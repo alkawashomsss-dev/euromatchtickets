@@ -1,13 +1,13 @@
-import { useEffect, useState, createContext, useContext, useRef } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import axios from "axios";
-import { Toaster, toast } from "sonner";
+import { Toaster } from "sonner";
 
 // Pages
 import HomePage from "./pages/HomePage";
-import MatchesPage from "./pages/MatchesPage";
-import MatchDetailsPage from "./pages/MatchDetailsPage";
+import EventsPage from "./pages/EventsPage";
+import EventDetailsPage from "./pages/EventDetailsPage";
 import MyTicketsPage from "./pages/MyTicketsPage";
 import SellerDashboard from "./pages/SellerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -92,8 +92,8 @@ const ProtectedRoute = ({ children, requiredRole }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -122,8 +122,8 @@ function AppRouter() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/matches" element={<MatchesPage />} />
-        <Route path="/match/:matchId" element={<MatchDetailsPage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/event/:eventId" element={<EventDetailsPage />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
         <Route path="/order/success" element={
           <ProtectedRoute>
@@ -159,9 +159,9 @@ function App() {
           theme="dark"
           toastOptions={{
             style: {
-              background: '#1E293B',
+              background: '#18181b',
               border: '1px solid rgba(255,255,255,0.1)',
-              color: '#F8FAFC'
+              color: '#fafafa'
             }
           }}
         />
