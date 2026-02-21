@@ -425,7 +425,7 @@ const HomePage = () => {
             </span>
           </h2>
           <p className="text-zinc-400 text-lg mb-10 max-w-2xl mx-auto">
-            Join thousands of fans who trust FanPass for their live event tickets
+            Join thousands of fans who trust EuroMatchTickets for their live event tickets
           </p>
           <Link to="/events">
             <Button data-testid="cta-btn" className="btn-accent text-lg h-14 px-12">
@@ -445,7 +445,7 @@ const HomePage = () => {
                 <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
                   <Ticket className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold">FanPass</span>
+                <span className="text-xl font-bold">EuroMatchTickets</span>
               </div>
               <p className="text-zinc-500 text-sm">
                 Europe's trusted ticket marketplace for concerts and football matches.
@@ -480,7 +480,7 @@ const HomePage = () => {
           
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-zinc-500 text-sm">
-              © 2025 FanPass. All rights reserved.
+              © 2025 EuroMatchTickets. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-sm text-zinc-500">
               <span>Secure payments with Stripe</span>

@@ -5,8 +5,8 @@ const RefundPolicyPage = () => {
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       <Helmet>
-        <title>Refund Policy | FanPass</title>
-        <meta name="description" content="Learn about FanPass refund policy and buyer protection. We guarantee your purchase with our comprehensive refund policy." />
+        <title>Refund Policy | EuroMatchTickets</title>
+        <meta name="description" content="Learn about EuroMatchTickets refund policy and buyer protection. We guarantee your purchase with our comprehensive refund policy." />
         <meta name="keywords" content="refund policy, ticket refund, buyer protection, money back guarantee" />
       </Helmet>
 
@@ -18,21 +18,21 @@ const RefundPolicyPage = () => {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Refund Policy</h1>
           <p className="text-xl text-zinc-400">
-            Your purchase is protected by the FanPass Guarantee
+            Your purchase is protected by the EuroMatchTickets Guarantee
           </p>
         </div>
       </section>
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
-        {/* FanPass Guarantee */}
+        {/* EuroMatchTickets Guarantee */}
         <section className="mb-16">
           <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <Shield className="w-6 h-6 text-emerald-400" />
-              The FanPass Guarantee
+              The EuroMatchTickets Guarantee
             </h2>
             <p className="text-zinc-300 text-lg leading-relaxed mb-6">
-              Every ticket purchase on FanPass is protected. If something goes wrong, 
+              Every ticket purchase on EuroMatchTickets is protected. If something goes wrong, 
               we've got you covered with a full refund.
             </p>
             <div className="grid md:grid-cols-3 gap-4">

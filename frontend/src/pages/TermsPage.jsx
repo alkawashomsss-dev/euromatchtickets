@@ -4,8 +4,8 @@ const TermsPage = () => {
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       <Helmet>
-        <title>Terms & Conditions | FanPass</title>
-        <meta name="description" content="Read FanPass terms and conditions for buying and selling tickets on our marketplace." />
+        <title>Terms & Conditions | EuroMatchTickets</title>
+        <meta name="description" content="Read EuroMatchTickets terms and conditions for buying and selling tickets on our marketplace." />
         <meta name="keywords" content="terms conditions, ticket marketplace rules, fanpass terms" />
       </Helmet>
 
@@ -17,8 +17,8 @@ const TermsPage = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">1. Introduction</h2>
             <p className="text-zinc-400 leading-relaxed">
-              Welcome to FanPass. These Terms and Conditions govern your use of our website and services. 
-              By accessing or using FanPass, you agree to be bound by these terms. FanPass operates as a 
+              Welcome to EuroMatchTickets. These Terms and Conditions govern your use of our website and services. 
+              By accessing or using EuroMatchTickets, you agree to be bound by these terms. EuroMatchTickets operates as a 
               marketplace connecting ticket buyers with sellers.
             </p>
           </section>
@@ -26,7 +26,7 @@ const TermsPage = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">2. Definitions</h2>
             <ul className="list-disc pl-6 text-zinc-400 space-y-2">
-              <li><strong className="text-white">Platform:</strong> The FanPass website and mobile applications</li>
+              <li><strong className="text-white">Platform:</strong> The EuroMatchTickets website and mobile applications</li>
               <li><strong className="text-white">User:</strong> Any person accessing or using the Platform</li>
               <li><strong className="text-white">Buyer:</strong> A User purchasing tickets through the Platform</li>
               <li><strong className="text-white">Seller:</strong> A User listing tickets for sale on the Platform</li>
@@ -37,7 +37,7 @@ const TermsPage = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">3. Account Registration</h2>
             <p className="text-zinc-400 leading-relaxed mb-4">
-              To use certain features of FanPass, you must create an account. You agree to:
+              To use certain features of EuroMatchTickets, you must create an account. You agree to:
             </p>
             <ul className="list-disc pl-6 text-zinc-400 space-y-2">
               <li>Provide accurate and complete information</li>
@@ -50,10 +50,10 @@ const TermsPage = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">4. Buying Tickets</h2>
             <p className="text-zinc-400 leading-relaxed mb-4">
-              When you purchase tickets through FanPass:
+              When you purchase tickets through EuroMatchTickets:
             </p>
             <ul className="list-disc pl-6 text-zinc-400 space-y-2">
-              <li>You are purchasing from third-party sellers, not FanPass directly</li>
+              <li>You are purchasing from third-party sellers, not EuroMatchTickets directly</li>
               <li>Prices may be above or below face value</li>
               <li>A 10% service fee is added to all purchases</li>
               <li>Tickets are delivered digitally via QR code</li>
@@ -64,7 +64,7 @@ const TermsPage = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">5. Selling Tickets</h2>
             <p className="text-zinc-400 leading-relaxed mb-4">
-              As a seller on FanPass, you agree to:
+              As a seller on EuroMatchTickets, you agree to:
             </p>
             <ul className="list-disc pl-6 text-zinc-400 space-y-2">
               <li>Only list tickets you legally own or are authorized to sell</li>
@@ -76,7 +76,7 @@ const TermsPage = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-4">6. FanPass Guarantee</h2>
+            <h2 className="text-2xl font-bold mb-4">6. EuroMatchTickets Guarantee</h2>
             <p className="text-zinc-400 leading-relaxed mb-4">
               Our Buyer Guarantee protects you when:
             </p>
@@ -93,7 +93,7 @@ const TermsPage = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">7. Prohibited Activities</h2>
             <p className="text-zinc-400 leading-relaxed mb-4">
-              You may not use FanPass to:
+              You may not use EuroMatchTickets to:
             </p>
             <ul className="list-disc pl-6 text-zinc-400 space-y-2">
               <li>List fraudulent, stolen, or counterfeit tickets</li>
@@ -107,7 +107,7 @@ const TermsPage = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">8. Fees and Payments</h2>
             <p className="text-zinc-400 leading-relaxed">
-              FanPass charges a 10% service fee on all transactions. This fee covers payment processing, 
+              EuroMatchTickets charges a 10% service fee on all transactions. This fee covers payment processing, 
               platform maintenance, customer support, and our Buyer Guarantee. Payments are processed 
               securely through Stripe. Sellers receive payment after the event has taken place and 
               tickets have been confirmed as valid.
@@ -117,7 +117,7 @@ const TermsPage = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">9. Limitation of Liability</h2>
             <p className="text-zinc-400 leading-relaxed">
-              FanPass acts as a marketplace facilitator and is not responsible for the actions of buyers 
+              EuroMatchTickets acts as a marketplace facilitator and is not responsible for the actions of buyers 
               or sellers. Our liability is limited to the amount of fees paid to us. We are not liable 
               for event cancellations, venue changes, or any indirect damages arising from your use of 
               the platform.

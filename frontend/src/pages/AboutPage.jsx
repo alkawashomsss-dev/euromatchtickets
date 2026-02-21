@@ -5,8 +5,8 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       <Helmet>
-        <title>About Us | FanPass</title>
-        <meta name="description" content="FanPass is Europe's trusted ticket marketplace. Buy and sell verified tickets for concerts, football matches, and live events with 100% buyer protection." />
+        <title>About Us | EuroMatchTickets</title>
+        <meta name="description" content="EuroMatchTickets is Europe's trusted ticket marketplace. Buy and sell verified tickets for concerts, football matches, and live events with 100% buyer protection." />
         <meta name="keywords" content="about fanpass, ticket marketplace, secure tickets, buy tickets europe" />
       </Helmet>
 
@@ -18,7 +18,7 @@ const AboutPage = () => {
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Ticket Marketplace</span>
           </h1>
           <p className="text-xl text-zinc-400 leading-relaxed">
-            FanPass connects passionate fans with verified tickets for the world's best concerts, 
+            EuroMatchTickets connects passionate fans with verified tickets for the world's best concerts, 
             football matches, and live events. We're committed to making ticket buying safe, 
             transparent, and accessible to everyone.
           </p>
@@ -34,7 +34,7 @@ const AboutPage = () => {
               <p className="text-zinc-400 text-lg leading-relaxed mb-6">
                 We believe everyone deserves access to unforgettable live experiences. 
                 Whether it's watching your favorite artist perform or cheering for your team 
-                in the Champions League final, FanPass is here to make it happen.
+                in the Champions League final, EuroMatchTickets is here to make it happen.
               </p>
               <p className="text-zinc-400 text-lg leading-relaxed">
                 Founded in 2024, we've grown to become one of Europe's leading secondary ticket 
@@ -66,13 +66,13 @@ const AboutPage = () => {
       {/* Why Choose Us */}
       <section className="py-20 bg-zinc-900/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose FanPass?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose EuroMatchTickets?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 icon: <Shield className="w-8 h-8" />,
                 title: "100% Buyer Protection",
-                description: "Every purchase is backed by our FanPass Guarantee. If your tickets don't arrive or are invalid, you get a full refund."
+                description: "Every purchase is backed by our EuroMatchTickets Guarantee. If your tickets don't arrive or are invalid, you get a full refund."
               },
               {
                 icon: <CheckCircle className="w-8 h-8" />,
@@ -142,7 +142,7 @@ const AboutPage = () => {
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Experience Live Events?</h2>
           <p className="text-zinc-400 text-lg mb-8">
-            Join thousands of fans who trust FanPass for their ticket needs.
+            Join thousands of fans who trust EuroMatchTickets for their ticket needs.
           </p>
           <a href="/events" className="inline-flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-8 py-4 rounded-full font-semibold transition-colors">
             <Ticket className="w-5 h-5" />

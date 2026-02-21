@@ -108,10 +108,10 @@ const EventDetailsPage = () => {
   // SEO title - set document title directly (moved before early returns to comply with hooks rules)
   useEffect(() => {
     if (event?.title) {
-      document.title = `${event.title} | FanPass`;
+      document.title = `${event.title} | EuroMatchTickets`;
     }
     return () => {
-      document.title = 'FanPass - Buy Verified Concert & Football Tickets';
+      document.title = 'EuroMatchTickets - Buy Verified Concert & Football Tickets';
     };
   }, [event?.title]);
 

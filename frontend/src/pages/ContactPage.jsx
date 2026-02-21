@@ -29,8 +29,8 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       <Helmet>
-        <title>Contact Us | FanPass</title>
-        <meta name="description" content="Get in touch with FanPass support team. We're here to help with ticket purchases, seller questions, and any issues." />
+        <title>Contact Us | EuroMatchTickets</title>
+        <meta name="description" content="Get in touch with EuroMatchTickets support team. We're here to help with ticket purchases, seller questions, and any issues." />
         <meta name="keywords" content="contact fanpass, support, help, ticket support" />
       </Helmet>
 
@@ -185,7 +185,7 @@ const ContactPage = () => {
               { q: "How do I receive my tickets?", a: "Tickets are delivered digitally via QR code to your email immediately after purchase." },
               { q: "Can I get a refund?", a: "Refunds are available under our Buyer Guarantee if tickets are invalid or not delivered." },
               { q: "How do I become a seller?", a: "Sign in to your account and click 'Become a Seller' in your profile menu." },
-              { q: "Are the tickets legitimate?", a: "Yes, all sellers are verified and tickets are guaranteed authentic under our FanPass Guarantee." }
+              { q: "Are the tickets legitimate?", a: "Yes, all sellers are verified and tickets are guaranteed authentic under our EuroMatchTickets Guarantee." }
             ].map((faq, index) => (
               <div key={index} className="bg-zinc-900/50 border border-white/5 rounded-xl p-6">
                 <h3 className="font-semibold mb-2">{faq.q}</h3>
