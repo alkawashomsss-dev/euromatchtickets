@@ -6,7 +6,7 @@ const TermsPage = () => {
       <Helmet>
         <title>Terms & Conditions | EuroMatchTickets</title>
         <meta name="description" content="Read EuroMatchTickets terms and conditions for buying and selling tickets on our marketplace." />
-        <meta name="keywords" content="terms conditions, ticket marketplace rules, fanpass terms" />
+        <meta name="keywords" content="terms conditions, ticket marketplace rules, euromatchtickets terms" />
       </Helmet>
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
@@ -128,8 +128,8 @@ const TermsPage = () => {
             <h2 className="text-2xl font-bold mb-4">10. Contact Us</h2>
             <p className="text-zinc-400 leading-relaxed">
               For questions about these Terms, please contact us at{" "}
-              <a href="mailto:legal@fanpass.com" className="text-purple-400 hover:underline">
-                legal@fanpass.com
+              <a href="mailto:legal@euromatchtickets.com" className="text-purple-400 hover:underline">
+                legal@euromatchtickets.com
               </a>
             </p>
           </section>

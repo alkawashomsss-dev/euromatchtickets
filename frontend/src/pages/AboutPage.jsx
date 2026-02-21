@@ -7,7 +7,7 @@ const AboutPage = () => {
       <Helmet>
         <title>About Us | EuroMatchTickets</title>
         <meta name="description" content="EuroMatchTickets is Europe's trusted ticket marketplace. Buy and sell verified tickets for concerts, football matches, and live events with 100% buyer protection." />
-        <meta name="keywords" content="about fanpass, ticket marketplace, secure tickets, buy tickets europe" />
+        <meta name="keywords" content="about euromatchtickets, ticket marketplace, secure tickets, buy tickets europe" />
       </Helmet>
 
       {/* Hero */}

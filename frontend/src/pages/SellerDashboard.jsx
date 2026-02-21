@@ -147,7 +147,7 @@ const SellerDashboard = () => {
           </div>
           <h1 className="text-3xl font-bold mb-4">Become a Seller</h1>
           <p className="text-zinc-400 mb-8">
-            Start selling your tickets on FanPass and reach thousands of fans across Europe.
+            Start selling your tickets on EuroMatchTickets and reach thousands of fans across Europe.
           </p>
           <ul className="text-left max-w-md mx-auto mb-8 space-y-3">
             <li className="flex items-center gap-3 text-zinc-300">

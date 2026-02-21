@@ -137,7 +137,7 @@ const RefundPolicyPage = () => {
                 <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold flex-shrink-0">1</span>
                 <div>
                   <h3 className="font-semibold">Contact Support</h3>
-                  <p className="text-zinc-400">Email us at support@fanpass.com with your order number and details of the issue.</p>
+                  <p className="text-zinc-400">Email us at support@euromatchtickets.com with your order number and details of the issue.</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">

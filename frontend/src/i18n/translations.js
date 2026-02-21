@@ -46,7 +46,7 @@ export const translations = {
       trustedBy: 'Trusted by 50K+ Fans',
       readyTitle: 'Ready for Your Next',
       readyHighlight: 'Unforgettable Experience?',
-      readyDesc: 'Join thousands of fans who trust FanPass for their live event tickets',
+      readyDesc: 'Join thousands of fans who trust EuroMatchTickets for their live event tickets',
       exploreAll: 'Explore All Events'
     },
     
@@ -131,7 +131,7 @@ export const translations = {
       completeKYC: 'Complete KYC',
       kycPending: 'KYC Pending',
       becomeSeller: 'Become a Seller',
-      becomeSellerDesc: 'Start selling your tickets on FanPass and reach thousands of fans across Europe.',
+      becomeSellerDesc: 'Start selling your tickets on EuroMatchTickets and reach thousands of fans across Europe.',
       payouts: 'Payouts',
       viewPayouts: 'View Payouts',
       grossAmount: 'Gross Amount',
@@ -232,7 +232,7 @@ export const translations = {
       trustedBy: 'Vertraut von 50.000+ Fans',
       readyTitle: 'Bereit für Ihr nächstes',
       readyHighlight: 'Unvergessliches Erlebnis?',
-      readyDesc: 'Schließen Sie sich Tausenden von Fans an, die FanPass für ihre Live-Event-Tickets vertrauen',
+      readyDesc: 'Schließen Sie sich Tausenden von Fans an, die EuroMatchTickets für ihre Live-Event-Tickets vertrauen',
       exploreAll: 'Alle Events entdecken'
     },
     
@@ -317,7 +317,7 @@ export const translations = {
       completeKYC: 'KYC abschließen',
       kycPending: 'KYC ausstehend',
       becomeSeller: 'Verkäufer werden',
-      becomeSellerDesc: 'Beginnen Sie mit dem Verkauf Ihrer Tickets auf FanPass und erreichen Sie Tausende von Fans in ganz Europa.',
+      becomeSellerDesc: 'Beginnen Sie mit dem Verkauf Ihrer Tickets auf EuroMatchTickets und erreichen Sie Tausende von Fans in ganz Europa.',
       payouts: 'Auszahlungen',
       viewPayouts: 'Auszahlungen anzeigen',
       grossAmount: 'Bruttobetrag',

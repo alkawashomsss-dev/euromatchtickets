@@ -31,7 +31,7 @@ const ContactPage = () => {
       <Helmet>
         <title>Contact Us | EuroMatchTickets</title>
         <meta name="description" content="Get in touch with EuroMatchTickets support team. We're here to help with ticket purchases, seller questions, and any issues." />
-        <meta name="keywords" content="contact fanpass, support, help, ticket support" />
+        <meta name="keywords" content="contact euromatchtickets, support, help, ticket support" />
       </Helmet>
 
       {/* Header */}
@@ -57,8 +57,8 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Email Support</h3>
-                  <a href="mailto:support@fanpass.com" className="text-zinc-400 hover:text-purple-400">
-                    support@fanpass.com
+                  <a href="mailto:support@euromatchtickets.com" className="text-zinc-400 hover:text-purple-400">
+                    support@euromatchtickets.com
                   </a>
                 </div>
               </div>
