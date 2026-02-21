@@ -14,25 +14,27 @@ export const SEOHead = ({
   const fullTitle = title ? `${title} | ${baseTitle}` : `${baseTitle} - Buy Verified Concert & Football Tickets`;
   const defaultDescription = "Buy and sell verified tickets for Champions League, Premier League, concerts. 100% secure with instant QR delivery.";
   const defaultImage = "/og-image.jpg";
+  const safeDescription = description || defaultDescription;
+  const safeImage = image || defaultImage;
 
   return (
     <Helmet>
-      <title>{fullTitle}</title>
-      <meta name="description" content={description || defaultDescription} />
-      {keywords && <meta name="keywords" content={keywords} />}
+      <title>{String(fullTitle)}</title>
+      <meta name="description" content={String(safeDescription)} />
+      {keywords && <meta name="keywords" content={String(keywords)} />}
       
       {/* Open Graph */}
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description || defaultDescription} />
+      <meta property="og:title" content={String(fullTitle)} />
+      <meta property="og:description" content={String(safeDescription)} />
       <meta property="og:type" content={type} />
-      {url && <meta property="og:url" content={url} />}
-      <meta property="og:image" content={image || defaultImage} />
+      {url && <meta property="og:url" content={String(url)} />}
+      <meta property="og:image" content={String(safeImage)} />
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description || defaultDescription} />
-      <meta name="twitter:image" content={image || defaultImage} />
+      <meta name="twitter:title" content={String(fullTitle)} />
+      <meta name="twitter:description" content={String(safeDescription)} />
+      <meta name="twitter:image" content={String(safeImage)} />
 
       {/* Event Schema */}
       {event && (
