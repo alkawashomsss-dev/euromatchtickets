@@ -102,7 +102,7 @@ const Header = () => {
                       <p className="font-medium truncate">{user.name}</p>
                       <p className="text-sm text-zinc-500 truncate">{user.email}</p>
                     </div>
-                  <DropdownMenuSeparator className="bg-zinc-800" />
+                    <DropdownMenuSeparator className="bg-zinc-800" />
                   <DropdownMenuItem 
                     onClick={() => navigate('/my-tickets')}
                     className="cursor-pointer"
