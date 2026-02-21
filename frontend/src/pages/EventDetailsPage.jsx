@@ -138,6 +138,31 @@ const EventDetailsPage = () => {
 
     setPurchasing(true);
     try {
+      // Track Facebook Pixel - InitiateCheckout
+      if (window.fbq) {
+        window.fbq('track', 'InitiateCheckout', {
+          content_name: event.title,
+          content_category: event.event_type,
+          content_ids: [selectedTicket.ticket_id],
+          value: totalAmount,
+          currency: 'EUR'
+        });
+      }
+      
+      // Track Google Analytics - begin_checkout
+      if (window.gtag) {
+        window.gtag('event', 'begin_checkout', {
+          currency: 'EUR',
+          value: totalAmount,
+          items: [{
+            item_id: selectedTicket.ticket_id,
+            item_name: event.title,
+            category: event.event_type,
+            price: selectedTicket.price
+          }]
+        });
+      }
+
       const response = await axios.post(`${API}/checkout/create`, {
         ticket_id: selectedTicket.ticket_id,
         origin_url: window.location.origin
