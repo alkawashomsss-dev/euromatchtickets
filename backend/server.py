@@ -1546,6 +1546,186 @@ async def seed_data():
 async def root():
     return {"message": "FanPass API - Events & Tickets Marketplace"}
 
+# ============== SITEMAP ENDPOINT ==============
+
+@api_router.get("/sitemap.xml")
+async def get_sitemap():
+    """Generate dynamic sitemap.xml for SEO"""
+    from fastapi.responses import Response
+    
+    base_url = "https://fanpass.com"
+    
+    # Static pages
+    static_pages = [
+        {"loc": f"{base_url}/", "priority": "1.0", "changefreq": "daily"},
+        {"loc": f"{base_url}/events", "priority": "0.9", "changefreq": "hourly"},
+        {"loc": f"{base_url}/events?type=concert", "priority": "0.8", "changefreq": "hourly"},
+        {"loc": f"{base_url}/events?type=match", "priority": "0.8", "changefreq": "hourly"},
+        {"loc": f"{base_url}/about", "priority": "0.5", "changefreq": "monthly"},
+        {"loc": f"{base_url}/terms", "priority": "0.3", "changefreq": "monthly"},
+        {"loc": f"{base_url}/contact", "priority": "0.5", "changefreq": "monthly"},
+        {"loc": f"{base_url}/refund-policy", "priority": "0.3", "changefreq": "monthly"},
+    ]
+    
+    # Get all events
+    events = await db.events.find(
+        {"status": {"$ne": "cancelled"}},
+        {"_id": 0, "event_id": 1, "event_date": 1}
+    ).to_list(1000)
+    
+    # Build sitemap XML
+    xml_items = ['<?xml version="1.0" encoding="UTF-8"?>']
+    xml_items.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    
+    # Add static pages
+    for page in static_pages:
+        xml_items.append(f"""  <url>
+    <loc>{page['loc']}</loc>
+    <changefreq>{page['changefreq']}</changefreq>
+    <priority>{page['priority']}</priority>
+  </url>""")
+    
+    # Add event pages
+    for event in events:
+        event_date = event.get('event_date', '')
+        if isinstance(event_date, datetime):
+            lastmod = event_date.strftime('%Y-%m-%d')
+        else:
+            lastmod = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+        
+        xml_items.append(f"""  <url>
+    <loc>{base_url}/event/{event['event_id']}</loc>
+    <lastmod>{lastmod}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>""")
+    
+    xml_items.append('</urlset>')
+    
+    return Response(
+        content='\n'.join(xml_items),
+        media_type="application/xml"
+    )
+
+@api_router.get("/robots.txt")
+async def get_robots():
+    """Generate robots.txt for SEO"""
+    from fastapi.responses import PlainTextResponse
+    
+    robots_content = """User-agent: *
+Allow: /
+Allow: /events
+Allow: /event/
+
+Disallow: /admin
+Disallow: /seller
+Disallow: /my-tickets
+Disallow: /alerts
+Disallow: /api/
+
+Sitemap: https://fanpass.com/api/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+"""
+    return PlainTextResponse(content=robots_content)
+
+# ============== AI DESCRIPTION GENERATOR ==============
+
+@api_router.post("/events/{event_id}/generate-description")
+async def generate_event_description(event_id: str, request: Request):
+    """Generate SEO-optimized description for an event using AI"""
+    user = await require_admin(request)
+    
+    event = await db.events.find_one({"event_id": event_id}, {"_id": 0})
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
+    
+    try:
+        from emergentintegrations.llm.chat import LlmChat, UserMessage
+        
+        llm_key = os.environ.get('EMERGENT_LLM_KEY')
+        if not llm_key:
+            raise HTTPException(status_code=500, detail="LLM key not configured")
+        
+        chat = LlmChat(
+            api_key=llm_key,
+            session_id=f"seo_desc_{event_id}",
+            system_message="""You are an SEO expert for a ticket marketplace. Generate compelling, 
+            SEO-optimized descriptions for events. The description should be 150-250 words, 
+            include relevant keywords naturally, and encourage ticket purchases. 
+            Write in a professional but exciting tone. Do not use markdown formatting."""
+        ).with_model("openai", "gpt-4o")
+        
+        is_match = event.get('event_type') == 'match'
+        
+        if is_match:
+            prompt = f"""Write an SEO description for this football match:
+            
+Match: {event.get('home_team')} vs {event.get('away_team')}
+Competition: {event.get('subtitle', event.get('league', 'Football Match'))}
+Venue: {event.get('venue')}, {event.get('city')}, {event.get('country')}
+Date: {event.get('event_date')}
+
+Include keywords like: buy tickets, {event.get('home_team')} tickets, {event.get('away_team')} tickets, 
+{event.get('city')} football, secure tickets, official tickets."""
+        else:
+            prompt = f"""Write an SEO description for this concert:
+            
+Artist: {event.get('artist')}
+Tour: {event.get('subtitle', 'Live Concert')}
+Genre: {event.get('genre', 'Music')}
+Venue: {event.get('venue')}, {event.get('city')}, {event.get('country')}
+Date: {event.get('event_date')}
+
+Include keywords like: buy tickets, {event.get('artist')} concert tickets, {event.get('artist')} tour,
+{event.get('city')} concert, live music, official tickets."""
+        
+        user_message = UserMessage(text=prompt)
+        description = await chat.send_message(user_message)
+        
+        # Update event with description
+        await db.events.update_one(
+            {"event_id": event_id},
+            {"$set": {"description": description}}
+        )
+        
+        return {"success": True, "description": description}
+        
+    except ImportError:
+        raise HTTPException(status_code=500, detail="LLM integration not available")
+    except Exception as e:
+        logger.error(f"Error generating description: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.post("/events/generate-all-descriptions")
+async def generate_all_descriptions(request: Request):
+    """Generate descriptions for all events without descriptions"""
+    user = await require_admin(request)
+    
+    events = await db.events.find(
+        {"$or": [{"description": None}, {"description": ""}]},
+        {"_id": 0, "event_id": 1}
+    ).to_list(100)
+    
+    generated = 0
+    errors = []
+    
+    for event in events:
+        try:
+            # Call the single event generator
+            await generate_event_description(event["event_id"], request)
+            generated += 1
+        except Exception as e:
+            errors.append({"event_id": event["event_id"], "error": str(e)})
+    
+    return {
+        "success": True,
+        "generated": generated,
+        "total": len(events),
+        "errors": errors
+    }
+
 # Include the router in the main app
 app.include_router(api_router)
 
