@@ -200,6 +200,36 @@ class KYCSubmission(BaseModel):
     id_type: str  # passport, national_id, drivers_license
     id_number: str
 
+class PriceAlert(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    alert_id: str = Field(default_factory=lambda: f"alert_{uuid.uuid4().hex[:12]}")
+    user_id: str
+    user_email: str
+    event_id: str
+    target_price: float
+    current_lowest: Optional[float] = None
+    status: str = "active"  # active, triggered, cancelled
+    language: str = "en"
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class PriceAlertCreate(BaseModel):
+    event_id: str
+    target_price: float
+
+class SellerPayout(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    payout_id: str = Field(default_factory=lambda: f"payout_{uuid.uuid4().hex[:12]}")
+    seller_id: str
+    order_id: str
+    ticket_id: str
+    gross_amount: float  # Total ticket price
+    commission: float  # Platform fee
+    net_amount: float  # What seller receives
+    currency: str = "EUR"
+    status: str = "pending"  # pending, processing, completed, failed
+    payout_date: Optional[datetime] = None
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 # ============== AUTH HELPERS ==============
 
 async def get_current_user(request: Request) -> Optional[User]:
