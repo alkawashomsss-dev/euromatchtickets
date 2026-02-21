@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, Send, MessageSquare, Clock } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { toast } from "sonner";
-import { SEOHead } from "../components/SEOHead";
+import { Helmet } from 'react-helmet-async';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -28,11 +28,11 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
-      <SEOHead 
-        title="Contact Us"
-        description="Get in touch with FanPass support team. We're here to help with ticket purchases, seller questions, and any issues."
-        keywords="contact fanpass, support, help, ticket support"
-      />
+      <Helmet>
+        <title>Contact Us | FanPass</title>
+        <meta name="description" content="Get in touch with FanPass support team. We're here to help with ticket purchases, seller questions, and any issues." />
+        <meta name="keywords" content="contact fanpass, support, help, ticket support" />
+      </Helmet>
 
       {/* Header */}
       <section className="py-16 bg-zinc-900/30 border-b border-white/5">
