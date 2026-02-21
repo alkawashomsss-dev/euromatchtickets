@@ -1,14 +1,14 @@
 import { Shield, Users, Ticket, Award, Globe, CheckCircle } from "lucide-react";
-import { SEOHead } from "../components/SEOHead";
+import { Helmet } from 'react-helmet-async';
 
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
-      <SEOHead 
-        title="About Us"
-        description="FanPass is Europe's trusted ticket marketplace. Buy and sell verified tickets for concerts, football matches, and live events with 100% buyer protection."
-        keywords="about fanpass, ticket marketplace, secure tickets, buy tickets europe"
-      />
+      <Helmet>
+        <title>About Us | FanPass</title>
+        <meta name="description" content="FanPass is Europe's trusted ticket marketplace. Buy and sell verified tickets for concerts, football matches, and live events with 100% buyer protection." />
+        <meta name="keywords" content="about fanpass, ticket marketplace, secure tickets, buy tickets europe" />
+      </Helmet>
 
       {/* Hero */}
       <section className="py-20 bg-zinc-900/30 border-b border-white/5">
