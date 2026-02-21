@@ -108,7 +108,14 @@ const Header = () => {
                     className="cursor-pointer"
                   >
                     <ShoppingBag className="w-4 h-4 mr-2" />
-                    My Tickets
+                    {t('nav.myTickets')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => navigate('/alerts')}
+                    className="cursor-pointer"
+                  >
+                    <Bell className="w-4 h-4 mr-2" />
+                    Price Alerts
                   </DropdownMenuItem>
                   {(user.role === 'seller' || user.role === 'admin') && (
                     <DropdownMenuItem 
@@ -116,7 +123,7 @@ const Header = () => {
                       className="cursor-pointer"
                     >
                       <Settings className="w-4 h-4 mr-2" />
-                      Seller Dashboard
+                      {t('nav.sellerDashboard')}
                     </DropdownMenuItem>
                   )}
                   {user.role === 'admin' && (
@@ -125,7 +132,7 @@ const Header = () => {
                       className="cursor-pointer"
                     >
                       <LayoutDashboard className="w-4 h-4 mr-2" />
-                      Admin Panel
+                      {t('nav.admin')}
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator className="bg-zinc-800" />
