@@ -30,7 +30,7 @@ STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY', 'sk_test_emergent')
 PLATFORM_COMMISSION = 0.10  # 10% commission
 
 # Create the main app
-app = FastAPI(title="FanPass - European Football Ticket Marketplace")
+app = FastAPI(title="FanPass - Events & Tickets Marketplace")
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
@@ -46,6 +46,8 @@ class User(BaseModel):
     role: str = "buyer"  # buyer, seller, admin
     rating: float = 5.0
     total_sales: int = 0
+    kyc_status: str = "pending"  # pending, submitted, verified, rejected
+    kyc_documents: Optional[Dict[str, Any]] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class UserSession(BaseModel):
@@ -56,46 +58,63 @@ class UserSession(BaseModel):
     expires_at: datetime
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
-class Match(BaseModel):
+class Event(BaseModel):
     model_config = ConfigDict(extra="ignore")
-    match_id: str = Field(default_factory=lambda: f"match_{uuid.uuid4().hex[:12]}")
-    home_team: str
-    away_team: str
-    home_logo: str
-    away_logo: str
-    league: str  # champions_league, premier_league, la_liga
-    league_logo: str
-    stadium: str
+    event_id: str = Field(default_factory=lambda: f"event_{uuid.uuid4().hex[:12]}")
+    event_type: str  # match, concert
+    title: str
+    subtitle: Optional[str] = None  # e.g., "World Tour 2025" for concerts
+    # For matches
+    home_team: Optional[str] = None
+    away_team: Optional[str] = None
+    home_logo: Optional[str] = None
+    away_logo: Optional[str] = None
+    league: Optional[str] = None
+    league_logo: Optional[str] = None
+    # For concerts
+    artist: Optional[str] = None
+    artist_image: Optional[str] = None
+    genre: Optional[str] = None
+    # Common fields
+    venue: str
     city: str
     country: str
-    match_date: datetime
-    status: str = "upcoming"  # upcoming, live, completed
+    event_date: datetime
+    event_image: Optional[str] = None
+    status: str = "upcoming"  # upcoming, live, completed, cancelled
     featured: bool = False
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
-class MatchCreate(BaseModel):
-    home_team: str
-    away_team: str
-    home_logo: str
-    away_logo: str
-    league: str
-    league_logo: str
-    stadium: str
+class EventCreate(BaseModel):
+    event_type: str
+    title: str
+    subtitle: Optional[str] = None
+    home_team: Optional[str] = None
+    away_team: Optional[str] = None
+    home_logo: Optional[str] = None
+    away_logo: Optional[str] = None
+    league: Optional[str] = None
+    league_logo: Optional[str] = None
+    artist: Optional[str] = None
+    artist_image: Optional[str] = None
+    genre: Optional[str] = None
+    venue: str
     city: str
     country: str
-    match_date: datetime
+    event_date: datetime
+    event_image: Optional[str] = None
     featured: bool = False
 
 class Ticket(BaseModel):
     model_config = ConfigDict(extra="ignore")
     ticket_id: str = Field(default_factory=lambda: f"ticket_{uuid.uuid4().hex[:12]}")
-    match_id: str
+    event_id: str
     seller_id: str
     seller_name: str
-    category: str  # vip, cat1, cat2, cat3
+    category: str  # vip, cat1, cat2, cat3, standing, floor
     section: str
-    row: str
-    seat: str
+    row: Optional[str] = None
+    seat: Optional[str] = None
     price: float
     original_price: float
     currency: str = "EUR"
@@ -103,11 +122,11 @@ class Ticket(BaseModel):
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class TicketCreate(BaseModel):
-    match_id: str
+    event_id: str
     category: str
     section: str
-    row: str
-    seat: str
+    row: Optional[str] = None
+    seat: Optional[str] = None
     price: float
     original_price: float
     currency: str = "EUR"
@@ -118,13 +137,13 @@ class Order(BaseModel):
     buyer_id: str
     buyer_email: str
     ticket_id: str
-    match_id: str
+    event_id: str
     seller_id: str
     ticket_price: float
     commission: float
     total_amount: float
     currency: str = "EUR"
-    status: str = "pending"  # pending, paid, completed, cancelled, refunded
+    status: str = "pending"  # pending, paid, completed, cancelled, refunded, disputed
     stripe_session_id: Optional[str] = None
     qr_code: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -154,6 +173,26 @@ class PaymentTransaction(BaseModel):
     status: str = "initiated"  # initiated, paid, failed, expired
     metadata: Dict[str, Any] = {}
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class Dispute(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    dispute_id: str = Field(default_factory=lambda: f"dispute_{uuid.uuid4().hex[:12]}")
+    order_id: str
+    buyer_id: str
+    seller_id: str
+    reason: str
+    description: str
+    status: str = "open"  # open, investigating, resolved, closed
+    resolution: Optional[str] = None
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class KYCSubmission(BaseModel):
+    full_name: str
+    date_of_birth: str
+    address: str
+    country: str
+    id_type: str  # passport, national_id, drivers_license
+    id_number: str
 
 # ============== AUTH HELPERS ==============
 
@@ -218,7 +257,6 @@ async def exchange_session(request: Request, response: Response):
     if not session_id:
         raise HTTPException(status_code=400, detail="session_id required")
     
-    # Call Emergent Auth to get user data
     async with httpx.AsyncClient() as client:
         auth_response = await client.get(
             "https://demobackend.emergentagent.com/auth/v1/env/oauth/session-data",
@@ -234,18 +272,15 @@ async def exchange_session(request: Request, response: Response):
     picture = auth_data.get("picture")
     session_token = auth_data.get("session_token")
     
-    # Check if user exists
     existing_user = await db.users.find_one({"email": email}, {"_id": 0})
     
     if existing_user:
         user_id = existing_user["user_id"]
-        # Update user info
         await db.users.update_one(
             {"user_id": user_id},
             {"$set": {"name": name, "picture": picture}}
         )
     else:
-        # Create new user
         user_id = f"user_{uuid.uuid4().hex[:12]}"
         new_user = User(
             user_id=user_id,
@@ -258,7 +293,6 @@ async def exchange_session(request: Request, response: Response):
         user_doc['created_at'] = user_doc['created_at'].isoformat()
         await db.users.insert_one(user_doc)
     
-    # Store session
     expires_at = datetime.now(timezone.utc) + timedelta(days=7)
     session_doc = {
         "session_id": str(uuid.uuid4()),
@@ -268,11 +302,9 @@ async def exchange_session(request: Request, response: Response):
         "created_at": datetime.now(timezone.utc).isoformat()
     }
     
-    # Remove old sessions for this user
     await db.user_sessions.delete_many({"user_id": user_id})
     await db.user_sessions.insert_one(session_doc)
     
-    # Set cookie
     response.set_cookie(
         key="session_token",
         value=session_token,
@@ -283,7 +315,6 @@ async def exchange_session(request: Request, response: Response):
         max_age=7 * 24 * 60 * 60
     )
     
-    # Get user data
     user_doc = await db.users.find_one({"user_id": user_id}, {"_id": 0})
     
     return {"success": True, "user": user_doc}
@@ -316,70 +347,107 @@ async def become_seller(request: Request):
     )
     return {"success": True, "role": "seller"}
 
-# ============== MATCHES ENDPOINTS ==============
+@api_router.post("/auth/kyc")
+async def submit_kyc(kyc_data: KYCSubmission, request: Request):
+    """Submit KYC documents"""
+    user = await require_auth(request)
+    
+    kyc_doc = {
+        "full_name": kyc_data.full_name,
+        "date_of_birth": kyc_data.date_of_birth,
+        "address": kyc_data.address,
+        "country": kyc_data.country,
+        "id_type": kyc_data.id_type,
+        "id_number": kyc_data.id_number,
+        "submitted_at": datetime.now(timezone.utc).isoformat()
+    }
+    
+    await db.users.update_one(
+        {"user_id": user.user_id},
+        {"$set": {"kyc_status": "submitted", "kyc_documents": kyc_doc}}
+    )
+    
+    return {"success": True, "status": "submitted"}
 
-@api_router.get("/matches")
-async def get_matches(
+# ============== EVENTS ENDPOINTS ==============
+
+@api_router.get("/events")
+async def get_events(
+    event_type: Optional[str] = None,
     league: Optional[str] = None,
+    genre: Optional[str] = None,
     city: Optional[str] = None,
+    country: Optional[str] = None,
     date_from: Optional[str] = None,
     date_to: Optional[str] = None,
-    featured: Optional[bool] = None
+    featured: Optional[bool] = None,
+    search: Optional[str] = None
 ):
-    """Get matches with filters"""
-    query = {}
+    """Get events with filters"""
+    query = {"status": {"$ne": "cancelled"}}
     
+    if event_type and event_type != "all":
+        query["event_type"] = event_type
     if league:
         query["league"] = league
+    if genre:
+        query["genre"] = genre
     if city:
         query["city"] = {"$regex": city, "$options": "i"}
+    if country:
+        query["country"] = {"$regex": country, "$options": "i"}
     if featured is not None:
         query["featured"] = featured
     if date_from:
-        query["match_date"] = {"$gte": date_from}
+        query["event_date"] = {"$gte": date_from}
     if date_to:
-        if "match_date" in query:
-            query["match_date"]["$lte"] = date_to
+        if "event_date" in query:
+            query["event_date"]["$lte"] = date_to
         else:
-            query["match_date"] = {"$lte": date_to}
+            query["event_date"] = {"$lte": date_to}
+    if search:
+        query["$or"] = [
+            {"title": {"$regex": search, "$options": "i"}},
+            {"artist": {"$regex": search, "$options": "i"}},
+            {"home_team": {"$regex": search, "$options": "i"}},
+            {"away_team": {"$regex": search, "$options": "i"}},
+            {"venue": {"$regex": search, "$options": "i"}},
+            {"city": {"$regex": search, "$options": "i"}}
+        ]
     
-    matches = await db.matches.find(query, {"_id": 0}).sort("match_date", 1).to_list(100)
+    events = await db.events.find(query, {"_id": 0}).sort("event_date", 1).to_list(100)
     
-    # Get ticket counts for each match
-    for match in matches:
+    for event in events:
         ticket_count = await db.tickets.count_documents({
-            "match_id": match["match_id"],
+            "event_id": event["event_id"],
             "status": "available"
         })
-        match["available_tickets"] = ticket_count
+        event["available_tickets"] = ticket_count
         
-        # Get lowest price
         lowest_ticket = await db.tickets.find_one(
-            {"match_id": match["match_id"], "status": "available"},
+            {"event_id": event["event_id"], "status": "available"},
             {"_id": 0, "price": 1},
             sort=[("price", 1)]
         )
-        match["lowest_price"] = lowest_ticket["price"] if lowest_ticket else None
+        event["lowest_price"] = lowest_ticket["price"] if lowest_ticket else None
     
-    return matches
+    return events
 
-@api_router.get("/matches/{match_id}")
-async def get_match(match_id: str):
-    """Get match details"""
-    match = await db.matches.find_one({"match_id": match_id}, {"_id": 0})
-    if not match:
-        raise HTTPException(status_code=404, detail="Match not found")
+@api_router.get("/events/{event_id}")
+async def get_event(event_id: str):
+    """Get event details"""
+    event = await db.events.find_one({"event_id": event_id}, {"_id": 0})
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
     
-    # Get available tickets grouped by category
     tickets = await db.tickets.find(
-        {"match_id": match_id, "status": "available"},
+        {"event_id": event_id, "status": "available"},
         {"_id": 0}
     ).to_list(500)
     
-    match["tickets"] = tickets
-    match["ticket_count"] = len(tickets)
+    event["tickets"] = tickets
+    event["ticket_count"] = len(tickets)
     
-    # Group by category
     categories = {}
     for ticket in tickets:
         cat = ticket["category"]
@@ -389,49 +457,49 @@ async def get_match(match_id: str):
         if ticket["price"] < categories[cat]["lowest_price"]:
             categories[cat]["lowest_price"] = ticket["price"]
     
-    match["categories"] = categories
+    event["categories"] = categories
     
-    return match
+    return event
 
-@api_router.post("/matches")
-async def create_match(match_data: MatchCreate, request: Request):
-    """Create a new match (admin only)"""
+@api_router.post("/events")
+async def create_event(event_data: EventCreate, request: Request):
+    """Create a new event (admin only)"""
     user = await require_admin(request)
     
-    match = Match(**match_data.model_dump())
-    match_doc = match.model_dump()
-    match_doc['match_date'] = match_doc['match_date'].isoformat()
-    match_doc['created_at'] = match_doc['created_at'].isoformat()
+    event = Event(**event_data.model_dump())
+    event_doc = event.model_dump()
+    event_doc['event_date'] = event_doc['event_date'].isoformat()
+    event_doc['created_at'] = event_doc['created_at'].isoformat()
     
-    await db.matches.insert_one(match_doc)
-    return {"success": True, "match_id": match.match_id}
+    await db.events.insert_one(event_doc)
+    return {"success": True, "event_id": event.event_id}
 
-@api_router.put("/matches/{match_id}")
-async def update_match(match_id: str, match_data: dict, request: Request):
-    """Update a match (admin only)"""
+@api_router.put("/events/{event_id}")
+async def update_event(event_id: str, event_data: dict, request: Request):
+    """Update an event (admin only)"""
     user = await require_admin(request)
     
-    if "match_date" in match_data and isinstance(match_data["match_date"], datetime):
-        match_data["match_date"] = match_data["match_date"].isoformat()
+    if "event_date" in event_data and isinstance(event_data["event_date"], datetime):
+        event_data["event_date"] = event_data["event_date"].isoformat()
     
-    result = await db.matches.update_one(
-        {"match_id": match_id},
-        {"$set": match_data}
+    result = await db.events.update_one(
+        {"event_id": event_id},
+        {"$set": event_data}
     )
     
     if result.matched_count == 0:
-        raise HTTPException(status_code=404, detail="Match not found")
+        raise HTTPException(status_code=404, detail="Event not found")
     
     return {"success": True}
 
-@api_router.delete("/matches/{match_id}")
-async def delete_match(match_id: str, request: Request):
-    """Delete a match (admin only)"""
+@api_router.delete("/events/{event_id}")
+async def delete_event(event_id: str, request: Request):
+    """Delete an event (admin only)"""
     user = await require_admin(request)
     
-    result = await db.matches.delete_one({"match_id": match_id})
+    result = await db.events.delete_one({"event_id": event_id})
     if result.deleted_count == 0:
-        raise HTTPException(status_code=404, detail="Match not found")
+        raise HTTPException(status_code=404, detail="Event not found")
     
     return {"success": True}
 
@@ -439,7 +507,7 @@ async def delete_match(match_id: str, request: Request):
 
 @api_router.get("/tickets")
 async def get_tickets(
-    match_id: Optional[str] = None,
+    event_id: Optional[str] = None,
     category: Optional[str] = None,
     seller_id: Optional[str] = None,
     status: str = "available"
@@ -447,8 +515,8 @@ async def get_tickets(
     """Get tickets with filters"""
     query = {"status": status}
     
-    if match_id:
-        query["match_id"] = match_id
+    if event_id:
+        query["event_id"] = event_id
     if category:
         query["category"] = category
     if seller_id:
@@ -462,10 +530,9 @@ async def create_ticket(ticket_data: TicketCreate, request: Request):
     """Create a ticket listing (seller only)"""
     user = await require_seller(request)
     
-    # Verify match exists
-    match = await db.matches.find_one({"match_id": ticket_data.match_id}, {"_id": 0})
-    if not match:
-        raise HTTPException(status_code=404, detail="Match not found")
+    event = await db.events.find_one({"event_id": ticket_data.event_id}, {"_id": 0})
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
     
     ticket = Ticket(
         **ticket_data.model_dump(),
@@ -489,11 +556,10 @@ async def get_seller_tickets(request: Request):
         {"_id": 0}
     ).to_list(500)
     
-    # Get match info for each ticket
     for ticket in tickets:
-        match = await db.matches.find_one({"match_id": ticket["match_id"]}, {"_id": 0})
-        if match:
-            ticket["match"] = match
+        event = await db.events.find_one({"event_id": ticket["event_id"]}, {"_id": 0})
+        if event:
+            ticket["event"] = event
     
     return tickets
 
@@ -542,27 +608,23 @@ async def create_checkout(request: Request):
     if not ticket_id or not origin_url:
         raise HTTPException(status_code=400, detail="ticket_id and origin_url required")
     
-    # Get ticket
     ticket = await db.tickets.find_one({"ticket_id": ticket_id, "status": "available"}, {"_id": 0})
     if not ticket:
         raise HTTPException(status_code=404, detail="Ticket not available")
     
-    # Get match
-    match = await db.matches.find_one({"match_id": ticket["match_id"]}, {"_id": 0})
-    if not match:
-        raise HTTPException(status_code=404, detail="Match not found")
+    event = await db.events.find_one({"event_id": ticket["event_id"]}, {"_id": 0})
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
     
-    # Calculate amounts
     ticket_price = float(ticket["price"])
     commission = round(ticket_price * PLATFORM_COMMISSION, 2)
     total_amount = round(ticket_price + commission, 2)
     
-    # Create order
     order = Order(
         buyer_id=user.user_id,
         buyer_email=user.email,
         ticket_id=ticket_id,
-        match_id=ticket["match_id"],
+        event_id=ticket["event_id"],
         seller_id=ticket["seller_id"],
         ticket_price=ticket_price,
         commission=commission,
@@ -573,19 +635,17 @@ async def create_checkout(request: Request):
     order_doc = order.model_dump()
     order_doc['created_at'] = order_doc['created_at'].isoformat()
     
-    # Reserve ticket
     await db.tickets.update_one(
         {"ticket_id": ticket_id},
         {"$set": {"status": "reserved"}}
     )
     
-    # Create Stripe checkout
     host_url = str(request.base_url).rstrip('/')
     webhook_url = f"{host_url}/api/webhook/stripe"
     stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
     
     success_url = f"{origin_url}/order/success?session_id={{CHECKOUT_SESSION_ID}}"
-    cancel_url = f"{origin_url}/match/{ticket['match_id']}"
+    cancel_url = f"{origin_url}/event/{ticket['event_id']}"
     
     checkout_request = CheckoutSessionRequest(
         amount=total_amount,
@@ -596,17 +656,15 @@ async def create_checkout(request: Request):
             "order_id": order.order_id,
             "ticket_id": ticket_id,
             "buyer_id": user.user_id,
-            "match": f"{match['home_team']} vs {match['away_team']}"
+            "event": event['title']
         }
     )
     
     session = await stripe_checkout.create_checkout_session(checkout_request)
     
-    # Update order with session ID
     order_doc["stripe_session_id"] = session.session_id
     await db.orders.insert_one(order_doc)
     
-    # Create payment transaction
     transaction = PaymentTransaction(
         order_id=order.order_id,
         session_id=session.session_id,
@@ -634,36 +692,29 @@ async def get_checkout_status(session_id: str, request: Request):
     
     status = await stripe_checkout.get_checkout_status(session_id)
     
-    # Get order
     order = await db.orders.find_one({"stripe_session_id": session_id}, {"_id": 0})
     if not order:
         raise HTTPException(status_code=404, detail="Order not found")
     
-    # Update payment transaction
     await db.payment_transactions.update_one(
         {"session_id": session_id},
         {"$set": {"status": status.payment_status}}
     )
     
-    # If paid and not already completed
     if status.payment_status == "paid" and order["status"] != "completed":
-        # Generate QR code
         qr_data = f"FANPASS-{order['order_id']}-{order['ticket_id']}"
         qr_code = generate_qr_code(qr_data)
         
-        # Update order
         await db.orders.update_one(
             {"order_id": order["order_id"]},
             {"$set": {"status": "completed", "qr_code": qr_code}}
         )
         
-        # Mark ticket as sold
         await db.tickets.update_one(
             {"ticket_id": order["ticket_id"]},
             {"$set": {"status": "sold"}}
         )
         
-        # Update seller stats
         await db.users.update_one(
             {"user_id": order["seller_id"]},
             {"$inc": {"total_sales": 1}}
@@ -733,11 +784,10 @@ async def get_orders(request: Request):
         {"_id": 0}
     ).sort("created_at", -1).to_list(100)
     
-    # Get match and ticket info
     for order in orders:
-        match = await db.matches.find_one({"match_id": order["match_id"]}, {"_id": 0})
+        event = await db.events.find_one({"event_id": order["event_id"]}, {"_id": 0})
         ticket = await db.tickets.find_one({"ticket_id": order["ticket_id"]}, {"_id": 0})
-        order["match"] = match
+        order["event"] = event
         order["ticket"] = ticket
     
     return orders
@@ -754,13 +804,87 @@ async def get_order(order_id: str, request: Request):
     if order["buyer_id"] != user.user_id and user.role != "admin":
         raise HTTPException(status_code=403, detail="Not authorized")
     
-    match = await db.matches.find_one({"match_id": order["match_id"]}, {"_id": 0})
+    event = await db.events.find_one({"event_id": order["event_id"]}, {"_id": 0})
     ticket = await db.tickets.find_one({"ticket_id": order["ticket_id"]}, {"_id": 0})
     
-    order["match"] = match
+    order["event"] = event
     order["ticket"] = ticket
     
     return order
+
+# ============== DISPUTES ENDPOINTS ==============
+
+@api_router.post("/disputes")
+async def create_dispute(request: Request):
+    """Create a dispute"""
+    user = await require_auth(request)
+    body = await request.json()
+    
+    order_id = body.get("order_id")
+    reason = body.get("reason")
+    description = body.get("description")
+    
+    order = await db.orders.find_one({"order_id": order_id}, {"_id": 0})
+    if not order:
+        raise HTTPException(status_code=404, detail="Order not found")
+    
+    if order["buyer_id"] != user.user_id:
+        raise HTTPException(status_code=403, detail="Not authorized")
+    
+    dispute = Dispute(
+        order_id=order_id,
+        buyer_id=user.user_id,
+        seller_id=order["seller_id"],
+        reason=reason,
+        description=description
+    )
+    
+    dispute_doc = dispute.model_dump()
+    dispute_doc['created_at'] = dispute_doc['created_at'].isoformat()
+    await db.disputes.insert_one(dispute_doc)
+    
+    await db.orders.update_one(
+        {"order_id": order_id},
+        {"$set": {"status": "disputed"}}
+    )
+    
+    return {"success": True, "dispute_id": dispute.dispute_id}
+
+@api_router.get("/admin/disputes")
+async def get_disputes(request: Request):
+    """Get all disputes (admin only)"""
+    user = await require_admin(request)
+    
+    disputes = await db.disputes.find({}, {"_id": 0}).sort("created_at", -1).to_list(100)
+    
+    for dispute in disputes:
+        order = await db.orders.find_one({"order_id": dispute["order_id"]}, {"_id": 0})
+        buyer = await db.users.find_one({"user_id": dispute["buyer_id"]}, {"_id": 0})
+        seller = await db.users.find_one({"user_id": dispute["seller_id"]}, {"_id": 0})
+        dispute["order"] = order
+        dispute["buyer"] = buyer
+        dispute["seller"] = seller
+    
+    return disputes
+
+@api_router.put("/admin/disputes/{dispute_id}")
+async def resolve_dispute(dispute_id: str, request: Request):
+    """Resolve a dispute (admin only)"""
+    user = await require_admin(request)
+    body = await request.json()
+    
+    status = body.get("status")
+    resolution = body.get("resolution")
+    
+    result = await db.disputes.update_one(
+        {"dispute_id": dispute_id},
+        {"$set": {"status": status, "resolution": resolution}}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Dispute not found")
+    
+    return {"success": True}
 
 # ============== RATINGS ENDPOINTS ==============
 
@@ -779,7 +903,6 @@ async def create_rating(rating_data: RatingCreate, request: Request):
     if order["status"] != "completed":
         raise HTTPException(status_code=400, detail="Order not completed")
     
-    # Check if already rated
     existing = await db.ratings.find_one({"order_id": rating_data.order_id}, {"_id": 0})
     if existing:
         raise HTTPException(status_code=400, detail="Already rated")
@@ -796,7 +919,6 @@ async def create_rating(rating_data: RatingCreate, request: Request):
     rating_doc['created_at'] = rating_doc['created_at'].isoformat()
     await db.ratings.insert_one(rating_doc)
     
-    # Update seller average rating
     seller_ratings = await db.ratings.find(
         {"seller_id": order["seller_id"]},
         {"_id": 0, "rating": 1}
@@ -829,12 +951,15 @@ async def get_admin_stats(request: Request):
     
     total_users = await db.users.count_documents({})
     total_sellers = await db.users.count_documents({"role": "seller"})
-    total_matches = await db.matches.count_documents({})
+    verified_sellers = await db.users.count_documents({"role": "seller", "kyc_status": "verified"})
+    total_events = await db.events.count_documents({})
+    total_matches = await db.events.count_documents({"event_type": "match"})
+    total_concerts = await db.events.count_documents({"event_type": "concert"})
     total_tickets = await db.tickets.count_documents({})
     available_tickets = await db.tickets.count_documents({"status": "available"})
     sold_tickets = await db.tickets.count_documents({"status": "sold"})
+    open_disputes = await db.disputes.count_documents({"status": "open"})
     
-    # Calculate revenue
     completed_orders = await db.orders.find(
         {"status": "completed"},
         {"_id": 0, "total_amount": 1, "commission": 1}
@@ -846,10 +971,14 @@ async def get_admin_stats(request: Request):
     return {
         "total_users": total_users,
         "total_sellers": total_sellers,
+        "verified_sellers": verified_sellers,
+        "total_events": total_events,
         "total_matches": total_matches,
+        "total_concerts": total_concerts,
         "total_tickets": total_tickets,
         "available_tickets": available_tickets,
         "sold_tickets": sold_tickets,
+        "open_disputes": open_disputes,
         "total_revenue": round(total_revenue, 2),
         "total_commission": round(total_commission, 2)
     }
@@ -882,6 +1011,26 @@ async def update_user_role(user_id: str, request: Request):
     
     return {"success": True}
 
+@api_router.put("/admin/users/{user_id}/kyc")
+async def update_kyc_status(user_id: str, request: Request):
+    """Update user KYC status (admin only)"""
+    admin = await require_admin(request)
+    body = await request.json()
+    status = body.get("status")
+    
+    if status not in ["pending", "submitted", "verified", "rejected"]:
+        raise HTTPException(status_code=400, detail="Invalid status")
+    
+    result = await db.users.update_one(
+        {"user_id": user_id},
+        {"$set": {"kyc_status": status}}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    return {"success": True}
+
 @api_router.get("/admin/orders")
 async def get_admin_orders(request: Request):
     """Get all orders (admin only)"""
@@ -895,20 +1044,12 @@ async def get_admin_orders(request: Request):
 @api_router.post("/seed")
 async def seed_data():
     """Seed demo data"""
-    # Check if already seeded
-    existing = await db.matches.count_documents({})
+    existing = await db.events.count_documents({})
     if existing > 0:
         return {"message": "Already seeded"}
     
-    # League logos
-    leagues = {
-        "champions_league": "https://upload.wikimedia.org/wikipedia/commons/e/e9/UEFA_Champions_League_logo_2.svg",
-        "premier_league": "https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg",
-        "la_liga": "https://upload.wikimedia.org/wikipedia/commons/0/0f/LaLiga_logo_2023.svg"
-    }
-    
     # Team logos
-    teams = {
+    team_logos = {
         "Real Madrid": "https://crests.football-data.org/86.svg",
         "Barcelona": "https://crests.football-data.org/81.svg",
         "Manchester City": "https://crests.football-data.org/65.svg",
@@ -918,151 +1059,145 @@ async def seed_data():
         "PSG": "https://crests.football-data.org/524.svg",
         "Chelsea": "https://crests.football-data.org/61.svg",
         "Atletico Madrid": "https://crests.football-data.org/78.svg",
-        "Juventus": "https://crests.football-data.org/109.svg",
+        "Borussia Dortmund": "https://crests.football-data.org/4.svg",
         "Inter Milan": "https://crests.football-data.org/108.svg",
         "AC Milan": "https://crests.football-data.org/98.svg"
     }
     
+    leagues = {
+        "champions_league": "https://upload.wikimedia.org/wikipedia/commons/e/e9/UEFA_Champions_League_logo_2.svg",
+        "premier_league": "https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg",
+        "la_liga": "https://upload.wikimedia.org/wikipedia/commons/0/0f/LaLiga_logo_2023.svg",
+        "bundesliga": "https://upload.wikimedia.org/wikipedia/en/d/df/Bundesliga_logo_%282017%29.svg"
+    }
+    
+    # Football matches
     matches_data = [
-        # Champions League
-        {
-            "home_team": "Real Madrid", "away_team": "Manchester City",
-            "league": "champions_league", "stadium": "Santiago Bernabéu",
-            "city": "Madrid", "country": "Spain",
-            "match_date": (datetime.now(timezone.utc) + timedelta(days=7)).isoformat(),
-            "featured": True
-        },
-        {
-            "home_team": "Bayern Munich", "away_team": "PSG",
-            "league": "champions_league", "stadium": "Allianz Arena",
-            "city": "Munich", "country": "Germany",
-            "match_date": (datetime.now(timezone.utc) + timedelta(days=14)).isoformat(),
-            "featured": True
-        },
-        {
-            "home_team": "Barcelona", "away_team": "Inter Milan",
-            "league": "champions_league", "stadium": "Camp Nou",
-            "city": "Barcelona", "country": "Spain",
-            "match_date": (datetime.now(timezone.utc) + timedelta(days=21)).isoformat(),
-            "featured": False
-        },
-        # Premier League
-        {
-            "home_team": "Liverpool", "away_team": "Arsenal",
-            "league": "premier_league", "stadium": "Anfield",
-            "city": "Liverpool", "country": "England",
-            "match_date": (datetime.now(timezone.utc) + timedelta(days=3)).isoformat(),
-            "featured": True
-        },
-        {
-            "home_team": "Manchester City", "away_team": "Chelsea",
-            "league": "premier_league", "stadium": "Etihad Stadium",
-            "city": "Manchester", "country": "England",
-            "match_date": (datetime.now(timezone.utc) + timedelta(days=10)).isoformat(),
-            "featured": False
-        },
-        {
-            "home_team": "Arsenal", "away_team": "Liverpool",
-            "league": "premier_league", "stadium": "Emirates Stadium",
-            "city": "London", "country": "England",
-            "match_date": (datetime.now(timezone.utc) + timedelta(days=17)).isoformat(),
-            "featured": False
-        },
-        # La Liga
-        {
-            "home_team": "Barcelona", "away_team": "Real Madrid",
-            "league": "la_liga", "stadium": "Camp Nou",
-            "city": "Barcelona", "country": "Spain",
-            "match_date": (datetime.now(timezone.utc) + timedelta(days=5)).isoformat(),
-            "featured": True
-        },
-        {
-            "home_team": "Atletico Madrid", "away_team": "Barcelona",
-            "league": "la_liga", "stadium": "Metropolitano",
-            "city": "Madrid", "country": "Spain",
-            "match_date": (datetime.now(timezone.utc) + timedelta(days=12)).isoformat(),
-            "featured": False
-        },
-        {
-            "home_team": "Real Madrid", "away_team": "Atletico Madrid",
-            "league": "la_liga", "stadium": "Santiago Bernabéu",
-            "city": "Madrid", "country": "Spain",
-            "match_date": (datetime.now(timezone.utc) + timedelta(days=19)).isoformat(),
-            "featured": False
-        }
+        {"home": "Real Madrid", "away": "Manchester City", "league": "champions_league", "venue": "Santiago Bernabéu", "city": "Madrid", "country": "Spain", "days": 7, "featured": True},
+        {"home": "Bayern Munich", "away": "PSG", "league": "champions_league", "venue": "Allianz Arena", "city": "Munich", "country": "Germany", "days": 14, "featured": True},
+        {"home": "Barcelona", "away": "Inter Milan", "league": "champions_league", "venue": "Camp Nou", "city": "Barcelona", "country": "Spain", "days": 21, "featured": False},
+        {"home": "Liverpool", "away": "Arsenal", "league": "premier_league", "venue": "Anfield", "city": "Liverpool", "country": "England", "days": 3, "featured": True},
+        {"home": "Manchester City", "away": "Chelsea", "league": "premier_league", "venue": "Etihad Stadium", "city": "Manchester", "country": "England", "days": 10, "featured": False},
+        {"home": "Barcelona", "away": "Real Madrid", "league": "la_liga", "venue": "Camp Nou", "city": "Barcelona", "country": "Spain", "days": 5, "featured": True},
+        {"home": "Borussia Dortmund", "away": "Bayern Munich", "league": "bundesliga", "venue": "Signal Iduna Park", "city": "Dortmund", "country": "Germany", "days": 8, "featured": False},
     ]
     
-    for match_data in matches_data:
-        match = Match(
-            home_team=match_data["home_team"],
-            away_team=match_data["away_team"],
-            home_logo=teams.get(match_data["home_team"], ""),
-            away_logo=teams.get(match_data["away_team"], ""),
-            league=match_data["league"],
-            league_logo=leagues[match_data["league"]],
-            stadium=match_data["stadium"],
-            city=match_data["city"],
-            country=match_data["country"],
-            match_date=datetime.fromisoformat(match_data["match_date"]),
-            featured=match_data["featured"]
+    for m in matches_data:
+        event = Event(
+            event_type="match",
+            title=f"{m['home']} vs {m['away']}",
+            home_team=m["home"],
+            away_team=m["away"],
+            home_logo=team_logos.get(m["home"], ""),
+            away_logo=team_logos.get(m["away"], ""),
+            league=m["league"],
+            league_logo=leagues.get(m["league"], ""),
+            venue=m["venue"],
+            city=m["city"],
+            country=m["country"],
+            event_date=datetime.now(timezone.utc) + timedelta(days=m["days"]),
+            event_image="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg",
+            featured=m["featured"]
         )
-        
-        match_doc = match.model_dump()
-        match_doc['match_date'] = match_doc['match_date'].isoformat()
-        match_doc['created_at'] = match_doc['created_at'].isoformat()
-        await db.matches.insert_one(match_doc)
+        event_doc = event.model_dump()
+        event_doc['event_date'] = event_doc['event_date'].isoformat()
+        event_doc['created_at'] = event_doc['created_at'].isoformat()
+        await db.events.insert_one(event_doc)
     
-    # Create demo admin user
+    # Concert data
+    concerts_data = [
+        {"artist": "Taylor Swift", "tour": "The Eras Tour", "genre": "Pop", "venue": "Wembley Stadium", "city": "London", "country": "England", "days": 12, "featured": True, "image": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"},
+        {"artist": "Coldplay", "tour": "Music of the Spheres", "genre": "Rock", "venue": "Olympiastadion", "city": "Berlin", "country": "Germany", "days": 18, "featured": True, "image": "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg"},
+        {"artist": "Drake", "tour": "It's All A Blur Tour", "genre": "Hip-Hop", "venue": "AccorHotels Arena", "city": "Paris", "country": "France", "days": 25, "featured": False, "image": "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg"},
+        {"artist": "Ed Sheeran", "tour": "Mathematics Tour", "genre": "Pop", "venue": "Amsterdam Arena", "city": "Amsterdam", "country": "Netherlands", "days": 9, "featured": True, "image": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg"},
+        {"artist": "The Weeknd", "tour": "After Hours Til Dawn", "genre": "R&B", "venue": "Tottenham Stadium", "city": "London", "country": "England", "days": 30, "featured": False, "image": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg"},
+        {"artist": "Beyoncé", "tour": "Renaissance World Tour", "genre": "Pop", "venue": "Stade de France", "city": "Paris", "country": "France", "days": 15, "featured": True, "image": "https://images.pexels.com/photos/1916824/pexels-photo-1916824.jpeg"},
+        {"artist": "Rammstein", "tour": "Europe Stadium Tour", "genre": "Metal", "venue": "Olympiastadion", "city": "Munich", "country": "Germany", "days": 22, "featured": False, "image": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"},
+        {"artist": "Adele", "tour": "Weekends with Adele", "genre": "Pop", "venue": "O2 Arena", "city": "London", "country": "England", "days": 35, "featured": False, "image": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg"},
+    ]
+    
+    for c in concerts_data:
+        event = Event(
+            event_type="concert",
+            title=f"{c['artist']} Live",
+            subtitle=c["tour"],
+            artist=c["artist"],
+            artist_image=c["image"],
+            genre=c["genre"],
+            venue=c["venue"],
+            city=c["city"],
+            country=c["country"],
+            event_date=datetime.now(timezone.utc) + timedelta(days=c["days"]),
+            event_image=c["image"],
+            featured=c["featured"]
+        )
+        event_doc = event.model_dump()
+        event_doc['event_date'] = event_doc['event_date'].isoformat()
+        event_doc['created_at'] = event_doc['created_at'].isoformat()
+        await db.events.insert_one(event_doc)
+    
+    # Create demo users
     admin_user = User(
         user_id="admin_001",
         email="admin@fanpass.com",
         name="FanPass Admin",
-        role="admin"
+        role="admin",
+        kyc_status="verified"
     )
     admin_doc = admin_user.model_dump()
     admin_doc['created_at'] = admin_doc['created_at'].isoformat()
     await db.users.insert_one(admin_doc)
     
-    # Create demo seller with tickets
     seller_user = User(
         user_id="seller_demo",
         email="seller@fanpass.com",
-        name="John's Tickets",
+        name="Premium Tickets GmbH",
         role="seller",
         rating=4.8,
-        total_sales=127
+        total_sales=234,
+        kyc_status="verified"
     )
     seller_doc = seller_user.model_dump()
     seller_doc['created_at'] = seller_doc['created_at'].isoformat()
     await db.users.insert_one(seller_doc)
     
-    # Add demo tickets
-    all_matches = await db.matches.find({}, {"_id": 0}).to_list(100)
+    # Add tickets for all events
+    all_events = await db.events.find({}, {"_id": 0}).to_list(100)
     
-    categories = [
+    import random
+    
+    match_categories = [
         {"name": "vip", "base_price": 450, "sections": ["VIP-A", "VIP-B"]},
         {"name": "cat1", "base_price": 280, "sections": ["101", "102", "103"]},
         {"name": "cat2", "base_price": 180, "sections": ["201", "202", "203", "204"]},
         {"name": "cat3", "base_price": 95, "sections": ["301", "302", "303", "304", "305"]}
     ]
     
-    import random
+    concert_categories = [
+        {"name": "vip", "base_price": 550, "sections": ["VIP-FRONT", "VIP-SIDE"]},
+        {"name": "floor", "base_price": 320, "sections": ["FLOOR-A", "FLOOR-B", "FLOOR-C"]},
+        {"name": "cat1", "base_price": 220, "sections": ["LOWER-1", "LOWER-2", "LOWER-3"]},
+        {"name": "cat2", "base_price": 150, "sections": ["UPPER-1", "UPPER-2", "UPPER-3"]},
+        {"name": "standing", "base_price": 85, "sections": ["GA-1", "GA-2"]}
+    ]
     
-    for match in all_matches:
+    for event in all_events:
+        categories = concert_categories if event["event_type"] == "concert" else match_categories
+        
         for cat in categories:
             for section in cat["sections"]:
-                for _ in range(random.randint(2, 5)):
-                    price_variation = random.uniform(0.9, 1.3)
+                for _ in range(random.randint(3, 8)):
+                    price_variation = random.uniform(0.85, 1.4)
                     price = round(cat["base_price"] * price_variation, 2)
                     
                     ticket = Ticket(
-                        match_id=match["match_id"],
+                        event_id=event["event_id"],
                         seller_id="seller_demo",
-                        seller_name="John's Tickets",
+                        seller_name="Premium Tickets GmbH",
                         category=cat["name"],
                         section=section,
-                        row=str(random.randint(1, 20)),
-                        seat=str(random.randint(1, 30)),
+                        row=str(random.randint(1, 25)) if cat["name"] not in ["standing", "floor"] else None,
+                        seat=str(random.randint(1, 40)) if cat["name"] not in ["standing", "floor"] else None,
                         price=price,
                         original_price=cat["base_price"]
                     )
@@ -1071,11 +1206,11 @@ async def seed_data():
                     ticket_doc['created_at'] = ticket_doc['created_at'].isoformat()
                     await db.tickets.insert_one(ticket_doc)
     
-    return {"message": "Seeded successfully", "matches": len(matches_data)}
+    return {"message": "Seeded successfully", "events": len(all_events)}
 
 @api_router.get("/")
 async def root():
-    return {"message": "FanPass API - European Football Ticket Marketplace"}
+    return {"message": "FanPass API - Events & Tickets Marketplace"}
 
 # Include the router in the main app
 app.include_router(api_router)
