@@ -249,6 +249,40 @@ const EventDetailsPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left - Venue Map & Tickets */}
           <div className="lg:col-span-2 space-y-8">
+            
+            {/* Event Description - Important for SEO */}
+            {event.description && (
+              <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
+                <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <FileText className="w-5 h-5 text-purple-400" />
+                  About This Event
+                </h2>
+                <p className="text-zinc-300 leading-relaxed text-lg">
+                  {event.description}
+                </p>
+                
+                {/* Event Quick Info */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-white/5">
+                  <div>
+                    <span className="text-zinc-500 text-sm">Date</span>
+                    <p className="font-semibold">{dateInfo.full}</p>
+                  </div>
+                  <div>
+                    <span className="text-zinc-500 text-sm">Time</span>
+                    <p className="font-semibold">{dateInfo.time}</p>
+                  </div>
+                  <div>
+                    <span className="text-zinc-500 text-sm">Venue</span>
+                    <p className="font-semibold">{event.venue}</p>
+                  </div>
+                  <div>
+                    <span className="text-zinc-500 text-sm">Location</span>
+                    <p className="font-semibold">{event.city}, {event.country}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+            
             {/* Venue Seat Map */}
             <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
               <h2 className="text-2xl font-bold mb-6">Select Your Seats</h2>
