@@ -160,30 +160,18 @@ const EventDetailsPage = () => {
   const commission = selectedTicket ? selectedTicket.price * 0.10 : 0;
   const totalAmount = selectedTicket ? selectedTicket.price + commission : 0;
 
-  // Generate SEO description
-  const seoDescription = event.description || `Buy verified tickets for ${event.title || 'this event'} at ${event.venue || 'the venue'}, ${event.city || 'Europe'}. Secure checkout with instant QR delivery.`;
-  
-  // SEO keywords based on event type
-  const seoKeywords = isMatch
-    ? `${event.home_team || ''} tickets, ${event.away_team || ''} tickets, ${event.city || ''} football, buy football tickets, ${event.venue || ''} tickets`
-    : `${event.artist || ''} tickets, ${event.artist || ''} concert, ${event.city || ''} concert tickets, buy concert tickets, ${event.venue || ''} tickets`;
-
-  // SEO title
-  const seoTitle = (event.title || 'Event') + ' | FanPass';
+  // SEO title - set document title directly
+  useEffect(() => {
+    if (event?.title) {
+      document.title = `${event.title} | FanPass`;
+    }
+    return () => {
+      document.title = 'FanPass - Buy Verified Concert & Football Tickets';
+    };
+  }, [event?.title]);
 
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
-      {/* SEO Meta Tags */}
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={seoDescription} />
-        <meta name="keywords" content={seoKeywords} />
-        <meta property="og:title" content={seoTitle} />
-        <meta property="og:description" content={seoDescription} />
-        <meta property="og:type" content="event" />
-        {event.event_image && <meta property="og:image" content={event.event_image} />}
-      </Helmet>
-      
       {/* Hero */}
       <div className="relative h-[400px] md:h-[450px] overflow-hidden">
         <img 
