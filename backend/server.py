@@ -70,6 +70,7 @@ class Event(BaseModel):
     event_type: str  # match, concert
     title: str
     subtitle: Optional[str] = None  # e.g., "World Tour 2025" for concerts
+    description: Optional[str] = None  # SEO description 150-300 words
     # For matches
     home_team: Optional[str] = None
     away_team: Optional[str] = None
