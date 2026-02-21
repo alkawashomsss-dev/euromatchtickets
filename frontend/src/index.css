@@ -1,115 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: 222 47% 4%;
+  --foreground: 210 40% 98%;
+  --card: 217 33% 10%;
+  --card-foreground: 210 40% 98%;
+  --popover: 217 33% 10%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 222 47% 4%;
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 38 92% 50%;
+  --accent-foreground: 222 47% 4%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --ring: 210 40% 98%;
+  --radius: 0.75rem;
+  --success: 142 71% 45%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: 'Manrope', sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-code {
-    font-family:
-        source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Stadium glow effect */
+.stadium-glow {
+  box-shadow: 0 0 60px rgba(34, 197, 94, 0.1), 0 0 120px rgba(34, 197, 94, 0.05);
+}
+
+/* Gold shine for VIP */
+.gold-shine {
+  background: linear-gradient(135deg, #F59E0B 0%, #FDE68A 50%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ticket card hover effect */
+.ticket-card {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ticket-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* Hero gradient overlay */
+.hero-gradient {
+  background: linear-gradient(to top, hsl(222, 47%, 4%) 0%, transparent 100%);
+}
+
+/* Pitch pattern background */
+.pitch-pattern {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.08) 0%, transparent 50%);
+}
+
+/* Floodlight effect */
+.floodlight {
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+}
+
+/* Seat map styles */
+.seat {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.seat:hover {
+  transform: scale(1.2);
+}
+
+.seat-vip {
+  fill: #F59E0B;
+}
+
+.seat-cat1 {
+  fill: #3B82F6;
+}
+
+.seat-cat2 {
+  fill: #22C55E;
+}
+
+.seat-cat3 {
+  fill: #94A3B8;
+}
+
+/* Badge styles */
+.badge-vip {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #000;
+}
+
+.badge-champions {
+  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+}
+
+.badge-premier {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+}
+
+.badge-laliga {
+  background: linear-gradient(135deg, #DC2626 0%, #F87171 100%);
+}
+
+/* Animation keyframes */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.5);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease forwards;
+}
+
+/* Stagger animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* League colors */
+.league-champions { color: #3B82F6; }
+.league-premier { color: #7C3AED; }
+.league-laliga { color: #EF4444; }
+
+/* Glass morphism */
+.glass {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-white text-black font-bold uppercase tracking-wide px-8 py-3 rounded-sm 
+         transition-all duration-200 hover:bg-slate-200 active:scale-95;
+}
+
+.btn-outline {
+  @apply border border-white/20 text-white font-bold uppercase tracking-wide px-8 py-3 rounded-sm
+         transition-all duration-200 hover:border-white hover:bg-white/5;
+}
+
+/* Input styles */
+.input-dark {
+  @apply bg-slate-950 border-slate-800 text-white placeholder:text-slate-600 
+         focus:border-white/50 focus:ring-0 rounded-lg h-12;
+}
+
+/* Card styles */
+.card-dark {
+  @apply bg-slate-900/50 backdrop-blur-md border border-white/5 rounded-xl 
+         overflow-hidden hover:border-white/20 transition-colors duration-300;
 }
 
 @layer base {
-    :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
-    }
-    .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-    }
-}
-
-@layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
-}
-
-@layer base {
-    [data-debug-wrapper="true"] {
-        display: contents !important;
-    }
-
-    [data-debug-wrapper="true"] > * {
-        margin-left: inherit;
-        margin-right: inherit;
-        margin-top: inherit;
-        margin-bottom: inherit;
-        padding-left: inherit;
-        padding-right: inherit;
-        padding-top: inherit;
-        padding-bottom: inherit;
-        column-gap: inherit;
-        row-gap: inherit;
-        gap: inherit;
-        border-left-width: inherit;
-        border-right-width: inherit;
-        border-top-width: inherit;
-        border-bottom-width: inherit;
-        border-left-style: inherit;
-        border-right-style: inherit;
-        border-top-style: inherit;
-        border-bottom-style: inherit;
-        border-left-color: inherit;
-        border-right-color: inherit;
-        border-top-color: inherit;
-        border-bottom-color: inherit;
-    }
+  * {
+    @apply border-border;
+  }
 }
