@@ -617,6 +617,211 @@ async def delete_ticket(ticket_id: str, request: Request):
     await db.tickets.delete_one({"ticket_id": ticket_id})
     return {"success": True}
 
+# ============== PRICE ALERTS ENDPOINTS ==============
+
+@api_router.post("/price-alerts")
+async def create_price_alert(alert_data: PriceAlertCreate, request: Request):
+    """Create a price drop alert"""
+    user = await require_auth(request)
+    
+    # Check if event exists
+    event = await db.events.find_one({"event_id": alert_data.event_id}, {"_id": 0})
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
+    
+    # Get current lowest price
+    lowest_ticket = await db.tickets.find_one(
+        {"event_id": alert_data.event_id, "status": "available"},
+        {"_id": 0, "price": 1},
+        sort=[("price", 1)]
+    )
+    current_lowest = lowest_ticket["price"] if lowest_ticket else None
+    
+    # Check if alert already exists
+    existing = await db.price_alerts.find_one({
+        "user_id": user.user_id,
+        "event_id": alert_data.event_id,
+        "status": "active"
+    }, {"_id": 0})
+    
+    if existing:
+        # Update existing alert
+        await db.price_alerts.update_one(
+            {"alert_id": existing["alert_id"]},
+            {"$set": {"target_price": alert_data.target_price, "current_lowest": current_lowest}}
+        )
+        return {"success": True, "alert_id": existing["alert_id"], "updated": True}
+    
+    alert = PriceAlert(
+        user_id=user.user_id,
+        user_email=user.email,
+        event_id=alert_data.event_id,
+        target_price=alert_data.target_price,
+        current_lowest=current_lowest
+    )
+    
+    alert_doc = alert.model_dump()
+    alert_doc['created_at'] = alert_doc['created_at'].isoformat()
+    await db.price_alerts.insert_one(alert_doc)
+    
+    return {"success": True, "alert_id": alert.alert_id}
+
+@api_router.get("/price-alerts")
+async def get_my_alerts(request: Request):
+    """Get user's price alerts"""
+    user = await require_auth(request)
+    
+    alerts = await db.price_alerts.find(
+        {"user_id": user.user_id},
+        {"_id": 0}
+    ).sort("created_at", -1).to_list(100)
+    
+    # Add event info
+    for alert in alerts:
+        event = await db.events.find_one({"event_id": alert["event_id"]}, {"_id": 0})
+        alert["event"] = event
+        
+        # Update current lowest
+        lowest_ticket = await db.tickets.find_one(
+            {"event_id": alert["event_id"], "status": "available"},
+            {"_id": 0, "price": 1},
+            sort=[("price", 1)]
+        )
+        alert["current_lowest"] = lowest_ticket["price"] if lowest_ticket else None
+    
+    return alerts
+
+@api_router.delete("/price-alerts/{alert_id}")
+async def delete_price_alert(alert_id: str, request: Request):
+    """Delete a price alert"""
+    user = await require_auth(request)
+    
+    alert = await db.price_alerts.find_one({"alert_id": alert_id}, {"_id": 0})
+    if not alert:
+        raise HTTPException(status_code=404, detail="Alert not found")
+    
+    if alert["user_id"] != user.user_id:
+        raise HTTPException(status_code=403, detail="Not authorized")
+    
+    await db.price_alerts.delete_one({"alert_id": alert_id})
+    return {"success": True}
+
+async def check_and_trigger_price_alerts(event_id: str, new_price: float):
+    """Check if any price alerts should be triggered"""
+    # Find all active alerts for this event where target price >= new price
+    alerts = await db.price_alerts.find({
+        "event_id": event_id,
+        "status": "active",
+        "target_price": {"$gte": new_price}
+    }, {"_id": 0}).to_list(1000)
+    
+    if not alerts:
+        return
+    
+    event = await db.events.find_one({"event_id": event_id}, {"_id": 0})
+    if not event:
+        return
+    
+    for alert in alerts:
+        old_price = alert.get("current_lowest", new_price + 50)
+        
+        # Send email notification
+        await send_price_drop_alert(
+            event=event,
+            old_price=old_price,
+            new_price=new_price,
+            user_email=alert["user_email"],
+            lang=alert.get("language", "en")
+        )
+        
+        # Update alert status
+        await db.price_alerts.update_one(
+            {"alert_id": alert["alert_id"]},
+            {"$set": {"status": "triggered", "current_lowest": new_price}}
+        )
+
+# ============== SELLER PAYOUTS ENDPOINTS ==============
+
+@api_router.get("/seller/payouts")
+async def get_seller_payouts(request: Request):
+    """Get seller's payout history"""
+    user = await require_seller(request)
+    
+    payouts = await db.seller_payouts.find(
+        {"seller_id": user.user_id},
+        {"_id": 0}
+    ).sort("created_at", -1).to_list(500)
+    
+    # Calculate totals
+    total_gross = sum(p.get("gross_amount", 0) for p in payouts)
+    total_commission = sum(p.get("commission", 0) for p in payouts)
+    total_net = sum(p.get("net_amount", 0) for p in payouts)
+    pending_amount = sum(p.get("net_amount", 0) for p in payouts if p.get("status") == "pending")
+    completed_amount = sum(p.get("net_amount", 0) for p in payouts if p.get("status") == "completed")
+    
+    # Get order and event info for each payout
+    for payout in payouts:
+        order = await db.orders.find_one({"order_id": payout["order_id"]}, {"_id": 0})
+        if order:
+            event = await db.events.find_one({"event_id": order["event_id"]}, {"_id": 0})
+            payout["order"] = order
+            payout["event"] = event
+    
+    return {
+        "payouts": payouts,
+        "summary": {
+            "total_gross": round(total_gross, 2),
+            "total_commission": round(total_commission, 2),
+            "total_net": round(total_net, 2),
+            "pending_amount": round(pending_amount, 2),
+            "completed_amount": round(completed_amount, 2),
+            "total_sales": len(payouts)
+        }
+    }
+
+@api_router.get("/seller/dashboard-stats")
+async def get_seller_dashboard_stats(request: Request):
+    """Get comprehensive seller dashboard statistics"""
+    user = await require_seller(request)
+    
+    # Get all payouts
+    payouts = await db.seller_payouts.find(
+        {"seller_id": user.user_id},
+        {"_id": 0}
+    ).to_list(1000)
+    
+    # Get active tickets
+    active_tickets = await db.tickets.count_documents({
+        "seller_id": user.user_id,
+        "status": "available"
+    })
+    
+    # Get sold tickets
+    sold_tickets = await db.tickets.count_documents({
+        "seller_id": user.user_id,
+        "status": "sold"
+    })
+    
+    # Calculate earnings
+    total_earnings = sum(p.get("net_amount", 0) for p in payouts)
+    pending_earnings = sum(p.get("net_amount", 0) for p in payouts if p.get("status") == "pending")
+    
+    # Monthly earnings (current month)
+    now = datetime.now(timezone.utc)
+    month_start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+    monthly_payouts = [p for p in payouts if p.get("created_at", "") >= month_start.isoformat()]
+    monthly_earnings = sum(p.get("net_amount", 0) for p in monthly_payouts)
+    
+    return {
+        "active_listings": active_tickets,
+        "sold_tickets": sold_tickets,
+        "total_earnings": round(total_earnings, 2),
+        "pending_earnings": round(pending_earnings, 2),
+        "monthly_earnings": round(monthly_earnings, 2),
+        "rating": user.rating,
+        "kyc_status": user.kyc_status
+    }
+
 # ============== PAYMENT ENDPOINTS ==============
 
 def generate_qr_code(data: str) -> str:
