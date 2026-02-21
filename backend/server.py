@@ -963,6 +963,37 @@ async def get_checkout_status(session_id: str, request: Request):
         
         order["status"] = "completed"
         order["qr_code"] = qr_code
+        
+        # Get event and ticket for emails
+        event = await db.events.find_one({"event_id": order["event_id"]}, {"_id": 0})
+        ticket = await db.tickets.find_one({"ticket_id": order["ticket_id"]}, {"_id": 0})
+        
+        # Create seller payout record
+        payout = SellerPayout(
+            seller_id=order["seller_id"],
+            order_id=order["order_id"],
+            ticket_id=order["ticket_id"],
+            gross_amount=order["total_amount"],
+            commission=order["commission"],
+            net_amount=order["ticket_price"]
+        )
+        payout_doc = payout.model_dump()
+        payout_doc['created_at'] = payout_doc['created_at'].isoformat()
+        await db.seller_payouts.insert_one(payout_doc)
+        
+        # Send order confirmation email to buyer
+        try:
+            await send_order_confirmation(order, event, ticket, order["buyer_email"])
+        except Exception as e:
+            logger.error(f"Failed to send buyer email: {e}")
+        
+        # Send sale notification to seller
+        try:
+            seller = await db.users.find_one({"user_id": order["seller_id"]}, {"_id": 0})
+            if seller:
+                await send_seller_notification(order, event, ticket, seller["email"])
+        except Exception as e:
+            logger.error(f"Failed to send seller email: {e}")
     
     return {
         "payment_status": status.payment_status,
