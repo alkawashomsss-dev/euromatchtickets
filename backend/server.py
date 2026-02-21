@@ -1333,31 +1333,60 @@ async def seed_data():
         "Atletico Madrid": "https://crests.football-data.org/78.svg",
         "Borussia Dortmund": "https://crests.football-data.org/4.svg",
         "Inter Milan": "https://crests.football-data.org/108.svg",
-        "AC Milan": "https://crests.football-data.org/98.svg"
+        "AC Milan": "https://crests.football-data.org/98.svg",
+        "England": "https://crests.football-data.org/770.svg",
+        "Uruguay": "https://crests.football-data.org/UY.svg",
+        "Germany": "https://crests.football-data.org/759.svg",
+        "France": "https://crests.football-data.org/773.svg",
+        "Juventus": "https://crests.football-data.org/109.svg",
+        "Napoli": "https://crests.football-data.org/113.svg",
+        "Tottenham": "https://crests.football-data.org/73.svg",
+        "Manchester United": "https://crests.football-data.org/66.svg"
     }
     
     leagues = {
         "champions_league": "https://upload.wikimedia.org/wikipedia/commons/e/e9/UEFA_Champions_League_logo_2.svg",
         "premier_league": "https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg",
         "la_liga": "https://upload.wikimedia.org/wikipedia/commons/0/0f/LaLiga_logo_2023.svg",
-        "bundesliga": "https://upload.wikimedia.org/wikipedia/en/d/df/Bundesliga_logo_%282017%29.svg"
+        "bundesliga": "https://upload.wikimedia.org/wikipedia/en/d/df/Bundesliga_logo_%282017%29.svg",
+        "serie_a": "https://upload.wikimedia.org/wikipedia/en/e/e1/Serie_A_logo_%282019%29.svg",
+        "international": "https://upload.wikimedia.org/wikipedia/commons/a/aa/UEFA_logo.svg"
     }
     
-    # Football matches
+    # Football matches - BIG EVENTS 2025
     matches_data = [
-        {"home": "Real Madrid", "away": "Manchester City", "league": "champions_league", "venue": "Santiago Bernabéu", "city": "Madrid", "country": "Spain", "days": 7, "featured": True},
-        {"home": "Bayern Munich", "away": "PSG", "league": "champions_league", "venue": "Allianz Arena", "city": "Munich", "country": "Germany", "days": 14, "featured": True},
-        {"home": "Barcelona", "away": "Inter Milan", "league": "champions_league", "venue": "Camp Nou", "city": "Barcelona", "country": "Spain", "days": 21, "featured": False},
-        {"home": "Liverpool", "away": "Arsenal", "league": "premier_league", "venue": "Anfield", "city": "Liverpool", "country": "England", "days": 3, "featured": True},
-        {"home": "Manchester City", "away": "Chelsea", "league": "premier_league", "venue": "Etihad Stadium", "city": "Manchester", "country": "England", "days": 10, "featured": False},
-        {"home": "Barcelona", "away": "Real Madrid", "league": "la_liga", "venue": "Camp Nou", "city": "Barcelona", "country": "Spain", "days": 5, "featured": True},
-        {"home": "Borussia Dortmund", "away": "Bayern Munich", "league": "bundesliga", "venue": "Signal Iduna Park", "city": "Dortmund", "country": "Germany", "days": 8, "featured": False},
+        # Featured International
+        {"home": "England", "away": "Uruguay", "league": "international", "venue": "Wembley Stadium", "city": "London", "country": "England", "days": 5, "featured": True, "subtitle": "International Friendly 2025"},
+        {"home": "Germany", "away": "France", "league": "international", "venue": "Allianz Arena", "city": "Munich", "country": "Germany", "days": 12, "featured": True, "subtitle": "Nations League 2025"},
+        
+        # Champions League
+        {"home": "Real Madrid", "away": "Manchester City", "league": "champions_league", "venue": "Santiago Bernabéu", "city": "Madrid", "country": "Spain", "days": 8, "featured": True, "subtitle": "UCL Quarter-Final"},
+        {"home": "Bayern Munich", "away": "PSG", "league": "champions_league", "venue": "Allianz Arena", "city": "Munich", "country": "Germany", "days": 15, "featured": True, "subtitle": "UCL Quarter-Final"},
+        {"home": "Barcelona", "away": "Inter Milan", "league": "champions_league", "venue": "Camp Nou", "city": "Barcelona", "country": "Spain", "days": 22, "featured": False, "subtitle": "UCL Semi-Final"},
+        {"home": "Arsenal", "away": "Borussia Dortmund", "league": "champions_league", "venue": "Emirates Stadium", "city": "London", "country": "England", "days": 29, "featured": False, "subtitle": "UCL Semi-Final"},
+        
+        # Premier League
+        {"home": "Liverpool", "away": "Arsenal", "league": "premier_league", "venue": "Anfield", "city": "Liverpool", "country": "England", "days": 3, "featured": True, "subtitle": "Premier League Matchday 28"},
+        {"home": "Manchester City", "away": "Chelsea", "league": "premier_league", "venue": "Etihad Stadium", "city": "Manchester", "country": "England", "days": 10, "featured": False, "subtitle": "Premier League Matchday 29"},
+        {"home": "Tottenham", "away": "Manchester United", "league": "premier_league", "venue": "Tottenham Hotspur Stadium", "city": "London", "country": "England", "days": 17, "featured": False, "subtitle": "Premier League Matchday 30"},
+        
+        # La Liga - El Clasico
+        {"home": "Barcelona", "away": "Real Madrid", "league": "la_liga", "venue": "Camp Nou", "city": "Barcelona", "country": "Spain", "days": 6, "featured": True, "subtitle": "El Clasico - La Liga Matchday 32"},
+        {"home": "Atletico Madrid", "away": "Barcelona", "league": "la_liga", "venue": "Metropolitano", "city": "Madrid", "country": "Spain", "days": 20, "featured": False, "subtitle": "La Liga Matchday 34"},
+        
+        # Bundesliga
+        {"home": "Borussia Dortmund", "away": "Bayern Munich", "league": "bundesliga", "venue": "Signal Iduna Park", "city": "Dortmund", "country": "Germany", "days": 9, "featured": True, "subtitle": "Der Klassiker - Bundesliga"},
+        
+        # Serie A
+        {"home": "Juventus", "away": "Inter Milan", "league": "serie_a", "venue": "Allianz Stadium", "city": "Turin", "country": "Italy", "days": 13, "featured": False, "subtitle": "Derby d'Italia - Serie A"},
+        {"home": "AC Milan", "away": "Napoli", "league": "serie_a", "venue": "San Siro", "city": "Milan", "country": "Italy", "days": 18, "featured": False, "subtitle": "Serie A Matchday 30"},
     ]
     
     for m in matches_data:
         event = Event(
             event_type="match",
             title=f"{m['home']} vs {m['away']}",
+            subtitle=m.get("subtitle", ""),
             home_team=m["home"],
             away_team=m["away"],
             home_logo=team_logos.get(m["home"], ""),
@@ -1376,16 +1405,41 @@ async def seed_data():
         event_doc['created_at'] = event_doc['created_at'].isoformat()
         await db.events.insert_one(event_doc)
     
-    # Concert data
+    # Concert data - MAJOR TOURS 2025
     concerts_data = [
-        {"artist": "Taylor Swift", "tour": "The Eras Tour", "genre": "Pop", "venue": "Wembley Stadium", "city": "London", "country": "England", "days": 12, "featured": True, "image": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"},
-        {"artist": "Coldplay", "tour": "Music of the Spheres", "genre": "Rock", "venue": "Olympiastadion", "city": "Berlin", "country": "Germany", "days": 18, "featured": True, "image": "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg"},
-        {"artist": "Drake", "tour": "It's All A Blur Tour", "genre": "Hip-Hop", "venue": "AccorHotels Arena", "city": "Paris", "country": "France", "days": 25, "featured": False, "image": "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg"},
-        {"artist": "Ed Sheeran", "tour": "Mathematics Tour", "genre": "Pop", "venue": "Amsterdam Arena", "city": "Amsterdam", "country": "Netherlands", "days": 9, "featured": True, "image": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg"},
-        {"artist": "The Weeknd", "tour": "After Hours Til Dawn", "genre": "R&B", "venue": "Tottenham Stadium", "city": "London", "country": "England", "days": 30, "featured": False, "image": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg"},
-        {"artist": "Beyoncé", "tour": "Renaissance World Tour", "genre": "Pop", "venue": "Stade de France", "city": "Paris", "country": "France", "days": 15, "featured": True, "image": "https://images.pexels.com/photos/1916824/pexels-photo-1916824.jpeg"},
-        {"artist": "Rammstein", "tour": "Europe Stadium Tour", "genre": "Metal", "venue": "Olympiastadion", "city": "Munich", "country": "Germany", "days": 22, "featured": False, "image": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"},
-        {"artist": "Adele", "tour": "Weekends with Adele", "genre": "Pop", "venue": "O2 Arena", "city": "London", "country": "England", "days": 35, "featured": False, "image": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg"},
+        # The Weeknd - Featured
+        {"artist": "The Weeknd", "tour": "After Hours Til Dawn Tour 2025", "genre": "R&B", "venue": "Wembley Stadium", "city": "London", "country": "England", "days": 7, "featured": True, "image": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg"},
+        {"artist": "The Weeknd", "tour": "After Hours Til Dawn Tour 2025", "genre": "R&B", "venue": "Stade de France", "city": "Paris", "country": "France", "days": 10, "featured": True, "image": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg"},
+        {"artist": "The Weeknd", "tour": "After Hours Til Dawn Tour 2025", "genre": "R&B", "venue": "Olympiastadion", "city": "Berlin", "country": "Germany", "days": 14, "featured": False, "image": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg"},
+        
+        # Taylor Swift
+        {"artist": "Taylor Swift", "tour": "The Eras Tour 2025", "genre": "Pop", "venue": "Wembley Stadium", "city": "London", "country": "England", "days": 21, "featured": True, "image": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"},
+        {"artist": "Taylor Swift", "tour": "The Eras Tour 2025", "genre": "Pop", "venue": "Olympiastadion", "city": "Munich", "country": "Germany", "days": 28, "featured": False, "image": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"},
+        
+        # Coldplay
+        {"artist": "Coldplay", "tour": "Music of the Spheres World Tour", "genre": "Rock", "venue": "Olympiastadion", "city": "Berlin", "country": "Germany", "days": 18, "featured": True, "image": "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg"},
+        {"artist": "Coldplay", "tour": "Music of the Spheres World Tour", "genre": "Rock", "venue": "Camp Nou", "city": "Barcelona", "country": "Spain", "days": 25, "featured": False, "image": "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg"},
+        
+        # Drake
+        {"artist": "Drake", "tour": "Anita Max Wynn Tour 2025", "genre": "Hip-Hop", "venue": "O2 Arena", "city": "London", "country": "England", "days": 11, "featured": True, "image": "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg"},
+        {"artist": "Drake", "tour": "Anita Max Wynn Tour 2025", "genre": "Hip-Hop", "venue": "AccorHotels Arena", "city": "Paris", "country": "France", "days": 16, "featured": False, "image": "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg"},
+        
+        # Ed Sheeran
+        {"artist": "Ed Sheeran", "tour": "Mathematics Tour 2025", "genre": "Pop", "venue": "Amsterdam Arena", "city": "Amsterdam", "country": "Netherlands", "days": 9, "featured": True, "image": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg"},
+        {"artist": "Ed Sheeran", "tour": "Mathematics Tour 2025", "genre": "Pop", "venue": "Olympiastadion", "city": "Munich", "country": "Germany", "days": 15, "featured": False, "image": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg"},
+        
+        # Beyoncé
+        {"artist": "Beyoncé", "tour": "Renaissance World Tour 2025", "genre": "Pop", "venue": "Stade de France", "city": "Paris", "country": "France", "days": 22, "featured": True, "image": "https://images.pexels.com/photos/1916824/pexels-photo-1916824.jpeg"},
+        
+        # Rammstein
+        {"artist": "Rammstein", "tour": "Europe Stadium Tour 2025", "genre": "Metal", "venue": "Olympiastadion", "city": "Munich", "country": "Germany", "days": 30, "featured": False, "image": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"},
+        {"artist": "Rammstein", "tour": "Europe Stadium Tour 2025", "genre": "Metal", "venue": "Stade de France", "city": "Paris", "country": "France", "days": 35, "featured": False, "image": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"},
+        
+        # Adele
+        {"artist": "Adele", "tour": "Weekends with Adele 2025", "genre": "Pop", "venue": "O2 Arena", "city": "London", "country": "England", "days": 40, "featured": False, "image": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg"},
+        
+        # Bruno Mars
+        {"artist": "Bruno Mars", "tour": "24K Magic World Tour", "genre": "Pop", "venue": "Ziggo Dome", "city": "Amsterdam", "country": "Netherlands", "days": 19, "featured": False, "image": "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg"},
     ]
     
     for c in concerts_data:
