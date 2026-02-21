@@ -16,6 +16,10 @@ import AdminDashboard from "./pages/AdminDashboard";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import AuthCallback from "./pages/AuthCallback";
 import PriceAlertsPage from "./pages/PriceAlertsPage";
+import AboutPage from "./pages/AboutPage";
+import TermsPage from "./pages/TermsPage";
+import ContactPage from "./pages/ContactPage";
+import RefundPolicyPage from "./pages/RefundPolicyPage";
 import Header from "./components/Header";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
