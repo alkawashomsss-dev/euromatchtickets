@@ -166,17 +166,20 @@ const EventDetailsPage = () => {
   
   // SEO keywords based on event type
   const seoKeywords = isMatch
-    ? `${event.home_team} tickets, ${event.away_team} tickets, ${event.city} football, buy football tickets, ${event.venue} tickets`
-    : `${event.artist} tickets, ${event.artist} concert, ${event.city} concert tickets, buy concert tickets, ${event.venue} tickets`;
+    ? `${event.home_team || ''} tickets, ${event.away_team || ''} tickets, ${event.city || ''} football, buy football tickets, ${event.venue || ''} tickets`
+    : `${event.artist || ''} tickets, ${event.artist || ''} concert, ${event.city || ''} concert tickets, buy concert tickets, ${event.venue || ''} tickets`;
+
+  // SEO title
+  const seoTitle = (event.title || 'Event') + ' | FanPass';
 
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       {/* SEO Meta Tags */}
       <Helmet>
-        <title>{`${event.title || 'Event'} | FanPass`}</title>
+        <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
         <meta name="keywords" content={seoKeywords} />
-        <meta property="og:title" content={`${event.title || 'Event'} | FanPass`} />
+        <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="event" />
         {event.event_image && <meta property="og:image" content={event.event_image} />}
