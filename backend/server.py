@@ -1313,6 +1313,13 @@ async def get_admin_orders(request: Request):
 
 # ============== SEED DATA ==============
 
+@api_router.post("/reseed")
+async def reseed_data():
+    """Clear and reseed demo data"""
+    await db.events.delete_many({})
+    await db.tickets.delete_many({})
+    return await seed_data()
+
 @api_router.post("/seed")
 async def seed_data():
     """Seed demo data"""
