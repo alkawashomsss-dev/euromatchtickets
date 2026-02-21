@@ -161,5 +161,3 @@ export const generateFAQSchema = (faqs) => {
     }))
   };
 };
-
-export default SEOHead;
