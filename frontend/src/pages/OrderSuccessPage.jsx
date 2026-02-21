@@ -29,6 +29,30 @@ const OrderSuccessPage = () => {
         if (response.data.payment_status === 'paid') {
           setOrder(response.data.order);
           setPolling(false);
+          
+          // Track Facebook Pixel - Purchase
+          if (window.fbq && response.data.order) {
+            window.fbq('track', 'Purchase', {
+              content_name: response.data.order.event_title || 'Ticket',
+              content_ids: [response.data.order.ticket_id],
+              value: response.data.order.total_amount,
+              currency: 'EUR'
+            });
+          }
+          
+          // Track Google Analytics - purchase
+          if (window.gtag && response.data.order) {
+            window.gtag('event', 'purchase', {
+              transaction_id: response.data.order.order_id,
+              value: response.data.order.total_amount,
+              currency: 'EUR',
+              items: [{
+                item_id: response.data.order.ticket_id,
+                item_name: response.data.order.event_title || 'Ticket',
+                price: response.data.order.ticket_price
+              }]
+            });
+          }
         } else if (response.data.status === 'expired') {
           setPolling(false);
         }
