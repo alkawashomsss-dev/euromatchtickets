@@ -1,13 +1,13 @@
-import { SEOHead } from "../components/SEOHead";
+import { Helmet } from 'react-helmet-async';
 
 const TermsPage = () => {
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
-      <SEOHead 
-        title="Terms & Conditions"
-        description="Read FanPass terms and conditions for buying and selling tickets on our marketplace."
-        keywords="terms conditions, ticket marketplace rules, fanpass terms"
-      />
+      <Helmet>
+        <title>Terms & Conditions | FanPass</title>
+        <meta name="description" content="Read FanPass terms and conditions for buying and selling tickets on our marketplace." />
+        <meta name="keywords" content="terms conditions, ticket marketplace rules, fanpass terms" />
+      </Helmet>
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         <h1 className="text-4xl font-bold mb-8">Terms & Conditions</h1>
