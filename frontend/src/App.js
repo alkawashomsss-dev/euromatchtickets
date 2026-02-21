@@ -148,6 +148,11 @@ function AppRouter() {
             <AdminDashboard />
           </ProtectedRoute>
         } />
+        <Route path="/alerts" element={
+          <ProtectedRoute>
+            <PriceAlertsPage />
+          </ProtectedRoute>
+        } />
       </Routes>
     </>
   );
@@ -156,20 +161,24 @@ function AppRouter() {
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <Toaster 
-          position="top-right" 
-          theme="dark"
-          toastOptions={{
-            style: {
-              background: '#18181b',
-              border: '1px solid rgba(255,255,255,0.1)',
-              color: '#fafafa'
-            }
-          }}
-        />
-        <AppRouter />
-      </AuthProvider>
+      <HelmetProvider>
+        <LanguageProvider>
+          <AuthProvider>
+            <Toaster 
+              position="top-right" 
+              theme="dark"
+              toastOptions={{
+                style: {
+                  background: '#18181b',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: '#fafafa'
+                }
+              }}
+            />
+            <AppRouter />
+          </AuthProvider>
+        </LanguageProvider>
+      </HelmetProvider>
     </BrowserRouter>
   );
 }
