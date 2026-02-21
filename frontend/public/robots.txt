@@ -1,0 +1,37 @@
+# FanPass Robots.txt
+# https://fanpass.com
+
+User-agent: *
+Allow: /
+Allow: /events
+Allow: /events?type=concert
+Allow: /events?type=match
+Allow: /football/
+Allow: /concerts/
+Allow: /city/
+Allow: /venue/
+Disallow: /admin
+Disallow: /seller
+Disallow: /my-tickets
+Disallow: /auth/
+Disallow: /order/
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://fanpass.com/sitemap.xml
+
+# Crawl-delay for good server behavior
+Crawl-delay: 1
+
+# Specific crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
