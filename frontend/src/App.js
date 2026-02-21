@@ -132,6 +132,10 @@ function AppRouter() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/event/:eventId" element={<EventDetailsPage />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/refund-policy" element={<RefundPolicyPage />} />
         <Route path="/order/success" element={
           <ProtectedRoute>
             <OrderSuccessPage />
