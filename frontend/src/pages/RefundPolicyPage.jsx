@@ -1,14 +1,14 @@
 import { Shield, CheckCircle, XCircle, AlertTriangle, Clock } from "lucide-react";
-import { SEOHead } from "../components/SEOHead";
+import { Helmet } from 'react-helmet-async';
 
 const RefundPolicyPage = () => {
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
-      <SEOHead 
-        title="Refund Policy"
-        description="Learn about FanPass refund policy and buyer protection. We guarantee your purchase with our comprehensive refund policy."
-        keywords="refund policy, ticket refund, buyer protection, money back guarantee"
-      />
+      <Helmet>
+        <title>Refund Policy | FanPass</title>
+        <meta name="description" content="Learn about FanPass refund policy and buyer protection. We guarantee your purchase with our comprehensive refund policy." />
+        <meta name="keywords" content="refund policy, ticket refund, buyer protection, money back guarantee" />
+      </Helmet>
 
       {/* Header */}
       <section className="py-16 bg-zinc-900/30 border-b border-white/5">
