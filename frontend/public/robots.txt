@@ -1,24 +1,23 @@
-# FanPass Robots.txt
-# https://fanpass.com
+# EuroMatchTickets Robots.txt
+# https://euromatchtickets.com
 
 User-agent: *
 Allow: /
 Allow: /events
 Allow: /events?type=concert
 Allow: /events?type=match
-Allow: /football/
-Allow: /concerts/
-Allow: /city/
-Allow: /venue/
+Allow: /event/
 Disallow: /admin
 Disallow: /seller
+Disallow: /owner
 Disallow: /my-tickets
 Disallow: /auth/
 Disallow: /order/
 Disallow: /api/
+Disallow: /alerts
 
 # Sitemaps
-Sitemap: https://fanpass.com/sitemap.xml
+Sitemap: https://euromatchtickets.com/api/sitemap.xml
 
 # Crawl-delay for good server behavior
 Crawl-delay: 1
