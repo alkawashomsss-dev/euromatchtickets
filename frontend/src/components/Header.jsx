@@ -101,7 +101,7 @@ const Header = () => {
                     <div className="px-3 py-2">
                       <p className="font-medium truncate">{user.name}</p>
                       <p className="text-sm text-zinc-500 truncate">{user.email}</p>
-                  </div>
+                    </div>
                   <DropdownMenuSeparator className="bg-zinc-800" />
                   <DropdownMenuItem 
                     onClick={() => navigate('/my-tickets')}
