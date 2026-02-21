@@ -3,6 +3,8 @@ import "@/App.css";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Toaster } from "sonner";
+import { HelmetProvider } from 'react-helmet-async';
+import { LanguageProvider } from "./i18n/LanguageProvider";
 
 // Pages
 import HomePage from "./pages/HomePage";
@@ -13,6 +15,7 @@ import SellerDashboard from "./pages/SellerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import AuthCallback from "./pages/AuthCallback";
+import PriceAlertsPage from "./pages/PriceAlertsPage";
 import Header from "./components/Header";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
