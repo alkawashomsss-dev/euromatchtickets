@@ -4,34 +4,13 @@ import axios from "axios";
 import { API, useAuth } from "../App";
 import { 
   Calendar, MapPin, Ticket, TrendingUp, Shield, Star, 
-  ChevronRight, Users, Trophy, ArrowRight 
+  ChevronRight, Users, Music, Trophy, ArrowRight, Sparkles
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 
-// SEO Keywords: Buy Champions League tickets, Premier League tickets online, La Liga tickets resale, 
-// European football tickets, UEFA tickets marketplace, secure ticket resale, verified football tickets
-
-const leagueConfig = {
-  champions_league: {
-    name: "UEFA Champions League",
-    color: "from-blue-600 to-blue-800",
-    badge: "badge-champions",
-    textColor: "text-blue-400"
-  },
-  premier_league: {
-    name: "Premier League",
-    color: "from-purple-600 to-purple-800",
-    badge: "badge-premier",
-    textColor: "text-purple-400"
-  },
-  la_liga: {
-    name: "La Liga",
-    color: "from-red-600 to-red-800",
-    badge: "badge-laliga",
-    textColor: "text-red-400"
-  }
-};
+// SEO: Buy concert tickets, Champions League tickets, Taylor Swift tickets, Drake concert,
+// European football tickets, music festival tickets, secure ticket resale marketplace
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);
@@ -43,90 +22,104 @@ const formatDate = (dateStr) => {
   };
 };
 
-const MatchCard = ({ match, featured = false }) => {
-  const dateInfo = formatDate(match.match_date);
-  const league = leagueConfig[match.league];
+const EventCard = ({ event }) => {
+  const dateInfo = formatDate(event.event_date);
+  const isMatch = event.event_type === "match";
 
   return (
     <Link 
-      to={`/match/${match.match_id}`}
-      data-testid={`match-card-${match.match_id}`}
-      className={`ticket-card card-dark group block ${featured ? 'md:col-span-2' : ''}`}
+      to={`/event/${event.event_id}`}
+      data-testid={`event-card-${event.event_id}`}
+      className="event-card group block"
     >
-      <div className={`p-6 ${featured ? 'md:p-8' : ''}`}>
-        {/* League Badge */}
-        <div className="flex items-center justify-between mb-6">
-          <Badge className={`${league.badge} text-xs font-bold uppercase tracking-wider`}>
-            {league.name}
-          </Badge>
-          {match.available_tickets > 0 && (
-            <Badge variant="outline" className="border-green-500/50 text-green-400">
-              {match.available_tickets} tickets
-            </Badge>
+      {/* Image */}
+      <div className="relative h-48 overflow-hidden">
+        <img 
+          src={event.event_image || (isMatch 
+            ? "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg"
+            : "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"
           )}
+          alt={event.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="img-overlay" />
+        
+        {/* Type Badge */}
+        <div className="absolute top-4 left-4">
+          <Badge className={isMatch ? "tag-match" : "tag-concert"}>
+            {isMatch ? <Trophy className="w-3 h-3 mr-1" /> : <Music className="w-3 h-3 mr-1" />}
+            {isMatch ? "Match" : "Concert"}
+          </Badge>
         </div>
 
-        {/* Teams */}
-        <div className="flex items-center justify-between gap-4 mb-6">
-          <div className="flex-1 text-center">
-            <div className="w-16 h-16 mx-auto mb-3 bg-white/5 rounded-full p-2 flex items-center justify-center">
-              <img 
-                src={match.home_logo} 
-                alt={match.home_team}
-                className="w-12 h-12 object-contain"
-                onError={(e) => { e.target.style.display = 'none'; }}
-              />
+        {/* Featured Badge */}
+        {event.featured && (
+          <div className="absolute top-4 right-4">
+            <Badge className="bg-amber-500/20 text-amber-400 border border-amber-500/30">
+              <Sparkles className="w-3 h-3 mr-1" />
+              Featured
+            </Badge>
+          </div>
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="p-5">
+        {/* Title */}
+        <h3 className="text-xl font-bold mb-1 group-hover:text-purple-400 transition-colors line-clamp-1">
+          {event.title}
+        </h3>
+        {event.subtitle && (
+          <p className="text-zinc-400 text-sm mb-3">{event.subtitle}</p>
+        )}
+
+        {/* Teams for matches */}
+        {isMatch && event.home_team && (
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-white/5 rounded-full p-1 flex items-center justify-center">
+                <img src={event.home_logo} alt="" className="w-6 h-6 object-contain" onError={(e) => e.target.style.display='none'} />
+              </div>
+              <span className="font-medium text-sm">{event.home_team}</span>
             </div>
-            <h3 className={`font-bold uppercase ${featured ? 'text-xl' : 'text-lg'}`}>
-              {match.home_team}
-            </h3>
-          </div>
-
-          <div className="flex flex-col items-center px-4">
-            <span className="text-3xl font-black text-slate-600">VS</span>
-          </div>
-
-          <div className="flex-1 text-center">
-            <div className="w-16 h-16 mx-auto mb-3 bg-white/5 rounded-full p-2 flex items-center justify-center">
-              <img 
-                src={match.away_logo} 
-                alt={match.away_team}
-                className="w-12 h-12 object-contain"
-                onError={(e) => { e.target.style.display = 'none'; }}
-              />
+            <span className="text-zinc-600 text-sm">vs</span>
+            <div className="flex items-center gap-2">
+              <span className="font-medium text-sm">{event.away_team}</span>
+              <div className="w-8 h-8 bg-white/5 rounded-full p-1 flex items-center justify-center">
+                <img src={event.away_logo} alt="" className="w-6 h-6 object-contain" onError={(e) => e.target.style.display='none'} />
+              </div>
             </div>
-            <h3 className={`font-bold uppercase ${featured ? 'text-xl' : 'text-lg'}`}>
-              {match.away_team}
-            </h3>
-          </div>
-        </div>
-
-        {/* Match Info */}
-        <div className="flex items-center justify-between text-sm text-slate-400 border-t border-white/5 pt-4">
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4" />
-            <span>{dateInfo.day}, {dateInfo.month} {dateInfo.date} - {dateInfo.time}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4" />
-            <span>{match.stadium}</span>
-          </div>
-        </div>
-
-        {/* Price */}
-        {match.lowest_price && (
-          <div className="mt-4 flex items-center justify-between">
-            <span className="text-slate-500 text-sm">From</span>
-            <span className="text-2xl font-black text-white">
-              €{match.lowest_price.toFixed(0)}
-            </span>
           </div>
         )}
 
-        {/* CTA */}
-        <div className="mt-4 flex items-center justify-center text-sm text-slate-400 group-hover:text-white transition-colors">
-          <span>View Tickets</span>
-          <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+        {/* Info */}
+        <div className="flex items-center gap-4 text-sm text-zinc-400 mb-4">
+          <div className="flex items-center gap-1.5">
+            <Calendar className="w-4 h-4" />
+            <span>{dateInfo.month} {dateInfo.date}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <MapPin className="w-4 h-4" />
+            <span>{event.city}</span>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-center justify-between pt-4 border-t border-white/5">
+          {event.lowest_price ? (
+            <div>
+              <span className="text-zinc-500 text-xs">From</span>
+              <span className="text-2xl font-bold ml-2">€{event.lowest_price.toFixed(0)}</span>
+            </div>
+          ) : (
+            <span className="text-zinc-500 text-sm">No tickets available</span>
+          )}
+          
+          {event.available_tickets > 0 && (
+            <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">
+              {event.available_tickets} tickets
+            </Badge>
+          )}
         </div>
       </div>
     </Link>
@@ -135,26 +128,27 @@ const MatchCard = ({ match, featured = false }) => {
 
 const HomePage = () => {
   const { user, login } = useAuth();
-  const [featuredMatches, setFeaturedMatches] = useState([]);
-  const [allMatches, setAllMatches] = useState([]);
+  const [featuredEvents, setFeaturedEvents] = useState([]);
+  const [concerts, setConcerts] = useState([]);
+  const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Seed data first
         await axios.post(`${API}/seed`);
         
-        // Fetch matches
-        const [featuredRes, allRes] = await Promise.all([
-          axios.get(`${API}/matches?featured=true`),
-          axios.get(`${API}/matches`)
+        const [featuredRes, concertsRes, matchesRes] = await Promise.all([
+          axios.get(`${API}/events?featured=true`),
+          axios.get(`${API}/events?event_type=concert`),
+          axios.get(`${API}/events?event_type=match`)
         ]);
         
-        setFeaturedMatches(featuredRes.data.slice(0, 4));
-        setAllMatches(allRes.data.slice(0, 6));
+        setFeaturedEvents(featuredRes.data.slice(0, 6));
+        setConcerts(concertsRes.data.slice(0, 4));
+        setMatches(matchesRes.data.slice(0, 4));
       } catch (error) {
-        console.error("Error fetching matches:", error);
+        console.error("Error fetching events:", error);
       } finally {
         setLoading(false);
       }
@@ -164,92 +158,108 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-zinc-950">
       {/* Hero Section */}
-      <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1920)'
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/40" />
-        <div className="absolute inset-0 floodlight" />
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-40"
+            style={{
+              backgroundImage: 'url(https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1920)'
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-zinc-950" />
+          <div className="absolute inset-0 gradient-glow" />
+        </div>
 
-        <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 w-full">
+        <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 w-full py-32">
           <div className="max-w-3xl">
-            <Badge className="badge-champions mb-6 animate-slide-up">
-              #1 Trusted Ticket Marketplace
-            </Badge>
+            <div className="flex items-center gap-3 mb-6 animate-slide-up">
+              <Badge className="bg-purple-500/20 text-purple-400 border border-purple-500/30 px-4 py-1.5">
+                <Sparkles className="w-4 h-4 mr-2" />
+                Europe's #1 Ticket Marketplace
+              </Badge>
+            </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black uppercase tracking-tighter mb-6 animate-slide-up stagger-1">
-              Your Seat
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-slide-up stagger-1 leading-tight">
+              Live Events.
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">
-                Awaits
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                Unforgettable Moments.
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-xl animate-slide-up stagger-2">
-              Buy and sell verified tickets for UEFA Champions League, Premier League, 
-              and La Liga matches. 100% secure transactions.
+            <p className="text-lg md:text-xl text-zinc-400 mb-10 max-w-xl animate-slide-up stagger-2">
+              Buy and sell verified tickets for concerts, football matches, and more. 
+              100% secure transactions with buyer protection.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 animate-slide-up stagger-3">
-              <Link to="/matches">
+              <Link to="/events">
                 <Button 
-                  data-testid="browse-matches-btn"
-                  className="btn-primary text-lg h-14 px-10"
+                  data-testid="explore-events-btn"
+                  className="btn-accent text-lg h-14 px-10 rounded-full"
                 >
                   <Ticket className="w-5 h-5 mr-2" />
-                  Browse Matches
+                  Explore Events
                 </Button>
               </Link>
               {!user && (
                 <Button 
                   data-testid="start-selling-btn"
-                  variant="outline" 
-                  className="btn-outline text-lg h-14 px-10"
                   onClick={login}
+                  className="btn-secondary text-lg h-14 px-10"
                 >
                   Start Selling
                 </Button>
               )}
             </div>
 
-            {/* Trust Badges */}
-            <div className="flex items-center gap-6 mt-12 animate-slide-up stagger-4">
-              <div className="flex items-center gap-2 text-slate-400">
-                <Shield className="w-5 h-5 text-green-500" />
-                <span className="text-sm">Verified Tickets</span>
+            {/* Stats */}
+            <div className="flex items-center gap-8 mt-16 animate-slide-up stagger-4">
+              <div className="text-center">
+                <div className="text-3xl font-bold">50K+</div>
+                <div className="text-zinc-500 text-sm">Happy Fans</div>
               </div>
-              <div className="flex items-center gap-2 text-slate-400">
-                <Users className="w-5 h-5 text-blue-500" />
-                <span className="text-sm">50K+ Happy Fans</span>
+              <div className="w-px h-12 bg-zinc-800" />
+              <div className="text-center">
+                <div className="text-3xl font-bold">1000+</div>
+                <div className="text-zinc-500 text-sm">Events</div>
               </div>
-              <div className="flex items-center gap-2 text-slate-400">
-                <Star className="w-5 h-5 text-yellow-500" />
-                <span className="text-sm">4.9/5 Rating</span>
+              <div className="w-px h-12 bg-zinc-800" />
+              <div className="text-center">
+                <div className="text-3xl font-bold flex items-center gap-1">
+                  <Star className="w-5 h-5 text-amber-400" />
+                  4.9
+                </div>
+                <div className="text-zinc-500 text-sm">Rating</div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Floating elements */}
+        <div className="absolute right-10 top-1/3 hidden lg:block animate-float">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur border border-white/10" />
+        </div>
+        <div className="absolute right-40 bottom-1/4 hidden lg:block animate-float" style={{animationDelay: '2s'}}>
+          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 backdrop-blur border border-white/10" />
+        </div>
       </section>
 
-      {/* Featured Matches */}
-      <section className="py-20 md:py-32 pitch-pattern">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+      {/* Featured Events */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 gradient-glow opacity-30" />
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 relative">
           <div className="flex items-center justify-between mb-12">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight mb-2">
-                Featured Matches
-              </h2>
-              <p className="text-slate-400">Don't miss these upcoming blockbusters</p>
+              <h2 className="text-4xl font-bold mb-2">Featured Events</h2>
+              <p className="text-zinc-400">Don't miss these hot tickets</p>
             </div>
             <Link 
-              to="/matches" 
-              className="hidden md:flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+              to="/events" 
+              className="hidden md:flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
             >
               View All <ArrowRight className="w-4 h-4" />
             </Link>
@@ -257,70 +267,80 @@ const HomePage = () => {
 
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1,2,3,4].map(i => (
-                <div key={i} className="card-dark h-80 animate-pulse" />
+              {[1,2,3,4,5,6].map(i => (
+                <div key={i} className="event-card h-96 shimmer" />
               ))}
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredMatches.map((match, index) => (
-                <MatchCard 
-                  key={match.match_id} 
-                  match={match} 
-                  featured={index === 0}
-                />
+              {featuredEvents.map((event) => (
+                <EventCard key={event.event_id} event={event} />
               ))}
             </div>
           )}
         </div>
       </section>
 
-      {/* Leagues Section */}
-      <section className="py-20 md:py-32 bg-slate-900/50">
+      {/* Categories */}
+      <section className="py-24 bg-zinc-900/30">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight mb-4">
-              Top European Leagues
-            </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
-              Access tickets for the most prestigious football competitions in the world
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {Object.entries(leagueConfig).map(([key, league]) => (
-              <Link
-                key={key}
-                to={`/matches?league=${key}`}
-                data-testid={`league-${key}`}
-                className="group relative overflow-hidden rounded-2xl h-64"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${league.color} opacity-80 group-hover:opacity-100 transition-opacity`} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="relative h-full flex flex-col items-center justify-center text-center p-8">
-                  <Trophy className="w-12 h-12 mb-4 text-white/80" />
-                  <h3 className="text-2xl font-bold uppercase text-white mb-2">
-                    {league.name}
-                  </h3>
-                  <span className="text-white/60 text-sm group-hover:text-white transition-colors flex items-center gap-1">
-                    Browse Tickets <ChevronRight className="w-4 h-4" />
-                  </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Concerts */}
+            <Link 
+              to="/events?type=concert"
+              data-testid="category-concerts"
+              className="group relative h-80 rounded-3xl overflow-hidden"
+            >
+              <img 
+                src="https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"
+                alt="Concerts"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
+              <div className="absolute inset-0 bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors" />
+              <div className="relative h-full flex flex-col justify-end p-8">
+                <Music className="w-10 h-10 text-purple-400 mb-4" />
+                <h3 className="text-3xl font-bold mb-2">Concerts</h3>
+                <p className="text-zinc-400 mb-4">Taylor Swift, Coldplay, Drake & more</p>
+                <div className="flex items-center text-purple-400 group-hover:translate-x-2 transition-transform">
+                  Browse Concerts <ChevronRight className="w-5 h-5 ml-1" />
                 </div>
-              </Link>
-            ))}
+              </div>
+            </Link>
+
+            {/* Football */}
+            <Link 
+              to="/events?type=match"
+              data-testid="category-matches"
+              className="group relative h-80 rounded-3xl overflow-hidden"
+            >
+              <img 
+                src="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg"
+                alt="Football"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
+              <div className="absolute inset-0 bg-emerald-500/10 group-hover:bg-emerald-500/20 transition-colors" />
+              <div className="relative h-full flex flex-col justify-end p-8">
+                <Trophy className="w-10 h-10 text-emerald-400 mb-4" />
+                <h3 className="text-3xl font-bold mb-2">Football</h3>
+                <p className="text-zinc-400 mb-4">Champions League, Premier League, La Liga</p>
+                <div className="flex items-center text-emerald-400 group-hover:translate-x-2 transition-transform">
+                  Browse Matches <ChevronRight className="w-5 h-5 ml-1" />
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-20 md:py-32">
+      <section className="py-24">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight mb-4">
-              How It Works
-            </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
-              Buy verified tickets in 3 simple steps
+            <h2 className="text-4xl font-bold mb-4">How It Works</h2>
+            <p className="text-zinc-400 max-w-2xl mx-auto">
+              Get your tickets in 3 simple steps
             </p>
           </div>
 
@@ -328,55 +348,88 @@ const HomePage = () => {
             {[
               {
                 step: "01",
-                title: "Find Your Match",
-                description: "Browse upcoming matches from Champions League, Premier League, and La Liga",
-                icon: <Ticket className="w-8 h-8" />
+                title: "Find Your Event",
+                description: "Browse concerts, matches, and more across Europe",
+                icon: <Ticket className="w-8 h-8" />,
+                color: "from-purple-500/20 to-pink-500/20"
               },
               {
                 step: "02",
-                title: "Choose Your Seat",
-                description: "Select from VIP boxes to general admission with our interactive stadium map",
-                icon: <MapPin className="w-8 h-8" />
+                title: "Choose Your Seats",
+                description: "Select from VIP to standing with our interactive venue maps",
+                icon: <MapPin className="w-8 h-8" />,
+                color: "from-blue-500/20 to-cyan-500/20"
               },
               {
                 step: "03",
                 title: "Get Your QR Code",
-                description: "Receive your verified digital ticket instantly after secure payment",
-                icon: <Shield className="w-8 h-8" />
+                description: "Receive your verified digital ticket instantly",
+                icon: <Shield className="w-8 h-8" />,
+                color: "from-emerald-500/20 to-teal-500/20"
               }
             ].map((item, index) => (
               <div 
                 key={index}
-                className="relative p-8 border border-white/5 rounded-2xl hover:border-white/20 transition-colors group"
+                className="relative p-8 rounded-3xl border border-white/5 bg-zinc-900/30 hover:border-white/10 transition-all group"
               >
-                <span className="absolute top-4 right-4 text-6xl font-black text-white/5 group-hover:text-white/10 transition-colors">
-                  {item.step}
-                </span>
-                <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-6 text-green-400">
-                  {item.icon}
+                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                <div className="relative">
+                  <span className="text-7xl font-bold text-zinc-800 group-hover:text-zinc-700 transition-colors">
+                    {item.step}
+                  </span>
+                  <div className="mt-4 mb-6 w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-purple-400">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                  <p className="text-zinc-400">{item.description}</p>
                 </div>
-                <h3 className="text-xl font-bold uppercase mb-3">{item.title}</h3>
-                <p className="text-slate-400">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-slate-900 to-slate-950">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 text-center">
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight mb-6">
-            Ready to Experience
+      {/* Trust Badges */}
+      <section className="py-16 border-t border-white/5">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+            <div className="flex items-center gap-3 text-zinc-400">
+              <Shield className="w-6 h-6 text-emerald-500" />
+              <span>100% Buyer Protection</span>
+            </div>
+            <div className="flex items-center gap-3 text-zinc-400">
+              <Users className="w-6 h-6 text-purple-500" />
+              <span>Verified Sellers</span>
+            </div>
+            <div className="flex items-center gap-3 text-zinc-400">
+              <Ticket className="w-6 h-6 text-blue-500" />
+              <span>Instant QR Delivery</span>
+            </div>
+            <div className="flex items-center gap-3 text-zinc-400">
+              <Star className="w-6 h-6 text-amber-500" />
+              <span>Trusted by 50K+ Fans</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 gradient-glow" />
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 relative text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready for Your Next
             <br />
-            <span className="gold-shine">Live Football?</span>
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Unforgettable Experience?
+            </span>
           </h2>
-          <p className="text-slate-400 text-lg mb-8 max-w-2xl mx-auto">
-            Join thousands of fans who trust FanPass for their match day experience
+          <p className="text-zinc-400 text-lg mb-10 max-w-2xl mx-auto">
+            Join thousands of fans who trust FanPass for their live event tickets
           </p>
-          <Link to="/matches">
-            <Button data-testid="explore-tickets-btn" className="btn-primary text-lg h-14 px-12">
-              Explore All Tickets
+          <Link to="/events">
+            <Button data-testid="cta-btn" className="btn-accent text-lg h-14 px-12">
+              Explore All Events
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
@@ -384,20 +437,22 @@ const HomePage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-white/5">
+      <footer className="py-12 border-t border-white/5 bg-zinc-900/30">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-2">
-              <Ticket className="w-6 h-6 text-green-500" />
-              <span className="text-xl font-bold uppercase tracking-tight">FanPass</span>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
+                <Ticket className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold">FanPass</span>
             </div>
-            <div className="flex items-center gap-8 text-sm text-slate-400">
-              <Link to="/matches" className="hover:text-white transition-colors">Matches</Link>
+            <div className="flex items-center gap-8 text-sm text-zinc-400">
+              <Link to="/events" className="hover:text-white transition-colors">Events</Link>
               <a href="#" className="hover:text-white transition-colors">About</a>
               <a href="#" className="hover:text-white transition-colors">Support</a>
               <a href="#" className="hover:text-white transition-colors">Terms</a>
             </div>
-            <p className="text-slate-500 text-sm">
+            <p className="text-zinc-500 text-sm">
               © 2025 FanPass. All rights reserved.
             </p>
           </div>
