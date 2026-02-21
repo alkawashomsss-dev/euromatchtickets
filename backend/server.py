@@ -36,7 +36,7 @@ STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY', 'sk_test_emergent')
 PLATFORM_COMMISSION = 0.10  # 10% commission
 
 # Create the main app
-app = FastAPI(title="FanPass - Events & Tickets Marketplace")
+app = FastAPI(title="EuroMatchTickets - Events & Tickets Marketplace")
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
@@ -1715,7 +1715,7 @@ async def seed_data():
 
 @api_router.get("/")
 async def root():
-    return {"message": "FanPass API - Events & Tickets Marketplace"}
+    return {"message": "EuroMatchTickets API - Events & Tickets Marketplace"}
 
 # ============== SITEMAP ENDPOINT ==============
 
@@ -1724,7 +1724,7 @@ async def get_sitemap():
     """Generate dynamic sitemap.xml for SEO"""
     from fastapi.responses import Response
     
-    base_url = "https://fanpass.com"
+    base_url = "https://euromatchtickets.com"
     
     # Static pages
     static_pages = [
@@ -1790,11 +1790,12 @@ Allow: /event/
 
 Disallow: /admin
 Disallow: /seller
+Disallow: /owner
 Disallow: /my-tickets
 Disallow: /alerts
 Disallow: /api/
 
-Sitemap: https://fanpass.com/api/sitemap.xml
+Sitemap: https://euromatchtickets.com/api/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
