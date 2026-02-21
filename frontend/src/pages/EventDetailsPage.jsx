@@ -178,8 +178,8 @@ const EventDetailsPage = () => {
     <div className="min-h-screen bg-zinc-950 pt-20">
       {/* SEO Head with Schema Markup */}
       <SEOHead
-        title={event.title}
-        description={event.description || `Buy verified tickets for ${event.title} at ${event.venue}, ${event.city}. Secure checkout with instant QR delivery.`}
+        title={event.title || "Event Details"}
+        description={event.description || `Buy verified tickets for ${event.title || 'this event'} at ${event.venue || 'the venue'}, ${event.city || 'Europe'}. Secure checkout with instant QR delivery.`}
         keywords={seoKeywords}
         image={event.event_image}
         url={`https://fanpass.com/event/${event.event_id}`}
@@ -187,10 +187,6 @@ const EventDetailsPage = () => {
         event={event}
       />
       
-      {/* Breadcrumb Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify(generateBreadcrumbSchema(breadcrumbs))}
-      </script>
       {/* Hero */}
       <div className="relative h-[400px] md:h-[450px] overflow-hidden">
         <img 
