@@ -439,22 +439,53 @@ const HomePage = () => {
       {/* Footer */}
       <footer className="py-12 border-t border-white/5 bg-zinc-900/30">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-                <Ticket className="w-5 h-5 text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
+                  <Ticket className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-xl font-bold">FanPass</span>
               </div>
-              <span className="text-xl font-bold">FanPass</span>
+              <p className="text-zinc-500 text-sm">
+                Europe's trusted ticket marketplace for concerts and football matches.
+              </p>
             </div>
-            <div className="flex items-center gap-8 text-sm text-zinc-400">
-              <Link to="/events" className="hover:text-white transition-colors">Events</Link>
-              <a href="#" className="hover:text-white transition-colors">About</a>
-              <a href="#" className="hover:text-white transition-colors">Support</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Events</h4>
+              <div className="flex flex-col gap-2 text-sm text-zinc-400">
+                <Link to="/events" className="hover:text-white transition-colors">All Events</Link>
+                <Link to="/events?type=concert" className="hover:text-white transition-colors">Concerts</Link>
+                <Link to="/events?type=match" className="hover:text-white transition-colors">Football</Link>
+              </div>
             </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Company</h4>
+              <div className="flex flex-col gap-2 text-sm text-zinc-400">
+                <Link to="/about" className="hover:text-white transition-colors">About Us</Link>
+                <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Legal</h4>
+              <div className="flex flex-col gap-2 text-sm text-zinc-400">
+                <Link to="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
+                <Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-zinc-500 text-sm">
               © 2025 FanPass. All rights reserved.
             </p>
+            <div className="flex items-center gap-6 text-sm text-zinc-500">
+              <span>Secure payments with Stripe</span>
+              <span>100% Buyer Protection</span>
+            </div>
           </div>
         </div>
       </footer>
