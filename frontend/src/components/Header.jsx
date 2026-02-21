@@ -55,39 +55,52 @@ const Header = () => {
           </nav>
 
           {/* Auth */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
+            
             {loading ? (
               <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
             ) : user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button 
-                    className="flex items-center gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors"
-                    data-testid="user-menu-btn"
-                  >
-                    {user.picture ? (
-                      <img 
-                        src={user.picture} 
-                        alt={user.name}
-                        className="w-9 h-9 rounded-full border-2 border-purple-500/50"
-                      />
-                    ) : (
-                      <div className="w-9 h-9 rounded-full bg-purple-500/20 flex items-center justify-center">
-                        <User className="w-5 h-5 text-purple-400" />
-                      </div>
-                    )}
-                    <span className="hidden md:block text-sm font-medium max-w-[100px] truncate">
-                      {user.name}
-                    </span>
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent 
-                  align="end" 
-                  className="w-56 bg-zinc-900 border-zinc-800"
+              <>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => navigate('/alerts')}
+                  className="text-zinc-400 hover:text-white"
+                  data-testid="alerts-btn"
                 >
-                  <div className="px-3 py-2">
-                    <p className="font-medium truncate">{user.name}</p>
-                    <p className="text-sm text-zinc-500 truncate">{user.email}</p>
+                  <Bell className="w-5 h-5" />
+                </Button>
+                
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button 
+                      className="flex items-center gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors"
+                      data-testid="user-menu-btn"
+                    >
+                      {user.picture ? (
+                        <img 
+                          src={user.picture} 
+                          alt={user.name}
+                          className="w-9 h-9 rounded-full border-2 border-purple-500/50"
+                        />
+                      ) : (
+                        <div className="w-9 h-9 rounded-full bg-purple-500/20 flex items-center justify-center">
+                          <User className="w-5 h-5 text-purple-400" />
+                        </div>
+                      )}
+                      <span className="hidden md:block text-sm font-medium max-w-[100px] truncate">
+                        {user.name}
+                      </span>
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent 
+                    align="end" 
+                    className="w-56 bg-zinc-900 border-zinc-800"
+                  >
+                    <div className="px-3 py-2">
+                      <p className="font-medium truncate">{user.name}</p>
+                      <p className="text-sm text-zinc-500 truncate">{user.email}</p>
                   </div>
                   <DropdownMenuSeparator className="bg-zinc-800" />
                   <DropdownMenuItem 
