@@ -13,6 +13,7 @@ import EventDetailsPage from "./pages/EventDetailsPage";
 import MyTicketsPage from "./pages/MyTicketsPage";
 import SellerDashboard from "./pages/SellerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import OwnerDashboard from "./pages/OwnerDashboard";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import AuthCallback from "./pages/AuthCallback";
 import PriceAlertsPage from "./pages/PriceAlertsPage";
