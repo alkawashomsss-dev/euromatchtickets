@@ -1312,6 +1312,177 @@ async def get_admin_orders(request: Request):
     orders = await db.orders.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
     return orders
 
+# ============== OWNER DASHBOARD (Revenue & Payouts) ==============
+
+@api_router.get("/owner/dashboard")
+async def get_owner_dashboard(request: Request):
+    """Get owner dashboard with revenue stats"""
+    user = await require_admin(request)
+    
+    # Get all completed orders
+    orders = await db.orders.find(
+        {"status": "completed"},
+        {"_id": 0}
+    ).to_list(1000)
+    
+    # Calculate totals
+    total_revenue = sum(order.get("total_amount", 0) for order in orders)
+    total_commission = sum(order.get("commission", 0) for order in orders)
+    total_seller_amount = total_revenue - total_commission
+    
+    # Get pending payouts
+    pending_payouts = await db.payouts.find(
+        {"status": "pending"},
+        {"_id": 0}
+    ).to_list(100)
+    
+    pending_payout_amount = sum(p.get("amount", 0) for p in pending_payouts)
+    
+    # Get completed payouts
+    completed_payouts = await db.payouts.find(
+        {"status": "completed"},
+        {"_id": 0}
+    ).to_list(100)
+    
+    total_paid_out = sum(p.get("amount", 0) for p in completed_payouts)
+    
+    # Orders by status
+    orders_pending = await db.orders.count_documents({"status": "pending"})
+    orders_completed = await db.orders.count_documents({"status": "completed"})
+    orders_cancelled = await db.orders.count_documents({"status": "cancelled"})
+    
+    # Recent orders (last 10)
+    recent_orders = await db.orders.find(
+        {},
+        {"_id": 0}
+    ).sort("created_at", -1).to_list(10)
+    
+    # Enrich recent orders
+    for order in recent_orders:
+        event = await db.events.find_one({"event_id": order.get("event_id")}, {"_id": 0, "title": 1})
+        order["event_title"] = event.get("title") if event else "Unknown"
+    
+    return {
+        "revenue": {
+            "total": round(total_revenue, 2),
+            "commission": round(total_commission, 2),
+            "seller_amount": round(total_seller_amount, 2)
+        },
+        "payouts": {
+            "pending_count": len(pending_payouts),
+            "pending_amount": round(pending_payout_amount, 2),
+            "total_paid": round(total_paid_out, 2)
+        },
+        "orders": {
+            "pending": orders_pending,
+            "completed": orders_completed,
+            "cancelled": orders_cancelled,
+            "total": orders_pending + orders_completed + orders_cancelled
+        },
+        "recent_orders": recent_orders
+    }
+
+@api_router.get("/owner/sellers")
+async def get_sellers_with_balance(request: Request):
+    """Get all sellers with their pending balances"""
+    user = await require_admin(request)
+    
+    # Get all sellers
+    sellers = await db.users.find(
+        {"role": "seller"},
+        {"_id": 0, "user_id": 1, "name": 1, "email": 1, "kyc_status": 1}
+    ).to_list(100)
+    
+    for seller in sellers:
+        # Calculate pending balance (completed orders not yet paid out)
+        orders = await db.orders.find(
+            {"seller_id": seller["user_id"], "status": "completed"},
+            {"_id": 0, "total_amount": 1, "commission": 1}
+        ).to_list(100)
+        
+        total_sales = sum(o.get("total_amount", 0) for o in orders)
+        total_commission = sum(o.get("commission", 0) for o in orders)
+        seller_earnings = total_sales - total_commission
+        
+        # Get already paid out
+        payouts = await db.payouts.find(
+            {"seller_id": seller["user_id"], "status": "completed"},
+            {"_id": 0, "amount": 1}
+        ).to_list(100)
+        
+        total_paid = sum(p.get("amount", 0) for p in payouts)
+        
+        seller["total_sales"] = round(total_sales, 2)
+        seller["total_commission"] = round(total_commission, 2)
+        seller["total_earnings"] = round(seller_earnings, 2)
+        seller["total_paid"] = round(total_paid, 2)
+        seller["pending_balance"] = round(seller_earnings - total_paid, 2)
+        seller["orders_count"] = len(orders)
+    
+    return sellers
+
+@api_router.post("/owner/payouts")
+async def create_payout(request: Request):
+    """Create a payout record for a seller"""
+    user = await require_admin(request)
+    body = await request.json()
+    
+    seller_id = body.get("seller_id")
+    amount = body.get("amount")
+    payment_method = body.get("payment_method", "bank_transfer")
+    notes = body.get("notes", "")
+    
+    if not seller_id or not amount:
+        raise HTTPException(status_code=400, detail="seller_id and amount required")
+    
+    seller = await db.users.find_one({"user_id": seller_id}, {"_id": 0})
+    if not seller:
+        raise HTTPException(status_code=404, detail="Seller not found")
+    
+    payout = {
+        "payout_id": f"payout_{uuid.uuid4().hex[:12]}",
+        "seller_id": seller_id,
+        "seller_name": seller.get("name"),
+        "seller_email": seller.get("email"),
+        "amount": amount,
+        "payment_method": payment_method,
+        "status": "pending",  # pending, processing, completed, failed
+        "notes": notes,
+        "created_at": datetime.now(timezone.utc),
+        "completed_at": None
+    }
+    
+    await db.payouts.insert_one(payout)
+    payout.pop("_id", None)
+    
+    return payout
+
+@api_router.put("/owner/payouts/{payout_id}/complete")
+async def complete_payout(payout_id: str, request: Request):
+    """Mark a payout as completed"""
+    user = await require_admin(request)
+    
+    result = await db.payouts.update_one(
+        {"payout_id": payout_id},
+        {"$set": {
+            "status": "completed",
+            "completed_at": datetime.now(timezone.utc)
+        }}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Payout not found")
+    
+    return {"success": True}
+
+@api_router.get("/owner/payouts")
+async def get_all_payouts(request: Request):
+    """Get all payouts"""
+    user = await require_admin(request)
+    
+    payouts = await db.payouts.find({}, {"_id": 0}).sort("created_at", -1).to_list(100)
+    return payouts
+
 # ============== SEED DATA ==============
 
 @api_router.post("/reseed")
