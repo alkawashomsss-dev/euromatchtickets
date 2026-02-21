@@ -157,6 +157,11 @@ function AppRouter() {
             <AdminDashboard />
           </ProtectedRoute>
         } />
+        <Route path="/owner" element={
+          <ProtectedRoute requiredRole="admin">
+            <OwnerDashboard />
+          </ProtectedRoute>
+        } />
         <Route path="/alerts" element={
           <ProtectedRoute>
             <PriceAlertsPage />
