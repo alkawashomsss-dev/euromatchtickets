@@ -10,7 +10,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { toast } from "sonner";
 import VenueSeatMap from "../components/VenueSeatMap";
-import { SEOHead, generateEventSchema, generateBreadcrumbSchema, generateTicketSchema } from "../components/SEOHead";
+import { Helmet } from 'react-helmet-async';
 
 const categoryConfig = {
   vip: { name: "VIP", color: "bg-amber-500", textColor: "text-amber-400", description: "Premium experience with best views" },
