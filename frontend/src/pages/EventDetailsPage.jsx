@@ -170,16 +170,6 @@ const EventDetailsPage = () => {
   const commission = selectedTicket ? selectedTicket.price * 0.10 : 0;
   const totalAmount = selectedTicket ? selectedTicket.price + commission : 0;
 
-  // SEO title - set document title directly
-  useEffect(() => {
-    if (event?.title) {
-      document.title = `${event.title} | FanPass`;
-    }
-    return () => {
-      document.title = 'FanPass - Buy Verified Concert & Football Tickets';
-    };
-  }, [event?.title]);
-
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       {/* Hero */}
