@@ -161,8 +161,36 @@ const EventDetailsPage = () => {
   const commission = selectedTicket ? selectedTicket.price * 0.10 : 0;
   const totalAmount = selectedTicket ? selectedTicket.price + commission : 0;
 
+  // Generate breadcrumb for SEO
+  const breadcrumbs = [
+    { name: "Home", url: "https://fanpass.com/" },
+    { name: "Events", url: "https://fanpass.com/events" },
+    { name: isMatch ? "Football" : "Concerts", url: `https://fanpass.com/events?type=${event.event_type}` },
+    { name: event.title, url: `https://fanpass.com/event/${event.event_id}` }
+  ];
+
+  // SEO keywords based on event type
+  const seoKeywords = isMatch
+    ? `${event.home_team} tickets, ${event.away_team} tickets, ${event.city} football, buy football tickets, ${event.venue} tickets`
+    : `${event.artist} tickets, ${event.artist} concert, ${event.city} concert tickets, buy concert tickets, ${event.venue} tickets`;
+
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
+      {/* SEO Head with Schema Markup */}
+      <SEOHead
+        title={event.title}
+        description={event.description || `Buy verified tickets for ${event.title} at ${event.venue}, ${event.city}. Secure checkout with instant QR delivery.`}
+        keywords={seoKeywords}
+        image={event.event_image}
+        url={`https://fanpass.com/event/${event.event_id}`}
+        type="event"
+        event={event}
+      />
+      
+      {/* Breadcrumb Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify(generateBreadcrumbSchema(breadcrumbs))}
+      </script>
       {/* Hero */}
       <div className="relative h-[400px] md:h-[450px] overflow-hidden">
         <img 
