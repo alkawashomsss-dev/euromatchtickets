@@ -4,13 +4,13 @@ import axios from "axios";
 import { API, useAuth } from "../App";
 import { 
   Calendar, MapPin, Ticket, Shield, Star, Users, 
-  ChevronRight, Info, Check, Music, Trophy
+  ChevronRight, Info, Check, Music, Trophy, FileText
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { toast } from "sonner";
 import VenueSeatMap from "../components/VenueSeatMap";
-import { generateEventSchema, generateBreadcrumbSchema } from "../components/SEOHead";
+import { SEOHead, generateEventSchema, generateBreadcrumbSchema, generateTicketSchema } from "../components/SEOHead";
 
 const categoryConfig = {
   vip: { name: "VIP", color: "bg-amber-500", textColor: "text-amber-400", description: "Premium experience with best views" },
