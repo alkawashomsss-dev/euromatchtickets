@@ -1,0 +1,141 @@
+{
+  "identity": {
+    "name": "E1 - The Anti-AI Designer",
+    "mission": "Create a visceral, stadium-like football marketplace. Reject generic e-commerce templates. Design for the fan's pulse.",
+    "core_principles": [
+      "The Tunnel Effect: Users enter from darkness into light (Hero -> Content).",
+      "Pitch Perfect: Green is sacred. Use it only for 'Success' and 'Pitch' elements.",
+      "Floodlight Focus: High contrast white text on dark backgrounds. No grey soup.",
+      "Tactile Tickets: Digital tickets should look like collectibles (holographic foils, textures)."
+    ]
+  },
+  "visual_language": {
+    "theme": "dark",
+    "colors": {
+      "background": {
+        "default": "#020617",
+        "surface": "#0F172A",
+        "card": "#1E293B",
+        "overlay": "rgba(2, 6, 23, 0.8)"
+      },
+      "text": {
+        "primary": "#F8FAFC",
+        "secondary": "#94A3B8",
+        "muted": "#475569",
+        "accent": "#38BDF8"
+      },
+      "brand": {
+        "primary": "#FFFFFF",
+        "secondary": "#22C55E",
+        "accent": "#F59E0B",
+        "danger": "#EF4444"
+      },
+      "gradients": {
+        "hero": "linear-gradient(to top, #020617 10%, transparent 100%)",
+        "gold_shine": "linear-gradient(135deg, #F59E0B 0%, #FDE68A 50%, #D97706 100%)",
+        "pitch_glow": "radial-gradient(circle at center, rgba(34, 197, 94, 0.15) 0%, transparent 70%)"
+      }
+    },
+    "typography": {
+      "font_family": {
+        "headings": "\"Barlow Condensed\", \"Tajawal\", sans-serif",
+        "body": "\"Manrope\", \"Tajawal\", sans-serif",
+        "mono": "\"JetBrains Mono\", monospace"
+      },
+      "scale": {
+        "h1": "text-6xl md:text-8xl font-black uppercase tracking-tighter",
+        "h2": "text-4xl md:text-6xl font-bold uppercase tracking-tight",
+        "h3": "text-2xl md:text-3xl font-bold uppercase",
+        "body_lg": "text-lg md:text-xl font-medium",
+        "body": "text-base font-normal",
+        "caption": "text-sm font-medium tracking-wide uppercase"
+      }
+    },
+    "borders": {
+      "radius": {
+        "default": "0px",
+        "card": "12px",
+        "button": "2px"
+      },
+      "width": "1px",
+      "color": "rgba(255, 255, 255, 0.08)"
+    },
+    "shadows": {
+      "card": "0 0 0 1px rgba(255,255,255,0.05), 0 10px 30px -10px rgba(0,0,0,0.5)",
+      "glow": "0 0 20px rgba(255, 255, 255, 0.15)"
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_background": "https://images.pexels.com/photos/35985591/pexels-photo-35985591.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "stadium_aerial": "https://images.pexels.com/photos/12201296/pexels-photo-12201296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "match_action": "https://images.unsplash.com/photo-1674941063377-69c61db07740?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "fans_cheering": "https://images.pexels.com/photos/28922125/pexels-photo-28922125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "stadium_lights": "https://images.unsplash.com/photo-1708025608571-a9d7d7c78aa9?crop=entropy&cs=srgb&fm=jpg&q=85"
+    },
+    "logos": {
+      "real_madrid": "https://crests.football-data.org/86.svg",
+      "barcelona": "https://crests.football-data.org/81.svg",
+      "man_city": "https://crests.football-data.org/65.svg",
+      "liverpool": "https://crests.football-data.org/64.svg",
+      "arsenal": "https://crests.football-data.org/57.svg",
+      "bayern": "https://crests.football-data.org/5.svg",
+      "psg": "https://crests.football-data.org/524.svg",
+      "champions_league": "https://upload.wikimedia.org/wikipedia/commons/e/e9/UEFA_Champions_League_logo_2.svg",
+      "premier_league": "https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg",
+      "la_liga": "https://upload.wikimedia.org/wikipedia/commons/0/0f/LaLiga_logo_2023.svg"
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "stroke-width-1.5"
+    }
+  },
+  "layout_strategy": {
+    "container": "max-w-[1440px] mx-auto px-4 md:px-8",
+    "grid_system": {
+      "bento_hero": "grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[600px]",
+      "match_list": "flex flex-col gap-3",
+      "stadium_view": "grid grid-cols-1 lg:grid-cols-3 gap-8"
+    },
+    "spacing": {
+      "section_gap": "py-20 md:py-32",
+      "card_padding": "p-6 md:p-8"
+    }
+  },
+  "components": {
+    "Button": {
+      "default": "bg-white text-black hover:bg-slate-200 font-bold uppercase tracking-wide rounded-sm h-12 px-8 transition-transform active:scale-95",
+      "outline": "border border-white/20 hover:border-white text-white bg-transparent font-bold uppercase tracking-wide rounded-sm h-12 px-8",
+      "ghost": "text-slate-400 hover:text-white hover:bg-white/5 uppercase font-medium tracking-wide"
+    },
+    "Card": {
+      "base": "bg-slate-900/50 backdrop-blur-md border border-white/5 rounded-xl overflow-hidden hover:border-white/20 transition-colors duration-300",
+      "interactive": "group cursor-pointer relative hover:-translate-y-1 transition-all duration-300"
+    },
+    "Input": {
+      "base": "bg-slate-950 border-slate-800 text-white placeholder:text-slate-600 focus:border-white/50 focus:ring-0 rounded-lg h-12"
+    },
+    "SeatMap": {
+      "library": "react-seat-toolkit (or custom SVG wrapper)",
+      "style": "The map must look technical and architectural. Dark mode map. Seats are dots. VIP areas are gold polygons."
+    }
+  },
+  "animations": {
+    "page_transition": {
+      "initial": { "opacity": 0, "y": 20 },
+      "animate": { "opacity": 1, "y": 0 },
+      "exit": { "opacity": 0, "y": -20 },
+      "transition": { "duration": 0.4, "ease": [0.22, 1, 0.36, 1] }
+    },
+    "hover_lift": "hover:-translate-y-1 transition-transform duration-300",
+    "shimmer": "animate-pulse bg-slate-800"
+  },
+  "universal_guidelines": [
+    "NEVER use gradients on text. It reduces readability in high-glare environments (like outdoors).",
+    "ALWAYS use high-contrast images. If an image is too bright, apply a 40% black overlay.",
+    "Data density is good for the 'Match List', but 'Hero' sections must be minimal.",
+    "Use 'Barlow Condensed' for all numbers (prices, dates, scores). It looks like a scoreboard.",
+    "Arabic RTL support is mandatory. Ensure 'dir=rtl' is set on the root when language is AR.",
+    "Do not use generic 'Lorem Ipsum'. Use real team names and stadium names in mock data."
+  ]
+}
