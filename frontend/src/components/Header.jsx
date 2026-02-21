@@ -1,8 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../App";
-import { Ticket, Menu, X, User, LogOut, Settings, ShoppingBag, LayoutDashboard } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageProvider";
+import { Ticket, Menu, X, User, LogOut, Settings, ShoppingBag, LayoutDashboard, Bell } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useState } from "react";
+import LanguageSwitcher from "./LanguageSwitcher";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +15,7 @@ import {
 
 const Header = () => {
   const { user, login, logout, loading } = useAuth();
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
