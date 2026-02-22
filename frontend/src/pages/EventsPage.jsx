@@ -321,29 +321,32 @@ const EventsPage = () => {
         </div>
 
         {/* Quick filters */}
-        <div className="flex items-center gap-3 mb-8 overflow-x-auto pb-2">
-          <button
-            onClick={() => handleFilterChange('type', 'concert')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
-              filters.type === 'concert' 
-                ? 'bg-purple-500/20 border-purple-500/50 text-purple-400' 
-                : 'border-white/10 text-zinc-400 hover:border-white/20'
-            }`}
-          >
-            <Music className="w-4 h-4" />
-            Concerts
-          </button>
-          <button
-            onClick={() => handleFilterChange('type', 'match')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
-              filters.type === 'match' 
-                ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400' 
-                : 'border-white/10 text-zinc-400 hover:border-white/20'
-            }`}
-          >
-            <Trophy className="w-4 h-4" />
-            Football
-          </button>
+        <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+          {[
+            { type: 'match', label: 'Football', icon: Trophy, color: 'emerald' },
+            { type: 'concert', label: 'Concerts', icon: Music, color: 'purple' },
+            { type: 'train', label: 'Trains', icon: Train, color: 'blue' },
+            { type: 'attraction', label: 'Attractions', icon: Landmark, color: 'amber' },
+            { type: 'festival', label: 'Festivals', icon: PartyPopper, color: 'pink' },
+            { type: 'f1', label: 'F1', icon: Flag, color: 'red' },
+            { type: 'tennis', label: 'Tennis', icon: CircleDot, color: 'green' },
+          ].map(({ type, label, icon: Icon, color }) => (
+            <button
+              key={type}
+              onClick={() => handleFilterChange('type', type)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                filters.type === type 
+                  ? `bg-${color}-500/20 border-${color}-500/50 text-${color}-400` 
+                  : 'border-white/10 text-zinc-400 hover:border-white/20'
+              }`}
+              style={filters.type === type ? {
+                backgroundColor: `rgb(var(--${color}-500) / 0.2)`,
+              } : {}}
+            >
+              <Icon className="w-4 h-4" />
+              {label}
+            </button>
+          ))}
         </div>
 
         {/* Results */}
