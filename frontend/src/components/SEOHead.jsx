@@ -1,11 +1,11 @@
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const BASE_URL = 'https://euromatchtickets.com';
 
 /**
  * SEO Component for managing meta tags across all pages
- * Provides canonical URLs, Open Graph, Twitter Cards, and structured data
+ * Uses useEffect to update document head directly
  */
 const SEOHead = ({ 
   title, 
@@ -13,7 +13,6 @@ const SEOHead = ({
   image,
   type = 'website',
   article = null,
-  event = null,
   noIndex = false 
 }) => {
   const location = useLocation();
@@ -23,7 +22,6 @@ const SEOHead = ({
   const defaultDescription = 'Buy verified tickets for Champions League, Premier League, La Liga, and top concerts across Europe. 100% secure with instant QR delivery.';
   const defaultImage = `${BASE_URL}/og-image.jpg`;
 
-  // Ensure title is always a valid string
   const fullTitle = title && typeof title === 'string' && title.trim() 
     ? `${title} | EuroMatchTickets` 
     : defaultTitle;
@@ -32,49 +30,57 @@ const SEOHead = ({
     : defaultDescription;
   const ogImage = image && typeof image === 'string' ? image : defaultImage;
 
-  return (
-    <Helmet>
-      {/* Primary Meta Tags */}
-      <title>{fullTitle}</title>
-      <meta name="title" content={fullTitle} />
-      <meta name="description" content={metaDescription} />
-      
-      {/* Canonical URL */}
-      <link rel="canonical" href={canonicalUrl} />
-      
-      {/* Robots */}
-      {noIndex ? (
-        <meta name="robots" content="noindex, nofollow" />
-      ) : (
-        <meta name="robots" content="index, follow, max-image-preview:large" />
-      )}
-      
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={metaDescription} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content="EuroMatchTickets" />
-      <meta property="og:locale" content="en_US" />
-      
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={canonicalUrl} />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:image" content={ogImage} />
-      
-      {/* Article specific tags */}
-      {article && (
-        <>
-          <meta property="article:published_time" content={article.publishedTime} />
-          <meta property="article:author" content={article.author} />
-          <meta property="article:section" content={article.section} />
-        </>
-      )}
-    </Helmet>
-  );
+  useEffect(() => {
+    // Update title
+    document.title = fullTitle;
+
+    // Helper to update or create meta tag
+    const updateMetaTag = (selector, content, property = false) => {
+      let meta = document.querySelector(selector);
+      if (!meta) {
+        meta = document.createElement('meta');
+        if (property) {
+          meta.setAttribute('property', selector.replace('meta[property="', '').replace('"]', ''));
+        } else {
+          meta.setAttribute('name', selector.replace('meta[name="', '').replace('"]', ''));
+        }
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    // Update meta tags
+    updateMetaTag('meta[name="description"]', metaDescription);
+    updateMetaTag('meta[name="robots"]', noIndex ? 'noindex, nofollow' : 'index, follow');
+    
+    // Open Graph
+    updateMetaTag('meta[property="og:title"]', fullTitle, true);
+    updateMetaTag('meta[property="og:description"]', metaDescription, true);
+    updateMetaTag('meta[property="og:image"]', ogImage, true);
+    updateMetaTag('meta[property="og:url"]', canonicalUrl, true);
+    updateMetaTag('meta[property="og:type"]', type, true);
+    
+    // Twitter
+    updateMetaTag('meta[name="twitter:title"]', fullTitle);
+    updateMetaTag('meta[name="twitter:description"]', metaDescription);
+    updateMetaTag('meta[name="twitter:image"]', ogImage);
+
+    // Update canonical
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', canonicalUrl);
+
+    // Cleanup
+    return () => {
+      document.title = defaultTitle;
+    };
+  }, [fullTitle, metaDescription, ogImage, canonicalUrl, type, noIndex, defaultTitle]);
+
+  return null; // This component doesn't render anything
 };
 
 export default SEOHead;
