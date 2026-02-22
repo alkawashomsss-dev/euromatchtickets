@@ -52,6 +52,12 @@ const Header = () => {
             >
               Football
             </Link>
+            <Link 
+              to="/blog" 
+              className="text-zinc-400 hover:text-white transition-colors font-medium"
+            >
+              Blog
+            </Link>
           </nav>
 
           {/* Auth */}
