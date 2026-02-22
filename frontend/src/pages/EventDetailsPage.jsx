@@ -195,8 +195,85 @@ const EventDetailsPage = () => {
   const commission = selectedTicket ? selectedTicket.price * 0.10 : 0;
   const totalAmount = selectedTicket ? selectedTicket.price + commission : 0;
 
+  // Generate Event Schema for SEO
+  const eventSchema = {
+    "@context": "https://schema.org",
+    "@type": isMatch ? "SportsEvent" : "MusicEvent",
+    "name": event.title,
+    "description": event.description || `Buy verified tickets for ${event.title} at ${event.venue}, ${event.city}. Secure checkout with instant QR code delivery.`,
+    "startDate": event.event_date,
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": event.venue,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": event.city,
+        "addressCountry": event.country
+      }
+    },
+    "image": event.event_image || "https://euromatchtickets.com/og-image.jpg",
+    "organizer": {
+      "@type": "Organization",
+      "name": "EuroMatchTickets",
+      "url": "https://euromatchtickets.com"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "url": `https://euromatchtickets.com/event/${event.event_id}`,
+      "priceCurrency": "EUR",
+      "lowPrice": event.categories ? Math.min(...Object.values(event.categories).map(c => c.lowest_price || 999999)) : 0,
+      "availability": event.ticket_count > 0 ? "https://schema.org/InStock" : "https://schema.org/SoldOut",
+      "validFrom": new Date().toISOString()
+    },
+    ...(isMatch && event.home_team && {
+      "homeTeam": { "@type": "SportsTeam", "name": event.home_team },
+      "awayTeam": { "@type": "SportsTeam", "name": event.away_team }
+    }),
+    ...(!isMatch && event.artist && {
+      "performer": { "@type": "MusicGroup", "name": event.artist }
+    })
+  };
+
+  // FAQ Schema for SEO
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `Are ${event.title} tickets legitimate?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, all tickets on EuroMatchTickets are verified and guaranteed authentic. We work only with trusted sellers and offer a 100% money-back guarantee if there are any issues with your tickets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `How do I receive my ${event.title} tickets?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "After purchase, you'll receive a QR code instantly via email and in your account. This QR code is your entry ticket to the event. Simply show it at the venue entrance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Can I get a refund for ${event.title} tickets?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer refunds if the event is cancelled or if tickets are not delivered as promised. Please review our refund policy for full details."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
+      {/* SEO Schema Scripts */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      
       {/* Hero */}
       <div className="relative h-[400px] md:h-[450px] overflow-hidden">
         <img 
