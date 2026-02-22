@@ -203,31 +203,32 @@ const Header = () => {
         {/* Mobile menu */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-white/5">
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col gap-2">
               <Link 
                 to="/events" 
-                className="text-zinc-400 hover:text-white transition-colors py-2"
+                className="text-zinc-400 hover:text-white transition-colors py-2 font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 All Events
               </Link>
-              <Link 
-                to="/events?type=concert" 
-                className="text-zinc-400 hover:text-white transition-colors py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Concerts
-              </Link>
-              <Link 
-                to="/events?type=match" 
-                className="text-zinc-400 hover:text-white transition-colors py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Football
-              </Link>
+              
+              <div className="py-2 text-zinc-500 text-sm font-medium">Categories</div>
+              
+              {categories.map((cat) => (
+                <Link 
+                  key={cat.name}
+                  to={cat.href}
+                  className={`flex items-center gap-2 py-2 pl-4 ${cat.color} hover:opacity-80 transition-colors`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <cat.icon className="w-4 h-4" />
+                  {cat.name}
+                </Link>
+              ))}
+              
               <Link 
                 to="/world-cup-2026" 
-                className="text-yellow-400 hover:text-yellow-300 transition-colors py-2 font-bold flex items-center gap-2"
+                className="text-yellow-400 hover:text-yellow-300 transition-colors py-2 font-bold flex items-center gap-2 mt-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <Trophy className="w-4 h-4" />
