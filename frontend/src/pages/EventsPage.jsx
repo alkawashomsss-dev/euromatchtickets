@@ -28,9 +28,23 @@ const formatDate = (dateStr) => {
   };
 };
 
+const getEventTypeInfo = (type) => {
+  const types = {
+    match: { label: "Football", icon: Trophy, color: "tag-match" },
+    concert: { label: "Concert", icon: Music, color: "tag-concert" },
+    train: { label: "Train", icon: Train, color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
+    attraction: { label: "Attraction", icon: Landmark, color: "bg-amber-500/20 text-amber-400 border-amber-500/30" },
+    festival: { label: "Festival", icon: PartyPopper, color: "bg-pink-500/20 text-pink-400 border-pink-500/30" },
+    f1: { label: "Formula 1", icon: Flag, color: "bg-red-500/20 text-red-400 border-red-500/30" },
+    tennis: { label: "Tennis", icon: CircleDot, color: "bg-green-500/20 text-green-400 border-green-500/30" },
+  };
+  return types[type] || types.match;
+};
+
 const EventRow = ({ event }) => {
   const dateInfo = formatDate(event.event_date);
-  const isMatch = event.event_type === "match";
+  const typeInfo = getEventTypeInfo(event.event_type);
+  const TypeIcon = typeInfo.icon;
 
   return (
     <Link
@@ -42,10 +56,7 @@ const EventRow = ({ event }) => {
         {/* Image */}
         <div className="w-full md:w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
           <img 
-            src={event.event_image || (isMatch 
-              ? "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=200"
-              : "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=200"
-            )}
+            src={event.event_image || "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=200"}
             alt={event.title}
             loading="lazy"
             decoding="async"
@@ -58,9 +69,9 @@ const EventRow = ({ event }) => {
         {/* Info */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
-            <Badge className={isMatch ? "tag-match text-xs" : "tag-concert text-xs"}>
-              {isMatch ? <Trophy className="w-3 h-3 mr-1" /> : <Music className="w-3 h-3 mr-1" />}
-              {isMatch ? "Match" : "Concert"}
+            <Badge className={`${typeInfo.color} text-xs`}>
+              <TypeIcon className="w-3 h-3 mr-1" />
+              {typeInfo.label}
             </Badge>
             {event.featured && (
               <Badge className="bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs">
@@ -84,7 +95,7 @@ const EventRow = ({ event }) => {
             </div>
             <div className="flex items-center gap-1.5">
               <MapPin className="w-4 h-4" />
-              <span>{event.venue}, {event.city}</span>
+              <span className="truncate max-w-[200px]">{event.venue}, {event.city}</span>
             </div>
           </div>
         </div>
