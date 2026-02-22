@@ -37,10 +37,14 @@ const EventCard = ({ event }) => {
       <div className="relative h-48 overflow-hidden">
         <img 
           src={event.event_image || (isMatch 
-            ? "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg"
-            : "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"
+            ? "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=600"
+            : "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=600"
           )}
           alt={event.title}
+          loading="lazy"
+          decoding="async"
+          width="400"
+          height="192"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="img-overlay" />
