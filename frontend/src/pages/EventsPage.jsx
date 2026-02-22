@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
+import SEOHead from "../components/SEOHead";
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);
