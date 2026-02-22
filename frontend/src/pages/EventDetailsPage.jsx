@@ -261,8 +261,21 @@ const EventDetailsPage = () => {
     ]
   };
 
+  // Generate SEO description
+  const seoDescription = event.description 
+    ? event.description.substring(0, 155) + '...'
+    : `Buy verified tickets for ${event.title} at ${event.venue}, ${event.city}. Secure checkout with instant QR code delivery. 100% buyer protection.`;
+
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
+      {/* SEO Head with Canonical */}
+      <SEOHead 
+        title={`${event.title} Tickets - ${event.venue}, ${event.city}`}
+        description={seoDescription}
+        image={event.event_image}
+        type={isMatch ? "sports_event" : "music_event"}
+      />
+      
       {/* SEO Schema Scripts */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
