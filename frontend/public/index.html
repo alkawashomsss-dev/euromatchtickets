@@ -6,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#18181b" />
     
+    <!-- DNS Prefetch & Preconnect for Performance (Core Web Vitals) -->
+    <link rel="dns-prefetch" href="https://images.pexels.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.pexels.com" crossorigin />
+    
+    <!-- Preload Critical Resources (LCP Optimization) -->
+    <link rel="preload" as="image" href="https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1920" />
+    
     <!-- Primary SEO Meta Tags -->
     <title>EuroMatchTickets - Buy Football & Concert Tickets | Europe's #1 Marketplace</title>
     <meta name="title" content="EuroMatchTickets - Buy Football & Concert Tickets | Europe's #1 Marketplace" />
     <meta name="description" content="Buy verified tickets for Champions League, Premier League, La Liga, Bundesliga and top concerts. 100% secure with instant QR delivery. Trusted by fans across Europe." />
     <meta name="keywords" content="buy football tickets, Champions League tickets, Premier League tickets, La Liga tickets, Bundesliga tickets, concert tickets Europe, Taylor Swift tickets, Coldplay tickets, Drake tickets, verified ticket resale, euro match tickets" />
     <meta name="author" content="EuroMatchTickets" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://euromatchtickets.com" />
     
     <!-- Open Graph / Facebook -->
@@ -41,13 +51,21 @@
     <meta name="language" content="English" />
     <meta name="distribution" content="global" />
     
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.pexels.com" />
-    
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Critical CSS for Above-the-fold (CLS Optimization) -->
+    <style>
+      /* Prevent layout shift */
+      body { margin: 0; background-color: #09090b; }
+      #root { min-height: 100vh; }
+      /* Reserve space for header */
+      .header-placeholder { height: 80px; }
+      /* Image aspect ratio hints */
+      img { max-width: 100%; height: auto; }
+      /* Font display swap for better LCP */
+      @font-face { font-display: swap; }
+    </style>
     
     <!-- Organization Schema -->
     <script type="application/ld+json">
