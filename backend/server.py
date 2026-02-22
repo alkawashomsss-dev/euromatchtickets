@@ -1732,6 +1732,7 @@ async def get_sitemap():
         {"loc": f"{base_url}/events", "priority": "0.9", "changefreq": "hourly"},
         {"loc": f"{base_url}/events?type=concert", "priority": "0.8", "changefreq": "hourly"},
         {"loc": f"{base_url}/events?type=match", "priority": "0.8", "changefreq": "hourly"},
+        {"loc": f"{base_url}/world-cup-2026", "priority": "0.95", "changefreq": "daily"},
         {"loc": f"{base_url}/blog", "priority": "0.8", "changefreq": "weekly"},
         {"loc": f"{base_url}/reviews", "priority": "0.7", "changefreq": "weekly"},
         {"loc": f"{base_url}/faq", "priority": "0.6", "changefreq": "monthly"},
