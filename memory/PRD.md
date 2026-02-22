@@ -26,6 +26,31 @@ Build a comprehensive ticket marketplace for European events with:
 | 🏎️ Formula 1 | 7 | Monaco GP, British GP, Italian GP |
 | 🎾 Tennis | 7 | Wimbledon, Roland Garros, Madrid Open |
 
+## 🔥 High-Converting Landing Pages (SEO Optimized)
+
+### 1. Monaco Grand Prix 2025 (`/f1-monaco-grand-prix`)
+- **SEO Title:** "Monaco Grand Prix 2025 Tickets - Buy F1 Monte Carlo Tickets"
+- **Urgency:** "High Demand - Only 46 tickets left!"
+- **Schema:** SportsEvent
+- **Price From:** €180
+
+### 2. Tomorrowland 2025 (`/tomorrowland-2025`)
+- **SEO Title:** "Tomorrowland 2025 Tickets - Buy Festival Passes Belgium"
+- **Urgency:** "Sold Out in 2024! Get 2025 Tickets Now!"
+- **Schema:** MusicEvent
+- **Price From:** €275 (Day Pass), €375 (Full Madness)
+
+### 3. Disneyland Paris (`/disneyland-paris`)
+- **SEO Title:** "Disneyland Paris Tickets 2025 - Buy Skip-the-Line Passes"
+- **Urgency:** "Skip the 2+ Hour Queues - Book Now!"
+- **Schema:** TouristAttraction
+- **Price From:** €85 (1 Park), €105 (Hopper), €169 (2-Day)
+
+### 4. FIFA World Cup 2026 (`/world-cup-2026`)
+- **SEO Title:** "FIFA World Cup 2026 Tickets - Buy Official Verified Tickets"
+- **Schema:** SportsEvent
+- **Price From:** €150
+
 ## Features Implemented ✅
 
 ### Multi-Category Marketplace
@@ -33,116 +58,58 @@ Build a comprehensive ticket marketplace for European events with:
 - Categories dropdown in Header navigation
 - Quick filter buttons on Events page
 - Type-based filtering via URL parameters
-- 87 events with tickets
 
-### High-Speed Train Tickets 🚄
-- Eurostar (London-Paris-Brussels-Amsterdam)
-- TGV (France)
-- ICE (Germany)
-- Thalys (Belgium-Netherlands)
-- Frecciarossa/Italo (Italy)
-- AVE (Spain)
+### Conversion Optimization
+- "Hot Right Now" section on homepage with 4 landing pages
+- Urgency banners on all landing pages
+- Clear pricing display
+- Trust badges (Verified, Money-Back Guarantee, Instant Delivery)
+- Social proof counters (50K+ Happy Fans, 4.9 Rating)
 
-### Theme Parks & Attractions 🏛️
-- Disneyland Paris (1 Day & 2 Day Hopper)
-- Europa Park
-- PortAventura World
-- Eiffel Tower (Skip-the-Line)
-- Louvre Museum
-- Colosseum & Roman Forum
-- Vatican Museums
-- Sagrada Familia
-- Tower of London
-- London Eye
-
-### Music Festivals 🎪
-- Tomorrowland 2025 (Weekend 1 & 2)
-- Rock am Ring 2025
-- Glastonbury Festival 2025
-- Primavera Sound Barcelona
-- Oktoberfest 2025
-- Sziget Festival
-- Creamfields
-
-### Formula 1 Races 🏎️
-- Monaco Grand Prix
-- British Grand Prix (Silverstone)
-- Italian Grand Prix (Monza)
-- Belgian Grand Prix (Spa)
-- Dutch Grand Prix (Zandvoort)
-- Spanish Grand Prix
-- Hungarian Grand Prix
-
-### Tennis Grand Slams 🎾
-- Wimbledon 2025 (Centre Court, Women's Final, Ground Pass)
-- Roland Garros 2025 (Final, Semifinals)
-- Italian Open (Rome)
-- Madrid Open
-
-### FIFA World Cup 2026 ⭐
-- Dedicated landing page at `/world-cup-2026`
-- SEO optimized for FIFA keywords
-- 6 World Cup events available
-- Link in main Header navigation
-
-### SEO & Trust ✅
-- sitemap.xml with all category pages
+### SEO Implementation
+- Dynamic sitemap.xml with all pages
 - robots.txt
-- SEOHead component with dynamic meta tags
-- Trust pages: About Us, Reviews, FAQ
-- Professional Footer with trust badges
+- Schema.org markup (SportsEvent, MusicEvent, TouristAttraction)
+- Optimized meta titles and descriptions
+- Trust pages (About, Reviews, FAQ)
 
-## Key API Endpoints
+### Payment Flow
+- Stripe Checkout (LIVE MODE)
+- 10% platform commission
+- QR code ticket delivery
 
-### Events
-- `GET /api/events` - List events (supports type, city, search filters)
-- `GET /api/events/{id}` - Event details with tickets
-- `POST /api/seed-expanded` - Add trains/attractions/festivals/F1/tennis
-
-### Sitemap
-- `GET /api/sitemap.xml` - Dynamic sitemap (includes all categories)
-- `GET /api/robots.txt` - Robots file
-
-## File Structure
+## Key Landing Page URLs
 ```
-/app/
-├── backend/
-│   ├── server.py (seed-expanded endpoint added)
-│   └── .env
-├── frontend/
-│   └── src/
-│       ├── components/
-│       │   ├── Header.jsx (Categories dropdown)
-│       │   └── ...
-│       └── pages/
-│           ├── EventsPage.jsx (7 category filters)
-│           ├── WorldCupPage.jsx
-│           └── ...
-└── memory/
-    └── PRD.md
+/f1-monaco-grand-prix     - Monaco GP 2025
+/tomorrowland-2025        - Tomorrowland Festival
+/disneyland-paris         - Disneyland Paris
+/world-cup-2026           - FIFA World Cup 2026
+/events?type=train        - High-Speed Trains
+/events?type=attraction   - European Attractions
+/events?type=festival     - Music Festivals
+/events?type=f1           - Formula 1 Races
+/events?type=tennis       - Tennis Grand Slams
 ```
 
 ## Completed This Session (Dec 2025)
-- ✅ Added 51 new events (trains, attractions, festivals, F1, tennis)
-- ✅ Updated Header with Categories dropdown menu
-- ✅ Added quick filter buttons for all 7 categories
-- ✅ Updated EventsPage type filter dropdown
-- ✅ Added event type badges with icons and colors
-- ✅ Updated sitemap.xml with all category pages
-- ✅ All tests passing (100% success rate - iteration_4.json)
+- ✅ Created 3 high-converting landing pages (Monaco GP, Tomorrowland, Disneyland)
+- ✅ Added "Hot Right Now" section to homepage
+- ✅ Implemented urgency banners and trust badges
+- ✅ Added Schema.org markup for SEO
+- ✅ Created 51 new events (trains, attractions, festivals, F1, tennis)
+- ✅ Updated navigation with Categories dropdown
+- ✅ All tests passing (100% - iteration_5.json)
 
 ## Upcoming Tasks (P1)
 1. **Google Analytics Integration** - Needs Web Stream ID (G-XXXX)
 2. **Facebook Pixel Integration** - Needs Pixel ID
 3. **Test Resend Email Notifications** - API key configured
-4. **Create dedicated landing pages** for high-value categories (F1, Wimbledon, Tomorrowland)
 
 ## Future Tasks (P2)
+- Wimbledon 2025 landing page
+- Create more landing pages for high-search keywords
 - Train API integration (Trainline/RailEurope)
-- Attraction API integration (GetYourGuide/Viator)
-- Seller rating system
-- Professional HTML email templates
-- Blog content for each category
+- Blog content for SEO
 
 ## 3rd Party Integrations Status
 - ✅ Emergent Google OAuth - Working
@@ -151,12 +118,8 @@ Build a comprehensive ticket marketplace for European events with:
 - ✅ OpenAI GPT-4o - Emergent LLM Key
 - ⏳ Google Analytics - Needs ID
 - ⏳ Facebook Pixel - Needs ID
-- 🔜 Train APIs (future)
-- 🔜 Attraction APIs (future)
 
 ## Testing
 - iteration_3.json - World Cup page tests (100% pass)
 - iteration_4.json - Expanded categories tests (100% pass)
-- All 7 category filters verified working
-- Quick filter buttons verified
-- Event type badges verified
+- iteration_5.json - Landing pages tests (100% pass)
