@@ -190,9 +190,8 @@ const BlogArticlePage = () => {
   const article = articleContent[articleId] || defaultArticle;
 
   useEffect(() => {
-    document.title = `${article.title} | EuroMatchTickets Blog`;
     window.scrollTo(0, 0);
-  }, [article.title]);
+  }, [articleId]);
 
   const shareUrl = `https://euromatchtickets.com/blog/${articleId}`;
 
