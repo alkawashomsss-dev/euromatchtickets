@@ -23,9 +23,14 @@ const SEOHead = ({
   const defaultDescription = 'Buy verified tickets for Champions League, Premier League, La Liga, and top concerts across Europe. 100% secure with instant QR delivery.';
   const defaultImage = `${BASE_URL}/og-image.jpg`;
 
-  const fullTitle = title ? `${title} | EuroMatchTickets` : defaultTitle;
-  const metaDescription = description || defaultDescription;
-  const ogImage = image || defaultImage;
+  // Ensure title is always a valid string
+  const fullTitle = title && typeof title === 'string' && title.trim() 
+    ? `${title} | EuroMatchTickets` 
+    : defaultTitle;
+  const metaDescription = description && typeof description === 'string' 
+    ? description 
+    : defaultDescription;
+  const ogImage = image && typeof image === 'string' ? image : defaultImage;
 
   return (
     <Helmet>
