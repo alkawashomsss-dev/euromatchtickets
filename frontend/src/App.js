@@ -21,6 +21,8 @@ import AboutPage from "./pages/AboutPage";
 import TermsPage from "./pages/TermsPage";
 import ContactPage from "./pages/ContactPage";
 import RefundPolicyPage from "./pages/RefundPolicyPage";
+import BlogPage from "./pages/BlogPage";
+import BlogArticlePage from "./pages/BlogArticlePage";
 import Header from "./components/Header";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
