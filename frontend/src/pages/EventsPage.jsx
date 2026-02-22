@@ -43,10 +43,14 @@ const EventRow = ({ event }) => {
         <div className="w-full md:w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
           <img 
             src={event.event_image || (isMatch 
-              ? "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg"
-              : "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"
+              ? "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=200"
+              : "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=200"
             )}
             alt={event.title}
+            loading="lazy"
+            decoding="async"
+            width="96"
+            height="96"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
         </div>
