@@ -74,11 +74,6 @@ const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-  useEffect(() => {
-    // Title is now managed by SEOHead
-  }, []);
-
   const filteredArticles = blogArticles.filter(article => {
     const matchesCategory = selectedCategory === "All" || article.category === selectedCategory;
     const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
