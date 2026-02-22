@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Calendar, Clock, ArrowRight, Search, Tag } from "lucide-react";
 import { Button } from "../components/ui/button";
+import SEOHead from "../components/SEOHead";
 
 // Blog articles data - In production, this would come from a CMS or API
 const blogArticles = [
