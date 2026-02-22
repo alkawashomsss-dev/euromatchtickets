@@ -26,6 +26,9 @@ import BlogArticlePage from "./pages/BlogArticlePage";
 import ReviewsPage from "./pages/ReviewsPage";
 import FAQPage from "./pages/FAQPage";
 import WorldCupPage from "./pages/WorldCupPage";
+import F1MonacoPage from "./pages/F1MonacoPage";
+import TomorrowlandPage from "./pages/TomorrowlandPage";
+import DisneylandPage from "./pages/DisneylandPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
