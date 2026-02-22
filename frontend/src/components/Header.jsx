@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../App";
 import { useLanguage } from "../i18n/LanguageProvider";
-import { Ticket, Menu, X, User, LogOut, Settings, ShoppingBag, LayoutDashboard, Bell } from "lucide-react";
+import { Ticket, Menu, X, User, LogOut, Settings, ShoppingBag, LayoutDashboard, Bell, Trophy } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
