@@ -144,6 +144,8 @@ function AppRouter() {
         <Route path="/refund-policy" element={<RefundPolicyPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:articleId" element={<BlogArticlePage />} />
+        <Route path="/reviews" element={<ReviewsPage />} />
+        <Route path="/faq" element={<FAQPage />} />
         <Route path="/order/success" element={
           <ProtectedRoute>
             <OrderSuccessPage />
@@ -175,6 +177,7 @@ function AppRouter() {
           </ProtectedRoute>
         } />
       </Routes>
+      <Footer />
     </>
   );
 }
