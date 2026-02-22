@@ -25,6 +25,7 @@ import BlogPage from "./pages/BlogPage";
 import BlogArticlePage from "./pages/BlogArticlePage";
 import ReviewsPage from "./pages/ReviewsPage";
 import FAQPage from "./pages/FAQPage";
+import WorldCupPage from "./pages/WorldCupPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -146,6 +147,7 @@ function AppRouter() {
         <Route path="/blog/:articleId" element={<BlogArticlePage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/faq" element={<FAQPage />} />
+        <Route path="/world-cup-2026" element={<WorldCupPage />} />
         <Route path="/order/success" element={
           <ProtectedRoute>
             <OrderSuccessPage />
