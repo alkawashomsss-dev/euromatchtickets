@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../App";
 import { useLanguage } from "../i18n/LanguageProvider";
-import { Ticket, Menu, X, User, LogOut, Settings, ShoppingBag, LayoutDashboard, Bell, Trophy } from "lucide-react";
+import { Ticket, Menu, X, User, LogOut, Settings, ShoppingBag, LayoutDashboard, Bell, Trophy, Music, Train, Landmark, PartyPopper, Flag, CircleDot, ChevronDown } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -19,6 +19,16 @@ const Header = () => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const categories = [
+    { name: "Football", icon: Trophy, href: "/events?type=match", color: "text-emerald-400" },
+    { name: "Concerts", icon: Music, href: "/events?type=concert", color: "text-purple-400" },
+    { name: "Trains", icon: Train, href: "/events?type=train", color: "text-blue-400" },
+    { name: "Attractions", icon: Landmark, href: "/events?type=attraction", color: "text-amber-400" },
+    { name: "Festivals", icon: PartyPopper, href: "/events?type=festival", color: "text-pink-400" },
+    { name: "Formula 1", icon: Flag, href: "/events?type=f1", color: "text-red-400" },
+    { name: "Tennis", icon: CircleDot, href: "/events?type=tennis", color: "text-green-400" },
+  ];
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
@@ -32,33 +42,42 @@ const Header = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             <Link 
               to="/events" 
               className="text-zinc-400 hover:text-white transition-colors font-medium"
               data-testid="nav-events"
             >
-              Events
+              All Events
             </Link>
-            <Link 
-              to="/events?type=concert" 
-              className="text-zinc-400 hover:text-white transition-colors font-medium"
-            >
-              Concerts
-            </Link>
-            <Link 
-              to="/events?type=match" 
-              className="text-zinc-400 hover:text-white transition-colors font-medium"
-            >
-              Football
-            </Link>
+            
+            {/* Categories Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-zinc-400 hover:text-white transition-colors font-medium">
+                Categories
+                <ChevronDown className="w-4 h-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56 bg-zinc-900 border-zinc-800">
+                {categories.map((cat) => (
+                  <DropdownMenuItem 
+                    key={cat.name}
+                    onClick={() => navigate(cat.href)}
+                    className="cursor-pointer"
+                  >
+                    <cat.icon className={`w-4 h-4 mr-2 ${cat.color}`} />
+                    {cat.name}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <Link 
               to="/world-cup-2026" 
               className="text-yellow-400 hover:text-yellow-300 transition-colors font-bold flex items-center gap-1"
               data-testid="nav-world-cup"
             >
               <Trophy className="w-4 h-4" />
-              World Cup 2026
+              World Cup
             </Link>
             <Link 
               to="/blog" 
