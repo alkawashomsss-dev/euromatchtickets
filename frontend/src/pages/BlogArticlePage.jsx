@@ -198,15 +198,17 @@ const BlogArticlePage = () => {
 
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
-      <Helmet>
-        <title>{article.title} | EuroMatchTickets Blog</title>
-        <meta name="description" content={article.metaDescription} />
-        <link rel="canonical" href={shareUrl} />
-        <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.metaDescription} />
-        <meta property="og:image" content={article.image} />
-        <meta property="og:type" content="article" />
-      </Helmet>
+      <SEOHead 
+        title={article.title}
+        description={article.metaDescription}
+        image={article.image}
+        type="article"
+        article={{
+          publishedTime: article.date,
+          author: article.author,
+          section: article.category
+        }}
+      />
 
       {/* Article Schema */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
