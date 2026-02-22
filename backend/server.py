@@ -1732,10 +1732,21 @@ async def get_sitemap():
         {"loc": f"{base_url}/events", "priority": "0.9", "changefreq": "hourly"},
         {"loc": f"{base_url}/events?type=concert", "priority": "0.8", "changefreq": "hourly"},
         {"loc": f"{base_url}/events?type=match", "priority": "0.8", "changefreq": "hourly"},
+        {"loc": f"{base_url}/blog", "priority": "0.8", "changefreq": "weekly"},
         {"loc": f"{base_url}/about", "priority": "0.5", "changefreq": "monthly"},
         {"loc": f"{base_url}/terms", "priority": "0.3", "changefreq": "monthly"},
         {"loc": f"{base_url}/contact", "priority": "0.5", "changefreq": "monthly"},
         {"loc": f"{base_url}/refund-policy", "priority": "0.3", "changefreq": "monthly"},
+    ]
+    
+    # Blog articles (hardcoded for now - could be moved to DB)
+    blog_articles = [
+        "best-seats-santiago-bernabeu",
+        "how-to-buy-champions-league-tickets-safely",
+        "is-it-safe-to-buy-resale-concert-tickets",
+        "premier-league-away-days-guide",
+        "taylor-swift-eras-tour-europe-2025",
+        "el-clasico-atmosphere-guide"
     ]
     
     # Get all events
@@ -1754,6 +1765,14 @@ async def get_sitemap():
     <loc>{page['loc']}</loc>
     <changefreq>{page['changefreq']}</changefreq>
     <priority>{page['priority']}</priority>
+  </url>""")
+    
+    # Add blog articles
+    for article_id in blog_articles:
+        xml_items.append(f"""  <url>
+    <loc>{base_url}/blog/{article_id}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>""")
     
     # Add event pages
