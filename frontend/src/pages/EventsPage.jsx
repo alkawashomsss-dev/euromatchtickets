@@ -167,8 +167,26 @@ const EventsPage = () => {
   const cities = [...new Set(events.map(e => e.city))].sort();
   const hasFilters = filters.type || filters.city || filters.search;
 
+  // Dynamic SEO based on filters
+  const getSEOTitle = () => {
+    if (filters.type === 'concert') return 'Concert Tickets Europe';
+    if (filters.type === 'match') return 'Football Match Tickets Europe';
+    return 'All Events - Football & Concert Tickets';
+  };
+
+  const getSEODescription = () => {
+    if (filters.type === 'concert') return 'Buy verified concert tickets for Taylor Swift, Coldplay, Drake and more. Secure checkout with instant QR delivery across Europe.';
+    if (filters.type === 'match') return 'Buy verified football tickets for Champions League, Premier League, La Liga and Bundesliga. 100% secure with buyer protection.';
+    return 'Browse all upcoming events across Europe. Football matches, concerts, and more. Verified tickets with instant QR delivery.';
+  };
+
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
+      <SEOHead 
+        title={getSEOTitle()}
+        description={getSEODescription()}
+      />
+      
       {/* Header */}
       <div className="bg-zinc-900/30 border-b border-white/5">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-12">
