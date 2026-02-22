@@ -295,6 +295,60 @@ const HomePage = () => {
       {/* Categories */}
       <section className="py-24 bg-zinc-900/30">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+          {/* Hot Landing Pages */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">🔥 Hot Right Now</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <Link 
+                to="/f1-monaco-grand-prix"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-red-500/20 hover:border-red-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-red-400 text-xs font-bold mb-1">FORMULA 1</span>
+                  <h3 className="text-lg font-bold">Monaco GP 2025</h3>
+                  <p className="text-xs text-zinc-400">From €180</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/tomorrowland-2025"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-pink-500/20 hover:border-pink-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-pink-400 text-xs font-bold mb-1">FESTIVAL</span>
+                  <h3 className="text-lg font-bold">Tomorrowland</h3>
+                  <p className="text-xs text-zinc-400">From €275</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/disneyland-paris"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-blue-500/20 hover:border-blue-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-blue-400 text-xs font-bold mb-1">THEME PARK</span>
+                  <h3 className="text-lg font-bold">Disneyland Paris</h3>
+                  <p className="text-xs text-zinc-400">From €85</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/world-cup-2026"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-yellow-500/20 hover:border-yellow-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-yellow-400 text-xs font-bold mb-1">FOOTBALL</span>
+                  <h3 className="text-lg font-bold">World Cup 2026</h3>
+                  <p className="text-xs text-zinc-400">From €150</p>
+                </div>
+              </Link>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Concerts */}
             <Link 
@@ -340,6 +394,35 @@ const HomePage = () => {
                   Browse Matches <ChevronRight className="w-5 h-5 ml-1" />
                 </div>
               </div>
+            </Link>
+          </div>
+
+          {/* More Categories */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-8">
+            <Link to="/events?type=train" className="p-4 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-blue-500/30 transition-all text-center">
+              <span className="text-2xl mb-2 block">🚄</span>
+              <span className="font-medium">Trains</span>
+              <span className="block text-xs text-zinc-500">17 routes</span>
+            </Link>
+            <Link to="/events?type=attraction" className="p-4 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-amber-500/30 transition-all text-center">
+              <span className="text-2xl mb-2 block">🏛️</span>
+              <span className="font-medium">Attractions</span>
+              <span className="block text-xs text-zinc-500">12 places</span>
+            </Link>
+            <Link to="/events?type=festival" className="p-4 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-pink-500/30 transition-all text-center">
+              <span className="text-2xl mb-2 block">🎪</span>
+              <span className="font-medium">Festivals</span>
+              <span className="block text-xs text-zinc-500">8 events</span>
+            </Link>
+            <Link to="/events?type=f1" className="p-4 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-red-500/30 transition-all text-center">
+              <span className="text-2xl mb-2 block">🏎️</span>
+              <span className="font-medium">Formula 1</span>
+              <span className="block text-xs text-zinc-500">7 races</span>
+            </Link>
+            <Link to="/events?type=tennis" className="p-4 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-green-500/30 transition-all text-center">
+              <span className="text-2xl mb-2 block">🎾</span>
+              <span className="font-medium">Tennis</span>
+              <span className="block text-xs text-zinc-500">7 events</span>
             </Link>
           </div>
         </div>
