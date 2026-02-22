@@ -1809,6 +1809,7 @@ async def get_robots():
 Allow: /
 Allow: /events
 Allow: /event/
+Allow: /world-cup-2026
 Allow: /blog
 Allow: /blog/
 
