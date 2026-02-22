@@ -348,52 +348,52 @@ const HomePage = () => {
               </Link>
             </div>
             
-            {/* Second Row */}
+            {/* Second Row - Concerts */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
               <Link 
-                to="/disneyland-paris"
+                to="/bruno-mars-tour-2026"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-amber-500/20 hover:border-amber-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-amber-400 text-xs font-bold mb-1">6 NIGHTS WEMBLEY</span>
+                  <h3 className="text-lg font-bold">Bruno Mars</h3>
+                  <p className="text-xs text-zinc-400">From €125</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/guns-n-roses-tour-2026"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-yellow-500/20 hover:border-yellow-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-yellow-400 text-xs font-bold mb-1">STADIUM ROCK</span>
+                  <h3 className="text-lg font-bold">Guns N Roses</h3>
+                  <p className="text-xs text-zinc-400">From €95</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/bad-bunny-london-2026"
                 className="group relative h-40 rounded-2xl overflow-hidden border border-purple-500/20 hover:border-purple-500/50 transition-all"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-purple-400 text-xs font-bold mb-1">THEME PARK</span>
+                  <span className="text-purple-400 text-xs font-bold mb-1">LONDON STADIUM</span>
+                  <h3 className="text-lg font-bold">Bad Bunny</h3>
+                  <p className="text-xs text-zinc-400">From €145</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/disneyland-paris"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-blue-400/20 hover:border-blue-400/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-blue-300 text-xs font-bold mb-1">THEME PARK</span>
                   <h3 className="text-lg font-bold">Disneyland Paris</h3>
-                  <p className="text-xs text-zinc-400">From €85</p>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/tomorrowland-2025"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-pink-500/20 hover:border-pink-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-pink-400 text-xs font-bold mb-1">FESTIVAL</span>
-                  <h3 className="text-lg font-bold">Tomorrowland</h3>
-                  <p className="text-xs text-zinc-400">From €275</p>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/f1-monaco-grand-prix"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-red-600/20 hover:border-red-600/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-red-500 text-xs font-bold mb-1">FORMULA 1</span>
-                  <h3 className="text-lg font-bold">Monaco GP</h3>
-                  <p className="text-xs text-zinc-400">From €180</p>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/events?type=tennis"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-green-500/20 hover:border-green-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-green-400 text-xs font-bold mb-1">TENNIS</span>
-                  <h3 className="text-lg font-bold">Wimbledon 2026</h3>
                   <p className="text-xs text-zinc-400">From €85</p>
                 </div>
               </Link>
