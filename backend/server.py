@@ -1713,6 +1713,283 @@ async def seed_data():
     
     return {"message": "Seeded successfully", "events": len(all_events)}
 
+@api_router.post("/seed-expanded")
+async def seed_expanded_categories():
+    """Add trains, theme parks, F1, tennis, festivals to the marketplace"""
+    import random
+    
+    added_events = []
+    
+    # ============== HIGH-SPEED TRAINS ==============
+    trains_data = [
+        # Eurostar
+        {"title": "Eurostar London to Paris", "subtitle": "High-Speed Train - 2h 16min", "route": "London St Pancras → Paris Gare du Nord", "operator": "Eurostar", "city": "London", "country": "England", "days": 1, "featured": True, "base_price": 89, "image": "https://images.pexels.com/photos/2790396/pexels-photo-2790396.jpeg"},
+        {"title": "Eurostar Paris to London", "subtitle": "High-Speed Train - 2h 16min", "route": "Paris Gare du Nord → London St Pancras", "operator": "Eurostar", "city": "Paris", "country": "France", "days": 1, "featured": True, "base_price": 89, "image": "https://images.pexels.com/photos/2790396/pexels-photo-2790396.jpeg"},
+        {"title": "Eurostar London to Brussels", "subtitle": "High-Speed Train - 2h", "route": "London St Pancras → Brussels Midi", "operator": "Eurostar", "city": "London", "country": "England", "days": 2, "featured": False, "base_price": 69, "image": "https://images.pexels.com/photos/2790396/pexels-photo-2790396.jpeg"},
+        {"title": "Eurostar London to Amsterdam", "subtitle": "High-Speed Train - 3h 52min", "route": "London St Pancras → Amsterdam Centraal", "operator": "Eurostar", "city": "London", "country": "England", "days": 3, "featured": True, "base_price": 95, "image": "https://images.pexels.com/photos/2790396/pexels-photo-2790396.jpeg"},
+        # TGV France
+        {"title": "TGV Paris to Lyon", "subtitle": "High-Speed Train - 2h", "route": "Paris Gare de Lyon → Lyon Part-Dieu", "operator": "SNCF TGV", "city": "Paris", "country": "France", "days": 1, "featured": False, "base_price": 49, "image": "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg"},
+        {"title": "TGV Paris to Marseille", "subtitle": "High-Speed Train - 3h 20min", "route": "Paris Gare de Lyon → Marseille Saint-Charles", "operator": "SNCF TGV", "city": "Paris", "country": "France", "days": 2, "featured": True, "base_price": 69, "image": "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg"},
+        {"title": "TGV Paris to Nice", "subtitle": "High-Speed Train - 5h 30min", "route": "Paris Gare de Lyon → Nice Ville", "operator": "SNCF TGV", "city": "Paris", "country": "France", "days": 3, "featured": False, "base_price": 79, "image": "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg"},
+        # ICE Germany
+        {"title": "ICE Berlin to Munich", "subtitle": "High-Speed Train - 4h", "route": "Berlin Hauptbahnhof → München Hauptbahnhof", "operator": "Deutsche Bahn ICE", "city": "Berlin", "country": "Germany", "days": 1, "featured": True, "base_price": 59, "image": "https://images.pexels.com/photos/1598073/pexels-photo-1598073.jpeg"},
+        {"title": "ICE Frankfurt to Berlin", "subtitle": "High-Speed Train - 4h", "route": "Frankfurt Hauptbahnhof → Berlin Hauptbahnhof", "operator": "Deutsche Bahn ICE", "city": "Frankfurt", "country": "Germany", "days": 2, "featured": False, "base_price": 49, "image": "https://images.pexels.com/photos/1598073/pexels-photo-1598073.jpeg"},
+        {"title": "ICE Cologne to Frankfurt", "subtitle": "High-Speed Train - 1h 10min", "route": "Köln Hauptbahnhof → Frankfurt Hauptbahnhof", "operator": "Deutsche Bahn ICE", "city": "Cologne", "country": "Germany", "days": 1, "featured": False, "base_price": 35, "image": "https://images.pexels.com/photos/1598073/pexels-photo-1598073.jpeg"},
+        # Thalys
+        {"title": "Thalys Paris to Amsterdam", "subtitle": "High-Speed Train - 3h 20min", "route": "Paris Gare du Nord → Amsterdam Centraal", "operator": "Thalys", "city": "Paris", "country": "France", "days": 2, "featured": True, "base_price": 79, "image": "https://images.pexels.com/photos/2790396/pexels-photo-2790396.jpeg"},
+        {"title": "Thalys Brussels to Paris", "subtitle": "High-Speed Train - 1h 22min", "route": "Brussels Midi → Paris Gare du Nord", "operator": "Thalys", "city": "Brussels", "country": "Belgium", "days": 1, "featured": False, "base_price": 45, "image": "https://images.pexels.com/photos/2790396/pexels-photo-2790396.jpeg"},
+        # Italy
+        {"title": "Frecciarossa Rome to Milan", "subtitle": "High-Speed Train - 2h 55min", "route": "Roma Termini → Milano Centrale", "operator": "Trenitalia Frecciarossa", "city": "Rome", "country": "Italy", "days": 1, "featured": True, "base_price": 49, "image": "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg"},
+        {"title": "Italo Rome to Florence", "subtitle": "High-Speed Train - 1h 30min", "route": "Roma Termini → Firenze Santa Maria Novella", "operator": "Italo", "city": "Rome", "country": "Italy", "days": 2, "featured": False, "base_price": 35, "image": "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg"},
+        {"title": "Frecciarossa Milan to Venice", "subtitle": "High-Speed Train - 2h 25min", "route": "Milano Centrale → Venezia Santa Lucia", "operator": "Trenitalia Frecciarossa", "city": "Milan", "country": "Italy", "days": 3, "featured": False, "base_price": 39, "image": "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg"},
+        # Spain
+        {"title": "AVE Madrid to Barcelona", "subtitle": "High-Speed Train - 2h 30min", "route": "Madrid Puerta de Atocha → Barcelona Sants", "operator": "Renfe AVE", "city": "Madrid", "country": "Spain", "days": 1, "featured": True, "base_price": 55, "image": "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg"},
+        {"title": "AVE Madrid to Seville", "subtitle": "High-Speed Train - 2h 20min", "route": "Madrid Puerta de Atocha → Sevilla Santa Justa", "operator": "Renfe AVE", "city": "Madrid", "country": "Spain", "days": 2, "featured": False, "base_price": 45, "image": "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg"},
+    ]
+    
+    for t in trains_data:
+        event = Event(
+            event_type="train",
+            title=t["title"],
+            subtitle=t["subtitle"],
+            description=f"Book {t['operator']} tickets. Route: {t['route']}. Fast, comfortable, and eco-friendly travel across Europe.",
+            venue=t["route"],
+            city=t["city"],
+            country=t["country"],
+            event_date=datetime.now(timezone.utc) + timedelta(days=t["days"]),
+            event_image=t["image"],
+            featured=t["featured"]
+        )
+        event_doc = event.model_dump()
+        event_doc['event_date'] = event_doc['event_date'].isoformat()
+        event_doc['created_at'] = event_doc['created_at'].isoformat()
+        await db.events.insert_one(event_doc)
+        
+        # Add train tickets
+        for _ in range(random.randint(20, 50)):
+            price = round(t["base_price"] * random.uniform(0.7, 2.0), 2)
+            ticket = Ticket(
+                event_id=event.event_id,
+                seller_id="seller_demo",
+                seller_name="EuroRail Tickets",
+                category=random.choice(["standard", "first_class", "business"]),
+                section=random.choice(["Coach A", "Coach B", "Coach C", "Coach D"]),
+                price=price,
+                original_price=t["base_price"]
+            )
+            ticket_doc = ticket.model_dump()
+            ticket_doc['created_at'] = ticket_doc['created_at'].isoformat()
+            await db.tickets.insert_one(ticket_doc)
+        
+        added_events.append(event.event_id)
+    
+    # ============== THEME PARKS & ATTRACTIONS ==============
+    attractions_data = [
+        # Disneyland Paris
+        {"title": "Disneyland Paris - 1 Day Ticket", "subtitle": "Magic Kingdom & Walt Disney Studios", "venue": "Disneyland Paris", "city": "Paris", "country": "France", "days": 5, "featured": True, "base_price": 95, "image": "https://images.pexels.com/photos/1843563/pexels-photo-1843563.jpeg"},
+        {"title": "Disneyland Paris - 2 Day Hopper", "subtitle": "Both Parks Access", "venue": "Disneyland Paris", "city": "Paris", "country": "France", "days": 10, "featured": True, "base_price": 169, "image": "https://images.pexels.com/photos/1843563/pexels-photo-1843563.jpeg"},
+        # Europa Park
+        {"title": "Europa Park - Day Pass", "subtitle": "Germany's Largest Theme Park", "venue": "Europa Park", "city": "Rust", "country": "Germany", "days": 7, "featured": True, "base_price": 62, "image": "https://images.pexels.com/photos/784916/pexels-photo-784916.jpeg"},
+        # PortAventura
+        {"title": "PortAventura World - 1 Day", "subtitle": "Theme Park + Ferrari Land", "venue": "PortAventura World", "city": "Salou", "country": "Spain", "days": 8, "featured": True, "base_price": 55, "image": "https://images.pexels.com/photos/784916/pexels-photo-784916.jpeg"},
+        # Landmarks
+        {"title": "Eiffel Tower - Summit Access", "subtitle": "Skip-the-Line Tickets", "venue": "Eiffel Tower", "city": "Paris", "country": "France", "days": 3, "featured": True, "base_price": 35, "image": "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg"},
+        {"title": "Louvre Museum - Skip the Line", "subtitle": "World's Largest Art Museum", "venue": "Louvre Museum", "city": "Paris", "country": "France", "days": 4, "featured": True, "base_price": 22, "image": "https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg"},
+        {"title": "Colosseum & Roman Forum", "subtitle": "Priority Entrance", "venue": "Colosseum", "city": "Rome", "country": "Italy", "days": 5, "featured": True, "base_price": 24, "image": "https://images.pexels.com/photos/532263/pexels-photo-532263.jpeg"},
+        {"title": "Vatican Museums & Sistine Chapel", "subtitle": "Skip-the-Line Entry", "venue": "Vatican Museums", "city": "Rome", "country": "Italy", "days": 6, "featured": True, "base_price": 29, "image": "https://images.pexels.com/photos/326709/pexels-photo-326709.jpeg"},
+        {"title": "Sagrada Familia - Fast Track", "subtitle": "Gaudí's Masterpiece", "venue": "Sagrada Familia", "city": "Barcelona", "country": "Spain", "days": 4, "featured": True, "base_price": 26, "image": "https://images.pexels.com/photos/819764/pexels-photo-819764.jpeg"},
+        {"title": "Anne Frank House", "subtitle": "Timed Entry Ticket", "venue": "Anne Frank House", "city": "Amsterdam", "country": "Netherlands", "days": 5, "featured": False, "base_price": 16, "image": "https://images.pexels.com/photos/1414467/pexels-photo-1414467.jpeg"},
+        {"title": "Tower of London", "subtitle": "Crown Jewels & History", "venue": "Tower of London", "city": "London", "country": "England", "days": 3, "featured": False, "base_price": 33, "image": "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg"},
+        {"title": "London Eye - Standard Entry", "subtitle": "360° Views of London", "venue": "London Eye", "city": "London", "country": "England", "days": 2, "featured": False, "base_price": 38, "image": "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg"},
+    ]
+    
+    for a in attractions_data:
+        event = Event(
+            event_type="attraction",
+            title=a["title"],
+            subtitle=a["subtitle"],
+            venue=a["venue"],
+            city=a["city"],
+            country=a["country"],
+            event_date=datetime.now(timezone.utc) + timedelta(days=a["days"]),
+            event_image=a["image"],
+            featured=a["featured"]
+        )
+        event_doc = event.model_dump()
+        event_doc['event_date'] = event_doc['event_date'].isoformat()
+        event_doc['created_at'] = event_doc['created_at'].isoformat()
+        await db.events.insert_one(event_doc)
+        
+        # Add tickets
+        for _ in range(random.randint(30, 80)):
+            price = round(a["base_price"] * random.uniform(0.9, 1.5), 2)
+            ticket = Ticket(
+                event_id=event.event_id,
+                seller_id="seller_demo",
+                seller_name="EuroAttractions",
+                category=random.choice(["standard", "priority", "vip"]),
+                section="General",
+                price=price,
+                original_price=a["base_price"]
+            )
+            ticket_doc = ticket.model_dump()
+            ticket_doc['created_at'] = ticket_doc['created_at'].isoformat()
+            await db.tickets.insert_one(ticket_doc)
+        
+        added_events.append(event.event_id)
+    
+    # ============== MUSIC FESTIVALS ==============
+    festivals_data = [
+        {"title": "Tomorrowland 2025", "subtitle": "World's Best Electronic Music Festival", "venue": "De Schorre", "city": "Boom", "country": "Belgium", "days": 60, "featured": True, "base_price": 375, "image": "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg"},
+        {"title": "Tomorrowland 2025 - Weekend 2", "subtitle": "Full Madness Pass", "venue": "De Schorre", "city": "Boom", "country": "Belgium", "days": 67, "featured": True, "base_price": 375, "image": "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg"},
+        {"title": "Rock am Ring 2025", "subtitle": "Germany's Legendary Rock Festival", "venue": "Nürburgring", "city": "Nürburg", "country": "Germany", "days": 45, "featured": True, "base_price": 219, "image": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"},
+        {"title": "Glastonbury Festival 2025", "subtitle": "UK's Biggest Music Festival", "venue": "Worthy Farm", "city": "Pilton", "country": "England", "days": 50, "featured": True, "base_price": 355, "image": "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg"},
+        {"title": "Primavera Sound Barcelona 2025", "subtitle": "Indie & Alternative Festival", "venue": "Parc del Fòrum", "city": "Barcelona", "country": "Spain", "days": 55, "featured": True, "base_price": 275, "image": "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg"},
+        {"title": "Oktoberfest 2025 - Beer Tent Entry", "subtitle": "World's Largest Beer Festival", "venue": "Theresienwiese", "city": "Munich", "country": "Germany", "days": 90, "featured": True, "base_price": 45, "image": "https://images.pexels.com/photos/5028742/pexels-photo-5028742.jpeg"},
+        {"title": "Sziget Festival 2025", "subtitle": "Island of Freedom - Budapest", "venue": "Óbudai-sziget", "city": "Budapest", "country": "Hungary", "days": 70, "featured": True, "base_price": 299, "image": "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg"},
+        {"title": "Creamfields 2025", "subtitle": "Premier Electronic Festival UK", "venue": "Daresbury", "city": "Warrington", "country": "England", "days": 65, "featured": False, "base_price": 195, "image": "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg"},
+    ]
+    
+    for f in festivals_data:
+        event = Event(
+            event_type="festival",
+            title=f["title"],
+            subtitle=f["subtitle"],
+            venue=f["venue"],
+            city=f["city"],
+            country=f["country"],
+            event_date=datetime.now(timezone.utc) + timedelta(days=f["days"]),
+            event_image=f["image"],
+            featured=f["featured"]
+        )
+        event_doc = event.model_dump()
+        event_doc['event_date'] = event_doc['event_date'].isoformat()
+        event_doc['created_at'] = event_doc['created_at'].isoformat()
+        await db.events.insert_one(event_doc)
+        
+        # Add festival tickets
+        for _ in range(random.randint(15, 40)):
+            price = round(f["base_price"] * random.uniform(0.9, 1.8), 2)
+            ticket = Ticket(
+                event_id=event.event_id,
+                seller_id="seller_demo",
+                seller_name="Festival Tickets Europe",
+                category=random.choice(["day_pass", "weekend", "full_madness", "vip"]),
+                section="General Admission",
+                price=price,
+                original_price=f["base_price"]
+            )
+            ticket_doc = ticket.model_dump()
+            ticket_doc['created_at'] = ticket_doc['created_at'].isoformat()
+            await db.tickets.insert_one(ticket_doc)
+        
+        added_events.append(event.event_id)
+    
+    # ============== FORMULA 1 ==============
+    f1_data = [
+        {"title": "Monaco Grand Prix 2025", "subtitle": "Formula 1 - Monte Carlo Street Circuit", "venue": "Circuit de Monaco", "city": "Monte Carlo", "country": "Monaco", "days": 35, "featured": True, "base_price": 450, "image": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg"},
+        {"title": "British Grand Prix 2025", "subtitle": "Formula 1 - Silverstone", "venue": "Silverstone Circuit", "city": "Silverstone", "country": "England", "days": 50, "featured": True, "base_price": 295, "image": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg"},
+        {"title": "Italian Grand Prix 2025", "subtitle": "Formula 1 - Temple of Speed", "venue": "Autodromo di Monza", "city": "Monza", "country": "Italy", "days": 70, "featured": True, "base_price": 265, "image": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg"},
+        {"title": "Belgian Grand Prix 2025", "subtitle": "Formula 1 - Spa-Francorchamps", "venue": "Circuit de Spa-Francorchamps", "city": "Stavelot", "country": "Belgium", "days": 55, "featured": True, "base_price": 245, "image": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg"},
+        {"title": "Dutch Grand Prix 2025", "subtitle": "Formula 1 - Zandvoort", "venue": "Circuit Zandvoort", "city": "Zandvoort", "country": "Netherlands", "days": 60, "featured": True, "base_price": 325, "image": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg"},
+        {"title": "Spanish Grand Prix 2025", "subtitle": "Formula 1 - Barcelona", "venue": "Circuit de Barcelona-Catalunya", "city": "Barcelona", "country": "Spain", "days": 40, "featured": False, "base_price": 215, "image": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg"},
+        {"title": "Hungarian Grand Prix 2025", "subtitle": "Formula 1 - Hungaroring", "venue": "Hungaroring", "city": "Budapest", "country": "Hungary", "days": 65, "featured": False, "base_price": 195, "image": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg"},
+    ]
+    
+    for f1 in f1_data:
+        event = Event(
+            event_type="f1",
+            title=f1["title"],
+            subtitle=f1["subtitle"],
+            venue=f1["venue"],
+            city=f1["city"],
+            country=f1["country"],
+            event_date=datetime.now(timezone.utc) + timedelta(days=f1["days"]),
+            event_image=f1["image"],
+            featured=f1["featured"]
+        )
+        event_doc = event.model_dump()
+        event_doc['event_date'] = event_doc['event_date'].isoformat()
+        event_doc['created_at'] = event_doc['created_at'].isoformat()
+        await db.events.insert_one(event_doc)
+        
+        # Add F1 tickets
+        categories = [
+            {"name": "grandstand", "base": f1["base_price"]},
+            {"name": "general_admission", "base": f1["base_price"] * 0.4},
+            {"name": "vip_hospitality", "base": f1["base_price"] * 3},
+            {"name": "paddock_club", "base": f1["base_price"] * 5}
+        ]
+        for cat in categories:
+            for _ in range(random.randint(5, 15)):
+                price = round(cat["base"] * random.uniform(0.9, 1.5), 2)
+                ticket = Ticket(
+                    event_id=event.event_id,
+                    seller_id="seller_demo",
+                    seller_name="F1 Tickets Pro",
+                    category=cat["name"],
+                    section=random.choice(["Turn 1", "Main Straight", "Pit Lane", "Sector 3"]),
+                    price=price,
+                    original_price=cat["base"]
+                )
+                ticket_doc = ticket.model_dump()
+                ticket_doc['created_at'] = ticket_doc['created_at'].isoformat()
+                await db.tickets.insert_one(ticket_doc)
+        
+        added_events.append(event.event_id)
+    
+    # ============== TENNIS GRAND SLAMS ==============
+    tennis_data = [
+        {"title": "Wimbledon 2025 - Centre Court", "subtitle": "The Championships - Men's Final", "venue": "All England Club", "city": "London", "country": "England", "days": 80, "featured": True, "base_price": 550, "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg"},
+        {"title": "Wimbledon 2025 - Women's Final", "subtitle": "The Championships", "venue": "All England Club", "city": "London", "country": "England", "days": 79, "featured": True, "base_price": 450, "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg"},
+        {"title": "Wimbledon 2025 - Ground Pass", "subtitle": "Access to Outside Courts", "venue": "All England Club", "city": "London", "country": "England", "days": 75, "featured": False, "base_price": 85, "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg"},
+        {"title": "Roland Garros 2025 - Final", "subtitle": "French Open - Men's Singles Final", "venue": "Stade Roland Garros", "city": "Paris", "country": "France", "days": 45, "featured": True, "base_price": 385, "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg"},
+        {"title": "Roland Garros 2025 - Semifinals", "subtitle": "French Open", "venue": "Stade Roland Garros", "city": "Paris", "country": "France", "days": 43, "featured": True, "base_price": 275, "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg"},
+        {"title": "Italian Open 2025 - Rome", "subtitle": "ATP Masters 1000", "venue": "Foro Italico", "city": "Rome", "country": "Italy", "days": 35, "featured": True, "base_price": 125, "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg"},
+        {"title": "Madrid Open 2025", "subtitle": "ATP/WTA Masters", "venue": "Caja Mágica", "city": "Madrid", "country": "Spain", "days": 30, "featured": False, "base_price": 95, "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg"},
+    ]
+    
+    for t in tennis_data:
+        event = Event(
+            event_type="tennis",
+            title=t["title"],
+            subtitle=t["subtitle"],
+            venue=t["venue"],
+            city=t["city"],
+            country=t["country"],
+            event_date=datetime.now(timezone.utc) + timedelta(days=t["days"]),
+            event_image=t["image"],
+            featured=t["featured"]
+        )
+        event_doc = event.model_dump()
+        event_doc['event_date'] = event_doc['event_date'].isoformat()
+        event_doc['created_at'] = event_doc['created_at'].isoformat()
+        await db.events.insert_one(event_doc)
+        
+        # Add tennis tickets
+        for _ in range(random.randint(10, 30)):
+            price = round(t["base_price"] * random.uniform(0.8, 2.0), 2)
+            ticket = Ticket(
+                event_id=event.event_id,
+                seller_id="seller_demo",
+                seller_name="Tennis Tickets EU",
+                category=random.choice(["centre_court", "court_1", "ground_pass", "debenture"]),
+                section=random.choice(["Lower Tier", "Upper Tier", "Royal Box Area"]),
+                price=price,
+                original_price=t["base_price"]
+            )
+            ticket_doc = ticket.model_dump()
+            ticket_doc['created_at'] = ticket_doc['created_at'].isoformat()
+            await db.tickets.insert_one(ticket_doc)
+        
+        added_events.append(event.event_id)
+    
+    return {
+        "message": "Expanded categories added successfully",
+        "added_events": len(added_events),
+        "categories": ["trains", "attractions", "festivals", "f1", "tennis"]
+    }
+
 @api_router.get("/")
 async def root():
     return {"message": "EuroMatchTickets API - Events & Tickets Marketplace"}
