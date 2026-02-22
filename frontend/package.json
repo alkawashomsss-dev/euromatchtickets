@@ -61,8 +61,28 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
-    "test": "craco test"
+    "build": "craco build && react-snap",
+    "build:only": "craco build",
+    "test": "craco test",
+    "postbuild": "react-snap"
+  },
+  "reactSnap": {
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "skipThirdPartyRequests": true,
+    "inlineCss": true,
+    "crawl": true,
+    "include": [
+      "/",
+      "/events",
+      "/about",
+      "/contact",
+      "/terms",
+      "/refund-policy",
+      "/blog",
+      "/blog/best-seats-santiago-bernabeu",
+      "/blog/how-to-buy-champions-league-tickets-safely",
+      "/blog/is-it-safe-to-buy-resale-concert-tickets"
+    ]
   },
   "browserslist": {
     "production": [
