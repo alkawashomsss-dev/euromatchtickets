@@ -1806,6 +1806,8 @@ async def get_robots():
 Allow: /
 Allow: /events
 Allow: /event/
+Allow: /blog
+Allow: /blog/
 
 Disallow: /admin
 Disallow: /seller
