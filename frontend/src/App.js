@@ -32,6 +32,9 @@ import DisneylandPage from "./pages/DisneylandPage";
 import TheWeekndPage from "./pages/TheWeekndPage";
 import EurostarPage from "./pages/EurostarPage";
 import ChampionsLeaguePage from "./pages/ChampionsLeaguePage";
+import BrunoMarsPage from "./pages/BrunoMarsPage";
+import GunsNRosesPage from "./pages/GunsNRosesPage";
+import BadBunnyPage from "./pages/BadBunnyPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
