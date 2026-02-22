@@ -106,15 +106,7 @@ const EventDetailsPage = () => {
     fetchEvent();
   }, [eventId, navigate]);
 
-  // SEO title - set document title directly (moved before early returns to comply with hooks rules)
-  useEffect(() => {
-    if (event?.title) {
-      document.title = `${event.title} | EuroMatchTickets`;
-    }
-    return () => {
-      document.title = 'EuroMatchTickets - Buy Verified Concert & Football Tickets';
-    };
-  }, [event?.title]);
+  // SEO - removed document.title in favor of SEOHead component
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category === selectedCategory ? null : category);
