@@ -160,6 +160,12 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-zinc-950">
+      <SEOHead 
+        title="Buy Football & Concert Tickets in Europe"
+        description="Europe's #1 ticket marketplace. Buy verified tickets for Champions League, Premier League, La Liga, Taylor Swift, Coldplay and more. 100% secure with instant QR delivery."
+        image="https://euromatchtickets.com/og-image.jpg"
+      />
+      
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Background */}
