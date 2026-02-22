@@ -151,6 +151,9 @@ function AppRouter() {
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/world-cup-2026" element={<WorldCupPage />} />
+        <Route path="/f1-monaco-grand-prix" element={<F1MonacoPage />} />
+        <Route path="/tomorrowland-2025" element={<TomorrowlandPage />} />
+        <Route path="/disneyland-paris" element={<DisneylandPage />} />
         <Route path="/order/success" element={
           <ProtectedRoute>
             <OrderSuccessPage />
