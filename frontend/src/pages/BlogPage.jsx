@@ -75,7 +75,8 @@ const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    document.title = "Blog - Football & Concert Ticket Tips | EuroMatchTickets";
+  useEffect(() => {
+    // Title is now managed by SEOHead
   }, []);
 
   const filteredArticles = blogArticles.filter(article => {
@@ -89,12 +90,10 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
-      <Helmet>
-        <title>Blog - Football & Concert Ticket Tips | EuroMatchTickets</title>
-        <meta name="description" content="Expert tips on buying football and concert tickets in Europe. Stadium guides, buying advice, and the latest news on Champions League, Premier League, and major concerts." />
-        <meta name="keywords" content="football tickets tips, concert tickets guide, Champions League tickets, how to buy tickets safely, stadium seating guide" />
-        <link rel="canonical" href="https://euromatchtickets.com/blog" />
-      </Helmet>
+      <SEOHead 
+        title="Blog - Football & Concert Ticket Tips"
+        description="Expert tips on buying football and concert tickets in Europe. Stadium guides, buying advice, and the latest news on Champions League, Premier League, and major concerts."
+      />
 
       {/* Hero Section */}
       <div className="bg-gradient-to-b from-purple-900/20 to-transparent py-16">
