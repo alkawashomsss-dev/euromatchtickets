@@ -241,16 +241,46 @@ const EventsPage = () => {
             </SelectTrigger>
             <SelectContent className="bg-zinc-900 border-zinc-800">
               <SelectItem value="all">All Types</SelectItem>
+              <SelectItem value="match">
+                <div className="flex items-center gap-2">
+                  <Trophy className="w-4 h-4 text-emerald-400" />
+                  Football
+                </div>
+              </SelectItem>
               <SelectItem value="concert">
                 <div className="flex items-center gap-2">
                   <Music className="w-4 h-4 text-purple-400" />
                   Concerts
                 </div>
               </SelectItem>
-              <SelectItem value="match">
+              <SelectItem value="train">
                 <div className="flex items-center gap-2">
-                  <Trophy className="w-4 h-4 text-emerald-400" />
-                  Football
+                  <Train className="w-4 h-4 text-blue-400" />
+                  Trains
+                </div>
+              </SelectItem>
+              <SelectItem value="attraction">
+                <div className="flex items-center gap-2">
+                  <Landmark className="w-4 h-4 text-amber-400" />
+                  Attractions
+                </div>
+              </SelectItem>
+              <SelectItem value="festival">
+                <div className="flex items-center gap-2">
+                  <PartyPopper className="w-4 h-4 text-pink-400" />
+                  Festivals
+                </div>
+              </SelectItem>
+              <SelectItem value="f1">
+                <div className="flex items-center gap-2">
+                  <Flag className="w-4 h-4 text-red-400" />
+                  Formula 1
+                </div>
+              </SelectItem>
+              <SelectItem value="tennis">
+                <div className="flex items-center gap-2">
+                  <CircleDot className="w-4 h-4 text-green-400" />
+                  Tennis
                 </div>
               </SelectItem>
             </SelectContent>
