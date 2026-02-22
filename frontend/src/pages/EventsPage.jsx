@@ -4,7 +4,7 @@ import axios from "axios";
 import { API } from "../App";
 import { 
   Calendar, MapPin, Ticket, Search, X, ChevronRight, 
-  Trophy, Music, Filter, Sparkles 
+  Trophy, Music, Filter, Sparkles, Train, Landmark, PartyPopper, Flag, CircleDot
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
