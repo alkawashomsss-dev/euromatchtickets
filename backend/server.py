@@ -1733,9 +1733,11 @@ async def get_sitemap():
         {"loc": f"{base_url}/events?type=concert", "priority": "0.8", "changefreq": "hourly"},
         {"loc": f"{base_url}/events?type=match", "priority": "0.8", "changefreq": "hourly"},
         {"loc": f"{base_url}/blog", "priority": "0.8", "changefreq": "weekly"},
-        {"loc": f"{base_url}/about", "priority": "0.5", "changefreq": "monthly"},
-        {"loc": f"{base_url}/terms", "priority": "0.3", "changefreq": "monthly"},
+        {"loc": f"{base_url}/reviews", "priority": "0.7", "changefreq": "weekly"},
+        {"loc": f"{base_url}/faq", "priority": "0.6", "changefreq": "monthly"},
+        {"loc": f"{base_url}/about", "priority": "0.6", "changefreq": "monthly"},
         {"loc": f"{base_url}/contact", "priority": "0.5", "changefreq": "monthly"},
+        {"loc": f"{base_url}/terms", "priority": "0.3", "changefreq": "monthly"},
         {"loc": f"{base_url}/refund-policy", "priority": "0.3", "changefreq": "monthly"},
     ]
     
