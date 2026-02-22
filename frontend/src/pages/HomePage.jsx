@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
+import SEOHead from "../components/SEOHead";
 
 // SEO: Buy concert tickets, Champions League tickets, Taylor Swift tickets, Drake concert,
 // European football tickets, music festival tickets, secure ticket resale marketplace
