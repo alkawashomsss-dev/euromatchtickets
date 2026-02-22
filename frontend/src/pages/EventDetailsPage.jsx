@@ -534,6 +534,79 @@ const EventDetailsPage = () => {
             </div>
           </div>
         </div>
+
+        {/* FAQ Section for SEO */}
+        <div className="mt-16 bg-zinc-900/50 border border-white/5 rounded-2xl p-8">
+          <h2 className="text-2xl font-bold mb-8">Frequently Asked Questions</h2>
+          
+          <div className="space-y-6">
+            <div className="border-b border-white/5 pb-6">
+              <h3 className="text-lg font-semibold mb-3 text-purple-400">
+                Are {event.title} tickets legitimate?
+              </h3>
+              <p className="text-zinc-400 leading-relaxed">
+                Yes, all tickets on EuroMatchTickets are verified and guaranteed authentic. We work only with trusted sellers 
+                who have been verified through our rigorous verification process. Every purchase is protected by our 100% 
+                money-back guarantee if there are any issues with your tickets.
+              </p>
+            </div>
+
+            <div className="border-b border-white/5 pb-6">
+              <h3 className="text-lg font-semibold mb-3 text-purple-400">
+                How do I receive my tickets?
+              </h3>
+              <p className="text-zinc-400 leading-relaxed">
+                After completing your purchase, you'll receive a QR code instantly via email and in your EuroMatchTickets account. 
+                This QR code is your digital entry ticket. Simply show it at the venue entrance on your mobile device for 
+                quick and easy access to {event.venue}.
+              </p>
+            </div>
+
+            <div className="border-b border-white/5 pb-6">
+              <h3 className="text-lg font-semibold mb-3 text-purple-400">
+                Can I get a refund if I can't attend?
+              </h3>
+              <p className="text-zinc-400 leading-relaxed">
+                We offer full refunds if the event is cancelled or postponed. If tickets are not delivered as promised, 
+                you're also eligible for a complete refund. For personal reasons, we recommend considering ticket protection 
+                at checkout. Please review our refund policy for full details.
+              </p>
+            </div>
+
+            <div className="pb-2">
+              <h3 className="text-lg font-semibold mb-3 text-purple-400">
+                Is it safe to buy resale tickets?
+              </h3>
+              <p className="text-zinc-400 leading-relaxed">
+                Absolutely! EuroMatchTickets is Europe's trusted ticket marketplace. All transactions are secured with 
+                SSL encryption, and payments are processed through Stripe. Your financial information is never stored 
+                on our servers. With thousands of successful transactions, you can buy with confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Related Events / Trust Badges */}
+        <div className="mt-12 mb-8">
+          <div className="flex flex-wrap justify-center gap-8 text-zinc-500 text-sm">
+            <div className="flex items-center gap-2">
+              <Shield className="w-5 h-5 text-emerald-400" />
+              <span>100% Buyer Guarantee</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-5 h-5 text-emerald-400" />
+              <span>Verified Sellers Only</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Ticket className="w-5 h-5 text-emerald-400" />
+              <span>Instant QR Delivery</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Star className="w-5 h-5 text-emerald-400" />
+              <span>4.9/5 Customer Rating</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
