@@ -29,6 +29,9 @@ import WorldCupPage from "./pages/WorldCupPage";
 import F1MonacoPage from "./pages/F1MonacoPage";
 import TomorrowlandPage from "./pages/TomorrowlandPage";
 import DisneylandPage from "./pages/DisneylandPage";
+import TheWeekndPage from "./pages/TheWeekndPage";
+import EurostarPage from "./pages/EurostarPage";
+import ChampionsLeaguePage from "./pages/ChampionsLeaguePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
