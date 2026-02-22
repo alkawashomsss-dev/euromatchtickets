@@ -295,19 +295,70 @@ const HomePage = () => {
       {/* Categories */}
       <section className="py-24 bg-zinc-900/30">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          {/* Hot Landing Pages */}
+          {/* Hot Landing Pages - 2026 Events */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-6">🔥 Hot Right Now</h2>
+            <h2 className="text-3xl font-bold mb-6">🔥 Hot 2026 Events</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <Link 
-                to="/f1-monaco-grand-prix"
+                to="/world-cup-2026"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-yellow-500/20 hover:border-yellow-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-yellow-400 text-xs font-bold mb-1">FIFA 2026</span>
+                  <h3 className="text-lg font-bold">World Cup 2026</h3>
+                  <p className="text-xs text-zinc-400">From €150</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/champions-league-tickets"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-blue-500/20 hover:border-blue-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-blue-400 text-xs font-bold mb-1">UEFA</span>
+                  <h3 className="text-lg font-bold">Champions League</h3>
+                  <p className="text-xs text-zinc-400">From €85</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/the-weeknd-tour-2026"
                 className="group relative h-40 rounded-2xl overflow-hidden border border-red-500/20 hover:border-red-500/50 transition-all"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-red-400 text-xs font-bold mb-1">FORMULA 1</span>
-                  <h3 className="text-lg font-bold">Monaco GP 2025</h3>
-                  <p className="text-xs text-zinc-400">From €180</p>
+                  <span className="text-red-400 text-xs font-bold mb-1">CONCERT</span>
+                  <h3 className="text-lg font-bold">The Weeknd 2026</h3>
+                  <p className="text-xs text-zinc-400">From €95</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/eurostar-tickets"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-cyan-400 text-xs font-bold mb-1">TRAIN</span>
+                  <h3 className="text-lg font-bold">Eurostar</h3>
+                  <p className="text-xs text-zinc-400">From €39</p>
+                </div>
+              </Link>
+            </div>
+            
+            {/* Second Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+              <Link 
+                to="/disneyland-paris"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-purple-500/20 hover:border-purple-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-purple-400 text-xs font-bold mb-1">THEME PARK</span>
+                  <h3 className="text-lg font-bold">Disneyland Paris</h3>
+                  <p className="text-xs text-zinc-400">From €85</p>
                 </div>
               </Link>
               
@@ -324,26 +375,26 @@ const HomePage = () => {
               </Link>
               
               <Link 
-                to="/disneyland-paris"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-blue-500/20 hover:border-blue-500/50 transition-all"
+                to="/f1-monaco-grand-prix"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-red-600/20 hover:border-red-600/50 transition-all"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-zinc-900" />
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-blue-400 text-xs font-bold mb-1">THEME PARK</span>
-                  <h3 className="text-lg font-bold">Disneyland Paris</h3>
-                  <p className="text-xs text-zinc-400">From €85</p>
+                  <span className="text-red-500 text-xs font-bold mb-1">FORMULA 1</span>
+                  <h3 className="text-lg font-bold">Monaco GP</h3>
+                  <p className="text-xs text-zinc-400">From €180</p>
                 </div>
               </Link>
               
               <Link 
-                to="/world-cup-2026"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-yellow-500/20 hover:border-yellow-500/50 transition-all"
+                to="/events?type=tennis"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-green-500/20 hover:border-green-500/50 transition-all"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-zinc-900" />
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-yellow-400 text-xs font-bold mb-1">FOOTBALL</span>
-                  <h3 className="text-lg font-bold">World Cup 2026</h3>
-                  <p className="text-xs text-zinc-400">From €150</p>
+                  <span className="text-green-400 text-xs font-bold mb-1">TENNIS</span>
+                  <h3 className="text-lg font-bold">Wimbledon 2026</h3>
+                  <p className="text-xs text-zinc-400">From €85</p>
                 </div>
               </Link>
             </div>
