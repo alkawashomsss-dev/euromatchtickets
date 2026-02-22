@@ -206,6 +206,14 @@ const Header = () => {
               >
                 Football
               </Link>
+              <Link 
+                to="/world-cup-2026" 
+                className="text-yellow-400 hover:text-yellow-300 transition-colors py-2 font-bold flex items-center gap-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Trophy className="w-4 h-4" />
+                World Cup 2026
+              </Link>
             </nav>
           </div>
         )}
