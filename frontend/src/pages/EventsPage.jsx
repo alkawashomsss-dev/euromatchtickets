@@ -4,7 +4,7 @@ import axios from "axios";
 import { API } from "../App";
 import { 
   Calendar, MapPin, Ticket, Search, X, ChevronRight, 
-  Trophy, Music, Filter, Sparkles, Train, Landmark, PartyPopper, Flag, CircleDot
+  Trophy, Music, Filter, Sparkles
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -32,11 +32,6 @@ const getEventTypeInfo = (type) => {
   const types = {
     match: { label: "Football", icon: Trophy, color: "tag-match" },
     concert: { label: "Concert", icon: Music, color: "tag-concert" },
-    train: { label: "Train", icon: Train, color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
-    attraction: { label: "Attraction", icon: Landmark, color: "bg-amber-500/20 text-amber-400 border-amber-500/30" },
-    festival: { label: "Festival", icon: PartyPopper, color: "bg-pink-500/20 text-pink-400 border-pink-500/30" },
-    f1: { label: "Formula 1", icon: Flag, color: "bg-red-500/20 text-red-400 border-red-500/30" },
-    tennis: { label: "Tennis", icon: CircleDot, color: "bg-green-500/20 text-green-400 border-green-500/30" },
   };
   return types[type] || types.match;
 };
