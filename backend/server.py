@@ -1485,6 +1485,32 @@ async def get_all_payouts(request: Request):
 
 # ============== SEED DATA ==============
 
+@api_router.post("/cleanup-categories")
+async def cleanup_categories():
+    """Remove unwanted event categories (trains, attractions, festivals, f1, tennis)"""
+    unwanted_types = ["train", "attraction", "festival", "f1", "tennis"]
+    
+    # Get events to delete
+    events_to_delete = await db.events.find(
+        {"event_type": {"$in": unwanted_types}},
+        {"_id": 0, "event_id": 1}
+    ).to_list(1000)
+    
+    event_ids = [e["event_id"] for e in events_to_delete]
+    
+    # Delete tickets for these events
+    tickets_result = await db.tickets.delete_many({"event_id": {"$in": event_ids}})
+    
+    # Delete the events
+    events_result = await db.events.delete_many({"event_type": {"$in": unwanted_types}})
+    
+    return {
+        "message": "Cleanup completed",
+        "events_deleted": events_result.deleted_count,
+        "tickets_deleted": tickets_result.deleted_count,
+        "removed_categories": unwanted_types
+    }
+
 @api_router.post("/reseed")
 async def reseed_data():
     """Clear and reseed demo data"""
