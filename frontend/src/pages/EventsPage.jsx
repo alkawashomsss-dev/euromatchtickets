@@ -248,36 +248,6 @@ const EventsPage = () => {
                   Concerts
                 </div>
               </SelectItem>
-              <SelectItem value="train">
-                <div className="flex items-center gap-2">
-                  <Train className="w-4 h-4 text-blue-400" />
-                  Trains
-                </div>
-              </SelectItem>
-              <SelectItem value="attraction">
-                <div className="flex items-center gap-2">
-                  <Landmark className="w-4 h-4 text-amber-400" />
-                  Attractions
-                </div>
-              </SelectItem>
-              <SelectItem value="festival">
-                <div className="flex items-center gap-2">
-                  <PartyPopper className="w-4 h-4 text-pink-400" />
-                  Festivals
-                </div>
-              </SelectItem>
-              <SelectItem value="f1">
-                <div className="flex items-center gap-2">
-                  <Flag className="w-4 h-4 text-red-400" />
-                  Formula 1
-                </div>
-              </SelectItem>
-              <SelectItem value="tennis">
-                <div className="flex items-center gap-2">
-                  <CircleDot className="w-4 h-4 text-green-400" />
-                  Tennis
-                </div>
-              </SelectItem>
             </SelectContent>
           </Select>
 
@@ -320,11 +290,6 @@ const EventsPage = () => {
           {[
             { type: 'match', label: 'Football', icon: Trophy, color: 'emerald' },
             { type: 'concert', label: 'Concerts', icon: Music, color: 'purple' },
-            { type: 'train', label: 'Trains', icon: Train, color: 'blue' },
-            { type: 'attraction', label: 'Attractions', icon: Landmark, color: 'amber' },
-            { type: 'festival', label: 'Festivals', icon: PartyPopper, color: 'pink' },
-            { type: 'f1', label: 'F1', icon: Flag, color: 'red' },
-            { type: 'tennis', label: 'Tennis', icon: CircleDot, color: 'green' },
           ].map(({ type, label, icon: Icon, color }) => (
             <button
               key={type}
