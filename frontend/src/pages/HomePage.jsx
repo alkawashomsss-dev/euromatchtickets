@@ -447,35 +447,6 @@ const HomePage = () => {
               </div>
             </Link>
           </div>
-
-          {/* More Categories */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-8">
-            <Link to="/events?type=train" className="p-4 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-blue-500/30 transition-all text-center">
-              <span className="text-2xl mb-2 block">🚄</span>
-              <span className="font-medium">Trains</span>
-              <span className="block text-xs text-zinc-500">17 routes</span>
-            </Link>
-            <Link to="/events?type=attraction" className="p-4 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-amber-500/30 transition-all text-center">
-              <span className="text-2xl mb-2 block">🏛️</span>
-              <span className="font-medium">Attractions</span>
-              <span className="block text-xs text-zinc-500">12 places</span>
-            </Link>
-            <Link to="/events?type=festival" className="p-4 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-pink-500/30 transition-all text-center">
-              <span className="text-2xl mb-2 block">🎪</span>
-              <span className="font-medium">Festivals</span>
-              <span className="block text-xs text-zinc-500">8 events</span>
-            </Link>
-            <Link to="/events?type=f1" className="p-4 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-red-500/30 transition-all text-center">
-              <span className="text-2xl mb-2 block">🏎️</span>
-              <span className="font-medium">Formula 1</span>
-              <span className="block text-xs text-zinc-500">7 races</span>
-            </Link>
-            <Link to="/events?type=tennis" className="p-4 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-green-500/30 transition-all text-center">
-              <span className="text-2xl mb-2 block">🎾</span>
-              <span className="font-medium">Tennis</span>
-              <span className="block text-xs text-zinc-500">7 events</span>
-            </Link>
-          </div>
         </div>
       </section>
 
