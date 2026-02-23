@@ -297,7 +297,7 @@ const HomePage = () => {
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           {/* Hot Landing Pages - 2026 Events */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-6">🔥 Hot 2026 Events</h2>
+            <h2 className="text-3xl font-bold mb-6">🔥 Hot Right Now</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <Link 
                 to="/world-cup-2026"
@@ -305,8 +305,8 @@ const HomePage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-yellow-400 text-xs font-bold mb-1">FIFA 2026</span>
-                  <h3 className="text-lg font-bold">World Cup 2026</h3>
+                  <span className="text-yellow-400 text-xs font-bold mb-1">⚽ FIFA 2026</span>
+                  <h3 className="text-lg font-bold">World Cup Tickets</h3>
                   <p className="text-xs text-zinc-400">From €150</p>
                 </div>
               </Link>
@@ -317,7 +317,7 @@ const HomePage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-blue-400 text-xs font-bold mb-1">UEFA</span>
+                  <span className="text-blue-400 text-xs font-bold mb-1">⭐ UEFA</span>
                   <h3 className="text-lg font-bold">Champions League</h3>
                   <p className="text-xs text-zinc-400">From €85</p>
                 </div>
@@ -329,47 +329,35 @@ const HomePage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-red-400 text-xs font-bold mb-1">CONCERT</span>
+                  <span className="text-red-400 text-xs font-bold mb-1">🎤 WORLD TOUR</span>
                   <h3 className="text-lg font-bold">The Weeknd 2026</h3>
                   <p className="text-xs text-zinc-400">From €95</p>
                 </div>
               </Link>
               
               <Link 
-                to="/eurostar-tickets"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-cyan-400 text-xs font-bold mb-1">TRAIN</span>
-                  <h3 className="text-lg font-bold">Eurostar</h3>
-                  <p className="text-xs text-zinc-400">From €39</p>
-                </div>
-              </Link>
-            </div>
-            
-            {/* Second Row - Concerts */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-              <Link 
                 to="/bruno-mars-tour-2026"
                 className="group relative h-40 rounded-2xl overflow-hidden border border-amber-500/20 hover:border-amber-500/50 transition-all"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-amber-400 text-xs font-bold mb-1">6 NIGHTS WEMBLEY</span>
+                  <span className="text-amber-400 text-xs font-bold mb-1">🔥 6 NIGHTS WEMBLEY</span>
                   <h3 className="text-lg font-bold">Bruno Mars</h3>
                   <p className="text-xs text-zinc-400">From €125</p>
                 </div>
               </Link>
-              
+            </div>
+            
+            {/* Second Row - More Artists */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
               <Link 
                 to="/guns-n-roses-tour-2026"
                 className="group relative h-40 rounded-2xl overflow-hidden border border-yellow-500/20 hover:border-yellow-500/50 transition-all"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-yellow-400 text-xs font-bold mb-1">STADIUM ROCK</span>
-                  <h3 className="text-lg font-bold">Guns N Roses</h3>
+                  <span className="text-yellow-400 text-xs font-bold mb-1">🎸 STADIUM ROCK</span>
+                  <h3 className="text-lg font-bold">Guns N' Roses</h3>
                   <p className="text-xs text-zinc-400">From €95</p>
                 </div>
               </Link>
@@ -380,21 +368,33 @@ const HomePage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-purple-400 text-xs font-bold mb-1">LONDON STADIUM</span>
-                  <h3 className="text-lg font-bold">Bad Bunny</h3>
+                  <span className="text-purple-400 text-xs font-bold mb-1">🌴 REGGAETON</span>
+                  <h3 className="text-lg font-bold">Bad Bunny London</h3>
                   <p className="text-xs text-zinc-400">From €145</p>
                 </div>
               </Link>
               
               <Link 
-                to="/disneyland-paris"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-blue-400/20 hover:border-blue-400/50 transition-all"
+                to="/events?type=match"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-emerald-500/20 hover:border-emerald-500/50 transition-all"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-zinc-900" />
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-blue-300 text-xs font-bold mb-1">THEME PARK</span>
-                  <h3 className="text-lg font-bold">Disneyland Paris</h3>
-                  <p className="text-xs text-zinc-400">From €85</p>
+                  <span className="text-emerald-400 text-xs font-bold mb-1">⚽ FOOTBALL</span>
+                  <h3 className="text-lg font-bold">All Matches</h3>
+                  <p className="text-xs text-zinc-400">Premier League, La Liga & more</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/events?type=concert"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-pink-500/20 hover:border-pink-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-pink-400 text-xs font-bold mb-1">🎤 CONCERTS</span>
+                  <h3 className="text-lg font-bold">All Concerts</h3>
+                  <p className="text-xs text-zinc-400">Taylor Swift, Drake & more</p>
                 </div>
               </Link>
             </div>
