@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../App";
 import { useLanguage } from "../i18n/LanguageProvider";
-import { Ticket, Menu, X, User, LogOut, Settings, ShoppingBag, LayoutDashboard, Bell, Trophy, Music, Train, Landmark, PartyPopper, Flag, CircleDot, ChevronDown } from "lucide-react";
+import { Ticket, Menu, X, User, LogOut, Settings, ShoppingBag, LayoutDashboard, Bell, Trophy, Music, ChevronDown } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -22,11 +22,6 @@ const Header = () => {
   const categories = [
     { name: "Football", icon: Trophy, href: "/events?type=match", color: "text-emerald-400" },
     { name: "Concerts", icon: Music, href: "/events?type=concert", color: "text-purple-400" },
-    { name: "Trains", icon: Train, href: "/events?type=train", color: "text-blue-400" },
-    { name: "Attractions", icon: Landmark, href: "/events?type=attraction", color: "text-amber-400" },
-    { name: "Festivals", icon: PartyPopper, href: "/events?type=festival", color: "text-pink-400" },
-    { name: "Formula 1", icon: Flag, href: "/events?type=f1", color: "text-red-400" },
-    { name: "Tennis", icon: CircleDot, href: "/events?type=tennis", color: "text-green-400" },
   ];
 
   return (
