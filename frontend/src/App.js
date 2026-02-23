@@ -26,11 +26,7 @@ import BlogArticlePage from "./pages/BlogArticlePage";
 import ReviewsPage from "./pages/ReviewsPage";
 import FAQPage from "./pages/FAQPage";
 import WorldCupPage from "./pages/WorldCupPage";
-import F1MonacoPage from "./pages/F1MonacoPage";
-import TomorrowlandPage from "./pages/TomorrowlandPage";
-import DisneylandPage from "./pages/DisneylandPage";
 import TheWeekndPage from "./pages/TheWeekndPage";
-import EurostarPage from "./pages/EurostarPage";
 import ChampionsLeaguePage from "./pages/ChampionsLeaguePage";
 import BrunoMarsPage from "./pages/BrunoMarsPage";
 import GunsNRosesPage from "./pages/GunsNRosesPage";
@@ -157,11 +153,7 @@ function AppRouter() {
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/world-cup-2026" element={<WorldCupPage />} />
-        <Route path="/f1-monaco-grand-prix" element={<F1MonacoPage />} />
-        <Route path="/tomorrowland-2025" element={<TomorrowlandPage />} />
-        <Route path="/disneyland-paris" element={<DisneylandPage />} />
         <Route path="/the-weeknd-tour-2026" element={<TheWeekndPage />} />
-        <Route path="/eurostar-tickets" element={<EurostarPage />} />
         <Route path="/champions-league-tickets" element={<ChampionsLeaguePage />} />
         <Route path="/bruno-mars-tour-2026" element={<BrunoMarsPage />} />
         <Route path="/guns-n-roses-tour-2026" element={<GunsNRosesPage />} />
