@@ -78,7 +78,7 @@ const WorldCupPage = () => {
 
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-green-500/10 to-blue-500/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-green-500/10 to-blue-500/10" />
         <div className="absolute inset-0" style={{
           backgroundImage: 'url(https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg)',
           backgroundSize: 'cover',
@@ -87,14 +87,14 @@ const WorldCupPage = () => {
         }} />
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 mb-6">
+          <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 mb-6">
             <Trophy className="w-4 h-4 mr-2" />
             Official Ticket Marketplace
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             FIFA World Cup 2026
-            <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-yellow-400 via-green-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-cyan-400 via-green-400 to-blue-400 bg-clip-text text-transparent">
               Buy Tickets - USA • Canada • Mexico
             </span>
           </h1>
@@ -106,7 +106,7 @@ const WorldCupPage = () => {
 
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Calendar className="w-5 h-5 text-yellow-400" />
+              <Calendar className="w-5 h-5 text-cyan-400" />
               <span>June 11 - July 19, 2026</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
@@ -162,7 +162,7 @@ const WorldCupPage = () => {
                 <Link
                   key={event.event_id}
                   to={`/event/${event.event_id}`}
-                  className="group flex flex-col md:flex-row md:items-center gap-4 bg-zinc-900/50 border border-white/5 hover:border-yellow-500/30 rounded-2xl p-6 transition-all"
+                  className="group flex flex-col md:flex-row md:items-center gap-4 bg-zinc-900/50 border border-white/5 hover:border-cyan-500/30 rounded-2xl p-6 transition-all"
                 >
                   <div className="w-full md:w-32 h-24 rounded-xl overflow-hidden flex-shrink-0">
                     <img 
@@ -175,7 +175,7 @@ const WorldCupPage = () => {
                   
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <Badge className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30">
+                      <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30">
                         <Trophy className="w-3 h-3 mr-1" />
                         World Cup 2026
                       </Badge>
@@ -184,7 +184,7 @@ const WorldCupPage = () => {
                       )}
                     </div>
                     
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-yellow-400 transition-colors">
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">
                       {event.title}
                     </h3>
                     
@@ -202,7 +202,7 @@ const WorldCupPage = () => {
 
                   <div className="text-right">
                     <div className="text-sm text-zinc-500">From</div>
-                    <div className="text-2xl font-bold text-yellow-400">
+                    <div className="text-2xl font-bold text-cyan-400">
                       €{event.lowest_price || 150}
                     </div>
                     <div className="text-sm text-emerald-400">
@@ -210,7 +210,7 @@ const WorldCupPage = () => {
                     </div>
                   </div>
 
-                  <ChevronRight className="w-6 h-6 text-zinc-600 group-hover:text-yellow-400 transition-colors" />
+                  <ChevronRight className="w-6 h-6 text-zinc-600 group-hover:text-cyan-400 transition-colors" />
                 </Link>
               ))}
             </div>
@@ -265,7 +265,7 @@ const WorldCupPage = () => {
             Tickets are selling fast. Secure your seats now for the biggest football event in history.
           </p>
           <Link to="/events?search=FIFA">
-            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-6 text-lg">
+            <Button className="bg-cyan-500 hover:bg-yellow-600 text-black font-bold px-8 py-6 text-lg">
               <Trophy className="w-5 h-5 mr-2" />
               View All World Cup Tickets
             </Button>
