@@ -309,7 +309,7 @@ const AboutPage = () => {
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Experience Live Events?</h2>
           <p className="text-zinc-400 text-lg mb-8">
-            Join 50,000+ fans who trust EuroMatchTickets for their ticket needs.
+            Join fans across Europe who trust EuroMatchTickets for their ticket needs.
           </p>
           <Link to="/events" className="inline-flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-8 py-4 rounded-full font-semibold transition-colors">
             <Ticket className="w-5 h-5" />
