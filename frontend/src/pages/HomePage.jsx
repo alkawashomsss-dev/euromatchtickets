@@ -171,96 +171,136 @@ const HomePage = () => {
         image="https://euromatchtickets.com/og-image.jpg"
       />
       
-      {/* Hero Section - Crystal Edition */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Stadium Background with Vignette */}
+      {/* Hero Section - World Cup 2026 Featured */}
+      <section className="relative min-h-[100vh] flex items-center overflow-hidden">
+        {/* Video Background */}
         <div className="absolute inset-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: 'url(https://images.unsplash.com/photo-1735587804724-5d9511bce0cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxjcm93ZGVkJTIwZm9vdGJhbGwlMjBzdGFkaXVtJTIwbmlnaHQlMjBsaWdodHMlMjBsdXh1cnl8ZW58MHx8fHwxNzcxOTI5Mzk4fDA&ixlib=rb-4.1.0&q=85&w=1920)',
-              opacity: 0.5
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09090b]/60 to-transparent" />
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            poster="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&q=80"
+          >
+            <source src="https://cdn.coverr.co/videos/coverr-soccer-stadium-with-fans-3284/1080p.mp4" type="video/mp4" />
+          </video>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/70 to-[#09090b]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#09090b]/80 to-transparent" />
           {/* Stadium Glow Effect */}
           <div className="absolute inset-0 stadium-glow" />
         </div>
 
-        <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 w-full py-32">
-          <div className="max-w-3xl">
-            {/* Premium Badge */}
-            <div className="flex items-center gap-3 mb-8">
-              <div className="glass-card px-5 py-2.5 rounded-full inline-flex items-center gap-2">
-                <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-                <span className="text-cyan-400 font-accent text-sm tracking-wide">EUROPE'S #1 TICKET MARKETPLACE</span>
+        <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 w-full py-20 md:py-32">
+          <div className="max-w-4xl">
+            {/* Live Badge */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="glass-card px-4 py-2 rounded-full inline-flex items-center gap-2 border border-red-500/30">
+                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                <span className="text-red-400 font-accent text-sm tracking-wide">TICKETS ON SALE NOW</span>
               </div>
             </div>
             
-            {/* Hero Title - Crystal Typography */}
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-8xl mb-6 leading-none tracking-tight">
-              LIVE EVENTS.
+            {/* Main Hero Title - World Cup 2026 */}
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 leading-none tracking-tight">
+              <span className="text-white">FIFA WORLD CUP</span>
               <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                CRYSTAL MOMENTS.
+              <span className="bg-gradient-to-r from-cyan-400 via-yellow-400 to-cyan-400 bg-clip-text text-transparent animate-pulse">
+                2026 TICKETS
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-zinc-400 mb-10 max-w-xl leading-relaxed">
-              Premium verified tickets for concerts and football matches. 
-              Experience the stadium atmosphere with 100% secure transactions.
+            {/* Location & Date */}
+            <div className="flex flex-wrap items-center gap-4 mb-6">
+              <span className="text-2xl md:text-3xl">🇺🇸🇲🇽🇨🇦</span>
+              <span className="text-xl md:text-2xl text-zinc-300 font-semibold">USA • Mexico • Canada</span>
+            </div>
+            
+            <p className="text-lg md:text-xl text-zinc-300 mb-8 max-w-2xl leading-relaxed">
+              Be part of history! Get your verified tickets for the biggest football event ever. 
+              <span className="text-cyan-400 font-semibold"> 100% secure transactions</span> with instant QR delivery.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/events">
-                <Button 
-                  data-testid="explore-events-btn"
-                  className="btn-crystal text-lg h-14 px-10 rounded-full font-semibold hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all"
-                >
-                  <Ticket className="w-5 h-5 mr-2" />
-                  Explore Events
-                </Button>
-              </Link>
-              {!user && (
-                <Button 
-                  data-testid="start-selling-btn"
-                  onClick={login}
-                  className="bg-white/10 hover:bg-white/20 border border-white/20 text-lg h-14 px-10 rounded-full backdrop-blur-sm transition-all"
-                >
-                  Start Selling
-                </Button>
-              )}
+            {/* Price & CTA */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
+              <div className="glass-card px-6 py-4 rounded-2xl border border-cyan-500/30">
+                <span className="text-zinc-400 text-sm">Tickets from</span>
+                <div className="text-3xl md:text-4xl font-bold text-cyan-400">€150</div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/world-cup-2026">
+                  <Button 
+                    data-testid="buy-worldcup-btn"
+                    className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-lg h-14 px-8 rounded-full font-bold shadow-[0_0_30px_rgba(34,211,238,0.4)] hover:shadow-[0_0_50px_rgba(34,211,238,0.6)] transition-all animate-pulse"
+                  >
+                    🎟️ BUY WORLD CUP TICKETS
+                  </Button>
+                </Link>
+                <Link to="/events">
+                  <Button 
+                    data-testid="explore-events-btn"
+                    className="bg-white/10 hover:bg-white/20 border border-white/30 text-lg h-14 px-8 rounded-full backdrop-blur-sm transition-all"
+                  >
+                    <Ticket className="w-5 h-5 mr-2" />
+                    All Events
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Trust Badges - Horizontal */}
+            <div className="flex flex-wrap items-center gap-4 mb-8">
+              <div className="flex items-center gap-2 text-emerald-400 text-sm">
+                <CheckCircle className="w-5 h-5" />
+                <span>Verified Tickets</span>
+              </div>
+              <div className="flex items-center gap-2 text-blue-400 text-sm">
+                <Lock className="w-5 h-5" />
+                <span>Secure Payment</span>
+              </div>
+              <div className="flex items-center gap-2 text-purple-400 text-sm">
+                <CreditCard className="w-5 h-5" />
+                <span>Instant Delivery</span>
+              </div>
+              <div className="flex items-center gap-2 text-cyan-400 text-sm">
+                <Headphones className="w-5 h-5" />
+                <span>24/7 Support</span>
+              </div>
             </div>
 
             {/* Stats - Glass Style */}
-            <div className="flex items-center gap-6 mt-16">
-              <div className="glass-card px-6 py-4 rounded-2xl text-center">
-                <div className="text-2xl font-bold font-accent text-cyan-400">50K+</div>
+            <div className="flex flex-wrap items-center gap-4 md:gap-6">
+              <div className="glass-card px-5 py-3 rounded-xl text-center">
+                <div className="text-xl md:text-2xl font-bold font-accent text-cyan-400">50K+</div>
                 <div className="text-zinc-500 text-xs uppercase tracking-wider">Happy Fans</div>
               </div>
-              <div className="glass-card px-6 py-4 rounded-2xl text-center">
-                <div className="text-2xl font-bold font-accent text-purple-400">1000+</div>
+              <div className="glass-card px-5 py-3 rounded-xl text-center">
+                <div className="text-xl md:text-2xl font-bold font-accent text-purple-400">1000+</div>
                 <div className="text-zinc-500 text-xs uppercase tracking-wider">Events</div>
               </div>
-              <div className="glass-card px-6 py-4 rounded-2xl text-center">
-                <div className="text-2xl font-bold font-accent flex items-center gap-1 text-purple-400">
+              <div className="glass-card px-5 py-3 rounded-xl text-center">
+                <div className="text-xl md:text-2xl font-bold font-accent flex items-center gap-1 text-yellow-400">
                   <Star className="w-4 h-4" />
                   4.9
                 </div>
                 <div className="text-zinc-500 text-xs uppercase tracking-wider">Rating</div>
               </div>
+              <div className="glass-card px-5 py-3 rounded-xl text-center border border-emerald-500/30">
+                <div className="text-xl md:text-2xl font-bold font-accent text-emerald-400">€2M+</div>
+                <div className="text-zinc-500 text-xs uppercase tracking-wider">Tickets Sold</div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Crystal Floating Elements */}
-        <div className="absolute right-10 top-1/3 hidden lg:block animate-float">
-          <div className="w-24 h-24 rounded-2xl glass-card crystal-glow" />
+        {/* Floating World Cup Trophy Animation */}
+        <div className="absolute right-10 top-1/3 hidden xl:block animate-float">
+          <div className="text-8xl opacity-80">🏆</div>
         </div>
-        <div className="absolute right-40 bottom-1/4 hidden lg:block animate-float" style={{animationDelay: '2s'}}>
-          <div className="w-16 h-16 rounded-xl glass-card" style={{boxShadow: '0 0 30px rgba(192, 132, 252, 0.2)'}} />
+        <div className="absolute right-32 bottom-1/4 hidden xl:block animate-float" style={{animationDelay: '2s'}}>
+          <div className="text-6xl opacity-60">⚽</div>
         </div>
       </section>
 
