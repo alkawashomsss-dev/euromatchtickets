@@ -57,8 +57,8 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Email Support</h3>
-                  <a href="mailto:support@euromatchtickets.com" className="text-zinc-400 hover:text-purple-400">
-                    support@euromatchtickets.com
+                  <a href="mailto:Alkawashoms@gmail.com" className="text-zinc-400 hover:text-purple-400">
+                    Alkawashoms@gmail.com
                   </a>
                 </div>
               </div>
@@ -69,8 +69,8 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Phone Support</h3>
-                  <a href="tel:+4930123456789" className="text-zinc-400 hover:text-emerald-400">
-                    +49 30 123 456 789
+                  <a href="tel:+491781304137" className="text-zinc-400 hover:text-emerald-400">
+                    +49 178 130 4137
                   </a>
                 </div>
               </div>
