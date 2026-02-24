@@ -622,10 +622,14 @@ async def get_seller_tickets(request: Request):
         {"_id": 0}
     ).to_list(500)
     
-    for ticket in tickets:
-        event = await db.events.find_one({"event_id": ticket["event_id"]}, {"_id": 0})
-        if event:
-            ticket["event"] = event
+    # Batch fetch events to avoid N+1 queries
+    if tickets:
+        event_ids = list(set(t["event_id"] for t in tickets))
+        events = await db.events.find({"event_id": {"$in": event_ids}}, {"_id": 0}).to_list(None)
+        events_map = {e["event_id"]: e for e in events}
+        
+        for ticket in tickets:
+            ticket["event"] = events_map.get(ticket["event_id"])
     
     return tickets
 
