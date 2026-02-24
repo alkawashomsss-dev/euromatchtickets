@@ -164,54 +164,60 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-[#09090b] font-body">
       <SEOHead 
         title="Buy Football & Concert Tickets in Europe"
         description="Europe's #1 ticket marketplace. Buy verified tickets for Champions League, Premier League, La Liga, Taylor Swift, Coldplay and more. 100% secure with instant QR delivery."
         image="https://euromatchtickets.com/og-image.jpg"
       />
       
-      {/* Hero Section */}
+      {/* Hero Section - Crystal Edition */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background */}
+        {/* Stadium Background with Vignette */}
         <div className="absolute inset-0">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-40"
+            className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: 'url(https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1920)'
+              backgroundImage: 'url(https://images.unsplash.com/photo-1735587804724-5d9511bce0cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxjcm93ZGVkJTIwZm9vdGJhbGwlMjBzdGFkaXVtJTIwbmlnaHQlMjBsaWdodHMlMjBsdXh1cnl8ZW58MHx8fHwxNzcxOTI5Mzk4fDA&ixlib=rb-4.1.0&q=85&w=1920)',
+              opacity: 0.5
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-zinc-950" />
-          <div className="absolute inset-0 gradient-glow" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#09090b]/60 to-transparent" />
+          {/* Stadium Glow Effect */}
+          <div className="absolute inset-0 stadium-glow" />
         </div>
 
         <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 w-full py-32">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6 animate-slide-up">
-              <Badge className="bg-purple-500/20 text-purple-400 border border-purple-500/30 px-4 py-1.5">
-                <Sparkles className="w-4 h-4 mr-2" />
-                Europe's #1 Ticket Marketplace
-              </Badge>
+            {/* Premium Badge */}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="glass-card px-5 py-2.5 rounded-full inline-flex items-center gap-2">
+                <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                <span className="text-cyan-400 font-accent text-sm tracking-wide">EUROPE'S #1 TICKET MARKETPLACE</span>
+              </div>
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-slide-up stagger-1 leading-tight">
-              Live Events.
+            {/* Hero Title - Crystal Typography */}
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-8xl mb-6 leading-none tracking-tight">
+              LIVE EVENTS.
               <br />
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
-                Unforgettable Moments.
+              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                CRYSTAL MOMENTS.
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-zinc-400 mb-10 max-w-xl animate-slide-up stagger-2">
-              Buy and sell verified tickets for concerts, football matches, and more. 
-              100% secure transactions with buyer protection.
+            <p className="text-lg md:text-xl text-zinc-400 mb-10 max-w-xl leading-relaxed">
+              Premium verified tickets for concerts and football matches. 
+              Experience the stadium atmosphere with 100% secure transactions.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 animate-slide-up stagger-3">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/events">
                 <Button 
                   data-testid="explore-events-btn"
-                  className="btn-accent text-lg h-14 px-10 rounded-full"
+                  className="btn-crystal text-lg h-14 px-10 rounded-full font-semibold hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all"
                 >
                   <Ticket className="w-5 h-5 mr-2" />
                   Explore Events
