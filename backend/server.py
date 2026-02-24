@@ -798,13 +798,20 @@ async def get_seller_payouts(request: Request):
     pending_amount = sum(p.get("net_amount", 0) for p in payouts if p.get("status") == "pending")
     completed_amount = sum(p.get("net_amount", 0) for p in payouts if p.get("status") == "completed")
     
-    # Get order and event info for each payout
-    for payout in payouts:
-        order = await db.orders.find_one({"order_id": payout["order_id"]}, {"_id": 0})
-        if order:
-            event = await db.events.find_one({"event_id": order["event_id"]}, {"_id": 0})
+    # Batch fetch orders and events
+    if payouts:
+        order_ids = list(set(p["order_id"] for p in payouts))
+        orders = await db.orders.find({"order_id": {"$in": order_ids}}, {"_id": 0}).to_list(None)
+        orders_map = {o["order_id"]: o for o in orders}
+        
+        event_ids = list(set(o.get("event_id") for o in orders if o.get("event_id")))
+        events = await db.events.find({"event_id": {"$in": event_ids}}, {"_id": 0}).to_list(None)
+        events_map = {e["event_id"]: e for e in events}
+        
+        for payout in payouts:
+            order = orders_map.get(payout["order_id"])
             payout["order"] = order
-            payout["event"] = event
+            payout["event"] = events_map.get(order["event_id"]) if order else None
     
     return {
         "payouts": payouts,
