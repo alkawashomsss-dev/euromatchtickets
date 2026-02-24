@@ -396,11 +396,23 @@ const WorldCupPage = () => {
             Tickets are selling fast. Secure your seats now for the biggest football event in history.
           </p>
           <Link to="/events?search=FIFA">
-            <Button className="bg-cyan-500 hover:bg-yellow-600 text-black font-bold px-8 py-6 text-lg">
+            <Button className="btn-crystal font-bold px-8 py-6 text-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]">
               <Trophy className="w-5 h-5 mr-2" />
               View All World Cup Tickets
             </Button>
           </Link>
+        </div>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="py-8 border-t border-zinc-800">
+        <div className="max-w-4xl mx-auto px-4">
+          <p className="text-xs text-zinc-500 text-center">
+            <strong>Disclaimer:</strong> EuroMatchTickets is an independent ticket marketplace. 
+            We are not affiliated with, endorsed by, or connected to FIFA, the FIFA World Cup, 
+            or any official organizing body. All trademarks belong to their respective owners. 
+            Tickets sold on this platform are resale tickets and may be priced above or below face value.
+          </p>
         </div>
       </section>
     </div>
