@@ -167,13 +167,13 @@ const AboutPage = () => {
                 a need for a more transparent and secure ticket resale marketplace in Europe.
               </p>
               <p className="text-zinc-400 text-lg leading-relaxed mb-6">
-                With over 25 years of combined experience in event management, ticketing, and 
+                With experience in event management, ticketing, and 
                 cybersecurity, our founding team built EuroMatchTickets with one goal: to give 
                 fans peace of mind when buying tickets for their favorite events.
               </p>
               <p className="text-zinc-400 text-lg leading-relaxed">
-                Today, we're proud to serve over 50,000 customers across 25+ European countries, 
-                with a 4.9-star rating and a 100% satisfaction guarantee on every purchase.
+                Today, we serve customers across 20+ European countries 
+                with a 100% buyer protection guarantee on every purchase.
               </p>
             </div>
             <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-8">
