@@ -21,6 +21,8 @@ import AboutPage from "./pages/AboutPage";
 import TermsPage from "./pages/TermsPage";
 import ContactPage from "./pages/ContactPage";
 import RefundPolicyPage from "./pages/RefundPolicyPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import PaymentInfoPage from "./pages/PaymentInfoPage";
 import BlogPage from "./pages/BlogPage";
 import BlogArticlePage from "./pages/BlogArticlePage";
 import ReviewsPage from "./pages/ReviewsPage";
