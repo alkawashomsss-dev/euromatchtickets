@@ -34,24 +34,24 @@ const BrunoMarsPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 via-rose-500/10 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-rose-500/10 to-zinc-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/30 rounded-full px-4 py-2 mb-6 animate-pulse">
-            <Zap className="w-4 h-4 text-amber-400" />
-            <span className="text-amber-400 font-medium">OFFICIAL TOUR - 6 Nights at Wembley!</span>
+          <div className="inline-flex items-center gap-2 bg-purple-500/20 border border-purple-500/30 rounded-full px-4 py-2 mb-6 animate-pulse">
+            <Zap className="w-4 h-4 text-purple-400" />
+            <span className="text-purple-400 font-medium">OFFICIAL TOUR - 6 Nights at Wembley!</span>
           </div>
           <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 mb-6">
             <Heart className="w-4 h-4 mr-2" />The Romantic Tour
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Bruno Mars
-            <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-amber-400 via-rose-400 to-pink-400 bg-clip-text text-transparent">The Romantic Tour Europe 2026</span>
+            <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-purple-400 via-rose-400 to-pink-400 bg-clip-text text-transparent">The Romantic Tour Europe 2026</span>
           </h1>
           <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">The king of pop is back! Bruno Mars brings his legendary live show to European stadiums. Uptown Funk, 24K Magic, Thats What I Like - the ultimate party!</p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><Calendar className="w-5 h-5 text-amber-400" /><span>June - July 2026</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><MapPin className="w-5 h-5 text-amber-400" /><span>6 Cities, 18 Shows</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><Users className="w-5 h-5 text-amber-400" /><span>Stadium Tour</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><Calendar className="w-5 h-5 text-purple-400" /><span>June - July 2026</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><MapPin className="w-5 h-5 text-purple-400" /><span>6 Cities, 18 Shows</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><Users className="w-5 h-5 text-purple-400" /><span>Stadium Tour</span></div>
           </div>
           <div className="inline-block bg-zinc-900/80 border border-white/10 rounded-2xl p-6">
             <div className="text-zinc-400 text-sm">Tickets from</div>
@@ -76,21 +76,21 @@ const BrunoMarsPage = () => {
           <h2 className="text-3xl font-bold mb-8 text-center">Bruno Mars Europe 2026 - Official Dates</h2>
           <div className="grid gap-4">
             {shows.map((show, i) => (
-              <Link key={i} to="/events?type=concert" className="group flex flex-col md:flex-row md:items-center justify-between bg-zinc-900/50 border border-white/5 hover:border-amber-500/30 rounded-2xl p-6 transition-all">
+              <Link key={i} to="/events?type=concert" className="group flex flex-col md:flex-row md:items-center justify-between bg-zinc-900/50 border border-white/5 hover:border-purple-500/30 rounded-2xl p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center"><Music className="w-7 h-7 text-amber-400" /></div>
+                  <div className="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center"><Music className="w-7 h-7 text-purple-400" /></div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-bold group-hover:text-amber-400">{show.venue}</h3>
+                      <h3 className="font-bold group-hover:text-purple-400">{show.venue}</h3>
                       {show.hot && <Badge className="bg-red-500/20 text-red-400 text-xs animate-pulse">HIGH DEMAND</Badge>}
                     </div>
-                    <p className="text-zinc-500 text-sm">{show.date} - {show.city}, {show.country} {show.nights && <span className="text-amber-400">({show.nights} nights)</span>}</p>
+                    <p className="text-zinc-500 text-sm">{show.date} - {show.city}, {show.country} {show.nights && <span className="text-purple-400">({show.nights} nights)</span>}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="text-emerald-400 text-sm">{show.tickets} available</span>
-                  <div className="text-right"><div className="text-xs text-zinc-500">From</div><div className="text-xl font-bold text-amber-400">€{show.price}</div></div>
-                  <Button className="bg-amber-500 hover:bg-amber-600 text-black font-bold">Buy Tickets</Button>
+                  <div className="text-right"><div className="text-xs text-zinc-500">From</div><div className="text-xl font-bold text-purple-400">€{show.price}</div></div>
+                  <Button className="bg-purple-500 hover:bg-purple-600 text-black font-bold">Buy Tickets</Button>
                 </div>
               </Link>
             ))}
@@ -110,7 +110,7 @@ const BrunoMarsPage = () => {
               <li>New songs from The Romantic album</li>
               <li>World-class choreography and production</li>
             </ul>
-            <p className="text-amber-400 font-medium">This is an official tour announced on brunomars.com - tickets selling fast!</p>
+            <p className="text-purple-400 font-medium">This is an official tour announced on brunomars.com - tickets selling fast!</p>
           </div>
         </div>
       </section>

@@ -35,24 +35,24 @@ const GunsNRosesPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 via-red-500/10 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-red-500/10 to-zinc-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-yellow-500/20 border border-yellow-500/30 rounded-full px-4 py-2 mb-6">
-            <Zap className="w-4 h-4 text-yellow-400" />
-            <span className="text-yellow-400 font-medium">Legendary Rock Tour 2026!</span>
+          <div className="inline-flex items-center gap-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full px-4 py-2 mb-6">
+            <Zap className="w-4 h-4 text-cyan-400" />
+            <span className="text-cyan-400 font-medium">Legendary Rock Tour 2026!</span>
           </div>
           <Badge className="bg-red-500/20 text-red-400 border-red-500/30 mb-6">
             <Skull className="w-4 h-4 mr-2" />Stadium Rock
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Guns N Roses
-            <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-yellow-400 via-red-400 to-orange-400 bg-clip-text text-transparent">European Stadium Tour 2026</span>
+            <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-cyan-400 via-red-400 to-cyan-400 bg-clip-text text-transparent">European Stadium Tour 2026</span>
           </h1>
           <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">The most dangerous band in the world returns! Axl, Slash & Duff bring the ultimate rock n roll experience to European stadiums.</p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><Calendar className="w-5 h-5 text-yellow-400" /><span>June - July 2026</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><MapPin className="w-5 h-5 text-yellow-400" /><span>8 Stadium Shows</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><Users className="w-5 h-5 text-yellow-400" /><span>3+ Hour Sets</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><Calendar className="w-5 h-5 text-cyan-400" /><span>June - July 2026</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><MapPin className="w-5 h-5 text-cyan-400" /><span>8 Stadium Shows</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><Users className="w-5 h-5 text-cyan-400" /><span>3+ Hour Sets</span></div>
           </div>
           <div className="inline-block bg-zinc-900/80 border border-white/10 rounded-2xl p-6">
             <div className="text-zinc-400 text-sm">Tickets from</div>
@@ -77,12 +77,12 @@ const GunsNRosesPage = () => {
           <h2 className="text-3xl font-bold mb-8 text-center">Guns N Roses 2026 European Dates</h2>
           <div className="grid gap-4">
             {shows.map((show, i) => (
-              <Link key={i} to="/events?type=concert" className="group flex flex-col md:flex-row md:items-center justify-between bg-zinc-900/50 border border-white/5 hover:border-yellow-500/30 rounded-2xl p-6 transition-all">
+              <Link key={i} to="/events?type=concert" className="group flex flex-col md:flex-row md:items-center justify-between bg-zinc-900/50 border border-white/5 hover:border-cyan-500/30 rounded-2xl p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-yellow-500/20 rounded-xl flex items-center justify-center"><Music className="w-7 h-7 text-yellow-400" /></div>
+                  <div className="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center"><Music className="w-7 h-7 text-cyan-400" /></div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-bold group-hover:text-yellow-400">{show.venue}</h3>
+                      <h3 className="font-bold group-hover:text-cyan-400">{show.venue}</h3>
                       {show.hot && <Badge className="bg-red-500/20 text-red-400 text-xs animate-pulse">HOT</Badge>}
                     </div>
                     <p className="text-zinc-500 text-sm">{show.date} - {show.city}, {show.country}</p>
@@ -90,8 +90,8 @@ const GunsNRosesPage = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="text-emerald-400 text-sm">{show.tickets} left</span>
-                  <div className="text-right"><div className="text-xs text-zinc-500">From</div><div className="text-xl font-bold text-yellow-400">€{show.price}</div></div>
-                  <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold">Buy</Button>
+                  <div className="text-right"><div className="text-xs text-zinc-500">From</div><div className="text-xl font-bold text-cyan-400">€{show.price}</div></div>
+                  <Button className="bg-cyan-500 hover:bg-cyan-600 text-black font-bold">Buy</Button>
                 </div>
               </Link>
             ))}

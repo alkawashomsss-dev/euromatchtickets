@@ -61,7 +61,7 @@ const EventCard = ({ event }) => {
         {/* Featured Badge */}
         {event.featured && (
           <div className="absolute top-4 right-4">
-            <Badge className="bg-amber-500/20 text-amber-400 border border-amber-500/30">
+            <Badge className="bg-purple-500/20 text-purple-400 border border-purple-500/30">
               <Sparkles className="w-3 h-3 mr-1" />
               Featured
             </Badge>
@@ -245,7 +245,7 @@ const HomePage = () => {
                 <div className="text-zinc-500 text-xs uppercase tracking-wider">Events</div>
               </div>
               <div className="glass-card px-6 py-4 rounded-2xl text-center">
-                <div className="text-2xl font-bold font-accent flex items-center gap-1 text-amber-400">
+                <div className="text-2xl font-bold font-accent flex items-center gap-1 text-purple-400">
                   <Star className="w-4 h-4" />
                   4.9
                 </div>
@@ -269,22 +269,22 @@ const HomePage = () => {
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <Link 
             to="/world-cup-raffle"
-            className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 glass-card rounded-2xl border-yellow-500/30 hover:border-yellow-500/50 transition-all group"
+            className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 glass-card rounded-2xl border-cyan-500/30 hover:border-cyan-500/50 transition-all group"
             data-testid="raffle-banner"
           >
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500/30 to-amber-600/30 rounded-full flex items-center justify-center animate-glow-pulse" style={{boxShadow: '0 0 30px rgba(251, 191, 36, 0.3)'}}>
-                <Trophy className="w-8 h-8 text-yellow-400" />
+              <div className="w-16 h-16 bg-gradient-to-br from-cyan-500/30 to-purple-600/30 rounded-full flex items-center justify-center animate-glow-pulse" style={{boxShadow: '0 0 30px rgba(251, 191, 36, 0.3)'}}>
+                <Trophy className="w-8 h-8 text-cyan-400" />
               </div>
               <div>
-                <p className="text-yellow-400 text-sm font-accent tracking-wider mb-1">VIP RAFFLE - WIN A TRIP!</p>
+                <p className="text-cyan-400 text-sm font-accent tracking-wider mb-1">VIP RAFFLE - WIN A TRIP!</p>
                 <h3 className="text-xl md:text-2xl font-display">WORLD CUP 2026</h3>
                 <p className="text-zinc-400 text-sm">7 nights + flights + tickets for 2 people!</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-center">
-                <p className="text-3xl font-accent text-yellow-400 neon-text-gold">€100</p>
+                <p className="text-3xl font-accent text-cyan-400 neon-text-gold">€100</p>
                 <p className="text-xs text-zinc-500 uppercase">Entry</p>
               </div>
               <div className="btn-gold px-6 py-3 rounded-full group-hover:scale-105 transition-transform">
@@ -337,11 +337,11 @@ const HomePage = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <Link 
                 to="/world-cup-2026"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-yellow-500/20 hover:border-yellow-500/50 transition-all"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-500/50 transition-all"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-zinc-900" />
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-yellow-400 text-xs font-bold mb-1">⚽ FIFA 2026</span>
+                  <span className="text-cyan-400 text-xs font-bold mb-1">⚽ FIFA 2026</span>
                   <h3 className="text-lg font-bold">World Cup Tickets</h3>
                   <p className="text-xs text-zinc-400">From €150</p>
                 </div>
@@ -373,11 +373,11 @@ const HomePage = () => {
               
               <Link 
                 to="/bruno-mars-tour-2026"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-amber-500/20 hover:border-amber-500/50 transition-all"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-purple-500/20 hover:border-purple-500/50 transition-all"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-zinc-900" />
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-amber-400 text-xs font-bold mb-1">🔥 6 NIGHTS WEMBLEY</span>
+                  <span className="text-purple-400 text-xs font-bold mb-1">🔥 6 NIGHTS WEMBLEY</span>
                   <h3 className="text-lg font-bold">Bruno Mars</h3>
                   <p className="text-xs text-zinc-400">From €125</p>
                 </div>
@@ -388,11 +388,11 @@ const HomePage = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
               <Link 
                 to="/guns-n-roses-tour-2026"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-yellow-500/20 hover:border-yellow-500/50 transition-all"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-500/50 transition-all"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-zinc-900" />
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-yellow-400 text-xs font-bold mb-1">🎸 STADIUM ROCK</span>
+                  <span className="text-cyan-400 text-xs font-bold mb-1">🎸 STADIUM ROCK</span>
                   <h3 className="text-lg font-bold">Guns N' Roses</h3>
                   <p className="text-xs text-zinc-400">From €95</p>
                 </div>
@@ -560,7 +560,7 @@ const HomePage = () => {
             {[
               { number: "50K+", label: "Happy Customers", icon: Users, color: "text-purple-400" },
               { number: "€2M+", label: "Tickets Sold", icon: Ticket, color: "text-emerald-400" },
-              { number: "4.9★", label: "Trust Rating", icon: Star, color: "text-yellow-400" },
+              { number: "4.9★", label: "Trust Rating", icon: Star, color: "text-cyan-400" },
               { number: "24/7", label: "AI Support", icon: Headphones, color: "text-blue-400" },
             ].map((stat, idx) => (
               <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 text-center">

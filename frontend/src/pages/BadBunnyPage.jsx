@@ -84,7 +84,7 @@ const BadBunnyPage = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-orange-400 text-sm">{show.tickets} left</span>
+                  <span className="text-cyan-400 text-sm">{show.tickets} left</span>
                   <div className="text-right"><div className="text-xs text-zinc-500">From</div><div className="text-xl font-bold text-purple-400">€{show.price}</div></div>
                   <Button className="bg-purple-500 hover:bg-purple-600">Buy</Button>
                 </div>

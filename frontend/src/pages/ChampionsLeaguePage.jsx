@@ -80,13 +80,13 @@ const ChampionsLeaguePage = () => {
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold group-hover:text-blue-400">{match.home} vs {match.away}</h3>
-                      {match.hot && <Badge className="bg-orange-500/20 text-orange-400 text-xs animate-pulse">HOT</Badge>}
+                      {match.hot && <Badge className="bg-cyan-500/20 text-cyan-400 text-xs animate-pulse">HOT</Badge>}
                     </div>
                     <p className="text-zinc-500 text-sm">{match.date} - {match.venue}, {match.city}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-orange-400 text-sm">{match.tickets} left</span>
+                  <span className="text-cyan-400 text-sm">{match.tickets} left</span>
                   <div className="text-right"><div className="text-xs text-zinc-500">From</div><div className="text-xl font-bold text-blue-400">€{match.price}</div></div>
                   <Button className="bg-blue-500 hover:bg-blue-600">Buy</Button>
                 </div>
