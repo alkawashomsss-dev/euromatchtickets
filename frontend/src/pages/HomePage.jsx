@@ -5,7 +5,8 @@ import { API, useAuth } from "../App";
 import { 
   Calendar, MapPin, Ticket, TrendingUp, Shield, Star, 
   ChevronRight, Users, Music, Trophy, ArrowRight, Sparkles,
-  CheckCircle, Lock, CreditCard, Headphones, Award, Globe
+  CheckCircle, Lock, CreditCard, Headphones, Award, Globe,
+  Clock, AlertCircle, Timer
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -24,9 +25,42 @@ const formatDate = (dateStr) => {
   };
 };
 
+// Countdown Timer Component
+const CountdownTimer = ({ targetDate }) => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0 });
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const difference = new Date(targetDate) - new Date();
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          mins: Math.floor((difference / 1000 / 60) % 60)
+        });
+      }
+    };
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 60000);
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  if (timeLeft.days > 30) return null;
+
+  return (
+    <div className="flex items-center gap-1 text-xs text-amber-400 bg-amber-500/10 px-2 py-1 rounded-full">
+      <Timer className="w-3 h-3" />
+      <span>{timeLeft.days}d {timeLeft.hours}h left</span>
+    </div>
+  );
+};
+
 const EventCard = ({ event }) => {
   const dateInfo = formatDate(event.event_date);
   const isMatch = event.event_type === "match";
+  const ticketsLeft = event.available_tickets || 0;
+  const isLimitedAvailability = ticketsLeft > 0 && ticketsLeft <= 10;
+  const isSellingFast = ticketsLeft > 10 && ticketsLeft <= 25;
 
   return (
     <Link 
@@ -51,11 +85,27 @@ const EventCard = ({ event }) => {
         <div className="img-overlay" />
         
         {/* Type Badge */}
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 left-4 flex flex-col gap-2">
           <Badge className={isMatch ? "tag-match" : "tag-concert"}>
             {isMatch ? <Trophy className="w-3 h-3 mr-1" /> : <Music className="w-3 h-3 mr-1" />}
             {isMatch ? "Match" : "Concert"}
           </Badge>
+          
+          {/* Limited Availability Badge */}
+          {isLimitedAvailability && (
+            <Badge className="bg-red-500/90 text-white border-0 animate-pulse">
+              <AlertCircle className="w-3 h-3 mr-1" />
+              Only {ticketsLeft} left!
+            </Badge>
+          )}
+          
+          {/* Selling Fast Badge */}
+          {isSellingFast && (
+            <Badge className="bg-orange-500/90 text-white border-0">
+              <TrendingUp className="w-3 h-3 mr-1" />
+              Selling Fast
+            </Badge>
+          )}
         </div>
 
         {/* Featured Badge */}
@@ -71,10 +121,13 @@ const EventCard = ({ event }) => {
 
       {/* Content */}
       <div className="p-5">
-        {/* Title */}
-        <h3 className="text-xl font-bold mb-1 group-hover:text-purple-400 transition-colors line-clamp-1">
-          {event.title}
-        </h3>
+        {/* Title & Countdown */}
+        <div className="flex items-start justify-between gap-2 mb-1">
+          <h3 className="text-xl font-bold group-hover:text-purple-400 transition-colors line-clamp-1 flex-1">
+            {event.title}
+          </h3>
+          <CountdownTimer targetDate={event.event_date} />
+        </div>
         {event.subtitle && (
           <p className="text-zinc-400 text-sm mb-3">{event.subtitle}</p>
         )}
@@ -110,7 +163,7 @@ const EventCard = ({ event }) => {
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Footer with Live Inventory */}
         <div className="flex items-center justify-between pt-4 border-t border-white/5">
           {event.lowest_price ? (
             <div>
@@ -121,10 +174,19 @@ const EventCard = ({ event }) => {
             <span className="text-zinc-500 text-sm">No tickets available</span>
           )}
           
-          {event.available_tickets > 0 && (
-            <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">
-              {event.available_tickets} tickets
-            </Badge>
+          {/* Live Inventory Counter */}
+          {ticketsLeft > 0 && (
+            <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-sm ${
+              isLimitedAvailability 
+                ? 'bg-red-500/20 text-red-400 border border-red-500/30' 
+                : isSellingFast 
+                  ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
+                  : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+            }`}>
+              <Ticket className="w-3.5 h-3.5" />
+              <span className="font-medium">{ticketsLeft}</span>
+              <span className="text-xs opacity-80">available</span>
+            </div>
           )}
         </div>
       </div>
