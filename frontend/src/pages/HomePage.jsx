@@ -4,7 +4,8 @@ import axios from "axios";
 import { API, useAuth } from "../App";
 import { 
   Calendar, MapPin, Ticket, TrendingUp, Shield, Star, 
-  ChevronRight, Users, Music, Trophy, ArrowRight, Sparkles
+  ChevronRight, Users, Music, Trophy, ArrowRight, Sparkles,
+  CheckCircle, Lock, CreditCard, Headphones, Award, Globe
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
