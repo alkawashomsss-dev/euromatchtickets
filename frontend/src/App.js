@@ -154,6 +154,7 @@ function AppRouter() {
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/world-cup-2026" element={<WorldCupPage />} />
+        <Route path="/world-cup-raffle" element={<WorldCupRafflePage />} />
         <Route path="/the-weeknd-tour-2026" element={<TheWeekndPage />} />
         <Route path="/champions-league-tickets" element={<ChampionsLeaguePage />} />
         <Route path="/bruno-mars-tour-2026" element={<BrunoMarsPage />} />
