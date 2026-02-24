@@ -1539,8 +1539,8 @@ async def create_raffle_checkout(entry: RaffleEntry, request: Request):
                 'quantity': entry.entries,
             }],
             mode='payment',
-            success_url=f'{os.environ.get("FRONTEND_URL", "https://euromatchtickets.com")}/raffle/success?session_id={{CHECKOUT_SESSION_ID}}',
-            cancel_url=f'{os.environ.get("FRONTEND_URL", "https://euromatchtickets.com")}/world-cup-raffle',
+            success_url=f'{os.environ.get("FRONTEND_URL")}/raffle/success?session_id={{CHECKOUT_SESSION_ID}}',
+            cancel_url=f'{os.environ.get("FRONTEND_URL")}/world-cup-raffle',
             metadata={
                 'type': 'raffle',
                 'raffle_type': entry.raffle_type,
