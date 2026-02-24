@@ -215,6 +215,7 @@ function App() {
               }}
             />
             <AppRouter />
+            <AIChatWidget />
           </AuthProvider>
         </LanguageProvider>
       </HelmetProvider>
