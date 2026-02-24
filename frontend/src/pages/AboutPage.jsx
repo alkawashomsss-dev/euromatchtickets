@@ -178,8 +178,8 @@ const AboutPage = () => {
                 fans peace of mind when buying tickets for their favorite events.
               </p>
               <p className="text-zinc-400 text-lg leading-relaxed">
-                Today, we serve customers across 20+ European countries 
-                with a 100% buyer protection guarantee on every purchase.
+                Today, we serve customers across Europe 
+                with a full buyer protection guarantee on every purchase.
               </p>
             </div>
             <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-8">
