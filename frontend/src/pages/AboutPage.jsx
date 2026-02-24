@@ -252,7 +252,7 @@ const AboutPage = () => {
       {/* Why Choose Us - Trust Signals */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Why 50,000+ Fans Trust Us</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose EuroMatchTickets</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
