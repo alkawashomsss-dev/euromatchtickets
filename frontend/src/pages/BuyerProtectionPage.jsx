@@ -248,11 +248,11 @@ const BuyerProtectionPage = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <div className="flex items-center gap-2 text-zinc-300">
               <Mail className="w-5 h-5 text-purple-400" />
-              <a href="mailto:support@euromatchtickets.com" className="hover:text-purple-400">support@euromatchtickets.com</a>
+              <a href="mailto:Alkawashoms@gmail.com" className="hover:text-purple-400">Alkawashoms@gmail.com</a>
             </div>
             <div className="flex items-center gap-2 text-zinc-300">
               <Phone className="w-5 h-5 text-purple-400" />
-              <span>+49 30 123 456 789</span>
+              <span>+49 178 130 4137</span>
             </div>
           </div>
           
