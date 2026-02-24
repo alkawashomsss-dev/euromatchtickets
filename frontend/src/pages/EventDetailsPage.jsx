@@ -584,7 +584,7 @@ const EventDetailsPage = () => {
                       <span>Instant QR Code Delivery</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Star className="w-4 h-4 text-amber-500" />
+                      <Star className="w-4 h-4 text-purple-500" />
                       <span>Verified Seller</span>
                     </div>
                   </div>
