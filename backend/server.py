@@ -1483,6 +1483,94 @@ async def get_all_payouts(request: Request):
     payouts = await db.payouts.find({}, {"_id": 0}).sort("created_at", -1).to_list(100)
     return payouts
 
+# ============== RAFFLE SYSTEM ==============
+
+class RaffleEntry(BaseModel):
+    raffle_type: str
+    price: float = 100
+    entries: int = 1
+
+@api_router.post("/raffle/checkout")
+async def create_raffle_checkout(entry: RaffleEntry, request: Request):
+    """Create Stripe checkout for raffle entry"""
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(status_code=401, detail="Please sign in to enter the raffle")
+    
+    try:
+        # Create Stripe Checkout Session
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                'price_data': {
+                    'currency': 'eur',
+                    'unit_amount': int(entry.price * 100),  # Stripe uses cents
+                    'product_data': {
+                        'name': 'World Cup 2026 VIP Raffle Entry',
+                        'description': 'Enter for a chance to win an all-inclusive trip for 2 to FIFA World Cup 2026!',
+                        'images': ['https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg'],
+                    },
+                },
+                'quantity': entry.entries,
+            }],
+            mode='payment',
+            success_url=f'{os.environ.get("FRONTEND_URL", "https://euromatchtickets.com")}/raffle/success?session_id={{CHECKOUT_SESSION_ID}}',
+            cancel_url=f'{os.environ.get("FRONTEND_URL", "https://euromatchtickets.com")}/world-cup-raffle',
+            metadata={
+                'type': 'raffle',
+                'raffle_type': entry.raffle_type,
+                'user_id': user['user_id'],
+                'user_email': user['email']
+            }
+        )
+        
+        # Save raffle entry to database
+        raffle_entry = {
+            "entry_id": str(uuid.uuid4())[:12],
+            "user_id": user['user_id'],
+            "user_email": user['email'],
+            "user_name": user.get('name', ''),
+            "raffle_type": entry.raffle_type,
+            "price": entry.price,
+            "entries": entry.entries,
+            "stripe_session_id": checkout_session.id,
+            "status": "pending",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        await db.raffle_entries.insert_one(raffle_entry)
+        
+        return {"checkout_url": checkout_session.url}
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.get("/raffle/entries")
+async def get_raffle_entries(request: Request):
+    """Get raffle entries for current user"""
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    entries = await db.raffle_entries.find(
+        {"user_id": user['user_id']},
+        {"_id": 0}
+    ).to_list(100)
+    
+    return entries
+
+@api_router.get("/raffle/stats")
+async def get_raffle_stats():
+    """Get raffle statistics"""
+    total_entries = await db.raffle_entries.count_documents({"status": "completed"})
+    max_entries = 500
+    
+    return {
+        "total_entries": total_entries,
+        "max_entries": max_entries,
+        "entries_remaining": max_entries - total_entries,
+        "draw_date": "2026-05-01"
+    }
+
 # ============== SEED DATA ==============
 
 @api_router.post("/cleanup-categories")
