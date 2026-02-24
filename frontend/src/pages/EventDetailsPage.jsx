@@ -31,21 +31,20 @@ const formatDate = (dateStr) => {
   };
 };
 
-const TicketCard = ({ ticket, onSelect, selected }) => {
+const TicketCard = ({ ticket, onSelect, selected, onBuyNow, purchasing }) => {
   const category = categoryConfig[ticket.category] || categoryConfig.cat1;
   
   return (
     <div
       data-testid={`ticket-${ticket.ticket_id}`}
-      onClick={() => onSelect(ticket)}
-      className={`cursor-pointer p-4 rounded-xl border transition-all duration-200 ${
+      className={`p-4 rounded-xl border transition-all duration-200 ${
         selected 
-          ? 'border-purple-500 bg-purple-500/10' 
+          ? 'border-cyan-500 bg-cyan-500/10' 
           : 'border-white/5 bg-zinc-900/50 hover:border-white/20'
       }`}
     >
-      <div className="flex items-start justify-between">
-        <div>
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex-1 cursor-pointer" onClick={() => onSelect(ticket)}>
           <div className="flex items-center gap-2 mb-2">
             <div className={`w-3 h-3 rounded-full ${category.color}`} />
             <span className="font-semibold">{category.name}</span>
@@ -61,17 +60,25 @@ const TicketCard = ({ ticket, onSelect, selected }) => {
             </div>
           </div>
         </div>
-        <div className="text-right">
-          <div className="text-2xl font-bold">€{ticket.price.toFixed(0)}</div>
-          {ticket.price < ticket.original_price && (
-            <div className="text-sm text-zinc-500 line-through">€{ticket.original_price}</div>
-          )}
-          {selected && (
-            <div className="mt-2 flex items-center gap-1 text-purple-400 text-sm">
-              <Check className="w-4 h-4" />
-              Selected
-            </div>
-          )}
+        <div className="flex flex-col items-end gap-3">
+          <div className="text-right">
+            <div className="text-2xl font-bold text-white">€{ticket.price.toFixed(0)}</div>
+            {ticket.price < ticket.original_price && (
+              <div className="text-sm text-zinc-500 line-through">€{ticket.original_price}</div>
+            )}
+          </div>
+          <Button
+            onClick={(e) => {
+              e.stopPropagation();
+              onBuyNow(ticket);
+            }}
+            disabled={purchasing}
+            className="btn-crystal px-4 py-2 text-sm font-semibold flex items-center gap-2 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+            data-testid={`buy-now-${ticket.ticket_id}`}
+          >
+            <CreditCard className="w-4 h-4" />
+            {purchasing ? 'Processing...' : 'Buy Now'}
+          </Button>
         </div>
       </div>
     </div>
