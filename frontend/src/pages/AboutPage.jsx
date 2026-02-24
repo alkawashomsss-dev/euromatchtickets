@@ -135,22 +135,28 @@ const AboutPage = () => {
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-purple-400 mb-2">100+</div>
-              <div className="text-zinc-400">Live Events</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">100%</div>
-              <div className="text-zinc-400">Buyer Protected</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">20+</div>
-              <div className="text-zinc-400">Countries Served</div>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-4xl md:text-5xl font-bold text-purple-400 mb-2">
-                24/7
+              <div className="w-16 h-16 mx-auto mb-3 rounded-2xl bg-purple-500/20 flex items-center justify-center">
+                <Ticket className="w-8 h-8 text-purple-400" />
               </div>
-              <div className="text-zinc-400">Customer Support</div>
+              <div className="text-zinc-300 font-medium">Live Events</div>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-3 rounded-2xl bg-emerald-500/20 flex items-center justify-center">
+                <Shield className="w-8 h-8 text-emerald-400" />
+              </div>
+              <div className="text-zinc-300 font-medium">Buyer Protected</div>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-3 rounded-2xl bg-blue-500/20 flex items-center justify-center">
+                <Globe className="w-8 h-8 text-blue-400" />
+              </div>
+              <div className="text-zinc-300 font-medium">Europe-Wide</div>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-3 rounded-2xl bg-cyan-500/20 flex items-center justify-center">
+                <Users className="w-8 h-8 text-cyan-400" />
+              </div>
+              <div className="text-zinc-300 font-medium">24/7 Support</div>
             </div>
           </div>
         </div>
