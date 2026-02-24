@@ -23,6 +23,7 @@ import ContactPage from "./pages/ContactPage";
 import RefundPolicyPage from "./pages/RefundPolicyPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import PaymentInfoPage from "./pages/PaymentInfoPage";
+import BuyerProtectionPage from "./pages/BuyerProtectionPage";
 import BlogPage from "./pages/BlogPage";
 import BlogArticlePage from "./pages/BlogArticlePage";
 import ReviewsPage from "./pages/ReviewsPage";
