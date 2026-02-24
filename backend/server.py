@@ -1548,17 +1548,17 @@ async def create_raffle_checkout(entry: RaffleEntry, request: Request):
             metadata={
                 'type': 'raffle',
                 'raffle_type': entry.raffle_type,
-                'user_id': user['user_id'],
-                'user_email': user['email']
+                'user_id': user.user_id,
+                'user_email': user.email
             }
         )
         
         # Save raffle entry to database
         raffle_entry = {
             "entry_id": str(uuid.uuid4())[:12],
-            "user_id": user['user_id'],
-            "user_email": user['email'],
-            "user_name": user.get('name', ''),
+            "user_id": user.user_id,
+            "user_email": user.email,
+            "user_name": user.name if user.name else '',
             "raffle_type": entry.raffle_type,
             "price": entry.price,
             "entries": entry.entries,
@@ -1581,7 +1581,7 @@ async def get_raffle_entries(request: Request):
         raise HTTPException(status_code=401, detail="Not authenticated")
     
     entries = await db.raffle_entries.find(
-        {"user_id": user['user_id']},
+        {"user_id": user.user_id},
         {"_id": 0}
     ).to_list(100)
     
