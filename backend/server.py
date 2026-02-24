@@ -710,18 +710,23 @@ async def get_my_alerts(request: Request):
         {"_id": 0}
     ).sort("created_at", -1).to_list(100)
     
-    # Add event info
-    for alert in alerts:
-        event = await db.events.find_one({"event_id": alert["event_id"]}, {"_id": 0})
-        alert["event"] = event
+    if alerts:
+        # Batch fetch events
+        event_ids = list(set(a["event_id"] for a in alerts))
+        events = await db.events.find({"event_id": {"$in": event_ids}}, {"_id": 0}).to_list(None)
+        events_map = {e["event_id"]: e for e in events}
         
-        # Update current lowest
-        lowest_ticket = await db.tickets.find_one(
-            {"event_id": alert["event_id"], "status": "available"},
-            {"_id": 0, "price": 1},
-            sort=[("price", 1)]
-        )
-        alert["current_lowest"] = lowest_ticket["price"] if lowest_ticket else None
+        # Batch fetch lowest prices using aggregation
+        pipeline = [
+            {"$match": {"event_id": {"$in": event_ids}, "status": "available"}},
+            {"$group": {"_id": "$event_id", "lowest_price": {"$min": "$price"}}}
+        ]
+        lowest_prices = await db.tickets.aggregate(pipeline).to_list(None)
+        prices_map = {p["_id"]: p["lowest_price"] for p in lowest_prices}
+        
+        for alert in alerts:
+            alert["event"] = events_map.get(alert["event_id"])
+            alert["current_lowest"] = prices_map.get(alert["event_id"])
     
     return alerts
 
