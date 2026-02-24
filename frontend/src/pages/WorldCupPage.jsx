@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../App";
-import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Clock } from "lucide-react";
+import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Clock, Sparkles, CreditCard } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
@@ -25,20 +25,22 @@ const WorldCupPage = () => {
     fetchWorldCupEvents();
   }, []);
 
-  // World Cup Schema for SEO
+  // Enhanced World Cup Schema for SEO with Prices
   const worldCupSchema = {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
-    "name": "FIFA World Cup 2026",
-    "description": "Buy FIFA World Cup 2026 tickets for all matches. Opening ceremony, group stage, knockout rounds, and final. Verified tickets with 100% buyer guarantee.",
+    "name": "FIFA World Cup 2026 Tickets - Buy Now",
+    "description": "Buy FIFA World Cup 2026 tickets from €149. VIP packages from €999. Opening ceremony, group stage, knockout rounds, semi-finals, and final. Official verified tickets with 100% buyer guarantee. Instant QR code delivery.",
     "startDate": "2026-06-11",
     "endDate": "2026-07-19",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "location": {
       "@type": "Place",
       "name": "Multiple Venues - USA, Canada, Mexico",
       "address": {
         "@type": "PostalAddress",
-        "addressCountry": ["USA", "Canada", "Mexico"]
+        "addressCountry": "US"
       }
     },
     "organizer": {
@@ -46,14 +48,66 @@ const WorldCupPage = () => {
       "name": "FIFA",
       "url": "https://www.fifa.com"
     },
-    "offers": {
-      "@type": "AggregateOffer",
-      "url": "https://euromatchtickets.com/world-cup-2026",
-      "priceCurrency": "EUR",
-      "lowPrice": "150",
-      "highPrice": "15000",
-      "availability": "https://schema.org/InStock"
-    }
+    "performer": {
+      "@type": "SportsTeam",
+      "name": "32 National Teams"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Category 3 Tickets",
+        "url": "https://euromatchtickets.com/world-cup-2026",
+        "priceCurrency": "EUR",
+        "price": "149",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01"
+      },
+      {
+        "@type": "Offer",
+        "name": "Category 2 Tickets",
+        "url": "https://euromatchtickets.com/world-cup-2026",
+        "priceCurrency": "EUR",
+        "price": "299",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01"
+      },
+      {
+        "@type": "Offer",
+        "name": "Category 1 Tickets",
+        "url": "https://euromatchtickets.com/world-cup-2026",
+        "priceCurrency": "EUR",
+        "price": "449",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01"
+      },
+      {
+        "@type": "Offer",
+        "name": "VIP Silver Tickets",
+        "url": "https://euromatchtickets.com/world-cup-2026",
+        "priceCurrency": "EUR",
+        "price": "999",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01"
+      },
+      {
+        "@type": "Offer",
+        "name": "VIP Gold Tickets",
+        "url": "https://euromatchtickets.com/world-cup-2026",
+        "priceCurrency": "EUR",
+        "price": "1499",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01"
+      },
+      {
+        "@type": "Offer",
+        "name": "VIP Platinum Tickets",
+        "url": "https://euromatchtickets.com/world-cup-2026",
+        "priceCurrency": "EUR",
+        "price": "1899",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01"
+      }
+    ]
   };
 
   const formatDate = (dateStr) => {
