@@ -200,12 +200,15 @@ const PrivacyPolicyPage = () => {
             <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
               <p className="text-zinc-400">
                 <strong className="text-white">Email:</strong>{" "}
-                <a href="mailto:privacy@euromatchtickets.com" className="text-purple-400 hover:underline">
-                  privacy@euromatchtickets.com
+                <a href="mailto:Alkawashoms@gmail.com" className="text-purple-400 hover:underline">
+                  Alkawashoms@gmail.com
                 </a>
               </p>
               <p className="text-zinc-400 mt-2">
-                <strong className="text-white">Address:</strong> Friedrichstraße 123, 10117 Berlin, Germany
+                <strong className="text-white">Address:</strong> Fürstenriederstr. 33, 80686 München, Germany
+              </p>
+              <p className="text-zinc-400 mt-2">
+                <strong className="text-white">Phone:</strong> +49 178 130 4137
               </p>
               <p className="text-zinc-400 mt-4 text-sm">
                 We will respond to your request within 30 days.
