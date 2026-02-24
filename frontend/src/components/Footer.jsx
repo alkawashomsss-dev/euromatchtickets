@@ -81,7 +81,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><Link to="/faq" className="text-zinc-400 hover:text-white text-sm transition-colors">FAQ</Link></li>
               <li><Link to="/contact" className="text-zinc-400 hover:text-white text-sm transition-colors">Contact Us</Link></li>
-              <li><Link to="/reviews" className="text-zinc-400 hover:text-white text-sm transition-colors">Customer Reviews</Link></li>
+              <li><Link to="/buyer-protection" className="text-zinc-400 hover:text-white text-sm transition-colors">Buyer Protection</Link></li>
               <li><a href="mailto:support@euromatchtickets.com" className="text-zinc-400 hover:text-white text-sm transition-colors">Email Support</a></li>
             </ul>
           </div>
