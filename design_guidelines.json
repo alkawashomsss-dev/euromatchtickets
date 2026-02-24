@@ -1,141 +1,141 @@
 {
-  "identity": {
-    "name": "E1 - The Anti-AI Designer",
-    "mission": "Create a visceral, stadium-like football marketplace. Reject generic e-commerce templates. Design for the fan's pulse.",
-    "core_principles": [
-      "The Tunnel Effect: Users enter from darkness into light (Hero -> Content).",
-      "Pitch Perfect: Green is sacred. Use it only for 'Success' and 'Pitch' elements.",
-      "Floodlight Focus: High contrast white text on dark backgrounds. No grey soup.",
-      "Tactile Tickets: Digital tickets should look like collectibles (holographic foils, textures)."
-    ]
-  },
-  "visual_language": {
-    "theme": "dark",
-    "colors": {
-      "background": {
-        "default": "#020617",
-        "surface": "#0F172A",
-        "card": "#1E293B",
-        "overlay": "rgba(2, 6, 23, 0.8)"
-      },
-      "text": {
-        "primary": "#F8FAFC",
-        "secondary": "#94A3B8",
-        "muted": "#475569",
-        "accent": "#38BDF8"
-      },
-      "brand": {
-        "primary": "#FFFFFF",
-        "secondary": "#22C55E",
-        "accent": "#F59E0B",
-        "danger": "#EF4444"
-      },
-      "gradients": {
-        "hero": "linear-gradient(to top, #020617 10%, transparent 100%)",
-        "gold_shine": "linear-gradient(135deg, #F59E0B 0%, #FDE68A 50%, #D97706 100%)",
-        "pitch_glow": "radial-gradient(circle at center, rgba(34, 197, 94, 0.15) 0%, transparent 70%)"
-      }
+  "design_system": {
+    "identity": {
+      "name": "EuroMatch Tickets - Crystal Edition",
+      "tone": "Luxurious, Electric, Trustworthy, Cinematic",
+      "visual_metaphor": "A VIP Box at a Night Stadium - Glass, Lights, Darkness, exclusivity"
     },
     "typography": {
-      "font_family": {
-        "headings": "\"Barlow Condensed\", \"Tajawal\", sans-serif",
-        "body": "\"Manrope\", \"Tajawal\", sans-serif",
-        "mono": "\"JetBrains Mono\", monospace"
+      "headings": {
+        "family": "Tenor Sans, sans-serif",
+        "weight": "400",
+        "usage": "Hero titles, Section headers, Artist names",
+        "className": "font-display"
+      },
+      "body": {
+        "family": "Manrope, sans-serif",
+        "weight": "400, 500, 600",
+        "usage": "UI text, descriptions, prices",
+        "className": "font-body"
+      },
+      "accents": {
+        "family": "Unbounded, sans-serif",
+        "usage": "Tags, countdowns, price badges",
+        "className": "font-accent"
       },
       "scale": {
-        "h1": "text-6xl md:text-8xl font-black uppercase tracking-tighter",
-        "h2": "text-4xl md:text-6xl font-bold uppercase tracking-tight",
-        "h3": "text-2xl md:text-3xl font-bold uppercase",
-        "body_lg": "text-lg md:text-xl font-medium",
-        "body": "text-base font-normal",
-        "caption": "text-sm font-medium tracking-wide uppercase"
+        "h1": "text-5xl md:text-7xl tracking-tight leading-none uppercase",
+        "h2": "text-3xl md:text-5xl tracking-tight",
+        "h3": "text-2xl md:text-3xl",
+        "body": "text-base md:text-lg leading-relaxed text-zinc-400"
       }
     },
-    "borders": {
-      "radius": {
-        "default": "0px",
-        "card": "12px",
-        "button": "2px"
+    "colors": {
+      "palette": {
+        "background": {
+          "base": "#09090b",
+          "surface": "#121217",
+          "highlight": "#18181b"
+        },
+        "primary": {
+          "main": "#ffffff",
+          "dim": "#a1a1aa",
+          "inverse": "#000000"
+        },
+        "accent": {
+          "cyan": "#22d3ee",
+          "cyan_glow": "rgba(34, 211, 238, 0.5)",
+          "purple": "#c084fc",
+          "gold": "#fbbf24",
+          "gold_dim": "#b45309"
+        },
+        "status": {
+          "success": "#34d399",
+          "error": "#f87171"
+        }
       },
-      "width": "1px",
-      "color": "rgba(255, 255, 255, 0.08)"
+      "gradients": {
+        "stadium_glow": "radial-gradient(circle at center, rgba(34, 211, 238, 0.15) 0%, transparent 70%)",
+        "vip_gold": "linear-gradient(135deg, #fbbf24 0%, #b45309 100%)",
+        "glass_border": "linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0.05))"
+      }
     },
-    "shadows": {
-      "card": "0 0 0 1px rgba(255,255,255,0.05), 0 10px 30px -10px rgba(0,0,0,0.5)",
-      "glow": "0 0 20px rgba(255, 255, 255, 0.15)"
+    "surfaces": {
+      "glass_panel": "bg-zinc-950/40 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]",
+      "crystal_card": "bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-md border border-white/10 hover:border-white/30 transition-all duration-500",
+      "neon_border": "box-shadow: 0 0 10px rgba(34, 211, 238, 0.3), inset 0 0 5px rgba(34, 211, 238, 0.1)"
+    },
+    "layout": {
+      "spacing": {
+        "section_gap": "py-24 md:py-32",
+        "element_gap": "gap-8"
+      },
+      "grid_systems": {
+        "bento_events": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6",
+        "hero_tetris": "grid grid-cols-1 md:grid-cols-12 gap-4 h-[80vh]"
+      }
+    },
+    "motion": {
+      "transitions": "transition-all duration-500 cubic-bezier(0.22, 1, 0.36, 1)",
+      "hover_effects": "hover:scale-[1.02] hover:shadow-2xl hover:shadow-cyan-500/20",
+      "scroll_reveal": "opacity-0 translate-y-8"
     }
   },
   "assets": {
     "images": {
-      "hero_background": "https://images.pexels.com/photos/35985591/pexels-photo-35985591.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "stadium_aerial": "https://images.pexels.com/photos/12201296/pexels-photo-12201296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "match_action": "https://images.unsplash.com/photo-1674941063377-69c61db07740?crop=entropy&cs=srgb&fm=jpg&q=85",
-      "fans_cheering": "https://images.pexels.com/photos/28922125/pexels-photo-28922125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "stadium_lights": "https://images.unsplash.com/photo-1708025608571-a9d7d7c78aa9?crop=entropy&cs=srgb&fm=jpg&q=85"
-    },
-    "logos": {
-      "real_madrid": "https://crests.football-data.org/86.svg",
-      "barcelona": "https://crests.football-data.org/81.svg",
-      "man_city": "https://crests.football-data.org/65.svg",
-      "liverpool": "https://crests.football-data.org/64.svg",
-      "arsenal": "https://crests.football-data.org/57.svg",
-      "bayern": "https://crests.football-data.org/5.svg",
-      "psg": "https://crests.football-data.org/524.svg",
-      "champions_league": "https://upload.wikimedia.org/wikipedia/commons/e/e9/UEFA_Champions_League_logo_2.svg",
-      "premier_league": "https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg",
-      "la_liga": "https://upload.wikimedia.org/wikipedia/commons/0/0f/LaLiga_logo_2023.svg"
+      "hero_bg": "https://images.unsplash.com/photo-1735587804724-5d9511bce0cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxjcm93ZGVkJTIwZm9vdGJhbGwlMjBzdGFkaXVtJTIwbmlnaHQlMjBsaWdodHMlMjBsdXh1cnl8ZW58MHx8fHwxNzcxOTI5Mzk4fDA&ixlib=rb-4.1.0&q=85",
+      "concert_bg": "https://images.unsplash.com/photo-1760539619529-cfd85a2a9cfd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHw0fHxtdXNpYyUyMGNvbmNlcnQlMjBzdGFnZSUyMGxpZ2h0cyUyMGNyb3dkJTIwbHV4dXJ5fGVufDB8fHx8MTc3MTkyOTM5OXww&ixlib=rb-4.1.0&q=85",
+      "world_cup_trophy": "https://images.unsplash.com/photo-1637203725134-1bbdcc17bb91?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwzfHxGSUZBJTIwV29ybGQlMjBDdXAlMjB0cm9waHklMjAyMDI2JTIwY29uY2VwdHxlbnwwfHx8fDE3NzE5Mjk0MTJ8MA&ixlib=rb-4.1.0&q=85",
+      "bruno_mars": "https://images.unsplash.com/photo-1769755012867-920ce0d8c7f4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwxfHxCcnVubyUyME1hcnMlMjBjb25jZXJ0JTIwcGVyZm9ybWFuY2V8ZW58MHx8fHwxNzcxOTI5NDEwfDA&ixlib=rb-4.1.0&q=85",
+      "the_weeknd": "https://images.unsplash.com/photo-1766471870102-dcb1fe88e8cc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxUaGUlMjBXZWVrbmQlMjBjb25jZXJ0JTIwcGVyZm9ybWFuY2V8ZW58MHx8fHwxNzcxOTI5NDEyfDA&ixlib=rb-4.1.0&q=85"
     },
     "icons": {
       "library": "lucide-react",
-      "style": "stroke-width-1.5"
-    }
-  },
-  "layout_strategy": {
-    "container": "max-w-[1440px] mx-auto px-4 md:px-8",
-    "grid_system": {
-      "bento_hero": "grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[600px]",
-      "match_list": "flex flex-col gap-3",
-      "stadium_view": "grid grid-cols-1 lg:grid-cols-3 gap-8"
-    },
-    "spacing": {
-      "section_gap": "py-20 md:py-32",
-      "card_padding": "p-6 md:p-8"
+      "style": "stroke-1 text-white/80"
     }
   },
   "components": {
-    "Button": {
-      "default": "bg-white text-black hover:bg-slate-200 font-bold uppercase tracking-wide rounded-sm h-12 px-8 transition-transform active:scale-95",
-      "outline": "border border-white/20 hover:border-white text-white bg-transparent font-bold uppercase tracking-wide rounded-sm h-12 px-8",
-      "ghost": "text-slate-400 hover:text-white hover:bg-white/5 uppercase font-medium tracking-wide"
+    "Navbar": {
+      "path": "/app/frontend/src/components/layout/Navbar.jsx",
+      "style": "fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/5",
+      "elements": ["Logo (Text: EURO MATCH)", "Search (Glass Input)", "Auth Buttons (Glass/Solid)"]
     },
-    "Card": {
-      "base": "bg-slate-900/50 backdrop-blur-md border border-white/5 rounded-xl overflow-hidden hover:border-white/20 transition-colors duration-300",
-      "interactive": "group cursor-pointer relative hover:-translate-y-1 transition-all duration-300"
+    "Hero": {
+      "path": "/app/frontend/src/components/home/Hero.jsx",
+      "style": "relative h-[85vh] flex items-center justify-center overflow-hidden",
+      "features": ["Video/Image Background", "Gradient Overlay (Bottom)", "Central Search Bar (Floating Glass)", "Animated Text"]
     },
-    "Input": {
-      "base": "bg-slate-950 border-slate-800 text-white placeholder:text-slate-600 focus:border-white/50 focus:ring-0 rounded-lg h-12"
+    "EventCard": {
+      "path": "/app/frontend/src/components/ui/EventCard.jsx",
+      "style": "group relative overflow-hidden rounded-2xl bg-zinc-900/40 border border-white/10 hover:border-cyan-400/50 transition-all duration-300",
+      "interactions": ["Image Scale on Hover", "Glow Effect on Border", "Button Slide Up"]
     },
-    "SeatMap": {
-      "library": "react-seat-toolkit (or custom SVG wrapper)",
-      "style": "The map must look technical and architectural. Dark mode map. Seats are dots. VIP areas are gold polygons."
+    "ArtistLanding": {
+      "path": "/app/frontend/src/pages/ArtistPage.jsx",
+      "style": "Immersive header with artist portrait, scrolling discography/dates, neon accent colors matching artist vibe"
     }
   },
-  "animations": {
-    "page_transition": {
-      "initial": { "opacity": 0, "y": 20 },
-      "animate": { "opacity": 1, "y": 0 },
-      "exit": { "opacity": 0, "y": -20 },
-      "transition": { "duration": 0.4, "ease": [0.22, 1, 0.36, 1] }
+  "pages": {
+    "Home": {
+      "sections": ["Hero", "Trending Events (Horizontal Scroll)", "Categories (Bento Grid)", "Trust Badges", "World Cup Teaser"]
     },
-    "hover_lift": "hover:-translate-y-1 transition-transform duration-300",
-    "shimmer": "animate-pulse bg-slate-800"
+    "Events": {
+      "layout": "Sidebar Filters (Glass Panel) + Grid Results",
+      "features": ["Date Picker", "Price Range", "Category Toggle"]
+    },
+    "Raffle": {
+      "theme": "Gold/Luxury",
+      "elements": ["Countdown Timer", "Golden Ticket Visual", "Enter Form"]
+    }
   },
   "universal_guidelines": [
-    "NEVER use gradients on text. It reduces readability in high-glare environments (like outdoors).",
-    "ALWAYS use high-contrast images. If an image is too bright, apply a 40% black overlay.",
-    "Data density is good for the 'Match List', but 'Hero' sections must be minimal.",
-    "Use 'Barlow Condensed' for all numbers (prices, dates, scores). It looks like a scoreboard.",
-    "Arabic RTL support is mandatory. Ensure 'dir=rtl' is set on the root when language is AR.",
-    "Do not use generic 'Lorem Ipsum'. Use real team names and stadium names in mock data."
-  ]
+    "NEVER use generic gradients. Use noise textures + radial gradients for depth.",
+    "Text hierarchy: Headings must be uppercase and tracked tight. Body text relaxed.",
+    "Inputs and Forms: Use 'fluted glass' effect - semi-transparent with blur.",
+    "Images: Always add a subtle vignette to blend them into the dark background.",
+    "Buttons: Avoid default rounded-md. Use full pill shapes (rounded-full) or sharp edges (rounded-none) for 'Ticket' feel.",
+    "Use 'sonner' for toasts.",
+    "All interactive elements must have data-testid."
+  ],
+  "instructions_to_main_agent": "Refactor the existing frontend to match this Crystal/Luxury aesthetic. Start by installing the new fonts (Tenor Sans, Manrope, Unbounded). Replace the standard Tailwind colors with the new palette in tailwind.config.js. Update the global CSS for base styles. Then, rewrite the main layout and homepage components to use the glassmorphism and bento grid strategies. Ensure the 'Raffle' page feels distinctively 'Golden' and premium."
 }
