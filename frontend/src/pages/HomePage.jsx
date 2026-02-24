@@ -654,18 +654,19 @@ const HomePage = () => {
             </p>
           </div>
 
-          {/* Trust Stats - Realistic Numbers */}
+          {/* Trust Stats - Icons Only */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             {[
-              { number: "100+", label: "Live Events", icon: Ticket, color: "text-purple-400" },
-              { number: "100%", label: "Buyer Protected", icon: Shield, color: "text-emerald-400" },
-              { number: "20+", label: "Countries", icon: Globe, color: "text-cyan-400" },
-              { number: "24/7", label: "Live Support", icon: Headphones, color: "text-blue-400" },
+              { label: "Live Events", icon: Ticket, color: "text-purple-400", bg: "bg-purple-500/20" },
+              { label: "Buyer Protected", icon: Shield, color: "text-emerald-400", bg: "bg-emerald-500/20" },
+              { label: "Europe-Wide", icon: Globe, color: "text-cyan-400", bg: "bg-cyan-500/20" },
+              { label: "Live Support", icon: Headphones, color: "text-blue-400", bg: "bg-blue-500/20" },
             ].map((stat, idx) => (
               <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 text-center">
-                <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
-                <p className="text-3xl font-bold text-white mb-1">{stat.number}</p>
-                <p className="text-sm text-zinc-400">{stat.label}</p>
+                <div className={`w-12 h-12 ${stat.bg} rounded-xl flex items-center justify-center mx-auto mb-3`}>
+                  <stat.icon className={`w-6 h-6 ${stat.color}`} />
+                </div>
+                <p className="text-sm text-zinc-300 font-medium">{stat.label}</p>
               </div>
             ))}
           </div>
