@@ -36,14 +36,15 @@ Build a comprehensive ticket marketplace for European events:
   - `/guns-n-roses-tour-2026`
   - `/bad-bunny-london-2026`
 
-### Trust & Legal Pages ✅ (NEW)
+### Trust & Legal Pages ✅
+- `/buyer-protection` - **NEW** Comprehensive buyer guarantee page
 - `/privacy-policy` - GDPR compliant privacy policy
 - `/payment-info` - Payment methods and security info
 - `/terms` - Terms of Service
 - `/refund-policy` - Refund policy
 - `/contact` - Contact page with form
 
-### Multi-Language Support ✅ (NEW)
+### Multi-Language Support ✅
 16 languages supported:
 | Europe | Americas | Middle East | Asia |
 |--------|----------|-------------|------|
@@ -57,21 +58,43 @@ Build a comprehensive ticket marketplace for European events:
 | 🇵🇱 Polski | | | |
 | 🇹🇷 Türkçe | | | |
 
-### Homepage Improvements ✅ (NEW)
+### Homepage Improvements ✅
 - FIFA World Cup 2026 featured hero section
 - Video background (stadium atmosphere)
 - "BUY WORLD CUP TICKETS" prominent CTA
-- Trust badges (Verified, Secure, Instant, 24/7 Support)
-- Statistics: 50K+ Fans, 1000+ Events, 4.9 Rating, €2M+ Sold
+- **Realistic statistics:** 100+ Events, 20+ Countries, 100% Protected, 24/7 Support
+- Trust badges with links to protection pages
+
+### Event Card Features ✅ (NEW)
+- **Live Inventory Counter:** Shows available tickets in real-time
+- **Limited Availability Badge:** Red badge when ≤10 tickets left
+- **Selling Fast Badge:** Orange badge when ≤25 tickets left
+- **Countdown Timer:** Shows days/hours until event (for events within 30 days)
 
 ### AI Features
 - AI Live Chat support (GPT-4o powered)
 - AI-generated event descriptions
 
-### Marketing Assets ✅ (NEW)
+### Marketing Assets ✅
 - Google Ads promotional video: `/api/static/ad_video_landscape.mp4`
-- Professional ad images generated
+- 6 Professional ad images (landscape, square, vertical)
 - Ad copy and keywords provided
+
+---
+
+## Compliance Improvements ✅
+
+### Ad Platform Compliance
+1. **Removed fake statistics** - No more "50K+ Happy Fans" or "€2M+ Tickets Sold"
+2. **Buyer Protection page** - Required for Google/Meta Ads approval
+3. **Clear refund policy** - What's covered vs not covered
+4. **Trust indicators** - Real, verifiable claims only
+
+### Legal Compliance
+- GDPR compliant Privacy Policy
+- Clear Terms of Service
+- Transparent Payment Information
+- Buyer Protection Guarantee explained
 
 ---
 
@@ -83,7 +106,7 @@ Build a comprehensive ticket marketplace for European events:
 ### P1 - High Priority
 - [ ] "Sell Your Tickets" page - Allow users to list tickets
 - [ ] Test Resend email notifications end-to-end
-- [ ] Verify €0.50 test ticket payment works
+- [ ] Replace stock images with licensed/royalty-free images
 
 ### P2 - Medium Priority  
 - [ ] Google Analytics integration - Needs Web Stream ID (G-XXXX)
@@ -108,13 +131,13 @@ Build a comprehensive ticket marketplace for European events:
 ├── frontend/
 │   ├── src/
 │   │   ├── pages/
-│   │   │   ├── HomePage.jsx
-│   │   │   ├── WorldCupPage.jsx
-│   │   │   ├── PrivacyPolicyPage.jsx  # NEW
-│   │   │   ├── PaymentInfoPage.jsx    # NEW
+│   │   │   ├── HomePage.jsx           # Updated with realistic stats
+│   │   │   ├── BuyerProtectionPage.jsx # NEW - Guarantee page
+│   │   │   ├── PrivacyPolicyPage.jsx   
+│   │   │   ├── PaymentInfoPage.jsx    
 │   │   │   └── ...
 │   │   ├── components/
-│   │   │   ├── LanguageSwitcher.jsx   # Updated 16 languages
+│   │   │   ├── LanguageSwitcher.jsx   # 16 languages
 │   │   │   ├── AIChatWidget.jsx
 │   │   │   └── ...
 │   │   └── i18n/                      # Translations
@@ -139,11 +162,12 @@ Build a comprehensive ticket marketplace for European events:
 ## Last Updated
 February 24, 2026
 
-## Session Summary
-- ✅ Created Privacy Policy page
-- ✅ Created Payment Info page
-- ✅ Added 16 language support
-- ✅ Improved homepage with World Cup 2026 hero
-- ✅ Generated Google Ads video
-- ✅ Generated 6 promotional images
-- ✅ Updated Footer with legal links
+## Session Summary (Latest)
+- ✅ Changed statistics to realistic numbers (no legal risk)
+- ✅ Created Buyer Protection page with Triple Guarantee
+- ✅ Added Live Inventory Counter to event cards
+- ✅ Added Limited Availability badges (Only X left!)
+- ✅ Added Selling Fast badges
+- ✅ Added Countdown Timer to events
+- ✅ Updated Trust section with links to protection pages
+- ✅ Updated Footer with Buyer Protection link
