@@ -236,6 +236,17 @@ class SellerPayout(BaseModel):
 
 # ============== AUTH HELPERS ==============
 
+# Health check endpoint for Kubernetes
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Kubernetes liveness/readiness probes"""
+    return {"status": "healthy", "service": "euromatchtickets-api"}
+
+@app.get("/api/health")
+async def api_health_check():
+    """API Health check endpoint"""
+    return {"status": "healthy", "service": "euromatchtickets-api"}
+
 async def get_current_user(request: Request) -> Optional[User]:
     """Get current user from session token"""
     session_token = request.cookies.get("session_token")
