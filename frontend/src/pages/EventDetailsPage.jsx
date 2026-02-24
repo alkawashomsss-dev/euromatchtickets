@@ -4,7 +4,7 @@ import axios from "axios";
 import { API, useAuth } from "../App";
 import { 
   Calendar, MapPin, Ticket, Shield, Star, Users, 
-  ChevronRight, Info, Check, Music, Trophy, FileText
+  ChevronRight, Info, Check, Music, Trophy, FileText, CreditCard
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -13,9 +13,9 @@ import VenueSeatMap from "../components/VenueSeatMap";
 import SEOHead from "../components/SEOHead";
 
 const categoryConfig = {
-  vip: { name: "VIP", color: "bg-amber-500", textColor: "text-amber-400", description: "Premium experience with best views" },
+  vip: { name: "VIP", color: "bg-purple-500", textColor: "text-purple-400", description: "Premium experience with best views" },
   floor: { name: "Floor", color: "bg-pink-500", textColor: "text-pink-400", description: "Close to the stage" },
-  cat1: { name: "Category 1", color: "bg-blue-500", textColor: "text-blue-400", description: "Lower tier, excellent view" },
+  cat1: { name: "Category 1", color: "bg-cyan-500", textColor: "text-cyan-400", description: "Lower tier, excellent view" },
   cat2: { name: "Category 2", color: "bg-emerald-500", textColor: "text-emerald-400", description: "Mid-tier, great atmosphere" },
   cat3: { name: "Category 3", color: "bg-slate-400", textColor: "text-slate-400", description: "Upper tier, full venue view" },
   standing: { name: "Standing", color: "bg-slate-400", textColor: "text-slate-400", description: "General admission standing" }
