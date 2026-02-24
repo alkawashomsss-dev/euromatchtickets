@@ -243,9 +243,9 @@ const HomePage = () => {
             loop 
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&q=80"
+            poster="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1920"
           >
-            <source src="https://cdn.coverr.co/videos/coverr-soccer-stadium-with-fans-3284/1080p.mp4" type="video/mp4" />
+            <source src="https://videos.pexels.com/video-files/2657301/2657301-uhd_2560_1440_24fps.mp4" type="video/mp4" />
           </video>
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/70 to-[#09090b]/40" />
