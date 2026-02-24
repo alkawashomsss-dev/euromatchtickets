@@ -83,7 +83,7 @@ const PriceAlertsPage = () => {
                     priceReached 
                       ? 'border-emerald-500/50 bg-emerald-500/5' 
                       : alert.status === 'triggered'
-                      ? 'border-amber-500/30 opacity-60'
+                      ? 'border-purple-500/30 opacity-60'
                       : 'border-white/5'
                   }`}
                 >
@@ -110,7 +110,7 @@ const PriceAlertsPage = () => {
                         <Badge 
                           variant="outline" 
                           className={alert.status === 'triggered' 
-                            ? 'border-amber-500/50 text-amber-400' 
+                            ? 'border-purple-500/50 text-purple-400' 
                             : priceReached 
                             ? 'border-emerald-500/50 text-emerald-400'
                             : 'border-zinc-700 text-zinc-400'

@@ -139,10 +139,10 @@ const OwnerDashboard = () => {
 
           <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center">
-                <Wallet className="w-6 h-6 text-amber-400" />
+              <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                <Wallet className="w-6 h-6 text-purple-400" />
               </div>
-              <Badge className="bg-amber-500/20 text-amber-400">Pending</Badge>
+              <Badge className="bg-purple-500/20 text-purple-400">Pending</Badge>
             </div>
             <div className="text-3xl font-bold">€{dashboard?.payouts?.pending_amount?.toLocaleString() || 0}</div>
             <p className="text-zinc-500 text-sm mt-1">Pending Payouts ({dashboard?.payouts?.pending_count || 0})</p>
@@ -163,8 +163,8 @@ const OwnerDashboard = () => {
         {/* Orders Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-zinc-900/50 border border-white/5 rounded-xl p-4 flex items-center gap-4">
-            <div className="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
-              <Clock className="w-5 h-5 text-yellow-400" />
+            <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+              <Clock className="w-5 h-5 text-cyan-400" />
             </div>
             <div>
               <div className="text-2xl font-bold">{dashboard?.orders?.pending || 0}</div>
@@ -228,7 +228,7 @@ const OwnerDashboard = () => {
                       <p className="font-bold">€{order.total_amount?.toFixed(2)}</p>
                       <Badge className={
                         order.status === "completed" ? "bg-emerald-500/20 text-emerald-400" :
-                        order.status === "pending" ? "bg-yellow-500/20 text-yellow-400" :
+                        order.status === "pending" ? "bg-cyan-500/20 text-cyan-400" :
                         "bg-red-500/20 text-red-400"
                       }>
                         {order.status}
@@ -261,7 +261,7 @@ const OwnerDashboard = () => {
                         </Badge>
                         <Badge className={
                           seller.kyc_status === "verified" ? "bg-emerald-500/20 text-emerald-400" :
-                          seller.kyc_status === "pending" ? "bg-yellow-500/20 text-yellow-400" :
+                          seller.kyc_status === "pending" ? "bg-cyan-500/20 text-cyan-400" :
                           "bg-zinc-700 text-zinc-400"
                         }>
                           KYC: {seller.kyc_status || "none"}
@@ -320,7 +320,7 @@ const OwnerDashboard = () => {
                         <p className="text-xl font-bold">€{payout.amount?.toFixed(2)}</p>
                         <Badge className={
                           payout.status === "completed" ? "bg-emerald-500/20 text-emerald-400" :
-                          payout.status === "pending" ? "bg-yellow-500/20 text-yellow-400" :
+                          payout.status === "pending" ? "bg-cyan-500/20 text-cyan-400" :
                           "bg-blue-500/20 text-blue-400"
                         }>
                           {payout.status}

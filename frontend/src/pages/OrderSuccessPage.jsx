@@ -212,7 +212,7 @@ const OrderSuccessPage = () => {
           <div className="flex items-center justify-center gap-1">
             {[1, 2, 3, 4, 5].map((star) => (
               <button key={star} className="p-1 hover:scale-110 transition-transform">
-                <Star className="w-6 h-6 text-zinc-600 hover:text-amber-400" />
+                <Star className="w-6 h-6 text-zinc-600 hover:text-purple-400" />
               </button>
             ))}
           </div>

@@ -167,9 +167,9 @@ const RefundPolicyPage = () => {
 
         {/* Important Notes */}
         <section>
-          <div className="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-6">
+          <div className="bg-purple-500/10 border border-purple-500/20 rounded-2xl p-6">
             <h3 className="font-semibold mb-4 flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-amber-400" />
+              <AlertTriangle className="w-5 h-5 text-purple-400" />
               Important Notes
             </h3>
             <ul className="text-zinc-400 space-y-2">

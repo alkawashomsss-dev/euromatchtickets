@@ -48,7 +48,7 @@ const TicketCard = ({ order }) => {
             </div>
             <Badge 
               variant="outline" 
-              className={order.status === 'completed' ? 'border-emerald-500/50 text-emerald-400' : 'border-amber-500/50 text-amber-400'}
+              className={order.status === 'completed' ? 'border-emerald-500/50 text-emerald-400' : 'border-purple-500/50 text-purple-400'}
             >
               {order.status === 'completed' ? 'Confirmed' : order.status}
             </Badge>

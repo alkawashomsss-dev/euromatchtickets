@@ -30,7 +30,7 @@ const leagueConfig = {
 };
 
 const categoryConfig = {
-  vip: { name: "VIP", color: "bg-amber-500", textColor: "text-amber-400", description: "Premium hospitality with best views" },
+  vip: { name: "VIP", color: "bg-purple-500", textColor: "text-purple-400", description: "Premium hospitality with best views" },
   cat1: { name: "Category 1", color: "bg-blue-500", textColor: "text-blue-400", description: "Lower tier, close to the pitch" },
   cat2: { name: "Category 2", color: "bg-green-500", textColor: "text-green-400", description: "Mid-tier, great atmosphere" },
   cat3: { name: "Category 3", color: "bg-slate-400", textColor: "text-slate-400", description: "Upper tier, full stadium view" }
@@ -386,7 +386,7 @@ const MatchDetailsPage = () => {
                       <span>Instant QR Code Delivery</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Star className="w-4 h-4 text-yellow-500" />
+                      <Star className="w-4 h-4 text-cyan-500" />
                       <span>Verified Seller</span>
                     </div>
                   </div>

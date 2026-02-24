@@ -201,7 +201,7 @@ const ReviewsPage = () => {
                 <div className="text-6xl font-bold text-white mb-2">{avgRating}</div>
                 <div className="flex justify-center mb-2">
                   {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="w-6 h-6 fill-amber-400 text-amber-400" />
+                    <Star key={i} className="w-6 h-6 fill-purple-400 text-purple-400" />
                   ))}
                 </div>
                 <div className="text-zinc-400">Based on {totalReviews.toLocaleString()} reviews</div>
@@ -216,11 +216,11 @@ const ReviewsPage = () => {
                     <div key={rating} className="flex items-center gap-3 mb-2">
                       <div className="flex items-center gap-1 w-12">
                         <span>{rating}</span>
-                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                        <Star className="w-4 h-4 fill-purple-400 text-purple-400" />
                       </div>
                       <div className="flex-1 h-2 bg-zinc-800 rounded-full overflow-hidden">
                         <div 
-                          className="h-full bg-amber-400 rounded-full"
+                          className="h-full bg-purple-400 rounded-full"
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
@@ -309,7 +309,7 @@ const ReviewsPage = () => {
                       {[...Array(5)].map((_, i) => (
                         <Star 
                           key={i} 
-                          className={`w-4 h-4 ${i < review.rating ? 'fill-amber-400 text-amber-400' : 'text-zinc-700'}`}
+                          className={`w-4 h-4 ${i < review.rating ? 'fill-purple-400 text-purple-400' : 'text-zinc-700'}`}
                         />
                       ))}
                     </div>
