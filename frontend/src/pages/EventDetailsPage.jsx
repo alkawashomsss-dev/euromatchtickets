@@ -498,6 +498,8 @@ const EventDetailsPage = () => {
                       ticket={ticket}
                       selected={selectedTicket?.ticket_id === ticket.ticket_id}
                       onSelect={handleTicketSelect}
+                      onBuyNow={handleBuyNow}
+                      purchasing={purchasing}
                     />
                   ))}
                 </div>
