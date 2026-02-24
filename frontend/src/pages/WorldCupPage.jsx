@@ -30,7 +30,8 @@ const WorldCupPage = () => {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     "name": "FIFA World Cup 2026 Tickets - Buy Now",
-    "description": "Buy FIFA World Cup 2026 tickets from €149. VIP packages from €999. Opening ceremony, group stage, knockout rounds, semi-finals, and final. Official verified tickets with 100% buyer guarantee. Instant QR code delivery.",
+    "description": "Buy FIFA World Cup 2026 tickets from €149. VIP packages from €999. Opening ceremony, group stage, knockout rounds, semi-finals, and final. Official verified tickets with 100% buyer guarantee. Instant QR code delivery. EuroMatchTickets is an independent ticket marketplace and is not affiliated with FIFA.",
+    "image": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "startDate": "2026-06-11",
     "endDate": "2026-07-19",
     "eventStatus": "https://schema.org/EventScheduled",
@@ -45,8 +46,8 @@ const WorldCupPage = () => {
     },
     "organizer": {
       "@type": "Organization",
-      "name": "FIFA",
-      "url": "https://www.fifa.com"
+      "name": "EuroMatchTickets",
+      "url": "https://euromatchtickets.com"
     },
     "performer": {
       "@type": "SportsTeam",
