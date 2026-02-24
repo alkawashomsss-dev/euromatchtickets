@@ -1,77 +1,149 @@
-# EuroMatchTickets - Multi-Category Ticket Marketplace
+# EuroMatchTickets - Ticket Marketplace PRD
 
 ## Original Problem Statement
-Build a comprehensive ticket marketplace for European events with:
-- 10% platform commission
-- Full payment to owner's Stripe account
-- Excellent SEO for €50k sales goal
+Build a comprehensive ticket marketplace for European events:
+- 10% platform commission via Stripe
+- Full payment to owner's Stripe account  
+- Excellent SEO for sales goal
 - Domain: euromatchtickets.com
 
-## Current Inventory (87 Events)
-| Category | Count | Examples |
-|----------|-------|----------|
-| ⚽ Football | 20 | Champions League, El Clasico, Premier League |
-| 🎵 Concerts | 16 | Taylor Swift, Coldplay, The Weeknd |
-| 🚄 Trains | 17 | Eurostar, TGV, ICE, AVE |
-| 🏛️ Attractions | 12 | Disneyland Paris, Eiffel Tower |
-| 🎪 Festivals | 8 | Tomorrowland, Oktoberfest |
-| 🏎️ Formula 1 | 7 | Monaco GP, Silverstone |
-| 🎾 Tennis | 7 | Wimbledon, Roland Garros |
+## Current Status: PREVIEW WORKING ✅
 
-## 🔥 Real 2026 Concert Landing Pages (All Confirmed)
+### ⚠️ CRITICAL DEPLOYMENT ISSUE
+**Live site (euromatchtickets.com) uses OLD database!**
+- User must re-deploy with "Use new database" option
+- Preview environment has all fixes and new features
 
-### Bruno Mars - The Romantic Tour 2026 ✅
-- **URL:** `/bruno-mars-tour-2026`
-- **Dates:** June 21 - July 28, 2026
-- **Venues:** Paris, Berlin (3 nights), Amsterdam (4 nights), Madrid (2 nights), Milan (2 nights), London Wembley (6 nights!)
-- **Price:** From €125
-- **Source:** brunomars.com
-
-### Guns N' Roses European Tour 2026 ✅
-- **URL:** `/guns-n-roses-tour-2026`
-- **Dates:** June 13 - July 17, 2026
-- **Venues:** Berlin, Arnhem, Cologne, London Tottenham, Marseille, Hamburg (2 nights), Munich
-- **Price:** From €95
-
-### Bad Bunny - DeBi TiRAR MaS FOToS 2026 ✅
-- **URL:** `/bad-bunny-london-2026`
-- **Dates:** June 27-28, 2026
-- **Venue:** Tottenham Hotspur Stadium, London (2 nights)
-- **Price:** From €145
-
-### The Weeknd - After Hours Til Dawn 2026 ✅
-- **URL:** `/the-weeknd-tour-2026`
-- **Dates:** June - September 2026
-- **Venues:** Paris, London, Berlin, Amsterdam, Milan, Madrid
-- **Price:** From €95
-
-## Other Landing Pages
-
-| Page | URL | Price From |
-|------|-----|------------|
-| FIFA World Cup 2026 | `/world-cup-2026` | €150 |
-| Champions League 2025-26 | `/champions-league-tickets` | €85 |
-| Eurostar Tickets | `/eurostar-tickets` | €39 |
-| Disneyland Paris | `/disneyland-paris` | €85 |
-| Monaco Grand Prix | `/f1-monaco-grand-prix` | €180 |
-| Tomorrowland | `/tomorrowland-2025` | €275 |
+---
 
 ## Features Implemented ✅
-- 87 events across 7 categories
-- 10 high-value SEO landing pages
-- Real confirmed 2026 concert tours
-- Categories dropdown in Header
-- Dynamic sitemap.xml
-- Schema.org markup
-- Trust badges and urgency elements
-- Stripe Checkout (LIVE MODE)
 
-## Upcoming Tasks (P1)
-1. **Google Analytics** - Needs Web Stream ID (G-XXXX)
-2. **Facebook Pixel** - Needs Pixel ID
-3. **Test Resend Email** - API key configured
+### Core Marketplace
+- ⚽ Football tickets (Champions League, Premier League, La Liga, World Cup 2026)
+- 🎵 Concert tickets (The Weeknd, Bruno Mars, Guns N' Roses, Bad Bunny)
+- 100% Stripe Live Mode payments
+- 10% commission on all sales
+- Google OAuth authentication
 
-## Testing
-- All landing pages verified working
-- Homepage displays all 8 Hot Events
-- Concert pages show real dates
+### SEO & Landing Pages
+- Dynamic `sitemap.xml` with all pages
+- Schema.org markup for events
+- High-value landing pages:
+  - `/world-cup-2026` - FIFA World Cup 2026
+  - `/champions-league-tickets`
+  - `/the-weeknd-tour-2026`
+  - `/bruno-mars-tour-2026`
+  - `/guns-n-roses-tour-2026`
+  - `/bad-bunny-london-2026`
+
+### Trust & Legal Pages ✅ (NEW)
+- `/privacy-policy` - GDPR compliant privacy policy
+- `/payment-info` - Payment methods and security info
+- `/terms` - Terms of Service
+- `/refund-policy` - Refund policy
+- `/contact` - Contact page with form
+
+### Multi-Language Support ✅ (NEW)
+16 languages supported:
+| Europe | Americas | Middle East | Asia |
+|--------|----------|-------------|------|
+| 🇬🇧 English | 🇲🇽 Español (MX) | 🇸🇦 العربية | 🇨🇳 中文 |
+| 🇩🇪 Deutsch | 🇧🇷 Português (BR) | | 🇯🇵 日本語 |
+| 🇫🇷 Français | | | 🇰🇷 한국어 |
+| 🇪🇸 Español | | | 🇮🇳 हिन्दी |
+| 🇮🇹 Italiano | | | |
+| 🇵🇹 Português | | | |
+| 🇳🇱 Nederlands | | | |
+| 🇵🇱 Polski | | | |
+| 🇹🇷 Türkçe | | | |
+
+### Homepage Improvements ✅ (NEW)
+- FIFA World Cup 2026 featured hero section
+- Video background (stadium atmosphere)
+- "BUY WORLD CUP TICKETS" prominent CTA
+- Trust badges (Verified, Secure, Instant, 24/7 Support)
+- Statistics: 50K+ Fans, 1000+ Events, 4.9 Rating, €2M+ Sold
+
+### AI Features
+- AI Live Chat support (GPT-4o powered)
+- AI-generated event descriptions
+
+### Marketing Assets ✅ (NEW)
+- Google Ads promotional video: `/api/static/ad_video_landscape.mp4`
+- Professional ad images generated
+- Ad copy and keywords provided
+
+---
+
+## Pending / Blocked
+
+### P0 - CRITICAL
+- [ ] **Live Deployment Database Sync** - User must select "Use new database" when deploying
+
+### P1 - High Priority
+- [ ] "Sell Your Tickets" page - Allow users to list tickets
+- [ ] Test Resend email notifications end-to-end
+- [ ] Verify €0.50 test ticket payment works
+
+### P2 - Medium Priority  
+- [ ] Google Analytics integration - Needs Web Stream ID (G-XXXX)
+- [ ] Facebook Pixel integration - Needs Pixel ID
+
+### Future Tasks
+- Seller payouts dashboard
+- Owner dashboard charts
+- More language translations
+
+---
+
+## Technical Architecture
+
+```
+/app/
+├── backend/
+│   ├── server.py          # FastAPI main file
+│   ├── email_service.py   # Resend integration
+│   ├── static/            # Video/asset files
+│   └── .env               # Environment variables
+├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── HomePage.jsx
+│   │   │   ├── WorldCupPage.jsx
+│   │   │   ├── PrivacyPolicyPage.jsx  # NEW
+│   │   │   ├── PaymentInfoPage.jsx    # NEW
+│   │   │   └── ...
+│   │   ├── components/
+│   │   │   ├── LanguageSwitcher.jsx   # Updated 16 languages
+│   │   │   ├── AIChatWidget.jsx
+│   │   │   └── ...
+│   │   └── i18n/                      # Translations
+│   └── .env
+└── memory/
+    └── PRD.md
+```
+
+## Key Endpoints
+- `GET /api/health` - Health check
+- `GET /api/sitemap.xml` - Dynamic sitemap
+- `POST /api/create-checkout-session` - Stripe checkout
+- `POST /api/chat` - AI chat support
+- `GET /api/static/*` - Static files (videos, etc.)
+
+## Credentials for Testing
+- **Login:** Google OAuth
+- **Test Payment:** €0.50 ticket exists for World Cup Opening Ceremony
+
+---
+
+## Last Updated
+February 24, 2026
+
+## Session Summary
+- ✅ Created Privacy Policy page
+- ✅ Created Payment Info page
+- ✅ Added 16 language support
+- ✅ Improved homepage with World Cup 2026 hero
+- ✅ Generated Google Ads video
+- ✅ Generated 6 promotional images
+- ✅ Updated Footer with legal links
