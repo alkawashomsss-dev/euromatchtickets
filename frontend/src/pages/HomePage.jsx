@@ -653,17 +653,17 @@ const HomePage = () => {
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Fans Trust Us</h2>
             <p className="text-zinc-400 max-w-2xl mx-auto">
-              Over 50,000 satisfied customers across Europe
+              Your purchase is protected with our comprehensive buyer guarantee
             </p>
           </div>
 
-          {/* Trust Stats */}
+          {/* Trust Stats - Realistic Numbers */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             {[
-              { number: "50K+", label: "Happy Customers", icon: Users, color: "text-purple-400" },
-              { number: "€2M+", label: "Tickets Sold", icon: Ticket, color: "text-emerald-400" },
-              { number: "4.9★", label: "Trust Rating", icon: Star, color: "text-cyan-400" },
-              { number: "24/7", label: "AI Support", icon: Headphones, color: "text-blue-400" },
+              { number: "100+", label: "Live Events", icon: Ticket, color: "text-purple-400" },
+              { number: "100%", label: "Buyer Protected", icon: Shield, color: "text-emerald-400" },
+              { number: "20+", label: "Countries", icon: Globe, color: "text-cyan-400" },
+              { number: "24/7", label: "Live Support", icon: Headphones, color: "text-blue-400" },
             ].map((stat, idx) => (
               <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 text-center">
                 <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
@@ -675,34 +675,43 @@ const HomePage = () => {
 
           {/* Trust Features */}
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all">
+            <Link to="/buyer-protection" className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all group">
               <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-emerald-400" />
               </div>
-              <h3 className="text-xl font-bold mb-2">100% Buyer Protection</h3>
-              <p className="text-zinc-400 text-sm">
-                Full refund if event is cancelled. Every ticket verified before sale.
+              <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">100% Buyer Protection</h3>
+              <p className="text-zinc-400 text-sm mb-3">
+                Full refund if tickets are invalid or not delivered. Every ticket verified before sale.
               </p>
-            </div>
+              <span className="text-emerald-400 text-sm flex items-center gap-1">
+                Learn more <ArrowRight className="w-4 h-4" />
+              </span>
+            </Link>
             
-            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all">
+            <Link to="/payment-info" className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all group">
               <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
                 <Lock className="w-6 h-6 text-blue-400" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Secure Payments</h3>
-              <p className="text-zinc-400 text-sm">
-                Bank-level encryption via Stripe. Your payment details are always safe.
+              <h3 className="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">Secure Payments</h3>
+              <p className="text-zinc-400 text-sm mb-3">
+                Bank-level 256-bit SSL encryption via Stripe. Your payment details are always safe.
               </p>
-            </div>
+              <span className="text-blue-400 text-sm flex items-center gap-1">
+                View payment options <ArrowRight className="w-4 h-4" />
+              </span>
+            </Link>
             
             <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-purple-500/30 transition-all">
               <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
                 <CheckCircle className="w-6 h-6 text-purple-400" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Verified Tickets</h3>
-              <p className="text-zinc-400 text-sm">
-                Every seller verified. Every ticket authenticated before delivery.
+              <h3 className="text-xl font-bold mb-2">Verified Sellers</h3>
+              <p className="text-zinc-400 text-sm mb-3">
+                Every seller undergoes ID verification. Every ticket authenticated before delivery.
               </p>
+              <span className="text-zinc-500 text-sm flex items-center gap-1">
+                <CheckCircle className="w-4 h-4 text-emerald-400" /> Identity verified
+              </span>
             </div>
           </div>
 
@@ -720,10 +729,10 @@ const HomePage = () => {
               <Award className="w-5 h-5" />
               <span className="text-sm">GDPR Compliant</span>
             </div>
-            <div className="flex items-center gap-2 text-zinc-500">
-              <Globe className="w-5 h-5" />
-              <span className="text-sm">Available in 20+ Countries</span>
-            </div>
+            <Link to="/buyer-protection" className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
+              <Shield className="w-5 h-5" />
+              <span className="text-sm font-medium">Buyer Protection →</span>
+            </Link>
           </div>
         </div>
       </section>
