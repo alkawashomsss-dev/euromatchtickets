@@ -2486,6 +2486,11 @@ async def generate_all_descriptions(request: Request):
 # Include the router in the main app
 app.include_router(api_router)
 
+# Mount static files directory for videos and assets
+static_dir = ROOT_DIR / "static"
+if static_dir.exists():
+    app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
