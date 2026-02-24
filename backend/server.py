@@ -15,6 +15,7 @@ import base64
 import io
 import qrcode
 import httpx
+import stripe
 
 # AI Chat Support
 from emergentintegrations.llm.chat import LlmChat, UserMessage
