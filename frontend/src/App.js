@@ -152,6 +152,8 @@ function AppRouter() {
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/refund-policy" element={<RefundPolicyPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/payment-info" element={<PaymentInfoPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:articleId" element={<BlogArticlePage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
