@@ -537,25 +537,86 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Trust Badges */}
-      <section className="py-16 border-t border-white/5">
+      {/* Trust & Security Section */}
+      <section className="py-20 bg-gradient-to-b from-zinc-900/50 to-zinc-950">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-            <div className="flex items-center gap-3 text-zinc-400">
-              <Shield className="w-6 h-6 text-emerald-500" />
-              <span>100% Buyer Protection</span>
+          <div className="text-center mb-12">
+            <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 mb-4">
+              <Shield className="w-4 h-4 mr-2" />
+              TRUSTED PLATFORM
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Fans Trust Us</h2>
+            <p className="text-zinc-400 max-w-2xl mx-auto">
+              Over 50,000 satisfied customers across Europe
+            </p>
+          </div>
+
+          {/* Trust Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            {[
+              { number: "50K+", label: "Happy Customers", icon: Users, color: "text-purple-400" },
+              { number: "€2M+", label: "Tickets Sold", icon: Ticket, color: "text-emerald-400" },
+              { number: "4.9★", label: "Trust Rating", icon: Star, color: "text-yellow-400" },
+              { number: "24/7", label: "AI Support", icon: Headphones, color: "text-blue-400" },
+            ].map((stat, idx) => (
+              <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 text-center">
+                <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
+                <p className="text-3xl font-bold text-white mb-1">{stat.number}</p>
+                <p className="text-sm text-zinc-400">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Trust Features */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all">
+              <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center mb-4">
+                <Shield className="w-6 h-6 text-emerald-400" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">100% Buyer Protection</h3>
+              <p className="text-zinc-400 text-sm">
+                Full refund if event is cancelled. Every ticket verified before sale.
+              </p>
             </div>
-            <div className="flex items-center gap-3 text-zinc-400">
-              <Users className="w-6 h-6 text-purple-500" />
-              <span>Verified Sellers</span>
+            
+            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all">
+              <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                <Lock className="w-6 h-6 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Secure Payments</h3>
+              <p className="text-zinc-400 text-sm">
+                Bank-level encryption via Stripe. Your payment details are always safe.
+              </p>
             </div>
-            <div className="flex items-center gap-3 text-zinc-400">
-              <Ticket className="w-6 h-6 text-blue-500" />
-              <span>Instant QR Delivery</span>
+            
+            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-purple-500/30 transition-all">
+              <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                <CheckCircle className="w-6 h-6 text-purple-400" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Verified Tickets</h3>
+              <p className="text-zinc-400 text-sm">
+                Every seller verified. Every ticket authenticated before delivery.
+              </p>
             </div>
-            <div className="flex items-center gap-3 text-zinc-400">
-              <Star className="w-6 h-6 text-amber-500" />
-              <span>Trusted by 50K+ Fans</span>
+          </div>
+
+          {/* Security Logos */}
+          <div className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-8 border-t border-zinc-800">
+            <div className="flex items-center gap-2 text-zinc-500">
+              <CreditCard className="w-5 h-5" />
+              <span className="text-sm">Powered by Stripe</span>
+            </div>
+            <div className="flex items-center gap-2 text-zinc-500">
+              <Lock className="w-5 h-5" />
+              <span className="text-sm">SSL Encrypted</span>
+            </div>
+            <div className="flex items-center gap-2 text-zinc-500">
+              <Award className="w-5 h-5" />
+              <span className="text-sm">GDPR Compliant</span>
+            </div>
+            <div className="flex items-center gap-2 text-zinc-500">
+              <Globe className="w-5 h-5" />
+              <span className="text-sm">Available in 20+ Countries</span>
             </div>
           </div>
         </div>
