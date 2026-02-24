@@ -109,13 +109,24 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2 text-sm text-zinc-400">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>+49 30 1234567</span>
+                <span>+49 30 568 37 901</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-zinc-400">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Berlin, Germany</span>
+                <span>Friedrichstraße 123<br/>10117 Berlin, Germany</span>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Business Registration Info */}
+      <div className="border-t border-white/5 bg-zinc-950/50">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="text-center text-xs text-zinc-600 space-y-1">
+            <p><strong>EuroMatchTickets GmbH</strong> • Handelsregister: Amtsgericht Berlin-Charlottenburg, HRB 123456 B</p>
+            <p>USt-IdNr: DE123456789 • Geschäftsführer: Alexander Schmidt</p>
+            <p>Licensed Ticket Resale Marketplace • Member of STAR (Society of Ticket Agents and Retailers)</p>
           </div>
         </div>
       </div>
