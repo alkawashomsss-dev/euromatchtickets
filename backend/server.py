@@ -1674,6 +1674,21 @@ async def cleanup_categories():
         "removed_categories": unwanted_types
     }
 
+@api_router.post("/fix-tickets-seller")
+async def fix_tickets_seller():
+    """Add seller_id to all tickets that don't have one"""
+    result = await db.tickets.update_many(
+        {"$or": [{"seller_id": {"$exists": False}}, {"seller_id": None}, {"seller_id": ""}]},
+        {"$set": {
+            "seller_id": "seller_euromatch",
+            "seller_name": "EuroMatchTickets Official"
+        }}
+    )
+    return {
+        "message": "Tickets updated",
+        "modified_count": result.modified_count
+    }
+
 @api_router.post("/reseed")
 async def reseed_data():
     """Clear and reseed demo data"""
