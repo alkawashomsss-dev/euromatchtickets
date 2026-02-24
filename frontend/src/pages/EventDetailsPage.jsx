@@ -124,6 +124,55 @@ const EventDetailsPage = () => {
     setSelectedTicket(ticket.ticket_id === selectedTicket?.ticket_id ? null : ticket);
   };
 
+  const handleBuyNow = async (ticket) => {
+    if (!user) {
+      toast.error("Please sign in to purchase tickets");
+      login();
+      return;
+    }
+
+    setPurchasing(true);
+    try {
+      const ticketTotal = ticket.price * 1.1; // 10% commission
+      
+      // Track Facebook Pixel - InitiateCheckout
+      if (window.fbq) {
+        window.fbq('track', 'InitiateCheckout', {
+          content_name: event.title,
+          content_category: event.event_type,
+          content_ids: [ticket.ticket_id],
+          value: ticketTotal,
+          currency: 'EUR'
+        });
+      }
+      
+      // Track Google Analytics - begin_checkout
+      if (window.gtag) {
+        window.gtag('event', 'begin_checkout', {
+          currency: 'EUR',
+          value: ticketTotal,
+          items: [{
+            item_id: ticket.ticket_id,
+            item_name: event.title,
+            category: event.event_type,
+            price: ticket.price
+          }]
+        });
+      }
+
+      const response = await axios.post(`${API}/checkout/create`, {
+        ticket_id: ticket.ticket_id,
+        origin_url: window.location.origin
+      }, { withCredentials: true });
+
+      window.location.href = response.data.url;
+    } catch (error) {
+      console.error("Checkout error:", error);
+      toast.error(error.response?.data?.detail || "Failed to create checkout");
+      setPurchasing(false);
+    }
+  };
+
   const handlePurchase = async () => {
     if (!user) {
       toast.error("Please sign in to purchase tickets");
