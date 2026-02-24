@@ -1574,6 +1574,78 @@ async def get_raffle_stats():
         "draw_date": "2026-05-01"
     }
 
+# ============== AI CHAT SUPPORT ==============
+
+class ChatMessage(BaseModel):
+    message: str
+    session_id: str
+
+# Store chat sessions in memory (for simplicity - could use DB for persistence)
+chat_sessions: Dict[str, LlmChat] = {}
+
+SUPPORT_SYSTEM_MESSAGE = """You are the AI customer support assistant for EuroMatchTickets, Europe's #1 ticket marketplace for football matches and concerts.
+
+Your role:
+- Help customers find tickets for events
+- Answer questions about orders and payments
+- Explain the refund policy (full refund if event cancelled, 48-hour refund window for change of mind)
+- Provide information about ticket delivery (instant QR code)
+- Be friendly, helpful, and professional
+
+Key information:
+- We sell verified tickets for Champions League, Premier League, La Liga, Bundesliga, and major concerts
+- Payment is 100% secure via Stripe
+- All tickets are verified and guaranteed
+- 10% commission on sales
+- Instant QR code delivery after purchase
+- 24/7 customer support
+
+Popular events we cover:
+- FIFA World Cup 2026
+- UEFA Champions League
+- Bruno Mars Tour 2026
+- The Weeknd Tour 2026
+- Bad Bunny London 2026
+- Guns N' Roses Tour 2026
+
+Keep responses concise and helpful. If you don't know something specific, direct them to email support@euromatchtickets.com"""
+
+@api_router.post("/chat/support")
+async def chat_support(chat_msg: ChatMessage):
+    """AI-powered customer support chat"""
+    try:
+        session_id = chat_msg.session_id
+        
+        # Get or create chat session
+        if session_id not in chat_sessions:
+            chat_sessions[session_id] = LlmChat(
+                api_key=os.environ.get('EMERGENT_LLM_KEY'),
+                session_id=session_id,
+                system_message=SUPPORT_SYSTEM_MESSAGE
+            ).with_model("openai", "gpt-4o")
+        
+        chat = chat_sessions[session_id]
+        
+        # Send message and get response
+        user_message = UserMessage(text=chat_msg.message)
+        response = await chat.send_message(user_message)
+        
+        # Save to database for analytics
+        await db.chat_logs.insert_one({
+            "session_id": session_id,
+            "user_message": chat_msg.message,
+            "ai_response": response,
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        })
+        
+        return {"response": response}
+        
+    except Exception as e:
+        logging.error(f"Chat error: {str(e)}")
+        return {
+            "response": "I'm having trouble connecting right now. Please try again or email us at support@euromatchtickets.com for assistance."
+        }
+
 # ============== SEED DATA ==============
 
 @api_router.post("/cleanup-categories")
