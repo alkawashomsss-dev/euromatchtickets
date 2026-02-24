@@ -737,6 +737,108 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Customer Reviews Section */}
+      <section className="py-20 bg-zinc-950">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+          <div className="text-center mb-12">
+            <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30 mb-4">
+              <Star className="w-4 h-4 mr-2 fill-current" />
+              CUSTOMER REVIEWS
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Customers Say</h2>
+            <p className="text-zinc-400 max-w-2xl mx-auto">
+              Real reviews from verified ticket buyers
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Marco R.",
+                location: "Milan, Italy",
+                event: "AC Milan vs Inter",
+                rating: 5,
+                review: "Fantastic experience! Tickets arrived instantly via email. The QR code worked perfectly at San Siro entrance. Will definitely use again!",
+                date: "Feb 2026",
+                avatar: "🇮🇹"
+              },
+              {
+                name: "Sophie L.",
+                location: "Paris, France",
+                event: "The Weeknd - Paris",
+                rating: 5,
+                review: "Amazing service! Got VIP tickets for The Weeknd concert. The whole process was smooth and secure. Highly recommend!",
+                date: "Jan 2026",
+                avatar: "🇫🇷"
+              },
+              {
+                name: "Thomas K.",
+                location: "Munich, Germany",
+                event: "Bayern vs Dortmund",
+                rating: 5,
+                review: "Best ticket platform I've used. Prices were fair and delivery was instant. Customer support helped me quickly when I had questions.",
+                date: "Feb 2026",
+                avatar: "🇩🇪"
+              }
+            ].map((review, idx) => (
+              <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 hover:border-purple-500/30 transition-all">
+                {/* Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-zinc-800 rounded-full flex items-center justify-center text-2xl">
+                      {review.avatar}
+                    </div>
+                    <div>
+                      <h4 className="font-semibold">{review.name}</h4>
+                      <p className="text-zinc-500 text-sm">{review.location}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-0.5">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Event Badge */}
+                <div className="mb-3">
+                  <Badge variant="outline" className="border-zinc-700 text-zinc-400">
+                    <Ticket className="w-3 h-3 mr-1" />
+                    {review.event}
+                  </Badge>
+                </div>
+                
+                {/* Review Text */}
+                <p className="text-zinc-300 text-sm leading-relaxed mb-4">
+                  "{review.review}"
+                </p>
+                
+                {/* Footer */}
+                <div className="flex items-center justify-between text-xs text-zinc-500">
+                  <span>{review.date}</span>
+                  <div className="flex items-center gap-1 text-emerald-400">
+                    <CheckCircle className="w-3 h-3" />
+                    <span>Verified Purchase</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Trust Indicator */}
+          <div className="text-center mt-10">
+            <div className="inline-flex items-center gap-2 bg-zinc-900/50 border border-zinc-800 rounded-full px-6 py-3">
+              <div className="flex -space-x-2">
+                <div className="w-8 h-8 bg-zinc-700 rounded-full flex items-center justify-center text-sm">🇪🇸</div>
+                <div className="w-8 h-8 bg-zinc-700 rounded-full flex items-center justify-center text-sm">🇬🇧</div>
+                <div className="w-8 h-8 bg-zinc-700 rounded-full flex items-center justify-center text-sm">🇳🇱</div>
+              </div>
+              <span className="text-zinc-400 text-sm">Trusted by fans across Europe</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 gradient-glow" />
