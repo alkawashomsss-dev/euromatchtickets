@@ -270,26 +270,26 @@ const HomePage = () => {
               </div>
             </div>
 
-            {/* Stats - Glass Style */}
+            {/* Stats - Glass Style - Realistic Numbers */}
             <div className="flex flex-wrap items-center gap-4 md:gap-6">
               <div className="glass-card px-5 py-3 rounded-xl text-center">
-                <div className="text-xl md:text-2xl font-bold font-accent text-cyan-400">50K+</div>
-                <div className="text-zinc-500 text-xs uppercase tracking-wider">Happy Fans</div>
-              </div>
-              <div className="glass-card px-5 py-3 rounded-xl text-center">
-                <div className="text-xl md:text-2xl font-bold font-accent text-purple-400">1000+</div>
+                <div className="text-xl md:text-2xl font-bold font-accent text-cyan-400">100+</div>
                 <div className="text-zinc-500 text-xs uppercase tracking-wider">Events</div>
               </div>
               <div className="glass-card px-5 py-3 rounded-xl text-center">
-                <div className="text-xl md:text-2xl font-bold font-accent flex items-center gap-1 text-yellow-400">
-                  <Star className="w-4 h-4" />
-                  4.9
-                </div>
-                <div className="text-zinc-500 text-xs uppercase tracking-wider">Rating</div>
+                <div className="text-xl md:text-2xl font-bold font-accent text-purple-400">20+</div>
+                <div className="text-zinc-500 text-xs uppercase tracking-wider">Countries</div>
               </div>
-              <div className="glass-card px-5 py-3 rounded-xl text-center border border-emerald-500/30">
-                <div className="text-xl md:text-2xl font-bold font-accent text-emerald-400">€2M+</div>
-                <div className="text-zinc-500 text-xs uppercase tracking-wider">Tickets Sold</div>
+              <div className="glass-card px-5 py-3 rounded-xl text-center">
+                <div className="text-xl md:text-2xl font-bold font-accent flex items-center gap-1 text-emerald-400">
+                  <Shield className="w-4 h-4" />
+                  100%
+                </div>
+                <div className="text-zinc-500 text-xs uppercase tracking-wider">Protected</div>
+              </div>
+              <div className="glass-card px-5 py-3 rounded-xl text-center border border-cyan-500/30">
+                <div className="text-xl md:text-2xl font-bold font-accent text-cyan-400">24/7</div>
+                <div className="text-zinc-500 text-xs uppercase tracking-wider">Support</div>
               </div>
             </div>
           </div>
