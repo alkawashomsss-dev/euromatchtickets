@@ -332,26 +332,23 @@ const HomePage = () => {
               </div>
             </div>
 
-            {/* Stats - Glass Style - Realistic Numbers */}
+            {/* Stats - Glass Style - No Numbers */}
             <div className="flex flex-wrap items-center gap-4 md:gap-6">
-              <div className="glass-card px-5 py-3 rounded-xl text-center">
-                <div className="text-xl md:text-2xl font-bold font-accent text-cyan-400">100+</div>
-                <div className="text-zinc-500 text-xs uppercase tracking-wider">Events</div>
+              <div className="glass-card px-5 py-3 rounded-xl text-center flex items-center gap-2">
+                <Ticket className="w-5 h-5 text-cyan-400" />
+                <span className="text-zinc-300 text-sm font-medium">Live Events</span>
               </div>
-              <div className="glass-card px-5 py-3 rounded-xl text-center">
-                <div className="text-xl md:text-2xl font-bold font-accent text-purple-400">20+</div>
-                <div className="text-zinc-500 text-xs uppercase tracking-wider">Countries</div>
+              <div className="glass-card px-5 py-3 rounded-xl text-center flex items-center gap-2">
+                <Globe className="w-5 h-5 text-purple-400" />
+                <span className="text-zinc-300 text-sm font-medium">Europe-Wide</span>
               </div>
-              <div className="glass-card px-5 py-3 rounded-xl text-center">
-                <div className="text-xl md:text-2xl font-bold font-accent flex items-center gap-1 text-emerald-400">
-                  <Shield className="w-4 h-4" />
-                  100%
-                </div>
-                <div className="text-zinc-500 text-xs uppercase tracking-wider">Protected</div>
+              <div className="glass-card px-5 py-3 rounded-xl text-center flex items-center gap-2">
+                <Shield className="w-5 h-5 text-emerald-400" />
+                <span className="text-zinc-300 text-sm font-medium">Buyer Protected</span>
               </div>
-              <div className="glass-card px-5 py-3 rounded-xl text-center border border-cyan-500/30">
-                <div className="text-xl md:text-2xl font-bold font-accent text-cyan-400">24/7</div>
-                <div className="text-zinc-500 text-xs uppercase tracking-wider">Support</div>
+              <div className="glass-card px-5 py-3 rounded-xl text-center flex items-center gap-2 border border-cyan-500/30">
+                <Headphones className="w-5 h-5 text-cyan-400" />
+                <span className="text-zinc-300 text-sm font-medium">24/7 Support</span>
               </div>
             </div>
           </div>
