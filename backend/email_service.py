@@ -229,7 +229,7 @@ def price_drop_alert_email(event: Dict, old_price: float, new_price: float, lang
         </div>
         
         <div style="text-align: center;">
-            <a href="https://fanpass.com/event/{event.get('event_id', '')}" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: #ffffff; text-decoration: none; padding: 15px 40px; border-radius: 30px; font-weight: bold; font-size: 16px;">
+            <a href="{FRONTEND_URL}/event/{event.get('event_id', '')}" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: #ffffff; text-decoration: none; padding: 15px 40px; border-radius: 30px; font-weight: bold; font-size: 16px;">
                 {t('buy_now')} →
             </a>
         </div>
