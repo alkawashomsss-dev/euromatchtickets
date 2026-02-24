@@ -1102,11 +1102,20 @@ async def get_orders(request: Request):
         {"_id": 0}
     ).sort("created_at", -1).to_list(100)
     
-    for order in orders:
-        event = await db.events.find_one({"event_id": order["event_id"]}, {"_id": 0})
-        ticket = await db.tickets.find_one({"ticket_id": order["ticket_id"]}, {"_id": 0})
-        order["event"] = event
-        order["ticket"] = ticket
+    if orders:
+        # Batch fetch events and tickets
+        event_ids = list(set(o["event_id"] for o in orders))
+        ticket_ids = list(set(o["ticket_id"] for o in orders))
+        
+        events = await db.events.find({"event_id": {"$in": event_ids}}, {"_id": 0}).to_list(None)
+        tickets = await db.tickets.find({"ticket_id": {"$in": ticket_ids}}, {"_id": 0}).to_list(None)
+        
+        events_map = {e["event_id"]: e for e in events}
+        tickets_map = {t["ticket_id"]: t for t in tickets}
+        
+        for order in orders:
+            order["event"] = events_map.get(order["event_id"])
+            order["ticket"] = tickets_map.get(order["ticket_id"])
     
     return orders
 
