@@ -82,8 +82,8 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-semibold mb-1">Office</h3>
                   <p className="text-zinc-400">
-                    Friedrichstraße 123<br />
-                    10117 Berlin, Germany
+                    Fürstenriederstr. 33<br />
+                    80686 München, Germany
                   </p>
                 </div>
               </div>
