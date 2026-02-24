@@ -2125,6 +2125,7 @@ async def get_sitemap():
         {"loc": f"{base_url}/events?type=concert", "priority": "0.85", "changefreq": "hourly"},
         # High-value landing pages - Football
         {"loc": f"{base_url}/world-cup-2026", "priority": "0.95", "changefreq": "daily"},
+        {"loc": f"{base_url}/world-cup-raffle", "priority": "0.95", "changefreq": "daily"},
         {"loc": f"{base_url}/champions-league-tickets", "priority": "0.95", "changefreq": "daily"},
         # High-value landing pages - Concerts & Artists
         {"loc": f"{base_url}/bruno-mars-tour-2026", "priority": "0.95", "changefreq": "daily"},
