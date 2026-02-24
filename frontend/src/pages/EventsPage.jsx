@@ -69,7 +69,7 @@ const EventRow = ({ event }) => {
               {typeInfo.label}
             </Badge>
             {event.featured && (
-              <Badge className="bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs">
+              <Badge className="bg-purple-500/20 text-purple-400 border border-purple-500/30 text-xs">
                 <Sparkles className="w-3 h-3 mr-1" />
                 Featured
               </Badge>

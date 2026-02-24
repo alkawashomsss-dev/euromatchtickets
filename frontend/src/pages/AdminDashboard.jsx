@@ -119,7 +119,7 @@ const AdminDashboard = () => {
             <div className="text-sm text-zinc-500">Tickets Sold</div>
           </div>
           <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-5">
-            <DollarSign className="w-5 h-5 text-amber-400 mb-2" />
+            <DollarSign className="w-5 h-5 text-purple-400 mb-2" />
             <div className="text-2xl font-bold">€{stats?.total_revenue?.toLocaleString() || 0}</div>
             <div className="text-sm text-zinc-500">Total Revenue</div>
           </div>
@@ -132,10 +132,10 @@ const AdminDashboard = () => {
 
         {/* Open Disputes Alert */}
         {stats?.open_disputes > 0 && (
-          <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 mb-8 flex items-center gap-4">
-            <AlertTriangle className="w-6 h-6 text-amber-400" />
+          <div className="bg-purple-500/10 border border-purple-500/30 rounded-xl p-4 mb-8 flex items-center gap-4">
+            <AlertTriangle className="w-6 h-6 text-purple-400" />
             <div>
-              <div className="font-semibold text-amber-400">{stats.open_disputes} Open Disputes</div>
+              <div className="font-semibold text-purple-400">{stats.open_disputes} Open Disputes</div>
               <div className="text-sm text-zinc-400">Require your attention</div>
             </div>
           </div>
@@ -228,7 +228,7 @@ const AdminDashboard = () => {
                           )}
                         </td>
                         <td className="p-4">
-                          <span className="text-amber-400">{u.rating?.toFixed(1) || '5.0'}</span>
+                          <span className="text-purple-400">{u.rating?.toFixed(1) || '5.0'}</span>
                         </td>
                         <td className="p-4">{u.total_sales || 0}</td>
                         <td className="p-4">
@@ -258,7 +258,7 @@ const AdminDashboard = () => {
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <Badge className={
-                          dispute.status === 'open' ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' :
+                          dispute.status === 'open' ? 'bg-purple-500/20 text-purple-400 border-purple-500/30' :
                           dispute.status === 'resolved' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
                           'bg-zinc-500/20 text-zinc-400 border-zinc-500/30'
                         }>
@@ -332,7 +332,7 @@ const AdminDashboard = () => {
                         <td className="p-4">
                           <Badge className={
                             order.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
-                            order.status === 'pending' ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' :
+                            order.status === 'pending' ? 'bg-purple-500/20 text-purple-400 border-purple-500/30' :
                             order.status === 'disputed' ? 'bg-red-500/20 text-red-400 border-red-500/30' :
                             'bg-zinc-500/20 text-zinc-400 border-zinc-500/30'
                           }>

@@ -147,8 +147,8 @@ const AboutPage = () => {
               <div className="text-zinc-400">Countries Served</div>
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-4xl md:text-5xl font-bold text-amber-400 mb-2">
-                4.9 <Star className="w-8 h-8 fill-amber-400" />
+              <div className="flex items-center justify-center gap-1 text-4xl md:text-5xl font-bold text-purple-400 mb-2">
+                4.9 <Star className="w-8 h-8 fill-purple-400" />
               </div>
               <div className="text-zinc-400">Customer Rating</div>
             </div>
@@ -299,7 +299,7 @@ const AboutPage = () => {
             <div className="flex items-center justify-center gap-2">
               <div className="flex">
                 {[1,2,3,4,5].map(i => (
-                  <Star key={i} className="w-6 h-6 fill-amber-400 text-amber-400" />
+                  <Star key={i} className="w-6 h-6 fill-purple-400 text-purple-400" />
                 ))}
               </div>
               <span className="text-lg font-bold">4.9/5</span>
@@ -315,7 +315,7 @@ const AboutPage = () => {
               <div key={i} className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
                 <div className="flex mb-3">
                   {[...Array(review.rating)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <Star key={j} className="w-4 h-4 fill-purple-400 text-purple-400" />
                   ))}
                 </div>
                 <p className="text-zinc-300 mb-4">"{review.text}"</p>
