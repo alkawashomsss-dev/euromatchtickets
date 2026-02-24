@@ -135,22 +135,22 @@ const AboutPage = () => {
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-purple-400 mb-2">50,000+</div>
-              <div className="text-zinc-400">Happy Customers</div>
+              <div className="text-4xl md:text-5xl font-bold text-purple-400 mb-2">100+</div>
+              <div className="text-zinc-400">Live Events</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">€2M+</div>
-              <div className="text-zinc-400">Tickets Sold</div>
+              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">100%</div>
+              <div className="text-zinc-400">Buyer Protected</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">25+</div>
+              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">20+</div>
               <div className="text-zinc-400">Countries Served</div>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center gap-1 text-4xl md:text-5xl font-bold text-purple-400 mb-2">
-                4.9 <Star className="w-8 h-8 fill-purple-400" />
+                24/7
               </div>
-              <div className="text-zinc-400">Customer Rating</div>
+              <div className="text-zinc-400">Customer Support</div>
             </div>
           </div>
         </div>
