@@ -322,7 +322,7 @@ def welcome_email(user_name: str, lang: str = 'en') -> Dict[str, str]:
         </div>
         
         <div style="text-align: center;">
-            <a href="https://fanpass.com/events" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: #ffffff; text-decoration: none; padding: 15px 40px; border-radius: 30px; font-weight: bold; font-size: 16px;">
+            <a href="{FRONTEND_URL}/events" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: #ffffff; text-decoration: none; padding: 15px 40px; border-radius: 30px; font-weight: bold; font-size: 16px;">
                 {t('start_exploring')} →
             </a>
         </div>
