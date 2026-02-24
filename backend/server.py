@@ -2371,11 +2371,15 @@ async def get_sitemap():
     )
 
 @api_router.get("/robots.txt")
-async def get_robots():
+async def get_robots(request: Request):
     """Generate robots.txt for SEO"""
     from fastapi.responses import PlainTextResponse
     
-    robots_content = """User-agent: *
+    # Get domain from request or environment
+    host = request.headers.get("host", "euromatchtickets.com")
+    base_url = f"https://{host}"
+    
+    robots_content = f"""User-agent: *
 Allow: /
 Allow: /events
 Allow: /event/
@@ -2390,7 +2394,7 @@ Disallow: /my-tickets
 Disallow: /alerts
 Disallow: /api/
 
-Sitemap: https://euromatchtickets.com/api/sitemap.xml
+Sitemap: {base_url}/api/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
