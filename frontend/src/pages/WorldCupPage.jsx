@@ -195,6 +195,82 @@ const WorldCupPage = () => {
         </div>
       </section>
 
+      {/* VIP Pricing Section */}
+      <section className="py-16 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30 mb-4">
+              <Sparkles className="w-4 h-4 mr-2" />
+              TICKET PRICES
+            </Badge>
+            <h2 className="text-3xl font-bold mb-4">World Cup 2026 Ticket Categories</h2>
+            <p className="text-zinc-400">Choose your experience - from budget-friendly to VIP luxury</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {/* Category 3 */}
+            <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all">
+              <div className="text-zinc-400 text-sm mb-2">Category 3</div>
+              <div className="text-3xl font-bold text-white mb-1">€149</div>
+              <div className="text-xs text-zinc-500 mb-4">Upper Tier</div>
+              <div className="text-emerald-400 text-xs">✓ Available</div>
+            </div>
+            
+            {/* Category 2 */}
+            <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all">
+              <div className="text-zinc-400 text-sm mb-2">Category 2</div>
+              <div className="text-3xl font-bold text-white mb-1">€299</div>
+              <div className="text-xs text-zinc-500 mb-4">Mid Tier</div>
+              <div className="text-emerald-400 text-xs">✓ Available</div>
+            </div>
+            
+            {/* Category 1 */}
+            <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all border-cyan-500/20">
+              <div className="text-cyan-400 text-sm mb-2">Category 1</div>
+              <div className="text-3xl font-bold text-white mb-1">€449</div>
+              <div className="text-xs text-zinc-500 mb-4">Lower Tier - Best View</div>
+              <div className="text-emerald-400 text-xs">✓ Available</div>
+            </div>
+            
+            {/* VIP Silver */}
+            <div className="glass-card rounded-2xl p-6 text-center hover:border-purple-500/30 transition-all border-purple-500/20">
+              <div className="text-purple-400 text-sm mb-2 flex items-center justify-center gap-1">
+                <Sparkles className="w-3 h-3" /> VIP Silver
+              </div>
+              <div className="text-3xl font-bold text-white mb-1">€999</div>
+              <div className="text-xs text-zinc-500 mb-4">Club Access</div>
+              <div className="text-emerald-400 text-xs">✓ Limited</div>
+            </div>
+            
+            {/* VIP Gold */}
+            <div className="glass-card rounded-2xl p-6 text-center hover:border-purple-500/30 transition-all border-purple-500/20 relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-purple-500 text-black text-xs px-2 py-1 rounded-bl-lg font-bold">POPULAR</div>
+              <div className="text-purple-400 text-sm mb-2 flex items-center justify-center gap-1">
+                <Sparkles className="w-3 h-3" /> VIP Gold
+              </div>
+              <div className="text-3xl font-bold text-white mb-1">€1,499</div>
+              <div className="text-xs text-zinc-500 mb-4">Private Suite</div>
+              <div className="text-emerald-400 text-xs">✓ Limited</div>
+            </div>
+            
+            {/* VIP Platinum */}
+            <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all border-cyan-500/30 relative overflow-hidden bg-gradient-to-br from-cyan-500/10 to-purple-500/10">
+              <div className="absolute top-0 right-0 bg-cyan-500 text-black text-xs px-2 py-1 rounded-bl-lg font-bold">BEST</div>
+              <div className="text-cyan-400 text-sm mb-2 flex items-center justify-center gap-1">
+                <Sparkles className="w-3 h-3" /> VIP Platinum
+              </div>
+              <div className="text-3xl font-bold text-white mb-1">€1,899</div>
+              <div className="text-xs text-zinc-500 mb-4">All-Inclusive</div>
+              <div className="text-emerald-400 text-xs">✓ Very Limited</div>
+            </div>
+          </div>
+          
+          <div className="text-center mt-8">
+            <p className="text-zinc-500 text-sm">All prices include 10% booking fee. Instant QR delivery after purchase.</p>
+          </div>
+        </div>
+      </section>
+
       {/* Available Matches */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
