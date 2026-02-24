@@ -1689,6 +1689,65 @@ async def fix_tickets_seller():
         "modified_count": result.modified_count
     }
 
+@api_router.post("/add-vip-worldcup-tickets")
+async def add_vip_worldcup_tickets():
+    """Add premium VIP World Cup 2026 tickets with competitive prices"""
+    import random
+    
+    # Get all World Cup events
+    wc_events = await db.events.find(
+        {"title": {"$regex": "FIFA World Cup 2026|World Cup", "$options": "i"}},
+        {"_id": 0}
+    ).to_list(100)
+    
+    if not wc_events:
+        return {"error": "No World Cup events found"}
+    
+    added_tickets = 0
+    
+    # VIP Packages with competitive prices
+    vip_packages = [
+        {"category": "vip", "name": "VIP Platinum", "section": "VIP Platinum Lounge", "base_price": 1899, "description": "Best seats + Lounge access + Catering"},
+        {"category": "vip", "name": "VIP Gold", "section": "VIP Gold Suite", "base_price": 1499, "description": "Premium view + Private suite"},
+        {"category": "vip", "name": "VIP Silver", "section": "VIP Silver Club", "base_price": 999, "description": "Great view + Club access"},
+        {"category": "cat1", "name": "Category 1 Premium", "section": "Lower Tier Central", "base_price": 649, "description": "Best non-VIP seats"},
+        {"category": "cat1", "name": "Category 1", "section": "Lower Tier Side", "base_price": 449, "description": "Excellent view"},
+        {"category": "cat2", "name": "Category 2", "section": "Mid Tier", "base_price": 299, "description": "Great atmosphere"},
+        {"category": "cat3", "name": "Category 3", "section": "Upper Tier", "base_price": 149, "description": "Budget friendly"},
+    ]
+    
+    for event in wc_events:
+        for pkg in vip_packages:
+            # Add 3-5 tickets per package per event
+            for i in range(random.randint(3, 5)):
+                price_variation = random.uniform(0.95, 1.15)
+                price = round(pkg["base_price"] * price_variation, 2)
+                
+                ticket = {
+                    "ticket_id": f"vip_{uuid.uuid4().hex[:12]}",
+                    "event_id": event["event_id"],
+                    "seller_id": "seller_euromatch",
+                    "seller_name": "EuroMatchTickets Official",
+                    "category": pkg["category"],
+                    "section": pkg["section"],
+                    "row": str(random.randint(1, 10)) if pkg["category"] != "vip" else "VIP",
+                    "seat": str(random.randint(1, 30)) if pkg["category"] != "vip" else f"Suite {random.randint(1, 20)}",
+                    "price": price,
+                    "original_price": pkg["base_price"],
+                    "currency": "EUR",
+                    "status": "available",
+                    "description": pkg["description"],
+                    "created_at": datetime.now(timezone.utc).isoformat()
+                }
+                await db.tickets.insert_one(ticket)
+                added_tickets += 1
+    
+    return {
+        "message": "VIP World Cup tickets added",
+        "tickets_added": added_tickets,
+        "events_updated": len(wc_events)
+    }
+
 @api_router.post("/reseed")
 async def reseed_data():
     """Clear and reseed demo data"""
