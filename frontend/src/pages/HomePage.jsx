@@ -227,37 +227,35 @@ const HomePage = () => {
                 <Button 
                   data-testid="start-selling-btn"
                   onClick={login}
-                  className="btn-secondary text-lg h-14 px-10"
+                  className="bg-white/10 hover:bg-white/20 border border-white/20 text-lg h-14 px-10 rounded-full backdrop-blur-sm transition-all"
                 >
                   Start Selling
                 </Button>
               )}
             </div>
 
-            {/* Stats */}
-            <div className="flex items-center gap-8 mt-16 animate-slide-up stagger-4">
-              <div className="text-center">
-                <div className="text-3xl font-bold">50K+</div>
-                <div className="text-zinc-500 text-sm">Happy Fans</div>
+            {/* Stats - Glass Style */}
+            <div className="flex items-center gap-6 mt-16">
+              <div className="glass-card px-6 py-4 rounded-2xl text-center">
+                <div className="text-2xl font-bold font-accent text-cyan-400">50K+</div>
+                <div className="text-zinc-500 text-xs uppercase tracking-wider">Happy Fans</div>
               </div>
-              <div className="w-px h-12 bg-zinc-800" />
-              <div className="text-center">
-                <div className="text-3xl font-bold">1000+</div>
-                <div className="text-zinc-500 text-sm">Events</div>
+              <div className="glass-card px-6 py-4 rounded-2xl text-center">
+                <div className="text-2xl font-bold font-accent text-purple-400">1000+</div>
+                <div className="text-zinc-500 text-xs uppercase tracking-wider">Events</div>
               </div>
-              <div className="w-px h-12 bg-zinc-800" />
-              <div className="text-center">
-                <div className="text-3xl font-bold flex items-center gap-1">
-                  <Star className="w-5 h-5 text-amber-400" />
+              <div className="glass-card px-6 py-4 rounded-2xl text-center">
+                <div className="text-2xl font-bold font-accent flex items-center gap-1 text-amber-400">
+                  <Star className="w-4 h-4" />
                   4.9
                 </div>
-                <div className="text-zinc-500 text-sm">Rating</div>
+                <div className="text-zinc-500 text-xs uppercase tracking-wider">Rating</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Floating elements */}
+        {/* Crystal Floating Elements */}
         <div className="absolute right-10 top-1/3 hidden lg:block animate-float">
           <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur border border-white/10" />
         </div>
