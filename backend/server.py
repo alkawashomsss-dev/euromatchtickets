@@ -469,19 +469,29 @@ async def get_events(
     
     events = await db.events.find(query, {"_id": 0}).sort("event_date", 1).to_list(100)
     
-    for event in events:
-        ticket_count = await db.tickets.count_documents({
-            "event_id": event["event_id"],
-            "status": "available"
-        })
-        event["available_tickets"] = ticket_count
+    # Batch fetch ticket info using aggregation to avoid N+1 queries
+    if events:
+        event_ids = [e["event_id"] for e in events]
         
-        lowest_ticket = await db.tickets.find_one(
-            {"event_id": event["event_id"], "status": "available"},
-            {"_id": 0, "price": 1},
-            sort=[("price", 1)]
-        )
-        event["lowest_price"] = lowest_ticket["price"] if lowest_ticket else None
+        # Aggregate ticket counts and lowest prices in one query
+        pipeline = [
+            {"$match": {"event_id": {"$in": event_ids}, "status": "available"}},
+            {"$group": {
+                "_id": "$event_id",
+                "ticket_count": {"$sum": 1},
+                "lowest_price": {"$min": "$price"}
+            }}
+        ]
+        ticket_stats = await db.tickets.aggregate(pipeline).to_list(None)
+        
+        # Create lookup dict
+        stats_map = {s["_id"]: s for s in ticket_stats}
+        
+        # Apply stats to events
+        for event in events:
+            stats = stats_map.get(event["event_id"], {})
+            event["available_tickets"] = stats.get("ticket_count", 0)
+            event["lowest_price"] = stats.get("lowest_price")
     
     return events
 
