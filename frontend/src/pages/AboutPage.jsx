@@ -188,36 +188,36 @@ const AboutPage = () => {
                 <div className="flex items-start gap-3">
                   <Building2 className="w-5 h-5 text-purple-400 mt-1" />
                   <div>
-                    <div className="font-medium">EuroMatchTickets GmbH</div>
+                    <div className="font-medium">Abd Al mahsen Alkawas</div>
                     <div className="text-zinc-500 text-sm">Registered in Germany</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-purple-400 mt-1" />
                   <div>
-                    <div className="font-medium">Friedrichstraße 123</div>
-                    <div className="text-zinc-500 text-sm">10117 Berlin, Germany</div>
+                    <div className="font-medium">Fürstenriederstr. 33</div>
+                    <div className="text-zinc-500 text-sm">80686 München, Germany</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-purple-400 mt-1" />
                   <div>
-                    <div className="font-medium">support@euromatchtickets.com</div>
-                    <div className="text-zinc-500 text-sm">24/7 Customer Support</div>
+                    <div className="font-medium">Alkawashoms@gmail.com</div>
+                    <div className="text-zinc-500 text-sm">Customer Support</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-purple-400 mt-1" />
                   <div>
-                    <div className="font-medium">+49 30 568 37 901</div>
+                    <div className="font-medium">+49 178 130 4137</div>
                     <div className="text-zinc-500 text-sm">Mon-Fri, 9AM-6PM CET</div>
                   </div>
                 </div>
                 <div className="mt-4 pt-4 border-t border-zinc-800">
                   <p className="text-xs text-zinc-600">
-                    <strong>Registration:</strong> HRB 123456 B<br/>
-                    <strong>VAT:</strong> DE123456789<br/>
-                    <strong>CEO:</strong> Alexander Schmidt
+                    <strong>Registration:</strong> 14410642728<br/>
+                    <strong>VAT:</strong> DE454326544<br/>
+                    <strong>Owner:</strong> Abd Al mahsen Alkawas
                   </p>
                 </div>
               </div>
