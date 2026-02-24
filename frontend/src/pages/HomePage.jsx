@@ -259,6 +259,37 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* World Cup Raffle Banner */}
+      <section className="py-8 bg-gradient-to-r from-yellow-500/20 via-amber-500/10 to-yellow-500/20">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+          <Link 
+            to="/world-cup-raffle"
+            className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-zinc-900/80 border border-yellow-500/30 rounded-2xl hover:border-yellow-500/50 transition-all group"
+            data-testid="raffle-banner"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center">
+                <Trophy className="w-8 h-8 text-yellow-400" />
+              </div>
+              <div>
+                <p className="text-yellow-400 text-sm font-bold mb-1">🎉 NEW - WIN A TRIP!</p>
+                <h3 className="text-xl md:text-2xl font-bold">World Cup 2026 VIP Raffle</h3>
+                <p className="text-zinc-400">7 nights + flights + tickets for 2 people!</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="text-center">
+                <p className="text-3xl font-bold text-yellow-400">€100</p>
+                <p className="text-sm text-zinc-400">Entry</p>
+              </div>
+              <div className="bg-yellow-500 text-black font-bold px-6 py-3 rounded-xl group-hover:bg-yellow-400 transition-colors">
+                Enter Now →
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* Featured Events */}
       <section className="py-24 relative">
         <div className="absolute inset-0 gradient-glow opacity-30" />
