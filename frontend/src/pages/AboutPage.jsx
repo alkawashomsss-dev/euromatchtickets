@@ -298,49 +298,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Customer Reviews Preview */}
-      <section className="py-20 bg-zinc-900/30">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What Our Customers Say</h2>
-            <div className="flex items-center justify-center gap-2">
-              <div className="flex">
-                {[1,2,3,4,5].map(i => (
-                  <Star key={i} className="w-6 h-6 fill-purple-400 text-purple-400" />
-                ))}
-              </div>
-              <span className="text-lg font-bold">4.9/5</span>
-              <span className="text-zinc-400">from 2,847 reviews</span>
-            </div>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { name: "Michael K.", location: "Munich", text: "Bought Champions League tickets, arrived instantly. Best experience ever!", rating: 5 },
-              { name: "Sophie L.", location: "Paris", text: "Finally a ticket site I can trust. Great prices and real customer support.", rating: 5 },
-              { name: "Thomas B.", location: "London", text: "Used for Taylor Swift concert. Smooth process, genuine tickets. Highly recommend!", rating: 5 }
-            ].map((review, i) => (
-              <div key={i} className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
-                <div className="flex mb-3">
-                  {[...Array(review.rating)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-purple-400 text-purple-400" />
-                  ))}
-                </div>
-                <p className="text-zinc-300 mb-4">"{review.text}"</p>
-                <div className="text-sm">
-                  <span className="font-medium">{review.name}</span>
-                  <span className="text-zinc-500"> • {review.location}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link to="/reviews" className="text-purple-400 hover:text-purple-300 font-medium">
-              Read all 2,847 reviews →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-purple-500/10 to-pink-500/10">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
