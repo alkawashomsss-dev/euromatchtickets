@@ -26,6 +26,7 @@ import BlogArticlePage from "./pages/BlogArticlePage";
 import ReviewsPage from "./pages/ReviewsPage";
 import FAQPage from "./pages/FAQPage";
 import WorldCupPage from "./pages/WorldCupPage";
+import WorldCupRafflePage from "./pages/WorldCupRafflePage";
 import TheWeekndPage from "./pages/TheWeekndPage";
 import ChampionsLeaguePage from "./pages/ChampionsLeaguePage";
 import BrunoMarsPage from "./pages/BrunoMarsPage";
