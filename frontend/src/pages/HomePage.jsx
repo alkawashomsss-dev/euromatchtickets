@@ -257,37 +257,37 @@ const HomePage = () => {
 
         {/* Crystal Floating Elements */}
         <div className="absolute right-10 top-1/3 hidden lg:block animate-float">
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur border border-white/10" />
+          <div className="w-24 h-24 rounded-2xl glass-card crystal-glow" />
         </div>
         <div className="absolute right-40 bottom-1/4 hidden lg:block animate-float" style={{animationDelay: '2s'}}>
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 backdrop-blur border border-white/10" />
+          <div className="w-16 h-16 rounded-xl glass-card" style={{boxShadow: '0 0 30px rgba(192, 132, 252, 0.2)'}} />
         </div>
       </section>
 
-      {/* World Cup Raffle Banner */}
-      <section className="py-8 bg-gradient-to-r from-yellow-500/20 via-amber-500/10 to-yellow-500/20">
+      {/* World Cup Raffle Banner - Gold VIP Style */}
+      <section className="py-6 stadium-glow-gold">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <Link 
             to="/world-cup-raffle"
-            className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-zinc-900/80 border border-yellow-500/30 rounded-2xl hover:border-yellow-500/50 transition-all group"
+            className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 glass-card rounded-2xl border-yellow-500/30 hover:border-yellow-500/50 transition-all group"
             data-testid="raffle-banner"
           >
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500/30 to-amber-600/30 rounded-full flex items-center justify-center animate-glow-pulse" style={{boxShadow: '0 0 30px rgba(251, 191, 36, 0.3)'}}>
                 <Trophy className="w-8 h-8 text-yellow-400" />
               </div>
               <div>
-                <p className="text-yellow-400 text-sm font-bold mb-1">🎉 NEW - WIN A TRIP!</p>
-                <h3 className="text-xl md:text-2xl font-bold">World Cup 2026 VIP Raffle</h3>
-                <p className="text-zinc-400">7 nights + flights + tickets for 2 people!</p>
+                <p className="text-yellow-400 text-sm font-accent tracking-wider mb-1">VIP RAFFLE - WIN A TRIP!</p>
+                <h3 className="text-xl md:text-2xl font-display">WORLD CUP 2026</h3>
+                <p className="text-zinc-400 text-sm">7 nights + flights + tickets for 2 people!</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-center">
-                <p className="text-3xl font-bold text-yellow-400">€100</p>
-                <p className="text-sm text-zinc-400">Entry</p>
+                <p className="text-3xl font-accent text-yellow-400 neon-text-gold">€100</p>
+                <p className="text-xs text-zinc-500 uppercase">Entry</p>
               </div>
-              <div className="bg-yellow-500 text-black font-bold px-6 py-3 rounded-xl group-hover:bg-yellow-400 transition-colors">
+              <div className="btn-gold px-6 py-3 rounded-full group-hover:scale-105 transition-transform">
                 Enter Now →
               </div>
             </div>
@@ -297,7 +297,7 @@ const HomePage = () => {
 
       {/* Featured Events */}
       <section className="py-24 relative">
-        <div className="absolute inset-0 gradient-glow opacity-30" />
+        <div className="absolute inset-0 stadium-glow opacity-30" />
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 relative">
           <div className="flex items-center justify-between mb-12">
             <div>
