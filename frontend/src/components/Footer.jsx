@@ -105,15 +105,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-zinc-400">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <a href="mailto:support@euromatchtickets.com" className="hover:text-white transition-colors">support@euromatchtickets.com</a>
+                <a href="mailto:Alkawashoms@gmail.com" className="hover:text-white transition-colors">Alkawashoms@gmail.com</a>
               </li>
               <li className="flex items-start gap-2 text-sm text-zinc-400">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>+49 30 568 37 901</span>
+                <span>+49 178 130 4137</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-zinc-400">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Friedrichstraße 123<br/>10117 Berlin, Germany</span>
+                <span>Fürstenriederstr. 33<br/>80686 München, Germany</span>
               </li>
             </ul>
           </div>
@@ -124,9 +124,9 @@ const Footer = () => {
       <div className="border-t border-white/5 bg-zinc-950/50">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="text-center text-xs text-zinc-600 space-y-1">
-            <p><strong>EuroMatchTickets GmbH</strong> • Handelsregister: Amtsgericht Berlin-Charlottenburg, HRB 123456 B</p>
-            <p>USt-IdNr: DE123456789 • Geschäftsführer: Alexander Schmidt</p>
-            <p>Licensed Ticket Resale Marketplace • Member of STAR (Society of Ticket Agents and Retailers)</p>
+            <p><strong>Abd Al mahsen Alkawas</strong> • Handelsregister: 14410642728</p>
+            <p>USt-IdNr: DE454326544 • Inhaber: Abd Al mahsen Alkawas</p>
+            <p>Fürstenriederstr. 33, 80686 München, Germany</p>
           </div>
         </div>
       </div>
