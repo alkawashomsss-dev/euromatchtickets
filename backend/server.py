@@ -10,11 +10,21 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
-# MongoDB
-mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
+# MongoDB - Read from environment
+mongo_url = os.environ.get('MONGO_URL')
 db_name = os.environ.get('DB_NAME', 'euromatchtickets')
+
+# Log the connection info
+logger.info(f"MONGO_URL set: {mongo_url is not None}")
+logger.info(f"DB_NAME: {db_name}")
+
+if not mongo_url:
+    logger.error("MONGO_URL environment variable is not set!")
+    mongo_url = 'mongodb://localhost:27017'  # Fallback for local dev only
+
 client = AsyncIOMotorClient(mongo_url)
 db = client[db_name]
+logger.info(f"Connected to MongoDB: {db_name}")
 
 @app.get("/health")
 async def health():
