@@ -273,7 +273,13 @@ class SellerPayout(BaseModel):
 @app.get("/health")
 async def health_check():
     """Health check endpoint for Kubernetes liveness/readiness probes"""
-    return {"status": "healthy", "service": "euromatchtickets-api"}
+    try:
+        # Quick DB check
+        await db.command('ping')
+        return {"status": "healthy", "service": "euromatchtickets-api", "db": "connected"}
+    except Exception as e:
+        logger.error(f"Health check failed: {e}")
+        return {"status": "healthy", "service": "euromatchtickets-api", "db": "error"}
 
 @app.get("/api/health")
 async def api_health_check():
