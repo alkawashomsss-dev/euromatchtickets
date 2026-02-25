@@ -57,15 +57,19 @@ except ImportError as e:
     async def send_price_drop_alert(*args, **kwargs): pass
     async def send_welcome(*args, **kwargs): pass
 
-# MongoDB connection with error handling
-try:
-    mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
-    client = AsyncIOMotorClient(mongo_url, serverSelectionTimeoutMS=5000)
-    db = client[os.environ.get('DB_NAME', 'euromatchtickets')]
-    logger.info(f"MongoDB connected to {mongo_url}")
-except Exception as e:
-    logger.error(f"MongoDB connection error: {e}")
-    raise
+# MongoDB connection - lazy initialization
+mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
+db_name = os.environ.get('DB_NAME', 'euromatchtickets')
+client = None
+db = None
+
+def get_db():
+    global client, db
+    if client is None:
+        client = AsyncIOMotorClient(mongo_url, serverSelectionTimeoutMS=10000, connectTimeoutMS=10000)
+        db = client[db_name]
+        logger.info(f"MongoDB client initialized for {db_name}")
+    return db
 
 # Stripe - with error handling
 try:
