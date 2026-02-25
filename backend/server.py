@@ -85,17 +85,18 @@ app = FastAPI(title="EuroMatchTickets - Events & Tickets Marketplace")
 @app.on_event("startup")
 async def startup_event():
     logger.info("🚀 Server starting up...")
-    try:
-        # Test database connection
-        await db.command('ping')
-        logger.info("✅ Database connected successfully")
-    except Exception as e:
-        logger.error(f"❌ Database connection failed: {e}")
+    logger.info(f"📊 MongoDB URL: {mongo_url[:30]}...")
+    logger.info(f"📊 Database: {db_name}")
+    # Don't block startup on DB ping - let it connect lazily
+    logger.info("✅ Server ready to accept connections")
 
 @app.on_event("shutdown")
 async def shutdown_event():
     logger.info("🛑 Server shutting down...")
-    client.close()
+    try:
+        client.close()
+    except:
+        pass
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
