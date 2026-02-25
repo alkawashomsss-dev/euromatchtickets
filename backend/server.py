@@ -13,15 +13,34 @@ import uuid
 from datetime import datetime, timezone, timedelta
 import base64
 import io
-import qrcode
 import httpx
 import stripe
 
-# AI Chat Support
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
+
+# AI Chat Support - with error handling
+try:
+    from emergentintegrations.llm.chat import LlmChat, UserMessage
+    AI_CHAT_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"AI Chat not available: {e}")
+    AI_CHAT_AVAILABLE = False
+    LlmChat = None
+    UserMessage = None
+
+# QR Code - with error handling
+try:
+    import qrcode
+    QR_AVAILABLE = True
+except ImportError:
+    logger.warning("QR code library not available")
+    QR_AVAILABLE = False
+    qrcode = None
 
 # Email Service
 from email_service import (
