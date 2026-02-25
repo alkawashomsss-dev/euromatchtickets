@@ -33,7 +33,7 @@ const WorldCupRafflePage = () => {
   const handleBuyEntry = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/raffle/checkout`, {
+      const response = await fetch(`${API}/raffle/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
