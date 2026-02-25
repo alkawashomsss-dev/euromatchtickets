@@ -8,6 +8,7 @@ import {
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import { API } from "../App";
 
 const WorldCupRafflePage = () => {
   const navigate = useNavigate();
