@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Bot, User, Sparkles, Shield, Clock, CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
+import { API } from "../App";
 
 const AIChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
