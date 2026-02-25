@@ -87,8 +87,58 @@ async def startup_event():
     logger.info("🚀 Server starting up...")
     logger.info(f"📊 MongoDB URL: {mongo_url[:30]}...")
     logger.info(f"📊 Database: {db_name}")
-    # Don't block startup on DB ping - let it connect lazily
+    
+    # Auto-seed database if empty
+    try:
+        event_count = await db.events.count_documents({})
+        logger.info(f"📊 Events in database: {event_count}")
+        if event_count == 0:
+            logger.info("🌱 Database empty, auto-seeding...")
+            await auto_seed_database()
+            logger.info("✅ Database seeded successfully!")
+    except Exception as e:
+        logger.error(f"❌ Auto-seed error: {e}")
+    
     logger.info("✅ Server ready to accept connections")
+
+async def auto_seed_database():
+    """Automatically seed database with initial data"""
+    import uuid
+    from datetime import datetime, timezone
+    
+    events = [
+        {"event_id": f"event_{uuid.uuid4().hex[:12]}", "event_type": "match", "title": "Liverpool vs Arsenal", "subtitle": "Premier League", "event_date": "2026-03-15T15:00:00Z", "city": "Liverpool", "country": "England", "venue": "Anfield", "image_url": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800", "categories": ["football", "premier-league"]},
+        {"event_id": f"event_{uuid.uuid4().hex[:12]}", "event_type": "match", "title": "Real Madrid vs Barcelona", "subtitle": "El Clasico - La Liga", "event_date": "2026-04-10T20:00:00Z", "city": "Madrid", "country": "Spain", "venue": "Santiago Bernabeu", "image_url": "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=800", "categories": ["football", "la-liga"]},
+        {"event_id": f"event_{uuid.uuid4().hex[:12]}", "event_type": "match", "title": "Bayern Munich vs Dortmund", "subtitle": "Der Klassiker - Bundesliga", "event_date": "2026-04-20T17:30:00Z", "city": "Munich", "country": "Germany", "venue": "Allianz Arena", "image_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800", "categories": ["football", "bundesliga"]},
+        {"event_id": f"event_{uuid.uuid4().hex[:12]}", "event_type": "match", "title": "PSG vs Marseille", "subtitle": "Le Classique - Ligue 1", "event_date": "2026-05-01T20:45:00Z", "city": "Paris", "country": "France", "venue": "Parc des Princes", "image_url": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800", "categories": ["football", "ligue-1"]},
+        {"event_id": f"event_{uuid.uuid4().hex[:12]}", "event_type": "match", "title": "Manchester United vs Manchester City", "subtitle": "Manchester Derby", "event_date": "2026-05-10T16:00:00Z", "city": "Manchester", "country": "England", "venue": "Old Trafford", "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800", "categories": ["football", "premier-league"]},
+        {"event_id": f"event_{uuid.uuid4().hex[:12]}", "event_type": "concert", "title": "Coldplay", "subtitle": "Music of the Spheres World Tour", "event_date": "2026-06-15T20:00:00Z", "city": "Berlin", "country": "Germany", "venue": "Olympiastadion", "image_url": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800", "categories": ["concert", "rock"]},
+        {"event_id": f"event_{uuid.uuid4().hex[:12]}", "event_type": "concert", "title": "Taylor Swift", "subtitle": "The Eras Tour", "event_date": "2026-07-20T19:00:00Z", "city": "London", "country": "England", "venue": "Wembley Stadium", "image_url": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800", "categories": ["concert", "pop"]},
+        {"event_id": f"event_{uuid.uuid4().hex[:12]}", "event_type": "concert", "title": "Ed Sheeran", "subtitle": "Mathematics Tour", "event_date": "2026-08-05T20:30:00Z", "city": "Amsterdam", "country": "Netherlands", "venue": "Johan Cruijff Arena", "image_url": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=800", "categories": ["concert", "pop"]},
+        {"event_id": f"event_{uuid.uuid4().hex[:12]}", "event_type": "match", "title": "Champions League Final 2026", "subtitle": "UEFA Champions League", "event_date": "2026-05-30T20:00:00Z", "city": "Munich", "country": "Germany", "venue": "Allianz Arena", "image_url": "https://images.unsplash.com/photo-1522778034537-20a2486be803?w=800", "categories": ["football", "champions-league"]},
+        {"event_id": f"event_{uuid.uuid4().hex[:12]}", "event_type": "match", "title": "FIFA World Cup 2026 Final", "subtitle": "FIFA World Cup", "event_date": "2026-07-19T18:00:00Z", "city": "New York", "country": "USA", "venue": "MetLife Stadium", "image_url": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800", "categories": ["football", "world-cup"]},
+    ]
+    
+    await db.events.insert_many(events)
+    
+    # Create tickets for each event
+    for event in events:
+        tickets = []
+        for i in range(25):
+            tickets.append({
+                "ticket_id": f"ticket_{uuid.uuid4().hex[:12]}",
+                "event_id": event["event_id"],
+                "seller_id": "system",
+                "category": ["Standard", "Premium", "VIP"][i % 3],
+                "section": f"Section {chr(65 + (i % 5))}",
+                "row": str((i % 10) + 1),
+                "seat": str((i % 30) + 1),
+                "price": round(50 + (i * 8) + (i % 3) * 40, 2),
+                "currency": "EUR",
+                "status": "available",
+                "created_at": datetime.now(timezone.utc).isoformat()
+            })
+        await db.tickets.insert_many(tickets)
 
 @app.on_event("shutdown")
 async def shutdown_event():
