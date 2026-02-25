@@ -40,8 +40,8 @@ import AIChatWidget from "./components/AIChatWidget";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-export const API = `${BACKEND_URL}/api`;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
+export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
 // Auth Context
 export const AuthContext = createContext(null);
