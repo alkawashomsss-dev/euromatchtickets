@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 # Initialize Resend
 RESEND_API_KEY = os.environ.get('RESEND_API_KEY')
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'onboarding@resend.dev')
-FRONTEND_URL = os.environ.get('FRONTEND_URL', 'https://euromatchtickets.com')
+FRONTEND_URL = os.environ.get('FRONTEND_URL', '')
 
 if RESEND_API_KEY:
     resend.api_key = RESEND_API_KEY
