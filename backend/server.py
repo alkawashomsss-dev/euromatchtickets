@@ -57,13 +57,24 @@ except ImportError as e:
     async def send_price_drop_alert(*args, **kwargs): pass
     async def send_welcome(*args, **kwargs): pass
 
-# MongoDB connection
-mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ.get('DB_NAME', 'euromatchtickets')]
+# MongoDB connection with error handling
+try:
+    mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
+    client = AsyncIOMotorClient(mongo_url, serverSelectionTimeoutMS=5000)
+    db = client[os.environ.get('DB_NAME', 'euromatchtickets')]
+    logger.info(f"MongoDB connected to {mongo_url}")
+except Exception as e:
+    logger.error(f"MongoDB connection error: {e}")
+    raise
 
-# Stripe
-from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
+# Stripe - with error handling
+try:
+    from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
+    STRIPE_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"Stripe checkout not available: {e}")
+    STRIPE_AVAILABLE = False
+    StripeCheckout = None
 
 STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY', 'sk_test_emergent')
 PLATFORM_COMMISSION = 0.10  # 10% commission
