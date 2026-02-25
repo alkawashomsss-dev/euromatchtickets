@@ -1,1 +1,1 @@
-web: cd backend && uvicorn server:app --host 0.0.0.0 --port 8001 --workers 1 --timeout-keep-alive 120 --limit-concurrency 100
+web: cd backend && gunicorn server:app -w 1 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8001 --timeout 120 --graceful-timeout 60 --keep-alive 5
