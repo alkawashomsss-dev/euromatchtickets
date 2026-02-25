@@ -42,11 +42,20 @@ except ImportError:
     QR_AVAILABLE = False
     qrcode = None
 
-# Email Service
-from email_service import (
-    send_order_confirmation, send_seller_notification, 
-    send_price_drop_alert, send_welcome
-)
+# Email Service - with error handling
+try:
+    from email_service import (
+        send_order_confirmation, send_seller_notification, 
+        send_price_drop_alert, send_welcome
+    )
+    EMAIL_SERVICE_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"Email service not available: {e}")
+    EMAIL_SERVICE_AVAILABLE = False
+    async def send_order_confirmation(*args, **kwargs): pass
+    async def send_seller_notification(*args, **kwargs): pass
+    async def send_price_drop_alert(*args, **kwargs): pass
+    async def send_welcome(*args, **kwargs): pass
 
 # MongoDB connection
 mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
