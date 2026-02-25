@@ -87,18 +87,6 @@ async def startup_event():
     logger.info("🚀 Server starting up...")
     logger.info(f"📊 MongoDB URL: {mongo_url[:30]}...")
     logger.info(f"📊 Database: {db_name}")
-    
-    # Auto-seed database if empty
-    try:
-        event_count = await db.events.count_documents({})
-        logger.info(f"📊 Events in database: {event_count}")
-        if event_count == 0:
-            logger.info("🌱 Database empty, auto-seeding...")
-            await auto_seed_database()
-            logger.info("✅ Database seeded successfully!")
-    except Exception as e:
-        logger.error(f"❌ Auto-seed error: {e}")
-    
     logger.info("✅ Server ready to accept connections")
 
 async def auto_seed_database():
