@@ -61,10 +61,8 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build && react-snap",
-    "build:only": "craco build",
-    "test": "craco test",
-    "postbuild": "react-snap"
+    "build": "craco build",
+    "test": "craco test"
   },
   "reactSnap": {
     "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
