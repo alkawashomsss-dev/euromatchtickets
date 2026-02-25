@@ -85,6 +85,22 @@ stripe.api_key = STRIPE_API_KEY
 # Create the main app
 app = FastAPI(title="EuroMatchTickets - Events & Tickets Marketplace")
 
+# Startup and shutdown events
+@app.on_event("startup")
+async def startup_event():
+    logger.info("🚀 Server starting up...")
+    try:
+        # Test database connection
+        await db.command('ping')
+        logger.info("✅ Database connected successfully")
+    except Exception as e:
+        logger.error(f"❌ Database connection failed: {e}")
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    logger.info("🛑 Server shutting down...")
+    client.close()
+
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
