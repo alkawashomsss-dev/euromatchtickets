@@ -368,21 +368,26 @@ async def require_admin(request: Request) -> User:
 @api_router.post("/auth/session")
 async def exchange_session(request: Request, response: Response):
     """Exchange session_id from Emergent Auth for session_token"""
+    logger.info("🔐 Auth session exchange started")
     try:
         body = await request.json()
         session_id = body.get("session_id")
+        logger.info(f"📝 Session ID received: {session_id[:20] if session_id else 'None'}...")
         
         if not session_id:
             raise HTTPException(status_code=400, detail="session_id required")
         
-        async with httpx.AsyncClient(timeout=30.0) as client:
-            auth_response = await client.get(
+        logger.info("🌐 Calling Emergent Auth API...")
+        async with httpx.AsyncClient(timeout=30.0) as http_client:
+            auth_response = await http_client.get(
                 "https://demobackend.emergentagent.com/auth/v1/env/oauth/session-data",
                 headers={"X-Session-ID": session_id}
             )
         
+        logger.info(f"📨 Auth API response: {auth_response.status_code}")
+        
         if auth_response.status_code != 200:
-            logger.error(f"Auth failed: {auth_response.status_code} - {auth_response.text}")
+            logger.error(f"❌ Auth failed: {auth_response.status_code} - {auth_response.text}")
             raise HTTPException(status_code=401, detail="Invalid session")
         
         auth_data = auth_response.json()
@@ -391,19 +396,25 @@ async def exchange_session(request: Request, response: Response):
         picture = auth_data.get("picture")
         session_token = auth_data.get("session_token")
         
+        logger.info(f"👤 User email: {email}")
+        
         if not email or not session_token:
+            logger.error("❌ Missing email or session_token in auth response")
             raise HTTPException(status_code=401, detail="Invalid auth data")
         
+        logger.info("🔍 Checking for existing user...")
         existing_user = await db.users.find_one({"email": email}, {"_id": 0})
         
         if existing_user:
             user_id = existing_user["user_id"]
+            logger.info(f"✅ Existing user found: {user_id}")
             await db.users.update_one(
                 {"user_id": user_id},
                 {"$set": {"name": name, "picture": picture}}
             )
         else:
             user_id = f"user_{uuid.uuid4().hex[:12]}"
+            logger.info(f"🆕 Creating new user: {user_id}")
             new_user = User(
                 user_id=user_id,
                 email=email,
@@ -415,6 +426,7 @@ async def exchange_session(request: Request, response: Response):
             user_doc['created_at'] = user_doc['created_at'].isoformat()
             await db.users.insert_one(user_doc)
         
+        logger.info("💾 Creating session...")
         expires_at = datetime.now(timezone.utc) + timedelta(days=7)
         session_doc = {
             "session_id": str(uuid.uuid4()),
@@ -426,6 +438,7 @@ async def exchange_session(request: Request, response: Response):
         
         await db.user_sessions.delete_many({"user_id": user_id})
         await db.user_sessions.insert_one(session_doc)
+        logger.info("✅ Session created successfully")
         
         response.set_cookie(
             key="session_token",
