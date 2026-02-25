@@ -2359,7 +2359,7 @@ async def get_sitemap():
     """Generate dynamic sitemap.xml for SEO"""
     from fastapi.responses import Response
     
-    base_url = "https://euromatchtickets.com"
+    base_url = os.environ.get('FRONTEND_URL', 'https://euromatchtickets.com')
     
     # Static pages
     static_pages = [
