@@ -451,21 +451,28 @@ async def exchange_session(request: Request, response: Response):
         )
         
         user_doc = await db.users.find_one({"user_id": user_id}, {"_id": 0})
+        logger.info(f"🎉 Auth complete for user: {user_id}")
         
         return {"success": True, "user": user_doc}
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"Auth session error: {str(e)}")
+        logger.error(f"❌ Auth session error: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Authentication error: {str(e)}")
 
 @api_router.get("/auth/me")
 async def get_me(request: Request):
     """Get current user"""
-    user = await get_current_user(request)
-    if not user:
+    try:
+        user = await get_current_user(request)
+        if not user:
+            raise HTTPException(status_code=401, detail="Not authenticated")
+        return user.model_dump()
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"❌ Auth/me error: {str(e)}")
         raise HTTPException(status_code=401, detail="Not authenticated")
-    return user.model_dump()
 
 @api_router.post("/auth/logout")
 async def logout(request: Request, response: Response):
