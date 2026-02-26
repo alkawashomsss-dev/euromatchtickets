@@ -440,7 +440,7 @@ async def exchange_session(request: Request, response: Response):
         user_doc = await db.users.find_one({"user_id": user_id}, {"_id": 0})
         logger.info(f"🎉 Auth complete for user: {user_id}")
         
-        return {"success": True, "user": user_doc}
+        return {"success": True, "user": user_doc, "session_token": session_token}
     except HTTPException:
         raise
     except Exception as e:
