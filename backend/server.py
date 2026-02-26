@@ -298,7 +298,12 @@ async def health_check():
 @app.get("/api/health")
 async def api_health_check():
     """API Health check endpoint"""
-    return {"status": "healthy", "service": "euromatchtickets-api"}
+    stripe_status = "configured" if STRIPE_API_KEY and STRIPE_API_KEY.startswith("sk_") else "not configured"
+    return {
+        "status": "healthy", 
+        "service": "euromatchtickets-api",
+        "stripe": stripe_status
+    }
 
 async def get_current_user(request: Request) -> Optional[User]:
     """Get current user from session token"""
