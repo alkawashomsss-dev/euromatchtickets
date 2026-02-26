@@ -2652,10 +2652,24 @@ static_dir = ROOT_DIR / "static"
 if static_dir.exists():
     app.mount("/api/static", StaticFiles(directory=str(static_dir)), name="static")
 
+# CORS Configuration - Allow specific origins for credentials
+ALLOWED_ORIGINS = [
+    "https://euromatchtickets-frontend.onrender.com",
+    "https://euromatchtickets.com",
+    "https://www.euromatchtickets.com",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
+]
+
+# Add custom origins from environment
+custom_origins = os.environ.get('CORS_ORIGINS', '')
+if custom_origins and custom_origins != '*':
+    ALLOWED_ORIGINS.extend([o.strip() for o in custom_origins.split(',') if o.strip()])
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
