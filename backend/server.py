@@ -1820,6 +1820,16 @@ async def chat_support(chat_msg: ChatMessage):
 
 # ============== SEED DATA ==============
 
+@api_router.post("/reset-and-seed")
+async def reset_and_seed():
+    """Delete all data and re-seed with full data"""
+    # Delete all existing data
+    await db.events.delete_many({})
+    await db.tickets.delete_many({})
+    await db.users.delete_many({"user_id": {"$in": ["admin_001", "seller_demo"]}})
+    
+    return {"message": "Data cleared. Call /api/seed to repopulate."}
+
 @api_router.post("/cleanup-categories")
 async def cleanup_categories():
     """Remove unwanted event categories (trains, attractions, festivals, f1, tennis)"""
