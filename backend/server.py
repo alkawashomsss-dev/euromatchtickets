@@ -2563,20 +2563,8 @@ async def generate_event_description(event_id: str, request: Request):
         raise HTTPException(status_code=404, detail="Event not found")
     
     try:
-        from emergentintegrations.llm.chat import LlmChat, UserMessage
-        
-        llm_key = os.environ.get('EMERGENT_LLM_KEY')
-        if not llm_key:
-            raise HTTPException(status_code=500, detail="LLM key not configured")
-        
-        chat = LlmChat(
-            api_key=llm_key,
-            session_id=f"seo_desc_{event_id}",
-            system_message="""You are an SEO expert for a ticket marketplace. Generate compelling, 
-            SEO-optimized descriptions for events. The description should be 150-250 words, 
-            include relevant keywords naturally, and encourage ticket purchases. 
-            Write in a professional but exciting tone. Do not use markdown formatting."""
-        ).with_model("openai", "gpt-4o")
+        if not openai_client:
+            raise HTTPException(status_code=500, detail="OpenAI not configured")
         
         is_match = event.get('event_type') == 'match'
         
@@ -2602,8 +2590,19 @@ Date: {event.get('event_date')}
 Include keywords like: buy tickets, {event.get('artist')} concert tickets, {event.get('artist')} tour,
 {event.get('city')} concert, live music, official tickets."""
         
-        user_message = UserMessage(text=prompt)
-        description = await chat.send_message(user_message)
+        response = openai_client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": """You are an SEO expert for a ticket marketplace. Generate compelling, 
+            SEO-optimized descriptions for events. The description should be 150-250 words, 
+            include relevant keywords naturally, and encourage ticket purchases. 
+            Write in a professional but exciting tone. Do not use markdown formatting."""},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=500
+        )
+        
+        description = response.choices[0].message.content
         
         # Update event with description
         await db.events.update_one(
@@ -2613,8 +2612,6 @@ Include keywords like: buy tickets, {event.get('artist')} concert tickets, {even
         
         return {"success": True, "description": description}
         
-    except ImportError:
-        raise HTTPException(status_code=500, detail="LLM integration not available")
     except Exception as e:
         logger.error(f"Error generating description: {e}")
         raise HTTPException(status_code=500, detail=str(e))
