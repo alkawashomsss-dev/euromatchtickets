@@ -101,10 +101,13 @@ const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await axios.post(`${API}/auth/logout`, {}, { withCredentials: true });
+      localStorage.removeItem('session_token');
       setUser(null);
       window.location.href = '/';
     } catch (error) {
       console.error("Logout error:", error);
+      localStorage.removeItem('session_token');
+      setUser(null);
     }
   };
 
