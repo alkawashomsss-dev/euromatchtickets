@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { Building2, Mail, Phone, MapPin, FileText, Scale } from 'lucide-react';
+import { Building2, Mail, MapPin, FileText, Scale } from 'lucide-react';
 
 const ImpressumPage = () => {
   return (
@@ -17,7 +17,7 @@ const ImpressumPage = () => {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Impressum</h1>
           <p className="text-xl text-zinc-400">
-            Legal Information (Angaben gemäß § 5 TMG)
+            Information according to §5 TMG
           </p>
         </div>
       </section>
@@ -28,21 +28,20 @@ const ImpressumPage = () => {
           <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <Building2 className="w-6 h-6 text-purple-400" />
-              Angaben gemäß § 5 TMG
+              Information according to §5 TMG
             </h2>
             
             <div className="space-y-4 text-zinc-300">
               <div>
-                <h3 className="font-semibold text-white text-lg">Abd Al mahsen Alkawas</h3>
-                <p className="text-zinc-400">Einzelunternehmer</p>
+                <h3 className="font-semibold text-white text-lg">Alex Heimbeck</h3>
               </div>
               
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-purple-400 mt-1 flex-shrink-0" />
                 <div>
-                  <p>Fürstenriederstr. 33</p>
-                  <p>80686 München</p>
-                  <p>Deutschland</p>
+                  <p>Erzgießereistraße 15</p>
+                  <p>80335 München</p>
+                  <p>Germany</p>
                 </div>
               </div>
             </div>
@@ -52,68 +51,42 @@ const ImpressumPage = () => {
           <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <Mail className="w-6 h-6 text-emerald-400" />
-              Kontakt
+              Contact
             </h2>
             
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-emerald-400" />
-                <a href="tel:+491781304137" className="text-zinc-300 hover:text-white">
-                  +49 178 130 4137
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-emerald-400" />
-                <a href="mailto:Alkawashoms@gmail.com" className="text-zinc-300 hover:text-white">
-                  Alkawashoms@gmail.com
+                <a href="mailto:support@euromatchtickets.com" className="text-zinc-300 hover:text-white">
+                  support@euromatchtickets.com
                 </a>
               </div>
-            </div>
-          </section>
-
-          {/* Tax Info */}
-          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <FileText className="w-6 h-6 text-cyan-400" />
-              Umsatzsteuer-ID
-            </h2>
-            
-            <div className="space-y-4 text-zinc-300">
-              <p>
-                <strong className="text-white">Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:</strong>
-              </p>
-              <p className="text-xl font-mono">DE454326544</p>
-              
-              <p className="mt-4">
-                <strong className="text-white">Handelsregister:</strong>
-              </p>
-              <p className="text-xl font-mono">14410642728</p>
             </div>
           </section>
 
           {/* Responsible for Content */}
           <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
-              Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+              Responsible for content according to §55 Abs. 2 RStV
             </h2>
             
             <div className="text-zinc-300">
-              <p className="font-semibold text-white">Abd Al mahsen Alkawas</p>
-              <p>Fürstenriederstr. 33</p>
-              <p>80686 München</p>
-              <p>Deutschland</p>
+              <p className="font-semibold text-white">Alex Heimbeck</p>
+              <p>Erzgießereistraße 15</p>
+              <p>80335 München</p>
+              <p>Germany</p>
             </div>
           </section>
 
           {/* EU Dispute Resolution */}
           <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
-              EU-Streitschlichtung
+              EU Dispute Resolution
             </h2>
             
             <div className="text-zinc-400 space-y-4">
               <p>
-                Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+                The European Commission provides a platform for online dispute resolution (OS):
               </p>
               <a 
                 href="https://ec.europa.eu/consumers/odr/" 
@@ -124,7 +97,7 @@ const ImpressumPage = () => {
                 https://ec.europa.eu/consumers/odr/
               </a>
               <p>
-                Unsere E-Mail-Adresse finden Sie oben im Impressum.
+                Our email address can be found above in the Impressum.
               </p>
             </div>
           </section>
@@ -132,13 +105,13 @@ const ImpressumPage = () => {
           {/* Dispute Resolution */}
           <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
-              Verbraucherstreitbeilegung/Universalschlichtungsstelle
+              Consumer Dispute Resolution
             </h2>
             
             <div className="text-zinc-400">
               <p>
-                Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer 
-                Verbraucherschlichtungsstelle teilzunehmen.
+                We are not willing or obliged to participate in dispute resolution proceedings 
+                before a consumer arbitration board.
               </p>
             </div>
           </section>
@@ -146,22 +119,37 @@ const ImpressumPage = () => {
           {/* Liability */}
           <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
-              Haftung für Inhalte
+              Liability for Content
             </h2>
             
             <div className="text-zinc-400 space-y-4">
               <p>
-                Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten 
-                nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als 
-                Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde 
-                Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige 
-                Tätigkeit hinweisen.
+                As a service provider, we are responsible for our own content on these pages in 
+                accordance with general laws pursuant to Section 7 (1) TMG. According to Sections 
+                8 to 10 TMG, however, we as a service provider are not obligated to monitor 
+                transmitted or stored third-party information or to investigate circumstances 
+                that indicate illegal activity.
               </p>
               <p>
-                Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den 
-                allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch 
-                erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei 
-                Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+                Obligations to remove or block the use of information under general law remain 
+                unaffected. However, liability in this regard is only possible from the time of 
+                knowledge of a specific infringement. Upon becoming aware of corresponding 
+                infringements, we will remove this content immediately.
+              </p>
+            </div>
+          </section>
+
+          {/* Disclaimer */}
+          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
+            <h2 className="text-2xl font-bold mb-6">
+              Disclaimer
+            </h2>
+            
+            <div className="text-zinc-400 space-y-4">
+              <p>
+                Euromatchtickets.com is an independent secondary ticket marketplace and is not 
+                affiliated with, endorsed by, or officially connected to any event organizer, 
+                sports club, or governing body.
               </p>
             </div>
           </section>
@@ -169,18 +157,18 @@ const ImpressumPage = () => {
           {/* Copyright */}
           <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
-              Urheberrecht
+              Copyright
             </h2>
             
             <div className="text-zinc-400 space-y-4">
               <p>
-                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen 
-                dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art 
-                der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen 
-                Zustimmung des jeweiligen Autors bzw. Erstellers.
+                The content and works created by the site operators on these pages are subject to 
+                copyright law. Duplication, processing, distribution, and any kind of exploitation 
+                outside the limits of copyright require the written consent of the respective 
+                author or creator.
               </p>
               <p>
-                Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+                Downloads and copies of this site are only permitted for private, non-commercial use.
               </p>
             </div>
           </section>
