@@ -1063,11 +1063,9 @@ async def create_checkout(request: Request):
 @api_router.get("/checkout/status/{session_id}")
 async def get_checkout_status(session_id: str, request: Request):
     """Get checkout status and complete order if paid"""
-    host_url = str(request.base_url).rstrip('/')
-    webhook_url = f"{host_url}/api/webhook/stripe"
-    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
-    
-    status = await stripe_checkout.get_checkout_status(session_id)
+    # Get session from Stripe
+    session = stripe.checkout.Session.retrieve(session_id)
+    payment_status = session.payment_status  # 'paid', 'unpaid', 'no_payment_required'
     
     order = await db.orders.find_one({"stripe_session_id": session_id}, {"_id": 0})
     if not order:
@@ -1075,10 +1073,10 @@ async def get_checkout_status(session_id: str, request: Request):
     
     await db.payment_transactions.update_one(
         {"session_id": session_id},
-        {"$set": {"status": status.payment_status}}
+        {"$set": {"status": payment_status}}
     )
     
-    if status.payment_status == "paid" and order["status"] != "completed":
+    if payment_status == "paid" and order["status"] != "completed":
         qr_data = f"FANPASS-{order['order_id']}-{order['ticket_id']}"
         qr_code = generate_qr_code(qr_data)
         
@@ -1132,8 +1130,8 @@ async def get_checkout_status(session_id: str, request: Request):
             logger.error(f"Failed to send seller email: {e}")
     
     return {
-        "payment_status": status.payment_status,
-        "status": status.status,
+        "payment_status": payment_status,
+        "status": session.status,
         "order": order
     }
 
