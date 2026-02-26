@@ -26,158 +26,273 @@ The user wants to build a marketplace website, , for reselling tickets for Europ
 The user communicates exclusively in Arabic (عربي). The next agent **MUST** respond in Arabic.
 
 **what currently exists?**
-A full-stack application (React, FastAPI, MongoDB) with a modern Crystal Edition UI. The preview environment is fully functional, with all features, data, and bug fixes applied. The backend has been extensively debugged to resolve deployment issues. The frontend has been enhanced to comply with Google Ads policies by adding an  page, a  page, and displaying the user's real company information in the footer and on all legal pages. Fake statistics have been removed.
-
-However, the live production site at  is completely down, returning a  or .
+The entire full-stack application has been successfully migrated from the failing Emergent platform to a new hosting environment. The FastAPI backend is deployed as a Web Service on **Render**, and the React frontend is deployed as a Static Site, also on **Render**. The database is now hosted on a free-tier **MongoDB Atlas** cluster. The previous deployment on the Emergent platform is completely broken and has been abandoned.
 
 **Last working item**:
-    - Last item agent was working: Diagnosing the persistent  /  on the live production deployment. The agent concluded that the code is correct and the issue stems from the production server configuration on the Emergent platform, which is outside the agent's control (likely the  flag causing a crash loop). The final action was to instruct the user to contact Emergent support with a pre-written message.
-    - Status: BLOCKED
-    - Agent Testing Done: Y (The preview environment is fully functional and tested. The production issue cannot be tested by the agent.)
-    - Which testing method agent to use? N/A. The issue is blocked on external support. The next step is to follow up with the user on their communication with the Emergent support team.
-    - User Testing Done: Y (The user has confirmed the live site is down).
+    - Last item agent was working: Deploying the React frontend as a Static Site on the Render platform. The agent guided the user through creating the service, setting the correct environment variables, and troubleshooting a build failure by changing the build command from npm <command>
+
+Usage:
+
+npm install        install all the dependencies in your project
+npm install <foo>  add the <foo> dependency to your project
+npm test           run this project's tests
+npm run <foo>      run the script named <foo>
+npm <command> -h   quick help on <command>
+npm -l             display usage info for all commands
+npm help <term>    search for help on <term>
+npm help npm       more involved overview
+
+All commands:
+
+    access, adduser, audit, bugs, cache, ci, completion,
+    config, dedupe, deprecate, diff, dist-tag, docs, doctor,
+    edit, exec, explain, explore, find-dupes, fund, get, help,
+    help-search, hook, init, install, install-ci-test,
+    install-test, link, ll, login, logout, ls, org, outdated,
+    owner, pack, ping, pkg, prefix, profile, prune, publish,
+    query, rebuild, repo, restart, root, run-script, sbom,
+    search, set, shrinkwrap, star, stars, start, stop, team,
+    test, token, uninstall, unpublish, unstar, update, version,
+    view, whoami
+
+Specify configs in the ini-formatted file:
+    /root/.npmrc
+or on the command line via: npm <command> --key=value
+
+More configuration info: npm help config
+Configuration fields: npm help 7 config
+
+npm@10.8.2 /usr/lib/node_modules/npm to yarn install v1.22.22
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+Done in 0.05s..
+    - Status: USER VERIFICATION PENDING
+    - Agent Testing Done: Y (The agent confirmed the build succeeded and the site is live via logs.)
+    - Which testing method agent to use? Manual testing by user. The user needs to test the full end-to-end flow on the new Render URLs.
+    - User Testing Done: N
 
 **All Pending/In progress Issue list**:
-  - Issue 1:  Live Production Site is Down (/ Error) (P0 - CRITICAL BLOCKER)
+  - Issue 1:  Full End-to-End User Testing on Render (P0 - HIGHEST)
   
   Issues Detail:
   - Issue 1: 
-     - Attempted fixes:
-        - Fixed numerous code-level bugs (missing  dependency, N+1 query issues, hardcoded URLs, Stripe key initialization).
-        - Added missing dependencies (, , ) to .
-        - Created a  to attempt to override the production server command (this was ineffective).
-        - Ran health checks and analyzed deployment logs multiple times.
-        - The agent correctly identified this as a platform-level issue, not a code issue, and instructed the user to contact Emergent support.
-     - Next debug checklist:
-        1.  In Arabic, ask the user if they have contacted Emergent support as instructed.
-        2.  Re-iterate that the problem is with the production server environment and **only the Emergent support team can fix it**.
-        3.  **DO NOT** attempt to modify the code to fix this. The code in the preview environment is correct and works. The focus must be on resolving the platform issue.
-        4.  Provide the user with the support contact (email or Discord) and the message to send again if they have not done so.
-     - Why fix this issue and what will be achieved with the fix? The entire application is unusable for the public. This blocks all other work and is the user's primary source of frustration.
-     - Status:  BLOCKED
-     - Is recurring issue? Y (This is the latest evolution of a long-standing problem where the production environment does not match the working preview environment).
-     - Should Test frontend/backend/both after fix? Both, on the live  URL, once the Emergent support team confirms a fix.
-     - Blocked on other issue: This is the primary blocker for all other tasks.
+     - Attempted fixes: N/A. The site has just been migrated.
+     - Next debug checklist: 
+        1. In Arabic, congratulate the user on the successful migration to Render.
+        2. Provide the user with the new frontend URL ().
+        3. Ask the user to perform a full test:
+           - Can they see the events on the main page?
+           - Can they log in with Google?
+           - Can they attempt to purchase a ticket?
+     - Why fix this issue and what will be achieved with the fix? This is to confirm the migration was 100% successful and that the site is fully functional before resuming other development tasks or restarting ad campaigns.
+     - Status:  USER VERIFICATION PENDING
+     - Is recurring issue? N
+     - Should Test frontend/backend/both after fix? Both have been deployed; user needs to test the integrated flow.
+     - Blocked on other issue: None.
 
 **In progress Task List**:
-  - None. All work is blocked by the P0 deployment issue.
+- None. The migration task is complete.
 
 **Upcoming and Future Tasks**
     Upcoming Tasks:
     - **P1: Implement Sell Your Tickets Functionality:** A core marketplace feature that has not been started.
-    - **P1: Research Ticket Suppliers:** The user asked to find the best ticket importer for the project. This requires web research to find ticket broker APIs or affiliate programs.
-    - **P1: Verify Resend Email Notifications:** The API key and code are in place but have never been tested end-to-end.
-    - **P2: Implement Customer Review System:** The user requested this, then postponed it. It should be added to the backlog.
-    - **P2: Google Analytics & Facebook Pixel Integration:** Blocked, awaiting tracking IDs from the user.
+    - **P1: Integrate Ticket Supplier Affiliate Program:** The user wants to integrate with a ticket supplier. The agent has already researched options (StubHub, viagogo). The next step is to guide the user through signing up for an affiliate program (e.g., StubHub) and then integrating the affiliate links/API into the site.
+    - **P1: Google Analytics & Facebook Pixel Integration:** The user is running ads and needs to track conversions. This is blocked awaiting tracking IDs from the user.
+    - **P2: Verify Resend Email Notifications:** The API key and code are in place but have never been tested end-to-end on the new platform.
     
     Future Tasks:
-    - **Internationalization:** The language switcher UI exists, but content needs to be translated into German, French, Spanish, etc.
+    - **P2: Implement Customer Review System:** Postponed by the user.
+    - **Internationalization:** The language switcher UI exists, but content needs translation.
     - **Seller Payouts UI:** A dashboard for sellers to see earnings and request payouts.
     - **Enhance Owner Dashboard:** Add charts and detailed sales reports to the  page.
 
 **Completed work in this session**
-- **Ad Compliance Overhaul:**
-  - Added the user's real company information (Name, Address, Phone, VAT ID, etc.) to the footer and all legal pages.
-  - Created a legally required ** page** for the German market.
-  - Created a ** page** to increase trust and ad compliance.
-  - Removed all fake/placeholder statistics (e.g., 50K+ Happy Fans) from the site.
-- **Critical Deployment Bug Fixes:**
-  - Added missing dependencies (, , ) to  to prevent deployment crashes.
-  - Optimized multiple database queries (, ) to fix N+1 performance issues that were causing timeouts.
-  - Fixed hardcoded URLs and incorrect Stripe API key initialization in .
-- **Marketing & Ad Support:**
-  - Provided extensive strategy advice for Google Ads and Facebook Ads, explaining why ads were rejected (ticket reseller policies).
-  - Created multiple ad-safe images and an ad video for the user's campaigns.
-- **UI/UX Enhancements:**
-  - Implemented a working background video on the homepage.
-  - Added trust/urgency elements to event cards (, ).
-- **Final Diagnosis:** Correctly identified the final deployment blocker as a platform-level issue ( error due to server config) and guided the user to contact Emergent support.
+- **Full Platform Migration:** Successfully migrated the entire application from the failing Emergent platform to Render and MongoDB Atlas.
+  - **Backend Deployment:** Deployed the FastAPI application as a Web Service on Render.
+  - **Frontend Deployment:** Deployed the React application as a Static Site on Render.
+  - **Database Migration:** Set up and connected the application to a new MongoDB Atlas cluster.
+- **Production Debugging (on Render):**
+  - Fixed multiple MongoDB connection issues, including authentication failures () by creating a new, simplified DB user and correcting the  environment variable.
+  - Resolved a frontend build failure by changing the build command from  to yarn install v1.22.22
+[1/4] Resolving packages...
+success Already up-to-date.
+Done in 0.06s.
+yarn run v1.22.22
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command..
+- **Code Repository Setup:** Guided the user to create a GitHub repository and successfully pushed the entire codebase to it, removing sensitive keys from version control.
+- **Business Research:** Researched and provided the user with a list of top ticket supplier affiliate programs (StubHub, viagogo, Vivid Seats) to help with inventory sourcing.
 
 **Earlier issues found/mentioned but not fixed**
-   - **Ticket Supplier Sourcing:** The user asked the agent to find the best ticket importer for the project. This business research task was not addressed.
+   - None. The agent addressed the user's primary concerns and the critical site-down issue.
 
 **Known issue recurrence from previous fork**
-  - **Production vs. Preview Mismatch:** The core recurring problem is that the live production environment fails to deploy or run correctly, even when the preview environment is working perfectly. This has evolved from a database sync issue to a complete server crash ( error).
+  - **Production Deployment Failure on Emergent:** The core recurring issue was the production environment on the Emergent platform repeatedly crashing (, , ). This was permanently resolved by migrating the entire application to a more stable platform (Render).
 
 **Code Architecture**
 
 
 **Key Technical Concepts**
-- **Backend:** FastAPI, MongoDB, Stripe API, Pydantic.
-- **Frontend:** React, Tailwind CSS, .
-- **Deployment:** Emergent native deployments to Kubernetes. The current deployment is failing due to a suspected production server configuration issue ( flag).
+- **Hosting:** Render (Web Service for Backend, Static Site for Frontend).
+- **Database:** MongoDB Atlas (Cloud-hosted).
+- **Version Control:** GitHub.
+- **Backend:** FastAPI, Python.
+- **Frontend:** React, Tailwind CSS.
 
 **key DB schema**
   - **tickets:** 
   - **events:** 
 
 **changes in tech stack**
-  - None.
+  - **Complete platform change:** From **Emergent** to **Render** for hosting and **MongoDB Atlas** for the database.
 
 **All files of reference**
-*   : Contains fixes for N+1 queries, Stripe initialization, and removal of hardcoded URLs.
-*   : Updated with , , and .
-*   : Updated with full legal company information and links to new pages.
-*   : New file for German legal compliance.
-*   : New file for user trust and ad compliance.
-*   : Updated with routes for all the new legal pages.
-*   : A new file created in an attempt to fix the production deployment command.
+*   : Modified to correctly read  and  from environment variables provided by Render.
+*   : Build command on Render was changed to use yarn install v1.22.22
+[1/4] Resolving packages...
+success Already up-to-date.
+Done in 0.03s. instead of npm <command>
+
+Usage:
+
+npm install        install all the dependencies in your project
+npm install <foo>  add the <foo> dependency to your project
+npm test           run this project's tests
+npm run <foo>      run the script named <foo>
+npm <command> -h   quick help on <command>
+npm -l             display usage info for all commands
+npm help <term>    search for help on <term>
+npm help npm       more involved overview
+
+All commands:
+
+    access, adduser, audit, bugs, cache, ci, completion,
+    config, dedupe, deprecate, diff, dist-tag, docs, doctor,
+    edit, exec, explain, explore, find-dupes, fund, get, help,
+    help-search, hook, init, install, install-ci-test,
+    install-test, link, ll, login, logout, ls, org, outdated,
+    owner, pack, ping, pkg, prefix, profile, prune, publish,
+    query, rebuild, repo, restart, root, run-script, sbom,
+    search, set, shrinkwrap, star, stars, start, stop, team,
+    test, token, uninstall, unpublish, unstar, update, version,
+    view, whoami
+
+Specify configs in the ini-formatted file:
+    /root/.npmrc
+or on the command line via: npm <command> --key=value
+
+More configuration info: npm help config
+Configuration fields: npm help 7 config
+
+npm@10.8.2 /usr/lib/node_modules/npm to resolve dependency issues.
+*   : The new source of truth for the codebase.
+*   **Render Dashboard:** Used for deployment, setting environment variables, and viewing logs.
+*   **MongoDB Atlas Dashboard:** Used for database user management and network access control.
 
 **Areas that need refactoring**:
-- None. The code is stable and ready. The focus must be on resolving the platform-level deployment issue.
+- The following files were created for debugging on the old platform and are now obsolete. They can be safely deleted from the GitHub repository to clean up the codebase:
+    - 
+    - 
+    - 
+    - 
+    - 
 
 **key api endpoints**
+*   **Backend Base URL:** 
+*   **Frontend URL:** 
 *   : **GET** - Health check endpoint.
-*   : **POST** - Endpoint to populate the database with initial data.
-*   : **GET** - Optimized to prevent performance issues.
+*   : **GET** - Fetches all events.
+*   : **POST** - Populates the database with initial data.
 
 **Critical Info for New Agent**
-*   **Speak Arabic.** This is the user's only language.
-*   **THE LIVE SITE IS DOWN (502/520 Error).** Your immediate and only priority is to help the user resolve this.
-*   **THIS IS A PLATFORM ISSUE, NOT A CODE ISSUE.** The previous agent has fixed all identifiable code-level bugs. Do not waste time trying to fix the code.
-*   **GUIDE THE USER TO CONTACT SUPPORT.** Your first action should be to ask the user if they have contacted Emergent support. If not, you must instruct them to do so immediately. Provide them with the exact message to send via Discord or email. All other work is blocked until the platform team fixes the production environment.
+*   **Speak Arabic.** This is non-negotiable.
+*   **THE APPLICATION IS NOW ON RENDER, NOT EMERGENT.** The old platform was abandoned due to persistent, unresolvable deployment failures. All future work must be done on the codebase in the GitHub repository and deployed to Render.
+*   **Credentials are on Render:** All secrets (, , etc.) are stored as Environment Variables in the Render dashboard for both the backend and frontend services.
+*   **Verify First:** Your first step is to confirm with the user that the new site on Render is fully working for them (login, viewing events, etc.).
+*   The user was extremely frustrated with the previous platform issues and money lost on ads. Be empathetic and focus on building momentum on the new, working platform.
 
 **documents and test reports created in this job**
-  - /app/memory/PRD.md (Updated)
-  - /app/memory/design_guidelines.md
-  - /app/memory/social_media_kit.md
+- A new GitHub repository was created and populated: 
 
 **Last 10 User Messages and any pending HUMAN messages** 
-1. User reports a  error on the live site. (In Progress)
-2. Agent identifies the issue as a server crash in production. (Completed)
-3. Agent finds and fixes missing dependencies in . (Completed)
-4. User reports the deployment still fails. (In Progress)
-5. Agent identifies a potential cause ( flag in production) and creates a  as a workaround. (Completed)
-6. User reports the deployment is running but gets stuck. (In Progress)
-7. User asks why the Use new database option is missing. (Completed - Agent explained it's for first-time deployments).
-8. User reports the live site now shows event not found and login fails. (In Progress - Agent identified this as an empty database).
-9. User reports a , indicating the server is down again. (In Progress)
-10. Agent concludes the issue is a persistent platform-level problem and instructs the user to contact Emergent support with a detailed message. This is the current state. (Completed - Handover)
+1.  User confirmed the new DB user was created. (Completed)
+2.  Agent provided the new Render connection string and instructed user to update  and re-deploy. (Completed)
+3.  User confirmed deployment. (Completed)
+4.  Agent tested and confirmed the backend on Render is now working. (Completed)
+5.  Agent asked user if they want to deploy the frontend. User said yes. (Completed)
+6.  Agent guided user on creating a Static Site on Render for the frontend. (In Progress)
+7.  User got stuck on the Connect to GitHub step. (In Progress)
+8.  Agent provided an alternative way to deploy using the public Git URL. (In Progress)
+9.  The frontend build failed due to npm <command>
+
+Usage:
+
+npm install        install all the dependencies in your project
+npm install <foo>  add the <foo> dependency to your project
+npm test           run this project's tests
+npm run <foo>      run the script named <foo>
+npm <command> -h   quick help on <command>
+npm -l             display usage info for all commands
+npm help <term>    search for help on <term>
+npm help npm       more involved overview
+
+All commands:
+
+    access, adduser, audit, bugs, cache, ci, completion,
+    config, dedupe, deprecate, diff, dist-tag, docs, doctor,
+    edit, exec, explain, explore, find-dupes, fund, get, help,
+    help-search, hook, init, install, install-ci-test,
+    install-test, link, ll, login, logout, ls, org, outdated,
+    owner, pack, ping, pkg, prefix, profile, prune, publish,
+    query, rebuild, repo, restart, root, run-script, sbom,
+    search, set, shrinkwrap, star, stars, start, stop, team,
+    test, token, uninstall, unpublish, unstar, update, version,
+    view, whoami
+
+Specify configs in the ini-formatted file:
+    /root/.npmrc
+or on the command line via: npm <command> --key=value
+
+More configuration info: npm help config
+Configuration fields: npm help 7 config
+
+npm@10.8.2 /usr/lib/node_modules/npm dependency conflicts. (In Progress)
+10. Agent instructed the user to change the build command to yarn install v1.22.22
+[1/4] Resolving packages...
+success Already up-to-date.
+Done in 0.09s.
+yarn run v1.22.22
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command. and re-deploy. The build then succeeded. (Completed)
 
 **Project Health Check:**
 *   **Broken:**
-    *   **Live Production Environment:** Completely down with a / server error. This is a P0, site-down blocker.
+    *   The original Emergent platform deployment (abandoned).
 *   **Mocked:**
-    *   **Google Analytics & Facebook Pixel:** Implemented but non-functional. Blocked on user providing the correct Tracking IDs.
-    *   **Resend Email Notifications:** API key is present, but the flow is completely untested.
+    *   Google Analytics & Facebook Pixel: Implemented in code but not configured with user's tracking IDs.
+    *   Resend (Email): Code exists but is untested on the new platform.
 
 **3rd Party Integrations**
-*   **Emergent-managed Google Auth:** Working (in preview).
-*   **Stripe (Payments):** Live Mode, user key provided, correctly configured.
+*   **GitHub:** Source code hosting.
+*   **Render:** Platform for hosting the frontend (Static Site) and backend (Web Service).
+*   **MongoDB Atlas:** Cloud database provider.
+*   **Emergent-managed Google Auth:** **NEEDS VERIFICATION.** The auth flow must be re-tested on the new Render domain. It will likely require updating the allowed callback URLs in the Emergent auth settings.
+*   **Stripe (Payments):** Live Mode, user key provided. **NEEDS VERIFICATION** on the new Render domain.
 *   **Resend (Email):** Requires User API Key (provided, but **untested**).
-*   **OpenAI GPT-4o (Text Generation):** Uses Emergent LLM Key, implemented for AI Chat.
-*   **Google Analytics (Tracking):** IN PROGRESS - **BLOCKED** (Needs correct User Web Tracking ID).
-*   **Facebook Pixel (Tracking):** IN PROGRESS - **BLOCKED** (Needs User Pixel ID).
+*   **OpenAI GPT-4o (Text Generation):** Implemented, uses Emergent LLM Key. **NEEDS VERIFICATION** on the new Render domain.
 
 **Testing status**
-  - Testing agent used after significant changes: YES (Deployment agent was called multiple times).
-  - Troubleshoot agent used after agent stuck in loop: YES (Agent extensively analyzed logs to debug deployment).
+  - Testing agent used after significant changes: NO (The migration was done manually with extensive debugging).
+  - Troubleshoot agent used after agent stuck in loop: NO
   - Test files created: []
-  - Known regressions: The entire live production site has regressed to a non-functional state (502/520 error).
+  - Known regressions: None on the new platform. The entire old platform is a regression.
 
 **Credentials to test flow:**
-*   **Login:** Use Google OAuth (works in preview environment).
-*   **Test Payment:** A test ticket for **€0.50** for the FIFA World Cup 2026 event exists in the preview environment.
+*   **Backend URL:** 
+*   **Frontend URL:** 
+*   **Database User (MongoDB Atlas):**  / 
+*   **Login:** Use Google OAuth (needs verification on the new domain).
 
 **What agent forgot to execute**
-*   The user asked to find the best ticket importer for my project. This business research query was not addressed and should be added to the upcoming tasks.</analysis>
+*   Nothing was forgotten. The agent correctly prioritized solving the critical site-down blocker by migrating the entire application to a new, stable platform at the user's request.</analysis>
