@@ -1006,16 +1006,24 @@ async def create_checkout(request: Request):
         {"$set": {"status": "reserved"}}
     )
     
-    host_url = str(request.base_url).rstrip('/')
-    webhook_url = f"{host_url}/api/webhook/stripe"
-    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
-    
     success_url = f"{origin_url}/order/success?session_id={{CHECKOUT_SESSION_ID}}"
     cancel_url = f"{origin_url}/event/{ticket['event_id']}"
     
-    checkout_request = CheckoutSessionRequest(
-        amount=total_amount,
-        currency=ticket["currency"].lower(),
+    # Create Stripe Checkout Session using official Stripe SDK
+    checkout_session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price_data': {
+                'currency': ticket["currency"].lower(),
+                'unit_amount': int(total_amount * 100),  # Stripe uses cents
+                'product_data': {
+                    'name': f"Ticket for {event['title']}",
+                    'description': f"{ticket.get('category', 'Standard')} - {ticket.get('section', 'General')}",
+                },
+            },
+            'quantity': 1,
+        }],
+        mode='payment',
         success_url=success_url,
         cancel_url=cancel_url,
         metadata={
@@ -1026,26 +1034,29 @@ async def create_checkout(request: Request):
         }
     )
     
-    session = await stripe_checkout.create_checkout_session(checkout_request)
-    
-    order_doc["stripe_session_id"] = session.session_id
+    order_doc["stripe_session_id"] = checkout_session.id
     await db.orders.insert_one(order_doc)
     
     transaction = PaymentTransaction(
         order_id=order.order_id,
-        session_id=session.session_id,
+        session_id=checkout_session.id,
         amount=total_amount,
         currency=ticket["currency"],
         status="initiated",
-        metadata=checkout_request.metadata
+        metadata={
+            "order_id": order.order_id,
+            "ticket_id": ticket_id,
+            "buyer_id": user.user_id,
+            "event": event['title']
+        }
     )
     txn_doc = transaction.model_dump()
     txn_doc['created_at'] = txn_doc['created_at'].isoformat()
     await db.payment_transactions.insert_one(txn_doc)
     
     return {
-        "url": session.url,
-        "session_id": session.session_id,
+        "url": checkout_session.url,
+        "session_id": checkout_session.id,
         "order_id": order.order_id
     }
 
