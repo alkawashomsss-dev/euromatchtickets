@@ -1725,8 +1725,15 @@ class ChatMessage(BaseModel):
     message: str
     session_id: str
 
-# Store chat sessions in memory (for simplicity - could use DB for persistence)
-chat_sessions: Dict[str, LlmChat] = {}
+# Store chat history in memory (for simplicity - could use DB for persistence)
+chat_histories: Dict[str, list] = {}
+
+# Initialize OpenAI client
+openai_client = None
+if AI_CHAT_AVAILABLE:
+    openai_api_key = os.environ.get('OPENAI_API_KEY') or os.environ.get('EMERGENT_LLM_KEY')
+    if openai_api_key:
+        openai_client = OpenAI(api_key=openai_api_key)
 
 SUPPORT_SYSTEM_MESSAGE = """You are the AI customer support assistant for EuroMatchTickets, Europe's #1 ticket marketplace for football matches and concerts.
 
