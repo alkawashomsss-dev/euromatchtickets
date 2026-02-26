@@ -25,13 +25,12 @@ load_dotenv(ROOT_DIR / '.env')
 
 # AI Chat Support - with error handling
 try:
-    from emergentintegrations.llm.chat import LlmChat, UserMessage
+    from openai import OpenAI
     AI_CHAT_AVAILABLE = True
 except ImportError as e:
-    logger.warning(f"AI Chat not available: {e}")
+    logger.warning(f"OpenAI not available: {e}")
     AI_CHAT_AVAILABLE = False
-    LlmChat = None
-    UserMessage = None
+    OpenAI = None
 
 # QR Code - with error handling
 try:
