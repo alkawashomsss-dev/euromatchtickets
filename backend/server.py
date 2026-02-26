@@ -1820,6 +1820,285 @@ async def chat_support(chat_msg: ChatMessage):
 
 # ============== SEED DATA ==============
 
+@api_router.post("/add-worldcup-2026")
+async def add_worldcup_2026():
+    """Add FIFA World Cup 2026 matches with all ticket categories"""
+    import random
+    
+    # World Cup 2026 venues (USA, Mexico, Canada)
+    wc_matches = [
+        # Group Stage
+        {"home": "USA", "away": "England", "stage": "Group Stage - Group B", "venue": "MetLife Stadium", "city": "New York", "country": "USA", "days": 120, "featured": True},
+        {"home": "Argentina", "away": "France", "stage": "Group Stage - Group A", "venue": "SoFi Stadium", "city": "Los Angeles", "country": "USA", "days": 121, "featured": True},
+        {"home": "Brazil", "away": "Germany", "stage": "Group Stage - Group C", "venue": "AT&T Stadium", "city": "Dallas", "country": "USA", "days": 122, "featured": True},
+        {"home": "Spain", "away": "Portugal", "stage": "Group Stage - Group D", "venue": "Estadio Azteca", "city": "Mexico City", "country": "Mexico", "days": 123, "featured": True},
+        {"home": "Italy", "away": "Netherlands", "stage": "Group Stage - Group E", "venue": "Hard Rock Stadium", "city": "Miami", "country": "USA", "days": 124, "featured": False},
+        {"home": "Belgium", "away": "Croatia", "stage": "Group Stage - Group F", "venue": "Mercedes-Benz Stadium", "city": "Atlanta", "country": "USA", "days": 125, "featured": False},
+        {"home": "Mexico", "away": "Canada", "stage": "Group Stage - Group G", "venue": "Estadio Azteca", "city": "Mexico City", "country": "Mexico", "days": 126, "featured": True},
+        {"home": "Japan", "away": "South Korea", "stage": "Group Stage - Group H", "venue": "BC Place", "city": "Vancouver", "country": "Canada", "days": 127, "featured": False},
+        
+        # Round of 16
+        {"home": "Winner Group A", "away": "Runner-up Group B", "stage": "Round of 16", "venue": "MetLife Stadium", "city": "New York", "country": "USA", "days": 135, "featured": True},
+        {"home": "Winner Group C", "away": "Runner-up Group D", "stage": "Round of 16", "venue": "SoFi Stadium", "city": "Los Angeles", "country": "USA", "days": 136, "featured": True},
+        
+        # Quarter Finals
+        {"home": "QF Match 1", "away": "QF Match 2", "stage": "Quarter-Final", "venue": "AT&T Stadium", "city": "Dallas", "country": "USA", "days": 142, "featured": True},
+        {"home": "QF Match 3", "away": "QF Match 4", "stage": "Quarter-Final", "venue": "Hard Rock Stadium", "city": "Miami", "country": "USA", "days": 143, "featured": True},
+        
+        # Semi Finals
+        {"home": "SF Match 1", "away": "SF Match 2", "stage": "Semi-Final", "venue": "MetLife Stadium", "city": "New York", "country": "USA", "days": 148, "featured": True},
+        {"home": "SF Match 3", "away": "SF Match 4", "stage": "Semi-Final", "venue": "SoFi Stadium", "city": "Los Angeles", "country": "USA", "days": 149, "featured": True},
+        
+        # Final
+        {"home": "Finalist 1", "away": "Finalist 2", "stage": "FINAL", "venue": "MetLife Stadium", "city": "New York", "country": "USA", "days": 155, "featured": True},
+    ]
+    
+    # Ticket categories with prices
+    ticket_categories = [
+        {"category": "vip_platinum", "name": "VIP Platinum", "section": "VIP Platinum Lounge", "base_price": 2499},
+        {"category": "vip_gold", "name": "VIP Gold", "section": "VIP Gold Suite", "base_price": 1899},
+        {"category": "vip_silver", "name": "VIP Silver", "section": "VIP Club", "base_price": 1299},
+        {"category": "cat1", "name": "Category 1", "section": "Lower Tier Central", "base_price": 799},
+        {"category": "cat2", "name": "Category 2", "section": "Lower Tier Side", "base_price": 499},
+        {"category": "cat3", "name": "Category 3", "section": "Upper Tier", "base_price": 299},
+        {"category": "cat4", "name": "Category 4", "section": "Behind Goal", "base_price": 199},
+    ]
+    
+    added_events = 0
+    added_tickets = 0
+    
+    for match in wc_matches:
+        # Create event
+        event_id = f"wc2026_{uuid.uuid4().hex[:8]}"
+        event = {
+            "event_id": event_id,
+            "event_type": "match",
+            "title": f"FIFA World Cup 2026: {match['home']} vs {match['away']}",
+            "subtitle": match["stage"],
+            "home_team": match["home"],
+            "away_team": match["away"],
+            "league": "FIFA World Cup 2026",
+            "venue": match["venue"],
+            "city": match["city"],
+            "country": match["country"],
+            "event_date": (datetime.now(timezone.utc) + timedelta(days=match["days"])).isoformat(),
+            "event_image": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&w=800",
+            "featured": match["featured"],
+            "status": "upcoming",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        await db.events.insert_one(event)
+        added_events += 1
+        
+        # Add tickets for each category
+        for cat in ticket_categories:
+            # More tickets for higher categories (finals get more VIP)
+            num_tickets = random.randint(5, 15) if "vip" in cat["category"] else random.randint(10, 25)
+            
+            # Finals have higher prices
+            price_multiplier = 2.5 if "FINAL" in match["stage"] else (1.5 if "Semi" in match["stage"] else 1.0)
+            
+            for i in range(num_tickets):
+                price = round(cat["base_price"] * price_multiplier * random.uniform(0.9, 1.2), 2)
+                ticket = {
+                    "ticket_id": f"wc_{uuid.uuid4().hex[:10]}",
+                    "event_id": event_id,
+                    "seller_id": "seller_euromatch",
+                    "seller_name": "EuroMatchTickets Official",
+                    "category": cat["category"],
+                    "section": cat["section"],
+                    "row": "VIP" if "vip" in cat["category"] else str(random.randint(1, 30)),
+                    "seat": f"Suite {random.randint(1, 50)}" if "vip" in cat["category"] else str(random.randint(1, 50)),
+                    "price": price,
+                    "original_price": cat["base_price"] * price_multiplier,
+                    "currency": "EUR",
+                    "status": "available",
+                    "created_at": datetime.now(timezone.utc).isoformat()
+                }
+                await db.tickets.insert_one(ticket)
+                added_tickets += 1
+    
+    return {
+        "message": "FIFA World Cup 2026 data added!",
+        "events_added": added_events,
+        "tickets_added": added_tickets
+    }
+
+@api_router.post("/add-champions-league")
+async def add_champions_league():
+    """Add UEFA Champions League matches with tickets"""
+    import random
+    
+    ucl_matches = [
+        {"home": "Real Madrid", "away": "Manchester City", "stage": "Quarter-Final 1st Leg", "venue": "Santiago Bernabéu", "city": "Madrid", "country": "Spain", "days": 30, "featured": True},
+        {"home": "Manchester City", "away": "Real Madrid", "stage": "Quarter-Final 2nd Leg", "venue": "Etihad Stadium", "city": "Manchester", "country": "England", "days": 37, "featured": True},
+        {"home": "Bayern Munich", "away": "PSG", "stage": "Quarter-Final 1st Leg", "venue": "Allianz Arena", "city": "Munich", "country": "Germany", "days": 31, "featured": True},
+        {"home": "PSG", "away": "Bayern Munich", "stage": "Quarter-Final 2nd Leg", "venue": "Parc des Princes", "city": "Paris", "country": "France", "days": 38, "featured": True},
+        {"home": "Barcelona", "away": "Arsenal", "stage": "Quarter-Final 1st Leg", "venue": "Camp Nou", "city": "Barcelona", "country": "Spain", "days": 32, "featured": True},
+        {"home": "Arsenal", "away": "Barcelona", "stage": "Quarter-Final 2nd Leg", "venue": "Emirates Stadium", "city": "London", "country": "England", "days": 39, "featured": True},
+        {"home": "Inter Milan", "away": "Liverpool", "stage": "Quarter-Final 1st Leg", "venue": "San Siro", "city": "Milan", "country": "Italy", "days": 33, "featured": False},
+        {"home": "Liverpool", "away": "Inter Milan", "stage": "Quarter-Final 2nd Leg", "venue": "Anfield", "city": "Liverpool", "country": "England", "days": 40, "featured": True},
+        # Semi Finals
+        {"home": "TBD", "away": "TBD", "stage": "Semi-Final 1st Leg", "venue": "TBD Stadium", "city": "TBD", "country": "Europe", "days": 55, "featured": True},
+        {"home": "TBD", "away": "TBD", "stage": "Semi-Final 2nd Leg", "venue": "TBD Stadium", "city": "TBD", "country": "Europe", "days": 62, "featured": True},
+        # Final
+        {"home": "TBD", "away": "TBD", "stage": "FINAL", "venue": "Allianz Arena", "city": "Munich", "country": "Germany", "days": 75, "featured": True},
+    ]
+    
+    ticket_categories = [
+        {"category": "vip_hospitality", "section": "VIP Hospitality Suite", "base_price": 1599},
+        {"category": "vip", "section": "VIP Premium", "base_price": 899},
+        {"category": "cat1", "section": "Category 1 - Sideline", "base_price": 449},
+        {"category": "cat2", "section": "Category 2 - Corner", "base_price": 299},
+        {"category": "cat3", "section": "Category 3 - Behind Goal", "base_price": 179},
+    ]
+    
+    added_events = 0
+    added_tickets = 0
+    
+    for match in ucl_matches:
+        event_id = f"ucl_{uuid.uuid4().hex[:8]}"
+        event = {
+            "event_id": event_id,
+            "event_type": "match",
+            "title": f"UCL: {match['home']} vs {match['away']}",
+            "subtitle": f"Champions League {match['stage']}",
+            "home_team": match["home"],
+            "away_team": match["away"],
+            "league": "UEFA Champions League",
+            "venue": match["venue"],
+            "city": match["city"],
+            "country": match["country"],
+            "event_date": (datetime.now(timezone.utc) + timedelta(days=match["days"])).isoformat(),
+            "event_image": "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&w=800",
+            "featured": match["featured"],
+            "status": "upcoming",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        await db.events.insert_one(event)
+        added_events += 1
+        
+        price_multiplier = 3.0 if "FINAL" in match["stage"] else (1.8 if "Semi" in match["stage"] else 1.0)
+        
+        for cat in ticket_categories:
+            num_tickets = random.randint(8, 20)
+            for i in range(num_tickets):
+                price = round(cat["base_price"] * price_multiplier * random.uniform(0.85, 1.25), 2)
+                ticket = {
+                    "ticket_id": f"ucl_{uuid.uuid4().hex[:10]}",
+                    "event_id": event_id,
+                    "seller_id": "seller_euromatch",
+                    "seller_name": "EuroMatchTickets Official",
+                    "category": cat["category"],
+                    "section": cat["section"],
+                    "row": "VIP" if "vip" in cat["category"] else str(random.randint(1, 25)),
+                    "seat": str(random.randint(1, 40)),
+                    "price": price,
+                    "original_price": cat["base_price"] * price_multiplier,
+                    "currency": "EUR",
+                    "status": "available",
+                    "created_at": datetime.now(timezone.utc).isoformat()
+                }
+                await db.tickets.insert_one(ticket)
+                added_tickets += 1
+    
+    return {
+        "message": "Champions League data added!",
+        "events_added": added_events,
+        "tickets_added": added_tickets
+    }
+
+@api_router.post("/add-euro-leagues")
+async def add_euro_leagues():
+    """Add Premier League, La Liga, Bundesliga, Serie A matches"""
+    import random
+    
+    all_matches = [
+        # Premier League
+        {"home": "Liverpool", "away": "Manchester City", "league": "Premier League", "venue": "Anfield", "city": "Liverpool", "country": "England", "days": 10, "featured": True},
+        {"home": "Arsenal", "away": "Chelsea", "league": "Premier League", "venue": "Emirates Stadium", "city": "London", "country": "England", "days": 14, "featured": True},
+        {"home": "Manchester United", "away": "Tottenham", "league": "Premier League", "venue": "Old Trafford", "city": "Manchester", "country": "England", "days": 17, "featured": False},
+        {"home": "Chelsea", "away": "Liverpool", "league": "Premier League", "venue": "Stamford Bridge", "city": "London", "country": "England", "days": 21, "featured": True},
+        
+        # La Liga
+        {"home": "Real Madrid", "away": "Barcelona", "league": "La Liga - El Clásico", "venue": "Santiago Bernabéu", "city": "Madrid", "country": "Spain", "days": 12, "featured": True},
+        {"home": "Barcelona", "away": "Atletico Madrid", "league": "La Liga", "venue": "Camp Nou", "city": "Barcelona", "country": "Spain", "days": 19, "featured": True},
+        {"home": "Atletico Madrid", "away": "Real Madrid", "league": "La Liga - Madrid Derby", "venue": "Metropolitano", "city": "Madrid", "country": "Spain", "days": 26, "featured": True},
+        
+        # Bundesliga
+        {"home": "Bayern Munich", "away": "Borussia Dortmund", "league": "Bundesliga - Der Klassiker", "venue": "Allianz Arena", "city": "Munich", "country": "Germany", "days": 15, "featured": True},
+        {"home": "Borussia Dortmund", "away": "RB Leipzig", "league": "Bundesliga", "venue": "Signal Iduna Park", "city": "Dortmund", "country": "Germany", "days": 22, "featured": False},
+        {"home": "Bayer Leverkusen", "away": "Bayern Munich", "league": "Bundesliga", "venue": "BayArena", "city": "Leverkusen", "country": "Germany", "days": 28, "featured": True},
+        
+        # Serie A
+        {"home": "AC Milan", "away": "Inter Milan", "league": "Serie A - Derby della Madonnina", "venue": "San Siro", "city": "Milan", "country": "Italy", "days": 13, "featured": True},
+        {"home": "Juventus", "away": "Napoli", "league": "Serie A", "venue": "Allianz Stadium", "city": "Turin", "country": "Italy", "days": 20, "featured": True},
+        {"home": "Roma", "away": "Lazio", "league": "Serie A - Derby della Capitale", "venue": "Stadio Olimpico", "city": "Rome", "country": "Italy", "days": 27, "featured": True},
+    ]
+    
+    ticket_categories = [
+        {"category": "vip", "section": "VIP Box", "base_price": 599},
+        {"category": "cat1", "section": "Category 1", "base_price": 249},
+        {"category": "cat2", "section": "Category 2", "base_price": 149},
+        {"category": "cat3", "section": "Category 3", "base_price": 89},
+    ]
+    
+    added_events = 0
+    added_tickets = 0
+    
+    for match in all_matches:
+        event_id = f"league_{uuid.uuid4().hex[:8]}"
+        event = {
+            "event_id": event_id,
+            "event_type": "match",
+            "title": f"{match['home']} vs {match['away']}",
+            "subtitle": match["league"],
+            "home_team": match["home"],
+            "away_team": match["away"],
+            "league": match["league"],
+            "venue": match["venue"],
+            "city": match["city"],
+            "country": match["country"],
+            "event_date": (datetime.now(timezone.utc) + timedelta(days=match["days"])).isoformat(),
+            "event_image": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&w=800",
+            "featured": match["featured"],
+            "status": "upcoming",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        await db.events.insert_one(event)
+        added_events += 1
+        
+        # El Clasico and derbies have higher prices
+        price_multiplier = 1.8 if "Clásico" in match["league"] or "Derby" in match["league"] else 1.0
+        
+        for cat in ticket_categories:
+            num_tickets = random.randint(15, 35)
+            for i in range(num_tickets):
+                price = round(cat["base_price"] * price_multiplier * random.uniform(0.8, 1.3), 2)
+                ticket = {
+                    "ticket_id": f"lg_{uuid.uuid4().hex[:10]}",
+                    "event_id": event_id,
+                    "seller_id": "seller_euromatch",
+                    "seller_name": "EuroMatchTickets Official",
+                    "category": cat["category"],
+                    "section": cat["section"],
+                    "row": str(random.randint(1, 30)),
+                    "seat": str(random.randint(1, 50)),
+                    "price": price,
+                    "original_price": cat["base_price"] * price_multiplier,
+                    "currency": "EUR",
+                    "status": "available",
+                    "created_at": datetime.now(timezone.utc).isoformat()
+                }
+                await db.tickets.insert_one(ticket)
+                added_tickets += 1
+    
+    return {
+        "message": "European Leagues data added!",
+        "events_added": added_events,
+        "tickets_added": added_tickets
+    }
+
 @api_router.post("/reset-and-seed")
 async def reset_and_seed():
     """Delete all data and re-seed with full data"""
