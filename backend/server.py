@@ -63,20 +63,11 @@ db_name = os.environ.get('DB_NAME', 'euromatchtickets')
 client = AsyncIOMotorClient(mongo_url, serverSelectionTimeoutMS=30000, connectTimeoutMS=30000)
 db = client[db_name]
 
-# Stripe - with error handling
-try:
-    from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
-    STRIPE_AVAILABLE = True
-except ImportError as e:
-    logger.warning(f"Stripe checkout not available: {e}")
-    STRIPE_AVAILABLE = False
-    StripeCheckout = None
-
+# Stripe configuration
 STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY', 'sk_test_emergent')
 PLATFORM_COMMISSION = 0.10  # 10% commission
-
-# Initialize Stripe API
 stripe.api_key = STRIPE_API_KEY
+STRIPE_AVAILABLE = True
 
 # Create the main app
 app = FastAPI(title="EuroMatchTickets - Events & Tickets Marketplace")
