@@ -43,6 +43,15 @@ import Footer from "./components/Footer";
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
+// Configure axios to include auth token
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem('session_token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 // Auth Context
 export const AuthContext = createContext(null);
 
