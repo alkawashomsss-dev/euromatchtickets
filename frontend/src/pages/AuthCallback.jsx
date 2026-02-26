@@ -34,6 +34,10 @@ const AuthCallback = () => {
         }, { withCredentials: true });
 
         if (response.data.success) {
+          // Save session token to localStorage for cross-origin requests
+          if (response.data.session_token) {
+            localStorage.setItem('session_token', response.data.session_token);
+          }
           setUser(response.data.user);
           // Clear hash and redirect
           window.history.replaceState(null, '', window.location.pathname);
