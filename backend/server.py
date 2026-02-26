@@ -1138,40 +1138,47 @@ async def get_checkout_status(session_id: str, request: Request):
 @api_router.post("/webhook/stripe")
 async def stripe_webhook(request: Request):
     """Handle Stripe webhooks"""
-    body = await request.body()
-    signature = request.headers.get("Stripe-Signature")
-    
-    host_url = str(request.base_url).rstrip('/')
-    webhook_url = f"{host_url}/api/webhook/stripe"
-    stripe_checkout = StripeCheckout(api_key=STRIPE_API_KEY, webhook_url=webhook_url)
+    payload = await request.body()
+    sig_header = request.headers.get("Stripe-Signature")
+    endpoint_secret = os.environ.get('STRIPE_WEBHOOK_SECRET', '')
     
     try:
-        webhook_response = await stripe_checkout.handle_webhook(body, signature)
+        if endpoint_secret:
+            event = stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
+        else:
+            # For testing without webhook secret
+            data = await request.json()
+            event = stripe.Event.construct_from(data, stripe.api_key)
         
-        if webhook_response.payment_status == "paid":
-            order = await db.orders.find_one(
-                {"stripe_session_id": webhook_response.session_id},
-                {"_id": 0}
-            )
+        if event['type'] == 'checkout.session.completed':
+            session = event['data']['object']
+            session_id = session['id']
+            payment_status = session.get('payment_status', '')
             
-            if order and order["status"] != "completed":
-                qr_data = f"FANPASS-{order['order_id']}-{order['ticket_id']}"
-                qr_code = generate_qr_code(qr_data)
-                
-                await db.orders.update_one(
-                    {"order_id": order["order_id"]},
-                    {"$set": {"status": "completed", "qr_code": qr_code}}
+            if payment_status == "paid":
+                order = await db.orders.find_one(
+                    {"stripe_session_id": session_id},
+                    {"_id": 0}
                 )
                 
-                await db.tickets.update_one(
-                    {"ticket_id": order["ticket_id"]},
-                    {"$set": {"status": "sold"}}
-                )
-                
-                await db.users.update_one(
-                    {"user_id": order["seller_id"]},
-                    {"$inc": {"total_sales": 1}}
-                )
+                if order and order["status"] != "completed":
+                    qr_data = f"FANPASS-{order['order_id']}-{order['ticket_id']}"
+                    qr_code = generate_qr_code(qr_data)
+                    
+                    await db.orders.update_one(
+                        {"order_id": order["order_id"]},
+                        {"$set": {"status": "completed", "qr_code": qr_code}}
+                    )
+                    
+                    await db.tickets.update_one(
+                        {"ticket_id": order["ticket_id"]},
+                        {"$set": {"status": "sold"}}
+                    )
+                    
+                    await db.users.update_one(
+                        {"user_id": order["seller_id"]},
+                        {"$inc": {"total_sales": 1}}
+                    )
         
         return {"received": True}
     except Exception as e:
