@@ -149,7 +149,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <span>© {currentYear} EuroMatchTickets GmbH. All rights reserved.</span>
+              <span>© {currentYear} Euromatchtickets.com – All Rights Reserved.</span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <span className="flex items-center gap-1">
