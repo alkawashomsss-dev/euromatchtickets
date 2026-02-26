@@ -1766,31 +1766,51 @@ Keep responses concise and helpful. If you don't know something specific, direct
 async def chat_support(chat_msg: ChatMessage):
     """AI-powered customer support chat"""
     try:
+        if not openai_client:
+            return {
+                "response": "AI support is currently unavailable. Please email us at support@euromatchtickets.com for assistance."
+            }
+        
         session_id = chat_msg.session_id
         
-        # Get or create chat session
-        if session_id not in chat_sessions:
-            chat_sessions[session_id] = LlmChat(
-                api_key=os.environ.get('EMERGENT_LLM_KEY'),
-                session_id=session_id,
-                system_message=SUPPORT_SYSTEM_MESSAGE
-            ).with_model("openai", "gpt-4o")
+        # Get or create chat history
+        if session_id not in chat_histories:
+            chat_histories[session_id] = []
         
-        chat = chat_sessions[session_id]
+        # Add user message to history
+        chat_histories[session_id].append({
+            "role": "user",
+            "content": chat_msg.message
+        })
         
-        # Send message and get response
-        user_message = UserMessage(text=chat_msg.message)
-        response = await chat.send_message(user_message)
+        # Build messages for OpenAI
+        messages = [{"role": "system", "content": SUPPORT_SYSTEM_MESSAGE}]
+        messages.extend(chat_histories[session_id][-10:])  # Keep last 10 messages
+        
+        # Call OpenAI
+        response = openai_client.chat.completions.create(
+            model="gpt-4o",
+            messages=messages,
+            max_tokens=500
+        )
+        
+        ai_response = response.choices[0].message.content
+        
+        # Add AI response to history
+        chat_histories[session_id].append({
+            "role": "assistant",
+            "content": ai_response
+        })
         
         # Save to database for analytics
         await db.chat_logs.insert_one({
             "session_id": session_id,
             "user_message": chat_msg.message,
-            "ai_response": response,
+            "ai_response": ai_response,
             "timestamp": datetime.now(timezone.utc).isoformat()
         })
         
-        return {"response": response}
+        return {"response": ai_response}
         
     except Exception as e:
         logging.error(f"Chat error: {str(e)}")
