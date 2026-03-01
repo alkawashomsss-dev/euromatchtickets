@@ -39,6 +39,7 @@ import BadBunnyPage from "./pages/BadBunnyPage";
 import AIChatWidget from "./components/AIChatWidget";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CookieConsentBanner from "./components/CookieConsentBanner";
 
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
