@@ -237,6 +237,7 @@ function App() {
             />
             <AppRouter />
             <AIChatWidget />
+            <CookieConsentBanner />
           </AuthProvider>
         </LanguageProvider>
       </HelmetProvider>
