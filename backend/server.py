@@ -64,7 +64,7 @@ db = client[db_name]
 
 # Stripe configuration
 STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY', 'sk_test_emergent')
-PLATFORM_COMMISSION = 0.10  # 10% commission
+PLATFORM_COMMISSION = 0.0  # No commission - prices are final
 stripe.api_key = STRIPE_API_KEY
 STRIPE_AVAILABLE = True
 
