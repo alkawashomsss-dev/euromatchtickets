@@ -133,7 +133,7 @@ const EventDetailsPage = () => {
 
     setPurchasing(true);
     try {
-      const ticketTotal = ticket.price * 1.1; // 10% commission
+      const ticketTotal = ticket.price; // No commission - final price
       
       // Track Facebook Pixel - InitiateCheckout
       if (window.fbq) {
