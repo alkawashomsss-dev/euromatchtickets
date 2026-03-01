@@ -241,8 +241,8 @@ const EventDetailsPage = () => {
     ? event.tickets.filter(t => t.category === selectedCategory)
     : event.tickets;
 
-  const commission = selectedTicket ? selectedTicket.price * 0.10 : 0;
-  const totalAmount = selectedTicket ? selectedTicket.price + commission : 0;
+  const commission = 0; // No service fee - prices are final
+  const totalAmount = selectedTicket ? selectedTicket.price : 0;
 
   // Generate Event Schema for SEO
   const eventSchema = {
