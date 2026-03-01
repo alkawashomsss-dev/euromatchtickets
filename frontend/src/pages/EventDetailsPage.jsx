@@ -543,19 +543,21 @@ const EventDetailsPage = () => {
                       <span>€{selectedTicket.price.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-zinc-500 flex items-center gap-1">
-                        Service Fee (10%)
-                        <Info className="w-3 h-3" />
+                      <span className="text-emerald-400 flex items-center gap-1">
+                        ✓ No Service Fee
                       </span>
-                      <span className="text-zinc-400">€{commission.toFixed(2)}</span>
+                      <span className="text-emerald-400">€0.00</span>
                     </div>
                     
                     <hr className="border-white/5" />
                     
                     <div className="flex justify-between text-xl font-bold">
                       <span>Total</span>
-                      <span>€{totalAmount.toFixed(2)}</span>
+                      <span className="text-emerald-400">€{totalAmount.toFixed(2)}</span>
                     </div>
+                    <p className="text-xs text-emerald-500 text-center mt-2">
+                      💰 You save 10-15% compared to other platforms!
+                    </p>
                   </div>
 
                   <Button
