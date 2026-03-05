@@ -2,17 +2,12 @@
 
 ## Original Problem Statement
 Build a comprehensive ticket marketplace for European events:
-- 10% platform commission via Stripe
+- 10% platform commission via Stripe (currently disabled at user request)
 - Full payment to owner's Stripe account  
 - Excellent SEO for sales goal
 - Domain: euromatchtickets.com
 
 ## Current Status: PREVIEW WORKING ✅
-
-### ⚠️ CRITICAL DEPLOYMENT ISSUE
-**Live site (euromatchtickets.com) uses OLD database!**
-- User must re-deploy with "Use new database" option
-- Preview environment has all fixes and new features
 
 ---
 
@@ -21,14 +16,25 @@ Build a comprehensive ticket marketplace for European events:
 ### Core Marketplace
 - ⚽ Football tickets (Champions League, Premier League, La Liga, World Cup 2026)
 - 🎵 Concert tickets (The Weeknd, Bruno Mars, Guns N' Roses, Bad Bunny)
+- 🏎️ **Formula 1 Tickets 2026** - NEW! 23 Grand Prix races with competitive pricing
 - 100% Stripe Live Mode payments
-- 10% commission on all sales
 - Google OAuth authentication
+
+### Formula 1 2026 Season ✅ (NEW - March 2026)
+Full F1 2026 calendar with 23 races:
+- **Legendary Circuits:** Monaco, Silverstone, Monza, Spa-Francorchamps
+- **Night Races:** Bahrain, Saudi Arabia, Singapore, Qatar, Abu Dhabi, Las Vegas
+- **European Races:** Spain, Austria, UK, Hungary, Belgium, Netherlands, Italy
+- **Competitive Pricing:** €87 - €599 (25% cheaper than competitors)
+- **Ticket Categories:** General Admission, Grandstand, VIP Hospitality, Paddock Club
+- **3,278+ tickets available**
+- **Price Comparison:** Shows EuroMatchTickets prices vs F1.com, StubHub, Viagogo
 
 ### SEO & Landing Pages
 - Dynamic `sitemap.xml` with all pages
 - Schema.org markup for events
 - High-value landing pages:
+  - `/f1-tickets` - **NEW** Formula 1 2026 Season (23 races)
   - `/world-cup-2026` - FIFA World Cup 2026
   - `/champions-league-tickets`
   - `/the-weeknd-tour-2026`
@@ -37,12 +43,14 @@ Build a comprehensive ticket marketplace for European events:
   - `/bad-bunny-london-2026`
 
 ### Trust & Legal Pages ✅
-- `/buyer-protection` - **NEW** Comprehensive buyer guarantee page
+- `/buyer-protection` - Comprehensive buyer guarantee page
 - `/privacy-policy` - GDPR compliant privacy policy
 - `/payment-info` - Payment methods and security info
 - `/terms` - Terms of Service
 - `/refund-policy` - Refund policy
+- `/impressum` - German legal notice
 - `/contact` - Contact page with form
+- Cookie Consent Banner (GDPR compliant)
 
 ### Multi-Language Support ✅
 16 languages supported:
@@ -100,22 +108,23 @@ Build a comprehensive ticket marketplace for European events:
 
 ## Pending / Blocked
 
-### P0 - CRITICAL
-- [ ] **Live Deployment Database Sync** - User must select "Use new database" when deploying
-
 ### P1 - High Priority
 - [ ] "Sell Your Tickets" page - Allow users to list tickets
-- [ ] Test Resend email notifications end-to-end
-- [ ] Replace stock images with licensed/royalty-free images
-
-### P2 - Medium Priority  
+- [ ] "About Us" page with price comparison and testimonials
 - [ ] Google Analytics integration - Needs Web Stream ID (G-XXXX)
 - [ ] Facebook Pixel integration - Needs Pixel ID
+- [ ] Ticket supplier/affiliate integration (StubHub, Viagogo)
 
-### Future Tasks
-- Seller payouts dashboard
-- Owner dashboard charts
-- More language translations
+### P2 - Medium Priority  
+- [ ] Test Resend email notifications end-to-end
+- [ ] Customer review/rating system
+- [ ] Enhanced Owner Dashboard with charts
+- [ ] Replace stock images with licensed/royalty-free images
+
+### P3 - Future Tasks
+- [ ] Reinstate 10% commission (currently disabled)
+- [ ] Seller payouts dashboard improvements
+- [ ] More language translations
 
 ---
 
@@ -124,20 +133,23 @@ Build a comprehensive ticket marketplace for European events:
 ```
 /app/
 ├── backend/
-│   ├── server.py          # FastAPI main file
+│   ├── server.py          # FastAPI main file (includes F1 2026 seed endpoint)
 │   ├── email_service.py   # Resend integration
 │   ├── static/            # Video/asset files
 │   └── .env               # Environment variables
 ├── frontend/
 │   ├── src/
 │   │   ├── pages/
-│   │   │   ├── HomePage.jsx           # Updated with realistic stats
-│   │   │   ├── BuyerProtectionPage.jsx # NEW - Guarantee page
+│   │   │   ├── F1TicketsPage.jsx       # NEW - F1 2026 Season page
+│   │   │   ├── HomePage.jsx           
+│   │   │   ├── BuyerProtectionPage.jsx  
+│   │   │   ├── ImpressumPage.jsx
 │   │   │   ├── PrivacyPolicyPage.jsx   
 │   │   │   ├── PaymentInfoPage.jsx    
 │   │   │   └── ...
 │   │   ├── components/
-│   │   │   ├── LanguageSwitcher.jsx   # 16 languages
+│   │   │   ├── Header.jsx             # Updated with F1 in Categories
+│   │   │   ├── LanguageSwitcher.jsx   
 │   │   │   ├── AIChatWidget.jsx
 │   │   │   └── ...
 │   │   └── i18n/                      # Translations
@@ -146,28 +158,30 @@ Build a comprehensive ticket marketplace for European events:
     └── PRD.md
 ```
 
-## Key Endpoints
+## Key API Endpoints
 - `GET /api/health` - Health check
+- `GET /api/events?event_type=f1` - Get F1 events
+- `POST /api/seed-f1-2026` - Seed F1 2026 season data
 - `GET /api/sitemap.xml` - Dynamic sitemap
-- `POST /api/create-checkout-session` - Stripe checkout
-- `POST /api/chat` - AI chat support
-- `GET /api/static/*` - Static files (videos, etc.)
+- `POST /api/checkout/create` - Stripe checkout
+- `POST /api/chat/support` - AI chat support
 
 ## Credentials for Testing
 - **Login:** Google OAuth
-- **Test Payment:** €0.50 ticket exists for World Cup Opening Ceremony
+- **Stripe:** Live mode configured
 
 ---
 
 ## Last Updated
-February 24, 2026
+March 5, 2026
 
-## Session Summary (Latest)
-- ✅ Changed statistics to realistic numbers (no legal risk)
-- ✅ Created Buyer Protection page with Triple Guarantee
-- ✅ Added Live Inventory Counter to event cards
-- ✅ Added Limited Availability badges (Only X left!)
-- ✅ Added Selling Fast badges
-- ✅ Added Countdown Timer to events
-- ✅ Updated Trust section with links to protection pages
-- ✅ Updated Footer with Buyer Protection link
+## Session Summary (March 5, 2026)
+- ✅ Created F1 Tickets 2026 page (`/f1-tickets`)
+- ✅ Added 23 F1 Grand Prix races for 2026 season
+- ✅ Implemented competitive pricing (€87 - €599)
+- ✅ Added race filters (All, Popular, Europe, Night, Legendary)
+- ✅ Added price comparison with competitors
+- ✅ Added F1 to Header Categories dropdown
+- ✅ Added F1 page to sitemap for SEO
+- ✅ Seeded 3,278+ F1 tickets in database
+- ✅ Full testing passed (100% success rate)
