@@ -4,7 +4,7 @@ import axios from "axios";
 import { API } from "../App";
 import { 
   Calendar, MapPin, Ticket, Search, X, ChevronRight, 
-  Trophy, Music, Filter, Sparkles
+  Trophy, Music, Filter, Sparkles, Flag
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -32,6 +32,7 @@ const getEventTypeInfo = (type) => {
   const types = {
     match: { label: "Football", icon: Trophy, color: "tag-match" },
     concert: { label: "Concert", icon: Music, color: "tag-concert" },
+    f1: { label: "Formula 1", icon: Flag, color: "bg-red-500/20 text-red-400 border-red-500/30" },
   };
   return types[type] || types.match;
 };
@@ -181,12 +182,14 @@ const EventsPage = () => {
   const getSEOTitle = () => {
     if (filters.type === 'concert') return 'Concert Tickets Europe';
     if (filters.type === 'match') return 'Football Match Tickets Europe';
+    if (filters.type === 'f1') return 'F1 Tickets 2026 - All Formula 1 Grand Prix Races';
     return 'All Events - Football & Concert Tickets';
   };
 
   const getSEODescription = () => {
     if (filters.type === 'concert') return 'Buy verified concert tickets for Taylor Swift, Coldplay, Drake and more. Secure checkout with instant QR delivery across Europe.';
     if (filters.type === 'match') return 'Buy verified football tickets for Champions League, Premier League, La Liga and Bundesliga. 100% secure with buyer protection.';
+    if (filters.type === 'f1') return 'Buy F1 2026 tickets for all 23 Grand Prix races. Monaco, Silverstone, Monza, Singapore and more. Best prices guaranteed with 0% service fees.';
     return 'Browse all upcoming events across Europe. Football matches, concerts, and more. Verified tickets with instant QR delivery.';
   };
 
@@ -248,6 +251,12 @@ const EventsPage = () => {
                   Concerts
                 </div>
               </SelectItem>
+              <SelectItem value="f1">
+                <div className="flex items-center gap-2">
+                  <Flag className="w-4 h-4 text-red-400" />
+                  Formula 1
+                </div>
+              </SelectItem>
             </SelectContent>
           </Select>
 
@@ -290,6 +299,7 @@ const EventsPage = () => {
           {[
             { type: 'match', label: 'Football', icon: Trophy, color: 'emerald' },
             { type: 'concert', label: 'Concerts', icon: Music, color: 'purple' },
+            { type: 'f1', label: 'Formula 1', icon: Flag, color: 'red' },
           ].map(({ type, label, icon: Icon, color }) => (
             <button
               key={type}
