@@ -37,6 +37,14 @@ import BrunoMarsPage from "./pages/BrunoMarsPage";
 import GunsNRosesPage from "./pages/GunsNRosesPage";
 import BadBunnyPage from "./pages/BadBunnyPage";
 import F1TicketsPage from "./pages/F1TicketsPage";
+import MonacoGPPage from "./pages/MonacoGPPage";
+import SilverstoneGPPage from "./pages/SilverstoneGPPage";
+import MonzaGPPage from "./pages/MonzaGPPage";
+import SingaporeGPPage from "./pages/SingaporeGPPage";
+import LasVegasGPPage from "./pages/LasVegasGPPage";
+import AbuDhabiGPPage from "./pages/AbuDhabiGPPage";
+import SpaGPPage from "./pages/SpaGPPage";
+import ZandvoortGPPage from "./pages/ZandvoortGPPage";
 import AIChatWidget from "./components/AIChatWidget";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -184,6 +192,14 @@ function AppRouter() {
         <Route path="/guns-n-roses-tour-2026" element={<GunsNRosesPage />} />
         <Route path="/bad-bunny-london-2026" element={<BadBunnyPage />} />
         <Route path="/f1-tickets" element={<F1TicketsPage />} />
+        <Route path="/f1-monaco-grand-prix-tickets" element={<MonacoGPPage />} />
+        <Route path="/f1-british-grand-prix-silverstone-tickets" element={<SilverstoneGPPage />} />
+        <Route path="/f1-italian-grand-prix-monza-tickets" element={<MonzaGPPage />} />
+        <Route path="/f1-singapore-grand-prix-tickets" element={<SingaporeGPPage />} />
+        <Route path="/f1-las-vegas-grand-prix-tickets" element={<LasVegasGPPage />} />
+        <Route path="/f1-abu-dhabi-grand-prix-tickets" element={<AbuDhabiGPPage />} />
+        <Route path="/f1-belgian-grand-prix-spa-tickets" element={<SpaGPPage />} />
+        <Route path="/f1-dutch-grand-prix-zandvoort-tickets" element={<ZandvoortGPPage />} />
         <Route path="/order/success" element={
           <ProtectedRoute>
             <OrderSuccessPage />

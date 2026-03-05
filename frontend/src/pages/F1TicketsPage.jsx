@@ -244,9 +244,9 @@ const F1TicketsPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { name: "General Admission", price: "€89 - €199", desc: "Access to general viewing areas", icon: Users },
-              { name: "Grandstand", price: "€189 - €599", desc: "Reserved seating with track views", icon: Ticket },
-              { name: "VIP Hospitality", price: "€999 - €2,999", desc: "Premium experience with food & drinks", icon: Trophy },
-              { name: "Paddock Club", price: "€2,999 - €7,999", desc: "Ultimate F1 experience", icon: Star }
+              { name: "Grandstand", price: "€179 - €589", desc: "Reserved seating with track views", icon: Ticket },
+              { name: "VIP Hospitality", price: "€989 - €1,989", desc: "Premium experience with food & drinks", icon: Trophy },
+              { name: "Paddock Club", price: "€2,989 - €5,989", desc: "Ultimate F1 experience", icon: Star }
             ].map((cat, i) => (
               <div key={i} className="bg-zinc-900/50 border border-zinc-700 rounded-2xl p-6 hover:border-red-500/30 transition-colors">
                 <cat.icon className="w-10 h-10 text-red-400 mb-4" />
@@ -254,6 +254,42 @@ const F1TicketsPage = () => {
                 <p className="text-zinc-400 text-sm mb-4">{cat.desc}</p>
                 <div className="text-lg font-bold text-emerald-400">{cat.price}</div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Popular F1 Races - SEO Links */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-10">Most Popular F1 Races 2026</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { name: "Monaco GP", flag: "🇲🇨", price: "€289", href: "/f1-monaco-grand-prix-tickets", highlight: true },
+              { name: "British GP", flag: "🇬🇧", price: "€149", href: "/f1-british-grand-prix-silverstone-tickets" },
+              { name: "Italian GP", flag: "🇮🇹", price: "€99", href: "/f1-italian-grand-prix-monza-tickets" },
+              { name: "Singapore GP", flag: "🇸🇬", price: "€189", href: "/f1-singapore-grand-prix-tickets" },
+              { name: "Las Vegas GP", flag: "🇺🇸", price: "€249", href: "/f1-las-vegas-grand-prix-tickets", highlight: true },
+              { name: "Abu Dhabi GP", flag: "🇦🇪", price: "€169", href: "/f1-abu-dhabi-grand-prix-tickets" },
+              { name: "Belgian GP", flag: "🇧🇪", price: "€109", href: "/f1-belgian-grand-prix-spa-tickets" },
+              { name: "Dutch GP", flag: "🇳🇱", price: "€189", href: "/f1-dutch-grand-prix-zandvoort-tickets" },
+            ].map((race, i) => (
+              <Link 
+                key={i} 
+                to={race.href}
+                className={`flex items-center gap-3 p-4 rounded-xl border transition-all hover:scale-105 ${
+                  race.highlight 
+                    ? 'bg-red-500/10 border-red-500/30 hover:border-red-500' 
+                    : 'bg-zinc-900/50 border-zinc-700 hover:border-zinc-500'
+                }`}
+              >
+                <span className="text-3xl">{race.flag}</span>
+                <div className="flex-1">
+                  <h3 className="font-bold text-white">{race.name}</h3>
+                  <span className="text-emerald-400 text-sm">from {race.price}</span>
+                </div>
+                <ChevronRight className="w-5 h-5 text-zinc-500" />
+              </Link>
             ))}
           </div>
         </div>
