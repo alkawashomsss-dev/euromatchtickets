@@ -2719,6 +2719,96 @@ async def seed_expanded_categories():
         "categories": ["trains", "attractions", "festivals", "f1", "tennis"]
     }
 
+
+@api_router.post("/seed-f1-2026")
+async def seed_f1_2026():
+    """Add comprehensive F1 2026 season events with competitive prices"""
+    import random
+    
+    added_events = []
+    
+    # F1 2026 Calendar - Full Season with competitive prices
+    f1_races_2026 = [
+        {"title": "Bahrain Grand Prix 2026", "circuit": "Bahrain International Circuit", "city": "Sakhir", "country": "Bahrain", "days": 60, "base_price": 189, "featured": True, "night_race": True},
+        {"title": "Saudi Arabian Grand Prix 2026", "circuit": "Jeddah Corniche Circuit", "city": "Jeddah", "country": "Saudi Arabia", "days": 67, "base_price": 199, "featured": False, "night_race": True},
+        {"title": "Australian Grand Prix 2026", "circuit": "Albert Park Circuit", "city": "Melbourne", "country": "Australia", "days": 81, "base_price": 249, "featured": True, "night_race": False},
+        {"title": "Japanese Grand Prix 2026", "circuit": "Suzuka International Racing Course", "city": "Suzuka", "country": "Japan", "days": 95, "base_price": 279, "featured": True, "night_race": False},
+        {"title": "Chinese Grand Prix 2026", "circuit": "Shanghai International Circuit", "city": "Shanghai", "country": "China", "days": 109, "base_price": 229, "featured": False, "night_race": False},
+        {"title": "Miami Grand Prix 2026", "circuit": "Miami International Autodrome", "city": "Miami", "country": "USA", "days": 123, "base_price": 349, "featured": True, "night_race": False},
+        {"title": "Emilia Romagna Grand Prix 2026", "circuit": "Autodromo Enzo e Dino Ferrari", "city": "Imola", "country": "Italy", "days": 137, "base_price": 199, "featured": False, "night_race": False},
+        {"title": "Monaco Grand Prix 2026", "circuit": "Circuit de Monaco", "city": "Monte Carlo", "country": "Monaco", "days": 144, "base_price": 599, "featured": True, "night_race": False, "legendary": True},
+        {"title": "Spanish Grand Prix 2026", "circuit": "Circuit de Barcelona-Catalunya", "city": "Barcelona", "country": "Spain", "days": 151, "base_price": 179, "featured": False, "night_race": False},
+        {"title": "Canadian Grand Prix 2026", "circuit": "Circuit Gilles Villeneuve", "city": "Montreal", "country": "Canada", "days": 164, "base_price": 249, "featured": True, "night_race": False},
+        {"title": "Austrian Grand Prix 2026", "circuit": "Red Bull Ring", "city": "Spielberg", "country": "Austria", "days": 178, "base_price": 189, "featured": False, "night_race": False},
+        {"title": "British Grand Prix 2026", "circuit": "Silverstone Circuit", "city": "Silverstone", "country": "UK", "days": 185, "base_price": 299, "featured": True, "night_race": False, "legendary": True},
+        {"title": "Hungarian Grand Prix 2026", "circuit": "Hungaroring", "city": "Budapest", "country": "Hungary", "days": 199, "base_price": 169, "featured": False, "night_race": False},
+        {"title": "Belgian Grand Prix 2026", "circuit": "Circuit de Spa-Francorchamps", "city": "Spa", "country": "Belgium", "days": 206, "base_price": 219, "featured": True, "night_race": False, "legendary": True},
+        {"title": "Dutch Grand Prix 2026", "circuit": "Circuit Zandvoort", "city": "Zandvoort", "country": "Netherlands", "days": 241, "base_price": 349, "featured": True, "night_race": False},
+        {"title": "Italian Grand Prix 2026", "circuit": "Autodromo Nazionale Monza", "city": "Monza", "country": "Italy", "days": 248, "base_price": 199, "featured": True, "night_race": False, "legendary": True},
+        {"title": "Singapore Grand Prix 2026", "circuit": "Marina Bay Street Circuit", "city": "Singapore", "country": "Singapore", "days": 262, "base_price": 329, "featured": True, "night_race": True},
+        {"title": "United States Grand Prix 2026", "circuit": "Circuit of the Americas", "city": "Austin", "country": "USA", "days": 290, "base_price": 279, "featured": True, "night_race": False},
+        {"title": "Mexico City Grand Prix 2026", "circuit": "Autódromo Hermanos Rodríguez", "city": "Mexico City", "country": "Mexico", "days": 297, "base_price": 199, "featured": False, "night_race": False},
+        {"title": "Brazilian Grand Prix 2026", "circuit": "Autódromo José Carlos Pace", "city": "São Paulo", "country": "Brazil", "days": 311, "base_price": 219, "featured": True, "night_race": False},
+        {"title": "Las Vegas Grand Prix 2026", "circuit": "Las Vegas Street Circuit", "city": "Las Vegas", "country": "USA", "days": 325, "base_price": 449, "featured": True, "night_race": True},
+        {"title": "Qatar Grand Prix 2026", "circuit": "Lusail International Circuit", "city": "Lusail", "country": "Qatar", "days": 332, "base_price": 249, "featured": False, "night_race": True},
+        {"title": "Abu Dhabi Grand Prix 2026", "circuit": "Yas Marina Circuit", "city": "Abu Dhabi", "country": "UAE", "days": 339, "base_price": 299, "featured": True, "night_race": True},
+    ]
+    
+    for race in f1_races_2026:
+        event = Event(
+            event_type="f1",
+            title=race["title"],
+            subtitle=f"Formula 1 World Championship 2026 - {race['circuit']}",
+            description=f"Experience the thrill of Formula 1 at the {race['circuit']}. {race['title']} offers world-class motorsport action. Book your tickets now for the best seats!",
+            venue=race["circuit"],
+            city=race["city"],
+            country=race["country"],
+            event_date=datetime.now(timezone.utc) + timedelta(days=race["days"]),
+            event_image="https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg",
+            featured=race["featured"]
+        )
+        event_doc = event.model_dump()
+        event_doc['event_date'] = event_doc['event_date'].isoformat()
+        event_doc['created_at'] = event_doc['created_at'].isoformat()
+        await db.events.insert_one(event_doc)
+        
+        # Add competitive F1 tickets with realistic pricing
+        categories = [
+            {"name": "general_admission", "base": race["base_price"] * 0.6, "sections": ["GA North", "GA South", "GA East"]},
+            {"name": "grandstand", "base": race["base_price"], "sections": ["Main Straight", "Turn 1", "Pit Lane Exit", "Final Corner"]},
+            {"name": "vip_hospitality", "base": race["base_price"] * 4, "sections": ["Champions Club", "Paddock Club Terrace"]},
+            {"name": "paddock_club", "base": race["base_price"] * 8, "sections": ["Paddock Club Suite"]},
+        ]
+        
+        for cat in categories:
+            for section in cat["sections"]:
+                for _ in range(random.randint(8, 20)):
+                    # Competitive pricing - slightly below market
+                    price = round(cat["base"] * random.uniform(0.85, 1.15), 2)
+                    ticket = Ticket(
+                        event_id=event.event_id,
+                        seller_id="seller_demo",
+                        seller_name="F1 Tickets Europe",
+                        category=cat["name"],
+                        section=section,
+                        row=str(random.randint(1, 30)) if cat["name"] in ["grandstand", "vip_hospitality"] else None,
+                        seat=str(random.randint(1, 40)) if cat["name"] in ["grandstand", "vip_hospitality"] else None,
+                        price=price,
+                        original_price=cat["base"]
+                    )
+                    ticket_doc = ticket.model_dump()
+                    ticket_doc['created_at'] = ticket_doc['created_at'].isoformat()
+                    await db.tickets.insert_one(ticket_doc)
+        
+        added_events.append(event.event_id)
+    
+    return {
+        "message": "F1 2026 season added successfully with competitive pricing",
+        "added_events": len(added_events),
+        "races": [r["title"] for r in f1_races_2026]
+    }
+
+
 @api_router.get("/")
 async def root():
     return {"message": "EuroMatchTickets API - Events & Tickets Marketplace"}
@@ -2747,6 +2837,7 @@ async def get_sitemap():
         {"loc": f"{base_url}/guns-n-roses-tour-2026", "priority": "0.95", "changefreq": "daily"},
         {"loc": f"{base_url}/bad-bunny-london-2026", "priority": "0.95", "changefreq": "daily"},
         {"loc": f"{base_url}/the-weeknd-tour-2026", "priority": "0.95", "changefreq": "daily"},
+        {"loc": f"{base_url}/f1-tickets", "priority": "0.95", "changefreq": "daily"},
         {"loc": f"{base_url}/blog", "priority": "0.8", "changefreq": "weekly"},
         {"loc": f"{base_url}/reviews", "priority": "0.7", "changefreq": "weekly"},
         {"loc": f"{base_url}/faq", "priority": "0.6", "changefreq": "monthly"},

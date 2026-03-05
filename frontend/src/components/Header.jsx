@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../App";
 import { useLanguage } from "../i18n/LanguageProvider";
-import { Ticket, Menu, X, User, LogOut, Settings, ShoppingBag, LayoutDashboard, Bell, Trophy, Music, ChevronDown } from "lucide-react";
+import { Ticket, Menu, X, User, LogOut, Settings, ShoppingBag, LayoutDashboard, Bell, Trophy, Music, ChevronDown, Flag } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -22,6 +22,7 @@ const Header = () => {
   const categories = [
     { name: "Football", icon: Trophy, href: "/events?type=match", color: "text-emerald-400" },
     { name: "Concerts", icon: Music, href: "/events?type=concert", color: "text-purple-400" },
+    { name: "Formula 1", icon: Flag, href: "/f1-tickets", color: "text-red-400" },
   ];
 
   return (

@@ -36,6 +36,7 @@ import ChampionsLeaguePage from "./pages/ChampionsLeaguePage";
 import BrunoMarsPage from "./pages/BrunoMarsPage";
 import GunsNRosesPage from "./pages/GunsNRosesPage";
 import BadBunnyPage from "./pages/BadBunnyPage";
+import F1TicketsPage from "./pages/F1TicketsPage";
 import AIChatWidget from "./components/AIChatWidget";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -182,6 +183,7 @@ function AppRouter() {
         <Route path="/bruno-mars-tour-2026" element={<BrunoMarsPage />} />
         <Route path="/guns-n-roses-tour-2026" element={<GunsNRosesPage />} />
         <Route path="/bad-bunny-london-2026" element={<BadBunnyPage />} />
+        <Route path="/f1-tickets" element={<F1TicketsPage />} />
         <Route path="/order/success" element={
           <ProtectedRoute>
             <OrderSuccessPage />
