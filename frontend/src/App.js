@@ -83,6 +83,9 @@ import PriceGuidePage from "./pages/PriceGuidePage";
 import EventsThisWeekendPage from "./pages/EventsThisWeekendPage";
 import MonthlyEventsPage from "./pages/MonthlyEventsPage";
 
+// Marketing Dashboard
+import MarketingDashboard from "./pages/MarketingDashboard";
+
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
@@ -288,6 +291,9 @@ function AppRouter() {
         
         {/* SEO Dashboard */}
         <Route path="/seo-dashboard" element={<SEODashboardPage />} />
+        
+        {/* Marketing Dashboard */}
+        <Route path="/marketing" element={<MarketingDashboard />} />
         
         {/* Programmatic SEO Routes - City Pages */}
         <Route path="/:cityName-tickets" element={<CityTicketsPage />} />

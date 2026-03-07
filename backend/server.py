@@ -56,6 +56,20 @@ except ImportError as e:
     async def send_price_drop_alert(*args, **kwargs): pass
     async def send_welcome(*args, **kwargs): pass
 
+# Marketing Warfare System - with error handling
+try:
+    from marketing_warfare import (
+        generate_referral_code, get_referral_link, generate_referral_message,
+        generate_social_post, generate_daily_posts,
+        generate_email_campaign, get_content_strategy,
+        generate_push_notification, get_monthly_marketing_plan,
+        GROWTH_TACTICS, HIGH_VALUE_KEYWORDS, EMAIL_CAMPAIGNS, PUSH_TEMPLATES
+    )
+    MARKETING_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"Marketing warfare not available: {e}")
+    MARKETING_AVAILABLE = False
+
 # MongoDB connection - will be initialized on startup
 mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
 db_name = os.environ.get('DB_NAME', 'euromatchtickets')
@@ -3435,6 +3449,156 @@ async def generate_all_descriptions(request: Request):
         "total": len(events),
         "errors": errors
     }
+
+
+# ============== MARKETING WARFARE SYSTEM ==============
+
+@api_router.get("/marketing/referral/{user_id}")
+async def get_user_referral(user_id: str):
+    """Get user's referral code and shareable messages"""
+    if not MARKETING_AVAILABLE:
+        raise HTTPException(status_code=500, detail="Marketing system not available")
+    code = generate_referral_code(user_id)
+    messages = generate_referral_message(code)
+    
+    # Get referral stats
+    referrals = await db.referrals.count_documents({"referrer_id": user_id, "status": "completed"})
+    earnings = referrals * 10  # €10 per referral
+    
+    return {
+        "referral_code": code,
+        "referral_link": get_referral_link(code),
+        "share_messages": messages,
+        "stats": {
+            "total_referrals": referrals,
+            "total_earnings": earnings,
+            "pending_referrals": await db.referrals.count_documents({"referrer_id": user_id, "status": "pending"})
+        }
+    }
+
+
+@api_router.post("/marketing/track-referral")
+async def track_referral(request: Request):
+    """Track a referral when someone uses a referral code"""
+    body = await request.json()
+    referral_code = body.get("referral_code")
+    new_user_id = body.get("user_id")
+    
+    if not referral_code or not new_user_id:
+        raise HTTPException(status_code=400, detail="referral_code and user_id required")
+    
+    referral_doc = {
+        "referral_id": f"ref_{uuid.uuid4().hex[:12]}",
+        "referral_code": referral_code,
+        "referred_user_id": new_user_id,
+        "status": "pending",
+        "created_at": datetime.now(timezone.utc).isoformat()
+    }
+    
+    await db.referrals.insert_one(referral_doc)
+    
+    return {"success": True, "discount_percent": 10}
+
+
+@api_router.get("/marketing/social-posts")
+async def generate_social_media_posts():
+    """Generate social media posts for all platforms"""
+    if not MARKETING_AVAILABLE:
+        raise HTTPException(status_code=500, detail="Marketing system not available")
+    events = await db.events.find(
+        {"status": {"$ne": "cancelled"}, "featured": True},
+        {"_id": 0}
+    ).limit(10).to_list(10)
+    
+    if not events:
+        events = await db.events.find({"status": {"$ne": "cancelled"}}, {"_id": 0}).limit(10).to_list(10)
+    
+    posts = generate_daily_posts(events, count=5)
+    
+    return {
+        "posts": posts,
+        "total": len(posts),
+        "tip": "Post these on your social media accounts daily for maximum reach"
+    }
+
+
+@api_router.get("/marketing/email-campaigns")
+async def get_email_campaigns():
+    """Get email campaign templates"""
+    return {
+        "campaigns": EMAIL_CAMPAIGNS if MARKETING_AVAILABLE else {},
+        "tip": "Set up these automated email sequences in your email marketing tool"
+    }
+
+
+@api_router.get("/marketing/growth-plan")
+async def get_growth_plan():
+    """Get the monthly marketing plan to sell 1000 tickets"""
+    if not MARKETING_AVAILABLE:
+        raise HTTPException(status_code=500, detail="Marketing system not available")
+    plan = get_monthly_marketing_plan()
+    strategy = get_content_strategy()
+    
+    return {
+        "monthly_plan": plan,
+        "content_strategy": strategy,
+        "growth_tactics": GROWTH_TACTICS,
+        "high_value_keywords": HIGH_VALUE_KEYWORDS[:10]
+    }
+
+
+@api_router.get("/marketing/push-templates")
+async def get_push_templates():
+    """Get push notification templates"""
+    return {
+        "templates": PUSH_TEMPLATES if MARKETING_AVAILABLE else {},
+        "tip": "Use web push notifications to bring visitors back"
+    }
+
+
+@api_router.post("/marketing/generate-campaign")
+async def generate_marketing_campaign(request: Request):
+    """Generate a complete marketing campaign for an event"""
+    if not MARKETING_AVAILABLE:
+        raise HTTPException(status_code=500, detail="Marketing system not available")
+    body = await request.json()
+    event_id = body.get("event_id")
+    
+    event = await db.events.find_one({"event_id": event_id}, {"_id": 0})
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
+    
+    campaign = {
+        "event": event,
+        "social_posts": {
+            "twitter": generate_social_post(event, "twitter"),
+            "facebook": generate_social_post(event, "facebook"),
+            "instagram": generate_social_post(event, "instagram"),
+            "linkedin": generate_social_post(event, "linkedin")
+        },
+        "push_notification": generate_push_notification("new_event", {
+            "event_name": event.get("title"),
+            "price": event.get("lowest_price", 49),
+            "event_id": event_id
+        }),
+        "seo_keywords": [
+            f"{event.get('title')} tickets",
+            f"{event.get('title')} tickets {event.get('city')}",
+            f"buy {event.get('title')} tickets",
+            f"cheap {event.get('title')} tickets",
+            f"{event.get('venue')} tickets"
+        ],
+        "hashtags": [
+            f"#{event.get('title', '').replace(' ', '')}",
+            f"#{event.get('city', '')}",
+            "#Tickets",
+            "#LiveEvent",
+            "#2026"
+        ]
+    }
+    
+    return campaign
+
 
 # Include the router in the main app
 app.include_router(api_router)
