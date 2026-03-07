@@ -2174,6 +2174,171 @@ async def fix_tickets_seller():
         "modified_count": result.modified_count
     }
 
+
+@api_router.post("/seed-premium-concerts")
+async def seed_premium_concerts():
+    """Seed premium concert events - Maroon 5, John Legend, Harry Styles, Metallica, ACL Festival"""
+    import random
+    
+    concerts = [
+        {
+            "title": "Maroon 5 World Tour 2026",
+            "subtitle": "The Ultimate Pop Experience - European Tour",
+            "artist": "Maroon 5",
+            "genre": "Pop/Rock",
+            "venues": [
+                {"venue": "Allianz Arena", "city": "Munich", "country": "Germany", "date": "2026-06-15"},
+                {"venue": "Wembley Stadium", "city": "London", "country": "UK", "date": "2026-06-20"},
+                {"venue": "Stade de France", "city": "Paris", "country": "France", "date": "2026-06-25"},
+                {"venue": "Camp Nou", "city": "Barcelona", "country": "Spain", "date": "2026-07-01"},
+                {"venue": "San Siro", "city": "Milan", "country": "Italy", "date": "2026-07-05"},
+            ],
+            "image": "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200",
+            "base_prices": {"general": 75, "seated": 120, "vip": 250, "platinum": 450}
+        },
+        {
+            "title": "John Legend Live in Abu Dhabi",
+            "subtitle": "An Intimate Evening with John Legend",
+            "artist": "John Legend",
+            "genre": "R&B/Soul",
+            "venues": [
+                {"venue": "Etihad Arena", "city": "Abu Dhabi", "country": "UAE", "date": "2026-03-20"},
+                {"venue": "Coca-Cola Arena", "city": "Dubai", "country": "UAE", "date": "2026-03-22"},
+            ],
+            "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200",
+            "base_prices": {"general": 95, "seated": 150, "vip": 350, "platinum": 650}
+        },
+        {
+            "title": "Harry Styles - Together Together Tour 2026",
+            "subtitle": "The Biggest Pop Tour of the Year",
+            "artist": "Harry Styles",
+            "genre": "Pop",
+            "venues": [
+                {"venue": "O2 Arena", "city": "London", "country": "UK", "date": "2026-05-10"},
+                {"venue": "Mercedes-Benz Arena", "city": "Berlin", "country": "Germany", "date": "2026-05-15"},
+                {"venue": "AccorHotels Arena", "city": "Paris", "country": "France", "date": "2026-05-20"},
+                {"venue": "Ziggo Dome", "city": "Amsterdam", "country": "Netherlands", "date": "2026-05-25"},
+                {"venue": "Palau Sant Jordi", "city": "Barcelona", "country": "Spain", "date": "2026-05-30"},
+                {"venue": "Forum", "city": "Copenhagen", "country": "Denmark", "date": "2026-06-05"},
+            ],
+            "image": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200",
+            "base_prices": {"general": 450, "seated": 750, "vip": 1200, "platinum": 2500}
+        },
+        {
+            "title": "Harry Styles VIP Experience Berlin",
+            "subtitle": "Ultimate VIP Package - Berlin Exclusive",
+            "artist": "Harry Styles",
+            "genre": "Pop/VIP",
+            "venues": [
+                {"venue": "Mercedes-Benz Arena", "city": "Berlin", "country": "Germany", "date": "2026-05-15"},
+            ],
+            "image": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200",
+            "base_prices": {"vip_gold": 5500, "vip_platinum": 9500, "vip_diamond": 15300}
+        },
+        {
+            "title": "ACL Festival 2026 - Austin City Limits",
+            "subtitle": "The Ultimate Music Festival Experience",
+            "artist": "ACL Festival",
+            "genre": "Festival",
+            "venues": [
+                {"venue": "Zilker Park", "city": "Austin", "country": "USA", "date": "2026-10-02"},
+                {"venue": "Zilker Park", "city": "Austin", "country": "USA", "date": "2026-10-03"},
+                {"venue": "Zilker Park", "city": "Austin", "country": "USA", "date": "2026-10-09"},
+                {"venue": "Zilker Park", "city": "Austin", "country": "USA", "date": "2026-10-10"},
+            ],
+            "image": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200",
+            "base_prices": {"general_day": 350, "general_weekend": 750, "vip_weekend": 2500, "platinum": 5150, "ultimate": 27000}
+        },
+        {
+            "title": "Metallica at The Sphere Las Vegas",
+            "subtitle": "M72 World Tour - Sphere Residency",
+            "artist": "Metallica",
+            "genre": "Heavy Metal",
+            "venues": [
+                {"venue": "The Sphere", "city": "Las Vegas", "country": "USA", "date": "2026-08-15"},
+                {"venue": "The Sphere", "city": "Las Vegas", "country": "USA", "date": "2026-08-16"},
+                {"venue": "The Sphere", "city": "Las Vegas", "country": "USA", "date": "2026-08-22"},
+                {"venue": "The Sphere", "city": "Las Vegas", "country": "USA", "date": "2026-08-23"},
+            ],
+            "image": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200",
+            "base_prices": {"general": 650, "premium": 950, "vip": 1800, "snake_pit": 2900}
+        }
+    ]
+    
+    created_events = []
+    created_tickets = 0
+    
+    for concert in concerts:
+        for venue_info in concert["venues"]:
+            event_id = f"concert_{uuid.uuid4().hex[:12]}"
+            
+            # Calculate lowest price (5% cheaper than market)
+            lowest_price = min(concert["base_prices"].values()) * 0.95
+            
+            event_doc = {
+                "event_id": event_id,
+                "event_type": "concert",
+                "title": concert["title"],
+                "subtitle": concert["subtitle"],
+                "artist": concert["artist"],
+                "genre": concert["genre"],
+                "venue": venue_info["venue"],
+                "city": venue_info["city"],
+                "country": venue_info["country"],
+                "event_date": f"{venue_info['date']}T20:00:00Z",
+                "event_image": concert["image"],
+                "status": "upcoming",
+                "featured": True,
+                "lowest_price": round(lowest_price, 2),
+                "available_tickets": random.randint(100, 300),
+                "created_at": datetime.now(timezone.utc).isoformat()
+            }
+            
+            await db.events.update_one(
+                {"event_id": event_id},
+                {"$set": event_doc},
+                upsert=True
+            )
+            
+            # Create tickets - 5% cheaper than market
+            for category, base_price in concert["base_prices"].items():
+                count = 20 if base_price > 5000 else (30 if base_price > 1000 else 50)
+                for i in range(count):
+                    # 5% cheaper than market price
+                    price = round(base_price * 0.95 * random.uniform(0.95, 1.05), 2)
+                    ticket_doc = {
+                        "ticket_id": f"ticket_{uuid.uuid4().hex[:12]}",
+                        "event_id": event_id,
+                        "seller_id": "seller_euromatch",
+                        "seller_name": "EuroMatchTickets Official",
+                        "category": category,
+                        "section": random.choice(["Section A", "Section B", "Floor", "Balcony", "VIP Lounge", "Front Row"]),
+                        "price": price,
+                        "original_price": base_price,
+                        "currency": "USD" if venue_info["country"] == "USA" else "EUR",
+                        "status": "available",
+                        "created_at": datetime.now(timezone.utc).isoformat()
+                    }
+                    await db.tickets.insert_one(ticket_doc)
+                    created_tickets += 1
+            
+            created_events.append({
+                "event_id": event_id,
+                "title": concert["title"],
+                "artist": concert["artist"],
+                "city": venue_info["city"],
+                "date": venue_info["date"],
+                "lowest_price": round(lowest_price, 2)
+            })
+    
+    return {
+        "success": True,
+        "events_created": len(created_events),
+        "tickets_created": created_tickets,
+        "events": created_events
+    }
+
+
 @api_router.post("/add-vip-worldcup-tickets")
 async def add_vip_worldcup_tickets():
     """Add premium VIP World Cup 2026 tickets with competitive prices"""
@@ -3263,6 +3428,13 @@ async def seo_index_all_pages():
         "https://euromatchtickets.com/motogp-tickets",
         "https://euromatchtickets.com/isle-of-man-tt-tickets",
         
+        # PREMIUM CONCERT PAGES - HIGH PRIORITY
+        "https://euromatchtickets.com/maroon-5-tickets",
+        "https://euromatchtickets.com/john-legend-abu-dhabi-tickets",
+        "https://euromatchtickets.com/harry-styles-tickets",
+        "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets",
+        "https://euromatchtickets.com/acl-festival-2026-tickets",
+        
         # Comparison pages (HIGH VALUE)
         "https://euromatchtickets.com/euromatchtickets-vs-stubhub",
         "https://euromatchtickets.com/euromatchtickets-vs-viagogo",
@@ -3298,6 +3470,9 @@ async def seo_index_all_pages():
         "https://euromatchtickets.com/manchester-tickets",
         "https://euromatchtickets.com/dubai-tickets",
         "https://euromatchtickets.com/singapore-tickets",
+        "https://euromatchtickets.com/abu-dhabi-tickets",
+        "https://euromatchtickets.com/las-vegas-tickets",
+        "https://euromatchtickets.com/austin-tickets",
     ]
     
     result = await submit_url_to_indexnow(all_urls)

@@ -307,6 +307,33 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- PREMIUM CONCERT PAGES - HIGH VALUE SEO -->
+  <url>
+    <loc>https://euromatchtickets.com/maroon-5-tickets</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/john-legend-abu-dhabi-tickets</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/harry-styles-tickets</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/metallica-sphere-las-vegas-tickets</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/acl-festival-2026-tickets</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
   <!-- PROGRAMMATIC SEO CITY PAGES - NEW -->
   <url>
     <loc>https://euromatchtickets.com/london-tickets</loc>

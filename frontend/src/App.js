@@ -87,6 +87,13 @@ import MonthlyEventsPage from "./pages/MonthlyEventsPage";
 // Marketing Dashboard
 import MarketingDashboard from "./pages/MarketingDashboard";
 
+// Premium Concert Pages
+import Maroon5Page from "./pages/Maroon5Page";
+import JohnLegendPage from "./pages/JohnLegendPage";
+import HarryStylesPage from "./pages/HarryStylesPage";
+import MetallicaPage from "./pages/MetallicaPage";
+import ACLFestivalPage from "./pages/ACLFestivalPage";
+
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
@@ -296,6 +303,13 @@ function AppRouter() {
         
         {/* Marketing Dashboard */}
         <Route path="/marketing" element={<MarketingDashboard />} />
+        
+        {/* Premium Concert Pages */}
+        <Route path="/maroon-5-tickets" element={<Maroon5Page />} />
+        <Route path="/john-legend-abu-dhabi-tickets" element={<JohnLegendPage />} />
+        <Route path="/harry-styles-tickets" element={<HarryStylesPage />} />
+        <Route path="/metallica-sphere-las-vegas-tickets" element={<MetallicaPage />} />
+        <Route path="/acl-festival-2026-tickets" element={<ACLFestivalPage />} />
         
         {/* Programmatic SEO Routes - City Pages */}
         <Route path="/:cityName-tickets" element={<CityTicketsPage />} />
