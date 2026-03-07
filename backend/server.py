@@ -1030,6 +1030,11 @@ async def create_checkout(request: Request):
         mode='payment',
         success_url=success_url,
         cancel_url=cancel_url,
+        payment_intent_data={
+            'description': f"EuroMatchTickets - {event['title']}",
+            'statement_descriptor': 'EUROMATCHTICKETS',
+            'statement_descriptor_suffix': 'TICKET'
+        },
         metadata={
             "order_id": order.order_id,
             "ticket_id": ticket_id,
