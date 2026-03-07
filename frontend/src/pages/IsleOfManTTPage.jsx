@@ -35,12 +35,39 @@ const IsleOfManTTPage = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
-    "name": "Isle of Man TT 2026",
-    "description": "Buy Isle of Man TT 2026 tickets. The world's most dangerous motorcycle race. Grandstand, VIP hospitality, and race week passes.",
+    "name": "Isle of Man TT 2026 - World's Greatest Road Race",
+    "description": "Buy Isle of Man TT 2026 tickets. The world's most legendary motorcycle race since 1907. Grandstand, VIP hospitality, paddock access, and race week passes available.",
     "startDate": "2026-05-30",
     "endDate": "2026-06-13",
-    "location": { "@type": "Place", "name": "Snaefell Mountain Course", "address": "Isle of Man, British Isles" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "45", "highPrice": "599" }
+    "location": { 
+      "@type": "Place", 
+      "name": "Snaefell Mountain Course", 
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Douglas",
+        "addressRegion": "Isle of Man",
+        "addressCountry": "IM"
+      }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "EuroMatchTickets",
+      "url": "https://euromatchtickets.com"
+    },
+    "offers": { 
+      "@type": "AggregateOffer", 
+      "priceCurrency": "EUR", 
+      "lowPrice": "45", 
+      "highPrice": "599",
+      "availability": "https://schema.org/InStock",
+      "url": "https://euromatchtickets.com/isle-of-man-tt-tickets"
+    },
+    "sport": "Motorcycle Racing",
+    "competitor": [
+      {"@type": "Person", "name": "Peter Hickman"},
+      {"@type": "Person", "name": "Michael Dunlop"},
+      {"@type": "Person", "name": "Dean Harrison"}
+    ]
   };
 
   const faqSchema = {

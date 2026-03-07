@@ -40,10 +40,63 @@ const F1TicketsPage = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
-    "name": "Formula 1 World Championship 2026",
-    "description": "Buy F1 2026 tickets for all Grand Prix races. Monaco GP, Silverstone, Monza, Singapore and more. Best prices guaranteed.",
+    "name": "Formula 1 World Championship 2026 - Buy F1 Tickets",
+    "description": "Buy official F1 2026 tickets for all 24 Grand Prix races. Monaco GP from €289, Silverstone from €199, Monza, Singapore, Las Vegas. Best prices guaranteed. Instant QR delivery.",
     "startDate": "2026-03-01",
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "89" }
+    "endDate": "2026-12-08",
+    "location": {
+      "@type": "Place",
+      "name": "Various F1 Circuits Worldwide"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "EuroMatchTickets",
+      "url": "https://euromatchtickets.com"
+    },
+    "offers": { 
+      "@type": "AggregateOffer", 
+      "priceCurrency": "EUR", 
+      "lowPrice": "89",
+      "highPrice": "5000",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2025-01-01",
+      "url": "https://euromatchtickets.com/f1-tickets"
+    },
+    "performer": {
+      "@type": "SportsTeam",
+      "name": "Formula 1 Teams"
+    }
+  };
+  
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where can I buy F1 tickets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can buy official F1 tickets at EuroMatchTickets.com. We offer verified tickets for all 24 Grand Prix races with instant QR delivery and 100% money-back guarantee."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much do F1 tickets cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "F1 ticket prices start from €89 for general admission and go up to €5,000+ for VIP hospitality packages. Monaco GP tickets start from €289, Silverstone from €199."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are F1 tickets on EuroMatchTickets authentic?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, all tickets are 100% verified and authentic. We offer a full money-back guarantee if any ticket doesn't work at the venue."
+        }
+      }
+    ]
   };
 
   // Country flags
@@ -68,9 +121,10 @@ const F1TicketsPage = () => {
     <div className="min-h-screen bg-zinc-950 pt-20">
       <SEOHead 
         title="F1 Tickets 2026 - Buy Formula 1 Grand Prix Tickets | Monaco, Silverstone, Monza"
-        description="Buy F1 2026 tickets at best prices! Monaco GP, British GP Silverstone, Italian GP Monza, Singapore GP & all 23 races. VIP Hospitality, Grandstand. 100% Buyer Protection. No Service Fees!"
+        description="Buy F1 2026 tickets at best prices! Monaco GP from €289, British GP Silverstone from €199, Italian GP Monza, Singapore GP & all 24 races. VIP Hospitality, Grandstand. 100% Verified. Instant QR Delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">

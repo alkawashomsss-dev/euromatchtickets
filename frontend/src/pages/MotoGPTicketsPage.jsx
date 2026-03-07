@@ -34,10 +34,51 @@ const MotoGPTicketsPage = () => {
 
   const schema = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "MotoGP 2026 Tickets",
-    "description": "Buy MotoGP 2026 tickets for all Grand Prix races. Best prices for motorcycle racing events.",
-    "numberOfItems": events.length
+    "@type": "SportsEvent",
+    "name": "MotoGP World Championship 2026 - Buy MotoGP Tickets",
+    "description": "Buy official MotoGP 2026 tickets for all Grand Prix races. Mugello, Silverstone, Assen, Barcelona, Valencia. VIP Village & Paddock passes. Best prices guaranteed.",
+    "startDate": "2026-03-01",
+    "endDate": "2026-11-15",
+    "location": {
+      "@type": "Place",
+      "name": "Various MotoGP Circuits Worldwide"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "EuroMatchTickets",
+      "url": "https://euromatchtickets.com"
+    },
+    "offers": { 
+      "@type": "AggregateOffer", 
+      "priceCurrency": "EUR", 
+      "lowPrice": "69",
+      "highPrice": "2500",
+      "availability": "https://schema.org/InStock",
+      "url": "https://euromatchtickets.com/motogp-tickets"
+    }
+  };
+  
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where can I buy MotoGP tickets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can buy official MotoGP tickets at EuroMatchTickets.com. We offer verified tickets for all Grand Prix races with VIP Village and Paddock access options."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much do MotoGP tickets cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MotoGP ticket prices start from €69 for general admission. VIP Village passes range from €500-2500 depending on the race and package."
+        }
+      }
+    ]
   };
 
   // Format date
@@ -53,10 +94,11 @@ const MotoGPTicketsPage = () => {
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       <SEOHead 
-        title="MotoGP Tickets 2026 - Buy Motorcycle Grand Prix Tickets | All Races"
-        description="Buy MotoGP 2026 tickets from €69. All Grand Prix races. Mugello, Silverstone, Assen, Barcelona, Valencia. 100% Ticket Guarantee. Instant delivery. Best prices!"
+        title="MotoGP Tickets 2026 - Buy Motorcycle Grand Prix Tickets | Mugello, Silverstone, Assen"
+        description="Buy MotoGP 2026 tickets from €69. All 20 Grand Prix races. Mugello, Silverstone, Assen, Barcelona, Valencia. VIP Village & Paddock. 100% Verified. Instant QR delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">
