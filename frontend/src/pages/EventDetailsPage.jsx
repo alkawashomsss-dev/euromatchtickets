@@ -248,12 +248,14 @@ const EventDetailsPage = () => {
 
   const dateInfo = formatDate(event.event_date);
   const isMatch = event.event_type === "match";
+  const tickets = event.tickets || [];
   const filteredTickets = selectedCategory 
-    ? event.tickets.filter(t => t.category === selectedCategory)
-    : event.tickets;
+    ? tickets.filter(t => t.category === selectedCategory)
+    : tickets;
 
   const commission = 0; // No service fee - prices are final
   const totalAmount = selectedTicket ? selectedTicket.price : 0;
+  const lowestPrice = tickets.length > 0 ? Math.min(...tickets.map(t => t.price)) : null;
 
   // Generate Event Schema for SEO
   const eventSchema = {
