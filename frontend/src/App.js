@@ -62,6 +62,7 @@ import Footer from "./components/Footer";
 import CookieConsentBanner from "./components/CookieConsentBanner";
 import { ExitIntentPopup, PushNotificationBanner, SocialProofNotification, FloatingCTA } from "./components/MarketingTools";
 import { MarketingBotButton } from "./components/AIMarketingBot";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 // MotoGP Pages
 import MotoGPTicketsPage from "./pages/MotoGPTicketsPage";
@@ -74,6 +75,13 @@ import F1SchedulePage from "./pages/F1SchedulePage";
 
 // SEO Dashboard
 import SEODashboardPage from "./pages/SEODashboardPage";
+
+// Programmatic SEO Pages
+import CityTicketsPage from "./pages/CityTicketsPage";
+import ComparisonPage from "./pages/ComparisonPage";
+import PriceGuidePage from "./pages/PriceGuidePage";
+import EventsThisWeekendPage from "./pages/EventsThisWeekendPage";
+import MonthlyEventsPage from "./pages/MonthlyEventsPage";
 
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
@@ -191,6 +199,7 @@ function AppRouter() {
 
   return (
     <>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -279,6 +288,36 @@ function AppRouter() {
         
         {/* SEO Dashboard */}
         <Route path="/seo-dashboard" element={<SEODashboardPage />} />
+        
+        {/* Programmatic SEO Routes - City Pages */}
+        <Route path="/:cityName-tickets" element={<CityTicketsPage />} />
+        
+        {/* Comparison Pages */}
+        <Route path="/euromatchtickets-vs-stubhub" element={<ComparisonPage competitor="StubHub" />} />
+        <Route path="/euromatchtickets-vs-viagogo" element={<ComparisonPage competitor="Viagogo" />} />
+        <Route path="/euromatchtickets-vs-ticketmaster" element={<ComparisonPage competitor="Ticketmaster" />} />
+        <Route path="/euromatchtickets-vs-seatgeek" element={<ComparisonPage competitor="SeatGeek" />} />
+        
+        {/* Price Guide Pages */}
+        <Route path="/f1-ticket-prices-2026" element={<PriceGuidePage eventType="f1" />} />
+        <Route path="/motogp-ticket-prices-2026" element={<PriceGuidePage eventType="motogp" />} />
+        <Route path="/concert-ticket-prices-2026" element={<PriceGuidePage eventType="concert" />} />
+        <Route path="/football-ticket-prices-2026" element={<PriceGuidePage eventType="football" />} />
+        
+        {/* Dynamic Time-Based Pages */}
+        <Route path="/events-this-weekend" element={<EventsThisWeekendPage />} />
+        <Route path="/events-january-2026" element={<MonthlyEventsPage month="January" />} />
+        <Route path="/events-february-2026" element={<MonthlyEventsPage month="February" />} />
+        <Route path="/events-march-2026" element={<MonthlyEventsPage month="March" />} />
+        <Route path="/events-april-2026" element={<MonthlyEventsPage month="April" />} />
+        <Route path="/events-may-2026" element={<MonthlyEventsPage month="May" />} />
+        <Route path="/events-june-2026" element={<MonthlyEventsPage month="June" />} />
+        <Route path="/events-july-2026" element={<MonthlyEventsPage month="July" />} />
+        <Route path="/events-august-2026" element={<MonthlyEventsPage month="August" />} />
+        <Route path="/events-september-2026" element={<MonthlyEventsPage month="September" />} />
+        <Route path="/events-october-2026" element={<MonthlyEventsPage month="October" />} />
+        <Route path="/events-november-2026" element={<MonthlyEventsPage month="November" />} />
+        <Route path="/events-december-2026" element={<MonthlyEventsPage month="December" />} />
       </Routes>
       <Footer />
     </>

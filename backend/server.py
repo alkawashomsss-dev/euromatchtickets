@@ -3289,6 +3289,60 @@ async def seo_refresh_sitemap():
     }
 
 
+# ============== PROGRAMMATIC SEO ENDPOINTS ==============
+
+from programmatic_seo import (
+    generate_all_seo_pages,
+    generate_city_page,
+    generate_comparison_page,
+    generate_long_tail_pages,
+    EUROPEAN_CITIES
+)
+
+@api_router.get("/seo/generate-all-pages")
+async def seo_generate_all_pages():
+    """Generate all SEO pages for maximum search coverage"""
+    result = generate_all_seo_pages()
+    return {
+        "status": "success",
+        "total_pages": result["total_pages_generated"],
+        "message": f"Generated {result['total_pages_generated']} SEO pages",
+        "breakdown": {
+            "city_pages": len(result["pages"]["city_pages"]),
+            "comparison_pages": len(result["pages"]["comparison_pages"]),
+            "monthly_pages": len(result["pages"]["monthly_pages"]),
+            "how_to_guides": len(result["pages"]["how_to_guides"]),
+        },
+        "sitemap_urls": result["sitemap_urls"][:20]  # First 20 for preview
+    }
+
+
+@api_router.get("/seo/city/{city_name}")
+async def seo_get_city_page(city_name: str):
+    """Get SEO content for a specific city"""
+    city_data = next((c for c in EUROPEAN_CITIES if c["city"].lower() == city_name.lower()), None)
+    if not city_data:
+        # Generate for unknown city
+        city_data = {"city": city_name.title(), "country": "Europe", "keywords": []}
+    
+    return generate_city_page(city_data)
+
+
+@api_router.get("/seo/compare/{competitor}")
+async def seo_get_comparison(competitor: str):
+    """Get comparison page content"""
+    return generate_comparison_page(competitor)
+
+
+@api_router.get("/seo/long-tail-keywords")
+async def seo_get_long_tail():
+    """Get all long-tail keyword pages"""
+    return {
+        "pages": generate_long_tail_pages(),
+        "total": len(generate_long_tail_pages())
+    }
+
+
 # ============== AI DESCRIPTION GENERATOR ==============
 
 @api_router.post("/events/{event_id}/generate-description")
