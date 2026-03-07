@@ -362,9 +362,9 @@ const EventDetailsPage = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/30" />
         
         <div className="relative z-10 h-full max-w-[1440px] mx-auto px-4 md:px-8 flex flex-col justify-end pb-12">
-          <Badge className={`mb-4 w-fit ${isMatch ? 'tag-match' : 'tag-concert'}`}>
+          <Badge className={`mb-4 w-fit ${isMatch ? 'tag-match' : event.event_type === 'f1' ? 'bg-red-500/20 text-red-400 border-red-500/30' : event.event_type === 'motogp' ? 'bg-orange-500/20 text-orange-400 border-orange-500/30' : event.event_type === 'worldcup' ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' : 'tag-concert'}`}>
             {isMatch ? <Trophy className="w-3 h-3 mr-1" /> : <Music className="w-3 h-3 mr-1" />}
-            {isMatch ? "Football Match" : "Concert"}
+            {isMatch ? "Football Match" : event.event_type === 'f1' ? "Formula 1" : event.event_type === 'motogp' ? "MotoGP" : event.event_type === 'worldcup' ? "FIFA World Cup" : "Concert"}
           </Badge>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">{event.title}</h1>
