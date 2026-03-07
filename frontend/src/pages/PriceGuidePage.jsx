@@ -5,8 +5,7 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import SEOHead from '../components/SEOHead';
 import axios from 'axios';
-
-const API = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, '') || '';
+import { API } from '../App';
 
 const PRICE_DATA = {
   f1: {

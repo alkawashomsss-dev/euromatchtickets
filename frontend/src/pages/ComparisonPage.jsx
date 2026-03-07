@@ -4,8 +4,7 @@ import { Shield, Zap, Star, Check, X, ArrowRight, Trophy, DollarSign, Clock, Hea
 import { Button } from '../components/ui/button';
 import SEOHead from '../components/SEOHead';
 import axios from 'axios';
-
-const API = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, '') || '';
+import { API } from '../App';
 
 const COMPETITOR_DATA = {
   'StubHub': {

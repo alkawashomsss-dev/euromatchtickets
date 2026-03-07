@@ -5,8 +5,7 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import SEOHead from '../components/SEOHead';
 import axios from 'axios';
-
-const API = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, '') || '';
+import { API } from '../App';
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -47,7 +46,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
       const startDate = new Date(year, monthIndex, 1);
       const endDate = new Date(year, monthIndex + 1, 0);
 
-      const res = await axios.get(`${API}/api/events`, {
+      const res = await axios.get(`${API}/events`, {
         params: {
           date_from: startDate.toISOString().split('T')[0],
           date_to: endDate.toISOString().split('T')[0]
@@ -58,7 +57,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
       console.error('Error fetching monthly events:', error);
       // Fallback: fetch all events
       try {
-        const res = await axios.get(`${API}/api/events`);
+        const res = await axios.get(`${API}/events`);
         setEvents((res.data || []).slice(0, 12));
       } catch (e) {
         console.error('Fallback error:', e);

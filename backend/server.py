@@ -2167,6 +2167,269 @@ async def cleanup_categories():
         "removed_categories": unwanted_types
     }
 
+@api_router.post("/seed-premium-events")
+async def seed_premium_high_value_events():
+    """Seed premium high-value events - World Cup 2026, Champions League Final, Euro 2026, etc."""
+    import random
+    
+    premium_events = [
+        # FIFA WORLD CUP 2026 - USA/Canada/Mexico
+        {
+            "title": "FIFA World Cup 2026 Final",
+            "subtitle": "The Ultimate Football Experience",
+            "event_type": "worldcup",
+            "venue": "MetLife Stadium",
+            "city": "New York",
+            "country": "USA",
+            "event_date": "2026-07-19T20:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200",
+            "base_prices": {"category_3": 1500, "category_2": 3500, "category_1": 7500, "vip": 15000, "hospitality": 35000}
+        },
+        {
+            "title": "FIFA World Cup 2026 Semi-Final 1",
+            "subtitle": "Road to the Final",
+            "event_type": "worldcup",
+            "venue": "AT&T Stadium",
+            "city": "Dallas",
+            "country": "USA",
+            "event_date": "2026-07-14T20:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200",
+            "base_prices": {"category_3": 800, "category_2": 2000, "category_1": 4500, "vip": 9000, "hospitality": 20000}
+        },
+        {
+            "title": "FIFA World Cup 2026 Semi-Final 2",
+            "subtitle": "Road to the Final",
+            "event_type": "worldcup",
+            "venue": "SoFi Stadium",
+            "city": "Los Angeles",
+            "country": "USA",
+            "event_date": "2026-07-15T20:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+            "base_prices": {"category_3": 800, "category_2": 2000, "category_1": 4500, "vip": 9000, "hospitality": 20000}
+        },
+        {
+            "title": "FIFA World Cup 2026 Quarter-Final 1",
+            "event_type": "worldcup",
+            "venue": "Azteca Stadium",
+            "city": "Mexico City",
+            "country": "Mexico",
+            "event_date": "2026-07-09T18:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=1200",
+            "base_prices": {"category_3": 500, "category_2": 1200, "category_1": 2800, "vip": 5500}
+        },
+        {
+            "title": "FIFA World Cup 2026 Quarter-Final 2",
+            "event_type": "worldcup",
+            "venue": "BC Place",
+            "city": "Vancouver",
+            "country": "Canada",
+            "event_date": "2026-07-09T21:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200",
+            "base_prices": {"category_3": 500, "category_2": 1200, "category_1": 2800, "vip": 5500}
+        },
+        # Group Stage matches
+        {
+            "title": "World Cup 2026: Germany vs Brazil",
+            "subtitle": "Group Stage - Match of the Tournament",
+            "event_type": "worldcup",
+            "venue": "MetLife Stadium",
+            "city": "New York",
+            "country": "USA",
+            "event_date": "2026-06-15T18:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200",
+            "base_prices": {"category_3": 350, "category_2": 750, "category_1": 1500, "vip": 3500}
+        },
+        {
+            "title": "World Cup 2026: Argentina vs France",
+            "subtitle": "Group Stage - Rematch of 2022 Final",
+            "event_type": "worldcup",
+            "venue": "AT&T Stadium",
+            "city": "Dallas",
+            "country": "USA",
+            "event_date": "2026-06-18T21:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+            "base_prices": {"category_3": 400, "category_2": 900, "category_1": 2000, "vip": 4500}
+        },
+        {
+            "title": "World Cup 2026: England vs Spain",
+            "subtitle": "Group Stage Classic",
+            "event_type": "worldcup",
+            "venue": "SoFi Stadium",
+            "city": "Los Angeles",
+            "country": "USA",
+            "event_date": "2026-06-20T18:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=1200",
+            "base_prices": {"category_3": 300, "category_2": 650, "category_1": 1300, "vip": 3000}
+        },
+        
+        # UEFA CHAMPIONS LEAGUE FINAL 2026
+        {
+            "title": "UEFA Champions League Final 2026",
+            "subtitle": "The Biggest Club Match on Earth",
+            "event_type": "match",
+            "venue": "Allianz Arena",
+            "city": "Munich",
+            "country": "Germany",
+            "event_date": "2026-05-30T21:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+            "base_prices": {"category_3": 800, "category_2": 1800, "category_1": 4000, "vip": 8500, "hospitality": 18000}
+        },
+        
+        # EL CLASICO
+        {
+            "title": "El Clasico: Real Madrid vs Barcelona",
+            "subtitle": "The Greatest Rivalry in Football",
+            "event_type": "match",
+            "venue": "Santiago Bernabéu",
+            "city": "Madrid",
+            "country": "Spain",
+            "event_date": "2026-04-12T21:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1569531955323-33c6b2dca44b?w=1200",
+            "base_prices": {"general": 450, "category_2": 850, "category_1": 1500, "vip": 3500, "hospitality": 8000}
+        },
+        {
+            "title": "El Clasico: Barcelona vs Real Madrid",
+            "subtitle": "Camp Nou Edition",
+            "event_type": "match",
+            "venue": "Spotify Camp Nou",
+            "city": "Barcelona",
+            "country": "Spain",
+            "event_date": "2026-10-25T20:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1569531955323-33c6b2dca44b?w=1200",
+            "base_prices": {"general": 400, "category_2": 750, "category_1": 1400, "vip": 3200, "hospitality": 7500}
+        },
+        
+        # PREMIER LEAGUE BIG MATCHES
+        {
+            "title": "Manchester Derby: Man United vs Man City",
+            "subtitle": "Premier League - Battle for Manchester",
+            "event_type": "match",
+            "venue": "Old Trafford",
+            "city": "Manchester",
+            "country": "UK",
+            "event_date": "2026-03-15T17:30:00Z",
+            "event_image": "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=1200",
+            "base_prices": {"general": 350, "premium": 650, "vip": 1500, "hospitality": 4000}
+        },
+        {
+            "title": "North London Derby: Arsenal vs Tottenham",
+            "subtitle": "Premier League Classic",
+            "event_type": "match",
+            "venue": "Emirates Stadium",
+            "city": "London",
+            "country": "UK",
+            "event_date": "2026-04-05T16:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200",
+            "base_prices": {"general": 300, "premium": 550, "vip": 1200, "hospitality": 3500}
+        },
+        
+        # F1 PREMIUM RACES
+        {
+            "title": "Monaco Grand Prix 2026 - Race Day",
+            "subtitle": "The Crown Jewel of F1",
+            "event_type": "f1",
+            "venue": "Circuit de Monaco",
+            "city": "Monte Carlo",
+            "country": "Monaco",
+            "event_date": "2026-05-24T15:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1752884991461-8ac432ad9266?w=1200",
+            "base_prices": {"general": 450, "grandstand": 950, "yacht_view": 5000, "vip_terrace": 12000, "paddock_club": 25000}
+        },
+        {
+            "title": "Las Vegas Grand Prix 2026 - Night Race",
+            "subtitle": "F1 Under the Vegas Lights",
+            "event_type": "f1",
+            "venue": "Las Vegas Strip Circuit",
+            "city": "Las Vegas",
+            "country": "USA",
+            "event_date": "2026-11-22T22:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200",
+            "base_prices": {"general": 550, "grandstand": 1200, "vip_lounge": 4500, "paddock_club": 18000}
+        },
+        {
+            "title": "Singapore Grand Prix 2026 - Night Race",
+            "subtitle": "The Original Night Race",
+            "event_type": "f1",
+            "venue": "Marina Bay Street Circuit",
+            "city": "Singapore",
+            "country": "Singapore",
+            "event_date": "2026-09-20T20:00:00Z",
+            "event_image": "https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200",
+            "base_prices": {"general": 380, "grandstand": 850, "vip": 3500, "paddock_club": 15000}
+        },
+    ]
+    
+    created_events = []
+    created_tickets = 0
+    
+    for event_data in premium_events:
+        event_id = f"premium_{uuid.uuid4().hex[:12]}"
+        base_prices = event_data.pop("base_prices", {})
+        
+        # Calculate lowest price (5% discount)
+        lowest_price = min(base_prices.values()) * 0.95
+        
+        event_doc = {
+            "event_id": event_id,
+            "event_type": event_data.get("event_type", "match"),
+            "title": event_data["title"],
+            "subtitle": event_data.get("subtitle", ""),
+            "venue": event_data["venue"],
+            "city": event_data["city"],
+            "country": event_data["country"],
+            "event_date": event_data["event_date"],
+            "event_image": event_data["event_image"],
+            "status": "upcoming",
+            "featured": True,
+            "lowest_price": round(lowest_price, 2),
+            "available_tickets": random.randint(100, 300),
+            "high_demand": True,
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        
+        await db.events.update_one(
+            {"event_id": event_id},
+            {"$set": event_doc},
+            upsert=True
+        )
+        
+        # Create tickets for each category
+        for category, base_price in base_prices.items():
+            count = 15 if base_price > 5000 else (25 if base_price > 1000 else 40)
+            for i in range(count):
+                price = round(base_price * 0.95 * random.uniform(0.95, 1.05), 2)
+                ticket_doc = {
+                    "ticket_id": f"ticket_{uuid.uuid4().hex[:12]}",
+                    "event_id": event_id,
+                    "seller_id": "seller_euromatch",
+                    "seller_name": "EuroMatchTickets Official",
+                    "category": category,
+                    "section": random.choice(["Block A", "Block B", "Block C", "Premium", "VIP Area"]),
+                    "price": price,
+                    "original_price": base_price,
+                    "currency": "USD" if event_data["country"] in ["USA", "Canada", "Mexico"] else "EUR",
+                    "status": "available",
+                    "high_demand": base_price > 2000,
+                    "created_at": datetime.now(timezone.utc).isoformat()
+                }
+                await db.tickets.insert_one(ticket_doc)
+                created_tickets += 1
+        
+        created_events.append({
+            "event_id": event_id,
+            "title": event_data["title"],
+            "city": event_data["city"],
+            "lowest_price": round(lowest_price, 2)
+        })
+    
+    return {
+        "success": True,
+        "events_created": len(created_events),
+        "tickets_created": created_tickets,
+        "events": created_events
+    }
+
+
 @api_router.post("/fix-tickets-seller")
 async def fix_tickets_seller():
     """Add seller_id to all tickets that don't have one"""

@@ -7,8 +7,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
 import axios from 'axios';
-
-const API = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, '') || '';
+import { API } from '../App';
 
 // City data with keywords
 const CITIES_DATA = {

@@ -4,8 +4,7 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
-const API = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, '') || '';
+import { API } from '../App';
 
 const SEODashboardPage = () => {
   const [loading, setLoading] = useState({});
@@ -19,7 +18,7 @@ const SEODashboardPage = () => {
   const pingSearchEngines = async () => {
     setLoading(prev => ({ ...prev, ping: true }));
     try {
-      const res = await fetch(`${API}/api/seo/ping-search-engines`);
+      const res = await fetch(`${API}/seo/ping-search-engines`);
       const data = await res.json();
       setResults(prev => ({ ...prev, ping: data }));
       setLastPing(new Date().toLocaleString());
@@ -32,7 +31,7 @@ const SEODashboardPage = () => {
   const submitUrls = async () => {
     setLoading(prev => ({ ...prev, submit: true }));
     try {
-      const res = await fetch(`${API}/api/seo/submit-urls`, {
+      const res = await fetch(`${API}/seo/submit-urls`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ urls: [] })
@@ -48,7 +47,7 @@ const SEODashboardPage = () => {
   const refreshSitemap = async () => {
     setLoading(prev => ({ ...prev, sitemap: true }));
     try {
-      const res = await fetch(`${API}/api/seo/refresh-sitemap`);
+      const res = await fetch(`${API}/seo/refresh-sitemap`);
       const data = await res.json();
       setResults(prev => ({ ...prev, sitemap: data }));
     } catch (e) {
@@ -60,7 +59,7 @@ const SEODashboardPage = () => {
   const runAudit = async () => {
     setLoading(prev => ({ ...prev, audit: true }));
     try {
-      const res = await fetch(`${API}/api/seo/audit`);
+      const res = await fetch(`${API}/seo/audit`);
       const data = await res.json();
       setResults(prev => ({ ...prev, audit: data }));
     } catch (e) {
@@ -235,7 +234,7 @@ const SEODashboardPage = () => {
               </a>
               
               <a 
-                href={`${API}/api/sitemap.xml`}
+                href={`${API}/sitemap.xml`}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 p-4 bg-zinc-800/50 rounded-xl hover:bg-zinc-800 transition-colors"

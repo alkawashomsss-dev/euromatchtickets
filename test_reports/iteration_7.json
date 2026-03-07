@@ -1,0 +1,106 @@
+{
+  "summary": "Full stack testing completed for EuroMatchTickets ticket marketplace. Fixed /api/api/ duplicate prefix bug verified as resolved. All 5 major features tested and working: F1 Tickets Page, MotoGP Tickets Page, World Cup 2026 Page, Event Details Page navigation, and Homepage featured events. 11/11 backend API tests passed. Frontend UI tests all passed via Playwright.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Event Details Page", "issues": ["Event badge shows 'Concert' instead of 'F1' or 'Motorsport' for Bahrain GP - minor cosmetic issue"]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_ticket_api.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "The API URL constant at line 98 in App.js is correctly defined and all 9 frontend files properly import API from App.js",
+    "No duplicate /api/api/ prefix errors detected in console or API responses"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_ticket_api.py"
+  ],
+  "success_rate": {
+    "backend": "100% (11/11 tests passed)",
+    "frontend": "100% (all UI tests passed)"
+  },
+  "seed_data_creation": "N/A - existing seed data used",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All major ticket pages verified working. F1 page at /f1-tickets shows 23 races. MotoGP page at /motogp-tickets shows 57 races. World Cup page at /world-cup-2026 shows 20 event links with ticket categories from €149-€999. Event details page loads correctly with ticket selection, pricing, and availability indicators. The /api/api/ duplicate prefix bug has been fixed - API calls use single /api prefix correctly.",
+  "passed_tests": [
+    "Backend: Health endpoint returns status healthy",
+    "Backend: /api/events?event_type=f1 returns F1 events",
+    "Backend: /api/events?event_type=motogp returns MotoGP events",
+    "Backend: /api/events?event_type=worldcup returns World Cup events",
+    "Backend: /api/events?search=FIFA returns FIFA-related events",
+    "Backend: /api/events?featured=true returns featured events",
+    "Backend: /api/events/{event_id} returns event details with tickets",
+    "Backend: /api/api/events (duplicate prefix) returns 404 as expected",
+    "Backend: /api/events returns all events list",
+    "Backend: /api/events?event_type=match returns football matches",
+    "Backend: /api/events?event_type=concert returns concerts",
+    "Frontend: F1 Tickets Page loads at /f1-tickets",
+    "Frontend: F1 page displays 'F1 Tickets 2026' title",
+    "Frontend: F1 page shows '23 Grand Prix Races Worldwide'",
+    "Frontend: F1 page has 6 event links to race details",
+    "Frontend: MotoGP Tickets Page loads at /motogp-tickets",
+    "Frontend: MotoGP page displays 'MotoGP Tickets 2026' heading",
+    "Frontend: MotoGP page shows '57 Races' and €69 starting price",
+    "Frontend: World Cup 2026 page loads at /world-cup-2026",
+    "Frontend: World Cup page displays 'FIFA World Cup 2026' heading",
+    "Frontend: World Cup page shows 20 event links",
+    "Frontend: World Cup page has ticket categories €149-€999",
+    "Frontend: Event Details navigation works - clicked F1 event",
+    "Frontend: Event Details shows 'Bahrain Grand Prix 2026' correctly",
+    "Frontend: Event Details shows 131 tickets available",
+    "Frontend: Event Details shows €97.47 pricing (-23% discount)",
+    "Frontend: No disappearing events bug detected",
+    "Frontend: Homepage loads correctly",
+    "Frontend: Homepage shows FIFA World Cup 2026 hero",
+    "Frontend: Homepage has 6 event links",
+    "Frontend: No /api/api duplicate prefix errors in console"
+  ],
+  "bug_verification": {
+    "original_bug": "Disappearing events when clicking F1/MotoGP tickets due to duplicate /api/api/ prefix in API calls",
+    "fix_applied": "All 9 frontend files now import API from App.js instead of defining it locally",
+    "verification_result": "FIXED - Events load correctly, no duplicate prefix errors, navigation to event details works"
+  },
+  "pages_tested": {
+    "f1_tickets": {
+      "url": "/f1-tickets",
+      "status": "WORKING",
+      "races_displayed": 23,
+      "event_links": 6,
+      "price_shown": "€89"
+    },
+    "motogp_tickets": {
+      "url": "/motogp-tickets",
+      "status": "WORKING",
+      "races_displayed": 57,
+      "price_shown": "€69"
+    },
+    "worldcup_2026": {
+      "url": "/world-cup-2026",
+      "status": "WORKING",
+      "event_links": 20,
+      "ticket_categories": ["€149 Cat3", "€299 Cat2", "€449 Cat1", "€999 VIP Silver"]
+    },
+    "event_details": {
+      "url": "/event/{event_id}",
+      "status": "WORKING",
+      "example_event": "Bahrain Grand Prix 2026",
+      "tickets_available": 131,
+      "price": "€97.47"
+    },
+    "homepage": {
+      "url": "/",
+      "status": "WORKING",
+      "event_links": 6,
+      "featured_content": ["FIFA World Cup 2026", "F1", "MotoGP"]
+    }
+  }
+}

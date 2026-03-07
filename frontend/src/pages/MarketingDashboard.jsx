@@ -9,10 +9,8 @@ import {
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { toast } from 'sonner';
-import { useAuth } from '../App';
+import { useAuth, API } from '../App';
 import axios from 'axios';
-
-const API = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, '') || '';
 
 const MarketingDashboard = () => {
   const { user } = useAuth();
@@ -30,9 +28,9 @@ const MarketingDashboard = () => {
     setLoading(true);
     try {
       const [referralRes, postsRes, planRes] = await Promise.all([
-        user ? axios.get(`${API}/api/marketing/referral/${user.user_id}`) : null,
-        axios.get(`${API}/api/marketing/social-posts`),
-        axios.get(`${API}/api/marketing/growth-plan`)
+        user ? axios.get(`${API}/marketing/referral/${user.user_id}`) : null,
+        axios.get(`${API}/marketing/social-posts`),
+        axios.get(`${API}/marketing/growth-plan`)
       ]);
       
       if (referralRes) setReferralData(referralRes.data);

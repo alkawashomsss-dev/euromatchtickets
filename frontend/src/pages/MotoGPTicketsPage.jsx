@@ -5,8 +5,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import axios from "axios";
-
-const API = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, '') || '';
+import { API } from "../App";
 
 const MotoGPTicketsPage = () => {
   const [events, setEvents] = useState([]);
@@ -22,7 +21,7 @@ const MotoGPTicketsPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(`${API}/api/events?event_type=motogp`);
+        const response = await axios.get(`${API}/events?event_type=motogp`);
         setEvents(response.data || []);
       } catch (error) {
         console.error("Error fetching MotoGP events:", error);

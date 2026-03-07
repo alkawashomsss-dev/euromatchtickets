@@ -5,8 +5,7 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import SEOHead from '../components/SEOHead';
 import axios from 'axios';
-
-const API = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, '') || '';
+import { API } from '../App';
 
 const EventsThisWeekendPage = () => {
   const [events, setEvents] = useState([]);
@@ -28,7 +27,7 @@ const EventsThisWeekendPage = () => {
       const sunday = new Date(friday);
       sunday.setDate(friday.getDate() + 2);
 
-      const res = await axios.get(`${API}/api/events`, {
+      const res = await axios.get(`${API}/events`, {
         params: {
           date_from: friday.toISOString().split('T')[0],
           date_to: sunday.toISOString().split('T')[0]
@@ -39,7 +38,7 @@ const EventsThisWeekendPage = () => {
       console.error('Error fetching weekend events:', error);
       // Fallback: fetch all upcoming events
       try {
-        const res = await axios.get(`${API}/api/events`);
+        const res = await axios.get(`${API}/events`);
         setEvents((res.data || []).slice(0, 12));
       } catch (e) {
         console.error('Fallback error:', e);
