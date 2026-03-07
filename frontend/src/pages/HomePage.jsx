@@ -537,53 +537,73 @@ const HomePage = () => {
 
           {/* Motorsports Section */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-6">🏎️ Motorsports</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-3xl font-bold">🏎️ Racing Tickets</h2>
+              <span className="text-zinc-400 text-sm">Formula 1 • MotoGP • Road Racing</span>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               <Link 
                 to="/f1-tickets"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-red-500/20 hover:border-red-500/50 transition-all"
+                className="group relative h-44 rounded-2xl overflow-hidden border border-red-500/30 hover:border-red-500/60 transition-all hover:scale-105"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600/30 to-zinc-900" />
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600/40 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-red-400 text-xs font-bold mb-1">🏎️ FORMULA 1</span>
-                  <h3 className="text-lg font-bold">F1 Tickets 2026</h3>
-                  <p className="text-xs text-zinc-400">All Grand Prix races</p>
+                  <span className="text-4xl mb-2">🏎️</span>
+                  <h3 className="text-lg font-bold text-white">F1 Tickets</h3>
+                  <p className="text-xs text-zinc-300">23 Grand Prix Races</p>
+                  <span className="text-emerald-400 text-xs font-bold mt-1">From €89</span>
                 </div>
               </Link>
               
               <Link 
                 to="/f1-2026-schedule"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-red-500/20 hover:border-red-500/50 transition-all"
+                className="group relative h-44 rounded-2xl overflow-hidden border border-red-500/30 hover:border-red-500/60 transition-all hover:scale-105"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-zinc-900" />
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/30 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-red-400 text-xs font-bold mb-1">📅 SCHEDULE</span>
-                  <h3 className="text-lg font-bold">F1 2026 Calendar</h3>
-                  <p className="text-xs text-zinc-400">Full season schedule</p>
+                  <span className="text-4xl mb-2">📅</span>
+                  <h3 className="text-lg font-bold text-white">F1 2026 Schedule</h3>
+                  <p className="text-xs text-zinc-300">Full Calendar</p>
+                  <span className="text-red-400 text-xs font-bold mt-1">Mar - Dec 2026</span>
                 </div>
               </Link>
               
               <Link 
                 to="/motogp-tickets"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-orange-500/20 hover:border-orange-500/50 transition-all"
+                className="group relative h-44 rounded-2xl overflow-hidden border border-orange-500/30 hover:border-orange-500/60 transition-all hover:scale-105"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-600/40 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-4xl mb-2">🏍️</span>
+                  <h3 className="text-lg font-bold text-white">MotoGP Tickets</h3>
+                  <p className="text-xs text-zinc-300">21 World Championship Races</p>
+                  <span className="text-emerald-400 text-xs font-bold mt-1">From €69</span>
+                </div>
+              </Link>
+
+              <Link 
+                to="/motogp-2026-schedule"
+                className="group relative h-44 rounded-2xl overflow-hidden border border-orange-500/30 hover:border-orange-500/60 transition-all hover:scale-105"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-orange-400 text-xs font-bold mb-1">🏍️ MOTOGP</span>
-                  <h3 className="text-lg font-bold">MotoGP Tickets</h3>
-                  <p className="text-xs text-zinc-400">World Championship</p>
+                  <span className="text-4xl mb-2">📅</span>
+                  <h3 className="text-lg font-bold text-white">MotoGP 2026 Schedule</h3>
+                  <p className="text-xs text-zinc-300">Full Calendar</p>
+                  <span className="text-orange-400 text-xs font-bold mt-1">Mar - Nov 2026</span>
                 </div>
               </Link>
               
               <Link 
                 to="/isle-of-man-tt-tickets"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-yellow-500/20 hover:border-yellow-500/50 transition-all"
+                className="group relative h-44 rounded-2xl overflow-hidden border border-yellow-500/30 hover:border-yellow-500/60 transition-all hover:scale-105"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/30 to-zinc-900" />
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/40 to-zinc-900" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-yellow-400 text-xs font-bold mb-1">🏝️ LEGENDARY</span>
-                  <h3 className="text-lg font-bold">Isle of Man TT</h3>
-                  <p className="text-xs text-zinc-400">The ultimate road race</p>
+                  <span className="text-4xl mb-2">🏝️</span>
+                  <h3 className="text-lg font-bold text-white">Isle of Man TT</h3>
+                  <p className="text-xs text-zinc-300">Legendary Road Race</p>
+                  <span className="text-emerald-400 text-xs font-bold mt-1">From €149</span>
                 </div>
               </Link>
             </div>
