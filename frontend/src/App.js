@@ -45,6 +45,17 @@ import LasVegasGPPage from "./pages/LasVegasGPPage";
 import AbuDhabiGPPage from "./pages/AbuDhabiGPPage";
 import SpaGPPage from "./pages/SpaGPPage";
 import ZandvoortGPPage from "./pages/ZandvoortGPPage";
+import MiamiGPPage from "./pages/MiamiGPPage";
+import JapanGPPage from "./pages/JapanGPPage";
+import AustraliaGPPage from "./pages/AustraliaGPPage";
+import BahrainGPPage from "./pages/BahrainGPPage";
+import SaudiGPPage from "./pages/SaudiGPPage";
+import SpainGPPage from "./pages/SpainGPPage";
+import HungaryGPPage from "./pages/HungaryGPPage";
+import AustriaGPPage from "./pages/AustriaGPPage";
+import HowToBuyF1TicketsPage from "./pages/HowToBuyF1TicketsPage";
+import BestF1RacesEuropePage from "./pages/BestF1RacesEuropePage";
+import F1TicketPricesGuidePage from "./pages/F1TicketPricesGuidePage";
 import AIChatWidget from "./components/AIChatWidget";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -200,6 +211,17 @@ function AppRouter() {
         <Route path="/f1-abu-dhabi-grand-prix-tickets" element={<AbuDhabiGPPage />} />
         <Route path="/f1-belgian-grand-prix-spa-tickets" element={<SpaGPPage />} />
         <Route path="/f1-dutch-grand-prix-zandvoort-tickets" element={<ZandvoortGPPage />} />
+        <Route path="/f1-miami-grand-prix-tickets" element={<MiamiGPPage />} />
+        <Route path="/f1-japanese-grand-prix-suzuka-tickets" element={<JapanGPPage />} />
+        <Route path="/f1-australian-grand-prix-melbourne-tickets" element={<AustraliaGPPage />} />
+        <Route path="/f1-bahrain-grand-prix-tickets" element={<BahrainGPPage />} />
+        <Route path="/f1-saudi-arabian-grand-prix-jeddah-tickets" element={<SaudiGPPage />} />
+        <Route path="/f1-spanish-grand-prix-barcelona-tickets" element={<SpainGPPage />} />
+        <Route path="/f1-hungarian-grand-prix-budapest-tickets" element={<HungaryGPPage />} />
+        <Route path="/f1-austrian-grand-prix-red-bull-ring-tickets" element={<AustriaGPPage />} />
+        <Route path="/how-to-buy-f1-tickets" element={<HowToBuyF1TicketsPage />} />
+        <Route path="/best-f1-races-europe" element={<BestF1RacesEuropePage />} />
+        <Route path="/f1-ticket-prices-guide" element={<F1TicketPricesGuidePage />} />
         <Route path="/order/success" element={
           <ProtectedRoute>
             <OrderSuccessPage />

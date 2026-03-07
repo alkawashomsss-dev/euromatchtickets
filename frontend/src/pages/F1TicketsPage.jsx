@@ -262,7 +262,7 @@ const F1TicketsPage = () => {
       {/* Popular F1 Races - SEO Links */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-10">Most Popular F1 Races 2026</h2>
+          <h2 className="text-3xl font-bold text-center mb-10">All F1 2026 Race Tickets</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { name: "Monaco GP", flag: "🇲🇨", price: "€289", href: "/f1-monaco-grand-prix-tickets", highlight: true },
@@ -273,6 +273,14 @@ const F1TicketsPage = () => {
               { name: "Abu Dhabi GP", flag: "🇦🇪", price: "€169", href: "/f1-abu-dhabi-grand-prix-tickets" },
               { name: "Belgian GP", flag: "🇧🇪", price: "€109", href: "/f1-belgian-grand-prix-spa-tickets" },
               { name: "Dutch GP", flag: "🇳🇱", price: "€189", href: "/f1-dutch-grand-prix-zandvoort-tickets" },
+              { name: "Miami GP", flag: "🇺🇸", price: "€249", href: "/f1-miami-grand-prix-tickets", highlight: true },
+              { name: "Japanese GP", flag: "🇯🇵", price: "€189", href: "/f1-japanese-grand-prix-suzuka-tickets" },
+              { name: "Australian GP", flag: "🇦🇺", price: "€159", href: "/f1-australian-grand-prix-melbourne-tickets" },
+              { name: "Bahrain GP", flag: "🇧🇭", price: "€149", href: "/f1-bahrain-grand-prix-tickets" },
+              { name: "Saudi GP", flag: "🇸🇦", price: "€169", href: "/f1-saudi-arabian-grand-prix-jeddah-tickets" },
+              { name: "Spanish GP", flag: "🇪🇸", price: "€119", href: "/f1-spanish-grand-prix-barcelona-tickets" },
+              { name: "Hungarian GP", flag: "🇭🇺", price: "€99", href: "/f1-hungarian-grand-prix-budapest-tickets" },
+              { name: "Austrian GP", flag: "🇦🇹", price: "€119", href: "/f1-austrian-grand-prix-red-bull-ring-tickets" },
             ].map((race, i) => (
               <Link 
                 key={i} 
