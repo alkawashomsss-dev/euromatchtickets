@@ -11,6 +11,17 @@ import { Badge } from "../components/ui/badge";
 import { toast } from "sonner";
 import VenueSeatMap from "../components/VenueSeatMap";
 import SEOHead from "../components/SEOHead";
+import { 
+  UrgencyCountdown, 
+  ScarcityIndicator, 
+  LiveViewers, 
+  PriceComparison, 
+  WhatsAppButton,
+  TrustBadges,
+  LimitedTimeOffer,
+  StickyBuyBar,
+  RecentlyBoughtPopup
+} from "../components/SalesAccelerator";
 
 const categoryConfig = {
   vip: { name: "VIP", color: "bg-purple-500", textColor: "text-purple-400", description: "Premium experience with best views" },
@@ -391,6 +402,27 @@ const EventDetailsPage = () => {
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-12">
+        {/* Sales Accelerator - Urgency & Social Proof */}
+        <div className="mb-8 grid md:grid-cols-3 gap-4">
+          <LiveViewers eventId={event.event_id} />
+          <UrgencyCountdown 
+            endTime={new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString()} 
+            onExpire={() => {}}
+          />
+          <ScarcityIndicator ticketsLeft={tickets.length} totalTickets={100} />
+        </div>
+
+        {/* Limited Time Offer */}
+        {lowestPrice && (
+          <div className="mb-8">
+            <LimitedTimeOffer 
+              originalPrice={Math.round(lowestPrice * 1.3)} 
+              salePrice={lowestPrice} 
+              expiresIn={7200}
+            />
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left - Venue Map & Tickets */}
           <div className="lg:col-span-2 space-y-8">
@@ -576,7 +608,27 @@ const EventDetailsPage = () => {
                     )}
                   </Button>
 
-                  <div className="mt-6 space-y-3 text-sm text-zinc-400">
+                  {/* WhatsApp Direct Sales */}
+                  <div className="mt-4">
+                    <WhatsAppButton eventTitle={event.title} price={selectedTicket.price} />
+                  </div>
+
+                  {/* Price Comparison */}
+                  <div className="mt-4">
+                    <PriceComparison 
+                      ourPrice={selectedTicket.price}
+                      competitorPrices={[
+                        { name: 'StubHub', price: Math.round(selectedTicket.price * 1.25) },
+                        { name: 'Viagogo', price: Math.round(selectedTicket.price * 1.35) },
+                        { name: 'Official Site', price: Math.round(selectedTicket.price * 1.15) },
+                      ]}
+                    />
+                  </div>
+
+                  {/* Trust Badges */}
+                  <TrustBadges />
+
+                  <div className="mt-4 space-y-3 text-sm text-zinc-400">
                     <div className="flex items-center gap-2">
                       <Shield className="w-4 h-4 text-emerald-500" />
                       <span>100% Secure Payment</span>
@@ -674,6 +726,25 @@ const EventDetailsPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Sales Accelerator - Recently Bought Popup */}
+      <RecentlyBoughtPopup />
+      
+      {/* Sticky Buy Bar */}
+      {lowestPrice && (
+        <StickyBuyBar 
+          price={lowestPrice} 
+          ticketsLeft={tickets.length}
+          onBuy={() => {
+            if (selectedTicket) {
+              handlePurchase();
+            } else if (tickets.length > 0) {
+              setSelectedTicket(tickets[0]);
+              handleBuyNow(tickets[0]);
+            }
+          }}
+        />
+      )}
     </div>
   );
 };
