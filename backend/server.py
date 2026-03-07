@@ -2809,7 +2809,7 @@ async def seed_f1_2026():
     }
 
 
-@api_router.post("/seed-motogp-2026")
+@api_router.api_route("/seed-motogp-2026", methods=["GET", "POST"])
 async def seed_motogp_2026():
     """Add MotoGP 2026 season events"""
     import random
@@ -2884,7 +2884,7 @@ async def seed_motogp_2026():
     return {"message": "MotoGP 2026 season added", "added_events": len(added_events)}
 
 
-@api_router.post("/seed-isle-of-man-tt")
+@api_router.api_route("/seed-isle-of-man-tt", methods=["GET", "POST"])
 async def seed_isle_of_man_tt():
     """Add Isle of Man TT 2026 events"""
     import random
