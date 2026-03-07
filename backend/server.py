@@ -3252,6 +3252,69 @@ async def seo_submit_urls(data: dict):
     }
 
 
+@api_router.post("/seo/index-all-pages")
+async def seo_index_all_pages():
+    """Submit ALL important pages to search engines for indexing"""
+    all_urls = [
+        # Main pages
+        "https://euromatchtickets.com/",
+        "https://euromatchtickets.com/events",
+        "https://euromatchtickets.com/f1-tickets",
+        "https://euromatchtickets.com/motogp-tickets",
+        "https://euromatchtickets.com/isle-of-man-tt-tickets",
+        
+        # Comparison pages (HIGH VALUE)
+        "https://euromatchtickets.com/euromatchtickets-vs-stubhub",
+        "https://euromatchtickets.com/euromatchtickets-vs-viagogo",
+        "https://euromatchtickets.com/euromatchtickets-vs-ticketmaster",
+        "https://euromatchtickets.com/euromatchtickets-vs-seatgeek",
+        
+        # Price guides (HIGH VALUE)
+        "https://euromatchtickets.com/f1-ticket-prices-2026",
+        "https://euromatchtickets.com/motogp-ticket-prices-2026",
+        "https://euromatchtickets.com/concert-ticket-prices-2026",
+        "https://euromatchtickets.com/football-ticket-prices-2026",
+        
+        # Time-based pages
+        "https://euromatchtickets.com/events-this-weekend",
+        "https://euromatchtickets.com/events-january-2026",
+        "https://euromatchtickets.com/events-february-2026",
+        "https://euromatchtickets.com/events-march-2026",
+        "https://euromatchtickets.com/events-april-2026",
+        "https://euromatchtickets.com/events-may-2026",
+        "https://euromatchtickets.com/events-june-2026",
+        
+        # City pages (Long-tail SEO)
+        "https://euromatchtickets.com/london-tickets",
+        "https://euromatchtickets.com/paris-tickets",
+        "https://euromatchtickets.com/berlin-tickets",
+        "https://euromatchtickets.com/madrid-tickets",
+        "https://euromatchtickets.com/barcelona-tickets",
+        "https://euromatchtickets.com/munich-tickets",
+        "https://euromatchtickets.com/milan-tickets",
+        "https://euromatchtickets.com/amsterdam-tickets",
+        "https://euromatchtickets.com/monaco-tickets",
+        "https://euromatchtickets.com/rome-tickets",
+        "https://euromatchtickets.com/manchester-tickets",
+        "https://euromatchtickets.com/dubai-tickets",
+        "https://euromatchtickets.com/singapore-tickets",
+    ]
+    
+    result = await submit_url_to_indexnow(all_urls)
+    
+    # Also ping search engines
+    ping_result = await ping_search_engines()
+    
+    return {
+        "status": "success",
+        "message": f"Submitted {len(all_urls)} pages for indexing",
+        "urls_submitted": len(all_urls),
+        "indexnow_response": result,
+        "ping_results": ping_result,
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+
+
 @api_router.get("/seo/generate-meta/{page_type}")
 async def seo_generate_meta(page_type: str, title: str = "", price: int = 49, city: str = "Europe"):
     """Generate optimized meta tags for a page"""
