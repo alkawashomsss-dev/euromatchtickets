@@ -61,6 +61,15 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieConsentBanner from "./components/CookieConsentBanner";
 
+// MotoGP Pages
+import MotoGPTicketsPage from "./pages/MotoGPTicketsPage";
+import MotoGPSchedulePage from "./pages/MotoGPSchedulePage";
+import MotoGPMugelloPage from "./pages/MotoGPMugelloPage";
+import IsleOfManTTPage from "./pages/IsleOfManTTPage";
+
+// F1 Schedule Page
+import F1SchedulePage from "./pages/F1SchedulePage";
+
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
@@ -222,6 +231,16 @@ function AppRouter() {
         <Route path="/how-to-buy-f1-tickets" element={<HowToBuyF1TicketsPage />} />
         <Route path="/best-f1-races-europe" element={<BestF1RacesEuropePage />} />
         <Route path="/f1-ticket-prices-guide" element={<F1TicketPricesGuidePage />} />
+        <Route path="/f1-2026-schedule" element={<F1SchedulePage />} />
+        
+        {/* MotoGP Routes */}
+        <Route path="/motogp-tickets" element={<MotoGPTicketsPage />} />
+        <Route path="/motogp-2026-schedule" element={<MotoGPSchedulePage />} />
+        <Route path="/motogp-mugello-tickets" element={<MotoGPMugelloPage />} />
+        
+        {/* Isle of Man TT */}
+        <Route path="/isle-of-man-tt-tickets" element={<IsleOfManTTPage />} />
+        
         <Route path="/order/success" element={
           <ProtectedRoute>
             <OrderSuccessPage />
