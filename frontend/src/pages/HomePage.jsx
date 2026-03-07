@@ -535,6 +535,60 @@ const HomePage = () => {
             </div>
           </div>
 
+          {/* Motorsports Section */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">🏎️ Motorsports</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <Link 
+                to="/f1-tickets"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-red-500/20 hover:border-red-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600/30 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-red-400 text-xs font-bold mb-1">🏎️ FORMULA 1</span>
+                  <h3 className="text-lg font-bold">F1 Tickets 2026</h3>
+                  <p className="text-xs text-zinc-400">All Grand Prix races</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/f1-2026-schedule"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-red-500/20 hover:border-red-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-red-400 text-xs font-bold mb-1">📅 SCHEDULE</span>
+                  <h3 className="text-lg font-bold">F1 2026 Calendar</h3>
+                  <p className="text-xs text-zinc-400">Full season schedule</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/motogp-tickets"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-orange-500/20 hover:border-orange-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-orange-400 text-xs font-bold mb-1">🏍️ MOTOGP</span>
+                  <h3 className="text-lg font-bold">MotoGP Tickets</h3>
+                  <p className="text-xs text-zinc-400">World Championship</p>
+                </div>
+              </Link>
+              
+              <Link 
+                to="/isle-of-man-tt-tickets"
+                className="group relative h-40 rounded-2xl overflow-hidden border border-yellow-500/20 hover:border-yellow-500/50 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/30 to-zinc-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="text-yellow-400 text-xs font-bold mb-1">🏝️ LEGENDARY</span>
+                  <h3 className="text-lg font-bold">Isle of Man TT</h3>
+                  <p className="text-xs text-zinc-400">The ultimate road race</p>
+                </div>
+              </Link>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Concerts */}
             <Link 
