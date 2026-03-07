@@ -15,6 +15,11 @@ const F1TicketsPage = () => {
   const [races, setRaces] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const fetchF1Events = async () => {
       try {

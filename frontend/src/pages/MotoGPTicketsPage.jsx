@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, MapPin, Ticket, Flag, Trophy, ChevronRight, Shield, Zap, Star, Bike } from "lucide-react";
 import { Button } from "../components/ui/button";
@@ -5,6 +6,11 @@ import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 
 const MotoGPTicketsPage = () => {
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "ItemList",

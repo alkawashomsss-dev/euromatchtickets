@@ -33,6 +33,8 @@ const getEventTypeInfo = (type) => {
     match: { label: "Football", icon: Trophy, color: "tag-match" },
     concert: { label: "Concert", icon: Music, color: "tag-concert" },
     f1: { label: "Formula 1", icon: Flag, color: "bg-red-500/20 text-red-400 border-red-500/30" },
+    motogp: { label: "MotoGP", icon: Flag, color: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
+    isle_of_man_tt: { label: "Isle of Man TT", icon: Flag, color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
   };
   return types[type] || types.match;
 };
@@ -131,6 +133,11 @@ const EventsPage = () => {
     city: searchParams.get('city') || '',
     search: searchParams.get('search') || ''
   });
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -255,6 +262,18 @@ const EventsPage = () => {
                 <div className="flex items-center gap-2">
                   <Flag className="w-4 h-4 text-red-400" />
                   Formula 1
+                </div>
+              </SelectItem>
+              <SelectItem value="motogp">
+                <div className="flex items-center gap-2">
+                  <Flag className="w-4 h-4 text-orange-400" />
+                  MotoGP
+                </div>
+              </SelectItem>
+              <SelectItem value="isle_of_man_tt">
+                <div className="flex items-center gap-2">
+                  <Flag className="w-4 h-4 text-yellow-400" />
+                  Isle of Man TT
                 </div>
               </SelectItem>
             </SelectContent>
