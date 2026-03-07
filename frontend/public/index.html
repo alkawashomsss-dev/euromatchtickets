@@ -74,8 +74,73 @@
       @font-face { font-display: swap; }
     </style>
     
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        page_title: document.title,
+        page_location: window.location.href,
+        send_page_view: true,
+        cookie_flags: 'SameSite=None;Secure'
+      });
+      // Track ticket purchases
+      window.trackPurchase = function(eventName, ticketPrice, currency) {
+        gtag('event', 'purchase', {
+          event_category: 'Tickets',
+          event_label: eventName,
+          value: ticketPrice,
+          currency: currency || 'EUR'
+        });
+      };
+      // Track add to cart
+      window.trackAddToCart = function(eventName, ticketPrice) {
+        gtag('event', 'add_to_cart', {
+          event_category: 'Tickets',
+          event_label: eventName,
+          value: ticketPrice,
+          currency: 'EUR'
+        });
+      };
+    </script>
+    
+    <!-- Facebook Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'PIXEL_ID_HERE');
+      fbq('track', 'PageView');
+      // Track ticket views
+      window.fbTrackViewContent = function(eventName, price) {
+        fbq('track', 'ViewContent', {
+          content_name: eventName,
+          content_type: 'ticket',
+          value: price,
+          currency: 'EUR'
+        });
+      };
+      // Track purchases
+      window.fbTrackPurchase = function(eventName, price) {
+        fbq('track', 'Purchase', {
+          content_name: eventName,
+          content_type: 'ticket',
+          value: price,
+          currency: 'EUR'
+        });
+      };
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=PIXEL_ID_HERE&ev=PageView&noscript=1"/></noscript>
+    
     <!-- Organization Schema -->
-    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",

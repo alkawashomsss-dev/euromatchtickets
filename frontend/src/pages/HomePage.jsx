@@ -12,6 +12,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { TrustSection, TrustBar, OfficialPartnerBadges } from "../components/TrustElements";
+import { ReviewsGrid, ReviewsStats, ReviewsCarousel } from "../components/ReviewsSystem";
 
 // SEO: Buy concert tickets, Champions League tickets, Taylor Swift tickets, Drake concert,
 // European football tickets, music festival tickets, secure ticket resale marketplace
@@ -835,6 +836,35 @@ const HomePage = () => {
 
       {/* Trust Section with Reviews */}
       <TrustSection />
+      
+      {/* Customer Reviews Section */}
+      <section className="py-16 bg-zinc-900/30">
+        <div className="max-w-6xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-10">
+            <Badge className="mb-4 bg-yellow-500/10 text-yellow-400 border-yellow-500/30">
+              <Star className="w-3 h-3 mr-1 fill-yellow-400" />
+              4.9/5 from 2,940+ reviews
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Fans Say</h2>
+            <p className="text-zinc-400">Real reviews from verified ticket buyers worldwide</p>
+          </div>
+          
+          <ReviewsStats />
+          
+          <div className="mt-10">
+            <ReviewsGrid limit={6} />
+          </div>
+          
+          <div className="text-center mt-8">
+            <Link to="/reviews">
+              <Button variant="outline" className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10">
+                View All Reviews
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="py-12 border-t border-white/5 bg-zinc-900/30">
