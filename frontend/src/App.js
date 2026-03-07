@@ -61,6 +61,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieConsentBanner from "./components/CookieConsentBanner";
 import { ExitIntentPopup, PushNotificationBanner, SocialProofNotification, FloatingCTA } from "./components/MarketingTools";
+import { MarketingBotButton } from "./components/AIMarketingBot";
 
 // MotoGP Pages
 import MotoGPTicketsPage from "./pages/MotoGPTicketsPage";
@@ -337,6 +338,7 @@ function App() {
               <PushNotificationBanner onClose={() => setShowPushBanner(false)} />
             )}
             <FloatingCTA onClick={() => window.location.href = '/events'} />
+            <MarketingBotButton />
           </AuthProvider>
         </LanguageProvider>
       </HelmetProvider>

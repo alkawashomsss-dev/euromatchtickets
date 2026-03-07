@@ -36,7 +36,7 @@ BASE_TEMPLATE = """
                     <!-- Header -->
                     <tr>
                         <td style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%); padding: 30px; text-align: center;">
-                            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">FanPass</h1>
+                            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">EuroMatchTickets</h1>
                             <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0; font-size: 14px;">Europe's #1 Ticket Marketplace</p>
                         </td>
                     </tr>
@@ -52,10 +52,10 @@ BASE_TEMPLATE = """
                     <tr>
                         <td style="background-color: #0f0f11; padding: 25px 30px; text-align: center; border-top: 1px solid #27272a;">
                             <p style="color: #71717a; margin: 0 0 10px; font-size: 12px;">
-                                © 2025 FanPass. All rights reserved.
+                                © 2026 EuroMatchTickets. All rights reserved.
                             </p>
                             <p style="color: #52525b; margin: 0; font-size: 11px;">
-                                Questions? Contact us at support@fanpass.com
+                                Questions? Contact us at support@euromatchtickets.com
                             </p>
                         </td>
                     </tr>
