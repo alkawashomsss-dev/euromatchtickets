@@ -1,14 +1,36 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Calendar, MapPin, Ticket, Flag, Trophy, ChevronRight, Shield, Zap, Star, Bike } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Calendar, MapPin, Ticket, Flag, ChevronRight, Shield, Zap, Star, Bike, Loader2 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import axios from "axios";
+
+const API = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, '') || '';
 
 const MotoGPTicketsPage = () => {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
   // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  // Fetch MotoGP events from API
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get(`${API}/api/events?event_type=motogp`);
+        setEvents(response.data || []);
+      } catch (error) {
+        console.error("Error fetching MotoGP events:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEvents();
   }, []);
 
   const schema = {
@@ -16,36 +38,24 @@ const MotoGPTicketsPage = () => {
     "@type": "ItemList",
     "name": "MotoGP 2026 Tickets",
     "description": "Buy MotoGP 2026 tickets for all Grand Prix races. Best prices for motorcycle racing events.",
-    "numberOfItems": 21
+    "numberOfItems": events.length
   };
 
-  const races = [
-    { name: "Qatar GP", location: "Lusail, Qatar", date: "March 6-8", price: 89, href: "/motogp-qatar-tickets", featured: true },
-    { name: "Portuguese GP", location: "Portimão, Portugal", date: "March 20-22", price: 79, href: "/motogp-portugal-tickets", featured: false },
-    { name: "Americas GP", location: "Austin, USA", date: "April 10-12", price: 99, href: "/motogp-austin-tickets", featured: true },
-    { name: "Spanish GP", location: "Jerez, Spain", date: "April 24-26", price: 69, href: "/motogp-jerez-tickets", featured: true },
-    { name: "French GP", location: "Le Mans, France", date: "May 15-17", price: 79, href: "/motogp-france-tickets", featured: true },
-    { name: "Catalunya GP", location: "Barcelona, Spain", date: "June 5-7", price: 69, href: "/motogp-barcelona-tickets", featured: true },
-    { name: "Italian GP", location: "Mugello, Italy", date: "June 12-14", price: 79, href: "/motogp-mugello-tickets", featured: true },
-    { name: "German GP", location: "Sachsenring, Germany", date: "July 17-19", price: 89, href: "/motogp-germany-tickets", featured: false },
-    { name: "Dutch GP", location: "Assen, Netherlands", date: "June 26-28", price: 89, href: "/motogp-assen-tickets", featured: true },
-    { name: "British GP", location: "Silverstone, UK", date: "Aug 7-9", price: 89, href: "/motogp-silverstone-tickets", featured: true },
-    { name: "Austrian GP", location: "Spielberg, Austria", date: "Aug 14-16", price: 79, href: "/motogp-austria-tickets", featured: false },
-    { name: "Aragon GP", location: "Alcañiz, Spain", date: "Sept 4-6", price: 69, href: "/motogp-aragon-tickets", featured: false },
-    { name: "San Marino GP", location: "Misano, Italy", date: "Sept 11-13", price: 79, href: "/motogp-misano-tickets", featured: true },
-    { name: "Japanese GP", location: "Motegi, Japan", date: "Oct 2-4", price: 99, href: "/motogp-japan-tickets", featured: false },
-    { name: "Indonesian GP", location: "Mandalika, Indonesia", date: "Oct 16-18", price: 79, href: "/motogp-indonesia-tickets", featured: false },
-    { name: "Australian GP", location: "Phillip Island, Australia", date: "Oct 23-25", price: 99, href: "/motogp-australia-tickets", featured: true },
-    { name: "Thai GP", location: "Buriram, Thailand", date: "Oct 30-Nov 1", price: 69, href: "/motogp-thailand-tickets", featured: false },
-    { name: "Malaysian GP", location: "Sepang, Malaysia", date: "Nov 6-8", price: 79, href: "/motogp-malaysia-tickets", featured: false },
-    { name: "Valencia GP", location: "Valencia, Spain", date: "Nov 13-15", price: 79, href: "/motogp-valencia-tickets", featured: true },
-  ];
+  // Format date
+  const formatDate = (dateStr) => {
+    try {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    } catch {
+      return dateStr;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       <SEOHead 
         title="MotoGP Tickets 2026 - Buy Motorcycle Grand Prix Tickets | All Races"
-        description="Buy MotoGP 2026 tickets from €69. All 21 Grand Prix races. Mugello, Silverstone, Assen, Barcelona, Valencia. 100% Ticket Guarantee. Instant delivery. Best prices!"
+        description="Buy MotoGP 2026 tickets from €69. All Grand Prix races. Mugello, Silverstone, Assen, Barcelona, Valencia. 100% Ticket Guarantee. Instant delivery. Best prices!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
@@ -59,7 +69,7 @@ const MotoGPTicketsPage = () => {
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             MotoGP Tickets 2026
-            <span className="block text-2xl md:text-3xl mt-2 text-zinc-400">21 Races • World's Best Motorcycle Racing</span>
+            <span className="block text-2xl md:text-3xl mt-2 text-zinc-400">{events.length} Races • World's Best Motorcycle Racing</span>
           </h1>
           
           <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">
@@ -69,7 +79,7 @@ const MotoGPTicketsPage = () => {
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Flag className="w-5 h-5 text-orange-400" /><span>21 Races</span>
+              <Flag className="w-5 h-5 text-orange-400" /><span>{events.length} Races</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
               <Calendar className="w-5 h-5 text-orange-400" /><span>March - November 2026</span>
@@ -98,154 +108,132 @@ const MotoGPTicketsPage = () => {
         </div>
       </section>
 
-      {/* Featured Races */}
+      {/* Events List */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">🏍️ Featured MotoGP Races 2026</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {races.filter(r => r.featured).map((race, i) => (
-              <Link 
-                key={i} 
-                to={race.href}
-                className="bg-zinc-900/50 border border-zinc-700 hover:border-orange-500/50 rounded-xl p-5 transition-all group"
+          <h2 className="text-3xl font-bold mb-8 text-center">MotoGP 2026 Calendar - All Races</h2>
+          
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <Loader2 className="w-10 h-10 animate-spin text-orange-500" />
+            </div>
+          ) : events.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-zinc-400 text-xl">No MotoGP events available at the moment.</p>
+              <Button 
+                onClick={() => navigate('/events')} 
+                className="mt-4 bg-orange-600 hover:bg-orange-700"
               >
-                <div className="flex items-center justify-between mb-3">
-                  <Badge className="bg-orange-500/20 text-orange-400">{race.date}</Badge>
-                  <Bike className="w-5 h-5 text-orange-400" />
-                </div>
-                <h3 className="text-xl font-bold group-hover:text-orange-400 transition-colors mb-1">{race.name}</h3>
-                <p className="text-zinc-500 text-sm mb-4 flex items-center gap-1">
-                  <MapPin className="w-4 h-4" />{race.location}
-                </p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-zinc-500 text-sm">From </span>
-                    <span className="text-emerald-400 font-bold text-xl">€{race.price}</span>
-                  </div>
-                  <Button size="sm" className="bg-orange-500 hover:bg-orange-600">
-                    <Ticket className="w-4 h-4 mr-1" />Buy
-                  </Button>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Full Schedule Table */}
-      <section className="py-16 bg-zinc-900/30">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Complete MotoGP 2026 Schedule</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-zinc-900/50 border-b border-zinc-700">
-                  <th className="py-4 px-4 text-left">Race</th>
-                  <th className="py-4 px-4 text-left">Location</th>
-                  <th className="py-4 px-4 text-left">Date</th>
-                  <th className="py-4 px-4 text-right">From</th>
-                  <th className="py-4 px-4 text-center">Tickets</th>
-                </tr>
-              </thead>
-              <tbody>
-                {races.map((race, i) => (
-                  <tr key={i} className="border-b border-zinc-800 hover:bg-zinc-900/30">
-                    <td className="py-4 px-4 font-medium">{race.name}</td>
-                    <td className="py-4 px-4 text-zinc-400">{race.location}</td>
-                    <td className="py-4 px-4 text-zinc-400">{race.date}</td>
-                    <td className="py-4 px-4 text-right text-emerald-400 font-bold">€{race.price}</td>
-                    <td className="py-4 px-4 text-center">
-                      <Link to={race.href}>
-                        <Button size="sm" className="bg-orange-500 hover:bg-orange-600">Buy</Button>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* Ticket Categories */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">MotoGP Ticket Types</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-zinc-900/50 border border-zinc-700 rounded-xl p-6">
-              <Ticket className="w-10 h-10 text-emerald-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">General Admission</h3>
-              <p className="text-zinc-400 mb-4">Access to open viewing areas around the circuit. Move around and find your perfect spot.</p>
-              <div className="text-2xl font-bold text-emerald-400">€69 - €99</div>
-            </div>
-            <div className="bg-zinc-900/50 border border-zinc-700 rounded-xl p-6">
-              <Trophy className="w-10 h-10 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Grandstand</h3>
-              <p className="text-zinc-400 mb-4">Reserved seat with excellent track views. Choose your preferred corner or straight.</p>
-              <div className="text-2xl font-bold text-orange-400">€99 - €199</div>
-            </div>
-            <div className="bg-zinc-900/50 border border-zinc-700 rounded-xl p-6">
-              <Star className="w-10 h-10 text-amber-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">VIP Village</h3>
-              <p className="text-zinc-400 mb-4">Premium hospitality with food, drinks, pit lane access, and paddock tours.</p>
-              <div className="text-2xl font-bold text-amber-400">€399 - €999</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-16 bg-zinc-900/30">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">MotoGP Tickets FAQ</h2>
-          <div className="space-y-4">
-            {[
-              { q: "How do I receive my MotoGP tickets?", a: "Tickets are delivered instantly via email as mobile QR codes. Show your phone at the gate or print the PDF." },
-              { q: "What's the best MotoGP race to attend?", a: "Mugello (Italian GP) and Assen (Dutch GP) are legendary for atmosphere. Barcelona and Valencia offer great value." },
-              { q: "Are MotoGP tickets refundable?", a: "Full refund if the race is cancelled. Partial refunds available up to 30 days before the event." },
-              { q: "What's included with General Admission?", a: "Access to open viewing areas, big screens, food courts, and merchandise stands. Great for first-timers!" },
-            ].map((faq, i) => (
-              <div key={i} className="bg-zinc-900/50 border border-zinc-700 rounded-xl p-6">
-                <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
-                <p className="text-zinc-400">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-orange-900/30 to-red-900/30">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Experience MotoGP 2026!</h2>
-          <p className="text-zinc-400 mb-8">The world's most exciting motorcycle racing - live!</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/motogp-mugello-tickets">
-              <Button size="lg" className="bg-orange-500 hover:bg-orange-600 px-8">
-                <Ticket className="w-5 h-5 mr-2" />Buy Mugello Tickets
-              </Button>
-            </Link>
-            <Link to="/events">
-              <Button size="lg" variant="outline" className="border-white/20 hover:bg-white/10 px-8">
                 View All Events
               </Button>
-            </Link>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {events.map((event) => (
+                <Link 
+                  key={event.event_id}
+                  to={`/event/${event.event_id}`}
+                  className="group bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-orange-500/50 transition-all hover:scale-[1.02]"
+                >
+                  <div className="relative h-40 overflow-hidden">
+                    <img 
+                      src={event.event_image || "https://images.pexels.com/photos/39693/motorcycle-racer-racing-race-speed-39693.jpeg"} 
+                      alt={event.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
+                    {event.featured && (
+                      <Badge className="absolute top-3 left-3 bg-orange-500 text-white">
+                        Featured Race
+                      </Badge>
+                    )}
+                  </div>
+                  
+                  <div className="p-5">
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-orange-400 transition-colors">
+                      {event.title}
+                    </h3>
+                    
+                    <div className="space-y-2 text-sm text-zinc-400 mb-4">
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-orange-400" />
+                        <span>{event.venue || event.city}, {event.country}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-orange-400" />
+                        <span>{formatDate(event.event_date)}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-zinc-500 text-sm">From</span>
+                        <span className="text-2xl font-bold text-emerald-400 ml-2">€69</span>
+                      </div>
+                      <Button size="sm" className="bg-orange-600 hover:bg-orange-700">
+                        Buy Tickets <ChevronRight className="w-4 h-4 ml-1" />
+                      </Button>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-zinc-900/30">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center">MotoGP Tickets FAQ</h2>
+          
+          <div className="space-y-4">
+            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+              <h3 className="font-bold text-lg mb-2">What's included in MotoGP weekend tickets?</h3>
+              <p className="text-zinc-400">All MotoGP weekend tickets include access to Friday practice, Saturday qualifying, and Sunday races for all classes (MotoGP, Moto2, Moto3).</p>
+            </div>
+            
+            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+              <h3 className="font-bold text-lg mb-2">Are MotoGP tickets cheaper than official prices?</h3>
+              <p className="text-zinc-400">Yes! Our tickets are typically 20-30% cheaper than official MotoGP.com prices. We source tickets directly from season pass holders and corporate allocations.</p>
+            </div>
+            
+            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+              <h3 className="font-bold text-lg mb-2">Which MotoGP races are best for first-timers?</h3>
+              <p className="text-zinc-400">Mugello (Italy), Assen (Netherlands), and Silverstone (UK) are considered the best for atmosphere. Barcelona and Valencia offer great value and accessibility.</p>
+            </div>
+            
+            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+              <h3 className="font-bold text-lg mb-2">Do you offer MotoGP paddock access?</h3>
+              <p className="text-zinc-400">Yes! We offer VIP Village and Paddock Access packages at select races. These include pit walks, rider meet-and-greets, and premium hospitality.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SEO Keywords */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h3 className="text-lg font-bold mb-4">Related Searches:</h3>
-          <div className="flex flex-wrap gap-2">
-            {[
-              "MotoGP tickets", "MotoGP 2026", "buy MotoGP tickets", "MotoGP Mugello tickets",
-              "MotoGP Barcelona tickets", "MotoGP Silverstone", "MotoGP schedule 2026",
-              "motorcycle racing tickets", "MotoGP calendar", "MotoGP prices"
-            ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-zinc-800/50 text-zinc-400 rounded-full text-sm">{term}</span>
-            ))}
+      {/* CTA Section */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Experience MotoGP?</h2>
+          <p className="text-zinc-400 mb-8">Book your tickets now and save up to 30% off official prices!</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button 
+              onClick={() => navigate('/events?type=motogp')} 
+              size="lg" 
+              className="bg-orange-600 hover:bg-orange-700"
+            >
+              <Ticket className="w-5 h-5 mr-2" />
+              View All MotoGP Events
+            </Button>
+            <Button 
+              onClick={() => navigate('/f1-tickets')} 
+              size="lg" 
+              variant="outline"
+              className="border-zinc-700 hover:border-red-500 hover:text-red-400"
+            >
+              <Flag className="w-5 h-5 mr-2" />
+              Browse F1 Tickets
+            </Button>
           </div>
         </div>
       </section>

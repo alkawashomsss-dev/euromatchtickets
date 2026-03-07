@@ -1,14 +1,36 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Calendar, MapPin, Ticket, Shield, Zap, Star, Bike, HelpCircle, CreditCard, Headphones, Trophy, Mountain, Clock, AlertTriangle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Calendar, MapPin, Ticket, Shield, Zap, Star, Bike, Trophy, Mountain, Clock, AlertTriangle, Loader2, ChevronRight } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import axios from "axios";
+
+const API = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, '') || '';
 
 const IsleOfManTTPage = () => {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
   // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  // Fetch Isle of Man TT events from API
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get(`${API}/api/events?event_type=isle_of_man_tt`);
+        setEvents(response.data || []);
+      } catch (error) {
+        console.error("Error fetching Isle of Man TT events:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEvents();
   }, []);
 
   const schema = {
@@ -33,30 +55,21 @@ const IsleOfManTTPage = () => {
     ]
   };
 
-  const raceSchedule = [
-    { day: "Saturday May 30", event: "Practice Week Begins", type: "practice" },
-    { day: "Saturday June 6", event: "Superbike TT Race", type: "race", featured: true },
-    { day: "Sunday June 7", event: "Sidecar TT Race 1", type: "race" },
-    { day: "Monday June 8", event: "Supersport TT Race 1", type: "race" },
-    { day: "Wednesday June 10", event: "Superstock TT Race", type: "race" },
-    { day: "Friday June 12", event: "Senior TT Race", type: "race", featured: true },
-    { day: "Saturday June 13", event: "Sidecar TT Race 2", type: "race" },
-  ];
-
-  const tickets = [
-    { name: "Grandstand Day Pass", price: 45, desc: "Single race day at the start/finish grandstand", popular: false },
-    { name: "Grandstand Week Pass", price: 149, desc: "Full race week access to grandstand (June 6-13)", popular: true },
-    { name: "Practice Week Pass", price: 79, desc: "Access to all practice sessions (May 30 - June 5)", popular: false },
-    { name: "Full TT Fortnight Pass", price: 199, desc: "Complete 2-week access: practice + all races", popular: true },
-    { name: "VIP Hospitality Day", price: 299, desc: "Premium seating, food, drinks, paddock access", popular: true },
-    { name: "VIP Full Week Package", price: 599, desc: "Ultimate TT experience with all VIP benefits", popular: false },
-  ];
+  // Format date
+  const formatDate = (dateStr) => {
+    try {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    } catch {
+      return dateStr;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       <SEOHead 
         title="Isle of Man TT Tickets 2026 - Buy TT Race Tickets | Grandstand & VIP Passes"
-        description="Buy Isle of Man TT 2026 tickets from €45. The world's most dangerous motorcycle race! Grandstand passes, VIP hospitality, practice week. May 30 - June 13, 2026. Instant delivery. 100% guarantee."
+        description="Buy Isle of Man TT 2026 tickets from €149. The world's most dangerous motorcycle race! Grandstand passes, VIP hospitality. May - June 2026. Instant delivery. 100% guarantee."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
@@ -78,30 +91,30 @@ const IsleOfManTTPage = () => {
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Isle of Man TT 2026 Tickets
-            <span className="block text-2xl md:text-3xl mt-2 text-zinc-400">Snaefell Mountain Course • May 30 - June 13</span>
+            <span className="block text-2xl md:text-3xl mt-2 text-zinc-400">37.73 Miles • 200 MPH • Pure Adrenaline</span>
           </h1>
           
           <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">
-            Experience the legendary TT races! 37.73 miles of public roads, average speeds over 135mph. 
-            The ultimate test of man and machine. <strong className="text-emerald-400">Grandstand tickets from €45!</strong>
+            Experience the legendary Isle of Man TT! Riders reach 200mph on public roads around the famous Snaefell Mountain Course.
+            <strong className="text-emerald-400"> Tickets from €149!</strong>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Calendar className="w-5 h-5 text-red-400" /><span>May 30 - June 13, 2026</span>
+              <Mountain className="w-5 h-5 text-amber-400" /><span>37.73 Mile Course</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <MapPin className="w-5 h-5 text-red-400" /><span>Isle of Man, British Isles</span>
+              <Clock className="w-5 h-5 text-amber-400" /><span>200+ MPH Speeds</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Mountain className="w-5 h-5 text-red-400" /><span>37.73 Mile Course</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/30">
+              <Ticket className="w-5 h-5 text-emerald-400" /><span className="text-emerald-400">From €149</span>
             </div>
           </div>
 
-          <div className="inline-block bg-zinc-900/80 border border-emerald-500/30 rounded-2xl p-6">
-            <div className="text-zinc-400 text-sm">Grandstand tickets from</div>
-            <div className="text-5xl font-bold text-emerald-400">€45</div>
-            <div className="text-emerald-400 text-sm mt-1">VIP Hospitality from €299</div>
+          <div className="inline-block bg-zinc-900/80 border border-amber-500/30 rounded-2xl p-6">
+            <div className="text-zinc-400 text-sm">Race Week Tickets from</div>
+            <div className="text-5xl font-bold text-amber-400">€149</div>
+            <div className="text-amber-400 text-sm mt-1">VIP Packages Available</div>
           </div>
         </div>
       </section>
@@ -109,205 +122,170 @@ const IsleOfManTTPage = () => {
       {/* Trust Bar */}
       <section className="py-6 border-y border-white/5 bg-zinc-900/30">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="flex items-center gap-2 justify-center text-emerald-400"><Shield className="w-5 h-5" /><span className="text-sm">100% Ticket Guarantee</span></div>
-            <div className="flex items-center gap-2 justify-center text-emerald-400"><CreditCard className="w-5 h-5" /><span className="text-sm">Secure Checkout</span></div>
-            <div className="flex items-center gap-2 justify-center text-emerald-400"><Zap className="w-5 h-5" /><span className="text-sm">Instant QR Delivery</span></div>
-            <div className="flex items-center gap-2 justify-center text-emerald-400"><Headphones className="w-5 h-5" /><span className="text-sm">24/7 Support</span></div>
+          <div className="flex flex-wrap justify-center gap-8">
+            <div className="flex items-center gap-2 text-emerald-400"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
+            <div className="flex items-center gap-2 text-emerald-400"><Zap className="w-5 h-5" /><span>Instant QR Delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-400"><Star className="w-5 h-5" /><span>Official Partner</span></div>
           </div>
         </div>
       </section>
 
-      {/* Race Schedule */}
+      {/* Events List */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Isle of Man TT 2026 Race Schedule</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {raceSchedule.map((item, i) => (
-              <div 
-                key={i} 
-                className={`flex items-center gap-4 p-4 rounded-xl border transition-all ${
-                  item.featured 
-                    ? 'bg-red-500/10 border-red-500/30' 
-                    : 'bg-zinc-900/50 border-zinc-700'
-                }`}
+          <h2 className="text-3xl font-bold mb-8 text-center">Isle of Man TT 2026 - Available Tickets</h2>
+          
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <Loader2 className="w-10 h-10 animate-spin text-amber-500" />
+            </div>
+          ) : events.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-zinc-400 text-xl mb-4">No Isle of Man TT events available at the moment.</p>
+              <Button 
+                onClick={() => navigate('/events')} 
+                className="bg-amber-600 hover:bg-amber-700"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                  item.type === 'race' ? 'bg-red-500/20' : 'bg-zinc-700'
-                }`}>
-                  {item.type === 'race' ? <Trophy className="w-6 h-6 text-red-400" /> : <Clock className="w-6 h-6 text-zinc-400" />}
-                </div>
-                <div className="flex-1">
-                  <div className="font-bold">{item.event}</div>
-                  <div className="text-sm text-zinc-500">{item.day}</div>
-                </div>
-                {item.featured && <Badge className="bg-red-500/20 text-red-400">Main Event</Badge>}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tickets */}
-      <section className="py-16 bg-zinc-900/30">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Buy Isle of Man TT 2026 Tickets</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {tickets.map((ticket, i) => (
-              <div 
-                key={i} 
-                className={`bg-zinc-900/50 border rounded-xl p-6 transition-all ${
-                  ticket.popular ? 'border-red-500/50' : 'border-zinc-700 hover:border-zinc-500'
-                }`}
-              >
-                {ticket.popular && (
-                  <Badge className="bg-red-500/20 text-red-400 mb-4">Most Popular</Badge>
-                )}
-                <h3 className="text-xl font-bold mb-2">{ticket.name}</h3>
-                <p className="text-zinc-400 text-sm mb-4">{ticket.desc}</p>
-                <div className="flex items-center justify-between">
-                  <div className="text-2xl font-bold text-emerald-400">€{ticket.price}</div>
-                  <Button className="bg-red-500 hover:bg-red-600">
-                    <Ticket className="w-4 h-4 mr-2" />Buy
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About TT */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6">About the Isle of Man TT</h2>
-          <div className="prose prose-invert max-w-none text-zinc-400">
-            <p className="mb-4">
-              The <strong>Isle of Man TT</strong> (Tourist Trophy) is the oldest and most prestigious motorcycle road race in the world. 
-              First held in 1907, it takes place on the 37.73-mile Snaefell Mountain Course - a circuit of closed public roads 
-              featuring everything from tight villages to high-speed mountain sections.
-            </p>
-            <p className="mb-4">
-              Riders reach speeds exceeding <strong>200mph</strong> on some sections, with lap averages over 135mph. 
-              The event attracts 40,000+ spectators annually and is considered the ultimate challenge in motorcycle racing.
-            </p>
-            <h3 className="text-xl font-bold text-white mt-6 mb-3">Key TT 2026 Races:</h3>
-            <ul className="space-y-2">
-              <li>• <strong>Superbike TT</strong> - 6 laps, the blue riband event featuring the fastest machines</li>
-              <li>• <strong>Senior TT</strong> - The most prestigious race, traditionally held on the final Friday</li>
-              <li>• <strong>Supersport TT</strong> - 4 laps on 600cc machines</li>
-              <li>• <strong>Sidecar TT</strong> - Spectacular 3-wheel racing with driver and passenger</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-16 bg-zinc-900/30">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
-            <HelpCircle className="w-6 h-6 text-red-400" />
-            Isle of Man TT Tickets FAQ
-          </h2>
-          <div className="space-y-4">
-            {[
-              { q: "When is Isle of Man TT 2026?", a: "The Isle of Man TT 2026 runs from May 30th to June 13th, 2026. Practice week is May 30 - June 5, with racing June 6-13." },
-              { q: "Do I need tickets for Isle of Man TT?", a: "Most of the 37.73-mile course is FREE to watch from public areas. Grandstand tickets (start/finish) and VIP hospitality require purchase." },
-              { q: "How do I receive my TT tickets?", a: "Instant email delivery as mobile QR codes. Show your phone at entry or print the PDF. Delivered within minutes of purchase." },
-              { q: "What's included in VIP hospitality?", a: "Premium grandstand seating, hospitality suite with gourmet food, open bar, paddock access, rider meet & greets, and exclusive merchandise." },
-              { q: "Is Isle of Man TT worth attending?", a: "Absolutely! It's a bucket-list event for motorsport fans. The atmosphere, speed, and history are unmatched. Many areas are free, making it affordable." },
-              { q: "How do I get to the Isle of Man?", a: "Fly to Ronaldsway Airport (IOM) or take the Steam Packet ferry from Liverpool, Heysham, or Dublin. Book accommodation early - it sells out!" },
-            ].map((faq, i) => (
-              <div key={i} className="bg-zinc-900/50 border border-zinc-700 rounded-xl p-6">
-                <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
-                <p className="text-zinc-400">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Buy From Us */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center">Why Buy TT Tickets From EuroMatchTickets?</h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { icon: Shield, title: "100% Guarantee", desc: "Full refund if tickets invalid" },
-              { icon: Zap, title: "Instant Delivery", desc: "QR tickets via email" },
-              { icon: Star, title: "Best Prices", desc: "No hidden fees" },
-              { icon: Headphones, title: "24/7 Support", desc: "Help when you need it" },
-            ].map((item, i) => (
-              <div key={i} className="text-center">
-                <div className="w-14 h-14 mx-auto bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
-                  <item.icon className="w-7 h-7 text-red-400" />
-                </div>
-                <h3 className="font-bold mb-1">{item.title}</h3>
-                <p className="text-zinc-400 text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Related Events */}
-      <section className="py-16 bg-zinc-900/30">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">More Motorcycle Racing Events</h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            <Link to="/motogp-tickets" className="bg-zinc-900/50 border border-zinc-700 hover:border-orange-500/50 rounded-xl p-6 transition-all">
-              <Bike className="w-10 h-10 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">MotoGP 2026</h3>
-              <p className="text-zinc-400 text-sm mb-4">21 Grand Prix races worldwide</p>
-              <span className="text-emerald-400">From €69 →</span>
-            </Link>
-            <Link to="/motogp-mugello-tickets" className="bg-zinc-900/50 border border-zinc-700 hover:border-green-500/50 rounded-xl p-6 transition-all">
-              <Trophy className="w-10 h-10 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Italian MotoGP Mugello</h3>
-              <p className="text-zinc-400 text-sm mb-4">The Cathedral of motorcycling</p>
-              <span className="text-emerald-400">From €79 →</span>
-            </Link>
-            <Link to="/f1-tickets" className="bg-zinc-900/50 border border-zinc-700 hover:border-red-500/50 rounded-xl p-6 transition-all">
-              <Star className="w-10 h-10 text-red-400 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Formula 1 2026</h3>
-              <p className="text-zinc-400 text-sm mb-4">24 Grand Prix races worldwide</p>
-              <span className="text-emerald-400">From €99 →</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-red-900/30 to-amber-900/30">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Experience the Legendary Isle of Man TT!</h2>
-          <p className="text-zinc-400 mb-8">The world's most dangerous and thrilling motorcycle race</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button size="lg" className="bg-red-500 hover:bg-red-600 px-8">
-              <Ticket className="w-5 h-5 mr-2" />Buy TT Grandstand Tickets
-            </Button>
-            <Link to="/isle-of-man-tt-schedule">
-              <Button size="lg" variant="outline" className="border-white/20 hover:bg-white/10 px-8">
-                View Full Schedule
+                View All Events
               </Button>
-            </Link>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {events.map((event) => (
+                <Link 
+                  key={event.event_id}
+                  to={`/event/${event.event_id}`}
+                  className="group bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-amber-500/50 transition-all hover:scale-[1.02]"
+                >
+                  <div className="relative h-40 overflow-hidden">
+                    <img 
+                      src={event.event_image || "https://images.pexels.com/photos/39693/motorcycle-racer-racing-race-speed-39693.jpeg"} 
+                      alt={event.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
+                    {event.featured && (
+                      <Badge className="absolute top-3 left-3 bg-amber-500 text-white">
+                        Featured Event
+                      </Badge>
+                    )}
+                  </div>
+                  
+                  <div className="p-5">
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-amber-400 transition-colors">
+                      {event.title}
+                    </h3>
+                    
+                    <div className="space-y-2 text-sm text-zinc-400 mb-4">
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-amber-400" />
+                        <span>{event.venue || "Snaefell Mountain Course"}, {event.city || "Douglas"}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-amber-400" />
+                        <span>{formatDate(event.event_date)}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-zinc-500 text-sm">From</span>
+                        <span className="text-2xl font-bold text-emerald-400 ml-2">€149</span>
+                      </div>
+                      <Button size="sm" className="bg-amber-600 hover:bg-amber-700">
+                        Buy Tickets <ChevronRight className="w-4 h-4 ml-1" />
+                      </Button>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* About the TT */}
+      <section className="py-16 bg-zinc-900/30">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center">About the Isle of Man TT</h2>
+          
+          <div className="prose prose-invert max-w-none">
+            <p className="text-zinc-400 text-lg mb-6">
+              The Isle of Man TT (Tourist Trophy) is the world's oldest and most dangerous motorcycle race. 
+              First held in 1907, riders compete on a 37.73-mile course of public roads around the island, 
+              reaching speeds of over 200 mph through villages, over mountains, and past ancient stone walls.
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-zinc-900/50 rounded-xl p-6 text-center border border-zinc-800">
+                <div className="text-4xl font-bold text-amber-400 mb-2">264</div>
+                <div className="text-zinc-400">Casualties Since 1907</div>
+              </div>
+              <div className="bg-zinc-900/50 rounded-xl p-6 text-center border border-zinc-800">
+                <div className="text-4xl font-bold text-amber-400 mb-2">135.452</div>
+                <div className="text-zinc-400">Lap Record (MPH)</div>
+              </div>
+              <div className="bg-zinc-900/50 rounded-xl p-6 text-center border border-zinc-800">
+                <div className="text-4xl font-bold text-amber-400 mb-2">117</div>
+                <div className="text-zinc-400">Years of History</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SEO Keywords */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h3 className="text-lg font-bold mb-4">Related Searches:</h3>
-          <div className="flex flex-wrap gap-2">
-            {[
-              "Isle of Man TT tickets", "TT 2026 tickets", "Isle of Man TT 2026",
-              "buy TT tickets", "TT grandstand tickets", "TT VIP tickets",
-              "Isle of Man TT schedule", "TT race week", "Snaefell Mountain Course",
-              "motorcycle road racing", "TT hospitality", "Isle of Man TT dates"
-            ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-zinc-800/50 text-zinc-400 rounded-full text-sm">{term}</span>
-            ))}
+      {/* FAQ Section */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center">Isle of Man TT FAQ</h2>
+          
+          <div className="space-y-4">
+            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+              <h3 className="font-bold text-lg mb-2">When is Isle of Man TT 2026?</h3>
+              <p className="text-zinc-400">The Isle of Man TT 2026 runs from May 30th to June 13th, 2026. Practice week starts May 30th, with racing from June 6th-13th.</p>
+            </div>
+            
+            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+              <h3 className="font-bold text-lg mb-2">How do I get to the Isle of Man?</h3>
+              <p className="text-zinc-400">You can reach the Isle of Man by ferry from Liverpool, Heysham, Dublin, or Belfast. Flights are available from many UK airports. Book early during TT fortnight!</p>
+            </div>
+            
+            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+              <h3 className="font-bold text-lg mb-2">Do I need tickets to watch the TT?</h3>
+              <p className="text-zinc-400">Most spectator areas around the course are FREE! Grandstand tickets (at the start/finish) and VIP hospitality packages are available for purchase.</p>
+            </div>
+            
+            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+              <h3 className="font-bold text-lg mb-2">What's included in VIP tickets?</h3>
+              <p className="text-zinc-400">VIP packages include premium grandstand seating, hospitality suite access, gourmet food, open bar, paddock tours, and rider meet & greets.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-amber-900/20 to-red-900/20">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Experience the World's Greatest Road Race</h2>
+          <p className="text-zinc-400 mb-8">Book your Isle of Man TT tickets now and be part of motorsport history!</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button 
+              onClick={() => navigate('/events?type=isle_of_man_tt')} 
+              size="lg" 
+              className="bg-amber-600 hover:bg-amber-700"
+            >
+              <Ticket className="w-5 h-5 mr-2" />
+              View All TT Events
+            </Button>
+            <Button 
+              onClick={() => navigate('/motogp-tickets')} 
+              size="lg" 
+              variant="outline"
+              className="border-zinc-700 hover:border-orange-500 hover:text-orange-400"
+            >
+              <Bike className="w-5 h-5 mr-2" />
+              Browse MotoGP Tickets
+            </Button>
           </div>
         </div>
       </section>
