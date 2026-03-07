@@ -1035,8 +1035,9 @@ async def create_checkout(request: Request):
                 'currency': ticket["currency"].lower(),
                 'unit_amount': int(total_amount * 100),  # Stripe uses cents
                 'product_data': {
-                    'name': f"Ticket for {event['title']}",
-                    'description': f"{ticket.get('category', 'Standard')} - {ticket.get('section', 'General')}",
+                    'name': f"EuroMatchTickets - {event['title']}",
+                    'description': f"{ticket.get('category', 'Standard')} - {ticket.get('section', 'General')} | Secure Purchase",
+                    'images': [event.get('event_image', 'https://euromatchtickets.com/logo.png')],
                 },
             },
             'quantity': 1,
@@ -1046,14 +1047,21 @@ async def create_checkout(request: Request):
         cancel_url=cancel_url,
         payment_intent_data={
             'description': f"EuroMatchTickets - {event['title']}",
-            'statement_descriptor': 'EUROMATCHTICKETS',
-            'statement_descriptor_suffix': 'TICKET'
+            'statement_descriptor': 'EUROMATCH',
+            'statement_descriptor_suffix': 'TICKETS'
         },
+        customer_email=user.email if hasattr(user, 'email') else None,
         metadata={
             "order_id": order.order_id,
             "ticket_id": ticket_id,
             "buyer_id": user.user_id,
-            "event": event['title']
+            "event": event['title'],
+            "vendor": "EuroMatchTickets"
+        },
+        custom_text={
+            "submit": {
+                "message": "EuroMatchTickets - 100% Secure Purchase | Instant QR Delivery"
+            }
         }
     )
     
@@ -2396,6 +2404,154 @@ async def add_vip_worldcup_tickets():
         "message": "VIP World Cup tickets added",
         "tickets_added": added_tickets,
         "events_updated": len(wc_events)
+    }
+
+
+@api_router.post("/update-event-images")
+async def update_event_images():
+    """Update event images with unique, professional photos for each type"""
+    import random
+    
+    # Professional image URLs by event type and team/circuit
+    IMAGE_DATABASE = {
+        # Football - Team specific
+        "football_teams": {
+            "Barcelona": "https://images.unsplash.com/photo-1569531955323-33c6b2dca44b?w=1200",
+            "Real Madrid": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+            "Liverpool": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200",
+            "Manchester United": "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=1200",
+            "Manchester City": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200",
+            "Arsenal": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200",
+            "Chelsea": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+            "Bayern": "https://images.unsplash.com/photo-1459865264687-595d652de67e?w=1200",
+            "PSG": "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=1200",
+            "Juventus": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200",
+            "Inter": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200",
+            "AC Milan": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200",
+            "Atletico": "https://images.unsplash.com/photo-1569531955323-33c6b2dca44b?w=1200",
+        },
+        # F1 - Circuit specific  
+        "f1_circuits": {
+            "Monaco": "https://images.unsplash.com/photo-1752884991461-8ac432ad9266?w=1200",
+            "Silverstone": "https://images.unsplash.com/photo-1752886157329-03575ea8849f?w=1200",
+            "Monza": "https://images.unsplash.com/photo-1752884991452-b06745698a9d?w=1200",
+            "Spa": "https://images.unsplash.com/photo-1752884991193-f40e0018e483?w=1200",
+            "Singapore": "https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200",
+            "Abu Dhabi": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200",
+            "Las Vegas": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200",
+            "Bahrain": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200",
+            "Suzuka": "https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200",
+            "Barcelona": "https://images.unsplash.com/photo-1752886157329-03575ea8849f?w=1200",
+        },
+        # MotoGP - Circuit specific
+        "motogp_circuits": {
+            "Mugello": "https://images.unsplash.com/photo-1761092993026-b3a416b2da0a?w=1200",
+            "Jerez": "https://images.unsplash.com/photo-1761092992796-4fedf10bc593?w=1200",
+            "Phillip Island": "https://images.unsplash.com/photo-1761092993044-610da33b1b28?w=1200",
+            "Sepang": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200",
+            "Qatar": "https://images.unsplash.com/photo-1766867517823-5771153d79c9?w=1200",
+            "Austin": "https://images.unsplash.com/photo-1761092993026-b3a416b2da0a?w=1200",
+            "Sachsenring": "https://images.unsplash.com/photo-1761092992796-4fedf10bc593?w=1200",
+        },
+        # Concerts - Artist specific
+        "concerts": {
+            "Coldplay": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200",
+            "Taylor Swift": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200",
+            "Ed Sheeran": "https://images.unsplash.com/photo-1619973226698-b77a5b5dd14b?w=1200",
+            "Maroon 5": "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200",
+            "Harry Styles": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200",
+            "John Legend": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200",
+            "Metallica": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200",
+            "ACL Festival": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200",
+        },
+        # Generic fallbacks
+        "match_generic": [
+            "https://images.unsplash.com/photo-1706675780107-7c43cc487928?w=1200",
+            "https://images.unsplash.com/photo-1767916732786-a83902ffc25c?w=1200",
+            "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200",
+            "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200",
+            "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+        ],
+        "f1_generic": [
+            "https://images.unsplash.com/photo-1752884991461-8ac432ad9266?w=1200",
+            "https://images.unsplash.com/photo-1752886157329-03575ea8849f?w=1200",
+            "https://images.unsplash.com/photo-1752884991452-b06745698a9d?w=1200",
+            "https://images.unsplash.com/photo-1752884991193-f40e0018e483?w=1200",
+        ],
+        "motogp_generic": [
+            "https://images.unsplash.com/photo-1761092993026-b3a416b2da0a?w=1200",
+            "https://images.unsplash.com/photo-1761092992796-4fedf10bc593?w=1200",
+            "https://images.unsplash.com/photo-1761092993044-610da33b1b28?w=1200",
+        ],
+        "concert_generic": [
+            "https://images.unsplash.com/photo-1709731191876-899e32264420?w=1200",
+            "https://images.unsplash.com/photo-1619973226698-b77a5b5dd14b?w=1200",
+            "https://images.unsplash.com/photo-1683612491338-ab87b7ac6583?w=1200",
+            "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200",
+        ],
+    }
+    
+    updated_count = 0
+    
+    # Get all events
+    events = await db.events.find({}, {"_id": 0, "event_id": 1, "title": 1, "event_type": 1, "venue": 1, "city": 1, "artist": 1}).to_list(None)
+    
+    for event in events:
+        new_image = None
+        title = event.get("title", "").lower()
+        event_type = event.get("event_type", "")
+        venue = event.get("venue", "")
+        city = event.get("city", "")
+        artist = event.get("artist", "")
+        
+        # Football matches
+        if event_type == "match":
+            for team, img in IMAGE_DATABASE["football_teams"].items():
+                if team.lower() in title:
+                    new_image = img
+                    break
+            if not new_image:
+                new_image = random.choice(IMAGE_DATABASE["match_generic"])
+        
+        # F1 races
+        elif event_type == "f1":
+            for circuit, img in IMAGE_DATABASE["f1_circuits"].items():
+                if circuit.lower() in title.lower() or circuit.lower() in city.lower():
+                    new_image = img
+                    break
+            if not new_image:
+                new_image = random.choice(IMAGE_DATABASE["f1_generic"])
+        
+        # MotoGP races
+        elif event_type == "motogp":
+            for circuit, img in IMAGE_DATABASE["motogp_circuits"].items():
+                if circuit.lower() in title.lower() or circuit.lower() in venue.lower():
+                    new_image = img
+                    break
+            if not new_image:
+                new_image = random.choice(IMAGE_DATABASE["motogp_generic"])
+        
+        # Concerts
+        elif event_type == "concert":
+            for artist_name, img in IMAGE_DATABASE["concerts"].items():
+                if artist_name.lower() in title.lower() or artist_name.lower() in (artist or "").lower():
+                    new_image = img
+                    break
+            if not new_image:
+                new_image = random.choice(IMAGE_DATABASE["concert_generic"])
+        
+        # Update if we found a new image
+        if new_image:
+            await db.events.update_one(
+                {"event_id": event["event_id"]},
+                {"$set": {"event_image": new_image}}
+            )
+            updated_count += 1
+    
+    return {
+        "success": True,
+        "events_updated": updated_count,
+        "message": f"Updated images for {updated_count} events"
     }
 
 @api_router.post("/reseed")
