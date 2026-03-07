@@ -63,6 +63,7 @@ import CookieConsentBanner from "./components/CookieConsentBanner";
 import { ExitIntentPopup, PushNotificationBanner, SocialProofNotification, FloatingCTA } from "./components/MarketingTools";
 import { MarketingBotButton } from "./components/AIMarketingBot";
 import ScrollToTop from "./components/common/ScrollToTop";
+import { TrustBar } from "./components/TrustElements";
 
 // MotoGP Pages
 import MotoGPTicketsPage from "./pages/MotoGPTicketsPage";
@@ -204,6 +205,7 @@ function AppRouter() {
     <>
       <ScrollToTop />
       <Header />
+      <TrustBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />

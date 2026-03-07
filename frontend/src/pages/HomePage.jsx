@@ -11,6 +11,7 @@ import {
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import { TrustSection, TrustBar, OfficialPartnerBadges } from "../components/TrustElements";
 
 // SEO: Buy concert tickets, Champions League tickets, Taylor Swift tickets, Drake concert,
 // European football tickets, music festival tickets, secure ticket resale marketplace
@@ -831,6 +832,9 @@ const HomePage = () => {
           </Link>
         </div>
       </section>
+
+      {/* Trust Section with Reviews */}
+      <TrustSection />
 
       {/* Footer */}
       <footer className="py-12 border-t border-white/5 bg-zinc-900/30">

@@ -48,11 +48,11 @@ const CityTicketsPage = () => {
     setLoading(true);
     try {
       // Fetch events for this city
-      const eventsRes = await axios.get(`${API}/api/events?city=${city}`);
+      const eventsRes = await axios.get(`${API}/events?city=${city}`);
       setEvents(eventsRes.data || []);
 
       // Fetch SEO data
-      const seoRes = await axios.get(`${API}/api/seo/city/${city}`);
+      const seoRes = await axios.get(`${API}/seo/city/${city}`);
       setSeoData(seoRes.data);
     } catch (error) {
       console.error('Error fetching data:', error);

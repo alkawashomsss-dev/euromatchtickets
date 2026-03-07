@@ -57,7 +57,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
 
   const fetchSEOData = async () => {
     try {
-      const res = await axios.get(`${API}/api/seo/compare/${competitor}`);
+      const res = await axios.get(`${API}/seo/compare/${competitor}`);
       setSeoData(res.data);
     } catch (error) {
       console.error('Error fetching SEO data:', error);
