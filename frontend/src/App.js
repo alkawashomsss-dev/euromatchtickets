@@ -60,6 +60,7 @@ import AIChatWidget from "./components/AIChatWidget";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieConsentBanner from "./components/CookieConsentBanner";
+import { ExitIntentPopup, PushNotificationBanner, SocialProofNotification, FloatingCTA } from "./components/MarketingTools";
 
 // MotoGP Pages
 import MotoGPTicketsPage from "./pages/MotoGPTicketsPage";
@@ -278,6 +279,35 @@ function AppRouter() {
 }
 
 function App() {
+  const [showExitPopup, setShowExitPopup] = useState(false);
+  const [showPushBanner, setShowPushBanner] = useState(false);
+  const [exitShown, setExitShown] = useState(false);
+
+  useEffect(() => {
+    // Show push notification banner after 30 seconds
+    const pushTimer = setTimeout(() => {
+      if (typeof Notification !== 'undefined' && Notification.permission === 'default') {
+        setShowPushBanner(true);
+      }
+    }, 30000);
+
+    // Exit intent detection
+    const handleMouseLeave = (e) => {
+      if (e.clientY < 10 && !exitShown && !localStorage.getItem('exitPopupShown')) {
+        setShowExitPopup(true);
+        setExitShown(true);
+        localStorage.setItem('exitPopupShown', 'true');
+      }
+    };
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      clearTimeout(pushTimer);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [exitShown]);
+
   return (
     <BrowserRouter>
       <HelmetProvider>
@@ -297,6 +327,16 @@ function App() {
             <AppRouter />
             <AIChatWidget />
             <CookieConsentBanner />
+            
+            {/* Marketing Tools */}
+            <SocialProofNotification />
+            {showExitPopup && (
+              <ExitIntentPopup onClose={() => setShowExitPopup(false)} />
+            )}
+            {showPushBanner && (
+              <PushNotificationBanner onClose={() => setShowPushBanner(false)} />
+            )}
+            <FloatingCTA onClick={() => window.location.href = '/events'} />
           </AuthProvider>
         </LanguageProvider>
       </HelmetProvider>

@@ -2949,6 +2949,101 @@ async def seed_isle_of_man_tt():
     return {"message": "Isle of Man TT 2026 added", "added_events": len(added_events)}
 
 
+# ============== RSS FEED ENDPOINT ==============
+@api_router.get("/rss/events")
+async def get_events_rss(request: Request):
+    """Generate RSS feed for events - Great for SEO and syndication"""
+    from fastapi.responses import Response
+    
+    host = request.headers.get("host", "euromatchtickets.com")
+    base_url = f"https://{host}"
+    
+    # Get latest events
+    events = await db.events.find(
+        {"status": {"$ne": "cancelled"}},
+        {"_id": 0}
+    ).sort("created_at", -1).limit(50).to_list(50)
+    
+    # Build RSS XML
+    rss_items = []
+    for event in events:
+        event_date = event.get('event_date', '')
+        if isinstance(event_date, str):
+            try:
+                event_date = datetime.fromisoformat(event_date.replace('Z', '+00:00'))
+            except:
+                event_date = datetime.now(timezone.utc)
+        
+        pub_date = event_date.strftime('%a, %d %b %Y %H:%M:%S +0000')
+        
+        rss_items.append(f"""    <item>
+      <title><![CDATA[{event.get('title', 'Event')} - Tickets Available]]></title>
+      <link>{base_url}/event/{event.get('event_id', '')}</link>
+      <description><![CDATA[{event.get('description', '')[:200]}... Get your tickets now at EuroMatchTickets!]]></description>
+      <pubDate>{pub_date}</pubDate>
+      <guid>{base_url}/event/{event.get('event_id', '')}</guid>
+      <category>{event.get('event_type', 'event').upper()}</category>
+    </item>""")
+    
+    rss_content = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>EuroMatchTickets - Latest Events &amp; Tickets</title>
+    <link>{base_url}</link>
+    <description>Get tickets for Formula 1, MotoGP, Football matches, and Concerts across Europe. Best prices guaranteed!</description>
+    <language>en-us</language>
+    <lastBuildDate>{datetime.now(timezone.utc).strftime('%a, %d %b %Y %H:%M:%S +0000')}</lastBuildDate>
+    <atom:link href="{base_url}/api/rss/events" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>{base_url}/favicon.ico</url>
+      <title>EuroMatchTickets</title>
+      <link>{base_url}</link>
+    </image>
+{''.join(rss_items)}
+  </channel>
+</rss>"""
+    
+    return Response(content=rss_content, media_type="application/xml")
+
+
+# ============== SOCIAL SHARE TRACKING ==============
+@api_router.post("/track/share")
+async def track_share(data: dict):
+    """Track social shares for analytics"""
+    share_doc = {
+        "event_id": data.get("event_id"),
+        "platform": data.get("platform"),
+        "referrer": data.get("referrer"),
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+    await db.share_tracking.insert_one(share_doc)
+    return {"status": "tracked"}
+
+
+# ============== EMAIL SUBSCRIPTION ==============
+@api_router.post("/subscribe")
+async def subscribe_email(data: dict):
+    """Subscribe email for marketing"""
+    email = data.get("email")
+    if not email:
+        raise HTTPException(status_code=400, detail="Email required")
+    
+    # Check if already subscribed
+    existing = await db.subscribers.find_one({"email": email})
+    if existing:
+        return {"status": "already_subscribed"}
+    
+    subscriber = {
+        "email": email,
+        "subscribed_at": datetime.now(timezone.utc).isoformat(),
+        "source": data.get("source", "exit_popup"),
+        "status": "active"
+    }
+    await db.subscribers.insert_one(subscriber)
+    
+    return {"status": "subscribed", "message": "Thank you for subscribing!"}
+
+
 @api_router.get("/")
 async def root():
     return {"message": "EuroMatchTickets API - Events & Tickets Marketplace"}

@@ -3,10 +3,40 @@
 
 User-agent: *
 Allow: /
+
+# Main Pages
 Allow: /events
 Allow: /events?type=concert
 Allow: /events?type=match
+Allow: /events?type=f1
+Allow: /events?type=motogp
 Allow: /event/
+
+# Formula 1 Pages (HIGH PRIORITY)
+Allow: /f1-tickets
+Allow: /f1-2026-schedule
+Allow: /f1-monaco-grand-prix-tickets
+Allow: /f1-british-grand-prix-silverstone-tickets
+Allow: /f1-italian-grand-prix-monza-tickets
+Allow: /f1-singapore-grand-prix-tickets
+Allow: /f1-las-vegas-grand-prix-tickets
+Allow: /how-to-buy-f1-tickets
+Allow: /best-f1-races-europe
+Allow: /f1-ticket-prices-guide
+
+# MotoGP Pages
+Allow: /motogp-tickets
+Allow: /motogp-2026-schedule
+Allow: /motogp-mugello-tickets
+
+# Isle of Man TT
+Allow: /isle-of-man-tt-tickets
+
+# Blog & Guides
+Allow: /blog
+Allow: /guides
+
+# Private Areas
 Disallow: /admin
 Disallow: /seller
 Disallow: /owner
@@ -17,15 +47,15 @@ Disallow: /api/
 Disallow: /alerts
 
 # Sitemaps
-Sitemap: https://euromatchtickets.com/api/sitemap.xml
+Sitemap: https://euromatchtickets.com/sitemap.xml
 
-# Crawl-delay for good server behavior
-Crawl-delay: 1
-
-# Specific crawlers
+# Crawl Settings
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
 
 User-agent: Bingbot
 Allow: /
@@ -34,3 +64,7 @@ Crawl-delay: 1
 User-agent: Slurp
 Allow: /
 Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
