@@ -72,6 +72,9 @@ import IsleOfManTTPage from "./pages/IsleOfManTTPage";
 // F1 Schedule Page
 import F1SchedulePage from "./pages/F1SchedulePage";
 
+// SEO Dashboard
+import SEODashboardPage from "./pages/SEODashboardPage";
+
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
@@ -273,6 +276,9 @@ function AppRouter() {
             <PriceAlertsPage />
           </ProtectedRoute>
         } />
+        
+        {/* SEO Dashboard */}
+        <Route path="/seo-dashboard" element={<SEODashboardPage />} />
       </Routes>
       <Footer />
     </>

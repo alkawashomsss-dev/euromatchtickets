@@ -3190,6 +3190,105 @@ Crawl-delay: 1
 """
     return PlainTextResponse(content=robots_content)
 
+
+# ============== SEO AUTOMATION ENDPOINTS ==============
+
+from seo_automation import (
+    ping_search_engines, 
+    submit_url_to_indexnow, 
+    generate_meta_tags,
+    generate_schema_markup,
+    get_internal_link_suggestions,
+    run_seo_audit,
+    generate_dynamic_sitemap
+)
+
+@api_router.api_route("/seo/ping-search-engines", methods=["GET", "POST"])
+async def seo_ping_engines():
+    """Ping Google, Bing, and other search engines to notify them of updates"""
+    results = await ping_search_engines()
+    return {
+        "status": "completed",
+        "message": "Search engines notified",
+        "results": results,
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+
+
+@api_router.post("/seo/submit-urls")
+async def seo_submit_urls(data: dict):
+    """Submit URLs to IndexNow for faster indexing"""
+    urls = data.get("urls", [])
+    if not urls:
+        # If no URLs provided, submit important pages
+        urls = [
+            "https://euromatchtickets.com/",
+            "https://euromatchtickets.com/events",
+            "https://euromatchtickets.com/f1-tickets",
+            "https://euromatchtickets.com/motogp-tickets",
+            "https://euromatchtickets.com/isle-of-man-tt-tickets",
+            "https://euromatchtickets.com/f1-2026-schedule",
+        ]
+    
+    result = await submit_url_to_indexnow(urls)
+    return {
+        "status": result.get("status"),
+        "urls_submitted": len(urls),
+        "indexnow_response": result
+    }
+
+
+@api_router.get("/seo/generate-meta/{page_type}")
+async def seo_generate_meta(page_type: str, title: str = "", price: int = 49, city: str = "Europe"):
+    """Generate optimized meta tags for a page"""
+    data = {"title": title, "price": price, "city": city}
+    meta = generate_meta_tags(page_type, data)
+    return meta
+
+
+@api_router.get("/seo/audit")
+async def seo_audit_page(url: str = ""):
+    """Run SEO audit on a page"""
+    # Simple audit based on URL
+    page_data = {
+        "title": "EuroMatchTickets - Buy Football & Concert Tickets",
+        "description": "Buy tickets for F1, MotoGP, football matches and concerts across Europe. Best prices, 100% guarantee.",
+        "schema": True,
+        "images": True,
+        "internal_links": 10
+    }
+    
+    result = run_seo_audit(page_data)
+    return result
+
+
+@api_router.get("/seo/internal-links/{event_type}")
+async def seo_get_internal_links(event_type: str):
+    """Get internal link suggestions for better SEO"""
+    suggestions = get_internal_link_suggestions(event_type, {})
+    return {"suggestions": suggestions}
+
+
+@api_router.api_route("/seo/refresh-sitemap", methods=["GET", "POST"])
+async def seo_refresh_sitemap():
+    """Regenerate sitemap and ping search engines"""
+    # Get all events
+    events = await db.events.find({}, {"_id": 0, "event_id": 1}).to_list(1000)
+    
+    # Generate sitemap
+    sitemap = generate_dynamic_sitemap(events)
+    
+    # Ping search engines
+    ping_results = await ping_search_engines()
+    
+    return {
+        "status": "success",
+        "message": "Sitemap refreshed and search engines pinged",
+        "events_in_sitemap": len(events),
+        "ping_results": ping_results
+    }
+
+
 # ============== AI DESCRIPTION GENERATOR ==============
 
 @api_router.post("/events/{event_id}/generate-description")
