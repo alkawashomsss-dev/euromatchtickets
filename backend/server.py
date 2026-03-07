@@ -2809,6 +2809,141 @@ async def seed_f1_2026():
     }
 
 
+@api_router.post("/seed-motogp-2026")
+async def seed_motogp_2026():
+    """Add MotoGP 2026 season events"""
+    import random
+    
+    added_events = []
+    
+    motogp_races_2026 = [
+        {"title": "Qatar MotoGP 2026", "circuit": "Lusail International Circuit", "city": "Lusail", "country": "Qatar", "days": 65, "base_price": 89, "featured": True},
+        {"title": "Portuguese MotoGP 2026", "circuit": "Algarve International Circuit", "city": "Portimão", "country": "Portugal", "days": 79, "base_price": 79, "featured": False},
+        {"title": "Americas MotoGP 2026", "circuit": "Circuit of the Americas", "city": "Austin", "country": "USA", "days": 100, "base_price": 99, "featured": True},
+        {"title": "Spanish MotoGP 2026", "circuit": "Circuito de Jerez", "city": "Jerez", "country": "Spain", "days": 114, "base_price": 69, "featured": True},
+        {"title": "French MotoGP 2026", "circuit": "Le Mans Circuit", "city": "Le Mans", "country": "France", "days": 135, "base_price": 79, "featured": True},
+        {"title": "Italian MotoGP 2026", "circuit": "Mugello Circuit", "city": "Mugello", "country": "Italy", "days": 163, "base_price": 89, "featured": True},
+        {"title": "Catalunya MotoGP 2026", "circuit": "Circuit de Barcelona-Catalunya", "city": "Barcelona", "country": "Spain", "days": 156, "base_price": 69, "featured": True},
+        {"title": "German MotoGP 2026", "circuit": "Sachsenring", "city": "Hohenstein-Ernstthal", "country": "Germany", "days": 198, "base_price": 89, "featured": False},
+        {"title": "Dutch MotoGP 2026", "circuit": "TT Circuit Assen", "city": "Assen", "country": "Netherlands", "days": 177, "base_price": 89, "featured": True},
+        {"title": "British MotoGP 2026", "circuit": "Silverstone Circuit", "city": "Silverstone", "country": "UK", "days": 219, "base_price": 89, "featured": True},
+        {"title": "Austrian MotoGP 2026", "circuit": "Red Bull Ring", "city": "Spielberg", "country": "Austria", "days": 226, "base_price": 79, "featured": False},
+        {"title": "Aragon MotoGP 2026", "circuit": "MotorLand Aragón", "city": "Alcañiz", "country": "Spain", "days": 247, "base_price": 69, "featured": False},
+        {"title": "San Marino MotoGP 2026", "circuit": "Misano World Circuit", "city": "Misano Adriatico", "country": "Italy", "days": 254, "base_price": 79, "featured": True},
+        {"title": "Japanese MotoGP 2026", "circuit": "Twin Ring Motegi", "city": "Motegi", "country": "Japan", "days": 275, "base_price": 99, "featured": False},
+        {"title": "Indonesian MotoGP 2026", "circuit": "Mandalika Circuit", "city": "Lombok", "country": "Indonesia", "days": 289, "base_price": 79, "featured": False},
+        {"title": "Australian MotoGP 2026", "circuit": "Phillip Island Circuit", "city": "Phillip Island", "country": "Australia", "days": 296, "base_price": 99, "featured": True},
+        {"title": "Thai MotoGP 2026", "circuit": "Chang International Circuit", "city": "Buriram", "country": "Thailand", "days": 303, "base_price": 69, "featured": False},
+        {"title": "Malaysian MotoGP 2026", "circuit": "Sepang International Circuit", "city": "Sepang", "country": "Malaysia", "days": 310, "base_price": 79, "featured": False},
+        {"title": "Valencia MotoGP 2026", "circuit": "Circuit Ricardo Tormo", "city": "Valencia", "country": "Spain", "days": 317, "base_price": 79, "featured": True},
+    ]
+    
+    for race in motogp_races_2026:
+        event = Event(
+            event_type="motogp",
+            title=race["title"],
+            subtitle=f"MotoGP World Championship 2026 - {race['circuit']}",
+            description=f"Experience MotoGP at {race['circuit']}. Watch the world's best riders battle at incredible speeds. Book your tickets now!",
+            venue=race["circuit"],
+            city=race["city"],
+            country=race["country"],
+            event_date=datetime.now(timezone.utc) + timedelta(days=race["days"]),
+            event_image="https://images.pexels.com/photos/39693/motorcycle-racer-racing-race-speed-39693.jpeg",
+            featured=race["featured"]
+        )
+        event_doc = event.model_dump()
+        event_doc['event_date'] = event_doc['event_date'].isoformat()
+        event_doc['created_at'] = event_doc['created_at'].isoformat()
+        await db.events.insert_one(event_doc)
+        
+        categories = [
+            {"name": "general_admission", "base": race["base_price"] * 0.7, "sections": ["GA Zone A", "GA Zone B"]},
+            {"name": "grandstand", "base": race["base_price"], "sections": ["Main Straight", "Turn 1", "Final Corner"]},
+            {"name": "vip_village", "base": race["base_price"] * 3, "sections": ["VIP Village", "Paddock Access"]},
+        ]
+        
+        for cat in categories:
+            for section in cat["sections"]:
+                for _ in range(random.randint(5, 15)):
+                    price = round(cat["base"] * random.uniform(0.9, 1.1), 2)
+                    ticket = Ticket(
+                        event_id=event.event_id,
+                        seller_id="seller_motogp",
+                        seller_name="MotoGP Tickets Europe",
+                        category=cat["name"],
+                        section=section,
+                        price=price,
+                        original_price=cat["base"]
+                    )
+                    ticket_doc = ticket.model_dump()
+                    ticket_doc['created_at'] = ticket_doc['created_at'].isoformat()
+                    await db.tickets.insert_one(ticket_doc)
+        
+        added_events.append(event.event_id)
+    
+    return {"message": "MotoGP 2026 season added", "added_events": len(added_events)}
+
+
+@api_router.post("/seed-isle-of-man-tt")
+async def seed_isle_of_man_tt():
+    """Add Isle of Man TT 2026 events"""
+    import random
+    
+    added_events = []
+    
+    tt_events = [
+        {"title": "Isle of Man TT 2026 - Superbike", "race": "Superbike TT", "days": 150, "base_price": 149, "featured": True},
+        {"title": "Isle of Man TT 2026 - Supersport", "race": "Supersport TT", "days": 152, "base_price": 129, "featured": True},
+        {"title": "Isle of Man TT 2026 - Superstock", "race": "Superstock TT", "days": 154, "base_price": 119, "featured": False},
+        {"title": "Isle of Man TT 2026 - Senior TT", "race": "Senior TT", "days": 156, "base_price": 179, "featured": True},
+        {"title": "Isle of Man TT 2026 - Full Week Pass", "race": "All Races", "days": 150, "base_price": 399, "featured": True},
+    ]
+    
+    for tt in tt_events:
+        event = Event(
+            event_type="isle_of_man_tt",
+            title=tt["title"],
+            subtitle=f"The World's Most Dangerous Road Race - {tt['race']}",
+            description=f"Experience the legendary Isle of Man TT! The ultimate road racing event with riders reaching 200mph on public roads. {tt['race']} promises incredible action.",
+            venue="Snaefell Mountain Course",
+            city="Douglas",
+            country="Isle of Man",
+            event_date=datetime.now(timezone.utc) + timedelta(days=tt["days"]),
+            event_image="https://images.pexels.com/photos/39693/motorcycle-racer-racing-race-speed-39693.jpeg",
+            featured=tt["featured"]
+        )
+        event_doc = event.model_dump()
+        event_doc['event_date'] = event_doc['event_date'].isoformat()
+        event_doc['created_at'] = event_doc['created_at'].isoformat()
+        await db.events.insert_one(event_doc)
+        
+        categories = [
+            {"name": "general_admission", "base": tt["base_price"], "sections": ["Grandstand A", "Grandstand B", "Bungalow"]},
+            {"name": "vip_enclosure", "base": tt["base_price"] * 2.5, "sections": ["VIP Enclosure", "Hospitality Suite"]},
+        ]
+        
+        for cat in categories:
+            for section in cat["sections"]:
+                for _ in range(random.randint(10, 25)):
+                    price = round(cat["base"] * random.uniform(0.9, 1.1), 2)
+                    ticket = Ticket(
+                        event_id=event.event_id,
+                        seller_id="seller_tt",
+                        seller_name="Isle of Man TT Official",
+                        category=cat["name"],
+                        section=section,
+                        price=price,
+                        original_price=cat["base"]
+                    )
+                    ticket_doc = ticket.model_dump()
+                    ticket_doc['created_at'] = ticket_doc['created_at'].isoformat()
+                    await db.tickets.insert_one(ticket_doc)
+        
+        added_events.append(event.event_id)
+    
+    return {"message": "Isle of Man TT 2026 added", "added_events": len(added_events)}
+
+
 @api_router.get("/")
 async def root():
     return {"message": "EuroMatchTickets API - Events & Tickets Marketplace"}
