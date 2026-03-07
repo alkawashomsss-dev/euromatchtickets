@@ -32,6 +32,16 @@ except ImportError as e:
     AI_CHAT_AVAILABLE = False
     OpenAI = None
 
+# SEO Bot - Import
+try:
+    from seo_bot import seo_bot, get_seo_bot_routes
+    SEO_BOT_AVAILABLE = True
+    logger.info("SEO Bot loaded successfully")
+except ImportError as e:
+    logger.warning(f"SEO Bot not available: {e}")
+    SEO_BOT_AVAILABLE = False
+    seo_bot = None
+
 # QR Code - with error handling
 try:
     import qrcode
@@ -4258,6 +4268,11 @@ async def generate_marketing_campaign(request: Request):
 
 
 # Include the router in the main app
+# Register SEO Bot routes if available
+if SEO_BOT_AVAILABLE:
+    api_router = get_seo_bot_routes(api_router)
+    logger.info("SEO Bot routes registered")
+
 app.include_router(api_router)
 
 # Mount static files directory for videos and assets under /api/static
@@ -4297,3 +4312,26 @@ logger = logging.getLogger(__name__)
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+
+# ============== SEO BOT SCHEDULER ==============
+import asyncio
+
+async def seo_bot_scheduler():
+    """Background task that runs SEO optimization every 6 hours"""
+    while True:
+        try:
+            if SEO_BOT_AVAILABLE and seo_bot:
+                logger.info("🤖 SEO Bot: Starting scheduled optimization cycle...")
+                results = await seo_bot.run_optimization_cycle()
+                logger.info(f"🤖 SEO Bot: Cycle completed. Actions: {len(results.get('actions', []))}")
+            await asyncio.sleep(6 * 60 * 60)  # Sleep for 6 hours
+        except Exception as e:
+            logger.error(f"🤖 SEO Bot Error: {e}")
+            await asyncio.sleep(60 * 60)  # Retry in 1 hour on error
+
+@app.on_event("startup")
+async def start_seo_bot():
+    """Start the SEO bot scheduler on app startup"""
+    if SEO_BOT_AVAILABLE:
+        asyncio.create_task(seo_bot_scheduler())
+        logger.info("🤖 SEO Bot Scheduler started - runs every 6 hours")

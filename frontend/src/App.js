@@ -76,6 +76,7 @@ import F1SchedulePage from "./pages/F1SchedulePage";
 
 // SEO Dashboard
 import SEODashboardPage from "./pages/SEODashboardPage";
+import SEOBotDashboard from "./pages/SEOBotDashboard";
 
 // Programmatic SEO Pages
 import CityTicketsPage from "./pages/CityTicketsPage";
@@ -300,6 +301,7 @@ function AppRouter() {
         
         {/* SEO Dashboard */}
         <Route path="/seo-dashboard" element={<SEODashboardPage />} />
+        <Route path="/seo-bot" element={<SEOBotDashboard />} />
         
         {/* Marketing Dashboard */}
         <Route path="/marketing" element={<MarketingDashboard />} />
