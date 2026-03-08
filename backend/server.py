@@ -72,6 +72,16 @@ except ImportError as e:
     MEGA_BOT_AVAILABLE = False
     mega_bot = None
 
+# Super SEO Bot - Import (50 articles daily)
+try:
+    from super_seo_bot import super_seo_bot, get_super_seo_routes
+    SUPER_SEO_AVAILABLE = True
+    logger.info("Super SEO Bot loaded successfully")
+except ImportError as e:
+    logger.warning(f"Super SEO Bot not available: {e}")
+    SUPER_SEO_AVAILABLE = False
+    super_seo_bot = None
+
 # QR Code - with error handling
 try:
     import qrcode
@@ -133,6 +143,15 @@ async def startup_event():
     logger.info(f"📊 Database: {db_name}")
     # Don't block startup on DB ping - let it connect lazily
     logger.info("✅ Server ready to accept connections")
+    
+    # Start Super SEO Bot scheduler - generate 50 articles every 24 hours
+    if SUPER_SEO_AVAILABLE:
+        try:
+            # Generate initial batch of articles
+            super_seo_bot.generate_daily_articles(50)
+            logger.info("📝 Super SEO Bot: Generated initial 50 articles")
+        except Exception as e:
+            logger.warning(f"Super SEO Bot initialization warning: {e}")
 
 @app.on_event("shutdown")
 async def shutdown_event():
@@ -4374,6 +4393,11 @@ if CONTENT_BOT_AVAILABLE:
 if MEGA_BOT_AVAILABLE:
     api_router = get_mega_bot_routes(api_router)
     logger.info("Mega Content Bot routes registered")
+
+# Register Super SEO Bot routes if available
+if SUPER_SEO_AVAILABLE:
+    api_router = get_super_seo_routes(api_router)
+    logger.info("Super SEO Bot routes registered")
 
 app.include_router(api_router)
 
