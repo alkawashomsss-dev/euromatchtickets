@@ -52,6 +52,16 @@ except ImportError as e:
     MARKETING_BOT_AVAILABLE = False
     marketing_bot = None
 
+# Content Bot - Import
+try:
+    from content_bot import content_bot, get_content_bot_routes
+    CONTENT_BOT_AVAILABLE = True
+    logger.info("Content Bot loaded successfully")
+except ImportError as e:
+    logger.warning(f"Content Bot not available: {e}")
+    CONTENT_BOT_AVAILABLE = False
+    content_bot = None
+
 # QR Code - with error handling
 try:
     import qrcode
@@ -4344,6 +4354,11 @@ if SEO_BOT_AVAILABLE:
 if MARKETING_BOT_AVAILABLE:
     api_router = get_marketing_bot_routes(api_router)
     logger.info("Marketing Bot routes registered")
+
+# Register Content Bot routes if available
+if CONTENT_BOT_AVAILABLE:
+    api_router = get_content_bot_routes(api_router)
+    logger.info("Content Bot routes registered")
 
 app.include_router(api_router)
 
