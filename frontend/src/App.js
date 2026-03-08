@@ -96,6 +96,9 @@ import HarryStylesPage from "./pages/HarryStylesPage";
 import MetallicaPage from "./pages/MetallicaPage";
 import ACLFestivalPage from "./pages/ACLFestivalPage";
 
+// Protection & Guarantee Pages
+import FanProtectPage from "./pages/FanProtectPage";
+
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
@@ -227,6 +230,7 @@ function AppRouter() {
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/payment-info" element={<PaymentInfoPage />} />
         <Route path="/buyer-protection" element={<BuyerProtectionPage />} />
+        <Route path="/fan-protect" element={<FanProtectPage />} />
         <Route path="/impressum" element={<ImpressumPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:articleId" element={<BlogArticlePage />} />

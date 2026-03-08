@@ -62,6 +62,16 @@ except ImportError as e:
     CONTENT_BOT_AVAILABLE = False
     content_bot = None
 
+# Mega Content Bot - Import
+try:
+    from mega_content_bot import mega_bot, get_mega_bot_routes
+    MEGA_BOT_AVAILABLE = True
+    logger.info("Mega Content Bot loaded successfully")
+except ImportError as e:
+    logger.warning(f"Mega Content Bot not available: {e}")
+    MEGA_BOT_AVAILABLE = False
+    mega_bot = None
+
 # QR Code - with error handling
 try:
     import qrcode
@@ -4359,6 +4369,11 @@ if MARKETING_BOT_AVAILABLE:
 if CONTENT_BOT_AVAILABLE:
     api_router = get_content_bot_routes(api_router)
     logger.info("Content Bot routes registered")
+
+# Register Mega Content Bot routes if available
+if MEGA_BOT_AVAILABLE:
+    api_router = get_mega_bot_routes(api_router)
+    logger.info("Mega Content Bot routes registered")
 
 app.include_router(api_router)
 
