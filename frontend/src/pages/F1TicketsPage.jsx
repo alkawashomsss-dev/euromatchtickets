@@ -39,33 +39,117 @@ const F1TicketsPage = () => {
 
   const schema = {
     "@context": "https://schema.org",
-    "@type": "SportsEvent",
-    "name": "Formula 1 World Championship 2026 - Buy F1 Tickets",
-    "description": "Buy official F1 2026 tickets for all 24 Grand Prix races. Monaco GP from €289, Silverstone from €199, Monza, Singapore, Las Vegas. Best prices guaranteed. Instant QR delivery.",
-    "startDate": "2026-03-01",
-    "endDate": "2026-12-08",
-    "location": {
-      "@type": "Place",
-      "name": "Various F1 Circuits Worldwide"
-    },
-    "organizer": {
-      "@type": "Organization",
-      "name": "EuroMatchTickets",
-      "url": "https://euromatchtickets.com"
-    },
-    "offers": { 
-      "@type": "AggregateOffer", 
-      "priceCurrency": "EUR", 
-      "lowPrice": "89",
-      "highPrice": "5000",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2025-01-01",
-      "url": "https://euromatchtickets.com/f1-tickets"
-    },
-    "performer": {
-      "@type": "SportsTeam",
-      "name": "Formula 1 Teams"
-    }
+    "@type": "ItemList",
+    "name": "F1 Tickets 2026 - Formula 1 Grand Prix Tickets",
+    "description": "Buy official F1 2026 tickets for all 24 Grand Prix races. Monaco GP from €289, Silverstone from €199. Best prices guaranteed.",
+    "numberOfItems": races.length || 24,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Event",
+          "name": "Monaco Grand Prix 2026",
+          "startDate": "2026-05-24",
+          "endDate": "2026-05-26",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "Circuit de Monaco",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Monte Carlo",
+              "addressCountry": "MC"
+            }
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Formula 1",
+            "url": "https://www.formula1.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://euromatchtickets.com/f1-tickets",
+            "price": "289",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2025-01-01"
+          },
+          "image": "https://euromatchtickets.com/images/monaco-gp.jpg"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Event",
+          "name": "British Grand Prix Silverstone 2026",
+          "startDate": "2026-07-04",
+          "endDate": "2026-07-06",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "Silverstone Circuit",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Silverstone",
+              "addressCountry": "GB"
+            }
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Formula 1",
+            "url": "https://www.formula1.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://euromatchtickets.com/f1-tickets",
+            "price": "199",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2025-01-01"
+          },
+          "image": "https://euromatchtickets.com/images/silverstone-gp.jpg"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Event",
+          "name": "Italian Grand Prix Monza 2026",
+          "startDate": "2026-09-05",
+          "endDate": "2026-09-07",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "Autodromo Nazionale Monza",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Monza",
+              "addressCountry": "IT"
+            }
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Formula 1",
+            "url": "https://www.formula1.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://euromatchtickets.com/f1-tickets",
+            "price": "179",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2025-01-01"
+          },
+          "image": "https://euromatchtickets.com/images/monza-gp.jpg"
+        }
+      }
+    ]
   };
   
   const faqSchema = {

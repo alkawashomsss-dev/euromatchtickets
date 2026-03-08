@@ -34,28 +34,80 @@ const MotoGPTicketsPage = () => {
 
   const schema = {
     "@context": "https://schema.org",
-    "@type": "SportsEvent",
-    "name": "MotoGP World Championship 2026 - Buy MotoGP Tickets",
-    "description": "Buy official MotoGP 2026 tickets for all Grand Prix races. Mugello, Silverstone, Assen, Barcelona, Valencia. VIP Village & Paddock passes. Best prices guaranteed.",
-    "startDate": "2026-03-01",
-    "endDate": "2026-11-15",
-    "location": {
-      "@type": "Place",
-      "name": "Various MotoGP Circuits Worldwide"
-    },
-    "organizer": {
-      "@type": "Organization",
-      "name": "EuroMatchTickets",
-      "url": "https://euromatchtickets.com"
-    },
-    "offers": { 
-      "@type": "AggregateOffer", 
-      "priceCurrency": "EUR", 
-      "lowPrice": "69",
-      "highPrice": "2500",
-      "availability": "https://schema.org/InStock",
-      "url": "https://euromatchtickets.com/motogp-tickets"
-    }
+    "@type": "ItemList",
+    "name": "MotoGP Tickets 2026 - Motorcycle Grand Prix Tickets",
+    "description": "Buy official MotoGP 2026 tickets. Mugello, Silverstone, Assen, Barcelona, Valencia. VIP Village & Paddock passes available.",
+    "numberOfItems": events.length || 20,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Event",
+          "name": "MotoGP Italian Grand Prix Mugello 2026",
+          "startDate": "2026-05-29",
+          "endDate": "2026-05-31",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "Autodromo del Mugello",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Scarperia",
+              "addressCountry": "IT"
+            }
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "MotoGP",
+            "url": "https://www.motogp.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://euromatchtickets.com/motogp-tickets",
+            "price": "99",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2025-01-01"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Event",
+          "name": "MotoGP Dutch TT Assen 2026",
+          "startDate": "2026-06-26",
+          "endDate": "2026-06-28",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "TT Circuit Assen",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Assen",
+              "addressCountry": "NL"
+            }
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "MotoGP",
+            "url": "https://www.motogp.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://euromatchtickets.com/motogp-tickets",
+            "price": "89",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2025-01-01"
+          }
+        }
+      }
+    ]
   };
   
   const faqSchema = {

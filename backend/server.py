@@ -42,6 +42,16 @@ except ImportError as e:
     SEO_BOT_AVAILABLE = False
     seo_bot = None
 
+# Marketing Bot - Import
+try:
+    from marketing_bot import marketing_bot, get_marketing_bot_routes
+    MARKETING_BOT_AVAILABLE = True
+    logger.info("Marketing Bot loaded successfully")
+except ImportError as e:
+    logger.warning(f"Marketing Bot not available: {e}")
+    MARKETING_BOT_AVAILABLE = False
+    marketing_bot = None
+
 # QR Code - with error handling
 try:
     import qrcode
@@ -4329,6 +4339,11 @@ async def generate_marketing_campaign(request: Request):
 if SEO_BOT_AVAILABLE:
     api_router = get_seo_bot_routes(api_router)
     logger.info("SEO Bot routes registered")
+
+# Register Marketing Bot routes if available
+if MARKETING_BOT_AVAILABLE:
+    api_router = get_marketing_bot_routes(api_router)
+    logger.info("Marketing Bot routes registered")
 
 app.include_router(api_router)
 
