@@ -99,6 +99,10 @@ import ACLFestivalPage from "./pages/ACLFestivalPage";
 // Protection & Guarantee Pages
 import FanProtectPage from "./pages/FanProtectPage";
 
+// Landing Pages for Google Ads
+import WorldCupLandingPage from "./pages/WorldCupLandingPage";
+import F1LandingPage from "./pages/F1LandingPage";
+
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
@@ -236,6 +240,11 @@ function AppRouter() {
         <Route path="/blog/:articleId" element={<BlogArticlePage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/faq" element={<FAQPage />} />
+        
+        {/* Landing Pages for Google Ads */}
+        <Route path="/world-cup-2026-tickets" element={<WorldCupLandingPage />} />
+        <Route path="/f1-tickets-2026" element={<F1LandingPage />} />
+        
         <Route path="/world-cup-2026" element={<WorldCupPage />} />
         <Route path="/world-cup-raffle" element={<WorldCupRafflePage />} />
         <Route path="/the-weeknd-tour-2026" element={<TheWeekndPage />} />
