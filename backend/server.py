@@ -82,6 +82,16 @@ except ImportError as e:
     SUPER_SEO_AVAILABLE = False
     super_seo_bot = None
 
+# Ultra Conversion Bot - Import (Premium SEO 2026)
+try:
+    from ultra_seo_bot import ultra_bot, get_ultra_bot_routes
+    ULTRA_BOT_AVAILABLE = True
+    logger.info("🚀 Ultra Conversion Bot loaded successfully")
+except ImportError as e:
+    logger.warning(f"Ultra Conversion Bot not available: {e}")
+    ULTRA_BOT_AVAILABLE = False
+    ultra_bot = None
+
 # QR Code - with error handling
 try:
     import qrcode
@@ -152,6 +162,18 @@ async def startup_event():
             logger.info("📝 Super SEO Bot: Generated initial 50 articles")
         except Exception as e:
             logger.warning(f"Super SEO Bot initialization warning: {e}")
+    
+    # Start Ultra Conversion Bot - Generate premium conversion articles
+    if ULTRA_BOT_AVAILABLE:
+        try:
+            # Generate initial batch of ultra-optimized articles
+            ultra_bot.generate_daily_articles(50)
+            logger.info("🚀 Ultra Conversion Bot: Generated 50 premium SEO articles")
+            # Auto-index articles
+            ultra_bot.index_articles()
+            logger.info("📊 Ultra Bot: Articles indexed for search engines")
+        except Exception as e:
+            logger.warning(f"Ultra Bot initialization warning: {e}")
 
 @app.on_event("shutdown")
 async def shutdown_event():
@@ -4398,6 +4420,11 @@ if MEGA_BOT_AVAILABLE:
 if SUPER_SEO_AVAILABLE:
     api_router = get_super_seo_routes(api_router)
     logger.info("Super SEO Bot routes registered")
+
+# Register Ultra Conversion Bot routes if available
+if ULTRA_BOT_AVAILABLE:
+    api_router = get_ultra_bot_routes(api_router)
+    logger.info("🚀 Ultra Conversion Bot routes registered")
 
 app.include_router(api_router)
 
