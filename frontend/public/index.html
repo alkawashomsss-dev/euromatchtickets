@@ -116,11 +116,20 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', 'PIXEL_ID_HERE');
+      fbq('init', '2229040237407271');
       fbq('track', 'PageView');
       // Track ticket views
       window.fbTrackViewContent = function(eventName, price) {
         fbq('track', 'ViewContent', {
+          content_name: eventName,
+          content_type: 'ticket',
+          value: price,
+          currency: 'EUR'
+        });
+      };
+      // Track add to cart
+      window.fbTrackAddToCart = function(eventName, price) {
+        fbq('track', 'AddToCart', {
           content_name: eventName,
           content_type: 'ticket',
           value: price,
@@ -136,9 +145,15 @@
           currency: 'EUR'
         });
       };
+      // Track search
+      window.fbTrackSearch = function(searchQuery) {
+        fbq('track', 'Search', {
+          search_string: searchQuery
+        });
+      };
     </script>
     <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=PIXEL_ID_HERE&ev=PageView&noscript=1"/></noscript>
+      src="https://www.facebook.com/tr?id=2229040237407271&ev=PageView&noscript=1"/></noscript>
     
     <!-- Organization Schema -->
     <script type="application/ld+json">

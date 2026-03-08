@@ -126,6 +126,31 @@ const EventDetailsPage = () => {
       try {
         const response = await axios.get(`${API}/events/${eventId}`);
         setEvent(response.data);
+        
+        // Track Facebook Pixel - ViewContent
+        if (window.fbq && response.data) {
+          window.fbq('track', 'ViewContent', {
+            content_name: response.data.title,
+            content_category: response.data.event_type,
+            content_ids: [eventId],
+            content_type: 'ticket',
+            value: response.data.tickets?.[0]?.price || 0,
+            currency: 'EUR'
+          });
+        }
+        
+        // Track Google Analytics
+        if (window.gtag && response.data) {
+          window.gtag('event', 'view_item', {
+            currency: 'EUR',
+            value: response.data.tickets?.[0]?.price || 0,
+            items: [{
+              item_id: eventId,
+              item_name: response.data.title,
+              item_category: response.data.event_type
+            }]
+          });
+        }
       } catch (error) {
         console.error("Error fetching event:", error);
         toast.error("Event not found");
