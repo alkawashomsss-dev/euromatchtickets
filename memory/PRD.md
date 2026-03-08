@@ -19,19 +19,23 @@ Build a comprehensive ticket marketplace for European events:
 - **68 Killer Keywords:** Targeting F1, World Cup, Football, Concerts
 - **Multi-Language:** Content in English AND Arabic
 - **Categories:** F1 (9 races), World Cup (6 events), Football (7 clubs), Concerts (6 artists), City Guides (10 cities)
+- **Diverse Images:** Each article has unique image based on race/team/city
+- **Auto-Indexing:** Bot submits articles to IndexNow (Bing, Yandex) daily
 
 ### ✅ Blog Page Completely Redesigned
 - Dynamic article loading from Super SEO Bot
 - Category filtering (F1, World Cup, Football, Concerts, City Guide, Comparison)
 - Stats dashboard showing keywords and content coverage
 - "Generate 50 New Articles" button for instant content creation
+- Shows city/location badge on each article
 
 ### ✅ APIs Added
 - `GET /api/super-seo/generate/{count}` - Generate articles on demand
 - `GET /api/super-seo/stats` - Bot statistics and coverage
 - `GET /api/super-seo/keywords` - All SEO keywords database
 - `GET /api/super-seo/articles` - Get generated articles
-- `POST /api/super-seo/schedule-daily` - Schedule daily generation
+- `POST /api/super-seo/index-all` - Submit all articles to IndexNow for indexing
+- `GET /api/super-seo/sitemap-articles` - Get sitemap entries for articles
 
 ### ✅ Files Created
 - `/app/backend/super_seo_bot.py` - Complete SEO bot with 68 keywords

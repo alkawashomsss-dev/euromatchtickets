@@ -8,6 +8,95 @@ from datetime import datetime, timedelta
 from typing import List, Dict
 import hashlib
 import json
+import httpx
+import asyncio
+
+# ============== EVENT SPECIFIC IMAGES ==============
+# Different images for each race/match/team/city
+
+EVENT_SPECIFIC_IMAGES = {
+    # F1 Races - unique images for each circuit
+    "bahrain": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg?auto=compress&w=800",
+    "saudi": "https://images.pexels.com/photos/3764984/pexels-photo-3764984.jpeg?auto=compress&w=800",
+    "australia": "https://images.pexels.com/photos/3764986/pexels-photo-3764986.jpeg?auto=compress&w=800",
+    "monaco": "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&w=800",
+    "silverstone": "https://images.pexels.com/photos/3800517/pexels-photo-3800517.jpeg?auto=compress&w=800",
+    "monza": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg?auto=compress&w=800",
+    "singapore": "https://images.pexels.com/photos/3052361/pexels-photo-3052361.jpeg?auto=compress&w=800",
+    "las vegas": "https://images.pexels.com/photos/415999/pexels-photo-415999.jpeg?auto=compress&w=800",
+    "abu dhabi": "https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg?auto=compress&w=800",
+    "jeddah": "https://images.pexels.com/photos/3764984/pexels-photo-3764984.jpeg?auto=compress&w=800",
+    "melbourne": "https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg?auto=compress&w=800",
+    "monte carlo": "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&w=800",
+    
+    # World Cup - country specific
+    "mexico": "https://images.pexels.com/photos/3566227/pexels-photo-3566227.jpeg?auto=compress&w=800",
+    "usa": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&w=800",
+    "canada": "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&w=800",
+    "new york": "https://images.pexels.com/photos/802024/pexels-photo-802024.jpeg?auto=compress&w=800",
+    "world cup final": "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&w=800",
+    "opening match": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&w=800",
+    "group stage": "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&w=800",
+    "quarter": "https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&w=800",
+    "semi": "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&w=800",
+    
+    # Football Clubs - team specific stadiums
+    "barcelona": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&w=800",
+    "camp nou": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&w=800",
+    "real madrid": "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&w=800",
+    "bernabéu": "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&w=800",
+    "manchester united": "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&w=800",
+    "old trafford": "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&w=800",
+    "liverpool": "https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&w=800",
+    "anfield": "https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&w=800",
+    "arsenal": "https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&w=800",
+    "emirates": "https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&w=800",
+    "bayern": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&w=800",
+    "allianz arena": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&w=800",
+    "psg": "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&w=800",
+    "parc des princes": "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&w=800",
+    
+    # Concerts - artist/genre specific
+    "weeknd": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&w=800",
+    "bruno mars": "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&w=800",
+    "taylor swift": "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&w=800",
+    "coldplay": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&w=800",
+    "ed sheeran": "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&w=800",
+    "bad bunny": "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&w=800",
+    
+    # Cities - unique city images
+    "barcelona_city": "https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&w=800",
+    "madrid_city": "https://images.pexels.com/photos/3757144/pexels-photo-3757144.jpeg?auto=compress&w=800",
+    "london": "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&w=800",
+    "paris": "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&w=800",
+    "munich": "https://images.pexels.com/photos/109629/pexels-photo-109629.jpeg?auto=compress&w=800",
+    "milan": "https://images.pexels.com/photos/2064827/pexels-photo-2064827.jpeg?auto=compress&w=800",
+    "amsterdam": "https://images.pexels.com/photos/2031706/pexels-photo-2031706.jpeg?auto=compress&w=800",
+    "monaco_city": "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&w=800",
+    "abu_dhabi_city": "https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg?auto=compress&w=800",
+    "singapore_city": "https://images.pexels.com/photos/3052361/pexels-photo-3052361.jpeg?auto=compress&w=800",
+}
+
+def get_event_image(event_name: str, category: str, city: str = "") -> str:
+    """Get specific image for event based on name, category, or city"""
+    search_text = f"{event_name} {city}".lower()
+    
+    # Check for specific match in event name or city
+    for key, url in EVENT_SPECIFIC_IMAGES.items():
+        if key in search_text:
+            return url
+    
+    # Fallback by category
+    category_defaults = {
+        "F1": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg?auto=compress&w=800",
+        "World Cup": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&w=800",
+        "Football": "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&w=800",
+        "Concerts": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&w=800",
+        "City Guide": "https://images.pexels.com/photos/1534560/pexels-photo-1534560.jpeg?auto=compress&w=800",
+        "MotoGP": "https://images.pexels.com/photos/39693/motorcycle-racer-racing-race-speed-39693.jpeg?auto=compress&w=800",
+        "Comparison": "https://images.pexels.com/photos/7567434/pexels-photo-7567434.jpeg?auto=compress&w=800",
+    }
+    return category_defaults.get(category, "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&w=800")
 
 # ============== HIGH-VALUE KEYWORDS ==============
 
@@ -457,6 +546,8 @@ class SuperSEOBot:
             "meta_description": f"Buy {event['name']} tickets from €{min_price}. Best prices, instant delivery, 100% guaranteed.",
             "category": "F1",
             "min_price": min_price,
+            "image": get_event_image(event['name'], "F1", event.get('city', '')),
+            "city": event.get('city', ''),
             "created_at": datetime.now().isoformat()
         }
     
@@ -503,6 +594,8 @@ class SuperSEOBot:
             "meta_description": f"Buy {event['name']} tickets from €{min_price}. FIFA World Cup 2026. Best prices guaranteed.",
             "category": "World Cup",
             "min_price": min_price,
+            "image": get_event_image(event['name'], "World Cup", event.get('city', '')),
+            "city": event.get('city', ''),
             "created_at": datetime.now().isoformat()
         }
     
@@ -549,6 +642,9 @@ class SuperSEOBot:
             "meta_description": f"Buy {club['name']} tickets at {club['venue']} from €{min_price}. All matches available.",
             "category": "Football",
             "min_price": min_price,
+            "image": get_event_image(club['name'], "Football", club.get('venue', '')),
+            "city": club.get('city', ''),
+            "venue": club.get('venue', ''),
             "created_at": datetime.now().isoformat()
         }
     
@@ -595,6 +691,9 @@ class SuperSEOBot:
             "meta_description": f"Get {concert['name']} {concert['tour']} tickets from €{min_price}. All tour dates available.",
             "category": "Concerts",
             "min_price": min_price,
+            "image": get_event_image(concert['name'], "Concerts"),
+            "artist": concert['name'],
+            "tour": concert['tour'],
             "created_at": datetime.now().isoformat()
         }
     
@@ -633,6 +732,8 @@ class SuperSEOBot:
             "keywords": [f"{city['name']} tickets", f"{city['name']} events", f"{city['name']} 2026"],
             "meta_description": f"Find all events in {city['name']} 2026. Football, concerts, F1 and more. Best prices guaranteed.",
             "category": "City Guide",
+            "image": get_event_image(city['name'], "City Guide", city['name']),
+            "city_name": city['name'],
             "created_at": datetime.now().isoformat()
         }
     
@@ -764,6 +865,90 @@ def get_super_seo_routes(api_router):
             "category": category,
             "keywords": keywords,
             "count": len(keywords)
+        }
+    
+    @api_router.post("/super-seo/index-all")
+    async def index_all_articles():
+        """Submit all articles to Google for indexing via IndexNow"""
+        base_url = "https://euromatchtickets.com"
+        indexed_urls = []
+        
+        # Get all article URLs
+        for article in super_seo_bot.daily_articles:
+            url = f"{base_url}/blog/{article.get('slug', article['id'])}"
+            indexed_urls.append(url)
+        
+        # Add main pages to index
+        main_pages = [
+            f"{base_url}/",
+            f"{base_url}/events",
+            f"{base_url}/world-cup-2026",
+            f"{base_url}/f1-tickets",
+            f"{base_url}/motogp-tickets",
+            f"{base_url}/concerts",
+            f"{base_url}/blog",
+            f"{base_url}/about",
+            f"{base_url}/fan-protect",
+        ]
+        indexed_urls.extend(main_pages)
+        
+        # Submit to IndexNow (Bing, Yandex, etc.)
+        indexnow_results = []
+        try:
+            async with httpx.AsyncClient() as client:
+                # IndexNow submission
+                indexnow_payload = {
+                    "host": "euromatchtickets.com",
+                    "key": "euromatchtickets2026",
+                    "urlList": indexed_urls[:100]  # Max 100 URLs per request
+                }
+                response = await client.post(
+                    "https://api.indexnow.org/indexnow",
+                    json=indexnow_payload,
+                    timeout=30
+                )
+                indexnow_results.append({
+                    "service": "IndexNow",
+                    "status": response.status_code,
+                    "urls_submitted": len(indexed_urls[:100])
+                })
+        except Exception as e:
+            indexnow_results.append({
+                "service": "IndexNow",
+                "status": "error",
+                "error": str(e)
+            })
+        
+        return {
+            "success": True,
+            "total_urls": len(indexed_urls),
+            "articles_indexed": len(super_seo_bot.daily_articles),
+            "main_pages_indexed": len(main_pages),
+            "indexing_results": indexnow_results,
+            "next_steps": [
+                "URLs submitted to IndexNow (Bing, Yandex)",
+                "For Google: Use Search Console to request indexing",
+                "Sitemap auto-updates at /api/sitemap.xml"
+            ]
+        }
+    
+    @api_router.get("/super-seo/sitemap-articles")
+    async def get_articles_sitemap():
+        """Get sitemap entries for all generated articles"""
+        base_url = "https://euromatchtickets.com"
+        entries = []
+        
+        for article in super_seo_bot.daily_articles:
+            entries.append({
+                "url": f"{base_url}/blog/{article.get('slug', article['id'])}",
+                "lastmod": article.get('created_at', datetime.now().isoformat()),
+                "changefreq": "daily",
+                "priority": 0.8
+            })
+        
+        return {
+            "count": len(entries),
+            "entries": entries
         }
     
     return api_router

@@ -18,7 +18,7 @@ const categoryColors = {
   "MotoGP": "bg-orange-500/20 text-orange-400 border-orange-500/30"
 };
 
-// Category images
+// Fallback category images (used only if article has no specific image)
 const categoryImages = {
   "F1": "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg",
   "World Cup": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg",
@@ -27,6 +27,11 @@ const categoryImages = {
   "City Guide": "https://images.pexels.com/photos/1534560/pexels-photo-1534560.jpeg",
   "Comparison": "https://images.pexels.com/photos/7567434/pexels-photo-7567434.jpeg",
   "MotoGP": "https://images.pexels.com/photos/39693/motorcycle-racer-racing-race-speed-39693.jpeg"
+};
+
+// Get image for article - prioritize article's own image, fallback to category
+const getArticleImage = (article) => {
+  return article.image || categoryImages[article.category] || categoryImages["Football"];
 };
 
 const BlogPage = () => {
@@ -250,7 +255,7 @@ const BlogPage = () => {
                     >
                       <div className="aspect-video relative overflow-hidden">
                         <img 
-                          src={categoryImages[article.category] || categoryImages["Football"]} 
+                          src={getArticleImage(article)} 
                           alt={article.title_en || article.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
@@ -260,6 +265,13 @@ const BlogPage = () => {
                             {article.category}
                           </Badge>
                         </div>
+                        {article.city && (
+                          <div className="absolute top-3 right-3">
+                            <Badge variant="outline" className="bg-black/50 text-white border-white/20">
+                              {article.city}
+                            </Badge>
+                          </div>
+                        )}
                         {article.min_price && (
                           <div className="absolute bottom-3 right-3">
                             <Badge className="bg-emerald-500/90 text-white">
@@ -312,7 +324,7 @@ const BlogPage = () => {
                     >
                       <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
                         <img 
-                          src={categoryImages[article.category] || categoryImages["Football"]} 
+                          src={getArticleImage(article)} 
                           alt={article.title_en || article.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
@@ -322,6 +334,9 @@ const BlogPage = () => {
                           <Badge className={`text-xs ${categoryColors[article.category] || "bg-zinc-700"}`}>
                             {article.category}
                           </Badge>
+                          {article.city && (
+                            <span className="text-xs text-zinc-500">{article.city}</span>
+                          )}
                           {article.min_price && (
                             <span className="text-xs text-emerald-400">€{article.min_price}</span>
                           )}
