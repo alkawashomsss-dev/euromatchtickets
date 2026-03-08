@@ -24,8 +24,8 @@ const F1TicketsPage = () => {
     const fetchF1Events = async () => {
       try {
         const response = await axios.get(`${API}/events?event_type=f1`);
+        // Show all F1 events regardless of year in title
         const sortedRaces = response.data
-          .filter(race => race.title.includes('2026'))
           .sort((a, b) => new Date(a.event_date) - new Date(b.event_date));
         setRaces(sortedRaces);
       } catch (error) {
