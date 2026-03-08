@@ -1,5 +1,8 @@
 const VenueSeatMap = ({ categories, selectedCategory, onCategorySelect, eventType }) => {
   const isMatch = eventType === "match";
+  const isF1 = eventType === "f1";
+  const isMotoGP = eventType === "motogp";
+  const isWorldCup = eventType === "worldcup";
 
   // Color mapping for categories
   const categoryColors = {
@@ -8,7 +11,12 @@ const VenueSeatMap = ({ categories, selectedCategory, onCategorySelect, eventTyp
     cat1: "#3B82F6",
     cat2: "#22C55E",
     cat3: "#94A3B8",
-    standing: "#94A3B8"
+    standing: "#94A3B8",
+    // F1 categories
+    grandstand: "#06B6D4",
+    general_admission: "#94A3B8",
+    vip_hospitality: "#A855F7",
+    paddock_club: "#F59E0B"
   };
 
   const handleSectionClick = (category) => {
@@ -26,7 +34,7 @@ const VenueSeatMap = ({ categories, selectedCategory, onCategorySelect, eventTyp
     return selectedCategory === category ? "#fff" : "transparent";
   };
 
-  if (isMatch) {
+  if (isMatch || isWorldCup) {
     // Football stadium layout
     return (
       <div className="relative w-full aspect-[16/10] bg-zinc-900/50 rounded-xl overflow-hidden border border-white/5">
@@ -150,6 +158,151 @@ const VenueSeatMap = ({ categories, selectedCategory, onCategorySelect, eventTyp
             />
             <text x="755" y="255" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="bold" transform="rotate(90, 755, 255)">CAT 3</text>
           </g>
+        </svg>
+      </div>
+    );
+  }
+
+  // F1 Circuit layout
+  if (isF1 || isMotoGP) {
+    return (
+      <div className="relative w-full aspect-[16/10] bg-zinc-900/50 rounded-xl overflow-hidden border border-white/5">
+        <svg viewBox="0 0 800 500" className="w-full h-full">
+          {/* Track outline */}
+          <path 
+            d="M 150 250 Q 150 100 300 100 L 500 100 Q 650 100 650 200 L 650 300 Q 650 400 500 400 L 300 400 Q 150 400 150 250" 
+            fill="none" 
+            stroke="#374151" 
+            strokeWidth="40"
+            strokeLinecap="round"
+          />
+          <path 
+            d="M 150 250 Q 150 100 300 100 L 500 100 Q 650 100 650 200 L 650 300 Q 650 400 500 400 L 300 400 Q 150 400 150 250" 
+            fill="none" 
+            stroke="#1F2937" 
+            strokeWidth="35"
+            strokeLinecap="round"
+          />
+          
+          {/* Track markings */}
+          <text x="400" y="250" textAnchor="middle" fill="#4B5563" fontSize="24" fontWeight="bold">CIRCUIT</text>
+          
+          {/* Paddock Club - Best seats */}
+          <g onClick={() => handleSectionClick('paddock_club')} className="cursor-pointer venue-section">
+            <rect 
+              x="320" y="180" width="160" height="60" 
+              fill={categoryColors.paddock_club}
+              opacity={getSectionOpacity('paddock_club')}
+              stroke={getSectionStroke('paddock_club')}
+              strokeWidth="2"
+              rx="8"
+            />
+            <text x="400" y="215" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="bold">PADDOCK CLUB</text>
+            {categories?.paddock_club?.count > 0 && (
+              <text x="400" y="230" textAnchor="middle" fill="#fff" fontSize="10">€{categories.paddock_club.lowest_price?.toFixed(0)}</text>
+            )}
+          </g>
+
+          {/* VIP Hospitality */}
+          <g onClick={() => handleSectionClick('vip_hospitality')} className="cursor-pointer venue-section">
+            <rect 
+              x="100" y="150" width="100" height="80" 
+              fill={categoryColors.vip_hospitality}
+              opacity={getSectionOpacity('vip_hospitality')}
+              stroke={getSectionStroke('vip_hospitality')}
+              strokeWidth="2"
+              rx="8"
+            />
+            <text x="150" y="190" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="bold">VIP</text>
+            <text x="150" y="205" textAnchor="middle" fill="#fff" fontSize="9">HOSPITALITY</text>
+            {categories?.vip_hospitality?.count > 0 && (
+              <text x="150" y="220" textAnchor="middle" fill="#fff" fontSize="10">€{categories.vip_hospitality.lowest_price?.toFixed(0)}</text>
+            )}
+          </g>
+          <g onClick={() => handleSectionClick('vip_hospitality')} className="cursor-pointer venue-section">
+            <rect 
+              x="600" y="150" width="100" height="80" 
+              fill={categoryColors.vip_hospitality}
+              opacity={getSectionOpacity('vip_hospitality')}
+              stroke={getSectionStroke('vip_hospitality')}
+              strokeWidth="2"
+              rx="8"
+            />
+            <text x="650" y="190" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="bold">VIP</text>
+            <text x="650" y="205" textAnchor="middle" fill="#fff" fontSize="9">HOSPITALITY</text>
+          </g>
+
+          {/* Grandstand sections */}
+          <g onClick={() => handleSectionClick('grandstand')} className="cursor-pointer venue-section">
+            <rect 
+              x="250" y="50" width="120" height="40" 
+              fill={categoryColors.grandstand}
+              opacity={getSectionOpacity('grandstand')}
+              stroke={getSectionStroke('grandstand')}
+              strokeWidth="2"
+              rx="4"
+            />
+            <text x="310" y="75" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="bold">GRANDSTAND</text>
+          </g>
+          <g onClick={() => handleSectionClick('grandstand')} className="cursor-pointer venue-section">
+            <rect 
+              x="430" y="50" width="120" height="40" 
+              fill={categoryColors.grandstand}
+              opacity={getSectionOpacity('grandstand')}
+              stroke={getSectionStroke('grandstand')}
+              strokeWidth="2"
+              rx="4"
+            />
+            <text x="490" y="75" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="bold">GRANDSTAND</text>
+          </g>
+          <g onClick={() => handleSectionClick('grandstand')} className="cursor-pointer venue-section">
+            <rect 
+              x="250" y="410" width="300" height="40" 
+              fill={categoryColors.grandstand}
+              opacity={getSectionOpacity('grandstand')}
+              stroke={getSectionStroke('grandstand')}
+              strokeWidth="2"
+              rx="4"
+            />
+            <text x="400" y="435" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="bold">GRANDSTAND</text>
+            {categories?.grandstand?.count > 0 && (
+              <text x="400" y="448" textAnchor="middle" fill="#fff" fontSize="10">from €{categories.grandstand.lowest_price?.toFixed(0)}</text>
+            )}
+          </g>
+
+          {/* General Admission */}
+          <g onClick={() => handleSectionClick('general_admission')} className="cursor-pointer venue-section">
+            <rect 
+              x="50" y="280" width="80" height="100" 
+              fill={categoryColors.general_admission}
+              opacity={getSectionOpacity('general_admission')}
+              stroke={getSectionStroke('general_admission')}
+              strokeWidth="2"
+              rx="4"
+            />
+            <text x="90" y="325" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="bold">GENERAL</text>
+            <text x="90" y="340" textAnchor="middle" fill="#fff" fontSize="9">ADMISSION</text>
+            {categories?.general_admission?.count > 0 && (
+              <text x="90" y="355" textAnchor="middle" fill="#fff" fontSize="10">€{categories.general_admission.lowest_price?.toFixed(0)}</text>
+            )}
+          </g>
+          <g onClick={() => handleSectionClick('general_admission')} className="cursor-pointer venue-section">
+            <rect 
+              x="670" y="280" width="80" height="100" 
+              fill={categoryColors.general_admission}
+              opacity={getSectionOpacity('general_admission')}
+              stroke={getSectionStroke('general_admission')}
+              strokeWidth="2"
+              rx="4"
+            />
+            <text x="710" y="325" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="bold">GENERAL</text>
+            <text x="710" y="340" textAnchor="middle" fill="#fff" fontSize="9">ADMISSION</text>
+          </g>
+
+          {/* Start/Finish line */}
+          <rect x="395" y="95" width="10" height="15" fill="#fff" />
+          <rect x="395" y="390" width="10" height="15" fill="#fff" />
+          <text x="400" y="470" textAnchor="middle" fill="#6B7280" fontSize="12">START / FINISH</text>
         </svg>
       </div>
     );

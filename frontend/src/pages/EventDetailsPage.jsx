@@ -24,12 +24,26 @@ import {
 } from "../components/SalesAccelerator";
 
 const categoryConfig = {
+  // Standard categories
   vip: { name: "VIP", color: "bg-purple-500", textColor: "text-purple-400", description: "Premium experience with best views" },
+  VIP: { name: "VIP", color: "bg-purple-500", textColor: "text-purple-400", description: "Premium experience with best views" },
   floor: { name: "Floor", color: "bg-pink-500", textColor: "text-pink-400", description: "Close to the stage" },
   cat1: { name: "Category 1", color: "bg-cyan-500", textColor: "text-cyan-400", description: "Lower tier, excellent view" },
   cat2: { name: "Category 2", color: "bg-emerald-500", textColor: "text-emerald-400", description: "Mid-tier, great atmosphere" },
   cat3: { name: "Category 3", color: "bg-slate-400", textColor: "text-slate-400", description: "Upper tier, full venue view" },
-  standing: { name: "Standing", color: "bg-slate-400", textColor: "text-slate-400", description: "General admission standing" }
+  standing: { name: "Standing", color: "bg-slate-400", textColor: "text-slate-400", description: "General admission standing" },
+  // F1 categories
+  grandstand: { name: "Grandstand", color: "bg-cyan-500", textColor: "text-cyan-400", description: "Reserved seating with track views" },
+  general_admission: { name: "General Admission", color: "bg-slate-400", textColor: "text-slate-400", description: "Access to general viewing areas" },
+  vip_hospitality: { name: "VIP Hospitality", color: "bg-purple-500", textColor: "text-purple-400", description: "Premium experience with food & drinks" },
+  paddock_club: { name: "Paddock Club", color: "bg-amber-500", textColor: "text-amber-400", description: "Ultimate VIP experience" },
+  // Concert/Football categories
+  Standard: { name: "Standard", color: "bg-slate-400", textColor: "text-slate-400", description: "Standard seating" },
+  standard: { name: "Standard", color: "bg-slate-400", textColor: "text-slate-400", description: "Standard seating" },
+  Premium: { name: "Premium", color: "bg-emerald-500", textColor: "text-emerald-400", description: "Premium seating" },
+  premium: { name: "Premium", color: "bg-emerald-500", textColor: "text-emerald-400", description: "Premium seating" },
+  business: { name: "Business", color: "bg-blue-500", textColor: "text-blue-400", description: "Business class seating" },
+  first_class: { name: "First Class", color: "bg-amber-500", textColor: "text-amber-400", description: "First class experience" }
 };
 
 const formatDate = (dateStr) => {
