@@ -3853,28 +3853,60 @@ async def seo_index_all_pages():
         # Main pages
         "https://euromatchtickets.com/",
         "https://euromatchtickets.com/events",
+        "https://euromatchtickets.com/about",
+        "https://euromatchtickets.com/contact",
+        "https://euromatchtickets.com/reviews",
+        "https://euromatchtickets.com/blog",
+        
+        # F1 Pages - HIGH PRIORITY
         "https://euromatchtickets.com/f1-tickets",
+        "https://euromatchtickets.com/f1-2026-schedule",
+        "https://euromatchtickets.com/f1-monaco-grand-prix-tickets",
+        "https://euromatchtickets.com/f1-british-grand-prix-silverstone-tickets",
+        "https://euromatchtickets.com/f1-italian-grand-prix-monza-tickets",
+        "https://euromatchtickets.com/f1-singapore-grand-prix-tickets",
+        "https://euromatchtickets.com/f1-las-vegas-grand-prix-tickets",
+        "https://euromatchtickets.com/f1-abu-dhabi-grand-prix-tickets",
+        "https://euromatchtickets.com/f1-belgian-grand-prix-spa-tickets",
+        "https://euromatchtickets.com/f1-dutch-grand-prix-zandvoort-tickets",
+        "https://euromatchtickets.com/f1-ticket-prices-2026",
+        "https://euromatchtickets.com/how-to-buy-f1-tickets",
+        "https://euromatchtickets.com/best-f1-races-europe",
+        
+        # MotoGP Pages
         "https://euromatchtickets.com/motogp-tickets",
+        "https://euromatchtickets.com/motogp-2026-schedule",
+        "https://euromatchtickets.com/motogp-mugello-tickets",
+        "https://euromatchtickets.com/motogp-ticket-prices-2026",
+        
+        # Isle of Man TT
         "https://euromatchtickets.com/isle-of-man-tt-tickets",
         
-        # PREMIUM CONCERT PAGES - HIGH PRIORITY
+        # World Cup 2026 - VERY HIGH PRIORITY
+        "https://euromatchtickets.com/world-cup-2026",
+        "https://euromatchtickets.com/world-cup-raffle",
+        
+        # Football
+        "https://euromatchtickets.com/champions-league-tickets",
+        "https://euromatchtickets.com/football-ticket-prices-2026",
+        
+        # CONCERT PAGES
+        "https://euromatchtickets.com/bruno-mars-tour-2026",
+        "https://euromatchtickets.com/guns-n-roses-tour-2026",
+        "https://euromatchtickets.com/bad-bunny-london-2026",
+        "https://euromatchtickets.com/the-weeknd-tour-2026",
         "https://euromatchtickets.com/maroon-5-tickets",
         "https://euromatchtickets.com/john-legend-abu-dhabi-tickets",
         "https://euromatchtickets.com/harry-styles-tickets",
         "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets",
         "https://euromatchtickets.com/acl-festival-2026-tickets",
+        "https://euromatchtickets.com/concert-ticket-prices-2026",
         
         # Comparison pages (HIGH VALUE)
         "https://euromatchtickets.com/euromatchtickets-vs-stubhub",
         "https://euromatchtickets.com/euromatchtickets-vs-viagogo",
         "https://euromatchtickets.com/euromatchtickets-vs-ticketmaster",
         "https://euromatchtickets.com/euromatchtickets-vs-seatgeek",
-        
-        # Price guides (HIGH VALUE)
-        "https://euromatchtickets.com/f1-ticket-prices-2026",
-        "https://euromatchtickets.com/motogp-ticket-prices-2026",
-        "https://euromatchtickets.com/concert-ticket-prices-2026",
-        "https://euromatchtickets.com/football-ticket-prices-2026",
         
         # Time-based pages
         "https://euromatchtickets.com/events-this-weekend",
@@ -3884,6 +3916,12 @@ async def seo_index_all_pages():
         "https://euromatchtickets.com/events-april-2026",
         "https://euromatchtickets.com/events-may-2026",
         "https://euromatchtickets.com/events-june-2026",
+        "https://euromatchtickets.com/events-july-2026",
+        "https://euromatchtickets.com/events-august-2026",
+        "https://euromatchtickets.com/events-september-2026",
+        "https://euromatchtickets.com/events-october-2026",
+        "https://euromatchtickets.com/events-november-2026",
+        "https://euromatchtickets.com/events-december-2026",
         
         # City pages (Long-tail SEO)
         "https://euromatchtickets.com/london-tickets",
@@ -3902,6 +3940,25 @@ async def seo_index_all_pages():
         "https://euromatchtickets.com/abu-dhabi-tickets",
         "https://euromatchtickets.com/las-vegas-tickets",
         "https://euromatchtickets.com/austin-tickets",
+        "https://euromatchtickets.com/jeddah-tickets",
+        "https://euromatchtickets.com/silverstone-tickets",
+        "https://euromatchtickets.com/monza-tickets",
+        "https://euromatchtickets.com/spa-tickets",
+        
+        # Blog posts
+        "https://euromatchtickets.com/blog/best-seats-santiago-bernabeu",
+        "https://euromatchtickets.com/blog/el-clasico-atmosphere-guide",
+        "https://euromatchtickets.com/blog/how-to-buy-champions-league-tickets-safely",
+        "https://euromatchtickets.com/blog/is-it-safe-to-buy-resale-concert-tickets",
+        "https://euromatchtickets.com/blog/premier-league-away-days-guide",
+        "https://euromatchtickets.com/blog/taylor-swift-eras-tour-europe-2025",
+        
+        # Legal pages
+        "https://euromatchtickets.com/privacy-policy",
+        "https://euromatchtickets.com/terms",
+        "https://euromatchtickets.com/refund-policy",
+        "https://euromatchtickets.com/buyer-protection",
+        "https://euromatchtickets.com/payment-info",
     ]
     
     result = await submit_url_to_indexnow(all_urls)
