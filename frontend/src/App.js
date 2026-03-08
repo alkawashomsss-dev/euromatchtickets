@@ -102,6 +102,7 @@ import FanProtectPage from "./pages/FanProtectPage";
 // Landing Pages for Google Ads
 import WorldCupLandingPage from "./pages/WorldCupLandingPage";
 import F1LandingPage from "./pages/F1LandingPage";
+import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
 
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
@@ -244,6 +245,7 @@ function AppRouter() {
         {/* Landing Pages for Google Ads */}
         <Route path="/world-cup-2026-tickets" element={<WorldCupLandingPage />} />
         <Route path="/f1-tickets-2026" element={<F1LandingPage />} />
+        <Route path="/purchase-success" element={<PurchaseSuccessPage />} />
         
         <Route path="/world-cup-2026" element={<WorldCupPage />} />
         <Route path="/world-cup-raffle" element={<WorldCupRafflePage />} />
