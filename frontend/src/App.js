@@ -104,6 +104,11 @@ import WorldCupLandingPage from "./pages/WorldCupLandingPage";
 import F1LandingPage from "./pages/F1LandingPage";
 import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
 
+// High-Converting Landing Pages
+import MonacoGPTicketsPage from "./pages/MonacoGPTicketsPage";
+import ElClasicoTicketsPage from "./pages/ElClasicoTicketsPage";
+import ChampionsLeagueTicketsPage from "./pages/ChampionsLeagueTicketsPage";
+
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
@@ -329,6 +334,11 @@ function AppRouter() {
         <Route path="/harry-styles-tickets" element={<HarryStylesPage />} />
         <Route path="/metallica-sphere-las-vegas-tickets" element={<MetallicaPage />} />
         <Route path="/acl-festival-2026-tickets" element={<ACLFestivalPage />} />
+        
+        {/* High-Converting Landing Pages - F1 & Football */}
+        <Route path="/monaco-grand-prix-tickets" element={<MonacoGPTicketsPage />} />
+        <Route path="/el-clasico-tickets" element={<ElClasicoTicketsPage />} />
+        <Route path="/champions-league-tickets" element={<ChampionsLeagueTicketsPage />} />
         
         {/* Programmatic SEO Routes - City Pages */}
         <Route path="/:cityName-tickets" element={<CityTicketsPage />} />
