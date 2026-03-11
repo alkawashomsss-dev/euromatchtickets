@@ -75,12 +75,12 @@
     </style>
     
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QVMZCNVYK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', {
+      gtag('config', 'G-9QVMZCNVYK', {
         page_title: document.title,
         page_location: window.location.href,
         send_page_view: true,
@@ -102,6 +102,24 @@
           event_label: eventName,
           value: ticketPrice,
           currency: 'EUR'
+        });
+      };
+      // Track search
+      window.trackSearch = function(searchTerm) {
+        gtag('event', 'search', {
+          search_term: searchTerm
+        });
+      };
+      // Track view item
+      window.trackViewItem = function(eventName, price, category) {
+        gtag('event', 'view_item', {
+          currency: 'EUR',
+          value: price,
+          items: [{
+            item_name: eventName,
+            item_category: category,
+            price: price
+          }]
         });
       };
     </script>
