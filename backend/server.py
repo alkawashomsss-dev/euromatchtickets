@@ -3846,24 +3846,77 @@ async def get_sitemap():
         {"_id": 0, "event_id": 1, "event_date": 1}
     ).to_list(1000)
     
-    # Build sitemap XML
+    # Get SEO pages from database
+    seo_pages = await db.seo_pages.find(
+        {},
+        {"_id": 0, "slug": 1, "updated_at": 1, "category": 1}
+    ).to_list(1000)
+    
+    # Get articles from database
+    articles = await db.articles.find(
+        {},
+        {"_id": 0, "slug": 1, "date_generated": 1}
+    ).to_list(500)
+    
+    # Current date for lastmod
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    
+    # Build sitemap XML - Google compliant format
     xml_items = ['<?xml version="1.0" encoding="UTF-8"?>']
     xml_items.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     
-    # Add static pages
+    # Add static pages with lastmod
     for page in static_pages:
         xml_items.append(f"""  <url>
     <loc>{page['loc']}</loc>
+    <lastmod>{today}</lastmod>
     <changefreq>{page['changefreq']}</changefreq>
     <priority>{page['priority']}</priority>
   </url>""")
     
-    # Add blog articles
+    # Add SEO pages from database
+    for seo_page in seo_pages:
+        updated = seo_page.get('updated_at')
+        if isinstance(updated, datetime):
+            lastmod = updated.strftime('%Y-%m-%d')
+        else:
+            lastmod = today
+        
+        priority = "0.85"
+        if seo_page.get('category') == 'f1':
+            priority = "0.90"
+        elif seo_page.get('category') == 'football':
+            priority = "0.88"
+        
+        xml_items.append(f"""  <url>
+    <loc>{base_url}/{seo_page['slug']}</loc>
+    <lastmod>{lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>{priority}</priority>
+  </url>""")
+    
+    # Add blog articles from database
+    for article in articles:
+        article_date = article.get('date_generated')
+        if isinstance(article_date, datetime):
+            lastmod = article_date.strftime('%Y-%m-%d')
+        else:
+            lastmod = today
+        
+        xml_items.append(f"""  <url>
+    <loc>{base_url}/blog/{article['slug']}</loc>
+    <lastmod>{lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>""")
+    
+    # Add hardcoded blog articles
     for article_id in blog_articles:
         xml_items.append(f"""  <url>
     <loc>{base_url}/blog/{article_id}</loc>
+    <lastmod>{today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.70</priority>
   </url>""")
     
     # Add event pages
@@ -3872,20 +3925,24 @@ async def get_sitemap():
         if isinstance(event_date, datetime):
             lastmod = event_date.strftime('%Y-%m-%d')
         else:
-            lastmod = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+            lastmod = today
         
         xml_items.append(f"""  <url>
     <loc>{base_url}/event/{event['event_id']}</loc>
     <lastmod>{lastmod}</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.80</priority>
   </url>""")
     
     xml_items.append('</urlset>')
     
     return Response(
         content='\n'.join(xml_items),
-        media_type="application/xml"
+        media_type="application/xml",
+        headers={
+            "Content-Type": "application/xml; charset=utf-8",
+            "Cache-Control": "public, max-age=3600"
+        }
     )
 
 @api_router.get("/robots.txt")
