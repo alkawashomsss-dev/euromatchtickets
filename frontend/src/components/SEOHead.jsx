@@ -6,6 +6,10 @@ const BASE_URL = 'https://euromatchtickets.com';
 /**
  * SEO Component for managing meta tags across all pages
  * Uses useEffect to update document head directly
+ * Fixes Google Search Console issues:
+ * - Canonical URL for each page
+ * - No noindex issues
+ * - Proper Open Graph tags
  */
 const SEOHead = ({ 
   title, 
@@ -13,13 +17,14 @@ const SEOHead = ({
   image,
   type = 'website',
   article = null,
-  noIndex = false 
+  noIndex = false,
+  canonicalUrl = null
 }) => {
   const location = useLocation();
-  const canonicalUrl = `${BASE_URL}${location.pathname}`;
+  const pageCanonicalUrl = canonicalUrl || `${BASE_URL}${location.pathname}`;
   
-  const defaultTitle = 'EuroMatchTickets - Buy Football & Concert Tickets';
-  const defaultDescription = 'Buy verified tickets for Champions League, Premier League, La Liga, and top concerts across Europe. 100% secure with instant QR delivery.';
+  const defaultTitle = 'EuroMatchTickets - Buy Football, F1 & Concert Tickets';
+  const defaultDescription = 'Buy verified tickets for Champions League, Formula 1, Premier League, La Liga, and top concerts across Europe. 100% secure with instant QR delivery.';
   const defaultImage = `${BASE_URL}/og-image.jpg`;
 
   const fullTitle = title && typeof title === 'string' && title.trim() 
@@ -49,36 +54,42 @@ const SEOHead = ({
       meta.setAttribute('content', content);
     };
 
-    // Update meta tags
+    // Update meta tags - ALWAYS index, follow unless explicitly set
     updateMetaTag('meta[name="description"]', metaDescription);
     updateMetaTag('meta[name="robots"]', noIndex ? 'noindex, nofollow' : 'index, follow');
     
-    // Open Graph
+    // Open Graph - Required for Facebook sharing
     updateMetaTag('meta[property="og:title"]', fullTitle, true);
     updateMetaTag('meta[property="og:description"]', metaDescription, true);
     updateMetaTag('meta[property="og:image"]', ogImage, true);
-    updateMetaTag('meta[property="og:url"]', canonicalUrl, true);
-    updateMetaTag('meta[property="og:type"]', type, true);
+    updateMetaTag('meta[property="og:image:width"]', '1200', true);
+    updateMetaTag('meta[property="og:image:height"]', '630', true);
+    updateMetaTag('meta[property="og:url"]', pageCanonicalUrl, true);
+    updateMetaTag('meta[property="og:type"]', type === 'sports_event' ? 'website' : type, true);
+    updateMetaTag('meta[property="og:site_name"]', 'EuroMatchTickets', true);
+    updateMetaTag('meta[property="og:locale"]', 'en_US', true);
     
-    // Twitter
+    // Twitter Cards
+    updateMetaTag('meta[name="twitter:card"]', 'summary_large_image');
     updateMetaTag('meta[name="twitter:title"]', fullTitle);
     updateMetaTag('meta[name="twitter:description"]', metaDescription);
     updateMetaTag('meta[name="twitter:image"]', ogImage);
+    updateMetaTag('meta[name="twitter:site"]', '@euromatchtickets');
 
-    // Update canonical
+    // Update canonical - CRITICAL for Google indexing
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', canonicalUrl);
+    canonical.setAttribute('href', pageCanonicalUrl);
 
     // Cleanup
     return () => {
       document.title = defaultTitle;
     };
-  }, [fullTitle, metaDescription, ogImage, canonicalUrl, type, noIndex, defaultTitle]);
+  }, [fullTitle, metaDescription, ogImage, pageCanonicalUrl, type, noIndex, defaultTitle]);
 
   return null; // This component doesn't render anything
 };

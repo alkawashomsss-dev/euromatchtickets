@@ -11,6 +11,7 @@ import { Badge } from "../components/ui/badge";
 import { toast } from "sonner";
 import VenueSeatMap from "../components/VenueSeatMap";
 import SEOHead from "../components/SEOHead";
+import { EventStructuredData, BreadcrumbStructuredData } from "../components/StructuredData";
 import { 
   UrgencyCountdown, 
   ScarcityIndicator, 
@@ -374,6 +375,14 @@ const EventDetailsPage = () => {
     ? event.description.substring(0, 155) + '...'
     : `Buy verified tickets for ${event.title} at ${event.venue}, ${event.city}. Secure checkout with instant QR code delivery. 100% buyer protection.`;
 
+  // Breadcrumb items for SEO
+  const breadcrumbItems = [
+    { name: "Home", url: "https://euromatchtickets.com" },
+    { name: isMatch ? "Football" : event.event_type === 'f1' ? "F1 Tickets" : event.event_type === 'concert' ? "Concerts" : "Events", 
+      url: `https://euromatchtickets.com/events?type=${event.event_type}` },
+    { name: event.title, url: `https://euromatchtickets.com/event/${event.event_id}` }
+  ];
+
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       {/* SEO Head with Canonical */}
@@ -382,11 +391,12 @@ const EventDetailsPage = () => {
         description={seoDescription}
         image={event.event_image}
         type={isMatch ? "sports_event" : "music_event"}
+        canonicalUrl={`https://euromatchtickets.com/event/${event.event_id}`}
       />
       
-      {/* SEO Schema Scripts */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {/* Structured Data for Google Rich Results */}
+      <EventStructuredData event={event} />
+      <BreadcrumbStructuredData items={breadcrumbItems} />
       
       {/* Hero */}
       <div className="relative h-[400px] md:h-[450px] overflow-hidden">
