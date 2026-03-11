@@ -195,6 +195,7 @@ const BreadcrumbStructuredData = ({ items }) => {
 
 /**
  * FAQStructuredData - For FAQ pages
+ * Helps get FAQ Rich Results in Google
  */
 const FAQStructuredData = ({ faqs }) => {
   useEffect(() => {
@@ -233,5 +234,121 @@ const FAQStructuredData = ({ faqs }) => {
   return null;
 };
 
-export { EventStructuredData, BreadcrumbStructuredData, FAQStructuredData };
+/**
+ * OrganizationStructuredData - For homepage and about page
+ */
+const OrganizationStructuredData = () => {
+  useEffect(() => {
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "EuroMatchTickets",
+      "url": "https://euromatchtickets.com",
+      "logo": "https://euromatchtickets.com/logo.png",
+      "description": "Europe's trusted ticket marketplace for football, Formula 1, and concert tickets.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+49-123-456-7890",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "German", "Spanish", "French"]
+      },
+      "sameAs": [
+        "https://facebook.com/euromatchtickets",
+        "https://instagram.com/euromatchtickets",
+        "https://twitter.com/euromatchtickets"
+      ]
+    };
+
+    let script = document.querySelector('script[data-schema="organization"]');
+    if (!script) {
+      script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-schema', 'organization');
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(structuredData);
+
+    return () => {
+      const existingScript = document.querySelector('script[data-schema="organization"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
+  return null;
+};
+
+/**
+ * WebsiteStructuredData - For sitelinks search box
+ */
+const WebsiteStructuredData = () => {
+  useEffect(() => {
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "EuroMatchTickets",
+      "url": "https://euromatchtickets.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://euromatchtickets.com/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    };
+
+    let script = document.querySelector('script[data-schema="website"]');
+    if (!script) {
+      script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-schema', 'website');
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(structuredData);
+
+    return () => {
+      const existingScript = document.querySelector('script[data-schema="website"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
+  return null;
+};
+
+// Common FAQ data for ticket pages
+const commonTicketFAQs = [
+  {
+    question: "Is it safe to buy tickets from EuroMatchTickets?",
+    answer: "Yes, all tickets sold on EuroMatchTickets are 100% verified. We offer FanProtect guarantee which ensures valid tickets, on-time delivery, and full refund if the event is cancelled."
+  },
+  {
+    question: "When will I receive my tickets?",
+    answer: "Most tickets are delivered digitally within 24 hours of purchase. For some events, tickets may be delivered closer to the event date. You'll receive an email with your tickets and QR code."
+  },
+  {
+    question: "Are resale tickets legal?",
+    answer: "Yes, ticket resale is legal in most European countries. EuroMatchTickets operates as a legitimate secondary marketplace connecting buyers with verified sellers."
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and other secure payment methods through Stripe."
+  },
+  {
+    question: "Can I get a refund if I can't attend the event?",
+    answer: "While all sales are generally final, you may be eligible for a refund if the event is cancelled or significantly changed. Contact our customer support for assistance."
+  }
+];
+
+export { 
+  EventStructuredData, 
+  BreadcrumbStructuredData, 
+  FAQStructuredData,
+  OrganizationStructuredData,
+  WebsiteStructuredData,
+  commonTicketFAQs
+};
 export default EventStructuredData;

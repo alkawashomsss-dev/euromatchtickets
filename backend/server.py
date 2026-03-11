@@ -4128,6 +4128,56 @@ async def seo_get_internal_links(event_type: str):
     return {"suggestions": suggestions}
 
 
+# ============== SEO PAGE GENERATOR BOT ==============
+@api_router.post("/seo/generate-pages")
+async def generate_seo_landing_pages():
+    """Generate hundreds of SEO-optimized landing pages"""
+    try:
+        from seo_page_generator import generate_seo_pages
+        pages_created = await generate_seo_pages()
+        return {
+            "status": "success",
+            "pages_created": pages_created,
+            "message": f"Successfully generated {pages_created} SEO landing pages",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Error generating SEO pages: {e}")
+        return {"status": "error", "message": str(e)}
+
+
+@api_router.get("/seo/pages")
+async def get_seo_pages(category: str = None, limit: int = 100):
+    """Get all generated SEO pages"""
+    query = {}
+    if category:
+        query["category"] = category
+    
+    pages = await db.seo_pages.find(
+        query,
+        {"_id": 0}
+    ).limit(limit).to_list(limit)
+    
+    return {
+        "total": len(pages),
+        "pages": pages
+    }
+
+
+@api_router.get("/seo/page/{slug}")
+async def get_seo_page(slug: str):
+    """Get a specific SEO page by slug"""
+    page = await db.seo_pages.find_one(
+        {"slug": slug},
+        {"_id": 0}
+    )
+    
+    if not page:
+        raise HTTPException(status_code=404, detail="Page not found")
+    
+    return page
+
+
 @api_router.api_route("/seo/refresh-sitemap", methods=["GET", "POST"])
 async def seo_refresh_sitemap():
     """Regenerate sitemap and ping search engines"""

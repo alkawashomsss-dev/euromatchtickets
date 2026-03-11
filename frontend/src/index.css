@@ -28,10 +28,23 @@
   --success: 142 71% 45%;
 }
 
+/* Performance: Lazy Loading Images */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+img[loading="lazy"].loaded,
+img[loading="lazy"]:not([src=""]) {
+  opacity: 1;
+}
+
+/* Optimize font rendering */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-rendering: optimizeSpeed;
 }
 
 body {
