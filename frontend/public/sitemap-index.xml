@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://euromatchtickets.com/api/sitemaps/pages.xml</loc>
+    <loc>https://euromatchtickets.com/sitemaps/pages.xml</loc>
     <lastmod>2026-03-12</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://euromatchtickets.com/api/sitemaps/f1.xml</loc>
+    <loc>https://euromatchtickets.com/sitemaps/f1.xml</loc>
     <lastmod>2026-03-12</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://euromatchtickets.com/api/sitemaps/football.xml</loc>
+    <loc>https://euromatchtickets.com/sitemaps/football.xml</loc>
     <lastmod>2026-03-12</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://euromatchtickets.com/api/sitemaps/concerts.xml</loc>
+    <loc>https://euromatchtickets.com/sitemaps/concerts.xml</loc>
     <lastmod>2026-03-12</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://euromatchtickets.com/api/sitemaps/worldcup.xml</loc>
+    <loc>https://euromatchtickets.com/sitemaps/worldcup.xml</loc>
     <lastmod>2026-03-12</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://euromatchtickets.com/api/sitemaps/cities.xml</loc>
+    <loc>https://euromatchtickets.com/sitemaps/cities.xml</loc>
     <lastmod>2026-03-12</lastmod>
   </sitemap>
 </sitemapindex>

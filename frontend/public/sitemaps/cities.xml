@@ -1,483 +1,803 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://euromatchtickets.com/london-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>London Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/london-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>London Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/london-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>London Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/london-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>London Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/madrid-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Madrid Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/madrid-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Madrid Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/madrid-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Madrid Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/madrid-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Madrid Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/barcelona-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Barcelona Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/barcelona-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Barcelona Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/barcelona-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Barcelona Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/barcelona-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Barcelona Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/paris-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Paris Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/paris-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Paris Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/paris-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Paris Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/paris-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Paris Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/munich-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Munich Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/munich-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Munich Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/munich-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Munich Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/munich-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Munich Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/milan-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Milan Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/milan-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Milan Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/milan-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Milan Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/milan-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Milan Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/berlin-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Berlin Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/berlin-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Berlin Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/berlin-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Berlin Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/berlin-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Berlin Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/amsterdam-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Amsterdam Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/amsterdam-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Amsterdam Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/amsterdam-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Amsterdam Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/amsterdam-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Amsterdam Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/manchester-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Manchester Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/manchester-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Manchester Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/manchester-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Manchester Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/manchester-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Manchester Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/liverpool-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Liverpool Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/liverpool-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Liverpool Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/liverpool-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Liverpool Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/liverpool-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Liverpool Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/rome-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Rome Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/rome-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Rome Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/rome-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Rome Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/rome-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Rome Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/lisbon-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Lisbon Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/lisbon-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Lisbon Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/lisbon-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Lisbon Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/lisbon-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Lisbon Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/vienna-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Vienna Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/vienna-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Vienna Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/vienna-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Vienna Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/vienna-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Vienna Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/istanbul-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Istanbul Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/istanbul-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Istanbul Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/istanbul-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Istanbul Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/istanbul-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Istanbul Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/dubai-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Dubai Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/dubai-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Dubai Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/dubai-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Dubai Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/dubai-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Dubai Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/abu-dhabi-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Abu Dhabi Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/abu-dhabi-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Abu Dhabi Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/abu-dhabi-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Abu Dhabi Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/abu-dhabi-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Abu Dhabi Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/new-york-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>New York Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/new-york-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>New York Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/new-york-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>New York Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/new-york-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>New York Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/las-vegas-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Las Vegas Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/las-vegas-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Las Vegas Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/las-vegas-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Las Vegas Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/las-vegas-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Las Vegas Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/miami-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Miami Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/miami-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Miami Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/miami-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Miami Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/miami-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Miami Events Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/los-angeles-concerts-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Los Angeles Concerts Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/los-angeles-football-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Los Angeles Football Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/los-angeles-sports-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Los Angeles Sports Tickets 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/los-angeles-events-tickets-2026</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/football-stadium-lg.webp</image:loc>
+      <image:title>Los Angeles Events Tickets 2026</image:title>
+    </image:image>
   </url>
 </urlset>
