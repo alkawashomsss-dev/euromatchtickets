@@ -326,7 +326,9 @@ const WorldCupLandingPage = () => {
           "lowPrice": "150",
           "highPrice": "2000",
           "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock"
+          "availability": "https://schema.org/InStock",
+          "url": "https://euromatchtickets.com/world-cup-2026-tickets",
+          "validFrom": "2025-01-01"
         },
         "organizer": {
           "@type": "Organization",

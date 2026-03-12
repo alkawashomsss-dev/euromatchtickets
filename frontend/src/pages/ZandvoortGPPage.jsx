@@ -21,7 +21,7 @@ const ZandvoortGPPage = () => {
       "address": { "@type": "PostalAddress", "addressLocality": "Zandvoort", "addressCountry": "NL" }
     },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-dutch-grand-prix-zandvoort-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

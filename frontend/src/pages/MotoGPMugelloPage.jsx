@@ -17,7 +17,7 @@ const MotoGPMugelloPage = () => {
     "image": "https://euromatchtickets.com/logo.png",
     "location": { "@type": "Place", "name": "Mugello Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Scarperia e San Piero", "addressCountry": "IT" } },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "79", "highPrice": "849", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "79", "highPrice": "849", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/motogp-mugello-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

@@ -21,7 +21,7 @@ const SilverstoneGPPage = () => {
       "address": { "@type": "PostalAddress", "addressLocality": "Silverstone", "addressCountry": "GB" }
     },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "149", "highPrice": "2499", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "149", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-british-grand-prix-silverstone-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

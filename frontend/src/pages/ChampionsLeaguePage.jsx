@@ -21,7 +21,7 @@ const ChampionsLeaguePage = () => {
       "address": { "@type": "PostalAddress", "addressLocality": "Munich", "addressCountry": "DE" }
     },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "85", "highPrice": "1500", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "85", "highPrice": "1500", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/champions-league-tickets", "validFrom": "2025-01-01" }
   };
 
   const matches = [

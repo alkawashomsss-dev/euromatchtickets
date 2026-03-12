@@ -21,7 +21,7 @@ const SpaGPPage = () => {
       "address": { "@type": "PostalAddress", "addressLocality": "Spa", "addressCountry": "BE" }
     },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "109", "highPrice": "1499", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "109", "highPrice": "1499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-belgian-grand-prix-spa-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

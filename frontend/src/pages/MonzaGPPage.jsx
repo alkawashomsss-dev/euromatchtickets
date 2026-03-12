@@ -21,7 +21,7 @@ const MonzaGPPage = () => {
       "address": { "@type": "PostalAddress", "addressLocality": "Monza", "addressCountry": "IT" }
     },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "99", "highPrice": "1999", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "99", "highPrice": "1999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-italian-grand-prix-monza-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

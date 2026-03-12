@@ -17,7 +17,7 @@ const HungaryGPPage = () => {
     "image": "https://euromatchtickets.com/logo.png",
     "location": { "@type": "Place", "name": "Hungaroring", "address": { "@type": "PostalAddress", "addressLocality": "Budapest", "addressCountry": "HU" } },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "99", "highPrice": "1499", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "99", "highPrice": "1499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-hungarian-grand-prix-budapest-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

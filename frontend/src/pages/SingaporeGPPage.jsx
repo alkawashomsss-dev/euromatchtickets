@@ -21,7 +21,7 @@ const SingaporeGPPage = () => {
       "address": { "@type": "PostalAddress", "addressLocality": "Singapore", "addressCountry": "SG" }
     },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189", "highPrice": "2999", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-singapore-grand-prix-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

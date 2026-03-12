@@ -17,7 +17,7 @@ const AustriaGPPage = () => {
     "image": "https://euromatchtickets.com/logo.png",
     "location": { "@type": "Place", "name": "Red Bull Ring", "address": { "@type": "PostalAddress", "addressLocality": "Spielberg", "addressCountry": "AT" } },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "119", "highPrice": "1999", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "119", "highPrice": "1999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-austrian-grand-prix-red-bull-ring-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

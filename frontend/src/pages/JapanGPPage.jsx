@@ -17,7 +17,7 @@ const JapanGPPage = () => {
     "image": "https://euromatchtickets.com/logo.png",
     "location": { "@type": "Place", "name": "Suzuka International Racing Course", "address": { "@type": "PostalAddress", "addressLocality": "Suzuka", "addressCountry": "JP" } },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189", "highPrice": "2499", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-japanese-grand-prix-suzuka-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

@@ -22,7 +22,7 @@ const TheWeekndPage = () => {
     },
     "performer": { "@type": "MusicGroup", "name": "The Weeknd" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/the-weeknd-tour-2026", "validFrom": "2025-01-01" }
   };
 
   const shows = [

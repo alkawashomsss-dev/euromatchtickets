@@ -118,6 +118,7 @@ export default function DynamicSEOPage() {
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
           "url": `https://euromatchtickets.com/${page.slug}`,
+          "validFrom": "2025-01-01",
           "seller": { "@type": "Organization", "name": "EuroMatchTickets" }
         }}),
         "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }

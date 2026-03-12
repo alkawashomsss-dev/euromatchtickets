@@ -21,7 +21,7 @@ const LasVegasGPPage = () => {
       "address": { "@type": "PostalAddress", "addressLocality": "Las Vegas", "addressCountry": "US" }
     },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "249", "highPrice": "3999", "availability": "https://schema.org/InStock" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "249", "highPrice": "3999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-las-vegas-grand-prix-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
