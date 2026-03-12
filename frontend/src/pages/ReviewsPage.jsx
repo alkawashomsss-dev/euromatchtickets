@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Star, CheckCircle, Quote, Filter, Globe, TrendingUp, Users, Award, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
+import { BreadcrumbStructuredData } from "../components/StructuredData";
 import { Button } from "../components/ui/button";
 import axios from "axios";
 import { API } from "../App";
@@ -63,6 +64,10 @@ const ReviewsPage = () => {
       />
       
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }} />
+      <BreadcrumbStructuredData items={[
+        { name: "Home", url: "https://euromatchtickets.com" },
+        { name: "Reviews", url: "https://euromatchtickets.com/reviews" }
+      ]} />
 
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-b from-purple-900/20 to-zinc-950 border-b border-white/5">

@@ -73,6 +73,7 @@ const EventCard = ({ event }) => {
       {/* Image */}
       <div className="relative h-48 overflow-hidden">
         <img 
+          loading="lazy"
           src={event.event_image || (isMatch 
             ? "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=600"
             : "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=600"

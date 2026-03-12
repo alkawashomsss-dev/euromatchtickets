@@ -8,6 +8,8 @@ import {
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { InternalLinks } from "../components/InternalLinks";
 import axios from 'axios';
 import { API } from '../App';
 
@@ -493,6 +495,26 @@ const F1TicketsPage = () => {
               </Button>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Structured Data for SEO */}
+      <BreadcrumbStructuredData items={[
+        { name: "Home", url: "https://euromatchtickets.com" },
+        { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }
+      ]} />
+      <FAQStructuredData faqs={[
+        { question: "Where can I buy F1 tickets for 2026?", answer: "EuroMatchTickets offers verified F1 tickets for all 24 Grand Prix races in 2026 including Monaco, Silverstone, Monza, and Singapore. Prices start from €149 with instant QR delivery." },
+        { question: "How much do F1 tickets cost?", answer: "F1 ticket prices vary by race and category. General admission starts from €149, grandstand seats from €289, and VIP hospitality packages from €1,500. Monaco GP is the most popular with tickets from €389." },
+        { question: "Are F1 tickets on EuroMatchTickets legitimate?", answer: "Yes, all F1 tickets are 100% verified and guaranteed. Every purchase is protected by our FanProtect guarantee with full refund if tickets are invalid." }
+      ]} />
+
+      {/* Internal Links */}
+      <section className="py-12 max-w-7xl mx-auto px-4">
+        <div className="grid md:grid-cols-3 gap-6">
+          <InternalLinks category="f1" showRelated={false} />
+          <InternalLinks category="football" showRelated={false} />
+          <InternalLinks category="concert" showRelated={false} />
         </div>
       </section>
     </div>

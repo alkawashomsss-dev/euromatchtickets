@@ -3,6 +3,7 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap } from "
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 
 const ChampionsLeaguePage = () => {
   const schema = {
@@ -123,6 +124,17 @@ const ChampionsLeaguePage = () => {
           </div>
         </div>
       </section>
+
+      <BreadcrumbStructuredData items={[
+        { name: "Home", url: "https://euromatchtickets.com" },
+        { name: "Football", url: "https://euromatchtickets.com/events?type=match" },
+        { name: "Champions League", url: "https://euromatchtickets.com/champions-league-tickets" }
+      ]} />
+      <FAQStructuredData faqs={[
+        { question: "Where is the Champions League Final 2026?", answer: "The UEFA Champions League 2025-26 Final will be held at the Allianz Arena in Munich, Germany on May 30, 2026." },
+        { question: "How can I buy Champions League tickets?", answer: "You can buy verified Champions League tickets from EuroMatchTickets starting at €149. All tickets are guaranteed authentic with instant QR delivery." },
+        { question: "When does the Champions League 2025-26 start?", answer: "The Champions League 2025-26 league phase starts in September 2025, with the knockout rounds beginning in February 2026 and the final on May 30, 2026." }
+      ]} />
     </div>
   );
 };

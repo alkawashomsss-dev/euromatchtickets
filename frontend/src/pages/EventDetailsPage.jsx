@@ -11,7 +11,7 @@ import { Badge } from "../components/ui/badge";
 import { toast } from "sonner";
 import VenueSeatMap from "../components/VenueSeatMap";
 import SEOHead from "../components/SEOHead";
-import { EventStructuredData, BreadcrumbStructuredData } from "../components/StructuredData";
+import { EventStructuredData, BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { 
   UrgencyCountdown, 
   ScarcityIndicator, 
@@ -713,6 +713,12 @@ const EventDetailsPage = () => {
         </div>
 
         {/* FAQ Section for SEO */}
+        <FAQStructuredData faqs={[
+          { question: `Are ${event.title} tickets legitimate?`, answer: "Yes, all tickets on EuroMatchTickets are verified and guaranteed authentic. Every purchase is protected by our 100% money-back guarantee." },
+          { question: "How do I receive my tickets?", answer: `After completing your purchase, you'll receive a QR code instantly via email. Show it at the venue entrance on your mobile device for quick access to ${event.venue}.` },
+          { question: "Can I get a refund if I can't attend?", answer: "We offer full refunds if the event is cancelled or postponed. If tickets are not delivered as promised, you're also eligible for a complete refund." },
+          { question: "Is it safe to buy resale tickets?", answer: "Absolutely! EuroMatchTickets is Europe's trusted ticket marketplace. All transactions are secured with SSL encryption, and payments are processed through Stripe." }
+        ]} />
         <div className="mt-16 bg-zinc-900/50 border border-white/5 rounded-2xl p-8">
           <h2 className="text-2xl font-bold mb-8">Frequently Asked Questions</h2>
           

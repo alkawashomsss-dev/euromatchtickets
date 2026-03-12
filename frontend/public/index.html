@@ -39,6 +39,21 @@
           if (canon) canon.href = 'https://euromatchtickets.com' + path;
           var ogUrl = document.querySelector('meta[property="og:url"]');
           if (ogUrl) ogUrl.content = 'https://euromatchtickets.com' + path;
+          
+          // Fetch page-specific title from API
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', '/api/seo/page-meta?path=' + encodeURIComponent(path), true);
+          xhr.timeout = 3000;
+          xhr.onload = function() {
+            if (xhr.status === 200) {
+              try {
+                var data = JSON.parse(xhr.responseText);
+                if (data.title) document.title = data.title;
+                if (data.canonical && canon) canon.href = data.canonical;
+              } catch(e) {}
+            }
+          };
+          xhr.send();
         }
       })();
     </script>

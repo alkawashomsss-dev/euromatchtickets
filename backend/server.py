@@ -9,6 +9,7 @@ import logging
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -31,6 +32,9 @@ from routes.marketing import router as marketing_router
 from routes.seed import router as seed_router
 
 app = FastAPI(title="EuroMatchTickets API", version="2.0")
+
+# GZip Compression for faster response times
+app.add_middleware(GZipMiddleware, minimum_size=500)
 
 # CORS
 ALLOWED_ORIGINS = [
@@ -82,60 +86,9 @@ async def api_root():
     return {"status": "EuroMatchTickets API v2.0", "version": "2.0"}
 
 
-# SEO Bot imports
-SEO_BOT_AVAILABLE = False
-seo_bot = None
-
-# Create a temporary api_router for bot compatibility
-from fastapi import APIRouter as _APIRouter
-_bot_router = _APIRouter(prefix="/api")
-
-try:
-    from seo_bot import seo_bot as _seo_bot, get_seo_bot_routes
-    seo_bot = _seo_bot
-    seo_bot_router = get_seo_bot_routes(_bot_router)
-    if seo_bot_router:
-        app.include_router(seo_bot_router)
-    SEO_BOT_AVAILABLE = True
-    logger.info("SEO Bot routes registered")
-except (ImportError, Exception) as e:
-    logger.info(f"SEO Bot not available: {e}")
-
-try:
-    from super_seo_bot import super_seo_bot, get_super_seo_routes
-    super_router = get_super_seo_routes(_bot_router)
-    if super_router:
-        app.include_router(super_router)
-    logger.info("Super SEO Bot routes registered")
-except (ImportError, Exception) as e:
-    logger.info(f"Super SEO Bot not available: {e}")
-
-try:
-    from ultra_seo_bot import ultra_seo_bot, get_ultra_seo_routes
-    ultra_router = get_ultra_seo_routes(_bot_router)
-    if ultra_router:
-        app.include_router(ultra_router)
-    logger.info("Ultra SEO Bot routes registered")
-except (ImportError, Exception) as e:
-    logger.info(f"Ultra SEO Bot not available: {e}")
-
-
-# Background tasks
-async def seo_bot_scheduler():
-    while True:
-        try:
-            if SEO_BOT_AVAILABLE and seo_bot:
-                logger.info("SEO Bot: Starting optimization cycle...")
-                results = await seo_bot.run_optimization_cycle()
-                logger.info(f"SEO Bot: Cycle completed. Actions: {len(results.get('actions', []))}")
-            await asyncio.sleep(6 * 60 * 60)
-        except Exception as e:
-            logger.error(f"SEO Bot Error: {e}")
-            await asyncio.sleep(60 * 60)
-
-
 from datetime import datetime, timezone
 
+# Background tasks
 async def cleanup_expired_events():
     while True:
         try:
@@ -161,9 +114,6 @@ async def cleanup_expired_events():
 
 @app.on_event("startup")
 async def startup():
-    if SEO_BOT_AVAILABLE:
-        asyncio.create_task(seo_bot_scheduler())
-        logger.info("SEO Bot Scheduler started")
     asyncio.create_task(cleanup_expired_events())
     logger.info("Cleanup Bot started - runs daily")
 

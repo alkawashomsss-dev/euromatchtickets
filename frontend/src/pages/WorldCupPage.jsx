@@ -6,6 +6,7 @@ import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Clock, Sp
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 
 const WorldCupPage = () => {
   const [events, setEvents] = useState([]);
@@ -415,6 +416,16 @@ const WorldCupPage = () => {
           </p>
         </div>
       </section>
+
+      <BreadcrumbStructuredData items={[
+        { name: "Home", url: "https://euromatchtickets.com" },
+        { name: "World Cup 2026", url: "https://euromatchtickets.com/world-cup-2026" }
+      ]} />
+      <FAQStructuredData faqs={[
+        { question: "When is the FIFA World Cup 2026?", answer: "The FIFA World Cup 2026 will be held from June 11 to July 19, 2026 across the United States, Mexico, and Canada. It will be the first World Cup with 48 teams." },
+        { question: "How can I buy World Cup 2026 tickets?", answer: "You can buy verified World Cup 2026 tickets on EuroMatchTickets starting from €199. All tickets include our FanProtect guarantee with instant QR delivery." },
+        { question: "Which cities are hosting the World Cup 2026?", answer: "The World Cup 2026 will be hosted in 16 cities: 11 in the USA (New York, Los Angeles, Dallas, Houston, Atlanta, Seattle, San Francisco, Philadelphia, Kansas City, Boston, Miami), 3 in Mexico (Mexico City, Guadalajara, Monterrey), and 2 in Canada (Toronto, Vancouver)." }
+      ]} />
     </div>
   );
 };

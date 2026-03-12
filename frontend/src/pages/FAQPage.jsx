@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronDown, Search, HelpCircle, Ticket, CreditCard, Shield, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
+import { BreadcrumbStructuredData } from "../components/StructuredData";
 
 const faqCategories = [
   { id: "buying", name: "Buying Tickets", icon: <Ticket className="w-5 h-5" /> },
@@ -151,6 +152,10 @@ const FAQPage = () => {
       
       {/* FAQ Schema */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <BreadcrumbStructuredData items={[
+        { name: "Home", url: "https://euromatchtickets.com" },
+        { name: "FAQ", url: "https://euromatchtickets.com/faq" }
+      ]} />
 
       {/* Hero */}
       <section className="py-16 bg-zinc-900/30 border-b border-white/5">

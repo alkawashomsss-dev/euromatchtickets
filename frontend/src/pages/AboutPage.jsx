@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
+import { BreadcrumbStructuredData } from "../components/StructuredData";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 
@@ -105,6 +106,10 @@ const AboutPage = () => {
         description="EuroMatchTickets Ltd. is a UK-registered company (No. 14892376) based in London. Europe's trusted ticket marketplace since 2024. 2.4M+ tickets sold. Contact us today."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <BreadcrumbStructuredData items={[
+        { name: "Home", url: "https://euromatchtickets.com" },
+        { name: "About Us", url: "https://euromatchtickets.com/about" }
+      ]} />
 
       {/* Hero */}
       <section className="py-16 bg-gradient-to-b from-purple-900/20 to-zinc-950">

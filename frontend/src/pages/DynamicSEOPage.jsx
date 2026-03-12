@@ -4,6 +4,7 @@ import { ArrowLeft, Shield, Clock, CreditCard, Star, ChevronRight, Tag, MapPin, 
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import { InternalLinks } from "../components/InternalLinks";
 import axios from "axios";
 import { API } from "../App";
 
@@ -200,7 +201,7 @@ export default function DynamicSEOPage() {
           {/* Image */}
           {page.image && (
             <div className="absolute top-0 right-0 w-1/3 h-full hidden lg:block opacity-20">
-              <img src={page.image} alt={page.title} className="w-full h-full object-cover" />
+              <img loading="lazy" src={page.image} alt={page.title} className="w-full h-full object-cover" />
             </div>
           )}
         </div>
@@ -272,6 +273,9 @@ export default function DynamicSEOPage() {
                   </Button>
                 </Link>
               </div>
+
+              {/* Internal Links for SEO */}
+              <InternalLinks category={page.category || "f1"} showRelated={true} />
             </div>
           </div>
         </div>
