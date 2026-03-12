@@ -198,7 +198,7 @@ const F1TicketsPage = () => {
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-zinc-900 to-zinc-950" />
-        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg')] opacity-10 bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-10 bg-cover bg-center" style={{backgroundImage: "url('/images/heroes/f1-red.jpg')"}} />
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-red-500/20 border border-red-500/30 rounded-full px-4 py-2 mb-6 animate-pulse">

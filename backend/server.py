@@ -36,6 +36,26 @@ app = FastAPI(title="EuroMatchTickets API", version="2.0")
 # GZip Compression for faster response times
 app.add_middleware(GZipMiddleware, minimum_size=500)
 
+# Cache control middleware for API responses
+from starlette.middleware.base import BaseHTTPMiddleware
+
+class CacheControlMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request, call_next):
+        response = await call_next(request)
+        path = request.url.path
+        # Aggressive cache for sitemaps and static SEO
+        if path.endswith('.xml') or path.startswith('/api/sitemaps/'):
+            response.headers["Cache-Control"] = "public, max-age=3600, s-maxage=7200"
+        # Cache for SEO pages list
+        elif '/api/seo/' in path:
+            response.headers["Cache-Control"] = "public, max-age=1800, s-maxage=3600"
+        # Cache for events list
+        elif '/api/events' in path and request.method == 'GET':
+            response.headers["Cache-Control"] = "public, max-age=300, s-maxage=600"
+        return response
+
+app.add_middleware(CacheControlMiddleware)
+
 # CORS
 ALLOWED_ORIGINS = [
     "http://localhost:3000", "http://localhost:3001",

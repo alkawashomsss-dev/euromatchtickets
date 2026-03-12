@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import VenueSeatMap from "../components/VenueSeatMap";
 import SEOHead from "../components/SEOHead";
 import { EventStructuredData, BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { getEventImagePath } from "../utils/eventImages";
 import { 
   UrgencyCountdown, 
   ScarcityIndicator, 
@@ -369,14 +370,15 @@ const EventDetailsPage = () => {
       
       {/* Hero */}
       <div className="relative h-[400px] md:h-[450px] overflow-hidden">
-        <img 
-          src={event.event_image || (isMatch 
-            ? "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg"
-            : "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"
-          )}
-          alt={event.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <picture>
+          <source type="image/webp" srcSet={`${getEventImagePath(event)}-md.webp 800w, ${getEventImagePath(event)}-lg.webp 1536w`} sizes="100vw" />
+          <img 
+            src={event.event_image || `${getEventImagePath(event)}.jpg`}
+            alt={event.title}
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={(e) => { e.target.onerror = null; e.target.src = `${getEventImagePath(event)}.jpg`; }}
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/30" />
         
         <div className="relative z-10 h-full max-w-[1440px] mx-auto px-4 md:px-8 flex flex-col justify-end pb-12">

@@ -11,6 +11,8 @@ import {
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import OptimizedImage from "../components/OptimizedImage";
+import { getEventImagePath, getCategoryHero } from "../utils/eventImages";
 import { TrustSection, TrustBar, OfficialPartnerBadges } from "../components/TrustElements";
 import { ReviewsGrid, ReviewsStats, ReviewsCarousel } from "../components/ReviewsSystem";
 
@@ -64,6 +66,8 @@ const EventCard = ({ event }) => {
   const isLimitedAvailability = ticketsLeft > 0 && ticketsLeft <= 10;
   const isSellingFast = ticketsLeft > 10 && ticketsLeft <= 25;
 
+  const eventImgBase = getEventImagePath(event);
+
   return (
     <Link 
       to={`/event/${event.event_id}`}
@@ -72,19 +76,23 @@ const EventCard = ({ event }) => {
     >
       {/* Image */}
       <div className="relative h-48 overflow-hidden">
-        <img 
-          loading="lazy"
-          src={event.event_image || (isMatch 
-            ? "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=600"
-            : "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=600"
-          )}
-          alt={event.title}
-          loading="lazy"
-          decoding="async"
-          width="400"
-          height="192"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
+        <picture>
+          <source type="image/webp" srcSet={`${eventImgBase}-sm.webp 400w, ${eventImgBase}-md.webp 800w`} sizes="(max-width: 640px) 400px, 800px" />
+          <img 
+            src={event.event_image || `${eventImgBase}.jpg`}
+            alt={event.title}
+            loading="lazy"
+            decoding="async"
+            width="400"
+            height="192"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = `${eventImgBase}.jpg`;
+            }}
+          />
+        </picture>
         <div className="img-overlay" />
         
         {/* Type Badge */}
@@ -246,7 +254,7 @@ const HomePage = () => {
             loop 
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
-            poster="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            poster="/images/heroes/worldcup-trophy.jpg"
           >
             <source src="https://videos.pexels.com/video-files/2657301/2657301-uhd_2560_1440_24fps.mp4" type="video/mp4" />
           </video>
@@ -619,8 +627,8 @@ const HomePage = () => {
               data-testid="category-concerts"
               className="group relative h-80 rounded-3xl overflow-hidden"
             >
-              <img 
-                src="https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg"
+              <OptimizedImage 
+                basePath={getCategoryHero("concert")}
                 alt="Concerts"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -642,8 +650,8 @@ const HomePage = () => {
               data-testid="category-matches"
               className="group relative h-80 rounded-3xl overflow-hidden"
             >
-              <img 
-                src="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg"
+              <OptimizedImage 
+                basePath={getCategoryHero("football")}
                 alt="Football"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />

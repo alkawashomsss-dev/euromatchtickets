@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/logo-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/logo-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#09090b" />
     
@@ -10,6 +14,7 @@
     <link rel="dns-prefetch" href="https://images.pexels.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://js.stripe.com" />
+    <link rel="dns-prefetch" href="https://static.prod-images.emergentagent.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://images.pexels.com" crossorigin />
@@ -18,8 +23,10 @@
     <!-- Crystal Edition Fonts - Display Swap for faster rendering -->
     <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet" />
     
-    <!-- Preload Critical Hero Image (LCP Optimization) -->
-    <link rel="preload" as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1735587804724-5d9511bce0cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxjcm93ZGVkJTIwZm9vdGJhbGwlMjBzdGFkaXVtJTIwbmlnaHQlMjBsaWdodHMlMjBsdXh1cnl8ZW58MHx8fHwxNzcxOTI5Mzk4fDA&ixlib=rb-4.1.0&q=75&w=1280" />
+    <!-- Preload Critical Hero Images (LCP Optimization) -->
+    <link rel="preload" as="image" fetchpriority="high" type="image/webp" href="%PUBLIC_URL%/images/heroes/worldcup-lg.webp" />
+    <link rel="preload" as="image" type="image/webp" href="%PUBLIC_URL%/images/heroes/football-md.webp" />
+    <link rel="preload" as="image" type="image/webp" href="%PUBLIC_URL%/images/heroes/concert-md.webp" />
     
     <!-- Primary SEO Meta Tags -->
     <title>EuroMatchTickets - Buy Football & Concert Tickets | Europe's #1 Marketplace</title>
@@ -63,9 +70,9 @@
     <meta property="og:url" content="https://euromatchtickets.com/" />
     <meta property="og:title" content="EuroMatchTickets - Football, F1 & Concert Tickets Europe" />
     <meta property="og:description" content="Europe's trusted ticket marketplace for football matches, Formula 1, and concerts. Champions League, Monaco GP, World Cup. 100% secure, instant QR delivery." />
-    <meta property="og:image" content="https://static.prod-images.emergentagent.com/jobs/775fd9a1-fbbf-459e-af56-55fb2499685c/images/1ad01909b1565e2be44a7b26803868d06378b04d70810a060231d8ef9d1b0c17.png" />
-    <meta property="og:image:width" content="1536" />
-    <meta property="og:image:height" content="1024" />
+    <meta property="og:image" content="https://euromatchtickets.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="EuroMatchTickets" />
     
@@ -74,7 +81,7 @@
     <meta property="twitter:url" content="https://euromatchtickets.com/" />
     <meta property="twitter:title" content="EuroMatchTickets - Football & Concert Tickets Europe" />
     <meta property="twitter:description" content="Europe's trusted ticket marketplace. Champions League, Premier League, La Liga, Bundesliga, concerts. Secure payments, instant QR." />
-    <meta property="twitter:image" content="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1200" />
+    <meta property="twitter:image" content="https://euromatchtickets.com/og-image.jpg" />
     
     <!-- Geo Tags for European Market -->
     <meta name="geo.region" content="EU" />
@@ -86,7 +93,7 @@
     <meta name="language" content="English" />
     <meta name="distribution" content="global" />
     
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     
     <!-- Critical CSS for Above-the-fold (CLS Optimization) -->
@@ -208,7 +215,12 @@
       "@type": "Organization",
       "name": "EuroMatchTickets",
       "url": "https://euromatchtickets.com",
-      "logo": "https://euromatchtickets.com/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://euromatchtickets.com/logo-600.png",
+        "width": 600,
+        "height": 600
+      },
       "description": "Europe's #1 ticket marketplace for football matches and concerts",
       "foundingDate": "2025",
       "sameAs": [

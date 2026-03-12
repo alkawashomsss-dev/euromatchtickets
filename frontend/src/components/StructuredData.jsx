@@ -256,7 +256,13 @@ const OrganizationStructuredData = () => {
       "@type": "Organization",
       "name": "EuroMatchTickets",
       "url": "https://euromatchtickets.com",
-      "logo": "https://euromatchtickets.com/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://euromatchtickets.com/logo-600.png",
+        "width": 600,
+        "height": 600
+      },
+      "image": "https://euromatchtickets.com/og-image.jpg",
       "description": "Europe's trusted ticket marketplace for football, Formula 1, and concert tickets.",
       "contactPoint": {
         "@type": "ContactPoint",
