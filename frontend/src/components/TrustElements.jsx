@@ -246,23 +246,23 @@ export const TrustSection = () => (
 
 // Compact Trust Bar for headers
 export const TrustBar = () => (
-  <div className="bg-gradient-to-r from-emerald-900/30 via-zinc-900 to-purple-900/30 border-y border-white/5 py-3">
+  <div className="mt-[90px] sm:mt-[110px] bg-gradient-to-r from-emerald-900/30 via-zinc-900 to-purple-900/30 border-y border-white/5 py-2">
     <div className="max-w-6xl mx-auto px-4">
-      <div className="flex flex-wrap justify-center items-center gap-6 text-sm">
-        <div className="flex items-center gap-2">
-          <Shield className="w-4 h-4 text-emerald-400" />
+      <div className="flex justify-center items-center gap-4 sm:gap-6 text-[11px] sm:text-sm overflow-x-auto whitespace-nowrap">
+        <div className="flex items-center gap-1.5">
+          <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0" />
           <span className="text-zinc-300">100% Guarantee</span>
         </div>
-        <div className="flex items-center gap-2">
-          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+        <div className="flex items-center gap-1.5">
+          <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400 flex-shrink-0" />
           <span className="text-zinc-300">4.8/5 Trustpilot</span>
         </div>
-        <div className="flex items-center gap-2">
-          <Award className="w-4 h-4 text-purple-400" />
+        <div className="hidden sm:flex items-center gap-1.5">
+          <Award className="w-4 h-4 text-purple-400 flex-shrink-0" />
           <span className="text-zinc-300">Official Partner</span>
         </div>
-        <div className="flex items-center gap-2">
-          <CheckCircle className="w-4 h-4 text-blue-400" />
+        <div className="hidden sm:flex items-center gap-1.5">
+          <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0" />
           <span className="text-zinc-300">2M+ Tickets Sold</span>
         </div>
       </div>

@@ -15,9 +15,9 @@ import {
 
 // Reseller Disclosure Banner - Required for Google Ads Certification
 const ResellerDisclosure = () => (
-  <div className="fixed top-0 left-0 right-0 z-[60] bg-amber-500/10 border-b border-amber-500/20 py-2 px-4">
+  <div className="fixed top-0 left-0 right-0 z-[60] bg-amber-500/10 border-b border-amber-500/20 py-1.5 px-3">
     <div className="max-w-[1440px] mx-auto">
-      <p className="text-xs text-amber-200/90 text-center">
+      <p className="text-[10px] sm:text-xs text-amber-200/90 text-center leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
         <strong>Notice:</strong> EuroMatchTickets is an independent resale marketplace. Prices may be above or below face value.
         <a href="/terms" className="underline ml-1 hover:text-amber-100">Learn more</a>
       </p>
@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <>
       <ResellerDisclosure />
-      <header className="fixed top-8 left-0 right-0 z-50 glass border-b border-white/5">
+      <header className="fixed top-[26px] sm:top-[30px] left-0 right-0 z-50 glass border-b border-white/5">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
