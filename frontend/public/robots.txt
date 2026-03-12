@@ -4,11 +4,6 @@
 User-agent: *
 Allow: /
 
-# Allow sitemaps (critical for indexing)
-Allow: /api/sitemap-index.xml
-Allow: /api/sitemap.xml
-Allow: /api/sitemaps/
-
 # Block private areas only
 Disallow: /admin
 Disallow: /seller
@@ -30,6 +25,6 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Sitemaps
-Sitemap: https://euromatchtickets.com/api/sitemap-index.xml
-Sitemap: https://euromatchtickets.com/api/sitemap.xml
+# Sitemaps (static files - no /api/ prefix)
+Sitemap: https://euromatchtickets.com/sitemap-index.xml
+Sitemap: https://euromatchtickets.com/sitemap.xml

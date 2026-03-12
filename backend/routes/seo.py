@@ -204,8 +204,8 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-Sitemap: {base_url}/api/sitemap-index.xml
-Sitemap: {base_url}/api/sitemap.xml
+Sitemap: {base_url}/sitemap-index.xml
+Sitemap: {base_url}/sitemap.xml
 """
     return Response(content=content, media_type="text/plain")
 

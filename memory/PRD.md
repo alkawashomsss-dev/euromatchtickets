@@ -10,7 +10,20 @@ backend/
 ├── config/settings.py     ├── database/db.py
 ├── models/schemas.py      ├── utils/helpers.py
 ├── routes/ (auth, events, tickets, seo, admin, marketing, seed)
-├── mega_seo_generator.py  └── uploads/
+├── mega_seo_generator.py  ├── generate_sitemaps.py  (NEW - static sitemap generator)
+└── uploads/
+frontend/public/
+├── robots.txt             (Updated - no /api/ block)
+├── sitemap-index.xml      (NEW - static XML)
+├── sitemap.xml            (NEW - static XML alias)
+└── sitemaps/              (NEW - static category XMLs)
+    ├── pages.xml (77 URLs)
+    ├── f1.xml (528 URLs)
+    ├── football.xml (292 URLs)
+    ├── concerts.xml (850 URLs)
+    ├── worldcup.xml (22 URLs)
+    ├── cities.xml (80 URLs)
+    └── articles.xml (0 URLs)
 ```
 
 ## Completed Features
@@ -18,47 +31,49 @@ backend/
 ### Core Platform
 - Event browsing, Stripe payments, QR tickets, Reseller compliance
 
-### server.py Refactoring (March 12, 2026)
-- 4,955 → 166 lines (97% reduction)
-
 ### SEO System (1,762+ Unique Pages)
-- Mega SEO Generator v3, Sitemap Index with 7 sitemaps, Smart Cleanup
+- Mega SEO Generator v3, Sitemap Index, Smart Cleanup
 
 ### Schema.org Complete Fix (March 12, 2026)
-- **Round 1:** Fixed ALL 37 event pages - added `location`, `eventStatus`, `endDate`, `image`, `organizer`
-- **Round 2:** Fixed ALL 32 pages with AggregateOffer - added `url`, `validFrom`, `highPrice`
-- **Round 2:** F1 Schedule nested items - added `description`, `offers` with full fields
-- All addresses use proper `PostalAddress` schema (not plain strings)
+- ALL 37 event pages: `location`, `eventStatus`, `endDate`, `image`, `organizer`
+- ALL 32 AggregateOffer pages: `url`, `validFrom`, `highPrice`
+- F1 Schedule nested items: `description`, `offers` with full fields
+- All addresses use proper `PostalAddress` schema
 
-### Google Search Console Indexing Fix (March 12, 2026)
-- **Fixed robots.txt:** Removed `Disallow: /api/` that blocked Google from sitemaps
-- **Fixed Sitemap URL:** Points to `/api/sitemap-index.xml`
-- **Added 61 static pages** to sitemap (77 total in pages.xml)
+### Static Sitemap Fix (March 12, 2026) - CRITICAL
+- **Problem:** Live site served HTML for `/api/sitemap-index.xml` (React catch-all intercepted)
+- **Fix:** Generated static XML files in `frontend/public/` - served directly as XML
+- **URLs now at root level:** `/sitemap-index.xml`, `/sitemap.xml`, `/sitemaps/*.xml`
+- **robots.txt:** Updated to point to root-level sitemaps
+- **Script:** `generate_sitemaps.py` to regenerate before each deployment
 - **Total: 1,849 URLs** across all sitemaps
 
-### "Sell Your Tickets" Feature (March 12, 2026)
-- Tested: 19/19 backend + all frontend (100%)
-
-### Customer Reviews System (March 12, 2026)
-- Connected frontend to backend API. Tested: 13/13 (100%)
+### Other Features
+- "Sell Your Tickets" page (tested 100%)
+- Customer Reviews System (tested 100%)
+- Deployment Guide at `/app/memory/DEPLOYMENT_GUIDE.md`
 
 ## Prioritized Backlog
 
 ### P0 - Completed
-- [x] 1,762 unique SEO pages
-- [x] Schema.org complete for ALL pages (all Google-recommended fields)
-- [x] robots.txt + sitemap fix
-- [x] "Sell Your Tickets" + Reviews system
+- [x] Schema.org complete for ALL pages
+- [x] Static sitemaps (no HTML issue)
+- [x] robots.txt fixed
+- [x] "Sell Your Tickets" + Reviews
 
 ### P1 - Next
-- [ ] Deploy to live site (ALL fixes need to be live for Google re-indexing)
-- [ ] Re-submit sitemaps in Google Search Console
+- [ ] Deploy to live site
+- [ ] Submit NEW sitemap URL in Google Search Console: `https://euromatchtickets.com/sitemap-index.xml`
 - [ ] Verify Resend domain for email delivery
 
 ### P2 - Future
-- [ ] Owner dashboard with real charts
-- [ ] Stripe Connect for marketplace payouts
-- [ ] Ticket supplier affiliate program
+- [ ] Owner dashboard, Stripe Connect, Affiliate program
+
+## Deployment Notes
+Before each deploy:
+1. Run `python3 backend/generate_sitemaps.py` to refresh static sitemaps
+2. Build frontend: `cd frontend && yarn build`
+3. Deploy to Render
 
 ## 3rd Party Integrations
 Stripe, MongoDB Atlas, OpenAI GPT-4o, Facebook Pixel, Google Analytics, Resend (blocked)
