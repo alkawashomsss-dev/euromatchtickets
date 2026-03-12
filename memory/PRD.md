@@ -15,7 +15,7 @@ backend/
 │   ├── auth.py            (auth endpoints)
 │   ├── events.py          (events CRUD)
 │   ├── tickets.py         (tickets, checkout, orders, Stripe, Sell Tickets)
-│   ├── seo.py             (SEO pages, sitemaps)
+│   ├── seo.py             (SEO pages, sitemaps, robots.txt)
 │   ├── admin.py           (admin, disputes, reviews, cleanup)
 │   ├── marketing.py       (chat, raffle, marketing)
 │   └── seed.py            (seed data endpoints)
@@ -28,72 +28,57 @@ backend/
 ### Core Platform
 - Event browsing by category (Football, F1, Concerts, MotoGP, World Cup)
 - Stripe payment integration with QR code tickets
-- Event detail pages with seat maps
 - Reseller compliance (terms, notice, price breakdown)
 
 ### server.py Refactoring (March 12, 2026)
 - 4,955 lines to 166 lines (97% reduction)
-- Split into 7 route modules + 4 supporting modules
 
 ### SEO System (1,762+ Unique Pages)
-- Mega SEO Generator v3 with truly unique content per page
-- Categories: F1 (528), Football (292), Concerts (850), World Cup (22), Cities (80+)
+- Mega SEO Generator v3 with unique content per page
 - Sitemap Index at `/api/sitemap-index.xml` with 7 category sitemaps
-- Smart Cleanup: Events marked `past_event` (not deleted) - preserves SEO value
-- Schema.org Event + BreadcrumbList structured data
+- Smart Cleanup: Events marked `past_event` (not deleted)
+
+### Schema.org Structured Data Fix (March 12, 2026)
+- Fixed ALL 37 event pages with missing Schema.org fields
+- Added: `location` (REQUIRED), `eventStatus`, `endDate`, `image`, `organizer`
+- All addresses use proper PostalAddress schema
+
+### Google Search Console Indexing Fix (March 12, 2026) - CRITICAL
+- **Fixed robots.txt:** Removed `Disallow: /api/` that was blocking Google from sitemaps
+- **Fixed Sitemap URL:** Changed from `sitemap.xml` to `/api/sitemap-index.xml`
+- **Added 61 static pages** to pages.xml sitemap (was 16, now 77)
+- **Total sitemap URLs:** 1,849 (pages: 77, F1: 528, Football: 292, Concerts: 850, WorldCup: 22, Cities: 80)
+- All tested URLs return HTTP 200
 
 ### "Sell Your Tickets" Feature (March 12, 2026)
-- Backend: POST /api/seller/list-tickets (multipart/form-data with file upload)
-- Backend: GET /api/seller/listings, DELETE /api/seller/listings/{id}, GET /api/listings/recent
-- Frontend: Professional multi-step form (3 steps: Event Details, Ticket Details, Upload & Submit)
-- Tested: 19/19 backend tests + all frontend flows passed (100%)
+- Tested: 19/19 backend + all frontend (100%)
 
 ### Customer Reviews System (March 12, 2026)
-- Backend: POST /api/reviews (public), GET /api/reviews (with aggregate), PUT /admin/reviews/{id}
-- Frontend: Connected SubmitReviewForm to backend API
-- Frontend: ReviewsGrid fetches from API + merges with seed data
-- SEO: Schema.org AggregateRating with real data from API
-- Tested: 13/13 backend tests + all frontend flows passed (100%)
-
-### Schema.org Structured Data Fix (March 12, 2026) - CRITICAL SEO FIX
-- Fixed ALL 37 event pages with missing Schema.org fields
-- Added to every Event page: `location` (REQUIRED), `eventStatus`, `endDate`, `image`, `organizer`
-- Fixed pages: DynamicSEOPage (1700+ pages), 16 GP pages, 6 concert pages, 4 World Cup pages, EventDetailsPage, + more
-- All addresses now use proper PostalAddress schema (not plain strings)
-- Validated: All event schemas now pass Google Rich Results Test
+- Tested: 13/13 backend + all frontend (100%)
 
 ### Deployment Guide (March 12, 2026)
-- Created `/app/memory/DEPLOYMENT_GUIDE.md` with step-by-step instructions
+- Created `/app/memory/DEPLOYMENT_GUIDE.md`
 
 ## Prioritized Backlog
 
 ### P0 - Completed
 - [x] 1,762 unique SEO pages
-- [x] Split sitemap index
-- [x] server.py refactoring
-- [x] Smart cleanup (past_event)
-- [x] Reviews API + Frontend integration
-- [x] Structured data for ALL pages (location, eventStatus, endDate, image, organizer)
-- [x] "Sell Your Tickets" page with file upload
+- [x] Schema.org for ALL pages
+- [x] robots.txt fix (was blocking sitemaps!)
+- [x] 77 static pages added to sitemap
+- [x] "Sell Your Tickets" page
+- [x] Reviews API + Frontend
 - [x] Deployment guide
 
 ### P1 - Next
-- [ ] Deploy latest changes to live site (euromatchtickets.com)
-- [ ] Verify Resend domain for email ticket delivery
+- [ ] Deploy to live site (all SEO fixes need to be live for Google to re-index)
+- [ ] Re-submit sitemaps in Google Search Console
+- [ ] Verify Resend domain for email delivery
 
 ### P2 - Future
 - [ ] Owner dashboard with real charts
-- [ ] Stripe Connect for real marketplace payouts
+- [ ] Stripe Connect for marketplace payouts
 - [ ] Ticket supplier affiliate program
-- [ ] Delete server_legacy.py and obsolete backup files
-
-## Key API Endpoints
-- `POST /api/reviews` - Submit review (public)
-- `GET /api/reviews` - Get reviews + aggregate
-- `POST /api/seller/list-tickets` - List tickets for sale (auth required)
-- `GET /api/seller/listings` - Get seller's listings
-- `GET /api/sitemap-index.xml` - Sitemap index
-- `GET /api/sitemaps/{category}.xml` - Category sitemaps
 
 ## 3rd Party Integrations
-- Stripe, MongoDB Atlas, OpenAI GPT-4o, Sora 2, Facebook Pixel, Google Analytics, Resend (blocked)
+- Stripe, MongoDB Atlas, OpenAI GPT-4o, Facebook Pixel, Google Analytics, Resend (blocked)

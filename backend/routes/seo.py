@@ -76,6 +76,75 @@ async def get_category_sitemap(category: str):
             ("/buyer-protection", "0.7", "monthly"), ("/terms", "0.5", "monthly"),
             ("/privacy-policy", "0.5", "monthly"), ("/refund-policy", "0.5", "monthly"),
             ("/sell-tickets", "0.8", "monthly"),
+            # F1 GP Pages
+            ("/f1-monaco-grand-prix-tickets", "0.95", "weekly"),
+            ("/f1-british-grand-prix-silverstone-tickets", "0.95", "weekly"),
+            ("/f1-italian-grand-prix-monza-tickets", "0.95", "weekly"),
+            ("/f1-singapore-grand-prix-tickets", "0.95", "weekly"),
+            ("/f1-las-vegas-grand-prix-tickets", "0.95", "weekly"),
+            ("/f1-miami-grand-prix-tickets", "0.95", "weekly"),
+            ("/f1-belgian-grand-prix-spa-tickets", "0.95", "weekly"),
+            ("/f1-abu-dhabi-grand-prix-tickets", "0.95", "weekly"),
+            ("/f1-dutch-grand-prix-zandvoort-tickets", "0.90", "weekly"),
+            ("/f1-japanese-grand-prix-suzuka-tickets", "0.90", "weekly"),
+            ("/f1-australian-grand-prix-melbourne-tickets", "0.90", "weekly"),
+            ("/f1-bahrain-grand-prix-tickets", "0.90", "weekly"),
+            ("/f1-saudi-arabian-grand-prix-jeddah-tickets", "0.90", "weekly"),
+            ("/f1-spanish-grand-prix-barcelona-tickets", "0.90", "weekly"),
+            ("/f1-hungarian-grand-prix-budapest-tickets", "0.90", "weekly"),
+            ("/f1-austrian-grand-prix-red-bull-ring-tickets", "0.90", "weekly"),
+            ("/f1-2026-schedule", "0.90", "weekly"),
+            ("/f1-ticket-prices-2026", "0.85", "weekly"),
+            ("/f1-ticket-prices-guide", "0.85", "weekly"),
+            ("/f1-tickets-2026", "0.90", "weekly"),
+            ("/how-to-buy-f1-tickets", "0.80", "monthly"),
+            ("/best-f1-races-europe", "0.80", "monthly"),
+            ("/monaco-grand-prix-tickets", "0.90", "weekly"),
+            # MotoGP Pages
+            ("/motogp-mugello-tickets", "0.85", "weekly"),
+            ("/motogp-2026-schedule", "0.85", "weekly"),
+            ("/motogp-ticket-prices-2026", "0.85", "weekly"),
+            ("/isle-of-man-tt-tickets", "0.80", "weekly"),
+            # Football Pages
+            ("/el-clasico-tickets", "0.90", "weekly"),
+            ("/football-ticket-prices-2026", "0.85", "weekly"),
+            # Concert Pages
+            ("/the-weeknd-tour-2026", "0.90", "weekly"),
+            ("/bruno-mars-tour-2026", "0.90", "weekly"),
+            ("/guns-n-roses-tour-2026", "0.85", "weekly"),
+            ("/bad-bunny-london-2026", "0.85", "weekly"),
+            ("/harry-styles-tickets", "0.85", "weekly"),
+            ("/maroon-5-tickets", "0.85", "weekly"),
+            ("/john-legend-abu-dhabi-tickets", "0.80", "weekly"),
+            ("/metallica-sphere-las-vegas-tickets", "0.85", "weekly"),
+            ("/acl-festival-2026-tickets", "0.85", "weekly"),
+            ("/concert-ticket-prices-2026", "0.85", "weekly"),
+            # World Cup Pages
+            ("/world-cup-2026-tickets", "0.95", "weekly"),
+            ("/world-cup-raffle", "0.75", "weekly"),
+            # Comparison Pages
+            ("/euromatchtickets-vs-stubhub", "0.80", "monthly"),
+            ("/euromatchtickets-vs-viagogo", "0.80", "monthly"),
+            ("/euromatchtickets-vs-ticketmaster", "0.80", "monthly"),
+            ("/euromatchtickets-vs-seatgeek", "0.80", "monthly"),
+            # Monthly Events Pages
+            ("/events-january-2026", "0.70", "monthly"),
+            ("/events-february-2026", "0.70", "monthly"),
+            ("/events-march-2026", "0.75", "monthly"),
+            ("/events-april-2026", "0.75", "monthly"),
+            ("/events-may-2026", "0.75", "monthly"),
+            ("/events-june-2026", "0.75", "monthly"),
+            ("/events-july-2026", "0.75", "monthly"),
+            ("/events-august-2026", "0.75", "monthly"),
+            ("/events-september-2026", "0.70", "monthly"),
+            ("/events-october-2026", "0.70", "monthly"),
+            ("/events-november-2026", "0.70", "monthly"),
+            ("/events-december-2026", "0.70", "monthly"),
+            ("/events-this-weekend", "0.80", "daily"),
+            # Trust & Info Pages
+            ("/fan-protect", "0.60", "monthly"),
+            ("/payment-info", "0.55", "monthly"),
+            ("/impressum", "0.40", "monthly"),
         ]
         for path, prio, freq in static:
             xml_items.append(f'  <url>\n    <loc>{base_url}{path}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>')
@@ -109,12 +178,31 @@ async def get_robots(request: Request):
     base_url = FRONTEND_URL
     content = f"""User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /api/
-Allow: /api/sitemap.xml
+
+# Allow sitemaps (critical for indexing)
 Allow: /api/sitemap-index.xml
+Allow: /api/sitemap.xml
 Allow: /api/sitemaps/
-Allow: /api/robots.txt
+
+# Block private areas only
+Disallow: /admin
+Disallow: /seller
+Disallow: /owner
+Disallow: /my-tickets
+Disallow: /auth/
+Disallow: /order/
+Disallow: /alerts
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
 
 Sitemap: {base_url}/api/sitemap-index.xml
 Sitemap: {base_url}/api/sitemap.xml
