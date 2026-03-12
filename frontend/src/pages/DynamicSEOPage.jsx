@@ -275,7 +275,7 @@ export default function DynamicSEOPage() {
               </div>
 
               {/* Internal Links for SEO */}
-              <InternalLinks category={page.category || "f1"} showRelated={true} />
+              <InternalLinks category={page.category || "f1"} slug={slug} city={page.city || ""} showRelated={true} />
             </div>
           </div>
         </div>

@@ -1,5 +1,8 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, Trophy, Music, Flag, Globe } from "lucide-react";
+import { ChevronRight, Trophy, Music, Flag, Globe, MapPin } from "lucide-react";
+import { API } from "../App";
+import axios from "axios";
 
 const linkGroups = {
   f1: {
@@ -55,12 +58,23 @@ const relatedMap = {
   worldcup: ["f1", "concert"],
 };
 
-export const InternalLinks = ({ category = "f1", showRelated = true }) => {
+const catIcons = { f1: Flag, football: Trophy, concert: Music, worldcup: Globe };
+
+export const InternalLinks = ({ category = "f1", slug = "", city = "", showRelated = true }) => {
+  const [dynamicLinks, setDynamicLinks] = useState([]);
   const primary = linkGroups[category] || linkGroups.f1;
   const relatedCategories = showRelated ? (relatedMap[category] || []).slice(0, 1) : [];
 
+  useEffect(() => {
+    const params = new URLSearchParams({ category, slug, city, limit: "6" });
+    axios.get(`${API}/seo/related-pages?${params}`).then(res => {
+      setDynamicLinks(res.data.links || []);
+    }).catch(() => {});
+  }, [category, slug, city]);
+
   return (
     <div className="space-y-6" data-testid="internal-links">
+      {/* Static category links */}
       <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
         <div className="flex items-center gap-2 mb-4">
           <primary.icon className="w-4 h-4 text-emerald-400" />
@@ -69,10 +83,7 @@ export const InternalLinks = ({ category = "f1", showRelated = true }) => {
         <ul className="space-y-2">
           {primary.links.map((link) => (
             <li key={link.to}>
-              <Link
-                to={link.to}
-                className="flex items-center gap-2 text-sm text-zinc-400 hover:text-emerald-400 transition-colors"
-              >
+              <Link to={link.to} className="flex items-center gap-2 text-sm text-zinc-400 hover:text-emerald-400 transition-colors">
                 <ChevronRight className="w-3 h-3 flex-shrink-0" />
                 {link.label}
               </Link>
@@ -81,6 +92,30 @@ export const InternalLinks = ({ category = "f1", showRelated = true }) => {
         </ul>
       </div>
 
+      {/* Dynamic related pages from DB */}
+      {dynamicLinks.length > 0 && (
+        <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5" data-testid="dynamic-internal-links">
+          <div className="flex items-center gap-2 mb-4">
+            <MapPin className="w-4 h-4 text-amber-400" />
+            <h3 className="font-bold text-white text-sm">Related Events</h3>
+          </div>
+          <ul className="space-y-2">
+            {dynamicLinks.map((link) => {
+              const Icon = catIcons[link.category] || Flag;
+              return (
+                <li key={link.url}>
+                  <Link to={link.url} className="flex items-center gap-2 text-sm text-zinc-400 hover:text-amber-400 transition-colors">
+                    <Icon className="w-3 h-3 flex-shrink-0" />
+                    <span className="truncate">{link.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+
+      {/* Static related category links */}
       {relatedCategories.map((cat) => {
         const group = linkGroups[cat];
         if (!group) return null;
@@ -93,10 +128,7 @@ export const InternalLinks = ({ category = "f1", showRelated = true }) => {
             <ul className="space-y-2">
               {group.links.slice(0, 4).map((link) => (
                 <li key={link.to}>
-                  <Link
-                    to={link.to}
-                    className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-                  >
+                  <Link to={link.to} className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
                     <ChevronRight className="w-3 h-3 flex-shrink-0" />
                     {link.label}
                   </Link>

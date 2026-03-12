@@ -57,7 +57,12 @@ async def get_sitemap_index():
     api_base = f"{base_url}/api"
     today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    for cat in ["pages", "f1", "football", "concerts", "worldcup", "cities", "articles"]:
+    categories = ["pages", "f1", "football", "concerts", "worldcup", "cities"]
+    # Only include articles sitemap if articles exist in the database
+    articles_count = await db.articles.count_documents({})
+    if articles_count > 0:
+        categories.append("articles")
+    for cat in categories:
         xml += f'  <sitemap>\n    <loc>{api_base}/sitemaps/{cat}.xml</loc>\n    <lastmod>{today}</lastmod>\n  </sitemap>\n'
     xml += '</sitemapindex>'
     return Response(content=xml, media_type="application/xml", headers={"Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=3600"})
@@ -393,3 +398,49 @@ async def get_seo_page_meta(path: str = ""):
 async def seo_get_internal_links(event_type: str):
     events = await db.events.find({"event_type": event_type, "status": {"$ne": "cancelled"}}, {"_id": 0, "event_id": 1, "title": 1}).to_list(20)
     return [{"url": f"/event/{e['event_id']}", "title": e['title']} for e in events]
+
+
+@router.get("/seo/related-pages")
+async def get_related_pages(category: str = "", slug: str = "", city: str = "", limit: int = 8):
+    """Return contextually related SEO pages for internal linking."""
+    results = []
+    seen_slugs = {slug}  # exclude current page
+
+    # 1. Same category pages (different from current)
+    if category:
+        same_cat = await db.seo_pages.find(
+            {"category": category, "slug": {"$ne": slug}},
+            {"_id": 0, "slug": 1, "title": 1, "category": 1, "city": 1, "price_low": 1, "page_type": 1}
+        ).sort("priority", -1).limit(limit).to_list(limit)
+        for p in same_cat:
+            if p["slug"] not in seen_slugs:
+                results.append({"url": f"/{p['slug']}", "title": p["title"].split("|")[0].strip(), "category": p.get("category", ""), "city": p.get("city", "")})
+                seen_slugs.add(p["slug"])
+
+    # 2. Same city, different category
+    if city and len(results) < limit:
+        remaining = limit - len(results)
+        city_pages = await db.seo_pages.find(
+            {"city": city, "slug": {"$nin": list(seen_slugs)}},
+            {"_id": 0, "slug": 1, "title": 1, "category": 1, "city": 1, "price_low": 1}
+        ).sort("priority", -1).limit(remaining).to_list(remaining)
+        for p in city_pages:
+            if p["slug"] not in seen_slugs:
+                results.append({"url": f"/{p['slug']}", "title": p["title"].split("|")[0].strip(), "category": p.get("category", ""), "city": p.get("city", "")})
+                seen_slugs.add(p["slug"])
+
+    # 3. Fill with top pages from related categories
+    if len(results) < limit:
+        related_map = {"f1": ["football", "concert"], "football": ["f1", "worldcup"], "concert": ["football", "f1"], "worldcup": ["f1", "football"]}
+        related_cats = related_map.get(category, ["f1", "concert"])
+        remaining = limit - len(results)
+        cross_pages = await db.seo_pages.find(
+            {"category": {"$in": related_cats}, "slug": {"$nin": list(seen_slugs)}},
+            {"_id": 0, "slug": 1, "title": 1, "category": 1, "city": 1, "price_low": 1}
+        ).sort("priority", -1).limit(remaining).to_list(remaining)
+        for p in cross_pages:
+            if p["slug"] not in seen_slugs:
+                results.append({"url": f"/{p['slug']}", "title": p["title"].split("|")[0].strip(), "category": p.get("category", ""), "city": p.get("city", "")})
+                seen_slugs.add(p["slug"])
+
+    return {"links": results[:limit]}
