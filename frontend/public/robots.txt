@@ -68,3 +68,6 @@ Crawl-delay: 2
 User-agent: DuckDuckBot
 Allow: /
 Crawl-delay: 1
+
+# Sitemap Location
+Sitemap: https://euromatchtickets.com/sitemap.xml
