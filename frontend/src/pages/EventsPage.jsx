@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "../components/ui/select";
 import SEOHead from "../components/SEOHead";
+import { getEventImagePath } from "../utils/eventImages";
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);
@@ -51,17 +52,20 @@ const EventRow = ({ event }) => {
       className="group block bg-zinc-900/40 hover:bg-zinc-800/60 border border-white/5 hover:border-white/10 rounded-2xl p-4 md:p-6 transition-all duration-300"
     >
       <div className="flex flex-col md:flex-row md:items-center gap-4">
-        {/* Image */}
+        {/* Image - Local optimized WebP */}
         <div className="w-full md:w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
-          <img 
-            src={event.event_image || "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=200"}
-            alt={event.title}
-            loading="lazy"
-            decoding="async"
-            width="96"
-            height="96"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
+          <picture>
+            <source type="image/webp" srcSet={`${getEventImagePath(event)}-sm.webp`} />
+            <img 
+              src={`${getEventImagePath(event)}.jpg`}
+              alt={event.title}
+              loading="lazy"
+              decoding="async"
+              width="96"
+              height="96"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+          </picture>
         </div>
 
         {/* Info */}

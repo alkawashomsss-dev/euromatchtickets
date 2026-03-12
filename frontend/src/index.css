@@ -30,13 +30,18 @@
 
 /* Performance: Lazy Loading Images */
 img[loading="lazy"] {
-  opacity: 0;
-  transition: opacity 0.3s ease-in;
+  content-visibility: auto;
 }
 
-img[loading="lazy"].loaded,
-img[loading="lazy"]:not([src=""]) {
-  opacity: 1;
+/* Smooth image reveal */
+picture img {
+  transition: opacity 0.2s ease-in;
+}
+
+/* Prevent layout shift from images */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Optimize font rendering */

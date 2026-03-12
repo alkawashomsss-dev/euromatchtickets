@@ -31,7 +31,7 @@ async def get_sitemap():
     for path, prio, freq in static_pages:
         xml_items.append(f'  <url>\n    <loc>{base_url}{path}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>')
 
-    events = await db.events.find({"status": {"$ne": "cancelled"}}, {"_id": 0, "event_id": 1, "event_date": 1, "event_type": 1}).to_list(1000)
+    events = await db.events.find({"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today}}, {"_id": 0, "event_id": 1, "event_date": 1, "event_type": 1}).to_list(1000)
     for event in events:
         xml_items.append(f'  <url>\n    <loc>{base_url}/event/{event["event_id"]}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.85</priority>\n  </url>')
 
@@ -426,7 +426,8 @@ async def get_seo_page_meta(path: str = ""):
 
 @router.get("/seo/internal-links/{event_type}")
 async def seo_get_internal_links(event_type: str):
-    events = await db.events.find({"event_type": event_type, "status": {"$ne": "cancelled"}}, {"_id": 0, "event_id": 1, "title": 1}).to_list(20)
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    events = await db.events.find({"event_type": event_type, "status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today}}, {"_id": 0, "event_id": 1, "title": 1}).to_list(20)
     return [{"url": f"/event/{e['event_id']}", "title": e['title']} for e in events]
 
 

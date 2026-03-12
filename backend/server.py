@@ -45,8 +45,11 @@ class CacheControlMiddleware(BaseHTTPMiddleware):
         path = request.url.path
         if request.method != 'GET':
             return response
+        # Aggressive cache for images (1 year - immutable assets)
+        if path.startswith('/images/') or path.endswith(('.webp', '.jpg', '.jpeg', '.png', '.svg', '.ico')):
+            response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
         # Aggressive cache for sitemaps
-        if path.endswith('.xml') or path.startswith('/api/sitemaps/'):
+        elif path.endswith('.xml') or path.startswith('/api/sitemaps/'):
             response.headers["Cache-Control"] = "public, max-age=3600, s-maxage=7200"
         # Cache for SEO pages list
         elif '/api/seo/' in path:
@@ -57,6 +60,9 @@ class CacheControlMiddleware(BaseHTTPMiddleware):
         # Cache for robots.txt
         elif path == '/api/robots.txt':
             response.headers["Cache-Control"] = "public, max-age=86400"
+        # Cache for static assets (JS, CSS, fonts)
+        elif path.endswith(('.js', '.css', '.woff2', '.woff', '.ttf')):
+            response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
         return response
 
 app.add_middleware(CacheControlMiddleware)

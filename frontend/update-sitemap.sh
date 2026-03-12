@@ -2,7 +2,7 @@
 # Script to update sitemap.xml before deployment
 # Run this before building the frontend
 
-BACKEND_URL="${REACT_APP_BACKEND_URL:-https://seotix-platform.preview.emergentagent.com}"
+BACKEND_URL="${REACT_APP_BACKEND_URL:-https://preview-tickets.preview.emergentagent.com}"
 
 echo "📥 Fetching latest sitemap from backend..."
 curl -s "$BACKEND_URL/api/sitemap.xml" > /app/frontend/public/sitemap.xml

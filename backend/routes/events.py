@@ -17,9 +17,10 @@ async def get_events(
     genre: Optional[str] = None, city: Optional[str] = None,
     country: Optional[str] = None, date_from: Optional[str] = None,
     date_to: Optional[str] = None, featured: Optional[bool] = None,
-    search: Optional[str] = None
+    search: Optional[str] = None, limit: Optional[int] = 100
 ):
-    query = {"status": {"$ne": "cancelled"}}
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    query = {"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today}}
     if event_type and event_type != "all":
         query["event_type"] = event_type
     if league:
@@ -33,12 +34,9 @@ async def get_events(
     if featured is not None:
         query["featured"] = featured
     if date_from:
-        query["event_date"] = {"$gte": date_from}
+        query["event_date"]["$gte"] = date_from
     if date_to:
-        if "event_date" in query:
-            query["event_date"]["$lte"] = date_to
-        else:
-            query["event_date"] = {"$lte": date_to}
+        query["event_date"]["$lte"] = date_to
     if search:
         query["$or"] = [
             {"title": {"$regex": search, "$options": "i"}},
@@ -49,7 +47,7 @@ async def get_events(
             {"city": {"$regex": search, "$options": "i"}}
         ]
 
-    events = await db.events.find(query, {"_id": 0}).sort("event_date", 1).to_list(100)
+    events = await db.events.find(query, {"_id": 0}).sort("event_date", 1).limit(min(limit, 200)).to_list(min(limit, 200))
 
     if events:
         event_ids = [e["event_id"] for e in events]

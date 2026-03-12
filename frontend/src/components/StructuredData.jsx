@@ -117,7 +117,7 @@ const EventStructuredData = ({ event }) => {
         "@type": "Organization",
         "name": event.title?.split(' vs ')[0]?.split(' v ')[0]?.trim() || "EuroMatchTickets Event"
       },
-      "image": event.image_url || event.image || "https://euromatchtickets.com/og-image.jpg",
+      "image": event.image_url || event.image || "https://euromatchtickets.com/images/heroes/football-stadium-lg.webp",
       "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "EUR",

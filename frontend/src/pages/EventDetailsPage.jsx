@@ -317,7 +317,7 @@ const EventDetailsPage = () => {
         "addressCountry": event.country
       }
     },
-    "image": event.event_image || "https://euromatchtickets.com/og-image.jpg",
+    "image": `https://euromatchtickets.com${getEventImagePath(event)}-lg.webp`,
     "organizer": {
       "@type": "Organization",
       "name": "EuroMatchTickets",

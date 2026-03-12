@@ -14,7 +14,7 @@ import os
 
 BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', '').rstrip('/')
 if not BASE_URL:
-    BASE_URL = "https://seotix-platform.preview.emergentagent.com"
+    BASE_URL = "https://preview-tickets.preview.emergentagent.com"
 
 class TestGoogleAuthEndpoint:
     """Tests for POST /api/auth/google - new Google OAuth code exchange"""
