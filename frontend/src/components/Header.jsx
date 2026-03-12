@@ -97,6 +97,14 @@ const Header = () => {
             >
               Blog
             </Link>
+            <Link 
+              to="/sell-tickets" 
+              className="text-emerald-400 hover:text-emerald-300 transition-colors font-bold flex items-center gap-1"
+              data-testid="nav-sell-tickets"
+            >
+              <DollarSign className="w-4 h-4" />
+              Sell Tickets
+            </Link>
           </nav>
 
           {/* Auth */}

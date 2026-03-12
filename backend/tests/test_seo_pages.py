@@ -10,7 +10,7 @@ import os
 # Get base URL from environment
 BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', '').rstrip('/')
 if not BASE_URL:
-    BASE_URL = "https://mega-pages-gen.preview.emergentagent.com"
+    BASE_URL = "https://seo-ticket-hub.preview.emergentagent.com"
 
 API_URL = f"{BASE_URL}/api"
 

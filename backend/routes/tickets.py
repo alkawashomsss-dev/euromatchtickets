@@ -332,3 +332,181 @@ async def get_seller_dashboard_stats(request: Request):
     monthly_payouts = [p for p in payouts if p.get("created_at", "") >= month_start.isoformat()]
     monthly_earnings = sum(p.get("net_amount", 0) for p in monthly_payouts)
     return {"active_listings": active_tickets, "sold_tickets": sold_tickets, "total_earnings": round(total_earnings, 2), "pending_earnings": round(pending_earnings, 2), "monthly_earnings": round(monthly_earnings, 2), "rating": user.rating, "kyc_status": user.kyc_status}
+
+
+
+# ===== SELL YOUR TICKETS - Marketplace Listing =====
+
+from fastapi import UploadFile, File, Form
+from typing import List
+import os as _os
+import shutil
+
+UPLOAD_DIR = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "uploads")
+_os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+
+@router.post("/seller/list-tickets")
+async def seller_list_tickets(
+    request: Request,
+    event_name: str = Form(...),
+    event_date: str = Form(...),
+    event_type: str = Form("concert"),
+    venue: str = Form(...),
+    city: str = Form(...),
+    country: str = Form(""),
+    category: str = Form("standard"),
+    section: str = Form("General"),
+    num_tickets: int = Form(1),
+    price_per_ticket: float = Form(...),
+    original_price: float = Form(0),
+    description: str = Form(""),
+    ticket_file: Optional[UploadFile] = File(None),
+):
+    """List tickets for sale - requires authentication"""
+    user = await require_auth(request)
+
+    # Auto-upgrade to seller if not already
+    if user.role == "buyer":
+        await db.users.update_one({"user_id": user.user_id}, {"$set": {"role": "seller"}})
+
+    # Handle file upload
+    file_path = None
+    if ticket_file and ticket_file.filename:
+        ext = ticket_file.filename.rsplit(".", 1)[-1].lower()
+        if ext not in ("pdf", "png", "jpg", "jpeg", "webp"):
+            raise HTTPException(status_code=400, detail="Only PDF and image files are accepted")
+        fname = f"{uuid.uuid4().hex[:16]}.{ext}"
+        file_path = _os.path.join(UPLOAD_DIR, fname)
+        with open(file_path, "wb") as f:
+            content = await ticket_file.read()
+            f.write(content)
+        file_path = f"/uploads/{fname}"
+
+    # Find or create event
+    existing_event = await db.events.find_one({"title": {"$regex": event_name, "$options": "i"}}, {"_id": 0})
+    if existing_event:
+        event_id = existing_event["event_id"]
+    else:
+        event_id = f"event_{uuid.uuid4().hex[:12]}"
+        event_doc = {
+            "event_id": event_id,
+            "event_type": event_type,
+            "title": event_name,
+            "venue": venue,
+            "city": city,
+            "country": country,
+            "event_date": event_date,
+            "status": "upcoming",
+            "featured": False,
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "user_submitted": True,
+        }
+        await db.events.insert_one(event_doc)
+
+    # Create tickets
+    listing_id = f"listing_{uuid.uuid4().hex[:12]}"
+    created_tickets = []
+    for i in range(num_tickets):
+        ticket = {
+            "ticket_id": f"ticket_{uuid.uuid4().hex[:12]}",
+            "event_id": event_id,
+            "seller_id": user.user_id,
+            "seller_name": user.name,
+            "listing_id": listing_id,
+            "category": category,
+            "section": section,
+            "price": price_per_ticket,
+            "original_price": original_price if original_price > 0 else price_per_ticket,
+            "currency": "EUR",
+            "status": "available",
+            "description": description,
+            "ticket_file": file_path,
+            "created_at": datetime.now(timezone.utc).isoformat(),
+        }
+        await db.tickets.insert_one(ticket)
+        created_tickets.append(ticket["ticket_id"])
+
+    # Create listing record
+    listing_doc = {
+        "listing_id": listing_id,
+        "seller_id": user.user_id,
+        "seller_name": user.name,
+        "seller_email": user.email,
+        "event_id": event_id,
+        "event_name": event_name,
+        "event_date": event_date,
+        "venue": venue,
+        "city": city,
+        "category": category,
+        "section": section,
+        "num_tickets": num_tickets,
+        "price_per_ticket": price_per_ticket,
+        "original_price": original_price,
+        "description": description,
+        "ticket_file": file_path,
+        "ticket_ids": created_tickets,
+        "status": "active",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
+    await db.listings.insert_one(listing_doc)
+
+    return {
+        "success": True,
+        "listing_id": listing_id,
+        "event_id": event_id,
+        "tickets_created": len(created_tickets),
+        "message": f"Successfully listed {num_tickets} ticket(s) for {event_name}!"
+    }
+
+
+@router.get("/seller/listings")
+async def get_seller_listings(request: Request):
+    """Get all listings for the authenticated seller"""
+    user = await require_auth(request)
+    listings = await db.listings.find({"seller_id": user.user_id}, {"_id": 0}).sort("created_at", -1).to_list(100)
+
+    # Enrich with event data and sold count
+    for listing in listings:
+        sold = await db.tickets.count_documents({"listing_id": listing["listing_id"], "status": "sold"})
+        available = await db.tickets.count_documents({"listing_id": listing["listing_id"], "status": "available"})
+        listing["sold_count"] = sold
+        listing["available_count"] = available
+
+    # Calculate totals
+    total_active = sum(1 for l in listings if l["status"] == "active")
+    total_sold = sum(l.get("sold_count", 0) for l in listings)
+    total_earnings = sum(l.get("sold_count", 0) * l.get("price_per_ticket", 0) for l in listings)
+
+    return {
+        "listings": listings,
+        "stats": {
+            "total_listings": len(listings),
+            "active_listings": total_active,
+            "total_tickets_sold": total_sold,
+            "total_earnings": round(total_earnings, 2),
+        }
+    }
+
+
+@router.delete("/seller/listings/{listing_id}")
+async def delete_listing(listing_id: str, request: Request):
+    """Delete a listing and its unsold tickets"""
+    user = await require_auth(request)
+    listing = await db.listings.find_one({"listing_id": listing_id}, {"_id": 0})
+    if not listing:
+        raise HTTPException(status_code=404, detail="Listing not found")
+    if listing["seller_id"] != user.user_id:
+        raise HTTPException(status_code=403, detail="Not authorized")
+
+    # Only delete available tickets (not sold ones)
+    await db.tickets.delete_many({"listing_id": listing_id, "status": "available"})
+    await db.listings.update_one({"listing_id": listing_id}, {"$set": {"status": "cancelled"}})
+    return {"success": True}
+
+
+@router.get("/listings/recent")
+async def get_recent_listings():
+    """Public: get recent active listings"""
+    listings = await db.listings.find({"status": "active"}, {"_id": 0, "seller_email": 0}).sort("created_at", -1).to_list(20)
+    return listings

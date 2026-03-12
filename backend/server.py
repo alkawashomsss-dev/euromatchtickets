@@ -60,6 +60,13 @@ app.include_router(admin_router)
 app.include_router(marketing_router)
 app.include_router(seed_router)
 
+# Serve uploaded files
+from fastapi.staticfiles import StaticFiles
+import pathlib
+uploads_dir = pathlib.Path(__file__).parent / "uploads"
+uploads_dir.mkdir(exist_ok=True)
+app.mount("/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
+
 # Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
