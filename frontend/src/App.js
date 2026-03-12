@@ -147,9 +147,10 @@ const AuthProvider = ({ children }) => {
 
   const checkAuth = async () => {
     // CRITICAL: If returning from OAuth callback, skip the /me check.
-    // AuthCallback will exchange the session_id and establish the session first.
+    // AuthCallback will exchange the code and establish the session first.
     // REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
-    if (window.location.hash?.includes('session_id=')) {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('code') || window.location.hash?.includes('session_id=')) {
       setLoading(false);
       return;
     }
@@ -177,7 +178,10 @@ const AuthProvider = ({ children }) => {
   const login = () => {
     // REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
     const redirectUrl = window.location.origin + '/auth/callback';
-    window.location.href = `https://auth.emergentagent.com/?redirect=${encodeURIComponent(redirectUrl)}`;
+    const googleClientId = '189939537642-prda40f304g7mi4ltki8t5ak9duaepmj.apps.googleusercontent.com';
+    const scope = 'openid email profile';
+    const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${encodeURIComponent(redirectUrl)}&response_type=code&scope=${encodeURIComponent(scope)}&access_type=offline&prompt=consent`;
+    window.location.href = authUrl;
   };
 
   const logout = async () => {
