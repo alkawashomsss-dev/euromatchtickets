@@ -115,6 +115,9 @@ import DynamicSEOPage from "./pages/DynamicSEOPage";
 // Sell Tickets
 import SellTicketsPage from "./pages/SellTicketsPage";
 
+// Ticket Preview
+import TicketPreviewPage from "./pages/TicketPreviewPage";
+
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
@@ -352,6 +355,9 @@ function AppRouter() {
         
         {/* Sell Tickets */}
         <Route path="/sell-tickets" element={<SellTicketsPage />} />
+        
+        {/* Ticket Preview */}
+        <Route path="/ticket-preview" element={<TicketPreviewPage />} />
         
         {/* Dynamic SEO Pages - handles city pages, event pages, and all generated content */}
         <Route path="/:slug" element={<DynamicSEOPage />} />
