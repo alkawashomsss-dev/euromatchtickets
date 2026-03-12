@@ -1,83 +1,37 @@
 # EuroMatchTickets - Product Requirements Document
 
 ## Original Problem Statement
-Build a ticket marketplace (euromatchtickets.com) with aggressive SEO strategy to dominate search rankings and sell 1,000 tickets in the first month.
+Build a ticket marketplace (euromatchtickets.com) with aggressive SEO strategy to dominate search rankings.
 
-## Architecture (v2.0 - Modular)
-```
-backend/
-├── server.py              (slim entry point)
-├── routes/ (auth, events, tickets, seo, admin, marketing, seed)
-├── seo_bot.py             (scheduled SEO bot with IndexNow)
-├── generate_sitemaps.py   (static sitemap generator script)
-└── uploads/
-frontend/public/
-├── robots.txt             (max-image-preview:large, no /api/ block)
-├── sitemap-index.xml      (static XML)
-├── sitemap.xml            (static XML alias)
-├── sitemaps/*.xml          (7 category sitemaps)
-└── [IndexNow key].txt     (verification file)
-```
+## Completed Features (March 12, 2026 Session)
 
-## Completed Features (This Session - March 12, 2026)
+### Critical SEO Fixes
+1. **Canonical Tag Fix**: Script in index.html immediately sets canonical to current page URL (was pointing to homepage for ALL pages)
+2. **Static HTML Pre-rendering**: Generated 1,762 static .html files with proper meta tags, Schema.org, and content for Google indexing
+3. **Schema.org Complete**: ALL pages have location, eventStatus, endDate, image, organizer, url, validFrom
+4. **Static Sitemaps**: 1,849 URLs in XML files served as application/xml (not HTML)
+5. **robots.txt Clean**: No /api/ blocking, proper sitemap references
+6. **IndexNow Integration**: Automatic URL submission to Bing/Yandex
+7. **Meta Robots**: max-image-preview:large for Google Discover
+8. **Organization + WebSite Schema**: Global schemas in index.html with AggregateRating
+9. **Event Images**: All 100 events now have images
 
-### 1. Sell Your Tickets (Tested 100%)
-- Multi-step form, file upload, backend API
+### Features
+10. Sell Your Tickets (tested 100%)
+11. Customer Reviews System (tested 100%)
+12. Auth improvements (localStorage token)
 
-### 2. Customer Reviews System (Tested 100%)
-- Frontend connected to backend API, AggregateRating schema
+## Architecture
+- 1,762 dynamic SEO pages + 77 static pages = 1,849 total URLs
+- 7 category sitemaps + sitemap-index.xml
+- IndexNow integration for instant indexing
+- Pre-rendered HTML for all SEO pages (Google-friendly)
 
-### 3. Schema.org Complete Fix
-- ALL 37 event pages: location, eventStatus, endDate, image, organizer
-- ALL 32 AggregateOffer pages: url, validFrom, highPrice
-- F1 Schedule nested items: description, offers
-- All PostalAddress properly structured
-
-### 4. Static Sitemaps (Fix HTML issue)
-- Generated static XML files in frontend/public/
-- Content-Type: application/xml (verified)
-- Total: 1,849 URLs (pages:77, F1:528, Football:292, Concerts:850, WorldCup:22, Cities:80)
-
-### 5. robots.txt Fixed
-- Removed Disallow /api/
-- Added max-image-preview:large, max-snippet:-1, max-video-preview:-1
-- Points to root-level sitemaps
-
-### 6. IndexNow Integration
-- POST /api/seo/indexnow - Submit all 1762 SEO pages to Bing/Yandex
-- POST /api/seo/submit-url - Submit single URL
-- Verification key file in frontend/public/
-- SEO bot updated to use IndexNow (replaces deprecated Google/Bing ping)
-
-### 7. Event Images Fixed
-- Added images to 213 events (was 94 without images)
-- Varied images per event type (F1, concerts, football, etc.)
-
-### 8. Auth Improvements
-- localStorage token storage for cross-origin support
-- Better error messages on auth failure
-
-### 9. Organization + WebSite Schema (in index.html)
-- Organization with AggregateRating
-- WebSite with SearchAction for Google Sitelinks
-
-## Prioritized Backlog
-
-### P1 - Deploy to live site
-- [ ] "Save to GitHub" → Render auto-deploys
-- [ ] Submit sitemap: https://euromatchtickets.com/sitemap-index.xml
-- [ ] Run IndexNow: POST /api/seo/indexnow
-
-### P2 - More Content (User's 12-phase plan)
-- [ ] Generate 300+ articles (AI content)
-- [ ] Generate 200+ MotoGP pages
-- [ ] Comparison pages (Monaco vs Silverstone, etc.)
-- [ ] City guide pages
-
-### P3 - Technical
-- [ ] Verify Resend domain for email
-- [ ] Owner dashboard with charts
-- [ ] Stripe Connect
+## After Deployment Checklist
+1. Submit sitemap: https://euromatchtickets.com/sitemap-index.xml
+2. Run IndexNow: POST /api/seo/indexnow
+3. Verify IndexNow key: https://euromatchtickets.com/e33676fbaf3c0bd0b243f4f76213d267.txt
+4. Check Google Search Console for indexing
 
 ## 3rd Party Integrations
 Stripe, MongoDB Atlas, OpenAI GPT-4o, Facebook Pixel, Google Analytics, IndexNow, Resend (blocked)

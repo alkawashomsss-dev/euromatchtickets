@@ -379,3 +379,98 @@ async def seo_audit_page(url: str = ""):
 async def seo_get_internal_links(event_type: str):
     events = await db.events.find({"event_type": event_type, "status": {"$ne": "cancelled"}}, {"_id": 0, "event_id": 1, "title": 1}).to_list(20)
     return [{"url": f"/event/{e['event_id']}", "title": e['title']} for e in events]
+
+
+
+@router.get("/prerender/{slug:path}")
+async def prerender_seo_page(slug: str):
+    """Serve pre-rendered HTML with proper meta tags for SEO crawlers.
+    Use this on production: reverse proxy SEO pages to this endpoint for Googlebot."""
+    page = await db.seo_pages.find_one({"slug": slug}, {"_id": 0})
+    if not page:
+        raise HTTPException(status_code=404, detail="Page not found")
+    
+    base_url = FRONTEND_URL
+    title = page.get("title", "EuroMatchTickets")
+    description = page.get("description", "")[:160]
+    content = page.get("content", "")
+    canonical = f"https://euromatchtickets.com/{slug}"
+    image = page.get("image", "https://euromatchtickets.com/logo.png")
+    keywords = page.get("keywords", "")
+    
+    # Build structured data
+    event_schema = {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": page.get("event_name", title.split("|")[0].strip()),
+        "description": description,
+        "image": image,
+        "url": canonical,
+        "startDate": page.get("event_date", "2026-06-01"),
+        "endDate": page.get("end_date", page.get("event_date", "2026-12-31")),
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+            "@type": "Place",
+            "name": page.get("venue", page.get("city", "Europe")),
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": page.get("city", "Europe"),
+                "addressCountry": page.get("country", "EU")
+            }
+        },
+        "organizer": {"@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com"}
+    }
+    if page.get("price_low"):
+        event_schema["offers"] = {
+            "@type": "AggregateOffer",
+            "lowPrice": str(page["price_low"]),
+            "highPrice": str(page.get("price_high", page["price_low"] * 10)),
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "url": canonical,
+            "validFrom": "2025-01-01"
+        }
+    
+    import json
+    schema_json = json.dumps(event_schema)
+    
+    # Convert markdown content to basic HTML
+    content_html = content.replace("# ", "<h1>").replace("## ", "<h2>").replace("### ", "<h3>")
+    content_html = content_html.replace("\n\n", "</p><p>").replace("\n", "<br>")
+    content_html = f"<p>{content_html}</p>"
+    
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content="{description}">
+<meta name="keywords" content="{keywords}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="{canonical}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{canonical}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{description}">
+<meta property="og:image" content="{image}">
+<meta property="og:site_name" content="EuroMatchTickets">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{description}">
+<meta name="twitter:image" content="{image}">
+<script type="application/ld+json">{schema_json}</script>
+</head>
+<body>
+<header><h1>{title}</h1></header>
+<main>
+<article>{content_html}</article>
+<p><a href="{canonical}">Buy tickets at EuroMatchTickets</a></p>
+</main>
+<footer><p>EuroMatchTickets - Europe's Trusted Ticket Marketplace</p></footer>
+<script>window.location.href="{canonical}";</script>
+</body>
+</html>"""
+    
+    return Response(content=html, media_type="text/html; charset=utf-8")

@@ -28,7 +28,20 @@
     <meta name="keywords" content="buy football tickets, Champions League tickets, Premier League tickets, La Liga tickets, Bundesliga tickets, concert tickets Europe, Taylor Swift tickets, Coldplay tickets, Drake tickets, verified ticket resale, euro match tickets, FIFA World Cup 2026 tickets" />
     <meta name="author" content="EuroMatchTickets" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://euromatchtickets.com" />
+    <link rel="canonical" href="https://euromatchtickets.com" id="canonical-tag" />
+    
+    <!-- Dynamic SEO: Set canonical + meta from URL before React loads -->
+    <script>
+      (function(){
+        var path = window.location.pathname;
+        if (path && path !== '/') {
+          var canon = document.getElementById('canonical-tag');
+          if (canon) canon.href = 'https://euromatchtickets.com' + path;
+          var ogUrl = document.querySelector('meta[property="og:url"]');
+          if (ogUrl) ogUrl.content = 'https://euromatchtickets.com' + path;
+        }
+      })();
+    </script>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
