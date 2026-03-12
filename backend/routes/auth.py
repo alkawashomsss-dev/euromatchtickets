@@ -28,7 +28,8 @@ async def exchange_session(request: Request, response: Response):
             )
 
         if auth_response.status_code != 200:
-            raise HTTPException(status_code=401, detail="Invalid session")
+            logger.error(f"Auth session validation failed: status={auth_response.status_code}, body={auth_response.text[:500]}")
+            raise HTTPException(status_code=401, detail=f"Invalid session (upstream: {auth_response.status_code})")
 
         auth_data = auth_response.json()
         email = auth_data.get("email")
