@@ -3,6 +3,7 @@ from typing import Optional
 from datetime import datetime, timezone
 import logging
 import os
+import uuid
 import stripe
 
 from database.db import db
