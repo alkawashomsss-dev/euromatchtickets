@@ -79,18 +79,13 @@ const EventCard = ({ event }) => {
         <picture>
           <source type="image/webp" srcSet={`${eventImgBase}-sm.webp 400w, ${eventImgBase}-md.webp 800w`} sizes="(max-width: 640px) 400px, 800px" />
           <img 
-            src={event.event_image || `${eventImgBase}.jpg`}
+            src={`${eventImgBase}.jpg`}
             alt={event.title}
             loading="lazy"
             decoding="async"
             width="400"
             height="192"
-            referrerPolicy="no-referrer"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = `${eventImgBase}.jpg`;
-            }}
           />
         </picture>
         <div className="img-overlay" />

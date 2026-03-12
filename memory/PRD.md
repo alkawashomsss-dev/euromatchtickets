@@ -1,62 +1,61 @@
 # EuroMatchTickets - Product Requirements Document
 
 ## Original Problem Statement
-Build a ticket marketplace (euromatchtickets.com) with aggressive SEO strategy to dominate search rankings and sell 1,000 tickets in the first month.
+Build a ticket marketplace (euromatchtickets.com) with aggressive SEO strategy to dominate search rankings and sell 1,000 tickets.
 
 ## Architecture
-- **Frontend:** React (CRA) with Tailwind CSS + Shadcn UI
-- **Backend:** FastAPI with MongoDB (Motor async driver)
-- **Hosting:** Render (Frontend Static Site + Backend Web Service)
-- **Database:** MongoDB Atlas
-- **Payments:** Stripe
-- **Analytics:** Google Analytics GA4 + Facebook Pixel
-- **SEO:** IndexNow API, Static Sitemaps, Dynamic Meta Tags
-- **Auth:** Direct Google OAuth 2.0 (replaced Emergent-managed auth)
+- Frontend: React (CRA) + Tailwind CSS + Shadcn UI
+- Backend: FastAPI + MongoDB (Motor)
+- Hosting: Render | DB: MongoDB Atlas | Payments: Stripe
+- Auth: Direct Google OAuth 2.0
+- SEO: IndexNow, Image Sitemaps, Schema.org, GZip, WebP
 
-## Completed Features
+## Completed Features (Mar 12, 2026)
 
-### Core Platform
-- Browse events by category (Football, Concerts, F1, MotoGP, World Cup)
-- Event details with interactive seat map and ticket purchasing
-- Stripe payment integration with QR code ticket delivery
-- Google OAuth 2.0 authentication (direct, supports custom domains)
-- Sell Your Tickets marketplace
-- Customer Reviews system with moderation
+### AI-Generated Professional Images
+- 15+ unique AI images across all categories (no duplicates)
+- F1 = Red Ferrari theme, Football = Green stadium, Concert = Purple laser, MotoGP = Orange, World Cup = Gold trophy
+- 3 responsive sizes per image: sm(400px), md(800px), lg(1536px) in WebP + JPEG fallback
+- Professional logo: favicon, apple-touch-icon, OG image, manifest.json
+- Smart image mapping: each event gets unique image via hash function
 
-### Google OAuth 2.0 (Mar 12, 2026) - REPLACED Emergent Auth
-- Direct Google OAuth using authorization code flow
-- Works with custom domain (euromatchtickets.com) and preview URLs
-- User MUST add redirect URIs, publish OAuth consent screen, add env vars to Render
+### Google Image Sitemap (NEW)
+- All 1,849+ URLs now include `<image:image>` tags for Google Image Search indexing
+- Category-aware image assignment (F1 pages → F1 red image, concerts → purple image, etc.)
+- `xmlns:image` namespace added to all sitemaps
 
-### Schema.org Fixes (Mar 12, 2026)
-- Fixed duplicate FAQPage on F1TicketsPage (removed inline faqSchema, kept FAQStructuredData component)
-- Removed unused faqSchema from EventDetailsPage
-- Added `performer` field to ALL Event schemas (F1, MotoGP, World Cup, Isle of Man TT, DynamicSEOPage)
-- Added fallback `description` to DynamicSEOPage Event schema
-- Updated EventStructuredData component to include performer for all event types (not just concerts)
+### Site Speed Optimization
+- WebP images with responsive srcset via `<picture>` element
+- Preload critical hero images (LCP optimization)
+- DNS prefetch + preconnect to all CDNs
+- GZip compression on all API responses
+- Cache-Control headers on API endpoints
+- Font display:swap for faster rendering
 
-### Sitemap Fix (Mar 12, 2026)
-- Fixed empty articles.xml causing Google Search Console error
+### Google OAuth 2.0 (replaced Emergent Auth)
+- Direct Google OAuth for custom domain support
+- Retry logic for cold starts
+- Legacy Emergent auth kept as fallback
 
-### Internal Linking Feature (Mar 12, 2026)
-- `/api/seo/related-pages` endpoint with database-driven recommendations
+### Schema.org Fixes
+- No duplicate FAQPage (removed inline duplicates)
+- `performer` field on ALL Event schemas
+- `description` field on all dynamic SEO pages
+- Organization logo as ImageObject (not just string URL)
 
-### SEO Infrastructure (Phases 1-5)
-- 1,849 pages indexed in Google Search Console
-- Schema.org: Event, BreadcrumbList, FAQPage, Organization, WebSite
-- GZip compression, lazy loading, DNS prefetch
+### Sitemap Fix
+- Empty articles.xml removed (was causing GSC error)
+- Dynamic sitemap-index conditionally includes articles
 
-## CRITICAL: User Actions Required
-1. Google Cloud Console: Add redirect URIs and publish OAuth consent screen
-2. Render Backend .env: Add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET
-3. Deploy latest code to Render
+### Internal Linking
+- `/api/seo/related-pages` with database-driven recommendations
 
-## Known Issues
-- Email Delivery: Blocked on domain verification with Resend
-- Stripe Branding: User needs to update in Stripe dashboard
+## User Actions Required
+1. Google Cloud Console: Add redirect URI `https://euromatchtickets.com/auth/callback`
+2. Publish OAuth Consent Screen (Testing → Production)
+3. Render .env: Add GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET
+4. Deploy latest code to Render
 
 ## Backlog
-- P2: Comparison Pages expansion
-- P2: Enhanced Owner Dashboard
-- P3: Ticket Supplier Affiliate Program
-- P3: Content scaling to 5000+ SEO pages
+- P2: Comparison Pages, Owner Dashboard
+- P3: Affiliate Program, 5000+ SEO pages

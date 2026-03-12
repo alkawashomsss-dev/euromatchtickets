@@ -72,7 +72,18 @@ async def get_sitemap_index():
 async def get_category_sitemap(category: str):
     base_url = FRONTEND_URL
     today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
-    xml_items = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    xml_items = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
+
+    # Image mapping for categories
+    cat_images = {
+        "f1": f"{base_url}/images/heroes/f1-red-lg.webp",
+        "football": f"{base_url}/images/heroes/football-stadium-lg.webp",
+        "concert": f"{base_url}/images/heroes/concert-purple-lg.webp",
+        "concerts": f"{base_url}/images/heroes/concert-purple-lg.webp",
+        "worldcup": f"{base_url}/images/heroes/worldcup-trophy-lg.webp",
+        "motogp": f"{base_url}/images/heroes/motogp-orange-lg.webp",
+        "sports": f"{base_url}/images/heroes/football-match-lg.webp",
+    }
 
     if category == "pages":
         static = [
@@ -155,7 +166,17 @@ async def get_category_sitemap(category: str):
             ("/impressum", "0.40", "monthly"),
         ]
         for path, prio, freq in static:
-            xml_items.append(f'  <url>\n    <loc>{base_url}{path}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>')
+            # Determine image for this page
+            img_cat = "football"
+            path_lower = path.lower()
+            if "/f1" in path_lower or "grand-prix" in path_lower or "silverstone" in path_lower or "monaco" in path_lower: img_cat = "f1"
+            elif any(x in path_lower for x in ["weeknd", "bruno", "guns", "harry", "maroon", "metallica", "bad-bunny", "acl", "legend", "concert"]): img_cat = "concert"
+            elif "motogp" in path_lower or "isle-of-man" in path_lower: img_cat = "motogp"
+            elif "world-cup" in path_lower: img_cat = "worldcup"
+            img_url = cat_images.get(img_cat, cat_images["football"])
+            page_title = path.strip("/").replace("-", " ").title() if path != "/" else "EuroMatchTickets Home"
+            img_tag = f'\n    <image:image>\n      <image:loc>{img_url}</image:loc>\n      <image:title>{page_title}</image:title>\n    </image:image>'
+            xml_items.append(f'  <url>\n    <loc>{base_url}{path}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>{img_tag}\n  </url>')
     elif category == "articles":
         articles = await db.articles.find({}, {"_id": 0, "slug": 1, "date_generated": 1}).to_list(5000)
         for a in articles:
@@ -163,19 +184,25 @@ async def get_category_sitemap(category: str):
             lm = d.strftime('%Y-%m-%d') if isinstance(d, datetime) else today
             xml_items.append(f'  <url>\n    <loc>{base_url}/blog/{a["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.70</priority>\n  </url>')
     elif category == "cities":
-        pages = await db.seo_pages.find({"page_type": "city_category"}, {"_id": 0, "slug": 1, "priority": 1, "updated_at": 1}).to_list(50000)
+        city_img = f"{base_url}/images/heroes/football-stadium-lg.webp"
+        pages = await db.seo_pages.find({"page_type": "city_category"}, {"_id": 0, "slug": 1, "title": 1, "priority": 1, "updated_at": 1}).to_list(50000)
         for p in pages:
             lm = p.get("updated_at", "")
             lm = lm.strftime('%Y-%m-%d') if isinstance(lm, datetime) else today
-            xml_items.append(f'  <url>\n    <loc>{base_url}/{p["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{p.get("priority", 0.75)}</priority>\n  </url>')
+            title_clean = (p.get("title", "").split("|")[0].strip() or p["slug"].replace("-", " ").title())
+            img_tag = f'\n    <image:image>\n      <image:loc>{city_img}</image:loc>\n      <image:title>{title_clean}</image:title>\n    </image:image>'
+            xml_items.append(f'  <url>\n    <loc>{base_url}/{p["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{p.get("priority", 0.75)}</priority>{img_tag}\n  </url>')
     else:
         cat_map = {"f1": "f1", "football": "football", "concerts": "concert", "worldcup": "worldcup"}
         db_cat = cat_map.get(category, category)
-        pages = await db.seo_pages.find({"category": db_cat}, {"_id": 0, "slug": 1, "priority": 1, "updated_at": 1}).to_list(50000)
+        img_url = cat_images.get(db_cat, cat_images.get(category, f"{base_url}/og-image.jpg"))
+        pages = await db.seo_pages.find({"category": db_cat}, {"_id": 0, "slug": 1, "title": 1, "priority": 1, "updated_at": 1}).to_list(50000)
         for p in pages:
             lm = p.get("updated_at", "")
             lm = lm.strftime('%Y-%m-%d') if isinstance(lm, datetime) else today
-            xml_items.append(f'  <url>\n    <loc>{base_url}/{p["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{p.get("priority", 0.80)}</priority>\n  </url>')
+            title_clean = (p.get("title", "").split("|")[0].strip() or p["slug"].replace("-", " ").title())
+            img_tag = f'\n    <image:image>\n      <image:loc>{img_url}</image:loc>\n      <image:title>{title_clean}</image:title>\n    </image:image>'
+            xml_items.append(f'  <url>\n    <loc>{base_url}/{p["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{p.get("priority", 0.80)}</priority>{img_tag}\n  </url>')
 
     xml_items.append('</urlset>')
     return Response(content='\n'.join(xml_items), media_type="application/xml", headers={"Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=3600"})
@@ -191,6 +218,9 @@ Allow: /
 Allow: /api/sitemap-index.xml
 Allow: /api/sitemap.xml
 Allow: /api/sitemaps/
+
+# Allow images for Google Image Search
+Allow: /images/
 
 # Block private areas only
 Disallow: /admin

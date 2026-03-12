@@ -43,15 +43,20 @@ class CacheControlMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request, call_next):
         response = await call_next(request)
         path = request.url.path
-        # Aggressive cache for sitemaps and static SEO
+        if request.method != 'GET':
+            return response
+        # Aggressive cache for sitemaps
         if path.endswith('.xml') or path.startswith('/api/sitemaps/'):
             response.headers["Cache-Control"] = "public, max-age=3600, s-maxage=7200"
         # Cache for SEO pages list
         elif '/api/seo/' in path:
             response.headers["Cache-Control"] = "public, max-age=1800, s-maxage=3600"
-        # Cache for events list
-        elif '/api/events' in path and request.method == 'GET':
+        # Cache for events list and event details
+        elif '/api/events' in path:
             response.headers["Cache-Control"] = "public, max-age=300, s-maxage=600"
+        # Cache for robots.txt
+        elif path == '/api/robots.txt':
+            response.headers["Cache-Control"] = "public, max-age=86400"
         return response
 
 app.add_middleware(CacheControlMiddleware)

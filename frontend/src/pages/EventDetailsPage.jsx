@@ -373,10 +373,9 @@ const EventDetailsPage = () => {
         <picture>
           <source type="image/webp" srcSet={`${getEventImagePath(event)}-md.webp 800w, ${getEventImagePath(event)}-lg.webp 1536w`} sizes="100vw" />
           <img 
-            src={event.event_image || `${getEventImagePath(event)}.jpg`}
+            src={`${getEventImagePath(event)}.jpg`}
             alt={event.title}
             className="absolute inset-0 w-full h-full object-cover"
-            onError={(e) => { e.target.onerror = null; e.target.src = `${getEventImagePath(event)}.jpg`; }}
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/30" />
