@@ -11,12 +11,17 @@ const MonzaGPPage = () => {
     "name": "Italian Grand Prix 2026 Monza",
     "description": "Buy Italian Grand Prix 2026 tickets at Monza. Temple of Speed. Tifosi atmosphere. General admission, grandstand and paddock club tickets.",
     "startDate": "2026-09-06",
+    "endDate": "2026-09-07",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "location": {
       "@type": "Place",
       "name": "Autodromo Nazionale Monza",
-      "address": "Monza, Italy"
+      "address": { "@type": "PostalAddress", "addressLocality": "Monza", "addressCountry": "IT" }
     },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "99" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "99", "highPrice": "1999", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

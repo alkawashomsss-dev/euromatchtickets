@@ -11,8 +11,13 @@ const SpainGPPage = () => {
     "name": "Spanish Grand Prix 2026 Barcelona",
     "description": "Buy Spanish Grand Prix 2026 tickets at Circuit de Barcelona-Catalunya. General admission, grandstand and hospitality tickets available.",
     "startDate": "2026-06-07",
-    "location": { "@type": "Place", "name": "Circuit de Barcelona-Catalunya", "address": "Montmeló, Barcelona, Spain" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "119", "availability": "https://schema.org/InStock" }
+    "endDate": "2026-06-08",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Circuit de Barcelona-Catalunya", "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" } },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "119", "highPrice": "1999", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

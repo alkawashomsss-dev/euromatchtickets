@@ -11,8 +11,18 @@ const TheWeekndPage = () => {
     "name": "The Weeknd After Hours Til Dawn Tour 2026",
     "description": "Buy The Weeknd 2026 tour tickets. After Hours Til Dawn European stadium tour. Blinding Lights, Save Your Tears live.",
     "startDate": "2026-06-11",
+    "endDate": "2026-07-08",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": {
+      "@type": "Place",
+      "name": "Stade de France",
+      "address": { "@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR" }
+    },
     "performer": { "@type": "MusicGroup", "name": "The Weeknd" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "95" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock" }
   };
 
   const shows = [

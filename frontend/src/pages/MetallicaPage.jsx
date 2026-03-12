@@ -37,8 +37,14 @@ const MetallicaPage = () => {
     "@context": "https://schema.org",
     "@type": "MusicEvent",
     "name": "Metallica at The Sphere Las Vegas 2026",
+    "startDate": "2026-09-01",
+    "endDate": "2026-10-31",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "performer": {"@type": "MusicGroup", "name": "Metallica"},
-    "location": {"@type": "Place", "name": "The Sphere", "address": {"addressLocality": "Las Vegas", "addressCountry": "USA"}},
+    "location": {"@type": "Place", "name": "The Sphere", "address": {"@type": "PostalAddress", "addressLocality": "Las Vegas", "addressCountry": "US"}},
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": {"@type": "AggregateOffer", "lowPrice": 617, "highPrice": 2755, "priceCurrency": "USD", "availability": "https://schema.org/LimitedAvailability"}
   };
 

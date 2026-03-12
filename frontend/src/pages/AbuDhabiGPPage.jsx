@@ -11,12 +11,17 @@ const AbuDhabiGPPage = () => {
     "name": "Abu Dhabi Grand Prix 2026",
     "description": "Buy Abu Dhabi Grand Prix 2026 tickets. F1 Season Finale at Yas Marina Circuit. Twilight race, VIP Hospitality, Paddock Club tickets.",
     "startDate": "2026-12-06",
+    "endDate": "2026-12-07",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "location": {
       "@type": "Place",
       "name": "Yas Marina Circuit",
-      "address": "Yas Island, Abu Dhabi, UAE"
+      "address": { "@type": "PostalAddress", "addressLocality": "Abu Dhabi", "addressCountry": "AE" }
     },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "169" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "169", "highPrice": "2999", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

@@ -11,8 +11,13 @@ const AustraliaGPPage = () => {
     "name": "Australian Grand Prix 2026 Melbourne",
     "description": "Buy Australian Grand Prix 2026 tickets at Albert Park Melbourne. Season opener. General admission, grandstand and hospitality tickets.",
     "startDate": "2026-03-15",
-    "location": { "@type": "Place", "name": "Albert Park Circuit", "address": "Melbourne, Victoria, Australia" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "159", "availability": "https://schema.org/InStock" }
+    "endDate": "2026-03-16",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Albert Park Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" } },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "159", "highPrice": "2499", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

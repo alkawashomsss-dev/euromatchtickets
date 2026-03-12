@@ -11,8 +11,18 @@ const BrunoMarsPage = () => {
     "name": "Bruno Mars The Romantic Tour 2026",
     "description": "Buy Bruno Mars The Romantic Tour 2026 tickets. Official European stadium tour - Berlin, Amsterdam, Madrid, Milan, London Wembley.",
     "startDate": "2026-06-21",
+    "endDate": "2026-07-28",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": {
+      "@type": "Place",
+      "name": "Stade de France",
+      "address": { "@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR" }
+    },
     "performer": { "@type": "MusicGroup", "name": "Bruno Mars" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "125" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "125", "highPrice": "650", "availability": "https://schema.org/InStock" }
   };
 
   // Real confirmed dates from brunomars.com

@@ -11,12 +11,17 @@ const LasVegasGPPage = () => {
     "name": "Las Vegas Grand Prix 2026",
     "description": "Buy Las Vegas Grand Prix 2026 tickets. F1 on the Las Vegas Strip. Night race past casinos and hotels. VIP Hospitality available.",
     "startDate": "2026-11-22",
+    "endDate": "2026-11-23",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "location": {
       "@type": "Place",
       "name": "Las Vegas Street Circuit",
-      "address": "Las Vegas, Nevada, USA"
+      "address": { "@type": "PostalAddress", "addressLocality": "Las Vegas", "addressCountry": "US" }
     },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "249" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "249", "highPrice": "3999", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

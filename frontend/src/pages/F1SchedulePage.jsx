@@ -12,9 +12,9 @@ const F1SchedulePage = () => {
     "description": "Complete Formula 1 2026 race calendar with all 24 Grand Prix dates, locations, and ticket prices.",
     "numberOfItems": 24,
     "itemListElement": [
-      { "@type": "SportsEvent", "position": 1, "name": "Bahrain Grand Prix", "startDate": "2026-03-08", "location": "Bahrain International Circuit" },
-      { "@type": "SportsEvent", "position": 2, "name": "Saudi Arabian Grand Prix", "startDate": "2026-03-22", "location": "Jeddah Corniche Circuit" },
-      { "@type": "SportsEvent", "position": 3, "name": "Australian Grand Prix", "startDate": "2026-03-15", "location": "Albert Park, Melbourne" },
+      { "@type": "SportsEvent", "position": 1, "name": "Bahrain Grand Prix", "startDate": "2026-03-08", "endDate": "2026-03-09", "eventStatus": "https://schema.org/EventScheduled", "image": "https://euromatchtickets.com/logo.png", "location": {"@type": "Place", "name": "Bahrain International Circuit", "address": {"@type": "PostalAddress", "addressCountry": "BH"}}, "organizer": {"@type": "Organization", "name": "EuroMatchTickets"} },
+      { "@type": "SportsEvent", "position": 2, "name": "Saudi Arabian Grand Prix", "startDate": "2026-03-22", "endDate": "2026-03-23", "eventStatus": "https://schema.org/EventScheduled", "image": "https://euromatchtickets.com/logo.png", "location": {"@type": "Place", "name": "Jeddah Corniche Circuit", "address": {"@type": "PostalAddress", "addressCountry": "SA"}}, "organizer": {"@type": "Organization", "name": "EuroMatchTickets"} },
+      { "@type": "SportsEvent", "position": 3, "name": "Australian Grand Prix", "startDate": "2026-03-15", "endDate": "2026-03-16", "eventStatus": "https://schema.org/EventScheduled", "image": "https://euromatchtickets.com/logo.png", "location": {"@type": "Place", "name": "Albert Park, Melbourne", "address": {"@type": "PostalAddress", "addressCountry": "AU"}}, "organizer": {"@type": "Organization", "name": "EuroMatchTickets"} },
     ]
   };
 

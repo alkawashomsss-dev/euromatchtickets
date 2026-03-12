@@ -11,12 +11,17 @@ const SilverstoneGPPage = () => {
     "name": "British Grand Prix 2026 Silverstone",
     "description": "Buy British Grand Prix 2026 tickets at Silverstone. Home of British motorsport. General admission, grandstand and hospitality tickets.",
     "startDate": "2026-07-05",
+    "endDate": "2026-07-06",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "location": {
       "@type": "Place",
       "name": "Silverstone Circuit",
-      "address": "Silverstone, Northamptonshire, UK"
+      "address": { "@type": "PostalAddress", "addressLocality": "Silverstone", "addressCountry": "GB" }
     },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "149" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "149", "highPrice": "2499", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

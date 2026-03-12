@@ -96,13 +96,21 @@ export default function DynamicSEOPage() {
         "@type": "Event",
         "name": page.event_name || page.artist || page.title?.split("|")[0]?.trim(),
         "description": page.description,
-        "image": page.image,
+        "image": page.image || "https://euromatchtickets.com/logo.png",
         "url": `https://euromatchtickets.com/${page.slug}`,
-        ...(page.venue && { "location": {
+        "startDate": page.event_date || page.start_date || `${page.year || "2026"}-06-01`,
+        "endDate": page.end_date || page.event_date || page.start_date || `${page.year || "2026"}-12-31`,
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
           "@type": "Place",
-          "name": page.venue,
-          "address": { "@type": "PostalAddress", "addressLocality": page.city, "addressCountry": page.country }
-        }}),
+          "name": page.venue || page.city || "Europe",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": page.city || "Europe",
+            "addressCountry": page.country || "EU"
+          }
+        },
         ...(page.price_low && { "offers": {
           "@type": "AggregateOffer",
           "lowPrice": page.price_low,

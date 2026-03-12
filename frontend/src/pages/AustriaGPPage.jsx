@@ -11,8 +11,13 @@ const AustriaGPPage = () => {
     "name": "Austrian Grand Prix 2026 Red Bull Ring",
     "description": "Buy Austrian Grand Prix 2026 tickets at Red Bull Ring Spielberg. General admission, grandstand and hospitality tickets available.",
     "startDate": "2026-07-05",
-    "location": { "@type": "Place", "name": "Red Bull Ring", "address": "Spielberg, Styria, Austria" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "119", "availability": "https://schema.org/InStock" }
+    "endDate": "2026-07-06",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Red Bull Ring", "address": { "@type": "PostalAddress", "addressLocality": "Spielberg", "addressCountry": "AT" } },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "119", "highPrice": "1999", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

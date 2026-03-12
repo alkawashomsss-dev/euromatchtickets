@@ -11,8 +11,13 @@ const SaudiGPPage = () => {
     "name": "Saudi Arabian Grand Prix 2026",
     "description": "Buy Saudi Arabian Grand Prix 2026 tickets. Jeddah Corniche Circuit night race. High-speed street circuit. Grandstand and hospitality tickets.",
     "startDate": "2026-03-22",
-    "location": { "@type": "Place", "name": "Jeddah Corniche Circuit", "address": "Jeddah, Saudi Arabia" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "169", "availability": "https://schema.org/InStock" }
+    "endDate": "2026-03-23",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Jeddah Corniche Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Jeddah", "addressCountry": "SA" } },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "169", "highPrice": "2999", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

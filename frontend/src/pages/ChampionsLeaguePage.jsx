@@ -11,7 +11,17 @@ const ChampionsLeaguePage = () => {
     "name": "UEFA Champions League 2025-26",
     "description": "Buy UEFA Champions League 2025-26 tickets. Group stage, knockout rounds, and final. Real Madrid, Man City, Bayern Munich, Barcelona.",
     "startDate": "2025-09-16",
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "85" }
+    "endDate": "2026-05-30",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": {
+      "@type": "Place",
+      "name": "Allianz Arena",
+      "address": { "@type": "PostalAddress", "addressLocality": "Munich", "addressCountry": "DE" }
+    },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "85", "highPrice": "1500", "availability": "https://schema.org/InStock" }
   };
 
   const matches = [

@@ -11,11 +11,16 @@ const ZandvoortGPPage = () => {
     "name": "Dutch Grand Prix 2026 Zandvoort",
     "description": "Buy Dutch Grand Prix 2026 tickets at Circuit Zandvoort. Max Verstappen home race. General admission, grandstand, hospitality tickets.",
     "startDate": "2026-08-30",
+    "endDate": "2026-08-31",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "location": {
       "@type": "Place",
       "name": "Circuit Zandvoort",
-      "address": "Zandvoort, Netherlands"
+      "address": { "@type": "PostalAddress", "addressLocality": "Zandvoort", "addressCountry": "NL" }
     },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189" }
   };
 

@@ -11,12 +11,17 @@ const SingaporeGPPage = () => {
     "name": "Singapore Grand Prix 2026",
     "description": "Buy Singapore Grand Prix 2026 tickets. F1 Night Race Marina Bay. VIP Hospitality, Grandstand tickets. The most spectacular night race.",
     "startDate": "2026-09-20",
+    "endDate": "2026-09-21",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "location": {
       "@type": "Place",
       "name": "Marina Bay Street Circuit",
-      "address": "Singapore"
+      "address": { "@type": "PostalAddress", "addressLocality": "Singapore", "addressCountry": "SG" }
     },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189", "highPrice": "2999", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

@@ -11,8 +11,13 @@ const BahrainGPPage = () => {
     "name": "Bahrain Grand Prix 2026",
     "description": "Buy Bahrain Grand Prix 2026 tickets. Night race at Bahrain International Circuit. General admission, grandstand and hospitality tickets.",
     "startDate": "2026-03-08",
-    "location": { "@type": "Place", "name": "Bahrain International Circuit", "address": "Sakhir, Bahrain" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "149", "availability": "https://schema.org/InStock" }
+    "endDate": "2026-03-09",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Bahrain International Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Sakhir", "addressCountry": "BH" } },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "149", "highPrice": "2499", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

@@ -40,9 +40,15 @@ const JohnLegendPage = () => {
     "@context": "https://schema.org",
     "@type": "MusicEvent",
     "name": "John Legend Live in Abu Dhabi 2026",
+    "startDate": "2026-03-01",
+    "endDate": "2026-03-01",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "performer": {"@type": "Person", "name": "John Legend"},
-    "location": {"@type": "Place", "name": "Etihad Arena", "address": {"@type": "PostalAddress", "addressLocality": "Abu Dhabi", "addressCountry": "UAE"}},
-    "offers": {"@type": "AggregateOffer", "lowPrice": 90, "priceCurrency": "EUR", "availability": "https://schema.org/InStock"}
+    "location": {"@type": "Place", "name": "Etihad Arena", "address": {"@type": "PostalAddress", "addressLocality": "Abu Dhabi", "addressCountry": "AE"}},
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": {"@type": "AggregateOffer", "lowPrice": 90, "highPrice": 500, "priceCurrency": "EUR", "availability": "https://schema.org/InStock"}
   };
 
   return (

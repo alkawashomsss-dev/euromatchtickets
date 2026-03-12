@@ -11,8 +11,13 @@ const JapanGPPage = () => {
     "name": "Japanese Grand Prix 2026 Suzuka",
     "description": "Buy Japanese Grand Prix 2026 tickets at Suzuka Circuit. The legendary figure-8 circuit. General admission, grandstand and hospitality tickets.",
     "startDate": "2026-04-05",
-    "location": { "@type": "Place", "name": "Suzuka International Racing Course", "address": "Suzuka, Mie Prefecture, Japan" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189", "availability": "https://schema.org/InStock" }
+    "endDate": "2026-04-06",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Suzuka International Racing Course", "address": { "@type": "PostalAddress", "addressLocality": "Suzuka", "addressCountry": "JP" } },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "189", "highPrice": "2499", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

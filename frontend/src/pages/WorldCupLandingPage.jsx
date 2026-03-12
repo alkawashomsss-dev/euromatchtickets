@@ -313,6 +313,7 @@ const WorldCupLandingPage = () => {
         "@type": "Event",
         "name": "FIFA World Cup 2026",
         "description": "FIFA World Cup 2026 tickets in USA, Mexico, and Canada",
+        "image": "https://euromatchtickets.com/logo.png",
         "startDate": "2026-06-11",
         "endDate": "2026-07-19",
         "eventStatus": "https://schema.org/EventScheduled",

@@ -11,8 +11,13 @@ const HungaryGPPage = () => {
     "name": "Hungarian Grand Prix 2026 Budapest",
     "description": "Buy Hungarian Grand Prix 2026 tickets at Hungaroring. General admission, grandstand and hospitality tickets available.",
     "startDate": "2026-07-26",
-    "location": { "@type": "Place", "name": "Hungaroring", "address": "Mogyoród, Budapest, Hungary" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "99", "availability": "https://schema.org/InStock" }
+    "endDate": "2026-07-27",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Hungaroring", "address": { "@type": "PostalAddress", "addressLocality": "Budapest", "addressCountry": "HU" } },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "99", "highPrice": "1499", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

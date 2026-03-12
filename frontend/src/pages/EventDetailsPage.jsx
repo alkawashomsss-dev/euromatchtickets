@@ -304,6 +304,7 @@ const EventDetailsPage = () => {
     "name": event.title,
     "description": event.description || `Buy verified tickets for ${event.title} at ${event.venue}, ${event.city}. Secure checkout with instant QR code delivery.`,
     "startDate": event.event_date,
+    "endDate": event.event_date,
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "location": {

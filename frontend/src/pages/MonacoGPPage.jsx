@@ -11,12 +11,17 @@ const MonacoGPPage = () => {
     "name": "Monaco Grand Prix 2026",
     "description": "Buy Monaco Grand Prix 2026 tickets. F1 Monte Carlo street circuit. VIP Hospitality, Grandstand, Paddock Club tickets available.",
     "startDate": "2026-05-24",
+    "endDate": "2026-05-25",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "location": {
       "@type": "Place",
       "name": "Circuit de Monaco",
-      "address": "Monte Carlo, Monaco"
+      "address": { "@type": "PostalAddress", "addressLocality": "Monte Carlo", "addressCountry": "MC" }
     },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "289" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "289", "highPrice": "4999", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

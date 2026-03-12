@@ -11,8 +11,14 @@ const GunsNRosesPage = () => {
     "name": "Guns N Roses European Tour 2026",
     "description": "Buy Guns N Roses 2026 tour tickets. European stadium tour - Berlin, London, Hamburg, Cologne, Marseille.",
     "startDate": "2026-06-13",
+    "endDate": "2026-07-15",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Olympiastadion", "address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" } },
     "performer": { "@type": "MusicGroup", "name": "Guns N Roses" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "95" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock" }
   };
 
   // Real confirmed dates

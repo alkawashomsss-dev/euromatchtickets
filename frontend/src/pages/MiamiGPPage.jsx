@@ -11,8 +11,13 @@ const MiamiGPPage = () => {
     "name": "Miami Grand Prix 2026",
     "description": "Buy Miami Grand Prix 2026 tickets. F1 Miami International Autodrome. VIP Hospitality, Grandstand, General Admission tickets available.",
     "startDate": "2026-05-10",
-    "location": { "@type": "Place", "name": "Miami International Autodrome", "address": "Miami Gardens, Florida, USA" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "249", "availability": "https://schema.org/InStock" }
+    "endDate": "2026-05-11",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Miami International Autodrome", "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressCountry": "US" } },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "249", "highPrice": "3999", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

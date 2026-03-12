@@ -11,12 +11,17 @@ const SpaGPPage = () => {
     "name": "Belgian Grand Prix 2026 Spa-Francorchamps",
     "description": "Buy Belgian Grand Prix 2026 tickets at Spa-Francorchamps. Eau Rouge, Raidillon. VIP Hospitality and grandstand tickets available.",
     "startDate": "2026-08-30",
+    "endDate": "2026-08-31",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "location": {
       "@type": "Place",
       "name": "Circuit de Spa-Francorchamps",
-      "address": "Spa, Belgium"
+      "address": { "@type": "PostalAddress", "addressLocality": "Spa", "addressCountry": "BE" }
     },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "109" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "109", "highPrice": "1499", "availability": "https://schema.org/InStock" }
   };
 
   const tickets = [

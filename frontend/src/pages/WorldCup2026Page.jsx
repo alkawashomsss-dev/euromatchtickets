@@ -48,13 +48,17 @@ const WorldCup2026Page = () => {
     "@type": "SportsEvent",
     "name": "FIFA World Cup 2026",
     "description": "FIFA World Cup 2026 tickets. Final, Semi-Finals, Quarter-Finals, Group Stage. USA, Canada, Mexico.",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
     "location": [
-      {"@type": "Place", "name": "MetLife Stadium", "address": "New York, USA"},
-      {"@type": "Place", "name": "AT&T Stadium", "address": "Dallas, USA"},
-      {"@type": "Place", "name": "Azteca Stadium", "address": "Mexico City, Mexico"}
+      {"@type": "Place", "name": "MetLife Stadium", "address": {"@type": "PostalAddress", "addressLocality": "New York", "addressCountry": "US"}},
+      {"@type": "Place", "name": "AT&T Stadium", "address": {"@type": "PostalAddress", "addressLocality": "Dallas", "addressCountry": "US"}},
+      {"@type": "Place", "name": "Azteca Stadium", "address": {"@type": "PostalAddress", "addressLocality": "Mexico City", "addressCountry": "MX"}}
     ],
     "startDate": "2026-06-11",
     "endDate": "2026-07-19",
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": {
       "@type": "AggregateOffer",
       "lowPrice": events[0]?.lowest_price || 285,

@@ -41,8 +41,15 @@ const HarryStylesPage = () => {
     "@context": "https://schema.org",
     "@type": "MusicEvent",
     "name": "Harry Styles Together Together Tour 2026",
+    "startDate": "2026-06-01",
+    "endDate": "2026-09-30",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Multiple Venues", "address": { "@type": "PostalAddress", "addressLocality": "Europe", "addressCountry": "EU" } },
     "performer": {"@type": "Person", "name": "Harry Styles"},
     "description": "Harry Styles live in concert. Together Together Tour 2026. VIP tickets from €427 to €15,300.",
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": {"@type": "AggregateOffer", "lowPrice": 427, "highPrice": 15300, "priceCurrency": "EUR", "availability": "https://schema.org/InStock"}
   };
 

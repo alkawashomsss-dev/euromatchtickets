@@ -11,8 +11,14 @@ const BadBunnyPage = () => {
     "name": "Bad Bunny DeBi TiRAR MaS FOToS Tour 2026",
     "description": "Buy Bad Bunny 2026 tour tickets. DeBi TiRAR MaS FOToS World Tour - London Tottenham Stadium.",
     "startDate": "2026-06-27",
+    "endDate": "2026-06-29",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://euromatchtickets.com/logo.png",
+    "location": { "@type": "Place", "name": "Tottenham Hotspur Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "MusicGroup", "name": "Bad Bunny" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "145" }
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "145", "highPrice": "600", "availability": "https://schema.org/InStock" }
   };
 
   // Real confirmed dates
