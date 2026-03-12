@@ -4235,6 +4235,126 @@ async def get_seo_page(slug: str):
     return page
 
 
+# ============== CLEANUP EXPIRED EVENTS API ==============
+
+@api_router.post("/cleanup/expired-events")
+async def cleanup_expired_events_api():
+    """
+    Manually trigger cleanup of expired events
+    - Marks events with past dates as 'expired'
+    - Deletes tickets for expired events
+    """
+    try:
+        now = datetime.now(timezone.utc)
+        today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        
+        # Find expired events
+        expired_events = await db.events.find({
+            "event_date": {"$lt": today},
+            "status": {"$ne": "expired"}
+        }).to_list(1000)
+        
+        expired_count = len(expired_events)
+        
+        if expired_count == 0:
+            return {
+                "status": "success",
+                "message": "No expired events found",
+                "events_cleaned": 0,
+                "tickets_deleted": 0
+            }
+        
+        # Mark events as expired
+        update_result = await db.events.update_many(
+            {"event_date": {"$lt": today}, "status": {"$ne": "expired"}},
+            {"$set": {"status": "expired", "updated_at": now}}
+        )
+        
+        # Delete tickets for expired events
+        expired_event_ids = [e['event_id'] for e in expired_events]
+        tickets_deleted = await db.tickets.delete_many({
+            "event_id": {"$in": expired_event_ids}
+        })
+        
+        return {
+            "status": "success",
+            "message": f"Cleaned up {update_result.modified_count} expired events",
+            "events_cleaned": update_result.modified_count,
+            "tickets_deleted": tickets_deleted.deleted_count,
+            "timestamp": now.isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error cleaning up expired events: {e}")
+        return {"status": "error", "message": str(e)}
+
+
+@api_router.get("/cleanup/status")
+async def get_cleanup_status():
+    """Get current cleanup status and statistics"""
+    now = datetime.now(timezone.utc)
+    today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    
+    # Count events by status
+    total_events = await db.events.count_documents({})
+    active_events = await db.events.count_documents({
+        "event_date": {"$gte": today},
+        "status": {"$ne": "expired"}
+    })
+    expired_events = await db.events.count_documents({"status": "expired"})
+    pending_cleanup = await db.events.count_documents({
+        "event_date": {"$lt": today},
+        "status": {"$ne": "expired"}
+    })
+    
+    # Count tickets
+    total_tickets = await db.tickets.count_documents({})
+    available_tickets = await db.tickets.count_documents({"status": "available"})
+    
+    return {
+        "events": {
+            "total": total_events,
+            "active": active_events,
+            "expired": expired_events,
+            "pending_cleanup": pending_cleanup
+        },
+        "tickets": {
+            "total": total_tickets,
+            "available": available_tickets
+        },
+        "last_check": now.isoformat()
+    }
+
+
+@api_router.delete("/cleanup/delete-expired")
+async def delete_expired_events_permanently():
+    """
+    Permanently delete all expired events and their tickets
+    WARNING: This action cannot be undone!
+    """
+    try:
+        # Delete expired events
+        events_deleted = await db.events.delete_many({"status": "expired"})
+        
+        # Delete orphan tickets (tickets without valid events)
+        active_event_ids = await db.events.distinct("event_id")
+        tickets_deleted = await db.tickets.delete_many({
+            "event_id": {"$nin": active_event_ids}
+        })
+        
+        return {
+            "status": "success",
+            "message": "Permanently deleted expired events",
+            "events_deleted": events_deleted.deleted_count,
+            "tickets_deleted": tickets_deleted.deleted_count,
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error deleting expired events: {e}")
+        return {"status": "error", "message": str(e)}
+
+
 @api_router.api_route("/seo/refresh-sitemap", methods=["GET", "POST"])
 async def seo_refresh_sitemap():
     """Regenerate sitemap and ping search engines"""
@@ -4639,9 +4759,67 @@ async def seo_bot_scheduler():
             logger.error(f"🤖 SEO Bot Error: {e}")
             await asyncio.sleep(60 * 60)  # Retry in 1 hour on error
 
+
+# ============== EXPIRED EVENTS CLEANUP BOT ==============
+
+async def cleanup_expired_events():
+    """
+    Daily cleanup of expired events and tickets
+    Runs every 24 hours at midnight
+    """
+    while True:
+        try:
+            logger.info("🧹 Cleanup Bot: Starting daily cleanup...")
+            
+            # Get current date
+            now = datetime.now(timezone.utc)
+            today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+            
+            # Find expired events (event_date < today)
+            expired_events = await db.events.find({
+                "event_date": {"$lt": today}
+            }).to_list(1000)
+            
+            expired_count = len(expired_events)
+            
+            if expired_count > 0:
+                # Option 1: Delete expired events
+                # delete_result = await db.events.delete_many({
+                #     "event_date": {"$lt": today}
+                # })
+                
+                # Option 2: Mark as expired (safer - keeps history)
+                update_result = await db.events.update_many(
+                    {"event_date": {"$lt": today}},
+                    {"$set": {"status": "expired", "updated_at": now}}
+                )
+                
+                # Delete tickets for expired events
+                expired_event_ids = [e['event_id'] for e in expired_events]
+                tickets_deleted = await db.tickets.delete_many({
+                    "event_id": {"$in": expired_event_ids}
+                })
+                
+                logger.info(f"🧹 Cleanup Bot: Marked {update_result.modified_count} events as expired")
+                logger.info(f"🧹 Cleanup Bot: Deleted {tickets_deleted.deleted_count} expired tickets")
+            else:
+                logger.info("🧹 Cleanup Bot: No expired events found")
+            
+            # Sleep until tomorrow (24 hours)
+            await asyncio.sleep(24 * 60 * 60)
+            
+        except Exception as e:
+            logger.error(f"🧹 Cleanup Bot Error: {e}")
+            await asyncio.sleep(60 * 60)  # Retry in 1 hour on error
+
+
 @app.on_event("startup")
 async def start_seo_bot():
     """Start the SEO bot scheduler on app startup"""
     if SEO_BOT_AVAILABLE:
         asyncio.create_task(seo_bot_scheduler())
         logger.info("🤖 SEO Bot Scheduler started - runs every 6 hours")
+    
+    # Start cleanup bot
+    asyncio.create_task(cleanup_expired_events())
+    logger.info("🧹 Cleanup Bot started - runs daily")
