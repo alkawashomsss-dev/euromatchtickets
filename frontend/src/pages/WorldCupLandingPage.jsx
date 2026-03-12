@@ -334,6 +334,10 @@ const WorldCupLandingPage = () => {
           "@type": "Organization",
           "name": "EuroMatchTickets",
           "url": "https://euromatchtickets.com"
+        },
+        "performer": {
+          "@type": "Organization",
+          "name": "FIFA World Cup 2026"
         }
       })}} />
     </div>

@@ -339,38 +339,6 @@ const EventDetailsPage = () => {
     })
   };
 
-  // FAQ Schema for SEO
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `Are ${event.title} tickets legitimate?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, all tickets on EuroMatchTickets are verified and guaranteed authentic. We work only with trusted sellers and offer a 100% money-back guarantee if there are any issues with your tickets."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `How do I receive my ${event.title} tickets?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "After purchase, you'll receive a QR code instantly via email and in your account. This QR code is your entry ticket to the event. Simply show it at the venue entrance."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Can I get a refund for ${event.title} tickets?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We offer refunds if the event is cancelled or if tickets are not delivered as promised. Please review our refund policy for full details."
-        }
-      }
-    ]
-  };
-
   // Generate SEO description
   const seoDescription = event.description 
     ? event.description.substring(0, 155) + '...'

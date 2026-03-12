@@ -96,7 +96,7 @@ export default function DynamicSEOPage() {
         "@context": "https://schema.org",
         "@type": "Event",
         "name": page.event_name || page.artist || page.title?.split("|")[0]?.trim(),
-        "description": page.description,
+        "description": page.description || `Buy verified tickets for ${page.title?.split("|")[0]?.trim()} at EuroMatchTickets.com with instant QR delivery and buyer protection.`,
         "image": page.image || "https://euromatchtickets.com/logo.png",
         "url": `https://euromatchtickets.com/${page.slug}`,
         "startDate": page.event_date || page.start_date || `${page.year || "2026"}-06-01`,
@@ -111,6 +111,10 @@ export default function DynamicSEOPage() {
             "addressLocality": page.city || "Europe",
             "addressCountry": page.country || "EU"
           }
+        },
+        "performer": {
+          "@type": page.artist ? "Person" : "Organization",
+          "name": page.artist || page.event_name || page.title?.split("|")[0]?.trim() || "EuroMatchTickets Event"
         },
         ...(page.price_low && { "offers": {
           "@type": "AggregateOffer",

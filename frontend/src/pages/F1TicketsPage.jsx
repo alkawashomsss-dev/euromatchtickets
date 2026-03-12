@@ -52,6 +52,7 @@ const F1TicketsPage = () => {
         "item": {
           "@type": "Event",
           "name": "Monaco Grand Prix 2026",
+          "description": "Experience the most glamorous race in Formula 1 at the Circuit de Monaco. Watch the world's best drivers navigate the iconic streets of Monte Carlo.",
           "startDate": "2026-05-24",
           "endDate": "2026-05-26",
           "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -64,6 +65,10 @@ const F1TicketsPage = () => {
               "addressLocality": "Monte Carlo",
               "addressCountry": "MC"
             }
+          },
+          "performer": {
+            "@type": "Organization",
+            "name": "Formula 1 World Championship"
           },
           "organizer": {
             "@type": "Organization",
@@ -87,6 +92,7 @@ const F1TicketsPage = () => {
         "item": {
           "@type": "Event",
           "name": "British Grand Prix Silverstone 2026",
+          "description": "The home of British motorsport. Watch thrilling F1 action at the legendary Silverstone Circuit with over 140,000 fans.",
           "startDate": "2026-07-04",
           "endDate": "2026-07-06",
           "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -99,6 +105,10 @@ const F1TicketsPage = () => {
               "addressLocality": "Silverstone",
               "addressCountry": "GB"
             }
+          },
+          "performer": {
+            "@type": "Organization",
+            "name": "Formula 1 World Championship"
           },
           "organizer": {
             "@type": "Organization",
@@ -122,6 +132,7 @@ const F1TicketsPage = () => {
         "item": {
           "@type": "Event",
           "name": "Italian Grand Prix Monza 2026",
+          "description": "The Temple of Speed. Experience pure racing excitement at Autodromo Nazionale Monza, one of the fastest circuits on the F1 calendar.",
           "startDate": "2026-09-05",
           "endDate": "2026-09-07",
           "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -134,6 +145,10 @@ const F1TicketsPage = () => {
               "addressLocality": "Monza",
               "addressCountry": "IT"
             }
+          },
+          "performer": {
+            "@type": "Organization",
+            "name": "Formula 1 World Championship"
           },
           "organizer": {
             "@type": "Organization",
@@ -154,37 +169,6 @@ const F1TicketsPage = () => {
     ]
   };
   
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Where can I buy F1 tickets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can buy official F1 tickets at EuroMatchTickets.com. We offer verified tickets for all 24 Grand Prix races with instant QR delivery and 100% money-back guarantee."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much do F1 tickets cost?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "F1 ticket prices start from €89 for general admission and go up to €5,000+ for VIP hospitality packages. Monaco GP tickets start from €289, Silverstone from €199."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are F1 tickets on EuroMatchTickets authentic?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, all tickets are 100% verified and authentic. We offer a full money-back guarantee if any ticket doesn't work at the venue."
-        }
-      }
-    ]
-  };
-
   // Country flags
   const countryFlags = {
     "Bahrain": "🇧🇭", "Saudi Arabia": "🇸🇦", "Australia": "🇦🇺", "Japan": "🇯🇵",
@@ -210,7 +194,6 @@ const F1TicketsPage = () => {
         description="Buy F1 2026 tickets at best prices! Monaco GP from €289, British GP Silverstone from €199, Italian GP Monza, Singapore GP & all 24 races. VIP Hospitality, Grandstand. 100% Verified. Instant QR Delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">

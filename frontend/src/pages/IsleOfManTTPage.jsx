@@ -56,6 +56,10 @@ const IsleOfManTTPage = () => {
       "name": "Isle of Man TT Races",
       "url": "https://www.iomtt.com"
     },
+    "performer": {
+      "@type": "Organization",
+      "name": "Isle of Man TT Races"
+    },
     "offers": { 
       "@type": "Offer", 
       "url": "https://euromatchtickets.com/isle-of-man-tt-tickets",

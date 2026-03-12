@@ -64,6 +64,10 @@ const MotoGPTicketsPage = () => {
             "name": "MotoGP",
             "url": "https://www.motogp.com"
           },
+          "performer": {
+            "@type": "Organization",
+            "name": "MotoGP World Championship"
+          },
           "offers": {
             "@type": "Offer",
             "url": "https://euromatchtickets.com/motogp-tickets",
@@ -97,6 +101,10 @@ const MotoGPTicketsPage = () => {
             "@type": "Organization",
             "name": "MotoGP",
             "url": "https://www.motogp.com"
+          },
+          "performer": {
+            "@type": "Organization",
+            "name": "MotoGP World Championship"
           },
           "offers": {
             "@type": "Offer",

@@ -104,7 +104,19 @@ const EventStructuredData = ({ event }) => {
       "performer": event.event_type === 'concert' ? {
         "@type": "Person",
         "name": event.title?.split(' - ')[0] || event.title?.split(' Live')[0] || event.artist || "Artist"
-      } : undefined,
+      } : event.event_type === 'f1' ? {
+        "@type": "Organization",
+        "name": "Formula 1 World Championship"
+      } : event.event_type === 'motogp' ? {
+        "@type": "Organization",
+        "name": "MotoGP World Championship"
+      } : event.event_type === 'worldcup' ? {
+        "@type": "Organization",
+        "name": "FIFA World Cup 2026"
+      } : {
+        "@type": "Organization",
+        "name": event.title?.split(' vs ')[0]?.split(' v ')[0]?.trim() || "EuroMatchTickets Event"
+      },
       "image": event.image_url || event.image || "https://euromatchtickets.com/og-image.jpg",
       "offers": {
         "@type": "AggregateOffer",
