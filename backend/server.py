@@ -3846,11 +3846,11 @@ async def get_sitemap():
         {"_id": 0, "event_id": 1, "event_date": 1}
     ).to_list(1000)
     
-    # Get SEO pages from database
+    # Get SEO pages from database (all pages for sitemap)
     seo_pages = await db.seo_pages.find(
         {},
-        {"_id": 0, "slug": 1, "updated_at": 1, "category": 1}
-    ).to_list(1000)
+        {"_id": 0, "slug": 1, "updated_at": 1, "category": 1, "priority": 1}
+    ).to_list(50000)
     
     # Get articles from database
     articles = await db.articles.find(
@@ -3882,11 +3882,7 @@ async def get_sitemap():
         else:
             lastmod = today
         
-        priority = "0.85"
-        if seo_page.get('category') == 'f1':
-            priority = "0.90"
-        elif seo_page.get('category') == 'football':
-            priority = "0.88"
+        priority = str(seo_page.get('priority', 0.80))
         
         xml_items.append(f"""  <url>
     <loc>{base_url}/{seo_page['slug']}</loc>
@@ -3945,6 +3941,77 @@ async def get_sitemap():
         }
     )
 
+
+@api_router.get("/sitemap-index.xml")
+async def get_sitemap_index():
+    """Sitemap index file - points to category-specific sitemaps"""
+    from fastapi.responses import Response
+    base_url = os.environ.get('FRONTEND_URL', 'https://euromatchtickets.com')
+    api_base = f"{base_url}/api"
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml += '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    
+    categories = ["pages", "f1", "football", "concerts", "worldcup", "cities", "articles"]
+    for cat in categories:
+        xml += f'  <sitemap>\n    <loc>{api_base}/sitemaps/{cat}.xml</loc>\n    <lastmod>{today}</lastmod>\n  </sitemap>\n'
+    
+    xml += '</sitemapindex>'
+    return Response(content=xml, media_type="application/xml", headers={"Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=3600"})
+
+
+@api_router.get("/sitemaps/{category}.xml")
+async def get_category_sitemap(category: str):
+    """Category-specific sitemaps for scalable indexing"""
+    from fastapi.responses import Response
+    base_url = os.environ.get('FRONTEND_URL', 'https://euromatchtickets.com')
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    
+    xml_items = ['<?xml version="1.0" encoding="UTF-8"?>']
+    xml_items.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    
+    if category == "pages":
+        # Static pages
+        static = [
+            ("/", "1.0", "daily"), ("/events", "0.9", "hourly"), ("/blog", "0.8", "daily"),
+            ("/world-cup-2026", "0.95", "daily"), ("/f1-tickets", "0.95", "daily"),
+            ("/champions-league-tickets", "0.95", "daily"), ("/motogp-tickets", "0.9", "daily"),
+            ("/reviews", "0.7", "weekly"), ("/faq", "0.7", "monthly"),
+            ("/about", "0.6", "monthly"), ("/contact", "0.6", "monthly"),
+            ("/buyer-protection", "0.7", "monthly"), ("/terms", "0.5", "monthly"),
+            ("/privacy-policy", "0.5", "monthly"), ("/refund-policy", "0.5", "monthly"),
+        ]
+        for path, prio, freq in static:
+            xml_items.append(f'  <url>\n    <loc>{base_url}{path}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>')
+    
+    elif category == "articles":
+        articles = await db.articles.find({}, {"_id": 0, "slug": 1, "date_generated": 1}).to_list(5000)
+        for a in articles:
+            d = a.get("date_generated", "")
+            lm = d.strftime('%Y-%m-%d') if isinstance(d, datetime) else today
+            xml_items.append(f'  <url>\n    <loc>{base_url}/blog/{a["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.70</priority>\n  </url>')
+    
+    elif category == "cities":
+        pages = await db.seo_pages.find({"page_type": "city_category"}, {"_id": 0, "slug": 1, "priority": 1, "updated_at": 1}).to_list(50000)
+        for p in pages:
+            lm = p.get("updated_at", "")
+            lm = lm.strftime('%Y-%m-%d') if isinstance(lm, datetime) else today
+            xml_items.append(f'  <url>\n    <loc>{base_url}/{p["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{p.get("priority", 0.75)}</priority>\n  </url>')
+    
+    else:
+        # F1, football, concerts, worldcup
+        cat_map = {"f1": "f1", "football": "football", "concerts": "concert", "worldcup": "worldcup"}
+        db_cat = cat_map.get(category, category)
+        pages = await db.seo_pages.find({"category": db_cat}, {"_id": 0, "slug": 1, "priority": 1, "updated_at": 1}).to_list(50000)
+        for p in pages:
+            lm = p.get("updated_at", "")
+            lm = lm.strftime('%Y-%m-%d') if isinstance(lm, datetime) else today
+            xml_items.append(f'  <url>\n    <loc>{base_url}/{p["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{p.get("priority", 0.80)}</priority>\n  </url>')
+    
+    xml_items.append('</urlset>')
+    return Response(content='\n'.join(xml_items), media_type="application/xml", headers={"Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=3600"})
+
 @api_router.get("/robots.txt")
 async def get_robots(request: Request):
     """Generate robots.txt for SEO"""
@@ -3969,6 +4036,7 @@ Disallow: /my-tickets
 Disallow: /alerts
 Disallow: /api/
 
+Sitemap: {base_url}/api/sitemap-index.xml
 Sitemap: {base_url}/api/sitemap.xml
 
 # Crawl-delay for polite crawling
@@ -4204,39 +4272,66 @@ async def generate_seo_landing_pages():
 
 
 @api_router.post("/seo/mega-generate")
-async def generate_mega_seo_pages():
-    """Generate professional SEO pages with unique content"""
+async def generate_mega_seo_pages_endpoint():
+    """Generate 10,000+ unique SEO pages"""
     try:
-        from professional_seo_generator import generate_professional_seo_pages
-        pages_created = await generate_professional_seo_pages()
-        
+        from mega_seo_generator import generate_mega_seo_pages
+        result = await generate_mega_seo_pages()
         return {
             "status": "success",
-            "pages_created": pages_created,
-            "message": f"Generated {pages_created} unique SEO pages with original content!",
+            "result": result,
+            "message": f"Generated {result['total_generated']} unique SEO pages!",
             "timestamp": datetime.now(timezone.utc).isoformat()
         }
     except Exception as e:
-        logger.error(f"Error in SEO generation: {e}")
+        logger.error(f"Error in mega SEO generation: {e}")
         import traceback
         return {"status": "error", "message": str(e), "traceback": traceback.format_exc()}
 
 
 @api_router.get("/seo/pages")
-async def get_seo_pages(category: str = None, limit: int = 100):
-    """Get all generated SEO pages"""
+async def get_seo_pages(category: str = None, page_type: str = None, page: int = 1, limit: int = 50):
+    """Get SEO pages with pagination and filters"""
     query = {}
     if category:
         query["category"] = category
+    if page_type:
+        query["page_type"] = page_type
     
+    skip = (page - 1) * limit
+    total = await db.seo_pages.count_documents(query)
     pages = await db.seo_pages.find(
         query,
-        {"_id": 0}
-    ).limit(limit).to_list(limit)
+        {"_id": 0, "slug": 1, "title": 1, "description": 1, "category": 1, "page_type": 1, "image": 1, "price_low": 1, "price_high": 1, "city": 1, "year": 1, "priority": 1}
+    ).sort("priority", -1).skip(skip).limit(limit).to_list(limit)
     
     return {
-        "total": len(pages),
+        "total": total,
+        "page": page,
+        "limit": limit,
+        "total_pages": (total + limit - 1) // limit,
         "pages": pages
+    }
+
+
+@api_router.get("/seo/stats")
+async def get_seo_stats():
+    """Get SEO pages statistics"""
+    total = await db.seo_pages.count_documents({})
+    pipeline = [
+        {"$group": {"_id": "$category", "count": {"$sum": 1}}},
+        {"$sort": {"count": -1}}
+    ]
+    by_category = await db.seo_pages.aggregate(pipeline).to_list(100)
+    pipeline2 = [
+        {"$group": {"_id": "$page_type", "count": {"$sum": 1}}},
+        {"$sort": {"count": -1}}
+    ]
+    by_type = await db.seo_pages.aggregate(pipeline2).to_list(100)
+    return {
+        "total_pages": total,
+        "by_category": {r["_id"]: r["count"] for r in by_category},
+        "by_type": {r["_id"]: r["count"] for r in by_type}
     }
 
 
@@ -4259,52 +4354,68 @@ async def get_seo_page(slug: str):
 @api_router.post("/cleanup/expired-events")
 async def cleanup_expired_events_api():
     """
-    Manually trigger cleanup of expired events
-    - Marks events with past dates as 'expired'
-    - Deletes tickets for expired events
+    Smart cleanup of expired events - SEO-friendly approach
+    - Marks events as 'past_event' (NOT deleted - preserves SEO value)
+    - Hides tickets but doesn't delete them
+    - Links to next similar events
     """
     try:
         now = datetime.now(timezone.utc)
         today = now.replace(hour=0, minute=0, second=0, microsecond=0)
         
-        # Find expired events
+        # Find expired events (not already marked)
         expired_events = await db.events.find({
             "event_date": {"$lt": today},
-            "status": {"$ne": "expired"}
+            "status": {"$nin": ["past_event", "expired"]}
         }).to_list(1000)
         
-        expired_count = len(expired_events)
+        if not expired_events:
+            return {"status": "success", "message": "No expired events found", "events_updated": 0}
         
-        if expired_count == 0:
-            return {
-                "status": "success",
-                "message": "No expired events found",
-                "events_cleaned": 0,
-                "tickets_deleted": 0
-            }
-        
-        # Mark events as expired
-        update_result = await db.events.update_many(
-            {"event_date": {"$lt": today}, "status": {"$ne": "expired"}},
-            {"$set": {"status": "expired", "updated_at": now}}
-        )
-        
-        # Delete tickets for expired events
-        expired_event_ids = [e['event_id'] for e in expired_events]
-        tickets_deleted = await db.tickets.delete_many({
-            "event_id": {"$in": expired_event_ids}
-        })
+        updated = 0
+        for event in expired_events:
+            event_type = event.get("event_type", "")
+            
+            # Find next similar event for linking
+            next_event = await db.events.find_one(
+                {"event_type": event_type, "event_date": {"$gte": today}, "status": {"$nin": ["past_event", "expired"]}},
+                {"_id": 0, "event_id": 1, "name": 1, "event_date": 1},
+                sort=[("event_date", 1)]
+            )
+            
+            # Find similar events in same category
+            similar_events = await db.events.find(
+                {"event_type": event_type, "event_date": {"$gte": today}, "status": {"$nin": ["past_event", "expired"]}, "event_id": {"$ne": event.get("event_id")}},
+                {"_id": 0, "event_id": 1, "name": 1}
+            ).limit(5).to_list(5)
+            
+            # Mark as past_event with links to similar
+            await db.events.update_one(
+                {"_id": event["_id"]},
+                {"$set": {
+                    "status": "past_event",
+                    "updated_at": now,
+                    "next_event": next_event,
+                    "similar_events": similar_events
+                }}
+            )
+            
+            # Mark tickets as unavailable (don't delete)
+            await db.tickets.update_many(
+                {"event_id": event.get("event_id")},
+                {"$set": {"status": "past_event", "updated_at": now}}
+            )
+            updated += 1
         
         return {
             "status": "success",
-            "message": f"Cleaned up {update_result.modified_count} expired events",
-            "events_cleaned": update_result.modified_count,
-            "tickets_deleted": tickets_deleted.deleted_count,
+            "message": f"Updated {updated} past events (SEO preserved)",
+            "events_updated": updated,
+            "note": "Events marked as past_event, not deleted. SEO value preserved.",
             "timestamp": now.isoformat()
         }
-        
     except Exception as e:
-        logger.error(f"Error cleaning up expired events: {e}")
+        logger.error(f"Error in cleanup: {e}")
         return {"status": "error", "message": str(e)}
 
 
@@ -4314,19 +4425,18 @@ async def get_cleanup_status():
     now = datetime.now(timezone.utc)
     today = now.replace(hour=0, minute=0, second=0, microsecond=0)
     
-    # Count events by status
     total_events = await db.events.count_documents({})
     active_events = await db.events.count_documents({
         "event_date": {"$gte": today},
-        "status": {"$ne": "expired"}
+        "status": {"$nin": ["past_event", "expired"]}
     })
+    past_events = await db.events.count_documents({"status": "past_event"})
     expired_events = await db.events.count_documents({"status": "expired"})
     pending_cleanup = await db.events.count_documents({
         "event_date": {"$lt": today},
-        "status": {"$ne": "expired"}
+        "status": {"$nin": ["past_event", "expired"]}
     })
     
-    # Count tickets
     total_tickets = await db.tickets.count_documents({})
     available_tickets = await db.tickets.count_documents({"status": "available"})
     
@@ -4334,6 +4444,7 @@ async def get_cleanup_status():
         "events": {
             "total": total_events,
             "active": active_events,
+            "past_event": past_events,
             "expired": expired_events,
             "pending_cleanup": pending_cleanup
         },

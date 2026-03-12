@@ -109,6 +109,9 @@ import MonacoGPTicketsPage from "./pages/MonacoGPTicketsPage";
 import ElClasicoTicketsPage from "./pages/ElClasicoTicketsPage";
 import ChampionsLeagueTicketsPage from "./pages/ChampionsLeagueTicketsPage";
 
+// Dynamic SEO Pages (catch-all)
+import DynamicSEOPage from "./pages/DynamicSEOPage";
+
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
@@ -340,8 +343,8 @@ function AppRouter() {
         <Route path="/el-clasico-tickets" element={<ElClasicoTicketsPage />} />
         <Route path="/champions-league-tickets" element={<ChampionsLeagueTicketsPage />} />
         
-        {/* Programmatic SEO Routes - City Pages */}
-        <Route path="/:cityName-tickets" element={<CityTicketsPage />} />
+        {/* Dynamic SEO Pages - handles city pages, event pages, and all generated content */}
+        <Route path="/:slug" element={<DynamicSEOPage />} />
         
         {/* Comparison Pages */}
         <Route path="/euromatchtickets-vs-stubhub" element={<ComparisonPage competitor="StubHub" />} />
