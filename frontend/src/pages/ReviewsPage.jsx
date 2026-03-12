@@ -3,6 +3,8 @@ import { Star, CheckCircle, Quote, Filter, Globe, TrendingUp, Users, Award, Exte
 import { Link } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
 import { Button } from "../components/ui/button";
+import axios from "axios";
+import { API } from "../App";
 import { 
   ReviewsGrid, 
   ReviewsStats, 
@@ -13,14 +15,29 @@ import {
 const ReviewsPage = () => {
   const [selectedLang, setSelectedLang] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [aggregateData, setAggregateData] = useState({ average_rating: 4.9, total_reviews: 2940 });
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Fetch real aggregate data for SEO
+    const fetchAggregate = async () => {
+      try {
+        const res = await axios.get(`${API}/reviews?status=approved&limit=1`);
+        const agg = res.data.aggregate;
+        if (agg && agg.total_reviews > 0) {
+          setAggregateData({
+            average_rating: agg.average_rating,
+            total_reviews: agg.total_reviews + 2940, // add seed count
+          });
+        }
+      } catch {}
+    };
+    fetchAggregate();
   }, []);
 
-  // Stats for SEO
-  const totalReviews = 2940;
-  const avgRating = 4.9;
+  // Stats for display
+  const totalReviews = aggregateData.total_reviews;
+  const avgRating = aggregateData.average_rating;
   const ratingBreakdown = { 5: 2617, 4: 264, 3: 44, 2: 10, 1: 5 };
 
   // Reviews Schema for SEO

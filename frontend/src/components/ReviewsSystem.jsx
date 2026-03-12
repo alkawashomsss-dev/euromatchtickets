@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Star, CheckCircle, ThumbsUp, Flag, Globe, Calendar, Ticket, Send, User } from 'lucide-react';
 import { Button } from './ui/button';
 import { toast } from 'sonner';
+import axios from 'axios';
+import { API } from '../App';
 
 // Realistic reviews database - Multi-language
 const REVIEWS_DATABASE = [
@@ -483,9 +485,44 @@ export const ReviewsStats = () => {
   );
 };
 
-// Reviews Grid
+// Reviews Grid - fetches from backend API and merges with seed data
 export const ReviewsGrid = ({ limit = 6, eventType = null, lang = null }) => {
-  let reviews = [...REVIEWS_DATABASE];
+  const [apiReviews, setApiReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const res = await axios.get(`${API}/reviews?status=approved&limit=50`);
+        const backendReviews = (res.data.reviews || []).map(r => ({
+          id: r.review_id,
+          name: r.reviewer_name,
+          avatar: r.reviewer_name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2),
+          location: '',
+          country: '',
+          rating: r.rating,
+          date: r.created_at?.split('T')[0] || new Date().toISOString().split('T')[0],
+          title: r.title,
+          text: r.content,
+          event: r.event_name || '',
+          eventType: '',
+          verified: r.verified_purchase || false,
+          helpful: 0,
+          lang: 'en',
+          isFromApi: true,
+        }));
+        setApiReviews(backendReviews);
+      } catch {
+        // Silently fail - seed data will still show
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchReviews();
+  }, []);
+
+  // Merge API reviews on top, then seed data
+  let reviews = [...apiReviews, ...REVIEWS_DATABASE];
   
   if (eventType) {
     reviews = reviews.filter(r => r.eventType === eventType);
@@ -494,11 +531,31 @@ export const ReviewsGrid = ({ limit = 6, eventType = null, lang = null }) => {
     reviews = reviews.filter(r => r.lang === lang);
   }
   
-  // Randomize order but keep it consistent
-  reviews = reviews.sort((a, b) => b.helpful - a.helpful);
+  reviews = reviews.sort((a, b) => (b.helpful || 0) - (a.helpful || 0));
+  
+  if (loading) {
+    return (
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[...Array(Math.min(limit, 6))].map((_, i) => (
+          <div key={i} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 animate-pulse">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-11 h-11 rounded-full bg-zinc-800" />
+              <div className="space-y-2">
+                <div className="h-4 w-24 bg-zinc-800 rounded" />
+                <div className="h-3 w-16 bg-zinc-800 rounded" />
+              </div>
+            </div>
+            <div className="h-4 w-3/4 bg-zinc-800 rounded mb-2" />
+            <div className="h-3 w-full bg-zinc-800 rounded mb-1" />
+            <div className="h-3 w-2/3 bg-zinc-800 rounded" />
+          </div>
+        ))}
+      </div>
+    );
+  }
   
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4" data-testid="reviews-grid">
       {reviews.slice(0, limit).map((review) => (
         <ReviewCard key={review.id} review={review} />
       ))}
@@ -545,7 +602,7 @@ export const ReviewsCarousel = () => {
   );
 };
 
-// Submit Review Form (user sees their review but pending approval)
+// Submit Review Form - connected to backend API
 export const SubmitReviewForm = ({ eventName = '' }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -557,32 +614,49 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [pendingReview, setPendingReview] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
     
-    // Create pending review (only visible to user)
-    const review = {
-      id: `pending_${Date.now()}`,
-      name: formData.name,
-      avatar: formData.name.split(' ').map(n => n[0]).join('').toUpperCase(),
-      location: 'Your Location',
-      country: 'pending',
-      rating: formData.rating,
-      date: new Date().toISOString().split('T')[0],
-      title: formData.title,
-      text: formData.text,
-      event: formData.event || 'Recent Purchase',
-      eventType: 'match',
-      verified: true,
-      helpful: 0,
-      lang: 'en',
-      isPending: true
-    };
-    
-    setPendingReview(review);
-    setSubmitted(true);
-    toast.success('Thank you! Your review has been submitted and will be published soon.');
+    try {
+      await axios.post(`${API}/reviews`, {
+        reviewer_name: formData.name,
+        reviewer_email: formData.email,
+        event_name: formData.event || 'General Review',
+        rating: formData.rating,
+        title: formData.title,
+        content: formData.text,
+        verified_purchase: false,
+      });
+
+      const review = {
+        id: `pending_${Date.now()}`,
+        name: formData.name,
+        avatar: formData.name.split(' ').map(n => n[0]).join('').toUpperCase(),
+        location: '',
+        country: '',
+        rating: formData.rating,
+        date: new Date().toISOString().split('T')[0],
+        title: formData.title,
+        text: formData.text,
+        event: formData.event || 'Recent Purchase',
+        eventType: '',
+        verified: false,
+        helpful: 0,
+        lang: 'en',
+        isPending: true
+      };
+      
+      setPendingReview(review);
+      setSubmitted(true);
+      toast.success('Thank you! Your review has been submitted and will be published after verification.');
+    } catch (err) {
+      toast.error(err.response?.data?.detail || 'Failed to submit review. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted && pendingReview) {
@@ -622,6 +696,7 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           className="bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-purple-500 outline-none"
+          data-testid="review-name-input"
         />
         <input
           type="email"
@@ -630,6 +705,7 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           className="bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-purple-500 outline-none"
+          data-testid="review-email-input"
         />
       </div>
       
@@ -660,6 +736,7 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
         value={formData.title}
         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
         className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-purple-500 outline-none"
+        data-testid="review-title-input"
       />
       
       <textarea
@@ -669,6 +746,7 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
         value={formData.text}
         onChange={(e) => setFormData({ ...formData, text: e.target.value })}
         className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-purple-500 outline-none resize-none"
+        data-testid="review-content-input"
       />
       
       <input
@@ -677,11 +755,15 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
         value={formData.event}
         onChange={(e) => setFormData({ ...formData, event: e.target.value })}
         className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-purple-500 outline-none"
+        data-testid="review-event-input"
       />
       
-      <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
-        <Send className="w-4 h-4 mr-2" />
-        Submit Review
+      <Button type="submit" disabled={submitting} className="w-full bg-purple-600 hover:bg-purple-700" data-testid="submit-review-btn">
+        {submitting ? (
+          <div className="flex items-center gap-2"><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> Submitting...</div>
+        ) : (
+          <><Send className="w-4 h-4 mr-2" /> Submit Review</>
+        )}
       </Button>
       
       <p className="text-xs text-zinc-500 text-center">
