@@ -4203,6 +4203,25 @@ async def generate_seo_landing_pages():
         return {"status": "error", "message": str(e)}
 
 
+@api_router.post("/seo/mega-generate")
+async def generate_mega_seo_pages():
+    """Generate professional SEO pages with unique content"""
+    try:
+        from professional_seo_generator import generate_professional_seo_pages
+        pages_created = await generate_professional_seo_pages()
+        
+        return {
+            "status": "success",
+            "pages_created": pages_created,
+            "message": f"Generated {pages_created} unique SEO pages with original content!",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Error in SEO generation: {e}")
+        import traceback
+        return {"status": "error", "message": str(e), "traceback": traceback.format_exc()}
+
+
 @api_router.get("/seo/pages")
 async def get_seo_pages(category: str = None, limit: int = 100):
     """Get all generated SEO pages"""
