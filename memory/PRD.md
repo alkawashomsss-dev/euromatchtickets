@@ -22,31 +22,38 @@ Build a ticket marketplace (euromatchtickets.com) with aggressive SEO strategy t
 - Sell Your Tickets marketplace
 - Customer Reviews system with moderation
 
-### Professional Ticket System (NEW - Feb 2026)
+### Professional Ticket System (Feb 2026)
 - Professional ticket design matching StubHub/Ticketmaster quality
 - QR code on every ticket with unique order ID
-- Event branding with category colors (VIP=gold, Premium=purple, Grandstand=cyan, Floor=pink)
-- Event type badges (FOOTBALL, FORMULA 1, CONCERT, MOTOGP, WORLD CUP)
-- Section/Row/Seat/Category display boxes
-- Tear-line design between main content and QR section
-- Download/Print functionality opens styled printable ticket
+- Event branding with category colors
+- Download/Print functionality
 - FanProtect Guarantee branding
-- Order ID barcode in footer
-- Used in: MyTicketsPage, OrderSuccessPage
-- Demo: /ticket-preview page with 3 sample tickets
 
-### SEO Infrastructure (Phases 1-5 Complete - Feb 2026)
+### SEO Infrastructure (Phases 1-5 Complete)
 1. SPA Indexing Fix: Dynamic script in index.html
 2. Page-Meta API: /api/seo/page-meta endpoint
 3. Schema.org: Event, BreadcrumbList, FAQPage, Organization, WebSite
-4. Static Sitemaps: 1,849 URLs
+4. Static Sitemaps: 1,849 URLs (6 category sitemaps)
 5. robots.txt with crawler directives
 6. IndexNow API for instant indexing
 7. Meta Robots: max-image-preview:large
 8. AggregateRating on Organization schema
 9. BreadcrumbList on 6+ key pages, FAQPage on 4+ pages
-10. Internal Linking: contextual cross-links via InternalLinks component
+10. Internal Linking: Static + Dynamic API-powered contextual cross-links
 11. Site Speed: GZip compression, lazy loading, DNS prefetch
+
+### Sitemap Fix (Mar 12, 2026)
+- Fixed empty articles.xml causing Google Search Console error
+- Removed articles.xml entry from static sitemap-index.xml
+- Made dynamic sitemap-index.xml conditionally include articles only when articles exist in DB
+- Deleted empty static articles.xml file
+
+### Internal Linking Feature Complete (Mar 12, 2026)
+- Implemented `/api/seo/related-pages` endpoint with full database logic
+- Returns contextually related pages based on category, city, and current page
+- Cross-category suggestions when primary results are limited
+- InternalLinks.jsx now displays both static hardcoded links AND dynamic API-powered related pages
+- Properly excludes current page from suggestions
 
 ### Content & Pages
 - 1,762 dynamic SEO pages + 77 static pages = 1,849 total URLs
@@ -62,8 +69,8 @@ Build a ticket marketplace (euromatchtickets.com) with aggressive SEO strategy t
 - Email Delivery: Blocked on domain verification
 - Stripe Branding: User needs to update in Stripe dashboard
 
-## Backlog
-- P2: Comparison Pages expansion
-- P2: Enhanced Owner Dashboard with charts
+## Backlog (Priority Order)
+- P2: Comparison Pages expansion (e.g., "Monaco vs Silverstone F1")
+- P2: Enhanced Owner Dashboard with charts and sales reports
 - P3: Ticket Supplier Affiliate Program
 - P3: Content scaling to 5000+ SEO pages
