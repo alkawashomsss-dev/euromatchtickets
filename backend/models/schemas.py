@@ -1,6 +1,3 @@
-"""
-Pydantic models for EuroMatchTickets API
-"""
 from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional, Dict, Any
 from datetime import datetime, timezone
@@ -13,27 +10,18 @@ class User(BaseModel):
     email: str
     name: str
     picture: Optional[str] = None
-    role: str = "buyer"  # buyer, seller, admin
+    role: str = "buyer"
     rating: float = 5.0
     total_sales: int = 0
-    kyc_status: str = "pending"  # pending, submitted, verified, rejected
+    kyc_status: str = "pending"
     kyc_documents: Optional[Dict[str, Any]] = None
-    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-
-
-class UserSession(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-    session_id: str
-    user_id: str
-    session_token: str
-    expires_at: datetime
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class Event(BaseModel):
     model_config = ConfigDict(extra="ignore")
     event_id: str = Field(default_factory=lambda: f"event_{uuid.uuid4().hex[:12]}")
-    event_type: str  # match, concert
+    event_type: str
     title: str
     subtitle: Optional[str] = None
     description: Optional[str] = None
@@ -207,12 +195,22 @@ class SellerPayout(BaseModel):
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
+class ChatMessage(BaseModel):
+    message: str
+    session_id: str
+
+
 class RaffleEntry(BaseModel):
     raffle_type: str
     price: float = 100
     entries: int = 1
 
 
-class ChatMessage(BaseModel):
-    message: str
-    session_id: str
+class ReviewCreate(BaseModel):
+    reviewer_name: str
+    reviewer_email: Optional[str] = None
+    event_name: str
+    rating: int = Field(ge=1, le=5)
+    title: str
+    content: str
+    verified_purchase: bool = False
