@@ -152,12 +152,16 @@ const AuthProvider = ({ children }) => {
     }
 
     try {
+      const token = localStorage.getItem('session_token');
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
       const response = await axios.get(`${API}/auth/me`, {
-        withCredentials: true
+        withCredentials: true,
+        headers
       });
       setUser(response.data);
     } catch (error) {
       setUser(null);
+      localStorage.removeItem('session_token');
     } finally {
       setLoading(false);
     }

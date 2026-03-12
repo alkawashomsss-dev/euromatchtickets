@@ -314,25 +314,39 @@ class SEOBot:
         return priorities
     
     async def ping_search_engines(self, sitemap_url: str) -> Dict:
-        """Notify search engines of sitemap updates"""
+        """Submit URLs to IndexNow (replaces deprecated Google/Bing ping)"""
         results = {}
-        
-        search_engines = [
-            f"https://www.google.com/ping?sitemap={sitemap_url}",
-            f"https://www.bing.com/ping?sitemap={sitemap_url}",
-        ]
+        INDEXNOW_KEY = "e33676fbaf3c0bd0b243f4f76213d267"
+        base_url = "https://euromatchtickets.com"
         
         async with httpx.AsyncClient(timeout=30.0) as client:
-            for url in search_engines:
-                try:
-                    response = await client.get(url)
-                    engine = "Google" if "google" in url else "Bing"
-                    results[engine] = {
-                        "status": "success" if response.status_code == 200 else "failed",
-                        "code": response.status_code
-                    }
-                except Exception as e:
-                    results[url] = {"status": "error", "message": str(e)}
+            # IndexNow - works for Bing, Yandex, and partners
+            try:
+                # Get recent SEO page slugs from DB
+                from database.db import db as database
+                recent_pages = await database.seo_pages.find(
+                    {}, {"_id": 0, "slug": 1}
+                ).sort("created_at", -1).to_list(100)
+                urls = [f"{base_url}/{p['slug']}" for p in recent_pages]
+                
+                payload = {
+                    "host": "euromatchtickets.com",
+                    "key": INDEXNOW_KEY,
+                    "keyLocation": f"{base_url}/{INDEXNOW_KEY}.txt",
+                    "urlList": urls[:500]
+                }
+                response = await client.post(
+                    "https://api.indexnow.org/indexnow",
+                    json=payload,
+                    headers={"Content-Type": "application/json"}
+                )
+                results["IndexNow"] = {
+                    "status": "success" if response.status_code in [200, 202] else "failed",
+                    "code": response.status_code,
+                    "urls_submitted": len(urls[:500])
+                }
+            except Exception as e:
+                results["IndexNow"] = {"status": "error", "message": str(e)}
         
         return results
     
@@ -409,12 +423,12 @@ class SEOBot:
                 "pages_updated": len(priorities)
             })
             
-            # 6. Ping search engines
+            # 6. Submit to IndexNow
             ping_results = await self.ping_search_engines(
-                "https://euromatchtickets.onrender.com/api/sitemap.xml"
+                "https://euromatchtickets.com/sitemap-index.xml"
             )
             results["actions"].append({
-                "action": "ping_search_engines",
+                "action": "indexnow_submit",
                 "status": "success",
                 "results": ping_results
             })

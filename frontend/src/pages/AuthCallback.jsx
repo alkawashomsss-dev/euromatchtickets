@@ -47,8 +47,13 @@ const AuthCallback = () => {
         }
       } catch (err) {
         console.error("Auth error:", err);
-        setError("Authentication failed. Please try again.");
-        setTimeout(() => navigate('/'), 2000);
+        const detail = err?.response?.data?.detail || err.message;
+        if (detail === "Invalid session" || detail === "Invalid auth data") {
+          setError("Session expired. Please try again.");
+        } else {
+          setError("Authentication failed. Please try again.");
+        }
+        setTimeout(() => navigate('/'), 3000);
       }
     };
 

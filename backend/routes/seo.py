@@ -2,12 +2,15 @@ from fastapi import APIRouter, HTTPException, Request, Response
 from datetime import datetime, timezone
 import os
 import logging
+import httpx
 
 from database.db import db
 from config.settings import FRONTEND_URL
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api")
+
+INDEXNOW_KEY = "e33676fbaf3c0bd0b243f4f76213d267"
 
 
 @router.get("/sitemap.xml")
@@ -266,22 +269,105 @@ async def get_seo_page(slug: str):
 # SEO Automation
 @router.api_route("/seo/ping-search-engines", methods=["GET", "POST"])
 async def seo_ping_engines():
-    import httpx
     base_url = FRONTEND_URL
-    sitemap_url = f"{base_url}/api/sitemap.xml"
+    sitemap_url = f"{base_url}/sitemap-index.xml"
     results = {}
     async with httpx.AsyncClient(timeout=10.0) as client:
+        # IndexNow (replaces deprecated Google/Bing ping)
         try:
-            r = await client.get(f"https://www.google.com/ping?sitemap={sitemap_url}")
+            seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(100)
+            urls = [f"{base_url}/{p['slug']}" for p in seo_pages[:100]]
+            payload = {
+                "host": "euromatchtickets.com",
+                "key": INDEXNOW_KEY,
+                "keyLocation": f"{base_url}/{INDEXNOW_KEY}.txt",
+                "urlList": urls
+            }
+            r = await client.post("https://api.indexnow.org/indexnow", json=payload)
+            results["indexnow"] = {"status": r.status_code, "urls": len(urls), "success": r.status_code in [200, 202]}
+        except Exception as e:
+            results["indexnow"] = {"status": "error", "detail": str(e)}
+    return {"sitemap_url": sitemap_url, "results": results}
+
+
+@router.post("/seo/indexnow")
+async def submit_indexnow(urls: list[str] = None):
+    """Submit URLs to IndexNow for instant indexing by Bing, Yandex, and partners."""
+    base_url = FRONTEND_URL
+    
+    if not urls:
+        # Submit all SEO pages
+        seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(5000)
+        urls = [f"{base_url}/{p['slug']}" for p in seo_pages]
+    
+    # IndexNow accepts max 10,000 URLs per request
+    results = {"submitted": 0, "errors": 0, "batches": 0}
+    
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        for i in range(0, len(urls), 10000):
+            batch = urls[i:i+10000]
+            payload = {
+                "host": "euromatchtickets.com",
+                "key": INDEXNOW_KEY,
+                "keyLocation": f"{base_url}/{INDEXNOW_KEY}.txt",
+                "urlList": batch
+            }
+            try:
+                r = await client.post(
+                    "https://api.indexnow.org/indexnow",
+                    json=payload,
+                    headers={"Content-Type": "application/json"}
+                )
+                if r.status_code in [200, 202]:
+                    results["submitted"] += len(batch)
+                else:
+                    results["errors"] += len(batch)
+                    logger.warning(f"IndexNow batch error: {r.status_code} - {r.text}")
+                results["batches"] += 1
+            except Exception as e:
+                results["errors"] += len(batch)
+                logger.error(f"IndexNow error: {e}")
+    
+    # Also ping Google
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            await client.get(f"https://www.google.com/ping?sitemap={base_url}/sitemap-index.xml")
+            results["google_ping"] = True
+    except Exception:
+        results["google_ping"] = False
+    
+    return {"status": "success", "total_urls": len(urls), **results}
+
+
+@router.post("/seo/submit-url")
+async def submit_single_url(url: str):
+    """Submit a single URL to IndexNow + Google ping."""
+    base_url = FRONTEND_URL
+    full_url = url if url.startswith("http") else f"{base_url}/{url.lstrip('/')}"
+    
+    results = {}
+    async with httpx.AsyncClient(timeout=15.0) as client:
+        # IndexNow
+        try:
+            payload = {
+                "host": "euromatchtickets.com",
+                "key": INDEXNOW_KEY,
+                "keyLocation": f"{base_url}/{INDEXNOW_KEY}.txt",
+                "urlList": [full_url]
+            }
+            r = await client.post("https://api.indexnow.org/indexnow", json=payload)
+            results["indexnow"] = {"status": r.status_code, "success": r.status_code in [200, 202]}
+        except Exception as e:
+            results["indexnow"] = {"status": "error", "detail": str(e)}
+        
+        # Google ping
+        try:
+            r = await client.get(f"https://www.google.com/ping?sitemap={base_url}/sitemap-index.xml")
             results["google"] = {"status": r.status_code, "success": r.status_code == 200}
         except Exception:
             results["google"] = {"status": "error"}
-        try:
-            r = await client.get(f"https://www.bing.com/ping?sitemap={sitemap_url}")
-            results["bing"] = {"status": r.status_code, "success": r.status_code == 200}
-        except Exception:
-            results["bing"] = {"status": "error"}
-    return {"sitemap_url": sitemap_url, "results": results}
+    
+    return {"url": full_url, "results": results}
 
 
 @router.get("/seo/audit")

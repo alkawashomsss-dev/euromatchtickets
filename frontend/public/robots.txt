@@ -3,6 +3,9 @@
 
 User-agent: *
 Allow: /
+Max-image-preview: large
+Max-snippet: -1
+Max-video-preview: -1
 
 # Block private areas only
 Disallow: /admin
@@ -25,6 +28,6 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Sitemaps (static files - no /api/ prefix)
+# Sitemaps
 Sitemap: https://euromatchtickets.com/sitemap-index.xml
 Sitemap: https://euromatchtickets.com/sitemap.xml
