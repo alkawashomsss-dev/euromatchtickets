@@ -47,7 +47,10 @@ async def get_events(
             {"city": {"$regex": search, "$options": "i"}}
         ]
 
-    events = await db.events.find(query, {"_id": 0}).sort("event_date", 1).limit(min(limit, 200)).to_list(min(limit, 200))
+    # Lightweight projection for list views - exclude heavy fields
+    projection = {"_id": 0, "description": 0}
+
+    events = await db.events.find(query, projection).sort("event_date", 1).limit(min(limit, 200)).to_list(min(limit, 200))
 
     if events:
         event_ids = [e["event_id"] for e in events]

@@ -210,12 +210,10 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await axios.post(`${API}/seed`);
-        
         const [featuredRes, concertsRes, matchesRes] = await Promise.all([
-          axios.get(`${API}/events?featured=true`),
-          axios.get(`${API}/events?event_type=concert`),
-          axios.get(`${API}/events?event_type=match`)
+          axios.get(`${API}/events?featured=true&limit=6`),
+          axios.get(`${API}/events?event_type=concert&limit=4`),
+          axios.get(`${API}/events?event_type=match&limit=4`)
         ]);
         
         setFeaturedEvents(featuredRes.data.slice(0, 6));
@@ -244,7 +242,7 @@ const HomePage = () => {
         {/* Static Background with Animated Overlay */}
         <div className="absolute inset-0">
           <picture>
-            <source type="image/webp" srcSet="/images/heroes/worldcup-trophy-sm.webp 400w, /images/heroes/worldcup-trophy-md.webp 800w, /images/heroes/worldcup-trophy-lg.webp 1536w" sizes="100vw" />
+            <source type="image/webp" srcSet="/images/heroes/worldcup-trophy-sm.webp 400w, /images/heroes/worldcup-trophy-md.webp 800w, /images/heroes/worldcup-trophy-lg.webp 1200w" sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px" />
             <img 
               src="/images/heroes/worldcup-trophy.jpg"
               alt="FIFA World Cup 2026"
