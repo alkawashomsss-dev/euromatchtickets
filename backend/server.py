@@ -142,9 +142,15 @@ if has_frontend_build:
 
     @app.get("/{full_path:path}")
     async def serve_spa(full_path: str):
+        # NEVER intercept API routes - let FastAPI routers handle them
+        if full_path.startswith("api/") or full_path.startswith("api") or full_path == "uploads":
+            from fastapi.responses import JSONResponse
+            return JSONResponse(status_code=404, content={"detail": "Not found"})
+        # Try to serve the exact file first
         file_path = static_dir / full_path
         if file_path.is_file():
             return FileResponse(str(file_path))
+        # Otherwise serve index.html for SPA routing (including /auth/callback, /events, etc.)
         return FileResponse(str(static_dir / "index.html"))
 else:
     @app.get("/")
