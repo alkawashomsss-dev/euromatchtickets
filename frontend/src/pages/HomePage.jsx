@@ -241,18 +241,18 @@ const HomePage = () => {
       
       {/* Hero Section - World Cup 2026 Featured */}
       <section className="relative min-h-[100vh] flex items-center overflow-hidden">
-        {/* Video Background */}
+        {/* Static Background with Animated Overlay */}
         <div className="absolute inset-0">
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-            poster="/images/heroes/worldcup-trophy.jpg"
-          >
-            <source src="https://videos.pexels.com/video-files/2657301/2657301-uhd_2560_1440_24fps.mp4" type="video/mp4" />
-          </video>
+          <picture>
+            <source type="image/webp" srcSet="/images/heroes/worldcup-trophy-sm.webp 400w, /images/heroes/worldcup-trophy-md.webp 800w, /images/heroes/worldcup-trophy-lg.webp 1536w" sizes="100vw" />
+            <img 
+              src="/images/heroes/worldcup-trophy.jpg"
+              alt="FIFA World Cup 2026"
+              className="absolute inset-0 w-full h-full object-cover"
+              fetchPriority="high"
+              decoding="sync"
+            />
+          </picture>
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/70 to-[#09090b]/40" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#09090b]/80 to-transparent" />
