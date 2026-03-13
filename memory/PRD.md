@@ -44,7 +44,7 @@ Full-stack FastAPI (backend) + React (frontend) + MongoDB ticket marketplace wit
 - Cookie consent banner (GDPR)
 - Multiple language support framework
 
-## Completed This Session (2026-03-12)
+## Completed This Session (2026-03-12/13)
 - Fixed event API date filtering (verified working - 193 future events only)
 - Replaced ALL external image URLs (Pexels/Unsplash) with local optimized WebP images on EventsPage
 - Enhanced CacheControlMiddleware: 1-year immutable cache for /images/ and static assets
@@ -53,9 +53,10 @@ Full-stack FastAPI (backend) + React (frontend) + MongoDB ticket marketplace wit
 - Updated structured data to use local image URLs
 - Cleaned up index.html: removed unnecessary dns-prefetch for external image hosts
 - Updated image preload hints to match actual hero images used
+- **FIXED Login:** Switched from direct Google OAuth (redirect_uri_mismatch) to Emergent Auth
+- **FIXED Homepage Speed:** Replaced UHD video from Pexels with local optimized WebP hero image
 
 ## Pending Issues
-- Google Login on live site: BLOCKED on user adding redirect URIs in Google Cloud Console
 - Live site deployment: BLOCKED on user clicking "Save to GitHub"
 - Email ticket delivery: BLOCKED on user verifying domain with Resend
 
