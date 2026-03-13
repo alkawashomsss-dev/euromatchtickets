@@ -76,7 +76,14 @@ const AuthCallback = () => {
     hasProcessed.current = true;
 
     const processAuth = async () => {
-      // Emergent auth: session_id comes as #session_id= fragment
+      // Google OAuth: code comes as ?code= query parameter
+      const code = searchParams.get('code');
+      if (code) {
+        await processGoogleAuth(code);
+        return;
+      }
+
+      // Legacy Emergent auth: session_id comes as #session_id= fragment
       const hash = window.location.hash;
       if (hash) {
         const params = new URLSearchParams(hash.substring(1));
@@ -87,13 +94,6 @@ const AuthCallback = () => {
         }
       }
 
-      // Google OAuth fallback: code comes as ?code= query parameter
-      const code = searchParams.get('code');
-      if (code) {
-        await processGoogleAuth(code);
-        return;
-      }
-
       setError("No authorization code found. Please try logging in again.");
     };
 
@@ -101,9 +101,11 @@ const AuthCallback = () => {
   }, [navigate, setUser, searchParams]);
 
   const handleRetry = () => {
-    // REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
+    // Retry by restarting login flow
     const redirectUrl = window.location.origin + '/auth/callback';
-    window.location.href = `https://auth.emergentagent.com/?redirect=${encodeURIComponent(redirectUrl)}`;
+    const googleClientId = '189939537642-prda40f304g7mi4ltki8t5ak9duaepmj.apps.googleusercontent.com';
+    const scope = 'openid email profile';
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${encodeURIComponent(redirectUrl)}&response_type=code&scope=${encodeURIComponent(scope)}&access_type=offline&prompt=consent`;
   };
 
   return (

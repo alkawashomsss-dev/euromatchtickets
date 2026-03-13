@@ -1,0 +1,28 @@
+# EuroMatchTickets Robots.txt
+# https://euromatchtickets.com
+
+User-agent: *
+Allow: /
+
+# Block private areas only
+Disallow: /admin
+Disallow: /seller
+Disallow: /owner
+Disallow: /my-tickets
+Disallow: /auth/
+Disallow: /order/
+Disallow: /alerts
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://euromatchtickets.com/sitemap-index.xml
+Sitemap: https://euromatchtickets.com/sitemap.xml
