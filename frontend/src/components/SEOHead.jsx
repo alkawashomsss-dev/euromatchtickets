@@ -85,6 +85,23 @@ const SEOHead = ({
     }
     canonical.setAttribute('href', pageCanonicalUrl);
 
+    // Hreflang - x-default for international targeting
+    const updateHreflang = (lang, href) => {
+      let link = document.querySelector(`link[hreflang="${lang}"]`);
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'alternate');
+        link.setAttribute('hreflang', lang);
+        document.head.appendChild(link);
+      }
+      link.setAttribute('href', href);
+    };
+    updateHreflang('x-default', pageCanonicalUrl);
+    updateHreflang('en', pageCanonicalUrl);
+    updateHreflang('de', pageCanonicalUrl);
+    updateHreflang('fr', pageCanonicalUrl);
+    updateHreflang('es', pageCanonicalUrl);
+
     // Cleanup
     return () => {
       document.title = defaultTitle;

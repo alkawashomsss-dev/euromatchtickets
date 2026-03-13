@@ -118,6 +118,9 @@ import SellTicketsPage from "./pages/SellTicketsPage";
 // Ticket Preview
 import TicketPreviewPage from "./pages/TicketPreviewPage";
 
+// Global Structured Data
+import { OrganizationStructuredData, WebsiteStructuredData } from "./components/StructuredData";
+
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
 
@@ -243,6 +246,8 @@ function AppRouter() {
   return (
     <>
       <ScrollToTop />
+      <OrganizationStructuredData />
+      <WebsiteStructuredData />
       <Header />
       <TrustBar />
       <Routes>

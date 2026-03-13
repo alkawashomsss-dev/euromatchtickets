@@ -18,6 +18,7 @@ import {
 } from "../components/ui/select";
 import SEOHead from "../components/SEOHead";
 import { getEventImagePath } from "../utils/eventImages";
+import { BreadcrumbStructuredData } from "../components/StructuredData";
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);
@@ -210,6 +211,10 @@ const EventsPage = () => {
         title={getSEOTitle()}
         description={getSEODescription()}
       />
+      <BreadcrumbStructuredData items={[
+        { name: "Home", url: "https://euromatchtickets.com" },
+        { name: "Events", url: "https://euromatchtickets.com/events" }
+      ]} />
       
       {/* Header */}
       <div className="bg-zinc-900/30 border-b border-white/5">

@@ -15,6 +15,7 @@ import OptimizedImage from "../components/OptimizedImage";
 import { getEventImagePath, getCategoryHero } from "../utils/eventImages";
 import { TrustSection, TrustBar, OfficialPartnerBadges } from "../components/TrustElements";
 import { ReviewsGrid, ReviewsStats, ReviewsCarousel } from "../components/ReviewsSystem";
+import { OrganizationStructuredData, WebsiteStructuredData, BreadcrumbStructuredData, FAQStructuredData, commonTicketFAQs } from "../components/StructuredData";
 
 // SEO: Buy concert tickets, Champions League tickets, Taylor Swift tickets, Drake concert,
 // European football tickets, music festival tickets, secure ticket resale marketplace
@@ -236,6 +237,8 @@ const HomePage = () => {
         description="Europe's #1 ticket marketplace. Buy verified tickets for Champions League, Premier League, La Liga, Taylor Swift, Coldplay and more. 100% secure with instant QR delivery."
         image="https://euromatchtickets.com/og-image.jpg"
       />
+      <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }]} />
+      <FAQStructuredData faqs={commonTicketFAQs} />
       
       {/* Hero Section - World Cup 2026 Featured */}
       <section className="relative min-h-[100vh] flex items-center overflow-hidden">

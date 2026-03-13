@@ -53,12 +53,17 @@ Full-stack FastAPI (backend) + React (frontend) + MongoDB ticket marketplace wit
 - Updated structured data to use local image URLs
 - Cleaned up index.html: removed unnecessary dns-prefetch for external image hosts
 - Updated image preload hints to match actual hero images used
-- **FIXED Login:** Switched from direct Google OAuth (redirect_uri_mismatch) to Emergent Auth, then reverted to direct Google OAuth per user request. Added GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET env vars on Render.
-- **FIXED CORS:** Removed wildcard `*` from CORS origins (was blocking all API calls with credentials)
+- **FIXED Login:** Reverted to direct Google OAuth per user request. Added GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET env vars on Render.
+- **FIXED CORS:** Removed wildcard `*` from CORS origins (was blocking all API calls with credentials on live site)
 - **FIXED Homepage Speed:** Replaced UHD video from Pexels with local optimized WebP hero image
-- **EXTREME Image Compression:** 6.8MB → 3.7MB (46% smaller). Mobile images: 7.5KB avg
-- **API Optimization:** Homepage now fetches limit=6 instead of 100 events (64KB → 3.6KB = 94% less)
-- **Fixed Render deployment:** Added Google OAuth env vars, fixed CORS for cross-origin requests
+- **EXTREME Image Compression:** 6.8MB -> 3.7MB (46% smaller). Mobile images: 7.5KB avg
+- **API Optimization:** Homepage now fetches limit=6 instead of 100 events (64KB -> 3.6KB = 94% less)
+- **FIXED Render deployment:** Added Google OAuth env vars, fixed CORS, removed catch-all SPA route
+- **COMPLETE SEO Overhaul:**
+  - Added @graph structured data: Organization (with AggregateRating 4.8), WebSite (SearchAction), BreadcrumbList (5 pages), FAQPage (5 questions)
+  - Added hreflang tags: en, de, fr, es, ar + x-default
+  - Cleaned robots.txt
+  - Added structured data to React components (HomePage, EventsPage, App.js)
 
 ## Pending Issues
 - Live site deployment: User needs to "Save to GitHub" and rebuild on Render
