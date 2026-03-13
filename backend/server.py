@@ -71,6 +71,8 @@ app.add_middleware(CacheControlMiddleware)
 ALLOWED_ORIGINS = [
     "http://localhost:3000", "http://localhost:3001",
     "https://euromatchtickets.com", "https://www.euromatchtickets.com",
+    "https://euromatchtickets-frontend.onrender.com",
+    "https://euromatchtickets.onrender.com",
 ]
 react_url = os.environ.get('REACT_APP_BACKEND_URL', '')
 if react_url:
@@ -78,7 +80,6 @@ if react_url:
 preview_url = os.environ.get('PREVIEW_URL', '')
 if preview_url:
     ALLOWED_ORIGINS.append(preview_url)
-ALLOWED_ORIGINS.append("*")
 
 app.add_middleware(
     CORSMiddleware,
@@ -97,65 +98,24 @@ app.include_router(seed_router)
 
 # Serve uploaded files
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 import pathlib
 uploads_dir = pathlib.Path(__file__).parent / "uploads"
 uploads_dir.mkdir(exist_ok=True)
 app.mount("/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
-
-# Serve frontend build (for production on Render)
-static_dir = pathlib.Path(__file__).parent / "static"
-has_frontend_build = (static_dir / "index.html").exists()
-if has_frontend_build:
-    # Serve static assets (JS, CSS, images, etc.)
-    static_assets = static_dir / "static"
-    if static_assets.exists():
-        app.mount("/static", StaticFiles(directory=str(static_assets)), name="frontend_static")
-    # Serve images from the build
-    images_dir = static_dir / "images"
-    if images_dir.exists():
-        app.mount("/images", StaticFiles(directory=str(images_dir)), name="frontend_images")
-    # Serve logo
-    logo_dir = static_dir / "logo"
-    if logo_dir.exists():
-        app.mount("/logo", StaticFiles(directory=str(logo_dir)), name="frontend_logo")
-    # Serve sitemaps
-    sitemaps_dir = static_dir / "sitemaps"
-    if sitemaps_dir.exists():
-        app.mount("/sitemaps", StaticFiles(directory=str(sitemaps_dir)), name="frontend_sitemaps")
 
 # Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 
+@app.get("/")
+async def root():
+    return {"status": "EuroMatchTickets API v2.0 - Modular Architecture", "endpoints": "/api/..."}
+
 @app.get("/api")
 @app.get("/api/")
 async def api_root():
     return {"status": "EuroMatchTickets API v2.0", "version": "2.0"}
-
-# Catch-all: Serve React SPA for any non-API route (production)
-if has_frontend_build:
-    @app.get("/")
-    async def serve_spa_root():
-        return FileResponse(str(static_dir / "index.html"))
-
-    @app.get("/{full_path:path}")
-    async def serve_spa(full_path: str):
-        # NEVER intercept API routes - let FastAPI routers handle them
-        if full_path.startswith("api/") or full_path.startswith("api") or full_path == "uploads":
-            from fastapi.responses import JSONResponse
-            return JSONResponse(status_code=404, content={"detail": "Not found"})
-        # Try to serve the exact file first
-        file_path = static_dir / full_path
-        if file_path.is_file():
-            return FileResponse(str(file_path))
-        # Otherwise serve index.html for SPA routing (including /auth/callback, /events, etc.)
-        return FileResponse(str(static_dir / "index.html"))
-else:
-    @app.get("/")
-    async def root():
-        return {"status": "EuroMatchTickets API v2.0 - Modular Architecture", "endpoints": "/api/..."}
 
 
 from datetime import datetime, timezone
