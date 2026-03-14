@@ -615,3 +615,16 @@ async def content_generation_status():
     from services.content_generator import get_content_stats
     stats = await get_content_stats()
     return {"job": _content_job, "stats": stats}
+
+
+@router.post("/seo/generate-template-content")
+async def generate_template_content_endpoint():
+    """Generate smart template content for ALL pages without AI content. Free, instant, no API needed."""
+    try:
+        from services.template_generator import generate_all_template_content
+        result = await generate_all_template_content()
+        return {"status": "success", **result}
+    except Exception as e:
+        logger.error(f"Template generation error: {e}")
+        import traceback
+        return {"status": "error", "message": str(e), "traceback": traceback.format_exc()}
