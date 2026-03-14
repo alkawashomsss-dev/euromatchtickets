@@ -484,3 +484,134 @@ async def get_related_pages(category: str = "", slug: str = "", city: str = "", 
                 seen_slugs.add(p["slug"])
 
     return {"links": results[:limit]}
+
+
+# ─── Content Generation Endpoints ─────────────────────────────────────
+
+@router.post("/seo/generate-content")
+async def generate_content_endpoint(batch_size: int = 5):
+    """Generate AI content for a batch of SEO pages that still have template content."""
+    try:
+        from services.content_generator import generate_content_batch
+        result = await generate_content_batch(batch_size=batch_size)
+        return {"status": "success", **result}
+    except Exception as e:
+        logger.error(f"Content generation error: {e}")
+        import traceback
+        return {"status": "error", "message": str(e), "traceback": traceback.format_exc()}
+
+
+@router.get("/seo/content-stats")
+async def content_stats_endpoint():
+    """Get content generation progress statistics."""
+    try:
+        from services.content_generator import get_content_stats
+        stats = await get_content_stats()
+        return {"status": "success", **stats}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+
+@router.post("/seo/generate-content-single/{slug}")
+async def generate_content_single(slug: str):
+    """Generate AI content for a specific SEO page by slug."""
+    page = await db.seo_pages.find_one({"slug": slug}, {"_id": 0})
+    if not page:
+        raise HTTPException(status_code=404, detail="Page not found")
+
+    try:
+        from services.content_generator import generate_content_for_page
+        content = await generate_content_for_page(page)
+        if content and len(content) > 200:
+            await db.seo_pages.update_one(
+                {"slug": slug},
+                {"$set": {
+                    "content": content,
+                    "content_generated_at": datetime.now(timezone.utc).isoformat(),
+                    "content_quality": "ai_generated",
+                    "updated_at": datetime.now(timezone.utc),
+                }},
+            )
+            return {"status": "success", "slug": slug, "content_length": len(content), "preview": content[:300]}
+        return {"status": "error", "message": "Generated content was too short or empty"}
+    except Exception as e:
+        logger.error(f"Single content generation error for {slug}: {e}")
+        return {"status": "error", "message": str(e)}
+
+
+# Background job state
+_content_job = {"running": False, "generated": 0, "errors": 0, "total": 0, "started_at": None}
+
+@router.post("/seo/generate-content-bulk")
+async def generate_content_bulk(batch_size: int = 5):
+    """Start bulk content generation as a background task."""
+    import asyncio
+    from services.content_generator import generate_content_for_page, get_content_stats
+
+    if _content_job["running"]:
+        return {"status": "already_running", **_content_job}
+
+    stats = await get_content_stats()
+    remaining = stats["template_only"]
+    if remaining == 0:
+        return {"status": "complete", "message": "All pages already have AI content", **stats}
+
+    _content_job["running"] = True
+    _content_job["generated"] = 0
+    _content_job["errors"] = 0
+    _content_job["total"] = remaining
+    _content_job["started_at"] = datetime.now(timezone.utc).isoformat()
+
+    async def _run_bulk():
+        try:
+            while True:
+                pages = await db.seo_pages.find(
+                    {"content_generated_at": {"$exists": False}},
+                    {"_id": 0},
+                ).limit(batch_size).to_list(batch_size)
+                if not pages:
+                    break
+                for page in pages:
+                    try:
+                        content = await generate_content_for_page(page)
+                        if content and len(content) > 200:
+                            await db.seo_pages.update_one(
+                                {"slug": page["slug"]},
+                                {"$set": {
+                                    "content": content,
+                                    "content_generated_at": datetime.now(timezone.utc).isoformat(),
+                                    "content_quality": "ai_generated",
+                                    "updated_at": datetime.now(timezone.utc),
+                                }},
+                            )
+                            _content_job["generated"] += 1
+                        else:
+                            _content_job["errors"] += 1
+                    except RuntimeError as re:
+                        if "BUDGET_EXCEEDED" in str(re):
+                            _content_job["running"] = False
+                            _content_job["stopped_reason"] = "budget_exceeded"
+                            logger.warning("Bulk generation stopped: LLM budget exceeded")
+                            return
+                        _content_job["errors"] += 1
+                    except Exception as e:
+                        logger.error(f"Bulk gen error for {page.get('slug')}: {e}")
+                        _content_job["errors"] += 1
+                        await asyncio.sleep(2)
+                # Brief pause between batches to avoid rate limiting
+                await asyncio.sleep(1)
+        except Exception as e:
+            logger.error(f"Bulk generation stopped: {e}")
+        finally:
+            _content_job["running"] = False
+
+    asyncio.create_task(_run_bulk())
+    return {"status": "started", "total_to_generate": remaining, "batch_size": batch_size}
+
+
+@router.get("/seo/generate-content-status")
+async def content_generation_status():
+    """Check the status of the bulk content generation job."""
+    from services.content_generator import get_content_stats
+    stats = await get_content_stats()
+    return {"job": _content_job, "stats": stats}
