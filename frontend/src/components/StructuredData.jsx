@@ -37,7 +37,7 @@ const EventStructuredData = ({ event }) => {
       }
       if (eventType === 'concert') {
         const artist = title?.split(' - ')[0] || title?.split(' Live')[0] || 'Artist';
-        return { "@type": "Person", "name": artist };
+        return { "@type": "Person", "name": artist, "url": "https://euromatchtickets.com" };
       }
       return { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" };
     };
