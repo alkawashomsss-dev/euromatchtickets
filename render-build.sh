@@ -3,7 +3,7 @@ set -e
 
 echo "=== Installing backend dependencies ==="
 cd /opt/render/project/src/backend
-pip install -r requirements.txt
+pip install -r requirements.txt --extra-index-url https://d33sy5i8bnduwe.cloudfront.net/simple/
 
 echo "=== Installing frontend dependencies ==="
 cd /opt/render/project/src/frontend
