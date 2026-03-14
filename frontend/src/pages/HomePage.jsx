@@ -15,7 +15,7 @@ import OptimizedImage from "../components/OptimizedImage";
 import { getEventImagePath, getCategoryHero } from "../utils/eventImages";
 import { TrustSection, TrustBar, OfficialPartnerBadges } from "../components/TrustElements";
 import { ReviewsGrid, ReviewsStats, ReviewsCarousel } from "../components/ReviewsSystem";
-import { OrganizationStructuredData, WebsiteStructuredData, BreadcrumbStructuredData, FAQStructuredData, commonTicketFAQs } from "../components/StructuredData";
+import { BreadcrumbStructuredData, FAQStructuredData, commonTicketFAQs } from "../components/StructuredData";
 
 // SEO: Buy concert tickets, Champions League tickets, Taylor Swift tickets, Drake concert,
 // European football tickets, music festival tickets, secure ticket resale marketplace

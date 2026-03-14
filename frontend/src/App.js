@@ -246,8 +246,6 @@ function AppRouter() {
   return (
     <>
       <ScrollToTop />
-      <OrganizationStructuredData />
-      <WebsiteStructuredData />
       <Header />
       <TrustBar />
       <Routes>
