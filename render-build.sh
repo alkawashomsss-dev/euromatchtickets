@@ -3,7 +3,8 @@ set -e
 
 echo "=== Installing backend dependencies ==="
 cd /opt/render/project/src/backend
-pip install -r requirements.txt --extra-index-url https://d33sy5i8bnduwe.cloudfront.net/simple/
+pip install -r requirements.txt
+pip install emergentintegrations --extra-index-url https://d33sy5i8bnduwe.cloudfront.net/simple/ || echo "Warning: emergentintegrations not installed (content generation will be unavailable)"
 
 echo "=== Installing frontend dependencies ==="
 cd /opt/render/project/src/frontend

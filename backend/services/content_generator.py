@@ -8,7 +8,12 @@ import random
 import uuid
 from datetime import datetime, timezone
 from database.db import db
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+
+try:
+    from emergentintegrations.llm.chat import LlmChat, UserMessage
+    HAS_LLM = True
+except ImportError:
+    HAS_LLM = False
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +53,9 @@ async def generate_content_for_page(page: dict) -> str | None:
     """Generate natural, human-like content for a single SEO page using Emergent LLM."""
     if not EMERGENT_LLM_KEY:
         logger.error("EMERGENT_LLM_KEY not found in environment")
+        return None
+    if not HAS_LLM:
+        logger.error("emergentintegrations library not installed")
         return None
 
     slug = page.get("slug", "")
