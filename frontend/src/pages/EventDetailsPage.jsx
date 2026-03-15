@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import VenueSeatMap from "../components/VenueSeatMap";
 import SEOHead from "../components/SEOHead";
 import { EventStructuredData, BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { RelatedEventsSection } from "../components/RelatedEventsSection";
 import { getEventImagePath } from "../utils/eventImages";
 import { 
   UrgencyCountdown, 
@@ -763,6 +764,17 @@ const EventDetailsPage = () => {
 
       {/* Sales Accelerator - Recently Bought Popup */}
       <RecentlyBoughtPopup />
+
+      {/* Related Events Internal Linking */}
+      {event && (
+        <div className="max-w-7xl mx-auto px-4 pb-8">
+          <RelatedEventsSection 
+            slug={event.event_id} 
+            category={event.event_type === 'match' ? 'football' : event.event_type} 
+            city={event.city} 
+          />
+        </div>
+      )}
       
       {/* Sticky Buy Bar */}
       {lowestPrice && (

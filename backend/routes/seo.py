@@ -486,6 +486,74 @@ async def get_related_pages(category: str = "", slug: str = "", city: str = "", 
     return {"links": results[:limit]}
 
 
+@router.get("/seo/full-related/{slug}")
+async def get_full_related(slug: str):
+    """Return comprehensive related content for internal linking sections."""
+    page = await db.seo_pages.find_one({"slug": slug}, {"_id": 0})
+    if not page:
+        return {"related_events": [], "similar_pages": [], "upcoming_events": [], "city_events": []}
+
+    category = page.get("category", "")
+    city = page.get("city", "")
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    seen = {slug}
+
+    def fmt_seo(p):
+        return {"url": f"/{p['slug']}", "title": p["title"].split("|")[0].strip(), 
+                "category": p.get("category", ""), "city": p.get("city", ""),
+                "price_low": p.get("price_low"), "venue": p.get("venue", "")}
+
+    def fmt_event(e):
+        return {"url": f"/event/{e['event_id']}", "title": e["title"],
+                "category": e.get("event_type", ""), "city": e.get("city", ""),
+                "date": e.get("event_date", ""), "venue": e.get("venue", "")}
+
+    # 1. Same category SEO pages
+    same_cat = await db.seo_pages.find(
+        {"category": category, "slug": {"$nin": list(seen)}},
+        {"_id": 0, "slug": 1, "title": 1, "category": 1, "city": 1, "price_low": 1, "venue": 1}
+    ).limit(6).to_list(6)
+    related_pages = [fmt_seo(p) for p in same_cat if p["slug"] not in seen]
+    seen.update(p["slug"] for p in same_cat)
+
+    # 2. Same city events (cross-category)
+    city_pages = []
+    if city:
+        cp = await db.seo_pages.find(
+            {"city": city, "slug": {"$nin": list(seen)}},
+            {"_id": 0, "slug": 1, "title": 1, "category": 1, "city": 1, "price_low": 1, "venue": 1}
+        ).limit(6).to_list(6)
+        city_pages = [fmt_seo(p) for p in cp if p["slug"] not in seen]
+
+    # 3. Upcoming real events (same type)
+    event_type_map = {"f1": "f1", "football": "match", "concert": "concert", "worldcup": "match"}
+    etype = event_type_map.get(category, "match")
+    upcoming_raw = await db.events.find(
+        {"event_type": etype, "event_date": {"$gte": today}},
+        {"_id": 0, "event_id": 1, "title": 1, "event_type": 1, "city": 1, "event_date": 1, "venue": 1}
+    ).sort("event_date", 1).limit(6).to_list(6)
+    upcoming = [fmt_event(e) for e in upcoming_raw]
+
+    # 4. Cross-category popular pages
+    cross_cats = {"f1": ["football", "concert"], "football": ["f1", "concert", "worldcup"],
+                  "concert": ["football", "f1"], "worldcup": ["football", "f1"]}
+    similar = []
+    for cc in cross_cats.get(category, ["f1", "concert"]):
+        sp = await db.seo_pages.find(
+            {"category": cc, "slug": {"$nin": list(seen)}},
+            {"_id": 0, "slug": 1, "title": 1, "category": 1, "city": 1, "price_low": 1, "venue": 1}
+        ).limit(3).to_list(3)
+        similar.extend(fmt_seo(p) for p in sp if p["slug"] not in seen)
+        seen.update(p["slug"] for p in sp)
+
+    return {
+        "related_pages": related_pages[:6],
+        "city_events": city_pages[:6],
+        "upcoming_events": upcoming[:6],
+        "similar_pages": similar[:6],
+    }
+
+
 # ─── Content Generation Endpoints ─────────────────────────────────────
 
 @router.post("/seo/generate-content")
@@ -628,3 +696,60 @@ async def generate_template_content_endpoint():
         logger.error(f"Template generation error: {e}")
         import traceback
         return {"status": "error", "message": str(e), "traceback": traceback.format_exc()}
+
+
+@router.post("/seo/force-index-all")
+async def force_index_all():
+    """Submit ALL URLs to every indexing service available. Maximum indexing push."""
+    base_url = "https://euromatchtickets.com"
+    
+    # Collect ALL URLs
+    seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(5000)
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    events = await db.events.find({"event_date": {"$gte": today}}, {"_id": 0, "event_id": 1}).to_list(500)
+    
+    urls = [base_url]
+    urls += [f"{base_url}/{p}" for p in [
+        "events", "f1-tickets", "motogp-tickets", "world-cup-2026",
+        "champions-league-tickets", "concerts", "sell-tickets",
+        "about", "faq", "reviews", "contact", "buyer-protection"
+    ]]
+    urls += [f"{base_url}/{p['slug']}" for p in seo_pages]
+    urls += [f"{base_url}/event/{e['event_id']}" for e in events]
+    
+    results = {"total_urls": len(urls), "engines": {}}
+    
+    async with httpx.AsyncClient(timeout=60.0) as client:
+        # 1. IndexNow API (covers Bing, Yandex, Seznam, Naver)
+        for engine_name, engine_url in [
+            ("indexnow", "https://api.indexnow.org/indexnow"),
+            ("yandex", "https://yandex.com/indexnow"),
+        ]:
+            submitted = 0
+            for i in range(0, len(urls), 5000):
+                batch = urls[i:i+5000]
+                try:
+                    r = await client.post(engine_url, json={
+                        "host": "euromatchtickets.com",
+                        "key": INDEXNOW_KEY,
+                        "keyLocation": f"{base_url}/{INDEXNOW_KEY}.txt",
+                        "urlList": batch
+                    }, headers={"Content-Type": "application/json"})
+                    if r.status_code in [200, 202]:
+                        submitted += len(batch)
+                except Exception:
+                    pass
+            results["engines"][engine_name] = submitted
+        
+        # 2. Google Sitemap Pings (multiple sitemaps)
+        google_pings = 0
+        for sitemap in ["sitemap-index.xml", "sitemap.xml", "sitemaps/pages.xml", "sitemaps/f1.xml", "sitemaps/football.xml", "sitemaps/concerts.xml", "sitemaps/worldcup.xml", "sitemaps/cities.xml"]:
+            try:
+                r = await client.get(f"https://www.google.com/ping?sitemap={base_url}/api/{sitemap}")
+                if r.status_code == 200:
+                    google_pings += 1
+            except Exception:
+                pass
+        results["engines"]["google_sitemap_pings"] = google_pings
+    
+    return {"status": "success", **results}
