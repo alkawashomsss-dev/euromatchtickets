@@ -20,7 +20,7 @@ FRONTEND_URL = os.environ.get('FRONTEND_URL', '')
 if RESEND_API_KEY:
     resend.api_key = RESEND_API_KEY
 
-# Email Template Base
+# Email Template Base - Premium Light Theme
 BASE_TEMPLATE = """
 <!DOCTYPE html>
 <html>
@@ -28,16 +28,16 @@ BASE_TEMPLATE = """
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; background-color: #09090b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #09090b; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: 'Helvetica Neue', Arial, sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f1f5f9; padding: 40px 20px;">
         <tr>
             <td align="center">
-                <table width="600" cellpadding="0" cellspacing="0" style="background-color: #18181b; border-radius: 16px; overflow: hidden;">
+                <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
                     <!-- Header -->
                     <tr>
-                        <td style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%); padding: 30px; text-align: center;">
-                            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold;">EuroMatchTickets</h1>
-                            <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0; font-size: 14px;">Europe's #1 Ticket Marketplace</p>
+                        <td style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 30px; text-align: center;">
+                            <h1 style="color: #fbbf24; margin: 0; font-size: 26px; font-weight: bold; letter-spacing: -0.5px;">EuroMatch<span style="color:#ffffff;">Tickets</span></h1>
+                            <p style="color: rgba(255,255,255,0.6); margin: 5px 0 0; font-size: 12px; letter-spacing: 1px;">EUROPE'S #1 TICKET MARKETPLACE</p>
                         </td>
                     </tr>
                     
@@ -48,14 +48,27 @@ BASE_TEMPLATE = """
                         </td>
                     </tr>
                     
+                    <!-- Trust Bar -->
+                    <tr>
+                        <td style="background-color: #f8fafc; padding: 15px 30px; text-align: center; border-top: 1px solid #e2e8f0;">
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="text-align: center; color: #64748b; font-size: 11px;">
+                                        &#9989; Verified Tickets &nbsp;&middot;&nbsp; &#128274; SSL Encrypted &nbsp;&middot;&nbsp; &#128737; FanProtect Guarantee &nbsp;&middot;&nbsp; &#9889; Instant QR Delivery
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
                     <!-- Footer -->
                     <tr>
-                        <td style="background-color: #0f0f11; padding: 25px 30px; text-align: center; border-top: 1px solid #27272a;">
-                            <p style="color: #71717a; margin: 0 0 10px; font-size: 12px;">
-                                © 2026 EuroMatchTickets. All rights reserved.
+                        <td style="background-color: #0f172a; padding: 25px 30px; text-align: center;">
+                            <p style="color: #94a3b8; margin: 0 0 8px; font-size: 12px;">
+                                &copy; 2026 EuroMatchTickets. All rights reserved.
                             </p>
-                            <p style="color: #52525b; margin: 0; font-size: 11px;">
-                                Questions? Contact us at support@euromatchtickets.com
+                            <p style="color: #475569; margin: 0; font-size: 11px;">
+                                Erzgieereistr. 15, 80335 Munich, Germany &middot; support@euromatchtickets.com
                             </p>
                         </td>
                     </tr>
@@ -145,56 +158,84 @@ def build_email(content: str) -> str:
 # ============== EMAIL TEMPLATES ==============
 
 def order_confirmation_email(order: Dict, event: Dict, ticket: Dict, lang: str = 'en') -> Dict[str, str]:
-    """Generate order confirmation email"""
+    """Generate order confirmation email with professional QR ticket"""
     t = lambda key: get_text(key, lang)
+    qr_data = f"FANPASS-{order.get('order_id', '')}-{order.get('ticket_id', '')}"
+    qr_url = f"https://api.qrserver.com/v1/create-qr-code/?size=220x220&data={qr_data}&color=0f172a&bgcolor=ffffff&margin=10"
     
     content = f"""
+        <!-- Success Banner -->
         <div style="text-align: center; margin-bottom: 30px;">
-            <div style="width: 80px; height: 80px; background-color: #22c55e; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
-                <span style="font-size: 40px;">✓</span>
+            <div style="width: 64px; height: 64px; background-color: #059669; border-radius: 50%; margin: 0 auto 15px; line-height: 64px; text-align: center;">
+                <span style="color: white; font-size: 32px;">&#10003;</span>
             </div>
-            <h2 style="color: #ffffff; margin: 0; font-size: 24px;">{t('order_confirmed')}</h2>
-            <p style="color: #a1a1aa; margin: 10px 0 0;">{t('thank_you')}</p>
+            <h2 style="color: #0f172a; margin: 0; font-size: 24px; font-weight: 800;">{t('order_confirmed')}</h2>
+            <p style="color: #64748b; margin: 8px 0 0; font-size: 14px;">{t('thank_you')}</p>
         </div>
         
-        <div style="background-color: #27272a; border-radius: 12px; padding: 25px; margin-bottom: 25px;">
-            <h3 style="color: #a855f7; margin: 0 0 15px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">{t('your_ticket')}</h3>
+        <!-- Ticket Card -->
+        <div style="border: 2px solid #e2e8f0; border-radius: 16px; overflow: hidden; margin-bottom: 25px;">
+            <!-- Event Header -->
+            <div style="background: linear-gradient(135deg, #0f172a, #1e293b); padding: 20px 25px;">
+                <p style="color: #fbbf24; margin: 0 0 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">YOUR OFFICIAL E-TICKET</p>
+                <h3 style="color: #ffffff; margin: 0; font-size: 20px; font-weight: 700;">{event.get('title', 'N/A')}</h3>
+            </div>
             
-            <table width="100%" cellpadding="8" cellspacing="0">
-                <tr>
-                    <td style="color: #71717a; font-size: 14px;">{t('event')}</td>
-                    <td style="color: #ffffff; font-size: 14px; font-weight: bold; text-align: right;">{event.get('title', 'N/A')}</td>
-                </tr>
-                <tr>
-                    <td style="color: #71717a; font-size: 14px;">{t('date')}</td>
-                    <td style="color: #ffffff; font-size: 14px; text-align: right;">{format_date(event.get('event_date', ''), lang)}</td>
-                </tr>
-                <tr>
-                    <td style="color: #71717a; font-size: 14px;">{t('venue')}</td>
-                    <td style="color: #ffffff; font-size: 14px; text-align: right;">{event.get('venue', '')}, {event.get('city', '')}</td>
-                </tr>
-                <tr>
-                    <td style="color: #71717a; font-size: 14px;">{t('section')}</td>
-                    <td style="color: #ffffff; font-size: 14px; text-align: right;">{ticket.get('category', '').upper()} - {ticket.get('section', '')}</td>
-                </tr>
-                {'<tr><td style="color: #71717a; font-size: 14px;">' + t('row_seat') + '</td><td style="color: #ffffff; font-size: 14px; text-align: right;">' + str(ticket.get('row', '')) + ' / ' + str(ticket.get('seat', '')) + '</td></tr>' if ticket.get('row') else ''}
-            </table>
+            <!-- Event Details -->
+            <div style="padding: 20px 25px; background: #f8fafc;">
+                <table width="100%" cellpadding="6" cellspacing="0">
+                    <tr>
+                        <td style="color: #94a3b8; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">{t('date')}</td>
+                        <td style="color: #0f172a; font-size: 14px; font-weight: 600; text-align: right;">{format_date(event.get('event_date', ''), lang)}</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #94a3b8; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">{t('venue')}</td>
+                        <td style="color: #0f172a; font-size: 14px; font-weight: 600; text-align: right;">{event.get('venue', '')}, {event.get('city', '')}</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #94a3b8; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">{t('section')}</td>
+                        <td style="color: #0f172a; font-size: 14px; font-weight: 600; text-align: right;">{ticket.get('category', '').upper()} &ndash; {ticket.get('section', 'General')}</td>
+                    </tr>
+                    {'<tr><td style="color: #94a3b8; font-size: 12px; text-transform: uppercase;">' + t('row_seat') + '</td><td style="color: #0f172a; font-size: 14px; font-weight: 600; text-align: right;">' + str(ticket.get('row', '')) + ' / ' + str(ticket.get('seat', '')) + '</td></tr>' if ticket.get('row') else ''}
+                </table>
+            </div>
+            
+            <!-- Dashed separator -->
+            <div style="border-top: 2px dashed #cbd5e1; margin: 0;"></div>
+            
+            <!-- QR Section -->
+            <div style="padding: 25px; text-align: center; background: #ffffff;">
+                <p style="color: #0f172a; font-size: 11px; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">{t('qr_instructions')}</p>
+                <div style="display: inline-block; padding: 12px; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 12px;">
+                    <img src="{qr_url}" alt="QR Ticket Code" style="width: 200px; height: 200px; display: block;" />
+                </div>
+                <p style="color: #64748b; font-size: 10px; margin: 12px 0 0; font-family: monospace; letter-spacing: 0.5px;">ID: {order.get('order_id', '')}</p>
+                <div style="margin-top: 10px; display: inline-block; background: #059669; color: white; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 700; letter-spacing: 1px;">
+                    VERIFIED &bull; AUTHENTIC
+                </div>
+            </div>
         </div>
         
-        <div style="background-color: #ffffff; border-radius: 12px; padding: 30px; text-align: center; margin-bottom: 25px;">
-            <p style="color: #18181b; font-size: 12px; margin: 0 0 15px; text-transform: uppercase; letter-spacing: 1px;">{t('qr_instructions')}</p>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=FANPASS-{order.get('order_id', '')}" alt="QR Code" style="width: 180px; height: 180px;" />
-            <p style="color: #71717a; font-size: 11px; margin: 15px 0 0;">{t('order_id')}: {order.get('order_id', '')}</p>
+        <!-- Total Paid -->
+        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 20px;">
+            <p style="color: #64748b; margin: 0 0 4px; font-size: 12px; text-transform: uppercase;">{t('total_paid')}</p>
+            <p style="color: #059669; margin: 0; font-size: 32px; font-weight: 800;">&euro;{order.get('total_amount', 0):.2f}</p>
         </div>
         
-        <div style="background-color: #27272a; border-radius: 12px; padding: 20px; text-align: center;">
-            <p style="color: #71717a; margin: 0 0 5px; font-size: 14px;">{t('total_paid')}</p>
-            <p style="color: #22c55e; margin: 0; font-size: 32px; font-weight: bold;">€{order.get('total_amount', 0):.2f}</p>
+        <!-- Instructions -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;">
+            <p style="color: #0f172a; font-size: 13px; font-weight: 700; margin: 0 0 8px;">How to use your ticket:</p>
+            <p style="color: #64748b; font-size: 12px; margin: 0; line-height: 1.8;">
+                1. Save this email or screenshot the QR code<br>
+                2. Arrive at {event.get('venue', 'the venue')} on {format_date(event.get('event_date', ''), lang)}<br>
+                3. Show the QR code at the entrance gate<br>
+                4. Enjoy the event!
+            </p>
         </div>
     """
     
     return {
-        'subject': f"🎫 {t('order_confirmed')} - {event.get('title', 'FanPass')}",
+        'subject': f"Your Ticket: {event.get('title', 'EuroMatchTickets')} - Order Confirmed",
         'html': build_email(content)
     }
 

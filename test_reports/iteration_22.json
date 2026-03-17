@@ -1,0 +1,86 @@
+{
+  "summary": "Comprehensive testing of new conversion/alert features for euromatchtickets.com. Backend: All 9 alert API tests passed. Frontend: All conversion widgets verified except ScarcityBadge (field mapping issue).",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {
+        "endpoint": "/api/events/{slug}",
+        "issue": "Single event API returns 'ticket_count' but events list API returns 'available_tickets'. Frontend expects 'available_tickets' for ScarcityBadge.",
+        "priority": "MEDIUM"
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "ScarcityBadge display",
+        "issue": "ScarcityBadge not showing because event detail API returns 'ticket_count' instead of 'available_tickets'. Component passes event.available_tickets which is undefined.",
+        "affected_selectors": ["[data-testid='scarcity-badge']"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_alerts.py",
+    "/app/test_reports/pytest/pytest_alerts.xml"
+  ],
+  "action_items": [
+    "Fix field mapping: Either update backend /api/events/{slug} to return 'available_tickets' OR update EventDetailsPage.jsx line 406 to use event.ticket_count"
+  ],
+  "critical_code_review_comments": [
+    "alerts.py: All endpoints properly implemented with validation, async/await, and error handling",
+    "ConversionWidgets.jsx: Good implementation with data-testid attributes for all components",
+    "EventDetailsPage.jsx line 406: Uses event.available_tickets but API returns ticket_count"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_alerts.py"
+  ],
+  "success_rate": {
+    "backend": "100% (9/9 tests passed)",
+    "frontend": "95% (1 widget field mapping issue)"
+  },
+  "seed_data_creation": "Test subscriptions created with TEST_ prefixed emails during pytest run",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All new conversion features tested. ScarcityBadge requires fix for available_tickets field. All other widgets working: PriceAlertButton (full subscribe flow works), HighDemandBadge ('X people viewing now'), SocialProofCounter ('X people booked today'), UrgencyCountdown (shows countdown for events within 60 days), AlertWatchersCount ('X fans tracking price alerts'), VenueInfoSection with Google Maps, Price Comparison with BEST DEAL badge. Test email used: test_playwright@example.com subscribed to John Legend event.",
+  "passed_tests": {
+    "backend_alerts_api": [
+      "POST /api/alerts/subscribe - returns success=true, message",
+      "POST /api/alerts/subscribe duplicate - returns already_subscribed=true",
+      "POST /api/alerts/subscribe invalid email - returns 422 validation error",
+      "GET /api/alerts/stats/{event_id} - returns subscribers and watching counts",
+      "GET /api/alerts/status/{event_id}/{email} - returns subscribed=false for non-subscriber",
+      "GET /api/alerts/status/{event_id}/{email} - returns subscribed=true after subscription",
+      "POST /api/alerts/unsubscribe - returns success=true, status check confirms unsubscribed"
+    ],
+    "frontend_conversion_widgets": [
+      "PriceAlertButton: 'Get Price Alerts' button renders correctly",
+      "PriceAlertButton: Click shows email input form with Activate button",
+      "PriceAlertButton: Subscribe flow completes with 'Price Alert Active' confirmation",
+      "PriceAlertButton: Toast notification 'Price alert activated!' appears",
+      "HighDemandBadge: Shows 'X people viewing this now' with Eye icon",
+      "SocialProofCounter: Shows 'X people booked this today' with Users icon",
+      "UrgencyCountdown: Shows countdown timer (Days/Hours/Mins) for events within 60 days",
+      "UrgencyCountdown: Shows 'EVENT VERY SOON!' label for imminent events",
+      "AlertWatchersCount: Shows 'X fans tracking price alerts' below price alert widget",
+      "VenueInfoSection: Google Maps iframe renders with correct venue query",
+      "VenueInfoSection: Shows Doors Open, Parking, Public Transit, Capacity info",
+      "VenueInfoSection: 'Get Directions' link points to Google Maps",
+      "Price Comparison: Card layout with competitors and 'BEST DEAL' badge on EuroMatchTickets row"
+    ],
+    "events_tested": [
+      "John Legend Live in Abu Dhabi - all widgets verified",
+      "Real Madrid vs Barcelona - verified ScarcityBadge issue (available_tickets undefined)"
+    ]
+  },
+  "failed_tests": {
+    "frontend": [
+      {
+        "test": "ScarcityBadge visibility",
+        "reason": "event.available_tickets is undefined on event detail page because API returns ticket_count"
+      }
+    ]
+  },
+  "rca_of_the_issue": "ScarcityBadge not displaying: Root cause is field name mismatch between events list API (returns 'available_tickets') and single event detail API (returns 'ticket_count'). EventDetailsPage.jsx line 406 passes event.available_tickets to ScarcityBadge, which is undefined for single event data. Fix: Either update /api/events/{slug} to include available_tickets field, or change line 406 to use event.ticket_count || event.available_tickets."
+}

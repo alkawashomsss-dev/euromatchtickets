@@ -27,6 +27,7 @@ from routes.tickets import router as tickets_router
 from routes.seo import router as seo_router
 from routes.admin import router as admin_router
 from routes.marketing import router as marketing_router
+from routes.alerts import router as alerts_router, set_db as alerts_set_db
 
 # Legacy seed routes - imported from old server to preserve seed data endpoints
 from routes.seed import router as seed_router
@@ -105,7 +106,11 @@ app.include_router(tickets_router)
 app.include_router(seo_router)
 app.include_router(admin_router)
 app.include_router(marketing_router)
+app.include_router(alerts_router)
 app.include_router(seed_router)
+
+# Set DB for alerts
+alerts_set_db(db)
 
 # Serve uploaded files
 from fastapi.staticfiles import StaticFiles

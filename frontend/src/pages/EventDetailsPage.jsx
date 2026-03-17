@@ -14,6 +14,7 @@ import { BreadcrumbStructuredData, FAQStructuredData, commonTicketFAQs } from ".
 import EventStructuredData from "../components/StructuredData";
 import { RecentlyBoughtPopup } from "../components/SalesAccelerator";
 import VenueInfoSection from "../components/VenueInfoSection";
+import { PriceAlertButton, ScarcityBadge, HighDemandBadge, SocialProofCounter, UrgencyCountdown, AlertWatchersCount } from "../components/ConversionWidgets";
 
 const FadeIn = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -399,6 +400,24 @@ export default function EventDetailsPage() {
                   ))}
                 </div>
               </motion.div>
+
+              {/* Conversion Widgets */}
+              <div className="space-y-3">
+                <ScarcityBadge available={event.available_tickets} total={event.total_tickets || 200} />
+                <HighDemandBadge eventId={event.event_id} />
+                <SocialProofCounter eventId={event.event_id} />
+              </div>
+
+              {/* Urgency Countdown */}
+              <UrgencyCountdown eventDate={event.event_date} />
+
+              {/* Price Alert */}
+              <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                <PriceAlertButton event={event} />
+                <div className="mt-3">
+                  <AlertWatchersCount eventId={event.event_id} />
+                </div>
+              </div>
 
               {/* Event Details */}
               <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
