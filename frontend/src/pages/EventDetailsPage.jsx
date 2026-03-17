@@ -326,7 +326,7 @@ const EventDetailsPage = () => {
     },
     "offers": {
       "@type": "AggregateOffer",
-      "url": `https://euromatchtickets.com/event/${event.event_id}`,
+      "url": `https://euromatchtickets.com/event/${event.slug || event.event_id}`,
       "priceCurrency": "EUR",
       "lowPrice": event.categories ? Math.min(...Object.values(event.categories).map(c => c.lowest_price || 999999)) : 0,
       "availability": event.ticket_count > 0 ? "https://schema.org/InStock" : "https://schema.org/SoldOut",
@@ -351,7 +351,7 @@ const EventDetailsPage = () => {
     { name: "Home", url: "https://euromatchtickets.com" },
     { name: isMatch ? "Football" : event.event_type === 'f1' ? "F1 Tickets" : event.event_type === 'concert' ? "Concerts" : "Events", 
       url: `https://euromatchtickets.com/events?type=${event.event_type}` },
-    { name: event.title, url: `https://euromatchtickets.com/event/${event.event_id}` }
+    { name: event.title, url: `https://euromatchtickets.com/event/${event.slug || event.event_id}` }
   ];
 
   return (
@@ -362,7 +362,7 @@ const EventDetailsPage = () => {
         description={seoDescription}
         image={event.event_image}
         type={isMatch ? "sports_event" : "music_event"}
-        canonicalUrl={`https://euromatchtickets.com/event/${event.event_id}`}
+        canonicalUrl={`https://euromatchtickets.com/event/${event.slug || event.event_id}`}
       />
       
       {/* Structured Data for Google Rich Results */}

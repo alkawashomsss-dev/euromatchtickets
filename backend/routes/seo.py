@@ -31,9 +31,10 @@ async def get_sitemap():
     for path, prio, freq in static_pages:
         xml_items.append(f'  <url>\n    <loc>{base_url}{path}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>')
 
-    events = await db.events.find({"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today}}, {"_id": 0, "event_id": 1, "event_date": 1, "event_type": 1}).to_list(1000)
+    events = await db.events.find({"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today}}, {"_id": 0, "event_id": 1, "slug": 1, "event_date": 1, "event_type": 1}).to_list(1000)
     for event in events:
-        xml_items.append(f'  <url>\n    <loc>{base_url}/event/{event["event_id"]}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.85</priority>\n  </url>')
+        slug = event.get("slug", event["event_id"])
+        xml_items.append(f'  <url>\n    <loc>{base_url}/event/{slug}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.85</priority>\n  </url>')
 
     articles = await db.articles.find({}, {"_id": 0, "slug": 1, "date_generated": 1}).to_list(5000)
     for a in articles:
@@ -242,8 +243,8 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-Sitemap: {base_url}/sitemap-index.xml
-Sitemap: {base_url}/sitemap.xml
+Sitemap: {base_url}/api/sitemap-index.xml
+Sitemap: {base_url}/api/sitemap.xml
 """
     return Response(content=content, media_type="text/plain")
 

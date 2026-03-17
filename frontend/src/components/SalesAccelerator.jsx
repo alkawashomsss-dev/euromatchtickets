@@ -220,30 +220,69 @@ export const FlashSaleBanner = ({ discount = 20, endsAt }) => {
 export const RecentlyBoughtPopup = () => {
   const [show, setShow] = useState(false);
   const [purchase, setPurchase] = useState(null);
+  const [usedIndices, setUsedIndices] = useState(new Set());
 
-  const purchases = [
-    { name: 'Michael K.', city: 'London', event: 'Monaco GP', tickets: 2, time: 'just now' },
-    { name: 'Sarah M.', city: 'Berlin', event: 'Coldplay Concert', tickets: 4, time: '2 min ago' },
-    { name: 'Ahmed R.', city: 'Dubai', event: 'F1 Abu Dhabi', tickets: 2, time: '5 min ago' },
-    { name: 'Emma L.', city: 'Paris', event: 'MotoGP Mugello', tickets: 3, time: '8 min ago' },
-    { name: 'Lucas P.', city: 'Madrid', event: 'El Clasico', tickets: 2, time: '12 min ago' },
-    { name: 'Sophie B.', city: 'Munich', event: 'Isle of Man TT', tickets: 2, time: '15 min ago' },
+  const firstNames = [
+    'Marco', 'Sofia', 'Liam', 'Emma', 'Noah', 'Mia', 'Alexander', 'Isabella',
+    'Henrik', 'Chloe', 'Mateo', 'Aria', 'Felix', 'Luna', 'Oscar', 'Elena',
+    'Hugo', 'Valentina', 'Leo', 'Amelia', 'Adrian', 'Nora', 'Julian', 'Hanna',
+    'Rafael', 'Stella', 'Daniel', 'Leah', 'Tobias', 'Clara', 'Jan', 'Lina',
+    'Finn', 'Zoe', 'Erik', 'Maya', 'Thomas', 'Alicia', 'Patrick', 'Sara',
+    'Niklas', 'Julia', 'Maximilian', 'Anna', 'Sebastian', 'Laura', 'Lukas', 'Marie'
   ];
 
+  const cities = [
+    'London', 'Berlin', 'Munich', 'Paris', 'Madrid', 'Amsterdam', 'Rome',
+    'Vienna', 'Stockholm', 'Copenhagen', 'Zurich', 'Brussels', 'Dublin',
+    'Oslo', 'Helsinki', 'Prague', 'Warsaw', 'Lisbon', 'Barcelona', 'Milan',
+    'Hamburg', 'Frankfurt', 'Dubai', 'Abu Dhabi', 'Doha', 'Istanbul'
+  ];
+
+  const events = [
+    'Monaco GP', 'Silverstone GP', 'Monza GP', 'Singapore GP',
+    'F1 Abu Dhabi', 'MotoGP Mugello', 'Isle of Man TT',
+    'Champions League Final', 'El Clasico', 'World Cup 2026',
+    'Coldplay Concert', 'The Weeknd Tour', 'Bruno Mars Live',
+    'Bayern vs Dortmund', 'PSG vs Marseille', 'Liverpool vs Man City'
+  ];
+
+  const times = ['just now', '1 min ago', '2 min ago', '3 min ago', '5 min ago', '8 min ago'];
+
   useEffect(() => {
+    let timeout;
     const showPurchase = () => {
-      const random = purchases[Math.floor(Math.random() * purchases.length)];
-      setPurchase(random);
+      // Pick unique combo
+      let idx;
+      do {
+        idx = Math.floor(Math.random() * firstNames.length);
+      } while (usedIndices.has(idx) && usedIndices.size < firstNames.length);
+
+      setUsedIndices(prev => {
+        const next = new Set(prev);
+        next.add(idx);
+        if (next.size >= firstNames.length - 5) next.clear();
+        return next;
+      });
+
+      const name = firstNames[idx];
+      const initial = name.charAt(0);
+      const city = cities[Math.floor(Math.random() * cities.length)];
+      const event = events[Math.floor(Math.random() * events.length)];
+      const tickets = Math.random() > 0.5 ? 2 : Math.random() > 0.5 ? 4 : 3;
+      const time = times[Math.floor(Math.random() * times.length)];
+
+      setPurchase({ name: `${name} ${initial}.`, city, event, tickets, time });
       setShow(true);
 
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         setShow(false);
-        setTimeout(showPurchase, 20000 + Math.random() * 30000);
-      }, 6000);
+        // Random delay 15-60 seconds
+        timeout = setTimeout(showPurchase, 15000 + Math.random() * 45000);
+      }, 5000);
     };
 
-    const initialTimer = setTimeout(showPurchase, 8000);
-    return () => clearTimeout(initialTimer);
+    timeout = setTimeout(showPurchase, 10000 + Math.random() * 10000);
+    return () => clearTimeout(timeout);
   }, []);
 
   if (!show || !purchase) return null;

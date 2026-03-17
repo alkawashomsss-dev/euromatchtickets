@@ -71,8 +71,8 @@ const EventCard = ({ event }) => {
 
   return (
     <Link 
-      to={`/event/${event.event_id}`}
-      data-testid={`event-card-${event.event_id}`}
+      to={`/event/${event.slug || event.event_id}`}
+      data-testid={`event-card-${event.slug || event.event_id}`}
       className="event-card group block"
     >
       {/* Image */}

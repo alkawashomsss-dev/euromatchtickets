@@ -48,8 +48,8 @@ const EventRow = ({ event }) => {
 
   return (
     <Link
-      to={`/event/${event.event_id}`}
-      data-testid={`event-row-${event.event_id}`}
+      to={`/event/${event.slug || event.event_id}`}
+      data-testid={`event-row-${event.slug || event.event_id}`}
       className="group block bg-zinc-900/40 hover:bg-zinc-800/60 border border-white/5 hover:border-white/10 rounded-2xl p-4 md:p-6 transition-all duration-300"
     >
       <div className="flex flex-col md:flex-row md:items-center gap-4">
@@ -210,6 +210,8 @@ const EventsPage = () => {
       <SEOHead 
         title={getSEOTitle()}
         description={getSEODescription()}
+        noIndex={window.location.search.includes('type=')}
+        canonicalUrl="https://euromatchtickets.com/events"
       />
       <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
