@@ -61,9 +61,11 @@ const Header = () => {
           <div className="flex items-center justify-between h-16 md:h-[72px]">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group" data-testid="logo">
-              <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-                <Ticket className="w-5 h-5 text-white" />
-              </div>
+              <img 
+                src="https://static.prod-images.emergentagent.com/jobs/4a0723d8-569f-4f37-a12d-b96fbae88e33/images/3a68688ecd89eb374164112bbca3b9cc526cf0e98afc1f70225c66468d4b831d.png" 
+                alt="EuroMatchTickets" 
+                className="w-10 h-10 rounded-xl shadow-md group-hover:shadow-lg transition-shadow object-contain"
+              />
               <div className="hidden sm:block">
                 <span className="text-lg font-bold text-slate-900 tracking-tight">EuroMatch</span>
                 <span className="text-lg font-bold text-amber-500 tracking-tight">Tickets</span>

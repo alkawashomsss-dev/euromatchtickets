@@ -27,44 +27,37 @@ const FadeIn = ({ children, className = "", delay = 0 }) => {
 };
 
 const TicketTier = ({ name, price, icon: Icon, gradient, features, badge, onBuy }) => {
-  const [open, setOpen] = useState(false);
   return (
     <motion.div 
-      whileHover={{ y: -2 }} 
-      className={`relative group rounded-2xl overflow-hidden transition-all duration-300 bg-white border ${open ? 'border-emerald-300 shadow-lg shadow-emerald-100' : 'border-slate-200 hover:border-slate-300 hover:shadow-md'}`}
+      whileHover={{ y: -4, scale: 1.01 }} 
+      className="relative group rounded-2xl overflow-hidden transition-all duration-300 bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-100/50"
       data-testid={`ticket-${name.toLowerCase().replace(/\s/g,'-')}`}
     >
       {badge && <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10">{badge}</div>}
-      <div className="relative p-5 cursor-pointer" onClick={() => setOpen(!open)}>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className={`w-14 h-14 rounded-2xl ${gradient} flex items-center justify-center shadow-lg`}>
-              <Icon className="w-7 h-7 text-white" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-slate-900">{name}</h3>
-              <p className="text-xs text-slate-500">{features[0]}</p>
-            </div>
+      <div className="p-5">
+        <div className="flex items-center gap-3 mb-4">
+          <div className={`w-12 h-12 rounded-xl ${gradient} flex items-center justify-center shadow-lg`}>
+            <Icon className="w-6 h-6 text-white" />
           </div>
-          <div className="text-right">
-            <p className="text-[10px] text-slate-400 uppercase tracking-wider">From</p>
-            <p className="text-3xl font-extrabold text-emerald-600">&euro;{price}</p>
+          <div>
+            <h3 className="text-base font-bold text-slate-900">{name}</h3>
+            <p className="text-xs text-slate-500">{features[0]}</p>
           </div>
         </div>
-      </div>
-      <div className={`transition-all duration-300 overflow-hidden ${open ? 'max-h-96' : 'max-h-0'}`}>
-        <div className="px-5 pb-5 border-t border-slate-100 pt-4">
-          <div className="grid grid-cols-2 gap-2 mb-5">
-            {features.map((f, i) => (
-              <div key={i} className="flex items-start gap-2 text-[13px] text-slate-600">
-                <Check className="w-3.5 h-3.5 text-emerald-500 mt-0.5 flex-shrink-0" />{f}
-              </div>
-            ))}
-          </div>
-          <button onClick={onBuy} className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg" data-testid={`buy-btn-${name.toLowerCase().replace(/\s/g,'-')}`}>
-            Select {name}
-          </button>
+        <div className="text-center mb-4">
+          <p className="text-[10px] text-slate-400 uppercase tracking-wider">From</p>
+          <p className="text-3xl font-extrabold text-emerald-600">&euro;{price}</p>
         </div>
+        <div className="space-y-1.5 mb-4">
+          {features.slice(0, 3).map((f, i) => (
+            <div key={i} className="flex items-center gap-2 text-[12px] text-slate-600">
+              <Check className="w-3 h-3 text-emerald-500 flex-shrink-0" />{f}
+            </div>
+          ))}
+        </div>
+        <button onClick={onBuy} className="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg text-sm" data-testid={`buy-btn-${name.toLowerCase().replace(/\s/g,'-')}`}>
+          Buy {name}
+        </button>
       </div>
     </motion.div>
   );
@@ -230,24 +223,27 @@ export default function EventDetailsPage() {
         </div>
       </div>
 
+      {/* ──── TICKETS SECTION - TOP PRIORITY ──── */}
+      <div className="max-w-7xl mx-auto px-4 -mt-6 mb-8 relative z-10">
+        <FadeIn>
+          <div id="tickets">
+            <h2 className="text-2xl font-extrabold text-slate-900 mb-5 flex items-center gap-2">
+              <Ticket className="w-6 h-6 text-emerald-600" /> Choose Your Tickets
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {ticketTiers.map((t, i) => (
+                <TicketTier key={i} {...t} onBuy={() => navigate(`/checkout?event=${event.event_id}&category=${t.name}`)} />
+              ))}
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+
       {/* ──── MAIN ──── */}
-      <div className="max-w-7xl mx-auto px-4 -mt-4 pb-20">
+      <div className="max-w-7xl mx-auto px-4 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* LEFT */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Ticket Tiers */}
-            <FadeIn>
-              <div id="tickets">
-                <h2 className="text-2xl font-extrabold text-slate-900 mb-5 flex items-center gap-2">
-                  <Ticket className="w-6 h-6 text-emerald-600" /> Choose Your Tickets
-                </h2>
-                <div className="space-y-4">
-                  {ticketTiers.map((t, i) => (
-                    <TicketTier key={i} {...t} onBuy={() => navigate(`/checkout?event=${event.event_id}&category=${t.name}`)} />
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
 
             {/* Price Comparison */}
             <FadeIn delay={0.1}>

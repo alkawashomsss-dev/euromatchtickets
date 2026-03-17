@@ -37,9 +37,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-5">
-              <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-                <Ticket className="w-5 h-5 text-white" />
-              </div>
+              <img 
+                src="https://static.prod-images.emergentagent.com/jobs/4a0723d8-569f-4f37-a12d-b96fbae88e33/images/3a68688ecd89eb374164112bbca3b9cc526cf0e98afc1f70225c66468d4b831d.png" 
+                alt="EuroMatchTickets" 
+                className="w-10 h-10 rounded-xl shadow-md object-contain"
+              />
               <div>
                 <span className="text-lg font-bold">EuroMatch</span>
                 <span className="text-lg font-bold text-amber-400">Tickets</span>

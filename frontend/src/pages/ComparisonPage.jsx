@@ -156,6 +156,16 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               </div>
             ))}
           </div>
+
+          {/* CTA After Table */}
+          <div className="mt-8 text-center">
+            <Link to="/events">
+              <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-10 py-5 text-lg rounded-full shadow-lg hover:shadow-xl transition-all" data-testid="comparison-buy-cta">
+                Buy Tickets Now <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+            <p className="text-slate-400 text-sm mt-3">0% fees &middot; Instant QR delivery &middot; FanProtect guarantee</p>
+          </div>
         </div>
       </section>
 
@@ -170,7 +180,8 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
                 <DollarSign className="w-8 h-8 text-emerald-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">0% Buyer Fees</h3>
-              <p className="text-slate-500">Unlike {competitor} which charges {competitorInfo.fees}, we show you the final price upfront with no hidden fees.</p>
+              <p className="text-slate-500 mb-4">Unlike {competitor} which charges {competitorInfo.fees}, we show you the final price upfront with no hidden fees.</p>
+              <Link to="/events" className="text-emerald-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Browse Tickets <ArrowRight className="w-4 h-4" /></Link>
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center">
@@ -178,7 +189,8 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
                 <Zap className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Instant QR Delivery</h3>
-              <p className="text-slate-500">Get your tickets immediately as a QR code. No waiting, no shipping, no stress.</p>
+              <p className="text-slate-500 mb-4">Get your tickets immediately as a QR code. No waiting, no shipping, no stress.</p>
+              <Link to="/events" className="text-violet-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Get Tickets <ArrowRight className="w-4 h-4" /></Link>
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center">
@@ -186,7 +198,8 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
                 <Shield className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">100% Money-Back</h3>
-              <p className="text-slate-500">Full refund if the event is cancelled. Your purchase is always protected.</p>
+              <p className="text-slate-500 mb-4">Full refund if the event is cancelled. Your purchase is always protected.</p>
+              <Link to="/events" className="text-blue-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Shop Now <ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>
@@ -201,8 +214,8 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               {seoData?.verdict || `EuroMatchTickets offers better prices, lower fees, and instant delivery compared to ${competitor}. With our 100% guarantee and 24/7 support, you can book with confidence.`}
             </p>
             <Link to="/events">
-              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700">
-                Browse Events <ArrowRight className="w-5 h-5 ml-2" />
+              <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-10 py-5 text-lg rounded-full shadow-lg">
+                Buy Tickets Now <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
           </div>
