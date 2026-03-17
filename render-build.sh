@@ -1,17 +1,20 @@
 #!/usr/bin/env bash
 set -e
 
+echo "=== Python Version ==="
+python3 --version
+
 echo "=== Installing backend dependencies ==="
 cd /opt/render/project/src/backend
+pip install --upgrade pip
 pip install -r requirements.txt
-pip install emergentintegrations --extra-index-url https://d33sy5i8bnduwe.cloudfront.net/simple/ || echo "Warning: emergentintegrations not installed (content generation will be unavailable)"
 
 echo "=== Installing frontend dependencies ==="
 cd /opt/render/project/src/frontend
-yarn install --frozen-lockfile || yarn install
+yarn install
 
 echo "=== Building frontend ==="
-yarn build
+CI=false yarn build
 
 echo "=== Copying frontend build to backend/static ==="
 rm -rf /opt/render/project/src/backend/static
