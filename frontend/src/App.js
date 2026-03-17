@@ -118,6 +118,9 @@ import SellTicketsPage from "./pages/SellTicketsPage";
 // Ticket Preview
 import TicketPreviewPage from "./pages/TicketPreviewPage";
 
+// Checkout
+import CheckoutPage from "./pages/CheckoutPage";
+
 // Global Structured Data
 import { OrganizationStructuredData, WebsiteStructuredData, LocalBusinessStructuredData } from "./components/StructuredData";
 
@@ -374,6 +377,9 @@ function AppRouter() {
         
         {/* Ticket Preview */}
         <Route path="/ticket-preview" element={<TicketPreviewPage />} />
+        
+        {/* Checkout */}
+        <Route path="/checkout" element={<CheckoutPage />} />
         
         {/* Dynamic SEO Pages - handles city pages, event pages, and all generated content */}
         <Route path="/:slug" element={<DynamicSEOPage />} />

@@ -197,6 +197,72 @@ async def create_checkout(request: Request):
     return {"url": checkout_session.url, "session_id": checkout_session.id, "order_id": order.order_id}
 
 
+@router.post("/checkout/create-event")
+async def create_event_checkout(request: Request):
+    """Create checkout for event ticket tiers (General Admission, Grandstand, VIP)"""
+    user = await require_auth(request)
+    body = await request.json()
+    event_id = body.get("event_id")
+    category = body.get("category", "General Admission")
+    price = body.get("price")
+    origin_url = body.get("origin_url")
+
+    if not event_id or not price or not origin_url:
+        raise HTTPException(status_code=400, detail="event_id, price, and origin_url required")
+
+    event = await db.events.find_one({"$or": [{"event_id": event_id}, {"slug": event_id}]}, {"_id": 0})
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
+
+    ticket_price = float(price)
+    commission = round(ticket_price * PLATFORM_COMMISSION, 2)
+    total_amount = round(ticket_price + commission, 2)
+
+    order_id = f"ord_{uuid.uuid4().hex[:12]}"
+    order_doc = {
+        "order_id": order_id,
+        "buyer_id": user.user_id,
+        "buyer_email": user.email,
+        "ticket_id": f"tier_{uuid.uuid4().hex[:8]}",
+        "event_id": event.get("event_id", event_id),
+        "seller_id": "platform",
+        "ticket_price": ticket_price,
+        "commission": commission,
+        "total_amount": total_amount,
+        "currency": "EUR",
+        "status": "pending",
+        "category": category,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+    checkout_session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price_data': {
+                'currency': 'eur',
+                'unit_amount': int(total_amount * 100),
+                'product_data': {
+                    'name': f"EuroMatchTickets - {event['title']}",
+                    'description': f"{category} | Verified Ticket with FanProtect Guarantee",
+                    'images': [event.get('event_image', 'https://euromatchtickets.com/logo.png')],
+                },
+            },
+            'quantity': 1,
+        }],
+        mode='payment',
+        success_url=f"{origin_url}/order/success?session_id={{CHECKOUT_SESSION_ID}}",
+        cancel_url=f"{origin_url}/event/{event.get('slug', event_id)}",
+        customer_email=user.email,
+        metadata={"order_id": order_id, "buyer_id": user.user_id, "event": event['title'], "category": category, "vendor": "EuroMatchTickets"},
+        custom_text={"submit": {"message": "EuroMatchTickets - 100% Secure Purchase | Instant QR Delivery"}}
+    )
+
+    order_doc["stripe_session_id"] = checkout_session.id
+    await db.orders.insert_one(order_doc)
+
+    return {"url": checkout_session.url, "session_id": checkout_session.id, "order_id": order_id}
+
+
 @router.get("/checkout/status/{session_id}")
 async def get_checkout_status(session_id: str, request: Request):
     session = stripe.checkout.Session.retrieve(session_id)

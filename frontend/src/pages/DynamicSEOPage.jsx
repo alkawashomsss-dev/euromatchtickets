@@ -20,10 +20,10 @@ const categoryStyles = {
 const renderMarkdown = (md) => {
   if (!md) return "";
   let html = md;
-  html = html.replace(/^### (.+)$/gm, '<h3 class="text-lg font-bold text-white mt-6 mb-2">$1</h3>');
-  html = html.replace(/^## (.+)$/gm, '<h2 class="text-xl font-bold text-white mt-8 mb-3 border-b border-slate-200 pb-2">$1</h2>');
-  html = html.replace(/^# (.+)$/gm, '<h1 class="text-2xl sm:text-3xl font-bold text-white mb-4">$1</h1>');
-  html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>');
+  html = html.replace(/^### (.+)$/gm, '<h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">$1</h3>');
+  html = html.replace(/^## (.+)$/gm, '<h2 class="text-xl font-bold text-slate-900 mt-8 mb-3 border-b border-slate-200 pb-2">$1</h2>');
+  html = html.replace(/^# (.+)$/gm, '<h1 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">$1</h1>');
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="text-slate-900 font-semibold">$1</strong>');
   html = html.replace(/^\| (.+)/gm, (match) => {
     const cells = match.split("|").filter(c => c.trim());
     if (cells.every(c => c.trim().match(/^[-:]+$/))) return "";
@@ -253,7 +253,7 @@ export default function DynamicSEOPage() {
             <div className="space-y-6">
               {/* Quick Info Card */}
               <div className="bg-white border border-slate-200 rounded-xl p-6" data-testid="seo-sidebar-info">
-                <h3 className="font-bold text-white mb-4">Quick Info</h3>
+                <h3 className="font-bold text-slate-900 mb-4">Quick Info</h3>
                 {page.city && (
                   <div className="flex items-center gap-2 text-slate-600 mb-3">
                     <MapPin className="w-4 h-4 text-slate-400" />
@@ -276,7 +276,7 @@ export default function DynamicSEOPage() {
 
               {/* Trust Signals */}
               <div className="bg-white border border-slate-200 rounded-xl p-6" data-testid="seo-trust-signals">
-                <h3 className="font-bold text-white mb-4">Buyer Protection</h3>
+                <h3 className="font-bold text-slate-900 mb-4">Buyer Protection</h3>
                 <div className="space-y-3">
                   {[
                     { icon: Shield, text: "FanProtect Guarantee", sub: "100% refund if cancelled" },
@@ -287,7 +287,7 @@ export default function DynamicSEOPage() {
                     <div key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
                       <div>
-                        <p className="text-white text-sm font-medium">{item.text}</p>
+                        <p className="text-slate-900 text-sm font-medium">{item.text}</p>
                         <p className="text-slate-400 text-xs">{item.sub}</p>
                       </div>
                     </div>

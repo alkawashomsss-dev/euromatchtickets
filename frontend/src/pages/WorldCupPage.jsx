@@ -213,7 +213,7 @@ const WorldCupPage = () => {
             {/* Category 3 */}
             <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all">
               <div className="text-slate-500 text-sm mb-2">Category 3</div>
-              <div className="text-3xl font-bold text-white mb-1">€149</div>
+              <div className="text-3xl font-bold text-slate-900 mb-1">€149</div>
               <div className="text-xs text-slate-400 mb-4">Upper Tier</div>
               <div className="text-emerald-600 text-xs">✓ Available</div>
             </div>
@@ -221,7 +221,7 @@ const WorldCupPage = () => {
             {/* Category 2 */}
             <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all">
               <div className="text-slate-500 text-sm mb-2">Category 2</div>
-              <div className="text-3xl font-bold text-white mb-1">€299</div>
+              <div className="text-3xl font-bold text-slate-900 mb-1">€299</div>
               <div className="text-xs text-slate-400 mb-4">Mid Tier</div>
               <div className="text-emerald-600 text-xs">✓ Available</div>
             </div>
@@ -229,7 +229,7 @@ const WorldCupPage = () => {
             {/* Category 1 */}
             <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all border-cyan-500/20">
               <div className="text-cyan-600 text-sm mb-2">Category 1</div>
-              <div className="text-3xl font-bold text-white mb-1">€449</div>
+              <div className="text-3xl font-bold text-slate-900 mb-1">€449</div>
               <div className="text-xs text-slate-400 mb-4">Lower Tier - Best View</div>
               <div className="text-emerald-600 text-xs">✓ Available</div>
             </div>
@@ -239,7 +239,7 @@ const WorldCupPage = () => {
               <div className="text-violet-600 text-sm mb-2 flex items-center justify-center gap-1">
                 <Sparkles className="w-3 h-3" /> VIP Silver
               </div>
-              <div className="text-3xl font-bold text-white mb-1">€999</div>
+              <div className="text-3xl font-bold text-slate-900 mb-1">€999</div>
               <div className="text-xs text-slate-400 mb-4">Club Access</div>
               <div className="text-emerald-600 text-xs">✓ Limited</div>
             </div>
@@ -250,7 +250,7 @@ const WorldCupPage = () => {
               <div className="text-violet-600 text-sm mb-2 flex items-center justify-center gap-1">
                 <Sparkles className="w-3 h-3" /> VIP Gold
               </div>
-              <div className="text-3xl font-bold text-white mb-1">€1,499</div>
+              <div className="text-3xl font-bold text-slate-900 mb-1">€1,499</div>
               <div className="text-xs text-slate-400 mb-4">Private Suite</div>
               <div className="text-emerald-600 text-xs">✓ Limited</div>
             </div>
@@ -261,7 +261,7 @@ const WorldCupPage = () => {
               <div className="text-cyan-600 text-sm mb-2 flex items-center justify-center gap-1">
                 <Sparkles className="w-3 h-3" /> VIP Platinum
               </div>
-              <div className="text-3xl font-bold text-white mb-1">€1,899</div>
+              <div className="text-3xl font-bold text-slate-900 mb-1">€1,899</div>
               <div className="text-xs text-slate-400 mb-4">All-Inclusive</div>
               <div className="text-emerald-600 text-xs">✓ Very Limited</div>
             </div>
@@ -362,14 +362,14 @@ const WorldCupPage = () => {
               will compete for the ultimate prize in football.
             </p>
             
-            <h3 className="text-white">World Cup 2026 Host Cities</h3>
+            <h3 className="text-slate-900">World Cup 2026 Host Cities</h3>
             <p>
               Matches will be played in 16 iconic stadiums including <strong>MetLife Stadium (New York)</strong>, 
               <strong>SoFi Stadium (Los Angeles)</strong>, <strong>AT&T Stadium (Dallas)</strong>, and 
               <strong>Estadio Azteca (Mexico City)</strong>.
             </p>
             
-            <h3 className="text-white">World Cup 2026 Ticket Categories</h3>
+            <h3 className="text-slate-900">World Cup 2026 Ticket Categories</h3>
             <ul>
               <li><strong>Category 1:</strong> Best views, premium locations - €500-€5,000</li>
               <li><strong>Category 2:</strong> Great sightlines, central sections - €300-€1,500</li>
@@ -377,7 +377,7 @@ const WorldCupPage = () => {
               <li><strong>VIP Hospitality:</strong> All-inclusive packages - €2,000-€15,000</li>
             </ul>
             
-            <h3 className="text-white">Why Buy World Cup Tickets from EuroMatchTickets?</h3>
+            <h3 className="text-slate-900">Why Buy World Cup Tickets from EuroMatchTickets?</h3>
             <ul>
               <li>100% verified and guaranteed authentic tickets</li>
               <li>Instant QR code delivery - no waiting</li>
