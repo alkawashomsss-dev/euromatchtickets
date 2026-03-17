@@ -11,7 +11,7 @@ pip install -r requirements.txt
 
 echo "=== Installing frontend dependencies ==="
 cd /opt/render/project/src/frontend
-yarn install
+yarn install --no-frozen-lockfile
 
 echo "=== Building frontend ==="
 CI=false yarn build
