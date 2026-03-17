@@ -1,4 +1,4 @@
-import { useEffect, useState, createContext, useContext } from "react";
+import { useEffect, useState, createContext, useContext, lazy, Suspense } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import axios from "axios";
@@ -6,123 +6,111 @@ import { Toaster } from "sonner";
 import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from "./i18n/LanguageProvider";
 
-// Pages
-import HomePage from "./pages/HomePage";
-import EventsPage from "./pages/EventsPage";
-import EventDetailsPage from "./pages/EventDetailsPage";
-import MyTicketsPage from "./pages/MyTicketsPage";
-import SellerDashboard from "./pages/SellerDashboard";
-import AdminDashboard from "./pages/AdminDashboard";
-import OwnerDashboard from "./pages/OwnerDashboard";
-import OrderSuccessPage from "./pages/OrderSuccessPage";
-import AuthCallback from "./pages/AuthCallback";
-import PriceAlertsPage from "./pages/PriceAlertsPage";
-import AboutPage from "./pages/AboutPage";
-import TermsPage from "./pages/TermsPage";
-import ContactPage from "./pages/ContactPage";
-import RefundPolicyPage from "./pages/RefundPolicyPage";
-import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
-import PaymentInfoPage from "./pages/PaymentInfoPage";
-import BuyerProtectionPage from "./pages/BuyerProtectionPage";
-import ImpressumPage from "./pages/ImpressumPage";
-import BlogPage from "./pages/BlogPage";
-import BlogArticlePage from "./pages/BlogArticlePage";
-import ReviewsPage from "./pages/ReviewsPage";
-import FAQPage from "./pages/FAQPage";
-import WorldCupPage from "./pages/WorldCupPage";
-import WorldCupRafflePage from "./pages/WorldCupRafflePage";
-import TheWeekndPage from "./pages/TheWeekndPage";
-import ChampionsLeaguePage from "./pages/ChampionsLeaguePage";
-import BrunoMarsPage from "./pages/BrunoMarsPage";
-import GunsNRosesPage from "./pages/GunsNRosesPage";
-import BadBunnyPage from "./pages/BadBunnyPage";
-import F1TicketsPage from "./pages/F1TicketsPage";
-import MonacoGPPage from "./pages/MonacoGPPage";
-import SilverstoneGPPage from "./pages/SilverstoneGPPage";
-import MonzaGPPage from "./pages/MonzaGPPage";
-import SingaporeGPPage from "./pages/SingaporeGPPage";
-import LasVegasGPPage from "./pages/LasVegasGPPage";
-import AbuDhabiGPPage from "./pages/AbuDhabiGPPage";
-import SpaGPPage from "./pages/SpaGPPage";
-import ZandvoortGPPage from "./pages/ZandvoortGPPage";
-import MiamiGPPage from "./pages/MiamiGPPage";
-import JapanGPPage from "./pages/JapanGPPage";
-import AustraliaGPPage from "./pages/AustraliaGPPage";
-import BahrainGPPage from "./pages/BahrainGPPage";
-import SaudiGPPage from "./pages/SaudiGPPage";
-import SpainGPPage from "./pages/SpainGPPage";
-import HungaryGPPage from "./pages/HungaryGPPage";
-import AustriaGPPage from "./pages/AustriaGPPage";
-import HowToBuyF1TicketsPage from "./pages/HowToBuyF1TicketsPage";
-import BestF1RacesEuropePage from "./pages/BestF1RacesEuropePage";
-import F1TicketPricesGuidePage from "./pages/F1TicketPricesGuidePage";
-import AIChatWidget from "./components/AIChatWidget";
+// Core components (always loaded)
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieConsentBanner from "./components/CookieConsentBanner";
-import { ExitIntentPopup, PushNotificationBanner, SocialProofNotification, FloatingCTA } from "./components/MarketingTools";
-import { MarketingBotButton } from "./components/AIMarketingBot";
 import ScrollToTop from "./components/common/ScrollToTop";
 import { TrustBar } from "./components/TrustElements";
-
-// MotoGP Pages
-import MotoGPTicketsPage from "./pages/MotoGPTicketsPage";
-import MotoGPSchedulePage from "./pages/MotoGPSchedulePage";
-import MotoGPMugelloPage from "./pages/MotoGPMugelloPage";
-import IsleOfManTTPage from "./pages/IsleOfManTTPage";
-
-// F1 Schedule Page
-import F1SchedulePage from "./pages/F1SchedulePage";
-
-// SEO Dashboard
-import SEODashboardPage from "./pages/SEODashboardPage";
-import SEOBotDashboard from "./pages/SEOBotDashboard";
-import FreeMarketingPage from "./pages/FreeMarketingPage";
-
-// Programmatic SEO Pages
-import CityTicketsPage from "./pages/CityTicketsPage";
-import ComparisonPage from "./pages/ComparisonPage";
-import PriceGuidePage from "./pages/PriceGuidePage";
-import EventsThisWeekendPage from "./pages/EventsThisWeekendPage";
-import MonthlyEventsPage from "./pages/MonthlyEventsPage";
-
-// Marketing Dashboard
-import MarketingDashboard from "./pages/MarketingDashboard";
-
-// Premium Concert Pages
-import Maroon5Page from "./pages/Maroon5Page";
-import JohnLegendPage from "./pages/JohnLegendPage";
-import HarryStylesPage from "./pages/HarryStylesPage";
-import MetallicaPage from "./pages/MetallicaPage";
-import ACLFestivalPage from "./pages/ACLFestivalPage";
-
-// Protection & Guarantee Pages
-import FanProtectPage from "./pages/FanProtectPage";
-
-// Landing Pages for Google Ads
-import WorldCupLandingPage from "./pages/WorldCupLandingPage";
-import F1LandingPage from "./pages/F1LandingPage";
-import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
-
-// High-Converting Landing Pages
-import MonacoGPTicketsPage from "./pages/MonacoGPTicketsPage";
-import ElClasicoTicketsPage from "./pages/ElClasicoTicketsPage";
-import ChampionsLeagueTicketsPage from "./pages/ChampionsLeagueTicketsPage";
-
-// Dynamic SEO Pages (catch-all)
-import DynamicSEOPage from "./pages/DynamicSEOPage";
-
-// Sell Tickets
-import SellTicketsPage from "./pages/SellTicketsPage";
-
-// Ticket Preview
-import TicketPreviewPage from "./pages/TicketPreviewPage";
-
-// Checkout
-import CheckoutPage from "./pages/CheckoutPage";
-
-// Global Structured Data
 import { OrganizationStructuredData, WebsiteStructuredData, LocalBusinessStructuredData } from "./components/StructuredData";
+
+// Auth must be eager (handles OAuth callback)
+import AuthCallback from "./pages/AuthCallback";
+
+// Lazy load ALL pages for rocket speed
+const HomePage = lazy(() => import("./pages/HomePage"));
+const EventsPage = lazy(() => import("./pages/EventsPage"));
+const EventDetailsPage = lazy(() => import("./pages/EventDetailsPage"));
+const MyTicketsPage = lazy(() => import("./pages/MyTicketsPage"));
+const SellerDashboard = lazy(() => import("./pages/SellerDashboard"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const OwnerDashboard = lazy(() => import("./pages/OwnerDashboard"));
+const OrderSuccessPage = lazy(() => import("./pages/OrderSuccessPage"));
+const PriceAlertsPage = lazy(() => import("./pages/PriceAlertsPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const RefundPolicyPage = lazy(() => import("./pages/RefundPolicyPage"));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
+const PaymentInfoPage = lazy(() => import("./pages/PaymentInfoPage"));
+const BuyerProtectionPage = lazy(() => import("./pages/BuyerProtectionPage"));
+const ImpressumPage = lazy(() => import("./pages/ImpressumPage"));
+const BlogPage = lazy(() => import("./pages/BlogPage"));
+const BlogArticlePage = lazy(() => import("./pages/BlogArticlePage"));
+const ReviewsPage = lazy(() => import("./pages/ReviewsPage"));
+const FAQPage = lazy(() => import("./pages/FAQPage"));
+const WorldCupPage = lazy(() => import("./pages/WorldCupPage"));
+const WorldCupRafflePage = lazy(() => import("./pages/WorldCupRafflePage"));
+const TheWeekndPage = lazy(() => import("./pages/TheWeekndPage"));
+const ChampionsLeaguePage = lazy(() => import("./pages/ChampionsLeaguePage"));
+const BrunoMarsPage = lazy(() => import("./pages/BrunoMarsPage"));
+const GunsNRosesPage = lazy(() => import("./pages/GunsNRosesPage"));
+const BadBunnyPage = lazy(() => import("./pages/BadBunnyPage"));
+const F1TicketsPage = lazy(() => import("./pages/F1TicketsPage"));
+const MonacoGPPage = lazy(() => import("./pages/MonacoGPPage"));
+const SilverstoneGPPage = lazy(() => import("./pages/SilverstoneGPPage"));
+const MonzaGPPage = lazy(() => import("./pages/MonzaGPPage"));
+const SingaporeGPPage = lazy(() => import("./pages/SingaporeGPPage"));
+const LasVegasGPPage = lazy(() => import("./pages/LasVegasGPPage"));
+const AbuDhabiGPPage = lazy(() => import("./pages/AbuDhabiGPPage"));
+const SpaGPPage = lazy(() => import("./pages/SpaGPPage"));
+const ZandvoortGPPage = lazy(() => import("./pages/ZandvoortGPPage"));
+const MiamiGPPage = lazy(() => import("./pages/MiamiGPPage"));
+const JapanGPPage = lazy(() => import("./pages/JapanGPPage"));
+const AustraliaGPPage = lazy(() => import("./pages/AustraliaGPPage"));
+const BahrainGPPage = lazy(() => import("./pages/BahrainGPPage"));
+const SaudiGPPage = lazy(() => import("./pages/SaudiGPPage"));
+const SpainGPPage = lazy(() => import("./pages/SpainGPPage"));
+const HungaryGPPage = lazy(() => import("./pages/HungaryGPPage"));
+const AustriaGPPage = lazy(() => import("./pages/AustriaGPPage"));
+const HowToBuyF1TicketsPage = lazy(() => import("./pages/HowToBuyF1TicketsPage"));
+const BestF1RacesEuropePage = lazy(() => import("./pages/BestF1RacesEuropePage"));
+const F1TicketPricesGuidePage = lazy(() => import("./pages/F1TicketPricesGuidePage"));
+const MotoGPTicketsPage = lazy(() => import("./pages/MotoGPTicketsPage"));
+const MotoGPSchedulePage = lazy(() => import("./pages/MotoGPSchedulePage"));
+const MotoGPMugelloPage = lazy(() => import("./pages/MotoGPMugelloPage"));
+const IsleOfManTTPage = lazy(() => import("./pages/IsleOfManTTPage"));
+const F1SchedulePage = lazy(() => import("./pages/F1SchedulePage"));
+const SEODashboardPage = lazy(() => import("./pages/SEODashboardPage"));
+const SEOBotDashboard = lazy(() => import("./pages/SEOBotDashboard"));
+const FreeMarketingPage = lazy(() => import("./pages/FreeMarketingPage"));
+const CityTicketsPage = lazy(() => import("./pages/CityTicketsPage"));
+const ComparisonPage = lazy(() => import("./pages/ComparisonPage"));
+const PriceGuidePage = lazy(() => import("./pages/PriceGuidePage"));
+const EventsThisWeekendPage = lazy(() => import("./pages/EventsThisWeekendPage"));
+const MonthlyEventsPage = lazy(() => import("./pages/MonthlyEventsPage"));
+const MarketingDashboard = lazy(() => import("./pages/MarketingDashboard"));
+const Maroon5Page = lazy(() => import("./pages/Maroon5Page"));
+const JohnLegendPage = lazy(() => import("./pages/JohnLegendPage"));
+const HarryStylesPage = lazy(() => import("./pages/HarryStylesPage"));
+const MetallicaPage = lazy(() => import("./pages/MetallicaPage"));
+const ACLFestivalPage = lazy(() => import("./pages/ACLFestivalPage"));
+const FanProtectPage = lazy(() => import("./pages/FanProtectPage"));
+const WorldCupLandingPage = lazy(() => import("./pages/WorldCupLandingPage"));
+const F1LandingPage = lazy(() => import("./pages/F1LandingPage"));
+const PurchaseSuccessPage = lazy(() => import("./pages/PurchaseSuccessPage"));
+const MonacoGPTicketsPage = lazy(() => import("./pages/MonacoGPTicketsPage"));
+const ElClasicoTicketsPage = lazy(() => import("./pages/ElClasicoTicketsPage"));
+const ChampionsLeagueTicketsPage = lazy(() => import("./pages/ChampionsLeagueTicketsPage"));
+const DynamicSEOPage = lazy(() => import("./pages/DynamicSEOPage"));
+const SellTicketsPage = lazy(() => import("./pages/SellTicketsPage"));
+const TicketPreviewPage = lazy(() => import("./pages/TicketPreviewPage"));
+const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
+
+// Marketing tools (lazy)
+const AIChatWidget = lazy(() => import("./components/AIChatWidget"));
+const ExitIntentPopup = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.ExitIntentPopup })));
+const PushNotificationBanner = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.PushNotificationBanner })));
+const SocialProofNotification = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.SocialProofNotification })));
+const FloatingCTA = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.FloatingCTA })));
+const MarketingBotButton = lazy(() => import("./components/AIMarketingBot").then(m => ({ default: m.MarketingBotButton })));
+
+// Page loader component
+const PageLoader = () => (
+  <div className="min-h-[60vh] flex items-center justify-center">
+    <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
@@ -257,6 +245,7 @@ function AppRouter() {
       <LocalBusinessStructuredData />
       <Header />
       {!isHome && <TrustBar />}
+      <Suspense fallback={<PageLoader />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
@@ -408,6 +397,7 @@ function AppRouter() {
         <Route path="/events-november-2026" element={<MonthlyEventsPage month="November" />} />
         <Route path="/events-december-2026" element={<MonthlyEventsPage month="December" />} />
       </Routes>
+      </Suspense>
       <Footer />
     </>
   );
@@ -460,19 +450,15 @@ function App() {
               }}
             />
             <AppRouter />
-            <AIChatWidget />
+            <Suspense fallback={null}>
+              <AIChatWidget />
+              <SocialProofNotification />
+              {showExitPopup && <ExitIntentPopup onClose={() => setShowExitPopup(false)} />}
+              {showPushBanner && <PushNotificationBanner onClose={() => setShowPushBanner(false)} />}
+              <FloatingCTA onClick={() => window.location.href = '/events'} />
+              <MarketingBotButton />
+            </Suspense>
             <CookieConsentBanner />
-            
-            {/* Marketing Tools */}
-            <SocialProofNotification />
-            {showExitPopup && (
-              <ExitIntentPopup onClose={() => setShowExitPopup(false)} />
-            )}
-            {showPushBanner && (
-              <PushNotificationBanner onClose={() => setShowPushBanner(false)} />
-            )}
-            <FloatingCTA onClick={() => window.location.href = '/events'} />
-            <MarketingBotButton />
           </AuthProvider>
         </LanguageProvider>
       </HelmetProvider>

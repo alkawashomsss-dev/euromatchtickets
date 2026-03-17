@@ -1,83 +1,84 @@
-# EuroMatchTickets - Product Requirements Document
+# EuroMatchTickets - PRD
 
 ## Original Problem Statement
-Build a ticket marketplace (euromatchtickets.com) with aggressive SEO and marketing strategy to dominate search rankings. The platform sells F1, Football, Concert, MotoGP, Isle of Man TT tickets.
+Build a ticket marketplace (euromatchtickets.com) with aggressive SEO and marketing strategy to dominate search rankings and sell 1,000 tickets in the first month.
 
-## Core Features (Implemented)
-- Browse events by category (Football, Concerts, F1, MotoGP, Isle of Man TT)
-- SEO-optimized landing pages with unique content (1745+ pages)
-- SEO-friendly slugs for all 219 events
-- Advanced Schema.org structured data (Event, Product, Review, Breadcrumb, FAQ, Organization, LocalBusiness)
-- Trust signals: FanProtect guarantee, buyer protection, secure payment badges
-- Google OAuth authentication with smart redirect (returns to original page)
-- Stripe payment integration
-- Admin/Seller dashboards
-- Venue info with Google Maps on event pages
-- Price comparison vs competitors
-- **Price Alert System** with automated email sequences
-- **Conversion optimization**: Scarcity, Social Proof, Urgency
-- Professional QR e-ticket delivery via email
+## Core Features
+- Browse events by category (Football, Concerts, F1, MotoGP, etc.)
+- 1745+ SEO-optimized landing pages
+- Professional, conversion-optimized design
+- Trust signals: FanProtect guarantee, customer reviews, secure payment
+- Advanced Structured Data (Schema.org)
+- Conversion features: scarcity, urgency, social proof
+- Price drop alerts with Resend emails
+- Google OAuth via Emergent Auth
 
-## Architecture
-```
-/app/
-├── backend/ (FastAPI + MongoDB)
-│   ├── server.py
-│   ├── routes/ (events, auth, tickets, seo, admin, marketing, alerts)
-│   ├── email_service.py (premium light theme templates + QR tickets)
-│   ├── services/ (content_generator)
-│   └── requirements.txt (17 deps pinned)
-├── frontend/ (React + Tailwind + Shadcn/UI + Framer Motion)
-│   ├── src/
-│   │   ├── App.js (routing + auth redirect + structured data)
-│   │   ├── index.css (premium light theme + glassmorphism)
-│   │   ├── pages/ (77+ pages - all light theme)
-│   │   ├── components/
-│   │   │   ├── ConversionWidgets.jsx (PriceAlert, Scarcity, SocialProof, Urgency)
-│   │   │   ├── VenueInfoSection.jsx (Google Maps)
-│   │   │   ├── Header/Footer (premium light)
-│   │   │   └── ...
-│   │   └── utils/
-│   └── yarn.lock (regenerated for Render)
-└── scripts/
-```
+## Tech Stack
+- **Frontend:** React + TailwindCSS + Shadcn/UI + Framer Motion
+- **Backend:** FastAPI + MongoDB
+- **Auth:** Emergent-managed Google Auth
+- **Payments:** Stripe Checkout
+- **Emails:** Resend
+- **Hosting:** Render
+- **3rd Party:** Unsplash (images), QR codes
 
 ## What's Been Implemented
 
-### Phase 1-2: SEO + Trust (Complete)
-- 1745 SEO pages, slugs, 301 redirects, canonical/noindex, sitemap, robots.txt
-- Schema.org (Event, Product, Review, Breadcrumb, FAQ, Organization, LocalBusiness)
-- Unsplash images, Related Events, purchase notifications
+### Session - March 17, 2026 (Latest)
+- **Fixed Checkout Flow (P0):** Created CheckoutPage.jsx + /api/checkout/create-event endpoint. Users can now complete purchases via Stripe.
+- **Fixed Auth 403 Error:** Switched from direct Google OAuth to Emergent Auth (auth.emergentagent.com) for preview environment compatibility.
+- **Fixed Price Visibility:** Changed white-on-white text to dark text on WorldCupPage, DynamicSEOPage.
+- **New Logo:** Professional ticket+stadium design replacing old icon.
+- **Tickets Moved to Top:** EventDetailsPage now shows ticket tiers immediately after hero.
+- **CTA Links Added:** ComparisonPage now has "Buy Tickets Now" buttons throughout.
+- **Rocket Speed (Lazy Loading):** Converted 80+ page imports to React.lazy() - massive performance boost.
+- **WorldCupPage Redesigned:** Premium dark theme with golden accents, stunning AI-generated hero image with trophy and stadium, 6 ticket categories with gradient cards and VIP tiers.
+- **Render Deployment Fixes:** Regenerated yarn.lock, pinned pydantic-core==2.33.1, updated render-build.sh with --no-frozen-lockfile.
 
-### Phase 3: Premium UI/UX Overhaul (Complete - March 2026)
-- Full dark-to-light theme across 77+ pages
-- Glassmorphism, Framer Motion, premium gradients
-- Redesigned Header, Footer, HomePage, EventDetailsPage, EventsPage
+### Previous Sessions
+- Complete UI/UX overhaul to premium light theme
+- Conversion widgets (scarcity, urgency, social proof)
+- Price alert system with Resend emails
+- Professional email templates with QR codes
+- 1745+ SEO landing pages
+- Venue info with Google Maps
+- Price comparison tables
 
-### Phase 4: Bug Fixes + Enhancement (Complete - March 2026)
-- Auth redirect bug fixed (returns to original page after login)
-- Gap between header and content fixed
-- Smooth scroll, LocalBusiness schema, venue maps, price comparison
-- requirements.txt pinned, yarn.lock regenerated
+## Prioritized Backlog
 
-### Phase 5: Conversion Optimization (Complete - March 2026)
-- **Price Alert System**: Subscribe with email → Welcome email → 24h discount (10% off) → 48h reminder → 72h urgency (tickets almost sold out)
-- **Scarcity Badges**: "Only X tickets left!" with urgency colors
-- **Social Proof**: "X people booked today", "X people viewing now"
-- **Urgency Countdown**: Days/Hours/Mins to event, "Prices increase soon" warning
-- **Enhanced Price Comparison**: Card layout vs Box Office, StubHub, Other Resellers
-- **Professional QR Tickets**: Premium light theme email with QR code, VERIFIED badge, event details
+### P0 - Critical
+- ✅ Fix checkout flow (DONE)
+- ✅ Fix auth 403 (DONE)
+- ✅ Fix Render deployment files (DONE - needs GitHub push)
 
-## Pending Issues
-- P0: Render deployment - requirements.txt pinned + yarn.lock regenerated, user needs to trigger build
-- P1: Full HTTPS enforcement
-- P2: GSC organizer URL schema
-- P3: Bing IndexNow Cloudflare block
+### P1 - High
+- Taylor Swift Wembley 2026 landing page
+- Long-tail keyword SEO pages (F1 Monaco price, Bahrain GP cheap, MotoGP Brno VIP)
+- Improve SEO titles with Cheapest, Official Alternative, Instant QR
+- HTTPS enforcement verification post-deploy
 
-## Upcoming Tasks
-- Enhance Owner Dashboard with charts
-- Ticket Supplier Affiliate Program
-- AI-powered content upgrade
+### P2 - Medium
+- Enhanced Owner Dashboard with charts/reports
+- Price comparison table visual enhancements
+- Bing IndexNow fix (Cloudflare blocking)
 
-## 3rd Party Integrations
-- MongoDB Atlas, Stripe, Google OAuth2, Unsplash, Resend (emails), Render
+### P3 - Future
+- Ticket supplier affiliate program
+- AI content enhancement
+- Multi-language expansion
+
+## Key API Endpoints
+- GET /api/events - List all events
+- GET /api/events/:id - Event details
+- POST /api/checkout/create - Checkout with ticket_id
+- POST /api/checkout/create-event - Checkout with event category (NEW)
+- POST /api/alerts/subscribe - Price alerts
+- POST /api/auth/session - Emergent auth exchange
+- GET /api/auth/me - Current user
+
+## DB Schema
+- **events:** event_id, title, slug, venue, city, event_date, categories, tickets, views, bookings_today
+- **orders:** order_id, buyer_id, ticket_price, commission, total_amount, status, stripe_session_id
+- **alerts:** email, event_id, created_at
+- **users:** user_id, email, name, picture, role
+- **user_sessions:** session_token, user_id, expires_at

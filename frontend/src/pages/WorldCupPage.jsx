@@ -2,347 +2,221 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../App";
-import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Clock, Sparkles, CreditCard } from "lucide-react";
+import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles, Zap, Crown, ArrowRight, Check, Users } from "lucide-react";
 import { Button } from "../components/ui/button";
-import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+
+const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/4a0723d8-569f-4f37-a12d-b96fbae88e33/images/2f1bd8a0ce8c928102711721120988ddfef9664d60a034592fbff3227a090028.png";
+
+const ticketCategories = [
+  { name: "Category 3", price: 149, tier: "Upper Tier", color: "from-slate-600 to-slate-800", text: "text-slate-300", border: "border-slate-700", tag: null },
+  { name: "Category 2", price: 299, tier: "Mid Tier", color: "from-blue-600 to-blue-800", text: "text-blue-300", border: "border-blue-700", tag: null },
+  { name: "Category 1", price: 449, tier: "Lower Tier – Best View", color: "from-emerald-600 to-emerald-800", text: "text-emerald-300", border: "border-emerald-600", tag: "BEST VALUE" },
+  { name: "VIP Silver", price: 999, tier: "Club Lounge Access", color: "from-gray-400 to-gray-600", text: "text-gray-200", border: "border-gray-400", tag: null, vip: true },
+  { name: "VIP Gold", price: 1499, tier: "Private Suite", color: "from-amber-500 to-amber-700", text: "text-amber-200", border: "border-amber-500", tag: "POPULAR", vip: true },
+  { name: "VIP Platinum", price: 1899, tier: "All-Inclusive Experience", color: "from-violet-500 via-purple-600 to-indigo-700", text: "text-violet-200", border: "border-violet-400", tag: "EXCLUSIVE", vip: true },
+];
 
 const WorldCupPage = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchWorldCupEvents = async () => {
-      try {
-        const response = await axios.get(`${API}/events?search=FIFA`);
-        setEvents(response.data.filter(e => e.title.includes('FIFA') || e.title.includes('World Cup')));
-      } catch (error) {
-        console.error("Error fetching World Cup events:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchWorldCupEvents();
+    axios.get(`${API}/events?search=FIFA`)
+      .then(r => setEvents(r.data.filter(e => e.title.includes('FIFA') || e.title.includes('World Cup'))))
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, []);
 
-  // Enhanced World Cup Schema for SEO with Prices
   const worldCupSchema = {
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
+    "@context": "https://schema.org", "@type": "SportsEvent",
     "name": "FIFA World Cup 2026 Tickets - Buy Now",
-    "description": "Buy FIFA World Cup 2026 tickets from €149. VIP packages from €999. Opening ceremony, group stage, knockout rounds, semi-finals, and final. Official verified tickets with 100% buyer guarantee. Instant QR code delivery. EuroMatchTickets is an independent ticket marketplace and is not affiliated with FIFA.",
-    "image": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    "startDate": "2026-06-11",
-    "endDate": "2026-07-19",
+    "description": "Buy FIFA World Cup 2026 tickets from €149. VIP packages from €999. Official verified tickets with 100% buyer guarantee.",
+    "image": HERO_IMG, "startDate": "2026-06-11", "endDate": "2026-07-19",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "location": {
-      "@type": "Place",
-      "name": "Multiple Venues - USA, Canada, Mexico",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "US"
-      }
-    },
-    "organizer": {
-      "@type": "Organization",
-      "name": "EuroMatchTickets",
-      "url": "https://euromatchtickets.com"
-    },
-    "performer": {
-      "@type": "SportsTeam",
-      "name": "32 National Teams"
-    },
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Category 3 Tickets",
-        "url": "https://euromatchtickets.com/world-cup-2026",
-        "priceCurrency": "EUR",
-        "price": "149",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2024-01-01"
-      },
-      {
-        "@type": "Offer",
-        "name": "Category 2 Tickets",
-        "url": "https://euromatchtickets.com/world-cup-2026",
-        "priceCurrency": "EUR",
-        "price": "299",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2024-01-01"
-      },
-      {
-        "@type": "Offer",
-        "name": "Category 1 Tickets",
-        "url": "https://euromatchtickets.com/world-cup-2026",
-        "priceCurrency": "EUR",
-        "price": "449",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2024-01-01"
-      },
-      {
-        "@type": "Offer",
-        "name": "VIP Silver Tickets",
-        "url": "https://euromatchtickets.com/world-cup-2026",
-        "priceCurrency": "EUR",
-        "price": "999",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2024-01-01"
-      },
-      {
-        "@type": "Offer",
-        "name": "VIP Gold Tickets",
-        "url": "https://euromatchtickets.com/world-cup-2026",
-        "priceCurrency": "EUR",
-        "price": "1499",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2024-01-01"
-      },
-      {
-        "@type": "Offer",
-        "name": "VIP Platinum Tickets",
-        "url": "https://euromatchtickets.com/world-cup-2026",
-        "priceCurrency": "EUR",
-        "price": "1899",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2024-01-01"
-      }
-    ]
+    "location": { "@type": "Place", "name": "Multiple Venues - USA, Canada, Mexico", "address": { "@type": "PostalAddress", "addressCountry": "US" } },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "offers": ticketCategories.map(c => ({ "@type": "Offer", "name": c.name, "url": "https://euromatchtickets.com/world-cup-2026", "priceCurrency": "EUR", "price": String(c.price), "availability": "https://schema.org/InStock" }))
   };
 
-  const formatDate = (dateStr) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { 
-      weekday: 'short',
-      month: 'short', 
-      day: 'numeric',
-      year: 'numeric'
-    });
-  };
+  const formatDate = (d) => new Date(d).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0a0e1a]" data-testid="worldcup-page">
       <SEOHead 
         title="FIFA World Cup 2026 Tickets - Cheapest Prices | Buy Official Verified Tickets"
-        description="Buy FIFA World Cup 2026 tickets for all matches. Opening ceremony Mexico, group stage, quarter finals, semi finals and World Cup Final in New York. Verified tickets with 100% buyer guarantee. Best prices online!"
+        description="Buy FIFA World Cup 2026 tickets for all matches. Opening ceremony Mexico, group stage, quarter finals, semi finals and World Cup Final in New York. Verified tickets with 100% buyer guarantee."
       />
-      
-      {/* Schema */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(worldCupSchema) }} />
 
-      {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-green-500/10 to-blue-500/10" />
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'url(https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.2
-        }} />
-        
-        <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-cyan-500/20 text-cyan-600 border-cyan-500/30 mb-6">
-            <Trophy className="w-4 h-4 mr-2" />
-            Official Ticket Marketplace
-          </Badge>
-          
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            FIFA World Cup 2026
-            <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-cyan-400 via-green-400 to-blue-400 bg-clip-text text-transparent">
-              Buy Tickets - USA • Canada • Mexico
-            </span>
+      {/* ════════ HERO ════════ */}
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0">
+          <img src={HERO_IMG} alt="FIFA World Cup 2026" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e1a] via-[#0a0e1a]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e1a]/80 via-transparent to-[#0a0e1a]" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 text-sm font-bold mb-6 backdrop-blur-md">
+            <Trophy className="w-4 h-4" /> Official Ticket Marketplace
+          </div>
+
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-tight mb-4 leading-[0.9]" style={{ textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}>
+            FIFA WORLD CUP
+            <span className="block bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 bg-clip-text text-transparent">2026</span>
           </h1>
-          
-          <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
-            Secure your verified FIFA World Cup 2026 tickets now! From the opening ceremony in Mexico 
-            to the Final in New York. All categories available with 100% buyer protection.
+
+          <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+            USA &bull; Canada &bull; Mexico &mdash; Secure your verified tickets for the biggest football event in history.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
-              <Calendar className="w-5 h-5 text-cyan-600" />
-              <span>June 11 - July 19, 2026</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
-              <MapPin className="w-5 h-5 text-green-600" />
-              <span>16 Host Cities</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
-              <Ticket className="w-5 h-5 text-blue-600" />
-              <span>48 Teams</span>
-            </div>
+          {/* Stats Row */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10">
+            {[
+              { icon: Calendar, label: "Jun 11 – Jul 19", sub: "2026" },
+              { icon: MapPin, label: "16 Cities", sub: "3 Countries" },
+              { icon: Users, label: "48 Teams", sub: "104 Matches" },
+            ].map((s, i) => (
+              <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
+                <s.icon className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                <div className="text-left">
+                  <div className="text-white text-sm font-bold leading-tight">{s.label}</div>
+                  <div className="text-slate-400 text-xs">{s.sub}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <a href="#tickets" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold rounded-full text-lg shadow-[0_0_40px_rgba(245,158,11,0.35)] hover:shadow-[0_0_60px_rgba(245,158,11,0.5)] transition-all" data-testid="hero-cta">
+            <Ticket className="w-5 h-5" /> Get Tickets from €149
+          </a>
+        </div>
+
+        {/* Trust Strip */}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-amber-500/10 border-t border-amber-500/20 backdrop-blur-md">
+          <div className="max-w-5xl mx-auto px-4 py-3 flex flex-wrap justify-center gap-6 sm:gap-10 text-sm">
+            {[
+              { icon: Shield, t: "100% Verified" },
+              { icon: Star, t: "FanProtect Guarantee" },
+              { icon: Zap, t: "Instant QR Delivery" },
+            ].map((b, i) => (
+              <div key={i} className="flex items-center gap-2 text-amber-300/90 font-medium">
+                <b.icon className="w-4 h-4" /> {b.t}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Trust Badges */}
-      <section className="py-8 border-y border-slate-100 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-600">
-              <Shield className="w-5 h-5" />
-              <span>100% Verified Tickets</span>
+      {/* ════════ TICKETS ════════ */}
+      <section id="tickets" className="relative py-20 bg-[#0a0e1a]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/10 via-transparent to-transparent" />
+        <div className="relative max-w-6xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest mb-4">
+              <Sparkles className="w-3.5 h-3.5" /> Ticket Categories
             </div>
-            <div className="flex items-center gap-2 text-emerald-600">
-              <Star className="w-5 h-5" />
-              <span>Money-Back Guarantee</span>
-            </div>
-            <div className="flex items-center gap-2 text-emerald-600">
-              <Ticket className="w-5 h-5" />
-              <span>Instant QR Delivery</span>
-            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">Choose Your Experience</h2>
+            <p className="text-slate-400 max-w-lg mx-auto">From stadium atmosphere to VIP luxury — every seat tells a story</p>
           </div>
+
+          {/* Standard Categories */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            {ticketCategories.filter(c => !c.vip).map((cat, i) => (
+              <div key={i} className={`relative group rounded-2xl bg-gradient-to-br ${cat.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
+                {cat.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">{cat.tag}</div>}
+                <div className="rounded-2xl bg-[#111827] p-6 h-full text-center">
+                  <div className={`text-xs font-bold uppercase tracking-wider ${cat.text} mb-2`}>{cat.name}</div>
+                  <div className="text-4xl font-black text-white mb-1">&euro;{cat.price}</div>
+                  <div className="text-slate-500 text-xs mb-5">{cat.tier}</div>
+                  <div className="space-y-1.5 mb-5">
+                    {["Verified authentic ticket", "Instant QR delivery", "Full refund if cancelled"].map((f, j) => (
+                      <div key={j} className="flex items-center gap-2 text-[11px] text-slate-400"><Check className="w-3 h-3 text-emerald-500 flex-shrink-0" />{f}</div>
+                    ))}
+                  </div>
+                  <Link to="/events?search=FIFA" className={`block w-full py-3 rounded-xl bg-gradient-to-r ${cat.color} text-white text-sm font-bold hover:opacity-90 transition`} data-testid={`buy-${cat.name.toLowerCase().replace(/\s/g,'-')}`}>
+                    Buy Tickets <ArrowRight className="w-4 h-4 inline ml-1" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* VIP Categories */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {ticketCategories.filter(c => c.vip).map((cat, i) => (
+              <div key={i} className={`relative group rounded-2xl bg-gradient-to-br ${cat.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
+                {cat.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-amber-600 text-black text-[10px] font-bold px-3 py-1 rounded-full z-10">{cat.tag}</div>}
+                <div className="rounded-2xl bg-[#111827] p-6 h-full text-center">
+                  <div className={`text-xs font-bold uppercase tracking-wider ${cat.text} mb-2 flex items-center justify-center gap-1`}><Crown className="w-3.5 h-3.5" /> {cat.name}</div>
+                  <div className="text-4xl font-black text-white mb-1">&euro;{cat.price.toLocaleString()}</div>
+                  <div className="text-slate-500 text-xs mb-5">{cat.tier}</div>
+                  <div className="space-y-1.5 mb-5">
+                    {["Premium hospitality lounge", "Open bar & gourmet dining", "Meet & greet opportunities", "Exclusive VIP parking"].map((f, j) => (
+                      <div key={j} className="flex items-center gap-2 text-[11px] text-slate-400"><Check className="w-3 h-3 text-amber-400 flex-shrink-0" />{f}</div>
+                    ))}
+                  </div>
+                  <Link to="/events?search=FIFA" className={`block w-full py-3 rounded-xl bg-gradient-to-r ${cat.color} text-white text-sm font-bold hover:opacity-90 transition`} data-testid={`buy-${cat.name.toLowerCase().replace(/\s/g,'-')}`}>
+                    Get VIP Access <Crown className="w-4 h-4 inline ml-1" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-slate-600 text-xs mt-8">All prices include booking fee. Prices may vary based on match and demand.</p>
         </div>
       </section>
 
-      {/* VIP Pricing Section */}
-      <section className="py-16 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent">
+      {/* ════════ MATCHES ════════ */}
+      <section className="py-20 bg-[#0d1117]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="bg-violet-50 text-violet-600 border-violet-200 mb-4">
-              <Sparkles className="w-4 h-4 mr-2" />
-              TICKET PRICES
-            </Badge>
-            <h2 className="text-3xl font-bold mb-4">World Cup 2026 Ticket Categories</h2>
-            <p className="text-slate-500">Choose your experience - from budget-friendly to VIP luxury</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">Available World Cup Matches</h2>
+            <p className="text-slate-500">Browse all scheduled matches and grab your tickets</p>
           </div>
-          
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {/* Category 3 */}
-            <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all">
-              <div className="text-slate-500 text-sm mb-2">Category 3</div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">€149</div>
-              <div className="text-xs text-slate-400 mb-4">Upper Tier</div>
-              <div className="text-emerald-600 text-xs">✓ Available</div>
-            </div>
-            
-            {/* Category 2 */}
-            <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all">
-              <div className="text-slate-500 text-sm mb-2">Category 2</div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">€299</div>
-              <div className="text-xs text-slate-400 mb-4">Mid Tier</div>
-              <div className="text-emerald-600 text-xs">✓ Available</div>
-            </div>
-            
-            {/* Category 1 */}
-            <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all border-cyan-500/20">
-              <div className="text-cyan-600 text-sm mb-2">Category 1</div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">€449</div>
-              <div className="text-xs text-slate-400 mb-4">Lower Tier - Best View</div>
-              <div className="text-emerald-600 text-xs">✓ Available</div>
-            </div>
-            
-            {/* VIP Silver */}
-            <div className="glass-card rounded-2xl p-6 text-center hover:border-violet-200 transition-all border-purple-500/20">
-              <div className="text-violet-600 text-sm mb-2 flex items-center justify-center gap-1">
-                <Sparkles className="w-3 h-3" /> VIP Silver
-              </div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">€999</div>
-              <div className="text-xs text-slate-400 mb-4">Club Access</div>
-              <div className="text-emerald-600 text-xs">✓ Limited</div>
-            </div>
-            
-            {/* VIP Gold */}
-            <div className="glass-card rounded-2xl p-6 text-center hover:border-violet-200 transition-all border-purple-500/20 relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-purple-500 text-black text-xs px-2 py-1 rounded-bl-lg font-bold">POPULAR</div>
-              <div className="text-violet-600 text-sm mb-2 flex items-center justify-center gap-1">
-                <Sparkles className="w-3 h-3" /> VIP Gold
-              </div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">€1,499</div>
-              <div className="text-xs text-slate-400 mb-4">Private Suite</div>
-              <div className="text-emerald-600 text-xs">✓ Limited</div>
-            </div>
-            
-            {/* VIP Platinum */}
-            <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all border-cyan-500/30 relative overflow-hidden bg-gradient-to-br from-cyan-500/10 to-purple-500/10">
-              <div className="absolute top-0 right-0 bg-cyan-500 text-black text-xs px-2 py-1 rounded-bl-lg font-bold">BEST</div>
-              <div className="text-cyan-600 text-sm mb-2 flex items-center justify-center gap-1">
-                <Sparkles className="w-3 h-3" /> VIP Platinum
-              </div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">€1,899</div>
-              <div className="text-xs text-slate-400 mb-4">All-Inclusive</div>
-              <div className="text-emerald-600 text-xs">✓ Very Limited</div>
-            </div>
-          </div>
-          
-          <div className="text-center mt-8">
-            <p className="text-slate-400 text-sm">All prices include 10% booking fee. Instant QR delivery after purchase.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Available Matches */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Available World Cup 2026 Tickets
-          </h2>
 
           {loading ? (
             <div className="text-center py-12">
-              <div className="animate-spin w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full mx-auto"></div>
+              <div className="w-8 h-8 border-2 border-amber-500 border-t-transparent rounded-full animate-spin mx-auto" />
             </div>
           ) : events.length === 0 ? (
-            <div className="text-center py-12 text-slate-400">
-              No World Cup tickets available at the moment. Check back soon!
+            <div className="text-center py-12">
+              <Trophy className="w-12 h-12 text-slate-700 mx-auto mb-3" />
+              <p className="text-slate-500">Matches will be listed soon. Check back!</p>
+              <Link to="/events" className="inline-flex items-center gap-2 mt-4 text-amber-400 hover:text-amber-300 font-bold text-sm">
+                Browse All Events <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           ) : (
-            <div className="grid gap-4">
+            <div className="space-y-3">
               {events.map(event => (
-                <Link
-                  key={event.event_id}
-                  to={`/event/${event.event_id}`}
-                  className="group flex flex-col md:flex-row md:items-center gap-4 bg-white border border-slate-100 hover:border-cyan-500/30 rounded-2xl p-6 transition-all"
+                <Link key={event.event_id} to={`/event/${event.event_id}`}
+                  className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-[#161b28] border border-white/5 hover:border-amber-500/30 rounded-2xl p-5 transition-all hover:bg-[#1a2035]" data-testid="match-card"
                 >
-                  <div className="w-full md:w-32 h-24 rounded-xl overflow-hidden flex-shrink-0">
-                    <img 
-                      src={event.event_image}
-                      alt={event.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
+                  <div className="w-full sm:w-28 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                    <img src={event.event_image} alt={event.title} className="w-full h-full object-cover" loading="lazy" />
                   </div>
-                  
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge className="bg-cyan-500/20 text-cyan-600 border-cyan-500/30">
-                        <Trophy className="w-3 h-3 mr-1" />
-                        World Cup 2026
-                      </Badge>
-                      {event.featured && (
-                        <Badge className="bg-violet-50 text-violet-600">Featured</Badge>
-                      )}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded">World Cup 2026</span>
                     </div>
-                    
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-600 transition-colors">
-                      {event.title}
-                    </h3>
-                    
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        {formatDate(event.event_date)}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        {event.venue}, {event.city}
-                      </span>
+                    <h3 className="text-lg font-bold text-white truncate group-hover:text-amber-400 transition-colors">{event.title}</h3>
+                    <div className="flex flex-wrap gap-3 mt-1 text-xs text-slate-500">
+                      <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" /> {formatDate(event.event_date)}</span>
+                      <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" /> {event.venue}, {event.city}</span>
                     </div>
                   </div>
-
-                  <div className="text-right">
-                    <div className="text-sm text-slate-400">From</div>
-                    <div className="text-2xl font-bold text-cyan-600">
-                      €{event.lowest_price || 150}
-                    </div>
-                    <div className="text-sm text-emerald-600">
-                      {event.ticket_count || 100}+ tickets
-                    </div>
+                  <div className="text-right flex-shrink-0">
+                    <div className="text-[10px] text-slate-500 uppercase">From</div>
+                    <div className="text-2xl font-black text-amber-400">&euro;{event.lowest_price || 150}</div>
+                    <div className="text-[10px] text-emerald-500 font-medium">{event.ticket_count || 100}+ available</div>
                   </div>
-
-                  <ChevronRight className="w-6 h-6 text-slate-500 group-hover:text-cyan-600 transition-colors" />
+                  <ChevronRight className="w-5 h-5 text-slate-700 group-hover:text-amber-400 transition-colors hidden sm:block" />
                 </Link>
               ))}
             </div>
@@ -350,72 +224,54 @@ const WorldCupPage = () => {
         </div>
       </section>
 
-      {/* SEO Content Section */}
-      <section className="py-16 bg-slate-50">
+      {/* ════════ SEO CONTENT ════════ */}
+      <section className="py-20 bg-[#0a0e1a]">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6">Buy FIFA World Cup 2026 Tickets</h2>
-          
-          <div className="prose prose-invert prose-lg max-w-none text-slate-500">
-            <p>
-              The <strong>FIFA World Cup 2026</strong> will be the biggest football tournament ever, 
-              hosted across <strong>USA, Canada, and Mexico</strong>. For the first time, 48 teams 
-              will compete for the ultimate prize in football.
-            </p>
-            
-            <h3 className="text-slate-900">World Cup 2026 Host Cities</h3>
-            <p>
-              Matches will be played in 16 iconic stadiums including <strong>MetLife Stadium (New York)</strong>, 
-              <strong>SoFi Stadium (Los Angeles)</strong>, <strong>AT&T Stadium (Dallas)</strong>, and 
-              <strong>Estadio Azteca (Mexico City)</strong>.
-            </p>
-            
-            <h3 className="text-slate-900">World Cup 2026 Ticket Categories</h3>
-            <ul>
-              <li><strong>Category 1:</strong> Best views, premium locations - €500-€5,000</li>
-              <li><strong>Category 2:</strong> Great sightlines, central sections - €300-€1,500</li>
-              <li><strong>Category 3:</strong> Good views, affordable prices - €150-€800</li>
-              <li><strong>VIP Hospitality:</strong> All-inclusive packages - €2,000-€15,000</li>
+          <h2 className="text-2xl font-bold text-white mb-6">Buy FIFA World Cup 2026 Tickets</h2>
+          <div className="prose prose-lg max-w-none text-slate-400 space-y-4">
+            <p>The <strong className="text-white">FIFA World Cup 2026</strong> will be the biggest football tournament ever, hosted across <strong className="text-white">USA, Canada, and Mexico</strong>. For the first time, 48 teams will compete for the ultimate prize.</p>
+            <h3 className="text-white text-xl font-bold mt-8">Host Cities</h3>
+            <p>Matches in 16 iconic stadiums including <strong className="text-white">MetLife Stadium (New York)</strong>, <strong className="text-white">SoFi Stadium (Los Angeles)</strong>, <strong className="text-white">AT&amp;T Stadium (Dallas)</strong>, and <strong className="text-white">Estadio Azteca (Mexico City)</strong>.</p>
+            <h3 className="text-white text-xl font-bold mt-8">Ticket Categories</h3>
+            <ul className="space-y-1">
+              <li><strong className="text-white">Category 1:</strong> Best views, premium locations — €449+</li>
+              <li><strong className="text-white">Category 2:</strong> Great sightlines, central sections — €299+</li>
+              <li><strong className="text-white">Category 3:</strong> Good views, affordable prices — €149+</li>
+              <li><strong className="text-white">VIP Hospitality:</strong> All-inclusive luxury packages — €999+</li>
             </ul>
-            
-            <h3 className="text-slate-900">Why Buy World Cup Tickets from EuroMatchTickets?</h3>
-            <ul>
+            <h3 className="text-white text-xl font-bold mt-8">Why EuroMatchTickets?</h3>
+            <ul className="space-y-1">
               <li>100% verified and guaranteed authentic tickets</li>
-              <li>Instant QR code delivery - no waiting</li>
+              <li>Instant QR code delivery — no waiting</li>
               <li>Full refund if event is cancelled</li>
               <li>24/7 customer support</li>
-              <li>Secure payment with Stripe</li>
+              <li>Secure payment powered by Stripe</li>
             </ul>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Don't Miss the World Cup 2026!</h2>
-          <p className="text-slate-500 mb-8">
-            Tickets are selling fast. Secure your seats now for the biggest football event in history.
-          </p>
+      {/* ════════ CTA ════════ */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-900/20 via-[#0a0e1a] to-amber-900/20" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
+          <Trophy className="w-12 h-12 text-amber-500 mx-auto mb-4" />
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Don't Miss History</h2>
+          <p className="text-slate-400 mb-8 max-w-lg mx-auto">Tickets are selling fast. Secure your seats for the biggest football event ever.</p>
           <Link to="/events?search=FIFA">
-            <Button className="btn-crystal font-bold px-8 py-6 text-lg hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-              <Trophy className="w-5 h-5 mr-2" />
-              View All World Cup Tickets
+            <Button className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold px-10 py-6 text-lg rounded-full shadow-[0_0_40px_rgba(245,158,11,0.3)] hover:shadow-[0_0_60px_rgba(245,158,11,0.5)] transition-all" data-testid="bottom-cta">
+              <Ticket className="w-5 h-5 mr-2" /> View All World Cup Tickets
             </Button>
           </Link>
         </div>
       </section>
 
       {/* Disclaimer */}
-      <section className="py-8 border-t border-slate-200">
-        <div className="max-w-4xl mx-auto px-4">
-          <p className="text-xs text-slate-400 text-center">
-            <strong>Disclaimer:</strong> EuroMatchTickets is an independent ticket marketplace. 
-            We are not affiliated with, endorsed by, or connected to FIFA, the FIFA World Cup, 
-            or any official organizing body. All trademarks belong to their respective owners. 
-            Tickets sold on this platform are resale tickets and may be priced above or below face value.
-          </p>
-        </div>
-      </section>
+      <div className="py-6 border-t border-white/5">
+        <p className="text-[10px] text-slate-600 text-center max-w-3xl mx-auto px-4">
+          <strong>Disclaimer:</strong> EuroMatchTickets is an independent ticket marketplace. Not affiliated with FIFA or any organizing body. Tickets are resale and may be above or below face value. All trademarks belong to their respective owners.
+        </p>
+      </div>
 
       <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
@@ -423,8 +279,8 @@ const WorldCupPage = () => {
       ]} />
       <FAQStructuredData faqs={[
         { question: "When is the FIFA World Cup 2026?", answer: "The FIFA World Cup 2026 will be held from June 11 to July 19, 2026 across the United States, Mexico, and Canada. It will be the first World Cup with 48 teams." },
-        { question: "How can I buy World Cup 2026 tickets?", answer: "You can buy verified World Cup 2026 tickets on EuroMatchTickets starting from €199. All tickets include our FanProtect guarantee with instant QR delivery." },
-        { question: "Which cities are hosting the World Cup 2026?", answer: "The World Cup 2026 will be hosted in 16 cities: 11 in the USA (New York, Los Angeles, Dallas, Houston, Atlanta, Seattle, San Francisco, Philadelphia, Kansas City, Boston, Miami), 3 in Mexico (Mexico City, Guadalajara, Monterrey), and 2 in Canada (Toronto, Vancouver)." }
+        { question: "How can I buy World Cup 2026 tickets?", answer: "You can buy verified World Cup 2026 tickets on EuroMatchTickets starting from €149. All tickets include our FanProtect guarantee with instant QR delivery." },
+        { question: "Which cities are hosting the World Cup 2026?", answer: "The World Cup 2026 will be hosted in 16 cities: 11 in the USA, 3 in Mexico, and 2 in Canada." }
       ]} />
     </div>
   );
