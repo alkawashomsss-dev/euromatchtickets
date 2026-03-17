@@ -1,5 +1,5 @@
 import { useEffect, useState, createContext, useContext } from "react";
-import "@/App.css";
+import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Toaster } from "sonner";
