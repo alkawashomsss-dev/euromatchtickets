@@ -86,13 +86,13 @@ const SEOBotDashboard = () => {
   };
 
   const getScoreColor = (score) => {
-    if (score >= 80) return "text-emerald-400";
-    if (score >= 60) return "text-yellow-400";
-    return "text-red-400";
+    if (score >= 80) return "text-emerald-600";
+    if (score >= 60) return "text-amber-600";
+    return "text-red-600";
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20 pb-12">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 pb-12">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Header */}
@@ -104,7 +104,7 @@ const SEOBotDashboard = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold">SEO Bot Dashboard</h1>
-                <p className="text-zinc-400 text-sm">24/7 Intelligent Keyword Optimizer</p>
+                <p className="text-slate-500 text-sm">24/7 Intelligent Keyword Optimizer</p>
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ const SEOBotDashboard = () => {
             <Button 
               onClick={pingSearchEngines}
               variant="outline"
-              className="border-cyan-500/50 text-cyan-400"
+              className="border-cyan-500/50 text-cyan-600"
             >
               <Globe className="w-4 h-4 mr-2" />
               Ping Google
@@ -135,13 +135,13 @@ const SEOBotDashboard = () => {
 
         {/* Bot Status Cards */}
         <div className="grid md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-zinc-400 text-sm">Bot Status</span>
+              <span className="text-slate-500 text-sm">Bot Status</span>
               {botStatus?.is_running ? (
-                <Badge className="bg-emerald-500/20 text-emerald-400">Running</Badge>
+                <Badge className="bg-emerald-50 text-emerald-600">Running</Badge>
               ) : (
-                <Badge className="bg-blue-500/20 text-blue-400">Idle</Badge>
+                <Badge className="bg-blue-50 text-blue-600">Idle</Badge>
               )}
             </div>
             <div className="flex items-center gap-2">
@@ -150,18 +150,18 @@ const SEOBotDashboard = () => {
             </div>
           </div>
 
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-zinc-400 text-sm">Keywords Tracked</span>
-              <Search className="w-4 h-4 text-purple-400" />
+              <span className="text-slate-500 text-sm">Keywords Tracked</span>
+              <Search className="w-4 h-4 text-violet-600" />
             </div>
             <div className="text-2xl font-bold">{botStatus?.total_keywords_tracked || 0}</div>
           </div>
 
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-zinc-400 text-sm">Last Update</span>
-              <Clock className="w-4 h-4 text-cyan-400" />
+              <span className="text-slate-500 text-sm">Last Update</span>
+              <Clock className="w-4 h-4 text-cyan-600" />
             </div>
             <div className="text-sm font-medium">
               {botStatus?.last_update 
@@ -170,10 +170,10 @@ const SEOBotDashboard = () => {
             </div>
           </div>
 
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-zinc-400 text-sm">Next Update</span>
-              <RefreshCw className="w-4 h-4 text-amber-400" />
+              <span className="text-slate-500 text-sm">Next Update</span>
+              <RefreshCw className="w-4 h-4 text-amber-600" />
             </div>
             <div className="text-sm font-medium">
               {botStatus?.next_update 
@@ -192,7 +192,7 @@ const SEOBotDashboard = () => {
               className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                 selectedCategory === cat.id
                   ? "bg-purple-600 text-white"
-                  : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+                  : "bg-slate-100 text-slate-500 hover:bg-slate-100"
               }`}
             >
               <span>{cat.icon}</span>
@@ -204,10 +204,10 @@ const SEOBotDashboard = () => {
         <div className="grid lg:grid-cols-3 gap-6">
           
           {/* Keywords List */}
-          <div className="lg:col-span-2 bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+          <div className="lg:col-span-2 bg-white border border-slate-200 rounded-xl p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-bold flex items-center gap-2">
-                <Target className="w-5 h-5 text-purple-400" />
+                <Target className="w-5 h-5 text-violet-600" />
                 Trending Keywords - {keywords.month || "Current Month"}
               </h2>
               <Badge>{keywords.total_keywords || 0} keywords</Badge>
@@ -217,10 +217,10 @@ const SEOBotDashboard = () => {
               {(keywords.keywords || []).map((kw, idx) => (
                 <div 
                   key={idx}
-                  className="flex items-center justify-between p-3 bg-zinc-800/50 rounded-lg hover:bg-zinc-800 transition-colors"
+                  className="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-zinc-500 text-sm w-6">{idx + 1}</span>
+                    <span className="text-slate-400 text-sm w-6">{idx + 1}</span>
                     <span className="font-medium">{kw.keyword}</span>
                   </div>
                   <div className="flex items-center gap-3">
@@ -240,9 +240,9 @@ const SEOBotDashboard = () => {
           </div>
 
           {/* Content Ideas */}
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-6">
             <h2 className="text-lg font-bold flex items-center gap-2 mb-6">
-              <Sparkles className="w-5 h-5 text-amber-400" />
+              <Sparkles className="w-5 h-5 text-amber-600" />
               Content Ideas
             </h2>
 
@@ -250,7 +250,7 @@ const SEOBotDashboard = () => {
               {contentIdeas.slice(0, 10).map((idea, idx) => (
                 <div 
                   key={idx}
-                  className="p-3 bg-zinc-800/50 rounded-lg border border-zinc-700/50 hover:border-purple-500/50 transition-colors cursor-pointer"
+                  className="p-3 bg-slate-50 rounded-lg border border-slate-200/50 hover:border-purple-500/50 transition-colors cursor-pointer"
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <Badge variant="outline" className="text-xs">
@@ -261,7 +261,7 @@ const SEOBotDashboard = () => {
                     </span>
                   </div>
                   <p className="text-sm font-medium line-clamp-2">{idea.title}</p>
-                  <p className="text-xs text-zinc-500 mt-1">Keyword: {idea.keyword}</p>
+                  <p className="text-xs text-slate-400 mt-1">Keyword: {idea.keyword}</p>
                 </div>
               ))}
             </div>
@@ -269,16 +269,16 @@ const SEOBotDashboard = () => {
         </div>
 
         {/* Update History */}
-        <div className="mt-8 bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+        <div className="mt-8 bg-white border border-slate-200 rounded-xl p-6">
           <h2 className="text-lg font-bold flex items-center gap-2 mb-6">
-            <BarChart3 className="w-5 h-5 text-cyan-400" />
+            <BarChart3 className="w-5 h-5 text-cyan-600" />
             Recent Updates
           </h2>
 
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="text-left text-zinc-500 text-sm border-b border-zinc-800">
+                <tr className="text-left text-slate-400 text-sm border-b border-slate-200">
                   <th className="pb-3">Timestamp</th>
                   <th className="pb-3">Status</th>
                   <th className="pb-3">Actions</th>
@@ -286,31 +286,31 @@ const SEOBotDashboard = () => {
               </thead>
               <tbody>
                 {(botStatus?.update_history || []).reverse().map((update, idx) => (
-                  <tr key={idx} className="border-b border-zinc-800/50">
+                  <tr key={idx} className="border-b border-slate-200/50">
                     <td className="py-3 text-sm">
                       {new Date(update.timestamp).toLocaleString()}
                     </td>
                     <td className="py-3">
                       {update.success ? (
-                        <Badge className="bg-emerald-500/20 text-emerald-400">
+                        <Badge className="bg-emerald-50 text-emerald-600">
                           <CheckCircle className="w-3 h-3 mr-1" />
                           Success
                         </Badge>
                       ) : (
-                        <Badge className="bg-red-500/20 text-red-400">
+                        <Badge className="bg-red-50 text-red-600">
                           <AlertCircle className="w-3 h-3 mr-1" />
                           Failed
                         </Badge>
                       )}
                     </td>
-                    <td className="py-3 text-sm text-zinc-400">
+                    <td className="py-3 text-sm text-slate-500">
                       {update.actions_completed || 0} actions completed
                     </td>
                   </tr>
                 ))}
                 {(!botStatus?.update_history || botStatus.update_history.length === 0) && (
                   <tr>
-                    <td colSpan={3} className="py-6 text-center text-zinc-500">
+                    <td colSpan={3} className="py-6 text-center text-slate-400">
                       No updates yet. Click "Run Optimization" to start.
                     </td>
                   </tr>
@@ -325,39 +325,39 @@ const SEOBotDashboard = () => {
           <h2 className="text-lg font-bold mb-4">🤖 How the SEO Bot Works</h2>
           <div className="grid md:grid-cols-4 gap-4 text-sm">
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="font-bold text-purple-400">1</span>
+              <div className="w-8 h-8 bg-violet-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="font-bold text-violet-600">1</span>
               </div>
               <div>
                 <p className="font-medium">Keyword Analysis</p>
-                <p className="text-zinc-400">Analyzes trending keywords based on season and events</p>
+                <p className="text-slate-500">Analyzes trending keywords based on season and events</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="font-bold text-cyan-400">2</span>
+                <span className="font-bold text-cyan-600">2</span>
               </div>
               <div>
                 <p className="font-medium">Score Calculation</p>
-                <p className="text-zinc-400">Calculates effectiveness score for each keyword</p>
+                <p className="text-slate-500">Calculates effectiveness score for each keyword</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="font-bold text-emerald-400">3</span>
+              <div className="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="font-bold text-emerald-600">3</span>
               </div>
               <div>
                 <p className="font-medium">Meta Optimization</p>
-                <p className="text-zinc-400">Generates optimized titles & descriptions</p>
+                <p className="text-slate-500">Generates optimized titles & descriptions</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-amber-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="font-bold text-amber-400">4</span>
+              <div className="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="font-bold text-amber-600">4</span>
               </div>
               <div>
                 <p className="font-medium">Search Engine Ping</p>
-                <p className="text-zinc-400">Notifies Google & Bing of updates</p>
+                <p className="text-slate-500">Notifies Google & Bing of updates</p>
               </div>
             </div>
           </div>

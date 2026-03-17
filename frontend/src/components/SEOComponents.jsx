@@ -40,7 +40,7 @@ export const OptimizedImage = ({
     <div ref={imgRef} className={`relative overflow-hidden ${className}`}>
       {/* Placeholder blur */}
       {!isLoaded && (
-        <div className="absolute inset-0 bg-zinc-800 animate-pulse" />
+        <div className="absolute inset-0 bg-slate-100 animate-pulse" />
       )}
       
       {isInView && (
@@ -85,10 +85,10 @@ export const RelatedEvents = ({ currentEvent, events = [] }) => {
           <a
             key={event.event_id}
             href={`/event/${event.event_id}`}
-            className="block p-4 bg-zinc-900/50 border border-white/5 rounded-xl hover:border-cyan-500/50 transition-all"
+            className="block p-4 bg-white border border-white/5 rounded-xl hover:border-cyan-500/50 transition-all"
           >
             <p className="font-semibold text-sm line-clamp-2">{event.title}</p>
-            <p className="text-xs text-zinc-500 mt-1">{event.city}</p>
+            <p className="text-xs text-slate-400 mt-1">{event.city}</p>
           </a>
         ))}
       </div>
@@ -128,13 +128,13 @@ export const InternalLinks = ({ currentCategory }) => {
 
   return (
     <div className="mt-8 py-6 border-t border-white/5">
-      <h3 className="text-lg font-semibold mb-4 text-zinc-400">Popular Tickets</h3>
+      <h3 className="text-lg font-semibold mb-4 text-slate-500">Popular Tickets</h3>
       <div className="flex flex-wrap gap-2">
         {categoryLinks.map((link, idx) => (
           <a
             key={idx}
             href={link.url}
-            className="px-3 py-1.5 bg-zinc-800/50 border border-white/5 rounded-full text-sm hover:border-cyan-500/50 hover:text-cyan-400 transition-all"
+            className="px-3 py-1.5 bg-slate-50 border border-white/5 rounded-full text-sm hover:border-cyan-500/50 hover:text-cyan-400 transition-all"
           >
             {link.name}
           </a>

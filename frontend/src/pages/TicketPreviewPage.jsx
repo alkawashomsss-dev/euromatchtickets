@@ -75,26 +75,26 @@ const demoOrderConcert = {
 
 const TicketPreviewPage = () => {
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20" data-testid="ticket-preview-page">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20" data-testid="ticket-preview-page">
       <div className="max-w-[900px] mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold mb-2">Your Ticket Experience</h1>
-          <p className="text-zinc-400">Every purchase includes a professional digital ticket with QR code</p>
+          <p className="text-slate-500">Every purchase includes a professional digital ticket with QR code</p>
         </div>
 
         <div className="space-y-12">
           <div>
-            <h2 className="text-lg font-semibold text-zinc-400 mb-4">Football Match Ticket</h2>
+            <h2 className="text-lg font-semibold text-slate-500 mb-4">Football Match Ticket</h2>
             <ProfessionalTicket order={demoOrder} />
           </div>
           
           <div>
-            <h2 className="text-lg font-semibold text-zinc-400 mb-4">Formula 1 Grand Prix Ticket</h2>
+            <h2 className="text-lg font-semibold text-slate-500 mb-4">Formula 1 Grand Prix Ticket</h2>
             <ProfessionalTicket order={demoOrderF1} />
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-zinc-400 mb-4">Concert Ticket</h2>
+            <h2 className="text-lg font-semibold text-slate-500 mb-4">Concert Ticket</h2>
             <ProfessionalTicket order={demoOrderConcert} />
           </div>
         </div>

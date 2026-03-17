@@ -37,7 +37,7 @@ const VenueSeatMap = ({ categories, selectedCategory, onCategorySelect, eventTyp
   if (isMatch || isWorldCup) {
     // Football stadium layout
     return (
-      <div className="relative w-full aspect-[16/10] bg-zinc-900/50 rounded-xl overflow-hidden border border-white/5">
+      <div className="relative w-full aspect-[16/10] bg-white rounded-xl overflow-hidden border border-white/5">
         <svg viewBox="0 0 800 500" className="w-full h-full">
           {/* Pitch */}
           <rect x="200" y="125" width="400" height="250" fill="#166534" rx="4" />
@@ -166,7 +166,7 @@ const VenueSeatMap = ({ categories, selectedCategory, onCategorySelect, eventTyp
   // F1 Circuit layout
   if (isF1 || isMotoGP) {
     return (
-      <div className="relative w-full aspect-[16/10] bg-zinc-900/50 rounded-xl overflow-hidden border border-white/5">
+      <div className="relative w-full aspect-[16/10] bg-white rounded-xl overflow-hidden border border-white/5">
         <svg viewBox="0 0 800 500" className="w-full h-full">
           {/* Track outline */}
           <path 
@@ -310,7 +310,7 @@ const VenueSeatMap = ({ categories, selectedCategory, onCategorySelect, eventTyp
 
   // Concert venue layout
   return (
-    <div className="relative w-full aspect-[16/10] bg-zinc-900/50 rounded-xl overflow-hidden border border-white/5">
+    <div className="relative w-full aspect-[16/10] bg-white rounded-xl overflow-hidden border border-white/5">
       <svg viewBox="0 0 800 500" className="w-full h-full">
         {/* Stage */}
         <rect x="200" y="30" width="400" height="80" fill="#7C3AED" rx="8" />

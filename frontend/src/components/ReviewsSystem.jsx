@@ -384,27 +384,27 @@ export const ReviewCard = ({ review, compact = false }) => {
   };
 
   return (
-    <div className={`bg-zinc-900/50 border border-zinc-800 rounded-xl ${compact ? 'p-4' : 'p-6'} hover:border-zinc-700 transition-all`}>
+    <div className={`bg-white border border-slate-200 rounded-xl ${compact ? 'p-4' : 'p-6'} hover:shadow-md transition-all`}>
       {/* Header */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-full bg-gradient-to-br from-purple-600 to-cyan-600 flex items-center justify-center font-bold text-sm">
+          <div className="w-11 h-11 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center font-bold text-sm text-white">
             {review.avatar}
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-semibold">{review.name}</span>
+              <span className="font-semibold text-slate-900">{review.name}</span>
               {review.verified && (
-                <span className="flex items-center gap-1 text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                <span className="flex items-center gap-1 text-xs text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
                   <CheckCircle className="w-3 h-3" />
                   <span className="hidden sm:inline">Verified</span>
                 </span>
               )}
             </div>
-            <div className="flex items-center gap-2 text-xs text-zinc-500">
+            <div className="flex items-center gap-2 text-xs text-slate-400">
               <span>{getFlagEmoji(review.country)}</span>
               <span>{review.location}</span>
-              <span>•</span>
+              <span>&middot;</span>
               <span>{formatRelativeDate(review.date)}</span>
             </div>
           </div>
@@ -413,22 +413,22 @@ export const ReviewCard = ({ review, compact = false }) => {
           {[1, 2, 3, 4, 5].map((star) => (
             <Star
               key={star}
-              className={`w-4 h-4 ${star <= review.rating ? 'fill-yellow-400 text-yellow-400' : 'text-zinc-600'}`}
+              className={`w-4 h-4 ${star <= review.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-200'}`}
             />
           ))}
         </div>
       </div>
 
       {/* Content */}
-      <h4 className="font-semibold mb-2 text-white">{review.title}</h4>
-      <p className={`text-zinc-400 ${compact ? 'text-sm line-clamp-2' : 'text-sm leading-relaxed'}`}>
+      <h4 className="font-semibold mb-2 text-slate-900">{review.title}</h4>
+      <p className={`text-slate-500 ${compact ? 'text-sm line-clamp-2' : 'text-sm leading-relaxed'}`}>
         {review.text}
       </p>
 
       {/* Event Tag */}
-      <div className="flex items-center gap-2 mt-3 pt-3 border-t border-zinc-800">
-        <Ticket className="w-4 h-4 text-purple-400" />
-        <span className="text-sm text-purple-400">{review.event}</span>
+      <div className="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100">
+        <Ticket className="w-4 h-4 text-slate-700" />
+        <span className="text-sm text-slate-700 font-medium">{review.event}</span>
       </div>
 
       {/* Actions */}
@@ -437,12 +437,12 @@ export const ReviewCard = ({ review, compact = false }) => {
           <button 
             onClick={handleHelpful}
             disabled={voted}
-            className={`flex items-center gap-2 text-sm ${voted ? 'text-emerald-400' : 'text-zinc-500 hover:text-zinc-300'} transition-colors`}
+            className={`flex items-center gap-2 text-sm ${voted ? 'text-emerald-600' : 'text-slate-400 hover:text-slate-600'} transition-colors`}
           >
-            <ThumbsUp className={`w-4 h-4 ${voted ? 'fill-emerald-400' : ''}`} />
+            <ThumbsUp className={`w-4 h-4 ${voted ? 'fill-emerald-600' : ''}`} />
             <span>Helpful ({helpful})</span>
           </button>
-          <button className="text-zinc-600 hover:text-zinc-400 text-xs flex items-center gap-1">
+          <button className="text-slate-400 hover:text-slate-600 text-xs flex items-center gap-1">
             <Flag className="w-3 h-3" />
             Report
           </button>
@@ -457,28 +457,28 @@ export const ReviewsStats = () => {
   const stats = calculateStats();
   
   return (
-    <div className="bg-gradient-to-r from-emerald-900/20 to-purple-900/20 border border-emerald-500/20 rounded-2xl p-6">
+    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div className="text-center">
-          <div className="text-4xl font-bold text-white">{stats.avgRating}</div>
+          <div className="text-4xl font-bold text-slate-900">{stats.avgRating}</div>
           <div className="flex justify-center gap-0.5 my-2">
             {[1, 2, 3, 4, 5].map((star) => (
-              <Star key={star} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+              <Star key={star} className="w-5 h-5 fill-amber-400 text-amber-400" />
             ))}
           </div>
-          <div className="text-sm text-zinc-400">Average Rating</div>
+          <div className="text-sm text-slate-500">Average Rating</div>
         </div>
         <div className="text-center">
-          <div className="text-4xl font-bold text-white">{stats.total.toLocaleString()}</div>
-          <div className="text-sm text-zinc-400 mt-2">Total Reviews</div>
+          <div className="text-4xl font-bold text-slate-900">{stats.total.toLocaleString()}</div>
+          <div className="text-sm text-slate-500 mt-2">Total Reviews</div>
         </div>
         <div className="text-center">
-          <div className="text-4xl font-bold text-emerald-400">{stats.fiveStars}%</div>
-          <div className="text-sm text-zinc-400 mt-2">5-Star Reviews</div>
+          <div className="text-4xl font-bold text-emerald-600">{stats.fiveStars}%</div>
+          <div className="text-sm text-slate-500 mt-2">5-Star Reviews</div>
         </div>
         <div className="text-center">
-          <div className="text-4xl font-bold text-purple-400">100%</div>
-          <div className="text-sm text-zinc-400 mt-2">Verified Purchases</div>
+          <div className="text-4xl font-bold text-slate-900">100%</div>
+          <div className="text-sm text-slate-500 mt-2">Verified Purchases</div>
         </div>
       </div>
     </div>
@@ -537,17 +537,17 @@ export const ReviewsGrid = ({ limit = 6, eventType = null, lang = null }) => {
     return (
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {[...Array(Math.min(limit, 6))].map((_, i) => (
-          <div key={i} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 animate-pulse">
+          <div key={i} className="bg-white border border-slate-200 rounded-xl p-6 animate-pulse">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-11 h-11 rounded-full bg-zinc-800" />
+              <div className="w-11 h-11 rounded-full bg-slate-200" />
               <div className="space-y-2">
-                <div className="h-4 w-24 bg-zinc-800 rounded" />
-                <div className="h-3 w-16 bg-zinc-800 rounded" />
+                <div className="h-4 w-24 bg-slate-200 rounded" />
+                <div className="h-3 w-16 bg-slate-200 rounded" />
               </div>
             </div>
-            <div className="h-4 w-3/4 bg-zinc-800 rounded mb-2" />
-            <div className="h-3 w-full bg-zinc-800 rounded mb-1" />
-            <div className="h-3 w-2/3 bg-zinc-800 rounded" />
+            <div className="h-4 w-3/4 bg-slate-200 rounded mb-2" />
+            <div className="h-3 w-full bg-slate-200 rounded mb-1" />
+            <div className="h-3 w-2/3 bg-slate-200 rounded" />
           </div>
         ))}
       </div>
@@ -593,7 +593,7 @@ export const ReviewsCarousel = () => {
             key={idx}
             onClick={() => setCurrentIndex(idx)}
             className={`w-2 h-2 rounded-full transition-colors ${
-              idx === currentIndex ? 'bg-purple-500' : 'bg-zinc-700'
+              idx === currentIndex ? 'bg-slate-900' : 'bg-slate-300'
             }`}
           />
         ))}
@@ -662,17 +662,17 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
   if (submitted && pendingReview) {
     return (
       <div className="space-y-4">
-        <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
-          <div className="flex items-center gap-2 text-emerald-400 mb-2">
+        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+          <div className="flex items-center gap-2 text-emerald-600 mb-2">
             <CheckCircle className="w-5 h-5" />
             <span className="font-semibold">Review Submitted!</span>
           </div>
-          <p className="text-sm text-zinc-400">Your review is being verified and will appear publicly within 24 hours.</p>
+          <p className="text-sm text-slate-500">Your review is being verified and will appear publicly within 24 hours.</p>
         </div>
         
         {/* Show user their pending review */}
         <div className="relative">
-          <div className="absolute top-2 right-2 bg-amber-500/20 text-amber-400 text-xs px-2 py-1 rounded-full">
+          <div className="absolute top-2 right-2 bg-amber-50 text-amber-700 border border-amber-200 text-xs px-2 py-1 rounded-full">
             Pending Approval
           </div>
           <ReviewCard review={pendingReview} />
@@ -682,83 +682,35 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 space-y-4">
-      <h3 className="text-lg font-bold flex items-center gap-2">
-        <User className="w-5 h-5 text-purple-400" />
+    <form onSubmit={handleSubmit} className="bg-white border border-slate-200 rounded-xl p-6 space-y-4 shadow-sm">
+      <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+        <User className="w-5 h-5 text-slate-700" />
         Write a Review
       </h3>
       
       <div className="grid md:grid-cols-2 gap-4">
-        <input
-          type="text"
-          placeholder="Your Name"
-          required
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-purple-500 outline-none"
-          data-testid="review-name-input"
-        />
-        <input
-          type="email"
-          placeholder="Your Email (not published)"
-          required
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-purple-500 outline-none"
-          data-testid="review-email-input"
-        />
+        <input type="text" placeholder="Your Name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:border-slate-400 outline-none text-slate-900 placeholder:text-slate-400" data-testid="review-name-input" />
+        <input type="email" placeholder="Your Email (not published)" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:border-slate-400 outline-none text-slate-900 placeholder:text-slate-400" data-testid="review-email-input" />
       </div>
       
       <div>
-        <label className="text-sm text-zinc-400 mb-2 block">Your Rating</label>
+        <label className="text-sm text-slate-500 mb-2 block">Your Rating</label>
         <div className="flex gap-2">
           {[1, 2, 3, 4, 5].map((star) => (
-            <button
-              key={star}
-              type="button"
-              onClick={() => setFormData({ ...formData, rating: star })}
-              className="focus:outline-none"
-            >
-              <Star
-                className={`w-8 h-8 transition-colors ${
-                  star <= formData.rating ? 'fill-yellow-400 text-yellow-400' : 'text-zinc-600 hover:text-zinc-400'
-                }`}
-              />
+            <button key={star} type="button" onClick={() => setFormData({ ...formData, rating: star })} className="focus:outline-none">
+              <Star className={`w-8 h-8 transition-colors ${star <= formData.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-300 hover:text-slate-400'}`} />
             </button>
           ))}
         </div>
       </div>
       
-      <input
-        type="text"
-        placeholder="Review Title"
-        required
-        value={formData.title}
-        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-        className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-purple-500 outline-none"
-        data-testid="review-title-input"
-      />
+      <input type="text" placeholder="Review Title" required value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:border-slate-400 outline-none text-slate-900 placeholder:text-slate-400" data-testid="review-title-input" />
       
-      <textarea
-        placeholder="Share your experience..."
-        required
-        rows={4}
-        value={formData.text}
-        onChange={(e) => setFormData({ ...formData, text: e.target.value })}
-        className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-purple-500 outline-none resize-none"
-        data-testid="review-content-input"
-      />
+      <textarea placeholder="Share your experience..." required rows={4} value={formData.text} onChange={(e) => setFormData({ ...formData, text: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:border-slate-400 outline-none resize-none text-slate-900 placeholder:text-slate-400" data-testid="review-content-input" />
       
-      <input
-        type="text"
-        placeholder="Event Name (optional)"
-        value={formData.event}
-        onChange={(e) => setFormData({ ...formData, event: e.target.value })}
-        className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-purple-500 outline-none"
-        data-testid="review-event-input"
-      />
+      <input type="text" placeholder="Event Name (optional)" value={formData.event} onChange={(e) => setFormData({ ...formData, event: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:border-slate-400 outline-none text-slate-900 placeholder:text-slate-400" data-testid="review-event-input" />
       
-      <Button type="submit" disabled={submitting} className="w-full bg-purple-600 hover:bg-purple-700" data-testid="submit-review-btn">
+      <Button type="submit" disabled={submitting} className="w-full bg-slate-900 hover:bg-slate-800 text-white" data-testid="submit-review-btn">
         {submitting ? (
           <div className="flex items-center gap-2"><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> Submitting...</div>
         ) : (
@@ -766,7 +718,7 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
         )}
       </Button>
       
-      <p className="text-xs text-zinc-500 text-center">
+      <p className="text-xs text-slate-400 text-center">
         By submitting, you agree to our review guidelines. Reviews are verified before publishing.
       </p>
     </form>
@@ -792,8 +744,8 @@ export const ReviewsLanguageFilter = ({ selected, onChange }) => {
           onClick={() => onChange(lang.code)}
           className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-colors ${
             selected === lang.code
-              ? 'bg-purple-600 text-white'
-              : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              ? 'bg-slate-900 text-white'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
           }`}
         >
           <span>{lang.flag}</span>

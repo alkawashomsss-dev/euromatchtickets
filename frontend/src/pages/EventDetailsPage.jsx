@@ -1,24 +1,38 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { 
   Calendar, MapPin, Ticket, Star, Shield, ChevronDown,
-  CreditCard, Mail, Users, Zap, Award, Flag, Check, ArrowLeft, 
-  Globe, Lock, Headphones, TrendingDown, Eye, Heart, Share2, Clock
+  CreditCard, Users, Zap, Award, Flag, Check, ArrowLeft, 
+  Globe, Lock, Headphones, TrendingDown, Eye, Heart, Clock
 } from "lucide-react";
 import axios from "axios";
 import { API } from "../App";
 import { RelatedEventsSection } from "../components/RelatedEventsSection";
+import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData, commonTicketFAQs } from "../components/StructuredData";
 import EventStructuredData from "../components/StructuredData";
 import { RecentlyBoughtPopup } from "../components/SalesAccelerator";
 
+const FadeIn = ({ children, className = "", delay = 0 }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  return (
+    <motion.div ref={ref} initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }} className={className}>
+      {children}
+    </motion.div>
+  );
+};
+
 const TicketTier = ({ name, price, icon: Icon, gradient, features, badge, onBuy }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={`relative group rounded-2xl overflow-hidden transition-all duration-300 ${open ? 'ring-2 ring-emerald-400/50' : 'ring-1 ring-white/10 hover:ring-white/20'}`} data-testid={`ticket-${name.toLowerCase().replace(/\s/g,'-')}`}>
-      {badge && <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-black px-3 py-1 rounded-bl-xl z-10">{badge}</div>}
-      <div className={`absolute inset-0 opacity-[0.07] ${gradient}`} />
+    <motion.div 
+      whileHover={{ y: -2 }} 
+      className={`relative group rounded-2xl overflow-hidden transition-all duration-300 bg-white border ${open ? 'border-emerald-300 shadow-lg shadow-emerald-100' : 'border-slate-200 hover:border-slate-300 hover:shadow-md'}`}
+      data-testid={`ticket-${name.toLowerCase().replace(/\s/g,'-')}`}
+    >
+      {badge && <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10">{badge}</div>}
       <div className="relative p-5 cursor-pointer" onClick={() => setOpen(!open)}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -26,31 +40,31 @@ const TicketTier = ({ name, price, icon: Icon, gradient, features, badge, onBuy 
               <Icon className="w-7 h-7 text-white" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-white">{name}</h3>
-              <p className="text-xs text-zinc-500">{features[0]}</p>
+              <h3 className="text-lg font-bold text-slate-900">{name}</h3>
+              <p className="text-xs text-slate-500">{features[0]}</p>
             </div>
           </div>
           <div className="text-right">
-            <p className="text-[10px] text-zinc-600 uppercase tracking-wider">From</p>
-            <p className="text-3xl font-black bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">&euro;{price}</p>
+            <p className="text-[10px] text-slate-400 uppercase tracking-wider">From</p>
+            <p className="text-3xl font-extrabold text-emerald-600">&euro;{price}</p>
           </div>
         </div>
       </div>
       <div className={`transition-all duration-300 overflow-hidden ${open ? 'max-h-96' : 'max-h-0'}`}>
-        <div className="px-5 pb-5 border-t border-white/5 pt-4">
+        <div className="px-5 pb-5 border-t border-slate-100 pt-4">
           <div className="grid grid-cols-2 gap-2 mb-5">
             {features.map((f, i) => (
-              <div key={i} className="flex items-start gap-2 text-[13px] text-zinc-400">
-                <Check className="w-3.5 h-3.5 text-emerald-400 mt-0.5 flex-shrink-0" />{f}
+              <div key={i} className="flex items-start gap-2 text-[13px] text-slate-600">
+                <Check className="w-3.5 h-3.5 text-emerald-500 mt-0.5 flex-shrink-0" />{f}
               </div>
             ))}
           </div>
-          <button onClick={onBuy} className="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-emerald-500/20" data-testid={`buy-btn-${name.toLowerCase().replace(/\s/g,'-')}`}>
+          <button onClick={onBuy} className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg" data-testid={`buy-btn-${name.toLowerCase().replace(/\s/g,'-')}`}>
             Select {name}
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -59,6 +73,10 @@ export default function EventDetailsPage() {
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   useEffect(() => {
     setLoading(true);
@@ -69,21 +87,22 @@ export default function EventDetailsPage() {
   }, [eventId]);
 
   if (loading) return (
-    <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
-      <div className="w-10 h-10 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin" />
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
+      <div className="w-10 h-10 border-2 border-slate-900 border-t-transparent rounded-full animate-spin" />
     </div>
   );
   if (!event) return (
-    <div className="min-h-screen bg-zinc-950 flex items-center justify-center text-center p-8">
-      <div><h1 className="text-3xl font-black mb-4">Event Not Found</h1>
-        <button onClick={() => navigate('/events')} className="text-emerald-400 hover:underline">Browse All Events</button>
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center text-center p-8">
+      <div>
+        <h1 className="text-3xl font-extrabold text-slate-900 mb-4">Event Not Found</h1>
+        <button onClick={() => navigate('/events')} className="text-emerald-600 hover:underline font-medium">Browse All Events</button>
       </div>
     </div>
   );
 
-  const lowestPrice = event.tickets?.length > 0 
+  const lowestPrice = Math.round(event.tickets?.length > 0 
     ? event.tickets.reduce((min, t) => t.price < min ? t.price : min, Infinity)
-    : Object.values(event.categories || {}).reduce((min, c) => c.lowest_price < min ? c.lowest_price : min, 99);
+    : Object.values(event.categories || {}).reduce((min, c) => c.lowest_price < min ? c.lowest_price : min, 99));
   const d = new Date(event.event_date);
   const dateStr = d.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   const shortDate = d.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -94,11 +113,11 @@ export default function EventDetailsPage() {
   const seoTitle = `Buy ${event.title} Tickets ${d.getFullYear()} – Cheapest Prices + Instant Delivery | EuroMatchTickets`;
   const seoDesc = `${event.title} tickets from €${lowestPrice}. ${event.venue}, ${event.city}. Save vs official sellers. Instant QR delivery. 100% FanProtect guarantee.`;
   const officialPrice = Math.round(lowestPrice * 1.35);
-  const savings = officialPrice - lowestPrice;
+  const savings = Math.round(officialPrice - lowestPrice);
 
   const ticketTiers = [
     { name: 'General Admission', price: lowestPrice, icon: Ticket, gradient: 'bg-gradient-to-br from-blue-600 to-blue-800', features: ['Entry to the venue', 'Standing / open seating', 'Access to all general areas', 'Instant QR ticket to your phone'], badge: null },
-    { name: 'Grandstand', price: Math.round(lowestPrice * 1.8), icon: Eye, gradient: 'bg-gradient-to-br from-purple-600 to-purple-800', features: ['Reserved numbered seat', 'Elevated premium views', 'Covered seating area', 'Priority entrance', 'Instant QR delivery'], badge: 'BEST SELLER' },
+    { name: 'Grandstand', price: Math.round(lowestPrice * 1.8), icon: Eye, gradient: 'bg-gradient-to-br from-violet-600 to-violet-800', features: ['Reserved numbered seat', 'Elevated premium views', 'Covered seating area', 'Priority entrance', 'Instant QR delivery'], badge: 'BEST SELLER' },
     { name: 'VIP Hospitality', price: Math.round(lowestPrice * 4.5), icon: Award, gradient: 'bg-gradient-to-br from-amber-500 to-amber-700', features: ['Best seats in the house', 'Private VIP lounge', 'Premium food & drinks', 'Exclusive merchandise', 'Meet & greet opportunity', 'Dedicated concierge'], badge: 'PREMIUM' },
   ];
 
@@ -111,16 +130,13 @@ export default function EventDetailsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white" data-testid="event-details-page">
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={seoDesc} />
-        <link rel="canonical" href={pageUrl} />
-        <meta property="og:title" content={`${event.title} Tickets – From €${lowestPrice}`} />
-        <meta property="og:description" content={seoDesc} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:type" content="website" />
-      </Helmet>
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="event-details-page">
+      <SEOHead 
+        title={seoTitle}
+        description={seoDesc}
+        canonicalUrl={pageUrl}
+        type="website"
+      />
       <EventStructuredData event={event} />
       <BreadcrumbStructuredData items={[
         { name: 'Home', url: 'https://euromatchtickets.com' },
@@ -129,147 +145,178 @@ export default function EventDetailsPage() {
       ]} />
 
       {/* ──── HERO ──── */}
-      <div className="relative">
-        <div className="absolute inset-0 h-[520px] md:h-[560px]">
-          <img src={event.image_url} alt={event.image_alt || `${event.title} tickets`} className="w-full h-full object-cover" loading="eager" />
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-zinc-950/70 to-zinc-950" />
+      <div ref={heroRef} className="relative">
+        <div className="absolute inset-0 h-[520px] md:h-[560px] overflow-hidden">
+          <motion.img 
+            style={{ y: imgY }} 
+            src={event.image_url} 
+            alt={event.image_alt || `${event.title} tickets`} 
+            className="w-full h-[120%] object-cover" 
+            loading="eager" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/60 to-slate-900" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 pt-6 pb-8">
-          {/* Back nav */}
-          <button onClick={() => navigate(-1)} className="flex items-center gap-1.5 text-sm text-zinc-400 hover:text-white transition mb-8" data-testid="back-btn">
+          {/* Back */}
+          <motion.button 
+            initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}
+            onClick={() => navigate(-1)} 
+            className="flex items-center gap-1.5 text-sm text-white/70 hover:text-white transition mb-8 backdrop-blur-sm bg-white/10 px-3 py-1.5 rounded-full" 
+            data-testid="back-btn"
+          >
             <ArrowLeft className="w-4 h-4" /> {catLabel}
-          </button>
+          </motion.button>
 
-          {/* Date badge */}
-          <div className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-sm font-bold px-4 py-1.5 rounded-full mb-4 backdrop-blur-sm">
-            <Calendar className="w-4 h-4" /> {shortDate}
-          </div>
+          {/* Date */}
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md border border-white/20 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-4"
+          >
+            <Calendar className="w-4 h-4 text-amber-600" /> {shortDate}
+          </motion.div>
 
           {/* Title */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] mb-3" data-testid="event-h1">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] text-white mb-3" data-testid="event-h1"
+          >
             {event.title} Tickets
-          </h1>
+          </motion.h1>
 
           {/* Location */}
-          <div className="flex flex-wrap items-center gap-4 text-zinc-300 mb-6">
-            <span className="flex items-center gap-1.5"><Flag className="w-4 h-4 text-zinc-500" />{event.city}{event.country ? `, ${event.country}` : ''}</span>
-            <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-zinc-500" />{event.venue}</span>
-          </div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.25 }}
+            className="flex flex-wrap items-center gap-4 text-white/80 mb-6"
+          >
+            <span className="flex items-center gap-1.5"><Flag className="w-4 h-4 text-white/50" />{event.city}{event.country ? `, ${event.country}` : ''}</span>
+            <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-white/50" />{event.venue}</span>
+          </motion.div>
 
-          {/* Hero CTA row */}
-          <div className="flex flex-wrap items-center gap-4 mb-8">
-            <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-3">
-              <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Tickets from</p>
-              <p className="text-4xl font-black text-emerald-400">&euro;{lowestPrice}</p>
+          {/* CTA */}
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-wrap items-center gap-4 mb-8"
+          >
+            <div className="glass-dark rounded-2xl px-6 py-3">
+              <p className="text-[10px] text-white/50 uppercase tracking-widest">Tickets from</p>
+              <p className="text-4xl font-extrabold text-amber-600">&euro;{lowestPrice}</p>
             </div>
-            <div className="bg-red-500/10 border border-red-500/20 rounded-2xl px-5 py-3 backdrop-blur-sm">
-              <p className="text-red-400 font-bold text-sm flex items-center gap-1"><TrendingDown className="w-4 h-4" /> Save &euro;{savings}</p>
-              <p className="text-[11px] text-zinc-500">vs official sellers</p>
+            <div className="bg-emerald-50 border border-emerald-400/30 rounded-2xl px-5 py-3 backdrop-blur-sm">
+              <p className="text-emerald-300 font-bold text-sm flex items-center gap-1"><TrendingDown className="w-4 h-4" /> Save &euro;{savings}</p>
+              <p className="text-[11px] text-white/50">vs official sellers</p>
             </div>
-            <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })} className="bg-emerald-500 hover:bg-emerald-400 text-white font-bold px-8 py-4 rounded-2xl text-lg transition-all shadow-xl shadow-emerald-500/20" data-testid="hero-cta">
+            <button 
+              onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })} 
+              className="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-8 py-4 rounded-full text-lg transition-all shadow-[0_4px_20px_rgba(245,158,11,0.4)] hover:shadow-[0_8px_30px_rgba(245,158,11,0.5)] hover:scale-105 active:scale-[0.97]" 
+              data-testid="hero-cta"
+            >
               Buy Tickets
             </button>
-          </div>
+          </motion.div>
 
-          {/* Trust strip */}
-          <div className="flex flex-wrap gap-5 text-[13px]">
+          {/* Trust */}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-wrap gap-5 text-[13px]"
+          >
             {[
-              { icon: Shield, text: '100% Buyer Protection', color: 'text-emerald-400' },
-              { icon: Zap, text: 'Instant QR Delivery', color: 'text-amber-400' },
-              { icon: Star, text: '4.8/5 from 2,847 reviews', color: 'text-yellow-400' },
-              { icon: Users, text: '50,000+ customers', color: 'text-blue-400' },
+              { icon: Shield, text: '100% Buyer Protection', color: 'text-emerald-600' },
+              { icon: Zap, text: 'Instant QR Delivery', color: 'text-amber-600' },
+              { icon: Star, text: '4.8/5 from 2,847 reviews', color: 'text-amber-600' },
+              { icon: Users, text: '50,000+ customers', color: 'text-blue-600' },
             ].map((t, i) => (
-              <span key={i} className="flex items-center gap-1.5 text-zinc-400"><t.icon className={`w-4 h-4 ${t.color}`} />{t.text}</span>
+              <span key={i} className="flex items-center gap-1.5 text-white/70"><t.icon className={`w-4 h-4 ${t.color}`} />{t.text}</span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* ──── MAIN CONTENT ──── */}
-      <div className="max-w-7xl mx-auto px-4 -mt-4">
+      {/* ──── MAIN ──── */}
+      <div className="max-w-7xl mx-auto px-4 -mt-4 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-          {/* LEFT - Tickets + Content */}
+          {/* LEFT */}
           <div className="lg:col-span-2 space-y-8">
-
             {/* Ticket Tiers */}
-            <div id="tickets">
-              <h2 className="text-2xl font-black mb-5 flex items-center gap-2">
-                <Ticket className="w-6 h-6 text-emerald-400" /> Choose Your Tickets
-              </h2>
-              <div className="space-y-4">
-                {ticketTiers.map((t, i) => (
-                  <TicketTier key={i} {...t} onBuy={() => navigate(`/checkout?event=${event.event_id}&category=${t.name}`)} />
-                ))}
+            <FadeIn>
+              <div id="tickets">
+                <h2 className="text-2xl font-extrabold text-slate-900 mb-5 flex items-center gap-2">
+                  <Ticket className="w-6 h-6 text-emerald-600" /> Choose Your Tickets
+                </h2>
+                <div className="space-y-4">
+                  {ticketTiers.map((t, i) => (
+                    <TicketTier key={i} {...t} onBuy={() => navigate(`/checkout?event=${event.event_id}&category=${t.name}`)} />
+                  ))}
+                </div>
               </div>
-            </div>
+            </FadeIn>
 
             {/* Price Comparison */}
-            <div className="bg-zinc-900/60 border border-white/10 rounded-2xl p-6" data-testid="price-comparison">
-              <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <TrendingDown className="w-5 h-5 text-emerald-400" /> Why EuroMatchTickets is the Smart Choice
-              </h3>
-              <div className="overflow-hidden rounded-xl border border-white/5">
-                <table className="w-full text-sm">
-                  <thead><tr className="bg-white/5">
-                    <th className="text-left p-3 text-zinc-500 font-medium">Platform</th>
-                    <th className="text-center p-3 text-zinc-500 font-medium">Price</th>
-                    <th className="text-center p-3 text-zinc-500 font-medium">Delivery</th>
-                    <th className="text-center p-3 text-zinc-500 font-medium">Guarantee</th>
-                  </tr></thead>
-                  <tbody>
-                    <tr className="border-t border-white/5">
-                      <td className="p-3 text-zinc-400">Official Box Office</td>
-                      <td className="p-3 text-center text-zinc-400 line-through">&euro;{officialPrice}</td>
-                      <td className="p-3 text-center text-zinc-500">2-4 weeks</td>
-                      <td className="p-3 text-center text-zinc-500">Limited</td>
-                    </tr>
-                    <tr className="border-t border-white/5">
-                      <td className="p-3 text-zinc-400">Other Resellers</td>
-                      <td className="p-3 text-center text-zinc-400 line-through">&euro;{Math.round(lowestPrice * 1.2)}</td>
-                      <td className="p-3 text-center text-zinc-500">1-7 days</td>
-                      <td className="p-3 text-center text-zinc-500">Varies</td>
-                    </tr>
-                    <tr className="border-t border-emerald-500/20 bg-emerald-500/5">
-                      <td className="p-3 font-bold text-white">EuroMatchTickets</td>
-                      <td className="p-3 text-center font-black text-emerald-400 text-lg">&euro;{lowestPrice}</td>
-                      <td className="p-3 text-center text-emerald-400 font-medium">Instant</td>
-                      <td className="p-3 text-center text-emerald-400 font-medium">FanProtect</td>
-                    </tr>
-                  </tbody>
-                </table>
+            <FadeIn delay={0.1}>
+              <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm" data-testid="price-comparison">
+                <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                  <TrendingDown className="w-5 h-5 text-emerald-600" /> Why EuroMatchTickets is the Smart Choice
+                </h3>
+                <div className="overflow-hidden rounded-xl border border-slate-200">
+                  <table className="w-full text-sm">
+                    <thead><tr className="bg-slate-50">
+                      <th className="text-left p-3 text-slate-500 font-medium">Platform</th>
+                      <th className="text-center p-3 text-slate-500 font-medium">Price</th>
+                      <th className="text-center p-3 text-slate-500 font-medium">Delivery</th>
+                      <th className="text-center p-3 text-slate-500 font-medium">Guarantee</th>
+                    </tr></thead>
+                    <tbody>
+                      <tr className="border-t border-slate-100">
+                        <td className="p-3 text-slate-500">Official Box Office</td>
+                        <td className="p-3 text-center text-slate-400 line-through">&euro;{officialPrice}</td>
+                        <td className="p-3 text-center text-slate-400">2-4 weeks</td>
+                        <td className="p-3 text-center text-slate-400">Limited</td>
+                      </tr>
+                      <tr className="border-t border-slate-100">
+                        <td className="p-3 text-slate-500">Other Resellers</td>
+                        <td className="p-3 text-center text-slate-400 line-through">&euro;{Math.round(lowestPrice * 1.2)}</td>
+                        <td className="p-3 text-center text-slate-400">1-7 days</td>
+                        <td className="p-3 text-center text-slate-400">Varies</td>
+                      </tr>
+                      <tr className="border-t-2 border-emerald-200 bg-emerald-50/50">
+                        <td className="p-3 font-bold text-slate-900">EuroMatchTickets</td>
+                        <td className="p-3 text-center font-extrabold text-emerald-600 text-lg">&euro;{lowestPrice}</td>
+                        <td className="p-3 text-center text-emerald-600 font-medium">Instant</td>
+                        <td className="p-3 text-center text-emerald-600 font-medium">FanProtect</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
+            </FadeIn>
 
             {/* Why Choose Us */}
-            <div data-testid="why-choose-us">
-              <h2 className="text-2xl font-black mb-5">Why 50,000+ Fans Choose Us</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: Shield, title: '100% Buyer Protection', desc: 'FanProtect covers every purchase. Full refund if cancelled.', gradient: 'from-emerald-600 to-emerald-800' },
-                  { icon: Zap, title: 'Instant QR Delivery', desc: 'Tickets on your phone in seconds. No waiting, no printing.', gradient: 'from-amber-500 to-orange-700' },
-                  { icon: TrendingDown, title: 'Best Price Guarantee', desc: `Save €${savings} vs official sellers. We match any lower price.`, gradient: 'from-blue-600 to-blue-800' },
-                  { icon: Headphones, title: 'Real Human Support', desc: 'Fan support before, during & after the event. Always available.', gradient: 'from-purple-600 to-purple-800' },
-                ].map((item, i) => (
-                  <div key={i} className="relative overflow-hidden rounded-2xl border border-white/10 p-5 group hover:border-white/20 transition-all">
-                    <div className={`absolute -top-8 -right-8 w-24 h-24 rounded-full bg-gradient-to-br ${item.gradient} opacity-10 group-hover:opacity-20 transition-opacity`} />
-                    <item.icon className="w-8 h-8 text-emerald-400 mb-3" />
-                    <h3 className="font-bold text-base mb-1">{item.title}</h3>
-                    <p className="text-sm text-zinc-500">{item.desc}</p>
-                  </div>
-                ))}
+            <FadeIn delay={0.15}>
+              <div data-testid="why-choose-us">
+                <h2 className="text-2xl font-extrabold text-slate-900 mb-5">Why 50,000+ Fans Choose Us</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    { icon: Shield, title: '100% Buyer Protection', desc: 'FanProtect covers every purchase. Full refund if cancelled.', color: 'text-emerald-600', bg: 'bg-emerald-50' },
+                    { icon: Zap, title: 'Instant QR Delivery', desc: 'Tickets on your phone in seconds. No waiting, no printing.', color: 'text-amber-600', bg: 'bg-amber-50' },
+                    { icon: TrendingDown, title: 'Best Price Guarantee', desc: `Save \u20ac${savings} vs official sellers. We match any lower price.`, color: 'text-blue-600', bg: 'bg-blue-50' },
+                    { icon: Headphones, title: 'Real Human Support', desc: 'Fan support before, during & after the event.', color: 'text-violet-600', bg: 'bg-violet-50' },
+                  ].map((item, i) => (
+                    <div key={i} className="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-md transition-all group">
+                      <div className={`w-12 h-12 ${item.bg} rounded-xl flex items-center justify-center mb-3`}>
+                        <item.icon className={`w-6 h-6 ${item.color}`} />
+                      </div>
+                      <h3 className="font-bold text-slate-900 text-base mb-1">{item.title}</h3>
+                      <p className="text-sm text-slate-500">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </FadeIn>
 
             {/* SEO Content */}
-            <div className="prose prose-invert max-w-none" data-testid="seo-content-block">
-              <h2 className="text-2xl font-black mb-4">{event.title} – Your Complete Guide</h2>
-              <div className="text-zinc-400 leading-relaxed space-y-4 text-[15px]">
+            <FadeIn delay={0.2}>
+              <div className="prose-light" data-testid="seo-content-block">
+                <h2>{event.title} &ndash; Your Complete Guide</h2>
                 <p>
                   Looking for {event.title} tickets at the cheapest prices? EuroMatchTickets offers verified 
                   {' '}{catLabel.toLowerCase()} tickets for {event.venue} in {event.city} with instant QR delivery 
-                  and our exclusive FanProtect buyer guarantee. Prices start from just &euro;{lowestPrice} — 
+                  and our exclusive FanProtect buyer guarantee. Prices start from just &euro;{lowestPrice} &mdash; 
                   that's up to &euro;{savings} less than official sellers.
                 </p>
                 <p>
@@ -278,62 +325,71 @@ export default function EventDetailsPage() {
                   or VIP Hospitality with private lounge access, food, drinks and the best seats available.
                 </p>
                 <p>
-                  Every ticket includes instant QR delivery — no waiting for postal delivery, no stress about lost tickets.
+                  Every ticket includes instant QR delivery &mdash; no waiting for postal delivery, no stress about lost tickets.
                   Just show your phone at the gate. Our 50,000+ customers rate us 4.8/5, and our FanProtect guarantee 
-                  means you're covered if anything changes. It's the smartest way to buy tickets.
+                  means you're covered if anything changes.
                 </p>
               </div>
-            </div>
+            </FadeIn>
 
             {/* FAQ */}
-            <div data-testid="faq-section">
-              <h2 className="text-2xl font-black mb-5">FAQ – {event.title}</h2>
-              <FAQStructuredData faqs={eventFAQs} />
-              <div className="space-y-3">
-                {eventFAQs.map((faq, i) => (
-                  <details key={i} className="group rounded-xl border border-white/10 bg-zinc-900/30 hover:border-white/15 transition" data-testid={`faq-${i}`}>
-                    <summary className="p-4 font-bold text-[15px] cursor-pointer list-none flex items-center justify-between">
-                      {faq.question}
-                      <ChevronDown className="w-4 h-4 text-zinc-600 group-open:rotate-180 transition-transform flex-shrink-0" />
-                    </summary>
-                    <p className="px-4 pb-4 text-zinc-500 text-sm leading-relaxed">{faq.answer}</p>
-                  </details>
-                ))}
+            <FadeIn delay={0.25}>
+              <div data-testid="faq-section">
+                <h2 className="text-2xl font-extrabold text-slate-900 mb-5">FAQ &ndash; {event.title}</h2>
+                <FAQStructuredData faqs={eventFAQs} />
+                <div className="space-y-3">
+                  {eventFAQs.map((faq, i) => (
+                    <details key={i} className="group rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition" data-testid={`faq-${i}`}>
+                      <summary className="p-4 font-bold text-[15px] text-slate-900 cursor-pointer list-none flex items-center justify-between">
+                        {faq.question}
+                        <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0" />
+                      </summary>
+                      <p className="px-4 pb-4 text-slate-500 text-sm leading-relaxed">{faq.answer}</p>
+                    </details>
+                  ))}
+                </div>
               </div>
-            </div>
+            </FadeIn>
           </div>
 
           {/* RIGHT SIDEBAR */}
           <div className="space-y-6">
-            {/* Sticky Buy Card */}
-            <div className="sticky top-4 space-y-6">
-              <div className="bg-zinc-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl" data-testid="quick-buy-card">
+            <div className="sticky top-24 space-y-6">
+              {/* Quick Buy Card */}
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
+                className="glass-card rounded-2xl p-6 shadow-xl" data-testid="quick-buy-card"
+              >
                 <div className="text-center mb-5">
-                  <p className="text-xs text-zinc-600 uppercase tracking-widest">Tickets from</p>
-                  <p className="text-5xl font-black bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent mt-1">&euro;{lowestPrice}</p>
-                  <p className="text-xs text-zinc-600 mt-1">per person &middot; all fees included</p>
+                  <p className="text-xs text-slate-400 uppercase tracking-widest">Tickets from</p>
+                  <p className="text-5xl font-extrabold text-emerald-600 mt-1">&euro;{lowestPrice}</p>
+                  <p className="text-xs text-slate-400 mt-1">per person &middot; all fees included</p>
                 </div>
 
-                <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })} className="w-full py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-black rounded-xl text-lg transition-all shadow-lg shadow-emerald-500/25 mb-5" data-testid="sidebar-cta">
+                <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })} className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-lg transition-all shadow-md hover:shadow-lg mb-5" data-testid="sidebar-cta">
                   Buy Tickets Now
                 </button>
 
                 <div className="space-y-2.5">
-                  {['Instant QR delivery', '100% verified tickets', 'FanProtect guarantee', 'Secure Stripe checkout', `Save €${savings} vs others`].map((t, i) => (
-                    <div key={i} className="flex items-center gap-2 text-[13px] text-zinc-400"><Check className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />{t}</div>
+                  {['Instant QR delivery', '100% verified tickets', 'FanProtect guarantee', 'Secure Stripe checkout', `Save \u20ac${savings} vs others`].map((t, i) => (
+                    <div key={i} className="flex items-center gap-2 text-[13px] text-slate-600"><Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />{t}</div>
                   ))}
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-white/5 grid grid-cols-4 gap-2">
-                  {['VISA', 'MC', 'AMEX', 'PAY'].map(p => (
-                    <div key={p} className="text-[10px] text-zinc-600 bg-zinc-800/80 py-1.5 rounded text-center font-medium">{p}</div>
+                <div className="mt-5 pt-4 border-t border-slate-200 grid grid-cols-4 gap-2">
+                  {[
+                    { name: 'VISA', bg: 'bg-blue-600 text-white' },
+                    { name: 'MC', bg: 'bg-red-600 text-white' },
+                    { name: 'AMEX', bg: 'bg-blue-800 text-white' },
+                    { name: 'PAY', bg: 'bg-slate-900 text-white' },
+                  ].map(p => (
+                    <div key={p.name} className={`text-[10px] ${p.bg} py-1.5 rounded text-center font-bold`}>{p.name}</div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
 
               {/* Event Details */}
-              <div className="bg-zinc-900/50 border border-white/10 rounded-2xl p-5">
-                <h3 className="font-bold text-sm mb-3">Event Details</h3>
+              <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                <h3 className="font-bold text-sm text-slate-900 mb-3">Event Details</h3>
                 <div className="space-y-2.5 text-[13px]">
                   {[
                     { label: 'Date', value: shortDate },
@@ -343,27 +399,27 @@ export default function EventDetailsPage() {
                     { label: 'Status', value: 'Tickets Available', green: true },
                   ].map((r, i) => (
                     <div key={i} className="flex justify-between">
-                      <span className="text-zinc-600">{r.label}</span>
-                      <span className={r.green ? 'text-emerald-400 font-bold' : 'text-zinc-300'}>{r.value}</span>
+                      <span className="text-slate-400">{r.label}</span>
+                      <span className={r.green ? 'text-emerald-600 font-bold' : 'text-slate-700'}>{r.value}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Reviews */}
-              <div className="bg-zinc-900/50 border border-white/10 rounded-2xl p-5">
+              <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="flex gap-0.5">{[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />)}</div>
-                  <span className="text-xs text-zinc-500">4.8/5</span>
+                  <div className="flex gap-0.5">{[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 text-amber-600 fill-amber-400" />)}</div>
+                  <span className="text-xs text-slate-500">4.8/5</span>
                 </div>
                 {[
-                  { name: 'Marco R.', text: 'Best ticket experience ever. Saved €60!', flag: 'DE' },
+                  { name: 'Marco R.', text: 'Best ticket experience ever. Saved \u20ac60!', flag: 'DE' },
                   { name: 'Sophie M.', text: 'Instant delivery. QR worked perfectly.', flag: 'FR' },
                   { name: 'Thomas K.', text: 'Cheapest prices I found. Real guarantee.', flag: 'UK' },
                 ].map((r, i) => (
-                  <div key={i} className="py-2.5 border-t border-white/5 first:border-0">
-                    <p className="text-zinc-400 text-xs italic leading-relaxed">"{r.text}"</p>
-                    <p className="text-zinc-600 text-[11px] mt-1">{r.name} · {r.flag}</p>
+                  <div key={i} className="py-2.5 border-t border-slate-100 first:border-0">
+                    <p className="text-slate-600 text-xs italic leading-relaxed">"{r.text}"</p>
+                    <p className="text-slate-400 text-[11px] mt-1">{r.name} &middot; {r.flag}</p>
                   </div>
                 ))}
               </div>
@@ -373,6 +429,19 @@ export default function EventDetailsPage() {
 
         {/* Related Events */}
         <RelatedEventsSection slug={event.slug || event.event_id} category={event.event_type === 'match' ? 'football' : event.event_type} city={event.city} />
+      </div>
+
+      {/* Mobile Sticky Buy */}
+      <div className="mobile-sticky-buy lg:hidden" data-testid="mobile-sticky-buy">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <p className="text-xs text-slate-500">From</p>
+            <p className="text-2xl font-extrabold text-slate-900">&euro;{lowestPrice}</p>
+          </div>
+          <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })} className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3.5 rounded-full text-base transition-all shadow-md">
+            Buy Tickets
+          </button>
+        </div>
       </div>
 
       <RecentlyBoughtPopup />

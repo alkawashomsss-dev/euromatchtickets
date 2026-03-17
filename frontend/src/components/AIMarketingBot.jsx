@@ -125,7 +125,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-zinc-900 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden border border-purple-500/30 relative flex flex-col">
+      <div className="bg-white rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden border border-purple-500/30 relative flex flex-col">
         {/* Header */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -143,12 +143,12 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
         </div>
 
         {/* Event Selector */}
-        <div className="p-4 border-b border-zinc-800 bg-zinc-900/50">
+        <div className="p-4 border-b border-slate-200 bg-white">
           <div className="flex items-center gap-4">
             <div className="flex-1">
-              <label className="text-sm text-zinc-400 mb-1 block">Select Event to Promote</label>
+              <label className="text-sm text-slate-500 mb-1 block">Select Event to Promote</label>
               <Select value={selectedEvent} onValueChange={setSelectedEvent}>
-                <SelectTrigger className="bg-zinc-800 border-zinc-700">
+                <SelectTrigger className="bg-slate-100 border-slate-200">
                   <SelectValue placeholder="Select an event" />
                 </SelectTrigger>
                 <SelectContent>
@@ -175,7 +175,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b border-zinc-800 overflow-x-auto">
+        <div className="flex border-b border-slate-200 overflow-x-auto">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -183,7 +183,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
               className={`flex items-center gap-2 px-6 py-3 text-sm font-medium transition-colors whitespace-nowrap ${
                 activeTab === tab.id 
                   ? 'text-purple-400 border-b-2 border-purple-400 bg-purple-500/10' 
-                  : 'text-zinc-400 hover:text-white'
+                  : 'text-slate-500 hover:text-white'
               }`}
             >
               <tab.icon className="w-4 h-4" />
@@ -205,10 +205,10 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
                 </div>
                 <div className="space-y-3">
                   {generatedContent.twitter.map((post, i) => (
-                    <div key={i} className="bg-zinc-800/50 rounded-xl p-4 border border-zinc-700">
+                    <div key={i} className="bg-slate-50 rounded-xl p-4 border border-slate-200">
                       <p className="text-sm whitespace-pre-wrap mb-3">{post}</p>
                       <div className="flex justify-between items-center">
-                        <span className="text-xs text-zinc-500">{post.length}/280 characters</span>
+                        <span className="text-xs text-slate-400">{post.length}/280 characters</span>
                         <Button 
                           size="sm" 
                           variant="outline"
@@ -232,7 +232,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
                 </div>
                 <div className="space-y-3">
                   {generatedContent.facebook.map((post, i) => (
-                    <div key={i} className="bg-zinc-800/50 rounded-xl p-4 border border-zinc-700">
+                    <div key={i} className="bg-slate-50 rounded-xl p-4 border border-slate-200">
                       <p className="text-sm whitespace-pre-wrap mb-3">{post}</p>
                       <Button 
                         size="sm" 
@@ -256,7 +256,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
                 </div>
                 <div className="space-y-3">
                   {generatedContent.instagram.map((post, i) => (
-                    <div key={i} className="bg-zinc-800/50 rounded-xl p-4 border border-zinc-700">
+                    <div key={i} className="bg-slate-50 rounded-xl p-4 border border-slate-200">
                       <p className="text-sm whitespace-pre-wrap mb-3">{post}</p>
                       <Button 
                         size="sm" 
@@ -277,7 +277,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
           {/* Hashtags Tab */}
           {activeTab === 'hashtags' && (
             <div>
-              <p className="text-zinc-400 mb-4">Copy these trending hashtags to increase your reach:</p>
+              <p className="text-slate-500 mb-4">Copy these trending hashtags to increase your reach:</p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {generatedContent.hashtags.map((tag, i) => (
                   <Badge 
@@ -302,10 +302,10 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
           {/* SEO Keywords Tab */}
           {activeTab === 'seo' && (
             <div>
-              <p className="text-zinc-400 mb-4">Use these keywords in your content for better Google ranking:</p>
+              <p className="text-slate-500 mb-4">Use these keywords in your content for better Google ranking:</p>
               <div className="space-y-2">
                 {generatedContent.seoKeywords.map((keyword, i) => (
-                  <div key={i} className="flex items-center justify-between bg-zinc-800/50 rounded-lg p-3 border border-zinc-700">
+                  <div key={i} className="flex items-center justify-between bg-slate-50 rounded-lg p-3 border border-slate-200">
                     <div className="flex items-center gap-3">
                       <TrendingUp className="w-4 h-4 text-emerald-400" />
                       <span>{keyword}</span>
@@ -326,10 +326,10 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
           {/* Email Subjects Tab */}
           {activeTab === 'email' && (
             <div>
-              <p className="text-zinc-400 mb-4">High-converting email subject lines:</p>
+              <p className="text-slate-500 mb-4">High-converting email subject lines:</p>
               <div className="space-y-2">
                 {generatedContent.emailSubjects.map((subject, i) => (
-                  <div key={i} className="flex items-center justify-between bg-zinc-800/50 rounded-lg p-3 border border-zinc-700">
+                  <div key={i} className="flex items-center justify-between bg-slate-50 rounded-lg p-3 border border-slate-200">
                     <span>{subject}</span>
                     <Button 
                       size="sm" 
@@ -348,7 +348,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
             <div className="text-center py-16">
               <Sparkles className="w-16 h-16 text-purple-500 mx-auto mb-4 opacity-50" />
               <h3 className="text-xl font-bold mb-2">Ready to Generate</h3>
-              <p className="text-zinc-400 mb-6">Select an event and click "Generate Content" to create viral marketing posts</p>
+              <p className="text-slate-500 mb-6">Select an event and click "Generate Content" to create viral marketing posts</p>
               <Badge className="bg-purple-500/20 text-purple-400">
                 <Zap className="w-4 h-4 mr-1" /> AI-Powered Content
               </Badge>

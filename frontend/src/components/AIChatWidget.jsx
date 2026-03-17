@@ -82,9 +82,9 @@ const AIChatWidget = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[600px] max-h-[calc(100vh-100px)] bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        <div className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[600px] max-h-[calc(100vh-100px)] bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border-b border-zinc-800 p-4">
+          <div className="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border-b border-slate-200 p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center">
@@ -103,7 +103,7 @@ const AIChatWidget = () => {
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="text-zinc-400 hover:text-white transition-colors"
+                className="text-slate-500 hover:text-white transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -111,7 +111,7 @@ const AIChatWidget = () => {
           </div>
 
           {/* Trust Badges */}
-          <div className="flex items-center justify-center gap-4 py-2 bg-zinc-900/50 border-b border-zinc-800 text-xs text-zinc-400">
+          <div className="flex items-center justify-center gap-4 py-2 bg-white border-b border-slate-200 text-xs text-slate-500">
             <span className="flex items-center gap-1">
               <Shield className="w-3 h-3 text-green-400" /> Secure
             </span>
@@ -140,7 +140,7 @@ const AIChatWidget = () => {
                 <div className={`max-w-[80%] p-3 rounded-2xl ${
                   msg.role === 'user'
                     ? 'bg-purple-500/20 text-white rounded-tr-sm'
-                    : 'bg-zinc-800 text-zinc-100 rounded-tl-sm'
+                    : 'bg-slate-100 text-zinc-100 rounded-tl-sm'
                 }`}>
                   <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
                 </div>
@@ -151,7 +151,7 @@ const AIChatWidget = () => {
                 <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
                   <Bot className="w-4 h-4" />
                 </div>
-                <div className="bg-zinc-800 p-3 rounded-2xl rounded-tl-sm">
+                <div className="bg-slate-100 p-3 rounded-2xl rounded-tl-sm">
                   <div className="flex gap-1">
                     <span className="w-2 h-2 bg-zinc-500 rounded-full animate-bounce" style={{animationDelay: '0ms'}} />
                     <span className="w-2 h-2 bg-zinc-500 rounded-full animate-bounce" style={{animationDelay: '150ms'}} />
@@ -164,7 +164,7 @@ const AIChatWidget = () => {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-zinc-800 bg-zinc-900/50">
+          <div className="p-4 border-t border-slate-200 bg-white">
             <div className="flex items-center gap-2">
               <input
                 type="text"
@@ -172,7 +172,7 @@ const AIChatWidget = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message..."
-                className="flex-1 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50"
+                className="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50"
                 data-testid="chat-input"
               />
               <Button
@@ -184,7 +184,7 @@ const AIChatWidget = () => {
                 <Send className="w-4 h-4" />
               </Button>
             </div>
-            <p className="text-xs text-zinc-500 text-center mt-2">
+            <p className="text-xs text-slate-400 text-center mt-2">
               Powered by AI • Response time: ~2 sec
             </p>
           </div>

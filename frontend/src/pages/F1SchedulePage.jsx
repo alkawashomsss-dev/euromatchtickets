@@ -46,7 +46,7 @@ const F1SchedulePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="F1 2026 Race Schedule & Tickets - Full Formula 1 Calendar | All 24 Races"
         description="Complete F1 2026 race schedule with all 24 Grand Prix dates, locations, and tickets. Monaco, Silverstone, Monza, Singapore, Las Vegas. Buy F1 tickets from €99. Official calendar with prices."
@@ -57,41 +57,41 @@ const F1SchedulePage = () => {
       <section className="relative py-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-zinc-900 to-zinc-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-red-500/20 text-red-400 border-red-500/30 mb-6">
+          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® World Championship
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             F1 2026 Race Schedule
-            <span className="block text-2xl md:text-3xl mt-2 text-zinc-400">Full Calendar & Tickets for All 24 Races</span>
+            <span className="block text-2xl md:text-3xl mt-2 text-slate-500">Full Calendar & Tickets for All 24 Races</span>
           </h1>
           
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
             Complete Formula 1 2026 calendar with dates, locations, and ticket prices. 
-            Book your F1 tickets now - <strong className="text-emerald-400">prices from €99!</strong>
+            Book your F1 tickets now - <strong className="text-emerald-600">prices from €99!</strong>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Flag className="w-5 h-5 text-red-400" /><span>24 Races</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Flag className="w-5 h-5 text-red-600" /><span>24 Races</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Calendar className="w-5 h-5 text-red-400" /><span>March - December 2026</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Calendar className="w-5 h-5 text-red-600" /><span>March - December 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <MapPin className="w-5 h-5 text-red-400" /><span>21 Countries</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <MapPin className="w-5 h-5 text-red-600" /><span>21 Countries</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-white/5 bg-zinc-900/30">
+      <section className="py-6 border-y border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-400"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><Zap className="w-5 h-5" /><span>Instant QR Delivery</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><Star className="w-5 h-5" /><span>€10 Cheaper Than Competitors</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant QR Delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>€10 Cheaper Than Competitors</span></div>
           </div>
         </div>
       </section>
@@ -104,7 +104,7 @@ const F1SchedulePage = () => {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-zinc-900/50 border-b border-zinc-700">
+                <tr className="bg-white border-b border-slate-200">
                   <th className="py-4 px-4 text-left">Round</th>
                   <th className="py-4 px-4 text-left">Race</th>
                   <th className="py-4 px-4 text-left">Location</th>
@@ -115,24 +115,24 @@ const F1SchedulePage = () => {
               </thead>
               <tbody>
                 {races.map((race) => (
-                  <tr key={race.round} className="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                  <tr key={race.round} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
                     <td className="py-4 px-4">
-                      <span className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center text-red-400 font-bold text-sm">
+                      <span className="w-8 h-8 bg-red-50 rounded-full flex items-center justify-center text-red-600 font-bold text-sm">
                         {race.round}
                       </span>
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-2">
                         <span className="font-bold">{race.name}</span>
-                        {race.legendary && <Badge className="bg-amber-500/20 text-amber-400 text-xs"><Trophy className="w-3 h-3" /></Badge>}
-                        {race.night && <Badge className="bg-purple-500/20 text-purple-400 text-xs"><Moon className="w-3 h-3" /></Badge>}
+                        {race.legendary && <Badge className="bg-amber-50 text-amber-600 text-xs"><Trophy className="w-3 h-3" /></Badge>}
+                        {race.night && <Badge className="bg-violet-50 text-violet-600 text-xs"><Moon className="w-3 h-3" /></Badge>}
                       </div>
-                      <div className="text-sm text-zinc-500">{race.circuit}</div>
+                      <div className="text-sm text-slate-400">{race.circuit}</div>
                     </td>
-                    <td className="py-4 px-4 text-zinc-400">{race.location}</td>
-                    <td className="py-4 px-4 text-zinc-400">{race.date}</td>
+                    <td className="py-4 px-4 text-slate-500">{race.location}</td>
+                    <td className="py-4 px-4 text-slate-500">{race.date}</td>
                     <td className="py-4 px-4 text-right">
-                      <span className="text-emerald-400 font-bold">€{race.price}</span>
+                      <span className="text-emerald-600 font-bold">€{race.price}</span>
                     </td>
                     <td className="py-4 px-4 text-center">
                       <Link to={race.href}>
@@ -150,7 +150,7 @@ const F1SchedulePage = () => {
       </section>
 
       {/* Featured Races */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">🔥 Most Popular F1 Races 2026</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -158,17 +158,17 @@ const F1SchedulePage = () => {
               <Link 
                 key={race.round} 
                 to={race.href}
-                className="bg-zinc-900/50 border border-zinc-700 hover:border-red-500/50 rounded-xl p-4 transition-all group"
+                className="bg-white border border-slate-200 hover:border-red-500/50 rounded-xl p-4 transition-all group"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <Badge className="bg-red-500/20 text-red-400 text-xs">Round {race.round}</Badge>
-                  {race.night && <Moon className="w-4 h-4 text-purple-400" />}
+                  <Badge className="bg-red-50 text-red-600 text-xs">Round {race.round}</Badge>
+                  {race.night && <Moon className="w-4 h-4 text-violet-600" />}
                 </div>
-                <h3 className="font-bold group-hover:text-red-400 transition-colors">{race.name}</h3>
-                <p className="text-sm text-zinc-500 mb-3">{race.date} • {race.location.split(',')[0]}</p>
+                <h3 className="font-bold group-hover:text-red-600 transition-colors">{race.name}</h3>
+                <p className="text-sm text-slate-400 mb-3">{race.date} • {race.location.split(',')[0]}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-emerald-400 font-bold">From €{race.price}</span>
-                  <ChevronRight className="w-4 h-4 text-zinc-500 group-hover:text-red-400" />
+                  <span className="text-emerald-600 font-bold">From €{race.price}</span>
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-red-600" />
                 </div>
               </Link>
             ))}
@@ -180,7 +180,7 @@ const F1SchedulePage = () => {
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-            <Moon className="w-8 h-8 text-purple-400" />
+            <Moon className="w-8 h-8 text-violet-600" />
             F1 Night Races 2026
           </h2>
           <div className="grid md:grid-cols-3 gap-4">
@@ -188,16 +188,16 @@ const F1SchedulePage = () => {
               <Link 
                 key={race.round} 
                 to={race.href}
-                className="flex items-center gap-4 bg-gradient-to-r from-purple-900/20 to-zinc-900/50 border border-purple-500/30 hover:border-purple-500/50 rounded-xl p-4 transition-all"
+                className="flex items-center gap-4 bg-gradient-to-r from-purple-900/20 to-zinc-900/50 border border-violet-200 hover:border-purple-500/50 rounded-xl p-4 transition-all"
               >
-                <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                  <Moon className="w-6 h-6 text-purple-400" />
+                <div className="w-12 h-12 bg-violet-50 rounded-full flex items-center justify-center">
+                  <Moon className="w-6 h-6 text-violet-600" />
                 </div>
                 <div className="flex-1">
                   <h3 className="font-bold">{race.name}</h3>
-                  <p className="text-sm text-zinc-500">{race.date}</p>
+                  <p className="text-sm text-slate-400">{race.date}</p>
                 </div>
-                <span className="text-emerald-400 font-bold">€{race.price}</span>
+                <span className="text-emerald-600 font-bold">€{race.price}</span>
               </Link>
             ))}
           </div>
@@ -205,7 +205,7 @@ const F1SchedulePage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8">F1 2026 Schedule FAQ</h2>
           <div className="space-y-4">
@@ -216,9 +216,9 @@ const F1SchedulePage = () => {
               { q: "Which F1 races are night races in 2026?", a: "The 2026 night races are: Bahrain GP, Saudi Arabian GP, Singapore GP, Las Vegas GP, Qatar GP, and Abu Dhabi GP (twilight)." },
               { q: "What is the cheapest F1 race to attend in 2026?", a: "The Hungarian GP and Italian GP (Monza) offer the best value with General Admission from €99." },
             ].map((faq, i) => (
-              <div key={i} className="bg-zinc-900/50 border border-zinc-700 rounded-xl p-6">
+              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
                 <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
-                <p className="text-zinc-400">{faq.a}</p>
+                <p className="text-slate-500">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -229,7 +229,7 @@ const F1SchedulePage = () => {
       <section className="py-20 bg-gradient-to-r from-red-900/30 to-orange-900/30">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready for F1 2026?</h2>
-          <p className="text-zinc-400 mb-8">Book your tickets now and save up to 50% vs official prices</p>
+          <p className="text-slate-500 mb-8">Book your tickets now and save up to 50% vs official prices</p>
           <Link to="/f1-tickets">
             <Button size="lg" className="bg-red-500 hover:bg-red-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />Browse All F1 Tickets
@@ -249,7 +249,7 @@ const F1SchedulePage = () => {
               "when is Monaco GP 2026", "F1 night races 2026", "F1 European races 2026",
               "F1 tickets 2026", "Formula 1 schedule", "F1 race calendar"
             ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-zinc-800/50 text-zinc-400 rounded-full text-sm">{term}</span>
+              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">{term}</span>
             ))}
           </div>
         </div>

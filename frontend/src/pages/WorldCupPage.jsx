@@ -123,7 +123,7 @@ const WorldCupPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="FIFA World Cup 2026 Tickets - Cheapest Prices | Buy Official Verified Tickets"
         description="Buy FIFA World Cup 2026 tickets for all matches. Opening ceremony Mexico, group stage, quarter finals, semi finals and World Cup Final in New York. Verified tickets with 100% buyer guarantee. Best prices online!"
@@ -143,7 +143,7 @@ const WorldCupPage = () => {
         }} />
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 mb-6">
+          <Badge className="bg-cyan-500/20 text-cyan-600 border-cyan-500/30 mb-6">
             <Trophy className="w-4 h-4 mr-2" />
             Official Ticket Marketplace
           </Badge>
@@ -155,22 +155,22 @@ const WorldCupPage = () => {
             </span>
           </h1>
           
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
             Secure your verified FIFA World Cup 2026 tickets now! From the opening ceremony in Mexico 
             to the Final in New York. All categories available with 100% buyer protection.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Calendar className="w-5 h-5 text-cyan-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Calendar className="w-5 h-5 text-cyan-600" />
               <span>June 11 - July 19, 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <MapPin className="w-5 h-5 text-green-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <MapPin className="w-5 h-5 text-green-600" />
               <span>16 Host Cities</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Ticket className="w-5 h-5 text-blue-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Ticket className="w-5 h-5 text-blue-600" />
               <span>48 Teams</span>
             </div>
           </div>
@@ -178,18 +178,18 @@ const WorldCupPage = () => {
       </section>
 
       {/* Trust Badges */}
-      <section className="py-8 border-y border-white/5 bg-zinc-900/30">
+      <section className="py-8 border-y border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-400">
+            <div className="flex items-center gap-2 text-emerald-600">
               <Shield className="w-5 h-5" />
               <span>100% Verified Tickets</span>
             </div>
-            <div className="flex items-center gap-2 text-emerald-400">
+            <div className="flex items-center gap-2 text-emerald-600">
               <Star className="w-5 h-5" />
               <span>Money-Back Guarantee</span>
             </div>
-            <div className="flex items-center gap-2 text-emerald-400">
+            <div className="flex items-center gap-2 text-emerald-600">
               <Ticket className="w-5 h-5" />
               <span>Instant QR Delivery</span>
             </div>
@@ -201,74 +201,74 @@ const WorldCupPage = () => {
       <section className="py-16 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30 mb-4">
+            <Badge className="bg-violet-50 text-violet-600 border-violet-200 mb-4">
               <Sparkles className="w-4 h-4 mr-2" />
               TICKET PRICES
             </Badge>
             <h2 className="text-3xl font-bold mb-4">World Cup 2026 Ticket Categories</h2>
-            <p className="text-zinc-400">Choose your experience - from budget-friendly to VIP luxury</p>
+            <p className="text-slate-500">Choose your experience - from budget-friendly to VIP luxury</p>
           </div>
           
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
             {/* Category 3 */}
             <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all">
-              <div className="text-zinc-400 text-sm mb-2">Category 3</div>
+              <div className="text-slate-500 text-sm mb-2">Category 3</div>
               <div className="text-3xl font-bold text-white mb-1">€149</div>
-              <div className="text-xs text-zinc-500 mb-4">Upper Tier</div>
-              <div className="text-emerald-400 text-xs">✓ Available</div>
+              <div className="text-xs text-slate-400 mb-4">Upper Tier</div>
+              <div className="text-emerald-600 text-xs">✓ Available</div>
             </div>
             
             {/* Category 2 */}
             <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all">
-              <div className="text-zinc-400 text-sm mb-2">Category 2</div>
+              <div className="text-slate-500 text-sm mb-2">Category 2</div>
               <div className="text-3xl font-bold text-white mb-1">€299</div>
-              <div className="text-xs text-zinc-500 mb-4">Mid Tier</div>
-              <div className="text-emerald-400 text-xs">✓ Available</div>
+              <div className="text-xs text-slate-400 mb-4">Mid Tier</div>
+              <div className="text-emerald-600 text-xs">✓ Available</div>
             </div>
             
             {/* Category 1 */}
             <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all border-cyan-500/20">
-              <div className="text-cyan-400 text-sm mb-2">Category 1</div>
+              <div className="text-cyan-600 text-sm mb-2">Category 1</div>
               <div className="text-3xl font-bold text-white mb-1">€449</div>
-              <div className="text-xs text-zinc-500 mb-4">Lower Tier - Best View</div>
-              <div className="text-emerald-400 text-xs">✓ Available</div>
+              <div className="text-xs text-slate-400 mb-4">Lower Tier - Best View</div>
+              <div className="text-emerald-600 text-xs">✓ Available</div>
             </div>
             
             {/* VIP Silver */}
-            <div className="glass-card rounded-2xl p-6 text-center hover:border-purple-500/30 transition-all border-purple-500/20">
-              <div className="text-purple-400 text-sm mb-2 flex items-center justify-center gap-1">
+            <div className="glass-card rounded-2xl p-6 text-center hover:border-violet-200 transition-all border-purple-500/20">
+              <div className="text-violet-600 text-sm mb-2 flex items-center justify-center gap-1">
                 <Sparkles className="w-3 h-3" /> VIP Silver
               </div>
               <div className="text-3xl font-bold text-white mb-1">€999</div>
-              <div className="text-xs text-zinc-500 mb-4">Club Access</div>
-              <div className="text-emerald-400 text-xs">✓ Limited</div>
+              <div className="text-xs text-slate-400 mb-4">Club Access</div>
+              <div className="text-emerald-600 text-xs">✓ Limited</div>
             </div>
             
             {/* VIP Gold */}
-            <div className="glass-card rounded-2xl p-6 text-center hover:border-purple-500/30 transition-all border-purple-500/20 relative overflow-hidden">
+            <div className="glass-card rounded-2xl p-6 text-center hover:border-violet-200 transition-all border-purple-500/20 relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-purple-500 text-black text-xs px-2 py-1 rounded-bl-lg font-bold">POPULAR</div>
-              <div className="text-purple-400 text-sm mb-2 flex items-center justify-center gap-1">
+              <div className="text-violet-600 text-sm mb-2 flex items-center justify-center gap-1">
                 <Sparkles className="w-3 h-3" /> VIP Gold
               </div>
               <div className="text-3xl font-bold text-white mb-1">€1,499</div>
-              <div className="text-xs text-zinc-500 mb-4">Private Suite</div>
-              <div className="text-emerald-400 text-xs">✓ Limited</div>
+              <div className="text-xs text-slate-400 mb-4">Private Suite</div>
+              <div className="text-emerald-600 text-xs">✓ Limited</div>
             </div>
             
             {/* VIP Platinum */}
             <div className="glass-card rounded-2xl p-6 text-center hover:border-cyan-500/30 transition-all border-cyan-500/30 relative overflow-hidden bg-gradient-to-br from-cyan-500/10 to-purple-500/10">
               <div className="absolute top-0 right-0 bg-cyan-500 text-black text-xs px-2 py-1 rounded-bl-lg font-bold">BEST</div>
-              <div className="text-cyan-400 text-sm mb-2 flex items-center justify-center gap-1">
+              <div className="text-cyan-600 text-sm mb-2 flex items-center justify-center gap-1">
                 <Sparkles className="w-3 h-3" /> VIP Platinum
               </div>
               <div className="text-3xl font-bold text-white mb-1">€1,899</div>
-              <div className="text-xs text-zinc-500 mb-4">All-Inclusive</div>
-              <div className="text-emerald-400 text-xs">✓ Very Limited</div>
+              <div className="text-xs text-slate-400 mb-4">All-Inclusive</div>
+              <div className="text-emerald-600 text-xs">✓ Very Limited</div>
             </div>
           </div>
           
           <div className="text-center mt-8">
-            <p className="text-zinc-500 text-sm">All prices include 10% booking fee. Instant QR delivery after purchase.</p>
+            <p className="text-slate-400 text-sm">All prices include 10% booking fee. Instant QR delivery after purchase.</p>
           </div>
         </div>
       </section>
@@ -285,7 +285,7 @@ const WorldCupPage = () => {
               <div className="animate-spin w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full mx-auto"></div>
             </div>
           ) : events.length === 0 ? (
-            <div className="text-center py-12 text-zinc-500">
+            <div className="text-center py-12 text-slate-400">
               No World Cup tickets available at the moment. Check back soon!
             </div>
           ) : (
@@ -294,7 +294,7 @@ const WorldCupPage = () => {
                 <Link
                   key={event.event_id}
                   to={`/event/${event.event_id}`}
-                  className="group flex flex-col md:flex-row md:items-center gap-4 bg-zinc-900/50 border border-white/5 hover:border-cyan-500/30 rounded-2xl p-6 transition-all"
+                  className="group flex flex-col md:flex-row md:items-center gap-4 bg-white border border-slate-100 hover:border-cyan-500/30 rounded-2xl p-6 transition-all"
                 >
                   <div className="w-full md:w-32 h-24 rounded-xl overflow-hidden flex-shrink-0">
                     <img 
@@ -307,20 +307,20 @@ const WorldCupPage = () => {
                   
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30">
+                      <Badge className="bg-cyan-500/20 text-cyan-600 border-cyan-500/30">
                         <Trophy className="w-3 h-3 mr-1" />
                         World Cup 2026
                       </Badge>
                       {event.featured && (
-                        <Badge className="bg-purple-500/20 text-purple-400">Featured</Badge>
+                        <Badge className="bg-violet-50 text-violet-600">Featured</Badge>
                       )}
                     </div>
                     
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-600 transition-colors">
                       {event.title}
                     </h3>
                     
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         {formatDate(event.event_date)}
@@ -333,16 +333,16 @@ const WorldCupPage = () => {
                   </div>
 
                   <div className="text-right">
-                    <div className="text-sm text-zinc-500">From</div>
-                    <div className="text-2xl font-bold text-cyan-400">
+                    <div className="text-sm text-slate-400">From</div>
+                    <div className="text-2xl font-bold text-cyan-600">
                       €{event.lowest_price || 150}
                     </div>
-                    <div className="text-sm text-emerald-400">
+                    <div className="text-sm text-emerald-600">
                       {event.ticket_count || 100}+ tickets
                     </div>
                   </div>
 
-                  <ChevronRight className="w-6 h-6 text-zinc-600 group-hover:text-cyan-400 transition-colors" />
+                  <ChevronRight className="w-6 h-6 text-slate-500 group-hover:text-cyan-600 transition-colors" />
                 </Link>
               ))}
             </div>
@@ -351,11 +351,11 @@ const WorldCupPage = () => {
       </section>
 
       {/* SEO Content Section */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">Buy FIFA World Cup 2026 Tickets</h2>
           
-          <div className="prose prose-invert prose-lg max-w-none text-zinc-400">
+          <div className="prose prose-invert prose-lg max-w-none text-slate-500">
             <p>
               The <strong>FIFA World Cup 2026</strong> will be the biggest football tournament ever, 
               hosted across <strong>USA, Canada, and Mexico</strong>. For the first time, 48 teams 
@@ -393,7 +393,7 @@ const WorldCupPage = () => {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Don't Miss the World Cup 2026!</h2>
-          <p className="text-zinc-400 mb-8">
+          <p className="text-slate-500 mb-8">
             Tickets are selling fast. Secure your seats now for the biggest football event in history.
           </p>
           <Link to="/events?search=FIFA">
@@ -406,9 +406,9 @@ const WorldCupPage = () => {
       </section>
 
       {/* Disclaimer */}
-      <section className="py-8 border-t border-zinc-800">
+      <section className="py-8 border-t border-slate-200">
         <div className="max-w-4xl mx-auto px-4">
-          <p className="text-xs text-zinc-500 text-center">
+          <p className="text-xs text-slate-400 text-center">
             <strong>Disclaimer:</strong> EuroMatchTickets is an independent ticket marketplace. 
             We are not affiliated with, endorsed by, or connected to FIFA, the FIFA World Cup, 
             or any official organizing body. All trademarks belong to their respective owners. 

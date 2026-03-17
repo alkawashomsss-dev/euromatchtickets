@@ -79,7 +79,7 @@ const WorldCupRafflePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="Win FIFA World Cup 2026 Trip - VIP Raffle €100 Entry"
         description="Enter our World Cup 2026 raffle for just €100! Win an all-inclusive trip for 2: flights, 7 nights hotel, and match tickets. Limited entries available."
@@ -94,11 +94,11 @@ const WorldCupRafflePage = () => {
         <div className="relative max-w-5xl mx-auto px-4 text-center">
           {/* Badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 px-4 py-2 text-sm animate-pulse">
+            <Badge className="bg-cyan-500/20 text-cyan-600 border-cyan-500/30 px-4 py-2 text-sm animate-pulse">
               <Trophy className="w-4 h-4 mr-2" />
               OFFICIAL RAFFLE
             </Badge>
-            <Badge className="bg-red-500/20 text-red-400 border-red-500/30 px-4 py-2 text-sm">
+            <Badge className="bg-red-50 text-red-600 border-red-200 px-4 py-2 text-sm">
               <Timer className="w-4 h-4 mr-2" />
               LIMITED ENTRIES
             </Badge>
@@ -106,23 +106,23 @@ const WorldCupRafflePage = () => {
 
           {/* Title */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-            <span className="text-cyan-400">WIN</span> a Trip to
+            <span className="text-cyan-600">WIN</span> a Trip to
             <span className="block mt-2 bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
               FIFA World Cup 2026
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-zinc-300 max-w-3xl mx-auto mb-8">
-            Enter for just <span className="text-cyan-400 font-bold">€100</span> and win an all-inclusive trip for 
-            <span className="text-cyan-400 font-bold"> 2 people</span>!
+          <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-8">
+            Enter for just <span className="text-cyan-600 font-bold">€100</span> and win an all-inclusive trip for 
+            <span className="text-cyan-600 font-bold"> 2 people</span>!
           </p>
 
           {/* Prize Value */}
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 rounded-2xl px-8 py-4 mb-8">
-            <Gift className="w-8 h-8 text-cyan-400" />
+            <Gift className="w-8 h-8 text-cyan-600" />
             <div className="text-left">
-              <p className="text-sm text-zinc-400">Total Prize Value</p>
-              <p className="text-3xl font-bold text-cyan-400">€5,000+</p>
+              <p className="text-sm text-slate-500">Total Prize Value</p>
+              <p className="text-3xl font-bold text-cyan-600">€5,000+</p>
             </div>
           </div>
 
@@ -144,34 +144,34 @@ const WorldCupRafflePage = () => {
                 </>
               )}
             </Button>
-            <p className="text-sm text-zinc-500">Secure payment via Stripe</p>
+            <p className="text-sm text-slate-400">Secure payment via Stripe</p>
           </div>
         </div>
       </section>
 
       {/* What You Win */}
-      <section className="py-20 bg-zinc-900/50">
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 mb-4">
+            <Badge className="bg-cyan-500/20 text-cyan-600 border-cyan-500/30 mb-4">
               <Sparkles className="w-4 h-4 mr-2" />
               THE PRIZE
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What You Could Win</h2>
-            <p className="text-zinc-400 text-lg">An unforgettable World Cup experience for 2</p>
+            <p className="text-slate-500 text-lg">An unforgettable World Cup experience for 2</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {prizes.map((prize, idx) => (
               <div 
                 key={idx}
-                className="bg-zinc-900/80 border border-cyan-500/20 rounded-2xl p-6 text-center hover:border-cyan-500/50 transition-all hover:transform hover:scale-105"
+                className="bg-white/90 border border-cyan-500/20 rounded-2xl p-6 text-center hover:border-cyan-500/50 transition-all hover:transform hover:scale-105"
               >
                 <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <prize.icon className="w-8 h-8 text-cyan-400" />
+                  <prize.icon className="w-8 h-8 text-cyan-600" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">{prize.title}</h3>
-                <p className="text-zinc-400">{prize.desc}</p>
+                <p className="text-slate-500">{prize.desc}</p>
               </div>
             ))}
           </div>
@@ -194,7 +194,7 @@ const WorldCupRafflePage = () => {
                   <div className="w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <Check className="w-4 h-4 text-black" />
                   </div>
-                  <span className="text-zinc-300">{item}</span>
+                  <span className="text-slate-600">{item}</span>
                 </div>
               ))}
             </div>
@@ -207,18 +207,18 @@ const WorldCupRafflePage = () => {
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-            <p className="text-zinc-400 text-lg">Simple steps to enter the raffle</p>
+            <p className="text-slate-500 text-lg">Simple steps to enter the raffle</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
             {howItWorks.map((step, idx) => (
               <div key={idx} className="relative">
-                <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 text-center h-full">
+                <div className="bg-white border border-slate-200 rounded-2xl p-6 text-center h-full">
                   <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 text-black font-bold text-xl">
                     {step.step}
                   </div>
                   <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-                  <p className="text-zinc-400 text-sm">{step.desc}</p>
+                  <p className="text-slate-500 text-sm">{step.desc}</p>
                 </div>
                 {idx < 3 && (
                   <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2">
@@ -235,29 +235,29 @@ const WorldCupRafflePage = () => {
       <section className="py-16 bg-gradient-to-r from-cyan-500/10 to-purple-500/10">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-4 mb-6">
-            <Calendar className="w-10 h-10 text-cyan-400" />
+            <Calendar className="w-10 h-10 text-cyan-600" />
             <div className="text-left">
-              <p className="text-sm text-zinc-400">Live Draw Date</p>
-              <p className="text-3xl font-bold text-cyan-400">May 1st, 2026</p>
+              <p className="text-sm text-slate-500">Live Draw Date</p>
+              <p className="text-3xl font-bold text-cyan-600">May 1st, 2026</p>
             </div>
           </div>
-          <p className="text-zinc-400 mb-8">
+          <p className="text-slate-500 mb-8">
             Winner will be announced live on our social media channels. 
             All participants will be notified via email.
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl px-6 py-4">
+            <div className="bg-white border border-slate-200 rounded-xl px-6 py-4">
               <p className="text-3xl font-bold text-white">500</p>
-              <p className="text-sm text-zinc-400">Max Entries</p>
+              <p className="text-sm text-slate-500">Max Entries</p>
             </div>
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl px-6 py-4">
-              <p className="text-3xl font-bold text-cyan-400">1:500</p>
-              <p className="text-sm text-zinc-400">Win Odds</p>
+            <div className="bg-white border border-slate-200 rounded-xl px-6 py-4">
+              <p className="text-3xl font-bold text-cyan-600">1:500</p>
+              <p className="text-sm text-slate-500">Win Odds</p>
             </div>
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl px-6 py-4">
-              <p className="text-3xl font-bold text-green-400">€100</p>
-              <p className="text-sm text-zinc-400">Entry Price</p>
+            <div className="bg-white border border-slate-200 rounded-xl px-6 py-4">
+              <p className="text-3xl font-bold text-green-600">€100</p>
+              <p className="text-sm text-slate-500">Entry Price</p>
             </div>
           </div>
         </div>
@@ -268,19 +268,19 @@ const WorldCupRafflePage = () => {
         <div className="max-w-4xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-6 text-center">
             <div className="flex flex-col items-center">
-              <Shield className="w-12 h-12 text-green-400 mb-4" />
+              <Shield className="w-12 h-12 text-green-600 mb-4" />
               <h3 className="font-bold mb-2">100% Secure</h3>
-              <p className="text-sm text-zinc-400">Stripe secure payments</p>
+              <p className="text-sm text-slate-500">Stripe secure payments</p>
             </div>
             <div className="flex flex-col items-center">
-              <Star className="w-12 h-12 text-cyan-400 mb-4" />
+              <Star className="w-12 h-12 text-cyan-600 mb-4" />
               <h3 className="font-bold mb-2">Guaranteed Prize</h3>
-              <p className="text-sm text-zinc-400">Winner will be selected</p>
+              <p className="text-sm text-slate-500">Winner will be selected</p>
             </div>
             <div className="flex flex-col items-center">
-              <Zap className="w-12 h-12 text-blue-400 mb-4" />
+              <Zap className="w-12 h-12 text-blue-600 mb-4" />
               <h3 className="font-bold mb-2">Instant Entry</h3>
-              <p className="text-sm text-zinc-400">Confirmation within seconds</p>
+              <p className="text-sm text-slate-500">Confirmation within seconds</p>
             </div>
           </div>
         </div>
@@ -292,7 +292,7 @@ const WorldCupRafflePage = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Don't Miss Your Chance!
           </h2>
-          <p className="text-xl text-zinc-400 mb-8">
+          <p className="text-xl text-slate-500 mb-8">
             Limited to 500 entries only. Enter now for your chance to experience the World Cup 2026!
           </p>
           <Button 
@@ -305,8 +305,8 @@ const WorldCupRafflePage = () => {
             Enter Raffle Now - €100
           </Button>
           
-          <p className="mt-6 text-sm text-zinc-500">
-            By entering, you agree to our <Link to="/terms" className="text-cyan-400 hover:underline">Terms & Conditions</Link>
+          <p className="mt-6 text-sm text-slate-400">
+            By entering, you agree to our <Link to="/terms" className="text-cyan-600 hover:underline">Terms & Conditions</Link>
           </p>
         </div>
       </section>

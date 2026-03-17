@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 const RefundPolicyPage = () => {
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <Helmet>
         <title>Refund Policy | EuroMatchTickets</title>
         <meta name="description" content="Learn about EuroMatchTickets refund policy and buyer protection. We guarantee your purchase with our comprehensive refund policy." />
@@ -11,13 +11,13 @@ const RefundPolicyPage = () => {
       </Helmet>
 
       {/* Header */}
-      <section className="py-16 bg-zinc-900/30 border-b border-white/5">
+      <section className="py-16 bg-slate-50 border-b border-slate-100">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
-            <Shield className="w-8 h-8 text-emerald-400" />
+          <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center mx-auto mb-6">
+            <Shield className="w-8 h-8 text-emerald-600" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Refund Policy</h1>
-          <p className="text-xl text-zinc-400">
+          <p className="text-xl text-slate-500">
             Your purchase is protected by the EuroMatchTickets Guarantee
           </p>
         </div>
@@ -28,24 +28,24 @@ const RefundPolicyPage = () => {
         <section className="mb-16">
           <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-              <Shield className="w-6 h-6 text-emerald-400" />
+              <Shield className="w-6 h-6 text-emerald-600" />
               The EuroMatchTickets Guarantee
             </h2>
-            <p className="text-zinc-300 text-lg leading-relaxed mb-6">
+            <p className="text-slate-600 text-lg leading-relaxed mb-6">
               Every ticket purchase on EuroMatchTickets is protected. If something goes wrong, 
               we've got you covered with a full refund.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="bg-zinc-900/50 rounded-xl p-4 text-center">
-                <CheckCircle className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
+              <div className="bg-white rounded-xl p-4 text-center">
+                <CheckCircle className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
                 <p className="font-semibold">100% Money Back</p>
               </div>
-              <div className="bg-zinc-900/50 rounded-xl p-4 text-center">
-                <Clock className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+              <div className="bg-white rounded-xl p-4 text-center">
+                <Clock className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                 <p className="font-semibold">Fast Processing</p>
               </div>
-              <div className="bg-zinc-900/50 rounded-xl p-4 text-center">
-                <Shield className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+              <div className="bg-white rounded-xl p-4 text-center">
+                <Shield className="w-8 h-8 text-violet-600 mx-auto mb-2" />
                 <p className="font-semibold">No Questions Asked</p>
               </div>
             </div>
@@ -55,7 +55,7 @@ const RefundPolicyPage = () => {
         {/* When You're Covered */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <CheckCircle className="w-6 h-6 text-emerald-400" />
+            <CheckCircle className="w-6 h-6 text-emerald-600" />
             When You're Covered
           </h2>
           <div className="space-y-4">
@@ -81,11 +81,11 @@ const RefundPolicyPage = () => {
                 desc: "If the same tickets were sold to multiple buyers, the affected buyers will be refunded."
               }
             ].map((item, index) => (
-              <div key={index} className="flex items-start gap-4 p-4 bg-zinc-900/50 border border-white/5 rounded-xl">
-                <CheckCircle className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
+              <div key={index} className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
+                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold mb-1">{item.title}</h3>
-                  <p className="text-zinc-400">{item.desc}</p>
+                  <p className="text-slate-500">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -95,7 +95,7 @@ const RefundPolicyPage = () => {
         {/* When You're Not Covered */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <XCircle className="w-6 h-6 text-red-400" />
+            <XCircle className="w-6 h-6 text-red-600" />
             When Refunds Don't Apply
           </h2>
           <div className="space-y-4">
@@ -117,11 +117,11 @@ const RefundPolicyPage = () => {
                 desc: "Inability to attend due to personal reasons (illness, travel issues) is not covered."
               }
             ].map((item, index) => (
-              <div key={index} className="flex items-start gap-4 p-4 bg-zinc-900/50 border border-white/5 rounded-xl">
-                <XCircle className="w-5 h-5 text-red-400 mt-1 flex-shrink-0" />
+              <div key={index} className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
+                <XCircle className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold mb-1">{item.title}</h3>
-                  <p className="text-zinc-400">{item.desc}</p>
+                  <p className="text-slate-500">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -131,34 +131,34 @@ const RefundPolicyPage = () => {
         {/* How to Request */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">How to Request a Refund</h2>
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6">
             <ol className="space-y-4">
               <li className="flex items-start gap-4">
-                <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold flex-shrink-0">1</span>
+                <span className="w-8 h-8 rounded-full bg-violet-50 flex items-center justify-center text-violet-600 font-bold flex-shrink-0">1</span>
                 <div>
                   <h3 className="font-semibold">Contact Support</h3>
-                  <p className="text-zinc-400">Email us at support@euromatchtickets.com with your order number and details of the issue.</p>
+                  <p className="text-slate-500">Email us at support@euromatchtickets.com with your order number and details of the issue.</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold flex-shrink-0">2</span>
+                <span className="w-8 h-8 rounded-full bg-violet-50 flex items-center justify-center text-violet-600 font-bold flex-shrink-0">2</span>
                 <div>
                   <h3 className="font-semibold">Provide Evidence</h3>
-                  <p className="text-zinc-400">Include any relevant documentation such as venue rejection notices or screenshots.</p>
+                  <p className="text-slate-500">Include any relevant documentation such as venue rejection notices or screenshots.</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold flex-shrink-0">3</span>
+                <span className="w-8 h-8 rounded-full bg-violet-50 flex items-center justify-center text-violet-600 font-bold flex-shrink-0">3</span>
                 <div>
                   <h3 className="font-semibold">Review Process</h3>
-                  <p className="text-zinc-400">Our team will review your request within 2-3 business days.</p>
+                  <p className="text-slate-500">Our team will review your request within 2-3 business days.</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold flex-shrink-0">4</span>
+                <span className="w-8 h-8 rounded-full bg-violet-50 flex items-center justify-center text-violet-600 font-bold flex-shrink-0">4</span>
                 <div>
                   <h3 className="font-semibold">Receive Refund</h3>
-                  <p className="text-zinc-400">Approved refunds are processed to your original payment method within 5-10 business days.</p>
+                  <p className="text-slate-500">Approved refunds are processed to your original payment method within 5-10 business days.</p>
                 </div>
               </li>
             </ol>
@@ -167,12 +167,12 @@ const RefundPolicyPage = () => {
 
         {/* Important Notes */}
         <section>
-          <div className="bg-purple-500/10 border border-purple-500/20 rounded-2xl p-6">
+          <div className="bg-violet-50 border border-purple-500/20 rounded-2xl p-6">
             <h3 className="font-semibold mb-4 flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-purple-400" />
+              <AlertTriangle className="w-5 h-5 text-violet-600" />
               Important Notes
             </h3>
-            <ul className="text-zinc-400 space-y-2">
+            <ul className="text-slate-500 space-y-2">
               <li>• Refund requests must be submitted within 7 days of the event date</li>
               <li>• Service fees may be non-refundable in certain circumstances</li>
               <li>• Refunds are processed to the original payment method only</li>
@@ -183,7 +183,7 @@ const RefundPolicyPage = () => {
 
         {/* Contact */}
         <section className="mt-12 text-center">
-          <p className="text-zinc-400 mb-4">
+          <p className="text-slate-500 mb-4">
             Have questions about our refund policy?
           </p>
           <a 

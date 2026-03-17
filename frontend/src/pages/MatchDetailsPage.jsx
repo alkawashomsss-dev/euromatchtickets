@@ -30,9 +30,9 @@ const leagueConfig = {
 };
 
 const categoryConfig = {
-  vip: { name: "VIP", color: "bg-purple-500", textColor: "text-purple-400", description: "Premium hospitality with best views" },
-  cat1: { name: "Category 1", color: "bg-blue-500", textColor: "text-blue-400", description: "Lower tier, close to the pitch" },
-  cat2: { name: "Category 2", color: "bg-green-500", textColor: "text-green-400", description: "Mid-tier, great atmosphere" },
+  vip: { name: "VIP", color: "bg-purple-500", textColor: "text-violet-600", description: "Premium hospitality with best views" },
+  cat1: { name: "Category 1", color: "bg-blue-500", textColor: "text-blue-600", description: "Lower tier, close to the pitch" },
+  cat2: { name: "Category 2", color: "bg-green-500", textColor: "text-green-600", description: "Mid-tier, great atmosphere" },
   cat3: { name: "Category 3", color: "bg-slate-400", textColor: "text-slate-400", description: "Upper tier, full stadium view" }
 };
 
@@ -56,7 +56,7 @@ const TicketCard = ({ ticket, onSelect, selected }) => {
       className={`cursor-pointer p-4 rounded-xl border transition-all duration-200 ${
         selected 
           ? 'border-green-500 bg-green-500/10' 
-          : 'border-white/10 bg-slate-900/50 hover:border-white/30'
+          : 'border-slate-200 bg-slate-900/50 hover:border-white/30'
       }`}
     >
       <div className="flex items-start justify-between">
@@ -82,7 +82,7 @@ const TicketCard = ({ ticket, onSelect, selected }) => {
             <div className="text-sm text-slate-500 line-through">€{ticket.original_price}</div>
           )}
           {selected && (
-            <div className="mt-2 flex items-center gap-1 text-green-400 text-sm">
+            <div className="mt-2 flex items-center gap-1 text-green-600 text-sm">
               <Check className="w-4 h-4" />
               Selected
             </div>
@@ -259,7 +259,7 @@ const MatchDetailsPage = () => {
                       className={`p-4 rounded-xl border transition-all ${
                         selectedCategory === key 
                           ? 'border-white bg-white/10' 
-                          : 'border-white/10 hover:border-white/30'
+                          : 'border-slate-200 hover:border-white/30'
                       } ${(!catData || catData.count === 0) ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
                       <div className="flex items-center gap-2 mb-2">
@@ -286,7 +286,7 @@ const MatchDetailsPage = () => {
                 <h2 className="text-2xl font-bold uppercase">
                   {selectedCategory ? `${categoryConfig[selectedCategory].name} Tickets` : 'All Available Tickets'}
                 </h2>
-                <Badge variant="outline" className="border-green-500/50 text-green-400">
+                <Badge variant="outline" className="border-green-500/50 text-green-600">
                   {filteredTickets.length} available
                 </Badge>
               </div>
@@ -338,7 +338,7 @@ const MatchDetailsPage = () => {
                       <span>{selectedTicket.row} / {selectedTicket.seat}</span>
                     </div>
                     
-                    <hr className="border-white/10" />
+                    <hr className="border-slate-200" />
                     
                     <div className="flex justify-between">
                       <span className="text-slate-400">Ticket Price</span>
@@ -352,7 +352,7 @@ const MatchDetailsPage = () => {
                       <span>€{commission.toFixed(2)}</span>
                     </div>
                     
-                    <hr className="border-white/10" />
+                    <hr className="border-slate-200" />
                     
                     <div className="flex justify-between text-xl font-black">
                       <span>Total</span>

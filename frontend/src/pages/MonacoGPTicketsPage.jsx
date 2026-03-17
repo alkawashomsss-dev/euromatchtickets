@@ -63,7 +63,7 @@ const MonacoGPTicketsPage = () => {
         image="https://static.prod-images.emergentagent.com/jobs/775fd9a1-fbbf-459e-af56-55fb2499685c/images/1ad01909b1565e2be44a7b26803868d06378b04d70810a060231d8ef9d1b0c17.png"
       />
 
-      <div className="min-h-screen bg-zinc-950">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)]">
         {/* Hero Section */}
         <div className="relative h-[70vh] overflow-hidden">
           <div 
@@ -77,13 +77,13 @@ const MonacoGPTicketsPage = () => {
           <div className="relative z-10 h-full flex flex-col justify-end pb-12 px-4 md:px-8 max-w-[1440px] mx-auto">
             {/* Live Badge */}
             <div className="flex items-center gap-4 mb-4">
-              <div className="flex items-center gap-2 bg-red-500/20 border border-red-500/50 px-3 py-1.5 rounded-full">
+              <div className="flex items-center gap-2 bg-red-50 border border-red-500/50 px-3 py-1.5 rounded-full">
                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-                <span className="text-red-400 text-sm font-medium">{viewersNow} people viewing now</span>
+                <span className="text-red-600 text-sm font-medium">{viewersNow} people viewing now</span>
               </div>
-              <div className="flex items-center gap-2 bg-amber-500/20 border border-amber-500/50 px-3 py-1.5 rounded-full">
-                <Zap className="w-4 h-4 text-amber-400" />
-                <span className="text-amber-400 text-sm font-bold">Only {seatsLeft} tickets left!</span>
+              <div className="flex items-center gap-2 bg-amber-50 border border-amber-500/50 px-3 py-1.5 rounded-full">
+                <Zap className="w-4 h-4 text-amber-600" />
+                <span className="text-amber-600 text-sm font-bold">Only {seatsLeft} tickets left!</span>
               </div>
             </div>
 
@@ -96,17 +96,17 @@ const MonacoGPTicketsPage = () => {
               Monaco Grand Prix 2026
             </h1>
             
-            <p className="text-xl md:text-2xl text-zinc-300 mb-6 max-w-2xl">
+            <p className="text-xl md:text-2xl text-slate-600 mb-6 max-w-2xl">
               The most prestigious race in Formula 1. Monte Carlo street circuit.
             </p>
 
-            <div className="flex flex-wrap items-center gap-6 text-zinc-300">
+            <div className="flex flex-wrap items-center gap-6 text-slate-600">
               <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-cyan-400" />
+                <Calendar className="w-5 h-5 text-cyan-600" />
                 <span className="font-semibold">June 5-7, 2026</span>
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-cyan-400" />
+                <MapPin className="w-5 h-5 text-cyan-600" />
                 <span>Circuit de Monaco, Monte Carlo</span>
               </div>
             </div>
@@ -133,7 +133,7 @@ const MonacoGPTicketsPage = () => {
             {/* Ticket List */}
             <div className="lg:col-span-2 space-y-4">
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <Ticket className="w-6 h-6 text-cyan-400" />
+                <Ticket className="w-6 h-6 text-cyan-600" />
                 Available Tickets
               </h2>
 
@@ -143,7 +143,7 @@ const MonacoGPTicketsPage = () => {
                   className={`p-6 rounded-2xl border transition-all hover:border-cyan-500/50 ${
                     cat.popular 
                       ? 'bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border-cyan-500/30' 
-                      : 'bg-zinc-900/50 border-white/5'
+                      : 'bg-white border-slate-100'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -156,19 +156,19 @@ const MonacoGPTicketsPage = () => {
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-4 text-sm text-zinc-400">
-                        <span className="flex items-center gap-1 text-amber-400">
+                      <div className="flex items-center gap-4 text-sm text-slate-500">
+                        <span className="flex items-center gap-1 text-amber-600">
                           <Users className="w-4 h-4" />
                           Only {cat.seats} left
                         </span>
-                        <span className="flex items-center gap-1 text-emerald-400">
+                        <span className="flex items-center gap-1 text-emerald-600">
                           <Shield className="w-4 h-4" />
                           Verified
                         </span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-sm text-zinc-500 line-through">€{cat.originalPrice}</div>
+                      <div className="text-sm text-slate-400 line-through">€{cat.originalPrice}</div>
                       <div className="text-3xl font-bold text-white">€{cat.price}</div>
                       <Button 
                         onClick={() => navigate('/f1-tickets')}
@@ -185,77 +185,77 @@ const MonacoGPTicketsPage = () => {
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Trust Box */}
-              <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
+              <div className="bg-white border border-slate-100 rounded-2xl p-6">
                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-emerald-400" />
+                  <Shield className="w-5 h-5 text-emerald-600" />
                   FanProtect Guarantee
                 </h3>
-                <ul className="space-y-3 text-sm text-zinc-300">
+                <ul className="space-y-3 text-sm text-slate-600">
                   <li className="flex items-center gap-2">
-                    <span className="text-emerald-400">✓</span>
+                    <span className="text-emerald-600">✓</span>
                     100% Verified Tickets
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-emerald-400">✓</span>
+                    <span className="text-emerald-600">✓</span>
                     Secure Payment
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-emerald-400">✓</span>
+                    <span className="text-emerald-600">✓</span>
                     Instant Digital Delivery
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-emerald-400">✓</span>
+                    <span className="text-emerald-600">✓</span>
                     Full Refund if Cancelled
                   </li>
                 </ul>
               </div>
 
               {/* Recent Sales */}
-              <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
+              <div className="bg-white border border-slate-100 rounded-2xl p-6">
                 <h3 className="text-lg font-bold mb-4">Recent Purchases</h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">J</div>
                     <div>
                       <p className="text-white">James from UK</p>
-                      <p className="text-zinc-500">bought 2x Grandstand K - 3 min ago</p>
+                      <p className="text-slate-400">bought 2x Grandstand K - 3 min ago</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">M</div>
                     <div>
                       <p className="text-white">Michael from Germany</p>
-                      <p className="text-zinc-500">bought 4x VIP Hospitality - 8 min ago</p>
+                      <p className="text-slate-400">bought 4x VIP Hospitality - 8 min ago</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold">S</div>
                     <div>
                       <p className="text-white">Sophie from Netherlands</p>
-                      <p className="text-zinc-500">bought 2x Paddock Club - 15 min ago</p>
+                      <p className="text-slate-400">bought 2x Paddock Club - 15 min ago</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Event Info */}
-              <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
+              <div className="bg-white border border-slate-100 rounded-2xl p-6">
                 <h3 className="text-lg font-bold mb-4">Event Information</h3>
-                <div className="space-y-3 text-sm text-zinc-300">
+                <div className="space-y-3 text-sm text-slate-600">
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Date</span>
+                    <span className="text-slate-400">Date</span>
                     <span>June 5-7, 2026</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Location</span>
+                    <span className="text-slate-400">Location</span>
                     <span>Monte Carlo, Monaco</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Circuit</span>
+                    <span className="text-slate-400">Circuit</span>
                     <span>Street Circuit</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Race Length</span>
+                    <span className="text-slate-400">Race Length</span>
                     <span>78 Laps</span>
                   </div>
                 </div>
@@ -265,16 +265,16 @@ const MonacoGPTicketsPage = () => {
         </div>
 
         {/* SEO Content */}
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-12 border-t border-white/5">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-12 border-t border-slate-100">
           <div className="prose prose-invert max-w-none">
             <h2 className="text-3xl font-bold mb-6">Buy Monaco Grand Prix 2026 Tickets</h2>
-            <p className="text-zinc-300 text-lg leading-relaxed mb-6">
+            <p className="text-slate-600 text-lg leading-relaxed mb-6">
               The Monaco Grand Prix is the crown jewel of Formula 1 racing. Experience the thrill of watching 
               the world's best drivers navigate the legendary streets of Monte Carlo. From the famous Casino 
               Square to the iconic tunnel section, Monaco delivers unmatched excitement.
             </p>
             <h3 className="text-2xl font-bold mb-4">Why Buy Monaco F1 Tickets from EuroMatchTickets?</h3>
-            <ul className="text-zinc-300 space-y-2 mb-6">
+            <ul className="text-slate-600 space-y-2 mb-6">
               <li>✓ 100% verified tickets with FanProtect guarantee</li>
               <li>✓ Best prices for Grandstand, VIP & Paddock Club</li>
               <li>✓ Instant digital delivery to your email</li>
@@ -282,7 +282,7 @@ const MonacoGPTicketsPage = () => {
               <li>✓ 24/7 customer support</li>
             </ul>
             <h3 className="text-2xl font-bold mb-4">Monaco Grand Prix 2026 Ticket Prices</h3>
-            <p className="text-zinc-300 leading-relaxed">
+            <p className="text-slate-600 leading-relaxed">
               Monaco GP tickets range from €450 for General Admission to €4,500+ for exclusive Paddock Club 
               access. Grandstand tickets offer excellent views of the action, while VIP Hospitality packages 
               include premium catering and exclusive viewing areas.

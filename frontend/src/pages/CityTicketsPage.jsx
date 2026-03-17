@@ -76,7 +76,7 @@ const CityTicketsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title={`${city} Event Tickets 2026 | Football, Concerts, F1 | EuroMatchTickets`}
         description={`Buy tickets for events in ${city}, ${cityInfo.country}. Football matches, concerts, F1 races. Best prices, 100% guarantee. From €29. Instant delivery!`}
@@ -94,7 +94,7 @@ const CityTicketsPage = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-zinc-950" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-16 text-center">
-          <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30 mb-4">
+          <Badge className="bg-violet-50 text-violet-600 border-violet-200 mb-4">
             <MapPin className="w-4 h-4 mr-2" />{cityInfo.country}
           </Badge>
           
@@ -102,7 +102,7 @@ const CityTicketsPage = () => {
             {cityInfo.emoji} {city} Event Tickets
           </h1>
           
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-8">
             Find tickets for football matches, concerts, and motorsport events in {city}. 
             Best prices guaranteed with instant delivery!
           </p>
@@ -119,7 +119,7 @@ const CityTicketsPage = () => {
               </Button>
             </Link>
             <Link to="/f1-tickets">
-              <Button variant="outline" className="border-red-500/50 text-red-400 hover:bg-red-500/10">
+              <Button variant="outline" className="border-red-500/50 text-red-600 hover:bg-red-50">
                 <Flag className="w-5 h-5 mr-2" />F1 Tickets
               </Button>
             </Link>
@@ -128,12 +128,12 @@ const CityTicketsPage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-4 border-y border-white/5 bg-zinc-900/30">
+      <section className="py-4 border-y border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 text-emerald-400"><Shield className="w-4 h-4" />100% Guarantee</div>
-            <div className="flex items-center gap-2 text-emerald-400"><Zap className="w-4 h-4" />Instant Delivery</div>
-            <div className="flex items-center gap-2 text-emerald-400"><Star className="w-4 h-4" />4.9/5 Rating</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />100% Guarantee</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" />Instant Delivery</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-4 h-4" />4.9/5 Rating</div>
           </div>
         </div>
       </section>
@@ -148,8 +148,8 @@ const CityTicketsPage = () => {
               <Loader2 className="w-10 h-10 animate-spin text-purple-500" />
             </div>
           ) : events.length === 0 ? (
-            <div className="text-center py-16 bg-zinc-900/30 rounded-2xl border border-zinc-800">
-              <p className="text-zinc-400 text-lg mb-4">No events currently in {city}</p>
+            <div className="text-center py-16 bg-slate-50 rounded-2xl border border-slate-200">
+              <p className="text-slate-500 text-lg mb-4">No events currently in {city}</p>
               <Link to="/events">
                 <Button className="bg-purple-600 hover:bg-purple-700">Browse All Events</Button>
               </Link>
@@ -160,7 +160,7 @@ const CityTicketsPage = () => {
                 <Link
                   key={event.event_id}
                   to={`/event/${event.event_id}`}
-                  className="group bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-purple-500/50 transition-all"
+                  className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-purple-500/50 transition-all"
                 >
                   <div className="relative h-40 overflow-hidden">
                     <img 
@@ -169,13 +169,13 @@ const CityTicketsPage = () => {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-900" />
-                    <Badge className="absolute top-3 left-3 bg-zinc-900/80">
+                    <Badge className="absolute top-3 left-3 bg-white/90">
                       {event.event_type === 'match' ? '⚽ Football' : event.event_type === 'concert' ? '🎵 Concert' : '🏎️ Motorsport'}
                     </Badge>
                   </div>
                   <div className="p-4">
-                    <h3 className="font-bold text-lg mb-2 group-hover:text-purple-400 transition-colors">{event.title}</h3>
-                    <div className="flex items-center gap-2 text-sm text-zinc-400 mb-3">
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-violet-600 transition-colors">{event.title}</h3>
+                    <div className="flex items-center gap-2 text-sm text-slate-500 mb-3">
                       <Calendar className="w-4 h-4" />
                       <span>{formatDate(event.event_date)}</span>
                       <span>•</span>
@@ -183,8 +183,8 @@ const CityTicketsPage = () => {
                       <span>{event.venue}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-emerald-400 font-bold">From €{event.min_price || 49}</span>
-                      <ChevronRight className="w-5 h-5 text-zinc-500 group-hover:text-purple-400 transition-colors" />
+                      <span className="text-emerald-600 font-bold">From €{event.min_price || 49}</span>
+                      <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-violet-600 transition-colors" />
                     </div>
                   </div>
                 </Link>
@@ -195,16 +195,16 @@ const CityTicketsPage = () => {
       </section>
 
       {/* SEO Content */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">Why Buy {city} Tickets from EuroMatchTickets?</h2>
           <div className="prose prose-invert max-w-none">
-            <p className="text-zinc-400 mb-4">
+            <p className="text-slate-500 mb-4">
               EuroMatchTickets is your trusted source for event tickets in {city}, {cityInfo.country}. 
               Whether you're looking for football matches at the city's top stadiums, the hottest concerts, 
               or thrilling motorsport events, we've got you covered.
             </p>
-            <ul className="space-y-2 text-zinc-400">
+            <ul className="space-y-2 text-slate-500">
               <li>✅ Best prices - typically 20-30% cheaper than other sites</li>
               <li>✅ 100% money-back guarantee if event is cancelled</li>
               <li>✅ Instant delivery via email QR code</li>
@@ -227,7 +227,7 @@ const CityTicketsPage = () => {
                 <Link
                   key={key}
                   to={`/${key}-tickets`}
-                  className="bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700 hover:border-purple-500/50 px-4 py-2 rounded-full transition-colors"
+                  className="bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-purple-500/50 px-4 py-2 rounded-full transition-colors"
                 >
                   {info.emoji} {key.charAt(0).toUpperCase() + key.slice(1)}
                 </Link>

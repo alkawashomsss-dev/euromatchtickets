@@ -83,7 +83,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title={`EuroMatchTickets vs ${competitor} 2026 | Which is Better? | Honest Comparison`}
         description={`Compare EuroMatchTickets and ${competitor}. See prices, fees, guarantees. Find out which ticket marketplace is better for you in 2026.`}
@@ -105,7 +105,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               <span className="text-xl font-bold">EuroMatchTickets</span>
             </div>
 
-            <div className="text-4xl font-bold text-zinc-500">VS</div>
+            <div className="text-4xl font-bold text-slate-400">VS</div>
 
             {/* Competitor */}
             <div className="text-center">
@@ -119,7 +119,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             EuroMatchTickets vs {competitor}
           </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-500 max-w-2xl mx-auto">
             Complete 2026 comparison. See which ticket marketplace offers better prices, fees, and buyer protection.
           </p>
         </div>
@@ -130,26 +130,26 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Feature Comparison</h2>
           
-          <div className="bg-zinc-900/50 rounded-2xl border border-zinc-800 overflow-hidden">
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
             {/* Header */}
-            <div className="grid grid-cols-3 bg-zinc-800/50 p-4 font-bold">
+            <div className="grid grid-cols-3 bg-slate-50 p-4 font-bold">
               <div>Feature</div>
-              <div className="text-center text-purple-400">EuroMatchTickets</div>
-              <div className="text-center text-zinc-400">{competitor}</div>
+              <div className="text-center text-violet-600">EuroMatchTickets</div>
+              <div className="text-center text-slate-500">{competitor}</div>
             </div>
 
             {/* Rows */}
             {comparisons.map((row, idx) => (
               <div 
                 key={idx}
-                className={`grid grid-cols-3 p-4 border-t border-zinc-800 ${idx % 2 === 0 ? 'bg-zinc-900/30' : ''}`}
+                className={`grid grid-cols-3 p-4 border-t border-slate-200 ${idx % 2 === 0 ? 'bg-slate-50' : ''}`}
               >
                 <div className="font-medium">{row.feature}</div>
-                <div className={`text-center flex items-center justify-center gap-2 ${row.winner === 'euro' ? 'text-emerald-400' : 'text-zinc-400'}`}>
+                <div className={`text-center flex items-center justify-center gap-2 ${row.winner === 'euro' ? 'text-emerald-600' : 'text-slate-500'}`}>
                   {row.winner === 'euro' && <Check className="w-5 h-5" />}
                   {row.euro}
                 </div>
-                <div className={`text-center flex items-center justify-center gap-2 ${row.winner === 'competitor' ? 'text-emerald-400' : 'text-zinc-400'}`}>
+                <div className={`text-center flex items-center justify-center gap-2 ${row.winner === 'competitor' ? 'text-emerald-600' : 'text-slate-500'}`}>
                   {row.winner === 'competitor' && <Check className="w-5 h-5" />}
                   {row.competitor}
                 </div>
@@ -160,33 +160,33 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Why Choose EuroMatchTickets?</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="w-8 h-8 text-emerald-400" />
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center">
+              <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="w-8 h-8 text-emerald-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">0% Buyer Fees</h3>
-              <p className="text-zinc-400">Unlike {competitor} which charges {competitorInfo.fees}, we show you the final price upfront with no hidden fees.</p>
+              <p className="text-slate-500">Unlike {competitor} which charges {competitorInfo.fees}, we show you the final price upfront with no hidden fees.</p>
             </div>
 
-            <div className="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
-                <Zap className="w-8 h-8 text-purple-400" />
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center">
+              <div className="w-16 h-16 rounded-2xl bg-violet-50 flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Instant QR Delivery</h3>
-              <p className="text-zinc-400">Get your tickets immediately as a QR code. No waiting, no shipping, no stress.</p>
+              <p className="text-slate-500">Get your tickets immediately as a QR code. No waiting, no shipping, no stress.</p>
             </div>
 
-            <div className="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-blue-500/20 flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-blue-400" />
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center">
+              <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">100% Money-Back</h3>
-              <p className="text-zinc-400">Full refund if the event is cancelled. Your purchase is always protected.</p>
+              <p className="text-slate-500">Full refund if the event is cancelled. Your purchase is always protected.</p>
             </div>
           </div>
         </div>
@@ -195,9 +195,9 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
       {/* Verdict */}
       <section className="py-16">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <div className="bg-gradient-to-br from-purple-900/30 to-emerald-900/30 p-8 rounded-2xl border border-purple-500/30">
+          <div className="bg-gradient-to-br from-purple-900/30 to-emerald-900/30 p-8 rounded-2xl border border-violet-200">
             <h2 className="text-2xl font-bold mb-4">The Verdict</h2>
-            <p className="text-lg text-zinc-300 mb-6">
+            <p className="text-lg text-slate-600 mb-6">
               {seoData?.verdict || `EuroMatchTickets offers better prices, lower fees, and instant delivery compared to ${competitor}. With our 100% guarantee and 24/7 support, you can book with confidence.`}
             </p>
             <Link to="/events">
@@ -210,7 +210,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
       </section>
 
       {/* Other Comparisons */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center">Compare With Other Platforms</h2>
           <div className="flex flex-wrap justify-center gap-4">
@@ -218,7 +218,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               <Link 
                 key={comp}
                 to={`/euromatchtickets-vs-${comp.toLowerCase()}`}
-                className="bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700 hover:border-purple-500/50 px-6 py-3 rounded-full transition-colors"
+                className="bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-purple-500/50 px-6 py-3 rounded-full transition-colors"
               >
                 vs {comp}
               </Link>

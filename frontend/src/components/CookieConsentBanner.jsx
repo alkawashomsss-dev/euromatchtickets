@@ -96,7 +96,7 @@ const CookieConsentBanner = () => {
       
       {/* Main Banner */}
       <div className="fixed bottom-0 left-0 right-0 z-[9999] p-4">
-        <div className="max-w-4xl mx-auto bg-zinc-900 border border-zinc-700 rounded-2xl shadow-2xl overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden">
           {!showSettings ? (
             // Main consent view
             <div className="p-6">
@@ -108,12 +108,12 @@ const CookieConsentBanner = () => {
                   <h3 className="text-xl font-bold text-white mb-2">
                     🍪 Cookie-Einstellungen / Cookie Settings
                   </h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed mb-4">
+                  <p className="text-slate-500 text-sm leading-relaxed mb-4">
                     Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. 
                     Einige Cookies sind notwendig für den Betrieb der Website, während andere uns helfen, 
                     die Website zu verbessern und personalisierte Inhalte anzuzeigen.
                   </p>
-                  <p className="text-zinc-500 text-xs mb-4">
+                  <p className="text-slate-400 text-xs mb-4">
                     We use cookies to provide you with the best experience on our website. Some cookies are 
                     necessary for the website to function, while others help us improve and personalize your experience.
                   </p>
@@ -134,14 +134,14 @@ const CookieConsentBanner = () => {
                     </button>
                     <button
                       onClick={() => setShowSettings(true)}
-                      className="flex items-center gap-2 border border-zinc-600 hover:border-zinc-500 text-zinc-300 px-6 py-3 rounded-xl font-medium transition-colors"
+                      className="flex items-center gap-2 border border-zinc-600 hover:border-zinc-500 text-slate-600 px-6 py-3 rounded-xl font-medium transition-colors"
                     >
                       <Settings className="w-4 h-4" />
                       Einstellungen / Settings
                     </button>
                   </div>
                   
-                  <div className="mt-4 text-xs text-zinc-500">
+                  <div className="mt-4 text-xs text-slate-400">
                     <Link to="/privacy-policy" className="text-purple-400 hover:underline">Datenschutzerklärung / Privacy Policy</Link>
                     {' • '}
                     <Link to="/impressum" className="text-purple-400 hover:underline">Impressum</Link>
@@ -159,7 +159,7 @@ const CookieConsentBanner = () => {
                 </h3>
                 <button 
                   onClick={() => setShowSettings(false)}
-                  className="text-zinc-400 hover:text-white transition-colors"
+                  className="text-slate-500 hover:text-white transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -167,7 +167,7 @@ const CookieConsentBanner = () => {
 
               <div className="space-y-4 mb-6">
                 {/* Necessary Cookies */}
-                <div className="bg-zinc-800/50 rounded-xl p-4">
+                <div className="bg-slate-50 rounded-xl p-4">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center">
@@ -175,21 +175,21 @@ const CookieConsentBanner = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold text-white">Notwendige Cookies</h4>
-                        <p className="text-xs text-zinc-500">Necessary Cookies</p>
+                        <p className="text-xs text-slate-400">Necessary Cookies</p>
                       </div>
                     </div>
                     <div className="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-xs font-medium">
                       Immer aktiv / Always Active
                     </div>
                   </div>
-                  <p className="text-zinc-400 text-sm">
+                  <p className="text-slate-500 text-sm">
                     Diese Cookies sind für die Grundfunktionen der Website erforderlich (z.B. Anmeldung, Warenkorb, Sicherheit).
                     Sie können nicht deaktiviert werden.
                   </p>
                 </div>
 
                 {/* Analytics Cookies */}
-                <div className="bg-zinc-800/50 rounded-xl p-4">
+                <div className="bg-slate-50 rounded-xl p-4">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
@@ -197,7 +197,7 @@ const CookieConsentBanner = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold text-white">Analyse-Cookies</h4>
-                        <p className="text-xs text-zinc-500">Analytics Cookies (Google Analytics)</p>
+                        <p className="text-xs text-slate-400">Analytics Cookies (Google Analytics)</p>
                       </div>
                     </div>
                     <button
@@ -207,14 +207,14 @@ const CookieConsentBanner = () => {
                       <div className={`w-5 h-5 bg-white rounded-full transition-transform ${preferences.analytics ? 'translate-x-8' : 'translate-x-1'}`} />
                     </button>
                   </div>
-                  <p className="text-zinc-400 text-sm">
+                  <p className="text-slate-500 text-sm">
                     Helfen uns zu verstehen, wie Besucher unsere Website nutzen. Wir verwenden Google Analytics 
                     mit anonymisierter IP-Adresse (Anonymize IP).
                   </p>
                 </div>
 
                 {/* Marketing Cookies */}
-                <div className="bg-zinc-800/50 rounded-xl p-4">
+                <div className="bg-slate-50 rounded-xl p-4">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center">
@@ -222,7 +222,7 @@ const CookieConsentBanner = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold text-white">Marketing-Cookies</h4>
-                        <p className="text-xs text-zinc-500">Marketing Cookies (Facebook Pixel)</p>
+                        <p className="text-xs text-slate-400">Marketing Cookies (Facebook Pixel)</p>
                       </div>
                     </div>
                     <button
@@ -232,14 +232,14 @@ const CookieConsentBanner = () => {
                       <div className={`w-5 h-5 bg-white rounded-full transition-transform ${preferences.marketing ? 'translate-x-8' : 'translate-x-1'}`} />
                     </button>
                   </div>
-                  <p className="text-zinc-400 text-sm">
+                  <p className="text-slate-500 text-sm">
                     Werden verwendet, um Werbung relevanter für Sie zu gestalten. Dazu gehört Facebook Pixel für 
                     personalisierte Werbung.
                   </p>
                 </div>
 
                 {/* Preference Cookies */}
-                <div className="bg-zinc-800/50 rounded-xl p-4">
+                <div className="bg-slate-50 rounded-xl p-4">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center">
@@ -247,7 +247,7 @@ const CookieConsentBanner = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold text-white">Präferenz-Cookies</h4>
-                        <p className="text-xs text-zinc-500">Preference Cookies</p>
+                        <p className="text-xs text-slate-400">Preference Cookies</p>
                       </div>
                     </div>
                     <button
@@ -257,7 +257,7 @@ const CookieConsentBanner = () => {
                       <div className={`w-5 h-5 bg-white rounded-full transition-transform ${preferences.preferences ? 'translate-x-8' : 'translate-x-1'}`} />
                     </button>
                   </div>
-                  <p className="text-zinc-400 text-sm">
+                  <p className="text-slate-500 text-sm">
                     Ermöglichen es der Website, sich an Ihre Einstellungen zu erinnern (z.B. Sprache, Region).
                   </p>
                 </div>

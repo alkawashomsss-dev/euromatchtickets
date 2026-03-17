@@ -17,7 +17,7 @@ const F1LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="F1 Formula 1 Tickets 2026 - Buy Official Online | EuroMatchTickets"
         description="Book Formula 1 tickets for 2026 season. Monaco, Silverstone, Abu Dhabi, Las Vegas. Prices from €120. Instant delivery. 100% guarantee."
@@ -36,11 +36,11 @@ const F1LandingPage = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
           <div className="flex justify-center gap-3 mb-6">
-            <Badge className="bg-red-500/20 text-red-400 border-red-500/30 px-4 py-2">
+            <Badge className="bg-red-50 text-red-600 border-red-200 px-4 py-2">
               <Flag className="w-4 h-4 mr-2" />
               2026 Full Season
             </Badge>
-            <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 px-4 py-2">
+            <Badge className="bg-amber-50 text-amber-600 border-amber-200 px-4 py-2">
               <Star className="w-4 h-4 mr-2" />
               24 Races Available
             </Badge>
@@ -51,10 +51,10 @@ const F1LandingPage = () => {
             <span className="text-white"> Tickets 2026</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-zinc-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto">
             Attend the world's greatest races - Monaco, Silverstone, Las Vegas & more!
             <br />
-            <span className="text-red-400 font-bold">Prices starting from €120!</span>
+            <span className="text-red-600 font-bold">Prices starting from €120!</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -67,17 +67,17 @@ const F1LandingPage = () => {
             </Link>
           </div>
 
-          <div className="flex justify-center gap-6 mt-8 text-sm text-zinc-400">
+          <div className="flex justify-center gap-6 mt-8 text-sm text-slate-500">
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-red-400" />
+              <Check className="w-4 h-4 text-red-600" />
               Instant Delivery
             </span>
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-red-400" />
+              <Check className="w-4 h-4 text-red-600" />
               VIP Hospitality
             </span>
             <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-red-400" />
+              <Check className="w-4 h-4 text-red-600" />
               100% Guarantee
             </span>
           </div>
@@ -88,14 +88,14 @@ const F1LandingPage = () => {
       <div className="py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4">F1 2026 Race Calendar</h2>
-          <p className="text-zinc-400 text-center mb-12">Choose your race and book now</p>
+          <p className="text-slate-500 text-center mb-12">Choose your race and book now</p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {f1Races.map((race, idx) => (
               <Link 
                 key={idx}
                 to="/events?category=F1"
-                className="group relative bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-red-500/50 transition-all"
+                className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-red-500/50 transition-all"
               >
                 {race.hot && (
                   <Badge className="absolute top-3 right-3 z-10 bg-red-500 text-white">Hot!</Badge>
@@ -115,16 +115,16 @@ const F1LandingPage = () => {
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-red-400 transition-colors">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-red-600 transition-colors">
                     {race.name}
                   </h3>
-                  <p className="text-zinc-400 text-sm mb-3">{race.date}, 2026</p>
+                  <p className="text-slate-500 text-sm mb-3">{race.date}, 2026</p>
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-2xl font-bold text-red-400">€{race.price}</span>
-                      <span className="text-sm text-zinc-500 ml-2">from</span>
+                      <span className="text-2xl font-bold text-red-600">€{race.price}</span>
+                      <span className="text-sm text-slate-400 ml-2">from</span>
                     </div>
-                    <Button size="sm" variant="outline" className="border-red-500/50 text-red-400 hover:bg-red-500/10">
+                    <Button size="sm" variant="outline" className="border-red-500/50 text-red-600 hover:bg-red-50">
                       Book Now
                     </Button>
                   </div>
@@ -136,39 +136,39 @@ const F1LandingPage = () => {
       </div>
 
       {/* Categories */}
-      <div className="py-20 bg-zinc-900/50">
+      <div className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Ticket Categories</h2>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-zinc-800/50 border border-zinc-700 rounded-2xl p-6">
-              <h3 className="text-xl font-bold mb-2 text-zinc-300">General Admission</h3>
-              <div className="text-3xl font-bold text-emerald-400 mb-4">From €120</div>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Track access</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Multiple zones</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Amazing atmosphere</li>
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <h3 className="text-xl font-bold mb-2 text-slate-600">General Admission</h3>
+              <div className="text-3xl font-bold text-emerald-600 mb-4">From €120</div>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-600" /> Track access</li>
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-600" /> Multiple zones</li>
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-600" /> Amazing atmosphere</li>
               </ul>
             </div>
 
             <div className="bg-gradient-to-b from-amber-900/20 to-zinc-800/50 border-2 border-amber-500/50 rounded-2xl p-6">
               <Badge className="bg-amber-500 text-black mb-2">Most Popular</Badge>
               <h3 className="text-xl font-bold mb-2 text-white">Grandstand</h3>
-              <div className="text-3xl font-bold text-amber-400 mb-4">From €250</div>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-amber-400" /> Reserved seat</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-amber-400" /> Excellent view</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-amber-400" /> Big screens</li>
+              <div className="text-3xl font-bold text-amber-600 mb-4">From €250</div>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-amber-600" /> Reserved seat</li>
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-amber-600" /> Excellent view</li>
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-amber-600" /> Big screens</li>
               </ul>
             </div>
 
-            <div className="bg-zinc-800/50 border border-zinc-700 rounded-2xl p-6">
-              <h3 className="text-xl font-bold mb-2 text-zinc-300">VIP Hospitality</h3>
-              <div className="text-3xl font-bold text-purple-400 mb-4">From €800</div>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-purple-400" /> Paddock access</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-purple-400" /> Food & drinks</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-purple-400" /> Driver meet & greet</li>
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <h3 className="text-xl font-bold mb-2 text-slate-600">VIP Hospitality</h3>
+              <div className="text-3xl font-bold text-violet-600 mb-4">From €800</div>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-violet-600" /> Paddock access</li>
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-violet-600" /> Food & drinks</li>
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-violet-600" /> Driver meet & greet</li>
               </ul>
             </div>
           </div>
@@ -179,53 +179,53 @@ const F1LandingPage = () => {
       <div className="py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Why Choose <span className="text-red-400">EuroMatchTickets</span>?
+            Why Choose <span className="text-red-600">EuroMatchTickets</span>?
           </h2>
 
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-red-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-red-400" />
+              <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-red-600" />
               </div>
               <h3 className="font-bold mb-2">100% Verified</h3>
-              <p className="text-sm text-zinc-400">Every ticket authenticated and guaranteed</p>
+              <p className="text-sm text-slate-500">Every ticket authenticated and guaranteed</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Zap className="w-8 h-8 text-amber-400" />
+              <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-8 h-8 text-amber-600" />
               </div>
               <h3 className="font-bold mb-2">Instant Delivery</h3>
-              <p className="text-sm text-zinc-400">QR code to your email in minutes</p>
+              <p className="text-sm text-slate-500">QR code to your email in minutes</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Star className="w-8 h-8 text-emerald-400" />
+              <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Star className="w-8 h-8 text-emerald-600" />
               </div>
               <h3 className="font-bold mb-2">Best Prices</h3>
-              <p className="text-sm text-zinc-400">Save 25% vs other ticket sites</p>
+              <p className="text-sm text-slate-500">Save 25% vs other ticket sites</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Flag className="w-8 h-8 text-purple-400" />
+              <div className="w-16 h-16 bg-violet-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Flag className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="font-bold mb-2">All 24 Races</h3>
-              <p className="text-sm text-zinc-400">Full 2026 calendar available</p>
+              <p className="text-sm text-slate-500">Full 2026 calendar available</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Final CTA */}
-      <div className="py-20 bg-zinc-900/50">
+      <div className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="bg-gradient-to-r from-red-900/30 to-amber-900/30 border border-red-500/30 rounded-3xl p-12">
+          <div className="bg-gradient-to-r from-red-900/30 to-amber-900/30 border border-red-200 rounded-3xl p-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Book <span className="text-red-400">F1 2026</span> Tickets Now!
+              Book <span className="text-red-600">F1 2026</span> Tickets Now!
             </h2>
-            <p className="text-xl text-zinc-400 mb-8">
+            <p className="text-xl text-slate-500 mb-8">
               Monaco, Las Vegas, Abu Dhabi & more - All races available
             </p>
             <Link to="/events?category=F1">
@@ -235,7 +235,7 @@ const F1LandingPage = () => {
                 <ChevronRight className="w-6 h-6 ml-2" />
               </Button>
             </Link>
-            <p className="text-sm text-zinc-500 mt-4">
+            <p className="text-sm text-slate-400 mt-4">
               🛡️ FanProtect™ Guarantee | 🔒 Secure Payment | ⚡ Instant Delivery
             </p>
           </div>

@@ -27,7 +27,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <Helmet>
         <title>Contact Us | EuroMatchTickets</title>
         <meta name="description" content="Get in touch with EuroMatchTickets support team. We're here to help with ticket purchases, seller questions, and any issues." />
@@ -35,10 +35,10 @@ const ContactPage = () => {
       </Helmet>
 
       {/* Header */}
-      <section className="py-16 bg-zinc-900/30 border-b border-white/5">
+      <section className="py-16 bg-slate-50 border-b border-slate-100">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl text-zinc-400">
+          <p className="text-xl text-slate-500">
             Have a question? We're here to help 24/7.
           </p>
         </div>
@@ -51,50 +51,50 @@ const ContactPage = () => {
             <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
             
             <div className="space-y-4">
-              <div className="flex items-start gap-4 p-4 bg-zinc-900/50 border border-white/5 rounded-xl">
-                <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400">
+              <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
+                <div className="w-10 h-10 rounded-lg bg-violet-50 flex items-center justify-center text-violet-600">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Email Support</h3>
-                  <a href="mailto:Alkawashoms@gmail.com" className="text-zinc-400 hover:text-purple-400">
+                  <a href="mailto:Alkawashoms@gmail.com" className="text-slate-500 hover:text-violet-600">
                     Alkawashoms@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 bg-zinc-900/50 border border-white/5 rounded-xl">
-                <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Phone Support</h3>
-                  <a href="tel:+491781304137" className="text-zinc-400 hover:text-emerald-400">
+                  <a href="tel:+491781304137" className="text-slate-500 hover:text-emerald-600">
                     +49 178 130 4137
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 bg-zinc-900/50 border border-white/5 rounded-xl">
-                <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
+              <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
+                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Office</h3>
-                  <p className="text-zinc-400">
+                  <p className="text-slate-500">
                     Fürstenriederstr. 33<br />
                     80686 München, Germany
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 bg-zinc-900/50 border border-white/5 rounded-xl">
-                <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400">
+              <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
+                <div className="w-10 h-10 rounded-lg bg-violet-50 flex items-center justify-center text-violet-600">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Response Time</h3>
-                  <p className="text-zinc-400">
+                  <p className="text-slate-500">
                     We typically respond within 24 hours
                   </p>
                 </div>
@@ -104,9 +104,9 @@ const ContactPage = () => {
 
           {/* Contact Form */}
           <div className="md:col-span-2">
-            <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-8">
+            <div className="bg-white border border-slate-100 rounded-2xl p-8">
               <div className="flex items-center gap-3 mb-6">
-                <MessageSquare className="w-6 h-6 text-purple-400" />
+                <MessageSquare className="w-6 h-6 text-violet-600" />
                 <h2 className="text-2xl font-bold">Send us a Message</h2>
               </div>
 
@@ -119,7 +119,7 @@ const ContactPage = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                       placeholder="John Doe"
-                      className="bg-zinc-800 border-zinc-700"
+                      className="bg-slate-100 border-slate-200"
                     />
                   </div>
                   <div>
@@ -130,7 +130,7 @@ const ContactPage = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                       placeholder="john@example.com"
-                      className="bg-zinc-800 border-zinc-700"
+                      className="bg-slate-100 border-slate-200"
                     />
                   </div>
                 </div>
@@ -142,7 +142,7 @@ const ContactPage = () => {
                     value={formData.subject}
                     onChange={(e) => setFormData({...formData, subject: e.target.value})}
                     placeholder="How can we help?"
-                    className="bg-zinc-800 border-zinc-700"
+                    className="bg-slate-100 border-slate-200"
                   />
                 </div>
 
@@ -154,7 +154,7 @@ const ContactPage = () => {
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                     placeholder="Tell us more about your inquiry..."
                     rows={6}
-                    className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
                   />
                 </div>
 
@@ -187,9 +187,9 @@ const ContactPage = () => {
               { q: "How do I become a seller?", a: "Sign in to your account and click 'Become a Seller' in your profile menu." },
               { q: "Are the tickets legitimate?", a: "Yes, all sellers are verified and tickets are guaranteed authentic under our EuroMatchTickets Guarantee." }
             ].map((faq, index) => (
-              <div key={index} className="bg-zinc-900/50 border border-white/5 rounded-xl p-6">
+              <div key={index} className="bg-white border border-slate-100 rounded-xl p-6">
                 <h3 className="font-semibold mb-2">{faq.q}</h3>
-                <p className="text-zinc-400">{faq.a}</p>
+                <p className="text-slate-500">{faq.a}</p>
               </div>
             ))}
           </div>

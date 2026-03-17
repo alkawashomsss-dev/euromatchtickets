@@ -10,13 +10,13 @@ const categoryColors = {
   Premium: { bg: "bg-purple-500", text: "text-purple-500", accent: "#a855f7" },
   cat1: { bg: "bg-cyan-500", text: "text-cyan-500", accent: "#06b6d4" },
   cat2: { bg: "bg-emerald-500", text: "text-emerald-500", accent: "#10b981" },
-  cat3: { bg: "bg-zinc-400", text: "text-zinc-400", accent: "#a1a1aa" },
+  cat3: { bg: "bg-zinc-400", text: "text-slate-500", accent: "#a1a1aa" },
   standard: { bg: "bg-blue-500", text: "text-blue-500", accent: "#3b82f6" },
   Standard: { bg: "bg-blue-500", text: "text-blue-500", accent: "#3b82f6" },
   floor: { bg: "bg-pink-500", text: "text-pink-500", accent: "#ec4899" },
-  standing: { bg: "bg-zinc-400", text: "text-zinc-400", accent: "#a1a1aa" },
+  standing: { bg: "bg-zinc-400", text: "text-slate-500", accent: "#a1a1aa" },
   grandstand: { bg: "bg-cyan-500", text: "text-cyan-500", accent: "#06b6d4" },
-  general_admission: { bg: "bg-zinc-400", text: "text-zinc-400", accent: "#a1a1aa" },
+  general_admission: { bg: "bg-zinc-400", text: "text-slate-500", accent: "#a1a1aa" },
   hospitality: { bg: "bg-amber-500", text: "text-amber-500", accent: "#f59e0b" },
   paddock_club: { bg: "bg-amber-600", text: "text-amber-600", accent: "#d97706" },
 };
@@ -137,7 +137,7 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
     <div ref={ticketRef} data-testid={`professional-ticket-${orderId}`} className="w-full">
       <div className="bg-white rounded-2xl overflow-hidden shadow-2xl shadow-black/20">
         {/* Header Bar */}
-        <div className="bg-zinc-900 px-6 py-4 flex items-center justify-between">
+        <div className="bg-white px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Ticket className="w-5 h-5 text-white" />
             <span className="text-white font-bold tracking-widest text-sm">EUROMATCHTICKETS</span>
@@ -155,25 +155,25 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
               {event?.title || "Event"}
             </h2>
             {event?.subtitle && (
-              <p className="text-zinc-500 text-sm mb-4">{event.subtitle}</p>
+              <p className="text-slate-400 text-sm mb-4">{event.subtitle}</p>
             )}
 
             {/* Date & Venue */}
             <div className="grid grid-cols-2 gap-4 mb-5">
               <div>
-                <p className="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Date</p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Date</p>
                 <p className="text-sm font-semibold text-zinc-800">{dateInfo.full}</p>
               </div>
               <div>
-                <p className="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Time</p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Time</p>
                 <p className="text-sm font-semibold text-zinc-800">{dateInfo.time}</p>
               </div>
               <div>
-                <p className="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Venue</p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Venue</p>
                 <p className="text-sm font-semibold text-zinc-800">{event?.venue || "TBA"}</p>
               </div>
               <div>
-                <p className="text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">City</p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">City</p>
                 <p className="text-sm font-semibold text-zinc-800">{event?.city || ""}</p>
               </div>
             </div>
@@ -187,7 +187,7 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
                 { label: "Category", value: (category || "STD").toUpperCase() },
               ].map((item) => (
                 <div key={item.label} className="bg-zinc-100 rounded-lg px-4 py-2 text-center min-w-[70px]">
-                  <p className="text-[9px] text-zinc-400 uppercase tracking-wider font-semibold">{item.label}</p>
+                  <p className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">{item.label}</p>
                   <p className={`text-lg font-bold ${colors.text}`} style={{ color: colors.accent }}>
                     {item.value}
                   </p>
@@ -199,8 +199,8 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
           {/* QR Section - Tear Line */}
           <div className="relative md:w-[200px] border-t md:border-t-0 md:border-l-2 md:border-dashed border-zinc-200">
             {/* Tear Circles */}
-            <div className="hidden md:block absolute -left-[11px] -top-[11px] w-5 h-5 bg-zinc-950 rounded-full" />
-            <div className="hidden md:block absolute -left-[11px] -bottom-[11px] w-5 h-5 bg-zinc-950 rounded-full" />
+            <div className="hidden md:block absolute -left-[11px] -top-[11px] w-5 h-5 bg-[hsl(210,20%,98%)] rounded-full" />
+            <div className="hidden md:block absolute -left-[11px] -bottom-[11px] w-5 h-5 bg-[hsl(210,20%,98%)] rounded-full" />
             
             <div className="flex flex-col items-center justify-center p-6 h-full">
               <div className="bg-white p-2 rounded-lg border border-zinc-200">
@@ -211,7 +211,7 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
                   level="M"
                 />
               </div>
-              <p className="text-[9px] text-zinc-400 uppercase tracking-[3px] mt-3 font-semibold">Scan to Enter</p>
+              <p className="text-[9px] text-slate-500 uppercase tracking-[3px] mt-3 font-semibold">Scan to Enter</p>
               <p className="text-xs font-mono font-bold text-zinc-700 mt-1">{shortId}</p>
             </div>
           </div>
@@ -219,11 +219,11 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
 
         {/* Footer Bar */}
         <div className="bg-zinc-50 border-t border-zinc-200 px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-[11px] text-zinc-400">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500">
             <Shield className="w-3 h-3" />
             <span>FanProtect Guarantee | euromatchtickets.com</span>
           </div>
-          <span className="font-mono text-[10px] text-zinc-400 tracking-wider">
+          <span className="font-mono text-[10px] text-slate-500 tracking-wider">
             {orderId.replace(/-/g, " ").toUpperCase().slice(0, 24)}
           </span>
         </div>
@@ -235,7 +235,7 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
           <Button
             onClick={handleDownload}
             variant="outline"
-            className="border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+            className="border-slate-200 text-slate-600 hover:bg-slate-100"
             data-testid="download-ticket-btn"
           >
             <Download className="w-4 h-4 mr-2" />

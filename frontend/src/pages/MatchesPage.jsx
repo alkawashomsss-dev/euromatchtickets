@@ -18,17 +18,17 @@ const leagueConfig = {
   champions_league: {
     name: "UEFA Champions League",
     badge: "badge-champions",
-    textColor: "text-blue-400"
+    textColor: "text-blue-600"
   },
   premier_league: {
     name: "Premier League",
     badge: "badge-premier",
-    textColor: "text-purple-400"
+    textColor: "text-violet-600"
   },
   la_liga: {
     name: "La Liga",
     badge: "badge-laliga",
-    textColor: "text-red-400"
+    textColor: "text-red-600"
   }
 };
 
@@ -51,7 +51,7 @@ const MatchRow = ({ match }) => {
     <Link
       to={`/match/${match.match_id}`}
       data-testid={`match-row-${match.match_id}`}
-      className="group block bg-slate-900/50 hover:bg-slate-800/50 border border-white/5 hover:border-white/20 rounded-xl p-4 md:p-6 transition-all duration-300"
+      className="group block bg-slate-900/50 hover:bg-slate-800/50 border border-slate-100 hover:border-white/20 rounded-xl p-4 md:p-6 transition-all duration-300"
     >
       <div className="flex flex-col md:flex-row md:items-center gap-4">
         {/* Date Column */}
@@ -108,7 +108,7 @@ const MatchRow = ({ match }) => {
           {match.available_tickets > 0 && (
             <div className="text-center">
               <div className="text-sm text-slate-400">Available</div>
-              <div className="text-lg font-bold text-green-400">{match.available_tickets}</div>
+              <div className="text-lg font-bold text-green-600">{match.available_tickets}</div>
             </div>
           )}
           
@@ -204,7 +204,7 @@ const MatchesPage = () => {
   return (
     <div className="min-h-screen bg-slate-950 pt-20">
       {/* Header */}
-      <div className="bg-slate-900/50 border-b border-white/5">
+      <div className="bg-slate-900/50 border-b border-slate-100">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-12">
           <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight mb-4">
             All Matches

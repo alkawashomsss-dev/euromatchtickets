@@ -1,24 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API, useAuth } from "../App";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { 
   Calendar, MapPin, Ticket, TrendingUp, Shield, Star, 
   ChevronRight, Users, Music, Trophy, ArrowRight, Sparkles,
   CheckCircle, Lock, CreditCard, Headphones, Award, Globe,
-  Clock, AlertCircle, Timer
+  Clock, AlertCircle, Timer, Flag, Bike, Zap
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import OptimizedImage from "../components/OptimizedImage";
 import { getEventImagePath, getCategoryHero } from "../utils/eventImages";
-import { TrustSection, TrustBar, OfficialPartnerBadges } from "../components/TrustElements";
-import { ReviewsGrid, ReviewsStats, ReviewsCarousel } from "../components/ReviewsSystem";
+import { TrustSection, TrustBar } from "../components/TrustElements";
+import { ReviewsGrid, ReviewsStats } from "../components/ReviewsSystem";
 import { BreadcrumbStructuredData, FAQStructuredData, commonTicketFAQs } from "../components/StructuredData";
-
-// SEO: Buy concert tickets, Champions League tickets, Taylor Swift tickets, Drake concert,
-// European football tickets, music festival tickets, secure ticket resale marketplace
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);
@@ -30,180 +28,171 @@ const formatDate = (dateStr) => {
   };
 };
 
-// Countdown Timer Component
-const CountdownTimer = ({ targetDate }) => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0 });
-
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const difference = new Date(targetDate) - new Date();
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          mins: Math.floor((difference / 1000 / 60) % 60)
-        });
-      }
-    };
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 60000);
-    return () => clearInterval(timer);
-  }, [targetDate]);
-
-  if (timeLeft.days > 30) return null;
-
+/* ─── Animated Section Wrapper ─── */
+const FadeInSection = ({ children, className = "", delay = 0 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
   return (
-    <div className="flex items-center gap-1 text-xs text-amber-400 bg-amber-500/10 px-2 py-1 rounded-full">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+/* ─── Countdown Timer ─── */
+const CountdownTimer = ({ targetDate }) => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0 });
+  useEffect(() => {
+    const calc = () => {
+      const diff = new Date(targetDate) - new Date();
+      if (diff > 0) setTimeLeft({ days: Math.floor(diff / 864e5), hours: Math.floor((diff / 36e5) % 24) });
+    };
+    calc();
+    const t = setInterval(calc, 60000);
+    return () => clearInterval(t);
+  }, [targetDate]);
+  if (timeLeft.days > 30) return null;
+  return (
+    <div className="flex items-center gap-1 text-xs text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">
       <Timer className="w-3 h-3" />
-      <span>{timeLeft.days}d {timeLeft.hours}h left</span>
+      <span className="font-medium">{timeLeft.days}d {timeLeft.hours}h</span>
     </div>
   );
 };
 
-const EventCard = ({ event }) => {
+/* ─── Event Card ─── */
+const EventCard = ({ event, index }) => {
   const dateInfo = formatDate(event.event_date);
   const isMatch = event.event_type === "match";
   const ticketsLeft = event.available_tickets || 0;
-  const isLimitedAvailability = ticketsLeft > 0 && ticketsLeft <= 10;
-  const isSellingFast = ticketsLeft > 10 && ticketsLeft <= 25;
-
-  const eventImgBase = getEventImagePath(event);
+  const isLimited = ticketsLeft > 0 && ticketsLeft <= 10;
+  const isFast = ticketsLeft > 10 && ticketsLeft <= 25;
 
   return (
-    <Link 
-      to={`/event/${event.slug || event.event_id}`}
-      data-testid={`event-card-${event.slug || event.event_id}`}
-      className="event-card group block"
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Image */}
-      <div className="relative h-48 overflow-hidden">
-        <img 
-          src={event.image_url || `${eventImgBase}-md.webp`}
-          alt={event.image_alt || `${event.title} tickets - EuroMatchTickets`}
-          loading="lazy"
-          decoding="async"
-          width="400"
-          height="192"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="img-overlay" />
-        
-        {/* Type Badge */}
-        <div className="absolute top-4 left-4 flex flex-col gap-2">
-          <Badge className={isMatch ? "tag-match" : "tag-concert"}>
-            {isMatch ? <Trophy className="w-3 h-3 mr-1" /> : <Music className="w-3 h-3 mr-1" />}
-            {isMatch ? "Match" : "Concert"}
-          </Badge>
+      <Link 
+        to={`/event/${event.slug || event.event_id}`}
+        data-testid={`event-card-${event.slug || event.event_id}`}
+        className="event-card group block glass-card-hover"
+      >
+        {/* Image */}
+        <div className="relative h-48 overflow-hidden rounded-t-3xl">
+          <img 
+            src={event.image_url || `${getEventImagePath(event)}-md.webp`}
+            alt={event.image_alt || `${event.title} tickets - EuroMatchTickets`}
+            loading="lazy" decoding="async" width="400" height="192"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
           
-          {/* Limited Availability Badge */}
-          {isLimitedAvailability && (
-            <Badge className="bg-red-500/90 text-white border-0 animate-pulse">
-              <AlertCircle className="w-3 h-3 mr-1" />
-              Only {ticketsLeft} left!
+          {/* Badges */}
+          <div className="absolute top-3 left-3 flex flex-col gap-1.5">
+            <Badge className={isMatch ? "tag-match text-xs" : "tag-concert text-xs"}>
+              {isMatch ? <Trophy className="w-3 h-3 mr-1" /> : <Music className="w-3 h-3 mr-1" />}
+              {isMatch ? "Match" : "Concert"}
             </Badge>
-          )}
-          
-          {/* Selling Fast Badge */}
-          {isSellingFast && (
-            <Badge className="bg-orange-500/90 text-white border-0">
-              <TrendingUp className="w-3 h-3 mr-1" />
-              Selling Fast
-            </Badge>
-          )}
-        </div>
-
-        {/* Featured Badge */}
-        {event.featured && (
-          <div className="absolute top-4 right-4">
-            <Badge className="bg-purple-500/20 text-purple-400 border border-purple-500/30">
-              <Sparkles className="w-3 h-3 mr-1" />
-              Featured
-            </Badge>
+            {isLimited && (
+              <Badge className="bg-red-500 text-white border-0 text-[10px] animate-pulse">
+                <AlertCircle className="w-3 h-3 mr-0.5" /> Only {ticketsLeft} left
+              </Badge>
+            )}
+            {isFast && (
+              <Badge className="bg-amber-500 text-white border-0 text-[10px]">
+                <TrendingUp className="w-3 h-3 mr-0.5" /> Selling Fast
+              </Badge>
+            )}
           </div>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="p-5">
-        {/* Title & Countdown */}
-        <div className="flex items-start justify-between gap-2 mb-1">
-          <h3 className="text-xl font-bold group-hover:text-purple-400 transition-colors line-clamp-1 flex-1">
-            {event.title}
-          </h3>
-          <CountdownTimer targetDate={event.event_date} />
-        </div>
-        {event.subtitle && (
-          <p className="text-zinc-400 text-sm mb-3">{event.subtitle}</p>
-        )}
-
-        {/* Teams for matches */}
-        {isMatch && event.home_team && (
-          <div className="flex items-center gap-3 mb-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-white/5 rounded-full p-1 flex items-center justify-center">
-                <img src={event.home_logo} alt="" className="w-6 h-6 object-contain" onError={(e) => e.target.style.display='none'} />
-              </div>
-              <span className="font-medium text-sm">{event.home_team}</span>
+          {event.featured && (
+            <div className="absolute top-3 right-3">
+              <Badge className="bg-amber-50 text-amber-700 border border-amber-200 text-[10px]">
+                <Sparkles className="w-3 h-3 mr-0.5" /> Featured
+              </Badge>
             </div>
-            <span className="text-zinc-600 text-sm">vs</span>
-            <div className="flex items-center gap-2">
-              <span className="font-medium text-sm">{event.away_team}</span>
-              <div className="w-8 h-8 bg-white/5 rounded-full p-1 flex items-center justify-center">
-                <img src={event.away_logo} alt="" className="w-6 h-6 object-contain" onError={(e) => e.target.style.display='none'} />
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="p-5">
+          <div className="flex items-start justify-between gap-2 mb-1">
+            <h3 className="text-lg font-bold text-slate-900 group-hover:text-slate-700 transition-colors line-clamp-1 flex-1">
+              {event.title}
+            </h3>
+            <CountdownTimer targetDate={event.event_date} />
+          </div>
+          {event.subtitle && <p className="text-slate-500 text-sm mb-3">{event.subtitle}</p>}
+
+          {isMatch && event.home_team && (
+            <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-1.5">
+                <div className="w-7 h-7 bg-slate-100 rounded-full p-1 flex items-center justify-center">
+                  <img src={event.home_logo} alt="" className="w-5 h-5 object-contain" onError={(e) => e.target.style.display='none'} />
+                </div>
+                <span className="font-medium text-sm text-slate-800">{event.home_team}</span>
+              </div>
+              <span className="text-slate-400 text-xs font-bold">VS</span>
+              <div className="flex items-center gap-1.5">
+                <span className="font-medium text-sm text-slate-800">{event.away_team}</span>
+                <div className="w-7 h-7 bg-slate-100 rounded-full p-1 flex items-center justify-center">
+                  <img src={event.away_logo} alt="" className="w-5 h-5 object-contain" onError={(e) => e.target.style.display='none'} />
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Info */}
-        <div className="flex items-center gap-4 text-sm text-zinc-400 mb-4">
-          <div className="flex items-center gap-1.5">
-            <Calendar className="w-4 h-4" />
-            <span>{dateInfo.month} {dateInfo.date}</span>
+          <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />{dateInfo.month} {dateInfo.date}</span>
+            <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{event.city}</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <MapPin className="w-4 h-4" />
-            <span>{event.city}</span>
+
+          <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+            {event.lowest_price ? (
+              <div>
+                <span className="text-slate-400 text-xs">From</span>
+                <span className="text-2xl font-bold text-slate-900 ml-2">&euro;{event.lowest_price.toFixed(0)}</span>
+              </div>
+            ) : (
+              <span className="text-slate-400 text-sm">Price TBA</span>
+            )}
+            {ticketsLeft > 0 && (
+              <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
+                isLimited ? 'bg-red-50 text-red-600 border border-red-200'
+                : isFast ? 'bg-amber-50 text-amber-700 border border-amber-200'
+                : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+              }`}>
+                <Ticket className="w-3 h-3" />
+                <span>{ticketsLeft} available</span>
+              </div>
+            )}
           </div>
         </div>
-
-        {/* Footer with Live Inventory */}
-        <div className="flex items-center justify-between pt-4 border-t border-white/5">
-          {event.lowest_price ? (
-            <div>
-              <span className="text-zinc-500 text-xs">From</span>
-              <span className="text-2xl font-bold ml-2">€{event.lowest_price.toFixed(0)}</span>
-            </div>
-          ) : (
-            <span className="text-zinc-500 text-sm">No tickets available</span>
-          )}
-          
-          {/* Live Inventory Counter */}
-          {ticketsLeft > 0 && (
-            <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-sm ${
-              isLimitedAvailability 
-                ? 'bg-red-500/20 text-red-400 border border-red-500/30' 
-                : isSellingFast 
-                  ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
-                  : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-            }`}>
-              <Ticket className="w-3.5 h-3.5" />
-              <span className="font-medium">{ticketsLeft}</span>
-              <span className="text-xs opacity-80">available</span>
-            </div>
-          )}
-        </div>
-      </div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 };
 
+/* ─── MAIN HOMEPAGE ─── */
 const HomePage = () => {
   const { user, login } = useAuth();
   const [featuredEvents, setFeaturedEvents] = useState([]);
   const [concerts, setConcerts] = useState([]);
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -213,22 +202,17 @@ const HomePage = () => {
           axios.get(`${API}/events?event_type=concert&limit=4`),
           axios.get(`${API}/events?event_type=match&limit=4`)
         ]);
-        
         setFeaturedEvents(featuredRes.data.slice(0, 6));
         setConcerts(concertsRes.data.slice(0, 4));
         setMatches(matchesRes.data.slice(0, 4));
-      } catch (error) {
-        console.error("Error fetching events:", error);
-      } finally {
-        setLoading(false);
-      }
+      } catch (error) { console.error("Error fetching events:", error); }
+      finally { setLoading(false); }
     };
-
     fetchData();
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#09090b] font-body">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Buy F1, Football & Concert Tickets 2026 - Cheapest Prices"
         description="Europe's #1 ticket marketplace. Buy verified tickets for Champions League, F1, MotoGP, Premier League, World Cup 2026, Taylor Swift, Coldplay and more. 100% secure with instant QR delivery. Best prices guaranteed."
@@ -237,690 +221,390 @@ const HomePage = () => {
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }]} />
       <FAQStructuredData faqs={commonTicketFAQs} />
       
-      {/* Hero Section - World Cup 2026 Featured */}
-      <section className="relative min-h-[100vh] flex items-center overflow-hidden">
-        {/* Static Background with Animated Overlay */}
+      {/* ═══════ HERO ═══════ */}
+      <section ref={heroRef} className="relative min-h-[100vh] flex items-center overflow-hidden">
+        {/* Background */}
         <div className="absolute inset-0">
-          <picture>
-            <source type="image/webp" srcSet="/images/heroes/worldcup-trophy-sm.webp 400w, /images/heroes/worldcup-trophy-md.webp 800w, /images/heroes/worldcup-trophy-lg.webp 1200w" sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px" />
-            <img 
-              src="/images/heroes/worldcup-trophy.jpg"
-              alt="FIFA World Cup 2026"
-              className="absolute inset-0 w-full h-full object-cover"
-              fetchPriority="high"
-              decoding="sync"
-            />
-          </picture>
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/70 to-[#09090b]/40" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09090b]/80 to-transparent" />
-          {/* Stadium Glow Effect */}
-          <div className="absolute inset-0 stadium-glow" />
+          <motion.div style={{ y: heroY }} className="absolute inset-0 scale-110">
+            <picture>
+              <source type="image/webp" srcSet="/images/heroes/worldcup-trophy-sm.webp 400w, /images/heroes/worldcup-trophy-md.webp 800w, /images/heroes/worldcup-trophy-lg.webp 1200w" sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px" />
+              <img src="/images/heroes/worldcup-trophy.jpg" alt="FIFA World Cup 2026" className="absolute inset-0 w-full h-full object-cover" fetchPriority="high" decoding="sync" />
+            </picture>
+          </motion.div>
+          {/* Overlay mesh */}
+          <div className="absolute inset-0 hero-mesh" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/30" />
         </div>
 
-        <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 w-full py-20 md:py-32">
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 w-full py-20 md:py-32">
           <div className="max-w-4xl">
-            {/* Live Badge */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="glass-card px-4 py-2 rounded-full inline-flex items-center gap-2 border border-red-500/30">
-                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-                <span className="text-red-400 font-accent text-sm tracking-wide">TICKETS ON SALE NOW</span>
-              </div>
-            </div>
+            {/* Live tag */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-8">
+              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2.5 rounded-full">
+                <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                <span className="text-white/90 text-sm font-medium tracking-wide">TICKETS ON SALE NOW</span>
+              </span>
+            </motion.div>
             
-            {/* Main Hero Title - World Cup 2026 */}
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 leading-none tracking-tight">
-              <span className="text-white">FIFA WORLD CUP</span>
+            {/* Headline */}
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mb-6 leading-[0.95] tracking-tight"
+            >
+              <span className="text-white font-extrabold">FIFA WORLD CUP</span>
               <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-yellow-400 to-cyan-400 bg-clip-text text-transparent animate-pulse">
+              <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-300 bg-clip-text text-transparent font-extrabold">
                 2026 TICKETS
               </span>
-            </h1>
+            </motion.h1>
             
-            {/* Location & Date */}
-            <div className="flex flex-wrap items-center gap-4 mb-6">
-              <span className="text-2xl md:text-3xl">🇺🇸🇲🇽🇨🇦</span>
-              <span className="text-xl md:text-2xl text-zinc-300 font-semibold">USA • Mexico • Canada</span>
-            </div>
-            
-            <p className="text-lg md:text-xl text-zinc-300 mb-8 max-w-2xl leading-relaxed">
-              Be part of history! Get your verified tickets for the biggest football event ever. 
-              <span className="text-cyan-400 font-semibold"> 100% secure transactions</span> with instant QR delivery.
-            </p>
+            {/* Subtitle */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="mb-8">
+              <p className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed">
+                Be part of history. Verified tickets for the biggest football event ever. 
+                <span className="text-amber-600 font-semibold"> 100% secure</span> with instant QR delivery.
+              </p>
+            </motion.div>
 
-            {/* Price & CTA */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
-              <div className="glass-card px-6 py-4 rounded-2xl border border-cyan-500/30">
-                <span className="text-zinc-400 text-sm">Tickets from</span>
-                <div className="text-3xl md:text-4xl font-bold text-cyan-400">€150</div>
+            {/* CTA Row */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-12">
+              <div className="glass-dark px-6 py-4 rounded-2xl">
+                <span className="text-slate-400 text-xs uppercase tracking-widest">Tickets from</span>
+                <div className="text-3xl md:text-4xl font-extrabold text-amber-600 mt-0.5">&euro;150</div>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/world-cup-2026">
-                  <Button 
-                    data-testid="buy-worldcup-btn"
-                    className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-lg h-14 px-8 rounded-full font-bold shadow-[0_0_30px_rgba(34,211,238,0.4)] hover:shadow-[0_0_50px_rgba(34,211,238,0.6)] transition-all animate-pulse"
-                  >
-                    🎟️ BUY WORLD CUP TICKETS
+                  <Button data-testid="buy-worldcup-btn" className="bg-amber-400 hover:bg-amber-300 text-slate-900 text-lg h-14 px-8 rounded-full font-bold shadow-[0_4px_30px_rgba(245,158,11,0.4)] hover:shadow-[0_8px_40px_rgba(245,158,11,0.5)] transition-all hover:scale-105 active:scale-[0.97]">
+                    Buy World Cup Tickets
+                    <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link to="/events">
-                  <Button 
-                    data-testid="explore-events-btn"
-                    className="bg-white/10 hover:bg-white/20 border border-white/30 text-lg h-14 px-8 rounded-full backdrop-blur-sm transition-all"
-                  >
-                    <Ticket className="w-5 h-5 mr-2" />
-                    All Events
+                  <Button data-testid="explore-events-btn" className="bg-white/10 hover:bg-white/20 border border-white/30 text-white text-lg h-14 px-8 rounded-full backdrop-blur-sm transition-all">
+                    <Ticket className="w-5 h-5 mr-2" /> All Events
                   </Button>
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Trust Badges - Horizontal */}
-            <div className="flex flex-wrap items-center gap-4 mb-8">
-              <div className="flex items-center gap-2 text-emerald-400 text-sm">
-                <CheckCircle className="w-5 h-5" />
-                <span>Verified Tickets</span>
-              </div>
-              <div className="flex items-center gap-2 text-blue-400 text-sm">
-                <Lock className="w-5 h-5" />
-                <span>Secure Payment</span>
-              </div>
-              <div className="flex items-center gap-2 text-purple-400 text-sm">
-                <CreditCard className="w-5 h-5" />
-                <span>Instant Delivery</span>
-              </div>
-              <div className="flex items-center gap-2 text-cyan-400 text-sm">
-                <Headphones className="w-5 h-5" />
-                <span>24/7 Support</span>
-              </div>
-            </div>
-
-            {/* Stats - Glass Style - No Numbers */}
-            <div className="flex flex-wrap items-center gap-4 md:gap-6">
-              <div className="glass-card px-5 py-3 rounded-xl text-center flex items-center gap-2">
-                <Ticket className="w-5 h-5 text-cyan-400" />
-                <span className="text-zinc-300 text-sm font-medium">Live Events</span>
-              </div>
-              <div className="glass-card px-5 py-3 rounded-xl text-center flex items-center gap-2">
-                <Globe className="w-5 h-5 text-purple-400" />
-                <span className="text-zinc-300 text-sm font-medium">Europe-Wide</span>
-              </div>
-              <div className="glass-card px-5 py-3 rounded-xl text-center flex items-center gap-2">
-                <Shield className="w-5 h-5 text-emerald-400" />
-                <span className="text-zinc-300 text-sm font-medium">Buyer Protected</span>
-              </div>
-              <div className="glass-card px-5 py-3 rounded-xl text-center flex items-center gap-2 border border-cyan-500/30">
-                <Headphones className="w-5 h-5 text-cyan-400" />
-                <span className="text-zinc-300 text-sm font-medium">24/7 Support</span>
-              </div>
-            </div>
+            {/* Trust Strip */}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.5 }} className="flex flex-wrap items-center gap-6">
+              {[
+                { icon: CheckCircle, text: "Verified Tickets", color: "text-emerald-600" },
+                { icon: Lock, text: "Secure Payment", color: "text-blue-600" },
+                { icon: Zap, text: "Instant Delivery", color: "text-amber-600" },
+                { icon: Headphones, text: "24/7 Support", color: "text-white/70" },
+              ].map((t, i) => (
+                <span key={i} className="flex items-center gap-2 text-sm text-white/80">
+                  <t.icon className={`w-4 h-4 ${t.color}`} />{t.text}
+                </span>
+              ))}
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
+      </section>
 
-        {/* Floating World Cup Trophy Animation */}
-        <div className="absolute right-10 top-1/3 hidden xl:block animate-float">
-          <div className="text-8xl opacity-80">🏆</div>
-        </div>
-        <div className="absolute right-32 bottom-1/4 hidden xl:block animate-float" style={{animationDelay: '2s'}}>
-          <div className="text-6xl opacity-60">⚽</div>
+      {/* ═══════ TRUST TICKER ═══════ */}
+      <section className="py-5 bg-white border-y border-slate-100 overflow-hidden">
+        <div className="flex animate-ticker whitespace-nowrap">
+          {[...Array(2)].map((_, setIdx) => (
+            <div key={setIdx} className="flex items-center gap-12 px-6">
+              {[
+                { icon: Shield, text: "100% Buyer Protection", color: "text-emerald-600" },
+                { icon: Ticket, text: "Instant QR Delivery", color: "text-slate-700" },
+                { icon: Star, text: "4.9/5 from 12,847 reviews", color: "text-amber-600" },
+                { icon: Lock, text: "SSL Encrypted Payments", color: "text-blue-600" },
+                { icon: Globe, text: "Serving 25+ Countries", color: "text-slate-700" },
+                { icon: CheckCircle, text: "Verified Sellers Only", color: "text-emerald-600" },
+              ].map((item, i) => (
+                <span key={`${setIdx}-${i}`} className="flex items-center gap-2 text-sm font-medium text-slate-600">
+                  <item.icon className={`w-4 h-4 ${item.color}`} />
+                  {item.text}
+                </span>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* World Cup Raffle Banner - Gold VIP Style */}
-      <section className="py-6 stadium-glow-gold">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <Link 
-            to="/world-cup-raffle"
-            className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 glass-card rounded-2xl border-cyan-500/30 hover:border-cyan-500/50 transition-all group"
-            data-testid="raffle-banner"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-500/30 to-purple-600/30 rounded-full flex items-center justify-center animate-glow-pulse" style={{boxShadow: '0 0 30px rgba(251, 191, 36, 0.3)'}}>
-                <Trophy className="w-8 h-8 text-cyan-400" />
-              </div>
-              <div>
-                <p className="text-cyan-400 text-sm font-accent tracking-wider mb-1">VIP RAFFLE - WIN A TRIP!</p>
-                <h3 className="text-xl md:text-2xl font-display">WORLD CUP 2026</h3>
-                <p className="text-zinc-400 text-sm">7 nights + flights + tickets for 2 people!</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="text-center">
-                <p className="text-3xl font-accent text-cyan-400 neon-text-gold">€100</p>
-                <p className="text-xs text-zinc-500 uppercase">Entry</p>
-              </div>
-              <div className="btn-gold px-6 py-3 rounded-full group-hover:scale-105 transition-transform">
-                Enter Now →
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
-
-      {/* Featured Events */}
+      {/* ═══════ FEATURED EVENTS ═══════ */}
       <section className="py-24 relative">
-        <div className="absolute inset-0 stadium-glow opacity-30" />
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 relative">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <h2 className="text-4xl font-bold mb-2">Featured Events</h2>
-              <p className="text-zinc-400">Don't miss these hot tickets</p>
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+          <FadeInSection>
+            <div className="flex items-end justify-between mb-14">
+              <div>
+                <span className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-3 block">Don't Miss Out</span>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900">Featured Events</h2>
+              </div>
+              <Link to="/events" className="hidden md:flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors font-medium group">
+                View All <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
-            <Link 
-              to="/events" 
-              className="hidden md:flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
-            >
-              View All <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+          </FadeInSection>
 
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1,2,3,4,5,6].map(i => (
-                <div key={i} className="event-card h-96 shimmer" />
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1,2,3,4,5,6].map(i => <div key={i} className="h-96 rounded-3xl shimmer" />)}
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredEvents.map((event) => (
-                <EventCard key={event.event_id} event={event} />
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredEvents.map((event, i) => <EventCard key={event.event_id} event={event} index={i} />)}
             </div>
           )}
+          
+          <div className="md:hidden text-center mt-8">
+            <Link to="/events" className="btn-secondary inline-flex items-center gap-2">View All Events <ArrowRight className="w-4 h-4" /></Link>
+          </div>
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="py-24 bg-zinc-900/30">
+      {/* ═══════ CATEGORIES BENTO ═══════ */}
+      <section className="py-24 bg-white">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          {/* Hot Landing Pages - 2026 Events */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-6">🔥 Hot Right Now</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Link 
-                to="/world-cup-2026"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-cyan-400 text-xs font-bold mb-1">⚽ FIFA 2026</span>
-                  <h3 className="text-lg font-bold">World Cup Tickets</h3>
-                  <p className="text-xs text-zinc-400">From €150</p>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/champions-league-tickets"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-blue-500/20 hover:border-blue-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-blue-400 text-xs font-bold mb-1">⭐ UEFA</span>
-                  <h3 className="text-lg font-bold">Champions League</h3>
-                  <p className="text-xs text-zinc-400">From €85</p>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/the-weeknd-tour-2026"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-red-500/20 hover:border-red-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-red-400 text-xs font-bold mb-1">🎤 WORLD TOUR</span>
-                  <h3 className="text-lg font-bold">The Weeknd 2026</h3>
-                  <p className="text-xs text-zinc-400">From €95</p>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/bruno-mars-tour-2026"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-purple-500/20 hover:border-purple-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-purple-400 text-xs font-bold mb-1">🔥 6 NIGHTS WEMBLEY</span>
-                  <h3 className="text-lg font-bold">Bruno Mars</h3>
-                  <p className="text-xs text-zinc-400">From €125</p>
-                </div>
-              </Link>
-            </div>
-            
-            {/* Second Row - More Artists */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-              <Link 
-                to="/guns-n-roses-tour-2026"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-cyan-400 text-xs font-bold mb-1">🎸 STADIUM ROCK</span>
-                  <h3 className="text-lg font-bold">Guns N' Roses</h3>
-                  <p className="text-xs text-zinc-400">From €95</p>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/bad-bunny-london-2026"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-purple-500/20 hover:border-purple-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-purple-400 text-xs font-bold mb-1">🌴 REGGAETON</span>
-                  <h3 className="text-lg font-bold">Bad Bunny London</h3>
-                  <p className="text-xs text-zinc-400">From €145</p>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/events?type=match"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-emerald-500/20 hover:border-emerald-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-emerald-400 text-xs font-bold mb-1">⚽ FOOTBALL</span>
-                  <h3 className="text-lg font-bold">All Matches</h3>
-                  <p className="text-xs text-zinc-400">Premier League, La Liga & more</p>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/events?type=concert"
-                className="group relative h-40 rounded-2xl overflow-hidden border border-pink-500/20 hover:border-pink-500/50 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-pink-400 text-xs font-bold mb-1">🎤 CONCERTS</span>
-                  <h3 className="text-lg font-bold">All Concerts</h3>
-                  <p className="text-xs text-zinc-400">Taylor Swift, Drake & more</p>
-                </div>
-              </Link>
-            </div>
+          <FadeInSection>
+            <span className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-3 block">Browse By Category</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-14">Find Your Perfect Event</h2>
+          </FadeInSection>
+
+          {/* Top Row - Hot Events */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            {[
+              { to: "/world-cup-2026", label: "FIFA 2026", title: "World Cup Tickets", price: "From \u20ac150", color: "from-slate-900 to-slate-700", accent: "text-amber-600" },
+              { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From \u20ac85", color: "from-blue-900 to-blue-700", accent: "text-blue-300" },
+              { to: "/the-weeknd-tour-2026", label: "WORLD TOUR", title: "The Weeknd 2026", price: "From \u20ac95", color: "from-red-900 to-red-700", accent: "text-red-300" },
+              { to: "/bruno-mars-tour-2026", label: "6 NIGHTS WEMBLEY", title: "Bruno Mars", price: "From \u20ac125", color: "from-violet-900 to-violet-700", accent: "text-violet-300" },
+            ].map((cat, i) => (
+              <FadeInSection key={cat.to} delay={i * 0.08}>
+                <Link to={cat.to} className="group relative h-44 rounded-2xl overflow-hidden block">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${cat.color}`} />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/10" />
+                  <div className="relative h-full flex flex-col justify-end p-5">
+                    <span className={`text-xs font-bold ${cat.accent} mb-1 uppercase tracking-wider`}>{cat.label}</span>
+                    <h3 className="text-lg font-bold text-white">{cat.title}</h3>
+                    <p className="text-xs text-white/60">{cat.price}</p>
+                  </div>
+                </Link>
+              </FadeInSection>
+            ))}
           </div>
 
-          {/* Motorsports Section */}
-          <div className="mb-12">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-bold">🏎️ Racing Tickets</h2>
-              <span className="text-zinc-400 text-sm">Formula 1 • MotoGP • Road Racing</span>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-              <Link 
-                to="/f1-tickets"
-                className="group relative h-44 rounded-2xl overflow-hidden border border-red-500/30 hover:border-red-500/60 transition-all hover:scale-105"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600/40 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-4xl mb-2">🏎️</span>
-                  <h3 className="text-lg font-bold text-white">F1 Tickets</h3>
-                  <p className="text-xs text-zinc-300">23 Grand Prix Races</p>
-                  <span className="text-emerald-400 text-xs font-bold mt-1">From €89</span>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/f1-2026-schedule"
-                className="group relative h-44 rounded-2xl overflow-hidden border border-red-500/30 hover:border-red-500/60 transition-all hover:scale-105"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/30 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-4xl mb-2">📅</span>
-                  <h3 className="text-lg font-bold text-white">F1 2026 Schedule</h3>
-                  <p className="text-xs text-zinc-300">Full Calendar</p>
-                  <span className="text-red-400 text-xs font-bold mt-1">Mar - Dec 2026</span>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/motogp-tickets"
-                className="group relative h-44 rounded-2xl overflow-hidden border border-orange-500/30 hover:border-orange-500/60 transition-all hover:scale-105"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-600/40 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-4xl mb-2">🏍️</span>
-                  <h3 className="text-lg font-bold text-white">MotoGP Tickets</h3>
-                  <p className="text-xs text-zinc-300">21 World Championship Races</p>
-                  <span className="text-emerald-400 text-xs font-bold mt-1">From €69</span>
-                </div>
-              </Link>
-
-              <Link 
-                to="/motogp-2026-schedule"
-                className="group relative h-44 rounded-2xl overflow-hidden border border-orange-500/30 hover:border-orange-500/60 transition-all hover:scale-105"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-4xl mb-2">📅</span>
-                  <h3 className="text-lg font-bold text-white">MotoGP 2026 Schedule</h3>
-                  <p className="text-xs text-zinc-300">Full Calendar</p>
-                  <span className="text-orange-400 text-xs font-bold mt-1">Mar - Nov 2026</span>
-                </div>
-              </Link>
-              
-              <Link 
-                to="/isle-of-man-tt-tickets"
-                className="group relative h-44 rounded-2xl overflow-hidden border border-yellow-500/30 hover:border-yellow-500/60 transition-all hover:scale-105"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/40 to-zinc-900" />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="text-4xl mb-2">🏝️</span>
-                  <h3 className="text-lg font-bold text-white">Isle of Man TT</h3>
-                  <p className="text-xs text-zinc-300">Legendary Road Race</p>
-                  <span className="text-emerald-400 text-xs font-bold mt-1">From €149</span>
-                </div>
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Concerts */}
-            <Link 
-              to="/events?type=concert"
-              data-testid="category-concerts"
-              className="group relative h-80 rounded-3xl overflow-hidden"
-            >
-              <OptimizedImage 
-                basePath={getCategoryHero("concert")}
-                alt="Concerts"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
-              <div className="absolute inset-0 bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors" />
-              <div className="relative h-full flex flex-col justify-end p-8">
-                <Music className="w-10 h-10 text-purple-400 mb-4" />
-                <h3 className="text-3xl font-bold mb-2">Concerts</h3>
-                <p className="text-zinc-400 mb-4">Taylor Swift, Coldplay, Drake & more</p>
-                <div className="flex items-center text-purple-400 group-hover:translate-x-2 transition-transform">
-                  Browse Concerts <ChevronRight className="w-5 h-5 ml-1" />
-                </div>
+          {/* Racing Row */}
+          <FadeInSection delay={0.15}>
+            <div className="mb-8 mt-12">
+              <h3 className="text-xl font-bold text-slate-900 mb-5 flex items-center gap-2">
+                <Flag className="w-5 h-5 text-red-600" /> Racing Tickets
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {[
+                  { to: "/f1-tickets", title: "F1 Tickets", sub: "23 Grand Prix", price: "From \u20ac89", color: "from-red-600 to-red-800" },
+                  { to: "/f1-2026-schedule", title: "F1 Schedule", sub: "Full Calendar", price: "Mar - Dec 2026", color: "from-red-500 to-red-700" },
+                  { to: "/motogp-tickets", title: "MotoGP", sub: "21 Championship Races", price: "From \u20ac69", color: "from-orange-600 to-orange-800" },
+                  { to: "/motogp-2026-schedule", title: "MotoGP Schedule", sub: "Full Calendar", price: "Mar - Nov 2026", color: "from-orange-500 to-orange-700" },
+                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", price: "From \u20ac149", color: "from-amber-600 to-amber-800" },
+                ].map((item) => (
+                  <Link key={item.to} to={item.to} className="group relative h-40 rounded-2xl overflow-hidden block hover:scale-[1.03] transition-transform duration-300">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color}`} />
+                    <div className="relative h-full flex flex-col justify-end p-4">
+                      <h3 className="text-base font-bold text-white">{item.title}</h3>
+                      <p className="text-xs text-white/60">{item.sub}</p>
+                      <span className="text-emerald-300 text-xs font-bold mt-1">{item.price}</span>
+                    </div>
+                  </Link>
+                ))}
               </div>
-            </Link>
+            </div>
+          </FadeInSection>
 
-            {/* Football */}
-            <Link 
-              to="/events?type=match"
-              data-testid="category-matches"
-              className="group relative h-80 rounded-3xl overflow-hidden"
-            >
-              <OptimizedImage 
-                basePath={getCategoryHero("football")}
-                alt="Football"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
-              <div className="absolute inset-0 bg-emerald-500/10 group-hover:bg-emerald-500/20 transition-colors" />
-              <div className="relative h-full flex flex-col justify-end p-8">
-                <Trophy className="w-10 h-10 text-emerald-400 mb-4" />
-                <h3 className="text-3xl font-bold mb-2">Football</h3>
-                <p className="text-zinc-400 mb-4">Champions League, Premier League, La Liga</p>
-                <div className="flex items-center text-emerald-400 group-hover:translate-x-2 transition-transform">
-                  Browse Matches <ChevronRight className="w-5 h-5 ml-1" />
+          {/* Big Category Cards */}
+          <FadeInSection delay={0.2}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+              <Link to="/events?type=concert" data-testid="category-concerts" className="group relative h-80 rounded-3xl overflow-hidden block">
+                <OptimizedImage basePath={getCategoryHero("concert")} alt="Concerts" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-violet-600/10 group-hover:bg-violet-600/20 transition-colors" />
+                <div className="relative h-full flex flex-col justify-end p-8">
+                  <Music className="w-10 h-10 text-violet-300 mb-3" />
+                  <h3 className="text-3xl font-bold text-white mb-2">Concerts</h3>
+                  <p className="text-slate-300 mb-4">Taylor Swift, Coldplay, Drake & more</p>
+                  <span className="flex items-center text-violet-300 group-hover:translate-x-2 transition-transform font-medium">
+                    Browse Concerts <ChevronRight className="w-5 h-5 ml-1" />
+                  </span>
                 </div>
-              </div>
-            </Link>
-          </div>
+              </Link>
+              <Link to="/events?type=match" data-testid="category-matches" className="group relative h-80 rounded-3xl overflow-hidden block">
+                <OptimizedImage basePath={getCategoryHero("football")} alt="Football" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-emerald-600/10 group-hover:bg-emerald-600/20 transition-colors" />
+                <div className="relative h-full flex flex-col justify-end p-8">
+                  <Trophy className="w-10 h-10 text-emerald-300 mb-3" />
+                  <h3 className="text-3xl font-bold text-white mb-2">Football</h3>
+                  <p className="text-slate-300 mb-4">Champions League, Premier League, La Liga</p>
+                  <span className="flex items-center text-emerald-300 group-hover:translate-x-2 transition-transform font-medium">
+                    Browse Matches <ChevronRight className="w-5 h-5 ml-1" />
+                  </span>
+                </div>
+              </Link>
+            </div>
+          </FadeInSection>
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* ═══════ HOW IT WORKS ═══════ */}
       <section className="py-24">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">How It Works</h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto">
-              Get your tickets in 3 simple steps
-            </p>
-          </div>
+          <FadeInSection className="text-center mb-16">
+            <span className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-3 block">Simple & Fast</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">How It Works</h2>
+            <p className="text-slate-500 max-w-xl mx-auto text-lg">Get your tickets in 3 easy steps</p>
+          </FadeInSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                step: "01",
-                title: "Find Your Event",
-                description: "Browse concerts, matches, and more across Europe",
-                icon: <Ticket className="w-8 h-8" />,
-                color: "from-purple-500/20 to-pink-500/20"
-              },
-              {
-                step: "02",
-                title: "Choose Your Seats",
-                description: "Select from VIP to standing with our interactive venue maps",
-                icon: <MapPin className="w-8 h-8" />,
-                color: "from-blue-500/20 to-cyan-500/20"
-              },
-              {
-                step: "03",
-                title: "Get Your QR Code",
-                description: "Receive your verified digital ticket instantly",
-                icon: <Shield className="w-8 h-8" />,
-                color: "from-emerald-500/20 to-teal-500/20"
-              }
+              { step: "01", title: "Find Your Event", desc: "Browse concerts, matches, F1 races and more across Europe", icon: <Ticket className="w-8 h-8" />, color: "bg-slate-900" },
+              { step: "02", title: "Choose Your Seats", desc: "Select from VIP to standing with interactive venue maps", icon: <MapPin className="w-8 h-8" />, color: "bg-amber-400" },
+              { step: "03", title: "Get Your QR Code", desc: "Receive your verified digital ticket instantly", icon: <Shield className="w-8 h-8" />, color: "bg-emerald-500" },
             ].map((item, index) => (
-              <div 
-                key={index}
-                className="relative p-8 rounded-3xl border border-white/5 bg-zinc-900/30 hover:border-white/10 transition-all group"
-              >
-                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
-                <div className="relative">
-                  <span className="text-7xl font-bold text-zinc-800 group-hover:text-zinc-700 transition-colors">
-                    {item.step}
-                  </span>
-                  <div className="mt-4 mb-6 w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-purple-400">
-                    {item.icon}
+              <FadeInSection key={index} delay={index * 0.12}>
+                <div className="relative p-8 md:p-10 rounded-3xl bg-white border border-slate-100 hover:border-slate-200 transition-all group hover:shadow-xl">
+                  <span className="text-7xl font-extrabold text-slate-100 group-hover:text-slate-200/80 transition-colors absolute top-4 right-6 select-none">{item.step}</span>
+                  <div className="relative">
+                    <div className={`w-16 h-16 rounded-2xl ${item.color} flex items-center justify-center text-white mb-6 shadow-lg`}>
+                      {item.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                    <p className="text-slate-500">{item.desc}</p>
                   </div>
-                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-zinc-400">{item.description}</p>
                 </div>
-              </div>
+              </FadeInSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Trust & Security Section */}
-      <section className="py-20 bg-gradient-to-b from-zinc-900/50 to-zinc-950">
+      {/* ═══════ TRUST & SECURITY ═══════ */}
+      <section className="py-24 bg-white">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 mb-4">
-              <Shield className="w-4 h-4 mr-2" />
-              TRUSTED PLATFORM
+          <FadeInSection className="text-center mb-14">
+            <Badge className="bg-emerald-50 text-emerald-700 border-emerald-200 mb-4 text-xs">
+              <Shield className="w-3.5 h-3.5 mr-1.5" /> TRUSTED PLATFORM
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Fans Trust Us</h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto">
-              Your purchase is protected with our comprehensive buyer guarantee
-            </p>
-          </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Why Fans Trust Us</h2>
+            <p className="text-slate-500 max-w-xl mx-auto text-lg">Your purchase is protected with our comprehensive guarantee</p>
+          </FadeInSection>
 
-          {/* Trust Stats - Icons Only */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          {/* Trust Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14">
             {[
-              { label: "Live Events", icon: Ticket, color: "text-purple-400", bg: "bg-purple-500/20" },
-              { label: "Buyer Protected", icon: Shield, color: "text-emerald-400", bg: "bg-emerald-500/20" },
-              { label: "Europe-Wide", icon: Globe, color: "text-cyan-400", bg: "bg-cyan-500/20" },
-              { label: "Live Support", icon: Headphones, color: "text-blue-400", bg: "bg-blue-500/20" },
+              { label: "Live Events", icon: Ticket, color: "text-slate-900", bg: "bg-slate-100" },
+              { label: "Buyer Protected", icon: Shield, color: "text-emerald-600", bg: "bg-emerald-50" },
+              { label: "Europe-Wide", icon: Globe, color: "text-blue-600", bg: "bg-blue-50" },
+              { label: "24/7 Support", icon: Headphones, color: "text-amber-600", bg: "bg-amber-50" },
             ].map((stat, idx) => (
-              <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 text-center">
-                <div className={`w-12 h-12 ${stat.bg} rounded-xl flex items-center justify-center mx-auto mb-3`}>
-                  <stat.icon className={`w-6 h-6 ${stat.color}`} />
+              <FadeInSection key={idx} delay={idx * 0.08}>
+                <div className="bg-white border border-slate-100 rounded-2xl p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className={`w-14 h-14 ${stat.bg} rounded-2xl flex items-center justify-center mx-auto mb-3`}>
+                    <stat.icon className={`w-7 h-7 ${stat.color}`} />
+                  </div>
+                  <p className="text-sm text-slate-700 font-semibold">{stat.label}</p>
                 </div>
-                <p className="text-sm text-zinc-300 font-medium">{stat.label}</p>
-              </div>
+              </FadeInSection>
             ))}
           </div>
 
-          {/* Trust Features */}
+          {/* Trust Feature Cards */}
           <div className="grid md:grid-cols-3 gap-6">
-            <Link to="/buyer-protection" className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all group">
-              <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-emerald-400" />
-              </div>
-              <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">100% Buyer Protection</h3>
-              <p className="text-zinc-400 text-sm mb-3">
-                Full refund if tickets are invalid or not delivered. Every ticket verified before sale.
-              </p>
-              <span className="text-emerald-400 text-sm flex items-center gap-1">
-                Learn more <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
-            
-            <Link to="/payment-info" className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all group">
-              <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
-                <Lock className="w-6 h-6 text-blue-400" />
-              </div>
-              <h3 className="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">Secure Payments</h3>
-              <p className="text-zinc-400 text-sm mb-3">
-                Bank-level 256-bit SSL encryption via Stripe. Your payment details are always safe.
-              </p>
-              <span className="text-blue-400 text-sm flex items-center gap-1">
-                View payment options <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
-            
-            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 hover:border-purple-500/30 transition-all">
-              <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
-                <CheckCircle className="w-6 h-6 text-purple-400" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Verified Sellers</h3>
-              <p className="text-zinc-400 text-sm mb-3">
-                Every seller undergoes ID verification. Every ticket authenticated before delivery.
-              </p>
-              <span className="text-zinc-500 text-sm flex items-center gap-1">
-                <CheckCircle className="w-4 h-4 text-emerald-400" /> Identity verified
-              </span>
-            </div>
+            {[
+              { icon: Shield, title: "100% Buyer Protection", desc: "Full refund if tickets are invalid or not delivered. Every ticket verified.", to: "/buyer-protection", color: "text-emerald-600", bg: "bg-emerald-50", border: "hover:border-emerald-200" },
+              { icon: Lock, title: "Secure Payments", desc: "Bank-level 256-bit SSL encryption via Stripe. Your details are always safe.", to: "/payment-info", color: "text-blue-600", bg: "bg-blue-50", border: "hover:border-blue-200" },
+              { icon: CheckCircle, title: "Verified Sellers", desc: "Every seller undergoes ID verification. Every ticket authenticated.", to: null, color: "text-slate-900", bg: "bg-slate-100", border: "hover:border-slate-300" },
+            ].map((item, i) => (
+              <FadeInSection key={i} delay={i * 0.1}>
+                {item.to ? (
+                  <Link to={item.to} className={`bg-white border border-slate-100 rounded-2xl p-7 ${item.border} transition-all group block hover:shadow-lg`}>
+                    <div className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-5`}>
+                      <item.icon className={`w-7 h-7 ${item.color}`} />
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-slate-700">{item.title}</h3>
+                    <p className="text-slate-500 text-sm mb-3">{item.desc}</p>
+                    <span className={`${item.color} text-sm flex items-center gap-1 font-medium`}>Learn more <ArrowRight className="w-4 h-4" /></span>
+                  </Link>
+                ) : (
+                  <div className={`bg-white border border-slate-100 rounded-2xl p-7 ${item.border} transition-all hover:shadow-lg`}>
+                    <div className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-5`}>
+                      <item.icon className={`w-7 h-7 ${item.color}`} />
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
+                    <p className="text-slate-500 text-sm mb-3">{item.desc}</p>
+                    <span className="text-emerald-600 text-sm flex items-center gap-1"><CheckCircle className="w-4 h-4" /> Identity verified</span>
+                  </div>
+                )}
+              </FadeInSection>
+            ))}
           </div>
 
           {/* Security Logos */}
-          <div className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-8 border-t border-zinc-800">
-            <div className="flex items-center gap-2 text-zinc-500">
-              <CreditCard className="w-5 h-5" />
-              <span className="text-sm">Powered by Stripe</span>
-            </div>
-            <div className="flex items-center gap-2 text-zinc-500">
-              <Lock className="w-5 h-5" />
-              <span className="text-sm">SSL Encrypted</span>
-            </div>
-            <div className="flex items-center gap-2 text-zinc-500">
-              <Award className="w-5 h-5" />
-              <span className="text-sm">GDPR Compliant</span>
-            </div>
-            <Link to="/buyer-protection" className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
-              <Shield className="w-5 h-5" />
-              <span className="text-sm font-medium">Buyer Protection →</span>
+          <div className="flex flex-wrap items-center justify-center gap-8 mt-14 pt-8 border-t border-slate-100">
+            {[
+              { icon: CreditCard, text: "Powered by Stripe" },
+              { icon: Lock, text: "SSL Encrypted" },
+              { icon: Award, text: "GDPR Compliant" },
+            ].map((item, i) => (
+              <span key={i} className="flex items-center gap-2 text-slate-400 text-sm"><item.icon className="w-4 h-4" />{item.text}</span>
+            ))}
+            <Link to="/buyer-protection" className="flex items-center gap-2 text-emerald-600 hover:text-emerald-700 transition-colors text-sm font-medium">
+              <Shield className="w-4 h-4" /> Buyer Protection &rarr;
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ═══════ CTA ═══════ */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 gradient-glow" />
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 relative text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        <div className="absolute inset-0 bg-slate-900" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+        <FadeInSection className="max-w-[1440px] mx-auto px-4 md:px-8 relative text-center">
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
             Ready for Your Next
             <br />
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-amber-300 to-amber-400 bg-clip-text text-transparent">
               Unforgettable Experience?
             </span>
           </h2>
-          <p className="text-zinc-400 text-lg mb-10 max-w-2xl mx-auto">
+          <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
             Join thousands of fans who trust EuroMatchTickets for their live event tickets
           </p>
           <Link to="/events">
             <Button data-testid="cta-btn" className="btn-accent text-lg h-14 px-12">
-              Explore All Events
-              <ArrowRight className="w-5 h-5 ml-2" />
+              Explore All Events <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
-        </div>
+        </FadeInSection>
       </section>
 
-      {/* Trust Section with Reviews */}
-      <TrustSection />
-      
-      {/* Customer Reviews Section */}
-      <section className="py-16 bg-zinc-900/30">
+      {/* ═══════ REVIEWS ═══════ */}
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-yellow-500/10 text-yellow-400 border-yellow-500/30">
-              <Star className="w-3 h-3 mr-1 fill-yellow-400" />
-              4.9/5 from 2,940+ reviews
+          <FadeInSection className="text-center mb-12">
+            <Badge className="mb-4 bg-amber-50 text-amber-700 border-amber-200 text-xs">
+              <Star className="w-3 h-3 mr-1 fill-amber-500 text-amber-500" /> 4.9/5 from 2,940+ reviews
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Fans Say</h2>
-            <p className="text-zinc-400">Real reviews from verified ticket buyers worldwide</p>
-          </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">What Fans Say</h2>
+            <p className="text-slate-500">Real reviews from verified ticket buyers worldwide</p>
+          </FadeInSection>
           
           <ReviewsStats />
-          
-          <div className="mt-10">
-            <ReviewsGrid limit={6} />
-          </div>
+          <div className="mt-10"><ReviewsGrid limit={6} /></div>
           
           <div className="text-center mt-8">
             <Link to="/reviews">
-              <Button variant="outline" className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10">
-                View All Reviews
-                <ChevronRight className="w-4 h-4 ml-1" />
+              <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50 rounded-full px-8">
+                View All Reviews <ChevronRight className="w-4 h-4 ml-1" />
               </Button>
             </Link>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 border-t border-white/5 bg-zinc-900/30">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-                  <Ticket className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold">EuroMatchTickets</span>
-              </div>
-              <p className="text-zinc-500 text-sm">
-                Europe's trusted ticket marketplace for concerts and football matches.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Events</h4>
-              <div className="flex flex-col gap-2 text-sm text-zinc-400">
-                <Link to="/events" className="hover:text-white transition-colors">All Events</Link>
-                <Link to="/events?type=concert" className="hover:text-white transition-colors">Concerts</Link>
-                <Link to="/events?type=match" className="hover:text-white transition-colors">Football</Link>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <div className="flex flex-col gap-2 text-sm text-zinc-400">
-                <Link to="/about" className="hover:text-white transition-colors">About Us</Link>
-                <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <div className="flex flex-col gap-2 text-sm text-zinc-400">
-                <Link to="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
-                <Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-zinc-500 text-sm">
-              © 2025 EuroMatchTickets. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6 text-sm text-zinc-500">
-              <span>Secure payments with Stripe</span>
-              <span>100% Buyer Protection</span>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

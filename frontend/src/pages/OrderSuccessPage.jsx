@@ -69,10 +69,10 @@ const OrderSuccessPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-3 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-zinc-400">Processing your payment...</p>
+          <p className="text-slate-500">Processing your payment...</p>
         </div>
       </div>
     );
@@ -80,9 +80,9 @@ const OrderSuccessPage = () => {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-zinc-950 pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-zinc-400 mb-4">Order not found or payment failed</p>
+          <p className="text-slate-500 mb-4">Order not found or payment failed</p>
           <Link to="/events">
             <Button variant="outline">Browse Events</Button>
           </Link>
@@ -92,39 +92,39 @@ const OrderSuccessPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20" data-testid="order-success-page">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20" data-testid="order-success-page">
       <div className="max-w-[900px] mx-auto px-4 py-12">
         {/* Success Header */}
         <div className="text-center mb-10">
-          <div className="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6 animate-bounce">
-            <Check className="w-10 h-10 text-emerald-400" />
+          <div className="w-20 h-20 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-6 animate-bounce">
+            <Check className="w-10 h-10 text-emerald-600" />
           </div>
           <h1 className="text-3xl font-bold mb-2" data-testid="success-title">Payment Successful!</h1>
-          <p className="text-zinc-400">Your ticket has been confirmed and is ready</p>
+          <p className="text-slate-500">Your ticket has been confirmed and is ready</p>
         </div>
 
         {/* Professional Ticket */}
         <ProfessionalTicket order={order} />
 
         {/* Price Summary */}
-        <div className="bg-zinc-900/60 border border-white/5 rounded-xl p-6 mt-6 max-w-md mx-auto">
+        <div className="bg-white border border-slate-100 rounded-xl p-6 mt-6 max-w-md mx-auto">
           <div className="flex justify-between items-center mb-3">
-            <span className="text-zinc-400 text-sm">Ticket Price</span>
+            <span className="text-slate-500 text-sm">Ticket Price</span>
             <span className="text-white font-medium">{"\u20ac"}{order.ticket_price?.toFixed(2)}</span>
           </div>
           <div className="flex justify-between items-center mb-3">
-            <span className="text-zinc-400 text-sm">Service Fee</span>
+            <span className="text-slate-500 text-sm">Service Fee</span>
             <span className="text-white font-medium">{"\u20ac"}{order.commission?.toFixed(2)}</span>
           </div>
-          <div className="border-t border-zinc-700 pt-3 flex justify-between items-center">
+          <div className="border-t border-slate-200 pt-3 flex justify-between items-center">
             <span className="text-white font-semibold">Total Paid</span>
-            <span className="text-2xl font-bold text-emerald-400">{"\u20ac"}{order.total_amount?.toFixed(2)}</span>
+            <span className="text-2xl font-bold text-emerald-600">{"\u20ac"}{order.total_amount?.toFixed(2)}</span>
           </div>
         </div>
 
         {/* Trust Info */}
-        <div className="flex items-center justify-center gap-2 mt-6 text-zinc-500 text-sm">
-          <Shield className="w-4 h-4 text-emerald-400" />
+        <div className="flex items-center justify-center gap-2 mt-6 text-slate-400 text-sm">
+          <Shield className="w-4 h-4 text-emerald-600" />
           <span>Protected by FanProtect Guarantee</span>
         </div>
 
@@ -137,7 +137,7 @@ const OrderSuccessPage = () => {
             </Button>
           </Link>
           <Link to="/events">
-            <Button variant="outline" className="border-zinc-700 w-full sm:w-auto">
+            <Button variant="outline" className="border-slate-200 w-full sm:w-auto">
               Browse More Events
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>

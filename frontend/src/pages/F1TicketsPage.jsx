@@ -188,7 +188,7 @@ const F1TicketsPage = () => {
   const displayRaces = featuredRaces.length > 0 ? featuredRaces : races.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="F1 Tickets 2026 - Buy Formula 1 Grand Prix Tickets | Monaco, Silverstone, Monza"
         description="Buy F1 2026 tickets at best prices! Monaco GP from €289, British GP Silverstone from €199, Italian GP Monza, Singapore GP & all 24 races. VIP Hospitality, Grandstand. 100% Verified. Instant QR Delivery!"
@@ -201,12 +201,12 @@ const F1TicketsPage = () => {
         <div className="absolute inset-0 opacity-10 bg-cover bg-center" style={{backgroundImage: "url('/images/heroes/f1-red.jpg')"}} />
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-red-500/20 border border-red-500/30 rounded-full px-4 py-2 mb-6 animate-pulse">
-            <Flame className="w-4 h-4 text-red-400" />
-            <span className="text-red-400 font-medium">2026 Season Tickets On Sale!</span>
+          <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 mb-6 animate-pulse">
+            <Flame className="w-4 h-4 text-red-600" />
+            <span className="text-red-600 font-medium">2026 Season Tickets On Sale!</span>
           </div>
           
-          <Badge className="bg-red-500/20 text-red-400 border-red-500/30 mb-6">
+          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® World Championship
           </Badge>
           
@@ -217,51 +217,51 @@ const F1TicketsPage = () => {
             </span>
           </h1>
           
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
             Experience the thrill of Formula 1. From Monaco to Silverstone, Singapore to Abu Dhabi. 
             <strong className="text-white"> Best prices guaranteed - No service fees!</strong>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Flag className="w-5 h-5 text-red-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Flag className="w-5 h-5 text-red-600" />
               <span>{races.length || 23} Races</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Calendar className="w-5 h-5 text-red-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Calendar className="w-5 h-5 text-red-600" />
               <span>Mar - Dec 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Users className="w-5 h-5 text-red-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Users className="w-5 h-5 text-red-600" />
               <span>20 Countries</span>
             </div>
           </div>
 
-          <div className="inline-block bg-zinc-900/80 border border-white/10 rounded-2xl p-6">
-            <div className="text-zinc-400 text-sm">Tickets from</div>
+          <div className="inline-block bg-white/90 border border-slate-200 rounded-2xl p-6">
+            <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">€89</div>
-            <div className="text-emerald-400 text-sm mt-1">Up to 25% cheaper than competitors</div>
+            <div className="text-emerald-600 text-sm mt-1">Up to 25% cheaper than competitors</div>
           </div>
         </div>
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-white/5 bg-zinc-900/30">
+      <section className="py-6 border-y border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-400">
+            <div className="flex items-center gap-2 text-emerald-600">
               <Shield className="w-5 h-5" />
               <span>100% Buyer Protection</span>
             </div>
-            <div className="flex items-center gap-2 text-emerald-400">
+            <div className="flex items-center gap-2 text-emerald-600">
               <Star className="w-5 h-5" />
               <span>Verified Tickets</span>
             </div>
-            <div className="flex items-center gap-2 text-emerald-400">
+            <div className="flex items-center gap-2 text-emerald-600">
               <TrendingUp className="w-5 h-5" />
               <span>0% Service Fee</span>
             </div>
-            <div className="flex items-center gap-2 text-emerald-400">
+            <div className="flex items-center gap-2 text-emerald-600">
               <Zap className="w-5 h-5" />
               <span>Instant Delivery</span>
             </div>
@@ -270,28 +270,28 @@ const F1TicketsPage = () => {
       </section>
 
       {/* Price Comparison */}
-      <section className="py-12 bg-zinc-900/50">
+      <section className="py-12 bg-white">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-8">💰 Compare Our F1 Ticket Prices</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="text-center p-4 bg-zinc-800/50 rounded-xl">
-              <div className="text-zinc-500 text-sm">F1.com Official</div>
-              <div className="text-red-400 line-through font-bold text-xl">€399</div>
+            <div className="text-center p-4 bg-slate-50 rounded-xl">
+              <div className="text-slate-400 text-sm">F1.com Official</div>
+              <div className="text-red-600 line-through font-bold text-xl">€399</div>
             </div>
-            <div className="text-center p-4 bg-zinc-800/50 rounded-xl">
-              <div className="text-zinc-500 text-sm">StubHub</div>
-              <div className="text-red-400 line-through font-bold text-xl">€379</div>
+            <div className="text-center p-4 bg-slate-50 rounded-xl">
+              <div className="text-slate-400 text-sm">StubHub</div>
+              <div className="text-red-600 line-through font-bold text-xl">€379</div>
             </div>
-            <div className="text-center p-4 bg-zinc-800/50 rounded-xl">
-              <div className="text-zinc-500 text-sm">Viagogo</div>
-              <div className="text-red-400 line-through font-bold text-xl">€365</div>
+            <div className="text-center p-4 bg-slate-50 rounded-xl">
+              <div className="text-slate-400 text-sm">Viagogo</div>
+              <div className="text-red-600 line-through font-bold text-xl">€365</div>
             </div>
-            <div className="text-center p-4 bg-emerald-500/20 rounded-xl border-2 border-emerald-500/50">
-              <div className="text-emerald-400 text-sm font-medium">EuroMatchTickets</div>
-              <div className="text-emerald-400 font-black text-2xl">€189</div>
+            <div className="text-center p-4 bg-emerald-50 rounded-xl border-2 border-emerald-500/50">
+              <div className="text-emerald-600 text-sm font-medium">EuroMatchTickets</div>
+              <div className="text-emerald-600 font-black text-2xl">€189</div>
             </div>
           </div>
-          <p className="text-zinc-500 text-xs text-center mt-4">*Average Grandstand prices. Prices vary by race.</p>
+          <p className="text-slate-400 text-xs text-center mt-4">*Average Grandstand prices. Prices vary by race.</p>
         </div>
       </section>
 
@@ -300,7 +300,7 @@ const F1TicketsPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold">🏎️ Featured F1 Races 2026</h2>
-            <Link to="/events?type=f1" className="text-red-400 hover:text-red-300 flex items-center gap-1">
+            <Link to="/events?type=f1" className="text-red-600 hover:text-red-300 flex items-center gap-1">
               View All Races <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
@@ -315,33 +315,33 @@ const F1TicketsPage = () => {
                 <Link 
                   key={race.event_id || i} 
                   to={`/event/${race.event_id}`}
-                  className="group flex flex-col md:flex-row md:items-center justify-between bg-zinc-900/50 border border-white/5 hover:border-red-500/30 rounded-2xl p-6 transition-all"
+                  className="group flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-red-200 rounded-2xl p-6 transition-all"
                 >
                   <div className="flex items-center gap-4 mb-4 md:mb-0">
-                    <div className="w-14 h-14 bg-red-500/20 rounded-xl flex items-center justify-center text-3xl">
+                    <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center text-3xl">
                       {countryFlags[race.country] || '🏁'}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-bold group-hover:text-red-400">{race.title}</h3>
+                        <h3 className="font-bold group-hover:text-red-600">{race.title}</h3>
                         {race.featured && (
-                          <Badge className="bg-orange-500/20 text-orange-400 text-xs">
+                          <Badge className="bg-orange-50 text-orange-600 text-xs">
                             <Flame className="w-3 h-3 mr-1" />HOT
                           </Badge>
                         )}
                       </div>
-                      <p className="text-zinc-500 text-sm">
+                      <p className="text-slate-400 text-sm">
                         {formatDate(race.event_date)} • {race.venue}, {race.country}
                       </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="text-emerald-400 text-sm">
+                    <span className="text-emerald-600 text-sm">
                       {race.available_tickets || 0} tickets
                     </span>
                     <div className="text-right">
-                      <div className="text-xs text-zinc-500">From</div>
-                      <div className="text-xl font-bold text-red-400">
+                      <div className="text-xs text-slate-400">From</div>
+                      <div className="text-xl font-bold text-red-600">
                         €{race.lowest_price ? Math.round(race.lowest_price) : '89'}
                       </div>
                     </div>
@@ -366,7 +366,7 @@ const F1TicketsPage = () => {
       </section>
 
       {/* Ticket Categories */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-10">Choose Your F1 Experience</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -376,11 +376,11 @@ const F1TicketsPage = () => {
               { name: "VIP Hospitality", price: "€989 - €1,989", desc: "Premium experience with food & drinks", icon: Trophy },
               { name: "Paddock Club", price: "€2,989 - €5,989", desc: "Ultimate F1 experience", icon: Star }
             ].map((cat, i) => (
-              <div key={i} className="bg-zinc-900/50 border border-zinc-700 rounded-2xl p-6 hover:border-red-500/30 transition-colors">
-                <cat.icon className="w-10 h-10 text-red-400 mb-4" />
+              <div key={i} className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-red-200 transition-colors">
+                <cat.icon className="w-10 h-10 text-red-600 mb-4" />
                 <h3 className="text-lg font-bold text-white mb-2">{cat.name}</h3>
-                <p className="text-zinc-400 text-sm mb-4">{cat.desc}</p>
-                <div className="text-lg font-bold text-emerald-400">{cat.price}</div>
+                <p className="text-slate-500 text-sm mb-4">{cat.desc}</p>
+                <div className="text-lg font-bold text-emerald-600">{cat.price}</div>
               </div>
             ))}
           </div>
@@ -415,16 +415,16 @@ const F1TicketsPage = () => {
                 to={race.href}
                 className={`flex items-center gap-3 p-4 rounded-xl border transition-all hover:scale-105 ${
                   race.highlight 
-                    ? 'bg-red-500/10 border-red-500/30 hover:border-red-500' 
-                    : 'bg-zinc-900/50 border-zinc-700 hover:border-zinc-500'
+                    ? 'bg-red-50 border-red-200 hover:border-red-500' 
+                    : 'bg-white border-slate-200 hover:border-zinc-500'
                 }`}
               >
                 <span className="text-3xl">{race.flag}</span>
                 <div className="flex-1">
                   <h3 className="font-bold text-white">{race.name}</h3>
-                  <span className="text-emerald-400 text-sm">from {race.price}</span>
+                  <span className="text-emerald-600 text-sm">from {race.price}</span>
                 </div>
-                <ChevronRight className="w-5 h-5 text-zinc-500" />
+                <ChevronRight className="w-5 h-5 text-slate-400" />
               </Link>
             ))}
           </div>
@@ -442,13 +442,13 @@ const F1TicketsPage = () => {
               { title: "Instant QR Delivery", desc: "Receive your tickets immediately via email" },
               { title: "0% Service Fees", desc: "The price you see is the price you pay" }
             ].map((item, i) => (
-              <div key={i} className="flex items-start gap-4 p-4 bg-zinc-900/50 rounded-xl">
-                <div className="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Star className="w-5 h-5 text-red-400" />
+              <div key={i} className="flex items-start gap-4 p-4 bg-white rounded-xl">
+                <div className="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Star className="w-5 h-5 text-red-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white mb-1">{item.title}</h3>
-                  <p className="text-zinc-400 text-sm">{item.desc}</p>
+                  <p className="text-slate-500 text-sm">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -462,7 +462,7 @@ const F1TicketsPage = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready for the F1 2026 Season?
           </h2>
-          <p className="text-xl text-zinc-400 mb-8">
+          <p className="text-xl text-slate-500 mb-8">
             Don't miss Monaco, Silverstone, Monza and more. Book now and save up to 25%!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

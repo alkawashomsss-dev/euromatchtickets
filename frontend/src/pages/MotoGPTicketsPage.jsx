@@ -153,7 +153,7 @@ const MotoGPTicketsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="MotoGP Tickets 2026 - Cheapest Prices | Buy Motorcycle Grand Prix Tickets"
         description="Buy MotoGP 2026 tickets from €69. All 20 Grand Prix races. Mugello, Silverstone, Assen, Barcelona, Valencia. VIP Village & Paddock. 100% Verified. Instant QR delivery!"
@@ -165,47 +165,47 @@ const MotoGPTicketsPage = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-zinc-900 to-zinc-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mb-6">
+          <Badge className="bg-orange-50 text-orange-600 border-orange-200 mb-6">
             <Bike className="w-4 h-4 mr-2" />MotoGP™ World Championship
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             MotoGP Tickets 2026
-            <span className="block text-2xl md:text-3xl mt-2 text-zinc-400">{events.length} Races • World's Best Motorcycle Racing</span>
+            <span className="block text-2xl md:text-3xl mt-2 text-slate-500">{events.length} Races • World's Best Motorcycle Racing</span>
           </h1>
           
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
             Experience the thrill of MotoGP! Watch Marquez, Bagnaia, and Martin battle at 350 km/h. 
-            <strong className="text-emerald-400"> Tickets from €69 - Best prices guaranteed!</strong>
+            <strong className="text-emerald-600"> Tickets from €69 - Best prices guaranteed!</strong>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Flag className="w-5 h-5 text-orange-400" /><span>{events.length} Races</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Flag className="w-5 h-5 text-orange-600" /><span>{events.length} Races</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Calendar className="w-5 h-5 text-orange-400" /><span>March - November 2026</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Calendar className="w-5 h-5 text-orange-600" /><span>March - November 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/30">
-              <Ticket className="w-5 h-5 text-emerald-400" /><span className="text-emerald-400">From €69</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-emerald-50 rounded-full border border-emerald-200">
+              <Ticket className="w-5 h-5 text-emerald-600" /><span className="text-emerald-600">From €69</span>
             </div>
           </div>
 
-          <div className="inline-block bg-zinc-900/80 border border-emerald-500/30 rounded-2xl p-6">
-            <div className="text-zinc-400 text-sm">General Admission from</div>
-            <div className="text-5xl font-bold text-emerald-400">€69</div>
-            <div className="text-emerald-400 text-sm mt-1">Save 30% vs official MotoGP.com</div>
+          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
+            <div className="text-slate-500 text-sm">General Admission from</div>
+            <div className="text-5xl font-bold text-emerald-600">€69</div>
+            <div className="text-emerald-600 text-sm mt-1">Save 30% vs official MotoGP.com</div>
           </div>
         </div>
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-white/5 bg-zinc-900/30">
+      <section className="py-6 border-y border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-400"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><Zap className="w-5 h-5" /><span>Instant QR Delivery</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><Star className="w-5 h-5" /><span>30% Cheaper</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant QR Delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>30% Cheaper</span></div>
           </div>
         </div>
       </section>
@@ -221,7 +221,7 @@ const MotoGPTicketsPage = () => {
             </div>
           ) : events.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-zinc-400 text-xl">No MotoGP events available at the moment.</p>
+              <p className="text-slate-500 text-xl">No MotoGP events available at the moment.</p>
               <Button 
                 onClick={() => navigate('/events')} 
                 className="mt-4 bg-orange-600 hover:bg-orange-700"
@@ -235,7 +235,7 @@ const MotoGPTicketsPage = () => {
                 <Link 
                   key={event.event_id}
                   to={`/event/${event.event_id}`}
-                  className="group bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-orange-500/50 transition-all hover:scale-[1.02]"
+                  className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-orange-500/50 transition-all hover:scale-[1.02]"
                 >
                   <div className="relative h-40 overflow-hidden">
                     <img 
@@ -252,25 +252,25 @@ const MotoGPTicketsPage = () => {
                   </div>
                   
                   <div className="p-5">
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-orange-400 transition-colors">
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-orange-600 transition-colors">
                       {event.title}
                     </h3>
                     
-                    <div className="space-y-2 text-sm text-zinc-400 mb-4">
+                    <div className="space-y-2 text-sm text-slate-500 mb-4">
                       <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-orange-400" />
+                        <MapPin className="w-4 h-4 text-orange-600" />
                         <span>{event.venue || event.city}, {event.country}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-orange-400" />
+                        <Calendar className="w-4 h-4 text-orange-600" />
                         <span>{formatDate(event.event_date)}</span>
                       </div>
                     </div>
                     
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-zinc-500 text-sm">From</span>
-                        <span className="text-2xl font-bold text-emerald-400 ml-2">€69</span>
+                        <span className="text-slate-400 text-sm">From</span>
+                        <span className="text-2xl font-bold text-emerald-600 ml-2">€69</span>
                       </div>
                       <Button size="sm" className="bg-orange-600 hover:bg-orange-700">
                         Buy Tickets <ChevronRight className="w-4 h-4 ml-1" />
@@ -285,29 +285,29 @@ const MotoGPTicketsPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">MotoGP Tickets FAQ</h2>
           
           <div className="space-y-4">
-            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+            <div className="bg-white rounded-xl p-6 border border-slate-200">
               <h3 className="font-bold text-lg mb-2">What's included in MotoGP weekend tickets?</h3>
-              <p className="text-zinc-400">All MotoGP weekend tickets include access to Friday practice, Saturday qualifying, and Sunday races for all classes (MotoGP, Moto2, Moto3).</p>
+              <p className="text-slate-500">All MotoGP weekend tickets include access to Friday practice, Saturday qualifying, and Sunday races for all classes (MotoGP, Moto2, Moto3).</p>
             </div>
             
-            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+            <div className="bg-white rounded-xl p-6 border border-slate-200">
               <h3 className="font-bold text-lg mb-2">Are MotoGP tickets cheaper than official prices?</h3>
-              <p className="text-zinc-400">Yes! Our tickets are typically 20-30% cheaper than official MotoGP.com prices. We source tickets directly from season pass holders and corporate allocations.</p>
+              <p className="text-slate-500">Yes! Our tickets are typically 20-30% cheaper than official MotoGP.com prices. We source tickets directly from season pass holders and corporate allocations.</p>
             </div>
             
-            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+            <div className="bg-white rounded-xl p-6 border border-slate-200">
               <h3 className="font-bold text-lg mb-2">Which MotoGP races are best for first-timers?</h3>
-              <p className="text-zinc-400">Mugello (Italy), Assen (Netherlands), and Silverstone (UK) are considered the best for atmosphere. Barcelona and Valencia offer great value and accessibility.</p>
+              <p className="text-slate-500">Mugello (Italy), Assen (Netherlands), and Silverstone (UK) are considered the best for atmosphere. Barcelona and Valencia offer great value and accessibility.</p>
             </div>
             
-            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+            <div className="bg-white rounded-xl p-6 border border-slate-200">
               <h3 className="font-bold text-lg mb-2">Do you offer MotoGP paddock access?</h3>
-              <p className="text-zinc-400">Yes! We offer VIP Village and Paddock Access packages at select races. These include pit walks, rider meet-and-greets, and premium hospitality.</p>
+              <p className="text-slate-500">Yes! We offer VIP Village and Paddock Access packages at select races. These include pit walks, rider meet-and-greets, and premium hospitality.</p>
             </div>
           </div>
         </div>
@@ -317,7 +317,7 @@ const MotoGPTicketsPage = () => {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Experience MotoGP?</h2>
-          <p className="text-zinc-400 mb-8">Book your tickets now and save up to 30% off official prices!</p>
+          <p className="text-slate-500 mb-8">Book your tickets now and save up to 30% off official prices!</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button 
               onClick={() => navigate('/events?type=motogp')} 
@@ -331,7 +331,7 @@ const MotoGPTicketsPage = () => {
               onClick={() => navigate('/f1-tickets')} 
               size="lg" 
               variant="outline"
-              className="border-zinc-700 hover:border-red-500 hover:text-red-400"
+              className="border-slate-200 hover:border-red-500 hover:text-red-600"
             >
               <Flag className="w-5 h-5 mr-2" />
               Browse F1 Tickets

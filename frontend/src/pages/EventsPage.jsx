@@ -34,9 +34,9 @@ const getEventTypeInfo = (type) => {
   const types = {
     match: { label: "Football", icon: Trophy, color: "tag-match" },
     concert: { label: "Concert", icon: Music, color: "tag-concert" },
-    f1: { label: "Formula 1", icon: Flag, color: "bg-red-500/20 text-red-400 border-red-500/30" },
-    motogp: { label: "MotoGP", icon: Flag, color: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
-    isle_of_man_tt: { label: "Isle of Man TT", icon: Flag, color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
+    f1: { label: "Formula 1", icon: Flag, color: "bg-red-50 text-red-700 border-red-200" },
+    motogp: { label: "MotoGP", icon: Flag, color: "bg-orange-50 text-orange-700 border-orange-200" },
+    isle_of_man_tt: { label: "Isle of Man TT", icon: Flag, color: "bg-amber-50 text-amber-700 border-amber-200" },
   };
   return types[type] || types.match;
 };
@@ -50,7 +50,7 @@ const EventRow = ({ event }) => {
     <Link
       to={`/event/${event.slug || event.event_id}`}
       data-testid={`event-row-${event.slug || event.event_id}`}
-      className="group block bg-zinc-900/40 hover:bg-zinc-800/60 border border-white/5 hover:border-white/10 rounded-2xl p-4 md:p-6 transition-all duration-300"
+      className="group block bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 rounded-2xl p-4 md:p-6 transition-all duration-300 hover:shadow-md"
     >
       <div className="flex flex-col md:flex-row md:items-center gap-4">
         {/* Image - Local optimized WebP */}
@@ -77,21 +77,21 @@ const EventRow = ({ event }) => {
               {typeInfo.label}
             </Badge>
             {event.featured && (
-              <Badge className="bg-purple-500/20 text-purple-400 border border-purple-500/30 text-xs">
+              <Badge className="bg-amber-50 text-amber-700 border border-amber-200 text-xs">
                 <Sparkles className="w-3 h-3 mr-1" />
                 Featured
               </Badge>
             )}
           </div>
           
-          <h3 className="text-lg font-bold group-hover:text-purple-400 transition-colors truncate">
+          <h3 className="text-lg font-bold text-slate-900 group-hover:text-slate-700 transition-colors truncate">
             {event.title}
           </h3>
           {event.subtitle && (
-            <p className="text-zinc-500 text-sm">{event.subtitle}</p>
+            <p className="text-slate-400 text-sm">{event.subtitle}</p>
           )}
 
-          <div className="flex items-center gap-4 mt-2 text-sm text-zinc-400">
+          <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
             <div className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
               <span>{dateInfo.month} {dateInfo.date}, {dateInfo.time}</span>
@@ -107,19 +107,19 @@ const EventRow = ({ event }) => {
         <div className="flex items-center gap-6 md:gap-8">
           {event.available_tickets > 0 && (
             <div className="text-center">
-              <div className="text-sm text-zinc-500">Available</div>
-              <div className="text-lg font-bold text-emerald-400">{event.available_tickets}</div>
+              <div className="text-sm text-slate-500">Available</div>
+              <div className="text-lg font-bold text-emerald-600">{event.available_tickets}</div>
             </div>
           )}
           
           {event.lowest_price && (
             <div className="text-center">
-              <div className="text-sm text-zinc-500">From</div>
-              <div className="text-2xl font-bold">€{event.lowest_price.toFixed(0)}</div>
+              <div className="text-sm text-slate-500">From</div>
+              <div className="text-2xl font-bold text-slate-900">&euro;{event.lowest_price.toFixed(0)}</div>
             </div>
           )}
 
-          <div className="flex items-center text-zinc-400 group-hover:text-purple-400 transition-colors">
+          <div className="flex items-center text-slate-400 group-hover:text-slate-700 transition-colors">
             <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
@@ -206,7 +206,7 @@ const EventsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title={getSEOTitle()}
         description={getSEODescription()}
@@ -219,10 +219,10 @@ const EventsPage = () => {
       ]} />
       
       {/* Header */}
-      <div className="bg-zinc-900/30 border-b border-white/5">
+      <div className="bg-white border-b border-slate-200">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">All Events</h1>
-          <p className="text-zinc-400 text-lg">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">All Events</h1>
+          <p className="text-slate-500 text-lg">
             Find tickets for concerts, matches, and more across Europe
           </p>
         </div>
@@ -233,7 +233,7 @@ const EventsPage = () => {
         <div className="flex flex-col md:flex-row gap-4 mb-8">
           {/* Search */}
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
             <Input
               data-testid="search-input"
               placeholder="Search events, artists, teams, venues..."
@@ -250,40 +250,40 @@ const EventsPage = () => {
           >
             <SelectTrigger 
               data-testid="type-filter"
-              className="w-full md:w-48 bg-zinc-900 border-zinc-800 h-12 rounded-xl"
+              className="w-full md:w-48 bg-white border-slate-200 h-12 rounded-xl"
             >
-              <Filter className="w-4 h-4 mr-2 text-zinc-500" />
+              <Filter className="w-4 h-4 mr-2 text-slate-400" />
               <SelectValue placeholder="All Types" />
             </SelectTrigger>
-            <SelectContent className="bg-zinc-900 border-zinc-800">
+            <SelectContent className="bg-white border-slate-200">
               <SelectItem value="all">All Types</SelectItem>
               <SelectItem value="match">
                 <div className="flex items-center gap-2">
-                  <Trophy className="w-4 h-4 text-emerald-400" />
+                  <Trophy className="w-4 h-4 text-emerald-600" />
                   Football
                 </div>
               </SelectItem>
               <SelectItem value="concert">
                 <div className="flex items-center gap-2">
-                  <Music className="w-4 h-4 text-purple-400" />
+                  <Music className="w-4 h-4 text-violet-600" />
                   Concerts
                 </div>
               </SelectItem>
               <SelectItem value="f1">
                 <div className="flex items-center gap-2">
-                  <Flag className="w-4 h-4 text-red-400" />
+                  <Flag className="w-4 h-4 text-red-600" />
                   Formula 1
                 </div>
               </SelectItem>
               <SelectItem value="motogp">
                 <div className="flex items-center gap-2">
-                  <Flag className="w-4 h-4 text-orange-400" />
+                  <Flag className="w-4 h-4 text-orange-600" />
                   MotoGP
                 </div>
               </SelectItem>
               <SelectItem value="isle_of_man_tt">
                 <div className="flex items-center gap-2">
-                  <Flag className="w-4 h-4 text-yellow-400" />
+                  <Flag className="w-4 h-4 text-amber-600" />
                   Isle of Man TT
                 </div>
               </SelectItem>
@@ -297,12 +297,12 @@ const EventsPage = () => {
           >
             <SelectTrigger 
               data-testid="city-filter"
-              className="w-full md:w-48 bg-zinc-900 border-zinc-800 h-12 rounded-xl"
+              className="w-full md:w-48 bg-white border-slate-200 h-12 rounded-xl"
             >
-              <MapPin className="w-4 h-4 mr-2 text-zinc-500" />
+              <MapPin className="w-4 h-4 mr-2 text-slate-400" />
               <SelectValue placeholder="All Cities" />
             </SelectTrigger>
-            <SelectContent className="bg-zinc-900 border-zinc-800">
+            <SelectContent className="bg-white border-slate-200">
               <SelectItem value="all">All Cities</SelectItem>
               {cities.map(city => (
                 <SelectItem key={city} value={city}>{city}</SelectItem>
@@ -316,7 +316,7 @@ const EventsPage = () => {
               data-testid="clear-filters-btn"
               variant="outline"
               onClick={clearFilters}
-              className="border-zinc-800 text-zinc-400 hover:text-white h-12 rounded-xl"
+              className="border-slate-200 text-slate-500 hover:text-slate-900 h-12 rounded-xl"
             >
               <X className="w-4 h-4 mr-2" />
               Clear
@@ -336,12 +336,10 @@ const EventsPage = () => {
               onClick={() => handleFilterChange('type', type)}
               className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
                 filters.type === type 
-                  ? `bg-${color}-500/20 border-${color}-500/50 text-${color}-400` 
-                  : 'border-white/10 text-zinc-400 hover:border-white/20'
+                  ? `bg-${color}-50 border-${color}-200 text-${color}-700` 
+                  : 'border-slate-200 text-slate-500 hover:border-slate-300 hover:text-slate-700'
               }`}
-              style={filters.type === type ? {
-                backgroundColor: `rgb(var(--${color}-500) / 0.2)`,
-              } : {}}
+              style={filters.type === type ? {} : {}}
             >
               <Icon className="w-4 h-4" />
               {label}
@@ -351,8 +349,8 @@ const EventsPage = () => {
 
         {/* Results */}
         <div className="flex items-center justify-between mb-6">
-          <p className="text-zinc-400">
-            Showing <span className="text-white font-semibold">{events.length}</span> events
+          <p className="text-slate-500">
+            Showing <span className="text-slate-900 font-semibold">{events.length}</span> events
           </p>
         </div>
 
@@ -360,14 +358,14 @@ const EventsPage = () => {
         {loading ? (
           <div className="space-y-4">
             {[1,2,3,4,5].map(i => (
-              <div key={i} className="h-32 bg-zinc-900/40 rounded-2xl shimmer" />
+              <div key={i} className="h-32 bg-white border border-slate-200 rounded-2xl shimmer" />
             ))}
           </div>
         ) : events.length === 0 ? (
           <div className="text-center py-20">
-            <Ticket className="w-16 h-16 mx-auto text-zinc-700 mb-4" />
-            <h3 className="text-xl font-bold mb-2">No Events Found</h3>
-            <p className="text-zinc-400 mb-6">Try adjusting your filters or search terms</p>
+            <Ticket className="w-16 h-16 mx-auto text-slate-300 mb-4" />
+            <h3 className="text-xl font-bold text-slate-900 mb-2">No Events Found</h3>
+            <p className="text-slate-500 mb-6">Try adjusting your filters or search terms</p>
             <Button onClick={clearFilters} className="btn-secondary">
               Clear Filters
             </Button>

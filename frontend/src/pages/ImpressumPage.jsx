@@ -3,20 +3,20 @@ import { Building2, Mail, MapPin, FileText, Scale } from 'lucide-react';
 
 const ImpressumPage = () => {
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <Helmet>
         <title>Impressum | EuroMatchTickets</title>
         <meta name="description" content="Impressum und rechtliche Informationen von EuroMatchTickets. Angaben gemäß § 5 TMG." />
       </Helmet>
 
       {/* Header */}
-      <section className="py-16 bg-zinc-900/30 border-b border-white/5">
+      <section className="py-16 bg-slate-50 border-b border-slate-100">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <div className="w-16 h-16 mx-auto bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <Scale className="w-8 h-8 text-purple-400" />
+          <div className="w-16 h-16 mx-auto bg-violet-50 rounded-2xl flex items-center justify-center mb-6">
+            <Scale className="w-8 h-8 text-violet-600" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Impressum</h1>
-          <p className="text-xl text-zinc-400">
+          <p className="text-xl text-slate-500">
             Information according to §5 TMG
           </p>
         </div>
@@ -25,19 +25,19 @@ const ImpressumPage = () => {
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         <div className="space-y-8">
           {/* Company Info */}
-          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
+          <section className="bg-white border border-slate-200 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <Building2 className="w-6 h-6 text-purple-400" />
+              <Building2 className="w-6 h-6 text-violet-600" />
               Information according to §5 TMG
             </h2>
             
-            <div className="space-y-4 text-zinc-300">
+            <div className="space-y-4 text-slate-600">
               <div>
                 <h3 className="font-semibold text-white text-lg">Alex Heimbeck</h3>
               </div>
               
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-purple-400 mt-1 flex-shrink-0" />
+                <MapPin className="w-5 h-5 text-violet-600 mt-1 flex-shrink-0" />
                 <div>
                   <p>Erzgießereistraße 15</p>
                   <p>80335 München</p>
@@ -48,16 +48,16 @@ const ImpressumPage = () => {
           </section>
 
           {/* Contact */}
-          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
+          <section className="bg-white border border-slate-200 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <Mail className="w-6 h-6 text-emerald-400" />
+              <Mail className="w-6 h-6 text-emerald-600" />
               Contact
             </h2>
             
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-emerald-400" />
-                <a href="mailto:support@euromatchtickets.com" className="text-zinc-300 hover:text-white">
+                <Mail className="w-5 h-5 text-emerald-600" />
+                <a href="mailto:support@euromatchtickets.com" className="text-slate-600 hover:text-white">
                   support@euromatchtickets.com
                 </a>
               </div>
@@ -65,12 +65,12 @@ const ImpressumPage = () => {
           </section>
 
           {/* Responsible for Content */}
-          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
+          <section className="bg-white border border-slate-200 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
               Responsible for content according to §55 Abs. 2 RStV
             </h2>
             
-            <div className="text-zinc-300">
+            <div className="text-slate-600">
               <p className="font-semibold text-white">Alex Heimbeck</p>
               <p>Erzgießereistraße 15</p>
               <p>80335 München</p>
@@ -79,12 +79,12 @@ const ImpressumPage = () => {
           </section>
 
           {/* EU Dispute Resolution */}
-          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
+          <section className="bg-white border border-slate-200 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
               EU Dispute Resolution
             </h2>
             
-            <div className="text-zinc-400 space-y-4">
+            <div className="text-slate-500 space-y-4">
               <p>
                 The European Commission provides a platform for online dispute resolution (OS):
               </p>
@@ -92,7 +92,7 @@ const ImpressumPage = () => {
                 href="https://ec.europa.eu/consumers/odr/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-purple-400 hover:underline block"
+                className="text-violet-600 hover:underline block"
               >
                 https://ec.europa.eu/consumers/odr/
               </a>
@@ -103,12 +103,12 @@ const ImpressumPage = () => {
           </section>
 
           {/* Dispute Resolution */}
-          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
+          <section className="bg-white border border-slate-200 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
               Consumer Dispute Resolution
             </h2>
             
-            <div className="text-zinc-400">
+            <div className="text-slate-500">
               <p>
                 We are not willing or obliged to participate in dispute resolution proceedings 
                 before a consumer arbitration board.
@@ -117,12 +117,12 @@ const ImpressumPage = () => {
           </section>
 
           {/* Liability */}
-          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
+          <section className="bg-white border border-slate-200 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
               Liability for Content
             </h2>
             
-            <div className="text-zinc-400 space-y-4">
+            <div className="text-slate-500 space-y-4">
               <p>
                 As a service provider, we are responsible for our own content on these pages in 
                 accordance with general laws pursuant to Section 7 (1) TMG. According to Sections 
@@ -140,12 +140,12 @@ const ImpressumPage = () => {
           </section>
 
           {/* Disclaimer */}
-          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
+          <section className="bg-white border border-slate-200 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
               Disclaimer
             </h2>
             
-            <div className="text-zinc-400 space-y-4">
+            <div className="text-slate-500 space-y-4">
               <p>
                 Euromatchtickets.com is an independent secondary ticket marketplace and is not 
                 affiliated with, endorsed by, or officially connected to any event organizer, 
@@ -155,12 +155,12 @@ const ImpressumPage = () => {
           </section>
 
           {/* Copyright */}
-          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
+          <section className="bg-white border border-slate-200 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6">
               Copyright
             </h2>
             
-            <div className="text-zinc-400 space-y-4">
+            <div className="text-slate-500 space-y-4">
               <p>
                 The content and works created by the site operators on these pages are subject to 
                 copyright law. Duplication, processing, distribution, and any kind of exploitation 

@@ -61,14 +61,14 @@ const MarketingDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 flex items-center justify-center">
         <RefreshCw className="w-8 h-8 animate-spin text-purple-500" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20 pb-16">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 pb-16">
       <div className="max-w-7xl mx-auto px-4">
         
         {/* Header */}
@@ -77,60 +77,60 @@ const MarketingDashboard = () => {
             <Rocket className="w-4 h-4 mr-2" />Marketing Warfare System
           </Badge>
           <h1 className="text-4xl font-bold mb-2">Sell 1000 Tickets This Month</h1>
-          <p className="text-zinc-400">Automated marketing tools to dominate the competition</p>
+          <p className="text-slate-500">Automated marketing tools to dominate the competition</p>
         </div>
 
         {/* Stats Overview */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4">
-            <div className="flex items-center gap-2 text-zinc-400 mb-2">
+          <div className="bg-white border border-slate-200 rounded-xl p-4">
+            <div className="flex items-center gap-2 text-slate-500 mb-2">
               <Users className="w-4 h-4" />Referrals
             </div>
             <div className="text-3xl font-bold">{referralData?.stats?.total_referrals || 0}</div>
           </div>
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4">
-            <div className="flex items-center gap-2 text-zinc-400 mb-2">
+          <div className="bg-white border border-slate-200 rounded-xl p-4">
+            <div className="flex items-center gap-2 text-slate-500 mb-2">
               <DollarSign className="w-4 h-4" />Earnings
             </div>
-            <div className="text-3xl font-bold text-emerald-400">€{referralData?.stats?.total_earnings || 0}</div>
+            <div className="text-3xl font-bold text-emerald-600">€{referralData?.stats?.total_earnings || 0}</div>
           </div>
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4">
-            <div className="flex items-center gap-2 text-zinc-400 mb-2">
+          <div className="bg-white border border-slate-200 rounded-xl p-4">
+            <div className="flex items-center gap-2 text-slate-500 mb-2">
               <Target className="w-4 h-4" />Target
             </div>
-            <div className="text-3xl font-bold text-purple-400">1000</div>
+            <div className="text-3xl font-bold text-violet-600">1000</div>
           </div>
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4">
-            <div className="flex items-center gap-2 text-zinc-400 mb-2">
+          <div className="bg-white border border-slate-200 rounded-xl p-4">
+            <div className="flex items-center gap-2 text-slate-500 mb-2">
               <TrendingUp className="w-4 h-4" />Progress
             </div>
-            <div className="text-3xl font-bold text-amber-400">0%</div>
+            <div className="text-3xl font-bold text-amber-600">0%</div>
           </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           
           {/* Referral Program */}
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
                 <Gift className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h2 className="text-xl font-bold">Viral Referral Program</h2>
-                <p className="text-zinc-400 text-sm">Give €10, Get €10 for each friend</p>
+                <p className="text-slate-500 text-sm">Give €10, Get €10 for each friend</p>
               </div>
             </div>
 
             {referralData && (
               <>
-                <div className="bg-zinc-800/50 rounded-xl p-4 mb-4">
-                  <label className="text-zinc-400 text-sm mb-2 block">Your Referral Link</label>
+                <div className="bg-slate-50 rounded-xl p-4 mb-4">
+                  <label className="text-slate-500 text-sm mb-2 block">Your Referral Link</label>
                   <div className="flex gap-2">
                     <input 
                       value={referralData.referral_link}
                       readOnly
-                      className="flex-1 bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-2 text-sm"
+                      className="flex-1 bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm"
                     />
                     <Button 
                       onClick={() => copyToClipboard(referralData.referral_link, 'link')}
@@ -168,15 +168,15 @@ const MarketingDashboard = () => {
                   </Button>
                 </div>
 
-                <div className="text-sm text-zinc-400">
-                  Code: <span className="text-purple-400 font-mono">{referralData.referral_code}</span>
+                <div className="text-sm text-slate-500">
+                  Code: <span className="text-violet-600 font-mono">{referralData.referral_code}</span>
                 </div>
               </>
             )}
 
             {!user && (
               <div className="text-center py-8">
-                <p className="text-zinc-400 mb-4">Sign in to get your referral link</p>
+                <p className="text-slate-500 mb-4">Sign in to get your referral link</p>
                 <Link to="/">
                   <Button className="bg-purple-600 hover:bg-purple-700">Sign In</Button>
                 </Link>
@@ -185,20 +185,20 @@ const MarketingDashboard = () => {
           </div>
 
           {/* Social Media Posts */}
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center">
                 <Share2 className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h2 className="text-xl font-bold">Auto-Generated Posts</h2>
-                <p className="text-zinc-400 text-sm">Copy & paste to your social media</p>
+                <p className="text-slate-500 text-sm">Copy & paste to your social media</p>
               </div>
             </div>
 
             <div className="space-y-4 max-h-[400px] overflow-y-auto">
               {socialPosts.map((post, idx) => (
-                <div key={idx} className="bg-zinc-800/50 rounded-xl p-4">
+                <div key={idx} className="bg-slate-50 rounded-xl p-4">
                   <div className="flex items-center gap-2 mb-2">
                     <Badge className={`
                       ${post.platform === 'twitter' ? 'bg-[#1DA1F2]' : ''}
@@ -209,9 +209,9 @@ const MarketingDashboard = () => {
                     `}>
                       {post.platform}
                     </Badge>
-                    <span className="text-zinc-500 text-sm">{post.event_title}</span>
+                    <span className="text-slate-400 text-sm">{post.event_title}</span>
                   </div>
-                  <p className="text-sm text-zinc-300 whitespace-pre-wrap mb-3">{post.content}</p>
+                  <p className="text-sm text-slate-600 whitespace-pre-wrap mb-3">{post.content}</p>
                   <Button 
                     size="sm"
                     onClick={() => copyToClipboard(post.content, `post-${idx}`)}
@@ -226,21 +226,21 @@ const MarketingDashboard = () => {
 
             <Button 
               onClick={fetchData}
-              className="w-full mt-4 bg-zinc-800 hover:bg-zinc-700"
+              className="w-full mt-4 bg-slate-100 hover:bg-slate-100"
             >
               <RefreshCw className="w-4 h-4 mr-2" />Generate New Posts
             </Button>
           </div>
 
           {/* Monthly Growth Plan */}
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 lg:col-span-2">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-600 to-orange-600 flex items-center justify-center">
                 <Calendar className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h2 className="text-xl font-bold">4-Week Growth Plan</h2>
-                <p className="text-zinc-400 text-sm">Follow this plan to sell 1000 tickets</p>
+                <p className="text-slate-500 text-sm">Follow this plan to sell 1000 tickets</p>
               </div>
             </div>
 
@@ -249,18 +249,18 @@ const MarketingDashboard = () => {
                 {Object.entries(growthPlan.monthly_plan)
                   .filter(([key]) => key.startsWith('week'))
                   .map(([weekKey, week]) => (
-                    <div key={weekKey} className="bg-zinc-800/50 rounded-xl p-4">
+                    <div key={weekKey} className="bg-slate-50 rounded-xl p-4">
                       <div className="flex items-center justify-between mb-3">
-                        <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30">
+                        <Badge className="bg-violet-50 text-violet-600 border-violet-200">
                           {weekKey.replace('_', ' ').toUpperCase()}
                         </Badge>
-                        <span className="text-emerald-400 font-bold">{week.target_sales} sales</span>
+                        <span className="text-emerald-600 font-bold">{week.target_sales} sales</span>
                       </div>
                       <h3 className="font-bold mb-2">{week.focus}</h3>
                       <ul className="space-y-1">
                         {week.actions.slice(0, 3).map((action, idx) => (
-                          <li key={idx} className="text-sm text-zinc-400 flex items-start gap-2">
-                            <ChevronRight className="w-3 h-3 mt-1 text-purple-400" />
+                          <li key={idx} className="text-sm text-slate-500 flex items-start gap-2">
+                            <ChevronRight className="w-3 h-3 mt-1 text-violet-600" />
                             {action}
                           </li>
                         ))}
@@ -272,30 +272,30 @@ const MarketingDashboard = () => {
           </div>
 
           {/* Growth Tactics */}
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center">
                 <Zap className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h2 className="text-xl font-bold">Growth Hacking Tactics</h2>
-                <p className="text-zinc-400 text-sm">Proven strategies to boost sales</p>
+                <p className="text-slate-500 text-sm">Proven strategies to boost sales</p>
               </div>
             </div>
 
             <div className="space-y-3">
               {growthPlan?.growth_tactics?.slice(0, 6).map((tactic, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-zinc-800/50 rounded-lg">
+                <div key={idx} className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg">
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold ${
-                    tactic.potential_impact === 'high' ? 'bg-emerald-500/20 text-emerald-400' :
-                    tactic.potential_impact === 'medium' ? 'bg-amber-500/20 text-amber-400' :
-                    'bg-zinc-500/20 text-zinc-400'
+                    tactic.potential_impact === 'high' ? 'bg-emerald-50 text-emerald-600' :
+                    tactic.potential_impact === 'medium' ? 'bg-amber-50 text-amber-600' :
+                    'bg-zinc-500/20 text-slate-500'
                   }`}>
                     {idx + 1}
                   </div>
                   <div>
                     <h4 className="font-semibold">{tactic.name}</h4>
-                    <p className="text-sm text-zinc-400">{tactic.description}</p>
+                    <p className="text-sm text-slate-500">{tactic.description}</p>
                   </div>
                 </div>
               ))}
@@ -303,27 +303,27 @@ const MarketingDashboard = () => {
           </div>
 
           {/* High Value Keywords */}
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-600 to-rose-600 flex items-center justify-center">
                 <Target className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h2 className="text-xl font-bold">Target Keywords</h2>
-                <p className="text-zinc-400 text-sm">Focus content on these keywords</p>
+                <p className="text-slate-500 text-sm">Focus content on these keywords</p>
               </div>
             </div>
 
             <div className="space-y-2">
               {growthPlan?.high_value_keywords?.map((kw, idx) => (
-                <div key={idx} className="flex items-center justify-between p-3 bg-zinc-800/50 rounded-lg">
+                <div key={idx} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
                   <span className="text-sm">{kw.keyword}</span>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-zinc-500">{kw.volume?.toLocaleString()} searches</span>
+                    <span className="text-xs text-slate-400">{kw.volume?.toLocaleString()} searches</span>
                     <Badge className={`text-xs ${
-                      kw.difficulty === 'low' ? 'bg-emerald-500/20 text-emerald-400' :
-                      kw.difficulty === 'medium' ? 'bg-amber-500/20 text-amber-400' :
-                      'bg-red-500/20 text-red-400'
+                      kw.difficulty === 'low' ? 'bg-emerald-50 text-emerald-600' :
+                      kw.difficulty === 'medium' ? 'bg-amber-50 text-amber-600' :
+                      'bg-red-50 text-red-600'
                     }`}>
                       {kw.difficulty}
                     </Badge>

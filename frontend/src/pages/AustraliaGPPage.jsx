@@ -37,7 +37,7 @@ const AustraliaGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="Australian Grand Prix Tickets 2026 - Melbourne F1 Tickets | Albert Park | Best Prices"
         description="Buy Australian Grand Prix 2026 Melbourne tickets from €159. Albert Park Circuit. Jones, Brabham, Prost grandstands. VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
@@ -47,43 +47,43 @@ const AustraliaGPPage = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-zinc-900 to-zinc-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 mb-6">
+          <Badge className="bg-blue-50 text-blue-600 border-blue-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® Australian Grand Prix
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Australian Grand Prix 2026 Tickets
-            <span className="block text-2xl md:text-3xl mt-2 text-zinc-400">Albert Park Circuit • Melbourne 🇦🇺</span>
+            <span className="block text-2xl md:text-3xl mt-2 text-slate-500">Albert Park Circuit • Melbourne 🇦🇺</span>
           </h1>
           
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
             The season opener! Beautiful Melbourne and the iconic Albert Park lake circuit.
-            <strong className="text-emerald-400"> 100% Ticket Guarantee. €10 cheaper than competitors!</strong>
+            <strong className="text-emerald-600"> 100% Ticket Guarantee. €10 cheaper than competitors!</strong>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Calendar className="w-5 h-5 text-blue-400" /><span>March 13-15, 2026</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Calendar className="w-5 h-5 text-blue-600" /><span>March 13-15, 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <MapPin className="w-5 h-5 text-blue-400" /><span>Melbourne, Australia</span>
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <MapPin className="w-5 h-5 text-blue-600" /><span>Melbourne, Australia</span>
             </div>
           </div>
 
-          <div className="inline-block bg-zinc-900/80 border border-emerald-500/30 rounded-2xl p-6">
-            <div className="text-zinc-400 text-sm">Tickets from</div>
-            <div className="text-5xl font-bold text-emerald-400">€159</div>
+          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
+            <div className="text-slate-500 text-sm">Tickets from</div>
+            <div className="text-5xl font-bold text-emerald-600">€159</div>
           </div>
         </div>
       </section>
 
-      <section className="py-6 border-y border-white/5 bg-zinc-900/30">
+      <section className="py-6 border-y border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="flex items-center gap-2 justify-center text-emerald-400"><Shield className="w-5 h-5" /><span className="text-sm">100% Ticket Guarantee</span></div>
-            <div className="flex items-center gap-2 justify-center text-emerald-400"><CreditCard className="w-5 h-5" /><span className="text-sm">Secure Checkout</span></div>
-            <div className="flex items-center gap-2 justify-center text-emerald-400"><Zap className="w-5 h-5" /><span className="text-sm">Instant Delivery</span></div>
-            <div className="flex items-center gap-2 justify-center text-emerald-400"><Headphones className="w-5 h-5" /><span className="text-sm">24/7 Support</span></div>
+            <div className="flex items-center gap-2 justify-center text-emerald-600"><Shield className="w-5 h-5" /><span className="text-sm">100% Ticket Guarantee</span></div>
+            <div className="flex items-center gap-2 justify-center text-emerald-600"><CreditCard className="w-5 h-5" /><span className="text-sm">Secure Checkout</span></div>
+            <div className="flex items-center gap-2 justify-center text-emerald-600"><Zap className="w-5 h-5" /><span className="text-sm">Instant Delivery</span></div>
+            <div className="flex items-center gap-2 justify-center text-emerald-600"><Headphones className="w-5 h-5" /><span className="text-sm">24/7 Support</span></div>
           </div>
         </div>
       </section>
@@ -93,22 +93,22 @@ const AustraliaGPPage = () => {
           <h2 className="text-3xl font-bold mb-8">Buy Melbourne F1 2026 Tickets</h2>
           <div className="grid gap-4">
             {tickets.map((ticket, i) => (
-              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-zinc-900/50 border border-white/5 hover:border-blue-500/30 rounded-2xl p-6 transition-all">
+              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-blue-200 rounded-2xl p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center"><Ticket className="w-7 h-7 text-blue-400" /></div>
+                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center"><Ticket className="w-7 h-7 text-blue-600" /></div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold">{ticket.section}</h3>
-                      {ticket.popular && <Badge className="bg-orange-500/20 text-orange-400 text-xs">POPULAR</Badge>}
+                      {ticket.popular && <Badge className="bg-orange-50 text-orange-600 text-xs">POPULAR</Badge>}
                     </div>
-                    <p className="text-zinc-500 text-sm">Australian Grand Prix 2026 • 3-Day Pass</p>
+                    <p className="text-slate-400 text-sm">Australian Grand Prix 2026 • 3-Day Pass</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-emerald-400 text-sm">{ticket.available} left</span>
+                  <span className="text-emerald-600 text-sm">{ticket.available} left</span>
                   <div className="text-right">
-                    <div className="text-xs text-zinc-500 line-through">€{ticket.originalPrice}</div>
-                    <div className="text-xl font-bold text-emerald-400">€{ticket.price}</div>
+                    <div className="text-xs text-slate-400 line-through">€{ticket.originalPrice}</div>
+                    <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
                   <Link to="/events?type=f1"><Button className="bg-blue-500 hover:bg-blue-600">Buy Now</Button></Link>
                 </div>
@@ -118,26 +118,26 @@ const AustraliaGPPage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 flex items-center gap-2"><HelpCircle className="w-6 h-6 text-blue-400" />FAQ - Australian GP Tickets</h2>
+          <h2 className="text-2xl font-bold mb-8 flex items-center gap-2"><HelpCircle className="w-6 h-6 text-blue-600" />FAQ - Australian GP Tickets</h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-zinc-900/50 border border-zinc-700 rounded-xl p-6">
+              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
                 <h3 className="font-bold text-white mb-2">{faq.q}</h3>
-                <p className="text-zinc-400">{faq.a}</p>
+                <p className="text-slate-500">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-12 border-t border-white/5">
+      <section className="py-12 border-t border-slate-100">
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-lg font-bold mb-4">Related Searches:</h3>
           <div className="flex flex-wrap gap-2">
             {["Australian GP tickets", "Melbourne F1 tickets", "Albert Park tickets", "F1 Australia 2026", "Melbourne Grand Prix", "buy Australian GP tickets", "F1 season opener 2026"].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-zinc-800/50 text-zinc-400 rounded-full text-sm">{term}</span>
+              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">{term}</span>
             ))}
           </div>
         </div>
@@ -146,7 +146,7 @@ const AustraliaGPPage = () => {
       <section className="py-16 bg-gradient-to-r from-blue-900/30 to-cyan-900/30">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Start Your F1 Season in Melbourne!</h2>
-          <p className="text-zinc-400 mb-8">The perfect way to kick off the 2026 F1 season</p>
+          <p className="text-slate-500 mb-8">The perfect way to kick off the 2026 F1 season</p>
           <Link to="/events?type=f1"><Button size="lg" className="bg-blue-500 hover:bg-blue-600 px-8"><Ticket className="w-5 h-5 mr-2" />Buy Melbourne Tickets</Button></Link>
         </div>
       </section>

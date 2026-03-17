@@ -50,7 +50,7 @@ export const ScarcityIndicator = ({ ticketsLeft = 5, totalTickets = 100 }) => {
   const isCritical = ticketsLeft <= 3;
 
   return (
-    <div className={`rounded-xl p-3 ${isCritical ? 'bg-red-500/20 border border-red-500/40' : isLow ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-zinc-800/50 border border-zinc-700'}`}>
+    <div className={`rounded-xl p-3 ${isCritical ? 'bg-red-500/20 border border-red-500/40' : isLow ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-slate-50 border border-slate-200'}`}>
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           {isCritical ? (
@@ -58,7 +58,7 @@ export const ScarcityIndicator = ({ ticketsLeft = 5, totalTickets = 100 }) => {
           ) : (
             <Flame className="w-5 h-5 text-orange-400" />
           )}
-          <span className={`font-bold ${isCritical ? 'text-red-400' : isLow ? 'text-orange-400' : 'text-zinc-300'}`}>
+          <span className={`font-bold ${isCritical ? 'text-red-400' : isLow ? 'text-orange-400' : 'text-slate-600'}`}>
             {isCritical ? 'Almost Sold Out!' : isLow ? 'Selling Fast!' : 'Available'}
           </span>
         </div>
@@ -130,14 +130,14 @@ export const PriceComparison = ({ ourPrice, competitorPrices }) => {
       <div className="space-y-2">
         {savings.slice(0, 3).map((comp, i) => (
           <div key={i} className="flex items-center justify-between text-sm">
-            <span className="text-zinc-400">{comp.name}</span>
+            <span className="text-slate-500">{comp.name}</span>
             <div className="flex items-center gap-2">
-              <span className="text-zinc-500 line-through">€{comp.price}</span>
+              <span className="text-slate-400 line-through">€{comp.price}</span>
               <Badge className="bg-emerald-500/20 text-emerald-400">-{comp.savingPercent}%</Badge>
             </div>
           </div>
         ))}
-        <div className="flex items-center justify-between pt-2 border-t border-zinc-700">
+        <div className="flex items-center justify-between pt-2 border-t border-slate-200">
           <span className="font-bold text-white">Our Price</span>
           <span className="text-2xl font-bold text-emerald-400">€{ourPrice}</span>
         </div>
@@ -288,20 +288,20 @@ export const RecentlyBoughtPopup = () => {
   if (!show || !purchase) return null;
 
   return (
-    <div className="fixed bottom-24 left-4 bg-zinc-900 rounded-2xl p-4 border border-emerald-500/30 shadow-2xl shadow-emerald-500/10 z-40 animate-in slide-in-from-left max-w-sm">
+    <div className="fixed bottom-24 left-4 bg-white rounded-2xl p-4 border border-slate-200 shadow-xl z-40 animate-in slide-in-from-left max-w-sm">
       <div className="flex items-start gap-3">
-        <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center">
-          <ShoppingCart className="w-6 h-6 text-emerald-400" />
+        <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center">
+          <ShoppingCart className="w-6 h-6 text-emerald-600" />
         </div>
         <div>
-          <p className="font-bold text-white">
+          <p className="font-bold text-slate-900">
             {purchase.name} from {purchase.city}
           </p>
-          <p className="text-sm text-zinc-400">
-            Just bought <span className="text-emerald-400 font-medium">{purchase.tickets} tickets</span> for
+          <p className="text-sm text-slate-500">
+            Just bought <span className="text-emerald-600 font-medium">{purchase.tickets} tickets</span> for
           </p>
-          <p className="text-sm text-purple-400 font-medium">{purchase.event}</p>
-          <p className="text-xs text-zinc-500 mt-1">{purchase.time}</p>
+          <p className="text-sm text-slate-700 font-medium">{purchase.event}</p>
+          <p className="text-xs text-slate-400 mt-1">{purchase.time}</p>
         </div>
       </div>
     </div>
@@ -344,9 +344,9 @@ export const TrustBadges = () => {
   return (
     <div className="flex flex-wrap justify-center gap-3 py-4">
       {badges.map((badge, i) => (
-        <div key={i} className="flex items-center gap-2 bg-zinc-800/50 rounded-full px-4 py-2 border border-zinc-700">
+        <div key={i} className="flex items-center gap-2 bg-slate-50 rounded-full px-4 py-2 border border-slate-200">
           <span className="text-lg">{badge.icon}</span>
-          <span className="text-sm text-zinc-300">{badge.text}</span>
+          <span className="text-sm text-slate-600">{badge.text}</span>
         </div>
       ))}
     </div>
@@ -379,15 +379,15 @@ export const LimitedTimeOffer = ({ originalPrice, salePrice, expiresIn = 3600 })
       
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-zinc-400 text-sm line-through">Was €{originalPrice}</div>
+          <div className="text-slate-500 text-sm line-through">Was €{originalPrice}</div>
           <div className="text-3xl font-bold text-white">€{salePrice}</div>
         </div>
         
-        <div className="text-center bg-zinc-900/50 rounded-xl px-4 py-2">
+        <div className="text-center bg-white rounded-xl px-4 py-2">
           <div className="text-2xl font-mono font-bold text-yellow-400">
             {String(hours).padStart(2, '0')}:{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
           </div>
-          <div className="text-xs text-zinc-400">Offer expires</div>
+          <div className="text-xs text-slate-500">Offer expires</div>
         </div>
       </div>
     </div>
@@ -409,12 +409,12 @@ export const StickyBuyBar = ({ price, ticketsLeft, onBuy }) => {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-zinc-900/95 backdrop-blur-lg border-t border-zinc-800 p-4 z-50 animate-in slide-in-from-bottom">
+    <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-slate-200 p-4 z-50 animate-in slide-in-from-bottom">
       <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <div>
             <div className="text-2xl font-bold text-white">€{price}</div>
-            <div className="text-sm text-zinc-400">Best available</div>
+            <div className="text-sm text-slate-500">Best available</div>
           </div>
           {ticketsLeft <= 10 && (
             <Badge className="bg-red-500/20 text-red-400 border border-red-500/30 animate-pulse">

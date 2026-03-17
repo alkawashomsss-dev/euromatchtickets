@@ -34,7 +34,7 @@ const MonzaGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="Italian Grand Prix Tickets 2026 - Monza F1 Tickets | Temple of Speed"
         description="Buy Italian Grand Prix 2026 Monza tickets from €99. The Temple of Speed! Parabolica, Ascari grandstands. Tifosi atmosphere. 100% Buyer Protection. €10 cheaper!"
@@ -48,55 +48,55 @@ const MonzaGPPage = () => {
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 rounded-full px-4 py-2 mb-6">
-            <Trophy className="w-4 h-4 text-green-400" />
-            <span className="text-green-400 font-medium">The Temple of Speed 🏎️</span>
+            <Trophy className="w-4 h-4 text-green-600" />
+            <span className="text-green-600 font-medium">The Temple of Speed 🏎️</span>
           </div>
           
-          <Badge className="bg-red-500/20 text-red-400 border-red-500/30 mb-6">
+          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® World Championship
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Italian Grand Prix 2026
-            <span className="block text-2xl md:text-3xl mt-2 text-zinc-400">Autodromo Nazionale Monza • Italy</span>
+            <span className="block text-2xl md:text-3xl mt-2 text-slate-500">Autodromo Nazionale Monza • Italy</span>
           </h1>
           
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
             Feel the passion of the Tifosi at the fastest track in F1. Historic Monza - where legends are made 
-            and Ferrari dreams come true. <strong className="text-emerald-400">€10 cheaper than competitors!</strong>
+            and Ferrari dreams come true. <strong className="text-emerald-600">€10 cheaper than competitors!</strong>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Calendar className="w-5 h-5 text-green-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Calendar className="w-5 h-5 text-green-600" />
               <span>September 4-6, 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <MapPin className="w-5 h-5 text-green-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <MapPin className="w-5 h-5 text-green-600" />
               <span>Monza, Italy</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Users className="w-5 h-5 text-green-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Users className="w-5 h-5 text-green-600" />
               <span>5.793 km Circuit</span>
             </div>
           </div>
 
-          <div className="inline-block bg-zinc-900/80 border border-emerald-500/30 rounded-2xl p-6">
-            <div className="text-zinc-400 text-sm">Tickets from</div>
-            <div className="text-5xl font-bold text-emerald-400">€99</div>
-            <div className="text-emerald-400 text-sm mt-1">Best value F1 race! Save €10</div>
+          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
+            <div className="text-slate-500 text-sm">Tickets from</div>
+            <div className="text-5xl font-bold text-emerald-600">€99</div>
+            <div className="text-emerald-600 text-sm mt-1">Best value F1 race! Save €10</div>
           </div>
         </div>
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-white/5 bg-zinc-900/30">
+      <section className="py-6 border-y border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-400"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><Star className="w-5 h-5" /><span>Verified Tickets</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><TrendingUp className="w-5 h-5" /><span>€10 Cheaper</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><Zap className="w-5 h-5" /><span>Instant Delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>Verified Tickets</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>€10 Cheaper</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant Delivery</span></div>
           </div>
         </div>
       </section>
@@ -107,24 +107,24 @@ const MonzaGPPage = () => {
           <h2 className="text-3xl font-bold mb-8">Monza F1 2026 Tickets</h2>
           <div className="grid gap-4">
             {tickets.map((ticket, i) => (
-              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-zinc-900/50 border border-white/5 hover:border-green-500/30 rounded-2xl p-6 transition-all">
+              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-green-500/30 rounded-2xl p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
                   <div className="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
-                    <Ticket className="w-7 h-7 text-green-400" />
+                    <Ticket className="w-7 h-7 text-green-600" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold">{ticket.section}</h3>
-                      {ticket.popular && <Badge className="bg-orange-500/20 text-orange-400 text-xs">POPULAR</Badge>}
+                      {ticket.popular && <Badge className="bg-orange-50 text-orange-600 text-xs">POPULAR</Badge>}
                     </div>
-                    <p className="text-zinc-500 text-sm">Italian Grand Prix 2026 • 3-Day Pass</p>
+                    <p className="text-slate-400 text-sm">Italian Grand Prix 2026 • 3-Day Pass</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-emerald-400 text-sm">{ticket.available} left</span>
+                  <span className="text-emerald-600 text-sm">{ticket.available} left</span>
                   <div className="text-right">
-                    <div className="text-xs text-zinc-500 line-through">€{ticket.originalPrice}</div>
-                    <div className="text-xl font-bold text-emerald-400">€{ticket.price}</div>
+                    <div className="text-xs text-slate-400 line-through">€{ticket.originalPrice}</div>
+                    <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
                   <Link to="/events?type=f1">
                     <Button className="bg-green-500 hover:bg-green-600">Buy Now</Button>
@@ -137,22 +137,22 @@ const MonzaGPPage = () => {
       </section>
 
       {/* SEO Content */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">About Italian Grand Prix at Monza</h2>
           <div className="prose prose-invert max-w-none">
-            <p className="text-zinc-400 mb-4">
+            <p className="text-slate-500 mb-4">
               The <strong>Italian Grand Prix at Monza</strong> is known as the "Temple of Speed" - 
               the fastest circuit on the F1 calendar with average speeds over 260 km/h. 
               The passionate Tifosi fans make this one of the most atmospheric races.
             </p>
-            <p className="text-zinc-400 mb-4">
+            <p className="text-slate-500 mb-4">
               <strong>Autodromo Nazionale Monza</strong> has hosted F1 since 1950. 
               The track features famous corners like the Parabolica, Lesmo curves, and the 
               Ascari chicane. A Ferrari victory here sends the crowd into rapture.
             </p>
             <h3 className="text-xl font-bold text-white mt-6 mb-3">Best Grandstands at Monza:</h3>
-            <ul className="text-zinc-400 space-y-2">
+            <ul className="text-slate-500 space-y-2">
               <li>• <strong>Parabolica</strong> - The legendary final corner before the straight</li>
               <li>• <strong>Prima Variante</strong> - Best overtaking spot, turn 1 action</li>
               <li>• <strong>Ascari</strong> - Technical chicane with close racing</li>
@@ -172,7 +172,7 @@ const MonzaGPPage = () => {
               "Italian GP hospitality", "Monza Tifosi", "Monza VIP",
               "buy Monza tickets", "Italy F1 tickets", "F1 Italy 2026"
             ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-zinc-800/50 text-zinc-400 rounded-full text-sm">
+              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">
                 {term}
               </span>
             ))}
@@ -184,7 +184,7 @@ const MonzaGPPage = () => {
       <section className="py-16 bg-gradient-to-r from-green-900/30 to-red-900/30">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Join the Tifosi at Monza 2026!</h2>
-          <p className="text-zinc-400 mb-8">Experience the passion of Italian motorsport</p>
+          <p className="text-slate-500 mb-8">Experience the passion of Italian motorsport</p>
           <Link to="/events?type=f1">
             <Button size="lg" className="bg-green-500 hover:bg-green-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />

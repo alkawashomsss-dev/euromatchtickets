@@ -81,93 +81,93 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-          <p className="text-zinc-400">Manage users, events, and platform settings</p>
+          <p className="text-slate-500">Manage users, events, and platform settings</p>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-5">
-            <Users className="w-5 h-5 text-blue-400 mb-2" />
+          <div className="bg-white border border-slate-100 rounded-2xl p-5">
+            <Users className="w-5 h-5 text-blue-600 mb-2" />
             <div className="text-2xl font-bold">{stats?.total_users || 0}</div>
-            <div className="text-sm text-zinc-500">Total Users</div>
+            <div className="text-sm text-slate-400">Total Users</div>
           </div>
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-5">
-            <UserCheck className="w-5 h-5 text-emerald-400 mb-2" />
+          <div className="bg-white border border-slate-100 rounded-2xl p-5">
+            <UserCheck className="w-5 h-5 text-emerald-600 mb-2" />
             <div className="text-2xl font-bold">{stats?.verified_sellers || 0}</div>
-            <div className="text-sm text-zinc-500">Verified Sellers</div>
+            <div className="text-sm text-slate-400">Verified Sellers</div>
           </div>
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-5">
-            <Calendar className="w-5 h-5 text-purple-400 mb-2" />
+          <div className="bg-white border border-slate-100 rounded-2xl p-5">
+            <Calendar className="w-5 h-5 text-violet-600 mb-2" />
             <div className="text-2xl font-bold">{stats?.total_events || 0}</div>
-            <div className="text-sm text-zinc-500">Events</div>
+            <div className="text-sm text-slate-400">Events</div>
           </div>
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-5">
-            <Ticket className="w-5 h-5 text-pink-400 mb-2" />
+          <div className="bg-white border border-slate-100 rounded-2xl p-5">
+            <Ticket className="w-5 h-5 text-pink-600 mb-2" />
             <div className="text-2xl font-bold">{stats?.sold_tickets || 0}</div>
-            <div className="text-sm text-zinc-500">Tickets Sold</div>
+            <div className="text-sm text-slate-400">Tickets Sold</div>
           </div>
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-5">
-            <DollarSign className="w-5 h-5 text-purple-400 mb-2" />
+          <div className="bg-white border border-slate-100 rounded-2xl p-5">
+            <DollarSign className="w-5 h-5 text-violet-600 mb-2" />
             <div className="text-2xl font-bold">€{stats?.total_revenue?.toLocaleString() || 0}</div>
-            <div className="text-sm text-zinc-500">Total Revenue</div>
+            <div className="text-sm text-slate-400">Total Revenue</div>
           </div>
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-5">
-            <TrendingUp className="w-5 h-5 text-green-400 mb-2" />
+          <div className="bg-white border border-slate-100 rounded-2xl p-5">
+            <TrendingUp className="w-5 h-5 text-green-600 mb-2" />
             <div className="text-2xl font-bold">€{stats?.total_commission?.toLocaleString() || 0}</div>
-            <div className="text-sm text-zinc-500">Commission (10%)</div>
+            <div className="text-sm text-slate-400">Commission (10%)</div>
           </div>
         </div>
 
         {/* Open Disputes Alert */}
         {stats?.open_disputes > 0 && (
-          <div className="bg-purple-500/10 border border-purple-500/30 rounded-xl p-4 mb-8 flex items-center gap-4">
-            <AlertTriangle className="w-6 h-6 text-purple-400" />
+          <div className="bg-violet-50 border border-violet-200 rounded-xl p-4 mb-8 flex items-center gap-4">
+            <AlertTriangle className="w-6 h-6 text-violet-600" />
             <div>
-              <div className="font-semibold text-purple-400">{stats.open_disputes} Open Disputes</div>
-              <div className="text-sm text-zinc-400">Require your attention</div>
+              <div className="font-semibold text-violet-600">{stats.open_disputes} Open Disputes</div>
+              <div className="text-sm text-slate-500">Require your attention</div>
             </div>
           </div>
         )}
 
         {/* Tabs */}
         <Tabs defaultValue="users" className="w-full">
-          <TabsList className="mb-6 bg-zinc-900/50">
-            <TabsTrigger value="users" className="data-[state=active]:bg-zinc-800">
+          <TabsList className="mb-6 bg-white">
+            <TabsTrigger value="users" className="data-[state=active]:bg-slate-100">
               Users ({users.length})
             </TabsTrigger>
-            <TabsTrigger value="disputes" className="data-[state=active]:bg-zinc-800">
+            <TabsTrigger value="disputes" className="data-[state=active]:bg-slate-100">
               Disputes ({disputes.length})
             </TabsTrigger>
-            <TabsTrigger value="orders" className="data-[state=active]:bg-zinc-800">
+            <TabsTrigger value="orders" className="data-[state=active]:bg-slate-100">
               Orders ({orders.length})
             </TabsTrigger>
           </TabsList>
 
           {/* Users Tab */}
           <TabsContent value="users">
-            <div className="bg-zinc-900/30 border border-white/5 rounded-2xl overflow-hidden">
+            <div className="bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-zinc-900/50 border-b border-white/5">
+                  <thead className="bg-white border-b border-slate-100">
                     <tr>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">User</th>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">Role</th>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">KYC Status</th>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">Rating</th>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">Sales</th>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">Actions</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">User</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">Role</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">KYC Status</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">Rating</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">Sales</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5">
@@ -178,13 +178,13 @@ const AdminDashboard = () => {
                             {u.picture ? (
                               <img src={u.picture} alt="" className="w-8 h-8 rounded-full" />
                             ) : (
-                              <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center">
-                                <Users className="w-4 h-4 text-zinc-500" />
+                              <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                                <Users className="w-4 h-4 text-slate-400" />
                               </div>
                             )}
                             <div>
                               <div className="font-medium">{u.name}</div>
-                              <div className="text-sm text-zinc-500">{u.email}</div>
+                              <div className="text-sm text-slate-400">{u.email}</div>
                             </div>
                           </div>
                         </td>
@@ -193,10 +193,10 @@ const AdminDashboard = () => {
                             value={u.role} 
                             onValueChange={(v) => handleUpdateRole(u.user_id, v)}
                           >
-                            <SelectTrigger className="w-28 bg-zinc-900 border-zinc-800 h-8">
+                            <SelectTrigger className="w-28 bg-white border-slate-200 h-8">
                               <SelectValue />
                             </SelectTrigger>
-                            <SelectContent className="bg-zinc-900 border-zinc-800">
+                            <SelectContent className="bg-white border-slate-200">
                               <SelectItem value="buyer">Buyer</SelectItem>
                               <SelectItem value="seller">Seller</SelectItem>
                               <SelectItem value="admin">Admin</SelectItem>
@@ -210,13 +210,13 @@ const AdminDashboard = () => {
                               onValueChange={(v) => handleUpdateKYC(u.user_id, v)}
                             >
                               <SelectTrigger className={`w-28 h-8 ${
-                                u.kyc_status === 'verified' ? 'border-emerald-500/50 text-emerald-400' :
-                                u.kyc_status === 'rejected' ? 'border-red-500/50 text-red-400' :
-                                'border-zinc-800'
+                                u.kyc_status === 'verified' ? 'border-emerald-500/50 text-emerald-600' :
+                                u.kyc_status === 'rejected' ? 'border-red-500/50 text-red-600' :
+                                'border-slate-200'
                               }`}>
                                 <SelectValue />
                               </SelectTrigger>
-                              <SelectContent className="bg-zinc-900 border-zinc-800">
+                              <SelectContent className="bg-white border-slate-200">
                                 <SelectItem value="pending">Pending</SelectItem>
                                 <SelectItem value="submitted">Submitted</SelectItem>
                                 <SelectItem value="verified">Verified</SelectItem>
@@ -224,15 +224,15 @@ const AdminDashboard = () => {
                               </SelectContent>
                             </Select>
                           ) : (
-                            <span className="text-zinc-600">N/A</span>
+                            <span className="text-slate-500">N/A</span>
                           )}
                         </td>
                         <td className="p-4">
-                          <span className="text-purple-400">{u.rating?.toFixed(1) || '5.0'}</span>
+                          <span className="text-violet-600">{u.rating?.toFixed(1) || '5.0'}</span>
                         </td>
                         <td className="p-4">{u.total_sales || 0}</td>
                         <td className="p-4">
-                          <Button variant="ghost" size="sm" className="text-zinc-400">
+                          <Button variant="ghost" size="sm" className="text-slate-500">
                             View
                           </Button>
                         </td>
@@ -247,46 +247,46 @@ const AdminDashboard = () => {
           {/* Disputes Tab */}
           <TabsContent value="disputes">
             {disputes.length === 0 ? (
-              <div className="text-center py-12 text-zinc-400">
+              <div className="text-center py-12 text-slate-500">
                 <Shield className="w-12 h-12 mx-auto mb-4 opacity-50" />
                 <p>No disputes to review</p>
               </div>
             ) : (
               <div className="space-y-4">
                 {disputes.map(dispute => (
-                  <div key={dispute.dispute_id} className="bg-zinc-900/50 border border-white/5 rounded-xl p-6">
+                  <div key={dispute.dispute_id} className="bg-white border border-slate-100 rounded-xl p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <Badge className={
-                          dispute.status === 'open' ? 'bg-purple-500/20 text-purple-400 border-purple-500/30' :
-                          dispute.status === 'resolved' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
-                          'bg-zinc-500/20 text-zinc-400 border-zinc-500/30'
+                          dispute.status === 'open' ? 'bg-violet-50 text-violet-600 border-violet-200' :
+                          dispute.status === 'resolved' ? 'bg-emerald-50 text-emerald-600 border-emerald-200' :
+                          'bg-zinc-500/20 text-slate-500 border-zinc-500/30'
                         }>
                           {dispute.status}
                         </Badge>
                         <h3 className="text-lg font-semibold mt-2">{dispute.reason}</h3>
-                        <p className="text-zinc-400 text-sm mt-1">{dispute.description}</p>
+                        <p className="text-slate-500 text-sm mt-1">{dispute.description}</p>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4 text-sm mb-4">
                       <div>
-                        <span className="text-zinc-500">Buyer:</span> {dispute.buyer?.name}
+                        <span className="text-slate-400">Buyer:</span> {dispute.buyer?.name}
                       </div>
                       <div>
-                        <span className="text-zinc-500">Seller:</span> {dispute.seller?.name}
+                        <span className="text-slate-400">Seller:</span> {dispute.seller?.name}
                       </div>
                       <div>
-                        <span className="text-zinc-500">Order:</span> {dispute.order_id}
+                        <span className="text-slate-400">Order:</span> {dispute.order_id}
                       </div>
                       <div>
-                        <span className="text-zinc-500">Amount:</span> €{dispute.order?.total_amount}
+                        <span className="text-slate-400">Amount:</span> €{dispute.order?.total_amount}
                       </div>
                     </div>
                     {dispute.status === 'open' && (
                       <div className="flex gap-3">
                         <Button 
                           onClick={() => handleResolveDispute(dispute.dispute_id, 'resolved', 'Refund issued to buyer')}
-                          className="bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30"
+                          className="bg-emerald-50 text-emerald-600 hover:bg-emerald-500/30"
                         >
                           <CheckCircle className="w-4 h-4 mr-2" />
                           Refund Buyer
@@ -294,7 +294,7 @@ const AdminDashboard = () => {
                         <Button 
                           onClick={() => handleResolveDispute(dispute.dispute_id, 'closed', 'No action required')}
                           variant="outline"
-                          className="border-zinc-700"
+                          className="border-slate-200"
                         >
                           <XCircle className="w-4 h-4 mr-2" />
                           Dismiss
@@ -309,17 +309,17 @@ const AdminDashboard = () => {
 
           {/* Orders Tab */}
           <TabsContent value="orders">
-            <div className="bg-zinc-900/30 border border-white/5 rounded-2xl overflow-hidden">
+            <div className="bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-zinc-900/50 border-b border-white/5">
+                  <thead className="bg-white border-b border-slate-100">
                     <tr>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">Order ID</th>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">Buyer</th>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">Amount</th>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">Commission</th>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">Status</th>
-                      <th className="text-left p-4 text-sm font-medium text-zinc-400">Date</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">Order ID</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">Buyer</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">Amount</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">Commission</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">Status</th>
+                      <th className="text-left p-4 text-sm font-medium text-slate-500">Date</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5">
@@ -328,18 +328,18 @@ const AdminDashboard = () => {
                         <td className="p-4 font-mono text-sm">{order.order_id.slice(0, 16)}...</td>
                         <td className="p-4">{order.buyer_email}</td>
                         <td className="p-4 font-semibold">€{order.total_amount?.toFixed(2)}</td>
-                        <td className="p-4 text-emerald-400">€{order.commission?.toFixed(2)}</td>
+                        <td className="p-4 text-emerald-600">€{order.commission?.toFixed(2)}</td>
                         <td className="p-4">
                           <Badge className={
-                            order.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
-                            order.status === 'pending' ? 'bg-purple-500/20 text-purple-400 border-purple-500/30' :
-                            order.status === 'disputed' ? 'bg-red-500/20 text-red-400 border-red-500/30' :
-                            'bg-zinc-500/20 text-zinc-400 border-zinc-500/30'
+                            order.status === 'completed' ? 'bg-emerald-50 text-emerald-600 border-emerald-200' :
+                            order.status === 'pending' ? 'bg-violet-50 text-violet-600 border-violet-200' :
+                            order.status === 'disputed' ? 'bg-red-50 text-red-600 border-red-200' :
+                            'bg-zinc-500/20 text-slate-500 border-zinc-500/30'
                           }>
                             {order.status}
                           </Badge>
                         </td>
-                        <td className="p-4 text-zinc-500">
+                        <td className="p-4 text-slate-400">
                           {new Date(order.created_at).toLocaleDateString()}
                         </td>
                       </tr>

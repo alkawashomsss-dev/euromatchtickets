@@ -21,21 +21,21 @@ const renderMarkdown = (md) => {
   if (!md) return "";
   let html = md;
   html = html.replace(/^### (.+)$/gm, '<h3 class="text-lg font-bold text-white mt-6 mb-2">$1</h3>');
-  html = html.replace(/^## (.+)$/gm, '<h2 class="text-xl font-bold text-white mt-8 mb-3 border-b border-zinc-700 pb-2">$1</h2>');
+  html = html.replace(/^## (.+)$/gm, '<h2 class="text-xl font-bold text-white mt-8 mb-3 border-b border-slate-200 pb-2">$1</h2>');
   html = html.replace(/^# (.+)$/gm, '<h1 class="text-2xl sm:text-3xl font-bold text-white mb-4">$1</h1>');
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>');
   html = html.replace(/^\| (.+)/gm, (match) => {
     const cells = match.split("|").filter(c => c.trim());
     if (cells.every(c => c.trim().match(/^[-:]+$/))) return "";
-    const row = cells.map(c => `<td class="px-3 py-2 border border-zinc-700 text-sm">${c.trim()}</td>`).join("");
-    return `<tr class="hover:bg-zinc-800/50">${row}</tr>`;
+    const row = cells.map(c => `<td class="px-3 py-2 border border-slate-200 text-sm">${c.trim()}</td>`).join("");
+    return `<tr class="hover:bg-slate-50">${row}</tr>`;
   });
-  html = html.replace(/((<tr[^]*?<\/tr>\s*)+)/g, '<div class="overflow-x-auto my-4"><table class="w-full border-collapse border border-zinc-700 rounded-lg">$1</table></div>');
-  html = html.replace(/^- (.+)$/gm, '<li class="text-zinc-300 ml-4 mb-1 list-disc">$1</li>');
+  html = html.replace(/((<tr[^]*?<\/tr>\s*)+)/g, '<div class="overflow-x-auto my-4"><table class="w-full border-collapse border border-slate-200 rounded-lg">$1</table></div>');
+  html = html.replace(/^- (.+)$/gm, '<li class="text-slate-600 ml-4 mb-1 list-disc">$1</li>');
   html = html.replace(/((<li[^]*?<\/li>\s*)+)/g, '<ul class="my-3">$1</ul>');
   html = html.replace(/^(?!<[hultd]|<div|<str)(.+)$/gm, (match) => {
     if (match.trim() === "") return "";
-    return `<p class="text-zinc-300 mb-3 leading-relaxed">${match}</p>`;
+    return `<p class="text-slate-600 mb-3 leading-relaxed">${match}</p>`;
   });
   return html;
 };
@@ -62,7 +62,7 @@ export default function DynamicSEOPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
         <div className="animate-spin w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full" />
       </div>
     );
@@ -70,9 +70,9 @@ export default function DynamicSEOPage() {
 
   if (notFound || !page) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center gap-4" data-testid="seo-page-not-found">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex flex-col items-center justify-center gap-4" data-testid="seo-page-not-found">
         <h1 className="text-3xl font-bold text-white">Page Not Found</h1>
-        <p className="text-zinc-400">The page you are looking for does not exist.</p>
+        <p className="text-slate-500">The page you are looking for does not exist.</p>
         <Link to="/">
           <Button variant="outline">Back to Home</Button>
         </Link>
@@ -171,12 +171,12 @@ export default function DynamicSEOPage() {
         ]
       })}} />
 
-      <div className="min-h-screen bg-zinc-950" data-testid="dynamic-seo-page">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="dynamic-seo-page">
         {/* Hero */}
         <div className={`relative bg-gradient-to-b ${style.bg} py-16 sm:py-20`}>
           <div className="max-w-5xl mx-auto px-4">
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-sm text-zinc-400 mb-6" data-testid="seo-breadcrumb">
+            <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6" data-testid="seo-breadcrumb">
               <Link to="/" className="hover:text-white transition">Home</Link>
               <ChevronRight className="w-3 h-3" />
               {page.category === "f1" && <Link to="/f1-tickets" className="hover:text-white transition">F1 Tickets</Link>}
@@ -186,7 +186,7 @@ export default function DynamicSEOPage() {
               {page.category !== "concerts" && page.category !== "football" && page.category !== "sports" && page.category !== "events" && (
                 <>
                   <ChevronRight className="w-3 h-3" />
-                  <span className="text-zinc-300">{page.event_name || page.artist || page.city || page.stage || ""}</span>
+                  <span className="text-slate-600">{page.event_name || page.artist || page.city || page.stage || ""}</span>
                 </>
               )}
             </nav>
@@ -196,12 +196,12 @@ export default function DynamicSEOPage() {
                 {page.category?.toUpperCase()}
               </Badge>
               {page.page_type && (
-                <Badge variant="outline" className="text-zinc-300 border-zinc-600">
+                <Badge variant="outline" className="text-slate-600 border-slate-300">
                   {page.page_type.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
                 </Badge>
               )}
               {page.year && (
-                <Badge variant="outline" className="text-zinc-300 border-zinc-600">
+                <Badge variant="outline" className="text-slate-600 border-slate-300">
                   <Calendar className="w-3 h-3 mr-1" /> {page.year}
                 </Badge>
               )}
@@ -211,15 +211,15 @@ export default function DynamicSEOPage() {
               {page.title?.split("|")[0]?.trim()}
             </h1>
 
-            <p className="text-lg text-zinc-300 max-w-3xl mb-6">{page.description}</p>
+            <p className="text-lg text-slate-600 max-w-3xl mb-6">{page.description}</p>
 
             {/* Price & CTA */}
             {page.price_low && (
               <div className="flex flex-wrap items-center gap-4" data-testid="seo-price-cta">
-                <div className="bg-zinc-800/80 backdrop-blur rounded-xl px-6 py-4 border border-zinc-700">
-                  <span className="text-sm text-zinc-400">From</span>
-                  <div className="text-3xl font-bold text-emerald-400">{"\u20ac"}{page.price_low}</div>
-                  {page.price_high && <span className="text-xs text-zinc-500 line-through">{"\u20ac"}{page.price_high} on Viagogo</span>}
+                <div className="bg-slate-100/80 backdrop-blur rounded-xl px-6 py-4 border border-slate-200">
+                  <span className="text-sm text-slate-500">From</span>
+                  <div className="text-3xl font-bold text-emerald-600">{"\u20ac"}{page.price_low}</div>
+                  {page.price_high && <span className="text-xs text-slate-400 line-through">{"\u20ac"}{page.price_high} on Viagogo</span>}
                 </div>
                 <Link to="/events">
                   <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl" data-testid="seo-buy-btn">
@@ -252,30 +252,30 @@ export default function DynamicSEOPage() {
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Quick Info Card */}
-              <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6" data-testid="seo-sidebar-info">
+              <div className="bg-white border border-slate-200 rounded-xl p-6" data-testid="seo-sidebar-info">
                 <h3 className="font-bold text-white mb-4">Quick Info</h3>
                 {page.city && (
-                  <div className="flex items-center gap-2 text-zinc-300 mb-3">
-                    <MapPin className="w-4 h-4 text-zinc-500" />
+                  <div className="flex items-center gap-2 text-slate-600 mb-3">
+                    <MapPin className="w-4 h-4 text-slate-400" />
                     <span>{page.city}{page.country ? `, ${page.country}` : ""}</span>
                   </div>
                 )}
                 {page.venue && (
-                  <div className="flex items-center gap-2 text-zinc-300 mb-3">
-                    <Tag className="w-4 h-4 text-zinc-500" />
+                  <div className="flex items-center gap-2 text-slate-600 mb-3">
+                    <Tag className="w-4 h-4 text-slate-400" />
                     <span>{page.venue}</span>
                   </div>
                 )}
                 {page.year && (
-                  <div className="flex items-center gap-2 text-zinc-300 mb-3">
-                    <Calendar className="w-4 h-4 text-zinc-500" />
+                  <div className="flex items-center gap-2 text-slate-600 mb-3">
+                    <Calendar className="w-4 h-4 text-slate-400" />
                     <span>{page.year} Season</span>
                   </div>
                 )}
               </div>
 
               {/* Trust Signals */}
-              <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6" data-testid="seo-trust-signals">
+              <div className="bg-white border border-slate-200 rounded-xl p-6" data-testid="seo-trust-signals">
                 <h3 className="font-bold text-white mb-4">Buyer Protection</h3>
                 <div className="space-y-3">
                   {[
@@ -288,7 +288,7 @@ export default function DynamicSEOPage() {
                       <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="text-white text-sm font-medium">{item.text}</p>
-                        <p className="text-zinc-500 text-xs">{item.sub}</p>
+                        <p className="text-slate-400 text-xs">{item.sub}</p>
                       </div>
                     </div>
                   ))}
@@ -297,8 +297,8 @@ export default function DynamicSEOPage() {
 
               {/* CTA */}
               <div className="bg-emerald-900/30 border border-emerald-800/50 rounded-xl p-6 text-center">
-                <p className="text-emerald-400 font-semibold mb-2">Limited Availability</p>
-                <p className="text-zinc-400 text-sm mb-4">Prices increase as events approach. Book now for the best deals.</p>
+                <p className="text-emerald-600 font-semibold mb-2">Limited Availability</p>
+                <p className="text-slate-500 text-sm mb-4">Prices increase as events approach. Book now for the best deals.</p>
                 <Link to="/events">
                   <Button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white" data-testid="seo-sidebar-buy-btn">
                     Browse All Tickets
@@ -319,7 +319,7 @@ export default function DynamicSEOPage() {
 
         {/* Back Link */}
         <div className="max-w-5xl mx-auto px-4 pb-12">
-          <Link to="/" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition">
+          <Link to="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-white transition">
             <ArrowLeft className="w-4 h-4" /> Back to Home
           </Link>
         </div>

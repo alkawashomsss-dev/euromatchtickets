@@ -109,17 +109,17 @@ const AuthCallback = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center px-4">
       <div className="text-center max-w-md" data-testid="auth-callback">
         {error ? (
           <div data-testid="auth-error">
-            <AlertTriangle className="w-12 h-12 text-red-400 mx-auto mb-4" />
-            <div className="text-red-400 mb-4 text-sm">{error}</div>
+            <AlertTriangle className="w-12 h-12 text-red-600 mx-auto mb-4" />
+            <div className="text-red-600 mb-4 text-sm">{error}</div>
             <div className="flex gap-3 justify-center">
-              <Button onClick={handleRetry} variant="outline" className="border-zinc-700 text-zinc-300" data-testid="auth-retry-btn">
+              <Button onClick={handleRetry} variant="outline" className="border-slate-200 text-slate-600" data-testid="auth-retry-btn">
                 <RefreshCw className="w-4 h-4 mr-2" /> Try Again
               </Button>
-              <Button onClick={() => navigate('/')} variant="outline" className="border-zinc-700 text-zinc-300" data-testid="auth-home-btn">
+              <Button onClick={() => navigate('/')} variant="outline" className="border-slate-200 text-slate-600" data-testid="auth-home-btn">
                 Go Home
               </Button>
             </div>
@@ -127,7 +127,7 @@ const AuthCallback = () => {
         ) : (
           <div data-testid="auth-loading">
             <Loader2 className="w-10 h-10 text-emerald-500 animate-spin mx-auto mb-4" />
-            <p className="text-zinc-400">
+            <p className="text-slate-500">
               {isRetrying ? `Reconnecting... (Attempt ${retryCount + 1}/3)` : "Signing you in..."}
             </p>
           </div>

@@ -33,7 +33,7 @@ const GunsNRosesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="Guns N Roses Tour 2026 Tickets - European Stadium Tour Berlin London"
         description="Buy Guns N Roses 2026 European tour tickets from €95. Stadium shows - Berlin, London Tottenham, Hamburg, Cologne, Munich. Sweet Child O Mine live!"
@@ -44,36 +44,36 @@ const GunsNRosesPage = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-red-500/10 to-zinc-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full px-4 py-2 mb-6">
-            <Zap className="w-4 h-4 text-cyan-400" />
-            <span className="text-cyan-400 font-medium">Legendary Rock Tour 2026!</span>
+            <Zap className="w-4 h-4 text-cyan-600" />
+            <span className="text-cyan-600 font-medium">Legendary Rock Tour 2026!</span>
           </div>
-          <Badge className="bg-red-500/20 text-red-400 border-red-500/30 mb-6">
+          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
             <Skull className="w-4 h-4 mr-2" />Stadium Rock
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Guns N Roses
             <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-cyan-400 via-red-400 to-cyan-400 bg-clip-text text-transparent">European Stadium Tour 2026</span>
           </h1>
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">The most dangerous band in the world returns! Axl, Slash & Duff bring the ultimate rock n roll experience to European stadiums.</p>
+          <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">The most dangerous band in the world returns! Axl, Slash & Duff bring the ultimate rock n roll experience to European stadiums.</p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><Calendar className="w-5 h-5 text-cyan-400" /><span>June - July 2026</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><MapPin className="w-5 h-5 text-cyan-400" /><span>8 Stadium Shows</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full"><Users className="w-5 h-5 text-cyan-400" /><span>3+ Hour Sets</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Calendar className="w-5 h-5 text-cyan-600" /><span>June - July 2026</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><MapPin className="w-5 h-5 text-cyan-600" /><span>8 Stadium Shows</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Users className="w-5 h-5 text-cyan-600" /><span>3+ Hour Sets</span></div>
           </div>
-          <div className="inline-block bg-zinc-900/80 border border-white/10 rounded-2xl p-6">
-            <div className="text-zinc-400 text-sm">Tickets from</div>
+          <div className="inline-block bg-white/90 border border-slate-200 rounded-2xl p-6">
+            <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">€95</div>
-            <div className="text-emerald-400 text-sm mt-1">Verified</div>
+            <div className="text-emerald-600 text-sm mt-1">Verified</div>
           </div>
         </div>
       </section>
 
-      <section className="py-6 border-y border-white/5 bg-zinc-900/30">
+      <section className="py-6 border-y border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-400"><Shield className="w-5 h-5" /><span>100% Verified</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><Star className="w-5 h-5" /><span>Money-Back Guarantee</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><TrendingUp className="w-5 h-5" /><span>9,800+ Sold</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Verified</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>Money-Back Guarantee</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>9,800+ Sold</span></div>
           </div>
         </div>
       </section>
@@ -83,20 +83,20 @@ const GunsNRosesPage = () => {
           <h2 className="text-3xl font-bold mb-8 text-center">Guns N Roses 2026 European Dates</h2>
           <div className="grid gap-4">
             {shows.map((show, i) => (
-              <Link key={i} to="/events?type=concert" className="group flex flex-col md:flex-row md:items-center justify-between bg-zinc-900/50 border border-white/5 hover:border-cyan-500/30 rounded-2xl p-6 transition-all">
+              <Link key={i} to="/events?type=concert" className="group flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-cyan-500/30 rounded-2xl p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center"><Music className="w-7 h-7 text-cyan-400" /></div>
+                  <div className="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center"><Music className="w-7 h-7 text-cyan-600" /></div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-bold group-hover:text-cyan-400">{show.venue}</h3>
-                      {show.hot && <Badge className="bg-red-500/20 text-red-400 text-xs animate-pulse">HOT</Badge>}
+                      <h3 className="font-bold group-hover:text-cyan-600">{show.venue}</h3>
+                      {show.hot && <Badge className="bg-red-50 text-red-600 text-xs animate-pulse">HOT</Badge>}
                     </div>
-                    <p className="text-zinc-500 text-sm">{show.date} - {show.city}, {show.country}</p>
+                    <p className="text-slate-400 text-sm">{show.date} - {show.city}, {show.country}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-emerald-400 text-sm">{show.tickets} left</span>
-                  <div className="text-right"><div className="text-xs text-zinc-500">From</div><div className="text-xl font-bold text-cyan-400">€{show.price}</div></div>
+                  <span className="text-emerald-600 text-sm">{show.tickets} left</span>
+                  <div className="text-right"><div className="text-xs text-slate-400">From</div><div className="text-xl font-bold text-cyan-600">€{show.price}</div></div>
                   <Button className="bg-cyan-500 hover:bg-cyan-600 text-black font-bold">Buy</Button>
                 </div>
               </Link>
@@ -105,10 +105,10 @@ const GunsNRosesPage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">Guns N Roses European Tour 2026</h2>
-          <div className="prose prose-invert max-w-none text-zinc-400">
+          <div className="prose prose-invert max-w-none text-slate-500">
             <p><strong>Guns N Roses</strong> - Axl Rose, Slash, and Duff McKagan - return to Europe for their 2026 stadium tour. Expect epic 3+ hour shows!</p>
             <h3 className="text-white">Setlist Highlights</h3>
             <p>Sweet Child O Mine, Paradise City, Welcome to the Jungle, November Rain, Patience, Knockin on Heavens Door, and more classics!</p>

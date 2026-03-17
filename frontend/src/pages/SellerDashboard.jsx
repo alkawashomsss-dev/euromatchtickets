@@ -140,29 +140,29 @@ const SellerDashboard = () => {
   // If user is not a seller, show upgrade prompt
   if (user?.role === 'buyer') {
     return (
-      <div className="min-h-screen bg-zinc-950 pt-20">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
         <div className="max-w-2xl mx-auto px-4 py-20 text-center">
-          <div className="w-20 h-20 rounded-2xl bg-purple-500/20 flex items-center justify-center mx-auto mb-6">
-            <Package className="w-10 h-10 text-purple-400" />
+          <div className="w-20 h-20 rounded-2xl bg-violet-50 flex items-center justify-center mx-auto mb-6">
+            <Package className="w-10 h-10 text-violet-600" />
           </div>
           <h1 className="text-3xl font-bold mb-4">Become a Seller</h1>
-          <p className="text-zinc-400 mb-8">
+          <p className="text-slate-500 mb-8">
             Start selling your tickets on EuroMatchTickets and reach thousands of fans across Europe.
           </p>
           <ul className="text-left max-w-md mx-auto mb-8 space-y-3">
-            <li className="flex items-center gap-3 text-zinc-300">
+            <li className="flex items-center gap-3 text-slate-600">
               <CheckCircle className="w-5 h-5 text-emerald-500" />
               List tickets for any event
             </li>
-            <li className="flex items-center gap-3 text-zinc-300">
+            <li className="flex items-center gap-3 text-slate-600">
               <CheckCircle className="w-5 h-5 text-emerald-500" />
               Set your own prices
             </li>
-            <li className="flex items-center gap-3 text-zinc-300">
+            <li className="flex items-center gap-3 text-slate-600">
               <CheckCircle className="w-5 h-5 text-emerald-500" />
               Secure payments via Stripe
             </li>
-            <li className="flex items-center gap-3 text-zinc-300">
+            <li className="flex items-center gap-3 text-slate-600">
               <CheckCircle className="w-5 h-5 text-emerald-500" />
               Build your seller reputation
             </li>
@@ -179,25 +179,25 @@ const SellerDashboard = () => {
   const soldTickets = tickets.filter(t => t.status === 'sold');
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div>
             <h1 className="text-3xl font-bold">Seller Dashboard</h1>
-            <p className="text-zinc-400">Manage your ticket listings</p>
+            <p className="text-slate-500">Manage your ticket listings</p>
           </div>
           <div className="flex items-center gap-4">
             {/* KYC Status */}
             {user?.kyc_status !== 'verified' && (
               <Dialog open={showKYC} onOpenChange={setShowKYC}>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="border-amber-500/50 text-amber-400">
+                  <Button variant="outline" className="border-amber-500/50 text-amber-600">
                     <FileText className="w-4 h-4 mr-2" />
                     {user?.kyc_status === 'submitted' ? 'KYC Pending' : 'Complete KYC'}
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="bg-zinc-900 border-zinc-800">
+                <DialogContent className="bg-white border-slate-200">
                   <DialogHeader>
                     <DialogTitle>Identity Verification (KYC)</DialogTitle>
                   </DialogHeader>
@@ -241,10 +241,10 @@ const SellerDashboard = () => {
                       <div>
                         <Label>ID Type</Label>
                         <Select value={kycData.id_type} onValueChange={(v) => setKycData({...kycData, id_type: v})}>
-                          <SelectTrigger className="bg-zinc-900 border-zinc-800">
+                          <SelectTrigger className="bg-white border-slate-200">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent className="bg-zinc-900 border-zinc-800">
+                          <SelectContent className="bg-white border-slate-200">
                             <SelectItem value="passport">Passport</SelectItem>
                             <SelectItem value="national_id">National ID</SelectItem>
                             <SelectItem value="drivers_license">Driver's License</SelectItem>
@@ -276,7 +276,7 @@ const SellerDashboard = () => {
                   List Ticket
                 </Button>
               </DialogTrigger>
-              <DialogContent className="bg-zinc-900 border-zinc-800 max-w-md">
+              <DialogContent className="bg-white border-slate-200 max-w-md">
                 <DialogHeader>
                   <DialogTitle>List a New Ticket</DialogTitle>
                 </DialogHeader>
@@ -287,10 +287,10 @@ const SellerDashboard = () => {
                       value={newTicket.event_id} 
                       onValueChange={(v) => setNewTicket({...newTicket, event_id: v})}
                     >
-                      <SelectTrigger className="bg-zinc-900 border-zinc-800">
+                      <SelectTrigger className="bg-white border-slate-200">
                         <SelectValue placeholder="Select event" />
                       </SelectTrigger>
-                      <SelectContent className="bg-zinc-900 border-zinc-800 max-h-60">
+                      <SelectContent className="bg-white border-slate-200 max-h-60">
                         {events.map(event => (
                           <SelectItem key={event.event_id} value={event.event_id}>
                             {event.title}
@@ -305,10 +305,10 @@ const SellerDashboard = () => {
                       value={newTicket.category} 
                       onValueChange={(v) => setNewTicket({...newTicket, category: v})}
                     >
-                      <SelectTrigger className="bg-zinc-900 border-zinc-800">
+                      <SelectTrigger className="bg-white border-slate-200">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-zinc-900 border-zinc-800">
+                      <SelectContent className="bg-white border-slate-200">
                         <SelectItem value="vip">VIP</SelectItem>
                         <SelectItem value="floor">Floor</SelectItem>
                         <SelectItem value="cat1">Category 1</SelectItem>
@@ -380,31 +380,31 @@ const SellerDashboard = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Ticket className="w-5 h-5 text-purple-400" />
-              <span className="text-zinc-400">Active Listings</span>
+              <Ticket className="w-5 h-5 text-violet-600" />
+              <span className="text-slate-500">Active Listings</span>
             </div>
             <div className="text-3xl font-bold">{availableTickets.length}</div>
           </div>
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-2">
-              <TrendingUp className="w-5 h-5 text-emerald-400" />
-              <span className="text-zinc-400">Sold</span>
+              <TrendingUp className="w-5 h-5 text-emerald-600" />
+              <span className="text-slate-500">Sold</span>
             </div>
             <div className="text-3xl font-bold">{soldTickets.length}</div>
           </div>
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Star className="w-5 h-5 text-amber-400" />
-              <span className="text-zinc-400">Rating</span>
+              <Star className="w-5 h-5 text-amber-600" />
+              <span className="text-slate-500">Rating</span>
             </div>
             <div className="text-3xl font-bold">{user?.rating?.toFixed(1) || '5.0'}</div>
           </div>
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-2">
-              <DollarSign className="w-5 h-5 text-blue-400" />
-              <span className="text-zinc-400">Total Sales</span>
+              <DollarSign className="w-5 h-5 text-blue-600" />
+              <span className="text-slate-500">Total Sales</span>
             </div>
             <div className="text-3xl font-bold">{user?.total_sales || 0}</div>
           </div>
@@ -412,11 +412,11 @@ const SellerDashboard = () => {
 
         {/* Tickets */}
         <Tabs defaultValue="active" className="w-full">
-          <TabsList className="mb-6 bg-zinc-900/50">
-            <TabsTrigger value="active" className="data-[state=active]:bg-zinc-800">
+          <TabsList className="mb-6 bg-white">
+            <TabsTrigger value="active" className="data-[state=active]:bg-slate-100">
               Active ({availableTickets.length})
             </TabsTrigger>
-            <TabsTrigger value="sold" className="data-[state=active]:bg-zinc-800">
+            <TabsTrigger value="sold" className="data-[state=active]:bg-slate-100">
               Sold ({soldTickets.length})
             </TabsTrigger>
           </TabsList>
@@ -427,7 +427,7 @@ const SellerDashboard = () => {
                 <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto" />
               </div>
             ) : availableTickets.length === 0 ? (
-              <div className="text-center py-12 text-zinc-400">
+              <div className="text-center py-12 text-slate-500">
                 <Ticket className="w-12 h-12 mx-auto mb-4 opacity-50" />
                 <p>No active listings</p>
               </div>
@@ -436,14 +436,14 @@ const SellerDashboard = () => {
                 {availableTickets.map(ticket => {
                   const isMatch = ticket.event?.event_type === "match";
                   return (
-                    <div key={ticket.ticket_id} className="bg-zinc-900/50 border border-white/5 rounded-xl p-4 flex items-center justify-between">
+                    <div key={ticket.ticket_id} className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-zinc-800 flex items-center justify-center">
-                          {isMatch ? <Trophy className="w-6 h-6 text-emerald-400" /> : <Music className="w-6 h-6 text-purple-400" />}
+                        <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center">
+                          {isMatch ? <Trophy className="w-6 h-6 text-emerald-600" /> : <Music className="w-6 h-6 text-violet-600" />}
                         </div>
                         <div>
                           <h3 className="font-semibold">{ticket.event?.title || 'Unknown Event'}</h3>
-                          <p className="text-sm text-zinc-400">
+                          <p className="text-sm text-slate-500">
                             {ticket.category.toUpperCase()} - Section {ticket.section}
                             {ticket.row && ` - Row ${ticket.row}`}
                           </p>
@@ -452,7 +452,7 @@ const SellerDashboard = () => {
                       <div className="flex items-center gap-6">
                         <div className="text-right">
                           <div className="text-xl font-bold">€{ticket.price}</div>
-                          <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 text-xs">
+                          <Badge variant="outline" className="border-emerald-200 text-emerald-600 text-xs">
                             Available
                           </Badge>
                         </div>
@@ -460,7 +460,7 @@ const SellerDashboard = () => {
                           variant="ghost" 
                           size="icon"
                           onClick={() => handleDeleteTicket(ticket.ticket_id)}
-                          className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                          className="text-red-600 hover:text-red-300 hover:bg-red-50"
                         >
                           <Trash2 className="w-4 h-4" />
                         </Button>
@@ -474,27 +474,27 @@ const SellerDashboard = () => {
 
           <TabsContent value="sold">
             {soldTickets.length === 0 ? (
-              <div className="text-center py-12 text-zinc-400">
+              <div className="text-center py-12 text-slate-500">
                 <p>No sold tickets yet</p>
               </div>
             ) : (
               <div className="space-y-4">
                 {soldTickets.map(ticket => (
-                  <div key={ticket.ticket_id} className="bg-zinc-900/50 border border-white/5 rounded-xl p-4 flex items-center justify-between opacity-60">
+                  <div key={ticket.ticket_id} className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-between opacity-60">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-zinc-800 flex items-center justify-center">
-                        <Ticket className="w-6 h-6 text-zinc-500" />
+                      <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center">
+                        <Ticket className="w-6 h-6 text-slate-400" />
                       </div>
                       <div>
                         <h3 className="font-semibold">{ticket.event?.title || 'Unknown Event'}</h3>
-                        <p className="text-sm text-zinc-500">
+                        <p className="text-sm text-slate-400">
                           {ticket.category.toUpperCase()} - Section {ticket.section}
                         </p>
                       </div>
                     </div>
                     <div className="text-right">
                       <div className="text-xl font-bold">€{ticket.price}</div>
-                      <Badge variant="outline" className="border-zinc-600 text-zinc-400 text-xs">
+                      <Badge variant="outline" className="border-slate-300 text-slate-500 text-xs">
                         Sold
                       </Badge>
                     </div>

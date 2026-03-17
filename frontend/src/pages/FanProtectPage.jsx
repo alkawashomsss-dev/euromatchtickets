@@ -93,7 +93,7 @@ const FanProtectPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="FanProtect Guarantee - 100% Ticket Protection | EuroMatchTickets"
         description="Our FanProtect Guarantee ensures 100% authentic tickets, full refunds for cancelled events, on-time delivery, and 24/7 support. Buy with confidence."
@@ -110,16 +110,16 @@ const FanProtectPage = () => {
               <Shield className="w-12 h-12 text-white" />
             </div>
             
-            <Badge className="mb-6 bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-sm px-4 py-2">
+            <Badge className="mb-6 bg-emerald-50 text-emerald-600 border-emerald-200 text-sm px-4 py-2">
               <Lock className="w-4 h-4 mr-2" />
               Industry-Leading Protection
             </Badge>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              FanProtect<span className="text-emerald-400">™</span> Guarantee
+              FanProtect<span className="text-emerald-600">™</span> Guarantee
             </h1>
             
-            <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-8">
               Every ticket purchase is protected by our comprehensive FanProtect Guarantee. 
               Buy with complete confidence - if anything goes wrong, we've got you covered.
             </p>
@@ -140,13 +140,13 @@ const FanProtectPage = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-12 bg-zinc-900/50 border-y border-white/5">
+      <section className="py-12 bg-white border-y border-slate-100">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, idx) => (
               <div key={idx} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-emerald-400 mb-2">{stat.value}</div>
-                <div className="text-zinc-400">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-bold text-emerald-600 mb-2">{stat.value}</div>
+                <div className="text-slate-500">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -157,7 +157,7 @@ const FanProtectPage = () => {
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-3xl font-bold text-center mb-4">What's Protected</h2>
-          <p className="text-zinc-400 text-center mb-12 max-w-2xl mx-auto">
+          <p className="text-slate-500 text-center mb-12 max-w-2xl mx-auto">
             Our FanProtect Guarantee covers you from purchase to event day
           </p>
           
@@ -165,13 +165,13 @@ const FanProtectPage = () => {
             {guarantees.map((item, idx) => (
               <div 
                 key={idx}
-                className={`bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 hover:border-${item.color}-500/50 transition-all group`}
+                className={`bg-white border border-slate-200 rounded-2xl p-8 hover:border-${item.color}-500/50 transition-all group`}
               >
                 <div className={`w-14 h-14 bg-${item.color}-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                   <item.icon className={`w-7 h-7 text-${item.color}-400`} />
                 </div>
                 <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-zinc-400">{item.description}</p>
+                <p className="text-slate-500">{item.description}</p>
               </div>
             ))}
           </div>
@@ -179,22 +179,22 @@ const FanProtectPage = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 bg-zinc-900/30">
+      <section className="py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-3xl font-bold text-center mb-4">How We Protect You</h2>
-          <p className="text-zinc-400 text-center mb-12 max-w-2xl mx-auto">
+          <p className="text-slate-500 text-center mb-12 max-w-2xl mx-auto">
             From sourcing to delivery, every step is designed with your protection in mind
           </p>
 
           <div className="grid md:grid-cols-4 gap-6">
             {process.map((item, idx) => (
               <div key={idx} className="relative">
-                <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 text-center h-full">
+                <div className="bg-white border border-slate-200 rounded-2xl p-6 text-center h-full">
                   <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                     {item.step}
                   </div>
                   <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                  <p className="text-sm text-zinc-400">{item.description}</p>
+                  <p className="text-sm text-slate-500">{item.description}</p>
                 </div>
                 {idx < process.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-3 w-6 text-emerald-500">→</div>
@@ -209,27 +209,27 @@ const FanProtectPage = () => {
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 md:px-8">
           <div className="bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-emerald-500/20 rounded-2xl p-8 md:p-12 text-center">
-            <FileCheck className="w-16 h-16 mx-auto mb-6 text-emerald-400" />
+            <FileCheck className="w-16 h-16 mx-auto mb-6 text-emerald-600" />
             <h2 className="text-2xl font-bold mb-4">Verified & Trusted</h2>
-            <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
+            <p className="text-slate-500 mb-8 max-w-xl mx-auto">
               EuroMatchTickets is a verified member of STAR (Secure Ticket Alliance for Resale) 
               and complies with all EU consumer protection regulations.
             </p>
             
             <div className="flex flex-wrap justify-center gap-6">
-              <div className="flex items-center gap-2 bg-zinc-800/50 rounded-full px-4 py-2">
+              <div className="flex items-center gap-2 bg-slate-50 rounded-full px-4 py-2">
                 <span className="text-2xl">🛡️</span>
                 <span className="text-sm">STAR Member</span>
               </div>
-              <div className="flex items-center gap-2 bg-zinc-800/50 rounded-full px-4 py-2">
+              <div className="flex items-center gap-2 bg-slate-50 rounded-full px-4 py-2">
                 <span className="text-2xl">🔒</span>
                 <span className="text-sm">PCI Compliant</span>
               </div>
-              <div className="flex items-center gap-2 bg-zinc-800/50 rounded-full px-4 py-2">
+              <div className="flex items-center gap-2 bg-slate-50 rounded-full px-4 py-2">
                 <span className="text-2xl">📋</span>
                 <span className="text-sm">GDPR Ready</span>
               </div>
-              <div className="flex items-center gap-2 bg-zinc-800/50 rounded-full px-4 py-2">
+              <div className="flex items-center gap-2 bg-slate-50 rounded-full px-4 py-2">
                 <span className="text-2xl">✅</span>
                 <span className="text-sm">UK Registered</span>
               </div>

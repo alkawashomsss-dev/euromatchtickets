@@ -9,13 +9,13 @@ import { API } from "../App";
 
 // Category colors
 const categoryColors = {
-  "F1": "bg-red-500/20 text-red-400 border-red-500/30",
-  "World Cup": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-  "Football": "bg-blue-500/20 text-blue-400 border-blue-500/30",
-  "Concerts": "bg-purple-500/20 text-purple-400 border-purple-500/30",
-  "City Guide": "bg-amber-500/20 text-amber-400 border-amber-500/30",
-  "Comparison": "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
-  "MotoGP": "bg-orange-500/20 text-orange-400 border-orange-500/30"
+  "F1": "bg-red-50 text-red-600 border-red-200",
+  "World Cup": "bg-emerald-50 text-emerald-600 border-emerald-200",
+  "Football": "bg-blue-50 text-blue-600 border-blue-200",
+  "Concerts": "bg-violet-50 text-violet-600 border-violet-200",
+  "City Guide": "bg-amber-50 text-amber-600 border-amber-200",
+  "Comparison": "bg-cyan-500/20 text-cyan-600 border-cyan-500/30",
+  "MotoGP": "bg-orange-50 text-orange-600 border-orange-200"
 };
 
 // Fallback category images (used only if article has no specific image)
@@ -142,7 +142,7 @@ const BlogPage = () => {
   const featuredArticles = articles.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="Blog - Ticket Guides & News | EuroMatchTickets"
         description="Expert guides on buying F1, World Cup, football and concert tickets. Daily updated articles with best prices and tips."
@@ -152,12 +152,12 @@ const BlogPage = () => {
       <div className="bg-gradient-to-b from-purple-900/20 to-transparent py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-4">
-            <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
+            <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200">
               <Zap className="w-3 h-3 mr-1" />
               AI-Powered Content
             </Badge>
             {stats && (
-              <Badge variant="outline" className="text-zinc-400">
+              <Badge variant="outline" className="text-slate-500">
                 {stats.total_articles_generated}+ Articles Generated
               </Badge>
             )}
@@ -165,7 +165,7 @@ const BlogPage = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             EuroMatchTickets Blog
           </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mb-6">
+          <p className="text-xl text-slate-500 max-w-2xl mb-6">
             Daily updated guides on buying tickets for F1, World Cup, football matches and concerts. 
             Best prices, expert tips, and insider knowledge.
           </p>
@@ -195,25 +195,25 @@ const BlogPage = () => {
         {/* Stats Bar */}
         {stats && (
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 text-center">
-              <div className="text-2xl font-bold text-purple-400">{stats.events_covered?.f1_races || stats.events_covered?.f1 || 11}</div>
-              <div className="text-xs text-zinc-500">F1 Races</div>
+            <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
+              <div className="text-2xl font-bold text-violet-600">{stats.events_covered?.f1_races || stats.events_covered?.f1 || 11}</div>
+              <div className="text-xs text-slate-400">F1 Races</div>
             </div>
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 text-center">
-              <div className="text-2xl font-bold text-emerald-400">{stats.events_covered?.worldcup_matches || stats.events_covered?.worldcup || 6}</div>
-              <div className="text-xs text-zinc-500">World Cup</div>
+            <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
+              <div className="text-2xl font-bold text-emerald-600">{stats.events_covered?.worldcup_matches || stats.events_covered?.worldcup || 6}</div>
+              <div className="text-xs text-slate-400">World Cup</div>
             </div>
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 text-center">
-              <div className="text-2xl font-bold text-blue-400">{stats.events_covered?.football_clubs || stats.events_covered?.football || 8}</div>
-              <div className="text-xs text-zinc-500">Football Clubs</div>
+            <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
+              <div className="text-2xl font-bold text-blue-600">{stats.events_covered?.football_clubs || stats.events_covered?.football || 8}</div>
+              <div className="text-xs text-slate-400">Football Clubs</div>
             </div>
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 text-center">
-              <div className="text-2xl font-bold text-pink-400">{stats.events_covered?.concerts || 8}</div>
-              <div className="text-xs text-zinc-500">Concerts</div>
+            <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
+              <div className="text-2xl font-bold text-pink-600">{stats.events_covered?.concerts || 8}</div>
+              <div className="text-xs text-slate-400">Concerts</div>
             </div>
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 text-center">
-              <div className="text-2xl font-bold text-amber-400">{stats.total_keywords || stats.keywords_database || 80}</div>
-              <div className="text-xs text-zinc-500">SEO Keywords</div>
+            <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
+              <div className="text-2xl font-bold text-amber-600">{stats.total_keywords || stats.keywords_database || 80}</div>
+              <div className="text-xs text-slate-400">SEO Keywords</div>
             </div>
           </div>
         )}
@@ -221,13 +221,13 @@ const BlogPage = () => {
         {/* Search and Filter */}
         <div className="flex flex-col md:flex-row gap-4 mb-12">
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
             <input
               type="text"
               placeholder="Search articles..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-zinc-900 border border-white/10 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+              className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
             />
           </div>
           <div className="flex gap-2 flex-wrap">
@@ -238,7 +238,7 @@ const BlogPage = () => {
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   selectedCategory === cat
                     ? 'bg-purple-600 text-white'
-                    : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+                    : 'bg-slate-100 text-slate-500 hover:bg-slate-100'
                 }`}
               >
                 {cat}
@@ -258,7 +258,7 @@ const BlogPage = () => {
             {selectedCategory === "All" && !searchQuery && featuredArticles.length > 0 && (
               <div className="mb-16">
                 <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <TrendingUp className="w-6 h-6 text-purple-400" />
+                  <TrendingUp className="w-6 h-6 text-violet-600" />
                   Featured Guides
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -266,7 +266,7 @@ const BlogPage = () => {
                     <Link 
                       key={article.id || idx}
                       to={`/blog/${article.slug || article.id}`}
-                      className="group bg-zinc-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all"
+                      className="group bg-white border border-slate-100 rounded-2xl overflow-hidden hover:border-violet-200 transition-all"
                     >
                       <div className="aspect-video relative overflow-hidden">
                         <img 
@@ -296,13 +296,13 @@ const BlogPage = () => {
                         )}
                       </div>
                       <div className="p-5">
-                        <h3 className="font-bold text-lg mb-2 group-hover:text-purple-400 transition-colors line-clamp-2">
+                        <h3 className="font-bold text-lg mb-2 group-hover:text-violet-600 transition-colors line-clamp-2">
                           {article.title_en || article.title}
                         </h3>
-                        <p className="text-zinc-400 text-sm line-clamp-2 mb-4">
+                        <p className="text-slate-500 text-sm line-clamp-2 mb-4">
                           {article.meta_description}
                         </p>
-                        <div className="flex items-center gap-4 text-xs text-zinc-500">
+                        <div className="flex items-center gap-4 text-xs text-slate-400">
                           <span className="flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
                             {new Date(article.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
@@ -326,7 +326,7 @@ const BlogPage = () => {
               </h2>
               
               {filteredArticles.length === 0 ? (
-                <div className="text-center py-12 text-zinc-500">
+                <div className="text-center py-12 text-slate-400">
                   <p>No articles found. Click "Generate 50 New Articles" to create content.</p>
                 </div>
               ) : (
@@ -335,7 +335,7 @@ const BlogPage = () => {
                     <Link
                       key={article.id || idx}
                       to={`/blog/${article.slug || article.id}`}
-                      className="group flex gap-4 bg-zinc-900/50 border border-white/5 rounded-xl p-4 hover:border-purple-500/30 transition-all"
+                      className="group flex gap-4 bg-white border border-slate-100 rounded-xl p-4 hover:border-violet-200 transition-all"
                     >
                       <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
                         <img 
@@ -350,20 +350,20 @@ const BlogPage = () => {
                             {article.category}
                           </Badge>
                           {article.city && (
-                            <span className="text-xs text-zinc-500">{article.city}</span>
+                            <span className="text-xs text-slate-400">{article.city}</span>
                           )}
                           {article.min_price && (
-                            <span className="text-xs text-emerald-400">€{article.min_price}</span>
+                            <span className="text-xs text-emerald-600">€{article.min_price}</span>
                           )}
                         </div>
-                        <h3 className="font-semibold text-sm mb-1 group-hover:text-purple-400 transition-colors line-clamp-2">
+                        <h3 className="font-semibold text-sm mb-1 group-hover:text-violet-600 transition-colors line-clamp-2">
                           {article.title_en || article.title}
                         </h3>
-                        <p className="text-zinc-500 text-xs line-clamp-1">
+                        <p className="text-slate-400 text-xs line-clamp-1">
                           {article.meta_description}
                         </p>
                       </div>
-                      <ArrowRight className="w-5 h-5 text-zinc-600 group-hover:text-purple-400 group-hover:translate-x-1 transition-all flex-shrink-0 self-center" />
+                      <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-violet-600 group-hover:translate-x-1 transition-all flex-shrink-0 self-center" />
                     </Link>
                   ))}
                 </div>
@@ -375,7 +375,7 @@ const BlogPage = () => {
         {/* SEO Content */}
         <div className="mt-16 bg-gradient-to-r from-purple-900/20 to-pink-900/20 border border-purple-500/20 rounded-2xl p-8">
           <h2 className="text-2xl font-bold mb-4">🎯 Your Ultimate Ticket Buying Resource</h2>
-          <div className="grid md:grid-cols-2 gap-6 text-zinc-400">
+          <div className="grid md:grid-cols-2 gap-6 text-slate-500">
             <div>
               <h3 className="font-semibold text-white mb-2">What We Cover:</h3>
               <ul className="space-y-1 text-sm">

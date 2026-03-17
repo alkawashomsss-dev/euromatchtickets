@@ -34,7 +34,7 @@ const LasVegasGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="Las Vegas Grand Prix Tickets 2026 - F1 Vegas Strip Night Race | Best Prices"
         description="Buy Las Vegas Grand Prix 2026 tickets from €249. F1 on the Strip! Sphere Grandstand, Strip View, VIP Hospitality. Night race past casinos. 100% Buyer Protection. €10 cheaper!"
@@ -48,55 +48,55 @@ const LasVegasGPPage = () => {
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-pink-500/20 border border-pink-500/30 rounded-full px-4 py-2 mb-6">
-            <Sparkles className="w-4 h-4 text-pink-400" />
-            <span className="text-pink-400 font-medium">F1 Meets Las Vegas! 🎰</span>
+            <Sparkles className="w-4 h-4 text-pink-600" />
+            <span className="text-pink-600 font-medium">F1 Meets Las Vegas! 🎰</span>
           </div>
           
-          <Badge className="bg-red-500/20 text-red-400 border-red-500/30 mb-6">
+          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® World Championship
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Las Vegas Grand Prix 2026
-            <span className="block text-2xl md:text-3xl mt-2 text-zinc-400">Las Vegas Strip • Nevada, USA</span>
+            <span className="block text-2xl md:text-3xl mt-2 text-slate-500">Las Vegas Strip • Nevada, USA</span>
           </h1>
           
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
             F1 on the world's most famous street! Race past the Bellagio, Caesars Palace, 
-            and The Sphere. The ultimate entertainment spectacle. <strong className="text-emerald-400">€10 cheaper!</strong>
+            and The Sphere. The ultimate entertainment spectacle. <strong className="text-emerald-600">€10 cheaper!</strong>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <Calendar className="w-5 h-5 text-pink-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <Calendar className="w-5 h-5 text-pink-600" />
               <span>November 20-22, 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-zinc-800/50 rounded-full">
-              <MapPin className="w-5 h-5 text-pink-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+              <MapPin className="w-5 h-5 text-pink-600" />
               <span>Las Vegas, USA</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/20 rounded-full">
-              <Moon className="w-5 h-5 text-purple-400" />
+            <div className="flex items-center gap-2 px-4 py-2 bg-violet-50 rounded-full">
+              <Moon className="w-5 h-5 text-violet-600" />
               <span>Night Race</span>
             </div>
           </div>
 
-          <div className="inline-block bg-zinc-900/80 border border-emerald-500/30 rounded-2xl p-6">
-            <div className="text-zinc-400 text-sm">Tickets from</div>
-            <div className="text-5xl font-bold text-emerald-400">€249</div>
-            <div className="text-emerald-400 text-sm mt-1">Save €10 vs F1.com & StubHub</div>
+          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
+            <div className="text-slate-500 text-sm">Tickets from</div>
+            <div className="text-5xl font-bold text-emerald-600">€249</div>
+            <div className="text-emerald-600 text-sm mt-1">Save €10 vs F1.com & StubHub</div>
           </div>
         </div>
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-white/5 bg-zinc-900/30">
+      <section className="py-6 border-y border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-400"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><Star className="w-5 h-5" /><span>Verified Tickets</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><TrendingUp className="w-5 h-5" /><span>€10 Cheaper</span></div>
-            <div className="flex items-center gap-2 text-emerald-400"><Zap className="w-5 h-5" /><span>Instant Delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>Verified Tickets</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>€10 Cheaper</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant Delivery</span></div>
           </div>
         </div>
       </section>
@@ -107,24 +107,24 @@ const LasVegasGPPage = () => {
           <h2 className="text-3xl font-bold mb-8">Las Vegas GP 2026 Tickets</h2>
           <div className="grid gap-4">
             {tickets.map((ticket, i) => (
-              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-zinc-900/50 border border-white/5 hover:border-pink-500/30 rounded-2xl p-6 transition-all">
+              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-pink-500/30 rounded-2xl p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
                   <div className="w-14 h-14 bg-pink-500/20 rounded-xl flex items-center justify-center">
-                    <Ticket className="w-7 h-7 text-pink-400" />
+                    <Ticket className="w-7 h-7 text-pink-600" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold">{ticket.section}</h3>
-                      {ticket.popular && <Badge className="bg-orange-500/20 text-orange-400 text-xs">HOT</Badge>}
+                      {ticket.popular && <Badge className="bg-orange-50 text-orange-600 text-xs">HOT</Badge>}
                     </div>
-                    <p className="text-zinc-500 text-sm">Las Vegas Grand Prix 2026 • 3-Day Pass</p>
+                    <p className="text-slate-400 text-sm">Las Vegas Grand Prix 2026 • 3-Day Pass</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-emerald-400 text-sm">{ticket.available} left</span>
+                  <span className="text-emerald-600 text-sm">{ticket.available} left</span>
                   <div className="text-right">
-                    <div className="text-xs text-zinc-500 line-through">€{ticket.originalPrice}</div>
-                    <div className="text-xl font-bold text-emerald-400">€{ticket.price}</div>
+                    <div className="text-xs text-slate-400 line-through">€{ticket.originalPrice}</div>
+                    <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
                   <Link to="/events?type=f1">
                     <Button className="bg-pink-500 hover:bg-pink-600">Buy Now</Button>
@@ -137,21 +137,21 @@ const LasVegasGPPage = () => {
       </section>
 
       {/* SEO Content */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">About Las Vegas Grand Prix</h2>
           <div className="prose prose-invert max-w-none">
-            <p className="text-zinc-400 mb-4">
+            <p className="text-slate-500 mb-4">
               The <strong>Las Vegas Grand Prix</strong> brings F1 to the Entertainment Capital of the World. 
               The 6.2km street circuit runs right down the iconic Las Vegas Strip, past world-famous 
               casinos, hotels, and The Sphere.
             </p>
-            <p className="text-zinc-400 mb-4">
+            <p className="text-slate-500 mb-4">
               Racing at night with the neon lights of Vegas as backdrop creates an unmatched atmosphere. 
               The event combines world-class motorsport with the city's legendary entertainment scene.
             </p>
             <h3 className="text-xl font-bold text-white mt-6 mb-3">Best Grandstands at Las Vegas GP:</h3>
-            <ul className="text-zinc-400 space-y-2">
+            <ul className="text-slate-500 space-y-2">
               <li>• <strong>Sphere Grandstand</strong> - Views of the world's largest LED screen</li>
               <li>• <strong>Strip View Grandstand</strong> - Classic Vegas backdrop with casinos</li>
               <li>• <strong>Turn 1 Grandstand</strong> - High-speed braking zone action</li>
@@ -171,7 +171,7 @@ const LasVegasGPPage = () => {
               "Vegas GP grandstand", "F1 Vegas night race", "Las Vegas race tickets",
               "buy Vegas GP tickets", "Las Vegas F1 2026", "F1 USA tickets"
             ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-zinc-800/50 text-zinc-400 rounded-full text-sm">
+              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">
                 {term}
               </span>
             ))}
@@ -183,7 +183,7 @@ const LasVegasGPPage = () => {
       <section className="py-16 bg-gradient-to-r from-pink-900/30 to-purple-900/30">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">What Happens in Vegas... F1! 🎰</h2>
-          <p className="text-zinc-400 mb-8">The most glamorous race weekend of the year</p>
+          <p className="text-slate-500 mb-8">The most glamorous race weekend of the year</p>
           <Link to="/events?type=f1">
             <Button size="lg" className="bg-pink-500 hover:bg-pink-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />

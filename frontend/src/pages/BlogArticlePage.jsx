@@ -196,7 +196,7 @@ const BlogArticlePage = () => {
   const shareUrl = `https://euromatchtickets.com/blog/${articleId}`;
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title={article.title}
         description={article.metaDescription}
@@ -242,7 +242,7 @@ const BlogArticlePage = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/30" />
         
         <div className="relative z-10 h-full max-w-[900px] mx-auto px-4 flex flex-col justify-end pb-12">
-          <Link to="/blog" className="flex items-center gap-2 text-purple-400 mb-4 hover:underline">
+          <Link to="/blog" className="flex items-center gap-2 text-violet-600 mb-4 hover:underline">
             <ArrowLeft className="w-4 h-4" />
             Back to Blog
           </Link>
@@ -255,7 +255,7 @@ const BlogArticlePage = () => {
             {article.title}
           </h1>
           
-          <div className="flex items-center gap-6 text-zinc-400">
+          <div className="flex items-center gap-6 text-slate-500">
             <span className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               {new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
@@ -275,27 +275,27 @@ const BlogArticlePage = () => {
             prose-headings:font-bold prose-headings:text-white
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
             prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-zinc-300 prose-p:leading-relaxed prose-p:mb-4
-            prose-ul:text-zinc-300 prose-ol:text-zinc-300
+            prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-4
+            prose-ul:text-slate-600 prose-ol:text-slate-600
             prose-li:mb-2
             prose-strong:text-white
-            prose-a:text-purple-400 prose-a:no-underline hover:prose-a:underline"
+            prose-a:text-violet-600 prose-a:no-underline hover:prose-a:underline"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
         {/* Share Section */}
-        <div className="mt-12 pt-8 border-t border-white/10">
+        <div className="mt-12 pt-8 border-t border-slate-200">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-3">
-              <Share2 className="w-5 h-5 text-zinc-400" />
-              <span className="text-zinc-400">Share this article:</span>
+              <Share2 className="w-5 h-5 text-slate-500" />
+              <span className="text-slate-500">Share this article:</span>
             </div>
             <div className="flex items-center gap-3">
               <a 
                 href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(article.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-colors"
+                className="p-2 bg-slate-100 rounded-lg hover:bg-slate-100 transition-colors"
               >
                 <Twitter className="w-5 h-5" />
               </a>
@@ -303,7 +303,7 @@ const BlogArticlePage = () => {
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-colors"
+                className="p-2 bg-slate-100 rounded-lg hover:bg-slate-100 transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>
@@ -311,7 +311,7 @@ const BlogArticlePage = () => {
                 href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(article.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-colors"
+                className="p-2 bg-slate-100 rounded-lg hover:bg-slate-100 transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -322,7 +322,7 @@ const BlogArticlePage = () => {
         {/* CTA */}
         <div className="mt-12 bg-gradient-to-r from-purple-900/30 to-pink-900/30 border border-purple-500/20 rounded-2xl p-8 text-center">
           <h3 className="text-2xl font-bold mb-3">Ready to Buy Tickets?</h3>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-slate-500 mb-6">
             Browse thousands of verified tickets for football matches and concerts across Europe.
           </p>
           <Link to="/events">
@@ -345,7 +345,7 @@ const BlogArticlePage = () => {
                   <Link 
                     key={id}
                     to={`/blog/${id}`}
-                    className="group bg-zinc-900/50 border border-white/5 rounded-xl p-4 hover:border-purple-500/30 transition-all flex gap-4"
+                    className="group bg-white border border-slate-100 rounded-xl p-4 hover:border-violet-200 transition-all flex gap-4"
                   >
                     <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
                       <img 
@@ -355,10 +355,10 @@ const BlogArticlePage = () => {
                       />
                     </div>
                     <div>
-                      <h3 className="font-semibold group-hover:text-purple-400 transition-colors line-clamp-2">
+                      <h3 className="font-semibold group-hover:text-violet-600 transition-colors line-clamp-2">
                         {related.title}
                       </h3>
-                      <span className="text-sm text-zinc-500">{related.readTime}</span>
+                      <span className="text-sm text-slate-400">{related.readTime}</span>
                     </div>
                   </Link>
                 );

@@ -76,7 +76,7 @@ const EventsThisWeekendPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Events This Weekend | Football, Concerts, F1 | EuroMatchTickets"
         description="Find events happening this weekend. Football matches, concerts, motorsport. Book last-minute tickets with instant delivery."
@@ -88,31 +88,31 @@ const EventsThisWeekendPage = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-orange-900/20 via-zinc-950 to-purple-900/20" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-16 text-center">
-          <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mb-4">
+          <Badge className="bg-orange-50 text-orange-600 border-orange-200 mb-4">
             <Clock className="w-4 h-4 mr-2" />This Weekend
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Events This Weekend
           </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-8">
             Don't miss out! Book last-minute tickets for this weekend's hottest events.
             Football, concerts, motorsport - instant QR delivery.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/events?type=match">
-              <Button variant="outline" className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10">
+              <Button variant="outline" className="border-emerald-500/50 text-emerald-600 hover:bg-emerald-50">
                 <Trophy className="w-5 h-5 mr-2" />Football
               </Button>
             </Link>
             <Link to="/events?type=concert">
-              <Button variant="outline" className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10">
+              <Button variant="outline" className="border-purple-500/50 text-violet-600 hover:bg-violet-50">
                 <Music className="w-5 h-5 mr-2" />Concerts
               </Button>
             </Link>
             <Link to="/f1-tickets">
-              <Button variant="outline" className="border-red-500/50 text-red-400 hover:bg-red-500/10">
+              <Button variant="outline" className="border-red-500/50 text-red-600 hover:bg-red-50">
                 <Flag className="w-5 h-5 mr-2" />F1
               </Button>
             </Link>
@@ -121,12 +121,12 @@ const EventsThisWeekendPage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-4 border-y border-white/5 bg-zinc-900/30">
+      <section className="py-4 border-y border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 text-emerald-400"><Shield className="w-4 h-4" />100% Guarantee</div>
-            <div className="flex items-center gap-2 text-emerald-400"><Zap className="w-4 h-4" />Instant Delivery</div>
-            <div className="flex items-center gap-2 text-emerald-400"><Star className="w-4 h-4" />Last-Minute OK</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />100% Guarantee</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" />Instant Delivery</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-4 h-4" />Last-Minute OK</div>
           </div>
         </div>
       </section>
@@ -141,9 +141,9 @@ const EventsThisWeekendPage = () => {
               <Loader2 className="w-10 h-10 animate-spin text-purple-500" />
             </div>
           ) : events.length === 0 ? (
-            <div className="text-center py-16 bg-zinc-900/30 rounded-2xl border border-zinc-800">
-              <Clock className="w-16 h-16 mx-auto text-zinc-600 mb-4" />
-              <p className="text-zinc-400 text-lg mb-4">No events scheduled for this weekend</p>
+            <div className="text-center py-16 bg-slate-50 rounded-2xl border border-slate-200">
+              <Clock className="w-16 h-16 mx-auto text-slate-500 mb-4" />
+              <p className="text-slate-500 text-lg mb-4">No events scheduled for this weekend</p>
               <Link to="/events">
                 <Button className="bg-purple-600 hover:bg-purple-700">Browse All Events</Button>
               </Link>
@@ -154,7 +154,7 @@ const EventsThisWeekendPage = () => {
                 <Link
                   key={event.event_id}
                   to={`/event/${event.event_id}`}
-                  className="group bg-zinc-900/50 rounded-2xl overflow-hidden border border-zinc-800 hover:border-orange-500/50 transition-all"
+                  className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-orange-500/50 transition-all"
                   data-testid={`weekend-event-${event.event_id}`}
                 >
                   <div className="relative h-40 overflow-hidden">
@@ -170,8 +170,8 @@ const EventsThisWeekendPage = () => {
                     </Badge>
                   </div>
                   <div className="p-4">
-                    <h3 className="font-bold text-lg mb-2 group-hover:text-orange-400 transition-colors">{event.title}</h3>
-                    <div className="flex items-center gap-2 text-sm text-zinc-400 mb-3">
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-orange-600 transition-colors">{event.title}</h3>
+                    <div className="flex items-center gap-2 text-sm text-slate-500 mb-3">
                       <Calendar className="w-4 h-4" />
                       <span>{formatDate(event.event_date)}</span>
                       <span>|</span>
@@ -179,8 +179,8 @@ const EventsThisWeekendPage = () => {
                       <span>{event.venue}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-emerald-400 font-bold">From €{event.lowest_price || 49}</span>
-                      <ArrowRight className="w-5 h-5 text-zinc-500 group-hover:text-orange-400 transition-colors" />
+                      <span className="text-emerald-600 font-bold">From €{event.lowest_price || 49}</span>
+                      <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-orange-600 transition-colors" />
                     </div>
                   </div>
                 </Link>
@@ -191,22 +191,22 @@ const EventsThisWeekendPage = () => {
       </section>
 
       {/* Last Minute Tips */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center">Last-Minute Booking Tips</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200">
               <h3 className="font-bold mb-2 flex items-center gap-2">
-                <Zap className="w-5 h-5 text-orange-400" />Instant QR Delivery
+                <Zap className="w-5 h-5 text-orange-600" />Instant QR Delivery
               </h3>
-              <p className="text-zinc-400">No waiting for physical tickets. Get your QR code instantly after purchase and head straight to the venue.</p>
+              <p className="text-slate-500">No waiting for physical tickets. Get your QR code instantly after purchase and head straight to the venue.</p>
             </div>
-            <div className="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200">
               <h3 className="font-bold mb-2 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-emerald-400" />100% Guarantee
+                <Shield className="w-5 h-5 text-emerald-600" />100% Guarantee
               </h3>
-              <p className="text-zinc-400">All tickets are verified and guaranteed. If there's any issue, you get a full refund.</p>
+              <p className="text-slate-500">All tickets are verified and guaranteed. If there's any issue, you get a full refund.</p>
             </div>
           </div>
         </div>
@@ -216,7 +216,7 @@ const EventsThisWeekendPage = () => {
       <section className="py-16">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Can't Find What You're Looking For?</h2>
-          <p className="text-zinc-400 mb-6">Browse our full catalog of events across Europe.</p>
+          <p className="text-slate-500 mb-6">Browse our full catalog of events across Europe.</p>
           <Link to="/events">
             <Button size="lg" className="bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700">
               Browse All Events <ArrowRight className="w-5 h-5 ml-2" />

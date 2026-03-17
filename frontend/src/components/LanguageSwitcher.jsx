@@ -42,15 +42,15 @@ const LanguageSwitcher = () => {
         <Button 
           variant="ghost" 
           size="sm"
-          className="text-zinc-400 hover:text-white px-2"
+          className="text-slate-500 hover:text-white px-2"
           data-testid="language-switcher"
         >
           <Globe className="w-4 h-4 mr-1" />
           {currentLang.flag} {currentLang.code.toUpperCase().split('-')[0]}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="bg-zinc-900 border-zinc-800 max-h-[400px] overflow-y-auto">
-        <div className="px-2 py-1 text-xs text-zinc-500 font-semibold">Europe</div>
+      <DropdownMenuContent align="end" className="bg-white border-slate-200 max-h-[400px] overflow-y-auto">
+        <div className="px-2 py-1 text-xs text-slate-400 font-semibold">Europe</div>
         {languages.slice(0, 9).map((lang) => (
           <DropdownMenuItem 
             key={lang.code}
@@ -60,7 +60,7 @@ const LanguageSwitcher = () => {
             {lang.flag} {lang.name}
           </DropdownMenuItem>
         ))}
-        <div className="px-2 py-1 text-xs text-zinc-500 font-semibold mt-2">Americas</div>
+        <div className="px-2 py-1 text-xs text-slate-400 font-semibold mt-2">Americas</div>
         {languages.slice(9, 11).map((lang) => (
           <DropdownMenuItem 
             key={lang.code}
@@ -70,7 +70,7 @@ const LanguageSwitcher = () => {
             {lang.flag} {lang.name}
           </DropdownMenuItem>
         ))}
-        <div className="px-2 py-1 text-xs text-zinc-500 font-semibold mt-2">Middle East</div>
+        <div className="px-2 py-1 text-xs text-slate-400 font-semibold mt-2">Middle East</div>
         {languages.slice(11, 12).map((lang) => (
           <DropdownMenuItem 
             key={lang.code}
@@ -80,7 +80,7 @@ const LanguageSwitcher = () => {
             {lang.flag} {lang.name}
           </DropdownMenuItem>
         ))}
-        <div className="px-2 py-1 text-xs text-zinc-500 font-semibold mt-2">Asia</div>
+        <div className="px-2 py-1 text-xs text-slate-400 font-semibold mt-2">Asia</div>
         {languages.slice(12).map((lang) => (
           <DropdownMenuItem 
             key={lang.code}

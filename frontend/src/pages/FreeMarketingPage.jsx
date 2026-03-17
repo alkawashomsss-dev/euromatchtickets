@@ -67,7 +67,7 @@ const FreeMarketingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20 pb-12">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 pb-12">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Header */}
@@ -79,7 +79,7 @@ const FreeMarketingPage = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold">Free Marketing Tools</h1>
-                <p className="text-zinc-400 text-sm">Generate viral posts • No ads needed</p>
+                <p className="text-slate-500 text-sm">Generate viral posts • No ads needed</p>
               </div>
             </div>
           </div>
@@ -95,40 +95,40 @@ const FreeMarketingPage = () => {
 
         {/* Quick Stats */}
         <div className="grid md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-zinc-400 text-sm">Strategy</span>
-              <Target className="w-4 h-4 text-pink-400" />
+              <span className="text-slate-500 text-sm">Strategy</span>
+              <Target className="w-4 h-4 text-pink-600" />
             </div>
             <div className="font-semibold">Organic Growth</div>
-            <p className="text-xs text-zinc-500 mt-1">No paid ads</p>
+            <p className="text-xs text-slate-400 mt-1">No paid ads</p>
           </div>
 
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-zinc-400 text-sm">Platforms</span>
-              <Share2 className="w-4 h-4 text-cyan-400" />
+              <span className="text-slate-500 text-sm">Platforms</span>
+              <Share2 className="w-4 h-4 text-cyan-600" />
             </div>
             <div className="font-semibold">5 Channels</div>
-            <p className="text-xs text-zinc-500 mt-1">Twitter, IG, FB, Reddit, WhatsApp</p>
+            <p className="text-xs text-slate-400 mt-1">Twitter, IG, FB, Reddit, WhatsApp</p>
           </div>
 
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-zinc-400 text-sm">Content Ideas</span>
-              <FileText className="w-4 h-4 text-purple-400" />
+              <span className="text-slate-500 text-sm">Content Ideas</span>
+              <FileText className="w-4 h-4 text-violet-600" />
             </div>
             <div className="font-semibold">{blogIdeas.length} Blog Posts</div>
-            <p className="text-xs text-zinc-500 mt-1">SEO optimized</p>
+            <p className="text-xs text-slate-400 mt-1">SEO optimized</p>
           </div>
 
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-5">
+          <div className="bg-white border border-slate-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-zinc-400 text-sm">Weekly Posts</span>
-              <Calendar className="w-4 h-4 text-emerald-400" />
+              <span className="text-slate-500 text-sm">Weekly Posts</span>
+              <Calendar className="w-4 h-4 text-emerald-600" />
             </div>
             <div className="font-semibold">7 Days</div>
-            <p className="text-xs text-zinc-500 mt-1">Auto calendar</p>
+            <p className="text-xs text-slate-400 mt-1">Auto calendar</p>
           </div>
         </div>
 
@@ -141,7 +141,7 @@ const FreeMarketingPage = () => {
               className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                 selectedCategory === cat.id
                   ? "bg-gradient-to-r from-pink-600 to-orange-600 text-white"
-                  : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+                  : "bg-slate-100 text-slate-500 hover:bg-slate-100"
               }`}
             >
               <span>{cat.icon}</span>
@@ -153,7 +153,7 @@ const FreeMarketingPage = () => {
         <div className="grid lg:grid-cols-2 gap-6 mb-8">
           
           {/* Twitter Post */}
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Twitter className="w-5 h-5 text-sky-400" />
@@ -162,7 +162,7 @@ const FreeMarketingPage = () => {
               <Badge variant="outline">{posts.twitter?.character_count || 0} chars</Badge>
             </div>
             
-            <div className="bg-zinc-800/50 rounded-lg p-4 mb-4 min-h-[150px]">
+            <div className="bg-slate-50 rounded-lg p-4 mb-4 min-h-[150px]">
               <p className="whitespace-pre-wrap text-sm">{posts.twitter?.post || "Loading..."}</p>
             </div>
             
@@ -186,16 +186,16 @@ const FreeMarketingPage = () => {
           </div>
 
           {/* Instagram Post */}
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Instagram className="w-5 h-5 text-pink-400" />
+                <Instagram className="w-5 h-5 text-pink-600" />
                 <h2 className="font-bold">Instagram Caption</h2>
               </div>
               <Badge variant="outline">With Hashtags</Badge>
             </div>
             
-            <div className="bg-zinc-800/50 rounded-lg p-4 mb-4 min-h-[150px]">
+            <div className="bg-slate-50 rounded-lg p-4 mb-4 min-h-[150px]">
               <p className="whitespace-pre-wrap text-sm">{posts.instagram?.caption || "Loading..."}</p>
             </div>
             
@@ -220,26 +220,26 @@ const FreeMarketingPage = () => {
         </div>
 
         {/* Weekly Content Calendar */}
-        <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 mb-8">
+        <div className="bg-white border border-slate-200 rounded-xl p-6 mb-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-bold flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-emerald-400" />
+              <Calendar className="w-5 h-5 text-emerald-600" />
               Weekly Content Calendar
             </h2>
-            <Badge className="bg-emerald-500/20 text-emerald-400">Auto-generated</Badge>
+            <Badge className="bg-emerald-50 text-emerald-600">Auto-generated</Badge>
           </div>
 
           <div className="grid md:grid-cols-7 gap-3">
             {Object.entries(calendar).map(([day, content]) => (
               <div 
                 key={day}
-                className="bg-zinc-800/50 rounded-lg p-3 hover:bg-zinc-800 transition-colors cursor-pointer"
+                className="bg-slate-50 rounded-lg p-3 hover:bg-slate-100 transition-colors cursor-pointer"
                 onClick={() => copyToClipboard(content.twitter, day)}
               >
                 <div className="font-semibold text-sm mb-2">{day}</div>
                 <Badge variant="outline" className="text-xs mb-2">{content.category}</Badge>
-                <p className="text-xs text-zinc-400 line-clamp-3">{content.twitter?.substring(0, 80)}...</p>
-                <div className="flex items-center gap-1 mt-2 text-xs text-zinc-500">
+                <p className="text-xs text-slate-500 line-clamp-3">{content.twitter?.substring(0, 80)}...</p>
+                <div className="flex items-center gap-1 mt-2 text-xs text-slate-400">
                   <Clock className="w-3 h-3" />
                   {content.best_time}
                 </div>
@@ -249,10 +249,10 @@ const FreeMarketingPage = () => {
         </div>
 
         {/* Blog Ideas for SEO */}
-        <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 mb-8">
+        <div className="bg-white border border-slate-200 rounded-xl p-6 mb-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-bold flex items-center gap-2">
-              <FileText className="w-5 h-5 text-purple-400" />
+              <FileText className="w-5 h-5 text-violet-600" />
               SEO Blog Post Ideas
             </h2>
             <Badge>{blogIdeas.length} ideas</Badge>
@@ -262,7 +262,7 @@ const FreeMarketingPage = () => {
             {blogIdeas.map((idea, idx) => (
               <div 
                 key={idx}
-                className="bg-zinc-800/50 rounded-lg p-4 hover:bg-zinc-800 transition-colors"
+                className="bg-slate-50 rounded-lg p-4 hover:bg-slate-100 transition-colors"
               >
                 <h3 className="font-semibold mb-2">{idea.title}</h3>
                 <div className="flex flex-wrap gap-2 mb-3">
@@ -270,7 +270,7 @@ const FreeMarketingPage = () => {
                     <Badge key={i} variant="outline" className="text-xs">{kw}</Badge>
                   ))}
                 </div>
-                <div className="text-sm text-zinc-400">
+                <div className="text-sm text-slate-500">
                   <span className="font-medium">Outline:</span> {idea.outline.join(" → ")}
                 </div>
               </div>
@@ -281,14 +281,14 @@ const FreeMarketingPage = () => {
         {/* Free Marketing Strategy */}
         <div className="bg-gradient-to-r from-pink-500/10 to-orange-500/10 border border-pink-500/20 rounded-xl p-6">
           <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-400" />
+            <Sparkles className="w-5 h-5 text-amber-600" />
             Free Marketing Strategy (No Ads!)
           </h2>
           
           <div className="grid md:grid-cols-3 gap-6">
             <div>
-              <h3 className="font-semibold text-pink-400 mb-2">📱 Social Media</h3>
-              <ul className="text-sm text-zinc-400 space-y-1">
+              <h3 className="font-semibold text-pink-600 mb-2">📱 Social Media</h3>
+              <ul className="text-sm text-slate-500 space-y-1">
                 <li>• Post 2-3 times daily</li>
                 <li>• Use trending hashtags</li>
                 <li>• Engage with F1/MotoGP accounts</li>
@@ -298,8 +298,8 @@ const FreeMarketingPage = () => {
             </div>
             
             <div>
-              <h3 className="font-semibold text-cyan-400 mb-2">✍️ Content Marketing</h3>
-              <ul className="text-sm text-zinc-400 space-y-1">
+              <h3 className="font-semibold text-cyan-600 mb-2">✍️ Content Marketing</h3>
+              <ul className="text-sm text-slate-500 space-y-1">
                 <li>• Write blog posts (SEO)</li>
                 <li>• Create how-to guides</li>
                 <li>• Price comparison articles</li>
@@ -309,8 +309,8 @@ const FreeMarketingPage = () => {
             </div>
             
             <div>
-              <h3 className="font-semibold text-emerald-400 mb-2">🔗 Viral Tactics</h3>
-              <ul className="text-sm text-zinc-400 space-y-1">
+              <h3 className="font-semibold text-emerald-600 mb-2">🔗 Viral Tactics</h3>
+              <ul className="text-sm text-slate-500 space-y-1">
                 <li>• Referral program (€10 reward)</li>
                 <li>• Giveaway contests</li>
                 <li>• User testimonials</li>
@@ -320,23 +320,23 @@ const FreeMarketingPage = () => {
             </div>
           </div>
           
-          <div className="mt-6 p-4 bg-zinc-900/50 rounded-lg">
+          <div className="mt-6 p-4 bg-white rounded-lg">
             <h4 className="font-semibold mb-2">🎯 Daily Action Plan:</h4>
             <div className="grid md:grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-zinc-400">Morning:</span>
+                <span className="text-slate-500">Morning:</span>
                 <p>Post on Twitter & Instagram</p>
               </div>
               <div>
-                <span className="text-zinc-400">Afternoon:</span>
+                <span className="text-slate-500">Afternoon:</span>
                 <p>Engage in Facebook groups</p>
               </div>
               <div>
-                <span className="text-zinc-400">Evening:</span>
+                <span className="text-slate-500">Evening:</span>
                 <p>Reply to comments, share to WhatsApp</p>
               </div>
               <div>
-                <span className="text-zinc-400">Weekly:</span>
+                <span className="text-slate-500">Weekly:</span>
                 <p>Write 1 blog post, run 1 giveaway</p>
               </div>
             </div>

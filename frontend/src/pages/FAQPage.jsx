@@ -144,7 +144,7 @@ const FAQPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="Frequently Asked Questions - Help Center"
         description="Find answers to common questions about buying tickets on EuroMatchTickets. Learn about our buyer protection, payment methods, ticket delivery, and security measures."
@@ -158,23 +158,23 @@ const FAQPage = () => {
       ]} />
 
       {/* Hero */}
-      <section className="py-16 bg-zinc-900/30 border-b border-white/5">
+      <section className="py-16 bg-slate-50 border-b border-slate-100">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <HelpCircle className="w-16 h-16 mx-auto mb-6 text-purple-400" />
+          <HelpCircle className="w-16 h-16 mx-auto mb-6 text-violet-600" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">How Can We Help?</h1>
-          <p className="text-xl text-zinc-400 mb-8">
+          <p className="text-xl text-slate-500 mb-8">
             Find answers to frequently asked questions about EuroMatchTickets
           </p>
           
           {/* Search */}
           <div className="relative max-w-xl mx-auto">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
             <input
               type="text"
               placeholder="Search for answers..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-zinc-800 border border-white/10 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+              className="w-full pl-12 pr-4 py-4 bg-slate-100 border border-slate-200 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
             />
           </div>
         </div>
@@ -192,8 +192,8 @@ const FAQPage = () => {
                     onClick={() => setActiveCategory(cat.id)}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                       activeCategory === cat.id 
-                        ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30' 
-                        : 'bg-zinc-900/50 text-zinc-400 border border-white/5 hover:bg-zinc-800'
+                        ? 'bg-violet-50 text-violet-600 border border-violet-200' 
+                        : 'bg-white text-slate-500 border border-slate-100 hover:bg-slate-100'
                     }`}
                   >
                     {cat.icon}
@@ -207,7 +207,7 @@ const FAQPage = () => {
           {/* FAQ Content */}
           <div className={searchQuery ? "md:col-span-4" : "md:col-span-3"}>
             {searchQuery && (
-              <div className="mb-6 text-zinc-400">
+              <div className="mb-6 text-slate-500">
                 Found {filteredFAQs.length} results for "{searchQuery}"
               </div>
             )}
@@ -218,22 +218,22 @@ const FAQPage = () => {
                 return (
                   <div 
                     key={itemKey}
-                    className="bg-zinc-900/50 border border-white/5 rounded-xl overflow-hidden"
+                    className="bg-white border border-slate-100 rounded-xl overflow-hidden"
                   >
                     <button
                       onClick={() => toggleItem(itemKey)}
-                      className="w-full flex items-center justify-between p-6 text-left hover:bg-zinc-800/50 transition-colors"
+                      className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors"
                     >
                       <h3 className="font-semibold text-lg pr-4">{faq.question}</h3>
                       <ChevronDown 
-                        className={`w-5 h-5 text-zinc-400 flex-shrink-0 transition-transform ${
+                        className={`w-5 h-5 text-slate-500 flex-shrink-0 transition-transform ${
                           openItems[itemKey] ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
                     {openItems[itemKey] && (
                       <div className="px-6 pb-6">
-                        <p className="text-zinc-400 leading-relaxed">{faq.answer}</p>
+                        <p className="text-slate-500 leading-relaxed">{faq.answer}</p>
                       </div>
                     )}
                   </div>
@@ -245,10 +245,10 @@ const FAQPage = () => {
       </div>
 
       {/* Contact Section */}
-      <section className="py-16 bg-zinc-900/30 border-t border-white/5">
+      <section className="py-16 bg-slate-50 border-t border-slate-100">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Still Have Questions?</h2>
-          <p className="text-zinc-400 mb-8">
+          <p className="text-slate-500 mb-8">
             Our support team is here to help 24/7
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -261,7 +261,7 @@ const FAQPage = () => {
             </Link>
             <a 
               href="mailto:support@euromatchtickets.com"
-              className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-xl font-medium transition-colors border border-white/10"
+              className="flex items-center gap-2 bg-slate-100 hover:bg-slate-100 text-white px-6 py-3 rounded-xl font-medium transition-colors border border-slate-200"
             >
               <Mail className="w-5 h-5" />
               support@euromatchtickets.com

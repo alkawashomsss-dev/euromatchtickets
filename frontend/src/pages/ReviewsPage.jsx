@@ -57,7 +57,7 @@ const ReviewsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="Customer Reviews - 4.9/5 Rating | 2,940+ Verified Reviews"
         description="Read verified reviews from 2,940+ customers who bought tickets on EuroMatchTickets. 4.9/5 average rating. F1, MotoGP, World Cup, Champions League tickets. Reviews in English, German, Arabic, French, Spanish."
@@ -70,33 +70,33 @@ const ReviewsPage = () => {
       ]} />
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-purple-900/20 to-zinc-950 border-b border-white/5">
+      <section className="py-16 bg-gradient-to-b from-purple-900/20 to-zinc-950 border-b border-slate-100">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-2 mb-6">
-              <CheckCircle className="w-4 h-4 text-emerald-400" />
-              <span className="text-emerald-400 text-sm font-medium">All Reviews Verified</span>
+            <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-2 mb-6">
+              <CheckCircle className="w-4 h-4 text-emerald-600" />
+              <span className="text-emerald-600 text-sm font-medium">All Reviews Verified</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Customer Reviews</h1>
-            <p className="text-xl text-zinc-400">What fans say about EuroMatchTickets</p>
+            <p className="text-xl text-slate-500">What fans say about EuroMatchTickets</p>
           </div>
 
           {/* Stats Summary */}
           <ReviewsStats />
 
           {/* Rating Breakdown */}
-          <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-8 max-w-3xl mx-auto mt-8">
+          <div className="bg-white border border-slate-100 rounded-2xl p-8 max-w-3xl mx-auto mt-8">
             <div className="flex flex-col md:flex-row items-center gap-8">
               {/* Average Rating */}
               <div className="text-center">
                 <div className="text-6xl font-bold text-white mb-2">{avgRating}</div>
                 <div className="flex justify-center mb-2">
                   {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="w-6 h-6 fill-yellow-400 text-amber-600" />
                   ))}
                 </div>
-                <div className="text-zinc-400">{totalReviews.toLocaleString()} reviews</div>
+                <div className="text-slate-500">{totalReviews.toLocaleString()} reviews</div>
               </div>
 
               {/* Rating Breakdown */}
@@ -108,15 +108,15 @@ const ReviewsPage = () => {
                     <div key={rating} className="flex items-center gap-3 mb-2">
                       <div className="flex items-center gap-1 w-12">
                         <span>{rating}</span>
-                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        <Star className="w-4 h-4 fill-yellow-400 text-amber-600" />
                       </div>
-                      <div className="flex-1 h-2 bg-zinc-800 rounded-full overflow-hidden">
+                      <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
                         <div 
                           className="h-full bg-yellow-400 rounded-full transition-all"
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
-                      <div className="w-16 text-right text-sm text-zinc-400">
+                      <div className="w-16 text-right text-sm text-slate-500">
                         {count.toLocaleString()}
                       </div>
                     </div>
@@ -132,38 +132,38 @@ const ReviewsPage = () => {
               href="https://www.trustpilot.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-xl px-4 py-3 hover:border-emerald-500/50 transition-colors"
+              className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 hover:border-emerald-500/50 transition-colors"
             >
               <div className="flex gap-0.5">
                 {[1,2,3,4,5].map(i => (
-                  <Star key={i} className="w-4 h-4 fill-emerald-400 text-emerald-400" />
+                  <Star key={i} className="w-4 h-4 fill-emerald-400 text-emerald-600" />
                 ))}
               </div>
-              <span className="text-emerald-400 font-semibold">4.8 on Trustpilot</span>
-              <ExternalLink className="w-4 h-4 text-emerald-400" />
+              <span className="text-emerald-600 font-semibold">4.8 on Trustpilot</span>
+              <ExternalLink className="w-4 h-4 text-emerald-600" />
             </a>
             
-            <div className="flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-xl px-4 py-3">
+            <div className="flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3">
               <div className="w-6 h-6 bg-white rounded flex items-center justify-center">
                 <span className="text-blue-600 font-bold text-sm">G</span>
               </div>
               <div className="flex gap-0.5">
                 {[1,2,3,4,5].map(i => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-amber-600" />
                 ))}
               </div>
-              <span className="text-blue-400 font-semibold">4.9 Google Reviews</span>
+              <span className="text-blue-600 font-semibold">4.9 Google Reviews</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Language Filter */}
-      <section className="py-6 border-b border-white/5 bg-zinc-900/30">
+      <section className="py-6 border-b border-slate-100 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <Globe className="w-5 h-5 text-zinc-400" />
+              <Globe className="w-5 h-5 text-slate-500" />
               <ReviewsLanguageFilter 
                 selected={selectedLang} 
                 onChange={setSelectedLang} 
@@ -172,7 +172,7 @@ const ReviewsPage = () => {
             <Button 
               onClick={() => setShowForm(!showForm)}
               variant="outline" 
-              className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10"
+              className="border-purple-500/50 text-violet-600 hover:bg-violet-50"
             >
               Write a Review
             </Button>
@@ -182,7 +182,7 @@ const ReviewsPage = () => {
 
       {/* Submit Review Form */}
       {showForm && (
-        <section className="py-8 border-b border-white/5">
+        <section className="py-8 border-b border-slate-100">
           <div className="max-w-2xl mx-auto px-4 md:px-8">
             <SubmitReviewForm />
           </div>
@@ -204,41 +204,41 @@ const ReviewsPage = () => {
       </section>
 
       {/* Why Trust Us */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-2xl font-bold text-center mb-8">Why Fans Trust EuroMatchTickets</h2>
           
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 bg-emerald-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-7 h-7 text-emerald-400" />
+            <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
+              <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="font-semibold mb-2">100% Verified</h3>
-              <p className="text-sm text-zinc-400">Every ticket checked before sale</p>
+              <p className="text-sm text-slate-500">Every ticket checked before sale</p>
             </div>
             
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-7 h-7 text-purple-400" />
+            <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
+              <div className="w-14 h-14 bg-violet-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-7 h-7 text-violet-600" />
               </div>
               <h3 className="font-semibold mb-2">Best Prices</h3>
-              <p className="text-sm text-zinc-400">Up to 25% cheaper than competitors</p>
+              <p className="text-sm text-slate-500">Up to 25% cheaper than competitors</p>
             </div>
             
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
+            <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
               <div className="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Users className="w-7 h-7 text-cyan-400" />
+                <Users className="w-7 h-7 text-cyan-600" />
               </div>
               <h3 className="font-semibold mb-2">2M+ Fans</h3>
-              <p className="text-sm text-zinc-400">Trusted by fans worldwide</p>
+              <p className="text-sm text-slate-500">Trusted by fans worldwide</p>
             </div>
             
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Award className="w-7 h-7 text-amber-400" />
+            <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
+              <div className="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Award className="w-7 h-7 text-amber-600" />
               </div>
               <h3 className="font-semibold mb-2">Money-Back</h3>
-              <p className="text-sm text-zinc-400">Full refund if tickets invalid</p>
+              <p className="text-sm text-slate-500">Full refund if tickets invalid</p>
             </div>
           </div>
         </div>
@@ -247,9 +247,9 @@ const ReviewsPage = () => {
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-purple-500/10 to-cyan-500/10">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <Quote className="w-12 h-12 mx-auto mb-6 text-purple-400 opacity-50" />
+          <Quote className="w-12 h-12 mx-auto mb-6 text-violet-600 opacity-50" />
           <h2 className="text-3xl font-bold mb-4">Join Millions of Happy Fans</h2>
-          <p className="text-zinc-400 text-lg mb-8">
+          <p className="text-slate-500 text-lg mb-8">
             Experience the EuroMatchTickets difference for yourself
           </p>
           <Link to="/events">

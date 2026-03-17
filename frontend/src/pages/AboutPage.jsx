@@ -100,7 +100,7 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
       <SEOHead 
         title="About EuroMatchTickets - Official Company Information | Registered in UK"
         description="EuroMatchTickets Ltd. is a UK-registered company (No. 14892376) based in London. Europe's trusted ticket marketplace since 2024. 2.4M+ tickets sold. Contact us today."
@@ -115,12 +115,12 @@ const AboutPage = () => {
       <section className="py-16 bg-gradient-to-b from-purple-900/20 to-zinc-950">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
+            <Badge className="mb-4 bg-emerald-50 text-emerald-600 border-emerald-200">
               <Building2 className="w-3 h-3 mr-1" />
               UK Registered Company
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">About EuroMatchTickets</h1>
-            <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-500 max-w-2xl mx-auto">
               Europe's most trusted ticket marketplace. Officially registered, fully compliant, and dedicated to getting you to the events you love.
             </p>
           </div>
@@ -128,10 +128,10 @@ const AboutPage = () => {
           {/* Stats */}
           <div className="grid md:grid-cols-4 gap-4">
             {stats.map((stat, idx) => (
-              <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
-                <stat.icon className="w-8 h-8 mx-auto mb-3 text-purple-400" />
+              <div key={idx} className="bg-white border border-slate-200 rounded-xl p-6 text-center">
+                <stat.icon className="w-8 h-8 mx-auto mb-3 text-violet-600" />
                 <div className="text-3xl font-bold mb-1">{stat.value}</div>
-                <div className="text-sm text-zinc-400">{stat.label}</div>
+                <div className="text-sm text-slate-500">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -144,31 +144,31 @@ const AboutPage = () => {
           <div className="grid md:grid-cols-2 gap-8">
             
             {/* Official Registration */}
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-8">
+            <div className="bg-white border border-slate-200 rounded-xl p-8">
               <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-emerald-400" />
+                <Shield className="w-5 h-5 text-emerald-600" />
                 Official Company Registration
               </h2>
               
               <div className="space-y-4">
-                <div className="flex justify-between py-3 border-b border-zinc-800">
-                  <span className="text-zinc-400">Company Name</span>
+                <div className="flex justify-between py-3 border-b border-slate-200">
+                  <span className="text-slate-500">Company Name</span>
                   <span className="font-semibold">{companyInfo.name}</span>
                 </div>
-                <div className="flex justify-between py-3 border-b border-zinc-800">
-                  <span className="text-zinc-400">Registration Number</span>
-                  <span className="font-mono text-emerald-400">{companyInfo.registrationNumber}</span>
+                <div className="flex justify-between py-3 border-b border-slate-200">
+                  <span className="text-slate-500">Registration Number</span>
+                  <span className="font-mono text-emerald-600">{companyInfo.registrationNumber}</span>
                 </div>
-                <div className="flex justify-between py-3 border-b border-zinc-800">
-                  <span className="text-zinc-400">VAT Number</span>
+                <div className="flex justify-between py-3 border-b border-slate-200">
+                  <span className="text-slate-500">VAT Number</span>
                   <span className="font-mono">{companyInfo.vatNumber}</span>
                 </div>
-                <div className="flex justify-between py-3 border-b border-zinc-800">
-                  <span className="text-zinc-400">Founded</span>
+                <div className="flex justify-between py-3 border-b border-slate-200">
+                  <span className="text-slate-500">Founded</span>
                   <span>{companyInfo.founded}</span>
                 </div>
                 <div className="flex justify-between py-3">
-                  <span className="text-zinc-400">Jurisdiction</span>
+                  <span className="text-slate-500">Jurisdiction</span>
                   <span>England & Wales 🇬🇧</span>
                 </div>
               </div>
@@ -177,7 +177,7 @@ const AboutPage = () => {
                 href="https://find-and-update.company-information.service.gov.uk/company/14892376"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 flex items-center justify-center gap-2 text-sm text-purple-400 hover:text-purple-300"
+                className="mt-6 flex items-center justify-center gap-2 text-sm text-violet-600 hover:text-purple-300"
               >
                 Verify on Companies House
                 <ExternalLink className="w-4 h-4" />
@@ -185,32 +185,32 @@ const AboutPage = () => {
             </div>
 
             {/* Contact & Address */}
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-8">
+            <div className="bg-white border border-slate-200 rounded-xl p-8">
               <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-cyan-400" />
+                <MapPin className="w-5 h-5 text-cyan-600" />
                 Headquarters & Contact
               </h2>
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-sm text-zinc-400 mb-2">Registered Address</h3>
+                  <h3 className="text-sm text-slate-500 mb-2">Registered Address</h3>
                   <p className="font-semibold">{companyInfo.headquarters.address}</p>
                   <p>{companyInfo.headquarters.city}, {companyInfo.headquarters.postcode}</p>
                   <p>{companyInfo.headquarters.country}</p>
                 </div>
 
                 <div>
-                  <h3 className="text-sm text-zinc-400 mb-2">Contact</h3>
+                  <h3 className="text-sm text-slate-500 mb-2">Contact</h3>
                   <div className="space-y-2">
-                    <a href={`mailto:${companyInfo.contact.email}`} className="flex items-center gap-2 hover:text-purple-400">
+                    <a href={`mailto:${companyInfo.contact.email}`} className="flex items-center gap-2 hover:text-violet-600">
                       <Mail className="w-4 h-4" />
                       {companyInfo.contact.email}
                     </a>
-                    <a href={`tel:${companyInfo.contact.phone}`} className="flex items-center gap-2 hover:text-purple-400">
+                    <a href={`tel:${companyInfo.contact.phone}`} className="flex items-center gap-2 hover:text-violet-600">
                       <Phone className="w-4 h-4" />
                       {companyInfo.contact.phone}
                     </a>
-                    <p className="flex items-center gap-2 text-zinc-400">
+                    <p className="flex items-center gap-2 text-slate-500">
                       <Clock className="w-4 h-4" />
                       {companyInfo.contact.hours}
                     </p>
@@ -218,22 +218,22 @@ const AboutPage = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-sm text-zinc-400 mb-3">Follow Us</h3>
+                  <h3 className="text-sm text-slate-500 mb-3">Follow Us</h3>
                   <div className="flex gap-3">
                     <a href={companyInfo.social.linkedin} target="_blank" rel="noopener noreferrer" 
-                       className="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                       className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a href={companyInfo.social.twitter} target="_blank" rel="noopener noreferrer"
-                       className="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-sky-500 transition-colors">
+                       className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-sky-500 transition-colors">
                       <Twitter className="w-5 h-5" />
                     </a>
                     <a href={companyInfo.social.facebook} target="_blank" rel="noopener noreferrer"
-                       className="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                       className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
                       <Facebook className="w-5 h-5" />
                     </a>
                     <a href={companyInfo.social.instagram} target="_blank" rel="noopener noreferrer"
-                       className="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-pink-600 transition-colors">
+                       className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-pink-600 transition-colors">
                       <Instagram className="w-5 h-5" />
                     </a>
                   </div>
@@ -245,12 +245,12 @@ const AboutPage = () => {
       </section>
 
       {/* Certifications */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-2xl font-bold text-center mb-8">Certifications & Compliance</h2>
           <div className="grid md:grid-cols-4 gap-4">
             {certifications.map((cert, idx) => (
-              <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
+              <div key={idx} className="bg-white border border-slate-200 rounded-xl p-6 text-center">
                 <div className="text-4xl mb-3">{cert.logo}</div>
                 <div className="font-semibold text-sm">{cert.name}</div>
               </div>
@@ -267,78 +267,78 @@ const AboutPage = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {/* Trustpilot */}
             <a href="https://www.trustpilot.com/review/euromatchtickets.com" target="_blank" rel="noopener noreferrer"
-               className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 hover:border-emerald-500/50 transition-colors">
+               className="bg-white border border-slate-200 rounded-xl p-6 hover:border-emerald-500/50 transition-colors">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
                   <span className="text-xl">⭐</span>
                 </div>
                 <div>
                   <div className="font-bold">Trustpilot</div>
-                  <div className="text-sm text-zinc-400">Verified Reviews</div>
+                  <div className="text-sm text-slate-500">Verified Reviews</div>
                 </div>
               </div>
               <div className="flex items-center gap-2 mb-2">
-                <div className="text-2xl font-bold text-emerald-400">4.8</div>
+                <div className="text-2xl font-bold text-emerald-600">4.8</div>
                 <div className="flex">
                   {[1,2,3,4,5].map(i => (
-                    <span key={i} className="text-emerald-400">★</span>
+                    <span key={i} className="text-emerald-600">★</span>
                   ))}
                 </div>
               </div>
-              <div className="text-sm text-zinc-400">Based on 2,847 reviews</div>
-              <div className="text-xs text-purple-400 mt-2 flex items-center gap-1">
+              <div className="text-sm text-slate-500">Based on 2,847 reviews</div>
+              <div className="text-xs text-violet-600 mt-2 flex items-center gap-1">
                 View all reviews <ExternalLink className="w-3 h-3" />
               </div>
             </a>
 
             {/* Google Reviews */}
             <a href="https://www.google.com/search?q=euromatchtickets+reviews" target="_blank" rel="noopener noreferrer"
-               className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+               className="bg-white border border-slate-200 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
                   <span className="text-blue-600 font-bold text-xl">G</span>
                 </div>
                 <div>
                   <div className="font-bold">Google Reviews</div>
-                  <div className="text-sm text-zinc-400">Business Profile</div>
+                  <div className="text-sm text-slate-500">Business Profile</div>
                 </div>
               </div>
               <div className="flex items-center gap-2 mb-2">
-                <div className="text-2xl font-bold text-blue-400">4.9</div>
+                <div className="text-2xl font-bold text-blue-600">4.9</div>
                 <div className="flex">
                   {[1,2,3,4,5].map(i => (
-                    <span key={i} className="text-yellow-400">★</span>
+                    <span key={i} className="text-amber-600">★</span>
                   ))}
                 </div>
               </div>
-              <div className="text-sm text-zinc-400">Based on 1,523 reviews</div>
-              <div className="text-xs text-purple-400 mt-2 flex items-center gap-1">
+              <div className="text-sm text-slate-500">Based on 1,523 reviews</div>
+              <div className="text-xs text-violet-600 mt-2 flex items-center gap-1">
                 View on Google <ExternalLink className="w-3 h-3" />
               </div>
             </a>
 
             {/* Facebook Reviews */}
             <a href="https://facebook.com/euromatchtickets/reviews" target="_blank" rel="noopener noreferrer"
-               className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 hover:border-blue-700/50 transition-colors">
+               className="bg-white border border-slate-200 rounded-xl p-6 hover:border-blue-700/50 transition-colors">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                   <Facebook className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <div className="font-bold">Facebook</div>
-                  <div className="text-sm text-zinc-400">Page Reviews</div>
+                  <div className="text-sm text-slate-500">Page Reviews</div>
                 </div>
               </div>
               <div className="flex items-center gap-2 mb-2">
                 <div className="text-2xl font-bold">4.7</div>
                 <div className="flex">
                   {[1,2,3,4,5].map(i => (
-                    <span key={i} className={i <= 4 ? "text-yellow-400" : "text-zinc-600"}>★</span>
+                    <span key={i} className={i <= 4 ? "text-amber-600" : "text-slate-500"}>★</span>
                   ))}
                 </div>
               </div>
-              <div className="text-sm text-zinc-400">Based on 892 recommendations</div>
-              <div className="text-xs text-purple-400 mt-2 flex items-center gap-1">
+              <div className="text-sm text-slate-500">Based on 892 recommendations</div>
+              <div className="text-xs text-violet-600 mt-2 flex items-center gap-1">
                 View on Facebook <ExternalLink className="w-3 h-3" />
               </div>
             </a>
@@ -347,7 +347,7 @@ const AboutPage = () => {
       </section>
 
       {/* Team */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-2xl font-bold text-center mb-8">Leadership Team</h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -357,7 +357,7 @@ const AboutPage = () => {
                   {member.image}
                 </div>
                 <div className="font-semibold">{member.name}</div>
-                <div className="text-sm text-zinc-400">{member.role}</div>
+                <div className="text-sm text-slate-500">{member.role}</div>
               </div>
             ))}
           </div>
@@ -368,7 +368,7 @@ const AboutPage = () => {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Experience the Best?</h2>
-          <p className="text-zinc-400 mb-8">Join over 850,000 happy customers who trust EuroMatchTickets</p>
+          <p className="text-slate-500 mb-8">Join over 850,000 happy customers who trust EuroMatchTickets</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/events">
               <Button className="bg-purple-600 hover:bg-purple-700 px-8 py-6 text-lg">

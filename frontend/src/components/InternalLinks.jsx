@@ -75,7 +75,7 @@ export const InternalLinks = ({ category = "f1", slug = "", city = "", showRelat
   return (
     <div className="space-y-6" data-testid="internal-links">
       {/* Static category links */}
-      <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
+      <div className="bg-white border border-slate-200 rounded-xl p-5">
         <div className="flex items-center gap-2 mb-4">
           <primary.icon className="w-4 h-4 text-emerald-400" />
           <h3 className="font-bold text-white text-sm">{primary.title}</h3>
@@ -83,7 +83,7 @@ export const InternalLinks = ({ category = "f1", slug = "", city = "", showRelat
         <ul className="space-y-2">
           {primary.links.map((link) => (
             <li key={link.to}>
-              <Link to={link.to} className="flex items-center gap-2 text-sm text-zinc-400 hover:text-emerald-400 transition-colors">
+              <Link to={link.to} className="flex items-center gap-2 text-sm text-slate-500 hover:text-emerald-400 transition-colors">
                 <ChevronRight className="w-3 h-3 flex-shrink-0" />
                 {link.label}
               </Link>
@@ -94,7 +94,7 @@ export const InternalLinks = ({ category = "f1", slug = "", city = "", showRelat
 
       {/* Dynamic related pages from DB */}
       {dynamicLinks.length > 0 && (
-        <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5" data-testid="dynamic-internal-links">
+        <div className="bg-white border border-slate-200 rounded-xl p-5" data-testid="dynamic-internal-links">
           <div className="flex items-center gap-2 mb-4">
             <MapPin className="w-4 h-4 text-amber-400" />
             <h3 className="font-bold text-white text-sm">Related Events</h3>
@@ -104,7 +104,7 @@ export const InternalLinks = ({ category = "f1", slug = "", city = "", showRelat
               const Icon = catIcons[link.category] || Flag;
               return (
                 <li key={link.url}>
-                  <Link to={link.url} className="flex items-center gap-2 text-sm text-zinc-400 hover:text-amber-400 transition-colors">
+                  <Link to={link.url} className="flex items-center gap-2 text-sm text-slate-500 hover:text-amber-400 transition-colors">
                     <Icon className="w-3 h-3 flex-shrink-0" />
                     <span className="truncate">{link.title}</span>
                   </Link>
@@ -120,15 +120,15 @@ export const InternalLinks = ({ category = "f1", slug = "", city = "", showRelat
         const group = linkGroups[cat];
         if (!group) return null;
         return (
-          <div key={cat} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
+          <div key={cat} className="bg-white border border-slate-200 rounded-xl p-5">
             <div className="flex items-center gap-2 mb-4">
-              <group.icon className="w-4 h-4 text-zinc-500" />
+              <group.icon className="w-4 h-4 text-slate-400" />
               <h3 className="font-bold text-white text-sm">{group.title}</h3>
             </div>
             <ul className="space-y-2">
               {group.links.slice(0, 4).map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                  <Link to={link.to} className="flex items-center gap-2 text-sm text-slate-500 hover:text-white transition-colors">
                     <ChevronRight className="w-3 h-3 flex-shrink-0" />
                     {link.label}
                   </Link>
