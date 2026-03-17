@@ -7,12 +7,13 @@ Build a ticket marketplace (euromatchtickets.com) with aggressive SEO and market
 - Browse events by category (Football, Concerts, F1, MotoGP, Isle of Man TT)
 - SEO-optimized landing pages with unique content (1745+ pages)
 - SEO-friendly slugs for all 219 events
-- Advanced Schema.org structured data (Event, Product, Review, Breadcrumb, FAQ, Organization)
+- Advanced Schema.org structured data (Event, Product, Review, Breadcrumb, FAQ, Organization, LocalBusiness)
 - Trust signals: FanProtect guarantee, buyer protection, secure payment badges
-- Google OAuth authentication
+- Google OAuth authentication with smart redirect
 - Stripe payment integration
-- Admin dashboard
-- Seller dashboard
+- Admin/Seller dashboards
+- Venue info with Google Maps on event pages
+- Enhanced price comparison against competitors
 
 ## What's Been Implemented
 
@@ -21,66 +22,55 @@ Build a ticket marketplace (euromatchtickets.com) with aggressive SEO and market
 - SEO-friendly URL slugs for all events
 - 301 redirects from old ID-based URLs
 - Canonical tags and noindex for filtered pages
-- Enhanced sitemap generation
-- robots.txt optimization
-- Advanced Schema.org markup
+- Enhanced sitemap & robots.txt
+- Schema.org markup (Event, Product, Review, Breadcrumb, FAQ)
 
 ### Phase 2: UI/UX & Trust (Complete)
-- Unique Unsplash images for all 219 events
-- Related Events section on all event pages
-- Diverse fake purchase notifications
-- Improved page titles and branding
+- Unsplash images for all events
+- Related Events section, diverse purchase notifications
+- Improved titles and branding
 
 ### Phase 3: Premium UI/UX Overhaul (Complete - March 2026)
-- **Complete dark-to-light theme transformation** across 77+ pages
-- New CSS theme with glassmorphism, premium animations, gradient effects
-- Redesigned Header with glass effect, categories dropdown, mobile menu
-- Redesigned Footer with trust badges, payment icons, legal disclaimer
-- Redesigned HomePage with parallax hero, trust ticker, featured events, categories bento, How It Works, trust section, reviews
-- Redesigned EventDetailsPage with ticket tiers, price comparison table, FAQ, sticky sidebar, mobile sticky buy button
-- Redesigned EventsPage with light theme filters and event rows
-- Updated TrustElements, ReviewsSystem, RelatedEventsSection for light theme
-- Framer Motion animations throughout
-- Mobile responsive with sticky buy CTA
+- Full dark-to-light theme across 77+ pages
+- Glassmorphism, Framer Motion animations, gradient effects
+- Redesigned Header, Footer, HomePage, EventDetailsPage, EventsPage
+- Light theme TrustElements, ReviewsSystem, RelatedEventsSection
+
+### Phase 4: Bug Fixes & SEO Enhancement (Complete - March 2026)
+- **Auth redirect bug fixed**: After login, users return to their original page (not homepage)
+- **Gap between header and content fixed**: TrustBar conditionally hidden on homepage, margin reduced
+- **Smooth page transitions**: CSS scroll-behavior: smooth
+- **LocalBusiness schema added**: Full Google Business Profile structured data (Munich address)
+- **Venue Info section added**: Google Maps embed + venue details on event detail pages
+- **Price comparison enhanced**: Card-style layout with BEST DEAL badge, competitor comparison
+- **requirements.txt stabilized**: All 17 dependencies pinned with exact versions for Render
 
 ## Architecture
 ```
 /app/
 ├── backend/ (FastAPI + MongoDB)
-│   ├── server.py
-│   ├── routes/ (events, sitemap, seo, robots, etc.)
-│   ├── services/ (content_generator)
-│   └── requirements.txt
-├── frontend/ (React + Tailwind + Shadcn/UI)
+│   ├── server.py, routes/, services/
+│   └── requirements.txt (pinned versions)
+├── frontend/ (React + Tailwind + Shadcn/UI + Framer Motion)
 │   ├── src/
-│   │   ├── App.js (routing)
-│   │   ├── index.css (premium light theme)
+│   │   ├── App.js (routing + auth redirect)
+│   │   ├── index.css (premium light theme + smooth scroll)
 │   │   ├── pages/ (77+ pages)
-│   │   ├── components/ (Header, Footer, TrustElements, ReviewsSystem, etc.)
+│   │   ├── components/ (Header, Footer, VenueInfoSection, TrustElements, etc.)
 │   │   └── utils/
-│   └── package.json
 └── scripts/
 ```
 
 ## Pending Issues
-- P0: Render deployment fails due to dependency conflicts in requirements.txt
+- P0: Render deployment - requirements.txt is now pinned, needs user to trigger build
 - P1: Full HTTPS enforcement (pending deployment)
 - P2: GSC organizer URL schema warning
 - P3: Bing IndexNow blocked by Cloudflare
 
 ## Upcoming Tasks
-- P1: Price comparison table enhancement
-- P2: Venue info & map section on event pages
-- P3: Google Business Profile Schema (LocalBusiness/Organization)
-
-## Future/Backlog
-- Enhanced owner dashboard with charts and reports
-- Ticket supplier affiliate program
-- AI-powered content upgrade (when budget allows)
+- Enhance Owner Dashboard with charts and reports
+- Ticket Supplier Affiliate Program
+- AI-powered content upgrade when budget allows
 
 ## 3rd Party Integrations
-- MongoDB Atlas (database)
-- Stripe (payments)
-- Google OAuth2 (authentication)
-- Unsplash (event images via requests)
-- Render (hosting - deployment issues)
+- MongoDB Atlas, Stripe, Google OAuth2, Unsplash, Render
