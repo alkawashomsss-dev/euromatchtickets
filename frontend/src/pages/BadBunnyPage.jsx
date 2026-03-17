@@ -28,7 +28,7 @@ const BadBunnyPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Bad Bunny London 2026 Tickets - DeBi TiRAR MaS FOToS Tour Tottenham"
         description="Buy Bad Bunny London 2026 tickets from €145. DeBi TiRAR MaS FOToS World Tour - Tottenham Hotspur Stadium June 27-28. El Conejo Malo live! Verified tickets."
@@ -36,7 +36,7 @@ const BadBunnyPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-pink-500/10 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-pink-500/10 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-violet-50 border border-violet-200 rounded-full px-4 py-2 mb-6 animate-pulse">
             <Flame className="w-4 h-4 text-violet-600" />

@@ -57,7 +57,7 @@ const ReviewsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Customer Reviews - 4.9/5 Rating | 2,940+ Verified Reviews"
         description="Read verified reviews from 2,940+ customers who bought tickets on EuroMatchTickets. 4.9/5 average rating. F1, MotoGP, World Cup, Champions League tickets. Reviews in English, German, Arabic, French, Spanish."
@@ -70,7 +70,7 @@ const ReviewsPage = () => {
       ]} />
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-purple-900/20 to-zinc-950 border-b border-slate-100">
+      <section className="py-16 bg-gradient-to-b from-purple-900/20 to-slate-950 border-b border-slate-100">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-2 mb-6">

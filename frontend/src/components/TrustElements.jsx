@@ -133,7 +133,7 @@ export const TrustSection = () => (
 );
 
 export const TrustBar = () => (
-  <div className="mt-[90px] sm:mt-[110px] bg-white border-b border-slate-200 py-2">
+  <div className="mt-[68px] sm:mt-[76px] bg-white border-b border-slate-200 py-2">
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex justify-center items-center gap-4 sm:gap-6 text-[11px] sm:text-sm overflow-x-auto whitespace-nowrap">
         <div className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 flex-shrink-0" /><span className="text-slate-600">100% Guarantee</span></div>

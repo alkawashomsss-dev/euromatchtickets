@@ -67,7 +67,7 @@ const ACLFestivalPage = () => {
       {/* Hero */}
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1920)' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/90 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/90 to-slate-950" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-20 text-center">
           <Badge className="bg-gradient-to-r from-green-600 to-teal-600 text-white border-0 mb-4">
@@ -109,7 +109,7 @@ const ACLFestivalPage = () => {
       </section>
 
       {/* Pass Types */}
-      <section className="py-12 bg-gradient-to-r from-green-900/20 via-zinc-900 to-teal-900/20">
+      <section className="py-12 bg-gradient-to-r from-green-900/20 via-slate-900 to-teal-900/20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center">Festival Passes</h2>
           <div className="grid md:grid-cols-5 gap-4">
@@ -133,7 +133,7 @@ const ACLFestivalPage = () => {
               <div className="text-2xl font-bold text-violet-600 mb-1">$4,892</div>
               <p className="text-xs text-slate-400">All weekends + perks</p>
             </div>
-            <div className="bg-gradient-to-br from-pink-900/30 to-zinc-900/50 border border-pink-500/50 rounded-xl p-5 text-center">
+            <div className="bg-gradient-to-br from-pink-900/30 to-slate-900/50 border border-pink-500/50 rounded-xl p-5 text-center">
               <Badge className="bg-gradient-to-r from-pink-600 to-purple-600 text-white text-xs mb-2">ULTIMATE</Badge>
               <div className="text-2xl font-bold text-pink-600 mb-1">$25,650</div>
               <p className="text-xs text-slate-400">VIP everything</p>

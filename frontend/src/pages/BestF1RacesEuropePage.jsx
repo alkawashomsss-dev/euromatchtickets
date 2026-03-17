@@ -123,7 +123,7 @@ const BestF1RacesEuropePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Best F1 Races in Europe 2026 - Top 8 Grand Prix to Attend | Complete Guide"
         description="Discover the best Formula 1 races to attend in Europe 2026. Monaco, Silverstone, Monza, Spa ranked with prices, pros & cons. Expert recommendations for your first F1 race."
@@ -131,7 +131,7 @@ const BestF1RacesEuropePage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       {/* Hero */}
-      <section className="relative py-16 bg-gradient-to-br from-red-600/20 via-zinc-900 to-zinc-950">
+      <section className="relative py-16 bg-gradient-to-br from-red-600/20 via-slate-900 to-slate-950">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Best F1 Races to Attend in Europe

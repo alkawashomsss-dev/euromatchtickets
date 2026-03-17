@@ -13,6 +13,7 @@ import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData, commonTicketFAQs } from "../components/StructuredData";
 import EventStructuredData from "../components/StructuredData";
 import { RecentlyBoughtPopup } from "../components/SalesAccelerator";
+import VenueInfoSection from "../components/VenueInfoSection";
 
 const FadeIn = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -250,38 +251,50 @@ export default function EventDetailsPage() {
             {/* Price Comparison */}
             <FadeIn delay={0.1}>
               <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm" data-testid="price-comparison">
-                <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                  <TrendingDown className="w-5 h-5 text-emerald-600" /> Why EuroMatchTickets is the Smart Choice
+                <h3 className="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
+                  <TrendingDown className="w-5 h-5 text-emerald-600" /> Price Comparison
                 </h3>
-                <div className="overflow-hidden rounded-xl border border-slate-200">
-                  <table className="w-full text-sm">
-                    <thead><tr className="bg-slate-50">
-                      <th className="text-left p-3 text-slate-500 font-medium">Platform</th>
-                      <th className="text-center p-3 text-slate-500 font-medium">Price</th>
-                      <th className="text-center p-3 text-slate-500 font-medium">Delivery</th>
-                      <th className="text-center p-3 text-slate-500 font-medium">Guarantee</th>
-                    </tr></thead>
-                    <tbody>
-                      <tr className="border-t border-slate-100">
-                        <td className="p-3 text-slate-500">Official Box Office</td>
-                        <td className="p-3 text-center text-slate-400 line-through">&euro;{officialPrice}</td>
-                        <td className="p-3 text-center text-slate-400">2-4 weeks</td>
-                        <td className="p-3 text-center text-slate-400">Limited</td>
-                      </tr>
-                      <tr className="border-t border-slate-100">
-                        <td className="p-3 text-slate-500">Other Resellers</td>
-                        <td className="p-3 text-center text-slate-400 line-through">&euro;{Math.round(lowestPrice * 1.2)}</td>
-                        <td className="p-3 text-center text-slate-400">1-7 days</td>
-                        <td className="p-3 text-center text-slate-400">Varies</td>
-                      </tr>
-                      <tr className="border-t-2 border-emerald-200 bg-emerald-50/50">
-                        <td className="p-3 font-bold text-slate-900">EuroMatchTickets</td>
-                        <td className="p-3 text-center font-extrabold text-emerald-600 text-lg">&euro;{lowestPrice}</td>
-                        <td className="p-3 text-center text-emerald-600 font-medium">Instant</td>
-                        <td className="p-3 text-center text-emerald-600 font-medium">FanProtect</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <p className="text-sm text-slate-500 mb-5">See how much you save with EuroMatchTickets</p>
+                
+                <div className="space-y-3 mb-5">
+                  {/* Competitors */}
+                  {[
+                    { name: 'Official Box Office', price: officialPrice, delivery: '2-4 weeks', guarantee: 'Limited' },
+                    { name: 'StubHub / Viagogo', price: Math.round(lowestPrice * 1.25), delivery: '1-7 days', guarantee: 'Partial' },
+                    { name: 'Other Resellers', price: Math.round(lowestPrice * 1.15), delivery: '3-5 days', guarantee: 'Varies' },
+                  ].map((comp, i) => (
+                    <div key={i} className="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-slate-300" />
+                        <span className="text-sm text-slate-500">{comp.name}</span>
+                      </div>
+                      <div className="flex items-center gap-4 text-sm">
+                        <span className="text-slate-400 line-through">&euro;{comp.price}</span>
+                        <span className="text-slate-400 text-xs hidden sm:block">{comp.delivery}</span>
+                        <span className="text-slate-400 text-xs hidden sm:block">{comp.guarantee}</span>
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {/* EuroMatchTickets - Highlighted */}
+                  <div className="flex items-center justify-between p-4 rounded-xl bg-emerald-50 border-2 border-emerald-300 shadow-sm relative">
+                    <div className="absolute -top-2.5 left-4 bg-emerald-500 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">BEST DEAL</div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                      <span className="text-sm font-bold text-slate-900">EuroMatchTickets</span>
+                    </div>
+                    <div className="flex items-center gap-4 text-sm">
+                      <span className="text-2xl font-extrabold text-emerald-600">&euro;{lowestPrice}</span>
+                      <span className="text-emerald-600 text-xs font-bold hidden sm:block">Instant</span>
+                      <span className="text-emerald-600 text-xs font-bold hidden sm:flex items-center gap-1"><Shield className="w-3 h-3" />FanProtect</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Savings badge */}
+                <div className="flex items-center justify-center gap-3 p-3 rounded-xl bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200">
+                  <TrendingDown className="w-5 h-5 text-emerald-600" />
+                  <span className="text-sm font-bold text-emerald-700">You save up to &euro;{savings} compared to official sellers</span>
                 </div>
               </div>
             </FadeIn>
@@ -405,6 +418,9 @@ export default function EventDetailsPage() {
                   ))}
                 </div>
               </div>
+
+              {/* Venue Info with Map */}
+              <VenueInfoSection event={event} />
 
               {/* Reviews */}
               <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">

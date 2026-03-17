@@ -188,7 +188,7 @@ const F1TicketsPage = () => {
   const displayRaces = featuredRaces.length > 0 ? featuredRaces : races.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="F1 Tickets 2026 - Buy Formula 1 Grand Prix Tickets | Monaco, Silverstone, Monza"
         description="Buy F1 2026 tickets at best prices! Monaco GP from €289, British GP Silverstone from €199, Italian GP Monza, Singapore GP & all 24 races. VIP Hospitality, Grandstand. 100% Verified. Instant QR Delivery!"
@@ -197,7 +197,7 @@ const F1TicketsPage = () => {
 
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-slate-900 to-slate-950" />
         <div className="absolute inset-0 opacity-10 bg-cover bg-center" style={{backgroundImage: "url('/images/heroes/f1-red.jpg')"}} />
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">

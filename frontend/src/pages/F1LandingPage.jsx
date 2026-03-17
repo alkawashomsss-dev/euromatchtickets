@@ -31,7 +31,7 @@ const F1LandingPage = () => {
             alt="F1 Racing"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-zinc-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-slate-950" />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">

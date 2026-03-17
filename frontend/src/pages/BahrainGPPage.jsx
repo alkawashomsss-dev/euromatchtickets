@@ -37,7 +37,7 @@ const BahrainGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Bahrain Grand Prix Tickets 2026 - Buy F1 Bahrain Night Race Tickets | Best Prices"
         description="Buy Bahrain Grand Prix 2026 tickets from €149. Spectacular F1 night race! Main Grandstand, Turn 1, VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
@@ -45,7 +45,7 @@ const BahrainGPPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-600/30 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-600/30 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-violet-50 border border-violet-200 rounded-full px-4 py-2 mb-6">
             <Moon className="w-4 h-4 text-violet-600" /><span className="text-violet-600 font-medium">Night Race Under The Stars</span>

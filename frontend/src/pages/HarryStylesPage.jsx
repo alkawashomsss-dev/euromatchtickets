@@ -81,7 +81,7 @@ const HarryStylesPage = () => {
       {/* Hero */}
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1920)' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/90 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/90 to-slate-950" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-20 text-center">
           <Badge className="bg-gradient-to-r from-pink-600 to-purple-600 text-white border-0 mb-4">
@@ -122,7 +122,7 @@ const HarryStylesPage = () => {
       </section>
 
       {/* VIP Packages */}
-      <section className="py-12 bg-gradient-to-r from-amber-900/20 via-zinc-900 to-amber-900/20">
+      <section className="py-12 bg-gradient-to-r from-amber-900/20 via-slate-900 to-amber-900/20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center flex items-center justify-center gap-2">
             <Crown className="w-6 h-6 text-amber-600" />{t.vipTitle}
@@ -133,12 +133,12 @@ const HarryStylesPage = () => {
               <div className="text-3xl font-bold text-white mb-2">€5,225</div>
               <p className="text-sm text-slate-500">Premium seating, early entry, exclusive merch</p>
             </div>
-            <div className="bg-gradient-to-br from-amber-900/30 to-zinc-900/50 border border-amber-500/50 rounded-xl p-6 text-center">
+            <div className="bg-gradient-to-br from-amber-900/30 to-slate-900/50 border border-amber-500/50 rounded-xl p-6 text-center">
               <div className="text-amber-600 font-bold mb-2">VIP Platinum</div>
               <div className="text-3xl font-bold text-amber-600 mb-2">€9,025</div>
               <p className="text-sm text-slate-500">Front row, meet & greet opportunity, VIP lounge</p>
             </div>
-            <div className="bg-gradient-to-br from-purple-900/30 to-zinc-900/50 border border-purple-500/50 rounded-xl p-6 text-center">
+            <div className="bg-gradient-to-br from-purple-900/30 to-slate-900/50 border border-purple-500/50 rounded-xl p-6 text-center">
               <Badge className="bg-purple-600 text-white mb-2">ULTIMATE</Badge>
               <div className="text-3xl font-bold text-violet-600 mb-2">€15,300</div>
               <p className="text-sm text-slate-500">Berlin exclusive, backstage, dinner with team</p>

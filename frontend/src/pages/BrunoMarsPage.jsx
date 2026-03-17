@@ -36,7 +36,7 @@ const BrunoMarsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Bruno Mars The Romantic Tour 2026 Tickets - Wembley, Berlin, Amsterdam"
         description="Buy Bruno Mars The Romantic Tour 2026 tickets. Official European stadium tour - 6 nights Wembley London, Berlin, Amsterdam, Madrid, Milan. Verified tickets from €125."
@@ -44,7 +44,7 @@ const BrunoMarsPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-rose-500/10 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-rose-500/10 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-violet-50 border border-violet-200 rounded-full px-4 py-2 mb-6 animate-pulse">
             <Zap className="w-4 h-4 text-violet-600" />

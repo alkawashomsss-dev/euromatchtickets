@@ -115,7 +115,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
       {/* Hero */}
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div className={`absolute inset-0 bg-gradient-to-br ${monthData.color} opacity-20`} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/80 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/80 to-slate-950" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-16 text-center">
           {/* Month Navigation */}
@@ -222,7 +222,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
                         alt={event.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-900" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900" />
                       <Badge className={`absolute top-3 left-3 ${badgeInfo.color} text-white`}>
                         {getEventIcon(event.event_type)}
                         <span className="ml-1">{badgeInfo.text}</span>

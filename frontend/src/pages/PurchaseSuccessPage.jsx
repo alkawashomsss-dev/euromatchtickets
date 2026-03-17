@@ -17,7 +17,7 @@ const PurchaseSuccessPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Purchase Complete | EuroMatchTickets"
         description="Thank you for your purchase. Your tickets are on the way."

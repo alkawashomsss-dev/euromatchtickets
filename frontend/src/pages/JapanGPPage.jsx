@@ -37,7 +37,7 @@ const JapanGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Japanese Grand Prix Tickets 2026 - Suzuka F1 Tickets | 130R, S-Curves Grandstand"
         description="Buy Japanese Grand Prix 2026 Suzuka tickets from €189. The legendary figure-8 circuit! 130R, S-Curves, Hairpin grandstands. VIP Hospitality. 100% Ticket Guarantee. Instant delivery!"
@@ -45,7 +45,7 @@ const JapanGPPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-600/30 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-rose-600/30 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® Japanese Grand Prix

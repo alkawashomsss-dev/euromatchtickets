@@ -140,7 +140,7 @@ const SellerDashboard = () => {
   // If user is not a seller, show upgrade prompt
   if (user?.role === 'buyer') {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)]">
         <div className="max-w-2xl mx-auto px-4 py-20 text-center">
           <div className="w-20 h-20 rounded-2xl bg-violet-50 flex items-center justify-center mx-auto mb-6">
             <Package className="w-10 h-10 text-violet-600" />
@@ -179,7 +179,7 @@ const SellerDashboard = () => {
   const soldTickets = tickets.filter(t => t.status === 'sold');
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">

@@ -35,7 +35,7 @@ const TheWeekndPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="The Weeknd Tour 2026 Tickets - After Hours Til Dawn Europe"
         description="Buy The Weeknd 2026 European tour tickets from €95. After Hours Til Dawn stadium tour. Paris, London, Berlin, Amsterdam. Blinding Lights live! 100% verified."
@@ -43,7 +43,7 @@ const TheWeekndPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 mb-6 animate-pulse">
             <Zap className="w-4 h-4 text-red-600" />

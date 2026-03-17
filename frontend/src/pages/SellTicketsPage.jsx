@@ -120,7 +120,7 @@ export default function SellTicketsPage() {
       <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="sell-tickets-page">
         {/* Hero */}
         <div className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/30 via-zinc-900 to-zinc-950" />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/30 via-slate-900 to-slate-950" />
           <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
             <Badge className="bg-emerald-600/20 text-emerald-600 border-emerald-700/50 mb-6">
               Trusted by 12,000+ sellers worldwide

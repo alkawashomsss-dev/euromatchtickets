@@ -128,7 +128,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{ backgroundImage: `url(${data.heroImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-slate-950" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-16 text-center">
           <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200 mb-4">
@@ -168,7 +168,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
             {data.categories.map((cat, idx) => (
               <div 
                 key={idx}
-                className={`bg-white p-6 rounded-2xl border ${idx === 2 ? 'border-purple-500/50 bg-gradient-to-br from-purple-900/20 to-zinc-900/50' : 'border-slate-200'}`}
+                className={`bg-white p-6 rounded-2xl border ${idx === 2 ? 'border-purple-500/50 bg-gradient-to-br from-purple-900/20 to-slate-900/50' : 'border-slate-200'}`}
               >
                 <div className="text-4xl mb-4">{cat.icon}</div>
                 <h3 className="text-xl font-bold mb-2">{cat.name}</h3>

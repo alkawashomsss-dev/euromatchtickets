@@ -3,7 +3,7 @@ import { Building2, Mail, MapPin, FileText, Scale } from 'lucide-react';
 
 const ImpressumPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <Helmet>
         <title>Impressum | EuroMatchTickets</title>
         <meta name="description" content="Impressum und rechtliche Informationen von EuroMatchTickets. Angaben gemäß § 5 TMG." />

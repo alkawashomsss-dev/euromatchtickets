@@ -61,7 +61,7 @@ const WorldCupLandingPage = () => {
             alt="World Cup Stadium"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-zinc-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-slate-950" />
         </div>
 
         {/* Content */}
@@ -211,7 +211,7 @@ const WorldCupLandingPage = () => {
             </div>
 
             {/* Knockout */}
-            <div className="bg-gradient-to-b from-amber-900/20 to-zinc-900 border-2 border-amber-500/50 rounded-2xl p-6 relative">
+            <div className="bg-gradient-to-b from-amber-900/20 to-slate-900 border-2 border-amber-500/50 rounded-2xl p-6 relative">
               <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-black">Most Popular</Badge>
               <h3 className="text-xl font-bold mb-2">Knockout Rounds</h3>
               <p className="text-slate-500 text-sm mb-4">Round of 16 + Quarter + Semi</p>

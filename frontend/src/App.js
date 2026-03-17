@@ -119,7 +119,7 @@ import SellTicketsPage from "./pages/SellTicketsPage";
 import TicketPreviewPage from "./pages/TicketPreviewPage";
 
 // Global Structured Data
-import { OrganizationStructuredData, WebsiteStructuredData } from "./components/StructuredData";
+import { OrganizationStructuredData, WebsiteStructuredData, LocalBusinessStructuredData } from "./components/StructuredData";
 
 const BACKEND_URL = (process.env.REACT_APP_BACKEND_URL || '').replace(/\/$/, '');
 export const API = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
@@ -179,6 +179,11 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const login = () => {
+    // Save current page so we can redirect back after auth
+    const currentPath = window.location.pathname + window.location.search;
+    if (currentPath !== '/' && currentPath !== '/auth/callback') {
+      sessionStorage.setItem('auth_redirect_url', currentPath);
+    }
     // REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
     const redirectUrl = window.location.origin + '/auth/callback';
     const googleClientId = '189939537642-prda40f304g7mi4ltki8t5ak9duaepmj.apps.googleusercontent.com';
@@ -218,8 +223,8 @@ const ProtectedRoute = ({ children, requiredRole }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-slate-900 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -237,6 +242,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
 
 function AppRouter() {
   const location = useLocation();
+  const isHome = location.pathname === '/';
 
   // Check URL fragment for session_id (OAuth callback)
   if (location.hash?.includes('session_id=')) {
@@ -246,8 +252,11 @@ function AppRouter() {
   return (
     <>
       <ScrollToTop />
+      <OrganizationStructuredData />
+      <WebsiteStructuredData />
+      <LocalBusinessStructuredData />
       <Header />
-      <TrustBar />
+      {!isHome && <TrustBar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
@@ -438,12 +447,12 @@ function App() {
           <AuthProvider>
             <Toaster 
               position="top-right" 
-              theme="dark"
+              theme="light"
               toastOptions={{
                 style: {
-                  background: '#18181b',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  color: '#fafafa'
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  color: '#0f172a'
                 }
               }}
             />

@@ -163,7 +163,7 @@ const EventsThisWeekendPage = () => {
                       alt={event.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900" />
                     <Badge className="absolute top-3 left-3 bg-orange-500/90 text-white">
                       {getEventIcon(event.event_type)}
                       <span className="ml-1">This Weekend</span>

@@ -39,14 +39,14 @@ const MyTicketsPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20" data-testid="my-tickets-page">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="my-tickets-page">
       <div className="max-w-[900px] mx-auto px-4 md:px-8 py-12">
         <div className="flex items-center gap-3 mb-8">
           <Ticket className="w-7 h-7 text-violet-600" />

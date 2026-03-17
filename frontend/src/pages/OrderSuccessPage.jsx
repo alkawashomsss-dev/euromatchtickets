@@ -69,7 +69,7 @@ const OrderSuccessPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-3 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-slate-500">Processing your payment...</p>
@@ -80,7 +80,7 @@ const OrderSuccessPage = () => {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
         <div className="text-center">
           <p className="text-slate-500 mb-4">Order not found or payment failed</p>
           <Link to="/events">
@@ -92,7 +92,7 @@ const OrderSuccessPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20" data-testid="order-success-page">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="order-success-page">
       <div className="max-w-[900px] mx-auto px-4 py-12">
         {/* Success Header */}
         <div className="text-center mb-10">

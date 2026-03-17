@@ -98,7 +98,7 @@ const WorldCup2026Page = () => {
       {/* Hero */}
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920)' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/90 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/90 to-slate-950" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-20 text-center">
           <Badge className="bg-gradient-to-r from-amber-600 to-yellow-600 text-white border-0 mb-4">
@@ -153,7 +153,7 @@ const WorldCup2026Page = () => {
       </section>
 
       {/* Final & Semi-Finals */}
-      <section className="py-12 bg-gradient-to-r from-amber-900/20 via-zinc-900 to-yellow-900/20">
+      <section className="py-12 bg-gradient-to-r from-amber-900/20 via-slate-900 to-yellow-900/20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center flex items-center justify-center gap-2">
             <Crown className="w-6 h-6 text-amber-600" />Knockout Stage - Premium Tickets

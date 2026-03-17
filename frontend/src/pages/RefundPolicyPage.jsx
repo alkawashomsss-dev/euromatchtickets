@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 const RefundPolicyPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <Helmet>
         <title>Refund Policy | EuroMatchTickets</title>
         <meta name="description" content="Learn about EuroMatchTickets refund policy and buyer protection. We guarantee your purchase with our comprehensive refund policy." />

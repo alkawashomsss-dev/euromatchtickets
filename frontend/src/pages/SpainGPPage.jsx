@@ -37,7 +37,7 @@ const SpainGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Spanish Grand Prix Tickets 2026 - Barcelona F1 Tickets | Catalunya Circuit | Best Prices"
         description="Buy Spanish Grand Prix 2026 Barcelona tickets from €119. Circuit de Barcelona-Catalunya. Grandstand G, C, H. VIP Hospitality. 100% Ticket Guarantee. Instant delivery!"
@@ -45,7 +45,7 @@ const SpainGPPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/30 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/30 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-yellow-500/20 text-amber-600 border-yellow-500/30 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® Spanish Grand Prix

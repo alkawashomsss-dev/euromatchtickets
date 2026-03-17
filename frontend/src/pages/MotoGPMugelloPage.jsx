@@ -37,7 +37,7 @@ const MotoGPMugelloPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Italian MotoGP Tickets 2026 - Mugello | The Cathedral of Motorcycling"
         description="Buy Italian MotoGP 2026 Mugello tickets from €79. The best atmosphere in motorcycle racing! Tribuna Centrale, Poggio Secco. 100% Ticket Guarantee. Instant delivery!"
@@ -45,7 +45,7 @@ const MotoGPMugelloPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-600/30 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-green-600/30 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-green-500/20 text-green-600 border-green-500/30 mb-6">
             <Bike className="w-4 h-4 mr-2" />The Cathedral of Motorcycling 🏍️

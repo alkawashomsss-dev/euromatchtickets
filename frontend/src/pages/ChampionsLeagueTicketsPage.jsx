@@ -81,7 +81,7 @@ const ChampionsLeagueTicketsPage = () => {
               backgroundImage: `url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1600')`
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-zinc-950/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-slate-950/40" />
           
           <div className="relative z-10 h-full flex flex-col justify-end pb-12 px-4 md:px-8 max-w-[1440px] mx-auto">
             <div className="flex items-center gap-4 mb-4">

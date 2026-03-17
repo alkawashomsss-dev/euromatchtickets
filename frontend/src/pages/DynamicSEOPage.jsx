@@ -10,11 +10,11 @@ import axios from "axios";
 import { API } from "../App";
 
 const categoryStyles = {
-  f1: { accent: "#e10600", bg: "from-red-900/40 to-zinc-900", badge: "bg-red-600 text-white" },
-  football: { accent: "#1e88e5", bg: "from-blue-900/40 to-zinc-900", badge: "bg-blue-600 text-white" },
-  concert: { accent: "#9c27b0", bg: "from-purple-900/40 to-zinc-900", badge: "bg-purple-600 text-white" },
-  worldcup: { accent: "#2e7d32", bg: "from-green-900/40 to-zinc-900", badge: "bg-green-600 text-white" },
-  motogp: { accent: "#ff6d00", bg: "from-orange-900/40 to-zinc-900", badge: "bg-orange-600 text-white" },
+  f1: { accent: "#e10600", bg: "from-red-900/40 to-slate-900", badge: "bg-red-600 text-white" },
+  football: { accent: "#1e88e5", bg: "from-blue-900/40 to-slate-900", badge: "bg-blue-600 text-white" },
+  concert: { accent: "#9c27b0", bg: "from-purple-900/40 to-slate-900", badge: "bg-purple-600 text-white" },
+  worldcup: { accent: "#2e7d32", bg: "from-green-900/40 to-slate-900", badge: "bg-green-600 text-white" },
+  motogp: { accent: "#ff6d00", bg: "from-orange-900/40 to-slate-900", badge: "bg-orange-600 text-white" },
 };
 
 const renderMarkdown = (md) => {

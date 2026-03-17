@@ -142,7 +142,7 @@ const BlogPage = () => {
   const featuredArticles = articles.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Blog - Ticket Guides & News | EuroMatchTickets"
         description="Expert guides on buying F1, World Cup, football and concert tickets. Daily updated articles with best prices and tips."

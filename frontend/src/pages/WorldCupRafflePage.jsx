@@ -79,7 +79,7 @@ const WorldCupRafflePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Win FIFA World Cup 2026 Trip - VIP Raffle €100 Entry"
         description="Enter our World Cup 2026 raffle for just €100! Win an all-inclusive trip for 2: flights, 7 nights hotel, and match tickets. Limited entries available."
@@ -88,7 +88,7 @@ const WorldCupRafflePage = () => {
 
       {/* Hero Section */}
       <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/30 via-purple-500/20 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/30 via-purple-500/20 to-slate-950" />
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1920')] opacity-20 bg-cover bg-center" />
         
         <div className="relative max-w-5xl mx-auto px-4 text-center">

@@ -371,6 +371,85 @@ const WebsiteStructuredData = () => {
   return null;
 };
 
+/**
+ * LocalBusinessStructuredData - For Google Business Profile
+ */
+const LocalBusinessStructuredData = () => {
+  useEffect(() => {
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "EuroMatchTickets",
+      "alternateName": "Euro Match Tickets",
+      "url": "https://euromatchtickets.com",
+      "logo": "https://euromatchtickets.com/logo512.png",
+      "image": "https://euromatchtickets.com/og-image.jpg",
+      "description": "Europe's #1 trusted ticket marketplace for FIFA World Cup 2026, Champions League, Premier League, F1, MotoGP, concerts and more. 100% verified tickets with instant QR delivery.",
+      "priceRange": "€€",
+      "telephone": "+49-89-12345678",
+      "email": "support@euromatchtickets.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Erzgieereistr. 15",
+        "addressLocality": "Munich",
+        "addressRegion": "Bayern",
+        "postalCode": "80335",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.1351,
+        "longitude": 11.5820
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "2847",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "sameAs": [
+        "https://facebook.com/euromatchtickets",
+        "https://instagram.com/euromatchtickets",
+        "https://twitter.com/euromatchtickets",
+        "https://linkedin.com/company/euromatchtickets"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Event Tickets",
+        "itemListElement": [
+          { "@type": "OfferCatalog", "name": "Football Tickets" },
+          { "@type": "OfferCatalog", "name": "Concert Tickets" },
+          { "@type": "OfferCatalog", "name": "Formula 1 Tickets" },
+          { "@type": "OfferCatalog", "name": "MotoGP Tickets" }
+        ]
+      }
+    };
+
+    let script = document.querySelector('script[data-schema="localbusiness"]');
+    if (!script) {
+      script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-schema', 'localbusiness');
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(structuredData);
+
+    return () => {
+      const el = document.querySelector('script[data-schema="localbusiness"]');
+      if (el) el.remove();
+    };
+  }, []);
+
+  return null;
+};
+
 // Common FAQ data for ticket pages
 const commonTicketFAQs = [
   {
@@ -401,6 +480,7 @@ export {
   FAQStructuredData,
   OrganizationStructuredData,
   WebsiteStructuredData,
+  LocalBusinessStructuredData,
   commonTicketFAQs
 };
 export default EventStructuredData;

@@ -34,7 +34,7 @@ const AbuDhabiGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Abu Dhabi Grand Prix Tickets 2026 - F1 Season Finale Yas Marina | Best Prices"
         description="Buy Abu Dhabi Grand Prix 2026 tickets from €169. F1 Season Finale at Yas Marina! Twilight race, Yas Hotel views. VIP Hospitality. 100% Buyer Protection. €10 cheaper!"
@@ -43,7 +43,7 @@ const AbuDhabiGPPage = () => {
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-600/30 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-600/30 via-slate-900 to-slate-950" />
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg')] opacity-15 bg-cover bg-center" />
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">

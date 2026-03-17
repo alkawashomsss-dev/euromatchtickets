@@ -144,7 +144,7 @@ const FAQPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Frequently Asked Questions - Help Center"
         description="Find answers to common questions about buying tickets on EuroMatchTickets. Learn about our buyer protection, payment methods, ticket delivery, and security measures."

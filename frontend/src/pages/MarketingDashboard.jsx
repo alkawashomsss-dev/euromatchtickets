@@ -61,14 +61,14 @@ const MarketingDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
         <RefreshCw className="w-8 h-8 animate-spin text-purple-500" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20 pb-16">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)] pb-16">
       <div className="max-w-7xl mx-auto px-4">
         
         {/* Header */}

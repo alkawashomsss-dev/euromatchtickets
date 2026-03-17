@@ -196,7 +196,7 @@ const BlogArticlePage = () => {
   const shareUrl = `https://euromatchtickets.com/blog/${articleId}`;
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title={article.title}
         description={article.metaDescription}
@@ -239,7 +239,7 @@ const BlogArticlePage = () => {
           alt={article.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-slate-950/30" />
         
         <div className="relative z-10 h-full max-w-[900px] mx-auto px-4 flex flex-col justify-end pb-12">
           <Link to="/blog" className="flex items-center gap-2 text-violet-600 mb-4 hover:underline">

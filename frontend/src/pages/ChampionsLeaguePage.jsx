@@ -35,7 +35,7 @@ const ChampionsLeaguePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Champions League Tickets 2025-26 - Buy UCL Final, Semi Finals"
         description="Buy UEFA Champions League 2025-26 tickets from €85. Real Madrid, Man City, Bayern, Barcelona matches. UCL Final 2026 Munich. 100% verified tickets."
@@ -43,7 +43,7 @@ const ChampionsLeaguePage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2 mb-6 animate-pulse">
             <Zap className="w-4 h-4 text-blue-600" />

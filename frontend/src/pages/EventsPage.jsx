@@ -206,7 +206,7 @@ const EventsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title={getSEOTitle()}
         description={getSEODescription()}

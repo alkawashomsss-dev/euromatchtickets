@@ -67,7 +67,7 @@ const JohnLegendPage = () => {
       {/* Hero */}
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920)' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/90 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/90 to-slate-950" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-20 text-center">
           <Badge className="bg-gradient-to-r from-amber-600 to-orange-600 text-white border-0 mb-4">

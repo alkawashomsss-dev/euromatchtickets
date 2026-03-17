@@ -68,7 +68,7 @@ const MetallicaPage = () => {
       {/* Hero */}
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1920)' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/90 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/90 to-slate-950" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-20 text-center">
           <Badge className="bg-gradient-to-r from-orange-600 to-red-600 text-white border-0 mb-4">
@@ -109,7 +109,7 @@ const MetallicaPage = () => {
       </section>
 
       {/* Ticket Tiers */}
-      <section className="py-12 bg-gradient-to-r from-red-900/20 via-zinc-900 to-orange-900/20">
+      <section className="py-12 bg-gradient-to-r from-red-900/20 via-slate-900 to-orange-900/20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center">Ticket Categories</h2>
           <div className="grid md:grid-cols-4 gap-4">
@@ -128,7 +128,7 @@ const MetallicaPage = () => {
               <div className="text-3xl font-bold text-amber-600 mb-2">$1,710</div>
               <p className="text-sm text-slate-500">VIP lounge access</p>
             </div>
-            <div className="bg-gradient-to-br from-red-900/30 to-zinc-900/50 border border-red-500/50 rounded-xl p-6 text-center">
+            <div className="bg-gradient-to-br from-red-900/30 to-slate-900/50 border border-red-500/50 rounded-xl p-6 text-center">
               <Badge className="bg-red-600 text-white mb-2">SNAKE PIT</Badge>
               <div className="text-3xl font-bold text-red-600 mb-2">$2,755</div>
               <p className="text-sm text-slate-500">Floor access, meet band</p>

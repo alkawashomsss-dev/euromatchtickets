@@ -46,7 +46,7 @@ const F1SchedulePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="F1 2026 Race Schedule & Tickets - Full Formula 1 Calendar | All 24 Races"
         description="Complete F1 2026 race schedule with all 24 Grand Prix dates, locations, and tickets. Monaco, Silverstone, Monza, Singapore, Las Vegas. Buy F1 tickets from €99. Official calendar with prices."
@@ -55,7 +55,7 @@ const F1SchedulePage = () => {
 
       {/* Hero */}
       <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® World Championship
@@ -188,7 +188,7 @@ const F1SchedulePage = () => {
               <Link 
                 key={race.round} 
                 to={race.href}
-                className="flex items-center gap-4 bg-gradient-to-r from-purple-900/20 to-zinc-900/50 border border-violet-200 hover:border-purple-500/50 rounded-xl p-4 transition-all"
+                className="flex items-center gap-4 bg-gradient-to-r from-purple-900/20 to-slate-900/50 border border-violet-200 hover:border-purple-500/50 rounded-xl p-4 transition-all"
               >
                 <div className="w-12 h-12 bg-violet-50 rounded-full flex items-center justify-center">
                   <Moon className="w-6 h-6 text-violet-600" />

@@ -93,7 +93,7 @@ const IsleOfManTTPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Isle of Man TT Tickets 2026 - Buy TT Race Tickets | Grandstand & VIP Passes"
         description="Buy Isle of Man TT 2026 tickets from €149. The world's most dangerous motorcycle race! Grandstand passes, VIP hospitality. May - June 2026. Instant delivery. 100% guarantee."
@@ -103,7 +103,7 @@ const IsleOfManTTPage = () => {
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900/40 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-red-900/40 via-slate-900 to-slate-950" />
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/2611686/pexels-photo-2611686.jpeg')] opacity-10 bg-cover bg-center" />
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">
@@ -190,7 +190,7 @@ const IsleOfManTTPage = () => {
                       alt={event.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
                     {event.featured && (
                       <Badge className="absolute top-3 left-3 bg-amber-500 text-white">
                         Featured Event

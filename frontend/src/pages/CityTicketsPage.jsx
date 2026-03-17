@@ -91,7 +91,7 @@ const CityTicketsPage = () => {
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{ backgroundImage: `url(${cityInfo.image || ''})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-slate-950" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-16 text-center">
           <Badge className="bg-violet-50 text-violet-600 border-violet-200 mb-4">
@@ -168,7 +168,7 @@ const CityTicketsPage = () => {
                       alt={event.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900" />
                     <Badge className="absolute top-3 left-3 bg-white/90">
                       {event.event_type === 'match' ? '⚽ Football' : event.event_type === 'concert' ? '🎵 Concert' : '🏎️ Motorsport'}
                     </Badge>

@@ -34,7 +34,7 @@ const ZandvoortGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Dutch Grand Prix Tickets 2026 - Zandvoort F1 Tickets | Max Verstappen Home Race"
         description="Buy Dutch Grand Prix 2026 Zandvoort tickets from €189. Max Verstappen's home race! Orange army atmosphere. General admission, grandstand, VIP. €10 cheaper than F1.com!"
@@ -42,7 +42,7 @@ const ZandvoortGPPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-orange-50 text-orange-600 border-orange-200 mb-6">
             <Trophy className="w-4 h-4 mr-2" />Max Verstappen's Home Race! 🧡

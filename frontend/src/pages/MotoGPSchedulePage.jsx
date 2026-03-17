@@ -36,7 +36,7 @@ const MotoGPSchedulePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="MotoGP 2026 Race Schedule & Tickets - Full Calendar | All 21 Races"
         description="Complete MotoGP 2026 race schedule with all 21 Grand Prix dates, locations, and tickets. Mugello, Assen, Silverstone, Barcelona. Buy MotoGP tickets from €69. Official calendar."
@@ -45,7 +45,7 @@ const MotoGPSchedulePage = () => {
 
       {/* Hero */}
       <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-600/20 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-600/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-orange-50 text-orange-600 border-orange-200 mb-6">
             <Bike className="w-4 h-4 mr-2" />MotoGP™ World Championship

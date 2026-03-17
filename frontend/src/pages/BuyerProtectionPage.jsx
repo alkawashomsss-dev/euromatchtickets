@@ -5,7 +5,7 @@ import { Button } from '../components/ui/button';
 
 const BuyerProtectionPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <Helmet>
         <title>Buyer Protection & Ticket Guarantee | EuroMatchTickets</title>
         <meta name="description" content="Learn about EuroMatchTickets buyer protection policy. 100% money-back guarantee if tickets are invalid or not delivered. Secure verified ticket marketplace." />
@@ -13,7 +13,7 @@ const BuyerProtectionPage = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-emerald-500/10 to-zinc-950 border-b border-slate-100">
+      <section className="py-16 bg-gradient-to-b from-emerald-500/10 to-slate-950 border-b border-slate-100">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <div className="w-20 h-20 mx-auto bg-emerald-50 rounded-full flex items-center justify-center mb-6 animate-pulse">
             <Shield className="w-10 h-10 text-emerald-600" />

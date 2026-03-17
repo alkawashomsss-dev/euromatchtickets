@@ -32,7 +32,7 @@ const HowToBuyF1TicketsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="How to Buy F1 Tickets 2026 - Complete Guide | Safe & Secure | EuroMatchTickets"
         description="Learn how to buy Formula 1 tickets safely online. Step-by-step guide for purchasing F1 Grand Prix tickets. Best prices, 100% guarantee, instant delivery. Trusted by 50,000+ fans."
@@ -42,7 +42,7 @@ const HowToBuyF1TicketsPage = () => {
 
       {/* Hero */}
       <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             How to Buy F1 Tickets

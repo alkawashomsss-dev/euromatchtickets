@@ -100,7 +100,7 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="About EuroMatchTickets - Official Company Information | Registered in UK"
         description="EuroMatchTickets Ltd. is a UK-registered company (No. 14892376) based in London. Europe's trusted ticket marketplace since 2024. 2.4M+ tickets sold. Contact us today."
@@ -112,7 +112,7 @@ const AboutPage = () => {
       ]} />
 
       {/* Hero */}
-      <section className="py-16 bg-gradient-to-b from-purple-900/20 to-zinc-950">
+      <section className="py-16 bg-gradient-to-b from-purple-900/20 to-slate-950">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-emerald-50 text-emerald-600 border-emerald-200">

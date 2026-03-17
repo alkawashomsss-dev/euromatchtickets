@@ -153,7 +153,7 @@ const MotoGPTicketsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="MotoGP Tickets 2026 - Cheapest Prices | Buy Motorcycle Grand Prix Tickets"
         description="Buy MotoGP 2026 tickets from €69. All 20 Grand Prix races. Mugello, Silverstone, Assen, Barcelona, Valencia. VIP Village & Paddock. 100% Verified. Instant QR delivery!"
@@ -163,7 +163,7 @@ const MotoGPTicketsPage = () => {
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-zinc-900 to-zinc-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-orange-50 text-orange-600 border-orange-200 mb-6">
             <Bike className="w-4 h-4 mr-2" />MotoGP™ World Championship
@@ -243,7 +243,7 @@ const MotoGPTicketsPage = () => {
                       alt={event.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
                     {event.featured && (
                       <Badge className="absolute top-3 left-3 bg-orange-500 text-white">
                         Featured Race

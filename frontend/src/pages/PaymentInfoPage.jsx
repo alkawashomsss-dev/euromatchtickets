@@ -3,7 +3,7 @@ import { CreditCard, Lock, Shield, CheckCircle, AlertCircle, RefreshCw, Globe, B
 
 const PaymentInfoPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <Helmet>
         <title>Payment Information | EuroMatchTickets - Secure Payments</title>
         <meta name="description" content="Learn about secure payment methods at EuroMatchTickets. We accept all major credit cards, Apple Pay, Google Pay. 100% secure with Stripe." />

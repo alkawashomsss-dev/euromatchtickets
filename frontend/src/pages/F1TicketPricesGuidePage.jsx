@@ -40,7 +40,7 @@ const F1TicketPricesGuidePage = () => {
   const mostExpensive = priceData.sort((a, b) => b.ga - a.ga).slice(0, 5);
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="F1 Ticket Prices 2026 - Complete Price Guide for All Races | EuroMatchTickets"
         description="Complete F1 ticket price guide 2026. Compare prices for all 23 Grand Prix races. General admission from €99, Grandstand from €189, VIP from €889. Save up to 50% vs official prices."
@@ -48,7 +48,7 @@ const F1TicketPricesGuidePage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       {/* Hero */}
-      <section className="relative py-16 bg-gradient-to-br from-emerald-600/20 via-zinc-900 to-zinc-950">
+      <section className="relative py-16 bg-gradient-to-br from-emerald-600/20 via-slate-900 to-slate-950">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             F1 Ticket Prices 2026

@@ -3,7 +3,7 @@ import { Shield, Lock, Eye, Database, Globe, Mail, Cookie, Server, UserCheck } f
 
 const PrivacyPolicyPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-20">
+    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <Helmet>
         <title>Datenschutzerklärung / Privacy Policy | EuroMatchTickets</title>
         <meta name="description" content="Datenschutzerklärung von EuroMatchTickets. Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO/GDPR." />

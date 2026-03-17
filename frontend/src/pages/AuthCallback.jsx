@@ -28,7 +28,10 @@ const AuthCallback = () => {
           localStorage.setItem('session_token', response.data.session_token);
         }
         setUser(response.data.user);
-        navigate('/', { replace: true });
+        // Redirect back to the page user was on before login
+        const redirectTo = sessionStorage.getItem('auth_redirect_url') || '/';
+        sessionStorage.removeItem('auth_redirect_url');
+        navigate(redirectTo, { replace: true });
         return true;
       }
       throw new Error("Authentication response invalid");
@@ -60,7 +63,9 @@ const AuthCallback = () => {
           localStorage.setItem('session_token', response.data.session_token);
         }
         setUser(response.data.user);
-        navigate('/', { replace: true });
+        const redirectTo = sessionStorage.getItem('auth_redirect_url') || '/';
+        sessionStorage.removeItem('auth_redirect_url');
+        navigate(redirectTo, { replace: true });
         return true;
       }
       throw new Error("Authentication failed");
