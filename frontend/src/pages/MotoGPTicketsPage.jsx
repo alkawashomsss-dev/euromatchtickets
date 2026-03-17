@@ -155,7 +155,7 @@ const MotoGPTicketsPage = () => {
   return (
     <div className="min-h-screen bg-zinc-950 pt-20">
       <SEOHead 
-        title="MotoGP Tickets 2026 - Buy Motorcycle Grand Prix Tickets | Mugello, Silverstone, Assen"
+        title="MotoGP Tickets 2026 - Cheapest Prices | Buy Motorcycle Grand Prix Tickets"
         description="Buy MotoGP 2026 tickets from €69. All 20 Grand Prix races. Mugello, Silverstone, Assen, Barcelona, Valencia. VIP Village & Paddock. 100% Verified. Instant QR delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

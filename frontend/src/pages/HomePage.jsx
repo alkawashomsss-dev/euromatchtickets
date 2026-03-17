@@ -77,18 +77,15 @@ const EventCard = ({ event }) => {
     >
       {/* Image */}
       <div className="relative h-48 overflow-hidden">
-        <picture>
-          <source type="image/webp" srcSet={`${eventImgBase}-sm.webp 400w, ${eventImgBase}-md.webp 800w`} sizes="(max-width: 640px) 400px, 800px" />
-          <img 
-            src={`${eventImgBase}.jpg`}
-            alt={event.title}
-            loading="lazy"
-            decoding="async"
-            width="400"
-            height="192"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-        </picture>
+        <img 
+          src={event.image_url || `${eventImgBase}-md.webp`}
+          alt={event.image_alt || `${event.title} tickets - EuroMatchTickets`}
+          loading="lazy"
+          decoding="async"
+          width="400"
+          height="192"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
         <div className="img-overlay" />
         
         {/* Type Badge */}
@@ -233,8 +230,8 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-[#09090b] font-body">
       <SEOHead 
-        title="Buy Football & Concert Tickets in Europe"
-        description="Europe's #1 ticket marketplace. Buy verified tickets for Champions League, Premier League, La Liga, Taylor Swift, Coldplay and more. 100% secure with instant QR delivery."
+        title="Buy F1, Football & Concert Tickets 2026 - Cheapest Prices"
+        description="Europe's #1 ticket marketplace. Buy verified tickets for Champions League, F1, MotoGP, Premier League, World Cup 2026, Taylor Swift, Coldplay and more. 100% secure with instant QR delivery. Best prices guaranteed."
         image="https://euromatchtickets.com/og-image.jpg"
       />
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }]} />
