@@ -403,7 +403,7 @@ export default function EventDetailsPage() {
 
               {/* Conversion Widgets */}
               <div className="space-y-3">
-                <ScarcityBadge available={event.available_tickets} total={event.total_tickets || 200} />
+                <ScarcityBadge available={event.available_tickets || event.ticket_count} total={event.total_tickets || 200} />
                 <HighDemandBadge eventId={event.event_id} />
                 <SocialProofCounter eventId={event.event_id} />
               </div>

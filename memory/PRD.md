@@ -9,68 +9,75 @@ Build a ticket marketplace (euromatchtickets.com) with aggressive SEO and market
 - SEO-friendly slugs for all 219 events
 - Advanced Schema.org structured data (Event, Product, Review, Breadcrumb, FAQ, Organization, LocalBusiness)
 - Trust signals: FanProtect guarantee, buyer protection, secure payment badges
-- Google OAuth authentication with smart redirect
+- Google OAuth authentication with smart redirect (returns to original page)
 - Stripe payment integration
 - Admin/Seller dashboards
 - Venue info with Google Maps on event pages
-- Enhanced price comparison against competitors
-
-## What's Been Implemented
-
-### Phase 1: SEO Foundation (Complete)
-- 1745 SEO pages with unique template-based content
-- SEO-friendly URL slugs for all events
-- 301 redirects from old ID-based URLs
-- Canonical tags and noindex for filtered pages
-- Enhanced sitemap & robots.txt
-- Schema.org markup (Event, Product, Review, Breadcrumb, FAQ)
-
-### Phase 2: UI/UX & Trust (Complete)
-- Unsplash images for all events
-- Related Events section, diverse purchase notifications
-- Improved titles and branding
-
-### Phase 3: Premium UI/UX Overhaul (Complete - March 2026)
-- Full dark-to-light theme across 77+ pages
-- Glassmorphism, Framer Motion animations, gradient effects
-- Redesigned Header, Footer, HomePage, EventDetailsPage, EventsPage
-- Light theme TrustElements, ReviewsSystem, RelatedEventsSection
-
-### Phase 4: Bug Fixes & SEO Enhancement (Complete - March 2026)
-- **Auth redirect bug fixed**: After login, users return to their original page (not homepage)
-- **Gap between header and content fixed**: TrustBar conditionally hidden on homepage, margin reduced
-- **Smooth page transitions**: CSS scroll-behavior: smooth
-- **LocalBusiness schema added**: Full Google Business Profile structured data (Munich address)
-- **Venue Info section added**: Google Maps embed + venue details on event detail pages
-- **Price comparison enhanced**: Card-style layout with BEST DEAL badge, competitor comparison
-- **requirements.txt stabilized**: All 17 dependencies pinned with exact versions for Render
+- Price comparison vs competitors
+- **Price Alert System** with automated email sequences
+- **Conversion optimization**: Scarcity, Social Proof, Urgency
+- Professional QR e-ticket delivery via email
 
 ## Architecture
 ```
 /app/
 ├── backend/ (FastAPI + MongoDB)
-│   ├── server.py, routes/, services/
-│   └── requirements.txt (pinned versions)
+│   ├── server.py
+│   ├── routes/ (events, auth, tickets, seo, admin, marketing, alerts)
+│   ├── email_service.py (premium light theme templates + QR tickets)
+│   ├── services/ (content_generator)
+│   └── requirements.txt (17 deps pinned)
 ├── frontend/ (React + Tailwind + Shadcn/UI + Framer Motion)
 │   ├── src/
-│   │   ├── App.js (routing + auth redirect)
-│   │   ├── index.css (premium light theme + smooth scroll)
-│   │   ├── pages/ (77+ pages)
-│   │   ├── components/ (Header, Footer, VenueInfoSection, TrustElements, etc.)
+│   │   ├── App.js (routing + auth redirect + structured data)
+│   │   ├── index.css (premium light theme + glassmorphism)
+│   │   ├── pages/ (77+ pages - all light theme)
+│   │   ├── components/
+│   │   │   ├── ConversionWidgets.jsx (PriceAlert, Scarcity, SocialProof, Urgency)
+│   │   │   ├── VenueInfoSection.jsx (Google Maps)
+│   │   │   ├── Header/Footer (premium light)
+│   │   │   └── ...
 │   │   └── utils/
+│   └── yarn.lock (regenerated for Render)
 └── scripts/
 ```
 
+## What's Been Implemented
+
+### Phase 1-2: SEO + Trust (Complete)
+- 1745 SEO pages, slugs, 301 redirects, canonical/noindex, sitemap, robots.txt
+- Schema.org (Event, Product, Review, Breadcrumb, FAQ, Organization, LocalBusiness)
+- Unsplash images, Related Events, purchase notifications
+
+### Phase 3: Premium UI/UX Overhaul (Complete - March 2026)
+- Full dark-to-light theme across 77+ pages
+- Glassmorphism, Framer Motion, premium gradients
+- Redesigned Header, Footer, HomePage, EventDetailsPage, EventsPage
+
+### Phase 4: Bug Fixes + Enhancement (Complete - March 2026)
+- Auth redirect bug fixed (returns to original page after login)
+- Gap between header and content fixed
+- Smooth scroll, LocalBusiness schema, venue maps, price comparison
+- requirements.txt pinned, yarn.lock regenerated
+
+### Phase 5: Conversion Optimization (Complete - March 2026)
+- **Price Alert System**: Subscribe with email → Welcome email → 24h discount (10% off) → 48h reminder → 72h urgency (tickets almost sold out)
+- **Scarcity Badges**: "Only X tickets left!" with urgency colors
+- **Social Proof**: "X people booked today", "X people viewing now"
+- **Urgency Countdown**: Days/Hours/Mins to event, "Prices increase soon" warning
+- **Enhanced Price Comparison**: Card layout vs Box Office, StubHub, Other Resellers
+- **Professional QR Tickets**: Premium light theme email with QR code, VERIFIED badge, event details
+
 ## Pending Issues
-- P0: Render deployment - requirements.txt is now pinned, needs user to trigger build
-- P1: Full HTTPS enforcement (pending deployment)
-- P2: GSC organizer URL schema warning
-- P3: Bing IndexNow blocked by Cloudflare
+- P0: Render deployment - requirements.txt pinned + yarn.lock regenerated, user needs to trigger build
+- P1: Full HTTPS enforcement
+- P2: GSC organizer URL schema
+- P3: Bing IndexNow Cloudflare block
 
 ## Upcoming Tasks
-- Enhance Owner Dashboard with charts and reports
+- Enhance Owner Dashboard with charts
 - Ticket Supplier Affiliate Program
-- AI-powered content upgrade when budget allows
+- AI-powered content upgrade
 
 ## 3rd Party Integrations
-- MongoDB Atlas, Stripe, Google OAuth2, Unsplash, Render
+- MongoDB Atlas, Stripe, Google OAuth2, Unsplash, Resend (emails), Render
