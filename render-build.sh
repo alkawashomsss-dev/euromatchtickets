@@ -11,10 +11,10 @@ pip install -r requirements.txt
 
 echo "=== Installing frontend dependencies ==="
 cd /opt/render/project/src/frontend
-yarn install --no-frozen-lockfile
+npm ci --legacy-peer-deps
 
 echo "=== Building frontend ==="
-CI=false yarn build
+CI=false npx craco build
 
 echo "=== Copying frontend build to backend/static ==="
 rm -rf /opt/render/project/src/backend/static
