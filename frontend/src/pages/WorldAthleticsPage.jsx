@@ -6,8 +6,9 @@ import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles,
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { motion } from "framer-motion";
 
-const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/4a0723d8-569f-4f37-a12d-b96fbae88e33/images/8def4308c583ef39b2bc261b09aa54b750f7257fc66032fa13e855b5f4696f21.png";
+const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/a3a9316ec64f6c42707d0fe9d06b2409d1652145b679655bcb7aac9a3c772036.png";
 
 const categories = [
   { name: "Category C", price: 79, tier: "Upper Tier – Full Stadium View", color: "from-sky-600 to-sky-800", text: "text-sky-300", tag: null, features: ["Verified authentic ticket", "Upper tier seating", "Instant QR delivery", "Full refund if cancelled"] },
@@ -54,20 +55,20 @@ const WorldAthleticsPage = () => {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/40 bg-blue-500/10 text-blue-400 text-xs font-bold mb-5 backdrop-blur-md">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/40 bg-blue-500/10 text-blue-400 text-xs font-bold mb-5 backdrop-blur-md">
             <Trophy className="w-4 h-4" /> Olympic-Level Competition
-          </div>
+          </motion.div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tighter mb-3 leading-[0.85]" style={{ textShadow: '0 4px 40px rgba(0,0,0,0.5)' }}>
+          <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tighter mb-3 leading-[0.85]" style={{ textShadow: '0 4px 40px rgba(0,0,0,0.5)' }}>
             WORLD ATHLETICS
             <span className="block bg-gradient-to-r from-blue-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">CHAMPIONSHIP 2026</span>
-          </h1>
-          <p className="text-base sm:text-lg text-slate-400 mb-6">September 2026 &bull; Budapest, Hungary</p>
+          </motion.h1>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-base sm:text-lg text-slate-400 mb-6">September 2026 &bull; Budapest, Hungary</motion.p>
 
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
             Watch <strong className="text-white">world champions and Olympic medalists</strong> compete in the ultimate track & field showdown. 
             Usain Bolt's successors. World records. Pure athletic glory.
-          </p>
+          </motion.p>
 
           <div className="flex flex-wrap justify-center gap-3 sm:gap-5 mb-10">
             {[
@@ -75,19 +76,19 @@ const WorldAthleticsPage = () => {
               { icon: MapPin, label: "Budapest", sub: "Hungary" },
               { icon: Users, label: "200+ Nations", sub: "2000+ Athletes" },
             ].map((s, i) => (
-              <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
                 <s.icon className="w-5 h-5 text-blue-400 flex-shrink-0" />
                 <div className="text-left">
                   <div className="text-white text-sm font-bold leading-tight">{s.label}</div>
                   <div className="text-slate-400 text-xs">{s.sub}</div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          <a href="#tickets" className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-extrabold rounded-full text-lg shadow-[0_0_40px_rgba(59,130,246,0.35)] hover:shadow-[0_0_60px_rgba(59,130,246,0.5)] transition-all" data-testid="hero-cta">
-            <Ticket className="w-5 h-5" /> Get Tickets from €79
-          </a>
+          <motion.a initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} href="#tickets" className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-extrabold rounded-full text-lg shadow-[0_0_40px_rgba(59,130,246,0.35)] hover:shadow-[0_0_60px_rgba(59,130,246,0.5)] transition-all" data-testid="hero-cta">
+            <Ticket className="w-5 h-5" /> Get Tickets from &euro;79
+          </motion.a>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-blue-500/10 via-blue-500/5 to-blue-500/10 border-t border-blue-500/20 backdrop-blur-md">

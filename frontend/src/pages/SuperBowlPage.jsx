@@ -6,8 +6,9 @@ import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles,
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { motion } from "framer-motion";
 
-const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/4a0723d8-569f-4f37-a12d-b96fbae88e33/images/45944c725832f3a437f2bc805d12a6b4a19fae5d783c15acc66d1ce2f243ec58.png";
+const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/d1f3f993ef225f8bb18bf55d54c64c51b61a17902dc81f204df12ad8285ee2bd.png";
 
 const packages = [
   { name: "Upper Level", price: 899, orig: 1200, tier: "Nosebleed Seats", color: "from-slate-600 to-slate-800", text: "text-slate-300", tag: null, features: ["Verified e-ticket", "Stadium atmosphere", "Instant QR delivery", "Full refund if cancelled"] },
@@ -29,22 +30,30 @@ const Countdown = () => {
   return (
     <div className="flex gap-3 justify-center" data-testid="countdown">
       {[{ v: d, l: "Days" }, { v: h, l: "Hours" }, { v: m, l: "Min" }, { v: s, l: "Sec" }].map((u, i) => (
-        <div key={i} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3 min-w-[70px] text-center">
+        <motion.div key={i} initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: i * 0.1 }} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3 min-w-[70px] text-center">
           <div className="text-2xl sm:text-3xl font-black text-white">{String(u.v).padStart(2, '0')}</div>
           <div className="text-[10px] text-red-300 uppercase tracking-wider font-bold">{u.l}</div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
 };
 
+const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
+
 const SuperBowlPage = () => {
   const [events, setEvents] = useState([]);
-  const [viewCount] = useState(Math.floor(Math.random() * 80) + 340);
-  const [ticketsLeft] = useState(47);
+  const [liveStats, setLiveStats] = useState({ available: 0, lowest: 0 });
 
   useEffect(() => {
-    axios.get(`${API}/events?search=Super+Bowl`).then(r => setEvents(r.data)).catch(() => {});
+    axios.get(`${API}/events?search=Super+Bowl`).then(r => {
+      setEvents(r.data);
+      if (r.data.length > 0) {
+        const total = r.data.reduce((s, e) => s + (e.available_tickets || 0), 0);
+        const lowest = Math.min(...r.data.map(e => e.lowest_price || 999999));
+        setLiveStats({ available: total, lowest: lowest < 999999 ? lowest : 899 });
+      }
+    }).catch(() => {});
   }, []);
 
   const schema = {
@@ -75,32 +84,32 @@ const SuperBowlPage = () => {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/40 bg-red-500/10 text-red-400 text-xs font-bold mb-4 backdrop-blur-md animate-pulse">
-            <Flame className="w-4 h-4" /> SOLD OUT FAST — Only {ticketsLeft} tickets left!
-          </div>
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/40 bg-red-500/10 text-red-400 text-xs font-bold mb-4 backdrop-blur-md animate-pulse">
+            <Flame className="w-4 h-4" /> {liveStats.available > 0 ? `${liveStats.available} tickets available` : 'Limited Availability'}
+          </motion.div>
 
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-2 leading-[0.85]" style={{ textShadow: '0 4px 40px rgba(0,0,0,0.5)' }}>
+          <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-5xl sm:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-2 leading-[0.85]" style={{ textShadow: '0 4px 40px rgba(0,0,0,0.5)' }}>
             SUPER BOWL
             <span className="block bg-gradient-to-r from-red-500 via-amber-400 to-red-500 bg-clip-text text-transparent">LX 2026</span>
-          </h1>
-          <p className="text-base sm:text-lg text-slate-400 mb-6">February 8, 2026 &bull; Levi's Stadium, Santa Clara, California</p>
+          </motion.h1>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-base sm:text-lg text-slate-400 mb-6">February 8, 2026 &bull; Levi's Stadium, Santa Clara, California</motion.p>
 
-          <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
             The <strong className="text-white">biggest night in American sports</strong>. World-class halftime show. 
             70,000+ fans. A once-in-a-lifetime experience you'll never forget.
-          </p>
+          </motion.p>
 
           <Countdown />
 
-          <div className="flex flex-wrap justify-center gap-3 mt-8 mb-6 text-xs text-slate-400">
-            <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><Eye className="w-3.5 h-3.5 text-red-400" /> {viewCount} people viewing</span>
-            <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><TrendingUp className="w-3.5 h-3.5 text-amber-400" /> 89 bought today</span>
-            <span className="flex items-center gap-1.5 bg-red-500/10 border border-red-500/30 rounded-full px-3 py-1.5 backdrop-blur-sm text-red-300"><Flame className="w-3.5 h-3.5" /> Only {ticketsLeft} left</span>
-          </div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="flex flex-wrap justify-center gap-3 mt-8 mb-6 text-xs text-slate-400">
+            <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><Users className="w-3.5 h-3.5 text-red-400" /> {liveStats.available > 0 ? `${liveStats.available} tickets left` : 'Selling Fast'}</span>
+            {liveStats.lowest > 0 && <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><TrendingUp className="w-3.5 h-3.5 text-amber-400" /> From &euro;{Math.round(liveStats.lowest)}</span>}
+            <span className="flex items-center gap-1.5 bg-red-500/10 border border-red-500/30 rounded-full px-3 py-1.5 backdrop-blur-sm text-red-300"><Flame className="w-3.5 h-3.5" /> High Demand</span>
+          </motion.div>
 
-          <a href="#tickets" className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-extrabold rounded-full text-lg shadow-[0_0_50px_rgba(220,38,38,0.4)] hover:shadow-[0_0_70px_rgba(220,38,38,0.6)] transition-all" data-testid="hero-cta">
-            <Ticket className="w-5 h-5" /> Get Tickets from €899
-          </a>
+          <motion.a initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} href="#tickets" className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-extrabold rounded-full text-lg shadow-[0_0_50px_rgba(220,38,38,0.4)] hover:shadow-[0_0_70px_rgba(220,38,38,0.6)] transition-all" data-testid="hero-cta">
+            <Ticket className="w-5 h-5" /> Get Tickets from &euro;{liveStats.lowest > 0 ? Math.round(liveStats.lowest) : 899}
+          </motion.a>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-red-500/10 via-red-500/5 to-red-500/10 border-t border-red-500/20 backdrop-blur-md">
@@ -145,7 +154,7 @@ const SuperBowlPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             {packages.filter(p => !p.vip).map((p, i) => (
-              <div key={i} className={`relative group rounded-2xl bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
+              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} className={`relative group rounded-2xl bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
                 {p.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">{p.tag}</div>}
                 <div className="rounded-2xl bg-[#111827] p-6 h-full flex flex-col">
                   <div className={`text-xs font-bold uppercase tracking-wider ${p.text} mb-2 text-center`}>{p.name}</div>
@@ -161,13 +170,13 @@ const SuperBowlPage = () => {
                     Buy Now <ArrowRight className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {packages.filter(p => p.vip).map((p, i) => (
-              <div key={i} className={`relative group rounded-2xl bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
+              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} className={`relative group rounded-2xl bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
                 {p.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">{p.tag}</div>}
                 <div className="rounded-2xl bg-[#111827] p-6 h-full flex flex-col">
                   <div className={`text-xs font-bold uppercase tracking-wider ${p.text} mb-2 flex items-center justify-center gap-1`}><Crown className="w-3.5 h-3.5" /> {p.name}</div>
@@ -183,7 +192,7 @@ const SuperBowlPage = () => {
                     Get VIP Access <Crown className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -278,7 +287,7 @@ const SuperBowlPage = () => {
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <Trophy className="w-12 h-12 text-red-500 mx-auto mb-4" />
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Don't Miss Super Bowl LX</h2>
-          <p className="text-slate-400 mb-8">Only {ticketsLeft} tickets remaining. Prices go up every day.</p>
+          <p className="text-slate-400 mb-8">{liveStats.available > 0 ? `${liveStats.available} tickets remaining` : 'Limited tickets available'}. Prices go up every day.</p>
           <a href="#tickets">
             <Button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-extrabold px-10 py-6 text-lg rounded-full shadow-[0_0_40px_rgba(220,38,38,0.3)] transition-all">
               <Ticket className="w-5 h-5 mr-2" /> Secure Your Tickets Now

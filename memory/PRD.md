@@ -1,59 +1,68 @@
 # EuroMatchTickets - PRD
 
 ## Original Problem Statement
-Build a ticket marketplace (euromatchtickets.com) with aggressive SEO and marketing strategy to dominate search rankings and sell 1,000 tickets in the first month.
+Build a ticket marketplace at euromatchtickets.com with aggressive SEO strategy to sell 1,000 tickets in the first month.
 
-## Tech Stack
-- Frontend: React + TailwindCSS + Shadcn/UI + Framer Motion + React.lazy (80+ pages)
-- Backend: FastAPI + MongoDB
-- Auth: Emergent-managed Google Auth
-- Payments: Stripe Checkout
-- Emails: Resend
-- Hosting: Render
+## Core Features
+- Browse events by category (Football, Concerts, F1, MotoGP, etc.)
+- SEO-optimized landing pages with unique content
+- Premium, conversion-optimized design
+- Trust signals: FanProtect guarantee, reviews, secure payments
+- Advanced Structured Data (Schema.org)
 
 ## What's Been Implemented
 
-### March 18, 2026 - Session 2
-- **Taylor Swift Wembley 2026 Page** - Premium pink/purple theme, hero with concert atmosphere, countdown, 6 show dates (Jun 19-28) with status badges, 5 ticket tiers €89-€999, VIP/Diamond packages, SEO schema, cross-links
-- **Featured Events Carousel** - Homepage "HOTTEST EVENTS" carousel with Taylor Swift, Super Bowl, World Cup. Auto-rotation, countdown timers, navigation arrows, from prices
-- **SEO Title Optimization** - All major pages updated with "Cheapest", "Official Alternative", "Instant QR Delivery" keywords:
-  - Homepage, F1 Tickets, Monaco GP, Bahrain GP, MotoGP, Champions League
-- **Cross-linking improvements** - Footer updated with Super Bowl, World Athletics links
+### Session 1-3 (Previous)
+- Full-stack FastAPI/React marketplace
+- 80+ SEO landing pages
+- Lazy loading for all page components
+- Checkout flow with Stripe
+- Google OAuth authentication
+- Homepage with Featured Events Carousel
+- Sitemap generation
+- Price comparison tables
+- FanProtect guarantee page
 
-### March 18, 2026 - Session 1
-- **Super Bowl 2026 Page** - Red/gold theme, countdown, social proof (340 viewing/89 bought/47 left), 6 packages €899-€14,999 with strikethrough pricing, price comparison vs StubHub/Viagogo/SeatGeek
-- **World Athletics 2026 Page** - Blue theme, 6 categories €79-€1,899, VIP track-side
-- **Lazy Loading** - ALL 80+ pages converted to React.lazy()
-- **WorldCupPage Redesigned** - Premium dark/gold theme
-- **Checkout Fix** - CheckoutPage + /api/checkout/create-event endpoint
-- **Auth Fix** - Switched to Emergent Auth (403 resolved)
-- **Price Visibility Fix** - White-on-white text fixed
-- **New Logo** - Ticket+stadium design
-- **Tickets at Top** - EventDetailsPage restructured
-- **CTA Links** - ComparisonPage Buy Now buttons
-- **Render Deploy Fixes** - yarn.lock, pydantic-core, render-build.sh
+### Session 4 (March 18, 2026)
+- **Fixed Render Deployment**: Root cause was `yarn.lock` in `.gitignore`. Migrated to npm, added `SKIP_INSTALL_DEPS=true`, `--legacy-peer-deps`
+- **Fixed Google Auth**: Removed Emergent Auth, restored direct Google OAuth
+- **Fixed Google Search Console Warnings**: Added `validFrom` to all Offer schemas (6 pages)
+- **New Hero Images**: Generated 4 high-quality images for SuperBowl, TaylorSwift, WorldAthletics, WorldCup
+- **Real Events & Animations**: Added framer-motion animations, real API data (available_tickets, lowest_price), real countdowns, removed fake social proof numbers
 
-## Key SEO Pages
-- /taylor-swift-wembley-2026-tickets (NEW)
-- /super-bowl-2026-tickets
-- /world-athletics-2026-tickets
-- /world-cup-2026
-- /f1-tickets + 16 GP pages
-- /motogp-tickets + race pages
-- /champions-league-tickets, /el-clasico-tickets
-- 1745+ dynamic SEO pages
+## Architecture
+```
+/app/
+├── backend/ (FastAPI)
+│   ├── server.py
+│   ├── routes/ (auth, checkout, events, etc.)
+│   └── .env (MONGO_URL, GOOGLE credentials)
+├── frontend/ (React + Craco)
+│   ├── package.json (npm)
+│   ├── .node-version (20)
+│   └── src/
+│       ├── pages/ (80+ pages)
+│       ├── components/
+│       └── App.js
+└── render.yaml
+```
+
+## Deployment
+- **Platform**: Render (Static Site for frontend, Web Service for backend)
+- **Frontend Build**: `npm ci --legacy-peer-deps && CI=false npm run build`
+- **Environment**: `SKIP_INSTALL_DEPS=true`, `REACT_APP_GOOGLE_CLIENT_ID`
 
 ## Prioritized Backlog
 
-### P1 - High
-- More long-tail keyword pages (specific GP prices, cheap tickets)
-- Enhanced Owner Dashboard with charts/reports
+### P1
+- Owner Dashboard with charts and sales reports
+- Verify Google Auth on production after deploy
 
-### P2 - Medium
-- Price comparison table visual enhancements
-- Bing IndexNow fix
+### P2
+- Fix Bing IndexNow (Cloudflare blocking)
+- Improve price comparison tables
 
-### P3 - Future
+### P3
 - Ticket supplier affiliate program
 - AI content enhancement
 - Multi-language expansion

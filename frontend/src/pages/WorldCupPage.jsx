@@ -6,8 +6,9 @@ import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles,
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { motion } from "framer-motion";
 
-const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/4a0723d8-569f-4f37-a12d-b96fbae88e33/images/2f1bd8a0ce8c928102711721120988ddfef9664d60a034592fbff3227a090028.png";
+const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/dace0d6f85813a94768e9f4cc5ec70716da9ba0825a43dfbd72cc0d3e280bfe9.png";
 
 const ticketCategories = [
   { name: "Category 3", price: 149, tier: "Upper Tier", color: "from-slate-600 to-slate-800", text: "text-slate-300", border: "border-slate-700", tag: null },
@@ -61,39 +62,38 @@ const WorldCupPage = () => {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 text-sm font-bold mb-6 backdrop-blur-md">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 text-sm font-bold mb-6 backdrop-blur-md">
             <Trophy className="w-4 h-4" /> Official Ticket Marketplace
-          </div>
+          </motion.div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-tight mb-4 leading-[0.9]" style={{ textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}>
+          <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-tight mb-4 leading-[0.9]" style={{ textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}>
             FIFA WORLD CUP
             <span className="block bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 bg-clip-text text-transparent">2026</span>
-          </h1>
+          </motion.h1>
 
-          <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
             USA &bull; Canada &bull; Mexico &mdash; Secure your verified tickets for the biggest football event in history.
-          </p>
+          </motion.p>
 
-          {/* Stats Row */}
           <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mb-10">
             {[
               { icon: Calendar, label: "Jun 11 – Jul 19", sub: "2026" },
               { icon: MapPin, label: "16 Cities", sub: "3 Countries" },
               { icon: Users, label: "48 Teams", sub: "104 Matches" },
             ].map((s, i) => (
-              <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
                 <s.icon className="w-5 h-5 text-amber-400 flex-shrink-0" />
                 <div className="text-left">
                   <div className="text-white text-sm font-bold leading-tight">{s.label}</div>
                   <div className="text-slate-400 text-xs">{s.sub}</div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          <a href="#tickets" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold rounded-full text-lg shadow-[0_0_40px_rgba(245,158,11,0.35)] hover:shadow-[0_0_60px_rgba(245,158,11,0.5)] transition-all" data-testid="hero-cta">
-            <Ticket className="w-5 h-5" /> Get Tickets from €149
-          </a>
+          <motion.a initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} href="#tickets" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold rounded-full text-lg shadow-[0_0_40px_rgba(245,158,11,0.35)] hover:shadow-[0_0_60px_rgba(245,158,11,0.5)] transition-all" data-testid="hero-cta">
+            <Ticket className="w-5 h-5" /> Get Tickets from &euro;149
+          </motion.a>
         </div>
 
         {/* Trust Strip */}

@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { API } from "../App";
 import { Calendar, MapPin, Ticket, Star, Shield, ChevronRight, Sparkles, Zap, Crown, ArrowRight, Check, Users, Clock, Flame, Eye, TrendingUp, Heart, Music } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { motion } from "framer-motion";
 
-const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/4a0723d8-569f-4f37-a12d-b96fbae88e33/images/6abbdd7a05846d21824781f9c8f6e515efcd3ce88e98a77c9e1039bf33a5cbc9.png";
+const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png";
 
 const shows = [
   { date: "Jun 19, 2026", day: "Friday", time: "18:00", status: "Few Left", badge: "bg-red-500" },
@@ -43,8 +46,20 @@ const Countdown = ({ target }) => {
   );
 };
 
+const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }) };
+
 const TaylorSwiftPage = () => {
-  const [viewCount] = useState(Math.floor(Math.random() * 200) + 890);
+  const [liveStats, setLiveStats] = useState({ available: 0, lowest: 0 });
+
+  useEffect(() => {
+    axios.get(`${API}/events?search=Taylor+Swift`).then(r => {
+      if (r.data.length > 0) {
+        const total = r.data.reduce((s, e) => s + (e.available_tickets || 0), 0);
+        const lowest = Math.min(...r.data.map(e => e.lowest_price || 999999));
+        setLiveStats({ available: total, lowest: lowest < 999999 ? lowest : 89 });
+      }
+    }).catch(() => {});
+  }, []);
 
   const schema = {
     "@context": "https://schema.org", "@type": "MusicEvent",
@@ -75,32 +90,32 @@ const TaylorSwiftPage = () => {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-500/40 bg-pink-500/10 text-pink-400 text-xs font-bold mb-5 backdrop-blur-md animate-pulse">
-            <Flame className="w-4 h-4" /> Selling Out Fast — {viewCount} people viewing now!
-          </div>
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-500/40 bg-pink-500/10 text-pink-400 text-xs font-bold mb-5 backdrop-blur-md animate-pulse">
+            <Flame className="w-4 h-4" /> {liveStats.available > 0 ? `${liveStats.available} tickets available` : 'Selling Out Fast'}
+          </motion.div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-tighter mb-2 leading-[0.85]" style={{ textShadow: '0 4px 40px rgba(0,0,0,0.5)' }}>
+          <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-tighter mb-2 leading-[0.85]" style={{ textShadow: '0 4px 40px rgba(0,0,0,0.5)' }}>
             TAYLOR SWIFT
             <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-violet-400 bg-clip-text text-transparent text-4xl sm:text-5xl lg:text-6xl mt-2">The Eras Tour 2026</span>
-          </h1>
-          <p className="text-base sm:text-lg text-slate-400 mb-6">6 Nights at Wembley Stadium, London &bull; June 19–28, 2026</p>
+          </motion.h1>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-base sm:text-lg text-slate-400 mb-6">6 Nights at Wembley Stadium, London &bull; June 19–28, 2026</motion.p>
 
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
             The <strong className="text-white">most iconic concert tour of a generation</strong> returns to London. 
             90,000 fans. Friendship bracelets. A night you'll remember forever.
-          </p>
+          </motion.p>
 
           <Countdown target="2026-06-19T18:00:00+01:00" />
 
-          <div className="flex flex-wrap justify-center gap-3 mt-8 mb-6 text-xs text-slate-400">
-            <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><Eye className="w-3.5 h-3.5 text-pink-400" /> {viewCount} viewing now</span>
-            <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><TrendingUp className="w-3.5 h-3.5 text-purple-400" /> 156 bought today</span>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="flex flex-wrap justify-center gap-3 mt-8 mb-6 text-xs text-slate-400">
+            <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><Users className="w-3.5 h-3.5 text-pink-400" /> {liveStats.available > 0 ? `${liveStats.available} tickets left` : 'Limited Tickets'}</span>
+            {liveStats.lowest > 0 && <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><TrendingUp className="w-3.5 h-3.5 text-purple-400" /> From &euro;{Math.round(liveStats.lowest)}</span>}
             <span className="flex items-center gap-1.5 bg-pink-500/10 border border-pink-500/30 rounded-full px-3 py-1.5 backdrop-blur-sm text-pink-300"><Heart className="w-3.5 h-3.5" /> #1 Concert 2026</span>
-          </div>
+          </motion.div>
 
-          <a href="#tickets" className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-extrabold rounded-full text-lg shadow-[0_0_50px_rgba(219,39,119,0.4)] hover:shadow-[0_0_70px_rgba(219,39,119,0.6)] transition-all" data-testid="hero-cta">
-            <Ticket className="w-5 h-5" /> Get Tickets from €89
-          </a>
+          <motion.a initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} href="#tickets" className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-extrabold rounded-full text-lg shadow-[0_0_50px_rgba(219,39,119,0.4)] hover:shadow-[0_0_70px_rgba(219,39,119,0.6)] transition-all" data-testid="hero-cta">
+            <Ticket className="w-5 h-5" /> Get Tickets from &euro;{liveStats.lowest > 0 ? Math.round(liveStats.lowest) : 89}
+          </motion.a>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-pink-500/10 via-purple-500/5 to-pink-500/10 border-t border-pink-500/20 backdrop-blur-md">
