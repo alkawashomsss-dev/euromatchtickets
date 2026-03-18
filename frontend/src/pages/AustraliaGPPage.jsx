@@ -39,7 +39,7 @@ const AustraliaGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Australian Grand Prix Tickets 2026 - Melbourne F1 Tickets | Albert Park | Best Prices"
+        title="Australian GP Tickets 2026 | Melbourne F1 Prices"
         description="Buy Australian Grand Prix 2026 Melbourne tickets from €159. Albert Park Circuit. Jones, Brabham, Prost grandstands. VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

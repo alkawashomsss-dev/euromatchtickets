@@ -36,7 +36,7 @@ const SpaGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Belgian Grand Prix Tickets 2026 - Spa F1 Tickets Eau Rouge | Best Prices"
+        title="Belgian GP Tickets 2026 | Spa F1 Eau Rouge"
         description="Buy Belgian Grand Prix 2026 Spa-Francorchamps tickets from €109. Legendary Eau Rouge & Raidillon! General admission, grandstand, VIP. 100% Buyer Protection. €10 cheaper!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

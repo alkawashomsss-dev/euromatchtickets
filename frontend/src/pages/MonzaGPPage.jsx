@@ -36,7 +36,7 @@ const MonzaGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Italian Grand Prix Tickets 2026 - Monza F1 Tickets | Temple of Speed"
+        title="Italian GP Tickets 2026 | Monza F1 Best Prices"
         description="Buy Italian Grand Prix 2026 Monza tickets from €99. The Temple of Speed! Parabolica, Ascari grandstands. Tifosi atmosphere. 100% Buyer Protection. €10 cheaper!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

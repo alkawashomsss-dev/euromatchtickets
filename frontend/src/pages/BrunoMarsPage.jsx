@@ -38,7 +38,7 @@ const BrunoMarsPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Bruno Mars The Romantic Tour 2026 Tickets - Wembley, Berlin, Amsterdam"
+        title="Bruno Mars Tour 2026 Tickets | Wembley & Europe"
         description="Buy Bruno Mars The Romantic Tour 2026 tickets. Official European stadium tour - 6 nights Wembley London, Berlin, Amsterdam, Madrid, Milan. Verified tickets from €125."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

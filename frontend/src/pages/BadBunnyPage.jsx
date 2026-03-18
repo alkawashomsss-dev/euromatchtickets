@@ -30,7 +30,7 @@ const BadBunnyPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Bad Bunny London 2026 Tickets - DeBi TiRAR MaS FOToS Tour Tottenham"
+        title="Bad Bunny London 2026 Tickets | Tottenham Stadium"
         description="Buy Bad Bunny London 2026 tickets from €145. DeBi TiRAR MaS FOToS World Tour - Tottenham Hotspur Stadium June 27-28. El Conejo Malo live! Verified tickets."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

@@ -58,7 +58,7 @@ const MonacoGPTicketsPage = () => {
   return (
     <>
       <SEOHead
-        title="Monaco Grand Prix 2026 Tickets | Buy F1 Tickets Monaco | EuroMatchTickets"
+        title="Monaco GP 2026 Tickets | Buy F1 Monaco Tickets"
         description="Buy Monaco Grand Prix 2026 tickets. Grandstand, VIP Hospitality & Paddock Club available. Secure booking, instant delivery. Limited availability - Book now!"
         image="https://static.prod-images.emergentagent.com/jobs/775fd9a1-fbbf-459e-af56-55fb2499685c/images/1ad01909b1565e2be44a7b26803868d06378b04d70810a060231d8ef9d1b0c17.png"
       />

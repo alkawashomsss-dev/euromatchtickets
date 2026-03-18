@@ -39,7 +39,7 @@ const JapanGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Japanese Grand Prix Tickets 2026 - Suzuka F1 Tickets | 130R, S-Curves Grandstand"
+        title="Japanese GP Tickets 2026 | Suzuka F1 Prices"
         description="Buy Japanese Grand Prix 2026 Suzuka tickets from €189. The legendary figure-8 circuit! 130R, S-Curves, Hairpin grandstands. VIP Hospitality. 100% Ticket Guarantee. Instant delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

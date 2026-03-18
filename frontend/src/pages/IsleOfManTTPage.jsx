@@ -95,7 +95,7 @@ const IsleOfManTTPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Isle of Man TT Tickets 2026 - Buy TT Race Tickets | Grandstand & VIP Passes"
+        title="Isle of Man TT Tickets 2026 | Race & VIP Passes"
         description="Buy Isle of Man TT 2026 tickets from €149. The world's most dangerous motorcycle race! Grandstand passes, VIP hospitality. May - June 2026. Instant delivery. 100% guarantee."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

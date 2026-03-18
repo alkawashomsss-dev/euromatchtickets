@@ -78,7 +78,7 @@ const EventsThisWeekendPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Events This Weekend | Football, Concerts, F1 | EuroMatchTickets"
+        title="Events This Weekend | EuroMatchTickets"
         description="Find events happening this weekend. Football matches, concerts, motorsport. Book last-minute tickets with instant delivery."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

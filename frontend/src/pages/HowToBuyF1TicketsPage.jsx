@@ -34,7 +34,7 @@ const HowToBuyF1TicketsPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="How to Buy F1 Tickets 2026 - Complete Guide | Safe & Secure | EuroMatchTickets"
+        title="How to Buy F1 Tickets 2026 | Complete Guide"
         description="Learn how to buy Formula 1 tickets safely online. Step-by-step guide for purchasing F1 Grand Prix tickets. Best prices, 100% guarantee, instant delivery. Trusted by 50,000+ fans."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

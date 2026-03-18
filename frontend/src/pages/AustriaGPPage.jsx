@@ -39,7 +39,7 @@ const AustriaGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Austrian Grand Prix Tickets 2026 - Red Bull Ring F1 Tickets | Spielberg | Best Prices"
+        title="Austrian GP Tickets 2026 | Red Bull Ring F1 Prices"
         description="Buy Austrian Grand Prix 2026 Red Bull Ring tickets from €119. Mountain circuit in Spielberg! VIP Hospitality. 100% Ticket Guarantee. Instant delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

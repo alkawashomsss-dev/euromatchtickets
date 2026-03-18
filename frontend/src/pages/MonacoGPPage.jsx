@@ -36,7 +36,7 @@ const MonacoGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Monaco Grand Prix 2026 Tickets Price – Cheapest F1 Monte Carlo GP | Official Alternative + Instant QR"
+        title="Monaco GP Tickets 2026 | Cheapest F1 Monte Carlo"
         description="Buy Monaco Grand Prix 2026 tickets from €289. Cheapest prices for Casino Square, Swimming Pool, Tabac. VIP Hospitality & Paddock Club. Official alternative marketplace with instant QR delivery & FanProtect guarantee."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

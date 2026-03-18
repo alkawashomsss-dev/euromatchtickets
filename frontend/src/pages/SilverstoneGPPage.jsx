@@ -36,7 +36,7 @@ const SilverstoneGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="British Grand Prix Tickets 2026 - Silverstone F1 Tickets | €10 Cheaper"
+        title="British GP Tickets 2026 | Silverstone F1 Prices"
         description="Buy British Grand Prix 2026 Silverstone tickets from €149. Best grandstands Copse, Club, Maggotts. VIP Hospitality available. 100% Buyer Protection. €10 cheaper than F1.com!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

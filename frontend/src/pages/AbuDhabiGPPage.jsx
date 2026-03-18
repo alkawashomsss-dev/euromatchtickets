@@ -36,7 +36,7 @@ const AbuDhabiGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Abu Dhabi Grand Prix Tickets 2026 - F1 Season Finale Yas Marina | Best Prices"
+        title="Abu Dhabi GP Tickets 2026 | F1 Yas Marina Prices"
         description="Buy Abu Dhabi Grand Prix 2026 tickets from €169. F1 Season Finale at Yas Marina! Twilight race, Yas Hotel views. VIP Hospitality. 100% Buyer Protection. €10 cheaper!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

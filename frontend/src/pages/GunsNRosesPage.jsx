@@ -35,7 +35,7 @@ const GunsNRosesPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Guns N Roses Tour 2026 Tickets - European Stadium Tour Berlin London"
+        title="Guns N' Roses Tour 2026 Tickets | Europe Stadium"
         description="Buy Guns N Roses 2026 European tour tickets from €95. Stadium shows - Berlin, London Tottenham, Hamburg, Cologne, Munich. Sweet Child O Mine live!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

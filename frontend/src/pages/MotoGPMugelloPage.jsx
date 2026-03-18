@@ -39,7 +39,7 @@ const MotoGPMugelloPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Italian MotoGP Tickets 2026 - Mugello | The Cathedral of Motorcycling"
+        title="Italian MotoGP Tickets 2026 | Mugello Circuit"
         description="Buy Italian MotoGP 2026 Mugello tickets from €79. The best atmosphere in motorcycle racing! Tribuna Centrale, Poggio Secco. 100% Ticket Guarantee. Instant delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

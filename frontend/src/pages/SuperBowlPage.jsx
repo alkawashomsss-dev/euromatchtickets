@@ -70,7 +70,7 @@ const SuperBowlPage = () => {
   return (
     <div className="min-h-screen bg-[#0a0a12]" data-testid="superbowl-page">
       <SEOHead
-        title="Super Bowl 2026 Tickets – VIP & Best Seats | Instant Delivery | EuroMatchTickets"
+        title="Super Bowl 2026 Tickets | VIP & Best Seats"
         description="Buy Super Bowl LX 2026 tickets from €899. VIP suites, hospitality packages & premium seats at Levi's Stadium, Santa Clara. 100% verified with instant QR delivery. Only 47 tickets remaining!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

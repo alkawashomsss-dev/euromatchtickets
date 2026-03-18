@@ -97,7 +97,7 @@ const FanProtectPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="FanProtect Guarantee - 100% Ticket Protection | EuroMatchTickets"
+        title="FanProtect Guarantee | 100% Ticket Protection"
         description="Our FanProtect Guarantee ensures 100% authentic tickets, full refunds for cancelled events, on-time delivery, and 24/7 support. Buy with confidence."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

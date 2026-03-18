@@ -39,7 +39,7 @@ const HungaryGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Hungarian Grand Prix Tickets 2026 - Budapest F1 Tickets | Hungaroring | Best Prices"
+        title="Hungarian GP Tickets 2026 | Budapest F1 Prices"
         description="Buy Hungarian Grand Prix 2026 Budapest tickets from €99. Cheapest F1 race! Hungaroring circuit. VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

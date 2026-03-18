@@ -47,7 +47,7 @@ const WorldCupPage = () => {
   return (
     <div className="min-h-screen bg-[#0a0e1a]" data-testid="worldcup-page">
       <SEOHead 
-        title="FIFA World Cup 2026 Tickets - Cheapest Prices | Buy Official Verified Tickets"
+        title="FIFA World Cup 2026 Tickets | Cheapest Prices"
         description="Buy FIFA World Cup 2026 tickets for all matches. Opening ceremony Mexico, group stage, quarter finals, semi finals and World Cup Final in New York. Verified tickets with 100% buyer guarantee."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(worldCupSchema) }} />

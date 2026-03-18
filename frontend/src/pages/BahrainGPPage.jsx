@@ -39,7 +39,7 @@ const BahrainGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Bahrain Grand Prix 2026 Tickets Cheap – Buy F1 Night Race | Cheapest Official Alternative + Instant QR"
+        title="Bahrain GP Tickets 2026 | F1 Night Race Best Prices"
         description="Buy Bahrain Grand Prix 2026 tickets from €149. Spectacular F1 night race! Main Grandstand, Turn 1, VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

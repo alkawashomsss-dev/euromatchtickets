@@ -48,7 +48,7 @@ const WorldCupLandingPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="FIFA World Cup 2026 Tickets - Buy Official Online | EuroMatchTickets"
+        title="FIFA World Cup 2026 Tickets | Buy Official Online"
         description="Get official FIFA World Cup 2026 tickets. Prices from €150. Instant QR delivery. 100% money-back guarantee. Over 50,000 tickets available."
       />
 
