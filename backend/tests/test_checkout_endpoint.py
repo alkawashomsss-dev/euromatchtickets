@@ -5,7 +5,7 @@ import pytest
 import requests
 import os
 
-BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://ticket-checkout-fix.preview.emergentagent.com').rstrip('/')
+BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://luxury-tickets-dev.preview.emergentagent.com').rstrip('/')
 
 class TestCheckoutEndpoint:
     """Tests for POST /api/checkout/create-event endpoint"""
