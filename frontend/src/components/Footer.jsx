@@ -78,8 +78,8 @@ const Footer = () => {
                 { label: "All Matches", to: "/events?type=match" },
                 { label: "World Cup 2026", to: "/world-cup-2026" },
                 { label: "Champions League", to: "/champions-league-tickets" },
-                { label: "Premier League", to: "/events?type=match" },
-                { label: "La Liga", to: "/events?type=match" },
+                { label: "Super Bowl 2026", to: "/super-bowl-2026-tickets" },
+                { label: "El Clasico", to: "/el-clasico-tickets" },
               ].map(link => (
                 <li key={link.label}><Link to={link.to} className="text-slate-400 hover:text-white text-sm transition-colors">{link.label}</Link></li>
               ))}
@@ -98,17 +98,17 @@ const Footer = () => {
 
           {/* Support */}
           <div>
-            <h4 className="font-semibold mb-4 text-white text-sm">Support</h4>
+            <h4 className="font-semibold mb-4 text-white text-sm">More Events</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "FAQ", to: "/faq" },
-                { label: "Contact Us", to: "/contact" },
-                { label: "Buyer Protection", to: "/buyer-protection" },
-                { label: "Sell Tickets", to: "/sell-tickets" },
+                { label: "F1 Tickets", to: "/f1-tickets" },
+                { label: "MotoGP", to: "/motogp-tickets" },
+                { label: "World Athletics", to: "/world-athletics-2026-tickets" },
+                { label: "Monaco GP", to: "/monaco-grand-prix-tickets" },
+                { label: "Events This Weekend", to: "/events-this-weekend" },
               ].map(link => (
                 <li key={link.label}><Link to={link.to} className="text-slate-400 hover:text-white text-sm transition-colors">{link.label}</Link></li>
               ))}
-              <li><a href="mailto:support@euromatchtickets.com" className="text-slate-400 hover:text-white text-sm transition-colors">Email Support</a></li>
             </ul>
           </div>
 

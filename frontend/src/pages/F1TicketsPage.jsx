@@ -494,6 +494,17 @@ const F1TicketsPage = () => {
 
       {/* Internal Links */}
       <section className="py-12 max-w-7xl mx-auto px-4">
+        {/* Cross-promotion banner */}
+        <div className="mb-8 p-5 bg-gradient-to-r from-red-900/20 via-slate-900/50 to-amber-900/20 rounded-2xl border border-white/5 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-white font-bold">Looking for other major events?</p>
+            <p className="text-slate-400 text-sm">Don't miss the Super Bowl 2026 and World Athletics Championship!</p>
+          </div>
+          <div className="flex gap-3">
+            <Link to="/super-bowl-2026-tickets" className="bg-red-600 hover:bg-red-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition">Super Bowl 2026</Link>
+            <Link to="/world-cup-2026" className="bg-amber-600 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition">World Cup 2026</Link>
+          </div>
+        </div>
         <div className="grid md:grid-cols-3 gap-6">
           <InternalLinks category="f1" showRelated={false} />
           <InternalLinks category="football" showRelated={false} />

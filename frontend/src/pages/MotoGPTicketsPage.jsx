@@ -339,6 +339,20 @@ const MotoGPTicketsPage = () => {
           </div>
         </div>
       </section>
+      {/* Cross-promotion */}
+      <section className="py-8 max-w-5xl mx-auto px-4">
+        <div className="p-5 bg-gradient-to-r from-red-50 via-white to-amber-50 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-slate-900 font-bold">Looking for other major events?</p>
+            <p className="text-slate-500 text-sm">Check out the Super Bowl, World Cup, and World Athletics Championship!</p>
+          </div>
+          <div className="flex gap-3 flex-wrap">
+            <Link to="/super-bowl-2026-tickets" className="bg-red-600 hover:bg-red-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition">Super Bowl 2026</Link>
+            <Link to="/world-cup-2026" className="bg-amber-600 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition">World Cup 2026</Link>
+            <Link to="/world-athletics-2026-tickets" className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition">Athletics 2026</Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

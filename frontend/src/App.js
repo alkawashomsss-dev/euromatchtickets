@@ -96,6 +96,8 @@ const DynamicSEOPage = lazy(() => import("./pages/DynamicSEOPage"));
 const SellTicketsPage = lazy(() => import("./pages/SellTicketsPage"));
 const TicketPreviewPage = lazy(() => import("./pages/TicketPreviewPage"));
 const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
+const SuperBowlPage = lazy(() => import("./pages/SuperBowlPage"));
+const WorldAthleticsPage = lazy(() => import("./pages/WorldAthleticsPage"));
 
 // Marketing tools (lazy)
 const AIChatWidget = lazy(() => import("./components/AIChatWidget"));
@@ -366,6 +368,10 @@ function AppRouter() {
         
         {/* Checkout */}
         <Route path="/checkout" element={<CheckoutPage />} />
+        
+        {/* Major Events */}
+        <Route path="/super-bowl-2026-tickets" element={<SuperBowlPage />} />
+        <Route path="/world-athletics-2026-tickets" element={<WorldAthleticsPage />} />
         
         {/* Dynamic SEO Pages - handles city pages, event pages, and all generated content */}
         <Route path="/:slug" element={<DynamicSEOPage />} />
