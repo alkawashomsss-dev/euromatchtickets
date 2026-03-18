@@ -38,6 +38,7 @@ const WorldCupPage = () => {
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "location": { "@type": "Place", "name": "Multiple Venues - USA, Canada, Mexico", "address": { "@type": "PostalAddress", "addressCountry": "US" } },
+    "performer": {"@type": "SportsTeam", "name": "FIFA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": ticketCategories.map(c => ({ "@type": "Offer", "name": c.name, "url": "https://euromatchtickets.com/world-cup-2026", "priceCurrency": "EUR", "price": String(c.price), "availability": "https://schema.org/InStock", "validFrom": "2025-01-01" }))
   };

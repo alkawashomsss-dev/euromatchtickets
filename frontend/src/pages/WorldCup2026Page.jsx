@@ -58,6 +58,7 @@ const WorldCup2026Page = () => {
     ],
     "startDate": "2026-06-11",
     "endDate": "2026-07-19",
+    "performer": {"@type": "SportsTeam", "name": "FIFA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": {
       "@type": "AggregateOffer",

@@ -34,6 +34,7 @@ const WorldAthleticsPage = () => {
     "image": HERO_IMG, "startDate": "2026-09-11", "endDate": "2026-09-17",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": { "@type": "Place", "name": "Budapest National Athletics Centre", "address": { "@type": "PostalAddress", "addressLocality": "Budapest", "addressCountry": "HU" } },
+    "performer": {"@type": "Organization", "name": "World Athletics"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": categories.map(c => ({ "@type": "Offer", "name": c.name, "priceCurrency": "EUR", "price": String(c.price), "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/world-athletics-2026-tickets" }))
   };

@@ -20,6 +20,7 @@ const MonacoGPPage = () => {
       "name": "Circuit de Monaco",
       "address": { "@type": "PostalAddress", "addressLocality": "Monte Carlo", "addressCountry": "MC" }
     },
+    "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "289", "highPrice": "4999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-monaco-grand-prix-tickets", "validFrom": "2025-01-01" }
   };

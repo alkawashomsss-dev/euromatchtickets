@@ -63,6 +63,7 @@ const SuperBowlPage = () => {
     "image": HERO_IMG, "startDate": "2026-02-08", "endDate": "2026-02-08",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": { "@type": "Place", "name": "Levi's Stadium", "address": { "@type": "PostalAddress", "addressLocality": "Santa Clara", "addressRegion": "CA", "addressCountry": "US" } },
+    "performer": {"@type": "SportsTeam", "name": "NFL"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": packages.map(p => ({ "@type": "Offer", "name": p.name, "url": "https://euromatchtickets.com/super-bowl-2026-tickets", "priceCurrency": "EUR", "price": String(p.price), "availability": "https://schema.org/LimitedAvailability", "validFrom": "2025-01-01" }))
   };
