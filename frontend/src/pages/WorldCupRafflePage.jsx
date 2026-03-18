@@ -31,7 +31,9 @@ const WorldCupRafflePage = () => {
       "@type": "Offer",
       "price": "100",
       "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock"
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2025-01-01",
+      "url": "https://euromatchtickets.com/world-cup-2026-raffle"
     }
   };
 

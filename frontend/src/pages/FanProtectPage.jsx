@@ -88,7 +88,9 @@ const FanProtectPage = () => {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "EUR",
-      "description": "Free protection included with every purchase"
+      "description": "Free protection included with every purchase",
+      "validFrom": "2025-01-01",
+      "url": "https://euromatchtickets.com/fan-protect"
     }
   };
 

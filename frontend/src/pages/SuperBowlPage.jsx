@@ -55,7 +55,7 @@ const SuperBowlPage = () => {
     "eventStatus": "https://schema.org/EventScheduled",
     "location": { "@type": "Place", "name": "Levi's Stadium", "address": { "@type": "PostalAddress", "addressLocality": "Santa Clara", "addressRegion": "CA", "addressCountry": "US" } },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": packages.map(p => ({ "@type": "Offer", "name": p.name, "url": "https://euromatchtickets.com/super-bowl-2026-tickets", "priceCurrency": "EUR", "price": String(p.price), "availability": "https://schema.org/LimitedAvailability" }))
+    "offers": packages.map(p => ({ "@type": "Offer", "name": p.name, "url": "https://euromatchtickets.com/super-bowl-2026-tickets", "priceCurrency": "EUR", "price": String(p.price), "availability": "https://schema.org/LimitedAvailability", "validFrom": "2025-01-01" }))
   };
 
   return (
