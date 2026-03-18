@@ -15,7 +15,6 @@ const AuthCallback = () => {
   const [retryCount, setRetryCount] = useState(0);
 
   const processGoogleAuth = async (code, attempt = 1) => {
-    // REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
     const redirectUri = window.location.origin + '/auth/callback';
     try {
       const response = await axios.post(`${API}/auth/google`, {
@@ -28,7 +27,6 @@ const AuthCallback = () => {
           localStorage.setItem('session_token', response.data.session_token);
         }
         setUser(response.data.user);
-        // Redirect back to the page user was on before login
         const redirectTo = sessionStorage.getItem('auth_redirect_url') || '/';
         sessionStorage.removeItem('auth_redirect_url');
         navigate(redirectTo, { replace: true });
@@ -37,7 +35,6 @@ const AuthCallback = () => {
       throw new Error("Authentication response invalid");
     } catch (err) {
       const status = err?.response?.status;
-      // Retry on network/server errors
       if (attempt < 3 && (!status || status >= 500 || err.code === 'ECONNABORTED' || err.code === 'ERR_NETWORK')) {
         setIsRetrying(true);
         setRetryCount(attempt);
@@ -51,64 +48,23 @@ const AuthCallback = () => {
     }
   };
 
-  // Legacy: Emergent auth session_id flow (for preview environment)
-  const processEmergentAuth = async (sessionId) => {
-    try {
-      const response = await axios.post(`${API}/auth/session`, {
-        session_id: sessionId
-      }, { withCredentials: true, timeout: 30000 });
-
-      if (response.data.success) {
-        if (response.data.session_token) {
-          localStorage.setItem('session_token', response.data.session_token);
-        }
-        setUser(response.data.user);
-        const redirectTo = sessionStorage.getItem('auth_redirect_url') || '/';
-        sessionStorage.removeItem('auth_redirect_url');
-        navigate(redirectTo, { replace: true });
-        return true;
-      }
-      throw new Error("Authentication failed");
-    } catch (err) {
-      const detail = err?.response?.data?.detail || err.message;
-      setError(detail || "Authentication failed");
-      return false;
-    }
-  };
-
   useEffect(() => {
     if (hasProcessed.current) return;
     hasProcessed.current = true;
 
-    const processAuth = async () => {
-      // Google OAuth: code comes as ?code= query parameter
-      const code = searchParams.get('code');
-      if (code) {
-        await processGoogleAuth(code);
-        return;
-      }
-
-      // Legacy Emergent auth: session_id comes as #session_id= fragment
-      const hash = window.location.hash;
-      if (hash) {
-        const params = new URLSearchParams(hash.substring(1));
-        const sessionId = params.get('session_id');
-        if (sessionId) {
-          await processEmergentAuth(sessionId);
-          return;
-        }
-      }
-
+    const code = searchParams.get('code');
+    if (code) {
+      processGoogleAuth(code);
+    } else {
       setError("No authorization code found. Please try logging in again.");
-    };
-
-    processAuth();
+    }
   }, [navigate, setUser, searchParams]);
 
   const handleRetry = () => {
-    // REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
-    const redirectUrl = window.location.origin + '/auth/callback';
-    window.location.href = `https://auth.emergentagent.com/?redirect=${encodeURIComponent(redirectUrl)}`;
+    const redirectUri = window.location.origin + '/auth/callback';
+    const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+    const scope = encodeURIComponent('openid email profile');
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${scope}&access_type=offline&prompt=consent`;
   };
 
   return (

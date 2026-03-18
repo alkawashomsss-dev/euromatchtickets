@@ -147,7 +147,7 @@ const AuthProvider = ({ children }) => {
     // AuthCallback will exchange the code and establish the session first.
     // REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
     const params = new URLSearchParams(window.location.search);
-    if (params.get('code') || window.location.hash?.includes('session_id=')) {
+    if (params.get('code')) {
       setLoading(false);
       return;
     }
@@ -173,14 +173,14 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const login = () => {
-    // Save current page so we can redirect back after auth
     const currentPath = window.location.pathname + window.location.search;
     if (currentPath !== '/' && currentPath !== '/auth/callback') {
       sessionStorage.setItem('auth_redirect_url', currentPath);
     }
-    // REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
-    const redirectUrl = window.location.origin + '/auth/callback';
-    window.location.href = `https://auth.emergentagent.com/?redirect=${encodeURIComponent(redirectUrl)}`;
+    const redirectUri = window.location.origin + '/auth/callback';
+    const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+    const scope = encodeURIComponent('openid email profile');
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${scope}&access_type=offline&prompt=consent`;
   };
 
   const logout = async () => {
