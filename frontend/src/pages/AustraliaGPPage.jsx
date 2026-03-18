@@ -40,7 +40,7 @@ const AustraliaGPPage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Australian GP Tickets 2026 | Melbourne F1 Prices"
-        description="Buy Australian Grand Prix 2026 Melbourne tickets from €159. Albert Park Circuit. Jones, Brabham, Prost grandstands. VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
+        description="Buy Australian Grand Prix 2026 Melbourne tickets from €159. Albert Park Circuit. Jones, Brabham, Prost grandstands. VIP Hospitality. 100% Ticket."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

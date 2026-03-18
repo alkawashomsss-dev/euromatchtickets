@@ -126,7 +126,7 @@ const BestF1RacesEuropePage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Best F1 Races in Europe 2026 | Top 8 Grand Prix"
-        description="Discover the best Formula 1 races to attend in Europe 2026. Monaco, Silverstone, Monza, Spa ranked with prices, pros & cons. Expert recommendations for your first F1 race."
+        description="Discover the best Formula 1 races to attend in Europe 2026. Monaco, Silverstone, Monza, Spa ranked with prices, pros & cons. Expert recommendations for."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

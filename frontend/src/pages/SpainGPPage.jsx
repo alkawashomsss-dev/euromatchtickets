@@ -40,7 +40,7 @@ const SpainGPPage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Spanish GP Tickets 2026 | Barcelona F1 Prices"
-        description="Buy Spanish Grand Prix 2026 Barcelona tickets from €119. Circuit de Barcelona-Catalunya. Grandstand G, C, H. VIP Hospitality. 100% Ticket Guarantee. Instant delivery!"
+        description="Buy Spanish Grand Prix 2026 Barcelona tickets from €119. Circuit de Barcelona-Catalunya. Grandstand G, C, H. VIP Hospitality. 100% Ticket Guarantee."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

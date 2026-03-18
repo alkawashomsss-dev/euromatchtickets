@@ -39,7 +39,7 @@ const MotoGPSchedulePage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="MotoGP 2026 Schedule & Tickets | Full Calendar"
-        description="Complete MotoGP 2026 race schedule with all 21 Grand Prix dates, locations, and tickets. Mugello, Assen, Silverstone, Barcelona. Buy MotoGP tickets from €69. Official calendar."
+        description="Complete MotoGP 2026 race schedule with all 21 Grand Prix dates, locations, and tickets. Mugello, Assen, Silverstone, Barcelona. Buy MotoGP tickets from."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

@@ -40,7 +40,7 @@ const MiamiGPPage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Miami GP Tickets 2026 | F1 Beach & Marina Seats"
-        description="Buy Miami Grand Prix 2026 tickets from €249. F1 Miami International Autodrome. Beach Grandstand, Turn 1, Marina views. VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
+        description="Buy Miami Grand Prix 2026 tickets from €249. F1 Miami International Autodrome. Beach Grandstand, Turn 1, Marina views. VIP Hospitality. 100% Ticket."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

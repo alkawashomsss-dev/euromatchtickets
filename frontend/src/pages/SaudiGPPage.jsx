@@ -40,7 +40,7 @@ const SaudiGPPage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Saudi GP Tickets 2026 | Jeddah F1 Night Race"
-        description="Buy Saudi Arabian Grand Prix 2026 Jeddah tickets from €169. Fastest street circuit! Night race on the Red Sea. VIP Hospitality. 100% Ticket Guarantee. Instant delivery!"
+        description="Buy Saudi Arabian Grand Prix 2026 Jeddah tickets from €169. Fastest street circuit! Night race on the Red Sea. VIP Hospitality. 100% Ticket Guarantee."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

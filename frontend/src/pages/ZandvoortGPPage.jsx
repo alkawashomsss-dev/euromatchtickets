@@ -37,7 +37,7 @@ const ZandvoortGPPage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Dutch GP Tickets 2026 | Zandvoort F1 Prices"
-        description="Buy Dutch Grand Prix 2026 Zandvoort tickets from €189. Max Verstappen's home race! Orange army atmosphere. General admission, grandstand, VIP. €10 cheaper than F1.com!"
+        description="Buy Dutch Grand Prix 2026 Zandvoort tickets from €189. Max Verstappen's home race! Orange army atmosphere. General admission, grandstand, VIP. €10 cheaper."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

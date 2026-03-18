@@ -60,7 +60,7 @@ const ReviewsPage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Customer Reviews - 4.9/5 Rating | 2,940+ Verified Reviews"
-        description="Read verified reviews from 2,940+ customers who bought tickets on EuroMatchTickets. 4.9/5 average rating. F1, MotoGP, World Cup, Champions League tickets. Reviews in English, German, Arabic, French, Spanish."
+        description="Read verified reviews from 2,940+ customers who bought tickets on EuroMatchTickets. 4.9/5 average rating. F1, MotoGP, World Cup, Champions League tickets."
       />
       
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }} />

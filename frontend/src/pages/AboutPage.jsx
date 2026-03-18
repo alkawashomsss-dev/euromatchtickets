@@ -103,7 +103,7 @@ const AboutPage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="About EuroMatchTickets | Official UK Company Info"
-        description="EuroMatchTickets Ltd. is a UK-registered company (No. 14892376) based in London. Europe's trusted ticket marketplace since 2024. 2.4M+ tickets sold. Contact us today."
+        description="EuroMatchTickets Ltd. is a UK-registered company (No. 14892376) based in London. Europe's trusted ticket marketplace since 2024. 2.4M+ tickets sold."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <BreadcrumbStructuredData items={[

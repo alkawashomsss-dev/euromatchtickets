@@ -42,7 +42,7 @@ const WorldAthleticsPage = () => {
     <div className="min-h-screen bg-[#070b14]" data-testid="athletics-page">
       <SEOHead
         title="World Athletics 2026 Tickets | Best Prices & VIP"
-        description="Buy World Athletics Ultimate Championship 2026 tickets from €79. VIP track-side packages, hospitality access. Watch Olympic champions live. 100% verified, instant QR delivery."
+        description="Buy World Athletics Ultimate Championship 2026 tickets from €79. VIP track-side packages, hospitality access. Watch Olympic champions live. 100% verified."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

@@ -191,7 +191,7 @@ const F1TicketsPage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="F1 Tickets 2026 | Cheapest Grand Prix Prices"
-        description="Buy F1 2026 tickets at best prices! Monaco GP from €289, British GP Silverstone from €199, Italian GP Monza, Singapore GP & all 24 races. VIP Hospitality, Grandstand. 100% Verified. Instant QR Delivery!"
+        description="Buy F1 2026 tickets at best prices! Monaco GP from €289, British GP Silverstone from €199, Italian GP Monza, Singapore GP & all 24 races. VIP Hospitality."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

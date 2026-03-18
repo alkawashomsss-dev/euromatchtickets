@@ -49,7 +49,7 @@ const F1SchedulePage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="F1 2026 Race Schedule & Tickets | Full Calendar"
-        description="Complete F1 2026 race schedule with all 24 Grand Prix dates, locations, and tickets. Monaco, Silverstone, Monza, Singapore, Las Vegas. Buy F1 tickets from €99. Official calendar with prices."
+        description="Complete F1 2026 race schedule with all 24 Grand Prix dates, locations, and tickets. Monaco, Silverstone, Monza, Singapore, Las Vegas. Buy F1 tickets from."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

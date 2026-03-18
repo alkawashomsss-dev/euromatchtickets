@@ -37,7 +37,7 @@ const LasVegasGPPage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Las Vegas GP Tickets 2026 | F1 Night Race Prices"
-        description="Buy Las Vegas Grand Prix 2026 tickets from €249. F1 on the Strip! Sphere Grandstand, Strip View, VIP Hospitality. Night race past casinos. 100% Buyer Protection. €10 cheaper!"
+        description="Buy Las Vegas Grand Prix 2026 tickets from €249. F1 on the Strip! Sphere Grandstand, Strip View, VIP Hospitality. Night race past casinos. 100% Buyer."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

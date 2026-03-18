@@ -43,7 +43,7 @@ const F1TicketPricesGuidePage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="F1 Ticket Prices 2026 | Complete Price Guide"
-        description="Complete F1 ticket price guide 2026. Compare prices for all 23 Grand Prix races. General admission from €99, Grandstand from €189, VIP from €889. Save up to 50% vs official prices."
+        description="Complete F1 ticket price guide 2026. Compare prices for all 23 Grand Prix races. General admission from €99, Grandstand from €189, VIP from €889. Save up."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

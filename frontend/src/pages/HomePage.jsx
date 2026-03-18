@@ -216,7 +216,7 @@ const HomePage = () => {
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
         title="Buy F1, Football & Concert Tickets 2026 | EuroMatchTickets"
-        description="Europe's #1 official alternative ticket marketplace. Cheapest verified tickets for World Cup 2026, Taylor Swift, Super Bowl, Champions League, F1, MotoGP. Instant QR delivery. FanProtect 100% money-back guarantee."
+        description="Europe's #1 official alternative ticket marketplace. Cheapest verified tickets for World Cup 2026, Taylor Swift, Super Bowl, Champions League, F1, MotoGP."
         image="https://euromatchtickets.com/og-image.jpg"
       />
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }]} />
