@@ -374,12 +374,14 @@ const HomePage = () => {
           </FadeInSection>
 
           {/* Top Row - Hot Events */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-4">
             {[
-              { to: "/world-cup-2026", label: "FIFA 2026", title: "World Cup Tickets", price: "From \u20ac150", color: "from-slate-900 to-slate-700", accent: "text-amber-600" },
-              { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From \u20ac85", color: "from-blue-900 to-blue-700", accent: "text-blue-300" },
-              { to: "/the-weeknd-tour-2026", label: "WORLD TOUR", title: "The Weeknd 2026", price: "From \u20ac95", color: "from-red-900 to-red-700", accent: "text-red-300" },
-              { to: "/bruno-mars-tour-2026", label: "6 NIGHTS WEMBLEY", title: "Bruno Mars", price: "From \u20ac125", color: "from-violet-900 to-violet-700", accent: "text-violet-300" },
+              { to: "/taylor-swift-wembley-2026-tickets", label: "ERAS TOUR", title: "Taylor Swift", price: "From €89", color: "from-pink-600 to-purple-800", accent: "text-pink-300" },
+              { to: "/super-bowl-2026-tickets", label: "NFL FINAL", title: "Super Bowl 2026", price: "From €899", color: "from-red-700 to-red-900", accent: "text-red-300" },
+              { to: "/world-cup-2026", label: "FIFA 2026", title: "World Cup", price: "From €149", color: "from-amber-700 to-amber-900", accent: "text-amber-300" },
+              { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From €85", color: "from-blue-800 to-blue-950", accent: "text-blue-300" },
+              { to: "/world-athletics-2026-tickets", label: "TRACK & FIELD", title: "Athletics 2026", price: "From €79", color: "from-sky-700 to-indigo-900", accent: "text-sky-300" },
+              { to: "/el-clasico-tickets", label: "EL CLASICO", title: "Real vs Barca", price: "From €199", color: "from-violet-800 to-violet-950", accent: "text-violet-300" },
             ].map((cat, i) => (
               <FadeInSection key={cat.to} delay={i * 0.08}>
                 <Link to={cat.to} className="group relative h-44 rounded-2xl overflow-hidden block">
@@ -432,7 +434,7 @@ const HomePage = () => {
                 <div className="relative h-full flex flex-col justify-end p-8">
                   <Music className="w-10 h-10 text-violet-300 mb-3" />
                   <h3 className="text-3xl font-bold text-white mb-2">Concerts</h3>
-                  <p className="text-slate-300 mb-4">Taylor Swift, Coldplay, Drake & more</p>
+                  <p className="text-slate-300 mb-4">Taylor Swift, Bruno Mars, The Weeknd & more</p>
                   <span className="flex items-center text-violet-300 group-hover:translate-x-2 transition-transform font-medium">
                     Browse Concerts <ChevronRight className="w-5 h-5 ml-1" />
                   </span>
@@ -445,7 +447,7 @@ const HomePage = () => {
                 <div className="relative h-full flex flex-col justify-end p-8">
                   <Trophy className="w-10 h-10 text-emerald-300 mb-3" />
                   <h3 className="text-3xl font-bold text-white mb-2">Football</h3>
-                  <p className="text-slate-300 mb-4">Champions League, Premier League, La Liga</p>
+                  <p className="text-slate-300 mb-4">Champions League, World Cup, Super Bowl & more</p>
                   <span className="flex items-center text-emerald-300 group-hover:translate-x-2 transition-transform font-medium">
                     Browse Matches <ChevronRight className="w-5 h-5 ml-1" />
                   </span>
