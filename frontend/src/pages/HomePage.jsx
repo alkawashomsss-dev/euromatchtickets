@@ -13,6 +13,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import OptimizedImage from "../components/OptimizedImage";
+import FeaturedEventsCarousel from "../components/FeaturedEventsCarousel";
 import { getEventImagePath, getCategoryHero } from "../utils/eventImages";
 import { TrustSection, TrustBar } from "../components/TrustElements";
 import { ReviewsGrid, ReviewsStats } from "../components/ReviewsSystem";
@@ -214,8 +215,8 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Buy F1, Football & Concert Tickets 2026 - Cheapest Prices"
-        description="Europe's #1 ticket marketplace. Buy verified tickets for Champions League, F1, MotoGP, Premier League, World Cup 2026, Taylor Swift, Coldplay and more. 100% secure with instant QR delivery. Best prices guaranteed."
+        title="Buy Cheapest F1, Football & Concert Tickets 2026 | Official Alternative Marketplace – Instant QR Delivery"
+        description="Europe's #1 official alternative ticket marketplace. Cheapest verified tickets for World Cup 2026, Taylor Swift, Super Bowl, Champions League, F1, MotoGP. Instant QR delivery. FanProtect 100% money-back guarantee."
         image="https://euromatchtickets.com/og-image.jpg"
       />
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }]} />
@@ -327,6 +328,11 @@ const HomePage = () => {
           ))}
         </div>
       </section>
+
+      {/* ═══════ HOTTEST EVENTS CAROUSEL ═══════ */}
+      <div className="bg-[#0a0e1a]">
+        <FeaturedEventsCarousel />
+      </div>
 
       {/* ═══════ FEATURED EVENTS ═══════ */}
       <section className="py-24 relative">
