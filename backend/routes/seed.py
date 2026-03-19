@@ -294,3 +294,74 @@ async def get_push_templates():
 async def seo_generate_meta(page_type: str, title: str = "", price: int = 49, city: str = "Europe"):
     templates = {"event": f"{title} Tickets | From EUR{price} | EuroMatchTickets", "city": f"{city} Event Tickets 2026 | Best Prices | EuroMatchTickets"}
     return {"meta_title": templates.get(page_type, f"{title} | EuroMatchTickets"), "meta_description": f"Buy {title} tickets. Best prices guaranteed. From EUR{price}. FanProtect guarantee. Instant delivery."}
+
+
+
+@router.post("/seed-new-events")
+async def seed_new_events():
+    """Seed Super Bowl, Taylor Swift nights, World Athletics, Champions League, concerts"""
+    new_events = [
+        # Super Bowl
+        {"event_type": "match", "title": "Super Bowl LXI 2027", "venue": "Levi's Stadium", "city": "Santa Clara", "country": "USA", "event_date": "2027-02-07T18:00:00Z", "featured": True, "subtitle": "NFL Championship Game", "genre": "American Football", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/d1f3f993ef225f8bb18bf55d54c64c51b61a17902dc81f204df12ad8285ee2bd.png", "base_prices": {"upper_deck": (399, 899), "mid_level": (899, 1899), "lower_level": (1899, 3499), "club_level": (3499, 5999), "vip_suite": (5999, 8999), "platinum": (8999, 14999)}},
+        {"event_type": "match", "title": "Super Bowl LXI 2027 - VIP Experience", "venue": "Levi's Stadium", "city": "Santa Clara", "country": "USA", "event_date": "2027-02-07T14:00:00Z", "featured": True, "subtitle": "Premium Pre-Game + Game Day + After Party", "genre": "American Football", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/d1f3f993ef225f8bb18bf55d54c64c51b61a17902dc81f204df12ad8285ee2bd.png", "base_prices": {"premium": (5999, 14999)}},
+        # Taylor Swift - 6 Wembley Nights
+        {"event_type": "concert", "title": "Taylor Swift - Eras Tour Wembley Night 1", "artist": "Taylor Swift", "genre": "Pop", "venue": "Wembley Stadium", "city": "London", "country": "UK", "event_date": "2026-06-19T18:00:00Z", "featured": True, "subtitle": "The Eras Tour 2026 - Opening Night", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png", "base_prices": {"general": (59, 129), "category_a": (129, 249), "floor_standing": (199, 349), "vip_lounge": (349, 699), "diamond": (699, 1299)}},
+        {"event_type": "concert", "title": "Taylor Swift - Eras Tour Wembley Night 2", "artist": "Taylor Swift", "genre": "Pop", "venue": "Wembley Stadium", "city": "London", "country": "UK", "event_date": "2026-06-20T18:00:00Z", "featured": True, "subtitle": "The Eras Tour 2026", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png", "base_prices": {"general": (59, 129), "category_a": (129, 249), "floor_standing": (199, 349), "vip_lounge": (349, 699), "diamond": (699, 1299)}},
+        {"event_type": "concert", "title": "Taylor Swift - Eras Tour Wembley Night 3", "artist": "Taylor Swift", "genre": "Pop", "venue": "Wembley Stadium", "city": "London", "country": "UK", "event_date": "2026-06-21T18:00:00Z", "featured": True, "subtitle": "The Eras Tour 2026", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png", "base_prices": {"general": (59, 129), "category_a": (129, 249), "floor_standing": (199, 349), "vip_lounge": (349, 699), "diamond": (699, 1299)}},
+        {"event_type": "concert", "title": "Taylor Swift - Eras Tour Wembley Night 4", "artist": "Taylor Swift", "genre": "Pop", "venue": "Wembley Stadium", "city": "London", "country": "UK", "event_date": "2026-06-25T18:00:00Z", "featured": True, "subtitle": "The Eras Tour 2026", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png", "base_prices": {"general": (59, 129), "category_a": (129, 249), "floor_standing": (199, 349), "vip_lounge": (349, 699), "diamond": (699, 1299)}},
+        {"event_type": "concert", "title": "Taylor Swift - Eras Tour Wembley Night 5", "artist": "Taylor Swift", "genre": "Pop", "venue": "Wembley Stadium", "city": "London", "country": "UK", "event_date": "2026-06-27T18:00:00Z", "featured": True, "subtitle": "The Eras Tour 2026", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png", "base_prices": {"general": (59, 129), "category_a": (129, 249), "floor_standing": (199, 349), "vip_lounge": (349, 699), "diamond": (699, 1299)}},
+        {"event_type": "concert", "title": "Taylor Swift - Eras Tour Wembley Night 6", "artist": "Taylor Swift", "genre": "Pop", "venue": "Wembley Stadium", "city": "London", "country": "UK", "event_date": "2026-06-28T18:00:00Z", "featured": True, "subtitle": "The Eras Tour 2026 - Closing Night", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png", "base_prices": {"general": (59, 129), "category_a": (129, 249), "floor_standing": (199, 349), "vip_lounge": (349, 699), "diamond": (699, 1299)}},
+        # World Athletics
+        {"event_type": "match", "title": "World Athletics Championships 2026 - Day 1", "venue": "National Athletics Centre", "city": "Budapest", "country": "Hungary", "event_date": "2026-09-11T10:00:00Z", "featured": True, "subtitle": "100m Heats, Long Jump Qualifying", "genre": "Athletics", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/a3a9316ec64f6c42707d0fe9d06b2409d1652145b679655bcb7aac9a3c772036.png", "base_prices": {"day_pass": (49, 99), "evening_session": (79, 149), "premium": (149, 299), "vip": (299, 599)}},
+        {"event_type": "match", "title": "World Athletics Championships 2026 - 100m Final", "venue": "National Athletics Centre", "city": "Budapest", "country": "Hungary", "event_date": "2026-09-13T20:00:00Z", "featured": True, "subtitle": "Men's & Women's 100m Finals", "genre": "Athletics", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/a3a9316ec64f6c42707d0fe9d06b2409d1652145b679655bcb7aac9a3c772036.png", "base_prices": {"general": (79, 149), "premium": (149, 299), "vip": (299, 599), "platinum": (599, 999)}},
+        {"event_type": "match", "title": "World Athletics Championships 2026 - 200m Final", "venue": "National Athletics Centre", "city": "Budapest", "country": "Hungary", "event_date": "2026-09-15T20:00:00Z", "featured": True, "subtitle": "Sprint Finals Night", "genre": "Athletics", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/a3a9316ec64f6c42707d0fe9d06b2409d1652145b679655bcb7aac9a3c772036.png", "base_prices": {"general": (69, 129), "premium": (129, 249), "vip": (249, 499)}},
+        {"event_type": "match", "title": "World Athletics Championships 2026 - Marathon", "venue": "Budapest City Centre", "city": "Budapest", "country": "Hungary", "event_date": "2026-09-17T07:00:00Z", "featured": True, "subtitle": "Men's & Women's Marathon", "genre": "Athletics", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/a3a9316ec64f6c42707d0fe9d06b2409d1652145b679655bcb7aac9a3c772036.png", "base_prices": {"viewing_area": (29, 59), "premium": (59, 129)}},
+        {"event_type": "match", "title": "World Athletics Championships 2026 - Final Day", "venue": "National Athletics Centre", "city": "Budapest", "country": "Hungary", "event_date": "2026-09-17T18:00:00Z", "featured": True, "subtitle": "4x100m Relay Finals, Closing Ceremony", "genre": "Athletics", "event_image": "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/a3a9316ec64f6c42707d0fe9d06b2409d1652145b679655bcb7aac9a3c772036.png", "base_prices": {"general": (89, 179), "premium": (179, 349), "vip": (349, 699), "platinum": (699, 1299)}},
+        # Champions League
+        {"event_type": "match", "title": "UEFA Champions League Final 2026", "venue": "San Siro", "city": "Milan", "country": "Italy", "event_date": "2026-05-30T21:00:00Z", "featured": True, "subtitle": "UCL Final", "genre": "Football", "base_prices": {"cat3": (199, 400), "cat2": (400, 800), "cat1": (800, 1500), "vip": (1500, 5000)}},
+        {"event_type": "match", "title": "Champions League Semi-Final 1st Leg", "venue": "TBA", "city": "Europe", "country": "Europe", "event_date": "2026-04-28T21:00:00Z", "featured": True, "subtitle": "UCL Semi-Final", "genre": "Football", "base_prices": {"cat3": (99, 200), "cat2": (200, 400), "cat1": (400, 800)}},
+        {"event_type": "match", "title": "Champions League Semi-Final 2nd Leg", "venue": "TBA", "city": "Europe", "country": "Europe", "event_date": "2026-05-05T21:00:00Z", "featured": True, "subtitle": "UCL Semi-Final", "genre": "Football", "base_prices": {"cat3": (99, 200), "cat2": (200, 400), "cat1": (400, 800)}},
+        # Concerts
+        {"event_type": "concert", "title": "Bad Bunny - DeBi TiRAR MaS FOToS Tour London", "artist": "Bad Bunny", "genre": "Reggaeton", "venue": "Tottenham Hotspur Stadium", "city": "London", "country": "UK", "event_date": "2026-07-15T19:00:00Z", "featured": True, "base_prices": {"general": (69, 149), "premium": (149, 299), "vip": (299, 599)}},
+        {"event_type": "concert", "title": "Bruno Mars - The Romantic Tour London", "artist": "Bruno Mars", "genre": "Pop/R&B", "venue": "Wembley Stadium", "city": "London", "country": "UK", "event_date": "2026-08-10T19:00:00Z", "featured": True, "base_prices": {"general": (79, 159), "premium": (159, 329), "vip": (329, 699)}},
+        {"event_type": "concert", "title": "Bruno Mars - The Romantic Tour Berlin", "artist": "Bruno Mars", "genre": "Pop/R&B", "venue": "Olympiastadion", "city": "Berlin", "country": "Germany", "event_date": "2026-08-15T19:00:00Z", "featured": True, "base_prices": {"general": (69, 139), "premium": (139, 279), "vip": (279, 599)}},
+        {"event_type": "concert", "title": "Guns N' Roses European Stadium Tour 2026", "artist": "Guns N' Roses", "genre": "Rock", "venue": "London Stadium", "city": "London", "country": "UK", "event_date": "2026-06-20T18:00:00Z", "featured": True, "base_prices": {"general": (59, 129), "premium": (129, 249), "vip": (249, 499)}},
+        {"event_type": "concert", "title": "Metallica M72 World Tour 2026 - Paris", "artist": "Metallica", "genre": "Heavy Metal", "venue": "Stade de France", "city": "Paris", "country": "France", "event_date": "2026-07-05T18:00:00Z", "featured": True, "base_prices": {"general": (79, 159), "premium": (159, 329), "vip": (329, 699)}},
+        {"event_type": "concert", "title": "The Weeknd After Hours Til Dawn Tour London", "artist": "The Weeknd", "genre": "R&B/Pop", "venue": "Tottenham Hotspur Stadium", "city": "London", "country": "UK", "event_date": "2026-07-20T19:00:00Z", "featured": True, "base_prices": {"general": (69, 149), "premium": (149, 299), "vip": (299, 599)}},
+        {"event_type": "concert", "title": "Harry Styles Love On Tour 2026 London", "artist": "Harry Styles", "genre": "Pop", "venue": "Wembley Stadium", "city": "London", "country": "UK", "event_date": "2026-09-01T19:00:00Z", "featured": True, "base_prices": {"general": (69, 139), "premium": (139, 279), "vip": (279, 599)}},
+        # MotoGP / Isle of Man
+        {"event_type": "motogp", "title": "Italian MotoGP 2026 - Mugello Race Day", "venue": "Autodromo del Mugello", "city": "Scarperia", "country": "Italy", "event_date": "2026-06-01T14:00:00Z", "featured": True, "base_prices": {"general": (49, 99), "grandstand": (99, 199), "vip": (199, 499)}},
+        {"event_type": "motogp", "title": "Isle of Man TT 2026 - Senior Race", "venue": "Snaefell Mountain Course", "city": "Douglas", "country": "Isle of Man", "event_date": "2026-06-13T10:00:00Z", "featured": True, "base_prices": {"hillside": (29, 69), "grandstand": (69, 149), "vip": (149, 349)}},
+        # Festivals
+        {"event_type": "festival", "title": "ACL Festival 2026 - Weekend 1", "venue": "Zilker Park", "city": "Austin", "country": "USA", "event_date": "2026-10-02T11:00:00Z", "featured": True, "base_prices": {"single_day": (99, 199), "3_day_pass": (249, 449), "vip": (449, 999)}},
+        {"event_type": "festival", "title": "ACL Festival 2026 - Weekend 2", "venue": "Zilker Park", "city": "Austin", "country": "USA", "event_date": "2026-10-09T11:00:00Z", "featured": True, "base_prices": {"single_day": (99, 199), "3_day_pass": (249, 449), "vip": (449, 999)}},
+    ]
+
+    created = 0
+    total_tickets = 0
+    for ev in new_events:
+        event_id = f"premium_{uuid.uuid4().hex[:12]}"
+        base_prices = ev.pop("base_prices", {})
+        lowest = min(lo for lo, hi in base_prices.values()) if base_prices else 49
+        total_avail = 0
+        ev["event_id"] = event_id
+        ev["status"] = "upcoming"
+        ev["created_at"] = datetime.now(timezone.utc).isoformat()
+        ev["lowest_price"] = round(lowest * 0.95, 2)
+        ev["available_tickets"] = random.randint(30, 200)
+        total_avail = ev["available_tickets"]
+        await db.events.update_one({"title": ev["title"]}, {"$set": ev}, upsert=True)
+        for cat, (lo, hi) in base_prices.items():
+            count = 15 if hi > 3000 else (20 if hi > 1000 else 30)
+            for _ in range(count):
+                await db.tickets.insert_one({
+                    "ticket_id": f"ticket_{uuid.uuid4().hex[:12]}", "event_id": event_id,
+                    "seller_id": "seller_euromatch", "seller_name": "EuroMatchTickets Official",
+                    "category": cat, "section": f"Block {random.choice(['A','B','C','D','E'])}",
+                    "price": round(random.uniform(lo, hi), 2), "original_price": hi,
+                    "currency": "EUR", "status": "available",
+                    "created_at": datetime.now(timezone.utc).isoformat()
+                })
+                total_tickets += 1
+        created += 1
+    return {"success": True, "events_created": created, "tickets_created": total_tickets}

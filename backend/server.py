@@ -164,6 +164,13 @@ async def cleanup_expired_events():
 async def startup():
     asyncio.create_task(cleanup_expired_events())
     logger.info("Cleanup Bot started - runs daily")
+    # Auto-seed new events if they don't exist
+    count = await db.events.count_documents({"title": {"$regex": "Super Bowl LXI", "$options": "i"}})
+    if count == 0:
+        logger.info("Seeding new events...")
+        from routes.seed import seed_new_events
+        await seed_new_events()
+        logger.info("New events seeded successfully")
 
 
 @app.on_event("shutdown")
