@@ -19,8 +19,9 @@ const F1LandingPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="F1 Tickets 2026 | Buy Formula 1 Online"
-        description="Book Formula 1 tickets for 2026 season. Monaco, Silverstone, Abu Dhabi, Las Vegas. Prices from €120. Instant delivery. 100% guarantee."
+        title="F1 Tickets 2026 | Buy Formula 1 Tickets Online"
+        description="Buy F1 tickets 2026 season. F1 calendar 2026: Monaco, Silverstone, Bahrain, Abu Dhabi & more. From €120. F1 schedule 2026 with instant delivery + guarantee."
+        canonicalUrl="https://euromatchtickets.com/f1-tickets-2026"
       />
 
       {/* Hero Section */}

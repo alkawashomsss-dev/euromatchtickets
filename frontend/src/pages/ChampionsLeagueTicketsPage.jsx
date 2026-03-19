@@ -66,9 +66,9 @@ const ChampionsLeagueTicketsPage = () => {
   return (
     <>
       <SEOHead
-        title="Champions League Tickets 2026 | Cheapest UCL Prices"
-        description="Buy UEFA Champions League tickets. Quarter Finals, Semi Finals & Final. Real Madrid, Barcelona, Man City, Bayern Munich. Secure booking, verified tickets!"
-        keywords="Champions League tickets, UCL tickets, buy Champions League tickets, UEFA final tickets, Real Madrid UCL, Barcelona Champions League, Man City tickets"
+        title="Champions League Tickets 2025/26 | Buy UCL Tickets"
+        description="Buy Champions League 2025 tickets. UCL semi final, final Munich 2025. Bayern Munich, Real Madrid, Barcelona. Verified tickets + instant QR delivery."
+        keywords="champions league tickets, ucl 2025 tickets, ticket champions league 2025, champions league semi final 2025 tickets, buy ticket final champions league 2025, champions league munich tickets"
         canonicalUrl="https://euromatchtickets.com/champions-league-tickets"
       />
 

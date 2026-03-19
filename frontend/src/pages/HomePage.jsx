@@ -376,12 +376,12 @@ const HomePage = () => {
           {/* Top Row - Hot Events */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-4">
             {[
-              { to: "/taylor-swift-wembley-2026-tickets", label: "ERAS TOUR", title: "Taylor Swift", price: "From €89", color: "from-pink-600 to-purple-800", accent: "text-pink-300" },
-              { to: "/super-bowl-2026-tickets", label: "NFL FINAL", title: "Super Bowl 2026", price: "From €899", color: "from-red-700 to-red-900", accent: "text-red-300" },
-              { to: "/world-cup-2026", label: "FIFA 2026", title: "World Cup", price: "From €149", color: "from-amber-700 to-amber-900", accent: "text-amber-300" },
+              { to: "/taylor-swift-london-tickets", label: "ERAS TOUR", title: "Taylor Swift London", price: "From €89", color: "from-pink-600 to-purple-800", accent: "text-pink-300" },
+              { to: "/bayern-vs-real-madrid-tickets", label: "UCL CLASSIC", title: "Bayern vs Real Madrid", price: "From €199", color: "from-red-700 to-red-900", accent: "text-red-300" },
+              { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "Bahrain World Cup", price: "From €89", color: "from-amber-700 to-amber-900", accent: "text-amber-300" },
               { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From €85", color: "from-blue-800 to-blue-950", accent: "text-blue-300" },
-              { to: "/world-athletics-2026-tickets", label: "TRACK & FIELD", title: "Athletics 2026", price: "From €79", color: "from-sky-700 to-indigo-900", accent: "text-sky-300" },
-              { to: "/el-clasico-tickets", label: "EL CLASICO", title: "Real vs Barca", price: "From €199", color: "from-violet-800 to-violet-950", accent: "text-violet-300" },
+              { to: "/f1-bahrain-grand-prix-tickets", label: "F1 NIGHT RACE", title: "Bahrain GP", price: "From €149", color: "from-emerald-700 to-emerald-900", accent: "text-emerald-300" },
+              { to: "/f1-tickets-2026", label: "F1 2026", title: "F1 Tickets", price: "From €120", color: "from-violet-800 to-violet-950", accent: "text-violet-300" },
             ].map((cat, i) => (
               <FadeInSection key={cat.to} delay={i * 0.08}>
                 <Link to={cat.to} className="group relative h-44 rounded-2xl overflow-hidden block">

@@ -51,8 +51,8 @@ const F1SchedulePage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="F1 2026 Race Schedule & Tickets | Full Calendar"
-        description="Complete F1 2026 race schedule with all 24 Grand Prix dates, locations, and tickets. Monaco, Silverstone, Monza, Singapore, Las Vegas. Buy F1 tickets from."
+        title="F1 Schedule 2026 | F1 Calendar 2026 & Tickets"
+        description="F1 2026 calendar with all 24 Grand Prix dates. Formula 1 schedule 2026: Monaco, Silverstone, Bahrain, Abu Dhabi. Buy F1 tickets from €120."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

@@ -95,8 +95,8 @@ const IsleOfManTTPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Isle of Man TT Tickets 2026 | Race & VIP Passes"
-        description="Buy Isle of Man TT 2026 tickets from €149. The world's most dangerous motorcycle race! Grandstand passes, VIP hospitality. May - June 2026. Instant."
+        title="Isle of Man TT Tickets 2025-2026 | Race Passes"
+        description="Buy Isle of Man TT tickets 2025 & 2026 from €149. World's most thrilling motorcycle race. Grandstand passes, VIP. Instant QR delivery + FanProtect."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

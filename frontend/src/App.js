@@ -98,6 +98,9 @@ const TicketPreviewPage = lazy(() => import("./pages/TicketPreviewPage"));
 const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
 const SuperBowlPage = lazy(() => import("./pages/SuperBowlPage"));
 const WorldAthleticsPage = lazy(() => import("./pages/WorldAthleticsPage"));
+const BayernRealMadridPage = lazy(() => import("./pages/BayernRealMadridPage"));
+const BahrainWorldCupPage = lazy(() => import("./pages/BahrainWorldCupPage"));
+const TaylorSwiftLondonPage = lazy(() => import("./pages/TaylorSwiftLondonPage"));
 const TaylorSwiftPage = lazy(() => import("./pages/TaylorSwiftPage"));
 
 // Marketing tools (lazy)
@@ -375,6 +378,12 @@ function AppRouter() {
         <Route path="/super-bowl-2027-tickets" element={<SuperBowlPage />} />
         <Route path="/world-athletics-2026-tickets" element={<WorldAthleticsPage />} />
         <Route path="/taylor-swift-wembley-2026-tickets" element={<TaylorSwiftPage />} />
+        <Route path="/bayern-vs-real-madrid-tickets" element={<BayernRealMadridPage />} />
+        <Route path="/bayern-real-madrid-champions-league-tickets" element={<BayernRealMadridPage />} />
+        <Route path="/bahrain-world-cup-tickets-2026" element={<BahrainWorldCupPage />} />
+        <Route path="/buy-bahrain-world-cup-tickets" element={<BahrainWorldCupPage />} />
+        <Route path="/taylor-swift-london-tickets" element={<TaylorSwiftLondonPage />} />
+        <Route path="/taylor-swift-tickets-london" element={<TaylorSwiftLondonPage />} />
         
         {/* Dynamic SEO Pages - handles city pages, event pages, and all generated content */}
         <Route path="/:slug" element={<DynamicSEOPage />} />

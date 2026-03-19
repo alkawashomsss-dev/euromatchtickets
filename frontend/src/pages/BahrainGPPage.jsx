@@ -40,8 +40,9 @@ const BahrainGPPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Bahrain GP Tickets 2026 | F1 Night Race Best Prices"
-        description="Buy Bahrain Grand Prix 2026 tickets from €149. Spectacular F1 night race! Main Grandstand, Turn 1, VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
+        title="Bahrain GP Tickets 2026 | Grand Prix Bahrain from €149"
+        description="Buy Bahrain Grand Prix tickets 2026 from €149. Bahrain International Circuit, Sakhir. F1 night race, grandstand & hospitality. Instant QR delivery + FanProtect!"
+        canonicalUrl="https://euromatchtickets.com/f1-bahrain-grand-prix-tickets"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
@@ -131,7 +132,7 @@ const BahrainGPPage = () => {
           <div className="space-y-4">
             {faqs.map((faq, i) => (
               <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
-                <h3 className="font-bold text-white mb-2">{faq.q}</h3>
+                <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
                 <p className="text-slate-500">{faq.a}</p>
               </div>
             ))}
@@ -143,10 +144,21 @@ const BahrainGPPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-lg font-bold mb-4">Related Searches:</h3>
           <div className="flex flex-wrap gap-2">
-            {["Bahrain GP tickets", "F1 Bahrain 2026", "Bahrain night race tickets", "Sakhir F1 tickets", "buy Bahrain GP tickets", "F1 Middle East", "Bahrain International Circuit tickets"].map((term, i) => (
+            {["Bahrain GP tickets", "Grand Prix Bahrain tickets", "Bahrain Grand Prix tickets", "Bahrain circuit tickets", "F1 Bahrain International Circuit tickets", "Bahrain GP tickets 2026", "buy Bahrain GP tickets", "Bahrain F1 night race tickets", "F1 Bahrain 2026", "Sakhir F1 tickets", "Bahrain Grand Prix hospitality 2026", "Formel 1 Bahrain tickets", "Grand Prix Bahrein tickets"].map((term, i) => (
               <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">{term}</span>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4 space-y-6">
+          <h2 className="text-2xl font-bold text-slate-900">Buy Bahrain International Circuit Tickets Online</h2>
+          <p className="text-slate-600 leading-relaxed">Looking for <strong>Grand Prix Bahrain tickets</strong>? EuroMatchTickets offers the cheapest verified tickets for the <strong>Bahrain Grand Prix 2026</strong> at the iconic <strong>Bahrain International Circuit</strong> in Sakhir. The Bahrain GP is one of Formula 1's most spectacular races, held under floodlights as a night race in the desert. Tickets start from just €149 for General Admission, with premium Grandstand options and exclusive VIP Hospitality packages available.</p>
+          <h2 className="text-2xl font-bold text-slate-900">Bahrain Grand Prix Hospitality 2026</h2>
+          <p className="text-slate-600 leading-relaxed">Experience the ultimate <strong>Bahrain Grand Prix hospitality</strong> packages. Our VIP options include the legendary Paddock Club with pit lane access, premium food and beverages, and the best views of the Bahrain International Circuit. Whether you're looking for standard <strong>Bahrain GP tickets</strong> or luxury hospitality, every purchase includes instant QR delivery and our FanProtect guarantee.</p>
+          <h2 className="text-2xl font-bold text-slate-900">F1 Bahrain International Circuit Guide</h2>
+          <p className="text-slate-600 leading-relaxed">The <strong>Bahrain International Circuit</strong> in Sakhir is a 5.412km track known for its challenging corners and stunning desert backdrop. For the best experience, the Main Grandstand and Turn 1 Grandstand offer the most action. The circuit is located 30km south of Manama and is easily accessible by taxi or shuttle bus during race weekend. Evening temperatures of 20-25°C make it perfect for watching Formula 1.</p>
         </div>
       </section>
 

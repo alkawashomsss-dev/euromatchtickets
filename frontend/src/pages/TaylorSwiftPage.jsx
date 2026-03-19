@@ -79,8 +79,9 @@ const TaylorSwiftPage = () => {
   return (
     <div className="min-h-screen bg-[#0a0610]" data-testid="taylorswift-page">
       <SEOHead
-        title="Taylor Swift Wembley 2026 Tickets | Best Prices"
-        description="Buy Taylor Swift Eras Tour 2026 Wembley Stadium tickets from €89. 6 nights, best seats, VIP packages & floor standing. Official alternative marketplace."
+        title="Taylor Swift Tickets Wembley 2026 | Cheapest Prices"
+        description="Buy Taylor Swift Wembley tickets 2026 from €89. 6 nights at Wembley Stadium London. Floor, VIP, general admission. Instant QR delivery + FanProtect guarantee."
+        canonicalUrl="https://euromatchtickets.com/taylor-swift-wembley-2026-tickets"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

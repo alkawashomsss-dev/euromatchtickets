@@ -155,8 +155,8 @@ const MotoGPTicketsPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="MotoGP Tickets 2026 | Cheapest VIP Race Prices"
-        description="Buy MotoGP 2026 tickets from €69. All 20 Grand Prix races. Mugello, Silverstone, Assen, Barcelona, Valencia. VIP Village & Paddock. 100% Verified. Instant."
+        title="MotoGP Tickets 2026 | Buy Moto GP Race Passes"
+        description="Buy MotoGP tickets 2026 from €69. Moto GP calendar 2026: Mugello, Silverstone, Assen. VIP Village. MotoGP tickets price from €69. Instant QR delivery."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

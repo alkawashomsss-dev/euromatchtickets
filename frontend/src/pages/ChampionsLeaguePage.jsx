@@ -38,8 +38,8 @@ const ChampionsLeaguePage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="Champions League Tickets 2025-26 | UCL Final"
-        description="Buy UEFA Champions League 2025-26 tickets from €85. Real Madrid, Man City, Bayern, Barcelona matches. UCL Final 2026 Munich. 100% verified tickets."
+        title="UEFA Champions League 2025 Tickets | UCL Final Munich"
+        description="Buy UEFA Champions League 2025 tickets. Semi finals, final Munich 2025. Bayern Munich, Real Madrid tickets. 100% verified. Instant QR delivery."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

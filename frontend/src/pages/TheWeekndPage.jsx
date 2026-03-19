@@ -37,8 +37,8 @@ const TheWeekndPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title="The Weeknd Tour 2026 Tickets - After Hours Til Dawn Europe"
-        description="Buy The Weeknd 2026 European tour tickets from €95. After Hours Til Dawn stadium tour. Paris, London, Berlin, Amsterdam. Blinding Lights live! 100% verified."
+        title="The Weeknd Tour 2026 Tickets | Concert & European Tour"
+        description="Buy The Weeknd tour 2026 tickets from €95. Concert The Weeknd 2026 European dates. Paris, London, Berlin. Instant QR delivery + FanProtect guarantee."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
