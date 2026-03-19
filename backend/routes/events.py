@@ -114,6 +114,7 @@ async def get_event(event_id: str):
     event["tickets"] = tickets
     event["ticket_count"] = len(tickets)
 
+    # Group by category
     categories = {}
     for ticket in tickets:
         cat = ticket["category"]
@@ -123,6 +124,40 @@ async def get_event(event_id: str):
         if ticket["price"] < categories[cat]["lowest_price"]:
             categories[cat]["lowest_price"] = ticket["price"]
     event["categories"] = categories
+
+    # Group by section for StubHub-style display
+    sections = {}
+    for ticket in tickets:
+        section = ticket.get("section", "General")
+        cat = ticket.get("category", "standard")
+        key = f"{cat}|{section}"
+        if key not in sections:
+            sections[key] = {
+                "category": cat,
+                "section": section,
+                "count": 0,
+                "lowest_price": float('inf'),
+                "highest_price": 0,
+                "tickets": []
+            }
+        sections[key]["count"] += 1
+        p = ticket["price"]
+        if p < sections[key]["lowest_price"]:
+            sections[key]["lowest_price"] = p
+        if p > sections[key]["highest_price"]:
+            sections[key]["highest_price"] = p
+        sections[key]["tickets"].append({
+            "ticket_id": ticket["ticket_id"],
+            "price": ticket["price"],
+            "section": section,
+            "category": cat,
+            "currency": ticket.get("currency", "EUR"),
+        })
+
+    # Sort sections by price and convert to list
+    section_list = sorted(sections.values(), key=lambda s: s["lowest_price"])
+    event["grouped_sections"] = section_list
+
     return event
 
 

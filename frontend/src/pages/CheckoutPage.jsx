@@ -12,6 +12,8 @@ export default function CheckoutPage() {
 
   const eventId = searchParams.get("event");
   const category = searchParams.get("category") || "General Admission";
+  const urlPrice = searchParams.get("price");
+  const ticketId = searchParams.get("ticket_id");
 
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,6 +27,7 @@ export default function CheckoutPage() {
   }, [eventId, navigate]);
 
   const getPrice = () => {
+    if (urlPrice) return parseInt(urlPrice);
     if (!event) return 0;
     const base = event.tickets?.length > 0
       ? event.tickets.reduce((min, t) => t.price < min ? t.price : min, Infinity)
