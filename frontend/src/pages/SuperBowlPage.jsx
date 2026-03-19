@@ -6,6 +6,7 @@ import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles,
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
 
 const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/d1f3f993ef225f8bb18bf55d54c64c51b61a17902dc81f204df12ad8285ee2bd.png";
@@ -281,6 +282,12 @@ const SuperBowlPage = () => {
           </div>
         </div>
       </section>
+
+      {/* TRUST */}
+      <TrustSection />
+
+      {/* RELATED EVENTS */}
+      <RelatedEvents events={events} accentColor="red" />
 
       {/* CTA */}
       <section className="py-20 relative overflow-hidden">

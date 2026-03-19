@@ -6,6 +6,7 @@ import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles,
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
 
 const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/a3a9316ec64f6c42707d0fe9d06b2409d1652145b679655bcb7aac9a3c772036.png";
@@ -192,6 +193,12 @@ const WorldAthleticsPage = () => {
           </ul>
         </div>
       </section>
+
+      {/* TRUST */}
+      <TrustSection />
+
+      {/* RELATED EVENTS */}
+      <RelatedEvents events={events} accentColor="blue" />
 
       {/* CROSS LINKS */}
       <section className="py-16 bg-[#070b14]">

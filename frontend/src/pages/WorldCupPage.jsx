@@ -6,6 +6,7 @@ import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles,
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
 
 const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/dace0d6f85813a94768e9f4cc5ec70716da9ba0825a43dfbd72cc0d3e280bfe9.png";
@@ -273,6 +274,12 @@ const WorldCupPage = () => {
           <strong>Disclaimer:</strong> EuroMatchTickets is an independent ticket marketplace. Not affiliated with FIFA or any organizing body. Tickets are resale and may be above or below face value. All trademarks belong to their respective owners.
         </p>
       </div>
+
+      {/* TRUST */}
+      <TrustSection />
+
+      {/* RELATED EVENTS */}
+      <RelatedEvents events={events} accentColor="amber" />
 
       <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },

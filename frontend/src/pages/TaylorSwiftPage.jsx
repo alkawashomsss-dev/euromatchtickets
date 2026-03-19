@@ -6,6 +6,7 @@ import { Calendar, MapPin, Ticket, Star, Shield, ChevronRight, Sparkles, Zap, Cr
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
 
 const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png";
@@ -50,9 +51,11 @@ const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: (i = 0) => ({ opacity: 
 
 const TaylorSwiftPage = () => {
   const [liveStats, setLiveStats] = useState({ available: 0, lowest: 0 });
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     axios.get(`${API}/events?search=Taylor+Swift`).then(r => {
+      setEvents(r.data);
       if (r.data.length > 0) {
         const total = r.data.reduce((s, e) => s + (e.available_tickets || 0), 0);
         const lowest = Math.min(...r.data.map(e => e.lowest_price || 999999));
@@ -226,6 +229,12 @@ const TaylorSwiftPage = () => {
           <p><strong className="text-white">Wembley Stadium</strong> (capacity 90,000) is easily accessible via the Jubilee and Metropolitan tube lines to Wembley Park station, just a 10-minute walk from the venue. The stadium is fully accessible with dedicated facilities for disabled fans.</p>
         </div>
       </section>
+
+      {/* TRUST */}
+      <TrustSection />
+
+      {/* RELATED EVENTS */}
+      <RelatedEvents events={events} accentColor="pink" />
 
       {/* CROSS LINKS */}
       <section className="py-16 bg-[#0a0610]">
