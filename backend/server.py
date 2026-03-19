@@ -160,10 +160,142 @@ async def cleanup_expired_events():
             await asyncio.sleep(60 * 60)
 
 
+async def bing_daily_indexing():
+    """Daily cron: submit next 100 unsubmitted URLs to Bing URL Submission API."""
+    import httpx
+
+    BING_KEY = os.environ.get("BING_WEBMASTER_API_KEY", "")
+    INDEXNOW_KEY = "e33676fbaf3c0bd0b243f4f76213d267"
+    SITE = "https://euromatchtickets.com"
+
+    if not BING_KEY:
+        logger.warning("Bing Indexing Bot: No BING_WEBMASTER_API_KEY, skipping")
+        return
+
+    # Wait 30s after startup to let everything initialize
+    await asyncio.sleep(30)
+
+    while True:
+        try:
+            logger.info("Bing Indexing Bot: Starting daily submission...")
+
+            # Collect all URLs
+            seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(5000)
+            today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+            events = await db.events.find(
+                {"event_date": {"$gte": today_str}},
+                {"_id": 0, "event_id": 1, "slug": 1}
+            ).to_list(500)
+
+            all_urls = set()
+            # Priority 1: Key static pages
+            for p in ["", "events", "f1-tickets", "football-tickets", "concerts",
+                       "motogp-tickets", "world-cup-2026", "sell-tickets", "about",
+                       "faq", "reviews", "contact", "buyer-protection",
+                       "champions-league-tickets", "super-bowl-2026-tickets",
+                       "taylor-swift-wembley-2026-tickets", "el-clasico-tickets",
+                       "monaco-grand-prix-tickets", "blog"]:
+                all_urls.add(f"{SITE}/{p}")
+            # Priority 2: SEO pages
+            for p in seo_pages:
+                all_urls.add(f"{SITE}/{p['slug']}")
+            # Priority 3: Event pages
+            for e in events:
+                all_urls.add(f"{SITE}/event/{e.get('slug') or e['event_id']}")
+
+            # Get already submitted URLs from DB
+            submitted_docs = await db.bing_submitted_urls.find(
+                {}, {"_id": 0, "url": 1}
+            ).to_list(10000)
+            submitted_set = {d["url"] for d in submitted_docs}
+
+            # Find unsubmitted URLs
+            pending = [u for u in all_urls if u not in submitted_set]
+
+            if not pending:
+                logger.info("Bing Indexing Bot: All URLs already submitted! Resetting for re-submission...")
+                await db.bing_submitted_urls.delete_many({})
+                pending = list(all_urls)
+
+            # Take next batch (up to 100 for daily quota)
+            batch = pending[:100]
+            logger.info(f"Bing Indexing Bot: Submitting {len(batch)} of {len(pending)} pending URLs")
+
+            bing_ok = 0
+            yandex_ok = 0
+            now = datetime.now(timezone.utc)
+
+            async with httpx.AsyncClient(timeout=30.0, follow_redirects=True) as client:
+                # Submit to Bing in chunks of 50
+                for i in range(0, len(batch), 50):
+                    chunk = batch[i:i+50]
+                    try:
+                        r = await client.post(
+                            f"https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey={BING_KEY}",
+                            json={"siteUrl": SITE, "urlList": chunk},
+                            headers={"Content-Type": "application/json; charset=utf-8"}
+                        )
+                        if r.status_code == 200:
+                            bing_ok += len(chunk)
+                            # Record submitted URLs
+                            await db.bing_submitted_urls.insert_many(
+                                [{"url": u, "submitted_at": now, "engine": "bing"} for u in chunk]
+                            )
+                        else:
+                            if "Quota" in r.text:
+                                logger.warning(f"Bing Indexing Bot: Daily quota reached after {bing_ok} URLs")
+                                break
+                            logger.warning(f"Bing Indexing Bot: Batch error {r.status_code}: {r.text[:100]}")
+                    except Exception as e:
+                        logger.error(f"Bing Indexing Bot: Request error: {e}")
+                        break
+
+                # Also submit to Yandex (no quota limit)
+                try:
+                    r = await client.post("https://yandex.com/indexnow", json={
+                        "host": "euromatchtickets.com",
+                        "key": INDEXNOW_KEY,
+                        "keyLocation": f"{SITE}/{INDEXNOW_KEY}.txt",
+                        "urlList": batch
+                    })
+                    if r.status_code in [200, 202]:
+                        yandex_ok = len(batch)
+                except Exception:
+                    pass
+
+            # Log summary
+            total_submitted = len(submitted_set) + bing_ok
+            total_all = len(all_urls)
+            logger.info(
+                f"Bing Indexing Bot: Done! Bing={bing_ok}, Yandex={yandex_ok}. "
+                f"Progress: {total_submitted}/{total_all} URLs indexed "
+                f"({round(total_submitted/total_all*100)}%)"
+            )
+
+            # Store daily report
+            await db.bing_indexing_logs.insert_one({
+                "date": now.strftime("%Y-%m-%d"),
+                "bing_submitted": bing_ok,
+                "yandex_submitted": yandex_ok,
+                "total_progress": total_submitted,
+                "total_urls": total_all,
+                "created_at": now
+            })
+
+            # Sleep 24 hours
+            await asyncio.sleep(24 * 60 * 60)
+
+        except Exception as e:
+            logger.error(f"Bing Indexing Bot Error: {e}")
+            await asyncio.sleep(60 * 60)
+
+
 @app.on_event("startup")
 async def startup():
     asyncio.create_task(cleanup_expired_events())
     logger.info("Cleanup Bot started - runs daily")
+    asyncio.create_task(bing_daily_indexing())
+    logger.info("Bing Indexing Bot started - submits 100 URLs/day")
     # Auto-seed new events if they don't exist
     count = await db.events.count_documents({"title": {"$regex": "Super Bowl LXI", "$options": "i"}})
     if count == 0:

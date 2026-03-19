@@ -37,12 +37,17 @@ Build a ticket marketplace at euromatchtickets.com with aggressive SEO strategy 
 
 ### Session 7 (March 19, 2026) - Current
 - **Bing IndexNow Fix (RESOLVED)**:
-  - Root cause: Cloudflare blocked IndexNow key verification bots (403 "UserForbiddedToAccessSite")
-  - Solution: Switched to Bing URL Submission API (bypasses Cloudflare entirely)
+  - Root cause: Cloudflare blocked IndexNow key verification bots (403)
+  - Solution: Switched to Bing URL Submission API (bypasses Cloudflare)
   - Added `BING_WEBMASTER_API_KEY` to backend env
-  - Backend serves IndexNow key file as fallback (`/api/{key}.txt`)
-  - Quota-aware batching (Bing daily limit ~100 URLs)
-  - Results: Bing API ✅, Yandex ✅, Google Ping ✅
+  - Backend serves IndexNow key file as fallback
+- **Daily Bing Indexing Cron Job (NEW)**:
+  - Automatic daily submission of 100 URLs to Bing + all to Yandex
+  - Tracks submitted URLs in MongoDB (`bing_submitted_urls` collection)
+  - Logs daily progress (`bing_indexing_logs` collection)
+  - Auto-resets when all URLs submitted (continuous re-indexing)
+  - Progress API: `GET /api/seo/indexing-progress`
+  - Estimated ~20 days to fully index all 1996 URLs
 
 ## Architecture
 ```

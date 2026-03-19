@@ -446,6 +446,39 @@ async def submit_indexnow(urls: list[str] = None):
     return {"status": "success", **results}
 
 
+@router.get("/seo/indexing-progress")
+async def get_indexing_progress():
+    """Check daily Bing indexing progress and history."""
+    # Get total URLs
+    seo_count = await db.seo_pages.count_documents({})
+    today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    event_count = await db.events.count_documents({"event_date": {"$gte": today_str}})
+    static_pages = 18
+    total_urls = seo_count + event_count + static_pages
+
+    # Get submitted count
+    submitted_count = await db.bing_submitted_urls.count_documents({})
+
+    # Get recent logs
+    logs = await db.bing_indexing_logs.find(
+        {}, {"_id": 0}
+    ).sort("created_at", -1).to_list(14)
+
+    remaining = max(0, total_urls - submitted_count)
+    days_left = max(1, (remaining + 99) // 100) if remaining > 0 else 0
+
+    return {
+        "total_urls": total_urls,
+        "submitted_to_bing": submitted_count,
+        "remaining": remaining,
+        "progress_pct": round(submitted_count / total_urls * 100) if total_urls > 0 else 0,
+        "estimated_days_left": days_left,
+        "daily_quota": 100,
+        "recent_logs": logs
+    }
+
+
+
 @router.post("/seo/submit-url")
 async def submit_single_url(url: str):
     """Submit a single URL to Bing API + Yandex IndexNow + Google ping."""
