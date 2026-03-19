@@ -20,7 +20,7 @@ const packages = [
 ];
 
 const Countdown = () => {
-  const target = new Date("2026-02-08T18:00:00-05:00");
+  const target = new Date("2027-02-07T18:00:00-05:00");
   const [diff, setDiff] = useState(target - new Date());
   useEffect(() => { const t = setInterval(() => setDiff(target - new Date()), 1000); return () => clearInterval(t); }, []);
   const d = Math.max(0, Math.floor(diff / 86400000));
@@ -58,21 +58,21 @@ const SuperBowlPage = () => {
 
   const schema = {
     "@context": "https://schema.org", "@type": "SportsEvent",
-    "name": "Super Bowl LX 2026 Tickets – VIP & Best Seats",
+    "name": "Super Bowl LXII 2027 Tickets – VIP & Best Seats",
     "description": "Buy Super Bowl 2026 tickets from €899. VIP suites from €8,999. The ultimate American football experience at Levi's Stadium, Santa Clara. Instant QR delivery with FanProtect guarantee.",
-    "image": HERO_IMG, "startDate": "2026-02-08", "endDate": "2026-02-08",
+    "image": HERO_IMG, "startDate": "2027-02-07", "endDate": "2027-02-07",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": { "@type": "Place", "name": "Levi's Stadium", "address": { "@type": "PostalAddress", "addressLocality": "Santa Clara", "addressRegion": "CA", "addressCountry": "US" } },
     "performer": {"@type": "SportsTeam", "name": "NFL"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": packages.map(p => ({ "@type": "Offer", "name": p.name, "url": "https://euromatchtickets.com/super-bowl-2026-tickets", "priceCurrency": "EUR", "price": String(p.price), "availability": "https://schema.org/LimitedAvailability", "validFrom": "2025-01-01" }))
+    "offers": packages.map(p => ({ "@type": "Offer", "name": p.name, "url": "https://euromatchtickets.com/super-bowl-2027-tickets", "priceCurrency": "EUR", "price": String(p.price), "availability": "https://schema.org/LimitedAvailability", "validFrom": "2025-01-01" }))
   };
 
   return (
     <div className="min-h-screen bg-[#0a0a12]" data-testid="superbowl-page">
       <SEOHead
         title="Super Bowl 2026 Tickets | VIP & Best Seats"
-        description="Buy Super Bowl LX 2026 tickets from €899. VIP suites, hospitality packages & premium seats at Levi's Stadium, Santa Clara. 100% verified with instant QR."
+        description="Buy Super Bowl LXII 2027 tickets from €899. VIP suites, hospitality packages & premium seats at Levi's Stadium, Santa Clara. 100% verified with instant QR."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
@@ -91,9 +91,9 @@ const SuperBowlPage = () => {
 
           <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-5xl sm:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-2 leading-[0.85]" style={{ textShadow: '0 4px 40px rgba(0,0,0,0.5)' }}>
             SUPER BOWL
-            <span className="block bg-gradient-to-r from-red-500 via-amber-400 to-red-500 bg-clip-text text-transparent">LX 2026</span>
+            <span className="block bg-gradient-to-r from-red-500 via-amber-400 to-red-500 bg-clip-text text-transparent">LXI 2027</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-base sm:text-lg text-slate-400 mb-6">February 8, 2026 &bull; Levi's Stadium, Santa Clara, California</motion.p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-base sm:text-lg text-slate-400 mb-6">February 7, 2027 &bull; Levi's Stadium, Santa Clara, California</motion.p>
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
             The <strong className="text-white">biggest night in American sports</strong>. World-class halftime show. 
@@ -242,7 +242,7 @@ const SuperBowlPage = () => {
       <section className="py-20 bg-[#0a0a12]">
         <div className="max-w-4xl mx-auto px-4 space-y-6 text-slate-400">
           <h2 className="text-2xl font-bold text-white">Buy Super Bowl 2026 Tickets — The Ultimate NFL Experience</h2>
-          <p>The <strong className="text-white">Super Bowl LX</strong> is coming to <strong className="text-white">Levi's Stadium in Santa Clara, California</strong> on February 8, 2026. This is the pinnacle of American football — two elite teams battling for the Lombardi Trophy in front of 70,000+ screaming fans, with the most spectacular halftime show on Earth.</p>
+          <p>The <strong className="text-white">Super Bowl LXI</strong> is coming to <strong className="text-white">Levi's Stadium in Santa Clara, California</strong> on February 7, 2027. This is the pinnacle of American football — two elite teams battling for the Lombardi Trophy in front of 70,000+ screaming fans, with the most spectacular halftime show on Earth.</p>
           <h3 className="text-xl font-bold text-white mt-8">Why Super Bowl 2026 Tickets Are Selling Out Fast</h3>
           <p>Super Bowl tickets are among the <strong className="text-white">most expensive and coveted tickets in all of sports</strong>. With limited availability and global demand, prices increase every week. Smart fans buy early to lock in the best seats at the lowest prices.</p>
           <h3 className="text-xl font-bold text-white mt-8">Super Bowl 2026 VIP Packages</h3>
@@ -287,7 +287,7 @@ const SuperBowlPage = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 via-[#0a0a12] to-red-900/20" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <Trophy className="w-12 h-12 text-red-500 mx-auto mb-4" />
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Don't Miss Super Bowl LX</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Don't Miss Super Bowl LXI</h2>
           <p className="text-slate-400 mb-8">{liveStats.available > 0 ? `${liveStats.available} tickets remaining` : 'Limited tickets available'}. Prices go up every day.</p>
           <a href="#tickets">
             <Button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-extrabold px-10 py-6 text-lg rounded-full shadow-[0_0_40px_rgba(220,38,38,0.3)] transition-all">
@@ -305,10 +305,10 @@ const SuperBowlPage = () => {
 
       <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
-        { name: "Super Bowl 2026", url: "https://euromatchtickets.com/super-bowl-2026-tickets" }
+        { name: "Super Bowl 2026", url: "https://euromatchtickets.com/super-bowl-2027-tickets" }
       ]} />
       <FAQStructuredData faqs={[
-        { question: "When is the Super Bowl 2026?", answer: "Super Bowl LX is on February 8, 2026 at Levi's Stadium in Santa Clara, California." },
+        { question: "When is the Super Bowl 2026?", answer: "Super Bowl LXI is on February 7, 2027 at Levi's Stadium in Santa Clara, California." },
         { question: "How much are Super Bowl 2026 tickets?", answer: "Super Bowl 2026 tickets start from €899 for upper level, with VIP packages starting at €5,999 and Platinum experiences from €14,999." },
         { question: "Can I get a refund on Super Bowl tickets?", answer: "Yes, all tickets purchased through EuroMatchTickets include our FanProtect guarantee with full refund if the event is cancelled." },
         { question: "How will I receive my Super Bowl tickets?", answer: "All tickets are delivered instantly as QR codes to your email. No shipping, no waiting." }

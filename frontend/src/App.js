@@ -372,6 +372,7 @@ function AppRouter() {
         
         {/* Major Events */}
         <Route path="/super-bowl-2026-tickets" element={<SuperBowlPage />} />
+        <Route path="/super-bowl-2027-tickets" element={<SuperBowlPage />} />
         <Route path="/world-athletics-2026-tickets" element={<WorldAthleticsPage />} />
         <Route path="/taylor-swift-wembley-2026-tickets" element={<TaylorSwiftPage />} />
         
