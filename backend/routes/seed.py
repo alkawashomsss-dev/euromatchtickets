@@ -365,3 +365,161 @@ async def seed_new_events():
                 total_tickets += 1
         created += 1
     return {"success": True, "events_created": created, "tickets_created": total_tickets}
+
+
+@router.post("/seed-mega-premium-events")
+async def seed_mega_premium_events():
+    """Seed ultra-premium realistic events: FIFA Club World Cup 2025, World Cup 2026 premium, Boxing mega-fights"""
+
+    SECTIONS = ["Floor", "Section A", "Section B", "Section C", "Balcony"]
+
+    mega_events = [
+        # ═══════ FIFA CLUB WORLD CUP 2025 ═══════
+        {"event_type": "football", "title": "FIFA Club World Cup 2025 Final", "home_team": "TBD", "away_team": "TBD", "league": "Club World Cup", "venue": "MetLife Stadium", "city": "New York", "country": "USA", "event_date": "2025-07-13T20:00:00Z", "featured": True, "high_demand": True, "subtitle": "The Biggest Club Match in History", "event_image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 40, "price_range": (299, 599)},
+             {"category": "seated", "section": "Section B", "count": 35, "price_range": (599, 1299)},
+             {"category": "seated", "section": "Section A", "count": 30, "price_range": (1299, 2499)},
+             {"category": "vip", "section": "Floor", "count": 20, "price_range": (2499, 4999)},
+             {"category": "platinum", "section": "Floor", "count": 10, "price_range": (4999, 12999)},
+         ]},
+        {"event_type": "football", "title": "FIFA Club World Cup 2025 - Real Madrid vs Flamengo", "home_team": "Real Madrid", "away_team": "Flamengo", "league": "Club World Cup", "venue": "Hard Rock Stadium", "city": "Miami", "country": "USA", "event_date": "2025-06-18T21:00:00Z", "featured": True, "high_demand": True, "subtitle": "Group Stage - Europe vs South America", "event_image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 40, "price_range": (149, 349)},
+             {"category": "seated", "section": "Section B", "count": 35, "price_range": (349, 699)},
+             {"category": "seated", "section": "Section A", "count": 30, "price_range": (699, 1499)},
+             {"category": "vip", "section": "Floor", "count": 15, "price_range": (1499, 3999)},
+             {"category": "platinum", "section": "Floor", "count": 8, "price_range": (3999, 7999)},
+         ]},
+        {"event_type": "football", "title": "FIFA Club World Cup 2025 - Manchester City vs Al Ahly", "home_team": "Manchester City", "away_team": "Al Ahly", "league": "Club World Cup", "venue": "Orlando City Stadium", "city": "Orlando", "country": "USA", "event_date": "2025-06-19T18:00:00Z", "featured": True, "subtitle": "Group Stage", "event_image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 45, "price_range": (99, 249)},
+             {"category": "seated", "section": "Section B", "count": 35, "price_range": (249, 599)},
+             {"category": "seated", "section": "Section A", "count": 25, "price_range": (599, 1199)},
+             {"category": "vip", "section": "Floor", "count": 12, "price_range": (1199, 2999)},
+         ]},
+        {"event_type": "football", "title": "FIFA Club World Cup 2025 - Bayern Munich vs Boca Juniors", "home_team": "Bayern Munich", "away_team": "Boca Juniors", "league": "Club World Cup", "venue": "Lincoln Financial Field", "city": "Philadelphia", "country": "USA", "event_date": "2025-06-21T20:00:00Z", "featured": True, "subtitle": "Group Stage", "event_image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 40, "price_range": (129, 299)},
+             {"category": "seated", "section": "Section B", "count": 35, "price_range": (299, 649)},
+             {"category": "seated", "section": "Section A", "count": 25, "price_range": (649, 1299)},
+             {"category": "vip", "section": "Floor", "count": 12, "price_range": (1299, 3499)},
+         ]},
+        {"event_type": "football", "title": "FIFA Club World Cup 2025 Semi-Final 1", "home_team": "TBD", "away_team": "TBD", "league": "Club World Cup", "venue": "AT&T Stadium", "city": "Dallas", "country": "USA", "event_date": "2025-07-08T20:00:00Z", "featured": True, "high_demand": True, "subtitle": "Semi-Final", "event_image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 35, "price_range": (199, 499)},
+             {"category": "seated", "section": "Section B", "count": 30, "price_range": (499, 999)},
+             {"category": "seated", "section": "Section A", "count": 25, "price_range": (999, 1999)},
+             {"category": "vip", "section": "Floor", "count": 15, "price_range": (1999, 4999)},
+             {"category": "platinum", "section": "Floor", "count": 8, "price_range": (4999, 9999)},
+         ]},
+
+        # ═══════ FIFA WORLD CUP 2026 PREMIUM ═══════
+        {"event_type": "worldcup", "title": "FIFA World Cup 2026 Final - Premium", "venue": "MetLife Stadium", "city": "New York", "country": "USA", "event_date": "2026-07-19T20:00:00Z", "featured": True, "high_demand": True, "subtitle": "The Greatest Show on Earth", "event_image": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 30, "price_range": (899, 1999)},
+             {"category": "seated", "section": "Section B", "count": 25, "price_range": (1999, 4999)},
+             {"category": "seated", "section": "Section A", "count": 20, "price_range": (4999, 9999)},
+             {"category": "vip", "section": "Floor", "count": 15, "price_range": (9999, 24999)},
+             {"category": "platinum", "section": "Floor", "count": 5, "price_range": (24999, 57000)},
+         ]},
+        {"event_type": "worldcup", "title": "FIFA World Cup 2026 - USA vs England", "home_team": "USA", "away_team": "England", "venue": "SoFi Stadium", "city": "Los Angeles", "country": "USA", "event_date": "2026-06-15T18:00:00Z", "featured": True, "high_demand": True, "subtitle": "Group Stage Blockbuster", "event_image": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 40, "price_range": (299, 699)},
+             {"category": "seated", "section": "Section B", "count": 35, "price_range": (699, 1499)},
+             {"category": "seated", "section": "Section A", "count": 25, "price_range": (1499, 2999)},
+             {"category": "vip", "section": "Floor", "count": 12, "price_range": (2999, 7999)},
+             {"category": "platinum", "section": "Floor", "count": 5, "price_range": (7999, 14999)},
+         ]},
+        {"event_type": "worldcup", "title": "FIFA World Cup 2026 - Brazil vs Argentina", "home_team": "Brazil", "away_team": "Argentina", "venue": "AT&T Stadium", "city": "Dallas", "country": "USA", "event_date": "2026-06-22T20:00:00Z", "featured": True, "high_demand": True, "subtitle": "South American Derby", "event_image": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 35, "price_range": (399, 899)},
+             {"category": "seated", "section": "Section B", "count": 30, "price_range": (899, 1999)},
+             {"category": "seated", "section": "Section A", "count": 20, "price_range": (1999, 3999)},
+             {"category": "vip", "section": "Floor", "count": 10, "price_range": (3999, 9999)},
+             {"category": "platinum", "section": "Floor", "count": 5, "price_range": (9999, 19999)},
+         ]},
+
+        # ═══════ BOXING MEGA-FIGHTS ═══════
+        {"event_type": "match", "title": "Tyson Fury vs Oleksandr Usyk III - Undisputed", "venue": "Kingdom Arena", "city": "Riyadh", "country": "Saudi Arabia", "event_date": "2025-10-18T22:00:00Z", "featured": True, "high_demand": True, "subtitle": "Undisputed Heavyweight Championship of the World", "genre": "Boxing", "event_image": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 30, "price_range": (499, 999)},
+             {"category": "seated", "section": "Section B", "count": 25, "price_range": (999, 2999)},
+             {"category": "seated", "section": "Section A", "count": 20, "price_range": (2999, 7999)},
+             {"category": "vip", "section": "Floor", "count": 12, "price_range": (7999, 24999)},
+             {"category": "platinum", "section": "Floor", "count": 5, "price_range": (24999, 74999)},
+         ]},
+        {"event_type": "match", "title": "Canelo Alvarez vs David Benavidez - Super Middleweight", "venue": "T-Mobile Arena", "city": "Las Vegas", "country": "USA", "event_date": "2025-09-13T22:00:00Z", "featured": True, "high_demand": True, "subtitle": "Undisputed Super Middleweight Championship", "genre": "Boxing", "event_image": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 35, "price_range": (299, 799)},
+             {"category": "seated", "section": "Section B", "count": 30, "price_range": (799, 1999)},
+             {"category": "seated", "section": "Section A", "count": 20, "price_range": (1999, 4999)},
+             {"category": "vip", "section": "Floor", "count": 12, "price_range": (4999, 14999)},
+             {"category": "platinum", "section": "Floor", "count": 5, "price_range": (14999, 49999)},
+         ]},
+        {"event_type": "match", "title": "UFC 310 - Heavyweight Championship", "venue": "T-Mobile Arena", "city": "Las Vegas", "country": "USA", "event_date": "2025-12-06T22:00:00Z", "featured": True, "high_demand": True, "subtitle": "UFC Pay-Per-View Mega Event", "genre": "MMA/UFC", "event_image": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 30, "price_range": (399, 899)},
+             {"category": "seated", "section": "Section B", "count": 25, "price_range": (899, 2499)},
+             {"category": "seated", "section": "Section A", "count": 18, "price_range": (2499, 4999)},
+             {"category": "vip", "section": "Floor", "count": 10, "price_range": (4999, 14999)},
+             {"category": "platinum", "section": "Floor", "count": 5, "price_range": (14999, 29999)},
+         ]},
+
+        # ═══════ BAYERN vs REAL MADRID - UCL ═══════
+        {"event_type": "football", "title": "Bayern Munich vs Real Madrid - UCL Quarter-Final", "home_team": "Bayern Munich", "away_team": "Real Madrid", "league": "Champions League", "venue": "Allianz Arena", "city": "Munich", "country": "Germany", "event_date": "2026-04-08T21:00:00Z", "featured": True, "high_demand": True, "subtitle": "Champions League Quarter-Final 1st Leg", "event_image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 35, "price_range": (199, 449)},
+             {"category": "seated", "section": "Section B", "count": 30, "price_range": (449, 899)},
+             {"category": "seated", "section": "Section A", "count": 25, "price_range": (899, 1799)},
+             {"category": "vip", "section": "Floor", "count": 15, "price_range": (1799, 3999)},
+             {"category": "platinum", "section": "Floor", "count": 8, "price_range": (3999, 8999)},
+         ]},
+        {"event_type": "football", "title": "Real Madrid vs Bayern Munich - UCL Quarter-Final 2nd Leg", "home_team": "Real Madrid", "away_team": "Bayern Munich", "league": "Champions League", "venue": "Santiago Bernabeu", "city": "Madrid", "country": "Spain", "event_date": "2026-04-15T21:00:00Z", "featured": True, "high_demand": True, "subtitle": "Champions League Quarter-Final 2nd Leg", "event_image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200",
+         "ticket_tiers": [
+             {"category": "general_admission", "section": "Section C", "count": 35, "price_range": (249, 499)},
+             {"category": "seated", "section": "Section B", "count": 30, "price_range": (499, 999)},
+             {"category": "seated", "section": "Section A", "count": 25, "price_range": (999, 1999)},
+             {"category": "vip", "section": "Floor", "count": 15, "price_range": (1999, 4499)},
+             {"category": "platinum", "section": "Floor", "count": 8, "price_range": (4499, 9999)},
+         ]},
+    ]
+
+    created = 0
+    total_tickets = 0
+    for ev in mega_events:
+        event_id = f"mega_{uuid.uuid4().hex[:12]}"
+        tiers = ev.pop("ticket_tiers", [])
+        lowest = min(t["price_range"][0] for t in tiers) if tiers else 99
+        total_avail = sum(t["count"] for t in tiers)
+        ev.update({
+            "event_id": event_id, "status": "upcoming",
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "lowest_price": round(lowest * 0.97, 2),
+            "available_tickets": total_avail,
+        })
+        if "slug" not in ev:
+            from routes.events import generate_event_slug
+            ev["slug"] = generate_event_slug(ev["title"], ev["event_type"], ev.get("city", ""), ev["event_date"])
+        await db.events.update_one({"title": ev["title"]}, {"$set": ev}, upsert=True)
+
+        for tier in tiers:
+            lo, hi = tier["price_range"]
+            for _ in range(tier["count"]):
+                await db.tickets.insert_one({
+                    "ticket_id": f"ticket_{uuid.uuid4().hex[:12]}",
+                    "event_id": event_id,
+                    "seller_id": "seller_euromatch",
+                    "seller_name": "EuroMatchTickets Official",
+                    "category": tier["category"],
+                    "section": tier["section"],
+                    "price": round(random.uniform(lo, hi), 2),
+                    "original_price": hi,
+                    "currency": "EUR",
+                    "status": "available",
+                    "created_at": datetime.now(timezone.utc).isoformat()
+                })
+                total_tickets += 1
+        created += 1
+
+    return {"success": True, "events_created": created, "tickets_created": total_tickets}

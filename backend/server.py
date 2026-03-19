@@ -303,6 +303,13 @@ async def startup():
         from routes.seed import seed_new_events
         await seed_new_events()
         logger.info("New events seeded successfully")
+    # Auto-seed mega premium events if they don't exist
+    mega_count = await db.events.count_documents({"title": {"$regex": "Fury.*Usyk|Club World Cup 2025 Final", "$options": "i"}})
+    if mega_count == 0:
+        logger.info("Seeding mega premium events...")
+        from routes.seed import seed_mega_premium_events
+        await seed_mega_premium_events()
+        logger.info("Mega premium events seeded successfully")
 
 
 @app.on_event("shutdown")
