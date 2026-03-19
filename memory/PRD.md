@@ -24,25 +24,43 @@ Build a ticket marketplace at euromatchtickets.com with aggressive SEO strategy 
 - FanProtect guarantee page
 
 ### Session 4 (March 18, 2026)
-- **Fixed Render Deployment**: Root cause was `yarn.lock` in `.gitignore`. Migrated to npm, added `SKIP_INSTALL_DEPS=true`, `--legacy-peer-deps`
-- **Fixed Google Auth**: Removed Emergent Auth, restored direct Google OAuth
-- **Fixed Google Search Console Warnings**: Added `validFrom` to all Offer schemas (6 pages)
-- **New Hero Images**: Generated 4 high-quality images for SuperBowl, TaylorSwift, WorldAthletics, WorldCup
-- **Real Events & Animations**: Added framer-motion animations, real API data (available_tickets, lowest_price), real countdowns, removed fake social proof numbers
+- Fixed Render Deployment (yarn.lock issue, migrated to npm)
+- Fixed Google Auth
+- Fixed Google Search Console Warnings (validFrom in Offer schemas)
+- New Hero Images for SEO pages
+- Real Events & Animations with framer-motion
+
+### Session 5 (March 19, 2026)
+- Comprehensive SEO Overhaul: Fixed 40+ titles, 30+ meta descriptions, missing structured data
+- Auto-seeding mechanism on server startup for production data consistency
+- Bing Webmaster Tools verification
+- Upgraded 4 SEO pages with real API data, live countdowns, stats
+
+### Session 6 (March 19, 2026) - Current
+- **EventDetailsPage Complete Overhaul (StubHub-style)**:
+  - Interactive SVG venue maps (Concert/Football/F1 layouts)
+  - Real ticket data from database grouped by category and section
+  - Section filtering via map click and legend buttons
+  - Category filters (VIP, Seated, General Admission, Platinum)
+  - Sort functionality (Price Low/High, Availability)
+  - Expandable ticket rows showing individual tickets with exact prices
+  - Buy buttons linking to checkout with ticket_id, price, category params
+  - LOW STOCK badges, trust signals, conversion widgets
+- **Backend Enhancement**: `/api/events/{eventId}` now returns `grouped_sections` array
 
 ## Architecture
 ```
 /app/
 ├── backend/ (FastAPI)
 │   ├── server.py
-│   ├── routes/ (auth, checkout, events, etc.)
-│   └── .env (MONGO_URL, GOOGLE credentials)
+│   ├── routes/ (auth, checkout, events, seed, tickets, etc.)
+│   └── .env (MONGO_URL, credentials)
 ├── frontend/ (React + Craco)
 │   ├── package.json (npm)
 │   ├── .node-version (20)
 │   └── src/
-│       ├── pages/ (80+ pages)
-│       ├── components/
+│       ├── pages/ (80+ pages including EventDetailsPage)
+│       ├── components/ (InteractiveVenueMap, TicketListings, VenueTickets, etc.)
 │       └── App.js
 └── render.yaml
 ```
@@ -54,9 +72,12 @@ Build a ticket marketplace at euromatchtickets.com with aggressive SEO strategy 
 
 ## Prioritized Backlog
 
+### P0 (Completed)
+- ~~EventDetailsPage overhaul with interactive venue maps~~ DONE
+
 ### P1
 - Owner Dashboard with charts and sales reports
-- Verify Google Auth on production after deploy
+- Login flow with user's own Google OAuth credentials (BLOCKED - needs user to create new OAuth Client ID)
 
 ### P2
 - Fix Bing IndexNow (Cloudflare blocking)
