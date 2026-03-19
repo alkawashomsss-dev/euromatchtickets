@@ -11,6 +11,15 @@ logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api")
 
 INDEXNOW_KEY = "e33676fbaf3c0bd0b243f4f76213d267"
+BING_API_KEY = os.environ.get("BING_WEBMASTER_API_KEY", "")
+SITE_URL = "https://euromatchtickets.com"
+
+
+# Serve IndexNow key file from backend (bypasses Cloudflare frontend protection)
+@router.get(f"/{INDEXNOW_KEY}.txt")
+async def serve_indexnow_key():
+    return Response(content=INDEXNOW_KEY, media_type="text/plain")
+
 
 
 @router.get("/sitemap.xml")
@@ -310,13 +319,27 @@ async def get_seo_page(slug: str):
 # SEO Automation
 @router.api_route("/seo/ping-search-engines", methods=["GET", "POST"])
 async def seo_ping_engines():
-    base_url = FRONTEND_URL
+    base_url = SITE_URL
     sitemap_url = f"{base_url}/sitemap-index.xml"
     results = {}
-    async with httpx.AsyncClient(timeout=10.0) as client:
-        # IndexNow (replaces deprecated Google/Bing ping)
+    async with httpx.AsyncClient(timeout=15.0, follow_redirects=True) as client:
+        # 1. Bing URL Submission API (primary - no key file verification needed)
+        if BING_API_KEY:
+            try:
+                seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(100)
+                url_list = [f"{base_url}/{p['slug']}" for p in seo_pages[:100]]
+                r = await client.post(
+                    f"https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey={BING_API_KEY}",
+                    json={"siteUrl": base_url, "urlList": url_list},
+                    headers={"Content-Type": "application/json; charset=utf-8"}
+                )
+                results["bing_api"] = {"status": r.status_code, "urls": len(url_list), "success": r.status_code == 200}
+            except Exception as e:
+                results["bing_api"] = {"status": "error", "detail": str(e)}
+
+        # 2. Yandex IndexNow (works reliably)
         try:
-            seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(100)
+            seo_pages = seo_pages if 'seo_pages' in dir() else await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(100)
             urls = [f"{base_url}/{p['slug']}" for p in seo_pages[:100]]
             payload = {
                 "host": "euromatchtickets.com",
@@ -324,95 +347,139 @@ async def seo_ping_engines():
                 "keyLocation": f"{base_url}/{INDEXNOW_KEY}.txt",
                 "urlList": urls
             }
-            r = await client.post("https://api.indexnow.org/indexnow", json=payload)
-            results["indexnow"] = {"status": r.status_code, "urls": len(urls), "success": r.status_code in [200, 202]}
+            r = await client.post("https://yandex.com/indexnow", json=payload)
+            results["yandex"] = {"status": r.status_code, "urls": len(urls), "success": r.status_code in [200, 202]}
         except Exception as e:
-            results["indexnow"] = {"status": "error", "detail": str(e)}
+            results["yandex"] = {"status": "error", "detail": str(e)}
+
     return {"sitemap_url": sitemap_url, "results": results}
+
+
+async def _collect_all_urls():
+    """Collect all site URLs for submission."""
+    base_url = SITE_URL
+    seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(5000)
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    events = await db.events.find(
+        {"event_date": {"$gte": today}}, {"_id": 0, "event_id": 1, "slug": 1}
+    ).to_list(500)
+
+    urls = [f"{base_url}/{p['slug']}" for p in seo_pages]
+    urls += [f"{base_url}/event/{e.get('slug') or e['event_id']}" for e in events]
+    urls += [f"{base_url}/{p}" for p in [
+        "", "events", "f1-tickets", "football-tickets", "concerts",
+        "motogp-tickets", "world-cup-2026", "sell-tickets", "about", "faq",
+        "reviews", "contact", "buyer-protection", "champions-league-tickets",
+        "super-bowl-2026-tickets", "taylor-swift-wembley-2026-tickets",
+        "el-clasico-tickets", "monaco-grand-prix-tickets", "blog",
+    ]]
+    return list(set(urls))
 
 
 @router.post("/seo/indexnow")
 async def submit_indexnow(urls: list[str] = None):
-    """Submit URLs to IndexNow for instant indexing by Bing, Yandex, and partners."""
-    base_url = "https://euromatchtickets.com"
-    
+    """Submit URLs via Bing URL Submission API + Yandex IndexNow."""
     if not urls:
-        # Submit all SEO pages + key site pages + event pages
-        seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(5000)
-        today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
-        events = await db.events.find({"event_date": {"$gte": today}}, {"_id": 0, "event_id": 1}).to_list(500)
-        
-        urls = [f"{base_url}/{p['slug']}" for p in seo_pages]
-        urls += [f"{base_url}/event/{e['event_id']}" for e in events]
-        # Add key static pages
-        urls += [f"{base_url}/{p}" for p in ["", "events", "f1-tickets", "football-tickets", "concerts", "motogp-tickets", "world-cup-2026", "sell-tickets", "about", "faq"]]
-    
-    results = {"submitted": 0, "errors": 0, "batches": 0, "engines": {}}
-    
-    # Submit to multiple IndexNow engines
-    engines = [
-        ("yandex", "https://yandex.com/indexnow"),
-        ("bing", "https://www.bing.com/indexnow"),
-        ("indexnow", "https://api.indexnow.org/indexnow"),
-    ]
-    
-    async with httpx.AsyncClient(timeout=30.0) as client:
-        for engine_name, engine_url in engines:
-            engine_result = {"submitted": 0, "errors": 0}
-            for i in range(0, len(urls), 9000):
-                batch = urls[i:i+9000]
-                payload = {
+        urls = await _collect_all_urls()
+
+    results = {"total_urls": len(urls), "engines": {}}
+
+    async with httpx.AsyncClient(timeout=30.0, follow_redirects=True) as client:
+        # 1. Bing URL Submission API (daily quota ~100 URLs, prioritize key pages first)
+        if BING_API_KEY:
+            bing_result = {"submitted": 0, "quota_exceeded": False}
+            # Bing has a small daily quota - send in batches of 50 and stop on quota error
+            for i in range(0, len(urls), 50):
+                batch = urls[i:i+50]
+                try:
+                    r = await client.post(
+                        f"https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey={BING_API_KEY}",
+                        json={"siteUrl": SITE_URL, "urlList": batch},
+                        headers={"Content-Type": "application/json; charset=utf-8"}
+                    )
+                    if r.status_code == 200:
+                        bing_result["submitted"] += len(batch)
+                    else:
+                        resp = r.text[:200]
+                        if "Quota" in resp or "quota" in resp:
+                            bing_result["quota_exceeded"] = True
+                            bing_result["note"] = "Daily quota reached. Run again tomorrow."
+                            break
+                        bing_result["last_error"] = resp
+                except Exception as e:
+                    bing_result["last_error"] = str(e)[:100]
+                    break
+            results["engines"]["bing_api"] = bing_result
+        else:
+            results["engines"]["bing_api"] = {"error": "No BING_WEBMASTER_API_KEY configured"}
+
+        # 2. Yandex IndexNow (no daily limit issues)
+        yandex_result = {"submitted": 0, "errors": 0}
+        for i in range(0, len(urls), 5000):
+            batch = urls[i:i+5000]
+            try:
+                r = await client.post("https://yandex.com/indexnow", json={
                     "host": "euromatchtickets.com",
                     "key": INDEXNOW_KEY,
-                    "keyLocation": f"{base_url}/{INDEXNOW_KEY}.txt",
+                    "keyLocation": f"{SITE_URL}/{INDEXNOW_KEY}.txt",
                     "urlList": batch
-                }
-                try:
-                    r = await client.post(engine_url, json=payload, headers={"Content-Type": "application/json"})
-                    if r.status_code in [200, 202]:
-                        engine_result["submitted"] += len(batch)
-                    else:
-                        engine_result["errors"] += len(batch)
-                except Exception as e:
-                    engine_result["errors"] += len(batch)
-            results["engines"][engine_name] = engine_result
-            results["submitted"] += engine_result["submitted"]
-    
-    # Ping Google sitemap
-    try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
-            await client.get(f"https://www.google.com/ping?sitemap={base_url}/sitemap-index.xml")
-            results["google_ping"] = True
-    except Exception:
-        results["google_ping"] = False
-    
-    return {"status": "success", "total_urls": len(urls), **results}
+                })
+                if r.status_code in [200, 202]:
+                    yandex_result["submitted"] += len(batch)
+                else:
+                    yandex_result["errors"] += len(batch)
+            except Exception:
+                yandex_result["errors"] += len(batch)
+        results["engines"]["yandex"] = yandex_result
+
+        # 3. Google Sitemap Ping
+        try:
+            r = await client.get(f"https://www.google.com/ping?sitemap={SITE_URL}/sitemap-index.xml")
+            results["engines"]["google_ping"] = {"success": r.status_code == 200}
+        except Exception:
+            results["engines"]["google_ping"] = {"success": False}
+
+    total_submitted = sum(
+        v.get("submitted", 0) for v in results["engines"].values() if isinstance(v, dict)
+    )
+    results["total_submitted"] = total_submitted
+    return {"status": "success", **results}
 
 
 @router.post("/seo/submit-url")
 async def submit_single_url(url: str):
-    """Submit a single URL to IndexNow + Google ping."""
-    base_url = FRONTEND_URL
-    full_url = url if url.startswith("http") else f"{base_url}/{url.lstrip('/')}"
+    """Submit a single URL to Bing API + Yandex IndexNow + Google ping."""
+    full_url = url if url.startswith("http") else f"{SITE_URL}/{url.lstrip('/')}"
     
     results = {}
-    async with httpx.AsyncClient(timeout=15.0) as client:
-        # IndexNow
+    async with httpx.AsyncClient(timeout=15.0, follow_redirects=True) as client:
+        # 1. Bing URL Submission API (primary)
+        if BING_API_KEY:
+            try:
+                r = await client.post(
+                    f"https://ssl.bing.com/webmaster/api.svc/json/SubmitUrl?apikey={BING_API_KEY}",
+                    json={"siteUrl": SITE_URL, "url": full_url},
+                    headers={"Content-Type": "application/json; charset=utf-8"}
+                )
+                results["bing_api"] = {"status": r.status_code, "success": r.status_code == 200}
+            except Exception as e:
+                results["bing_api"] = {"status": "error", "detail": str(e)}
+
+        # 2. Yandex IndexNow
         try:
-            payload = {
+            r = await client.post("https://yandex.com/indexnow", json={
                 "host": "euromatchtickets.com",
                 "key": INDEXNOW_KEY,
-                "keyLocation": f"{base_url}/{INDEXNOW_KEY}.txt",
+                "keyLocation": f"{SITE_URL}/{INDEXNOW_KEY}.txt",
                 "urlList": [full_url]
-            }
-            r = await client.post("https://api.indexnow.org/indexnow", json=payload)
-            results["indexnow"] = {"status": r.status_code, "success": r.status_code in [200, 202]}
+            })
+            results["yandex"] = {"status": r.status_code, "success": r.status_code in [200, 202]}
         except Exception as e:
-            results["indexnow"] = {"status": "error", "detail": str(e)}
+            results["yandex"] = {"status": "error", "detail": str(e)}
         
-        # Google ping
+        # 3. Google ping
         try:
-            r = await client.get(f"https://www.google.com/ping?sitemap={base_url}/sitemap-index.xml")
+            r = await client.get(f"https://www.google.com/ping?sitemap={SITE_URL}/sitemap-index.xml")
             results["google"] = {"status": r.status_code, "success": r.status_code == 200}
         except Exception:
             results["google"] = {"status": "error"}
@@ -706,52 +773,52 @@ async def generate_template_content_endpoint():
 
 @router.post("/seo/force-index-all")
 async def force_index_all():
-    """Submit ALL URLs to every indexing service available. Maximum indexing push."""
-    base_url = "https://euromatchtickets.com"
-    
-    # Collect ALL URLs
-    seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(5000)
-    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
-    events = await db.events.find({"event_date": {"$gte": today}}, {"_id": 0, "event_id": 1}).to_list(500)
-    
-    urls = [base_url]
-    urls += [f"{base_url}/{p}" for p in [
-        "events", "f1-tickets", "motogp-tickets", "world-cup-2026",
-        "champions-league-tickets", "concerts", "sell-tickets",
-        "about", "faq", "reviews", "contact", "buyer-protection"
-    ]]
-    urls += [f"{base_url}/{p['slug']}" for p in seo_pages]
-    urls += [f"{base_url}/event/{e['event_id']}" for e in events]
-    
+    """Submit ALL URLs via Bing API + Yandex IndexNow + Google Ping. Maximum indexing push."""
+    urls = await _collect_all_urls()
     results = {"total_urls": len(urls), "engines": {}}
     
-    async with httpx.AsyncClient(timeout=60.0) as client:
-        # 1. IndexNow API (covers Bing, Yandex, Seznam, Naver)
-        for engine_name, engine_url in [
-            ("indexnow", "https://api.indexnow.org/indexnow"),
-            ("yandex", "https://yandex.com/indexnow"),
-        ]:
-            submitted = 0
-            for i in range(0, len(urls), 5000):
-                batch = urls[i:i+5000]
+    async with httpx.AsyncClient(timeout=60.0, follow_redirects=True) as client:
+        # 1. Bing URL Submission API (respects daily quota ~100 URLs)
+        if BING_API_KEY:
+            bing_submitted = 0
+            for i in range(0, len(urls), 50):
+                batch = urls[i:i+50]
                 try:
-                    r = await client.post(engine_url, json={
-                        "host": "euromatchtickets.com",
-                        "key": INDEXNOW_KEY,
-                        "keyLocation": f"{base_url}/{INDEXNOW_KEY}.txt",
-                        "urlList": batch
-                    }, headers={"Content-Type": "application/json"})
-                    if r.status_code in [200, 202]:
-                        submitted += len(batch)
+                    r = await client.post(
+                        f"https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey={BING_API_KEY}",
+                        json={"siteUrl": SITE_URL, "urlList": batch},
+                        headers={"Content-Type": "application/json; charset=utf-8"}
+                    )
+                    if r.status_code == 200:
+                        bing_submitted += len(batch)
+                    elif "Quota" in r.text or "quota" in r.text:
+                        break
                 except Exception:
-                    pass
-            results["engines"][engine_name] = submitted
-        
-        # 2. Google Sitemap Pings (multiple sitemaps)
-        google_pings = 0
-        for sitemap in ["sitemap-index.xml", "sitemap.xml", "sitemaps/pages.xml", "sitemaps/f1.xml", "sitemaps/football.xml", "sitemaps/concerts.xml", "sitemaps/worldcup.xml", "sitemaps/cities.xml"]:
+                    break
+            results["engines"]["bing_api"] = bing_submitted
+
+        # 2. Yandex IndexNow (no quota issues)
+        yandex_submitted = 0
+        for i in range(0, len(urls), 5000):
+            batch = urls[i:i+5000]
             try:
-                r = await client.get(f"https://www.google.com/ping?sitemap={base_url}/api/{sitemap}")
+                r = await client.post("https://yandex.com/indexnow", json={
+                    "host": "euromatchtickets.com",
+                    "key": INDEXNOW_KEY,
+                    "keyLocation": f"{SITE_URL}/{INDEXNOW_KEY}.txt",
+                    "urlList": batch
+                })
+                if r.status_code in [200, 202]:
+                    yandex_submitted += len(batch)
+            except Exception:
+                pass
+        results["engines"]["yandex"] = yandex_submitted
+        
+        # 3. Google Sitemap Pings
+        google_pings = 0
+        for sitemap in ["sitemap-index.xml", "sitemap.xml"]:
+            try:
+                r = await client.get(f"https://www.google.com/ping?sitemap={SITE_URL}/{sitemap}")
                 if r.status_code == 200:
                     google_pings += 1
             except Exception:

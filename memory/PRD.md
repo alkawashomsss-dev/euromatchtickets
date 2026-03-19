@@ -15,72 +15,64 @@ Build a ticket marketplace at euromatchtickets.com with aggressive SEO strategy 
 ### Session 1-3 (Previous)
 - Full-stack FastAPI/React marketplace
 - 80+ SEO landing pages
-- Lazy loading for all page components
-- Checkout flow with Stripe
-- Google OAuth authentication
-- Homepage with Featured Events Carousel
-- Sitemap generation
-- Price comparison tables
-- FanProtect guarantee page
+- Lazy loading, Checkout flow with Stripe
+- Google OAuth, Homepage with Featured Events Carousel
+- Sitemap generation, Price comparison tables
 
 ### Session 4 (March 18, 2026)
-- Fixed Render Deployment (yarn.lock issue, migrated to npm)
+- Fixed Render Deployment
 - Fixed Google Auth
-- Fixed Google Search Console Warnings (validFrom in Offer schemas)
+- Fixed Google Search Console Warnings
 - New Hero Images for SEO pages
-- Real Events & Animations with framer-motion
 
 ### Session 5 (March 19, 2026)
-- Comprehensive SEO Overhaul: Fixed 40+ titles, 30+ meta descriptions, missing structured data
-- Auto-seeding mechanism on server startup for production data consistency
+- Comprehensive SEO Overhaul: Fixed 40+ titles, 30+ meta descriptions
+- Auto-seeding mechanism on server startup
 - Bing Webmaster Tools verification
-- Upgraded 4 SEO pages with real API data, live countdowns, stats
+- Upgraded 4 SEO pages with real API data
 
-### Session 6 (March 19, 2026) - Current
-- **EventDetailsPage Complete Overhaul (StubHub-style)**:
-  - Interactive SVG venue maps (Concert/Football/F1 layouts)
-  - Real ticket data from database grouped by category and section
-  - Section filtering via map click and legend buttons
-  - Category filters (VIP, Seated, General Admission, Platinum)
-  - Sort functionality (Price Low/High, Availability)
-  - Expandable ticket rows showing individual tickets with exact prices
-  - Buy buttons linking to checkout with ticket_id, price, category params
-  - LOW STOCK badges, trust signals, conversion widgets
+### Session 6 (March 19, 2026) 
+- **EventDetailsPage Complete Overhaul (StubHub-style)**: Interactive SVG venue maps, real ticket data grouped by section, category filters, sort, expandable ticket rows, LOW STOCK badges
 - **Backend Enhancement**: `/api/events/{eventId}` now returns `grouped_sections` array
+
+### Session 7 (March 19, 2026) - Current
+- **Bing IndexNow Fix (RESOLVED)**:
+  - Root cause: Cloudflare blocked IndexNow key verification bots (403 "UserForbiddedToAccessSite")
+  - Solution: Switched to Bing URL Submission API (bypasses Cloudflare entirely)
+  - Added `BING_WEBMASTER_API_KEY` to backend env
+  - Backend serves IndexNow key file as fallback (`/api/{key}.txt`)
+  - Quota-aware batching (Bing daily limit ~100 URLs)
+  - Results: Bing API ✅, Yandex ✅, Google Ping ✅
 
 ## Architecture
 ```
 /app/
 ├── backend/ (FastAPI)
 │   ├── server.py
-│   ├── routes/ (auth, checkout, events, seed, tickets, etc.)
-│   └── .env (MONGO_URL, credentials)
+│   ├── routes/ (auth, checkout, events, seed, tickets, seo, etc.)
+│   └── .env (MONGO_URL, BING_WEBMASTER_API_KEY, etc.)
 ├── frontend/ (React + Craco)
-│   ├── package.json (npm)
-│   ├── .node-version (20)
-│   └── src/
-│       ├── pages/ (80+ pages including EventDetailsPage)
-│       ├── components/ (InteractiveVenueMap, TicketListings, VenueTickets, etc.)
-│       └── App.js
+│   └── src/ (80+ pages, InteractiveVenueMap, TicketListings, etc.)
 └── render.yaml
 ```
 
-## Deployment
-- **Platform**: Render (Static Site for frontend, Web Service for backend)
-- **Frontend Build**: `npm ci --legacy-peer-deps && CI=false npm run build`
-- **Environment**: `SKIP_INSTALL_DEPS=true`, `REACT_APP_GOOGLE_CLIENT_ID`
+## API Endpoints (SEO)
+- `POST /api/seo/indexnow` - Submit all URLs to Bing API + Yandex
+- `POST /api/seo/submit-url?url=X` - Submit single URL
+- `POST /api/seo/force-index-all` - Maximum indexing push
+- `GET/POST /api/seo/ping-search-engines` - Quick ping to all engines
 
 ## Prioritized Backlog
 
 ### P0 (Completed)
-- ~~EventDetailsPage overhaul with interactive venue maps~~ DONE
+- ~~EventDetailsPage overhaul~~ DONE
+- ~~Bing IndexNow fix~~ DONE
 
 ### P1
 - Owner Dashboard with charts and sales reports
-- Login flow with user's own Google OAuth credentials (BLOCKED - needs user to create new OAuth Client ID)
+- Login flow with user's own Google OAuth credentials (BLOCKED)
 
 ### P2
-- Fix Bing IndexNow (Cloudflare blocking)
 - Improve price comparison tables
 
 ### P3
