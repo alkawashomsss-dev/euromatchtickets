@@ -32,14 +32,22 @@ Build a ticket marketplace at euromatchtickets.com with aggressive SEO strategy 
 - **4 AI-generated professional images**: Boxing arena, World Cup stadium, UFC octagon, VIP suite
 - All events use real venues, real dates, real pricing tiers (up to €57,000 for WC Final Platinum)
 
-## Key Events (Premium)
+## Key Events (Premium - Competitive Pricing)
 | Event | Venue | Price Range | Tickets |
 |-------|-------|-------------|---------|
-| WC 2026 Final Premium | MetLife Stadium, NY | €968 - €41,199 | 95 |
-| Fury vs Usyk III | Kingdom Arena, Riyadh | €501 - €74,999 | 92 |
-| Canelo vs Benavidez | T-Mobile Arena, Vegas | €299 - €49,999 | 102 |
-| CWC 2025 Final | MetLife Stadium, NY | €290 - €12,999 | 135 |
-| Bayern vs Real Madrid UCL | Allianz Arena, Munich | €199 - €8,999 | 113 |
+| WC 2026 Final Premium | MetLife Stadium, NY | €260 - €1,648 | 95 |
+| Fury vs Usyk III | Kingdom Arena, Riyadh | €175 - €2,050 | 92 |
+| Canelo vs Benavidez | T-Mobile Arena, Vegas | €152 - €1,623 | 102 |
+| CWC 2025 Final | MetLife Stadium, NY | €153 - €790 | 135 |
+| Bayern vs Real Madrid UCL | Allianz Arena, Munich | €102 - €730 | 113 |
+
+### Session 10 (March 20, 2026) - Current
+- **Price Adjustment - Cheapest in Market:**
+  - Scaled down ALL 82,840 tickets across 254 events
+  - Applied aggressive pricing formula: mega events max ~€2,050, premium events max ~€800, standard events max ~€500
+  - Updated seed functions to use competitive prices for future re-seeding
+  - Most expensive ticket: €2,050 (Fury vs Usyk Platinum)
+  - Average event starting price: €35-€150
 
 ## Prioritized Backlog
 ### P1
