@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Ticket, ChevronDown, ChevronUp, Shield, Zap, Users, Check, Filter, SortAsc, Tag } from "lucide-react";
+import { Ticket, ChevronDown, ChevronUp, Shield, Zap, Users, Check, Filter, SortAsc, Tag, Crown } from "lucide-react";
 
 const CATEGORY_LABELS = {
   platinum: "Platinum",
@@ -25,43 +25,56 @@ const SectionTicketList = ({ group, eventId, onBuy }) => {
 
   const isLow = group.count < 10;
   const catLabel = formatCategory(group.category);
+  const isVIP = group.category === 'vip' || group.category === 'platinum';
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white border border-slate-100 rounded-xl overflow-hidden hover:border-slate-200 transition-all hover:shadow-sm"
+      className={`rounded-xl overflow-hidden hover:shadow-sm transition-all ${
+        isVIP
+          ? 'bg-gradient-to-r from-[#0c0a14] to-[#15111f] border border-amber-500/20 hover:border-amber-500/40'
+          : 'bg-white border border-slate-100 hover:border-slate-200'
+      }`}
       data-testid={`section-${group.category}-${group.section.toLowerCase().replace(/\s/g,'-')}`}
     >
       {/* Section Header Row */}
       <div className="flex items-center justify-between p-4 cursor-pointer"
         onClick={() => setExpanded(!expanded)} data-testid={`section-toggle-${group.section.toLowerCase().replace(/\s/g,'-')}`}>
         <div className="flex items-center gap-3 flex-1 min-w-0">
-          <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center flex-shrink-0">
-            <Ticket className="w-5 h-5 text-slate-600" />
+          <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+            isVIP ? 'bg-gradient-to-br from-amber-500/20 to-amber-600/10' : 'bg-slate-50'
+          }`}>
+            {isVIP ? <Crown className="w-5 h-5 text-amber-500" /> : <Ticket className="w-5 h-5 text-slate-600" />}
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="font-bold text-slate-900 text-sm">{group.section}</h3>
-              <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">{catLabel}</span>
+              <h3 className={`font-bold text-sm ${isVIP ? 'text-white' : 'text-slate-900'}`}>{group.section}</h3>
+              <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+                isVIP ? 'text-amber-400 bg-amber-500/10 border border-amber-500/20' : 'text-slate-500 bg-slate-100'
+              }`}>{catLabel}</span>
               {isLow && <span className="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-full">LOW STOCK</span>}
             </div>
-            <p className="text-xs text-slate-400 mt-0.5">{group.count} ticket{group.count !== 1 ? 's' : ''} available</p>
+            <p className={`text-xs mt-0.5 ${isVIP ? 'text-white/40' : 'text-slate-400'}`}>{group.count} ticket{group.count !== 1 ? 's' : ''} available{isVIP ? ' · VIP Hospitality included' : ''}</p>
           </div>
         </div>
         <div className="flex items-center gap-4 flex-shrink-0">
           <div className="text-right">
-            <p className="text-[10px] text-slate-400 uppercase tracking-wide">From</p>
-            <p className="text-lg font-extrabold text-emerald-600">&euro;{Math.round(group.lowest_price)}</p>
+            <p className={`text-[10px] uppercase tracking-wide ${isVIP ? 'text-amber-500/60' : 'text-slate-400'}`}>From</p>
+            <p className={`text-lg font-extrabold ${isVIP ? 'text-amber-400' : 'text-emerald-600'}`}>&euro;{Math.round(group.lowest_price).toLocaleString()}</p>
           </div>
           <button
             onClick={(e) => { e.stopPropagation(); onBuy(sortedTickets[0]); }}
-            className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm px-5 py-2.5 rounded-lg transition-all shadow-sm hover:shadow-md hidden sm:block"
+            className={`font-bold text-sm px-5 py-2.5 rounded-lg transition-all shadow-sm hover:shadow-md hidden sm:block ${
+              isVIP
+                ? 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black'
+                : 'bg-emerald-500 hover:bg-emerald-600 text-white'
+            }`}
             data-testid={`buy-quick-${group.section.toLowerCase().replace(/\s/g,'-')}`}
           >
-            Buy
+            {isVIP ? 'Buy VIP' : 'Buy'}
           </button>
-          <div className="text-slate-400">
+          <div className={isVIP ? 'text-white/40' : 'text-slate-400'}>
             {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </div>
         </div>
@@ -71,10 +84,14 @@ const SectionTicketList = ({ group, eventId, onBuy }) => {
       <div className="px-4 pb-3 sm:hidden">
         <button
           onClick={() => onBuy(sortedTickets[0])}
-          className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm py-2.5 rounded-lg transition-all"
+          className={`w-full font-bold text-sm py-2.5 rounded-lg transition-all ${
+            isVIP
+              ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black'
+              : 'bg-emerald-500 hover:bg-emerald-600 text-white'
+          }`}
           data-testid={`buy-quick-mobile-${group.section.toLowerCase().replace(/\s/g,'-')}`}
         >
-          Buy from &euro;{Math.round(group.lowest_price)}
+          {isVIP ? `Buy VIP from €${Math.round(group.lowest_price).toLocaleString()}` : `Buy from €${Math.round(group.lowest_price)}`}
         </button>
       </div>
 

@@ -11,7 +11,7 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional
 
 class FanPassAPITester:
-    def __init__(self, base_url: str = "https://event-ticket-hub-8.preview.emergentagent.com"):
+    def __init__(self, base_url: str = "https://seo-campaign-staging.preview.emergentagent.com"):
         self.base_url = base_url.rstrip('/')
         self.session = requests.Session()
         self.session.headers.update({'Content-Type': 'application/json'})

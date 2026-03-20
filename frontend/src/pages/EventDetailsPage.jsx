@@ -17,6 +17,7 @@ import VenueInfoSection from "../components/VenueInfoSection";
 import InteractiveVenueMap from "../components/InteractiveVenueMap";
 import TicketListings from "../components/TicketListings";
 import { PriceAlertButton, ScarcityBadge, HighDemandBadge, SocialProofCounter, UrgencyCountdown, AlertWatchersCount } from "../components/ConversionWidgets";
+import { VIPExperienceSection } from "../components/VIPExperience";
 
 const FadeIn = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -209,6 +210,17 @@ export default function EventDetailsPage() {
                 onClearFilter={() => setSelectedSection(null)}
               />
             </FadeIn>
+
+            {/* VIP Experience Section */}
+            {groupedSections.some(g => g.category === 'vip' || g.category === 'platinum') && (
+              <FadeIn delay={0.15}>
+                <VIPExperienceSection
+                  event={event}
+                  vipTickets={groupedSections.filter(g => g.category === 'vip' || g.category === 'platinum')}
+                  onBuy={(tier) => navigate(`/checkout?event=${event.event_id}&category=${tier.category === 'platinum' ? 'Platinum' : 'VIP'}&price=${Math.round(tier.lowest_price)}`)}
+                />
+              </FadeIn>
+            )}
 
             {/* Price Comparison */}
             <FadeIn delay={0.15}>
