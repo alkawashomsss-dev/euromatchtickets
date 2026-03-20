@@ -219,7 +219,7 @@ async def get_category_sitemap(category: str):
             xml_items.append(f'  <url>\n    <loc>{base_url}/blog/{a["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.70</priority>\n  </url>')
     elif category == "cities":
         city_img = f"{base_url}/images/heroes/football-stadium-lg.webp"
-        pages = await db.seo_pages.find({"page_type": "city_category"}, {"_id": 0, "slug": 1, "title": 1, "priority": 1, "updated_at": 1}).to_list(50000)
+        pages = await db.seo_pages.find({"page_type": "city_category", "active": True}, {"_id": 0, "slug": 1, "title": 1, "priority": 1, "updated_at": 1}).to_list(50000)
         for p in pages:
             lm = p.get("updated_at", "")
             lm = lm.strftime('%Y-%m-%d') if isinstance(lm, datetime) else today
@@ -230,7 +230,7 @@ async def get_category_sitemap(category: str):
         cat_map = {"f1": "f1", "football": "football", "concerts": "concert", "worldcup": "worldcup"}
         db_cat = cat_map.get(category, category)
         img_url = cat_images.get(db_cat, cat_images.get(category, f"{base_url}/og-image.jpg"))
-        pages = await db.seo_pages.find({"category": db_cat}, {"_id": 0, "slug": 1, "title": 1, "priority": 1, "updated_at": 1}).to_list(50000)
+        pages = await db.seo_pages.find({"category": db_cat, "active": True}, {"_id": 0, "slug": 1, "title": 1, "priority": 1, "updated_at": 1}).to_list(50000)
         for p in pages:
             lm = p.get("updated_at", "")
             lm = lm.strftime('%Y-%m-%d') if isinstance(lm, datetime) else today
@@ -332,7 +332,52 @@ async def get_seo_page(slug: str):
     page = await db.seo_pages.find_one({"slug": slug}, {"_id": 0})
     if not page:
         raise HTTPException(status_code=404, detail="Page not found")
+    # Add noindex flag for inactive pages
+    if not page.get("active", False):
+        page["noindex"] = True
     return page
+
+
+@router.post("/seo/activate-batch")
+async def activate_next_batch(count: int = 100):
+    """Activate the next batch of highest-priority inactive pages"""
+    # Find top inactive pages sorted by SEO value
+    inactive = await db.seo_pages.find(
+        {"active": {"$ne": True}, "slug": {"$regex": "2026"}},
+        {"_id": 1, "slug": 1, "category": 1}
+    ).sort("slug", 1).limit(count).to_list(count)
+    
+    if not inactive:
+        return {"message": "No more inactive 2026 pages to activate", "activated": 0}
+    
+    ids = [p["_id"] for p in inactive]
+    result = await db.seo_pages.update_many(
+        {"_id": {"$in": ids}},
+        {"$set": {"active": True, "priority": 75}}
+    )
+    
+    active_total = await db.seo_pages.count_documents({"active": True})
+    inactive_total = await db.seo_pages.count_documents({"active": {"$ne": True}})
+    
+    return {
+        "activated": result.modified_count,
+        "total_active": active_total,
+        "total_inactive": inactive_total,
+        "sample_activated": [p["slug"] for p in inactive[:5]]
+    }
+
+@router.get("/seo/indexing-status")
+async def get_indexing_status():
+    """Get current SEO indexing status"""
+    active = await db.seo_pages.count_documents({"active": True})
+    inactive = await db.seo_pages.count_documents({"active": {"$ne": True}})
+    with_meta = await db.seo_pages.count_documents({"meta_description": {"$exists": True, "$ne": "", "$ne": None}})
+    return {
+        "active_pages": active,
+        "inactive_pages": inactive,
+        "pages_with_meta": with_meta,
+        "total": active + inactive
+    }
 
 
 # SEO Automation

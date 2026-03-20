@@ -86,10 +86,11 @@ export default function DynamicSEOPage() {
     <>
       <SEOHead
         title={page.title}
-        description={page.description}
+        description={page.meta_description || page.description}
         keywords={page.keywords}
         image={page.image}
         canonicalUrl={`https://euromatchtickets.com/${page.slug}`}
+        noIndex={page.noindex || false}
       />
 
       {/* Structured Data - Event + Product + Review Schema */}
