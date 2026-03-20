@@ -194,6 +194,7 @@ export default function EventDetailsPage() {
                       selectedSection={selectedSection}
                       onSectionSelect={setSelectedSection}
                       eventType={event.event_type}
+                      eventTitle={event.title || event.name}
                     />
                     <p className="text-[11px] text-slate-400 mt-3 text-center">Click a section on the map to filter tickets</p>
                   </div>
