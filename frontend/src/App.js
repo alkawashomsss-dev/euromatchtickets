@@ -102,6 +102,8 @@ const BayernRealMadridPage = lazy(() => import("./pages/BayernRealMadridPage"));
 const BahrainWorldCupPage = lazy(() => import("./pages/BahrainWorldCupPage"));
 const TaylorSwiftLondonPage = lazy(() => import("./pages/TaylorSwiftLondonPage"));
 const TaylorSwiftPage = lazy(() => import("./pages/TaylorSwiftPage"));
+const SpanishLandingPage = lazy(() => import("./pages/SpanishLandingPage"));
+const GermanLandingPage = lazy(() => import("./pages/GermanLandingPage"));
 
 // Marketing tools (lazy)
 const AIChatWidget = lazy(() => import("./components/AIChatWidget"));
@@ -384,6 +386,21 @@ function AppRouter() {
         <Route path="/buy-bahrain-world-cup-tickets" element={<BahrainWorldCupPage />} />
         <Route path="/taylor-swift-london-tickets" element={<TaylorSwiftLondonPage />} />
         <Route path="/taylor-swift-tickets-london" element={<TaylorSwiftLondonPage />} />
+        
+        {/* Spanish SEO Pages */}
+        <Route path="/es/comprar-entradas" element={<SpanishLandingPage />} />
+        <Route path="/es/entradas-champions-league" element={<SpanishLandingPage />} />
+        <Route path="/es/entradas-f1" element={<SpanishLandingPage />} />
+        <Route path="/es/entradas-conciertos" element={<SpanishLandingPage />} />
+        <Route path="/es/entradas-copa-del-mundo-2026" element={<SpanishLandingPage />} />
+        
+        {/* German SEO Pages */}
+        <Route path="/de/tickets-kaufen" element={<GermanLandingPage />} />
+        <Route path="/de/champions-league-tickets" element={<GermanLandingPage />} />
+        <Route path="/de/formel-1-tickets" element={<GermanLandingPage />} />
+        <Route path="/de/bundesliga-tickets" element={<GermanLandingPage />} />
+        <Route path="/de/konzert-tickets" element={<GermanLandingPage />} />
+        <Route path="/de/wm-2026-tickets" element={<GermanLandingPage />} />
         
         {/* Dynamic SEO Pages - handles city pages, event pages, and all generated content */}
         <Route path="/:slug" element={<DynamicSEOPage />} />

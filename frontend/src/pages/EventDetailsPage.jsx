@@ -88,6 +88,8 @@ export default function EventDetailsPage() {
     { question: `Can I get a refund?`, answer: `If the event is cancelled or significantly rescheduled, you receive a full refund automatically.` },
   ];
 
+  const isMotorsport = event.event_type === 'motogp' || event.event_type === 'f1' || event.event_type === 'isle_of_man_tt' || (event.title || '').toLowerCase().includes('isle of man');
+
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="event-details-page">
       <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" />
@@ -104,6 +106,14 @@ export default function EventDetailsPage() {
           <motion.img style={{ y: imgY }} src={event.image_url} alt={event.image_alt || `${event.title} tickets`}
             className="w-full h-[120%] object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/70 to-slate-900" />
+          {/* Speed lines for motorsport events */}
+          {isMotorsport && (
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div className="absolute top-[30%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent anim-speed-line" />
+              <div className="absolute top-[55%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-400/40 to-transparent anim-speed-line-2" />
+              <div className="absolute top-[75%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent anim-speed-line-3" />
+            </div>
+          )}
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 pt-6 pb-6">

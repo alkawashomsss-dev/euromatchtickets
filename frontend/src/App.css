@@ -272,3 +272,78 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   z-index: 9999;
 }
+
+/* === Lightweight CSS Animations (no JS, zero perf impact) === */
+@keyframes anim-pulse-slow-kf {
+  0%, 100% { opacity: 0.08; transform: scale(1); }
+  50% { opacity: 0.15; transform: scale(1.05); }
+}
+@keyframes anim-fade-in-kf {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes anim-slide-up-kf {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes anim-fade-in-up-kf {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes anim-blink-kf {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes anim-shimmer-kf {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.anim-pulse-slow { animation: anim-pulse-slow-kf 6s ease-in-out infinite; }
+.anim-fade-in { animation: anim-fade-in-kf 0.6s ease-out both; }
+.anim-slide-up { animation: anim-slide-up-kf 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-fade-in-up { animation: anim-fade-in-up-kf 0.5s ease-out both; }
+.anim-blink { animation: anim-blink-kf 1.5s ease-in-out infinite; }
+.anim-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: anim-shimmer-kf 3s linear infinite;
+}
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .anim-pulse-slow, .anim-fade-in, .anim-slide-up, .anim-fade-in-up, .anim-blink, .anim-shimmer {
+    animation: none !important;
+  }
+}
+
+/* === Motorsport Adrenaline Animations === */
+@keyframes speed-line {
+  0% { transform: translateX(-100%); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+@keyframes race-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(239,68,68,0.2); }
+  50% { box-shadow: 0 0 20px rgba(239,68,68,0.5), 0 0 40px rgba(239,68,68,0.1); }
+}
+@keyframes checkered-sweep {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+.anim-speed-line { animation: speed-line 2s linear infinite; }
+.anim-speed-line-2 { animation: speed-line 2.5s linear infinite; animation-delay: 0.8s; }
+.anim-speed-line-3 { animation: speed-line 1.8s linear infinite; animation-delay: 1.5s; }
+.anim-race-glow { animation: race-glow 2s ease-in-out infinite; }
+.anim-checkered {
+  background: repeating-linear-gradient(90deg, transparent 0 8px, rgba(255,255,255,0.03) 8px 16px);
+  background-size: 200% 100%;
+  animation: checkered-sweep 8s linear infinite;
+}
+/* Card entrance with stagger */
+@keyframes card-pop {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.anim-card-pop { animation: card-pop 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+
+

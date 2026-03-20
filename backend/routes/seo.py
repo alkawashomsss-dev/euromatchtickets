@@ -47,6 +47,19 @@ async def get_sitemap():
         ("/reviews", "0.7", "weekly"), ("/faq", "0.7", "monthly"),
         ("/about", "0.6", "monthly"), ("/contact", "0.6", "monthly"),
         ("/buyer-protection", "0.7", "monthly"), ("/terms", "0.5", "monthly"),
+        # Spanish SEO pages
+        ("/es/comprar-entradas", "0.90", "weekly"),
+        ("/es/entradas-champions-league", "0.85", "weekly"),
+        ("/es/entradas-f1", "0.85", "weekly"),
+        ("/es/entradas-conciertos", "0.85", "weekly"),
+        ("/es/entradas-copa-del-mundo-2026", "0.90", "weekly"),
+        # German SEO pages
+        ("/de/tickets-kaufen", "0.90", "weekly"),
+        ("/de/champions-league-tickets", "0.85", "weekly"),
+        ("/de/formel-1-tickets", "0.85", "weekly"),
+        ("/de/bundesliga-tickets", "0.85", "weekly"),
+        ("/de/konzert-tickets", "0.85", "weekly"),
+        ("/de/wm-2026-tickets", "0.90", "weekly"),
     ]
     for path, prio, freq in static_pages:
         xml_items.append(f'  <url>\n    <loc>{base_url}{path}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>')
