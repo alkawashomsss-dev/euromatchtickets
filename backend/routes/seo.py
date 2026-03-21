@@ -24,6 +24,17 @@ async def serve_indexnow_key():
 
 @router.get("/sitemap.xml")
 async def get_sitemap():
+    """Main comprehensive sitemap - includes all active URLs"""
+    return await _build_full_sitemap()
+
+
+@router.get("/seo/sitemap.xml")
+async def get_seo_sitemap():
+    """Alias for main sitemap - this is the URL submitted to Google Search Console"""
+    return await _build_full_sitemap()
+
+
+async def _build_full_sitemap():
     base_url = FRONTEND_URL
     today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     xml_items = ['<?xml version="1.0" encoding="UTF-8"?>']
@@ -75,7 +86,7 @@ async def get_sitemap():
         lm = d.strftime('%Y-%m-%d') if isinstance(d, datetime) else today
         xml_items.append(f'  <url>\n    <loc>{base_url}/blog/{a["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.70</priority>\n  </url>')
 
-    seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1, "updated_at": 1, "priority": 1}).to_list(50000)
+    seo_pages = await db.seo_pages.find({"active": True}, {"_id": 0, "slug": 1, "updated_at": 1, "priority": 1}).to_list(50000)
     for p in seo_pages:
         lm = p.get("updated_at", "")
         lm = lm.strftime('%Y-%m-%d') if isinstance(lm, datetime) else today
