@@ -390,7 +390,7 @@ async def seo_ping_engines():
         # 1. Bing URL Submission API (primary - no key file verification needed)
         if BING_API_KEY:
             try:
-                seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(100)
+                seo_pages = await db.seo_pages.find({"active": True}, {"_id": 0, "slug": 1}).to_list(100)
                 url_list = [f"{base_url}/{p['slug']}" for p in seo_pages[:100]]
                 r = await client.post(
                     f"https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey={BING_API_KEY}",
@@ -403,7 +403,7 @@ async def seo_ping_engines():
 
         # 2. Yandex IndexNow (works reliably)
         try:
-            seo_pages = seo_pages if 'seo_pages' in dir() else await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(100)
+            seo_pages = seo_pages if 'seo_pages' in dir() else await db.seo_pages.find({"active": True}, {"_id": 0, "slug": 1}).to_list(100)
             urls = [f"{base_url}/{p['slug']}" for p in seo_pages[:100]]
             payload = {
                 "host": "euromatchtickets.com",
@@ -420,9 +420,10 @@ async def seo_ping_engines():
 
 
 async def _collect_all_urls():
-    """Collect all site URLs for submission."""
+    """Collect only ACTIVE site URLs for submission."""
     base_url = SITE_URL
-    seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(5000)
+    # Only submit active SEO pages
+    seo_pages = await db.seo_pages.find({"active": True}, {"_id": 0, "slug": 1}).to_list(5000)
     today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     events = await db.events.find(
         {"event_date": {"$gte": today}}, {"_id": 0, "event_id": 1, "slug": 1}
@@ -436,6 +437,7 @@ async def _collect_all_urls():
         "reviews", "contact", "buyer-protection", "champions-league-tickets",
         "super-bowl-2026-tickets", "taylor-swift-wembley-2026-tickets",
         "el-clasico-tickets", "monaco-grand-prix-tickets", "blog",
+        "es/comprar-entradas", "de/tickets-kaufen",
     ]]
     return list(set(urls))
 
