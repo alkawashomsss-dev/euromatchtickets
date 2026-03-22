@@ -32,7 +32,7 @@ const GermanLandingPage = () => {
   return (
     <div className="min-h-screen bg-white" data-testid="german-landing-page">
       <SEOHead
-        title="Tickets Kaufen Online - Champions League, F1, Bundesliga, Konzerte | EuroMatchTickets"
+        title="Tickets Kaufen - Champions League, F1, Bundesliga"
         description="Kaufen Sie Tickets für Champions League, F1, Bundesliga, Konzerte und mehr. Günstigste Preise garantiert. Sofortige Lieferung per QR. FanProtect Garantie."
         keywords="tickets kaufen, champions league tickets, f1 tickets kaufen, bundesliga tickets, konzert tickets, tickets online kaufen, günstige tickets europa, rammstein tickets, bayern münchen tickets"
         canonical="https://euromatchtickets.com/de/tickets-kaufen"

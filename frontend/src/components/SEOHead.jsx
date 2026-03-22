@@ -28,7 +28,8 @@ const SEOHead = ({
   const defaultImage = `${BASE_URL}/og-image.jpg`;
 
   const fullTitle = title && typeof title === 'string' && title.trim() 
-    ? (title.includes('EuroMatchTickets') ? title : `${title} | EuroMatchTickets`)
+    ? (title.includes('EuroMatchTickets') ? title : 
+       (title.length + 19 <= 60 ? `${title} | EuroMatchTickets` : title))
     : defaultTitle;
   const metaDescription = description && typeof description === 'string' 
     ? description 

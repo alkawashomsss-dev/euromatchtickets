@@ -78,7 +78,7 @@ const CityTicketsPage = () => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title={`${city} Event Tickets 2026 | Football, Concerts, F1 | EuroMatchTickets`}
+        title={`${city} Event Tickets 2026 - Best Prices`}
         description={`Buy tickets for events in ${city}, ${cityInfo.country}. Football matches, concerts, F1 races. Best prices, 100% guarantee. From €29. Instant delivery!`}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

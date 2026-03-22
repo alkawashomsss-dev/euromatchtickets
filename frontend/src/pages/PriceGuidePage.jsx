@@ -117,7 +117,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title={`${data.title} - Complete Price Guide | EuroMatchTickets`}
+        title={`${data.title} - Price Guide 2026`}
         description={data.description}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

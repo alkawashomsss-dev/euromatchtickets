@@ -107,7 +107,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title={`Events in ${month} 2026 | Football, Concerts, F1 | EuroMatchTickets`}
+        title={`Events in ${month} 2026 - Football, Concerts, F1`}
         description={`Find all events happening in ${month} 2026. Football, concerts, F1 races. Book now with best prices!`}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

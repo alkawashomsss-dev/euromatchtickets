@@ -85,7 +85,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]">
       <SEOHead 
-        title={`EuroMatchTickets vs ${competitor} 2026 | Which is Better? | Honest Comparison`}
+        title={`EuroMatchTickets vs ${competitor} - Honest Comparison`}
         description={`Compare EuroMatchTickets and ${competitor}. See prices, fees, guarantees. Find out which ticket marketplace is better for you in 2026.`}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

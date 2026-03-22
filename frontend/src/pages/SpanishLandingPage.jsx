@@ -32,7 +32,7 @@ const SpanishLandingPage = () => {
   return (
     <div className="min-h-screen bg-white" data-testid="spanish-landing-page">
       <SEOHead
-        title="Comprar Entradas Online - Champions League, F1, Conciertos | EuroMatchTickets"
+        title="Comprar Entradas - Champions League, F1, Conciertos"
         description="Compra entradas para Champions League, F1, La Liga, conciertos y más. Los precios más bajos garantizados. Entrega inmediata por QR. Garantía FanProtect."
         keywords="comprar entradas, entradas champions league, entradas f1, entradas conciertos, comprar entradas online, entradas baratas europa, entradas real madrid, entradas barcelona"
         canonical="https://euromatchtickets.com/es/comprar-entradas"
