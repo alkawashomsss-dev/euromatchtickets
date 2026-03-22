@@ -2,7 +2,7 @@
 # Script to update sitemap.xml before deployment
 # Run this before building the frontend
 
-BACKEND_URL="${REACT_APP_BACKEND_URL:-https://seo-campaign-staging.preview.emergentagent.com}"
+BACKEND_URL="${REACT_APP_BACKEND_URL:-https://euro-indexing.preview.emergentagent.com}"
 
 echo "📥 Fetching latest sitemap from backend..."
 curl -s "$BACKEND_URL/api/sitemap.xml" > /app/frontend/public/sitemap.xml
