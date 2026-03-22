@@ -31,19 +31,42 @@
     <meta name="keywords" content="buy football tickets, Champions League tickets, Premier League tickets, La Liga tickets, Bundesliga tickets, concert tickets Europe, Taylor Swift tickets, Coldplay tickets, Drake tickets, verified ticket resale, euro match tickets, FIFA World Cup 2026 tickets" />
     <meta name="author" content="EuroMatchTickets" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://euromatchtickets.com" id="canonical-tag" />
     
-    <!-- Dynamic SEO: Set canonical + meta from URL before React loads -->
+    <!-- CRITICAL: Canonical is set via synchronous script BEFORE any rendering -->
     <script>
       (function(){
-        var path = window.location.pathname;
+        var base = 'https://euromatchtickets.com';
+        var path = window.location.pathname.replace(/\/+$/, '') || '';
+        var fullUrl = base + (path || '/');
+        
+        // 1. Create canonical link - NO static fallback to homepage
+        var canon = document.createElement('link');
+        canon.rel = 'canonical';
+        canon.id = 'canonical-tag';
+        canon.href = fullUrl;
+        document.head.appendChild(canon);
+        
+        // 2. Create/Update og:url
+        var ogUrl = document.querySelector('meta[property="og:url"]');
+        if (!ogUrl) {
+          ogUrl = document.createElement('meta');
+          ogUrl.setAttribute('property', 'og:url');
+          document.head.appendChild(ogUrl);
+        }
+        ogUrl.content = fullUrl;
+        
+        // 3. Create hreflang tags dynamically
+        var langs = ['x-default', 'en', 'de', 'fr', 'es', 'ar'];
+        for (var i = 0; i < langs.length; i++) {
+          var hreflang = document.createElement('link');
+          hreflang.rel = 'alternate';
+          hreflang.hreflang = langs[i];
+          hreflang.href = fullUrl;
+          document.head.appendChild(hreflang);
+        }
+        
+        // 4. Fetch page-specific title from API
         if (path && path !== '/') {
-          var canon = document.getElementById('canonical-tag');
-          if (canon) canon.href = 'https://euromatchtickets.com' + path;
-          var ogUrl = document.querySelector('meta[property="og:url"]');
-          if (ogUrl) ogUrl.content = 'https://euromatchtickets.com' + path;
-          
-          // Fetch page-specific title from API
           var xhr = new XMLHttpRequest();
           xhr.open('GET', '/api/seo/page-meta?path=' + encodeURIComponent(path), true);
           xhr.timeout = 3000;
@@ -52,7 +75,6 @@
               try {
                 var data = JSON.parse(xhr.responseText);
                 if (data.title) document.title = data.title;
-                if (data.canonical && canon) canon.href = data.canonical;
               } catch(e) {}
             }
           };
@@ -61,9 +83,8 @@
       })();
     </script>
     
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook - og:url set dynamically by canonical script -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://euromatchtickets.com/" />
     <meta property="og:title" content="EuroMatchTickets - Football & Concert Tickets Europe" />
     <meta property="og:description" content="Europe's trusted ticket marketplace for football matches, Formula 1, and concerts. Champions League, Monaco GP, World Cup. 100% secure, instant QR delivery." />
     <meta property="og:image" content="https://euromatchtickets.com/og-image.jpg" />
@@ -207,13 +228,7 @@
     <!-- Complete Structured Data (@graph) -->
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"EuroMatchTickets","url":"https://euromatchtickets.com","logo":{"@type":"ImageObject","url":"https://euromatchtickets.com/logo/euromatch-logo.png","width":600,"height":600},"description":"Europe's #1 ticket marketplace for football, concerts, F1, and sporting events.","foundingDate":"2025","sameAs":["https://twitter.com/euromatchtickets","https://facebook.com/euromatchtickets","https://instagram.com/euromatchtickets"],"contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"support@euromatchtickets.com","availableLanguage":["English","German","French","Spanish","Arabic"]},"areaServed":{"@type":"Continent","name":"Europe"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"12847","bestRating":"5","worstRating":"1"}},{"@type":"WebSite","name":"EuroMatchTickets","url":"https://euromatchtickets.com","potentialAction":{"@type":"SearchAction","target":"https://euromatchtickets.com/events?search={search_term_string}","query-input":"required name=search_term_string"},"inLanguage":["en","de","fr","es","ar"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://euromatchtickets.com"},{"@type":"ListItem","position":2,"name":"Events","item":"https://euromatchtickets.com/events"},{"@type":"ListItem","position":3,"name":"Football Tickets","item":"https://euromatchtickets.com/football-tickets"},{"@type":"ListItem","position":4,"name":"F1 Tickets","item":"https://euromatchtickets.com/f1-tickets"},{"@type":"ListItem","position":5,"name":"Concert Tickets","item":"https://euromatchtickets.com/concerts"}]}]}</script>
     
-    <!-- Hreflang for international targeting -->
-    <link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com" />
-    <link rel="alternate" hreflang="en" href="https://euromatchtickets.com" />
-    <link rel="alternate" hreflang="de" href="https://euromatchtickets.com" />
-    <link rel="alternate" hreflang="fr" href="https://euromatchtickets.com" />
-    <link rel="alternate" hreflang="es" href="https://euromatchtickets.com" />
-    <link rel="alternate" hreflang="ar" href="https://euromatchtickets.com" />
+    <!-- Hreflang tags are created dynamically by the canonical script in <head> -->
   </head>
   <body>
     <noscript>

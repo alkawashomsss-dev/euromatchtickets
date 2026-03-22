@@ -19,67 +19,41 @@ Build a ticket marketplace at euromatchtickets.com with aggressive SEO strategy 
 ### Session 8 (March 19, 2026)
 - SEO keyword optimization for 47 Google Search Console keywords
 - 3 new landing pages: Bayern vs Real Madrid, Bahrain World Cup, Taylor Swift London
-- Optimized 9 existing page titles/descriptions for exact keyword match
 
-### Session 9 (March 20, 2026) - Current
-- **13 Ultra-Premium Realistic Events Added:**
-  - FIFA Club World Cup 2025 (5 matches: Final, Semi-Final, Group Stage)
-  - FIFA World Cup 2026 (3 premium matches: Final €968-€41K, USA vs England, Brazil vs Argentina)
-  - Boxing: Tyson Fury vs Oleksandr Usyk III (€501-€75K), Canelo vs Benavidez (€299-€50K)
-  - UFC 310 Heavyweight Championship (€399-€30K)
-  - Bayern Munich vs Real Madrid UCL QF (home + away leg)
-- **1,425 new realistic tickets** with market-accurate pricing tiers
-- **4 AI-generated professional images**: Boxing arena, World Cup stadium, UFC octagon, VIP suite
-- All events use real venues, real dates, real pricing tiers (up to €57,000 for WC Final Platinum)
+### Session 9 (March 20, 2026)
+- 13 Ultra-Premium Realistic Events Added
+- 1,425 new realistic tickets with market-accurate pricing
 
-## Key Events (Premium - Competitive Pricing)
-| Event | Venue | Price Range | Tickets |
-|-------|-------|-------------|---------|
-| WC 2026 Final Premium | MetLife Stadium, NY | €260 - €1,648 | 95 |
-| Fury vs Usyk III | Kingdom Arena, Riyadh | €175 - €2,050 | 92 |
-| Canelo vs Benavidez | T-Mobile Arena, Vegas | €152 - €1,623 | 102 |
-| CWC 2025 Final | MetLife Stadium, NY | €153 - €790 | 135 |
-| Bayern vs Real Madrid UCL | Allianz Arena, Munich | €102 - €730 | 113 |
+### Session 10 (March 20, 2026)
+- Site-Wide Price Reduction (cheapest in market)
+- MotoGP & Isle of Man TT Circuit Maps
+- Spanish & German SEO Pages
+- CSS Adrenaline Animations
+- Fix Soft 404 - Google Indexing Issue
+- Static Sitemap Generation (356 URLs)
+- Orphaned HTML File Cleanup (1663 files deleted)
+- Bing SEO Errors (Title/H1) Fix
+- 410 Gone Implementation for inactive pages
 
-### Session 10 (March 20, 2026) - Current
-- **Price Adjustment - Cheapest in Market:**
-  - Scaled down ALL tickets across all events with aggressive pricing formula
-  - Updated seed functions to use competitive prices for future re-seeding
-  - Most expensive ticket: ~€2,050 (Fury vs Usyk Platinum)
-  - Average event starting price: €24-€150
-
-- **MotoGP & Isle of Man TT Circuit Maps:**
-  - Created interactive SVG MotoGP circuit map with: Main Grandstand, Turn 1, Chicane, Pit Straight, Final Corner, GA Zones, VIP Village, Paddock Access
-  - Created Snaefell Mountain Course map for Isle of Man TT with: Grandstand (Douglas), Bray Hill, Quarter Bridge, Ballaugh Bridge, Ramsey Hairpin, The Mountain
-  - Updated ticket section names to match real circuit locations
-  - Generated 4 professional adrenaline-pumping motorsport images
-  - Updated 61 MotoGP + 7 TT events with new images
-  - All tests passed (18/18 backend, 100% frontend)
-
-- **Spanish & German SEO Pages:**
-  - Created /es/comprar-entradas (Spanish) with 5 sub-routes for Champions League, F1, concerts, World Cup
-  - Created /de/tickets-kaufen (German) with 6 sub-routes for Champions League, F1, Bundesliga, concerts, World Cup
-  - Full native language content, SEO meta tags, structured data, internal links
-  - Added to sitemap.xml with proper priority (0.85-0.90)
-
-- **CSS Adrenaline Animations (Pure CSS, zero perf impact):**
-  - Speed line animations on motorsport event hero sections
-  - Pulse, fade-in, slide-up, blink animations for landing pages
-  - Race glow, checkered sweep, card pop effects
-  - Accessibility: `prefers-reduced-motion` support
-- **Fix Soft 404 - Google Indexing Issue:**
-  - Generated unique meta descriptions for ALL 1762 pages
-  - Selected TOP 100 high-value pages as active (F1 2026, UCL 2026, World Cup 2026, Premier League, La Liga)
-  - Set 1662 remaining pages to noindex (won't appear in sitemap)
-  - Sitemap now only includes active pages
-  - Added /api/seo/activate-batch endpoint to activate next 100 pages
-  - Added /api/seo/indexing-status endpoint to monitor progress
+### Session 11 (March 22, 2026)
+- **CRITICAL FIX: "Duplicate, Google chose different canonical than user"**
+  - Root cause: Static `<link rel="canonical">` in index.html hardcoded to homepage URL
+  - Google saw homepage canonical in raw HTML before JS could update it
+  - Fix: Removed static canonical tag, replaced with synchronous inline script
+  - Script dynamically creates canonical, og:url, and hreflang tags with correct page URL
+  - SEOHead.jsx updated to prevent duplicate canonical tags
+  - All hreflang tags now created dynamically (not static in HTML)
+  - Verified: Every page now has exactly 1 canonical pointing to itself
 
 ## Prioritized Backlog
 ### P1
 - Owner Dashboard with charts and sales reports
-- Login flow with user's own Google OAuth credentials (BLOCKED)
+- Login flow with user's own Google OAuth credentials (BLOCKED on user credentials)
 ### P2
-- More SEO content pages
+- French/Italian SEO Pages
+- Activate Next Batch of 100 SEO Pages
 ### P3
-- Affiliate program, AI content, Multi-language
+- Price Comparison Tables
+- Ticket Supplier Affiliate Program
+- "Price Match Guarantee" badge
+- Video/GIF highlights on event pages

@@ -78,6 +78,11 @@ const SEOHead = ({
     updateMetaTag('meta[name="twitter:site"]', '@euromatchtickets');
 
     // Update canonical - CRITICAL for Google indexing
+    // Remove ALL existing canonical tags first to prevent duplicates
+    const existingCanonicals = document.querySelectorAll('link[rel="canonical"]');
+    existingCanonicals.forEach((el, i) => {
+      if (i > 0) el.remove(); // Keep only the first one
+    });
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
@@ -86,7 +91,7 @@ const SEOHead = ({
     }
     canonical.setAttribute('href', pageCanonicalUrl);
 
-    // Hreflang - x-default for international targeting
+    // Hreflang - update existing tags (created by index.html script)
     const updateHreflang = (lang, href) => {
       let link = document.querySelector(`link[hreflang="${lang}"]`);
       if (!link) {
