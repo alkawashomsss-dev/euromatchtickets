@@ -70,12 +70,14 @@ export default function DynamicSEOPage() {
 
   if (notFound || !page) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex flex-col items-center justify-center gap-4" data-testid="seo-page-not-found">
-        <h1 className="text-3xl font-bold text-white">Page Not Found</h1>
-        <p className="text-slate-500">The page you are looking for does not exist.</p>
-        <Link to="/">
-          <Button variant="outline">Back to Home</Button>
-        </Link>
+      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex flex-col items-center justify-center gap-6 px-4" data-testid="seo-page-not-found">
+        <SEOHead title="Page Not Found" noIndex={true} />
+        <h1 className="text-4xl font-black text-slate-900">Page Not Found</h1>
+        <p className="text-slate-500 text-center max-w-md">This page has been removed or is no longer available. Browse our events to find what you're looking for.</p>
+        <div className="flex gap-3">
+          <Link to="/events"><Button>Browse Events</Button></Link>
+          <Link to="/"><Button variant="outline">Home</Button></Link>
+        </div>
       </div>
     );
   }

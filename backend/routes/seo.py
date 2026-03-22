@@ -343,9 +343,9 @@ async def get_seo_page(slug: str):
     page = await db.seo_pages.find_one({"slug": slug}, {"_id": 0})
     if not page:
         raise HTTPException(status_code=404, detail="Page not found")
-    # Add noindex flag for inactive pages
+    # Return 410 Gone for inactive pages - tells Google to REMOVE from index
     if not page.get("active", False):
-        page["noindex"] = True
+        raise HTTPException(status_code=410, detail="Page removed")
     return page
 
 
