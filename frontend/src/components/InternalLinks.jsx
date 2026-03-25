@@ -23,11 +23,12 @@ const linkGroups = {
     icon: Trophy,
     links: [
       { to: "/champions-league-tickets", label: "Champions League Tickets" },
+      { to: "/real-madrid-tickets", label: "Real Madrid Tickets" },
+      { to: "/barcelona-tickets", label: "Barcelona Tickets" },
+      { to: "/manchester-city-tickets", label: "Man City Tickets" },
       { to: "/world-cup-2026", label: "FIFA World Cup 2026" },
       { to: "/el-clasico-tickets", label: "El Clasico" },
       { to: "/events?type=match", label: "All Football Matches" },
-      { to: "/football-ticket-prices-2026", label: "Football Price Guide" },
-      { to: "/bayern-vs-real-madrid-tickets", label: "Bayern vs Real Madrid" },
     ],
   },
   concert: {

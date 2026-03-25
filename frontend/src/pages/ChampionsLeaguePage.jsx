@@ -225,10 +225,11 @@ const ChampionsLeaguePage = () => {
             <div className="bg-white rounded-2xl p-5 border border-slate-100">
               <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2"><Trophy className="w-5 h-5 text-blue-600" /> Football</h3>
               <ul className="space-y-2">
+                <li><Link to="/real-madrid-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Real Madrid Tickets</Link></li>
+                <li><Link to="/barcelona-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Barcelona Tickets</Link></li>
+                <li><Link to="/manchester-city-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Man City Tickets</Link></li>
                 <li><Link to="/el-clasico-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />El Clasico Tickets</Link></li>
-                <li><Link to="/real-madrid-champions-league-tickets-2026" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Real Madrid UCL Tickets</Link></li>
-                <li><Link to="/bayern-vs-real-madrid-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Bayern vs Real Madrid</Link></li>
-                <li><Link to="/world-cup-2026" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />World Cup 2026 Tickets</Link></li>
+                <li><Link to="/world-cup-2026" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />World Cup 2026</Link></li>
                 <li><Link to="/football-ticket-prices-2026" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Football Ticket Prices</Link></li>
               </ul>
             </div>

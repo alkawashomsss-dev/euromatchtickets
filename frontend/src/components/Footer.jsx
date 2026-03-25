@@ -75,11 +75,13 @@ const Footer = () => {
             <h4 className="font-semibold mb-4 text-white text-sm">Football</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "All Matches", to: "/events?type=match" },
-                { label: "World Cup 2026", to: "/world-cup-2026" },
                 { label: "Champions League", to: "/champions-league-tickets" },
-                { label: "Super Bowl 2026", to: "/super-bowl-2026-tickets" },
+                { label: "Real Madrid Tickets", to: "/real-madrid-tickets" },
+                { label: "Barcelona Tickets", to: "/barcelona-tickets" },
+                { label: "Man City Tickets", to: "/manchester-city-tickets" },
+                { label: "World Cup 2026", to: "/world-cup-2026" },
                 { label: "El Clasico", to: "/el-clasico-tickets" },
+                { label: "All Matches", to: "/events?type=match" },
               ].map(link => (
                 <li key={link.label}><Link to={link.to} className="text-slate-400 hover:text-white text-sm transition-colors">{link.label}</Link></li>
               ))}

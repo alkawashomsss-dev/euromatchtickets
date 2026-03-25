@@ -104,6 +104,9 @@ const TaylorSwiftLondonPage = lazy(() => import("./pages/TaylorSwiftLondonPage")
 const TaylorSwiftPage = lazy(() => import("./pages/TaylorSwiftPage"));
 const SpanishLandingPage = lazy(() => import("./pages/SpanishLandingPage"));
 const GermanLandingPage = lazy(() => import("./pages/GermanLandingPage"));
+const RealMadridHubPage = lazy(() => import("./pages/RealMadridHubPage"));
+const BarcelonaHubPage = lazy(() => import("./pages/BarcelonaHubPage"));
+const ManCityHubPage = lazy(() => import("./pages/ManCityHubPage"));
 
 // Marketing tools (lazy)
 const AIChatWidget = lazy(() => import("./components/AIChatWidget"));
@@ -386,6 +389,11 @@ function AppRouter() {
         <Route path="/buy-bahrain-world-cup-tickets" element={<BahrainWorldCupPage />} />
         <Route path="/taylor-swift-london-tickets" element={<TaylorSwiftLondonPage />} />
         <Route path="/taylor-swift-tickets-london" element={<TaylorSwiftLondonPage />} />
+        
+        {/* Team Hub Pages */}
+        <Route path="/real-madrid-tickets" element={<RealMadridHubPage />} />
+        <Route path="/barcelona-tickets" element={<BarcelonaHubPage />} />
+        <Route path="/manchester-city-tickets" element={<ManCityHubPage />} />
         
         {/* Spanish SEO Pages */}
         <Route path="/es/comprar-entradas" element={<SpanishLandingPage />} />
