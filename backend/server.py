@@ -47,6 +47,15 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "SAMEORIGIN"
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        
+        # CRITICAL SEO FIX: Explicitly set X-Robots-Tag to override any proxy-level noindex
+        # This ensures Google indexes all pages correctly
+        path = request.url.path
+        if response.status_code == 410:
+            response.headers["X-Robots-Tag"] = "noindex"
+        elif not path.startswith('/api/'):
+            response.headers["X-Robots-Tag"] = "index, follow"
+        
         return response
 
 app.add_middleware(SecurityHeadersMiddleware)
