@@ -90,8 +90,15 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4 text-white text-sm">Concerts</h4>
             <ul className="space-y-2.5">
-              {["All Concerts", "Coldplay", "Ed Sheeran", "Taylor Swift", "The Weeknd", "Bruno Mars"].map(name => (
-                <li key={name}><Link to="/events?type=concert" className="text-slate-400 hover:text-white text-sm transition-colors">{name}</Link></li>
+              {[
+                { label: "All Concerts", to: "/events?type=concert" },
+                { label: "Taylor Swift Wembley", to: "/taylor-swift-wembley-2026-tickets" },
+                { label: "The Weeknd Tour", to: "/the-weeknd-tour-2026" },
+                { label: "Bruno Mars Tour", to: "/bruno-mars-tour-2026" },
+                { label: "Metallica Las Vegas", to: "/metallica-sphere-las-vegas-tickets" },
+                { label: "Bad Bunny London", to: "/bad-bunny-london-2026" },
+              ].map(link => (
+                <li key={link.label}><Link to={link.to} className="text-slate-400 hover:text-white text-sm transition-colors">{link.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -114,10 +121,14 @@ const Footer = () => {
 
           {/* Legal */}
           <div>
-            <h4 className="font-semibold mb-4 text-white text-sm">Legal</h4>
+            <h4 className="font-semibold mb-4 text-white text-sm">Help & Info</h4>
             <ul className="space-y-2.5">
               {[
                 { label: "About Us", to: "/about" },
+                { label: "Buyer Protection", to: "/buyer-protection" },
+                { label: "Reviews", to: "/reviews" },
+                { label: "FAQ", to: "/faq" },
+                { label: "Contact Us", to: "/contact" },
                 { label: "Impressum", to: "/impressum" },
                 { label: "Terms of Service", to: "/terms" },
                 { label: "Privacy Policy", to: "/privacy-policy" },

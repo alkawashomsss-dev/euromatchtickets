@@ -15,17 +15,19 @@ const linkGroups = {
       { to: "/f1-singapore-grand-prix-tickets", label: "Singapore GP" },
       { to: "/f1-las-vegas-grand-prix-tickets", label: "Las Vegas GP" },
       { to: "/f1-2026-schedule", label: "Full F1 Schedule 2026" },
+      { to: "/champions-league-tickets", label: "Champions League Tickets" },
     ],
   },
   football: {
     title: "Top Football Events",
     icon: Trophy,
     links: [
+      { to: "/champions-league-tickets", label: "Champions League Tickets" },
       { to: "/world-cup-2026", label: "FIFA World Cup 2026" },
-      { to: "/champions-league-tickets", label: "Champions League" },
       { to: "/el-clasico-tickets", label: "El Clasico" },
       { to: "/events?type=match", label: "All Football Matches" },
       { to: "/football-ticket-prices-2026", label: "Football Price Guide" },
+      { to: "/bayern-vs-real-madrid-tickets", label: "Bayern vs Real Madrid" },
     ],
   },
   concert: {
@@ -37,6 +39,7 @@ const linkGroups = {
       { to: "/metallica-sphere-las-vegas-tickets", label: "Metallica @ Sphere" },
       { to: "/harry-styles-tickets", label: "Harry Styles" },
       { to: "/events?type=concert", label: "All Concerts" },
+      { to: "/champions-league-tickets", label: "Champions League Tickets" },
     ],
   },
   worldcup: {
@@ -46,6 +49,7 @@ const linkGroups = {
       { to: "/world-cup-2026", label: "World Cup Overview" },
       { to: "/world-cup-2026-tickets", label: "Buy World Cup Tickets" },
       { to: "/world-cup-raffle", label: "World Cup Raffle" },
+      { to: "/champions-league-tickets", label: "Champions League Tickets" },
       { to: "/events?type=match", label: "All Matches" },
     ],
   },
