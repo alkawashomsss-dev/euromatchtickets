@@ -389,6 +389,7 @@ function AppRouter() {
         <Route path="/buy-bahrain-world-cup-tickets" element={<BahrainWorldCupPage />} />
         <Route path="/taylor-swift-london-tickets" element={<TaylorSwiftLondonPage />} />
         <Route path="/taylor-swift-tickets-london" element={<TaylorSwiftLondonPage />} />
+        <Route path="/taylor-swift-tickets" element={<TaylorSwiftLondonPage />} />
         
         {/* Team Hub Pages */}
         <Route path="/real-madrid-tickets" element={<RealMadridHubPage />} />
