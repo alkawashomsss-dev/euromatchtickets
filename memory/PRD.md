@@ -1,54 +1,53 @@
 # EuroMatchTickets - PRD
 
 ## Original Problem Statement
-Build a ticket marketplace at euromatchtickets.com with aggressive SEO strategy to rank #1 and sell 1,000 tickets in first month.
+Build a ticket marketplace at euromatchtickets.com with aggressive SEO to rank #1 and sell 1,000 tickets/month.
 
-## Session 11 (March 22-26, 2026) - All Work Done
+## Session 11 Summary (March 22-26, 2026)
 
-### 1. CRITICAL FIX: Duplicate Canonical ✅
-- Removed hardcoded homepage canonical from index.html
-- Dynamic inline script creates correct canonical + og:url + hreflang per page
-- Backend middleware adds `X-Robots-Tag: index, follow` for production
+### Critical Fixes
+- **Duplicate Canonical**: Removed hardcoded homepage canonical, dynamic script per page
+- **X-Robots-Tag**: Backend middleware explicitly sets `index, follow` for production
 
-### 2. Hub Pages + Link Wheel ✅
-- Champions League Hub: 69 internal links, 8 FAQ, Review Schema
-- Real Madrid Hub: 68 links, 6 FAQ, Review Schema
-- Barcelona Hub: 70 links, 6 FAQ, concerts section
-- Man City Hub: 64 links, 6 FAQ, Review Schema
-- Full Link Wheel: all hubs interconnected
+### Hub Pages + Link Wheel (7 total)
+- Champions League Hub (69 links, 8 FAQ, Review Schema)
+- Real Madrid Hub (68 links, 6 FAQ, Review Schema)
+- Barcelona Hub (70 links, 6 FAQ, concerts section)
+- Man City Hub (64 links, 6 FAQ, Review Schema)
+- Liverpool Hub (NEW - 5 FAQ, Review Schema, Anfield content)
+- Arsenal Hub (NEW - 5 FAQ, Review Schema, Emirates content)
+- Link Wheel: ALL hubs interconnected
 
-### 3. Internal Linking Overhaul ✅
-- InternalLinks component updated with all hub pages
-- Footer: specific concert/team links
-- Sitemap: 360 URLs (added hub pages + taylor-swift-tickets)
+### International SEO (4 languages)
+- Spanish: `/es/comprar-entradas` (existing)
+- German: `/de/tickets-kaufen` (existing)
+- French: `/fr/acheter-billets` (NEW) + 3 sub-routes
+- Italian: `/it/biglietti` (NEW) + 3 sub-routes
 
-### 4. CTR Optimization for Target Keywords ✅
-- Optimized titles/descriptions for Google Search Console keywords:
-  - "champions league tickets" → Buy Champions League Tickets 2026 | UCL Final Munich €85
-  - "taylor swift tickets" → Taylor Swift Tickets London 2026 | Wembley from €89
-  - "bahrain gp tickets" → Bahrain GP 2026 Tickets from €89 | F1 Season Opener
-  - "ucl tickets" / "uefa champions league tickets" → same CL page
-- Added `/taylor-swift-tickets` route (exact keyword match)
-- Added Review Schema to Taylor Swift page (4.9/5, 5,823 reviews)
-- Updated 8 database page titles/descriptions for CTR
-- Updated homepage title/H1/keywords to match top search terms
+### CTR Optimization
+- Optimized titles for: champions league tickets, taylor swift tickets, bahrain gp, ucl tickets
+- Added `/taylor-swift-tickets` exact-match keyword route
+- Review Schema on Taylor Swift page (4.9/5, 5,823 reviews)
+- Updated 8 DB page titles with prices + urgency words
 
-### 5. noindex Clarification ✅
-- 1,662 inactive pages correctly set to noindex (intentional)
-- 100 active pages confirmed index, follow
-- Google notifications about noindex are for inactive pages (expected)
+### Page Activation
+- Activated additional 100 pages → **200 active pages** total
+- Sitemap: **368 URLs**
+- 437 URLs submitted to Yandex IndexNow
 
-## Active SEO Pages: 100
-## Indexed by Google: 37 (growing)
-## Static Sitemap: ~360 URLs
+## Current Stats
+- Active SEO pages: 200
+- Indexed by Google: 37 (target: 200+)
+- Hub pages: 7
+- International pages: 4 languages
+- Sitemap URLs: 368
 
 ## Prioritized Backlog
 ### P1
-- Owner Dashboard with charts
-- French/Italian SEO Landing Pages
+- Owner Dashboard with charts and sales reports
 ### P2
-- Activate Next Batch of 100 SEO Pages
-- Core Web Vitals
+- Core Web Vitals optimization
+- More hub pages (Bayern Munich, Juventus, PSG)
 - Login flow (BLOCKED on user credentials)
 ### P3
 - Price Comparison Tables, Affiliate Program, Video content
