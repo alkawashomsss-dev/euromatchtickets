@@ -632,6 +632,18 @@ async def get_seo_page_meta(path: str = ""):
         "/blog": {"title": "Blog | EuroMatchTickets | Sports & Concert News", "description": "Latest news about football, F1, concerts, and ticket buying guides."},
         "/buyer-protection": {"title": "Buyer Protection | FanProtect | EuroMatchTickets", "description": "FanProtect. 100% money-back guarantee, verified sellers, secure payments."},
         "/sell-tickets": {"title": "Sell Tickets | EuroMatchTickets | List Yours", "description": "Sell your tickets on EuroMatchTickets. Reach millions of European buyers."},
+        "/es/comprar-entradas": {"title": "Comprar Entradas | Champions League, F1 | EuroMatchTickets", "description": "Compra entradas Champions League desde \u20ac85, F1 desde \u20ac89. Precios m\u00e1s baratos de Europa."},
+        "/es/entradas-champions-league": {"title": "Entradas Champions League 2026 | EuroMatchTickets", "description": "Compra entradas UEFA Champions League desde \u20ac85. Vendedores verificados."},
+        "/es/entradas-f1": {"title": "Entradas F1 2026 | Todos los GP | EuroMatchTickets", "description": "Compra entradas F1 desde \u20ac89. M\u00f3naco, Barcelona, Monza."},
+        "/de/tickets-kaufen": {"title": "Tickets Kaufen | Champions League, F1 | EuroMatchTickets", "description": "Champions League ab \u20ac85, F1 ab \u20ac89. G\u00fcnstigste Preise Europas."},
+        "/de/champions-league-tickets": {"title": "Champions League Tickets 2026 | Ab \u20ac85", "description": "UEFA Champions League Tickets kaufen ab \u20ac85. Verifizierte Verk\u00e4ufer."},
+        "/de/formel-1-tickets": {"title": "Formel 1 Tickets 2026 | Alle Rennen", "description": "F1 Tickets kaufen ab \u20ac89. Monaco, Monza, Silverstone."},
+        "/fr/acheter-billets": {"title": "Acheter Billets | Champions League, F1 | EuroMatchTickets", "description": "Billets Champions League d\u00e8s \u20ac85, F1 d\u00e8s \u20ac89. Prix les plus bas d'Europe."},
+        "/fr/billets-champions-league": {"title": "Billets Champions League 2026 | EuroMatchTickets", "description": "Billets UEFA Champions League d\u00e8s \u20ac85. Vendeurs v\u00e9rifi\u00e9s."},
+        "/fr/billets-f1": {"title": "Billets F1 2026 | Tous les GP | EuroMatchTickets", "description": "Billets F1 d\u00e8s \u20ac89. Monaco, Monza, Silverstone."},
+        "/it/biglietti": {"title": "Biglietti | Champions League, F1 | EuroMatchTickets", "description": "Biglietti Champions League da \u20ac85, F1 da \u20ac89. Prezzi pi\u00f9 bassi d'Europa."},
+        "/it/biglietti-champions-league": {"title": "Biglietti Champions League 2026 | EuroMatchTickets", "description": "Biglietti UEFA Champions League da \u20ac85. Venditori verificati."},
+        "/it/biglietti-f1": {"title": "Biglietti F1 2026 | Tutti i GP | EuroMatchTickets", "description": "Biglietti F1 da \u20ac89. Monaco, Monza, Silverstone."},
     }
 
     if not path or path == "/":
@@ -641,10 +653,16 @@ async def get_seo_page_meta(path: str = ""):
     clean_path = "/" + path.strip("/")
     slug = path.strip("/")
     
+    # Also check with leading slash variants for international pages
+    check_paths = [clean_path]
+    if "/" in slug:
+        check_paths.append("/" + slug)
+    
     # Check static meta first (for React-only routes not in DB)
-    if clean_path in STATIC_META:
-        meta = STATIC_META[clean_path]
-        return {"title": meta["title"], "description": meta.get("description", ""), "canonical": f"https://euromatchtickets.com/{slug}"}
+    for cp in check_paths:
+        if cp in STATIC_META:
+            meta = STATIC_META[cp]
+            return {"title": meta["title"], "description": meta.get("description", ""), "canonical": f"https://euromatchtickets.com/{slug}"}
     
     # Check DB for dynamic SEO pages
     page = await db.seo_pages.find_one({"slug": slug}, {"_id": 0, "title": 1, "description": 1})
