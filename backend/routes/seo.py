@@ -351,7 +351,7 @@ async def get_seo_page(slug: str):
 
 @router.post("/seo/activate-batch")
 async def activate_next_batch(count: int = 100):
-    """Activate the next batch of highest-priority inactive pages"""
+    """Activate the next batch of highest-priority inactive pages + auto-index them."""
     # Find top inactive pages sorted by SEO value
     inactive = await db.seo_pages.find(
         {"active": {"$ne": True}, "slug": {"$regex": "2026"}},
@@ -370,10 +370,20 @@ async def activate_next_batch(count: int = 100):
     active_total = await db.seo_pages.count_documents({"active": True})
     inactive_total = await db.seo_pages.count_documents({"active": {"$ne": True}})
     
+    # Auto-index the newly activated pages
+    try:
+        from services.auto_indexer import submit_specific_urls
+        new_urls = [f"{SITE_URL}/{p['slug']}" for p in inactive]
+        submit_specific_urls(new_urls)
+        logger.info(f"Auto-indexed {len(new_urls)} newly activated pages")
+    except Exception as e:
+        logger.warning(f"Auto-index after activation failed: {e}")
+
     return {
         "activated": result.modified_count,
         "total_active": active_total,
         "total_inactive": inactive_total,
+        "auto_indexed": True,
         "sample_activated": [p["slug"] for p in inactive[:5]]
     }
 

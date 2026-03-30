@@ -309,12 +309,42 @@ async def bing_daily_indexing():
             await asyncio.sleep(60 * 60)
 
 
+async def auto_reindex_loop():
+    """Background task: regenerate sitemaps + submit to IndexNow every 6 hours."""
+    from services.auto_indexer import full_reindex
+    # Wait 60 seconds after startup before first run
+    await asyncio.sleep(60)
+    while True:
+        try:
+            logger.info("Auto-Index Bot: Starting scheduled reindex...")
+            result = full_reindex()
+            if result.get("success"):
+                logger.info(f"Auto-Index Bot: Done! {result.get('urls_count', 0)} URLs indexed")
+                # Store the result in DB
+                await db.auto_index_logs.insert_one({
+                    "urls_count": result.get("urls_count", 0),
+                    "indexnow": result.get("indexnow", {}),
+                    "ping": result.get("ping", {}),
+                    "duration": result.get("duration_seconds", 0),
+                    "created_at": datetime.now(timezone.utc)
+                })
+            else:
+                logger.error(f"Auto-Index Bot: Failed - {result.get('error', 'Unknown')}")
+            # Run every 6 hours
+            await asyncio.sleep(6 * 60 * 60)
+        except Exception as e:
+            logger.error(f"Auto-Index Bot Error: {e}")
+            await asyncio.sleep(30 * 60)
+
+
 @app.on_event("startup")
 async def startup():
     asyncio.create_task(cleanup_expired_events())
     logger.info("Cleanup Bot started - runs daily")
     asyncio.create_task(bing_daily_indexing())
     logger.info("Bing Indexing Bot started - submits 100 URLs/day")
+    asyncio.create_task(auto_reindex_loop())
+    logger.info("Auto-Indexing Bot started - reindexes every 6 hours")
     # Auto-seed new events if they don't exist
     count = await db.events.count_documents({"title": {"$regex": "Super Bowl LXI", "$options": "i"}})
     if count == 0:
