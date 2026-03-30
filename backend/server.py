@@ -8,6 +8,7 @@ import asyncio
 import logging
 
 from fastapi import FastAPI, Request
+from fastapi.responses import Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from dotenv import load_dotenv
@@ -138,6 +139,13 @@ logger = logging.getLogger(__name__)
 @app.get("/")
 async def root():
     return {"status": "EuroMatchTickets API v2.0 - Modular Architecture", "endpoints": "/api/..."}
+
+# IndexNow key verification file
+INDEXNOW_KEY = os.environ.get("INDEXNOW_KEY", "dd91242c079d4538a9ae74378aaad957")
+
+@app.get(f"/{INDEXNOW_KEY}.txt")
+async def indexnow_key_file():
+    return Response(content=INDEXNOW_KEY, media_type="text/plain")
 
 @app.get("/api")
 @app.get("/api/")
