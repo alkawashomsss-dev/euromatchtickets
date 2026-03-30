@@ -604,16 +604,56 @@ async def seo_audit_page(url: str = ""):
 
 @router.get("/seo/page-meta")
 async def get_seo_page_meta(path: str = ""):
-    """Return title and canonical for dynamic SPA meta tag injection."""
+    """Return title, description, and canonical for dynamic SPA meta tag injection."""
+    STATIC_META = {
+        "/": {"title": "Buy Tickets | Champions League, F1, Concerts | EuroMatchTickets", "description": "Buy Champions League tickets from \u20ac85, Taylor Swift from \u20ac89, F1 from \u20ac89. Verified sellers, instant QR delivery."},
+        "/champions-league-tickets": {"title": "Champions League Tickets 2026 | From \u20ac85", "description": "Buy UEFA Champions League tickets from \u20ac85. Semi-finals, final & all matches. Verified sellers, instant QR delivery."},
+        "/f1-tickets": {"title": "F1 Tickets 2026 | All Grand Prix Races | EuroMatchTickets", "description": "Buy Formula 1 tickets from \u20ac89. Monaco, Silverstone, Monza & all 2026 races. Verified tickets, instant delivery."},
+        "/world-cup-2026": {"title": "FIFA World Cup 2026 Tickets | From \u20ac95", "description": "Buy FIFA World Cup 2026 tickets. Group stage from \u20ac95, knockout rounds available. Verified sellers."},
+        "/motogp-tickets": {"title": "MotoGP Tickets 2026 | All Races | EuroMatchTickets", "description": "Buy MotoGP tickets from \u20ac69. Mugello, Valencia & all 2026 races. Instant delivery."},
+        "/taylor-swift-tickets": {"title": "Taylor Swift Tickets 2026 | London | EuroMatchTickets", "description": "Buy Taylor Swift tickets from \u20ac89. Wembley Stadium London. Verified sellers, instant QR delivery."},
+        "/taylor-swift-london-tickets": {"title": "Taylor Swift London Tickets | Wembley 2026", "description": "Buy Taylor Swift London tickets from \u20ac89. All Wembley dates. Verified, instant delivery."},
+        "/taylor-swift-wembley-2026-tickets": {"title": "Taylor Swift Wembley 2026 Tickets | From \u20ac89", "description": "Buy Taylor Swift Wembley 2026 tickets. Multiple dates. Verified, instant QR."},
+        "/el-clasico-tickets": {"title": "El Clasico Tickets | Real Madrid vs Barcelona", "description": "Buy El Clasico tickets. Real Madrid vs Barcelona. Verified sellers, cheapest prices."},
+        "/super-bowl-2026-tickets": {"title": "Super Bowl 2026 Tickets | Buy Now | EuroMatchTickets", "description": "Buy Super Bowl LXI 2026 tickets. Premium seats. Verified sellers, instant QR delivery."},
+        "/monaco-grand-prix-tickets": {"title": "Monaco Grand Prix Tickets 2026 | F1 Monaco", "description": "Buy Monaco GP tickets. Grandstands & hospitality. Verified tickets, instant delivery."},
+        "/real-madrid-tickets": {"title": "Real Madrid Tickets 2026 | All Matches | From \u20ac75", "description": "Buy Real Madrid tickets. Bernabeu, Champions League, La Liga. From \u20ac75."},
+        "/barcelona-tickets": {"title": "FC Barcelona Tickets 2026 | Camp Nou | From \u20ac70", "description": "Buy FC Barcelona tickets. Camp Nou, Champions League, La Liga. Verified sellers."},
+        "/manchester-city-tickets": {"title": "Man City Tickets 2026 | Etihad | EuroMatchTickets", "description": "Buy Manchester City tickets. Etihad, Premier League, Champions League. Instant delivery."},
+        "/liverpool-tickets": {"title": "Liverpool FC Tickets 2026 | Anfield | From \u20ac65", "description": "Buy Liverpool FC tickets. Anfield, Premier League, Champions League. From \u20ac65."},
+        "/arsenal-tickets": {"title": "Arsenal Tickets 2026 | Emirates | EuroMatchTickets", "description": "Buy Arsenal tickets. Emirates Stadium, Premier League, Champions League."},
+        "/bayern-vs-real-madrid-tickets": {"title": "Bayern vs Real Madrid Tickets | Champions League", "description": "Buy Bayern Munich vs Real Madrid Champions League tickets. Verified, instant delivery."},
+        "/bahrain-world-cup-tickets-2026": {"title": "Bahrain World Cup 2026 Tickets | FIFA", "description": "Buy Bahrain FIFA World Cup 2026 tickets. Group & knockout matches. Verified sellers."},
+        "/events": {"title": "Events & Tickets 2026 | Browse All | EuroMatchTickets", "description": "Browse 500+ events. Football, F1, concerts. Cheapest prices, instant QR delivery."},
+        "/about": {"title": "About EuroMatchTickets | Trusted Ticket Marketplace", "description": "Europe\u2019s trusted ticket marketplace for football, F1, and concerts. FanProtect guarantee."},
+        "/faq": {"title": "FAQ | EuroMatchTickets | Common Questions", "description": "Answers to common questions about buying tickets, delivery, refunds, and FanProtect."},
+        "/reviews": {"title": "Reviews | EuroMatchTickets | 4.8/5 Rating", "description": "Read 12,000+ verified customer reviews. 4.8/5 rating. Trusted marketplace."},
+        "/contact": {"title": "Contact Us | EuroMatchTickets | Support", "description": "Get in touch with EuroMatchTickets support. Email, phone, live chat 24/7."},
+        "/blog": {"title": "Blog | EuroMatchTickets | Sports & Concert News", "description": "Latest news about football, F1, concerts, and ticket buying guides."},
+        "/buyer-protection": {"title": "Buyer Protection | FanProtect | EuroMatchTickets", "description": "FanProtect. 100% money-back guarantee, verified sellers, secure payments."},
+        "/sell-tickets": {"title": "Sell Tickets | EuroMatchTickets | List Yours", "description": "Sell your tickets on EuroMatchTickets. Reach millions of European buyers."},
+    }
+
     if not path or path == "/":
-        return {"title": "EuroMatchTickets - Buy Football & Concert Tickets | Europe's #1 Marketplace", "canonical": "https://euromatchtickets.com/"}
+        meta = STATIC_META.get("/", {})
+        return {"title": meta.get("title", "EuroMatchTickets"), "description": meta.get("description", ""), "canonical": "https://euromatchtickets.com/"}
     
+    clean_path = "/" + path.strip("/")
     slug = path.strip("/")
+    
+    # Check static meta first (for React-only routes not in DB)
+    if clean_path in STATIC_META:
+        meta = STATIC_META[clean_path]
+        return {"title": meta["title"], "description": meta.get("description", ""), "canonical": f"https://euromatchtickets.com/{slug}"}
+    
+    # Check DB for dynamic SEO pages
     page = await db.seo_pages.find_one({"slug": slug}, {"_id": 0, "title": 1, "description": 1})
     if page:
-        return {"title": page.get("title", "EuroMatchTickets"), "canonical": f"https://euromatchtickets.com/{slug}"}
+        return {"title": page.get("title", f"{slug} | EuroMatchTickets"), "description": page.get("description", ""), "canonical": f"https://euromatchtickets.com/{slug}"}
     
-    return {"title": "EuroMatchTickets - Europe's #1 Ticket Marketplace", "canonical": f"https://euromatchtickets.com/{slug}"}
+    # Smart fallback: generate from slug
+    readable = slug.replace("-", " ").title()
+    return {"title": f"{readable} | EuroMatchTickets", "description": f"Buy {readable} tickets at Europe's cheapest prices. Verified sellers, instant QR delivery.", "canonical": f"https://euromatchtickets.com/{slug}"}
 
 
 @router.get("/seo/internal-links/{event_type}")

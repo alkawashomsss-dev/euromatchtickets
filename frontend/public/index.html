@@ -11,118 +11,242 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#09090b" />
     
-    <!-- DNS Prefetch & Preconnect for Performance (Core Web Vitals) -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://js.stripe.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Crystal Edition Fonts - Display Swap for faster rendering -->
     <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet" />
     
-    <!-- Preload Critical Hero Images (LCP Optimization) -->
     <link rel="preload" as="image" fetchpriority="high" type="image/webp" href="%PUBLIC_URL%/images/heroes/worldcup-trophy-sm.webp" media="(max-width: 640px)" />
     <link rel="preload" as="image" fetchpriority="high" type="image/webp" href="%PUBLIC_URL%/images/heroes/worldcup-trophy-md.webp" media="(min-width: 641px)" />
     
-    <!-- Primary SEO Meta Tags -->
-    <title>Buy Tickets | Champions League, F1, Taylor Swift | EuroMatchTickets</title>
-    <meta name="title" content="Buy Tickets | Champions League, F1, Taylor Swift | EuroMatchTickets" />
-    <meta name="description" content="Buy Champions League tickets from €85, Taylor Swift tickets from €89, F1 Grand Prix from €89. 100% verified, instant QR delivery. Cheapest ticket prices in Europe!" />
-    <meta name="keywords" content="champions league tickets, taylor swift tickets, taylor swift london tickets, ucl tickets, uefa champions league tickets, bahrain gp tickets, grand prix bahrain tickets, f1 tickets, buy football tickets, concert tickets Europe, FIFA World Cup 2026 tickets" />
     <meta name="author" content="EuroMatchTickets" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="keywords" content="champions league tickets, taylor swift tickets, f1 tickets, buy football tickets, concert tickets Europe, FIFA World Cup 2026 tickets" />
     
-    <!-- CRITICAL: Canonical is set via synchronous script BEFORE any rendering -->
+    <!-- SEO tags are set SYNCHRONOUSLY by the script below - unique per page -->
     <script>
-      (function(){
-        var base = 'https://euromatchtickets.com';
-        var path = window.location.pathname.replace(/\/+$/, '') || '';
-        var fullUrl = base + (path || '/');
-        
-        // 1. Create canonical link - NO static fallback to homepage
-        var canon = document.createElement('link');
-        canon.rel = 'canonical';
-        canon.id = 'canonical-tag';
-        canon.href = fullUrl;
-        document.head.appendChild(canon);
-        
-        // 2. Create/Update og:url
-        var ogUrl = document.querySelector('meta[property="og:url"]');
-        if (!ogUrl) {
-          ogUrl = document.createElement('meta');
-          ogUrl.setAttribute('property', 'og:url');
-          document.head.appendChild(ogUrl);
+    (function(){
+      var B='https://euromatchtickets.com';
+      var p=location.pathname.replace(/\/+$/,'')||'/';
+      var u=B+(p==='/'?'/':p);
+
+      /* ===== PAGE METADATA MAP ===== */
+      /* Format: path: [title, description, h1] */
+      var M={
+        '/':['Buy Tickets | Champions League, F1, Concerts | EuroMatchTickets','Buy Champions League tickets from \u20ac85, Taylor Swift from \u20ac89, F1 from \u20ac89. Verified sellers, instant QR delivery. Cheapest prices in Europe!','Buy Football, F1 & Concert Tickets'],
+        '/events':['Events & Tickets 2026 | Browse All | EuroMatchTickets','Browse 500+ live events. Football, F1, concerts, MotoGP across Europe. Cheapest prices guaranteed, instant QR delivery.','Browse All Events & Tickets'],
+        '/champions-league-tickets':['Champions League Tickets 2026 | From \u20ac85','Buy UEFA Champions League tickets from \u20ac85. Semi-finals, final & all matches. 100% verified sellers, instant QR delivery.','Buy Champions League Tickets 2026'],
+        '/f1-tickets':['F1 Tickets 2026 | All Grand Prix Races | EuroMatchTickets','Buy Formula 1 tickets from \u20ac89. Monaco, Silverstone, Monza & all 2026 races. Verified tickets, instant delivery.','Buy F1 Tickets 2026 \u2013 All Grand Prix'],
+        '/world-cup-2026':['FIFA World Cup 2026 Tickets | From \u20ac95','Buy FIFA World Cup 2026 tickets. Group stage from \u20ac95, knockout rounds available. Verified sellers, instant QR delivery.','Buy FIFA World Cup 2026 Tickets'],
+        '/motogp-tickets':['MotoGP Tickets 2026 | All Races | EuroMatchTickets','Buy MotoGP tickets from \u20ac69. Mugello, Valencia & all 2026 races. Interactive circuit maps. Instant delivery.','Buy MotoGP Tickets 2026'],
+        '/taylor-swift-tickets':['Taylor Swift Tickets 2026 | London | EuroMatchTickets','Buy Taylor Swift tickets from \u20ac89. Wembley Stadium London concerts. Verified sellers, instant QR delivery.','Buy Taylor Swift Tickets \u2013 London 2026'],
+        '/taylor-swift-london-tickets':['Taylor Swift London Tickets | Wembley 2026','Buy Taylor Swift London tickets from \u20ac89. All Wembley dates. Verified, instant delivery, best prices in Europe.','Taylor Swift London Tickets \u2013 Wembley 2026'],
+        '/taylor-swift-wembley-2026-tickets':['Taylor Swift Wembley 2026 Tickets | From \u20ac89','Buy Taylor Swift Wembley 2026 tickets. Multiple dates available. 100% verified, instant QR code delivery.','Taylor Swift Wembley 2026 Tickets'],
+        '/el-clasico-tickets':['El Clasico Tickets | Real Madrid vs Barcelona','Buy El Clasico tickets. Real Madrid vs Barcelona at Bernabeu. Verified sellers, cheapest prices guaranteed.','Buy El Clasico Tickets \u2013 Real Madrid vs Barcelona'],
+        '/super-bowl-2026-tickets':['Super Bowl 2026 Tickets | Buy Now | EuroMatchTickets','Buy Super Bowl LXI 2026 tickets. Premium seats available. Verified sellers, instant QR delivery.','Buy Super Bowl 2026 Tickets'],
+        '/monaco-grand-prix-tickets':['Monaco Grand Prix Tickets 2026 | F1 Monaco','Buy Monaco GP tickets. Circuit de Monaco grandstands & hospitality. Verified tickets, instant delivery.','Buy Monaco Grand Prix Tickets 2026'],
+        '/real-madrid-tickets':['Real Madrid Tickets 2026 | All Matches | From \u20ac75','Buy Real Madrid tickets. Bernabeu, Champions League, La Liga. From \u20ac75. Verified sellers, instant delivery.','Buy Real Madrid Tickets \u2013 All Matches'],
+        '/barcelona-tickets':['FC Barcelona Tickets 2026 | Camp Nou | From \u20ac70','Buy FC Barcelona tickets. Camp Nou, Champions League, La Liga matches. Verified sellers, instant QR delivery.','Buy FC Barcelona Tickets \u2013 Camp Nou'],
+        '/manchester-city-tickets':['Man City Tickets 2026 | Etihad | EuroMatchTickets','Buy Manchester City tickets. Etihad Stadium, Premier League, Champions League. Verified, instant delivery.','Buy Manchester City Tickets \u2013 Etihad'],
+        '/liverpool-tickets':['Liverpool FC Tickets 2026 | Anfield | From \u20ac65','Buy Liverpool FC tickets. Anfield, Premier League, Champions League. From \u20ac65. Instant QR delivery.','Buy Liverpool FC Tickets \u2013 Anfield'],
+        '/arsenal-tickets':['Arsenal Tickets 2026 | Emirates | EuroMatchTickets','Buy Arsenal tickets. Emirates Stadium, Premier League, Champions League. Verified sellers, instant delivery.','Buy Arsenal Tickets \u2013 Emirates Stadium'],
+        '/f1-monaco-grand-prix-tickets':['Monaco GP Tickets 2026 | F1 Monte Carlo','Buy F1 Monaco Grand Prix tickets. Circuit de Monaco grandstands & yacht hospitality. Verified tickets.','Monaco Grand Prix F1 Tickets 2026'],
+        '/f1-british-grand-prix-silverstone-tickets':['Silverstone GP Tickets 2026 | British F1','Buy British Grand Prix tickets at Silverstone. All grandstands available. Verified, instant QR delivery.','British Grand Prix Silverstone Tickets 2026'],
+        '/f1-italian-grand-prix-monza-tickets':['Monza GP Tickets 2026 | Italian Grand Prix','Buy Italian Grand Prix tickets at Monza. All grandstands & general admission. Instant QR delivery.','Italian Grand Prix Monza Tickets 2026'],
+        '/f1-singapore-grand-prix-tickets':['Singapore GP Tickets 2026 | F1 Night Race','Buy Singapore Grand Prix tickets. Marina Bay night race. Premium grandstands. Verified tickets.','Singapore Grand Prix Tickets 2026'],
+        '/f1-las-vegas-grand-prix-tickets':['Las Vegas GP Tickets 2026 | F1 Strip Race','Buy Las Vegas Grand Prix tickets. F1 on the Strip. VIP & grandstands. Instant QR delivery.','Las Vegas Grand Prix Tickets 2026'],
+        '/f1-abu-dhabi-grand-prix-tickets':['Abu Dhabi GP Tickets 2026 | Yas Marina F1','Buy Abu Dhabi Grand Prix tickets. Yas Marina Circuit season finale. All grandstands. Verified.','Abu Dhabi Grand Prix Tickets 2026'],
+        '/f1-bahrain-grand-prix-tickets':['Bahrain GP Tickets 2026 | From \u20ac89 | F1','Buy Bahrain Grand Prix tickets from \u20ac89. Sakhir circuit, all grandstands. Instant QR delivery.','Bahrain Grand Prix Tickets 2026'],
+        '/f1-belgian-grand-prix-spa-tickets':['Spa GP Tickets 2026 | Belgian Grand Prix','Buy Belgian Grand Prix tickets at Spa-Francorchamps. Eau Rouge grandstand. Verified, instant delivery.','Belgian Grand Prix Spa Tickets 2026'],
+        '/f1-dutch-grand-prix-zandvoort-tickets':['Zandvoort GP Tickets 2026 | Dutch F1','Buy Dutch Grand Prix tickets at Zandvoort. All grandstands. Verstappen home race. Verified tickets.','Dutch Grand Prix Zandvoort Tickets 2026'],
+        '/f1-miami-grand-prix-tickets':['Miami GP Tickets 2026 | F1 Florida','Buy Miami Grand Prix tickets. Hard Rock Stadium circuit. Grandstands & beach club. Instant delivery.','Miami Grand Prix Tickets 2026'],
+        '/f1-japanese-grand-prix-suzuka-tickets':['Suzuka GP Tickets 2026 | Japanese F1','Buy Japanese Grand Prix tickets at Suzuka. Legendary circuit. All grandstands. Verified tickets.','Japanese Grand Prix Suzuka Tickets 2026'],
+        '/f1-australian-grand-prix-melbourne-tickets':['Melbourne GP Tickets 2026 | Australian F1','Buy Australian Grand Prix tickets. Albert Park Melbourne. All grandstands. Instant QR delivery.','Australian Grand Prix Melbourne Tickets 2026'],
+        '/f1-saudi-arabian-grand-prix-jeddah-tickets':['Jeddah GP Tickets 2026 | Saudi F1','Buy Saudi Arabian Grand Prix tickets. Jeddah Corniche night race. Verified, instant delivery.','Saudi Arabian Grand Prix Jeddah Tickets 2026'],
+        '/f1-spanish-grand-prix-barcelona-tickets':['Barcelona GP Tickets 2026 | Spanish F1','Buy Spanish Grand Prix tickets. Circuit de Barcelona-Catalunya. All grandstands. Instant delivery.','Spanish Grand Prix Barcelona Tickets 2026'],
+        '/f1-hungarian-grand-prix-budapest-tickets':['Budapest GP Tickets 2026 | Hungarian F1','Buy Hungarian Grand Prix tickets at Hungaroring. All grandstands. Verified sellers. Instant delivery.','Hungarian Grand Prix Budapest Tickets 2026'],
+        '/f1-austrian-grand-prix-red-bull-ring-tickets':['Austria GP Tickets 2026 | Red Bull Ring','Buy Austrian Grand Prix tickets. Red Bull Ring Spielberg. All grandstands. Verified, instant delivery.','Austrian Grand Prix Red Bull Ring Tickets 2026'],
+        '/bayern-vs-real-madrid-tickets':['Bayern vs Real Madrid Tickets | Champions League','Buy Bayern Munich vs Real Madrid Champions League tickets. Verified sellers, instant QR delivery.','Bayern Munich vs Real Madrid Tickets'],
+        '/bahrain-world-cup-tickets-2026':['Bahrain World Cup 2026 Tickets | FIFA','Buy Bahrain FIFA World Cup 2026 tickets. Group stage and knockout matches. Verified sellers.','Bahrain World Cup 2026 Tickets'],
+        '/world-athletics-2026-tickets':['World Athletics 2026 Tickets | Championships','Buy World Athletics Championships 2026 tickets. Track & field events. Verified, instant QR delivery.','World Athletics 2026 Tickets'],
+        '/isle-of-man-tt-tickets':['Isle of Man TT 2026 Tickets | Motorcycle Race','Buy Isle of Man TT 2026 tickets. Legendary motorcycle road race. Grandstands & hillside. Instant delivery.','Isle of Man TT 2026 Tickets'],
+        '/motogp-mugello-tickets':['MotoGP Mugello 2026 Tickets | Italian GP','Buy MotoGP Mugello tickets. Italian Grand Prix at Autodromo del Mugello. All grandstands. Instant delivery.','MotoGP Mugello Tickets 2026'],
+        '/bruno-mars-tour-2026':['Bruno Mars Tickets 2026 | European Tour','Buy Bruno Mars 2026 tour tickets. All European dates. Verified sellers, instant QR delivery.','Buy Bruno Mars Tour 2026 Tickets'],
+        '/the-weeknd-tour-2026':['The Weeknd Tickets 2026 | European Tour','Buy The Weeknd 2026 tour tickets. All European concert dates. Verified, instant QR delivery.','Buy The Weeknd Tour 2026 Tickets'],
+        '/guns-n-roses-tour-2026':['Guns N Roses Tickets 2026 | European Tour','Buy Guns N\' Roses 2026 tour tickets. All European dates. Verified sellers, instant delivery.','Buy Guns N\' Roses Tour 2026 Tickets'],
+        '/bad-bunny-london-2026':['Bad Bunny London 2026 Tickets | Concert','Buy Bad Bunny London 2026 concert tickets. Verified sellers, instant QR delivery. Best prices.','Buy Bad Bunny London 2026 Tickets'],
+        '/about':['About EuroMatchTickets | Trusted Ticket Marketplace','Learn about EuroMatchTickets \u2013 Europe\'s trusted ticket marketplace for football, F1, and concerts. FanProtect guarantee.','About EuroMatchTickets'],
+        '/faq':['FAQ | EuroMatchTickets | Common Questions','Answers to common questions about buying tickets, delivery, refunds, and our FanProtect guarantee.','Frequently Asked Questions'],
+        '/reviews':['Reviews | EuroMatchTickets | 4.8/5 Rating','Read 12,000+ verified customer reviews. 4.8/5 rating. Europe\'s most trusted ticket marketplace.','Customer Reviews \u2013 EuroMatchTickets'],
+        '/contact':['Contact Us | EuroMatchTickets | Support','Get in touch with EuroMatchTickets customer support. Email, phone, and live chat available 24/7.','Contact EuroMatchTickets'],
+        '/blog':['Blog | EuroMatchTickets | Sports & Concert News','Latest news about football, F1, concerts, and ticket buying guides. Tips for the best event experiences.','EuroMatchTickets Blog'],
+        '/buyer-protection':['Buyer Protection | FanProtect | EuroMatchTickets','Your tickets are protected with FanProtect. 100% money-back guarantee, verified sellers, secure payments.','Buyer Protection \u2013 FanProtect Guarantee'],
+        '/sell-tickets':['Sell Tickets | EuroMatchTickets | List Yours','Sell your tickets on EuroMatchTickets. Reach millions of buyers across Europe. Simple, fast, secure.','Sell Your Tickets'],
+        '/privacy-policy':['Privacy Policy | EuroMatchTickets','Read our privacy policy. How we protect your data and personal information at EuroMatchTickets.','Privacy Policy'],
+        '/terms':['Terms & Conditions | EuroMatchTickets','Read EuroMatchTickets terms and conditions for buying and selling tickets on our platform.','Terms & Conditions'],
+        '/refund-policy':['Refund Policy | EuroMatchTickets','Our refund policy. 100% money-back guarantee for cancelled events. FanProtect coverage details.','Refund Policy'],
+        '/fan-protect':['FanProtect Guarantee | EuroMatchTickets','FanProtect \u2013 your ticket purchase guarantee. Full refund for cancelled events, verified sellers only.','FanProtect Guarantee'],
+        '/f1-tickets-2026':['F1 Tickets 2026 | All Races | EuroMatchTickets','Buy F1 2026 season tickets. All Grand Prix races. Monaco, Silverstone, Monza. Verified, instant delivery.','F1 Tickets 2026 \u2013 Full Season'],
+        '/f1-2026-schedule':['F1 2026 Schedule | Race Calendar | EuroMatchTickets','Complete F1 2026 race calendar with dates, circuits and ticket availability for every Grand Prix.','F1 2026 Race Schedule & Calendar'],
+        '/how-to-buy-f1-tickets':['How to Buy F1 Tickets | Guide | EuroMatchTickets','Complete guide to buying F1 tickets. Tips for best grandstands, pricing, and how to get the best deals.','How to Buy F1 Tickets \u2013 Complete Guide'],
+        '/best-f1-races-europe':['Best F1 Races in Europe | Top Circuits','Discover the best F1 races in Europe. Monaco, Silverstone, Monza, Spa ranked by fan experience.','Best F1 Races in Europe'],
+        '/f1-ticket-prices-guide':['F1 Ticket Prices 2026 | Price Guide','Complete F1 ticket price guide for 2026. Compare prices across all Grand Prix races and grandstands.','F1 Ticket Prices Guide 2026'],
+        '/es/comprar-entradas':['Comprar Entradas | Champions League, F1 | EuroMatchTickets','Compra entradas Champions League desde \u20ac85, F1 desde \u20ac89, conciertos. Precios m\u00e1s baratos de Europa. Entrega instant\u00e1nea.','Comprar Entradas \u2013 Champions League, F1, Conciertos'],
+        '/es/entradas-champions-league':['Entradas Champions League 2026 | EuroMatchTickets','Compra entradas UEFA Champions League desde \u20ac85. Semifinales, final. Vendedores verificados.','Entradas Champions League 2026'],
+        '/es/entradas-f1':['Entradas F1 2026 | Todos los GP | EuroMatchTickets','Compra entradas F\u00f3rmula 1 desde \u20ac89. M\u00f3naco, Barcelona, Monza. Entrega instant\u00e1nea QR.','Entradas F1 2026'],
+        '/es/entradas-conciertos':['Entradas Conciertos Europa | EuroMatchTickets','Compra entradas para los mejores conciertos de Europa. Taylor Swift, Bruno Mars. Precios garantizados.','Entradas Conciertos Europa'],
+        '/es/entradas-copa-del-mundo-2026':['Entradas Copa del Mundo 2026 | FIFA','Compra entradas FIFA Copa del Mundo 2026. Fase de grupos desde \u20ac95. Vendedores verificados.','Entradas Copa del Mundo 2026'],
+        '/de/tickets-kaufen':['Tickets Kaufen | Champions League, F1 | EuroMatchTickets','Champions League ab \u20ac85, F1 ab \u20ac89, Konzerte. G\u00fcnstigste Preise Europas. Sofortige QR-Lieferung.','Tickets Kaufen \u2013 Champions League, F1, Konzerte'],
+        '/de/champions-league-tickets':['Champions League Tickets 2026 | Ab \u20ac85','UEFA Champions League Tickets kaufen ab \u20ac85. Halbfinale, Finale. Verifizierte Verk\u00e4ufer.','Champions League Tickets 2026 Kaufen'],
+        '/de/formel-1-tickets':['Formel 1 Tickets 2026 | Alle Rennen','F1 Tickets kaufen ab \u20ac89. Monaco, Monza, Silverstone. Alle 2026 Rennen. Sofortige Lieferung.','Formel 1 Tickets 2026'],
+        '/de/bundesliga-tickets':['Bundesliga Tickets 2026 | EuroMatchTickets','Bundesliga Tickets kaufen. Bayern, Dortmund, alle Spiele. Verifizierte Verk\u00e4ufer, sofortige Lieferung.','Bundesliga Tickets 2026'],
+        '/de/konzert-tickets':['Konzert Tickets Europa | EuroMatchTickets','Konzert Tickets f\u00fcr Europa kaufen. Taylor Swift, Bruno Mars. G\u00fcnstigste Preise garantiert.','Konzert Tickets Europa'],
+        '/de/wm-2026-tickets':['WM 2026 Tickets | FIFA | EuroMatchTickets','FIFA WM 2026 Tickets kaufen. Gruppenphase ab \u20ac95. Verifizierte Verk\u00e4ufer, sofortige QR-Lieferung.','WM 2026 Tickets Kaufen'],
+        '/fr/acheter-billets':['Acheter Billets | Champions League, F1 | EuroMatchTickets','Billets Champions League d\u00e8s \u20ac85, F1 d\u00e8s \u20ac89. Prix les plus bas d\'Europe. Livraison QR instantan\u00e9e.','Acheter des Billets \u2013 Champions League, F1'],
+        '/fr/billets-champions-league':['Billets Champions League 2026 | EuroMatchTickets','Achetez des billets UEFA Champions League d\u00e8s \u20ac85. Demi-finales, finale. Vendeurs v\u00e9rifi\u00e9s.','Billets Champions League 2026'],
+        '/fr/billets-f1':['Billets F1 2026 | Tous les GP | EuroMatchTickets','Achetez des billets F1 d\u00e8s \u20ac89. Monaco, Monza, Silverstone. Livraison instantan\u00e9e QR.','Billets F1 2026'],
+        '/fr/billets-concerts':['Billets Concerts Europe | EuroMatchTickets','Achetez des billets pour les meilleurs concerts. Taylor Swift, Bruno Mars. Prix garantis.','Billets Concerts Europe'],
+        '/it/biglietti':['Biglietti | Champions League, F1 | EuroMatchTickets','Biglietti Champions League da \u20ac85, F1 da \u20ac89. Prezzi pi\u00f9 bassi d\'Europa. Consegna QR istantanea.','Acquista Biglietti \u2013 Champions League, F1'],
+        '/it/biglietti-champions-league':['Biglietti Champions League 2026 | EuroMatchTickets','Acquista biglietti UEFA Champions League da \u20ac85. Semifinali, finale. Venditori verificati.','Biglietti Champions League 2026'],
+        '/it/biglietti-f1':['Biglietti F1 2026 | Tutti i GP | EuroMatchTickets','Acquista biglietti F1 da \u20ac89. Monaco, Monza, Silverstone. Consegna istantanea QR.','Biglietti F1 2026'],
+        '/it/biglietti-concerti':['Biglietti Concerti Europa | EuroMatchTickets','Acquista biglietti per i migliori concerti. Taylor Swift, Bruno Mars. Prezzi garantiti.','Biglietti Concerti Europa'],
+        '/maroon-5-tickets':['Maroon 5 Tickets 2026 | European Tour','Buy Maroon 5 tour tickets. All European dates. Verified sellers, instant QR delivery.','Buy Maroon 5 Tour 2026 Tickets'],
+        '/harry-styles-tickets':['Harry Styles Tickets 2026 | European Tour','Buy Harry Styles 2026 tour tickets. All European dates. Verified, instant QR delivery.','Buy Harry Styles Tour 2026 Tickets'],
+        '/metallica-sphere-las-vegas-tickets':['Metallica Sphere Las Vegas Tickets','Buy Metallica Sphere Las Vegas tickets. Immersive concert experience. Verified, instant delivery.','Metallica Sphere Las Vegas Tickets'],
+        '/world-cup-raffle':['World Cup 2026 Ticket Raffle | EuroMatchTickets','Enter the FIFA World Cup 2026 ticket raffle. Win exclusive match tickets. Free entry available.','World Cup 2026 Ticket Raffle'],
+        '/motogp-2026-schedule':['MotoGP 2026 Schedule | Race Calendar','Complete MotoGP 2026 race calendar. All dates, circuits, and ticket availability.','MotoGP 2026 Race Schedule'],
+        '/payment-info':['Payment Methods | EuroMatchTickets','Accepted payment methods. Credit cards, PayPal, bank transfer. Secure checkout with SSL encryption.','Payment Information'],
+        '/impressum':['Impressum | EuroMatchTickets | Legal Notice','Legal notice and company information for EuroMatchTickets. Registered in the European Union.','Impressum \u2013 Legal Notice']
+      };
+
+      /* ===== HREFLANG LANGUAGE MAPPING ===== */
+      var L={
+        '/':{es:'/es/comprar-entradas',de:'/de/tickets-kaufen',fr:'/fr/acheter-billets',it:'/it/biglietti'},
+        '/champions-league-tickets':{es:'/es/entradas-champions-league',de:'/de/champions-league-tickets',fr:'/fr/billets-champions-league',it:'/it/biglietti-champions-league'},
+        '/f1-tickets':{es:'/es/entradas-f1',de:'/de/formel-1-tickets',fr:'/fr/billets-f1',it:'/it/biglietti-f1'},
+        '/es/comprar-entradas':{en:'/',de:'/de/tickets-kaufen',fr:'/fr/acheter-billets',it:'/it/biglietti'},
+        '/es/entradas-champions-league':{en:'/champions-league-tickets',de:'/de/champions-league-tickets',fr:'/fr/billets-champions-league',it:'/it/biglietti-champions-league'},
+        '/es/entradas-f1':{en:'/f1-tickets',de:'/de/formel-1-tickets',fr:'/fr/billets-f1',it:'/it/biglietti-f1'},
+        '/de/tickets-kaufen':{en:'/',es:'/es/comprar-entradas',fr:'/fr/acheter-billets',it:'/it/biglietti'},
+        '/de/champions-league-tickets':{en:'/champions-league-tickets',es:'/es/entradas-champions-league',fr:'/fr/billets-champions-league',it:'/it/biglietti-champions-league'},
+        '/de/formel-1-tickets':{en:'/f1-tickets',es:'/es/entradas-f1',fr:'/fr/billets-f1',it:'/it/biglietti-f1'},
+        '/fr/acheter-billets':{en:'/',es:'/es/comprar-entradas',de:'/de/tickets-kaufen',it:'/it/biglietti'},
+        '/fr/billets-champions-league':{en:'/champions-league-tickets',es:'/es/entradas-champions-league',de:'/de/champions-league-tickets',it:'/it/biglietti-champions-league'},
+        '/fr/billets-f1':{en:'/f1-tickets',es:'/es/entradas-f1',de:'/de/formel-1-tickets',it:'/it/biglietti-f1'},
+        '/it/biglietti':{en:'/',es:'/es/comprar-entradas',de:'/de/tickets-kaufen',fr:'/fr/acheter-billets'},
+        '/it/biglietti-champions-league':{en:'/champions-league-tickets',es:'/es/entradas-champions-league',de:'/de/champions-league-tickets',fr:'/fr/billets-champions-league'},
+        '/it/biglietti-f1':{en:'/f1-tickets',es:'/es/entradas-f1',de:'/de/formel-1-tickets',fr:'/fr/billets-f1'}
+      };
+
+      /* ===== GET PAGE METADATA ===== */
+      var m=M[p];
+      var t,d,h1;
+      if(m){
+        t=m[0]; d=m[1]; h1=m[2];
+      } else {
+        /* Smart fallback: generate title from URL slug */
+        var slug=p.replace(/^\//,'').replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
+        if(slug){
+          t=slug+' | EuroMatchTickets';
+          d='Buy '+slug+' tickets at Europe\'s cheapest prices. 100% verified sellers, instant QR delivery.';
+          h1='Buy '+slug+' Tickets';
+        } else {
+          t='Buy Tickets | Champions League, F1, Concerts | EuroMatchTickets';
+          d='Buy Champions League tickets from \u20ac85, Taylor Swift from \u20ac89, F1 from \u20ac89. Verified sellers, instant QR delivery.';
+          h1='Buy Football, F1 & Concert Tickets';
         }
-        ogUrl.content = fullUrl;
-        
-        // 3. Create hreflang tags dynamically
-        var langs = ['x-default', 'en', 'de', 'fr', 'es', 'ar'];
-        for (var i = 0; i < langs.length; i++) {
-          var hreflang = document.createElement('link');
-          hreflang.rel = 'alternate';
-          hreflang.hreflang = langs[i];
-          hreflang.href = fullUrl;
-          document.head.appendChild(hreflang);
+      }
+
+      /* ===== SET TITLE ===== */
+      document.title=t;
+
+      /* ===== HELPER: set or create meta tag ===== */
+      function setMeta(sel,val,isProp){
+        var el=document.querySelector(sel);
+        if(!el){
+          el=document.createElement('meta');
+          if(isProp) el.setAttribute('property',sel.match(/\"([^\"]+)\"/)[1]);
+          else el.setAttribute('name',sel.match(/\"([^\"]+)\"/)[1]);
+          document.head.appendChild(el);
         }
-        
-        // 4. Fetch page-specific title from API
-        if (path && path !== '/') {
-          var xhr = new XMLHttpRequest();
-          xhr.open('GET', '/api/seo/page-meta?path=' + encodeURIComponent(path), true);
-          xhr.timeout = 3000;
-          xhr.onload = function() {
-            if (xhr.status === 200) {
-              try {
-                var data = JSON.parse(xhr.responseText);
-                if (data.title) document.title = data.title;
-              } catch(e) {}
-            }
-          };
-          xhr.send();
+        el.setAttribute('content',val);
+      }
+
+      /* ===== SET ALL META TAGS ===== */
+      setMeta('meta[name="description"]',d);
+      setMeta('meta[name="title"]',t);
+      setMeta('meta[name="robots"]','index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+      
+      /* Open Graph */
+      setMeta('meta[property="og:title"]',t,true);
+      setMeta('meta[property="og:description"]',d,true);
+      setMeta('meta[property="og:url"]',u,true);
+      setMeta('meta[property="og:type"]','website',true);
+      setMeta('meta[property="og:image"]',B+'/og-image.jpg',true);
+      setMeta('meta[property="og:image:width"]','1200',true);
+      setMeta('meta[property="og:image:height"]','630',true);
+      setMeta('meta[property="og:locale"]','en_US',true);
+      setMeta('meta[property="og:site_name"]','EuroMatchTickets',true);
+
+      /* Twitter */
+      setMeta('meta[name="twitter:card"]','summary_large_image');
+      setMeta('meta[name="twitter:url"]',u);
+      setMeta('meta[name="twitter:title"]',t);
+      setMeta('meta[name="twitter:description"]',d);
+      setMeta('meta[name="twitter:image"]',B+'/og-image.jpg');
+
+      /* ===== CANONICAL ===== */
+      var canon=document.createElement('link');
+      canon.rel='canonical';
+      canon.id='canonical-tag';
+      canon.href=u;
+      document.head.appendChild(canon);
+
+      /* ===== HREFLANG ===== */
+      var langMap=L[p];
+      function addHL(lang,href){
+        var lk=document.createElement('link');
+        lk.rel='alternate';lk.hreflang=lang;lk.href=B+href;
+        document.head.appendChild(lk);
+      }
+      if(langMap){
+        /* This page has translations - add proper hreflang */
+        addHL('x-default',p==='/'?'/':p);
+        /* Determine this page's lang */
+        var thisLang='en';
+        if(p.indexOf('/es/')===0) thisLang='es';
+        else if(p.indexOf('/de/')===0) thisLang='de';
+        else if(p.indexOf('/fr/')===0) thisLang='fr';
+        else if(p.indexOf('/it/')===0) thisLang='it';
+        addHL(thisLang,p==='/'?'/':p);
+        /* Add other languages */
+        for(var lang in langMap){
+          if(langMap.hasOwnProperty(lang)){
+            addHL(lang,langMap[lang]);
+          }
         }
-      })();
+      } else {
+        /* No translations - only x-default and en pointing to self */
+        addHL('x-default',p==='/'?'/':p);
+        addHL('en',p==='/'?'/':p);
+      }
+
+      /* ===== STORE H1 FOR BODY SCRIPT ===== */
+      window.__seoH1=h1;
+    })();
     </script>
     
-    <!-- Open Graph / Facebook - og:url set dynamically by canonical script -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="EuroMatchTickets - Football & Concert Tickets Europe" />
-    <meta property="og:description" content="Europe's trusted ticket marketplace for football matches, Formula 1, and concerts. Champions League, Monaco GP, World Cup. 100% secure, instant QR delivery." />
-    <meta property="og:image" content="https://euromatchtickets.com/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="EuroMatchTickets" />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://euromatchtickets.com/" />
-    <meta property="twitter:title" content="EuroMatchTickets - Football & Concert Tickets Europe" />
-    <meta property="twitter:description" content="Europe's trusted ticket marketplace. Champions League, Premier League, La Liga, Bundesliga, concerts. Secure payments, instant QR." />
-    <meta property="twitter:image" content="https://euromatchtickets.com/og-image.jpg" />
-    
-    <!-- Geo Tags for European Market -->
-    <meta name="geo.region" content="EU" />
-    <meta name="geo.placename" content="Europe" />
-    
-    <!-- Additional SEO -->
-    <meta name="rating" content="general" />
-    <meta name="revisit-after" content="1 days" />
-    <meta name="language" content="English" />
-    <meta name="distribution" content="global" />
+    <!-- Complete Structured Data (@graph) -->
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"EuroMatchTickets","url":"https://euromatchtickets.com","logo":{"@type":"ImageObject","url":"https://euromatchtickets.com/logo/euromatch-logo.png","width":600,"height":600},"description":"Europe's #1 ticket marketplace for football, concerts, F1, and sporting events.","foundingDate":"2025","sameAs":["https://twitter.com/euromatchtickets","https://facebook.com/euromatchtickets","https://instagram.com/euromatchtickets"],"contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"support@euromatchtickets.com","availableLanguage":["English","German","French","Spanish","Arabic"]},"areaServed":{"@type":"Continent","name":"Europe"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"12847","bestRating":"5","worstRating":"1"}},{"@type":"WebSite","name":"EuroMatchTickets","url":"https://euromatchtickets.com","potentialAction":{"@type":"SearchAction","target":"https://euromatchtickets.com/events?search={search_term_string}","query-input":"required name=search_term_string"},"inLanguage":["en","de","fr","es","it"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://euromatchtickets.com"},{"@type":"ListItem","position":2,"name":"Events","item":"https://euromatchtickets.com/events"},{"@type":"ListItem","position":3,"name":"Football Tickets","item":"https://euromatchtickets.com/football-tickets"},{"@type":"ListItem","position":4,"name":"F1 Tickets","item":"https://euromatchtickets.com/f1-tickets"},{"@type":"ListItem","position":5,"name":"Concert Tickets","item":"https://euromatchtickets.com/concerts"}]}]}</script>
     
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     
-    <!-- Critical CSS for Above-the-fold (CLS Optimization) -->
     <style>
-      /* Prevent layout shift */
       body { margin: 0; background-color: #09090b; }
       #root { min-height: 100vh; }
-      /* Reserve space for header */
       .header-placeholder { height: 80px; }
-      /* Image aspect ratio hints */
       img { max-width: 100%; height: auto; }
-      /* Font display swap for better LCP */
       @font-face { font-display: swap; }
     </style>
     
@@ -138,97 +262,31 @@
         send_page_view: true,
         cookie_flags: 'SameSite=None;Secure'
       });
-      // Track ticket purchases
       window.trackPurchase = function(eventName, ticketPrice, currency) {
-        gtag('event', 'purchase', {
-          event_category: 'Tickets',
-          event_label: eventName,
-          value: ticketPrice,
-          currency: currency || 'EUR'
-        });
+        gtag('event', 'purchase', { event_category: 'Tickets', event_label: eventName, value: ticketPrice, currency: currency || 'EUR' });
       };
-      // Track add to cart
       window.trackAddToCart = function(eventName, ticketPrice) {
-        gtag('event', 'add_to_cart', {
-          event_category: 'Tickets',
-          event_label: eventName,
-          value: ticketPrice,
-          currency: 'EUR'
-        });
+        gtag('event', 'add_to_cart', { event_category: 'Tickets', event_label: eventName, value: ticketPrice, currency: 'EUR' });
       };
-      // Track search
       window.trackSearch = function(searchTerm) {
-        gtag('event', 'search', {
-          search_term: searchTerm
-        });
+        gtag('event', 'search', { search_term: searchTerm });
       };
-      // Track view item
       window.trackViewItem = function(eventName, price, category) {
-        gtag('event', 'view_item', {
-          currency: 'EUR',
-          value: price,
-          items: [{
-            item_name: eventName,
-            item_category: category,
-            price: price
-          }]
-        });
+        gtag('event', 'view_item', { currency: 'EUR', value: price, items: [{ item_name: eventName, item_category: category, price: price }] });
       };
     </script>
     
     <!-- Facebook Pixel -->
     <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '2229040237407271');
       fbq('track', 'PageView');
-      // Track ticket views
-      window.fbTrackViewContent = function(eventName, price) {
-        fbq('track', 'ViewContent', {
-          content_name: eventName,
-          content_type: 'ticket',
-          value: price,
-          currency: 'EUR'
-        });
-      };
-      // Track add to cart
-      window.fbTrackAddToCart = function(eventName, price) {
-        fbq('track', 'AddToCart', {
-          content_name: eventName,
-          content_type: 'ticket',
-          value: price,
-          currency: 'EUR'
-        });
-      };
-      // Track purchases
-      window.fbTrackPurchase = function(eventName, price) {
-        fbq('track', 'Purchase', {
-          content_name: eventName,
-          content_type: 'ticket',
-          value: price,
-          currency: 'EUR'
-        });
-      };
-      // Track search
-      window.fbTrackSearch = function(searchQuery) {
-        fbq('track', 'Search', {
-          search_string: searchQuery
-        });
-      };
+      window.fbTrackViewContent = function(eventName, price) { fbq('track', 'ViewContent', { content_name: eventName, content_type: 'ticket', value: price, currency: 'EUR' }); };
+      window.fbTrackAddToCart = function(eventName, price) { fbq('track', 'AddToCart', { content_name: eventName, content_type: 'ticket', value: price, currency: 'EUR' }); };
+      window.fbTrackPurchase = function(eventName, price) { fbq('track', 'Purchase', { content_name: eventName, content_type: 'ticket', value: price, currency: 'EUR' }); };
+      window.fbTrackSearch = function(searchQuery) { fbq('track', 'Search', { search_string: searchQuery }); };
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=2229040237407271&ev=PageView&noscript=1"/></noscript>
-    
-    <!-- Complete Structured Data (@graph) -->
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"EuroMatchTickets","url":"https://euromatchtickets.com","logo":{"@type":"ImageObject","url":"https://euromatchtickets.com/logo/euromatch-logo.png","width":600,"height":600},"description":"Europe's #1 ticket marketplace for football, concerts, F1, and sporting events.","foundingDate":"2025","sameAs":["https://twitter.com/euromatchtickets","https://facebook.com/euromatchtickets","https://instagram.com/euromatchtickets"],"contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"support@euromatchtickets.com","availableLanguage":["English","German","French","Spanish","Arabic"]},"areaServed":{"@type":"Continent","name":"Europe"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"12847","bestRating":"5","worstRating":"1"}},{"@type":"WebSite","name":"EuroMatchTickets","url":"https://euromatchtickets.com","potentialAction":{"@type":"SearchAction","target":"https://euromatchtickets.com/events?search={search_term_string}","query-input":"required name=search_term_string"},"inLanguage":["en","de","fr","es","ar"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://euromatchtickets.com"},{"@type":"ListItem","position":2,"name":"Events","item":"https://euromatchtickets.com/events"},{"@type":"ListItem","position":3,"name":"Football Tickets","item":"https://euromatchtickets.com/football-tickets"},{"@type":"ListItem","position":4,"name":"F1 Tickets","item":"https://euromatchtickets.com/f1-tickets"},{"@type":"ListItem","position":5,"name":"Concert Tickets","item":"https://euromatchtickets.com/concerts"}]}]}</script>
-    
-    <!-- Hreflang tags are created dynamically by the canonical script in <head> -->
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2229040237407271&ev=PageView&noscript=1"/></noscript>
   </head>
   <body>
     <noscript>
@@ -255,7 +313,8 @@
           <span style="font-size:20px;font-weight:800;color:#f59e0b">EuroMatchTickets</span>
         </header>
         <main style="max-width:1200px;margin:0 auto;padding:40px 20px;text-align:center">
-          <h1 style="font-size:2.5rem;font-weight:900;margin:0 0 16px">Buy Champions League, Taylor Swift & F1 Tickets</h1>
+          <h1 id="seo-h1" style="font-size:2.5rem;font-weight:900;margin:0 0 16px">Buy Champions League, Taylor Swift & F1 Tickets</h1>
+          <script>if(window.__seoH1){document.getElementById('seo-h1').textContent=window.__seoH1;}</script>
           <p style="font-size:1.1rem;color:#94a3b8;margin:0 0 32px">Europe's cheapest prices. Instant QR delivery. 100% guaranteed.</p>
           <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
             <a href="/world-cup-2026" style="background:#f59e0b;color:#000;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700">World Cup 2026</a>

@@ -91,22 +91,53 @@ const SEOHead = ({
     }
     canonical.setAttribute('href', pageCanonicalUrl);
 
-    // Hreflang - update existing tags (created by index.html script)
-    const updateHreflang = (lang, href) => {
-      let link = document.querySelector(`link[hreflang="${lang}"]`);
-      if (!link) {
-        link = document.createElement('link');
-        link.setAttribute('rel', 'alternate');
-        link.setAttribute('hreflang', lang);
-        document.head.appendChild(link);
-      }
-      link.setAttribute('href', href);
+    // Hreflang - remove old tags and set correct language-specific URLs
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
+    
+    const LANG_MAP = {
+      '/': { es: '/es/comprar-entradas', de: '/de/tickets-kaufen', fr: '/fr/acheter-billets', it: '/it/biglietti' },
+      '/champions-league-tickets': { es: '/es/entradas-champions-league', de: '/de/champions-league-tickets', fr: '/fr/billets-champions-league', it: '/it/biglietti-champions-league' },
+      '/f1-tickets': { es: '/es/entradas-f1', de: '/de/formel-1-tickets', fr: '/fr/billets-f1', it: '/it/biglietti-f1' },
+      '/es/comprar-entradas': { en: '/', de: '/de/tickets-kaufen', fr: '/fr/acheter-billets', it: '/it/biglietti' },
+      '/es/entradas-champions-league': { en: '/champions-league-tickets', de: '/de/champions-league-tickets', fr: '/fr/billets-champions-league', it: '/it/biglietti-champions-league' },
+      '/es/entradas-f1': { en: '/f1-tickets', de: '/de/formel-1-tickets', fr: '/fr/billets-f1', it: '/it/biglietti-f1' },
+      '/de/tickets-kaufen': { en: '/', es: '/es/comprar-entradas', fr: '/fr/acheter-billets', it: '/it/biglietti' },
+      '/de/champions-league-tickets': { en: '/champions-league-tickets', es: '/es/entradas-champions-league', fr: '/fr/billets-champions-league', it: '/it/biglietti-champions-league' },
+      '/de/formel-1-tickets': { en: '/f1-tickets', es: '/es/entradas-f1', fr: '/fr/billets-f1', it: '/it/biglietti-f1' },
+      '/fr/acheter-billets': { en: '/', es: '/es/comprar-entradas', de: '/de/tickets-kaufen', it: '/it/biglietti' },
+      '/fr/billets-champions-league': { en: '/champions-league-tickets', es: '/es/entradas-champions-league', de: '/de/champions-league-tickets', it: '/it/biglietti-champions-league' },
+      '/fr/billets-f1': { en: '/f1-tickets', es: '/es/entradas-f1', de: '/de/formel-1-tickets', it: '/it/biglietti-f1' },
+      '/it/biglietti': { en: '/', es: '/es/comprar-entradas', de: '/de/tickets-kaufen', fr: '/fr/acheter-billets' },
+      '/it/biglietti-champions-league': { en: '/champions-league-tickets', es: '/es/entradas-champions-league', de: '/de/champions-league-tickets', fr: '/fr/billets-champions-league' },
+      '/it/biglietti-f1': { en: '/f1-tickets', es: '/es/entradas-f1', de: '/de/formel-1-tickets', fr: '/fr/billets-f1' },
     };
-    updateHreflang('x-default', pageCanonicalUrl);
-    updateHreflang('en', pageCanonicalUrl);
-    updateHreflang('de', pageCanonicalUrl);
-    updateHreflang('fr', pageCanonicalUrl);
-    updateHreflang('es', pageCanonicalUrl);
+
+    const addHreflang = (lang, path) => {
+      const link = document.createElement('link');
+      link.setAttribute('rel', 'alternate');
+      link.setAttribute('hreflang', lang);
+      link.setAttribute('href', `${BASE_URL}${path}`);
+      document.head.appendChild(link);
+    };
+
+    const currentPath = location.pathname.replace(/\/+$/, '') || '/';
+    const langMapping = LANG_MAP[currentPath];
+    
+    if (langMapping) {
+      // This page has translations
+      addHreflang('x-default', currentPath);
+      let thisLang = 'en';
+      if (currentPath.startsWith('/es/')) thisLang = 'es';
+      else if (currentPath.startsWith('/de/')) thisLang = 'de';
+      else if (currentPath.startsWith('/fr/')) thisLang = 'fr';
+      else if (currentPath.startsWith('/it/')) thisLang = 'it';
+      addHreflang(thisLang, currentPath);
+      Object.entries(langMapping).forEach(([lang, path]) => addHreflang(lang, path));
+    } else {
+      // No translations - only self-referencing
+      addHreflang('x-default', currentPath);
+      addHreflang('en', currentPath);
+    }
 
     // Cleanup
     return () => {
