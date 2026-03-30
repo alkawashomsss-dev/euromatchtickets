@@ -45,13 +45,18 @@ export default function DynamicSEOPage() {
   const [page, setPage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [gone, setGone] = useState(false);
 
   useEffect(() => {
     const fetchPage = async () => {
       try {
         const res = await axios.get(`${API}/seo/page/${slug}`);
         setPage(res.data);
-      } catch {
+      } catch (err) {
+        const status = err?.response?.status;
+        if (status === 410) {
+          setGone(true);
+        }
         setNotFound(true);
       } finally {
         setLoading(false);
@@ -71,9 +76,10 @@ export default function DynamicSEOPage() {
   if (notFound || !page) {
     return (
       <div className="min-h-screen bg-[hsl(210,20%,98%)] flex flex-col items-center justify-center gap-6 px-4" data-testid="seo-page-not-found">
-        <SEOHead title="Page Not Found" noIndex={true} />
-        <h1 className="text-4xl font-black text-slate-900">Page Not Found</h1>
-        <p className="text-slate-500 text-center max-w-md">This page has been removed or is no longer available. Browse our events to find what you're looking for.</p>
+        {/* 410 Gone = Google removes page permanently. Do NOT add noIndex - the HTTP 410 status is enough */}
+        {!gone && <SEOHead title="Page Not Found" noIndex={true} />}
+        <h1 className="text-4xl font-black text-slate-900">{gone ? "Page Removed" : "Page Not Found"}</h1>
+        <p className="text-slate-500 text-center max-w-md">{gone ? "This event has ended and the page has been permanently removed." : "This page is no longer available. Browse our events to find what you're looking for."}</p>
         <div className="flex gap-3">
           <Link to="/events"><Button>Browse Events</Button></Link>
           <Link to="/"><Button variant="outline">Home</Button></Link>
