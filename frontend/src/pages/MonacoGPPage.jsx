@@ -228,6 +228,21 @@ const MonacoGPPage = () => {
         </div>
       </section>
 
+      {/* MONACO GUIDES - Content Cluster */}
+      <section className="max-w-5xl mx-auto px-4 pb-16">
+        <h2 className="text-lg font-bold text-white mb-4">Monaco GP Deep Dive</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <Link to="/monaco-gp-vip-experience" className="bg-amber-400/5 border border-amber-400/20 rounded-xl p-4 hover:border-amber-400/40 transition-all">
+            <p className="font-bold text-white text-sm">VIP & Yacht Experience Guide</p>
+            <p className="text-xs text-amber-300/60 mt-1">Champions Club, yacht hospitality</p>
+          </Link>
+          <Link to="/ultimate-f1-tickets-guide-2026" className="bg-amber-400/5 border border-amber-400/20 rounded-xl p-4 hover:border-amber-400/40 transition-all">
+            <p className="font-bold text-white text-sm">Ultimate F1 Guide 2026</p>
+            <p className="text-xs text-amber-300/60 mt-1">Every race compared</p>
+          </Link>
+        </div>
+      </section>
+
       {/* LINK WHEEL */}
       <section className="max-w-5xl mx-auto px-4 pb-16">
         <h2 className="text-lg font-bold text-white mb-4">More Premium Events</h2>

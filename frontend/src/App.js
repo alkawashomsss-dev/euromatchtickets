@@ -115,6 +115,13 @@ const BayernMunichHubPage = lazy(() => import("./pages/BayernMunichHubPage"));
 const PSGHubPage = lazy(() => import("./pages/PSGHubPage"));
 const JuventusHubPage = lazy(() => import("./pages/JuventusHubPage"));
 const ColdplayPage = lazy(() => import("./pages/ColdplayPage"));
+const MonzaBestSeatsPage = lazy(() => import("./pages/MonzaBestSeatsPage"));
+const MonzaTicketPricesPage = lazy(() => import("./pages/MonzaTicketPricesPage"));
+const HowToGetToMonzaPage = lazy(() => import("./pages/HowToGetToMonzaPage"));
+const MonzaTravelTipsPage = lazy(() => import("./pages/MonzaTravelTipsPage"));
+const UltimateF1GuidePage = lazy(() => import("./pages/UltimateF1GuidePage"));
+const MonacoExperiencePage = lazy(() => import("./pages/MonacoExperiencePage"));
+const BahrainNightRaceGuidePage = lazy(() => import("./pages/BahrainNightRaceGuidePage"));
 
 // Marketing tools (lazy)
 const AIChatWidget = lazy(() => import("./components/AIChatWidget"));
@@ -409,6 +416,19 @@ function AppRouter() {
         <Route path="/psg-tickets" element={<PSGHubPage />} />
         <Route path="/juventus-tickets" element={<JuventusHubPage />} />
         <Route path="/coldplay-tour-2026" element={<ColdplayPage />} />
+
+        {/* Content Cluster Pages - Monza */}
+        <Route path="/monza-best-seats-guide" element={<MonzaBestSeatsPage />} />
+        <Route path="/monza-ticket-prices" element={<MonzaTicketPricesPage />} />
+        <Route path="/how-to-get-to-monza" element={<HowToGetToMonzaPage />} />
+        <Route path="/monza-f1-travel-tips" element={<MonzaTravelTipsPage />} />
+
+        {/* Content Cluster Pages - Monaco & Bahrain */}
+        <Route path="/monaco-gp-vip-experience" element={<MonacoExperiencePage />} />
+        <Route path="/bahrain-f1-night-race-guide" element={<BahrainNightRaceGuidePage />} />
+
+        {/* Ultimate Guides */}
+        <Route path="/ultimate-f1-tickets-guide-2026" element={<UltimateF1GuidePage />} />
 
         {/* French SEO Pages */}
         <Route path="/fr/acheter-billets" element={<FrenchLandingPage />} />

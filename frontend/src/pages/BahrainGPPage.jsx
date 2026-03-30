@@ -241,6 +241,21 @@ const BahrainGPPage = () => {
         </div>
       </section>
 
+      {/* BAHRAIN GUIDES - Content Cluster */}
+      <section className="max-w-5xl mx-auto px-4 pb-16">
+        <h2 className="text-lg font-bold text-white mb-4">Bahrain GP Deep Dive</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <Link to="/bahrain-f1-night-race-guide" className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 hover:border-amber-500/40 transition-all">
+            <p className="font-bold text-white text-sm">Night Race Guide</p>
+            <p className="text-xs text-amber-300/60 mt-1">What makes it special + tips</p>
+          </Link>
+          <Link to="/ultimate-f1-tickets-guide-2026" className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 hover:border-amber-500/40 transition-all">
+            <p className="font-bold text-white text-sm">Ultimate F1 Guide 2026</p>
+            <p className="text-xs text-amber-300/60 mt-1">Every race compared</p>
+          </Link>
+        </div>
+      </section>
+
       {/* INTERNAL LINKS - Link Wheel */}
       <section className="max-w-5xl mx-auto px-4 pb-16">
         <h2 className="text-lg font-bold text-white mb-4">More F1 Races You'll Love</h2>

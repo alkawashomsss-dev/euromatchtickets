@@ -292,6 +292,10 @@ def build_f1_motorsport():
         "/f1-2026-schedule", "/how-to-buy-f1-tickets",
         "/best-f1-races-europe", "/f1-ticket-prices-guide",
         "/f1-ticket-prices-2026",
+        "/ultimate-f1-tickets-guide-2026",
+        "/monza-best-seats-guide", "/monza-ticket-prices",
+        "/how-to-get-to-monza", "/monza-f1-travel-tips",
+        "/monaco-gp-vip-experience", "/bahrain-f1-night-race-guide",
     ]
     for path in f1_guides:
         urls.append(_url_block(f"{SITE}{path}", changefreq="weekly", priority=PRIORITY_TIERS["guide"]))

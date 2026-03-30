@@ -275,6 +275,31 @@ const MonzaGPPage = () => {
         </div>
       </section>
 
+      {/* MONZA GUIDES - Content Cluster */}
+      <section className="py-12 bg-red-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-lg font-bold text-slate-900 mb-4">Complete Monza F1 Guide</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <Link to="/monza-best-seats-guide" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-red-300 hover:shadow-md transition-all">
+              <p className="font-bold text-slate-900 text-sm">Best Seats Guide</p>
+              <p className="text-xs text-slate-500 mt-1">Every grandstand rated by experts</p>
+            </Link>
+            <Link to="/monza-ticket-prices" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-red-300 hover:shadow-md transition-all">
+              <p className="font-bold text-slate-900 text-sm">Ticket Prices Compared</p>
+              <p className="text-xs text-slate-500 mt-1">Save up to 40% vs competitors</p>
+            </Link>
+            <Link to="/how-to-get-to-monza" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-red-300 hover:shadow-md transition-all">
+              <p className="font-bold text-slate-900 text-sm">How to Get There</p>
+              <p className="text-xs text-slate-500 mt-1">From Milan in 45 minutes</p>
+            </Link>
+            <Link to="/monza-f1-travel-tips" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-red-300 hover:shadow-md transition-all">
+              <p className="font-bold text-slate-900 text-sm">Tips & Travel Guide</p>
+              <p className="text-xs text-slate-500 mt-1">Expert insider tips</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* LINK WHEEL */}
       <section className="py-12">
         <div className="max-w-5xl mx-auto px-4">
