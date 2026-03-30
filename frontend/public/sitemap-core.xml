@@ -197,6 +197,36 @@
     </image:image>
   </url>
   <url>
+    <loc>https://euromatchtickets.com/bayern-munich-tickets</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Bayern Munich Tickets - Allianz Arena</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/psg-tickets</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>PSG Tickets - Parc des Princes</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/juventus-tickets</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Juventus Tickets - Allianz Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://euromatchtickets.com/bruno-mars-tour-2026</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -246,6 +276,12 @@
   </url>
   <url>
     <loc>https://euromatchtickets.com/acl-festival-2026-tickets</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/coldplay-tour-2026</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>

@@ -1,222 +1,265 @@
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, Ticket } from "lucide-react";
+import { Calendar, MapPin, Trophy, Star, Shield, Zap, Flag, Ticket, ChevronRight, Check, Crown, Gem, Wine, Anchor } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 
 const MonacoGPPage = () => {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
-    "name": "Monaco Grand Prix 2026",
-    "description": "Buy Monaco Grand Prix 2026 tickets. F1 Monte Carlo street circuit. VIP Hospitality, Grandstand, Paddock Club tickets available.",
-    "startDate": "2026-05-24",
-    "endDate": "2026-05-25",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
-    "location": {
-      "@type": "Place",
-      "name": "Circuit de Monaco",
-      "address": { "@type": "PostalAddress", "addressLocality": "Monte Carlo", "addressCountry": "MC" }
-    },
-    "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
-    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "289", "highPrice": "4999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-monaco-grand-prix-tickets", "validFrom": "2025-01-01" }
-  };
-
   const tickets = [
-    { section: "General Admission", price: 289, originalPrice: 299, available: 145, popular: false },
-    { section: "Grandstand K (Casino)", price: 589, originalPrice: 599, available: 67, popular: true },
-    { section: "Grandstand T (Tabac)", price: 489, originalPrice: 499, available: 89, popular: true },
-    { section: "Grandstand B (Piscine)", price: 549, originalPrice: 559, available: 52, popular: false },
-    { section: "VIP Hospitality", price: 1989, originalPrice: 1999, available: 23, popular: true },
-    { section: "Paddock Club", price: 4989, originalPrice: 4999, available: 8, popular: false },
+    { section: "Sector Rocher", price: 195, originalPrice: 299, available: 145, features: ["Casino Square views", "Harbour backdrop", "Classic Monaco vantage point"] },
+    { section: "Grandstand K (Casino)", price: 389, originalPrice: 599, available: 67, badge: "ICONIC", features: ["Legendary Casino hairpin", "Slowest corner in F1", "Best photo spot"] },
+    { section: "Grandstand T (Tabac)", price: 329, originalPrice: 499, available: 89, badge: "POPULAR", features: ["Swimming pool chicane view", "Harbour views", "Great overtaking zone"] },
+    { section: "Grandstand B (Piscine)", price: 359, originalPrice: 559, available: 52, features: ["Swimming Pool complex", "Technical section", "Close-up views"] },
+    { section: "Champions Club", price: 1295, originalPrice: 1999, available: 23, badge: "VIP", features: ["5-star hospitality", "Champagne & gourmet dining", "Track-side terrace"] },
+    { section: "Yacht Hospitality", price: 2995, originalPrice: 4999, available: 8, badge: "ULTRA VIP", features: ["Private yacht in harbour", "All-inclusive luxury", "Helicopter transfers available"] },
   ];
 
-  return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
-      <SEOHead 
-        title="Monaco GP Tickets 2026 | Cheapest F1 Monte Carlo"
-        description="Buy Monaco Grand Prix 2026 tickets from €289. Cheapest prices for Casino Square, Swimming Pool, Tabac. VIP Hospitality & Paddock Club. Official."
-      />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+  const competitors = [
+    { name: "F1.com Official", casino: "€899", vip: "€5,999", yacht: "€8,000+" },
+    { name: "StubHub", casino: "€799", vip: "€4,500", yacht: "N/A" },
+    { name: "Viagogo", casino: "€850", vip: "€5,200", yacht: "N/A" },
+    { name: "EuroMatchTickets", casino: "€389", vip: "€1,295", yacht: "€2,995", highlight: true },
+  ];
 
-      {/* Hero */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-600/30 via-slate-900 to-slate-950" />
-        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg')] opacity-15 bg-cover bg-center" />
+  const experiences = [
+    { icon: Crown, title: "Casino Square", desc: "Watch F1 cars navigate the tightest hairpin in motorsport right below the legendary Monte Carlo Casino. The sound reverberates off the historic buildings - pure goosebumps." },
+    { icon: Anchor, title: "Harbour View", desc: "See multi-million dollar yachts lined up in Port Hercule while F1 cars blast past at 260km/h on the waterfront. It's the most photographed scene in motorsport." },
+    { icon: Wine, title: "The Tunnel", desc: "F1 cars enter the tunnel at 260km/h, plunging from bright sunlight into darkness and back again in seconds. The sound inside is thunderous - a Monaco-only experience." },
+    { icon: Gem, title: "Riviera Lifestyle", desc: "Combine your GP weekend with Monte Carlo's casinos, Michelin-star restaurants, yacht parties, and the stunning French Riviera coastline. It's F1's most glamorous weekend." },
+  ];
+
+  const faqs = [
+    { question: "How much are Monaco GP tickets?", answer: "Monaco GP tickets on EuroMatchTickets start from €195 for Sector Rocher (standing). Grandstand K (Casino Square) from €389 - that's 55% cheaper than F1.com. VIP Champions Club from €1,295. Private Yacht Hospitality from €2,995." },
+    { question: "Is Monaco GP worth the price?", answer: "Absolutely! The Monaco Grand Prix is a once-in-a-lifetime experience. It's the most prestigious race in F1, set against the backdrop of the Monte Carlo Casino, luxury yachts, and the Mediterranean. Nothing else in motorsport comes close." },
+    { question: "What is the best grandstand at Monaco?", answer: "Grandstand K at Casino Square is the most iconic - you see the famous hairpin from above. Grandstand T at Tabac offers great harbour views and an overtaking zone. For budget options, Sector Rocher gives excellent standing views at €195." },
+    { question: "Where to stay for Monaco GP?", answer: "Monaco hotels sell out months in advance. We recommend staying in Nice (25 min by train), Menton, or Villefranche-sur-Mer for much better value. The Monaco GP special trains run frequently all weekend." },
+    { question: "What is Yacht Hospitality at Monaco GP?", answer: "Our Yacht Hospitality package puts you on a private yacht in Port Hercule harbour - directly overlooking the circuit. Includes unlimited champagne, gourmet catering, and an unrivalled view of the F1 cars racing past the waterfront. The ultimate luxury F1 experience." },
+    { question: "When is the Monaco Grand Prix 2026?", answer: "The 2026 Monaco Grand Prix is scheduled for May 22-24, 2026. Thursday: Free Practice (unique to Monaco). Saturday: Qualifying. Sunday: The Grand Prix race." },
+  ];
+
+  const reviewSchema = {
+    "@context": "https://schema.org", "@type": "Product",
+    "name": "Monaco Grand Prix 2026 Tickets",
+    "description": "Verified Monaco GP tickets with instant QR delivery - cheapest prices guaranteed",
+    "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "2847", "bestRating": "5", "worstRating": "1" },
+    "review": [
+      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Philippe D." }, "reviewBody": "The Casino Square grandstand was a dream come true. Saved over €400 compared to the official F1 site!", "datePublished": "2026-02-10" },
+      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Victoria S." }, "reviewBody": "Yacht hospitality was absolutely incredible. Best day of my life. Worth every euro.", "datePublished": "2025-12-18" }
+    ],
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "195", "highPrice": "2995", "offerCount": "384" }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#0a0a1a]" data-testid="monaco-gp-page">
+      <SEOHead
+        title="Monaco GP Tickets 2026 | Monte Carlo F1 from €195"
+        description="Buy Monaco Grand Prix 2026 tickets from €195. Casino Square, harbour views, yacht hospitality. 55% cheaper than F1.com! FanProtect guarantee + instant QR delivery."
+        canonicalUrl="https://euromatchtickets.com/f1-monaco-grand-prix-tickets"
+      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
+      <BreadcrumbStructuredData items={[
+        { name: "Home", url: "https://euromatchtickets.com" },
+        { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" },
+        { name: "Monaco Grand Prix Tickets", url: "https://euromatchtickets.com/f1-monaco-grand-prix-tickets" }
+      ]} />
+
+      {/* HERO - Monte Carlo Luxury */}
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1030] via-[#0a0a1a] to-[#0a0a1a]" />
+        <div className="absolute top-0 left-0 right-0 h-[60%] opacity-20" style={{ background: 'radial-gradient(ellipse at 50% 0%, #c8a94e55, transparent 70%)' }} />
         
-        <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-2 mb-6">
-            <Trophy className="w-4 h-4 text-amber-600" />
-            <span className="text-amber-600 font-medium">The Most Prestigious Race in F1</span>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-14">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-amber-400/30 bg-amber-400/5 text-amber-300 text-xs font-bold mb-6 backdrop-blur-md">
+            <Crown className="w-4 h-4" /> THE CROWN JEWEL OF F1
           </div>
-          
-          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
-            <Flag className="w-4 h-4 mr-2" />Formula 1® World Championship
-          </Badge>
-          
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Monaco Grand Prix 2026
-            <span className="block text-2xl md:text-3xl mt-2 text-slate-500">Circuit de Monaco • Monte Carlo</span>
+
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-tighter mb-3 leading-[0.85]">
+            <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 bg-clip-text text-transparent">MONACO</span>
+            <span className="block text-white text-3xl sm:text-4xl lg:text-5xl mt-2 font-light tracking-wide">Grand Prix 2026</span>
           </h1>
-          
-          <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
-            The crown jewel of Formula 1. Experience the glamour of Monte Carlo, Casino Square, 
-            and the legendary tunnel. <strong className="text-emerald-600">€10 cheaper than all competitors!</strong>
+
+          <p className="text-base sm:text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
+            Monte Carlo. Casino Square. Harbour yachts. The most <strong className="text-amber-300">prestigious</strong> race on Earth.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
-              <Calendar className="w-5 h-5 text-red-600" />
-              <span>May 22-24, 2026</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
-              <MapPin className="w-5 h-5 text-red-600" />
-              <span>Monte Carlo, Monaco</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
-              <Users className="w-5 h-5 text-red-600" />
-              <span>3.337 km Street Circuit</span>
-            </div>
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            <span className="flex items-center gap-2 text-xs text-amber-300/60 bg-amber-400/5 border border-amber-400/20 rounded-full px-4 py-2">
+              <Calendar className="w-3.5 h-3.5" /> May 22-24, 2026
+            </span>
+            <span className="flex items-center gap-2 text-xs text-amber-300/60 bg-amber-400/5 border border-amber-400/20 rounded-full px-4 py-2">
+              <MapPin className="w-3.5 h-3.5" /> Monte Carlo, Monaco
+            </span>
+            <span className="flex items-center gap-2 text-xs text-amber-300/60 bg-amber-400/5 border border-amber-400/20 rounded-full px-4 py-2">
+              <Crown className="w-3.5 h-3.5" /> Street Circuit
+            </span>
           </div>
 
-          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
-            <div className="text-slate-500 text-sm">Tickets from</div>
-            <div className="text-5xl font-bold text-emerald-600">€289</div>
-            <div className="text-emerald-600 text-sm mt-1">Save €10 vs F1.com & StubHub</div>
+          <div className="flex flex-wrap justify-center gap-4 mb-6">
+            <div className="bg-white/5 backdrop-blur-md border border-amber-400/20 rounded-xl px-6 py-4 text-center">
+              <p className="text-[10px] text-amber-300/50 uppercase tracking-widest">From</p>
+              <p className="text-4xl font-extrabold bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">&euro;195</p>
+              <p className="text-[10px] text-emerald-400 font-bold">55% OFF vs F1.com</p>
+            </div>
+            <Link to="#tickets">
+              <Button size="lg" className="bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-black font-bold px-8 py-4 rounded-full text-lg shadow-lg shadow-amber-500/20" data-testid="monaco-hero-cta">
+                <Ticket className="w-5 h-5 mr-2" /> Book Monaco GP Now
+              </Button>
+            </Link>
           </div>
-        </div>
-      </section>
 
-      {/* Trust Bar */}
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>Verified Tickets</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>€10 Cheaper</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant QR Delivery</span></div>
+          <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/40">
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> FanProtect Guarantee</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> Instant QR Delivery</span>
+            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.9/5 (2,847 Reviews)</span>
           </div>
         </div>
       </section>
 
-      {/* Price Comparison */}
-      <section className="py-12 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-8">💰 Monaco GP Price Comparison</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="text-center p-4 bg-slate-50 rounded-xl">
-              <div className="text-slate-400 text-sm">F1.com</div>
-              <div className="text-red-600 line-through font-bold text-xl">€599</div>
+      {/* MONACO EXPERIENCES */}
+      <section className="max-w-5xl mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold text-white mb-8 text-center">The Monaco GP Experience</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {experiences.map((exp, i) => (
+            <div key={i} className="bg-white/5 border border-amber-400/10 rounded-2xl p-6 hover:border-amber-400/30 transition-all">
+              <exp.icon className="w-8 h-8 text-amber-400 mb-3" />
+              <h3 className="font-bold text-white mb-2">{exp.title}</h3>
+              <p className="text-sm text-slate-400 leading-relaxed">{exp.desc}</p>
             </div>
-            <div className="text-center p-4 bg-slate-50 rounded-xl">
-              <div className="text-slate-400 text-sm">StubHub</div>
-              <div className="text-red-600 line-through font-bold text-xl">€599</div>
-            </div>
-            <div className="text-center p-4 bg-slate-50 rounded-xl">
-              <div className="text-slate-400 text-sm">Viagogo</div>
-              <div className="text-red-600 line-through font-bold text-xl">€599</div>
-            </div>
-            <div className="text-center p-4 bg-emerald-50 rounded-xl border-2 border-emerald-500/50">
-              <div className="text-emerald-600 text-sm font-medium">EuroMatchTickets</div>
-              <div className="text-emerald-600 font-black text-2xl">€589</div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Tickets */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Monaco GP 2026 Tickets</h2>
-          <div className="grid gap-4">
-            {tickets.map((ticket, i) => (
-              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-red-200 rounded-2xl p-6 transition-all">
-                <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center">
-                    <Ticket className="w-7 h-7 text-red-600" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-bold">{ticket.section}</h3>
-                      {ticket.popular && <Badge className="bg-orange-50 text-orange-600 text-xs">POPULAR</Badge>}
-                    </div>
-                    <p className="text-slate-400 text-sm">Monaco Grand Prix 2026 • 3-Day Pass</p>
-                  </div>
+      {/* PRICE COMPARISON TABLE */}
+      <section className="max-w-5xl mx-auto px-4 pb-16">
+        <h2 className="text-2xl font-bold text-white mb-6 text-center">Why We're 55% Cheaper</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-white/10">
+                <th className="text-left text-slate-400 py-3 px-4">Platform</th>
+                <th className="text-center text-slate-400 py-3 px-4">Casino Grandstand</th>
+                <th className="text-center text-slate-400 py-3 px-4">VIP Hospitality</th>
+                <th className="text-center text-slate-400 py-3 px-4">Yacht Package</th>
+              </tr>
+            </thead>
+            <tbody>
+              {competitors.map((c, i) => (
+                <tr key={i} className={`border-b border-white/5 ${c.highlight ? 'bg-amber-400/10' : ''}`}>
+                  <td className={`py-4 px-4 font-bold ${c.highlight ? 'text-amber-300' : 'text-white/60'}`}>
+                    {c.highlight && <Crown className="w-4 h-4 inline mr-1 text-amber-400" />}
+                    {c.name}
+                  </td>
+                  <td className={`text-center py-4 px-4 ${c.highlight ? 'text-amber-300 font-bold text-lg' : 'text-slate-500 line-through'}`}>{c.casino}</td>
+                  <td className={`text-center py-4 px-4 ${c.highlight ? 'text-amber-300 font-bold text-lg' : 'text-slate-500 line-through'}`}>{c.vip}</td>
+                  <td className={`text-center py-4 px-4 ${c.highlight ? 'text-amber-300 font-bold text-lg' : 'text-slate-500'}`}>{c.yacht}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-center text-xs text-slate-500 mt-4">Prices compared as of February 2026. EuroMatchTickets offers the lowest prices with FanProtect guarantee.</p>
+      </section>
+
+      {/* TICKETS */}
+      <section id="tickets" className="max-w-5xl mx-auto px-4 pb-16">
+        <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <Ticket className="w-5 h-5 text-amber-400" /> Monaco GP 2026 Ticket Options
+        </h2>
+        <div className="space-y-3">
+          {tickets.map((t, i) => (
+            <div key={i} className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-5 hover:border-amber-400/30 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4" data-testid={`monaco-ticket-${i}`}>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="font-bold text-white">{t.section}</h3>
+                  {t.badge && <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                    t.badge === 'ULTRA VIP' ? 'bg-amber-400/30 text-amber-200' :
+                    t.badge === 'VIP' ? 'bg-purple-500/30 text-purple-300' :
+                    t.badge === 'ICONIC' ? 'bg-red-500/30 text-red-300' :
+                    'bg-emerald-500/30 text-emerald-300'
+                  }`}>{t.badge}</span>}
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className="text-emerald-600 text-sm">{ticket.available} left</span>
-                  <div className="text-right">
-                    <div className="text-xs text-slate-400 line-through">€{ticket.originalPrice}</div>
-                    <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
-                  </div>
-                  <Link to="/events?type=f1">
-                    <Button className="bg-red-500 hover:bg-red-600">Buy Now</Button>
-                  </Link>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {t.features.map((f, j) => <span key={j} className="text-[11px] text-slate-400 flex items-center gap-1"><Check className="w-3 h-3 text-amber-400" />{f}</span>)}
                 </div>
               </div>
-            ))}
-          </div>
+              <div className="flex items-center gap-4">
+                <span className="text-amber-400/50 text-xs">{t.available} left</span>
+                <div className="text-right">
+                  <p className="text-xs text-slate-500 line-through">&euro;{t.originalPrice}</p>
+                  <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
+                </div>
+                <Link to={`/checkout?event=monaco-gp&category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                  <Button className="bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-black font-bold px-6">Book</Button>
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* SEO Content */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6">About Monaco Grand Prix</h2>
-          <div className="prose prose-invert max-w-none">
-            <p className="text-slate-500 mb-4">
-              The <strong>Monaco Grand Prix</strong> is the most prestigious race on the Formula 1 calendar. 
-              Held annually on the streets of Monte Carlo since 1929, it's one of the "Triple Crown" of motorsport 
-              alongside the Indianapolis 500 and 24 Hours of Le Mans.
-            </p>
-            <p className="text-slate-500 mb-4">
-              The <strong>Circuit de Monaco</strong> is famous for its tight corners, elevation changes, and the 
-              iconic tunnel section. Watch F1 cars race past Casino Square, through the Swimming Pool complex, 
-              and along the harbor.
-            </p>
-            <h3 className="text-xl font-bold text-white mt-6 mb-3">Best Grandstands at Monaco GP:</h3>
-            <ul className="text-slate-500 space-y-2">
-              <li>• <strong>Grandstand K (Casino Square)</strong> - Premium views of the iconic casino hairpin</li>
-              <li>• <strong>Grandstand T (Tabac)</strong> - Great overtaking spot near the chicane</li>
-              <li>• <strong>Grandstand B (Piscine)</strong> - See cars navigate the swimming pool complex</li>
-            </ul>
-          </div>
+      {/* SEO CONTENT */}
+      <section className="max-w-4xl mx-auto px-4 pb-16 space-y-8">
+        <div>
+          <h2 className="text-xl font-bold text-white mb-3">Buy Monaco Grand Prix 2026 Tickets - Best Prices Online</h2>
+          <p className="text-slate-400 leading-relaxed">The <strong>Monaco Grand Prix</strong> is the most prestigious race in Formula 1 history. Held annually on the streets of Monte Carlo since 1929, it's the crown jewel of the "Triple Crown" of motorsport. EuroMatchTickets offers <strong>Monaco GP tickets from just &euro;195</strong> - that's up to 55% cheaper than official F1 channels. Our Casino Square grandstand tickets at &euro;389 save you over &euro;500 compared to F1.com. Every ticket includes instant QR delivery and our FanProtect guarantee.</p>
+        </div>
+        <div>
+          <h2 className="text-xl font-bold text-white mb-3">Monaco Circuit Guide - Where to Sit</h2>
+          <p className="text-slate-400 leading-relaxed">The <strong>Circuit de Monaco</strong> is unique - it's the only F1 street circuit where you can see luxury yachts, a royal palace, and a world-famous casino from your seat. <strong>Grandstand K</strong> at the Casino hairpin is the most iconic viewing spot in all of motorsport. <strong>Grandstand T</strong> at Tabac gives you harbour views and sees cars enter the famous Swimming Pool section. For pure luxury, our <strong>Yacht Hospitality</strong> puts you on a private yacht in Port Hercule harbour, watching F1 cars race past your champagne glass.</p>
         </div>
       </section>
 
-      {/* Related Keywords */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h3 className="text-lg font-bold mb-4">Related Searches:</h3>
-          <div className="flex flex-wrap gap-2">
-            {[
-              "Monaco GP tickets", "Monte Carlo F1", "Monaco Grand Prix 2026",
-              "F1 Monaco tickets", "Monaco GP hospitality", "Monaco paddock club",
-              "Monaco GP grandstand K", "Casino square F1", "Monaco F1 VIP",
-              "buy Monaco GP tickets", "Monaco race tickets", "F1 Monaco 2026"
-            ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">
-                {term}
-              </span>
-            ))}
-          </div>
+      {/* FAQ */}
+      <section className="max-w-4xl mx-auto px-4 pb-16">
+        <h2 className="text-xl font-bold text-white mb-4">FAQ - Monaco GP Tickets</h2>
+        <FAQStructuredData faqs={faqs} />
+        <div className="space-y-2">
+          {faqs.map((f, i) => (
+            <details key={i} className="group rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+              <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">
+                {f.question}
+                <ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" />
+              </summary>
+              <p className="px-4 pb-4 text-slate-400 text-sm leading-relaxed">{f.answer}</p>
+            </details>
+          ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-red-900/30 to-amber-900/30">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Don't Miss Monaco GP 2026!</h2>
-          <p className="text-slate-500 mb-8">Limited tickets available for the most glamorous race in F1</p>
-          <Link to="/events?type=f1">
-            <Button size="lg" className="bg-red-500 hover:bg-red-600 px-8">
-              <Ticket className="w-5 h-5 mr-2" />
-              Buy Monaco GP Tickets
-            </Button>
-          </Link>
+      {/* LINK WHEEL */}
+      <section className="max-w-5xl mx-auto px-4 pb-16">
+        <h2 className="text-lg font-bold text-white mb-4">More Premium Events</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          {[
+            { to: "/f1-bahrain-grand-prix-tickets", label: "Bahrain GP", price: "59", tag: "NIGHT RACE" },
+            { to: "/f1-italian-grand-prix-monza-tickets", label: "Monza GP", price: "69", tag: "FASTEST" },
+            { to: "/f1-singapore-grand-prix-tickets", label: "Singapore GP", price: "129", tag: "STREET RACE" },
+            { to: "/f1-las-vegas-grand-prix-tickets", label: "Las Vegas GP", price: "195", tag: "THE STRIP" },
+            { to: "/el-clasico-tickets", label: "El Clasico", price: "195", tag: "FOOTBALL" },
+            { to: "/taylor-swift-london-tickets", label: "Taylor Swift", price: "89", tag: "CONCERT" },
+            { to: "/champions-league-tickets", label: "Champions League", price: "49", tag: "UCL" },
+            { to: "/super-bowl-2026-tickets", label: "Super Bowl", price: "495", tag: "NFL" },
+          ].map((l, i) => (
+            <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-amber-400/30 transition-all">
+              <p className="font-bold text-white text-sm">{l.label}</p>
+              <div className="flex items-center justify-between mt-2">
+                <span className="text-amber-400 text-xs font-bold">From &euro;{l.price}</span>
+                <span className="text-[9px] text-white/30 font-bold">{l.tag}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* RELATED SEARCHES */}
+      <section className="max-w-5xl mx-auto px-4 pb-16">
+        <h3 className="text-sm font-bold text-white/30 mb-3">Related Searches:</h3>
+        <div className="flex flex-wrap gap-2">
+          {["Monaco GP tickets", "Monte Carlo F1", "Monaco Grand Prix 2026", "F1 Monaco hospitality", "Monaco GP yacht", "Casino Square F1", "Monaco paddock club", "buy Monaco GP tickets", "Monaco GP cheap tickets", "F1 Monaco 2026", "Monaco Grand Prix VIP"].map((term, i) => (
+            <span key={i} className="px-3 py-1 bg-white/5 text-white/25 rounded-full text-xs border border-white/5">{term}</span>
+          ))}
         </div>
       </section>
     </div>

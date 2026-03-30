@@ -79,6 +79,10 @@ IMAGE_MAP = {
     "/manchester-city-tickets":       {"url": f"{SITE}/og-image.jpg",              "title": "Manchester City Tickets - Etihad Stadium"},
     "/liverpool-tickets":             {"url": f"{SITE}/og-image.jpg",              "title": "Liverpool FC Tickets - Anfield"},
     "/arsenal-tickets":               {"url": f"{SITE}/og-image.jpg",              "title": "Arsenal Tickets - Emirates Stadium"},
+    "/bayern-munich-tickets":         {"url": f"{SITE}/og-image.jpg",              "title": "Bayern Munich Tickets - Allianz Arena"},
+    "/psg-tickets":                   {"url": f"{SITE}/og-image.jpg",              "title": "PSG Tickets - Parc des Princes"},
+    "/juventus-tickets":              {"url": f"{SITE}/og-image.jpg",              "title": "Juventus Tickets - Allianz Stadium"},
+    "/coldplay-tour-2026":            {"url": f"{SITE}/og-image.jpg",              "title": "Coldplay European Tour 2026"},
 }
 
 # ---------------------------------------------------------------------------
@@ -229,6 +233,7 @@ def build_core():
     hubs = [
         "/real-madrid-tickets", "/barcelona-tickets", "/manchester-city-tickets",
         "/liverpool-tickets", "/arsenal-tickets",
+        "/bayern-munich-tickets", "/psg-tickets", "/juventus-tickets",
     ]
     for path in hubs:
         urls.append(_url_block(
@@ -241,7 +246,7 @@ def build_core():
         "/bruno-mars-tour-2026", "/the-weeknd-tour-2026", "/guns-n-roses-tour-2026",
         "/bad-bunny-london-2026", "/maroon-5-tickets", "/john-legend-abu-dhabi-tickets",
         "/harry-styles-tickets", "/metallica-sphere-las-vegas-tickets",
-        "/acl-festival-2026-tickets",
+        "/acl-festival-2026-tickets", "/coldplay-tour-2026",
     ]
     for path in concert_pages:
         urls.append(_url_block(f"{SITE}{path}", changefreq="weekly", priority=PRIORITY_TIERS["event_static"]))

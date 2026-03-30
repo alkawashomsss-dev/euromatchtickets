@@ -111,6 +111,10 @@ const FrenchLandingPage = lazy(() => import("./pages/FrenchLandingPage"));
 const ItalianLandingPage = lazy(() => import("./pages/ItalianLandingPage"));
 const LiverpoolHubPage = lazy(() => import("./pages/LiverpoolHubPage"));
 const ArsenalHubPage = lazy(() => import("./pages/ArsenalHubPage"));
+const BayernMunichHubPage = lazy(() => import("./pages/BayernMunichHubPage"));
+const PSGHubPage = lazy(() => import("./pages/PSGHubPage"));
+const JuventusHubPage = lazy(() => import("./pages/JuventusHubPage"));
+const ColdplayPage = lazy(() => import("./pages/ColdplayPage"));
 
 // Marketing tools (lazy)
 const AIChatWidget = lazy(() => import("./components/AIChatWidget"));
@@ -401,6 +405,10 @@ function AppRouter() {
         <Route path="/manchester-city-tickets" element={<ManCityHubPage />} />
         <Route path="/liverpool-tickets" element={<LiverpoolHubPage />} />
         <Route path="/arsenal-tickets" element={<ArsenalHubPage />} />
+        <Route path="/bayern-munich-tickets" element={<BayernMunichHubPage />} />
+        <Route path="/psg-tickets" element={<PSGHubPage />} />
+        <Route path="/juventus-tickets" element={<JuventusHubPage />} />
+        <Route path="/coldplay-tour-2026" element={<ColdplayPage />} />
 
         {/* French SEO Pages */}
         <Route path="/fr/acheter-billets" element={<FrenchLandingPage />} />
