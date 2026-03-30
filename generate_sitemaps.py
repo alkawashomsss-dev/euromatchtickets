@@ -264,6 +264,15 @@ def build_core():
     for path, prio in info_pages:
         urls.append(_url_block(f"{SITE}{path}", changefreq="monthly", priority=prio))
 
+    # Filtered event pages (important for SEO - each type gets its own canonical)
+    event_type_pages = [
+        ("/events?type=concert", "0.85"),
+        ("/events?type=match",   "0.85"),
+        ("/events?type=f1",      "0.85"),
+    ]
+    for path, prio in event_type_pages:
+        urls.append(_url_block(f"{SITE}{path}", changefreq="daily", priority=prio))
+
     return write_sitemap("sitemap-core.xml", urls)
 
 

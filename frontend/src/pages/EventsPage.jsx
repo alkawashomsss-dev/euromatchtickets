@@ -192,17 +192,24 @@ const EventsPage = () => {
 
   // Dynamic SEO based on filters
   const getSEOTitle = () => {
-    if (filters.type === 'concert') return 'Concert Tickets Europe';
-    if (filters.type === 'match') return 'Football Match Tickets Europe';
-    if (filters.type === 'f1') return 'F1 Tickets 2026 - All Formula 1 Grand Prix Races';
-    return 'All Events - Football & Concert Tickets';
+    if (filters.type === 'concert') return 'Concert Tickets Europe 2026 - Verified!';
+    if (filters.type === 'match') return 'Football Match Tickets Europe 2026';
+    if (filters.type === 'f1') return 'F1 Tickets 2026 - All Grand Prix Races';
+    return 'All Events - Football, F1 & Concert Tickets';
   };
 
   const getSEODescription = () => {
-    if (filters.type === 'concert') return 'Buy verified concert tickets for Taylor Swift, Coldplay, Drake and more. Secure checkout with instant QR delivery across Europe.';
-    if (filters.type === 'match') return 'Buy verified football tickets for Champions League, Premier League, La Liga and Bundesliga. 100% secure with buyer protection.';
-    if (filters.type === 'f1') return 'Buy F1 2026 tickets for all 23 Grand Prix races. Monaco, Silverstone, Monza, Singapore and more. Best prices guaranteed with 0% service fees.';
-    return 'Browse all upcoming events across Europe. Football matches, concerts, and more. Verified tickets with instant QR delivery.';
+    if (filters.type === 'concert') return 'Buy verified concert tickets for Taylor Swift, Coldplay, The Weeknd and more. Secure checkout with instant QR delivery. Cheapest prices in Europe!';
+    if (filters.type === 'match') return 'Buy verified football tickets for Champions League, Premier League, La Liga and Bundesliga. Cheapest prices, instant QR delivery. FanProtect guarantee!';
+    if (filters.type === 'f1') return 'Buy F1 2026 tickets for all Grand Prix races. Monaco, Silverstone, Monza, Singapore and more. From €59. Best prices guaranteed!';
+    return 'Browse all upcoming events across Europe. Football, F1, concerts. Verified tickets with instant QR delivery. Cheapest prices guaranteed!';
+  };
+
+  const getCanonicalUrl = () => {
+    if (filters.type === 'concert') return 'https://euromatchtickets.com/events?type=concert';
+    if (filters.type === 'match') return 'https://euromatchtickets.com/events?type=match';
+    if (filters.type === 'f1') return 'https://euromatchtickets.com/events?type=f1';
+    return 'https://euromatchtickets.com/events';
   };
 
   return (
@@ -210,8 +217,7 @@ const EventsPage = () => {
       <SEOHead 
         title={getSEOTitle()}
         description={getSEODescription()}
-        noIndex={window.location.search.includes('type=')}
-        canonicalUrl="https://euromatchtickets.com/events"
+        canonicalUrl={getCanonicalUrl()}
       />
       <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },

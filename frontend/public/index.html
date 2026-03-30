@@ -30,6 +30,14 @@
       var p=location.pathname.replace(/\/+$/,'')||'/';
       var u=B+(p==='/'?'/':p);
 
+      /* Handle query parameter pages (e.g. /events?type=concert) */
+      var qs=location.search;
+      var pq=p;
+      if(p==='/events' && qs){
+        var tp=new URLSearchParams(qs).get('type');
+        if(tp) { pq=p+'?type='+tp; u=B+pq; }
+      }
+
       /* ===== HIGH-CONVERTING PAGE METADATA MAP ===== */
       /* Format: path: [title, description, h1] */
       /* Titles: exact keyword + CTA + trust signal (<60 chars) */
@@ -37,6 +45,9 @@
       var M={
         '/':['Buy Cheap Tickets 2026 \u2013 Football, F1 & Concerts','Cheapest tickets in Europe! Champions League from \u20ac49, F1 from \u20ac59, Taylor Swift from \u20ac79. Verified sellers \u2013 instant e-ticket delivery. Book now!','Cheap Football, F1 & Concert Tickets \u2013 Verified & Instant'],
         '/events':['Live Events 2026 \u2013 500+ Shows | Book Now!','Browse 500+ events across Europe. Football, F1, concerts, MotoGP \u2013 all verified. Filter by date, city or sport. Lowest prices guaranteed!','Browse All Live Events \u2013 Cheapest Tickets Guaranteed'],
+        '/events?type=concert':['Concert Tickets 2026 \u2013 Verified & Cheapest!','Buy concert tickets: Coldplay, Taylor Swift, The Weeknd, Bruno Mars. Cheapest prices in Europe. Instant QR delivery!','Buy Concert Tickets Europe 2026'],
+        '/events?type=match':['Football Tickets 2026 \u2013 Cheapest in Europe!','Buy football tickets: Champions League, Premier League, La Liga, Bundesliga. Verified sellers, instant QR delivery!','Buy Football Match Tickets 2026'],
+        '/events?type=f1':['F1 Tickets 2026 \u2013 All Races from \u20ac59!','Buy F1 2026 tickets for all Grand Prix. Monaco, Monza, Bahrain, Singapore. From \u20ac59. Verified, instant delivery!','Buy F1 Tickets 2026'],
         '/champions-league-tickets':['Buy Champions League Tickets 2026 \u2013 From \u20ac49!','Only 127 tickets left for UCL Semi-Finals! Verified sellers, instant e-ticket, FanProtect money-back guarantee. Secure yours before they sell out!','Buy Champions League Tickets \u2013 Verified & Selling Fast!'],
         '/f1-tickets':['Buy F1 Tickets 2026 \u2013 All Grand Prix | From \u20ac59','Formula 1 tickets for every 2026 race \u2013 Monaco, Monza, Silverstone & more. Prices 30% below competitors. Instant QR delivery. Book today!','F1 Grand Prix Tickets 2026 \u2013 Cheapest Prices Guaranteed'],
         '/world-cup-2026':['FIFA World Cup 2026 Tickets \u2013 From \u20ac65!','Don\'t miss the biggest event in football! Group stage from \u20ac65, knockouts available. 100% verified \u2013 instant delivery. Limited availability!','Buy World Cup 2026 Tickets \u2013 Secure Yours Now!'],
@@ -152,7 +163,7 @@
       };
 
       /* ===== GET PAGE METADATA ===== */
-      var m=M[p];
+      var m=M[pq]||M[p];
       var t,d,h1;
       if(m){
         t=m[0]; d=m[1]; h1=m[2];
