@@ -22,7 +22,7 @@
     
     <meta name="author" content="EuroMatchTickets" />
     <meta name="keywords" content="champions league tickets, taylor swift tickets, f1 tickets, buy football tickets, concert tickets Europe, FIFA World Cup 2026 tickets" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="robots" content="" />
     <link rel="canonical" id="canonical-tag" href="" />
     
     <!-- SEO tags are set SYNCHRONOUSLY by the script below - unique per page -->
@@ -166,6 +166,8 @@
 
       /* ===== DETECT REMOVED 2025 PAGES ===== */
       var is2025=p.indexOf('2025')!==-1;
+      var isEventDetail=p.indexOf('/event/')===0;
+      var isNoIndex=is2025||isEventDetail;
 
       /* ===== GET PAGE METADATA ===== */
       var m=M[pq]||M[p];
@@ -175,6 +177,12 @@
         t='Page Removed | EuroMatchTickets';
         d='This event page has been permanently removed. Browse current 2026 events at EuroMatchTickets.';
         h1='Page Removed';
+      } else if(isEventDetail){
+        /* /event/* detail pages - internal pages, noindex to prevent duplicate content */
+        var evSlug=p.replace('/event/','').replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
+        t=evSlug+' | EuroMatchTickets';
+        d='Event details for '+evSlug+'. Buy verified tickets at EuroMatchTickets.';
+        h1=evSlug;
       } else if(m){
         t=m[0]; d=m[1]; h1=m[2];
       } else {
@@ -209,7 +217,7 @@
       /* ===== SET ALL META TAGS ===== */
       setMeta('meta[name="description"]',d);
       setMeta('meta[name="title"]',t);
-      setMeta('meta[name="robots"]',is2025?'noindex, nofollow':'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+      setMeta('meta[name="robots"]',isNoIndex?'noindex, nofollow':'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
       
       /* Open Graph */
       setMeta('meta[property="og:title"]',t,true);

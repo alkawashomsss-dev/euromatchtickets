@@ -92,7 +92,7 @@ export default function EventDetailsPage() {
 
   return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="event-details-page">
-      <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" />
+      <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={true} />
       <EventStructuredData event={event} />
       <BreadcrumbStructuredData items={[
         { name: 'Home', url: 'https://euromatchtickets.com' },

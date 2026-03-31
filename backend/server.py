@@ -385,6 +385,15 @@ if static_build_dir.exists():
             html_410 = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><title>Page Removed | EuroMatchTickets</title></head><body><h1>Page Permanently Removed</h1><p>This event page has been permanently removed. <a href="https://euromatchtickets.com/events">Browse current events</a>.</p></body></html>'
             return Response(content=html_410, media_type="text/html", status_code=410)
 
+        # Return HTTP 410 Gone for old /event/* detail pages with hash IDs
+        # These are internal pages that should not be indexed
+        if full_path.startswith("event/") and not full_path.startswith("events"):
+            event_id = full_path.replace("event/", "")
+            event_exists = await db.events.find_one({"event_id": event_id})
+            if not event_exists:
+                html_410 = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><title>Event Removed | EuroMatchTickets</title></head><body><h1>Event Removed</h1><p>This event is no longer available. <a href="https://euromatchtickets.com/events">Browse current events</a>.</p></body></html>'
+                return Response(content=html_410, media_type="text/html", status_code=410)
+
         # Try to serve static file (images, manifest, etc.) from build root
         file_path = static_build_dir / full_path
         if full_path and file_path.exists() and file_path.is_file():
