@@ -687,18 +687,26 @@ async def _collect_all_urls():
 
 @router.post("/seo/indexnow")
 async def submit_indexnow(urls: list[str] = None):
-    """Submit URLs via Bing URL Submission API + Yandex IndexNow."""
+    """NUCLEAR INDEX SUBMISSION - Submit ALL URLs to EVERY search engine possible."""
     if not urls:
         urls = await _collect_all_urls()
 
     results = {"total_urls": len(urls), "engines": {}}
 
+    # ALL IndexNow endpoints (each one notifies different search engines)
+    INDEXNOW_ENDPOINTS = [
+        ("bing", "https://www.bing.com/indexnow"),
+        ("yandex", "https://yandex.com/indexnow"),
+        ("indexnow_api", "https://api.indexnow.org/indexnow"),
+        ("seznam", "https://search.seznam.cz/indexnow"),
+        ("naver", "https://searchadvisor.naver.com/indexnow"),
+    ]
+
     async with httpx.AsyncClient(timeout=30.0, follow_redirects=True) as client:
-        # 1. Bing URL Submission API (daily quota ~100 URLs, prioritize key pages first)
+        # 1. Bing URL Submission API (daily quota ~100-500 URLs)
         if BING_API_KEY:
             bing_result = {"submitted": 0, "quota_exceeded": False}
-            # Bing has a small daily quota - send in batches of 50 and stop on quota error
-            for i in range(0, len(urls), 50):
+            for i in range(0, min(len(urls), 500), 50):
                 batch = urls[i:i+50]
                 try:
                     r = await client.post(
@@ -712,7 +720,7 @@ async def submit_indexnow(urls: list[str] = None):
                         resp = r.text[:200]
                         if "Quota" in resp or "quota" in resp:
                             bing_result["quota_exceeded"] = True
-                            bing_result["note"] = "Daily quota reached. Run again tomorrow."
+                            bing_result["note"] = f"Daily quota reached after {bing_result['submitted']} URLs. Auto-retries tomorrow."
                             break
                         bing_result["last_error"] = resp
                 except Exception as e:
@@ -722,36 +730,112 @@ async def submit_indexnow(urls: list[str] = None):
         else:
             results["engines"]["bing_api"] = {"error": "No BING_WEBMASTER_API_KEY configured"}
 
-        # 2. Yandex IndexNow (no daily limit issues)
-        yandex_result = {"submitted": 0, "errors": 0}
-        for i in range(0, len(urls), 5000):
-            batch = urls[i:i+5000]
-            try:
-                r = await client.post("https://yandex.com/indexnow", json={
-                    "host": "euromatchtickets.com",
-                    "key": INDEXNOW_KEY,
-                    "keyLocation": f"{SITE_URL}/{INDEXNOW_KEY}.txt",
-                    "urlList": batch
-                })
-                if r.status_code in [200, 202]:
-                    yandex_result["submitted"] += len(batch)
-                else:
-                    yandex_result["errors"] += len(batch)
-            except Exception:
-                yandex_result["errors"] += len(batch)
-        results["engines"]["yandex"] = yandex_result
+        # 2. Submit to ALL IndexNow endpoints (10,000 URL limit per request)
+        for engine_name, endpoint_url in INDEXNOW_ENDPOINTS:
+            engine_result = {"submitted": 0, "errors": 0}
+            for i in range(0, len(urls), 10000):
+                batch = urls[i:i+10000]
+                try:
+                    r = await client.post(endpoint_url, json={
+                        "host": "euromatchtickets.com",
+                        "key": INDEXNOW_KEY,
+                        "keyLocation": f"{SITE_URL}/{INDEXNOW_KEY}.txt",
+                        "urlList": batch
+                    })
+                    if r.status_code in [200, 202]:
+                        engine_result["submitted"] += len(batch)
+                    else:
+                        engine_result["errors"] += len(batch)
+                        engine_result["last_status"] = r.status_code
+                except Exception as e:
+                    engine_result["errors"] += len(batch)
+                    engine_result["exception"] = str(e)[:50]
+            results["engines"][f"indexnow_{engine_name}"] = engine_result
 
-        # 3. Google Sitemap Ping
-        try:
-            r = await client.get(f"https://www.google.com/ping?sitemap={SITE_URL}/sitemap-index.xml")
-            results["engines"]["google_ping"] = {"success": r.status_code == 200}
-        except Exception:
-            results["engines"]["google_ping"] = {"success": False}
+        # 3. Ping ALL individual sitemaps to Google AND Bing
+        sitemap_files = [
+            "sitemap.xml", "sitemap-core.xml", "sitemap-f1-motorsport.xml",
+            "sitemap-football.xml", "sitemap-concerts.xml", "sitemap-worldcup.xml",
+            "sitemap-city-regional.xml", "sitemap-events.xml",
+            "sitemap-international.xml", "sitemap-guides.xml"
+        ]
+        ping_results = {"google": 0, "bing": 0, "errors": 0}
+        for sm_file in sitemap_files:
+            sitemap_url = f"{SITE_URL}/{sm_file}"
+            for ping_url in [
+                f"https://www.google.com/ping?sitemap={sitemap_url}",
+                f"https://www.bing.com/ping?sitemap={sitemap_url}",
+            ]:
+                try:
+                    r = await client.get(ping_url)
+                    if r.status_code == 200:
+                        if "google" in ping_url:
+                            ping_results["google"] += 1
+                        else:
+                            ping_results["bing"] += 1
+                except Exception:
+                    ping_results["errors"] += 1
+        results["engines"]["sitemap_pings"] = ping_results
 
     total_submitted = sum(
         v.get("submitted", 0) for v in results["engines"].values() if isinstance(v, dict)
     )
-    results["total_submitted"] = total_submitted
+    results["total_submitted_across_engines"] = total_submitted
+    results["engines_reached"] = len([
+        k for k, v in results["engines"].items()
+        if isinstance(v, dict) and v.get("submitted", 0) > 0
+    ])
+
+    # Log to DB
+
+@router.get("/seo/nuclear-status")
+async def nuclear_indexing_status():
+    """Full status of ALL indexing channels."""
+    seo_count = await db.seo_pages.count_documents({"active": True})
+    bing_submitted = await db.bing_submitted_urls.count_documents({})
+    
+    # Recent submissions
+    recent = await db.indexing_submissions.find(
+        {}, {"_id": 0}
+    ).sort("created_at", -1).to_list(5)
+    
+    # Recent Bing logs
+    bing_logs = await db.bing_indexing_logs.find(
+        {}, {"_id": 0}
+    ).sort("created_at", -1).to_list(5)
+    
+    return {
+        "active_seo_pages": seo_count,
+        "indexing_channels": {
+            "bing_api": {"status": "active", "daily_quota": 100, "submitted_total": bing_submitted, "auto_submits": "every 24h"},
+            "indexnow_yandex": {"status": "active", "limit": "10,000/request", "protocol": "IndexNow"},
+            "indexnow_seznam": {"status": "active", "limit": "10,000/request", "protocol": "IndexNow"},
+            "indexnow_naver": {"status": "active", "limit": "10,000/request", "protocol": "IndexNow"},
+            "google_sitemap_ping": {"status": "active", "sitemaps": 10, "auto_pings": "every 6h"},
+            "google_indexing_api": {"status": "requires_setup", "note": "Requires Google Cloud service account. Can submit 200 URLs/day directly to Google for near-instant indexing."},
+            "google_merchant_feed": {"status": "active", "products": seo_count, "feed_url": f"{SITE_URL}/api/merchant/feed.xml"},
+        },
+        "recent_nuclear_submissions": recent,
+        "recent_bing_logs": bing_logs,
+        "setup_google_indexing_api": {
+            "step_1": "Go to https://console.cloud.google.com",
+            "step_2": "Create a new project or select existing",
+            "step_3": "Enable 'Web Search Indexing API'",
+            "step_4": "Create Service Account and download JSON key",
+            "step_5": "In Google Search Console, add the service account email as OWNER",
+            "step_6": "Share the JSON key file with us to enable auto-submission"
+        }
+    }
+
+
+    await db.indexing_submissions.insert_one({
+        "type": "nuclear_submit",
+        "total_urls": len(urls),
+        "total_submitted": total_submitted,
+        "results": {k: v for k, v in results["engines"].items() if isinstance(v, dict)},
+        "created_at": datetime.now(timezone.utc)
+    })
+
     return {"status": "success", **results}
 
 
