@@ -5,7 +5,7 @@
   <url>
     <loc>https://euromatchtickets.com/es/comprar-entradas</loc>
     <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://euromatchtickets.com/de/tickets-kaufen"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://euromatchtickets.com/"/>
@@ -47,7 +47,7 @@
   <url>
     <loc>https://euromatchtickets.com/es/entradas-copa-del-mundo-2026</loc>
     <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://euromatchtickets.com/de/wm-2026-tickets"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://euromatchtickets.com/world-cup-2026"/>
@@ -99,13 +99,13 @@
   <url>
     <loc>https://euromatchtickets.com/de/konzert-tickets</loc>
     <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/de/wm-2026-tickets</loc>
     <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://euromatchtickets.com/de/wm-2026-tickets"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://euromatchtickets.com/world-cup-2026"/>
@@ -157,7 +157,7 @@
   <url>
     <loc>https://euromatchtickets.com/it/biglietti</loc>
     <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://euromatchtickets.com/de/tickets-kaufen"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://euromatchtickets.com/"/>
