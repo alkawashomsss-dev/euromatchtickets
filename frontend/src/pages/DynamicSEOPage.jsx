@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Shield, Clock, CreditCard, Star, ChevronRight, Tag, MapPin, Calendar, Ticket } from "lucide-react";
+import { ArrowLeft, Shield, Clock, CreditCard, Star, ChevronRight, Tag, MapPin, Calendar, Ticket, ChevronDown, HelpCircle } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
@@ -8,6 +8,51 @@ import { InternalLinks } from "../components/InternalLinks";
 import { RelatedEventsSection } from "../components/RelatedEventsSection";
 import axios from "axios";
 import { API } from "../App";
+
+/* FAQ Accordion Item */
+const FAQItem = ({ question, answer, isOpen, onClick, index }) => (
+  <div className="border border-slate-200 rounded-lg overflow-hidden" data-testid={`faq-item-${index}`}>
+    <button
+      onClick={onClick}
+      className="w-full flex items-center justify-between px-5 py-4 text-left bg-white hover:bg-slate-50 transition-colors"
+      aria-expanded={isOpen}
+    >
+      <span className="font-semibold text-slate-900 text-sm pr-4">{question}</span>
+      <ChevronDown className={`w-4 h-4 text-slate-400 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+    </button>
+    {isOpen && (
+      <div className="px-5 pb-4 bg-white border-t border-slate-100">
+        <p className="text-slate-600 text-sm leading-relaxed pt-3">{answer}</p>
+      </div>
+    )}
+  </div>
+);
+
+/* FAQ Section with Schema */
+const FAQSection = ({ faqs, title }) => {
+  const [openIndex, setOpenIndex] = useState(0);
+  if (!faqs || faqs.length === 0) return null;
+  return (
+    <section className="mt-10" data-testid="faq-section">
+      <div className="flex items-center gap-3 mb-5">
+        <HelpCircle className="w-5 h-5 text-emerald-500" />
+        <h2 className="text-xl font-bold text-slate-900">{title || 'Frequently Asked Questions'}</h2>
+      </div>
+      <div className="space-y-2">
+        {faqs.map((faq, i) => (
+          <FAQItem
+            key={i}
+            index={i}
+            question={faq[0]}
+            answer={faq[1]}
+            isOpen={openIndex === i}
+            onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
 
 const categoryStyles = {
   f1: { accent: "#e10600", bg: "from-red-900/40 to-slate-900", badge: "bg-red-600 text-white" },
@@ -46,6 +91,9 @@ export default function DynamicSEOPage() {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [gone, setGone] = useState(false);
+
+  // Get pre-hydrated FAQ data from vanilla JS
+  const prehydratedFAQ = typeof window !== 'undefined' ? window.__seoFAQ : null;
 
   useEffect(() => {
     const fetchPage = async () => {
@@ -131,6 +179,10 @@ export default function DynamicSEOPage() {
                 <li className="flex items-start gap-2"><CreditCard className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Secure payment with Stripe encryption</li>
                 <li className="flex items-start gap-2"><Star className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />4.8/5 rating from 12,000+ verified buyers</li>
               </ul>
+              {/* FAQ Section for fallback pages */}
+              {prehydratedFAQ && prehydratedFAQ.length > 0 && (
+                <FAQSection faqs={prehydratedFAQ} title={`${prettyName} - FAQ`} />
+              )}
             </div>
             <div className="space-y-6">
               <div className="bg-white border border-slate-200 rounded-xl p-6">
@@ -258,6 +310,19 @@ export default function DynamicSEOPage() {
         ]
       })}} />
 
+      {/* FAQPage Schema - for Google FAQ rich snippets */}
+      {prehydratedFAQ && prehydratedFAQ.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": prehydratedFAQ.map(qa => ({
+            "@type": "Question",
+            "name": qa[0],
+            "acceptedAnswer": { "@type": "Answer", "text": qa[1] }
+          }))
+        })}} />
+      )}
+
       <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="dynamic-seo-page">
         {/* Hero */}
         <div className={`relative bg-gradient-to-b ${style.bg} py-16 sm:py-20`}>
@@ -334,6 +399,10 @@ export default function DynamicSEOPage() {
                 className="prose prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: renderMarkdown(page.content) }}
               />
+              {/* FAQ Section - visible + schema-linked */}
+              {prehydratedFAQ && prehydratedFAQ.length > 0 && (
+                <FAQSection faqs={prehydratedFAQ} title={`${page.title?.split("|")[0]?.split("–")[0]?.trim()} - FAQ`} />
+              )}
             </div>
 
             {/* Sidebar */}

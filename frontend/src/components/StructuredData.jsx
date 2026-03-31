@@ -315,6 +315,10 @@ const OrganizationStructuredData = () => {
       ]
     };
 
+    // Remove pre-hydration duplicate before adding React-managed version
+    const phOrg = document.getElementById('ph-org');
+    if (phOrg) phOrg.remove();
+
     let script = document.querySelector('script[data-schema="organization"]');
     if (!script) {
       script = document.createElement('script');
@@ -352,6 +356,10 @@ const WebsiteStructuredData = () => {
         "query-input": "required name=search_term_string"
       }
     };
+
+    // Remove pre-hydration duplicate before adding React-managed version
+    const phSite = document.getElementById('ph-site');
+    if (phSite) phSite.remove();
 
     let script = document.querySelector('script[data-schema="website"]');
     if (!script) {
