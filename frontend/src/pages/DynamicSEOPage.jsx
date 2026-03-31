@@ -74,9 +74,12 @@ export default function DynamicSEOPage() {
   }
 
   if (notFound || !page) {
+    // Do NOT render SEOHead here! The vanilla JS in index.html already set correct
+    // meta tags (title, description, canonical, robots="index,follow") for ALL pages.
+    // Overriding with noIndex here destroys SEO for pages where API temporarily fails
+    // or DB is not synced. Only 2025 pages get noindex (handled by vanilla JS).
     return (
       <div className="min-h-screen bg-[hsl(210,20%,98%)] flex flex-col items-center justify-center gap-6 px-4" data-testid="seo-page-not-found">
-        <SEOHead title={gone ? "Page Removed" : "Page Not Found"} noIndex={true} />
         <h1 className="text-4xl font-black text-slate-900">{gone ? "Page Removed" : "Page Not Found"}</h1>
         <p className="text-slate-500 text-center max-w-md">{gone ? "This event has ended and the page has been permanently removed." : "This page is no longer available. Browse our events to find what you're looking for."}</p>
         <div className="flex gap-3">
