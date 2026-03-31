@@ -199,7 +199,7 @@ async def bing_daily_indexing():
             logger.info("Bing Indexing Bot: Starting daily submission...")
 
             # Collect all URLs
-            seo_pages = await db.seo_pages.find({}, {"_id": 0, "slug": 1}).to_list(5000)
+            seo_pages = await db.seo_pages.find({"active": True}, {"_id": 0, "slug": 1}).to_list(5000)
             today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
             events = await db.events.find(
                 {"event_date": {"$gte": today_str}},
@@ -364,3 +364,36 @@ async def startup():
 @app.on_event("shutdown")
 async def shutdown():
     client.close()
+
+
+
+# ─── Production: Serve React Frontend with 410 for old pages ────────────────
+# This catch-all MUST be after all API routes so they take priority
+static_build_dir = pathlib.Path(__file__).parent / "static"
+
+if static_build_dir.exists():
+    # Serve React build static assets (JS, CSS, media)
+    static_assets = static_build_dir / "static"
+    if static_assets.exists():
+        app.mount("/static", StaticFiles(directory=str(static_assets)), name="frontend-assets")
+
+    # Serve files in build root (manifest.json, favicon, images, etc.)
+    @app.get("/{full_path:path}")
+    async def serve_frontend(full_path: str, request: Request):
+        # Return HTTP 410 Gone for old 2025 pages - Google will permanently de-index
+        if "2025" in full_path and not full_path.startswith("api/"):
+            html_410 = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><title>Page Removed | EuroMatchTickets</title></head><body><h1>Page Permanently Removed</h1><p>This event page has been permanently removed. <a href="https://euromatchtickets.com/events">Browse current events</a>.</p></body></html>'
+            return Response(content=html_410, media_type="text/html", status_code=410)
+
+        # Try to serve static file (images, manifest, etc.) from build root
+        file_path = static_build_dir / full_path
+        if full_path and file_path.exists() and file_path.is_file():
+            import mimetypes
+            content_type = mimetypes.guess_type(str(file_path))[0] or "application/octet-stream"
+            return Response(content=file_path.read_bytes(), media_type=content_type)
+
+        # SPA catch-all: serve index.html for all React routes
+        index_file = static_build_dir / "index.html"
+        if index_file.exists():
+            return Response(content=index_file.read_text(), media_type="text/html")
+        return Response(content="Not Found", status_code=404)

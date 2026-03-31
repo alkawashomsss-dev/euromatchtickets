@@ -162,10 +162,18 @@
         '/it/biglietti-f1':{en:'/f1-tickets',es:'/es/entradas-f1',de:'/de/formel-1-tickets',fr:'/fr/billets-f1'}
       };
 
+      /* ===== DETECT REMOVED 2025 PAGES ===== */
+      var is2025=p.indexOf('2025')!==-1;
+
       /* ===== GET PAGE METADATA ===== */
       var m=M[pq]||M[p];
       var t,d,h1;
-      if(m){
+      if(is2025){
+        /* 2025 pages are permanently removed - signal noindex immediately */
+        t='Page Removed | EuroMatchTickets';
+        d='This event page has been permanently removed. Browse current 2026 events at EuroMatchTickets.';
+        h1='Page Removed';
+      } else if(m){
         t=m[0]; d=m[1]; h1=m[2];
       } else {
         /* Smart fallback: generate title from URL slug */
@@ -199,7 +207,7 @@
       /* ===== SET ALL META TAGS ===== */
       setMeta('meta[name="description"]',d);
       setMeta('meta[name="title"]',t);
-      setMeta('meta[name="robots"]','index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+      setMeta('meta[name="robots"]',is2025?'noindex, nofollow':'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
       
       /* Open Graph */
       setMeta('meta[property="og:title"]',t,true);
