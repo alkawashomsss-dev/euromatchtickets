@@ -228,11 +228,20 @@
       setMeta('meta[name="twitter:image"]',B+'/og-image.jpg');
 
       /* ===== CANONICAL ===== */
-      var canon=document.createElement('link');
-      canon.rel='canonical';
-      canon.id='canonical-tag';
-      canon.href=u;
-      document.head.appendChild(canon);
+      var existingCanon=document.getElementById('canonical-tag');
+      if(!existingCanon){
+        existingCanon=document.querySelector('link[rel="canonical"]');
+      }
+      if(!existingCanon){
+        existingCanon=document.createElement('link');
+        existingCanon.rel='canonical';
+        existingCanon.id='canonical-tag';
+        document.head.appendChild(existingCanon);
+      }
+      /* Strip trailing slash for consistency */
+      var cleanU=u.replace(/\/$/,'');
+      if(cleanU==='https://euromatchtickets.com') cleanU='https://euromatchtickets.com/';
+      existingCanon.href=cleanU;
 
       /* ===== HREFLANG ===== */
       var langMap=L[p];
