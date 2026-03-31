@@ -61,7 +61,8 @@ const BahrainWorldCupPage = () => {
     "location": { "@type": "Place", "name": "Various Venues", "address": { "@type": "PostalAddress", "addressLocality": "Multiple Cities", "addressCountry": "US" } },
     "performer": { "@type": "SportsTeam", "name": "Bahrain National Football Team" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "89", "highPrice": "2999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/bahrain-world-cup-tickets-2026", "validFrom": "2025-01-01" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "89", "highPrice": "2999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/bahrain-world-cup-tickets-2026", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

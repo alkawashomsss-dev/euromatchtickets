@@ -48,7 +48,8 @@ const JohnLegendPage = () => {
     "performer": {"@type": "Person", "name": "John Legend"},
     "location": {"@type": "Place", "name": "Etihad Arena", "address": {"@type": "PostalAddress", "addressLocality": "Abu Dhabi", "addressCountry": "AE"}},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "AggregateOffer", "lowPrice": 90, "highPrice": 500, "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/john-legend-abu-dhabi-tickets", "validFrom": "2025-01-01"}
+    "offers": {"@type": "AggregateOffer", "lowPrice": 90, "highPrice": 500, "priceCurrency": "EUR",
+              "offerCount": "100", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/john-legend-abu-dhabi-tickets", "validFrom": "2025-01-01"}
   };
 
   return (

@@ -45,7 +45,7 @@ const MetallicaPage = () => {
     "performer": {"@type": "MusicGroup", "name": "Metallica"},
     "location": {"@type": "Place", "name": "The Sphere", "address": {"@type": "PostalAddress", "addressLocality": "Las Vegas", "addressCountry": "US"}},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "AggregateOffer", "lowPrice": 617, "highPrice": 2755, "priceCurrency": "USD", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets", "validFrom": "2025-01-01"}
+    "offers": {"@type": "AggregateOffer", "lowPrice": 617, "highPrice": 2755, "priceCurrency": "USD", "offerCount": "100", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets", "validFrom": "2025-01-01"}
   };
 
   return (

@@ -44,7 +44,7 @@ const ACLFestivalPage = () => {
     "startDate": "2026-10-02",
     "endDate": "2026-10-10",
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "AggregateOffer", "lowPrice": 332, "highPrice": 25650, "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/acl-festival-2026-tickets", "validFrom": "2025-01-01"}
+    "offers": {"@type": "AggregateOffer", "lowPrice": 332, "highPrice": 25650, "priceCurrency": "USD", "offerCount": "100", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/acl-festival-2026-tickets", "validFrom": "2025-01-01"}
   };
 
   return (

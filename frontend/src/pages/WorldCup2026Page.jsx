@@ -65,6 +65,7 @@ const WorldCup2026Page = () => {
       "lowPrice": events[0]?.lowest_price || 285,
       "highPrice": 35000,
       "priceCurrency": "USD",
+      "offerCount": "100",
       "availability": "https://schema.org/LimitedAvailability",
       "url": "https://euromatchtickets.com/world-cup-2026",
       "validFrom": "2025-01-01"

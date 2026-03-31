@@ -18,7 +18,8 @@ const BarcelonaHubPage = () => {
     "location": { "@type": "Place", "name": "Spotify Camp Nou", "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" } },
     "performer": { "@type": "SportsTeam", "name": "FC Barcelona" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "2200", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/barcelona-tickets" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "65", "highPrice": "2200", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/barcelona-tickets" }
   };
 
   const reviewSchema = {

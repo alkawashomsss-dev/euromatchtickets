@@ -58,7 +58,8 @@ const TaylorSwiftLondonPage = () => {
     "location": { "@type": "Place", "name": "Wembley Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "Person", "name": "Taylor Swift" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "89", "highPrice": "999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/taylor-swift-london-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "89", "highPrice": "999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/taylor-swift-london-tickets", "validFrom": "2025-01-01" }
   };
 
   const reviewSchema = {

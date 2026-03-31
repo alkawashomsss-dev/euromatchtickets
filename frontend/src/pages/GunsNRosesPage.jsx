@@ -18,7 +18,8 @@ const GunsNRosesPage = () => {
     "location": { "@type": "Place", "name": "Olympiastadion", "address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" } },
     "performer": { "@type": "MusicGroup", "name": "Guns N Roses" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/guns-n-roses-tour-2026", "validFrom": "2025-01-01" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/guns-n-roses-tour-2026", "validFrom": "2025-01-01" }
   };
 
   // Real confirmed dates

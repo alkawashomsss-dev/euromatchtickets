@@ -23,7 +23,8 @@ const ChampionsLeaguePage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "UEFA Champions League"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "85", "highPrice": "1500", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/champions-league-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "85", "highPrice": "1500", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/champions-league-tickets", "validFrom": "2025-01-01" }
   };
 
   const reviewSchema = {

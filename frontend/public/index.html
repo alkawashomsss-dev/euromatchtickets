@@ -292,55 +292,12 @@
         '/coldplay-tour-2026':{type:'Event',name:'Coldplay Music of the Spheres Tour 2026',date:'2026-06-12',endDate:'2026-07-11',venue:'Multiple Venues',city:'Europe',country:'GB',low:'69',high:'495',cat:'Concert',perf:'Coldplay',faq:[['When is Coldplay touring Europe 2026?','Coldplay\'s Music of the Spheres Tour returns to Europe June-July 2026: London, Paris, Berlin, Barcelona, Milan.'],['How much are Coldplay tickets?','Coldplay tickets from \u20ac69 general admission. Category A from \u20ac149. Floor from \u20ac249. VIP from \u20ac495.'],['Are Coldplay tickets still available?','Yes! We have verified resale tickets for all European dates. New tickets added daily.']]}
       };
 
-      /* Generate JSON-LD structured data for the current page */
-      var schema=S[p];
-      if(schema){
-        var ld={"@context":"https://schema.org","@graph":[]};
-
-        /* Event + AggregateOffer */
-        var ev={"@type":"Event","name":schema.name,"startDate":schema.date,"endDate":schema.endDate||schema.date,
-          "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled",
-          "location":{"@type":"Place","name":schema.venue,"address":{"@type":"PostalAddress","addressLocality":schema.city,"addressCountry":schema.country}},
-          "offers":{"@type":"AggregateOffer","lowPrice":schema.low,"highPrice":schema.high,"priceCurrency":"EUR","availability":"https://schema.org/InStock","url":u,"validFrom":"2025-01-01"},
-          "organizer":{"@type":"Organization","name":"EuroMatchTickets","url":B},
-          "performer":{"@type":schema.cat==='Football'?"SportsTeam":schema.cat==='Concert'?"MusicGroup":"SportsOrganization","name":schema.perf},
-          "image":B+"/og-image.jpg","description":d};
-        ld["@graph"].push(ev);
-
-        /* AggregateRating */
-        ld["@graph"].push({"@type":"Product","name":schema.name+" Tickets","description":d,"brand":{"@type":"Brand","name":"EuroMatchTickets"},"offers":{"@type":"AggregateOffer","lowPrice":schema.low,"highPrice":schema.high,"priceCurrency":"EUR","availability":"https://schema.org/InStock","url":u},
-          "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"12847","bestRating":"5","worstRating":"1"}});
-
-        /* FAQPage */
-        if(schema.faq&&schema.faq.length){
-          var faqSchema={"@type":"FAQPage","mainEntity":[]};
-          for(var fi=0;fi<schema.faq.length;fi++){
-            faqSchema.mainEntity.push({"@type":"Question","name":schema.faq[fi][0],"acceptedAnswer":{"@type":"Answer","text":schema.faq[fi][1]}});
-          }
-          ld["@graph"].push(faqSchema);
-        }
-
-        /* Breadcrumb */
-        var slug=p.replace(/^\//,'');
-        var breadName=slug.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
-        ld["@graph"].push({"@type":"BreadcrumbList","itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Home","item":B},
-          {"@type":"ListItem","position":2,"name":breadName,"item":u}
-        ]});
-
-        var ldScript=document.createElement('script');
-        ldScript.type='application/ld+json';
-        ldScript.textContent=JSON.stringify(ld);
-        document.head.appendChild(ldScript);
-      }
-
       /* ===== STORE H1 FOR BODY SCRIPT ===== */
       window.__seoH1=h1;
     })();
     </script>
     
-    <!-- Complete Structured Data (@graph) -->
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"EuroMatchTickets","url":"https://euromatchtickets.com","logo":{"@type":"ImageObject","url":"https://euromatchtickets.com/logo/euromatch-logo.png","width":600,"height":600},"description":"Europe's #1 ticket marketplace for football, concerts, F1, and sporting events.","foundingDate":"2025","sameAs":["https://twitter.com/euromatchtickets","https://facebook.com/euromatchtickets","https://instagram.com/euromatchtickets"],"contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"support@euromatchtickets.com","availableLanguage":["English","German","French","Spanish","Arabic"]},"areaServed":{"@type":"Continent","name":"Europe"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"12847","bestRating":"5","worstRating":"1"}},{"@type":"WebSite","name":"EuroMatchTickets","url":"https://euromatchtickets.com","potentialAction":{"@type":"SearchAction","target":"https://euromatchtickets.com/events?search={search_term_string}","query-input":"required name=search_term_string"},"inLanguage":["en","de","fr","es","it"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://euromatchtickets.com"},{"@type":"ListItem","position":2,"name":"Events","item":"https://euromatchtickets.com/events"},{"@type":"ListItem","position":3,"name":"Football Tickets","item":"https://euromatchtickets.com/football-tickets"},{"@type":"ListItem","position":4,"name":"F1 Tickets","item":"https://euromatchtickets.com/f1-tickets"},{"@type":"ListItem","position":5,"name":"Concert Tickets","item":"https://euromatchtickets.com/concerts"}]}]}</script>
+    <!-- Structured Data handled by React components to avoid duplication -->
     
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />

@@ -50,7 +50,8 @@ const HarryStylesPage = () => {
     "performer": {"@type": "Person", "name": "Harry Styles"},
     "description": "Harry Styles live in concert. Together Together Tour 2026. VIP tickets from €427 to €15,300.",
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "AggregateOffer", "lowPrice": 427, "highPrice": 15300, "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/harry-styles-tickets", "validFrom": "2025-01-01"}
+    "offers": {"@type": "AggregateOffer", "lowPrice": 427, "highPrice": 15300, "priceCurrency": "EUR",
+              "offerCount": "100", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/harry-styles-tickets", "validFrom": "2025-01-01"}
   };
 
   return (

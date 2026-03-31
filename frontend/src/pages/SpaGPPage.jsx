@@ -22,7 +22,8 @@ const SpaGPPage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "109", "highPrice": "1499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-belgian-grand-prix-spa-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "109", "highPrice": "1499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-belgian-grand-prix-spa-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

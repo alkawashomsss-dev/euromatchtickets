@@ -18,7 +18,8 @@ const RealMadridHubPage = () => {
     "location": { "@type": "Place", "name": "Santiago Bernabeu", "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES" } },
     "performer": { "@type": "SportsTeam", "name": "Real Madrid CF" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "75", "highPrice": "2500", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/real-madrid-tickets" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "75", "highPrice": "2500", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/real-madrid-tickets" }
   };
 
   const reviewSchema = {

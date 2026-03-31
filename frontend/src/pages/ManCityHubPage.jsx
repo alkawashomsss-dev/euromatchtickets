@@ -18,7 +18,8 @@ const ManCityHubPage = () => {
     "location": { "@type": "Place", "name": "Etihad Stadium", "address": { "@type": "PostalAddress", "addressLocality": "Manchester", "addressCountry": "GB" } },
     "performer": { "@type": "SportsTeam", "name": "Manchester City FC" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/manchester-city-tickets" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "65", "highPrice": "1800", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/manchester-city-tickets" }
   };
 
   const reviewSchema = {

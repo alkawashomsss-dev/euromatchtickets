@@ -65,7 +65,8 @@ const BayernRealMadridPage = () => {
       { "@type": "SportsTeam", "name": "Real Madrid CF" }
     ],
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "199", "highPrice": "2999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/bayern-vs-real-madrid-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "199", "highPrice": "2999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/bayern-vs-real-madrid-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

@@ -124,6 +124,7 @@ const Maroon5Page = () => {
       "lowPrice": events[0]?.lowest_price || 71,
       "highPrice": 500,
       "priceCurrency": "EUR",
+      "offerCount": "100",
       "availability": "https://schema.org/InStock",
       "url": "https://euromatchtickets.com/maroon-5-tickets",
       "validFrom": "2025-01-01"

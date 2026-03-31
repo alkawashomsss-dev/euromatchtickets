@@ -18,7 +18,8 @@ const SaudiGPPage = () => {
     "location": { "@type": "Place", "name": "Jeddah Corniche Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Jeddah", "addressCountry": "SA" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "169", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "169", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

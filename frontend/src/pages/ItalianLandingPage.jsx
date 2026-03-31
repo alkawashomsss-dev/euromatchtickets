@@ -42,7 +42,8 @@ const ItalianLandingPage = () => {
     "name": "Biglietti EuroMatchTickets - Italia",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1834", "bestRating": "5" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "39", "highPrice": "2500" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "39", "highPrice": "2500" }
   };
 
   return (

@@ -18,7 +18,8 @@ const AustraliaGPPage = () => {
     "location": { "@type": "Place", "name": "Albert Park Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "159", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "159", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [

@@ -18,7 +18,8 @@ const BadBunnyPage = () => {
     "location": { "@type": "Place", "name": "Tottenham Hotspur Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "MusicGroup", "name": "Bad Bunny" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "145", "highPrice": "600", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/bad-bunny-london-2026", "validFrom": "2025-01-01" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
+              "offerCount": "100", "lowPrice": "145", "highPrice": "600", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/bad-bunny-london-2026", "validFrom": "2025-01-01" }
   };
 
   // Real confirmed dates
