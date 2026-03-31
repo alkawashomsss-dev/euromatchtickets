@@ -1,0 +1,76 @@
+{
+  "summary": "Comprehensive testing of SEO canonical tag fix. All tests passed - canonical tags are correctly set per page, only 1 canonical tag exists per page, robots meta shows 'index, follow' for active pages and 'noindex, nofollow' for 2025 pages, hreflang tags are present for multilingual pages.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/seo/page/euro-indexing", "issue": "Returns 404 - page 'euro-indexing' does not exist in database (expected behavior, not a bug)"}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "All pages", "issues": ["401 errors in console for some API calls (likely auth-related endpoints) - not affecting SEO functionality"]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_seo_canonical.py",
+    "/app/test_reports/pytest/pytest_seo_canonical.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Static HTML (index.html) correctly has canonical tag with empty href at line 26 - JS fills it in",
+    "Vanilla JS script (lines 29-307) correctly sets page-specific canonical URLs synchronously",
+    "2025 page detection (is2025=p.indexOf('2025')!==-1) correctly triggers noindex",
+    "SEOHead.jsx correctly removes duplicate canonical tags before setting new one (lines 82-92)",
+    "DynamicSEOPage.jsx correctly does NOT set noindex when API fails (lines 76-91) - protects indexing",
+    "Hreflang tags are properly implemented for multilingual pages (6 languages supported)",
+    "JSON-LD structured data is present on dynamic SEO pages (6 scripts on Bayern Munich page)"
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100% (21/21 pytest tests passed)",
+    "frontend": "100% (23/23 Playwright tests passed)"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "SEO canonical tag fix has been verified. Key implementation: 1) Static HTML has <link rel='canonical' id='canonical-tag' href=''> with empty href. 2) Vanilla JS in index.html immediately sets correct canonical per page. 3) React SEOHead.jsx also updates canonical when mounted. 4) 2025 pages get noindex via vanilla JS detection. 5) DynamicSEOPage.jsx does NOT override with noindex on API failure. All pages tested: homepage, champions-league-tickets, f1-tickets, es/comprar-entradas, de/tickets-kaufen, world-cup-2026, bayern-munich-tickets, f1-tickets-2025.",
+  "passed_tests": {
+    "backend_api_tests": [
+      "test_indexing_status_endpoint: PASSED - Returns 1098 active, 664 inactive pages",
+      "test_seo_page_active: PASSED - bayern-munich-tickets returns correct data",
+      "test_seo_page_not_found: PASSED - Returns 404 for non-existent pages",
+      "test_seo_pages_list: PASSED - Returns paginated list of 1762 pages",
+      "test_seo_stats: PASSED - Returns category breakdown",
+      "test_sitemap_xml: PASSED - Returns valid XML sitemap",
+      "test_robots_txt: PASSED - Returns correct robots.txt"
+    ],
+    "static_html_tests": [
+      "test_homepage_has_canonical_tag: PASSED - Has id='canonical-tag' with empty href",
+      "test_homepage_has_robots_meta: PASSED - Has 'index, follow' directive",
+      "test_static_html_has_vanilla_js_seo: PASSED - Has setMeta function and 2025 detection"
+    ],
+    "page_specific_canonical_tests": [
+      "Homepage: PASSED - canonical=https://euromatchtickets.com/, robots=index,follow",
+      "Champions League: PASSED - canonical=https://euromatchtickets.com/champions-league-tickets",
+      "F1 Tickets: PASSED - canonical=https://euromatchtickets.com/f1-tickets",
+      "Spanish Page: PASSED - canonical=https://euromatchtickets.com/es/comprar-entradas",
+      "German Page: PASSED - canonical=https://euromatchtickets.com/de/tickets-kaufen",
+      "World Cup 2026: PASSED - canonical=https://euromatchtickets.com/world-cup-2026",
+      "Bayern Munich: PASSED - canonical=https://euromatchtickets.com/bayern-munich-tickets"
+    ],
+    "noindex_tests": [
+      "2025 Page: PASSED - robots=noindex,nofollow, title='Page Removed | EuroMatchTickets'"
+    ],
+    "hreflang_tests": [
+      "Spanish Page: PASSED - 6 hreflang tags (x-default, es, en, de, fr, it)"
+    ],
+    "json_ld_tests": [
+      "Bayern Munich: PASSED - 6 JSON-LD structured data scripts"
+    ]
+  },
+  "failed_tests": {},
+  "test_credentials": "None required - public pages",
+  "notes": "The 401 errors in console are for auth-related endpoints (likely user session checks) and do not affect SEO functionality. The /api/seo/page/euro-indexing endpoint returns 404 because there is no page with slug 'euro-indexing' in the database - this is expected behavior."
+}
