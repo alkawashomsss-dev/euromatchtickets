@@ -1,51 +1,44 @@
 # EuroMatchTickets - PRD
 
 ## Original Problem Statement
-Build `euromatchtickets.com`, a ticket marketplace with primary focus on achieving top search engine rankings through aggressive SEO strategy. Goal: sell 1,000 tickets in the first month.
+Build `euromatchtickets.com`, a ticket marketplace with primary focus on achieving top search engine rankings through aggressive SEO strategy.
 
-## Architecture
-- **Frontend:** React + Tailwind CSS + Shadcn/UI
-- **Backend:** FastAPI + MongoDB
-- **SEO Engine:** Vanilla JS in index.html for pre-hydration meta tags
-- **Structured Data:** Fully managed by React components (no duplication)
-- **Indexing:** IndexNow API (Bing/Yandex) + Background Auto-Indexer
+## SEO Keyword Strategy (Based on GSC Data)
+### High-Priority Keywords (Impressions detected):
+- "monza f1 tickets" → /monza-f1-tickets + /f1-italian-grand-prix-monza-tickets
+- "italian grand prix tickets" → /italian-grand-prix-tickets
+- "taylor swift london tickets" → /taylor-swift-london-tickets
+- "taylor swift tickets" → /taylor-swift-tickets
+- "bahrain gp tickets" → /bahrain-gp-tickets + /f1-bahrain-grand-prix-tickets
+- "belgian grand prix tickets" → /belgian-grand-prix-tickets + /f1-belgian-grand-prix-spa-tickets
+- "motogp tickets" → /motogp-tickets
+- "f1 2026 tickets" → /f1-2026-tickets + /f1-tickets-2026
+- "spa francorchamps tickets" → /spa-francorchamps-tickets
+- "event ticket shop" → / (homepage)
+- "champions league knockout stage tickets" → /champions-league-knockout-stage-tickets
 
-## SEO Protection Rules
-- 2025 pages: `noindex, nofollow` + `410 Gone`
-- `/event/*` detail pages: `noindex, nofollow` + `410 Gone` for non-existent events
-- Active SEO pages: `index, follow` with proper canonical
-- Static HTML meta tags: robots=empty, canonical=empty (JS fills both)
-- All Product/Event schemas ALWAYS include `offers` field
-
-## Database Status
-- Preview DB: 1,762 pages (1,098 active + 664 inactive)
-- **Production DB: 1,098 active pages (synced with prices)**
+## Sitemap Status
+- Total URLs: ~1,290 (after cleanup)
+- Removed: 168 dead 2027 pages
+- Fixed: 722 pages from priority 0.00 → 0.85
+- Added: 11 new keyword-optimized pages (priority 0.90)
 
 ## Completed
-- [x] Fix Soft 404 - fallback content when API fails
-- [x] Fix Duplicate canonical - empty href in static HTML
-- [x] Add `offers` to ALL Product/Event schemas (always present)
-- [x] Add prices to 266 pages missing them
-- [x] Set `/event/*` pages to `noindex, nofollow`
-- [x] Add `410 Gone` for non-existent `/event/*` URLs
-- [x] Sync 1,098 pages with prices to production
-- [x] Populate production database
+- [x] Keyword-optimized titles matching exact search queries
+- [x] 11 new landing pages for high-impression keywords
+- [x] Sitemap cleanup (removed 2027, fixed priorities)
+- [x] Production DB synced with 1,109 active pages
+- [x] /event/* pages set to noindex + 410 Gone
+- [x] All Product schemas always include offers field
+- [x] Soft 404 fix with real fallback content
+- [x] Canonical tag fix
 
 ## P1 (Next)
-- [ ] Enhance Owner Dashboard (charts + sales reports)
-- [ ] Activate Next Batch of 100 SEO Pages
-
-## P2 (Future)
-- [ ] Price Comparison Tables
-- [ ] Ticket Supplier Affiliate Program
-
-## Known Issues
-- Login uses Emergent-managed Google Auth
+- [ ] Enhance Owner Dashboard
+- [ ] Activate Next Batch of SEO Pages
 
 ## Date Log
-- 2026-03-31: Added `offers` to ALL Product/Event schemas (always present, with fallback prices)
-- 2026-03-31: Added prices to 266 pages missing price_low/price_high
-- 2026-03-31: Set `/event/*` pages to noindex + 410 Gone for non-existent events
-- 2026-03-31: Synced all 1,098 active pages with prices to production
-- 2026-03-31: Fixed Soft 404 by showing real content on API failure
-- 2026-03-31: Fixed Duplicate canonical with empty href in static HTML
+- 2026-03-31: Created 11 keyword-optimized landing pages
+- 2026-03-31: Optimized titles for top GSC keywords
+- 2026-03-31: Cleaned sitemaps: removed 168 2027-pages, fixed 722 priorities
+- 2026-03-31: Synced all to production
