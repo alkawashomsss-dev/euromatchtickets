@@ -344,6 +344,12 @@ export default function DynamicSEOPage() {
               )}
             </nav>
 
+            {/* Google Merchant Center Required: Resale Marketplace Disclosure */}
+            <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 text-xs px-3 py-1.5 rounded-md mb-4" data-testid="resale-disclosure">
+              <Shield className="w-3 h-3 flex-shrink-0" />
+              <span>Independent resale marketplace. Prices may be above or below face value. All sales are final. <Link to="/buyer-protection" className="underline font-medium">FanProtect Guarantee</Link></span>
+            </div>
+
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <Badge className={style.badge} data-testid="seo-category-badge">
                 {page.category?.toUpperCase()}

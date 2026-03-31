@@ -127,6 +127,194 @@ async def _build_full_sitemap():
     return Response(content='\n'.join(xml_items), media_type="application/xml", headers={"Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=3600"})
 
 
+# ============================================================
+# GOOGLE MERCHANT CENTER PRODUCT FEED
+# ============================================================
+
+# Category-specific images for product feed
+CATEGORY_IMAGES = {
+    "f1": "/images/heroes/f1-red-lg.webp",
+    "football": "/images/heroes/football-stadium-lg.webp",
+    "concert": "/images/heroes/concert-purple-lg.webp",
+    "worldcup": "/images/heroes/football-stadium-lg.webp",
+    "motorsport": "/images/heroes/motogp-lg.webp",
+    "motogp": "/images/heroes/motogp-lg.webp",
+}
+
+# Google product category taxonomy for event tickets
+GOOGLE_PRODUCT_CATEGORIES = {
+    "f1": "Arts & Entertainment > Event Tickets > Sporting Event Tickets",
+    "football": "Arts & Entertainment > Event Tickets > Sporting Event Tickets",
+    "concert": "Arts & Entertainment > Event Tickets > Concert & Music Festival Tickets",
+    "worldcup": "Arts & Entertainment > Event Tickets > Sporting Event Tickets",
+    "motorsport": "Arts & Entertainment > Event Tickets > Sporting Event Tickets",
+    "motogp": "Arts & Entertainment > Event Tickets > Sporting Event Tickets",
+}
+
+def _xml_escape(text):
+    """Escape special XML characters."""
+    if not text:
+        return ""
+    return str(text).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&apos;")
+
+
+@router.get("/merchant/feed.xml")
+async def google_merchant_feed():
+    """
+    Google Merchant Center Product Feed (RSS 2.0 with Google namespace).
+    Serves all active ticket products for Google Shopping.
+    """
+    base_url = SITE_URL
+
+    # Fetch all active SEO pages with prices
+    pages = await db.seo_pages.find(
+        {"active": True, "price_low": {"$gt": 0}},
+        {"_id": 0, "slug": 1, "title": 1, "description": 1, "meta_description": 1,
+         "category": 1, "city": 1, "country": 1, "venue": 1, "year": 1,
+         "price_low": 1, "price_high": 1, "page_type": 1, "keywords": 1}
+    ).to_list(5000)
+
+    xml_parts = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">',
+        '<channel>',
+        f'<title>EuroMatchTickets - Event Tickets</title>',
+        f'<link>{base_url}</link>',
+        '<description>Europe\'s cheapest verified ticket marketplace for football, F1, concerts and sports events. Independent resale marketplace.</description>',
+    ]
+
+    for page in pages:
+        slug = page.get("slug", "")
+        title = page.get("title", "").split("|")[0].strip()
+        cat = page.get("category", "other")
+        city = page.get("city", "Europe")
+        country = page.get("country", "EU")
+        venue = page.get("venue", "")
+        price_low = page.get("price_low", 0)
+        price_high = page.get("price_high", 0)
+        year = page.get("year", 2026)
+
+        # Clean title - remove price from title for GMC (price is separate field)
+        clean_title = title
+        for suffix in ["| EuroMatchTickets", "| EMT"]:
+            clean_title = clean_title.replace(suffix, "").strip()
+
+        # Build description - must be factual, no promotional language
+        desc = page.get("meta_description") or page.get("description", "")
+        if not desc:
+            desc = f"Verified {clean_title} available on EuroMatchTickets. Independent resale marketplace."
+        # Clean description - remove promotional gimmicks
+        desc = desc[:4500]  # Google limit is 5000
+
+        # Image URL
+        img_path = CATEGORY_IMAGES.get(cat, "/images/heroes/football-stadium-lg.webp")
+        img_url = f"{base_url}{img_path}"
+
+        # Google product category
+        g_cat = GOOGLE_PRODUCT_CATEGORIES.get(cat, "Arts & Entertainment > Event Tickets")
+
+        # Product type (custom taxonomy)
+        if cat == "f1":
+            product_type = f"Tickets > Motorsport > Formula 1 > {city}"
+        elif cat == "football":
+            product_type = f"Tickets > Football > {city}"
+        elif cat == "concert":
+            product_type = f"Tickets > Concerts > {city}"
+        elif cat == "worldcup":
+            product_type = f"Tickets > Football > FIFA World Cup 2026 > {city}"
+        else:
+            product_type = f"Tickets > Sports > {city}"
+
+        # Country code mapping
+        country_codes = {
+            "GB": "GB", "UK": "GB", "US": "US", "USA": "US",
+            "ES": "ES", "Spain": "ES", "IT": "IT", "Italy": "IT",
+            "DE": "DE", "Germany": "DE", "FR": "FR", "France": "FR",
+            "NL": "NL", "Netherlands": "NL", "BE": "BE", "Belgium": "BE",
+            "PT": "PT", "Portugal": "PT", "AT": "AT", "Austria": "AT",
+            "IE": "IE", "Ireland": "IE", "TR": "TR", "Turkey": "TR",
+            "BH": "BH", "Bahrain": "BH", "CA": "CA", "Canada": "CA",
+            "MX": "MX", "Mexico": "MX", "IM": "GB", "EU": "DE",
+            "SG": "SG", "AE": "AE", "JP": "JP", "AU": "AU", "BR": "BR",
+        }
+        iso_country = country_codes.get(country, "DE")
+
+        xml_parts.append('<item>')
+        xml_parts.append(f'  <g:id>{_xml_escape(slug)}</g:id>')
+        xml_parts.append(f'  <g:title>{_xml_escape(clean_title)}</g:title>')
+        xml_parts.append(f'  <g:description>{_xml_escape(desc)}</g:description>')
+        xml_parts.append(f'  <g:link>{base_url}/{slug}</g:link>')
+        xml_parts.append(f'  <g:image_link>{img_url}</g:image_link>')
+        xml_parts.append(f'  <g:price>{price_low} EUR</g:price>')
+        if price_high and price_high > price_low:
+            xml_parts.append(f'  <g:sale_price>{price_low} EUR</g:sale_price>')
+        xml_parts.append(f'  <g:availability>in_stock</g:availability>')
+        xml_parts.append(f'  <g:condition>new</g:condition>')
+        xml_parts.append(f'  <g:brand>EuroMatchTickets</g:brand>')
+        xml_parts.append(f'  <g:google_product_category>{_xml_escape(g_cat)}</g:google_product_category>')
+        xml_parts.append(f'  <g:product_type>{_xml_escape(product_type)}</g:product_type>')
+        xml_parts.append(f'  <g:identifier_exists>false</g:identifier_exists>')
+        # Shipping - free e-ticket delivery
+        xml_parts.append(f'  <g:shipping>')
+        xml_parts.append(f'    <g:country>{iso_country}</g:country>')
+        xml_parts.append(f'    <g:service>E-Ticket Delivery</g:service>')
+        xml_parts.append(f'    <g:price>0 EUR</g:price>')
+        xml_parts.append(f'  </g:shipping>')
+        # Custom labels for campaign management
+        xml_parts.append(f'  <g:custom_label_0>{_xml_escape(cat)}</g:custom_label_0>')
+        xml_parts.append(f'  <g:custom_label_1>{_xml_escape(city)}</g:custom_label_1>')
+        if price_low <= 50:
+            xml_parts.append(f'  <g:custom_label_2>budget</g:custom_label_2>')
+        elif price_low <= 100:
+            xml_parts.append(f'  <g:custom_label_2>mid-range</g:custom_label_2>')
+        else:
+            xml_parts.append(f'  <g:custom_label_2>premium</g:custom_label_2>')
+        xml_parts.append(f'  <g:custom_label_3>{year}</g:custom_label_3>')
+        xml_parts.append('</item>')
+
+    xml_parts.append('</channel>')
+    xml_parts.append('</rss>')
+
+    return Response(
+        content='\n'.join(xml_parts),
+        media_type="application/xml",
+        headers={
+            "Content-Type": "application/xml; charset=utf-8",
+            "Cache-Control": "public, max-age=3600"
+        }
+    )
+
+
+@router.get("/merchant/feed-status")
+async def merchant_feed_status():
+    """Check the status and stats of the Google Merchant Center feed."""
+    total = await db.seo_pages.count_documents({"active": True, "price_low": {"$gt": 0}})
+    by_cat = {}
+    for cat in ["f1", "football", "concert", "worldcup", "motorsport", "motogp"]:
+        count = await db.seo_pages.count_documents({"active": True, "price_low": {"$gt": 0}, "category": cat})
+        if count > 0:
+            by_cat[cat] = count
+
+    return {
+        "status": "active",
+        "feed_url": f"{SITE_URL}/api/merchant/feed.xml",
+        "total_products": total,
+        "products_by_category": by_cat,
+        "feed_format": "RSS 2.0 with Google Shopping namespace",
+        "currency": "EUR",
+        "shipping": "Free e-ticket delivery",
+        "update_frequency": "hourly",
+        "instructions": {
+            "step_1": "Go to https://merchants.google.com",
+            "step_2": "Add and verify your website: euromatchtickets.com",
+            "step_3": f"Add feed URL: {SITE_URL}/api/merchant/feed.xml",
+            "step_4": "Apply for Event Ticket Seller certification in Google Ads",
+            "step_5": "Products will appear in Google Shopping within 2-5 days"
+        }
+    }
+
+
+
 @router.get("/sitemap-index.xml")
 async def get_sitemap_index():
     base_url = FRONTEND_URL
@@ -294,6 +482,9 @@ Allow: /
 Allow: /api/sitemap-index.xml
 Allow: /api/sitemap.xml
 Allow: /api/sitemaps/
+
+# Allow Google Merchant Center feed
+Allow: /api/merchant/feed.xml
 
 # Allow images for Google Image Search
 Allow: /images/

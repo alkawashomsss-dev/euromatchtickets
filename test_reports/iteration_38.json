@@ -1,0 +1,71 @@
+{
+  "summary": "Google Merchant Center integration fully tested. All 19 backend tests passed. Feed endpoint /api/merchant/feed.xml returns valid RSS 2.0 XML with Google Shopping namespace containing 1200 products. All products have required fields (g:id, g:title, g:description, g:link, g:image_link, g:price, g:availability, g:condition, g:brand), unique IDs, non-zero prices in 'XX EUR' format, correct google_product_category, shipping info with free e-ticket delivery, and custom labels. Frontend resale disclosure visible on landing pages. robots.txt updated to allow merchant feed.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_google_merchant_feed.py",
+    "/app/test_reports/pytest/pytest_merchant_feed.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Added Allow: /api/merchant/feed.xml to backend API robots.txt for consistency with frontend public/robots.txt"
+  ],
+  "updated_files": [
+    "/app/backend/routes/seo.py",
+    "/app/backend/tests/test_google_merchant_feed.py"
+  ],
+  "success_rate": {
+    "backend": "100% (19/19 tests passed)",
+    "frontend": "100% (resale disclosure verified)"
+  },
+  "seed_data_creation": "1200 products from seo_pages collection with active=True and price_low > 0",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Google Merchant Center feed fully functional. Key findings: 1) /api/merchant/feed.xml returns valid RSS 2.0 XML with xmlns:g namespace. 2) Feed contains 1200 products (387 F1, 269 football, 446 concert, 28 worldcup). 3) All products have unique IDs (slug-based), non-zero prices in 'XX EUR' format, correct google_product_category for event tickets. 4) Products include shipping (free e-ticket), custom_labels (category, city, price tier, year), identifier_exists=false. 5) /api/merchant/feed-status returns feed stats. 6) Frontend resale disclosure shows 'Independent resale marketplace' with data-testid='resale-disclosure'. 7) robots.txt allows /api/merchant/feed.xml.",
+  "passed_tests": {
+    "backend_api_tests": [
+      "GET /api/merchant/feed.xml - 200 with XML content type",
+      "Feed is valid XML with rss root element",
+      "Feed has RSS 2.0 format with Google namespace xmlns:g",
+      "Feed has channel with title, link, description",
+      "Feed contains 1200 products",
+      "Products have all required Google fields (g:id, g:title, g:description, g:link, g:image_link, g:price, g:availability, g:condition, g:brand)",
+      "All 1200 product IDs are unique (no duplicates)",
+      "All products have non-zero prices in 'XX EUR' format",
+      "Products have correct google_product_category for event tickets",
+      "Products have shipping info with free e-ticket delivery (0 EUR)",
+      "Products have custom labels (category, city, price tier, year)",
+      "Feed has no HTML entities or broken characters",
+      "Products have identifier_exists=false",
+      "GET /api/merchant/feed-status - 200 with feed_url, total_products, products_by_category",
+      "Feed status shows categories: f1=387, football=269, concert=446, worldcup=28",
+      "robots.txt allows /api/merchant/feed.xml",
+      "robots.txt allows /api/sitemap.xml"
+    ],
+    "frontend_ui_tests": [
+      "/f1-tickets-london-2026: Resale disclosure visible with 'Independent resale marketplace' text",
+      "data-testid='resale-disclosure' element found and contains correct text",
+      "Page title, category badge, price CTA, trust signals all render correctly"
+    ]
+  },
+  "failed_tests": {},
+  "test_credentials": "None required - public endpoints",
+  "feed_stats": {
+    "total_products": 1200,
+    "products_by_category": {
+      "f1": 387,
+      "football": 269,
+      "concert": 446,
+      "worldcup": 28
+    },
+    "feed_format": "RSS 2.0 with Google Shopping namespace",
+    "currency": "EUR"
+  }
+}

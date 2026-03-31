@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Allow: /api/merchant/feed.xml
+Allow: /api/sitemap.xml
+Allow: /api/seo/sitemap.xml
 Disallow: /admin
 Disallow: /owner
 Disallow: /seller
