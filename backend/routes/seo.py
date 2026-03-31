@@ -15,6 +15,37 @@ BING_API_KEY = os.environ.get("BING_WEBMASTER_API_KEY", "")
 SITE_URL = "https://euromatchtickets.com"
 
 
+
+@router.post("/seo/bulk-import")
+async def bulk_import_seo_pages(request: Request):
+    """Import SEO pages in bulk - used to sync preview DB to production."""
+    try:
+        data = await request.json()
+        pages = data.get("pages", [])
+        if not pages:
+            return {"status": "error", "message": "No pages provided"}
+        
+        imported = 0
+        for page in pages:
+            slug = page.get("slug")
+            if not slug:
+                continue
+            # Upsert - update if exists, insert if not
+            await db.seo_pages.update_one(
+                {"slug": slug},
+                {"$set": page},
+                upsert=True
+            )
+            imported += 1
+        
+        total = await db.seo_pages.count_documents({})
+        return {"status": "success", "imported": imported, "total_in_db": total}
+    except Exception as e:
+        logger.error(f"Bulk import error: {e}")
+        return {"status": "error", "message": str(e)}
+
+
+
 # Serve IndexNow key file from backend (bypasses Cloudflare frontend protection)
 @router.get(f"/{INDEXNOW_KEY}.txt")
 async def serve_indexnow_key():
