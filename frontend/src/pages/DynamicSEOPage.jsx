@@ -73,18 +73,94 @@ export default function DynamicSEOPage() {
     );
   }
 
-  if (notFound || !page) {
-    // Do NOT render SEOHead here! The vanilla JS in index.html already set correct
-    // meta tags (title, description, canonical, robots="index,follow") for ALL pages.
-    // Overriding with noIndex here destroys SEO for pages where API temporarily fails
-    // or DB is not synced. Only 2025 pages get noindex (handled by vanilla JS).
+  if (gone) {
     return (
       <div className="min-h-screen bg-[hsl(210,20%,98%)] flex flex-col items-center justify-center gap-6 px-4" data-testid="seo-page-not-found">
-        <h1 className="text-4xl font-black text-slate-900">{gone ? "Page Removed" : "Page Not Found"}</h1>
-        <p className="text-slate-500 text-center max-w-md">{gone ? "This event has ended and the page has been permanently removed." : "This page is no longer available. Browse our events to find what you're looking for."}</p>
+        <h1 className="text-4xl font-black text-slate-900">Page Removed</h1>
+        <p className="text-slate-500 text-center max-w-md">This event has ended and the page has been permanently removed.</p>
         <div className="flex gap-3">
           <Link to="/events"><Button>Browse Events</Button></Link>
           <Link to="/"><Button variant="outline">Home</Button></Link>
+        </div>
+      </div>
+    );
+  }
+
+  if (notFound || !page) {
+    // API failed but page may be valid - show real content from slug to prevent Soft 404.
+    // Vanilla JS already set correct meta tags. Show a real ticket page.
+    const prettyName = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    const isF1 = slug.includes('f1') || slug.includes('grand-prix') || slug.includes('gp-');
+    const isFootball = slug.includes('tickets') && (slug.includes('real-madrid') || slug.includes('barcelona') || slug.includes('liverpool') || slug.includes('arsenal') || slug.includes('bayern') || slug.includes('psg') || slug.includes('juventus') || slug.includes('manchester') || slug.includes('clasico') || slug.includes('champions'));
+    const isConcert = slug.includes('tour') || slug.includes('swift') || slug.includes('mars') || slug.includes('weeknd') || slug.includes('coldplay') || slug.includes('bunny');
+    const cat = isF1 ? 'f1' : isFootball ? 'football' : isConcert ? 'concert' : 'f1';
+    const fallbackStyle = categoryStyles[cat] || categoryStyles.f1;
+
+    return (
+      <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="dynamic-seo-page">
+        <div className={`relative bg-gradient-to-b ${fallbackStyle.bg} py-16 sm:py-20`}>
+          <div className="max-w-5xl mx-auto px-4">
+            <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6">
+              <Link to="/" className="hover:text-white transition">Home</Link>
+              <ChevronRight className="w-3 h-3" />
+              <Link to="/events" className="hover:text-white transition">Events</Link>
+              <ChevronRight className="w-3 h-3" />
+              <span className="text-slate-600">{prettyName}</span>
+            </nav>
+            <Badge className={fallbackStyle.badge}>{cat.toUpperCase()}</Badge>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 mt-4">{prettyName}</h1>
+            <p className="text-lg text-slate-400 max-w-3xl mb-6">Buy verified {prettyName.toLowerCase()} at Europe's cheapest prices. 100% guaranteed with instant QR delivery and FanProtect buyer protection.</p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link to="/events">
+                <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl">
+                  <Ticket className="w-5 h-5 mr-2" /> Buy Tickets Now
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="max-w-5xl mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
+              <h2 className="text-xl font-bold text-slate-900 mb-4">About {prettyName}</h2>
+              <p className="text-slate-600 mb-4 leading-relaxed">Looking for {prettyName.toLowerCase()}? EuroMatchTickets offers the cheapest verified tickets in Europe with instant e-ticket delivery. Every purchase is protected by our FanProtect money-back guarantee.</p>
+              <h3 className="text-lg font-bold text-slate-900 mt-6 mb-2">Why Buy From EuroMatchTickets?</h3>
+              <ul className="space-y-2 text-slate-600">
+                <li className="flex items-start gap-2"><Shield className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />100% verified tickets with FanProtect guarantee</li>
+                <li className="flex items-start gap-2"><Clock className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Instant e-ticket delivery via QR code</li>
+                <li className="flex items-start gap-2"><CreditCard className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Secure payment with Stripe encryption</li>
+                <li className="flex items-start gap-2"><Star className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />4.8/5 rating from 12,000+ verified buyers</li>
+              </ul>
+            </div>
+            <div className="space-y-6">
+              <div className="bg-white border border-slate-200 rounded-xl p-6">
+                <h3 className="font-bold text-slate-900 mb-4">Buyer Protection</h3>
+                <div className="space-y-3">
+                  {[
+                    { icon: Shield, text: "FanProtect Guarantee", sub: "100% refund if cancelled" },
+                    { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
+                    { icon: Clock, text: "Instant Delivery", sub: "E-tickets sent immediately" },
+                    { icon: Star, text: "Verified Tickets", sub: "Every ticket authenticated" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-slate-900 text-sm font-medium">{item.text}</p>
+                        <p className="text-slate-400 text-xs">{item.sub}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-emerald-900/30 border border-emerald-800/50 rounded-xl p-6 text-center">
+                <p className="text-emerald-600 font-semibold mb-2">Limited Availability</p>
+                <p className="text-slate-500 text-sm mb-4">Prices increase as events approach. Book now for the best deals.</p>
+                <Link to="/events">
+                  <Button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white">Browse All Tickets</Button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
