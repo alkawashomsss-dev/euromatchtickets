@@ -134,4 +134,40 @@
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-tickets-new-york</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.01</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-tickets-los-angeles</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.01</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-tickets-dallas</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.01</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-tickets-miami</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.01</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-tickets-toronto</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.01</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-tickets-mexico-city</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.01</priority>
+  </url>
 </urlset>

@@ -311,11 +311,12 @@ export default function DynamicSEOPage() {
       })}} />
 
       {/* FAQPage Schema - for Google FAQ rich snippets */}
-      {prehydratedFAQ && prehydratedFAQ.length > 0 && (
+      {/* Use prehydratedFAQ if available, otherwise fall back to page.faq from API */}
+      {((prehydratedFAQ && prehydratedFAQ.length > 0) || (page.faq && page.faq.length > 0)) && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          "mainEntity": prehydratedFAQ.map(qa => ({
+          "mainEntity": (prehydratedFAQ && prehydratedFAQ.length > 0 ? prehydratedFAQ : page.faq).map(qa => ({
             "@type": "Question",
             "name": qa[0],
             "acceptedAnswer": { "@type": "Answer", "text": qa[1] }
@@ -347,9 +348,9 @@ export default function DynamicSEOPage() {
               <Badge className={style.badge} data-testid="seo-category-badge">
                 {page.category?.toUpperCase()}
               </Badge>
-              {page.page_type && (
+              {page.city && page.city !== "Europe" && (
                 <Badge variant="outline" className="text-slate-600 border-slate-300">
-                  {page.page_type.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
+                  <MapPin className="w-3 h-3 mr-1" /> {page.city}
                 </Badge>
               )}
               {page.year && (
@@ -400,8 +401,9 @@ export default function DynamicSEOPage() {
                 dangerouslySetInnerHTML={{ __html: renderMarkdown(page.content) }}
               />
               {/* FAQ Section - visible + schema-linked */}
-              {prehydratedFAQ && prehydratedFAQ.length > 0 && (
-                <FAQSection faqs={prehydratedFAQ} title={`${page.title?.split("|")[0]?.split("–")[0]?.trim()} - FAQ`} />
+              {/* Use prehydratedFAQ if available, otherwise fall back to page.faq from API */}
+              {((prehydratedFAQ && prehydratedFAQ.length > 0) || (page.faq && page.faq.length > 0)) && (
+                <FAQSection faqs={prehydratedFAQ && prehydratedFAQ.length > 0 ? prehydratedFAQ : page.faq} title={`${page.title?.split("|")[0]?.split("–")[0]?.trim()} - FAQ`} />
               )}
             </div>
 

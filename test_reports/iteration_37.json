@@ -1,0 +1,72 @@
+{
+  "summary": "Comprehensive testing of 91 programmatic SEO pages completed. All 17 backend API tests passed. Fixed FAQ section not rendering on programmatic pages (was only using prehydratedFAQ, now falls back to page.faq from API). All features verified: unique content, 3 FAQs per page, correct prices, city badges showing actual city names (not 'Programmatic City'), canonical URLs, robots meta 'index,follow', sitemap inclusion, and internal links.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_programmatic_seo_pages.py",
+    "/app/test_reports/pytest/pytest_programmatic_seo.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Fixed DynamicSEOPage.jsx to use page.faq from API when window.__seoFAQ is not set (for programmatic pages not in static index.html)",
+    "FAQPage schema now correctly renders for all programmatic pages",
+    "City badge correctly shows actual city name (e.g., 'Madrid') not internal page_type"
+  ],
+  "updated_files": [
+    "/app/frontend/src/pages/DynamicSEOPage.jsx"
+  ],
+  "success_rate": {
+    "backend": "100% (17/17 tests passed)",
+    "frontend": "100% (all UI tests passed)"
+  },
+  "seed_data_creation": "91 programmatic SEO pages already in MongoDB seo_pages collection",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Programmatic SEO pages fully functional. Key findings: 1) API endpoints return 200 with title, content, faq (3 items), price_low, city for all page types. 2) FAQ section now renders on programmatic pages using page.faq from API. 3) City badges show correct city names. 4) Sitemap includes all programmatic pages. 5) Internal links component shows updated F1 category links including cheap-f1-tickets, f1-tickets-london etc. 6) Canonical URLs point to production domain. 7) Robots meta is 'index, follow'.",
+  "passed_tests": {
+    "backend_api_tests": [
+      "GET /api/seo/page/f1-tickets-london-2026 - 200 with title, content, 3 FAQs, price_low=95, city=London",
+      "GET /api/seo/page/buy-manchester-united-tickets - 200 with correct data",
+      "GET /api/seo/page/world-cup-2026-tickets-miami - 200 with city=Miami",
+      "GET /api/seo/page/concert-tickets-berlin-2026 - 200 with city=Berlin",
+      "GET /api/seo/page/champions-league-tickets-madrid - 200 with city=Madrid",
+      "GET /api/seo/page/cheap-f1-tickets-2026 - 200 (niche page)",
+      "GET /api/seo/page/f1-tickets-barcelona-2026 - 200 with city=Barcelona",
+      "GET /api/seo/page/football-tickets-madrid - 200 with city='Madrid' (NOT 'Programmatic City')",
+      "GET /api/seo/page/buy-chelsea-fc-tickets - 200",
+      "GET /api/seo/page/premier-league-tickets-2026 - 200"
+    ],
+    "data_quality_tests": [
+      "Pages have unique content (300-1200 chars) - PASSED",
+      "Pages have correct price_low (numeric, positive) - PASSED",
+      "Pages have 3 FAQs with proper structure - PASSED"
+    ],
+    "sitemap_tests": [
+      "Sitemap includes f1-tickets-london-2026 - PASSED",
+      "Sitemap includes world-cup-2026-tickets-miami - PASSED",
+      "Sitemap includes concert-tickets-berlin-2026 - PASSED"
+    ],
+    "frontend_ui_tests": [
+      "/f1-tickets-london-2026: H1 renders, price from €95, city badge 'London', canonical correct, robots 'index,follow' - PASSED",
+      "/buy-manchester-united-tickets: H1 renders with correct title - PASSED",
+      "/football-tickets-madrid: City badge shows 'Madrid' NOT 'Programmatic City' - PASSED",
+      "FAQ section renders with 3 items on programmatic pages (after fix) - PASSED",
+      "Internal links component shows F1 category links including cheap-f1-tickets - PASSED"
+    ]
+  },
+  "failed_tests": {},
+  "test_credentials": "None required - public pages",
+  "fix_applied": {
+    "file": "/app/frontend/src/pages/DynamicSEOPage.jsx",
+    "issue": "FAQ section not rendering on programmatic pages",
+    "root_cause": "Component only used prehydratedFAQ (window.__seoFAQ) which is only set for static pages in index.html. Programmatic pages get FAQ data from API response (page.faq).",
+    "fix": "Added fallback to use page.faq when prehydratedFAQ is not available. Updated both FAQ section rendering and FAQPage schema generation."
+  }
+}
