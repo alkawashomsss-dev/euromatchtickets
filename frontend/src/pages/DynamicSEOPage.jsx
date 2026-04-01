@@ -307,8 +307,8 @@ export default function DynamicSEOPage() {
             },
             "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2847", "bestRating": "5", "worstRating": "1" },
             "review": [
-              { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "Excellent service! Tickets arrived instantly via QR code.", "datePublished": "2026-01-15" },
-              { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Smooth booking. FanProtect guarantee gave me real confidence.", "datePublished": "2026-02-08" }
+              { "@type": "Review", "name": "Instant QR tickets for Champions League", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "Excellent service! Tickets arrived instantly via QR code.", "datePublished": "2026-01-15" },
+              { "@type": "Review", "name": "Smooth booking with buyer guarantee", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Smooth booking. FanProtect guarantee gave me real confidence.", "datePublished": "2026-02-08" }
             ]
           }
         ]

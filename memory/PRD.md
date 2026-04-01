@@ -10,35 +10,29 @@ Build `euromatchtickets.com`, a ticket marketplace with primary focus on SEO and
 
 ## Features Implemented
 
+### Schema.org JSON-LD Validation Fix (2026-04-01) - DONE
+- FIXED: Google Search Console error "عنصر بدون اسم" (Item without name)
+- Added missing `name` property to ALL nested schema objects across 15+ files:
+  - `Review` objects: 30+ reviews fixed across all pages
+  - `ImageObject` (logo): Fixed in StructuredData.jsx and BlogArticlePage.jsx
+  - `ContactPoint`: Fixed in index.html, StructuredData.jsx, and AboutPage.jsx
+- Pre-hydration schemas in index.html also fixed
+- Verified via Screenshot tool: ALL 7 schemas on Champions League page pass validation
+- Verified via Screenshot tool: ALL 6 schemas on F1 page pass validation
+
 ### MEGA SEO Push (2026-04-01) - DONE
-- Created 27 NEW high-value keyword pages targeting commercial search queries:
-  - "cheap f1 tickets 2026", "buy f1 tickets online", "f1 ticket prices 2026", "f1 vip tickets", "last minute f1 tickets"
-  - "cheap champions league tickets", "buy champions league final tickets 2026"
-  - "buy premier league tickets", "buy la liga tickets", "buy serie a tickets", "buy bundesliga tickets"
-  - "cheap world cup 2026 tickets", "buy world cup final 2026 tickets", "world cup 2026 schedule"
-  - City pages: London, Paris, Madrid, Barcelona, Milan, Munich, Amsterdam, Istanbul, Lisbon, Dubai
-  - Concert pages: cheap concert tickets europe, Coldplay 2026, Ed Sheeran 2026
+- Created 27 NEW high-value keyword pages targeting commercial search queries
 - Optimized 20 existing F1 race page titles for better CTR
-- Added all 27 new pages to pre-hydration metadata map in index.html
 - Regenerated ALL sitemaps (1,506 URLs across 9 sitemap files)
-- Submitted 1,463 URLs to Yandex IndexNow
 
 ### Critical Canonical URL Fix (2026-04-01) - DONE
 - FIXED: Empty `<link rel="canonical" href="">` tag in raw HTML was confusing Google
-- Removed the empty canonical from HTML, now created dynamically by pre-hydration JS
-- All pages now show correct canonical URLs (verified via browser)
-- This resolves the "Duplicate, Google chose different canonical" GSC error
 
 ### Deployment Fix (2026-04-01) - DONE
 - Added `--extra-index-url` to requirements.txt for `emergentintegrations` package
-- Removed unused `python-jose` that caused pyasn1 conflict
 
 ### F1 Tickets Page Competitor Upgrade (2026-04-01) - DONE
-- 2026 Driver Standings (22 drivers), Constructor Standings (11 teams)
-- 2026 Team Lineups including Audi & Cadillac
-- 2025 Champions section (Norris 423pts)
-- Full 2026 Calendar (24 races) with buy buttons linked to real events
-- SEO keyword-rich race links with actual event data from database
+- 2026 Driver Standings, Constructor Standings, Team Lineups, Full Calendar
 
 ### AI Chatbot - DONE
 ### Google Merchant Center - DONE

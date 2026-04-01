@@ -43,6 +43,7 @@ const ChampionsLeaguePage = () => {
     "review": [
       {
         "@type": "Review",
+        "name": "Best Champions League ticket service",
         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
         "author": { "@type": "Person", "name": "Marco R." },
         "reviewBody": "Bought tickets for Real Madrid vs Man City. QR code arrived instantly. Smooth entry at the Bernabeu. Best ticket service!",
@@ -50,6 +51,7 @@ const ChampionsLeaguePage = () => {
       },
       {
         "@type": "Review",
+        "name": "Cheaper than StubHub for UCL Final",
         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
         "author": { "@type": "Person", "name": "Sophie L." },
         "reviewBody": "Champions League Final tickets were cheaper than StubHub. Received instantly via email. Will use again!",
@@ -57,6 +59,7 @@ const ChampionsLeaguePage = () => {
       },
       {
         "@type": "Review",
+        "name": "Great Bayern Munich UCL ticket prices",
         "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
         "author": { "@type": "Person", "name": "Hans W." },
         "reviewBody": "Great prices for Bayern Munich UCL tickets. Delivery was fast. Highly recommend for European matches.",

@@ -45,8 +45,8 @@ const MonacoGPPage = () => {
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "2847", "bestRating": "5", "worstRating": "1" },
     "review": [
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Philippe D." }, "reviewBody": "The Casino Square grandstand was a dream come true. Saved over €400 compared to the official F1 site!", "datePublished": "2026-02-10" },
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Victoria S." }, "reviewBody": "Yacht hospitality was absolutely incredible. Best day of my life. Worth every euro.", "datePublished": "2025-12-18" }
+      { "@type": "Review", "name": "Casino Square grandstand dream come true", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Philippe D." }, "reviewBody": "The Casino Square grandstand was a dream come true. Saved over €400 compared to the official F1 site!", "datePublished": "2026-02-10" },
+      { "@type": "Review", "name": "Incredible yacht hospitality", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Victoria S." }, "reviewBody": "Yacht hospitality was absolutely incredible. Best day of my life. Worth every euro.", "datePublished": "2025-12-18" }
     ],
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "195", "highPrice": "2995", "offerCount": "384" }
   };

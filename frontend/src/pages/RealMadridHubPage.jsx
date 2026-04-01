@@ -30,9 +30,9 @@ const RealMadridHubPage = () => {
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "2841", "bestRating": "5", "worstRating": "1" },
     "review": [
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Carlos M." }, "reviewBody": "Incredible experience at the Bernabeu! Tickets arrived instantly. Best prices I found anywhere.", "datePublished": "2026-02-20" },
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "James T." }, "reviewBody": "Got El Clasico tickets at amazing prices. QR code worked perfectly at the gate.", "datePublished": "2026-01-15" },
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Yuki H." }, "reviewBody": "Flew from Tokyo for Real Madrid vs Man City. EuroMatchTickets made it so easy!", "datePublished": "2025-12-08" }
+      { "@type": "Review", "name": "Incredible Bernabeu experience", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Carlos M." }, "reviewBody": "Incredible experience at the Bernabeu! Tickets arrived instantly. Best prices I found anywhere.", "datePublished": "2026-02-20" },
+      { "@type": "Review", "name": "El Clasico tickets at great prices", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "James T." }, "reviewBody": "Got El Clasico tickets at amazing prices. QR code worked perfectly at the gate.", "datePublished": "2026-01-15" },
+      { "@type": "Review", "name": "Easy booking from Tokyo", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Yuki H." }, "reviewBody": "Flew from Tokyo for Real Madrid vs Man City. EuroMatchTickets made it so easy!", "datePublished": "2025-12-08" }
     ],
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "75", "highPrice": "2500", "offerCount": "412" }
   };

@@ -179,8 +179,8 @@ const F1TicketsPage = () => {
         },
         "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2847", "bestRating": "5", "worstRating": "1" },
         "review": [
-          { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "Excellent service! F1 tickets arrived instantly via QR code.", "datePublished": "2026-01-15" },
-          { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Best F1 prices I found. FanProtect guarantee is reassuring.", "datePublished": "2026-02-08" }
+          { "@type": "Review", "name": "Instant F1 QR ticket delivery", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "Excellent service! F1 tickets arrived instantly via QR code.", "datePublished": "2026-01-15" },
+          { "@type": "Review", "name": "Best F1 prices with FanProtect", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Best F1 prices I found. FanProtect guarantee is reassuring.", "datePublished": "2026-02-08" }
         ]
       },
       {

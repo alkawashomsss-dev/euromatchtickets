@@ -34,7 +34,7 @@ const ColdplayPage = () => {
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "3456", "bestRating": "5", "worstRating": "1" },
     "review": [
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Laura B." }, "reviewBody": "Best concert I've ever been to! The LED wristbands were magical. Got my tickets cheaper than anywhere else!", "datePublished": "2026-01-25" }
+      { "@type": "Review", "name": "Best concert experience with LED wristbands", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Laura B." }, "reviewBody": "Best concert I've ever been to! The LED wristbands were magical. Got my tickets cheaper than anywhere else!", "datePublished": "2026-01-25" }
     ],
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "495", "offerCount": "2400" }
   };

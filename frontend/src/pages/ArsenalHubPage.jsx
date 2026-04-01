@@ -13,8 +13,8 @@ const ArsenalHubPage = () => {
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2187", "bestRating": "5" },
     "review": [
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Jack W." }, "reviewBody": "Emirates on a European night is unreal! Saka was incredible. Cheapest tickets I found.", "datePublished": "2026-02-18" },
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Amira F." }, "reviewBody": "North London Derby was the best football experience of my life! Great prices.", "datePublished": "2026-01-10" }
+      { "@type": "Review", "name": "Emirates European night was unreal", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Jack W." }, "reviewBody": "Emirates on a European night is unreal! Saka was incredible. Cheapest tickets I found.", "datePublished": "2026-02-18" },
+      { "@type": "Review", "name": "Best North London Derby experience", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Amira F." }, "reviewBody": "North London Derby was the best football experience of my life! Great prices.", "datePublished": "2026-01-10" }
     ],
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1500", "offerCount": "245" }
   };

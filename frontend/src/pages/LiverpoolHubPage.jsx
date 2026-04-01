@@ -13,8 +13,8 @@ const LiverpoolHubPage = () => {
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "3412", "bestRating": "5" },
     "review": [
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Steven G." }, "reviewBody": "Anfield on a Champions League night is something else! Tickets were cheapest I found.", "datePublished": "2026-02-12" },
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Lisa M." }, "reviewBody": "You'll Never Walk Alone live gave me goosebumps. Amazing prices on EuroMatchTickets!", "datePublished": "2026-01-25" }
+      { "@type": "Review", "name": "Anfield Champions League night was incredible", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Steven G." }, "reviewBody": "Anfield on a Champions League night is something else! Tickets were cheapest I found.", "datePublished": "2026-02-12" },
+      { "@type": "Review", "name": "YNWA live gave me goosebumps", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Lisa M." }, "reviewBody": "You'll Never Walk Alone live gave me goosebumps. Amazing prices on EuroMatchTickets!", "datePublished": "2026-01-25" }
     ],
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800", "offerCount": "278" }
   };

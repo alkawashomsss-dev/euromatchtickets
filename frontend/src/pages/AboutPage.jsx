@@ -80,6 +80,7 @@ const AboutPage = () => {
     },
     "contactPoint": {
       "@type": "ContactPoint",
+      "name": "EuroMatchTickets Customer Service",
       "telephone": "+44-20-7946-0958",
       "contactType": "customer service",
       "email": "support@euromatchtickets.com",

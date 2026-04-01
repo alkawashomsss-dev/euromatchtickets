@@ -30,8 +30,8 @@ const ManCityHubPage = () => {
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1923", "bestRating": "5", "worstRating": "1" },
     "review": [
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "David L." }, "reviewBody": "Watched Haaland score a hat-trick! Etihad was electric. Cheapest tickets I found online.", "datePublished": "2026-02-10" },
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sarah M." }, "reviewBody": "Man City vs Real Madrid in the Champions League was incredible. Tickets arrived instantly.", "datePublished": "2026-01-18" }
+      { "@type": "Review", "name": "Haaland hat-trick at electric Etihad", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "David L." }, "reviewBody": "Watched Haaland score a hat-trick! Etihad was electric. Cheapest tickets I found online.", "datePublished": "2026-02-10" },
+      { "@type": "Review", "name": "Man City vs Real Madrid was incredible", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sarah M." }, "reviewBody": "Man City vs Real Madrid in the Champions League was incredible. Tickets arrived instantly.", "datePublished": "2026-01-18" }
     ],
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800", "offerCount": "234" }
   };

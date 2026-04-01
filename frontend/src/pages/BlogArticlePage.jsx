@@ -225,6 +225,7 @@ const BlogArticlePage = () => {
           "name": "EuroMatchTickets",
           "logo": {
             "@type": "ImageObject",
+            "name": "EuroMatchTickets Logo",
             "url": "https://euromatchtickets.com/logo.png"
           }
         },

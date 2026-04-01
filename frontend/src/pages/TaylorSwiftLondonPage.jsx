@@ -70,8 +70,8 @@ const TaylorSwiftLondonPage = () => {
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "5823", "bestRating": "5", "worstRating": "1" },
     "review": [
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Emma R." }, "reviewBody": "Best night ever at Wembley! Tickets arrived instantly. Way cheaper than other sites.", "datePublished": "2026-02-15" },
-      { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Jessica K." }, "reviewBody": "Got floor tickets for my daughter's birthday. Smooth purchase, instant delivery!", "datePublished": "2026-01-20" }
+      { "@type": "Review", "name": "Best night ever at Wembley", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Emma R." }, "reviewBody": "Best night ever at Wembley! Tickets arrived instantly. Way cheaper than other sites.", "datePublished": "2026-02-15" },
+      { "@type": "Review", "name": "Perfect birthday gift floor tickets", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Jessica K." }, "reviewBody": "Got floor tickets for my daughter's birthday. Smooth purchase, instant delivery!", "datePublished": "2026-01-20" }
     ],
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "89", "highPrice": "999", "offerCount": "1200" }
   };

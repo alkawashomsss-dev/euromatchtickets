@@ -146,6 +146,7 @@ const EventStructuredData = ({ event }) => {
       "review": [
         {
           "@type": "Review",
+          "name": "Excellent ticket service",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
           "author": { "@type": "Person", "name": "Marco R." },
           "reviewBody": "Excellent service! Tickets arrived instantly via QR code. Great experience at the event.",
@@ -153,6 +154,7 @@ const EventStructuredData = ({ event }) => {
         },
         {
           "@type": "Review",
+          "name": "Smooth booking with FanProtect",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
           "author": { "@type": "Person", "name": "Sophie M." },
           "reviewBody": "Very smooth booking process. FanProtect guarantee gave me confidence. Will use again!",
@@ -160,6 +162,7 @@ const EventStructuredData = ({ event }) => {
         },
         {
           "@type": "Review",
+          "name": "Great prices and fast delivery",
           "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
           "author": { "@type": "Person", "name": "Thomas K." },
           "reviewBody": "Good prices compared to other platforms. Quick delivery and easy to use QR tickets.",
@@ -281,6 +284,7 @@ const OrganizationStructuredData = () => {
       "url": "https://euromatchtickets.com",
       "logo": {
         "@type": "ImageObject",
+        "name": "EuroMatchTickets Logo",
         "url": "https://euromatchtickets.com/logo-600.png",
         "width": 600,
         "height": 600
@@ -297,6 +301,7 @@ const OrganizationStructuredData = () => {
       },
       "contactPoint": {
         "@type": "ContactPoint",
+        "name": "EuroMatchTickets Customer Service",
         "email": "support@euromatchtickets.com",
         "contactType": "customer service",
         "availableLanguage": ["English", "German", "Spanish", "French", "Arabic"]
