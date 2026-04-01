@@ -56,8 +56,13 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         path = request.url.path
         if response.status_code == 410:
             response.headers["X-Robots-Tag"] = "noindex"
+        elif path.startswith('/api/merchant/') or path.endswith('sitemap.xml') or path == '/api/robots.txt':
+            # Allow Google to read merchant feed and sitemaps
+            response.headers["X-Robots-Tag"] = "index, follow"
         elif not path.startswith('/api/'):
             response.headers["X-Robots-Tag"] = "index, follow"
+        else:
+            response.headers["X-Robots-Tag"] = "noindex"
         
         return response
 
