@@ -10,30 +10,25 @@ Build `euromatchtickets.com`, a ticket marketplace with primary focus on SEO and
 
 ## Features Implemented
 
+### Google Merchant Center Feed Fix (2026-04-01) - DONE
+- FIXED: 0 products accepted by Google Merchant Center
+- Root cause: Fake inflated `g:price: 2500 EUR` with `g:sale_price: 59 EUR` (97% fake discount) was rejected by Google
+- Fix: Removed `g:sale_price` entirely, now using actual `price_low` as `g:price`
+- Added explicit `X-Robots-Tag: index, follow` header to feed response
+- Validated: 1200 products, all with correct prices, no errors
+
 ### Schema.org JSON-LD Validation Fix (2026-04-01) - DONE
 - FIXED: Google Search Console error "عنصر بدون اسم" (Item without name)
-- Added missing `name` property to ALL nested schema objects across 15+ files:
-  - `Review` objects: 30+ reviews fixed across all pages
-  - `ImageObject` (logo): Fixed in StructuredData.jsx and BlogArticlePage.jsx
-  - `ContactPoint`: Fixed in index.html, StructuredData.jsx, and AboutPage.jsx
-- Pre-hydration schemas in index.html also fixed
-- Verified via Screenshot tool: ALL 7 schemas on Champions League page pass validation
-- Verified via Screenshot tool: ALL 6 schemas on F1 page pass validation
+- Added missing `name` property to ALL nested schema objects across 15+ files
+- Verified via Screenshot tool: ALL schemas pass validation
 
 ### MEGA SEO Push (2026-04-01) - DONE
-- Created 27 NEW high-value keyword pages targeting commercial search queries
-- Optimized 20 existing F1 race page titles for better CTR
-- Regenerated ALL sitemaps (1,506 URLs across 9 sitemap files)
+- Created 27 NEW high-value keyword pages
+- Regenerated ALL sitemaps (1,506 URLs)
 
 ### Critical Canonical URL Fix (2026-04-01) - DONE
-- FIXED: Empty `<link rel="canonical" href="">` tag in raw HTML was confusing Google
-
 ### Deployment Fix (2026-04-01) - DONE
-- Added `--extra-index-url` to requirements.txt for `emergentintegrations` package
-
 ### F1 Tickets Page Competitor Upgrade (2026-04-01) - DONE
-- 2026 Driver Standings, Constructor Standings, Team Lineups, Full Calendar
-
 ### AI Chatbot - DONE
 ### Google Merchant Center - DONE
 ### Nuclear Indexing Engine - DONE

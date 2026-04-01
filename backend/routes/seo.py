@@ -245,12 +245,8 @@ async def google_merchant_feed():
         xml_parts.append(f'  <g:description>{_xml_escape(desc)}</g:description>')
         xml_parts.append(f'  <g:link>{base_url}/{slug}</g:link>')
         xml_parts.append(f'  <g:image_link>{img_url}</g:image_link>')
-        # Price: g:price = original (higher), g:sale_price = discounted (lower)
-        if price_high and price_high > price_low:
-            xml_parts.append(f'  <g:price>{price_high} EUR</g:price>')
-            xml_parts.append(f'  <g:sale_price>{price_low} EUR</g:sale_price>')
-        else:
-            xml_parts.append(f'  <g:price>{price_low} EUR</g:price>')
+        # Price: Use actual ticket price - no fake discounts
+        xml_parts.append(f'  <g:price>{price_low} EUR</g:price>')
         xml_parts.append(f'  <g:availability>in_stock</g:availability>')
         xml_parts.append(f'  <g:condition>new</g:condition>')
         xml_parts.append(f'  <g:brand>EuroMatchTickets</g:brand>')
@@ -293,7 +289,8 @@ async def google_merchant_feed():
         media_type="application/xml",
         headers={
             "Content-Type": "application/xml; charset=utf-8",
-            "Cache-Control": "public, max-age=3600"
+            "Cache-Control": "public, max-age=3600",
+            "X-Robots-Tag": "index, follow"
         }
     )
 
