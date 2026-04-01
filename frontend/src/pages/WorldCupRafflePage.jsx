@@ -28,12 +28,15 @@ const WorldCupRafflePage = () => {
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "performer": { "@type": "Organization", "name": "FIFA World Cup 2026" },
     "offers": {
-      "@type": "Offer",
-      "price": "100",
+      "@type": "AggregateOffer",
+      "lowPrice": "65",
+      "highPrice": "5000",
       "priceCurrency": "EUR",
+      "offerCount": "500",
       "availability": "https://schema.org/InStock",
       "validFrom": "2025-01-01",
-      "url": "https://euromatchtickets.com/world-cup-2026-raffle"
+      "url": "https://euromatchtickets.com/world-cup-2026-raffle",
+      "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
     }
   };
 

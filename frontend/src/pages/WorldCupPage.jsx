@@ -41,7 +41,7 @@ const WorldCupPage = () => {
     "location": { "@type": "Place", "name": "Multiple Venues - USA, Canada, Mexico", "address": { "@type": "PostalAddress", "addressCountry": "US" } },
     "performer": {"@type": "SportsTeam", "name": "FIFA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": ticketCategories.map(c => ({ "@type": "Offer", "name": c.name, "url": "https://euromatchtickets.com/world-cup-2026", "priceCurrency": "EUR", "price": String(c.price), "availability": "https://schema.org/InStock", "validFrom": "2025-01-01" }))
+    "offers": { "@type": "AggregateOffer", "lowPrice": "65", "highPrice": "5000", "priceCurrency": "EUR", "offerCount": "104", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/world-cup-2026", "validFrom": "2025-01-01", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
   };
 
   const formatDate = (d) => new Date(d).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });

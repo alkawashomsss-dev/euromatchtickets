@@ -73,7 +73,7 @@ const TaylorSwiftPage = () => {
     "location": { "@type": "Place", "name": "Wembley Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "Person", "name": "Taylor Swift" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": packages.map(p => ({ "@type": "Offer", "name": p.name, "priceCurrency": "EUR", "price": String(p.price), "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/taylor-swift-wembley-2026-tickets", "validFrom": "2025-01-01" }))
+    "offers": { "@type": "AggregateOffer", "lowPrice": "79", "highPrice": "1500", "priceCurrency": "EUR", "offerCount": "500", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/taylor-swift-wembley-2026-tickets", "validFrom": "2025-01-01", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
   };
 
   return (
