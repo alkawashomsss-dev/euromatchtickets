@@ -102,7 +102,7 @@ const MonzaGPPage = () => {
 
               <Link to="#tickets">
                 <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 rounded-full shadow-lg shadow-red-600/20" data-testid="monza-hero-cta">
-                  <Ticket className="w-5 h-5 mr-2" /> Get Monza Tickets from &euro;69
+                  <Ticket className="w-5 h-5 mr-2" /> Secure Your Seat Now
                 </Button>
               </Link>
             </div>

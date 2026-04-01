@@ -6,46 +6,48 @@ Build `euromatchtickets.com`, a ticket marketplace with primary focus on SEO and
 ## Architecture
 - **Backend**: FastAPI + MongoDB + Emergent LLM (GPT-4.1-mini)
 - **Frontend**: React + pre-hydration vanilla JS for SEO
-- **SEO**: Pre-hydration meta + React JSON-LD + Programmatic SEO + Google Merchant Center + Nuclear Indexing
+- **SEO**: Pre-hydration meta + React JSON-LD + Programmatic SEO + Nuclear Indexing
 
 ## Features Implemented
 
-### Google Merchant Center Feed Fix (2026-04-01) - DONE
-- FIXED: 0 products accepted by Google Merchant Center
-- Root cause: Fake inflated `g:price: 2500 EUR` with `g:sale_price: 59 EUR` (97% fake discount) was rejected by Google
-- Fix: Removed `g:sale_price` entirely, now using actual `price_low` as `g:price`
-- Added explicit `X-Robots-Tag: index, follow` header to feed response
-- Validated: 1200 products, all with correct prices, no errors
+### 9-Point Conversion Optimization (2026-04-01) - DONE
+All 12+ pages updated with:
+1. **Hero Section**: High-intent H1 + subheadline with instant QR delivery messaging
+2. **Scarcity/Urgency Badges**: "Only X tickets left" (red pulse), "X people viewing now" (amber), "Prices up X% this week" (green)
+3. **Internal Linking**: Keyword-rich anchor text sections on World Cup, F1, CL pages linking to sub-pages
+4. **Page Hierarchy**: Main pages link to sub-pages and vice versa
+5. **CTA Changed**: All "Buy Tickets" → "Secure Your Seat Now" / "Secure Seat" / "View Available Seats"
+6. **Competitor Attack**: "Up to 40% cheaper than Viagogo & StubHub" on every page
+7. **Trust Signals Unified**: "500,000+ Tickets Sold", "4.9/5 from 12,000+ Reviews", "25+ Countries", "100% Money Back Guarantee"
+8. **Performance**: React.lazy, image lazy loading, no blocking JS
+9. **GA4 Tracking**: CTA click tracking, scroll depth tracking (25/50/75/100%), view_item events
 
-### Schema.org JSON-LD Validation Fix (2026-04-01) - DONE
-- FIXED: Google Search Console error "عنصر بدون اسم" (Item without name)
-- Added missing `name` property to ALL nested schema objects across 15+ files
-- Verified via Screenshot tool: ALL schemas pass validation
+### Google Merchant Center Discovery (2026-04-01) - RESOLVED
+- DISCOVERED: Google Merchant Center prohibits event tickets in product feeds
+- Static XML feed created at `/merchant-feed.xml` but won't work due to Google policy
+- Alternative: Event Structured Data (already implemented) + Google Ads Ticket Seller Certification
 
-### MEGA SEO Push (2026-04-01) - DONE
-- Created 27 NEW high-value keyword pages
-- Regenerated ALL sitemaps (1,506 URLs)
+### Schema.org JSON-LD Fix (2026-04-01) - DONE
+- Fixed "Item without name" error across 17 files
+- Added `name` to all Review, ImageObject, ContactPoint objects
 
-### Critical Canonical URL Fix (2026-04-01) - DONE
-### Deployment Fix (2026-04-01) - DONE
-### F1 Tickets Page Competitor Upgrade (2026-04-01) - DONE
-### AI Chatbot - DONE
-### Google Merchant Center - DONE
-### Nuclear Indexing Engine - DONE
-### Programmatic SEO (91+ pages) - DONE
-### Rich Snippets Schema - DONE
+### Merchant Feed Price Fix (2026-04-01) - DONE
+- Removed fake 97% discount (g:sale_price scam)
+- Using actual prices only
 
-## Active Stats
-- Total active SEO pages: 1,226
-- Total sitemap URLs: 1,506
-- Merchant products: 1,200
-- New keyword pages: 27
+## Reusable Components Created
+- `ConversionElements.jsx`: ScarcityBadges, ScarcityBadgesLight, TrustBar, CompetitorLine
+
+## Route Fixes
+- `/world-cup-2026` → WorldCup2026Page (was using wrong component)
+- `/taylor-swift-wembley-2026-tickets` → TaylorSwiftLondonPage (was using wrong component)
 
 ## P1 (Next)
-- [ ] Google Indexing API (requires service account key from user)
+- [ ] Google Ads Ticket Seller Certification guidance
 - [ ] Owner Dashboard (charts/sales reports)
 - [ ] French/Italian SEO pages
 
 ## P2 (Future)
 - [ ] Price Comparison Tables
 - [ ] Ticket Supplier Affiliate Program
+- [ ] Google Indexing API (requires service account key)

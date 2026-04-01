@@ -41,6 +41,7 @@ const BlogArticlePage = lazy(() => import("./pages/BlogArticlePage"));
 const ReviewsPage = lazy(() => import("./pages/ReviewsPage"));
 const FAQPage = lazy(() => import("./pages/FAQPage"));
 const WorldCupPage = lazy(() => import("./pages/WorldCupPage"));
+const WorldCup2026Page = lazy(() => import("./pages/WorldCup2026Page"));
 const WorldCupRafflePage = lazy(() => import("./pages/WorldCupRafflePage"));
 const TheWeekndPage = lazy(() => import("./pages/TheWeekndPage"));
 const ChampionsLeaguePage = lazy(() => import("./pages/ChampionsLeaguePage"));
@@ -297,7 +298,7 @@ function AppRouter() {
         <Route path="/f1-tickets-2026" element={<F1LandingPage />} />
         <Route path="/purchase-success" element={<PurchaseSuccessPage />} />
         
-        <Route path="/world-cup-2026" element={<WorldCupPage />} />
+        <Route path="/world-cup-2026" element={<WorldCup2026Page />} />
         <Route path="/world-cup-raffle" element={<WorldCupRafflePage />} />
         <Route path="/the-weeknd-tour-2026" element={<TheWeekndPage />} />
         <Route path="/champions-league-tickets" element={<ChampionsLeaguePage />} />
@@ -398,7 +399,7 @@ function AppRouter() {
         <Route path="/super-bowl-2026-tickets" element={<SuperBowlPage />} />
         <Route path="/super-bowl-2027-tickets" element={<SuperBowlPage />} />
         <Route path="/world-athletics-2026-tickets" element={<WorldAthleticsPage />} />
-        <Route path="/taylor-swift-wembley-2026-tickets" element={<TaylorSwiftPage />} />
+        <Route path="/taylor-swift-wembley-2026-tickets" element={<TaylorSwiftLondonPage />} />
         <Route path="/bayern-vs-real-madrid-tickets" element={<BayernRealMadridPage />} />
         <Route path="/bayern-real-madrid-champions-league-tickets" element={<BayernRealMadridPage />} />
         <Route path="/bahrain-world-cup-tickets-2026" element={<BahrainWorldCupPage />} />
