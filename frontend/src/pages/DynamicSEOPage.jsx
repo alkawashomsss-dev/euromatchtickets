@@ -231,16 +231,34 @@ export default function DynamicSEOPage() {
         noIndex={page.noindex || false}
       />
 
+      {/* Category-based image mapping for structured data */}
+      {(() => {
+        const BASE = "https://euromatchtickets.com";
+        const CAT_IMAGES = {
+          f1: `${BASE}/images/heroes/f1-red-lg.webp`,
+          motorsport: `${BASE}/images/heroes/f1-red-lg.webp`,
+          motogp: `${BASE}/images/heroes/motogp-lg.webp`,
+          football: `${BASE}/images/heroes/football-stadium-lg.webp`,
+          concert: `${BASE}/images/heroes/concert-purple-lg.webp`,
+          worldcup: `${BASE}/images/heroes/football-stadium-lg.webp`,
+        };
+        const eventImage = page.image_url || page.image || CAT_IMAGES[page.category] || `${BASE}/images/heroes/football-stadium-lg.webp`;
+        const eventName = page.event_name || page.artist || page.title?.split("|")[0]?.split("–")[0]?.trim();
+        const eventDesc = page.description || page.meta_description || `Buy verified ${eventName} tickets on EuroMatchTickets. Cheapest prices in Europe with instant QR e-ticket delivery and FanProtect money-back guarantee.`;
+        const productDesc = `${eventName} tickets available now. From €${page.price_low || 49}. Verified sellers, instant QR delivery, FanProtect guarantee. Europe's cheapest ticket marketplace.`;
+
+        return (
+          <>
       {/* Structured Data - Event + Product + Review Schema */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@graph": [
           {
             "@type": page.category === "concert" ? "MusicEvent" : "SportsEvent",
-            "name": page.event_name || page.artist || page.title?.split("|")[0]?.trim(),
-            "description": page.description || `Buy verified tickets for ${page.title?.split("|")[0]?.trim()} at EuroMatchTickets.com with instant QR delivery and buyer protection.`,
-            "image": page.image || "https://euromatchtickets.com/logo.png",
-            "url": `https://euromatchtickets.com/${page.slug}`,
+            "name": eventName,
+            "description": eventDesc,
+            "image": [eventImage, `${BASE}/og-image.jpg`],
+            "url": `${BASE}/${page.slug}`,
             "startDate": page.event_date || page.start_date || `${page.year || "2026"}-06-01`,
             "endDate": page.end_date || page.event_date || page.start_date || `${page.year || "2026"}-12-31`,
             "eventStatus": "https://schema.org/EventScheduled",
@@ -256,7 +274,7 @@ export default function DynamicSEOPage() {
             },
             "performer": {
               "@type": page.artist ? "PerformingGroup" : "Organization",
-              "name": page.artist || page.event_name || page.title?.split("|")[0]?.trim() || "EuroMatchTickets Event"
+              "name": page.artist || eventName
             },
             "offers": {
               "@type": "AggregateOffer",
@@ -265,18 +283,18 @@ export default function DynamicSEOPage() {
               "priceCurrency": "EUR",
               "offerCount": "100",
               "availability": "https://schema.org/InStock",
-              "url": `https://euromatchtickets.com/${page.slug}`,
+              "url": `${BASE}/${page.slug}`,
               "validFrom": "2025-01-01",
-              "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
+              "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": BASE }
             },
-            "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
+            "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": BASE }
           },
           {
             "@type": "Product",
-            "name": `${page.title?.split("|")[0]?.trim()} Tickets`,
-            "description": `Tickets for ${page.title?.split("|")[0]?.trim()}. Instant QR delivery. FanProtect guarantee.`,
-            "image": page.image || "https://euromatchtickets.com/logo.png",
-            "url": `https://euromatchtickets.com/${page.slug}`,
+            "name": `${eventName} Tickets`,
+            "description": productDesc,
+            "image": [eventImage, `${BASE}/og-image.jpg`],
+            "url": `${BASE}/${page.slug}`,
             "brand": { "@type": "Organization", "name": "EuroMatchTickets" },
             "offers": {
               "@type": "AggregateOffer",
@@ -285,7 +303,7 @@ export default function DynamicSEOPage() {
               "priceCurrency": "EUR",
               "offerCount": "100",
               "availability": "https://schema.org/InStock",
-              "url": `https://euromatchtickets.com/${page.slug}`
+              "url": `${BASE}/${page.slug}`
             },
             "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2847", "bestRating": "5", "worstRating": "1" },
             "review": [
@@ -323,6 +341,9 @@ export default function DynamicSEOPage() {
           }))
         })}} />
       )}
+          </>
+        );
+      })()}
 
       <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="dynamic-seo-page">
         {/* Hero */}
