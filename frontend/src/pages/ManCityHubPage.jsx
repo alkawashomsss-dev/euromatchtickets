@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { ScarcityBadges, TrustBar } from "../components/ConversionElements";
 
 const ManCityHubPage = () => {
   const schema = {
@@ -78,7 +79,8 @@ const ManCityHubPage = () => {
             Manchester City Tickets 2025-26
             <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-sky-400 to-blue-400 bg-clip-text text-transparent">Etihad Stadium &middot; Premier League &middot; Champions League</span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-8">Watch Pep Guardiola's champions live. Haaland, De Bruyne, Foden - the best squad in English football. Cheapest tickets guaranteed.</p>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
+          <ScarcityBadges ticketsLeft={289} viewers={156} priceIncrease="14%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Calendar className="w-5 h-5 text-sky-600" /><span>2025-26 Season</span></div>
             <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><MapPin className="w-5 h-5 text-sky-600" /><span>Etihad Stadium, Manchester</span></div>
@@ -87,19 +89,12 @@ const ManCityHubPage = () => {
           <div className="inline-block bg-white/90 border border-slate-200 rounded-2xl p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">&euro;65</div>
-            <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Cheapest in Europe</div>
+            <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Up to 40% cheaper than Viagogo &amp; StubHub</div>
           </div>
         </div>
       </section>
 
-      {/* Trust */}
-      <section className="py-5 border-y border-slate-100 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8">
-          <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Verified</span></div>
-          <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>4.8/5 (1,923 Reviews)</span></div>
-          <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>8,000+ Man City Tickets Sold</span></div>
-        </div>
-      </section>
+      <TrustBar />
 
       {/* Matches */}
       <section className="py-16" data-testid="mc-matches">

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../App";
-import { Calendar, MapPin, Ticket, Shield, Zap, Star, Music, ChevronRight, Check, TrendingDown, Users, Heart, Flame, Clock } from "lucide-react";
+import { Calendar, MapPin, Ticket, Shield, Zap, Star, Music, ChevronRight, Check, TrendingDown, Users, Heart, Flame, Clock, AlertCircle, TrendingUp, Globe } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
@@ -138,7 +138,18 @@ const TaylorSwiftLondonPage = () => {
           </motion.h1>
 
           <motion.p variants={fadeUp} custom={2} initial="hidden" animate="visible"
-            className="text-base sm:text-lg text-slate-400 mb-6">Wembley Stadium &bull; 6 Nights &bull; 90,000 Fans &bull; June 19-28, 2026</motion.p>
+            className="text-base sm:text-lg text-slate-400 mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</motion.p>
+          <div className="flex flex-wrap justify-center gap-3 mb-4">
+            <span className="inline-flex items-center gap-1.5 bg-red-500/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
+              <AlertCircle className="w-3.5 h-3.5" /> Only {stats.available || 156} Wembley tickets left
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
+              <Users className="w-3.5 h-3.5" /> 1,247 people viewing now
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
+              <TrendingUp className="w-3.5 h-3.5" /> Prices up 30% this month
+            </span>
+          </div>
 
           <motion.div variants={fadeUp} custom={3} initial="hidden" animate="visible" className="mb-6">
             <Countdown target="2026-06-19T18:00:00" />
@@ -151,15 +162,16 @@ const TaylorSwiftLondonPage = () => {
             </div>
             <Link to="#tickets">
               <Button size="lg" className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-bold px-8 py-3 rounded-full text-lg shadow-lg">
-                <Ticket className="w-5 h-5 mr-2" /> Get Tickets
+                <Ticket className="w-5 h-5 mr-2" /> Secure Your Seat Now
               </Button>
             </Link>
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/50">
-            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> FanProtect Guarantee</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> 500,000+ Tickets Sold</span>
             <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> Instant QR Delivery</span>
-            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.8/5 Reviews</span>
+            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.9/5 from 12,000+ Reviews</span>
+            <span className="flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-blue-400" /> 40% cheaper than Viagogo</span>
           </div>
         </div>
       </section>

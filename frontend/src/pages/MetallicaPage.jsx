@@ -7,7 +7,7 @@ import { API } from '../App';
 import axios from 'axios';
 
 const TRANSLATIONS = {
-  en: { title: "Metallica Sphere Las Vegas 2026", subtitle: "M72 World Tour - The Sphere Experience", buyNow: "Buy Tickets", from: "From", snakePit: "Snake Pit VIP" },
+  en: { title: "Metallica Sphere Las Vegas 2026", subtitle: "M72 World Tour - The Sphere Experience", buyNow: "Secure Your Seat Now", from: "From", snakePit: "Snake Pit VIP" },
   de: { title: "Metallica Sphere Las Vegas 2026", subtitle: "M72 Welttournee - Das Sphere Erlebnis", buyNow: "Jetzt Kaufen", from: "Ab", snakePit: "Snake Pit VIP" },
   es: { title: "Metallica Sphere Las Vegas 2026", subtitle: "M72 Gira Mundial - La Experiencia Sphere", buyNow: "Comprar", from: "Desde", snakePit: "Snake Pit VIP" },
 };

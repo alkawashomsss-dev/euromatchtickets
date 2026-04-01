@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { ScarcityBadges, TrustBar, CompetitorLine } from "../components/ConversionElements";
 
 const LiverpoolHubPage = () => {
   const reviewSchema = {
@@ -52,7 +53,8 @@ const LiverpoolHubPage = () => {
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-red-50 text-red-700 border-red-200 mb-6"><Trophy className="w-4 h-4 mr-2" />Liverpool FC</Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Liverpool Tickets 2025-26<span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-red-400 to-red-200 bg-clip-text text-transparent">Anfield &middot; Premier League &middot; Champions League</span></h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-8">Experience the magic of Anfield. Salah, Van Dijk, and You'll Never Walk Alone. Cheapest Liverpool tickets in Europe.</p>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
+          <ScarcityBadges ticketsLeft={423} viewers={187} priceIncrease="15%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Calendar className="w-5 h-5 text-red-600" /><span>2025-26 Season</span></div>
             <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><MapPin className="w-5 h-5 text-red-600" /><span>Anfield, Liverpool</span></div>
@@ -60,18 +62,12 @@ const LiverpoolHubPage = () => {
           </div>
           <div className="inline-block bg-white/90 border border-slate-200 rounded-2xl p-6">
             <div className="text-slate-500 text-sm">Tickets from</div><div className="text-5xl font-bold text-white">&euro;65</div>
-            <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Cheapest in Europe</div>
+            <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Up to 40% cheaper than Viagogo &amp; StubHub</div>
           </div>
         </div>
       </section>
 
-      <section className="py-5 border-y border-slate-100 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8">
-          <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Verified</span></div>
-          <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>4.9/5 (3,412 Reviews)</span></div>
-          <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>10,000+ Liverpool Tickets Sold</span></div>
-        </div>
-      </section>
+      <TrustBar />
 
       <section className="py-16" data-testid="lfc-matches">
         <div className="max-w-6xl mx-auto px-4">

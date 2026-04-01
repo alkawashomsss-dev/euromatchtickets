@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Shield, Zap, Flag, Ticket, ChevronRight, Check, Star, Clock, Thermometer, Moon, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, Shield, Zap, Flag, Ticket, ChevronRight, Check, Star, Clock, Thermometer, Moon, ArrowRight, AlertCircle, Users, TrendingUp } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { InternalLinks } from "../components/InternalLinks";
+import { TrustBar } from "../components/ConversionElements";
 
 const Countdown = ({ target }) => {
   const [diff, setDiff] = useState(new Date(target) - new Date());
@@ -99,9 +100,20 @@ const BahrainGPPage = () => {
             <span className="block bg-gradient-to-r from-amber-400 via-orange-400 to-red-500 bg-clip-text text-transparent text-3xl sm:text-4xl lg:text-5xl mt-2">Grand Prix 2026</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
-            F1's most spectacular night race. Desert stars. Floodlit speed. Sakhir Circuit.
+          <p className="text-base sm:text-lg text-slate-400 mb-4 max-w-2xl mx-auto">
+            Secure your seat now with instant QR delivery. 100% Buyer Protection.
           </p>
+          <div className="flex flex-wrap justify-center gap-3 mb-4">
+            <span className="inline-flex items-center gap-1.5 bg-red-500/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
+              <AlertCircle className="w-3.5 h-3.5" /> Only 234 tickets left
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
+              <Users className="w-3.5 h-3.5" /> 189 people viewing now
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
+              <TrendingUp className="w-3.5 h-3.5" /> Prices up 18% this week
+            </span>
+          </div>
 
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <span className="flex items-center gap-2 text-xs text-amber-300/70 bg-amber-500/5 border border-amber-500/20 rounded-full px-4 py-2">
@@ -126,7 +138,7 @@ const BahrainGPPage = () => {
             </div>
             <Link to="#tickets">
               <Button size="lg" className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-black font-bold px-8 py-4 rounded-full text-lg shadow-lg shadow-amber-500/20" data-testid="bahrain-hero-cta">
-                <Ticket className="w-5 h-5 mr-2" /> Get Bahrain GP Tickets
+                <Ticket className="w-5 h-5 mr-2" /> Secure Your Seat Now
               </Button>
             </Link>
           </div>

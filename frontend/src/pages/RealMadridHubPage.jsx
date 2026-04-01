@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { ScarcityBadges, TrustBar } from "../components/ConversionElements";
 
 const RealMadridHubPage = () => {
   const schema = {
@@ -79,7 +80,8 @@ const RealMadridHubPage = () => {
             Real Madrid Tickets 2025-26
             <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-purple-400 to-amber-400 bg-clip-text text-transparent">Santiago Bernabeu &middot; La Liga &middot; Champions League</span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-8">Watch the most successful club in European football history. Vinicius Jr., Bellingham, Mbapp&eacute; - live at the Bernabeu. Cheapest tickets in Europe.</p>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
+          <ScarcityBadges ticketsLeft={512} viewers={378} priceIncrease="22%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Calendar className="w-5 h-5 text-purple-600" /><span>2025-26 Season</span></div>
             <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><MapPin className="w-5 h-5 text-purple-600" /><span>Santiago Bernabeu, Madrid</span></div>
@@ -88,19 +90,12 @@ const RealMadridHubPage = () => {
           <div className="inline-block bg-white/90 border border-slate-200 rounded-2xl p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">&euro;75</div>
-            <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Cheapest in Europe</div>
+            <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Up to 40% cheaper than Viagogo &amp; StubHub</div>
           </div>
         </div>
       </section>
 
-      {/* Trust Bar */}
-      <section className="py-5 border-y border-slate-100 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8">
-          <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Verified</span></div>
-          <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>4.9/5 (2,841 Reviews)</span></div>
-          <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>12,000+ Real Madrid Tickets Sold</span></div>
-        </div>
-      </section>
+      <TrustBar />
 
       {/* Matches */}
       <section className="py-16" data-testid="rm-matches">

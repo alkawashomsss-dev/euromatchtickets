@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Star, Shield, Zap, Ticket, ChevronRight, Check, Music, Heart, Globe } from "lucide-react";
+import { Calendar, MapPin, Star, Shield, Zap, Ticket, ChevronRight, Check, Music, Heart, Globe, AlertCircle, Users, TrendingUp } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
@@ -62,7 +62,18 @@ const ColdplayPage = () => {
             <span className="block text-white/60 text-2xl sm:text-3xl mt-3 font-light tracking-wide">European Tour 2026</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-400 mb-8 max-w-2xl mx-auto">6 Cities. 10 Nights. LED Wristbands. Giant Planets. Confetti. An unforgettable cosmic experience.</p>
+          <p className="text-base sm:text-lg text-slate-400 mb-4 max-w-2xl mx-auto">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
+          <div className="flex flex-wrap justify-center gap-3 mb-4">
+            <span className="inline-flex items-center gap-1.5 bg-red-500/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
+              <AlertCircle className="w-3.5 h-3.5" /> Only 189 Wembley tickets left
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
+              <Users className="w-3.5 h-3.5" /> 534 people viewing now
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
+              <TrendingUp className="w-3.5 h-3.5" /> Prices up 22% this week
+            </span>
+          </div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-6">
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-6 py-4 text-center">
@@ -71,15 +82,16 @@ const ColdplayPage = () => {
             </div>
             <Link to="#tickets">
               <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold px-8 py-4 rounded-full text-lg" data-testid="coldplay-hero-cta">
-                <Ticket className="w-5 h-5 mr-2" /> Get Coldplay Tickets
+                <Ticket className="w-5 h-5 mr-2" /> Secure Your Seat Now
               </Button>
             </Link>
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/40">
-            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> FanProtect Guarantee</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> 500,000+ Tickets Sold</span>
             <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-cyan-400" /> Instant QR Delivery</span>
-            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-yellow-400" /> 4.9/5 (3,456 Reviews)</span>
+            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-yellow-400" /> 4.9/5 from 12,000+ Reviews</span>
+            <span className="flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-blue-400" /> 40% cheaper than Viagogo</span>
           </div>
         </div>
       </section>

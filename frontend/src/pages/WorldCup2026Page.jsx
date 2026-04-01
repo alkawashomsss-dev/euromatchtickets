@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, MapPin, Ticket, Star, Shield, Zap, ArrowRight, Trophy, Users, Globe, Crown, Flame, Flag } from 'lucide-react';
+import { Calendar, MapPin, Ticket, Star, Shield, Zap, ArrowRight, Trophy, Users, Globe, Crown, Flame, Flag, AlertCircle, TrendingUp } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
 
 const TRANSLATIONS = {
-  en: { title: "FIFA World Cup 2026 Tickets", subtitle: "USA • Canada • Mexico", buyNow: "Buy Tickets", from: "From", final: "World Cup Final", guarantee: "100% Guarantee" },
+  en: { title: "FIFA World Cup 2026 Tickets", subtitle: "USA • Canada • Mexico", buyNow: "Secure Your Seat Now", from: "From", final: "World Cup Final", guarantee: "100% Guarantee" },
   de: { title: "FIFA WM 2026 Tickets", subtitle: "USA • Kanada • Mexiko", buyNow: "Jetzt Kaufen", from: "Ab", final: "WM-Finale", guarantee: "100% Garantie" },
   es: { title: "Entradas Copa Mundial FIFA 2026", subtitle: "USA • Canadá • México", buyNow: "Comprar", from: "Desde", final: "Final del Mundial", guarantee: "100% Garantía" },
   fr: { title: "Billets Coupe du Monde FIFA 2026", subtitle: "USA • Canada • Mexique", buyNow: "Acheter", from: "À partir de", final: "Finale de la Coupe", guarantee: "Garantie 100%" },
@@ -111,7 +111,18 @@ const WorldCup2026Page = () => {
             FIFA WORLD CUP
           </h1>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">2026</h2>
-          <p className="text-xl text-emerald-600 font-semibold mb-4">Official Tickets - 5% Below Market Price</p>
+          <p className="text-xl text-emerald-600 font-semibold mb-4">Secure your seat now - Up to 40% cheaper than Viagogo & StubHub</p>
+          <div className="flex flex-wrap justify-center gap-3 mb-4">
+            <span className="inline-flex items-center gap-1.5 bg-red-500/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
+              <AlertCircle className="w-3.5 h-3.5" /> Only 2,340 tickets left for Final
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
+              <Users className="w-3.5 h-3.5" /> 1,247 people viewing WC tickets now
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
+              <TrendingUp className="w-3.5 h-3.5" /> Prices up 25% this month
+            </span>
+          </div>
 
           {/* Final Highlight */}
           {finalEvent && (
@@ -135,8 +146,8 @@ const WorldCup2026Page = () => {
           </div>
 
           <Link to={finalEvent ? `/event/${finalEvent.event_id}` : '/events?search=World%20Cup'}>
-            <Button size="lg" className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-xl px-12 py-6">
-              {t.buyNow} <ArrowRight className="w-6 h-6 ml-2" />
+            <Button size="lg" className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-xl px-12 py-6" data-testid="wc-hero-cta">
+              Secure Your Seat Now <ArrowRight className="w-6 h-6 ml-2" />
             </Button>
           </Link>
         </div>
@@ -146,10 +157,10 @@ const WorldCup2026Page = () => {
       <section className="py-4 border-y border-slate-100 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 text-sm">
-            <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />FIFA Official Partner</div>
-            <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" />4.9/5 Trustpilot</div>
-            <div className="flex items-center gap-2"><Users className="w-4 h-4 text-violet-600" />500K+ Tickets Sold</div>
-            <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />Worldwide Delivery</div>
+            <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />500,000+ Tickets Sold</div>
+            <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" />4.9/5 from 12,000+ Reviews</div>
+            <div className="flex items-center gap-2"><Users className="w-4 h-4 text-violet-600" />Trusted in 25+ Countries</div>
+            <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />100% Money Back Guarantee</div>
           </div>
         </div>
       </section>
@@ -280,6 +291,53 @@ const WorldCup2026Page = () => {
               <li>• <strong>Germany vs Brazil:</strong> Classic rivalry</li>
               <li>• <strong>England vs Spain:</strong> European clash</li>
             </ul>
+          </div>
+        </div>
+      </section>
+      {/* Internal Links - SEO Boost */}
+      <section className="py-16 bg-white" data-testid="wc-internal-links">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl font-bold mb-8 text-center">More Events on EuroMatchTickets</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
+              <h3 className="font-bold mb-3 flex items-center gap-2"><Trophy className="w-5 h-5 text-blue-600" /> Football</h3>
+              <ul className="space-y-2">
+                <li><Link to="/champions-league-tickets" className="text-blue-600 hover:underline text-sm">Buy Champions League tickets</Link></li>
+                <li><Link to="/cheap-champions-league-tickets" className="text-blue-600 hover:underline text-sm">Cheap Champions League tickets</Link></li>
+                <li><Link to="/buy-premier-league-tickets" className="text-blue-600 hover:underline text-sm">Buy Premier League tickets</Link></li>
+                <li><Link to="/el-clasico-tickets" className="text-blue-600 hover:underline text-sm">El Clasico tickets</Link></li>
+                <li><Link to="/cheap-world-cup-2026-tickets" className="text-blue-600 hover:underline text-sm">Cheap World Cup 2026 tickets</Link></li>
+                <li><Link to="/buy-world-cup-final-2026-tickets" className="text-blue-600 hover:underline text-sm">World Cup Final 2026 tickets</Link></li>
+              </ul>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
+              <h3 className="font-bold mb-3 flex items-center gap-2"><Zap className="w-5 h-5 text-red-500" /> Formula 1</h3>
+              <ul className="space-y-2">
+                <li><Link to="/f1-tickets" className="text-blue-600 hover:underline text-sm">F1 tickets 2026</Link></li>
+                <li><Link to="/cheap-f1-tickets-2026" className="text-blue-600 hover:underline text-sm">Cheap F1 tickets 2026</Link></li>
+                <li><Link to="/monaco-grand-prix-tickets" className="text-blue-600 hover:underline text-sm">Monaco Grand Prix tickets</Link></li>
+                <li><Link to="/f1-vip-tickets-2026" className="text-blue-600 hover:underline text-sm">F1 VIP tickets 2026</Link></li>
+              </ul>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
+              <h3 className="font-bold mb-3 flex items-center gap-2"><Star className="w-5 h-5 text-purple-500" /> Concerts</h3>
+              <ul className="space-y-2">
+                <li><Link to="/taylor-swift-wembley-2026-tickets" className="text-blue-600 hover:underline text-sm">Taylor Swift Wembley tickets</Link></li>
+                <li><Link to="/coldplay-tour-2026" className="text-blue-600 hover:underline text-sm">Coldplay tour 2026 tickets</Link></li>
+                <li><Link to="/bruno-mars-tour-2026" className="text-blue-600 hover:underline text-sm">Bruno Mars tour 2026</Link></li>
+                <li><Link to="/cheap-concert-tickets-europe" className="text-blue-600 hover:underline text-sm">Cheap concert tickets Europe</Link></li>
+              </ul>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
+              <h3 className="font-bold mb-3 flex items-center gap-2"><Globe className="w-5 h-5 text-emerald-500" /> By City</h3>
+              <ul className="space-y-2">
+                <li><Link to="/london-event-tickets" className="text-blue-600 hover:underline text-sm">London event tickets</Link></li>
+                <li><Link to="/paris-event-tickets" className="text-blue-600 hover:underline text-sm">Paris event tickets</Link></li>
+                <li><Link to="/madrid-event-tickets" className="text-blue-600 hover:underline text-sm">Madrid event tickets</Link></li>
+                <li><Link to="/barcelona-event-tickets" className="text-blue-600 hover:underline text-sm">Barcelona event tickets</Link></li>
+                <li><Link to="/milan-event-tickets" className="text-blue-600 hover:underline text-sm">Milan event tickets</Link></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>

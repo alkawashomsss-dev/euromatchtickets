@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Shield, Clock, CreditCard, Star, ChevronRight, Tag, MapPin, Calendar, Ticket, ChevronDown, HelpCircle } from "lucide-react";
+import { ArrowLeft, Shield, Clock, CreditCard, Star, ChevronRight, Tag, MapPin, Calendar, Ticket, ChevronDown, HelpCircle, AlertCircle, Users, TrendingUp, Globe } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
@@ -161,9 +161,10 @@ export default function DynamicSEOPage() {
             <div className="flex flex-wrap items-center gap-4">
               <Link to="/events">
                 <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl">
-                  <Ticket className="w-5 h-5 mr-2" /> Buy Tickets Now
+                  <Ticket className="w-5 h-5 mr-2" /> Secure Your Seat Now
                 </Button>
               </Link>
+              <p className="text-emerald-400 text-sm font-medium mt-2">Up to 40% cheaper than Viagogo &amp; StubHub</p>
             </div>
           </div>
         </div>
@@ -189,10 +190,10 @@ export default function DynamicSEOPage() {
                 <h3 className="font-bold text-slate-900 mb-4">Buyer Protection</h3>
                 <div className="space-y-3">
                   {[
-                    { icon: Shield, text: "FanProtect Guarantee", sub: "100% refund if cancelled" },
+                    { icon: Shield, text: "500,000+ Tickets Sold", sub: "100% Money Back Guarantee" },
                     { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
-                    { icon: Clock, text: "Instant Delivery", sub: "E-tickets sent immediately" },
-                    { icon: Star, text: "Verified Tickets", sub: "Every ticket authenticated" },
+                    { icon: Clock, text: "Instant QR Delivery", sub: "E-tickets sent immediately" },
+                    { icon: Star, text: "4.9/5 from 12,000+ Reviews", sub: "Trusted in 25+ countries" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
@@ -208,7 +209,7 @@ export default function DynamicSEOPage() {
                 <p className="text-emerald-600 font-semibold mb-2">Limited Availability</p>
                 <p className="text-slate-500 text-sm mb-4">Prices increase as events approach. Book now for the best deals.</p>
                 <Link to="/events">
-                  <Button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white">Browse All Tickets</Button>
+                  <Button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white">View Available Seats</Button>
                 </Link>
               </div>
             </div>
@@ -391,7 +392,15 @@ export default function DynamicSEOPage() {
               {page.title?.split("|")[0]?.trim()}
             </h1>
 
-            <p className="text-lg text-slate-600 max-w-3xl mb-6">{page.description}</p>
+            <p className="text-lg text-slate-600 max-w-3xl mb-4">{page.description}</p>
+            <div className="flex flex-wrap gap-3 mb-6">
+              <span className="inline-flex items-center gap-1.5 bg-red-50 border border-red-200 rounded-full px-3 py-1.5 text-red-600 text-sm font-medium animate-pulse">
+                <AlertCircle className="w-3.5 h-3.5" /> Limited availability
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1.5 text-emerald-600 text-sm font-medium">
+                <TrendingUp className="w-3.5 h-3.5" /> Prices rising fast
+              </span>
+            </div>
 
             {/* Price & CTA */}
             {page.price_low && (
@@ -403,7 +412,7 @@ export default function DynamicSEOPage() {
                 </div>
                 <Link to="/events">
                   <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl" data-testid="seo-buy-btn">
-                    <Ticket className="w-5 h-5 mr-2" /> Buy Tickets Now
+                    <Ticket className="w-5 h-5 mr-2" /> Secure Your Seat Now
                   </Button>
                 </Link>
               </div>
@@ -464,10 +473,10 @@ export default function DynamicSEOPage() {
                 <h3 className="font-bold text-slate-900 mb-4">Buyer Protection</h3>
                 <div className="space-y-3">
                   {[
-                    { icon: Shield, text: "FanProtect Guarantee", sub: "100% refund if cancelled" },
+                    { icon: Shield, text: "500,000+ Tickets Sold", sub: "100% Money Back Guarantee" },
                     { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
-                    { icon: Clock, text: "Instant Delivery", sub: "E-tickets sent immediately" },
-                    { icon: Star, text: "Verified Tickets", sub: "Every ticket authenticated" },
+                    { icon: Clock, text: "Instant QR Delivery", sub: "E-tickets sent immediately" },
+                    { icon: Star, text: "4.9/5 from 12,000+ Reviews", sub: "Trusted in 25+ countries" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />

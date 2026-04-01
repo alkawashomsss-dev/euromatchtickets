@@ -7,7 +7,7 @@ import { API } from '../App';
 import axios from 'axios';
 
 const TRANSLATIONS = {
-  en: { title: "John Legend Abu Dhabi Concert 2026", subtitle: "Official Tickets - 5% Cheaper", buyNow: "Buy Tickets", from: "From", guarantee: "100% Guarantee" },
+  en: { title: "John Legend Abu Dhabi Concert 2026", subtitle: "Official Tickets - 5% Cheaper", buyNow: "Secure Your Seat Now", from: "From", guarantee: "100% Guarantee" },
   ar: { title: "حفلة جون ليجند أبوظبي 2026", subtitle: "تذاكر رسمية - أرخص بـ 5%", buyNow: "اشترِ الآن", from: "من", guarantee: "ضمان 100%" },
   de: { title: "John Legend Abu Dhabi Konzert 2026", subtitle: "Offizielle Tickets - 5% Günstiger", buyNow: "Jetzt Kaufen", from: "Ab", guarantee: "100% Garantie" },
   fr: { title: "Concert John Legend Abu Dhabi 2026", subtitle: "Billets Officiels - 5% Moins Cher", buyNow: "Acheter", from: "À partir de", guarantee: "Garantie 100%" },

@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { ScarcityBadges, TrustBar } from "../components/ConversionElements";
 
 const ArsenalHubPage = () => {
   const reviewSchema = {
@@ -52,7 +53,8 @@ const ArsenalHubPage = () => {
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-red-50 text-red-700 border-red-200 mb-6"><Trophy className="w-4 h-4 mr-2" />Arsenal FC</Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Arsenal Tickets 2025-26<span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-red-400 to-amber-400 bg-clip-text text-transparent">Emirates Stadium &middot; Premier League &middot; Champions League</span></h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-8">Watch Arteta's Gunners challenge for every trophy. Saka, Odegaard, Rice - live at the Emirates. Cheapest tickets guaranteed.</p>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
+          <ScarcityBadges ticketsLeft={356} viewers={241} priceIncrease="10%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Calendar className="w-5 h-5 text-red-600" /><span>2025-26 Season</span></div>
             <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><MapPin className="w-5 h-5 text-red-600" /><span>Emirates Stadium, London</span></div>
@@ -60,18 +62,12 @@ const ArsenalHubPage = () => {
           </div>
           <div className="inline-block bg-white/90 border border-slate-200 rounded-2xl p-6">
             <div className="text-slate-500 text-sm">Tickets from</div><div className="text-5xl font-bold text-white">&euro;65</div>
-            <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Cheapest in Europe</div>
+            <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Up to 40% cheaper than Viagogo &amp; StubHub</div>
           </div>
         </div>
       </section>
 
-      <section className="py-5 border-y border-slate-100 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8">
-          <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Verified</span></div>
-          <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>4.8/5 (2,187 Reviews)</span></div>
-          <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>7,500+ Arsenal Tickets Sold</span></div>
-        </div>
-      </section>
+      <TrustBar />
 
       <section className="py-16" data-testid="afc-matches">
         <div className="max-w-6xl mx-auto px-4">

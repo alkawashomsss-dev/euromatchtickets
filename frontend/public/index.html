@@ -431,6 +431,14 @@
       window.trackViewItem = function(eventName, price, category) {
         gtag('event', 'view_item', { currency: 'EUR', value: price, items: [{ item_name: eventName, item_category: category, price: price }] });
       };
+      window.trackCTAClick = function(buttonText, pageName, position) {
+        gtag('event', 'cta_click', { event_category: 'CTA', event_label: buttonText, page_name: pageName, position: position });
+      };
+      window.trackScrollDepth = function(depth, pageName) {
+        gtag('event', 'scroll_depth', { event_category: 'Engagement', event_label: pageName, value: depth });
+      };
+      // Auto scroll tracking
+      (function(){var t={25:!1,50:!1,75:!1,100:!1};window.addEventListener('scroll',function(){var s=Math.round(100*window.scrollY/(document.body.scrollHeight-window.innerHeight));for(var d in t)if(!t[d]&&s>=parseInt(d)){t[d]=!0;window.trackScrollDepth&&window.trackScrollDepth(parseInt(d),document.title)}})})();
     </script>
     
     <!-- Facebook Pixel -->

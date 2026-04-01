@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { 
   Calendar, MapPin, Ticket, Shield, Star, 
   ChevronRight, Trophy, Flag, Zap, Users, 
-  Flame, TrendingUp, Timer, Award, Car, Crown
+  Flame, TrendingUp, Timer, Award, Car, Crown,
+  AlertCircle, Globe
 } from 'lucide-react';
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -270,10 +271,21 @@ const F1TicketsPage = () => {
               24 Grand Prix Races - 11 Teams - 22 Drivers
             </span>
           </h1>
-          <p className="text-lg text-slate-400 max-w-3xl mx-auto mb-8">
-            The biggest regulation change in F1 history. New power units, new teams, new champions.
+          <p className="text-lg text-slate-400 max-w-3xl mx-auto mb-4">
+            Secure your seat now with instant QR delivery. 100% Buyer Protection.
             <strong className="text-white"> Best prices guaranteed - No service fees!</strong>
           </p>
+          <div className="flex flex-wrap justify-center gap-3 mb-4">
+            <span className="inline-flex items-center gap-1.5 bg-red-500/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
+              <AlertCircle className="w-3.5 h-3.5" /> Only 847 tickets left for Monaco GP
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
+              <Users className="w-3.5 h-3.5" /> 312 people viewing F1 tickets now
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
+              <TrendingUp className="w-3.5 h-3.5" /> Prices up 12% this week
+            </span>
+          </div>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             {[
               { icon: Flag, label: "24 Races" },
@@ -300,9 +312,9 @@ const F1TicketsPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             {[
-              { icon: Shield, label: "100% Buyer Protection", color: "text-emerald-600" },
-              { icon: Star, label: "Verified Tickets Only", color: "text-emerald-600" },
-              { icon: TrendingUp, label: "0% Service Fees", color: "text-emerald-600" },
+              { icon: Shield, label: "500,000+ Tickets Sold", color: "text-emerald-600" },
+              { icon: Star, label: "4.9/5 from 12,000+ Reviews", color: "text-amber-600" },
+              { icon: Globe, label: "Trusted in 25+ Countries", color: "text-blue-600" },
               { icon: Zap, label: "Instant QR Delivery", color: "text-emerald-600" },
             ].map((item, i) => (
               <div key={i} className={`flex items-center gap-2 ${item.color}`}>
@@ -561,7 +573,7 @@ const F1TicketsPage = () => {
                   <TableHead className="text-white font-bold hidden md:table-cell">Circuit</TableHead>
                   <TableHead className="text-white font-bold hidden sm:table-cell">Dates</TableHead>
                   <TableHead className="text-white font-bold text-center hidden sm:table-cell">Sprint</TableHead>
-                  <TableHead className="text-white font-bold text-right">Buy Tickets</TableHead>
+                  <TableHead className="text-white font-bold text-right">Secure Seats</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -730,19 +742,19 @@ const F1TicketsPage = () => {
       {/* ═══════════════ CTA ═══════════════ */}
       <section className="py-16 bg-gradient-to-r from-red-900/30 to-orange-900/30" data-testid="f1-cta">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready for the F1 2026 Season?</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Secure Your F1 2026 Tickets Now</h2>
           <p className="text-lg text-slate-400 mb-8">
-            New regulations, new teams, new champions. Don't miss Monaco, Silverstone, Monza and more!
+            New regulations, new teams, new champions. Up to 40% cheaper than Viagogo &amp; StubHub!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/events?type=f1">
-              <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white px-8" data-testid="cta-browse-btn">
-                <Ticket className="w-5 h-5 mr-2" />Browse All F1 Tickets
+              <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white px-8" data-testid="cta-browse-btn" onClick={() => window.trackCTAClick?.('Secure Your Seat Now', 'F1 Tickets', 'bottom')}>
+                <Ticket className="w-5 h-5 mr-2" />Secure Your Seat Now
               </Button>
             </Link>
             <Link to="/events">
               <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8">
-                View All Events
+                View Available Seats
               </Button>
             </Link>
           </div>

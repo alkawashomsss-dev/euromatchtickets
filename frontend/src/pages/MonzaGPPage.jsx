@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Trophy, Star, Shield, Zap, Flag, Ticket, ChevronRight, Check, Timer, TrendingUp, Users } from "lucide-react";
+import { Calendar, MapPin, Trophy, Star, Shield, Zap, Flag, Ticket, ChevronRight, Check, Timer, TrendingUp, Users, AlertCircle } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { ScarcityBadgesLight, TrustBar } from "../components/ConversionElements";
 
 const MonzaGPPage = () => {
   const tickets = [
@@ -82,10 +83,10 @@ const MonzaGPPage = () => {
                 Italian Grand Prix
                 <span className="block text-green-600">Monza 2026</span>
               </h1>
-              <p className="text-lg text-slate-500 mb-6 max-w-xl">
-                Where Ferrari dreams come true and the <strong>Tifosi</strong> roar echoes through history. 
-                The <strong>fastest circuit in F1</strong> at 264 km/h average speed.
+              <p className="text-lg text-slate-500 mb-4 max-w-xl">
+                Secure your seat now with instant QR delivery. 100% Buyer Protection.
               </p>
+              <ScarcityBadgesLight ticketsLeft={456} viewers={278} priceIncrease="15%" />
 
               <div className="flex flex-wrap gap-3 mb-8">
                 <span className="flex items-center gap-2 text-sm text-slate-600 bg-white rounded-full px-4 py-2 shadow-sm">

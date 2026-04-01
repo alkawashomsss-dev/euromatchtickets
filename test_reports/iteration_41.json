@@ -1,0 +1,70 @@
+{
+  "summary": "Frontend testing of 9-point conversion optimization across all pages. Tested 12 pages for scarcity badges, trust signals, CTA text, and competitor attack text. 9 pages pass all tests, 3 pages have issues.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "World Cup 2026 Page",
+        "issue": "Route /world-cup-2026 uses WorldCupPage.jsx instead of WorldCup2026Page.jsx - missing all conversion optimization elements (scarcity badges, unified trust signals, 'Secure Your Seat Now' CTA, competitor attack text)",
+        "affected_selectors": ["[data-testid='worldcup-page']"],
+        "priority": "HIGH"
+      },
+      {
+        "flow": "Taylor Swift Page",
+        "issue": "Route /taylor-swift-wembley-2026-tickets uses TaylorSwiftPage.jsx - missing 'people viewing' and 'Prices up' scarcity badges, CTA says 'Get Tickets from €X' instead of 'Secure Your Seat Now'",
+        "affected_selectors": ["[data-testid='taylorswift-page']"],
+        "priority": "MEDIUM"
+      },
+      {
+        "flow": "Monza GP Page",
+        "issue": "CTA button says 'Get Monza Tickets from €69' instead of 'Secure Your Seat Now'",
+        "affected_selectors": ["[data-testid='monza-hero-cta']"],
+        "priority": "LOW"
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration_41.json"],
+  "action_items": [
+    "Update App.js to use WorldCup2026Page for /world-cup-2026 route OR add conversion elements to WorldCupPage.jsx",
+    "Update TaylorSwiftPage.jsx to add 'people viewing' and 'Prices up' scarcity badges, change CTA to 'Secure Your Seat Now'",
+    "Update MonzaGPPage.jsx CTA from 'Get Monza Tickets from €69' to 'Secure Your Seat Now'"
+  ],
+  "critical_code_review_comments": [
+    "WorldCup2026Page.jsx has all conversion elements but is not used for /world-cup-2026 route",
+    "TaylorSwiftLondonPage.jsx has all conversion elements but TaylorSwiftPage.jsx (used for /taylor-swift-wembley-2026-tickets) does not",
+    "Inconsistent CTA text across pages - some use 'Secure Your Seat Now', others use 'Get Tickets from €X'"
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "N/A - frontend only test",
+    "frontend": "75% (9/12 pages pass all conversion element tests)"
+  },
+  "test_credentials": "None required - public pages",
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Conversion optimization testing completed. Key pages tested: F1 Tickets, Champions League, World Cup, Liverpool/Arsenal/Real Madrid/Barcelona/Man City hubs, Taylor Swift, Coldplay, Bahrain GP, Monza GP. Issues found with World Cup, Taylor Swift, and Monza GP pages. All club hub pages and F1/Champions League pages pass.",
+  "pages_tested": {
+    "passing": [
+      "/f1-tickets - All conversion elements present",
+      "/champions-league-tickets - All conversion elements present",
+      "/liverpool-tickets - All conversion elements present",
+      "/arsenal-tickets - All conversion elements present",
+      "/real-madrid-tickets - All conversion elements present",
+      "/barcelona-tickets - All conversion elements present",
+      "/manchester-city-tickets - All conversion elements present",
+      "/coldplay-tour-2026 - All conversion elements present",
+      "/f1-bahrain-grand-prix-tickets - All conversion elements present"
+    ],
+    "failing": [
+      "/world-cup-2026 - Missing all conversion elements (uses wrong page component)",
+      "/taylor-swift-wembley-2026-tickets - Missing 'people viewing' and 'Prices up' badges, wrong CTA text",
+      "/f1-italian-grand-prix-monza-tickets - Wrong CTA text"
+    ]
+  }
+}

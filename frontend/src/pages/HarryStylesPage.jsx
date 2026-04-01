@@ -7,7 +7,7 @@ import { API } from '../App';
 import axios from 'axios';
 
 const TRANSLATIONS = {
-  en: { title: "Harry Styles Tickets 2026", subtitle: "Together Together Tour - Official Tickets", buyNow: "Buy Tickets", from: "From", vipTitle: "VIP Packages Available", berlinVip: "Berlin VIP Experience €15,300" },
+  en: { title: "Harry Styles Tickets 2026", subtitle: "Together Together Tour - Official Tickets", buyNow: "Secure Your Seat Now", from: "From", vipTitle: "VIP Packages Available", berlinVip: "Berlin VIP Experience €15,300" },
   de: { title: "Harry Styles Tickets 2026", subtitle: "Together Together Tour - Offizielle Tickets", buyNow: "Jetzt Kaufen", from: "Ab", vipTitle: "VIP-Pakete Verfügbar", berlinVip: "Berlin VIP Experience €15.300" },
   fr: { title: "Billets Harry Styles 2026", subtitle: "Together Together Tour - Billets Officiels", buyNow: "Acheter", from: "À partir de", vipTitle: "Forfaits VIP Disponibles", berlinVip: "Berlin VIP Experience 15 300€" },
   es: { title: "Entradas Harry Styles 2026", subtitle: "Together Together Tour - Entradas Oficiales", buyNow: "Comprar", from: "Desde", vipTitle: "Paquetes VIP Disponibles", berlinVip: "Berlin VIP Experience €15.300" },
