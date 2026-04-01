@@ -153,13 +153,25 @@ const F1TicketsPage = () => {
     }))
   };
 
-  const countryFlags = {
+  // ISO code flags for calendar
+  const codeFlags = {
     "AU": "\ud83c\udde6\ud83c\uddfa", "CN": "\ud83c\udde8\ud83c\uddf3", "JP": "\ud83c\uddef\ud83c\uddf5", "BH": "\ud83c\udde7\ud83c\udded",
     "SA": "\ud83c\uddf8\ud83c\udde6", "US": "\ud83c\uddfa\ud83c\uddf8", "CA": "\ud83c\udde8\ud83c\udde6", "MC": "\ud83c\uddf2\ud83c\udde8",
     "ES": "\ud83c\uddea\ud83c\uddf8", "AT": "\ud83c\udde6\ud83c\uddf9", "GB": "\ud83c\uddec\ud83c\udde7", "BE": "\ud83c\udde7\ud83c\uddea",
     "HU": "\ud83c\udded\ud83c\uddfa", "NL": "\ud83c\uddf3\ud83c\uddf1", "IT": "\ud83c\uddee\ud83c\uddf9", "AZ": "\ud83c\udde6\ud83c\uddff",
     "SG": "\ud83c\uddf8\ud83c\uddec", "MX": "\ud83c\uddf2\ud83c\uddfd", "BR": "\ud83c\udde7\ud83c\uddf7", "QA": "\ud83c\uddf6\ud83c\udde6",
     "AE": "\ud83c\udde6\ud83c\uddea",
+  };
+  // Country name flags for API events
+  const countryFlags = {
+    "Australia": "\ud83c\udde6\ud83c\uddfa", "China": "\ud83c\udde8\ud83c\uddf3", "Japan": "\ud83c\uddef\ud83c\uddf5",
+    "Bahrain": "\ud83c\udde7\ud83c\udded", "Saudi Arabia": "\ud83c\uddf8\ud83c\udde6", "USA": "\ud83c\uddfa\ud83c\uddf8",
+    "Canada": "\ud83c\udde8\ud83c\udde6", "Monaco": "\ud83c\uddf2\ud83c\udde8", "Spain": "\ud83c\uddea\ud83c\uddf8",
+    "Austria": "\ud83c\udde6\ud83c\uddf9", "UK": "\ud83c\uddec\ud83c\udde7", "England": "\ud83c\uddec\ud83c\udde7",
+    "Great Britain": "\ud83c\uddec\ud83c\udde7", "Belgium": "\ud83c\udde7\ud83c\uddea", "Hungary": "\ud83c\udded\ud83c\uddfa",
+    "Netherlands": "\ud83c\uddf3\ud83c\uddf1", "Italy": "\ud83c\uddee\ud83c\uddf9", "Azerbaijan": "\ud83c\udde6\ud83c\uddff",
+    "Singapore": "\ud83c\uddf8\ud83c\uddec", "Mexico": "\ud83c\uddf2\ud83c\uddfd", "Brazil": "\ud83c\udde7\ud83c\uddf7",
+    "Qatar": "\ud83c\uddf6\ud83c\udde6", "UAE": "\ud83c\udde6\ud83c\uddea",
   };
 
   const formatDate = (dateStr) => new Date(dateStr).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -435,7 +447,7 @@ const F1TicketsPage = () => {
                 >
                   <div className="flex items-center gap-4 mb-3 md:mb-0">
                     <div className="w-12 h-12 bg-red-50 rounded-lg flex items-center justify-center text-2xl">
-                      {countryFlags[race.country] || countryFlags[Object.keys(countryFlags).find(k => race.country?.includes(k))] || <Flag className="w-5 h-5 text-red-500" />}
+                      {countryFlags[race.country] || <Flag className="w-5 h-5 text-red-500" />}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
@@ -477,8 +489,8 @@ const F1TicketsPage = () => {
       <section className="py-14 bg-white" data-testid="f1-calendar-section">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Complete F1 2026 Race Calendar</h2>
-            <p className="text-slate-500 text-sm">All 24 Grand Prix with dates, circuits, and ticket prices - 6 Sprint weekends</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">F1 2026 Calendar - Full Schedule & Ticket Prices</h2>
+            <p className="text-slate-500 text-sm">Buy tickets for all 24 Formula 1 Grand Prix races - 6 Sprint weekends included</p>
           </div>
           <div className="border border-slate-200 rounded-xl overflow-hidden">
             <Table>
@@ -489,33 +501,46 @@ const F1TicketsPage = () => {
                   <TableHead className="text-white font-bold hidden md:table-cell">Circuit</TableHead>
                   <TableHead className="text-white font-bold hidden sm:table-cell">Dates</TableHead>
                   <TableHead className="text-white font-bold text-center hidden sm:table-cell">Sprint</TableHead>
-                  <TableHead className="text-white font-bold text-right">From</TableHead>
+                  <TableHead className="text-white font-bold text-right">Buy Tickets</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {raceCalendar2026.map((r) => (
-                  <TableRow key={r.round} className="hover:bg-red-50/40" data-testid={`calendar-row-${r.round}`}>
-                    <TableCell className="text-center font-bold text-slate-500">{r.round}</TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <span className="text-lg">{countryFlags[r.flag]}</span>
-                        <span className="font-bold text-slate-900 text-sm">{r.gp}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-slate-500 text-sm hidden md:table-cell">{r.circuit}</TableCell>
-                    <TableCell className="text-slate-600 text-sm hidden sm:table-cell font-medium">{r.dates}</TableCell>
-                    <TableCell className="text-center hidden sm:table-cell">
-                      {r.sprint ? (
-                        <Badge className="bg-purple-100 text-purple-700 border-purple-200 text-xs">Sprint</Badge>
-                      ) : (
-                        <span className="text-slate-300">-</span>
-                      )}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <span className="font-black text-red-600">&#8364;{r.price}</span>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {raceCalendar2026.map((r) => {
+                  const matchedEvent = races.find(e => e.title?.includes(r.country) || e.title?.includes(r.gp.split(' ')[0]));
+                  const Row = matchedEvent ? Link : 'tr';
+                  const rowProps = matchedEvent
+                    ? { to: `/event/${matchedEvent.event_id}`, className: "border-b transition-colors hover:bg-red-50 cursor-pointer flex-none table-row" }
+                    : {};
+                  return (
+                    <TableRow key={r.round} className="hover:bg-red-50/40" data-testid={`calendar-row-${r.round}`}>
+                      <TableCell className="text-center font-bold text-slate-500">{r.round}</TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">{codeFlags[r.flag]}</span>
+                          <span className="font-bold text-slate-900 text-sm">{r.gp}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="text-slate-500 text-sm hidden md:table-cell">{r.circuit}</TableCell>
+                      <TableCell className="text-slate-600 text-sm hidden sm:table-cell font-medium">{r.dates}</TableCell>
+                      <TableCell className="text-center hidden sm:table-cell">
+                        {r.sprint ? (
+                          <Badge className="bg-purple-100 text-purple-700 border-purple-200 text-xs">Sprint</Badge>
+                        ) : (
+                          <span className="text-slate-300">-</span>
+                        )}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {matchedEvent ? (
+                          <Link to={`/event/${matchedEvent.event_id}`} className="inline-flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors">
+                            &#8364;{matchedEvent.lowest_price ? Math.round(matchedEvent.lowest_price) : r.price}
+                          </Link>
+                        ) : (
+                          <span className="font-black text-red-600">&#8364;{r.price}</span>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
               </TableBody>
             </Table>
           </div>
@@ -549,48 +574,71 @@ const F1TicketsPage = () => {
         </div>
       </section>
 
-      {/* ═══════════════ ALL RACE TICKET LINKS ═══════════════ */}
+      {/* ═══════════════ ALL RACE TICKET LINKS (SEO KEYWORDS) ═══════════════ */}
       <section className="py-14 bg-white" data-testid="f1-all-race-links">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center text-slate-900 mb-8">All F1 2026 Race Tickets</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
-            {[
-              { name: "Monaco GP", flag: "MC", price: "\u20ac289", href: "/f1-monaco-grand-prix-tickets", highlight: true },
-              { name: "British GP", flag: "GB", price: "\u20ac149", href: "/f1-british-grand-prix-silverstone-tickets" },
-              { name: "Italian GP", flag: "IT", price: "\u20ac99", href: "/f1-italian-grand-prix-monza-tickets" },
-              { name: "Singapore GP", flag: "SG", price: "\u20ac189", href: "/f1-singapore-grand-prix-tickets" },
-              { name: "Las Vegas GP", flag: "US", price: "\u20ac249", href: "/f1-las-vegas-grand-prix-tickets", highlight: true },
-              { name: "Abu Dhabi GP", flag: "AE", price: "\u20ac169", href: "/f1-abu-dhabi-grand-prix-tickets" },
-              { name: "Belgian GP", flag: "BE", price: "\u20ac109", href: "/f1-belgian-grand-prix-spa-tickets" },
-              { name: "Dutch GP", flag: "NL", price: "\u20ac189", href: "/f1-dutch-grand-prix-zandvoort-tickets" },
-              { name: "Miami GP", flag: "US", price: "\u20ac249", href: "/f1-miami-grand-prix-tickets", highlight: true },
-              { name: "Japanese GP", flag: "JP", price: "\u20ac189", href: "/f1-japanese-grand-prix-suzuka-tickets" },
-              { name: "Australian GP", flag: "AU", price: "\u20ac159", href: "/f1-australian-grand-prix-melbourne-tickets" },
-              { name: "Bahrain GP", flag: "BH", price: "\u20ac149", href: "/f1-bahrain-grand-prix-tickets" },
-              { name: "Saudi GP", flag: "SA", price: "\u20ac169", href: "/f1-saudi-arabian-grand-prix-jeddah-tickets" },
-              { name: "Spanish GP", flag: "ES", price: "\u20ac119", href: "/f1-spanish-grand-prix-barcelona-tickets" },
-              { name: "Hungarian GP", flag: "HU", price: "\u20ac99", href: "/f1-hungarian-grand-prix-budapest-tickets" },
-              { name: "Austrian GP", flag: "AT", price: "\u20ac119", href: "/f1-austrian-grand-prix-red-bull-ring-tickets" },
-            ].map((race, i) => (
-              <Link
-                key={i}
-                to={race.href}
-                className={`flex items-center gap-3 p-3.5 rounded-xl border transition-all hover:scale-[1.02] ${
-                  race.highlight
-                    ? 'bg-red-50 border-red-200 hover:border-red-400'
-                    : 'bg-white border-slate-200 hover:border-slate-400'
-                }`}
-                data-testid={`race-link-${i}`}
-              >
-                <span className="text-2xl">{countryFlags[race.flag]}</span>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-slate-900 text-sm">{race.name}</h3>
-                  <span className="text-emerald-600 text-xs font-medium">from {race.price}</span>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-400 flex-shrink-0" />
-              </Link>
-            ))}
-          </div>
+          <h2 className="text-2xl font-bold text-center text-slate-900 mb-2">Buy F1 2026 Grand Prix Tickets - All Races</h2>
+          <p className="text-slate-500 text-sm text-center mb-8">Cheapest Formula 1 tickets for every Grand Prix - 0% fees, instant delivery</p>
+          {races.filter(r => r.title?.includes('2026')).length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {races.filter(r => r.title?.includes('2026')).map((race, i) => {
+                const seoMap = {
+                  "Monaco": { kw: "Buy Monaco GP Tickets 2026", sub: "Circuit de Monaco - Cheapest Prices", hot: true },
+                  "British": { kw: "Buy Silverstone F1 Tickets 2026", sub: "British Grand Prix - Best Grandstand Seats", hot: true },
+                  "Italian Grand Prix": { kw: "Buy Monza F1 Tickets 2026", sub: "Italian GP - Autodromo Nazionale Monza" },
+                  "Singapore": { kw: "Buy Singapore GP Night Race Tickets", sub: "Marina Bay F1 Street Circuit 2026", hot: true },
+                  "Las Vegas": { kw: "Buy Las Vegas Grand Prix Tickets 2026", sub: "F1 Las Vegas Strip Night Race - VIP Available", hot: true },
+                  "Abu Dhabi": { kw: "Buy Abu Dhabi GP Tickets 2026", sub: "Yas Marina Circuit - Season Finale" },
+                  "Miami": { kw: "Buy Miami Grand Prix Tickets 2026", sub: "Miami F1 Sprint Race - Cheapest Prices", hot: true },
+                  "Australian": { kw: "Buy Australian GP Tickets 2026", sub: "Albert Park Melbourne - Season Opener" },
+                  "Japanese": { kw: "Buy Suzuka F1 Tickets 2026", sub: "Japanese Grand Prix - Suzuka Circuit" },
+                  "Chinese": { kw: "Buy Chinese GP Tickets 2026", sub: "Shanghai F1 Sprint Race Weekend" },
+                  "Bahrain": { kw: "Buy Bahrain GP Tickets 2026", sub: "Bahrain International Circuit - Night Race" },
+                  "Saudi": { kw: "Buy Saudi Arabian GP Tickets 2026", sub: "Jeddah Corniche Street Circuit F1" },
+                  "Canadian": { kw: "Buy Canadian GP Tickets 2026", sub: "Montreal Circuit Gilles Villeneuve - Sprint" },
+                  "Spanish Grand Prix": { kw: "Buy Barcelona F1 Tickets 2026", sub: "Spanish GP - Circuit de Catalunya" },
+                  "Austrian": { kw: "Buy Austrian GP Tickets 2026", sub: "Red Bull Ring Spielberg - F1 Sprint" },
+                  "Belgian": { kw: "Buy Spa F1 Tickets 2026", sub: "Belgian GP - Spa-Francorchamps Circuit" },
+                  "Hungarian": { kw: "Buy Hungarian GP Tickets 2026", sub: "Hungaroring Budapest - F1 Grand Prix" },
+                  "Dutch": { kw: "Buy Zandvoort F1 Tickets 2026", sub: "Dutch GP Sprint - Final Year at Zandvoort", hot: true },
+                  "Madrid": { kw: "Buy Madrid GP Tickets 2026", sub: "NEW - Madrid Grand Prix Debut Race", hot: true },
+                  "Azerbaijan": { kw: "Buy Baku F1 Tickets 2026", sub: "Azerbaijan GP - Baku City Street Circuit" },
+                  "United States": { kw: "Buy COTA F1 Tickets Austin 2026", sub: "US Grand Prix - Circuit of the Americas" },
+                  "Mexico": { kw: "Buy Mexico City GP Tickets 2026", sub: "Mexican F1 Grand Prix - Best Atmosphere" },
+                  "Brazil": { kw: "Buy Interlagos F1 Tickets 2026", sub: "Sao Paulo GP - Autodromo Interlagos" },
+                  "Qatar": { kw: "Buy Qatar GP Tickets 2026", sub: "Lusail International Circuit F1" },
+                  "Emilia": { kw: "Buy Imola F1 Tickets 2026", sub: "Emilia Romagna GP - Autodromo Enzo Ferrari" },
+                };
+                const match = Object.keys(seoMap).find(k => race.title?.includes(k));
+                const seo = match ? seoMap[match] : { kw: `Buy ${race.title} Tickets`, sub: race.venue };
+                return (
+                  <Link
+                    key={race.event_id || i}
+                    to={`/event/${race.event_id}`}
+                    className={`flex items-center gap-3 p-4 rounded-xl border transition-all hover:scale-[1.02] ${
+                      seo.hot
+                        ? 'bg-red-50 border-red-200 hover:border-red-400'
+                        : 'bg-white border-slate-200 hover:border-slate-400'
+                    }`}
+                    data-testid={`race-link-${race.event_id}`}
+                  >
+                    <span className="text-2xl flex-shrink-0">{countryFlags[race.country] || <Flag className="w-5 h-5 text-red-500" />}</span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-slate-900 text-sm">{seo.kw}</h3>
+                      <span className="text-slate-500 text-xs block truncate">{seo.sub}</span>
+                    </div>
+                    <div className="text-right flex-shrink-0">
+                      <div className="text-xs text-slate-400">from</div>
+                      <span className="font-black text-emerald-600">&#8364;{race.lowest_price ? Math.round(race.lowest_price) : '89'}</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-slate-400 flex-shrink-0" />
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="text-center py-8 text-slate-400">Loading events...</div>
+          )}
         </div>
       </section>
 
