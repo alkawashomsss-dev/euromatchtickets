@@ -270,6 +270,16 @@ async def google_merchant_feed():
         else:
             xml_parts.append(f'  <g:custom_label_2>premium</g:custom_label_2>')
         xml_parts.append(f'  <g:custom_label_3>{year}</g:custom_label_3>')
+        # Return policy label - must match label set in Merchant Center
+        xml_parts.append(f'  <g:return_policy_label>Full Refund</g:return_policy_label>')
+        # Free shipping to all major markets
+        for ship_country in ["DE", "GB", "FR", "ES", "IT", "NL", "AT", "BE", "US"]:
+            if ship_country != iso_country:
+                xml_parts.append(f'  <g:shipping>')
+                xml_parts.append(f'    <g:country>{ship_country}</g:country>')
+                xml_parts.append(f'    <g:service>E-Ticket Delivery</g:service>')
+                xml_parts.append(f'    <g:price>0 EUR</g:price>')
+                xml_parts.append(f'  </g:shipping>')
         xml_parts.append('</item>')
 
     xml_parts.append('</channel>')

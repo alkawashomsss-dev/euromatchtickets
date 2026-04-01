@@ -52,6 +52,47 @@ const RefundPolicyPage = () => {
           </div>
         </section>
 
+        {/* Delivery & Shipping Info - Critical for Google Merchant Center */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+            <CheckCircle className="w-6 h-6 text-emerald-600" />
+            Delivery & Shipping
+          </h2>
+          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6">
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold mb-1">Free Digital Delivery</h3>
+                  <p className="text-slate-600">All tickets are delivered <strong>free of charge</strong> as digital e-tickets via email. There are <strong>no shipping costs</strong> and no physical delivery required.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold mb-1">Instant QR Code Delivery</h3>
+                  <p className="text-slate-600">After purchase, you will receive your tickets instantly via email as QR codes or PDF files. No waiting, no postal delivery.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold mb-1">Worldwide Access</h3>
+                  <p className="text-slate-600">Since all tickets are digital, delivery is available worldwide at no additional cost. Shipping: <strong>Free (0.00 EUR)</strong> to all countries.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Resale Marketplace Disclosure */}
+        <section className="mb-12">
+          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+            <h3 className="font-semibold mb-2">Independent Resale Marketplace</h3>
+            <p className="text-slate-600">EuroMatchTickets is an independent ticket resale marketplace. We are not affiliated with any event organizer, venue, or box office. Prices may be above or below face value. All tickets are verified and guaranteed authentic by our FanProtect Guarantee.</p>
+          </div>
+        </section>
+
         {/* When You're Covered */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
