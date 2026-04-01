@@ -1,61 +1,57 @@
 # EuroMatchTickets - PRD
 
 ## Original Problem Statement
-Build `euromatchtickets.com`, a ticket marketplace with primary focus on achieving top search engine rankings through aggressive SEO strategy. Goal: sell 1,000 tickets in first month.
+Build `euromatchtickets.com`, a ticket marketplace with primary focus on SEO and sales. Goal: sell 1,000 tickets in first month.
 
 ## Architecture
-- **Backend**: FastAPI + MongoDB (Motor async driver)
-- **Frontend**: React with pre-hydration vanilla JS for SEO
-- **SEO Strategy**: Pre-hydration meta tags + React JSON-LD + Programmatic SEO + Google Merchant Center + Multi-Engine Indexing
+- **Backend**: FastAPI + MongoDB + Emergent LLM (GPT-4.1-mini)
+- **Frontend**: React + pre-hydration vanilla JS for SEO
+- **SEO**: Pre-hydration meta + React JSON-LD + Programmatic SEO + Google Merchant Center + Nuclear Indexing
 
-## Indexing System (Nuclear Level)
-### Active Channels (6/7):
-1. **Bing API** - 100 URLs/day auto-submission (24h cycle)
-2. **IndexNow Yandex** - 1,437 URLs submitted ✅
-3. **IndexNow Seznam** - 1,437 URLs submitted ✅
-4. **IndexNow Naver** - 1,437 URLs submitted ✅
-5. **Google Sitemap Ping** - 10 sitemaps pinged every 6h
-6. **Google Merchant Center** - 1,200 products in feed
-7. **Google Indexing API** - REQUIRES USER SETUP (service account)
+## Features Implemented
 
-### Endpoints:
-- `POST /api/seo/indexnow` - Nuclear submit to all engines
-- `GET /api/seo/nuclear-status` - Full indexing status
-- `GET /api/seo/indexing-progress` - Bing progress tracker
-- `GET /api/merchant/feed.xml` - Google Shopping feed
-- `GET /api/merchant/feed-status` - Feed stats
+### AI Chatbot (2026-04-01)
+- GPT-4.1-mini via Emergent LLM key (free)
+- Floating chat widget on all pages
+- Quick questions, session history, multilingual (EN/AR/DE/ES)
+- Fallback responses if LLM fails
+- POST /api/chat/message endpoint
 
-## Google Merchant Center
-- Feed URL: `https://euromatchtickets.com/api/merchant/feed.xml`
-- 1,200 products, RSS 2.0 with Google namespace
-- Categories: F1 (387), Concert (446), Football (269), World Cup (28)
+### Google Merchant Center (2026-03-31)
+- GET /api/merchant/feed.xml - 1,200 products RSS feed
+- GET /api/merchant/feed-status
 
-## Programmatic SEO: 91 unique pages
-## Total Active Pages: ~1,200
-## Total Sitemap URLs: ~1,574
+### Nuclear Indexing (2026-03-31)
+- IndexNow to 5 engines (Bing, Yandex, Seznam, Naver, api.indexnow.org)
+- Bing API auto-submission (100/day)
+- Google sitemap ping (10 sitemaps, every 6h)
+- POST /api/seo/indexnow, GET /api/seo/nuclear-status
 
-## Completed Features
-- [x] Nuclear multi-engine indexing (5 IndexNow + Bing API + Sitemap pings)
-- [x] Google Merchant Center (1,200 products)
-- [x] Pre-hydration JSON-LD (FAQ, Rating, Breadcrumb, Organization, WebSite)
-- [x] 91 programmatic SEO pages
-- [x] FAQ accordion on all SEO pages
-- [x] Schema deduplication
-- [x] Resale disclosure (Google requirement)
-- [x] All sitemaps updated with fresh lastmod dates
+### Programmatic SEO (2026-03-31)
+- 91 unique city+event pages
+- 15 new keyword FAQ pages in pre-hydration S object
+
+### Rich Snippets (2026-03-31)
+- FAQPage, Event, Product, AggregateRating, BreadcrumbList, Organization, WebSite schemas
+- Schema deduplication system
+- Category-based images for all schemas
+
+### SEO Fixes (2026-03-31 - 04-01)
+- Fixed "description missing" - all 1,200 pages have descriptions
+- Fixed "image missing" - category-based images for all pages
+- Canonical, Soft 404, 410 Gone, noindex all working
+
+## Active Stats
+- Total SEO pages: ~1,200
+- Sitemap URLs: ~1,574
+- Merchant products: 1,200
+- IndexNow submissions: 4,311
 
 ## P1 (Next)
-- [ ] Google Indexing API setup (requires user action)
-- [ ] Enhance Owner Dashboard
-- [ ] French/Italian SEO landing pages
+- [ ] Google Merchant Center setup (user action)
+- [ ] Owner Dashboard (charts/sales)
+- [ ] French/Italian SEO pages
 
 ## P2 (Future)
+- [ ] Google Indexing API (requires service account)
 - [ ] Price Comparison Tables
-- [ ] Ticket Supplier Affiliate Program
-
-## Date Log
-- 2026-03-31: Nuclear indexing submission (1,437 URLs to 3 engines = 4,311 total submissions)
-- 2026-03-31: Google Merchant Center feed (1,200 products)
-- 2026-03-31: 91 programmatic SEO pages
-- 2026-03-31: World-class SEO schemas
-- 2026-03-31: Updated all sitemap lastmod dates
