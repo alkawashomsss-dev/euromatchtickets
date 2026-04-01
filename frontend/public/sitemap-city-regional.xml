@@ -1,123 +1,365 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://euromatchtickets.com/london-events</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.00</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/madrid-events</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.00</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/barcelona-events</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.00</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/paris-events</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.00</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/munich-events</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.00</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/milan-events</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.00</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/berlin-events</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.00</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/amsterdam-events</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.00</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/manchester-events</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.00</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/liverpool-events</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.00</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/london-event-tickets</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/paris-event-tickets</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/madrid-event-tickets</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/barcelona-event-tickets</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/milan-event-tickets</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/munich-event-tickets</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/amsterdam-event-tickets</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/istanbul-event-tickets</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/lisbon-event-tickets</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/dubai-event-tickets</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/london-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/madrid-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/barcelona-events-tickets-2026</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/paris-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/munich-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/milan-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/berlin-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/amsterdam-events-tickets-2026</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/manchester-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/liverpool-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/rome-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/lisbon-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/vienna-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/istanbul-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/dubai-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/abu-dhabi-events-tickets-2026</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/new-york-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/las-vegas-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/miami-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/los-angeles-events-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/london-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/madrid-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/barcelona-sports-tickets-2026</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/paris-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/munich-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/milan-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/berlin-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/amsterdam-sports-tickets-2026</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/manchester-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/liverpool-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/rome-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/lisbon-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/vienna-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/istanbul-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/dubai-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/abu-dhabi-sports-tickets-2026</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/new-york-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/las-vegas-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/miami-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/los-angeles-sports-tickets-2026</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.00</priority>
   </url>
 </urlset>
