@@ -547,11 +547,8 @@ function App() {
               <SocialProofNotification />
               {showExitPopup && <ExitIntentPopup onClose={() => setShowExitPopup(false)} />}
               {showPushBanner && <PushNotificationBanner onClose={() => setShowPushBanner(false)} />}
-              <FloatingCTA onClick={() => window.location.href = '/events'} />
-              <MarketingBotButton />
             </Suspense>
             <CookieConsentBanner />
-            <ChatWidget />
           </AuthProvider>
         </LanguageProvider>
       </HelmetProvider>
