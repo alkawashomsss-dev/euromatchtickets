@@ -23,7 +23,7 @@
     <meta name="author" content="EuroMatchTickets" />
     <meta name="keywords" content="champions league tickets, taylor swift tickets, f1 tickets, buy football tickets, concert tickets Europe, FIFA World Cup 2026 tickets" />
     <meta name="robots" content="" />
-    <link rel="canonical" id="canonical-tag" href="" />
+    <!-- canonical set dynamically by pre-hydration script -->
     
     <!-- SEO tags are set SYNCHRONOUSLY by the script below - unique per page -->
     <script>
@@ -153,7 +153,27 @@
         '/motogp-tickets-2026':['MotoGP Tickets 2026 \u2013 All Races | From \u20ac45','Buy MotoGP tickets for every 2026 race! Mugello, Valencia & 18 more circuits. From \u20ac45. Verified, instant e-tickets!','MotoGP Tickets 2026 \u2013 All Races'],
         '/taylor-swift-tickets-2026':['Taylor Swift Tickets 2026 \u2013 Wembley | \u20ac79','Buy Taylor Swift tickets from \u20ac79! London Wembley 2026. All dates. Verified sellers, instant QR delivery!','Taylor Swift Tickets 2026'],
         '/champions-league-knockout-stage-tickets':['Champions League Knockout Tickets 2026 | \u20ac49','Buy Champions League knockout stage tickets! QF, SF & Final 2026. From \u20ac49. Verified, FanProtect guarantee!','Champions League Knockout Stage Tickets 2026'],
-        '/f1-2026-tickets':['F1 2026 Tickets \u2013 All Grand Prix | From \u20ac59','Buy F1 2026 tickets for every race! Monaco, Monza, Bahrain, Silverstone. From \u20ac59. Cheapest prices guaranteed!','F1 2026 Tickets \u2013 All Races']
+        '/f1-2026-tickets':['F1 2026 Tickets \u2013 All Grand Prix | From \u20ac59','Buy F1 2026 tickets for every race! Monaco, Monza, Bahrain, Silverstone. From \u20ac59. Cheapest prices guaranteed!','F1 2026 Tickets \u2013 All Races'],
+        '/cheap-f1-tickets-2026':['Cheap F1 Tickets 2026 | From \u20ac61','Buy the cheapest F1 tickets for all 24 Grand Prix races in 2026. Up to 40% off. 0% fees, instant delivery.','Cheap F1 Tickets 2026'],
+        '/buy-f1-tickets-online':['Buy F1 Tickets Online 2026 | All Races','Buy Formula 1 tickets online for all 24 Grand Prix races. Secure checkout, instant QR delivery, 100% buyer protection.','Buy F1 Tickets Online 2026'],
+        '/f1-ticket-prices-2026':['F1 Ticket Prices 2026 | Complete Guide','Complete guide to F1 2026 ticket prices. General admission from \u20ac61, grandstand from \u20ac149, VIP from \u20ac989.','F1 Ticket Prices 2026 Guide'],
+        '/f1-vip-tickets-2026':['F1 VIP Tickets 2026 | Paddock Club','Buy F1 VIP hospitality and Paddock Club tickets for 2026. Premium experience with pit lane access.','F1 VIP & Paddock Club Tickets 2026'],
+        '/last-minute-f1-tickets':['Last Minute F1 Tickets 2026 | Buy Now','Last minute F1 tickets available for 2026 Grand Prix races. Limited availability, instant delivery.','Last Minute F1 Tickets 2026'],
+        '/cheap-champions-league-tickets':['Cheap Champions League Tickets 2026','Buy cheap Champions League tickets. Group stage from \u20ac49, knockout from \u20ac89. Best prices guaranteed.','Cheap Champions League Tickets'],
+        '/buy-champions-league-final-tickets-2026':['Champions League Final 2026 Tickets','Buy Champions League Final 2026 tickets. The biggest match in club football. Verified, instant delivery.','Champions League Final 2026 Tickets'],
+        '/buy-premier-league-tickets':['Buy Premier League Tickets 2026','Buy Premier League tickets for all clubs. Arsenal, Liverpool, Man United, Chelsea. From \u20ac49.','Buy Premier League Tickets 2026'],
+        '/buy-la-liga-tickets':['Buy La Liga Tickets 2026 | Spain','Buy La Liga tickets for Real Madrid, Barcelona, Atletico Madrid. From \u20ac39. Best prices.','Buy La Liga Tickets 2026'],
+        '/buy-serie-a-tickets':['Buy Serie A Tickets 2026 | Italy','Buy Italian Serie A tickets. Juventus, AC Milan, Inter Milan, Roma. From \u20ac29.','Buy Serie A Tickets 2026'],
+        '/buy-bundesliga-tickets':['Buy Bundesliga Tickets 2026 | Germany','Buy Bundesliga tickets. Bayern Munich, Borussia Dortmund. From \u20ac25. Instant delivery.','Buy Bundesliga Tickets 2026'],
+        '/cheap-world-cup-2026-tickets':['Cheap World Cup 2026 Tickets','Buy cheap FIFA World Cup 2026 tickets. USA, Canada, Mexico. Group stage from \u20ac79.','Cheap World Cup 2026 Tickets'],
+        '/buy-world-cup-final-2026-tickets':['World Cup Final 2026 Tickets | MetLife','Buy FIFA World Cup 2026 Final tickets at MetLife Stadium. From \u20ac299.','World Cup Final 2026 Tickets'],
+        '/world-cup-2026-schedule-tickets':['World Cup 2026 Schedule & Tickets','Complete FIFA World Cup 2026 schedule with ticket prices. 48 teams, 104 matches.','World Cup 2026 Schedule & Tickets'],
+        '/london-event-tickets':['London Event Tickets 2026','Buy tickets for events in London. Premier League, concerts, theatre. From \u20ac29.','London Event Tickets 2026'],
+        '/paris-event-tickets':['Paris Event Tickets 2026','Buy tickets for events in Paris. PSG, concerts, Stade de France. From \u20ac35.','Paris Event Tickets 2026'],
+        '/madrid-event-tickets':['Madrid Event Tickets 2026','Buy tickets for events in Madrid. Real Madrid, Atletico, F1 Madrid GP. From \u20ac39.','Madrid Event Tickets 2026'],
+        '/barcelona-event-tickets':['Barcelona Event Tickets 2026','Buy tickets for events in Barcelona. FC Barcelona, Camp Nou, concerts. From \u20ac39.','Barcelona Event Tickets 2026'],
+        '/milan-event-tickets':['Milan Event Tickets 2026','Buy tickets for events in Milan. AC Milan, Inter Milan, San Siro, Monza GP. From \u20ac29.','Milan Event Tickets 2026'],
+        '/cheap-concert-tickets-europe':['Cheap Concert Tickets Europe 2026','Buy cheap concert tickets for Europe. Coldplay, Taylor Swift, Ed Sheeran. From \u20ac39.','Cheap Concert Tickets Europe']
       };
 
       /* ===== HREFLANG LANGUAGE MAPPING ===== */
@@ -249,10 +269,7 @@
       setMeta('meta[name="twitter:image"]',B+'/og-image.jpg');
 
       /* ===== CANONICAL ===== */
-      var existingCanon=document.getElementById('canonical-tag');
-      if(!existingCanon){
-        existingCanon=document.querySelector('link[rel="canonical"]');
-      }
+      var existingCanon=document.querySelector('link[rel="canonical"]');
       if(!existingCanon){
         existingCanon=document.createElement('link');
         existingCanon.rel='canonical';

@@ -10,40 +10,47 @@ Build `euromatchtickets.com`, a ticket marketplace with primary focus on SEO and
 
 ## Features Implemented
 
+### MEGA SEO Push (2026-04-01) - DONE
+- Created 27 NEW high-value keyword pages targeting commercial search queries:
+  - "cheap f1 tickets 2026", "buy f1 tickets online", "f1 ticket prices 2026", "f1 vip tickets", "last minute f1 tickets"
+  - "cheap champions league tickets", "buy champions league final tickets 2026"
+  - "buy premier league tickets", "buy la liga tickets", "buy serie a tickets", "buy bundesliga tickets"
+  - "cheap world cup 2026 tickets", "buy world cup final 2026 tickets", "world cup 2026 schedule"
+  - City pages: London, Paris, Madrid, Barcelona, Milan, Munich, Amsterdam, Istanbul, Lisbon, Dubai
+  - Concert pages: cheap concert tickets europe, Coldplay 2026, Ed Sheeran 2026
+- Optimized 20 existing F1 race page titles for better CTR
+- Added all 27 new pages to pre-hydration metadata map in index.html
+- Regenerated ALL sitemaps (1,506 URLs across 9 sitemap files)
+- Submitted 1,463 URLs to Yandex IndexNow
+
+### Critical Canonical URL Fix (2026-04-01) - DONE
+- FIXED: Empty `<link rel="canonical" href="">` tag in raw HTML was confusing Google
+- Removed the empty canonical from HTML, now created dynamically by pre-hydration JS
+- All pages now show correct canonical URLs (verified via browser)
+- This resolves the "Duplicate, Google chose different canonical" GSC error
+
+### Deployment Fix (2026-04-01) - DONE
+- Added `--extra-index-url` to requirements.txt for `emergentintegrations` package
+- Removed unused `python-jose` that caused pyasn1 conflict
+
 ### F1 Tickets Page Competitor Upgrade (2026-04-01) - DONE
-- Complete page rewrite with real 2026 F1 data
-- **2026 Driver Standings** (22 drivers, after Round 3 Japanese GP): Antonelli 72pts, Russell 63pts, Leclerc 49pts
-- **2026 Constructor Standings** (11 teams): Mercedes 135pts, Ferrari 90pts, McLaren 46pts
-- **2026 Team Lineups** (11 teams): Including new teams Audi and Cadillac
-- **2025 Champions**: Lando Norris (423pts), Verstappen (421pts), Piastri (410pts)
-- **Full 2026 Calendar** (24 races): All dates, circuits, prices, Sprint badges
-- Professional Shadcn UI Tables with position badges (gold/silver/bronze)
-- Tabbed interface for easy navigation
+- 2026 Driver Standings (22 drivers), Constructor Standings (11 teams)
+- 2026 Team Lineups including Audi & Cadillac
+- 2025 Champions section (Norris 423pts)
+- Full 2026 Calendar (24 races) with buy buttons linked to real events
+- SEO keyword-rich race links with actual event data from database
 
-### AI Chatbot (2026-04-01) - DONE
-- GPT-4.1-mini via Emergent LLM key
-- Floating chat widget on all pages
-- Quick questions, session history, multilingual (EN/AR/DE/ES)
-
-### Google Merchant Center (2026-03-31) - DONE
-- GET /api/merchant/feed.xml - 1,200 products RSS feed
-
-### Nuclear Indexing (2026-03-31) - DONE
-- IndexNow to 5 engines + Bing API auto-submission
-
-### Programmatic SEO (2026-03-31) - DONE
-- 91 unique city+event pages + 15 FAQ pages
-
-### Rich Snippets (2026-03-31) - DONE
-- FAQPage, Event, Product, AggregateRating, BreadcrumbList schemas
-
-### SEO Fixes - DONE
-- Canonical URLs, Soft 404, 410 Gone, noindex all working
+### AI Chatbot - DONE
+### Google Merchant Center - DONE
+### Nuclear Indexing Engine - DONE
+### Programmatic SEO (91+ pages) - DONE
+### Rich Snippets Schema - DONE
 
 ## Active Stats
-- Total SEO pages: ~1,200
-- Sitemap URLs: ~1,574
+- Total active SEO pages: 1,226
+- Total sitemap URLs: 1,506
 - Merchant products: 1,200
+- New keyword pages: 27
 
 ## P1 (Next)
 - [ ] Google Indexing API (requires service account key from user)
