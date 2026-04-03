@@ -160,22 +160,30 @@ def _xml_escape(text):
 
 def _build_clean_gmc_description(title, category, city, venue, year):
     """Generate a clean, factual description for Google Merchant Center.
-    No promotional language, no conversational tone - purely informational."""
-    venue_text = f" at {venue}" if venue and venue != city else ""
-    city_text = f" in {city}" if city and city != "Europe" else ""
+    No promotional language, no pricing, no conversational tone - purely informational."""
+    import re as _re
+    # Remove pricing from title before using in description
+    clean_name = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', title, flags=_re.IGNORECASE).strip()
+    clean_name = _re.sub(r'\s*\|\s*.*$', '', clean_name).strip()
+    # Remove "Tickets" word to avoid "Tickets for X Tickets"
+    clean_name = _re.sub(r'\s*Tickets?\s*$', '', clean_name, flags=_re.IGNORECASE).strip()
+    clean_name = _re.sub(r'\s*Tickets?\s+', ' ', clean_name, flags=_re.IGNORECASE).strip()
+    
+    venue_text = f" at {venue}" if venue and venue != city and venue != "Europe" else ""
+    city_text = f", {city}" if city and city != "Europe" else ""
     
     if category == "f1":
-        return f"{title}{venue_text}{city_text}. Formula 1 World Championship {year} season. Electronic ticket with QR code. Resale marketplace."
+        return f"Tickets for {clean_name}{venue_text}{city_text}. Formula 1 World Championship {year} season. Includes circuit access and seating. Secondary ticket marketplace."
     elif category == "football":
-        return f"{title}{venue_text}{city_text}. Football match ticket for the {year} season. Electronic delivery. Independent resale marketplace."
+        return f"Tickets for {clean_name}{venue_text}{city_text}. {year} season football match. Includes stadium entry and allocated seating. Secondary ticket marketplace."
     elif category == "concert":
-        return f"{title}{venue_text}{city_text}. Concert event ticket, {year}. Electronic ticket with QR code. Independent resale marketplace."
+        return f"Tickets for {clean_name}{venue_text}{city_text}. Live concert event, {year}. Includes venue entry and seating category. Secondary ticket marketplace."
     elif category == "worldcup":
-        return f"{title}{venue_text}{city_text}. FIFA World Cup {year} match ticket. Electronic delivery. Independent resale marketplace."
+        return f"Tickets for {clean_name}{venue_text}{city_text}. FIFA World Cup {year} match. Includes stadium access and seating. Secondary ticket marketplace."
     elif category in ("motorsport", "motogp"):
-        return f"{title}{venue_text}{city_text}. Motorsport event ticket, {year} season. Electronic ticket with QR code. Resale marketplace."
+        return f"Tickets for {clean_name}{venue_text}{city_text}. Motorsport event, {year} season. Includes circuit access and grandstand seating. Secondary ticket marketplace."
     else:
-        return f"{title}{venue_text}{city_text}. Event ticket, {year}. Electronic delivery. Independent resale marketplace."
+        return f"Tickets for {clean_name}{venue_text}{city_text}. Event in {year}. Includes venue entry. Secondary ticket marketplace."
 
 
 # Brand mapping by category for Google Merchant Center
@@ -218,6 +226,13 @@ async def google_merchant_feed():
         slug = page.get("slug", "")
         title = page.get("title", "").split("|")[0].strip()
         cat = page.get("category", "other")
+        
+        # Skip non-product pages (guides, comparisons, schedules)
+        skip_patterns = ["cheapest", "schedule", "ranked", "vs-", "guide", "how-to", "prices-guide", "events-this-weekend",
+                         "events-january", "events-february", "events-march", "events-april", "events-may", "events-june",
+                         "events-july", "events-august", "events-september", "events-october", "events-november", "events-december"]
+        if any(p in slug.lower() for p in skip_patterns):
+            continue
         city = page.get("city", "Europe")
         country = page.get("country", "EU")
         venue = page.get("venue", "")
@@ -225,10 +240,16 @@ async def google_merchant_feed():
         price_high = page.get("price_high", 0)
         year = page.get("year", 2026)
 
-        # Clean title - remove price from title for GMC (price is separate field)
+        # Clean title - remove price, brand suffix, and promotional text
         clean_title = title
         for suffix in ["| EuroMatchTickets", "| EMT"]:
             clean_title = clean_title.replace(suffix, "").strip()
+        # Remove pricing from title (price is in <g:price> field)
+        import re as _re
+        clean_title = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', clean_title, flags=_re.IGNORECASE).strip()
+        clean_title = _re.sub(r'\s*€\d+[\d,.]*', '', clean_title).strip()
+        # Remove trailing pipes or dashes
+        clean_title = _re.sub(r'\s*[\|–—-]\s*$', '', clean_title).strip()
 
         # Build description - MUST be purely factual for Google Merchant Center
         desc = _build_clean_gmc_description(clean_title, cat, city, venue, year)
