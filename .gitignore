@@ -495,3 +495,7 @@ frontend/node_modules/.cache/default-development/20.pack
 *.env
 *.env.*
 frontend/public/merchant-feed.xml
+-e 
+# Environment files
+*.env
+*.env.*
