@@ -385,37 +385,39 @@ async def serve_merchant_feed_direct():
 
 @app.get("/api/download-feed")
 async def download_feed_page():
-    """Download page that works on mobile - uses JavaScript to force download"""
-    html = """<!DOCTYPE html><html><head><title>Download Feed</title>
+    """Download page with XML and TSV options - works on mobile"""
+    html = """<!DOCTYPE html><html><head><title>Download Merchant Feed</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
-    async function downloadFeed() {
-        document.getElementById('btn').innerText = 'Downloading... please wait';
-        document.getElementById('btn').style.background = '#666';
+    async function downloadFile(format) {
+        const btn = document.getElementById('btn-' + format);
+        const orig = btn.innerText;
+        btn.innerText = 'Downloading...';
+        btn.style.background = '#666';
         try {
-            const res = await fetch('/api/merchant/feed.tsv');
+            const res = await fetch('/api/merchant/feed.' + format);
             const blob = await res.blob();
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'merchant-feed.tsv';
+            a.download = 'merchant-feed.' + format;
             document.body.appendChild(a);
             a.click();
             URL.revokeObjectURL(url);
-            document.getElementById('btn').innerText = 'Downloaded!';
-            document.getElementById('btn').style.background = '#16a34a';
+            btn.innerText = 'Done!';
+            btn.style.background = '#16a34a';
         } catch(e) {
-            document.getElementById('btn').innerText = 'Error - try again';
-            document.getElementById('btn').style.background = '#dc2626';
+            btn.innerText = 'Error - try again';
+            btn.style.background = '#dc2626';
         }
     }
     </script>
-    </head><body style="font-family:Arial;text-align:center;padding:50px;background:#111;color:white">
-    <h1>Merchant Feed</h1>
-    <p>1,200 products | EUR (Global Setup) | 33 countries</p>
-    <br>
-    <button id="btn" onclick="downloadFeed()" style="padding:20px 40px;background:#2563eb;color:white;border:none;border-radius:8px;font-size:20px;cursor:pointer">Download merchant-feed.tsv</button>
-    <br><br><p style="color:gray">Upload to Merchant Center → Datei hochladen</p>
+    </head><body style="font-family:Arial;text-align:center;padding:40px 20px;background:#111;color:white">
+    <h1 style="font-size:24px">Merchant Feed Download</h1>
+    <p style="color:#aaa;margin:10px 0 30px">1,200 products | EUR only (Global Setup) | 33 countries</p>
+    <button id="btn-xml" onclick="downloadFile('xml')" style="display:block;width:100%;max-width:400px;margin:10px auto;padding:18px 30px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:18px;cursor:pointer">Download XML Feed (3.8 MB)</button>
+    <button id="btn-tsv" onclick="downloadFile('tsv')" style="display:block;width:100%;max-width:400px;margin:10px auto;padding:18px 30px;background:#7c3aed;color:white;border:none;border-radius:10px;font-size:18px;cursor:pointer">Download TSV Feed (900 KB)</button>
+    <p style="color:#888;margin-top:30px;font-size:14px">Upload to Google Merchant Center &rarr; Products &rarr; Feeds &rarr; Upload file</p>
     </body></html>"""
     return Response(content=html, media_type="text/html")
 
