@@ -202,9 +202,19 @@ async def google_merchant_feed():
         # Build description - must be factual, no promotional language
         desc = page.get("meta_description") or page.get("description", "")
         if not desc:
-            desc = f"Verified {clean_title} available on EuroMatchTickets. Independent resale marketplace."
-        # Clean description - remove promotional gimmicks
-        desc = desc[:4500]  # Google limit is 5000
+            desc = f"{clean_title} available on EuroMatchTickets."
+        # Remove promotional/forbidden words for Google Merchant Center
+        import re as _re
+        promo_words = [
+            r'\b(cheapest|cheap|best price|lowest price|save \d+%?|discount|deal|offer|sale|limited time)\b',
+            r'\b(buy now|order now|hurry|don\'t miss|act now|exclusive|guaranteed|free shipping)\b',
+            r'\b(compare|cheaper than|vs\.|versus|beat|unbeatable|bargain)\b',
+            r'\b(100% secure|risk.free|money.back|no.risk)\b',
+            r'[!]{2,}|[🔥⚡💰🏆🎯✅❌]',
+        ]
+        for pattern in promo_words:
+            desc = _re.sub(pattern, '', desc, flags=_re.IGNORECASE)
+        desc = _re.sub(r'\s{2,}', ' ', desc).strip()[:300]
 
         # Image URL
         img_path = CATEGORY_IMAGES.get(cat, "/images/heroes/football-stadium-lg.webp")
