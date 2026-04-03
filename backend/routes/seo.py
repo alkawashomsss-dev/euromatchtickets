@@ -251,28 +251,11 @@ async def google_merchant_feed():
             "AU", "NZ",
         ]
         
-        # Currency zones - EXACTLY matching Merchant Center target countries (27 countries)
+        # Top 3 currencies only - small file, guaranteed to work
         currency_zones = [
             {"suffix": "", "currency": "EUR", "rate": 1.0},
-            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86},
-            {"suffix": "-chf", "currency": "CHF", "rate": 0.94},
-            {"suffix": "-pln", "currency": "PLN", "rate": 4.28},
-            {"suffix": "-sek", "currency": "SEK", "rate": 11.2},
-            {"suffix": "-dkk", "currency": "DKK", "rate": 7.46},
-            {"suffix": "-nok", "currency": "NOK", "rate": 11.5},
-            {"suffix": "-ron", "currency": "RON", "rate": 4.97},
-            {"suffix": "-uah", "currency": "UAH", "rate": 44.5},
-            {"suffix": "-rub", "currency": "RUB", "rate": 98.0},
-            {"suffix": "-try", "currency": "TRY", "rate": 34.5},
             {"suffix": "-usd", "currency": "USD", "rate": 1.08},
-            {"suffix": "-cad", "currency": "CAD", "rate": 1.47},
-            {"suffix": "-ars", "currency": "ARS", "rate": 950.0},
-            {"suffix": "-pen", "currency": "PEN", "rate": 4.0},
-            {"suffix": "-uyu", "currency": "UYU", "rate": 43.5},
-            {"suffix": "-aed", "currency": "AED", "rate": 3.97},
-            {"suffix": "-sar", "currency": "SAR", "rate": 4.05},
-            {"suffix": "-aud", "currency": "AUD", "rate": 1.65},
-            {"suffix": "-nzd", "currency": "NZD", "rate": 1.82},
+            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86},
         ]
         
         for zone in currency_zones:
@@ -281,7 +264,6 @@ async def google_merchant_feed():
                 z_price = 1
             z_id = product_id if not zone["suffix"] else (product_id[:46] + zone["suffix"] if len(product_id) > 46 else product_id + zone["suffix"])
             
-            # Shipping to ALL 27 countries - currency MUST match product price
             ship = ''.join(f'<g:shipping><g:country>{c}</g:country><g:service>E-Ticket</g:service><g:price>0 {zone["currency"]}</g:price></g:shipping>' for c in all_target_countries)
             
             xml_parts.append(
