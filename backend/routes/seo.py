@@ -281,7 +281,9 @@ async def google_merchant_feed():
                 z_price = 1
             z_id = product_id if not zone["suffix"] else (product_id[:46] + zone["suffix"] if len(product_id) > 46 else product_id + zone["suffix"])
             
-            # Compact XML - shipping is configured in Merchant Center account settings
+            # Shipping to ALL 27 countries - currency MUST match product price
+            ship = ''.join(f'<g:shipping><g:country>{c}</g:country><g:service>E-Ticket</g:service><g:price>0 {zone["currency"]}</g:price></g:shipping>' for c in all_target_countries)
+            
             xml_parts.append(
                 f'<item>'
                 f'<g:id>{_xml_escape(z_id)}</g:id>'
@@ -296,6 +298,7 @@ async def google_merchant_feed():
                 f'<g:google_product_category>499969</g:google_product_category>'
                 f'<g:product_type>{_xml_escape(product_type)}</g:product_type>'
                 f'<g:identifier_exists>false</g:identifier_exists>'
+                f'{ship}'
                 f'</item>'
             )
 
@@ -307,8 +310,8 @@ async def google_merchant_feed():
         media_type="application/xml",
         headers={
             "Content-Type": "application/xml; charset=utf-8",
-            "Cache-Control": "public, max-age=3600",
-            "X-Robots-Tag": "index, follow"
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "X-Robots-Tag": "noindex"
         }
     )
 
