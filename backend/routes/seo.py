@@ -287,8 +287,8 @@ async def google_merchant_feed():
                 z_price = 1
             z_id = product_id if not zone["suffix"] else (product_id[:46] + zone["suffix"] if len(product_id) > 46 else product_id + zone["suffix"])
             
-            # Shipping ONLY to countries that use this currency (avoids currency mismatch)
-            ship = ''.join(f'<g:shipping><g:country>{c}</g:country><g:price>0 {zone["currency"]}</g:price></g:shipping>' for c in zone["countries"])
+            # Shipping to ALL 33 target countries (currency matches product price)
+            ship = ''.join(f'<g:shipping><g:country>{c}</g:country><g:price>0 {zone["currency"]}</g:price></g:shipping>' for c in all_target_countries)
             
             xml_parts.append(
                 f'<item>'
