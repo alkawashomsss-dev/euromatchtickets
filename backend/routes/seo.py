@@ -242,33 +242,81 @@ async def google_merchant_feed():
         # Product ID - max 50 chars
         product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
         
-        # Multi-currency zones - ALL Google Merchant Center supported countries
-        all_countries = [
-            # EU countries (27)
-            "DE", "AT", "FR", "ES", "IT", "NL", "BE", "IE", "PT", "GR",
-            "FI", "PL", "CZ", "RO", "HU", "BG", "HR", "SK", "SI", "LT",
-            "LV", "EE", "CY", "MT", "LU", "DK", "SE",
-            # EEA + EFTA
-            "NO", "CH", "IS", "LI",
-            # UK
-            "GB",
-            # Americas
-            "US", "CA", "MX", "BR", "AR", "CL", "CO",
-            # Asia-Pacific
-            "AU", "NZ", "SG", "JP", "KR", "IN", "TH", "MY", "PH", "ID", "VN", "TW", "HK",
-            # Middle East & Africa
-            "AE", "SA", "IL", "TR", "ZA", "EG", "NG", "KE",
-            # Other Europe
-            "UA", "RS", "BA", "ME", "MK", "AL", "GE",
-        ]
+        # Currency zones - each currency ONLY ships to countries that USE that currency
         currency_zones = [
-            {"suffix": "", "currency": "EUR", "rate": 1.0},
-            {"suffix": "-usd", "currency": "USD", "rate": 1.08},
-            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86},
+            {
+                "suffix": "", "currency": "EUR", "rate": 1.0,
+                "countries": [
+                    "DE", "AT", "FR", "ES", "IT", "NL", "BE", "IE", "PT", "GR",
+                    "FI", "HR", "SK", "SI", "LT", "LV", "EE", "CY", "MT", "LU",
+                ]
+            },
+            {
+                "suffix": "-usd", "currency": "USD", "rate": 1.08,
+                "countries": ["US"]
+            },
+            {
+                "suffix": "-gbp", "currency": "GBP", "rate": 0.86,
+                "countries": ["GB"]
+            },
+            {
+                "suffix": "-chf", "currency": "CHF", "rate": 0.94,
+                "countries": ["CH", "LI"]
+            },
+            {
+                "suffix": "-pln", "currency": "PLN", "rate": 4.28,
+                "countries": ["PL"]
+            },
+            {
+                "suffix": "-sek", "currency": "SEK", "rate": 11.2,
+                "countries": ["SE"]
+            },
+            {
+                "suffix": "-dkk", "currency": "DKK", "rate": 7.46,
+                "countries": ["DK"]
+            },
+            {
+                "suffix": "-nok", "currency": "NOK", "rate": 11.5,
+                "countries": ["NO"]
+            },
+            {
+                "suffix": "-ron", "currency": "RON", "rate": 4.97,
+                "countries": ["RO"]
+            },
+            {
+                "suffix": "-huf", "currency": "HUF", "rate": 395.0,
+                "countries": ["HU"]
+            },
+            {
+                "suffix": "-czk", "currency": "CZK", "rate": 25.2,
+                "countries": ["CZ"]
+            },
+            {
+                "suffix": "-bgn", "currency": "BGN", "rate": 1.96,
+                "countries": ["BG"]
+            },
+            {
+                "suffix": "-aud", "currency": "AUD", "rate": 1.65,
+                "countries": ["AU"]
+            },
+            {
+                "suffix": "-cad", "currency": "CAD", "rate": 1.47,
+                "countries": ["CA"]
+            },
+            {
+                "suffix": "-try", "currency": "TRY", "rate": 34.5,
+                "countries": ["TR"]
+            },
+            {
+                "suffix": "-jpy", "currency": "JPY", "rate": 163.0,
+                "countries": ["JP"]
+            },
         ]
         
         for zone in currency_zones:
             z_price = round(price_low * zone["rate"])
+            if z_price < 1:
+                z_price = 1
             z_id = product_id if not zone["suffix"] else (product_id[:46] + zone["suffix"] if len(product_id) > 46 else product_id + zone["suffix"])
             
             xml_parts.append('<item>')
@@ -284,8 +332,8 @@ async def google_merchant_feed():
             xml_parts.append(f'  <g:google_product_category>499969</g:google_product_category>')
             xml_parts.append(f'  <g:product_type>{_xml_escape(product_type)}</g:product_type>')
             xml_parts.append(f'  <g:identifier_exists>false</g:identifier_exists>')
-            # Shipping for ALL countries - currency must match product price
-            for ship_country in all_countries:
+            # Shipping ONLY to countries that use this currency
+            for ship_country in zone["countries"]:
                 xml_parts.append(f'  <g:shipping>')
                 xml_parts.append(f'    <g:country>{ship_country}</g:country>')
                 xml_parts.append(f'    <g:service>Digital Delivery</g:service>')

@@ -36,11 +36,10 @@ All 12+ pages updated with:
 - Using actual prices only
 
 ### Merchant Feed Currency Mismatch Fix (2026-04-04) - DONE
-- Regenerated static merchant-feed.xml with correct currency matching
-- 3,600 products: 1,200 EUR + 1,200 USD + 1,200 GBP
-- All shipping blocks now match product currency (0 mismatches)
-- Expanded shipping countries from 24 to 67 (all EU, EEA, Americas, Asia-Pacific, Middle East, Africa)
-- Added missing Romania (RO) - store's primary country
+- Restructured feed: 16 local currencies mapped to correct countries (was 3 currencies for all countries)
+- 19,200 products (1,200 × 16 currencies): EUR, USD, GBP, CHF, PLN, SEK, DKK, NOK, RON, HUF, CZK, BGN, AUD, CAD, TRY, JPY
+- Removed South Korea (KR) to fix Korean business registration error
+- Each currency only ships to countries that use it (EUR→Eurozone, RON→Romania, etc.)
 
 ## Reusable Components Created
 - `ConversionElements.jsx`: ScarcityBadges, ScarcityBadgesLight, TrustBar, CompetitorLine
