@@ -224,14 +224,6 @@ async def google_merchant_feed():
         slug = page.get("slug", "")
         title = page.get("title", "").split("|")[0].strip()
         cat = page.get("category", "other")
-        
-        # Skip non-product pages (guides, comparisons, schedules)
-        skip_patterns = ["cheapest", "schedule", "ranked", "vs-", "guide", "how-to", "prices-guide", "events-this-weekend",
-                         "events-january", "events-february", "events-march", "events-april", "events-may", "events-june",
-                         "events-july", "events-august", "events-september", "events-october", "events-november", "events-december",
-                         "best-", "top-", "comparison", "review"]
-        if any(p in slug.lower() for p in skip_patterns):
-            continue
         city = page.get("city", "Europe")
         country = page.get("country", "EU")
         venue = page.get("venue", "")
@@ -243,17 +235,18 @@ async def google_merchant_feed():
         clean_title = title
         for suffix in ["| EuroMatchTickets", "| EMT"]:
             clean_title = clean_title.replace(suffix, "").strip()
-        # Remove pricing from title (price is in <g:price> field)
         import re as _re
         clean_title = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', clean_title, flags=_re.IGNORECASE).strip()
         clean_title = _re.sub(r'\s*€\d+[\d,.]*', '', clean_title).strip()
-        # Remove promotional prefixes
         clean_title = _re.sub(r'^(Buy|Get|Order|Book|Grab|Shop)\s+', '', clean_title, flags=_re.IGNORECASE).strip()
-        # Remove trailing punctuation and dashes
         clean_title = _re.sub(r'\s*[–—-]+\s*[!.]*\s*$', '', clean_title).strip()
         clean_title = _re.sub(r'[!]+$', '', clean_title).strip()
-        # Remove trailing pipes or dashes
         clean_title = _re.sub(r'\s*[\|–—-]\s*$', '', clean_title).strip()
+        # Remove promotional words from title
+        clean_title = _re.sub(r'\b(Cheap|Cheapest|Best|Top|Ranked)\b', '', clean_title, flags=_re.IGNORECASE).strip()
+        clean_title = _re.sub(r'\s{2,}', ' ', clean_title).strip()
+        # Final cleanup - remove any remaining trailing dashes/punctuation
+        clean_title = clean_title.rstrip(' –—-!.')
 
         # Build description - MUST be purely factual for Google Merchant Center
         desc = _build_clean_gmc_description(clean_title, cat, city, venue, year)
@@ -371,14 +364,6 @@ async def google_merchant_feed_tsv():
         city = page.get("city", "Europe")
         venue = page.get("venue", "")
         year = page.get("year", 2026)
-
-        # Skip non-product pages (guides, comparisons, schedules)
-        skip_patterns = ["cheapest", "schedule", "ranked", "vs-", "guide", "how-to", "prices-guide", "events-this-weekend",
-                         "events-january", "events-february", "events-march", "events-april", "events-may", "events-june",
-                         "events-july", "events-august", "events-september", "events-october", "events-november", "events-december",
-                         "best-", "top-", "comparison", "review"]
-        if any(p in slug.lower() for p in skip_patterns):
-            continue
 
         # Clean title - same logic as XML feed
         clean_title = title
