@@ -158,6 +158,37 @@ def _xml_escape(text):
     return str(text).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&apos;")
 
 
+def _build_clean_gmc_description(title, category, city, venue, year):
+    """Generate a clean, factual description for Google Merchant Center.
+    No promotional language, no conversational tone - purely informational."""
+    venue_text = f" at {venue}" if venue and venue != city else ""
+    city_text = f" in {city}" if city and city != "Europe" else ""
+    
+    if category == "f1":
+        return f"{title}{venue_text}{city_text}. Formula 1 World Championship {year} season. Electronic ticket with QR code. Resale marketplace."
+    elif category == "football":
+        return f"{title}{venue_text}{city_text}. Football match ticket for the {year} season. Electronic delivery. Independent resale marketplace."
+    elif category == "concert":
+        return f"{title}{venue_text}{city_text}. Concert event ticket, {year}. Electronic ticket with QR code. Independent resale marketplace."
+    elif category == "worldcup":
+        return f"{title}{venue_text}{city_text}. FIFA World Cup {year} match ticket. Electronic delivery. Independent resale marketplace."
+    elif category in ("motorsport", "motogp"):
+        return f"{title}{venue_text}{city_text}. Motorsport event ticket, {year} season. Electronic ticket with QR code. Resale marketplace."
+    else:
+        return f"{title}{venue_text}{city_text}. Event ticket, {year}. Electronic delivery. Independent resale marketplace."
+
+
+# Brand mapping by category for Google Merchant Center
+GMC_BRAND_MAP = {
+    "f1": "Formula 1",
+    "football": "UEFA",
+    "concert": "Live Nation",
+    "worldcup": "FIFA",
+    "motorsport": "MotoGP",
+    "motogp": "MotoGP",
+}
+
+
 @router.get("/merchant/feed.xml")
 async def google_merchant_feed():
     """
@@ -180,7 +211,7 @@ async def google_merchant_feed():
         '<channel>',
         f'<title>EuroMatchTickets - Event Tickets</title>',
         f'<link>{base_url}</link>',
-        '<description>Europe\'s cheapest verified ticket marketplace for football, F1, concerts and sports events. Independent resale marketplace.</description>',
+        '<description>Independent ticket resale marketplace for football, Formula 1, concerts and sports events across Europe.</description>',
     ]
 
     for page in pages:
@@ -199,22 +230,8 @@ async def google_merchant_feed():
         for suffix in ["| EuroMatchTickets", "| EMT"]:
             clean_title = clean_title.replace(suffix, "").strip()
 
-        # Build description - must be factual, no promotional language
-        desc = page.get("meta_description") or page.get("description", "")
-        if not desc:
-            desc = f"{clean_title} available on EuroMatchTickets."
-        # Remove promotional/forbidden words for Google Merchant Center
-        import re as _re
-        promo_words = [
-            r'\b(cheapest|cheap|best price|lowest price|save \d+%?|discount|deal|offer|sale|limited time)\b',
-            r'\b(buy now|order now|hurry|don\'t miss|act now|exclusive|guaranteed|free shipping)\b',
-            r'\b(compare|cheaper than|vs\.|versus|beat|unbeatable|bargain)\b',
-            r'\b(100% secure|risk.free|money.back|no.risk)\b',
-            r'[!]{2,}|[🔥⚡💰🏆🎯✅❌]',
-        ]
-        for pattern in promo_words:
-            desc = _re.sub(pattern, '', desc, flags=_re.IGNORECASE)
-        desc = _re.sub(r'\s{2,}', ' ', desc).strip()[:300]
+        # Build description - MUST be purely factual for Google Merchant Center
+        desc = _build_clean_gmc_description(clean_title, cat, city, venue, year)
 
         # Image URL
         img_path = CATEGORY_IMAGES.get(cat, "/images/heroes/football-stadium-lg.webp")
@@ -265,6 +282,9 @@ async def google_merchant_feed():
         # Single currency (EUR) - Google converts automatically
         ship = ''.join(f'<g:shipping><g:country>{c}</g:country><g:price>0 EUR</g:price></g:shipping>' for c in all_target_countries)
         
+        # Brand - use actual event organizer, not marketplace name
+        brand = GMC_BRAND_MAP.get(cat, "EuroMatchTickets")
+
         xml_parts.append(
             f'<item>'
             f'<g:id>{_xml_escape(product_id)}</g:id>'
@@ -275,7 +295,7 @@ async def google_merchant_feed():
             f'<g:price>{price_low} EUR</g:price>'
             f'<g:availability>in_stock</g:availability>'
             f'<g:condition>new</g:condition>'
-            f'<g:brand>EuroMatchTickets</g:brand>'
+            f'<g:brand>{_xml_escape(brand)}</g:brand>'
             f'<g:google_product_category>499969</g:google_product_category>'
             f'<g:product_type>{_xml_escape(product_type)}</g:product_type>'
             f'<g:identifier_exists>false</g:identifier_exists>'
@@ -313,8 +333,7 @@ async def google_merchant_feed_tsv():
 
     pages = await db.seo_pages.find(
         {"active": True, "price_low": {"$gt": 0}},
-        {"_id": 0, "slug": 1, "title": 1, "meta_description": 1, "description": 1,
-         "category": 1, "price_low": 1}
+        {"_id": 0, "slug": 1, "title": 1, "category": 1, "city": 1, "venue": 1, "year": 1, "price_low": 1}
     ).to_list(length=5000)
 
     rows = ["id\ttitle\tdescription\tlink\timage_link\tprice\tavailability\tcondition\tbrand\tgoogle_product_category\tproduct_type\tidentifier_exists\tshipping"]
@@ -324,31 +343,29 @@ async def google_merchant_feed_tsv():
         slug = page.get("slug", "")
         price_low = page.get("price_low", 0)
         cat = page.get("category", "events")
+        city = page.get("city", "Europe")
+        venue = page.get("venue", "")
+        year = page.get("year", 2026)
 
         clean_title = title
         for s in ["| EuroMatchTickets", "| EMT"]:
             clean_title = clean_title.replace(s, "").strip()
 
-        desc = page.get("meta_description") or page.get("description", "")
-        if not desc:
-            desc = f"{clean_title} available on EuroMatchTickets."
-        promo = [r'\b(cheapest|cheap|best price|lowest price|save \d+%?|discount|deal|offer|sale|limited time)\b',
-                 r'\b(buy now|order now|hurry|don\'t miss|exclusive|guaranteed|free shipping)\b']
-        for p in promo:
-            desc = _re.sub(p, '', desc, flags=_re.IGNORECASE)
-        desc = _re.sub(r'\s{2,}', ' ', desc).strip()[:300]
-        desc = desc.replace('\t', ' ').replace('\n', ' ')
+        # Clean factual description - no promotional language
+        desc = _build_clean_gmc_description(clean_title, cat, city, venue, year)
+        desc = desc.replace('\t', ' ').replace('\n', ' ')[:300]
         clean_title = clean_title.replace('\t', ' ')
 
         img_path = CATEGORY_IMAGES.get(cat, "/images/heroes/football-stadium-lg.webp")
         img_url = f"{base_url}{img_path}"
         product_type = f"Event Tickets > {cat.replace('_', ' ').title()}"
         product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
+        brand = GMC_BRAND_MAP.get(cat, "EuroMatchTickets")
 
         # Single currency (EUR) - Google auto-converts for target countries
         shipping = ",".join(f"{c}::0 EUR" for c in all_target_countries)
 
-        rows.append(f"{product_id}\t{clean_title}\t{desc}\t{base_url}/{slug}\t{img_url}\t{price_low} EUR\tin_stock\tnew\tEuroMatchTickets\t499969\t{product_type}\tfalse\t{shipping}")
+        rows.append(f"{product_id}\t{clean_title}\t{desc}\t{base_url}/{slug}\t{img_url}\t{price_low} EUR\tin_stock\tnew\t{brand}\t499969\t{product_type}\tfalse\t{shipping}")
 
     content = '\n'.join(rows)
     return Response(
