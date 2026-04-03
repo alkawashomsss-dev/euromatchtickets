@@ -243,13 +243,11 @@ async def google_merchant_feed():
         product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
         
         # Multi-currency zones
+        all_countries = ["DE", "AT", "FR", "ES", "IT", "NL", "BE", "IE", "PT", "GR", "FI", "CH", "DK", "SE", "NO", "PL", "CZ", "GB", "US", "CA", "AU", "NZ", "MX", "SG"]
         currency_zones = [
-            {"suffix": "", "currency": "EUR", "rate": 1.0, 
-             "countries": ["DE", "AT", "FR", "ES", "IT", "NL", "BE", "IE", "PT", "GR", "FI", "CH", "DK", "SE", "NO", "PL", "CZ"]},
-            {"suffix": "-usd", "currency": "USD", "rate": 1.08, 
-             "countries": ["US", "CA", "AU", "NZ", "MX", "SG"]},
-            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86, 
-             "countries": ["GB"]},
+            {"suffix": "", "currency": "EUR", "rate": 1.0},
+            {"suffix": "-usd", "currency": "USD", "rate": 1.08},
+            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86},
         ]
         
         for zone in currency_zones:
@@ -269,7 +267,8 @@ async def google_merchant_feed():
             xml_parts.append(f'  <g:google_product_category>499969</g:google_product_category>')
             xml_parts.append(f'  <g:product_type>{_xml_escape(product_type)}</g:product_type>')
             xml_parts.append(f'  <g:identifier_exists>false</g:identifier_exists>')
-            for ship_country in zone["countries"]:
+            # Shipping for ALL countries - currency must match product price
+            for ship_country in all_countries:
                 xml_parts.append(f'  <g:shipping>')
                 xml_parts.append(f'    <g:country>{ship_country}</g:country>')
                 xml_parts.append(f'    <g:service>Digital Delivery</g:service>')
