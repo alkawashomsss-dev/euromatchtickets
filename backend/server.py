@@ -412,7 +412,7 @@ async def download_feed_page():
     </script>
     </head><body style="font-family:Arial;text-align:center;padding:50px;background:#111;color:white">
     <h1>Merchant Feed</h1>
-    <p>30,000 products | 25 currencies | 33 countries</p>
+    <p>1,200 products | EUR (Global Setup) | 33 countries</p>
     <br>
     <button id="btn" onclick="downloadFeed()" style="padding:20px 40px;background:#2563eb;color:white;border:none;border-radius:8px;font-size:20px;cursor:pointer">Download merchant-feed.tsv</button>
     <br><br><p style="color:gray">Upload to Merchant Center → Datei hochladen</p>

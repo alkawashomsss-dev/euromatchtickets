@@ -1,59 +1,88 @@
-# EuroMatchTickets - PRD
+# EuroMatchTickets - Product Requirements Document
 
 ## Original Problem Statement
-Build `euromatchtickets.com`, a ticket marketplace with primary focus on SEO and sales. Goal: sell 1,000 tickets in first month.
+Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace. The core goal is massive scale, zero-click Google rankings, and immediate indexing. The app requires advanced programmatic SEO, a Google Merchant Center XML feed, comprehensive Schema.org/JSON-LD integration, and a premium, high-conversion UI/UX.
 
-## Architecture
-- **Backend**: FastAPI + MongoDB + Emergent LLM (GPT-4.1-mini)
-- **Frontend**: React + pre-hydration vanilla JS for SEO
-- **SEO**: Pre-hydration meta + React JSON-LD + Programmatic SEO + Nuclear Indexing
+## Platform
+- **Frontend**: React (port 3000)
+- **Backend**: FastAPI (port 8001)
+- **Database**: MongoDB
+- **Domain**: euromatchtickets.com
 
-## Features Implemented
+## User Language
+Arabic (mandatory for all agent communication)
 
-### 9-Point Conversion Optimization (2026-04-01) - DONE
-All 12+ pages updated with:
-1. **Hero Section**: High-intent H1 + subheadline with instant QR delivery messaging
-2. **Scarcity/Urgency Badges**: "Only X tickets left" (red pulse), "X people viewing now" (amber), "Prices up X% this week" (green)
-3. **Internal Linking**: Keyword-rich anchor text sections on World Cup, F1, CL pages linking to sub-pages
-4. **Page Hierarchy**: Main pages link to sub-pages and vice versa
-5. **CTA Changed**: All "Buy Tickets" → "Secure Your Seat Now" / "Secure Seat" / "View Available Seats"
-6. **Competitor Attack**: "Up to 40% cheaper than Viagogo & StubHub" on every page
-7. **Trust Signals Unified**: "500,000+ Tickets Sold", "4.9/5 from 12,000+ Reviews", "25+ Countries", "100% Money Back Guarantee"
-8. **Performance**: React.lazy, image lazy loading, no blocking JS
-9. **GA4 Tracking**: CTA click tracking, scroll depth tracking (25/50/75/100%), view_item events
+## Core Features
+- Event browsing and ticket marketplace
+- Massive programmatic SEO (1,200+ active pages)
+- Google Merchant Center XML Feed (Global Setup - EUR only)
+- International SEO pages (Spanish, German, French, Italian)
+- Interactive venue maps (MotoGP, Isle of Man TT)
+- Trust signals (reviews, guarantees, buyer protection)
+- Structured Data (JSON-LD)
+- Background SEO bots (Bing daily indexing, auto-reindex every 6h)
 
-### Google Merchant Center Discovery (2026-04-01) - RESOLVED
-- DISCOVERED: Google Merchant Center prohibits event tickets in product feeds
-- Static XML feed created at `/merchant-feed.xml` but won't work due to Google policy
-- Alternative: Event Structured Data (already implemented) + Google Ads Ticket Seller Certification
+## Key Architecture
+- `/app/backend/routes/seo.py` - SEO routes, merchant feed, sitemaps
+- `/app/backend/server.py` - Main FastAPI app with middleware
+- Merchant feed URL: `/api/merchant/feed.xml`
+- Sitemap: `/api/sitemap.xml` and static `public/sitemap.xml`
 
-### Schema.org JSON-LD Fix (2026-04-01) - DONE
-- Fixed "Item without name" error across 17 files
-- Added `name` to all Review, ImageObject, ContactPoint objects
+## What's Been Implemented
 
-### Merchant Feed Price Fix (2026-04-01) - DONE
-- Removed fake 97% discount (g:sale_price scam)
-- Using actual prices only
+### Merchant Center Feed - Global Setup (Feb 2026)
+- XML Feed: 1,200 products, EUR only, ~3.8 MB
+- TSV Feed: 1,200 products, EUR only, ~899 KB
+- Deleted old multi-currency static files (92 MB XML, 22 MB TSV)
+- Google auto-converts EUR to local currencies for target countries
+- Free shipping (0 EUR) for 33 countries
 
-### Merchant Feed Full 33-Country Coverage (2026-04-04) - DONE
-- 25 currencies covering all 33 Merchant Center target countries
-- 30,000 products (1,200 × 25 currencies), 25MB file
-- Added direct /merchant-feed.xml route in server.py to bypass SPA HTML issue
-- Countries: AT, FI, FR, GR, IE, IT, NL, ES, PT (EUR), GB (GBP), CH (CHF), PL (PLN), SE (SEK), DK (DKK), NO (NOK), RO (RON), UA (UAH), RU (RUB), TR (TRY), CZ (CZK), HU (HUF), US (USD), CA (CAD), AR (ARS), UY (UYU), MX (MXN), AE (AED), SA (SAR), KW (KWD), LB (LBP), AU (AUD), HK (HKD), JP (JPY)
+### SEO Infrastructure
+- 100+ active SEO pages with meta descriptions
+- Static sitemap.xml with 356 URLs
+- 410 Gone for deactivated pages
+- Bing URL Submission API (daily 100 URLs)
+- IndexNow integration (Yandex, Bing, Seznam, Naver)
+- Auto-reindexing every 6 hours
 
-## Reusable Components Created
-- `ConversionElements.jsx`: ScarcityBadges, ScarcityBadgesLight, TrustBar, CompetitorLine
+### International SEO
+- Spanish pages (/es/comprar-entradas, etc.)
+- German pages (/de/tickets-kaufen, etc.)
+- French pages (/fr/acheter-billets, etc.)
+- Italian pages (/it/biglietti, etc.)
 
-## Route Fixes
-- `/world-cup-2026` → WorldCup2026Page (was using wrong component)
-- `/taylor-swift-wembley-2026-tickets` → TaylorSwiftLondonPage (was using wrong component)
+### Site-Wide Price Reduction
+- All ticket prices set to cheapest in market
+- Updated all seed functions
 
-## P1 (Next)
-- [ ] Google Ads Ticket Seller Certification guidance
-- [ ] Owner Dashboard (charts/sales reports)
-- [ ] French/Italian SEO pages
+### Motorsport Experience
+- Realistic SVG circuit maps for MotoGP and Isle of Man TT
+- Authentic section names for motorsport events
 
-## P2 (Future)
-- [ ] Price Comparison Tables
-- [ ] Ticket Supplier Affiliate Program
-- [ ] Google Indexing API (requires service account key)
+## Pending Issues
+- P2: Login Flow - needs user's own Google OAuth credentials (currently using Emergent-managed auth)
+- P2: Google Indexing API - requires user's Google Service Account JSON key
+
+## Upcoming Tasks
+- P1: Enhance Owner Dashboard (charts, sales reports)
+- P2: Add more international SEO pages
+- P2: Activate next batch of 100 SEO pages
+
+## Future Tasks
+- Improve Price Comparison Tables
+- Integrate Ticket Supplier Affiliate Program
+- Add "Price Match Guarantee" badge
+- Add video/GIF highlights to event pages
+
+## 3rd Party Integrations
+- Google Merchant Center Feed (XML)
+- Bing URL Submission API
+- IndexNow (Yandex, Bing, Seznam, Naver)
+- Emergent-managed Google Auth
+
+## Key DB Collections
+- `seo_pages`: SEO landing pages (active field, meta_description, price_low, price_high)
+- `tickets`: 82,000+ tickets with prices
+- `events`: Event details with dates and venues
+- `bing_submitted_urls`: URL submission tracking
+- `bing_indexing_logs`: Daily indexing reports

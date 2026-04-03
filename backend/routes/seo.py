@@ -300,73 +300,35 @@ async def google_merchant_feed():
 
 @router.get("/merchant/feed.tsv")
 async def google_merchant_feed_tsv():
-    """Google Merchant Center feed in TSV format - much smaller than XML"""
+    """Google Merchant Center feed in TSV format - Global Setup: EUR only, Google auto-converts."""
     import re as _re
-    base_url = "https://euromatchtickets.com"
-    SITE_URL = base_url
-    
-    CATEGORY_IMAGES = {
-        "f1": f"{SITE_URL}/images/heroes/f1-hero-lg.webp",
-        "football": f"{SITE_URL}/images/heroes/football-stadium-lg.webp",
-        "concert": f"{SITE_URL}/images/heroes/concert-hero-lg.webp",
-        "worldcup": f"{SITE_URL}/images/heroes/world-cup-hero-lg.webp",
-        "motorsport": f"{SITE_URL}/images/heroes/motorsport-hero-lg.webp",
-        "motogp": f"{SITE_URL}/images/heroes/motogp-hero-lg.webp",
-    }
-    
+    base_url = SITE_URL
+
     all_target_countries = [
         "AT", "FI", "FR", "GR", "IE", "IT", "NL", "ES", "PT",
         "GB", "CH", "PL", "SE", "DK", "NO", "RO", "UA", "RU", "TR",
         "CZ", "HU", "US", "CA", "AR", "UY", "MX",
         "AE", "SA", "KW", "LB", "AU", "HK", "JP",
     ]
-    
-    currency_zones = [
-        {"suffix": "", "currency": "EUR", "rate": 1.0},
-        {"suffix": "-gbp", "currency": "GBP", "rate": 0.86},
-        {"suffix": "-chf", "currency": "CHF", "rate": 0.94},
-        {"suffix": "-pln", "currency": "PLN", "rate": 4.28},
-        {"suffix": "-sek", "currency": "SEK", "rate": 11.2},
-        {"suffix": "-dkk", "currency": "DKK", "rate": 7.46},
-        {"suffix": "-nok", "currency": "NOK", "rate": 11.5},
-        {"suffix": "-ron", "currency": "RON", "rate": 4.97},
-        {"suffix": "-uah", "currency": "UAH", "rate": 44.5},
-        {"suffix": "-rub", "currency": "RUB", "rate": 98.0},
-        {"suffix": "-try", "currency": "TRY", "rate": 34.5},
-        {"suffix": "-czk", "currency": "CZK", "rate": 25.2},
-        {"suffix": "-huf", "currency": "HUF", "rate": 395.0},
-        {"suffix": "-usd", "currency": "USD", "rate": 1.08},
-        {"suffix": "-cad", "currency": "CAD", "rate": 1.47},
-        {"suffix": "-ars", "currency": "ARS", "rate": 950.0},
-        {"suffix": "-uyu", "currency": "UYU", "rate": 43.5},
-        {"suffix": "-mxn", "currency": "MXN", "rate": 18.5},
-        {"suffix": "-aed", "currency": "AED", "rate": 3.97},
-        {"suffix": "-sar", "currency": "SAR", "rate": 4.05},
-        {"suffix": "-kwd", "currency": "KWD", "rate": 0.33},
-        {"suffix": "-lbp", "currency": "LBP", "rate": 97000.0},
-        {"suffix": "-aud", "currency": "AUD", "rate": 1.65},
-        {"suffix": "-hkd", "currency": "HKD", "rate": 8.45},
-        {"suffix": "-jpy", "currency": "JPY", "rate": 163.0},
-    ]
-    
+
     pages = await db.seo_pages.find(
         {"active": True, "price_low": {"$gt": 0}},
-        {"_id": 0}
+        {"_id": 0, "slug": 1, "title": 1, "meta_description": 1, "description": 1,
+         "category": 1, "price_low": 1}
     ).to_list(length=5000)
-    
-    # TSV header
+
     rows = ["id\ttitle\tdescription\tlink\timage_link\tprice\tavailability\tcondition\tbrand\tgoogle_product_category\tproduct_type\tidentifier_exists\tshipping"]
-    
+
     for page in pages:
         title = page.get("title", "")
         slug = page.get("slug", "")
         price_low = page.get("price_low", 0)
         cat = page.get("category", "events")
-        
+
         clean_title = title
         for s in ["| EuroMatchTickets", "| EMT"]:
             clean_title = clean_title.replace(s, "").strip()
-        
+
         desc = page.get("meta_description") or page.get("description", "")
         if not desc:
             desc = f"{clean_title} available on EuroMatchTickets."
@@ -377,21 +339,17 @@ async def google_merchant_feed_tsv():
         desc = _re.sub(r'\s{2,}', ' ', desc).strip()[:300]
         desc = desc.replace('\t', ' ').replace('\n', ' ')
         clean_title = clean_title.replace('\t', ' ')
-        
-        img_url = CATEGORY_IMAGES.get(cat, f"{SITE_URL}/images/heroes/football-stadium-lg.webp")
+
+        img_path = CATEGORY_IMAGES.get(cat, "/images/heroes/football-stadium-lg.webp")
+        img_url = f"{base_url}{img_path}"
         product_type = f"Event Tickets > {cat.replace('_', ' ').title()}"
-        
-        for zone in currency_zones:
-            z_price = round(price_low * zone["rate"])
-            if z_price < 1:
-                z_price = 1
-            pid = slug if not zone["suffix"] else (slug[:46] + zone["suffix"] if len(slug) > 46 else slug + zone["suffix"])
-            
-            # Shipping: country:service:price format
-            shipping = ",".join(f"{c}::0 {zone['currency']}" for c in all_target_countries)
-            
-            rows.append(f"{pid}\t{clean_title}\t{desc}\t{base_url}/{slug}\t{img_url}\t{z_price} {zone['currency']}\tin_stock\tnew\tEuroMatchTickets\t499969\t{product_type}\tfalse\t{shipping}")
-    
+        product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
+
+        # Single currency (EUR) - Google auto-converts for target countries
+        shipping = ",".join(f"{c}::0 EUR" for c in all_target_countries)
+
+        rows.append(f"{product_id}\t{clean_title}\t{desc}\t{base_url}/{slug}\t{img_url}\t{price_low} EUR\tin_stock\tnew\tEuroMatchTickets\t499969\t{product_type}\tfalse\t{shipping}")
+
     content = '\n'.join(rows)
     return Response(
         content=content,
