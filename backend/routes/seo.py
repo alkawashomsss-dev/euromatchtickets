@@ -241,40 +241,51 @@ async def google_merchant_feed():
 
         # Product ID - max 50 chars
         product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
-        xml_parts.append('<item>')
-        xml_parts.append(f'  <g:id>{_xml_escape(product_id)}</g:id>')
-        xml_parts.append(f'  <g:title>{_xml_escape(clean_title)}</g:title>')
-        xml_parts.append(f'  <g:description>{_xml_escape(desc)}</g:description>')
-        xml_parts.append(f'  <g:link>{base_url}/{slug}</g:link>')
-        xml_parts.append(f'  <g:image_link>{img_url}</g:image_link>')
-        # Price: Use actual ticket price - no fake discounts
-        xml_parts.append(f'  <g:price>{price_low} EUR</g:price>')
-        xml_parts.append(f'  <g:availability>in_stock</g:availability>')
-        xml_parts.append(f'  <g:condition>new</g:condition>')
-        xml_parts.append(f'  <g:brand>EuroMatchTickets</g:brand>')
-        xml_parts.append(f'  <g:google_product_category>499969</g:google_product_category>')
-        xml_parts.append(f'  <g:product_type>{_xml_escape(product_type)}</g:product_type>')
-        xml_parts.append(f'  <g:identifier_exists>false</g:identifier_exists>')
-        # Shipping - free digital delivery to EUR-accepting countries only
-        for ship_country in ["DE", "AT", "CH", "FR", "ES", "IT", "NL", "BE", "IE", "PT", "GR", "FI", "DK", "SE", "NO", "PL", "CZ", "GB"]:
-            xml_parts.append(f'  <g:shipping>')
-            xml_parts.append(f'    <g:country>{ship_country}</g:country>')
-            xml_parts.append(f'    <g:service>Digital Delivery</g:service>')
-            xml_parts.append(f'    <g:price>0 EUR</g:price>')
-            xml_parts.append(f'  </g:shipping>')
-        # Custom labels for campaign management
-        xml_parts.append(f'  <g:custom_label_0>{_xml_escape(cat)}</g:custom_label_0>')
-        xml_parts.append(f'  <g:custom_label_1>{_xml_escape(city)}</g:custom_label_1>')
-        if price_low <= 50:
-            xml_parts.append(f'  <g:custom_label_2>budget</g:custom_label_2>')
-        elif price_low <= 100:
-            xml_parts.append(f'  <g:custom_label_2>mid-range</g:custom_label_2>')
-        else:
-            xml_parts.append(f'  <g:custom_label_2>premium</g:custom_label_2>')
-        xml_parts.append(f'  <g:custom_label_3>{year}</g:custom_label_3>')
-        # Return policy label - must match label set in Merchant Center
-        xml_parts.append(f'  <g:return_policy_label>Full Refund</g:return_policy_label>')
-        xml_parts.append('</item>')
+        
+        # Multi-currency zones
+        currency_zones = [
+            {"suffix": "", "currency": "EUR", "rate": 1.0, 
+             "countries": ["DE", "AT", "FR", "ES", "IT", "NL", "BE", "IE", "PT", "GR", "FI", "CH", "DK", "SE", "NO", "PL", "CZ"]},
+            {"suffix": "-usd", "currency": "USD", "rate": 1.08, 
+             "countries": ["US", "CA", "AU", "NZ", "MX", "SG"]},
+            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86, 
+             "countries": ["GB"]},
+        ]
+        
+        for zone in currency_zones:
+            z_price = round(price_low * zone["rate"])
+            z_id = product_id if not zone["suffix"] else (product_id[:46] + zone["suffix"] if len(product_id) > 46 else product_id + zone["suffix"])
+            
+            xml_parts.append('<item>')
+            xml_parts.append(f'  <g:id>{_xml_escape(z_id)}</g:id>')
+            xml_parts.append(f'  <g:title>{_xml_escape(clean_title)}</g:title>')
+            xml_parts.append(f'  <g:description>{_xml_escape(desc)}</g:description>')
+            xml_parts.append(f'  <g:link>{base_url}/{slug}</g:link>')
+            xml_parts.append(f'  <g:image_link>{img_url}</g:image_link>')
+            xml_parts.append(f'  <g:price>{z_price} {zone["currency"]}</g:price>')
+            xml_parts.append(f'  <g:availability>in_stock</g:availability>')
+            xml_parts.append(f'  <g:condition>new</g:condition>')
+            xml_parts.append(f'  <g:brand>EuroMatchTickets</g:brand>')
+            xml_parts.append(f'  <g:google_product_category>499969</g:google_product_category>')
+            xml_parts.append(f'  <g:product_type>{_xml_escape(product_type)}</g:product_type>')
+            xml_parts.append(f'  <g:identifier_exists>false</g:identifier_exists>')
+            for ship_country in zone["countries"]:
+                xml_parts.append(f'  <g:shipping>')
+                xml_parts.append(f'    <g:country>{ship_country}</g:country>')
+                xml_parts.append(f'    <g:service>Digital Delivery</g:service>')
+                xml_parts.append(f'    <g:price>0 {zone["currency"]}</g:price>')
+                xml_parts.append(f'  </g:shipping>')
+            xml_parts.append(f'  <g:custom_label_0>{_xml_escape(cat)}</g:custom_label_0>')
+            xml_parts.append(f'  <g:custom_label_1>{_xml_escape(city)}</g:custom_label_1>')
+            if price_low <= 50:
+                xml_parts.append(f'  <g:custom_label_2>budget</g:custom_label_2>')
+            elif price_low <= 100:
+                xml_parts.append(f'  <g:custom_label_2>mid-range</g:custom_label_2>')
+            else:
+                xml_parts.append(f'  <g:custom_label_2>premium</g:custom_label_2>')
+            xml_parts.append(f'  <g:custom_label_3>{year}</g:custom_label_3>')
+            xml_parts.append(f'  <g:return_policy_label>Full Refund</g:return_policy_label>')
+            xml_parts.append('</item>')
 
     xml_parts.append('</channel>')
     xml_parts.append('</rss>')
