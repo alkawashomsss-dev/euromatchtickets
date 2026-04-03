@@ -35,6 +35,12 @@ All 12+ pages updated with:
 - Removed fake 97% discount (g:sale_price scam)
 - Using actual prices only
 
+### Merchant Feed Currency Mismatch Fix (2026-04-04) - DONE
+- Regenerated static merchant-feed.xml with correct currency matching
+- 3,600 products: 1,200 EUR + 1,200 USD + 1,200 GBP
+- All shipping blocks now match product currency (0 mismatches)
+- 24 shipping countries per product
+
 ## Reusable Components Created
 - `ConversionElements.jsx`: ScarcityBadges, ScarcityBadgesLight, TrustBar, CompetitorLine
 
