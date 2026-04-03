@@ -230,7 +230,8 @@ async def google_merchant_feed():
         # Skip non-product pages (guides, comparisons, schedules)
         skip_patterns = ["cheapest", "schedule", "ranked", "vs-", "guide", "how-to", "prices-guide", "events-this-weekend",
                          "events-january", "events-february", "events-march", "events-april", "events-may", "events-june",
-                         "events-july", "events-august", "events-september", "events-october", "events-november", "events-december"]
+                         "events-july", "events-august", "events-september", "events-october", "events-november", "events-december",
+                         "best-", "top-", "comparison", "review"]
         if any(p in slug.lower() for p in skip_patterns):
             continue
         city = page.get("city", "Europe")
@@ -240,7 +241,7 @@ async def google_merchant_feed():
         price_high = page.get("price_high", 0)
         year = page.get("year", 2026)
 
-        # Clean title - remove price, brand suffix, and promotional text
+        # Clean title - remove price, brand suffix, promotional text, and punctuation
         clean_title = title
         for suffix in ["| EuroMatchTickets", "| EMT"]:
             clean_title = clean_title.replace(suffix, "").strip()
@@ -248,6 +249,11 @@ async def google_merchant_feed():
         import re as _re
         clean_title = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', clean_title, flags=_re.IGNORECASE).strip()
         clean_title = _re.sub(r'\s*€\d+[\d,.]*', '', clean_title).strip()
+        # Remove promotional prefixes
+        clean_title = _re.sub(r'^(Buy|Get|Order|Book|Grab|Shop)\s+', '', clean_title, flags=_re.IGNORECASE).strip()
+        # Remove trailing punctuation and dashes
+        clean_title = _re.sub(r'\s*[–—-]+\s*[!.]*\s*$', '', clean_title).strip()
+        clean_title = _re.sub(r'[!]+$', '', clean_title).strip()
         # Remove trailing pipes or dashes
         clean_title = _re.sub(r'\s*[\|–—-]\s*$', '', clean_title).strip()
 
@@ -360,7 +366,7 @@ async def google_merchant_feed_tsv():
     rows = ["id\ttitle\tdescription\tlink\timage_link\tprice\tavailability\tcondition\tbrand\tgoogle_product_category\tproduct_type\tidentifier_exists\tshipping"]
 
     for page in pages:
-        title = page.get("title", "")
+        title = page.get("title", "").split("|")[0].strip()
         slug = page.get("slug", "")
         price_low = page.get("price_low", 0)
         cat = page.get("category", "events")
@@ -368,9 +374,24 @@ async def google_merchant_feed_tsv():
         venue = page.get("venue", "")
         year = page.get("year", 2026)
 
+        # Skip non-product pages (guides, comparisons, schedules)
+        skip_patterns = ["cheapest", "schedule", "ranked", "vs-", "guide", "how-to", "prices-guide", "events-this-weekend",
+                         "events-january", "events-february", "events-march", "events-april", "events-may", "events-june",
+                         "events-july", "events-august", "events-september", "events-october", "events-november", "events-december",
+                         "best-", "top-", "comparison", "review"]
+        if any(p in slug.lower() for p in skip_patterns):
+            continue
+
+        # Clean title - same logic as XML feed
         clean_title = title
         for s in ["| EuroMatchTickets", "| EMT"]:
             clean_title = clean_title.replace(s, "").strip()
+        clean_title = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', clean_title, flags=_re.IGNORECASE).strip()
+        clean_title = _re.sub(r'\s*€\d+[\d,.]*', '', clean_title).strip()
+        clean_title = _re.sub(r'^(Buy|Get|Order|Book|Grab|Shop)\s+', '', clean_title, flags=_re.IGNORECASE).strip()
+        clean_title = _re.sub(r'\s*[–—-]+\s*[!.]*\s*$', '', clean_title).strip()
+        clean_title = _re.sub(r'[!]+$', '', clean_title).strip()
+        clean_title = _re.sub(r'\s*[\|–—-]\s*$', '', clean_title).strip()
 
         # Clean factual description - no promotional language
         desc = _build_clean_gmc_description(clean_title, cat, city, venue, year)
