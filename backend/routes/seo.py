@@ -316,6 +316,7 @@ async def google_merchant_feed():
         media_type="application/xml",
         headers={
             "Content-Type": "application/xml; charset=utf-8",
+            "Content-Disposition": "attachment; filename=merchant-feed.xml",
             "Cache-Control": "no-cache, no-store, must-revalidate",
             "X-Robots-Tag": "noindex"
         }

@@ -383,6 +383,18 @@ async def serve_merchant_feed_direct():
     return await google_merchant_feed()
 
 
+@app.get("/download-feed")
+async def download_feed_page():
+    """Simple page with download button for merchant feed"""
+    html = """<!DOCTYPE html><html><head><title>Download Feed</title></head><body style="font-family:Arial;text-align:center;padding:50px">
+    <h1>Merchant Feed Download</h1>
+    <p>30,000 products | 25 currencies | 33 countries</p>
+    <a href="/api/merchant/feed.xml" download="merchant-feed.xml" style="display:inline-block;padding:20px 40px;background:#2563eb;color:white;text-decoration:none;border-radius:8px;font-size:20px">Download merchant-feed.xml</a>
+    <br><br><p style="color:gray">After download, upload this file to Google Merchant Center</p>
+    </body></html>"""
+    return Response(content=html, media_type="text/html")
+
+
 # ─── Production: Serve React Frontend with 410 for old pages ────────────────
 # This catch-all MUST be after all API routes so they take priority
 static_build_dir = pathlib.Path(__file__).parent / "static"
