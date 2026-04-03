@@ -52,7 +52,7 @@ const EventStructuredData = ({ event }) => {
 
     const { lowPrice, highPrice } = getPrices(event.tickets, event.categories);
     const availableTickets = event.available_tickets || event.tickets?.length || 50;
-    const pageUrl = `https://euromatchtickets.com/event/${event.event_id}`;
+    const pageUrl = `https://euromatchtickets.com/event/${event.slug || event.event_id}`;
     const eventImage = event.image_url || event.image || "https://euromatchtickets.com/images/heroes/football-stadium-lg.webp";
 
     const getPerformer = () => {

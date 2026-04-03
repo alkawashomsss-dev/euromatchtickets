@@ -197,9 +197,7 @@
       };
 
       /* ===== DETECT REMOVED 2025 PAGES ===== */
-      var is2025=p.indexOf('2025')!==-1;
-      var isEventDetail=p.indexOf('/event/')===0;
-      var isNoIndex=is2025||isEventDetail;
+      var isNoIndex=false;
 
       /* ===== GET PAGE METADATA ===== */
       var m=M[pq]||M[p];
@@ -210,11 +208,11 @@
         d='This event page has been permanently removed. Browse current 2026 events at EuroMatchTickets.';
         h1='Page Removed';
       } else if(isEventDetail){
-        /* /event/* detail pages - internal pages, noindex to prevent duplicate content */
+        /* /event/* detail pages - generate SEO-friendly title */
         var evSlug=p.replace('/event/','').replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
-        t=evSlug+' | EuroMatchTickets';
-        d='Event details for '+evSlug+'. Buy verified tickets at EuroMatchTickets.';
-        h1=evSlug;
+        t=evSlug+' Tickets | EuroMatchTickets';
+        d='Buy '+evSlug+' tickets at the cheapest price. 100% verified sellers, instant QR delivery. FanProtect guarantee!';
+        h1='Buy '+evSlug+' Tickets';
       } else if(m){
         t=m[0]; d=m[1]; h1=m[2];
       } else {

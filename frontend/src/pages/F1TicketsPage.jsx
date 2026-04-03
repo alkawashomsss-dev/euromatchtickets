@@ -513,7 +513,7 @@ const F1TicketsPage = () => {
               {displayRaces.map((race, i) => (
                 <Link
                   key={race.event_id || i}
-                  to={`/event/${race.event_id}`}
+                  to={`/event/${race.slug || race.event_id}`}
                   className="group flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-200 hover:border-red-300 rounded-xl p-5 transition-all hover:shadow-sm"
                   data-testid={`featured-race-${i}`}
                 >
@@ -581,7 +581,7 @@ const F1TicketsPage = () => {
                   const matchedEvent = races.find(e => e.title?.includes(r.country) || e.title?.includes(r.gp.split(' ')[0]));
                   const Row = matchedEvent ? Link : 'tr';
                   const rowProps = matchedEvent
-                    ? { to: `/event/${matchedEvent.event_id}`, className: "border-b transition-colors hover:bg-red-50 cursor-pointer flex-none table-row" }
+                    ? { to: `/event/${matchedEvent.slug || matchedEvent.event_id}`, className: "border-b transition-colors hover:bg-red-50 cursor-pointer flex-none table-row" }
                     : {};
                   return (
                     <TableRow key={r.round} className="hover:bg-red-50/40" data-testid={`calendar-row-${r.round}`}>
@@ -603,7 +603,7 @@ const F1TicketsPage = () => {
                       </TableCell>
                       <TableCell className="text-right">
                         {matchedEvent ? (
-                          <Link to={`/event/${matchedEvent.event_id}`} className="inline-flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors">
+                          <Link to={`/event/${matchedEvent.slug || matchedEvent.event_id}`} className="inline-flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors">
                             &#8364;{matchedEvent.lowest_price ? Math.round(matchedEvent.lowest_price) : r.price}
                           </Link>
                         ) : (
@@ -686,7 +686,7 @@ const F1TicketsPage = () => {
                 return (
                   <Link
                     key={race.event_id || i}
-                    to={`/event/${race.event_id}`}
+                    to={`/event/${race.slug || race.event_id}`}
                     className={`flex items-center gap-3 p-4 rounded-xl border transition-all hover:scale-[1.02] ${
                       seo.hot
                         ? 'bg-red-50 border-red-200 hover:border-red-400'

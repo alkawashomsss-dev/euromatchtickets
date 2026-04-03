@@ -92,7 +92,7 @@ const JohnLegendPage = () => {
             <span className="text-lg text-slate-500 line-through ml-3">€{Math.round((events[0]?.lowest_price || 90) / 0.95)}</span>
           </div>
 
-          <Link to={events[0] ? `/event/${events[0].event_id}` : '/events?search=John%20Legend'}>
+          <Link to={events[0] ? `/event/${events[0].slug || events[0].event_id}` : '/events?search=John%20Legend'}>
             <Button size="lg" className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-xl px-12 py-6">
               {t.buyNow} <ArrowRight className="w-6 h-6 ml-2" />
             </Button>
@@ -121,7 +121,7 @@ const JohnLegendPage = () => {
           ) : (
             <div className="space-y-4">
               {events.map((event) => (
-                <Link key={event.event_id} to={`/event/${event.event_id}`} className="block bg-white border border-slate-200 hover:border-amber-500/50 rounded-xl p-6 transition-all group">
+                <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`} className="block bg-white border border-slate-200 hover:border-amber-500/50 rounded-xl p-6 transition-all group">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-amber-600 to-orange-600 flex items-center justify-center">

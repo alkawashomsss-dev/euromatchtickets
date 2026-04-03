@@ -84,7 +84,7 @@ export const RelatedEvents = ({ currentEvent, events = [] }) => {
         {relatedEvents.map(event => (
           <a
             key={event.event_id}
-            href={`/event/${event.event_id}`}
+            href={`/event/${event.slug || event.event_id}`}
             className="block p-4 bg-white border border-white/5 rounded-xl hover:border-cyan-500/50 transition-all"
           >
             <p className="font-semibold text-sm line-clamp-2">{event.title}</p>

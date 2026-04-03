@@ -240,7 +240,7 @@ const MotoGPTicketsPage = () => {
               {events.map((event) => (
                 <Link 
                   key={event.event_id}
-                  to={`/event/${event.event_id}`}
+                  to={`/event/${event.slug || event.event_id}`}
                   className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-orange-500/50 transition-all hover:scale-[1.02]"
                 >
                   <div className="relative h-40 overflow-hidden">

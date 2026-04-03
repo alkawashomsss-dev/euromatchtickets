@@ -100,7 +100,7 @@ const ACLFestivalPage = () => {
             <span className="text-sm text-violet-600 ml-2">Ultimate</span>
           </div>
 
-          <Link to={events[0] ? `/event/${events[0].event_id}` : '/events?search=ACL%20Festival'}>
+          <Link to={events[0] ? `/event/${events[0].slug || events[0].event_id}` : '/events?search=ACL%20Festival'}>
             <Button size="lg" className="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-xl px-12 py-6">
               {t.buyNow} <ArrowRight className="w-6 h-6 ml-2" />
             </Button>
@@ -163,7 +163,7 @@ const ACLFestivalPage = () => {
           ) : (
             <div className="space-y-4">
               {events.map((event) => (
-                <Link key={event.event_id} to={`/event/${event.event_id}`} className="block bg-white border border-slate-200 hover:border-green-500/50 rounded-xl p-6 transition-all group">
+                <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`} className="block bg-white border border-slate-200 hover:border-green-500/50 rounded-xl p-6 transition-all group">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-green-600 to-teal-600 flex items-center justify-center">

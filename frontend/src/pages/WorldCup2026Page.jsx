@@ -145,7 +145,7 @@ const WorldCup2026Page = () => {
             <span className="text-sm text-amber-600 ml-2">Hospitality</span>
           </div>
 
-          <Link to={finalEvent ? `/event/${finalEvent.event_id}` : '/events?search=World%20Cup'}>
+          <Link to={finalEvent ? `/event/${finalEvent.slug || finalEvent.event_id}` : '/events?search=World%20Cup'}>
             <Button size="lg" className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-xl px-12 py-6" data-testid="wc-hero-cta">
               Secure Your Seat Now <ArrowRight className="w-6 h-6 ml-2" />
             </Button>
@@ -175,7 +175,7 @@ const WorldCup2026Page = () => {
           <div className="space-y-4">
             {/* Final */}
             {finalEvent && (
-              <Link to={`/event/${finalEvent.event_id}`} className="block bg-gradient-to-r from-amber-900/30 to-yellow-900/30 border border-amber-500/50 rounded-xl p-6 hover:border-amber-400 transition-all group">
+              <Link to={`/event/${finalEvent.slug || finalEvent.event_id}`} className="block bg-gradient-to-r from-amber-900/30 to-yellow-900/30 border border-amber-500/50 rounded-xl p-6 hover:border-amber-400 transition-all group">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-amber-600 to-yellow-600 flex items-center justify-center">
@@ -205,7 +205,7 @@ const WorldCup2026Page = () => {
 
             {/* Semi-Finals */}
             {semiEvents.map((event) => (
-              <Link key={event.event_id} to={`/event/${event.event_id}`} className="block bg-white border border-violet-200 rounded-xl p-6 hover:border-purple-500 transition-all group">
+              <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`} className="block bg-white border border-violet-200 rounded-xl p-6 hover:border-purple-500 transition-all group">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
@@ -248,7 +248,7 @@ const WorldCup2026Page = () => {
           ) : (
             <div className="grid md:grid-cols-2 gap-4">
               {groupEvents.map((event) => (
-                <Link key={event.event_id} to={`/event/${event.event_id}`} className="block bg-white border border-slate-200 hover:border-emerald-500/50 rounded-xl p-5 transition-all group">
+                <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`} className="block bg-white border border-slate-200 hover:border-emerald-500/50 rounded-xl p-5 transition-all group">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center">
                       <Trophy className="w-6 h-6 text-white" />

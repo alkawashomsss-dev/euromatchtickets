@@ -197,7 +197,7 @@ const Maroon5Page = () => {
             <span className="text-sm text-emerald-600 ml-2">-5%</span>
           </div>
 
-          <Link to={events[0] ? `/event/${events[0].event_id}` : '/events?search=Maroon%205'}>
+          <Link to={events[0] ? `/event/${events[0].slug || events[0].event_id}` : '/events?search=Maroon%205'}>
             <Button size="lg" className="bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-xl px-12 py-6">
               {t.buyNow} <ArrowRight className="w-6 h-6 ml-2" />
             </Button>
@@ -229,7 +229,7 @@ const Maroon5Page = () => {
               {events.map((event) => (
                 <Link
                   key={event.event_id}
-                  to={`/event/${event.event_id}`}
+                  to={`/event/${event.slug || event.event_id}`}
                   className="block bg-white border border-slate-200 hover:border-red-500/50 rounded-xl p-6 transition-all group"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">

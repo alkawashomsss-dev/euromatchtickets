@@ -100,7 +100,7 @@ const MetallicaPage = () => {
             <span className="text-sm text-red-600 ml-2">Snake Pit</span>
           </div>
 
-          <Link to={events[0] ? `/event/${events[0].event_id}` : '/events?search=Metallica'}>
+          <Link to={events[0] ? `/event/${events[0].slug || events[0].event_id}` : '/events?search=Metallica'}>
             <Button size="lg" className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-xl px-12 py-6">
               {t.buyNow} <ArrowRight className="w-6 h-6 ml-2" />
             </Button>
@@ -158,7 +158,7 @@ const MetallicaPage = () => {
           ) : (
             <div className="space-y-4">
               {events.map((event) => (
-                <Link key={event.event_id} to={`/event/${event.event_id}`} className="block bg-white border border-slate-200 hover:border-orange-500/50 rounded-xl p-6 transition-all group">
+                <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`} className="block bg-white border border-slate-200 hover:border-orange-500/50 rounded-xl p-6 transition-all group">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center">

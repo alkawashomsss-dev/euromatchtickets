@@ -91,12 +91,12 @@ const AIChatWidget = () => {
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white flex items-center gap-2">
+                  <h3 className="font-bold text-slate-800 flex items-center gap-2">
                     AI Support
                     <Sparkles className="w-4 h-4 text-yellow-400" />
                   </h3>
-                  <p className="text-xs text-emerald-400 flex items-center gap-1">
-                    <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                  <p className="text-xs text-emerald-600 flex items-center gap-1">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
                     Online - Instant replies
                   </p>
                 </div>
@@ -139,8 +139,8 @@ const AIChatWidget = () => {
                 </div>
                 <div className={`max-w-[80%] p-3 rounded-2xl ${
                   msg.role === 'user'
-                    ? 'bg-purple-500/20 text-white rounded-tr-sm'
-                    : 'bg-slate-100 text-zinc-100 rounded-tl-sm'
+                    ? 'bg-emerald-500 text-white rounded-tr-sm'
+                    : 'bg-slate-100 text-slate-800 rounded-tl-sm'
                 }`}>
                   <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
                 </div>
@@ -172,7 +172,7 @@ const AIChatWidget = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message..."
-                className="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50"
+                className="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-500/50"
                 data-testid="chat-input"
               />
               <Button

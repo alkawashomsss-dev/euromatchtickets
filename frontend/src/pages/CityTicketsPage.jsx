@@ -159,7 +159,7 @@ const CityTicketsPage = () => {
               {events.slice(0, 12).map((event) => (
                 <Link
                   key={event.event_id}
-                  to={`/event/${event.event_id}`}
+                  to={`/event/${event.slug || event.event_id}`}
                   className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-purple-500/50 transition-all"
                 >
                   <div className="relative h-40 overflow-hidden">

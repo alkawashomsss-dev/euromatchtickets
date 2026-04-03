@@ -212,7 +212,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
                 return (
                   <Link
                     key={event.event_id}
-                    to={`/event/${event.event_id}`}
+                    to={`/event/${event.slug || event.event_id}`}
                     className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-purple-500/50 transition-all"
                     data-testid={`monthly-event-${event.event_id}`}
                   >

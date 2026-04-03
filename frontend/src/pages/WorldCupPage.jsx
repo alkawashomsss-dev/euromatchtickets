@@ -197,7 +197,7 @@ const WorldCupPage = () => {
           ) : (
             <div className="space-y-3">
               {events.map(event => (
-                <Link key={event.event_id} to={`/event/${event.event_id}`}
+                <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`}
                   className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-[#161b28] border border-white/5 hover:border-amber-500/30 rounded-2xl p-5 transition-all hover:bg-[#1a2035]" data-testid="match-card"
                 >
                   <div className="w-full sm:w-28 h-20 rounded-xl overflow-hidden flex-shrink-0">
