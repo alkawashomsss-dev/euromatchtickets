@@ -39,7 +39,8 @@ All 12+ pages updated with:
 - Regenerated static merchant-feed.xml with correct currency matching
 - 3,600 products: 1,200 EUR + 1,200 USD + 1,200 GBP
 - All shipping blocks now match product currency (0 mismatches)
-- 24 shipping countries per product
+- Expanded shipping countries from 24 to 67 (all EU, EEA, Americas, Asia-Pacific, Middle East, Africa)
+- Added missing Romania (RO) - store's primary country
 
 ## Reusable Components Created
 - `ConversionElements.jsx`: ScarcityBadges, ScarcityBadgesLight, TrustBar, CompetitorLine

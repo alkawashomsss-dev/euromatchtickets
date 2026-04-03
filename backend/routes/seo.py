@@ -242,8 +242,25 @@ async def google_merchant_feed():
         # Product ID - max 50 chars
         product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
         
-        # Multi-currency zones
-        all_countries = ["DE", "AT", "FR", "ES", "IT", "NL", "BE", "IE", "PT", "GR", "FI", "CH", "DK", "SE", "NO", "PL", "CZ", "GB", "US", "CA", "AU", "NZ", "MX", "SG"]
+        # Multi-currency zones - ALL Google Merchant Center supported countries
+        all_countries = [
+            # EU countries (27)
+            "DE", "AT", "FR", "ES", "IT", "NL", "BE", "IE", "PT", "GR",
+            "FI", "PL", "CZ", "RO", "HU", "BG", "HR", "SK", "SI", "LT",
+            "LV", "EE", "CY", "MT", "LU", "DK", "SE",
+            # EEA + EFTA
+            "NO", "CH", "IS", "LI",
+            # UK
+            "GB",
+            # Americas
+            "US", "CA", "MX", "BR", "AR", "CL", "CO",
+            # Asia-Pacific
+            "AU", "NZ", "SG", "JP", "KR", "IN", "TH", "MY", "PH", "ID", "VN", "TW", "HK",
+            # Middle East & Africa
+            "AE", "SA", "IL", "TR", "ZA", "EG", "NG", "KE",
+            # Other Europe
+            "UA", "RS", "BA", "ME", "MK", "AL", "GE",
+        ]
         currency_zones = [
             {"suffix": "", "currency": "EUR", "rate": 1.0},
             {"suffix": "-usd", "currency": "USD", "rate": 1.08},
