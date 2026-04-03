@@ -250,15 +250,16 @@ async def google_merchant_feed():
         xml_parts.append(f'  <g:availability>in_stock</g:availability>')
         xml_parts.append(f'  <g:condition>new</g:condition>')
         xml_parts.append(f'  <g:brand>EuroMatchTickets</g:brand>')
-        xml_parts.append(f'  <g:google_product_category>{_xml_escape(g_cat)}</g:google_product_category>')
+        xml_parts.append(f'  <g:google_product_category>499969</g:google_product_category>')
         xml_parts.append(f'  <g:product_type>{_xml_escape(product_type)}</g:product_type>')
         xml_parts.append(f'  <g:identifier_exists>false</g:identifier_exists>')
-        # Shipping - free e-ticket delivery
-        xml_parts.append(f'  <g:shipping>')
-        xml_parts.append(f'    <g:country>{iso_country}</g:country>')
-        xml_parts.append(f'    <g:service>E-Ticket Delivery</g:service>')
-        xml_parts.append(f'    <g:price>0 EUR</g:price>')
-        xml_parts.append(f'  </g:shipping>')
+        # Shipping - free digital delivery to all target countries
+        for ship_country in ["DE", "AT", "CH", "GB", "FR", "ES", "IT", "NL", "BE", "US"]:
+            xml_parts.append(f'  <g:shipping>')
+            xml_parts.append(f'    <g:country>{ship_country}</g:country>')
+            xml_parts.append(f'    <g:service>Digital Delivery</g:service>')
+            xml_parts.append(f'    <g:price>0 EUR</g:price>')
+            xml_parts.append(f'  </g:shipping>')
         # Custom labels for campaign management
         xml_parts.append(f'  <g:custom_label_0>{_xml_escape(cat)}</g:custom_label_0>')
         xml_parts.append(f'  <g:custom_label_1>{_xml_escape(city)}</g:custom_label_1>')
