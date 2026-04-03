@@ -36,10 +36,9 @@ All 12+ pages updated with:
 - Using actual prices only
 
 ### Merchant Feed Currency Mismatch Fix (2026-04-04) - DONE
-- Restructured feed: 16 local currencies mapped to correct countries (was 3 currencies for all countries)
-- 19,200 products (1,200 × 16 currencies): EUR, USD, GBP, CHF, PLN, SEK, DKK, NOK, RON, HUF, CZK, BGN, AUD, CAD, TRY, JPY
-- Removed South Korea (KR) to fix Korean business registration error
-- Each currency only ships to countries that use it (EUR→Eurozone, RON→Romania, etc.)
+- Matched feed exactly to Merchant Center's 27 target countries with 20 local currencies
+- Countries: AT, FI, FR, GR, IE, IT, NL, ES (EUR), GB (GBP), CH (CHF), PL (PLN), SE (SEK), DK (DKK), NO (NOK), RO (RON), UA (UAH), RU (RUB), TR (TRY), US (USD), CA (CAD), AR (ARS), PE (PEN), UY (UYU), AE (AED), SA (SAR), AU (AUD), NZ (NZD)
+- 24,000 products total, removed non-target countries (Korea etc.) that caused registration errors
 
 ## Reusable Components Created
 - `ConversionElements.jsx`: ScarcityBadges, ScarcityBadgesLight, TrustBar, CompetitorLine
