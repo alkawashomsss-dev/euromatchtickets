@@ -256,7 +256,7 @@ async def google_merchant_feed():
         xml_parts.append(f'  <g:product_type>{_xml_escape(product_type)}</g:product_type>')
         xml_parts.append(f'  <g:identifier_exists>false</g:identifier_exists>')
         # Shipping - free digital delivery to all target countries
-        for ship_country in ["DE", "AT", "CH", "GB", "FR", "ES", "IT", "NL", "BE", "US"]:
+        for ship_country in ["DE", "AT", "CH", "GB", "FR", "ES", "IT", "NL", "BE", "US", "AR", "AU", "BR", "CA", "CL", "CO", "CZ", "DK", "FI", "GR", "HU", "IE", "IL", "IN", "JP", "KR", "MX", "NO", "NZ", "PL", "PT", "RO", "SE", "SG", "TR"]:
             xml_parts.append(f'  <g:shipping>')
             xml_parts.append(f'    <g:country>{ship_country}</g:country>')
             xml_parts.append(f'    <g:service>Digital Delivery</g:service>')
