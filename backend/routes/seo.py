@@ -194,6 +194,121 @@ GMC_BRAND_MAP = {
     "motogp": "MotoGP",
 }
 
+# ============================================================
+# DYNAMIC PRODUCT IMAGES FOR GOOGLE MERCHANT CENTER
+# ============================================================
+
+# Multiple base images per category for variety
+CATEGORY_BASE_IMAGES = {
+    "f1": ["f1-red-lg.webp", "f1-lg.webp", "f1-race-lg.webp", "f1-pitstop-lg.webp"],
+    "football": ["football-stadium-lg.webp", "football-lg.webp", "football-match-lg.webp", "football-penalty-lg.webp"],
+    "concert": ["concert-purple-lg.webp", "concert-lg.webp", "concert-live-lg.webp", "concert-drums-lg.webp"],
+    "worldcup": ["worldcup-lg.webp", "worldcup-trophy-lg.webp", "worldcup-final-lg.webp", "football-stadium-lg.webp"],
+    "motorsport": ["motogp-lg.webp", "motogp-orange-lg.webp"],
+    "motogp": ["motogp-lg.webp", "motogp-orange-lg.webp"],
+}
+
+_IMAGE_CACHE_DIR = "/tmp/gmc-images"
+os.makedirs(_IMAGE_CACHE_DIR, exist_ok=True)
+
+
+@router.get("/merchant/product-image/{slug}.jpg")
+async def generate_product_image(slug: str):
+    """Generate a unique product image with event name overlay for Google Merchant Center."""
+    import hashlib
+    from PIL import Image, ImageDraw, ImageFont
+    from io import BytesIO
+
+    # Check cache first
+    cache_path = os.path.join(_IMAGE_CACHE_DIR, f"{slug}.jpg")
+    if os.path.exists(cache_path):
+        with open(cache_path, "rb") as f:
+            return Response(content=f.read(), media_type="image/jpeg",
+                          headers={"Cache-Control": "public, max-age=604800"})
+
+    # Get product info from DB
+    page = await db.seo_pages.find_one(
+        {"slug": slug, "active": True},
+        {"_id": 0, "title": 1, "category": 1, "city": 1, "venue": 1, "year": 1}
+    )
+    if not page:
+        raise HTTPException(status_code=404, detail="Product not found")
+
+    cat = page.get("category", "other")
+    title = page.get("title", slug).split("|")[0].strip()
+    city = page.get("city", "")
+    venue = page.get("venue", "")
+    year = page.get("year", 2026)
+
+    # Clean title
+    import re as _re
+    clean_title = title
+    for s in ["| EuroMatchTickets", "| EMT"]:
+        clean_title = clean_title.replace(s, "").strip()
+    clean_title = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', clean_title, flags=_re.IGNORECASE).strip()
+    clean_title = _re.sub(r'^(Buy|Get|Order|Book|Grab|Shop)\s+', '', clean_title, flags=_re.IGNORECASE).strip()
+    clean_title = _re.sub(r'\b(Cheap|Cheapest|Best|Top|Ranked)\b', '', clean_title, flags=_re.IGNORECASE).strip()
+    clean_title = _re.sub(r'\s{2,}', ' ', clean_title).strip().rstrip(' –—-!.')
+
+    # Pick base image based on slug hash for consistent variety
+    base_images = CATEGORY_BASE_IMAGES.get(cat, ["football-stadium-lg.webp"])
+    img_index = int(hashlib.md5(slug.encode()).hexdigest(), 16) % len(base_images)
+    base_img_name = base_images[img_index]
+    base_img_path = f"/app/frontend/public/images/heroes/{base_img_name}"
+
+    if not os.path.exists(base_img_path):
+        base_img_path = "/app/frontend/public/images/heroes/football-stadium-lg.webp"
+
+    # Open and resize base image
+    img = Image.open(base_img_path).convert("RGB")
+    img = img.resize((1200, 628), Image.LANCZOS)
+    draw = ImageDraw.Draw(img)
+
+    # Add dark gradient overlay at bottom
+    for y in range(img.height // 2, img.height):
+        alpha = int(200 * (y - img.height // 2) / (img.height // 2))
+        draw.line([(0, y), (img.width, y)], fill=(0, 0, 0, alpha))
+
+    # Add semi-transparent overlay for text readability
+    overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    overlay_draw = ImageDraw.Draw(overlay)
+    overlay_draw.rectangle([(0, img.height - 200), (img.width, img.height)], fill=(0, 0, 0, 160))
+    img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+    draw = ImageDraw.Draw(img)
+
+    # Load fonts
+    try:
+        font_title = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSansBold.ttf", 42)
+        font_sub = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 28)
+        font_brand = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSansBold.ttf", 20)
+    except Exception:
+        font_title = ImageFont.load_default()
+        font_sub = font_title
+        font_brand = font_title
+
+    # Draw event title
+    title_y = img.height - 170
+    draw.text((50, title_y), clean_title, font=font_title, fill=(255, 255, 255))
+
+    # Draw city/venue info
+    location_text = venue if venue and venue != city else city
+    if location_text and location_text != "Europe":
+        draw.text((50, title_y + 55), location_text, font=font_sub, fill=(200, 200, 200))
+
+    # Draw brand bar
+    draw.text((50, img.height - 45), "EUROMATCHTICKETS.COM", font=font_brand, fill=(255, 200, 50))
+
+    # Save to cache and return
+    buffer = BytesIO()
+    img.save(buffer, format="JPEG", quality=85, optimize=True)
+    img_bytes = buffer.getvalue()
+
+    with open(cache_path, "wb") as f:
+        f.write(img_bytes)
+
+    return Response(content=img_bytes, media_type="image/jpeg",
+                   headers={"Cache-Control": "public, max-age=604800"})
+
 
 @router.get("/merchant/feed.xml")
 async def google_merchant_feed():
@@ -251,9 +366,8 @@ async def google_merchant_feed():
         # Build description - MUST be purely factual for Google Merchant Center
         desc = _build_clean_gmc_description(clean_title, cat, city, venue, year)
 
-        # Image URL
-        img_path = CATEGORY_IMAGES.get(cat, "/images/heroes/football-stadium-lg.webp")
-        img_url = f"{base_url}{img_path}"
+        # Image URL - unique dynamic image per product
+        img_url = f"{base_url}/api/merchant/product-image/{slug}.jpg"
 
         # Google product category
         g_cat = GOOGLE_PRODUCT_CATEGORIES.get(cat, "Arts & Entertainment > Event Tickets")
@@ -381,8 +495,7 @@ async def google_merchant_feed_tsv():
         desc = desc.replace('\t', ' ').replace('\n', ' ')[:300]
         clean_title = clean_title.replace('\t', ' ')
 
-        img_path = CATEGORY_IMAGES.get(cat, "/images/heroes/football-stadium-lg.webp")
-        img_url = f"{base_url}{img_path}"
+        img_url = f"{base_url}/api/merchant/product-image/{slug}.jpg"
         product_type = f"Event Tickets > {cat.replace('_', ' ').title()}"
         product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
         brand = GMC_BRAND_MAP.get(cat, "EuroMatchTickets")
