@@ -239,8 +239,10 @@ async def google_merchant_feed():
         }
         iso_country = country_codes.get(country, "DE")
 
+        # Product ID - max 50 chars
+        product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
         xml_parts.append('<item>')
-        xml_parts.append(f'  <g:id>{_xml_escape(slug)}</g:id>')
+        xml_parts.append(f'  <g:id>{_xml_escape(product_id)}</g:id>')
         xml_parts.append(f'  <g:title>{_xml_escape(clean_title)}</g:title>')
         xml_parts.append(f'  <g:description>{_xml_escape(desc)}</g:description>')
         xml_parts.append(f'  <g:link>{base_url}/{slug}</g:link>')
