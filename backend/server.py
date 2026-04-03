@@ -385,13 +385,37 @@ async def serve_merchant_feed_direct():
 
 @app.get("/api/download-feed")
 async def download_feed_page():
-    """Simple page with download button for merchant feed"""
-    html = """<!DOCTYPE html><html><head><title>Download Feed</title></head><body style="font-family:Arial;text-align:center;padding:50px;background:#111;color:white">
-    <h1>Merchant Feed Download</h1>
+    """Download page that works on mobile - uses JavaScript to force download"""
+    html = """<!DOCTYPE html><html><head><title>Download Feed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    async function downloadFeed() {
+        document.getElementById('btn').innerText = 'Downloading... please wait';
+        document.getElementById('btn').style.background = '#666';
+        try {
+            const res = await fetch('/api/merchant/feed.tsv');
+            const blob = await res.blob();
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'merchant-feed.tsv';
+            document.body.appendChild(a);
+            a.click();
+            URL.revokeObjectURL(url);
+            document.getElementById('btn').innerText = 'Downloaded!';
+            document.getElementById('btn').style.background = '#16a34a';
+        } catch(e) {
+            document.getElementById('btn').innerText = 'Error - try again';
+            document.getElementById('btn').style.background = '#dc2626';
+        }
+    }
+    </script>
+    </head><body style="font-family:Arial;text-align:center;padding:50px;background:#111;color:white">
+    <h1>Merchant Feed</h1>
     <p>30,000 products | 25 currencies | 33 countries</p>
     <br>
-    <a href="/api/merchant/feed.xml" download="merchant-feed.xml" style="display:inline-block;padding:20px 40px;background:#2563eb;color:white;text-decoration:none;border-radius:8px;font-size:20px">Download merchant-feed.xml</a>
-    <br><br><p style="color:gray">After download, upload to Google Merchant Center → Datei hochladen</p>
+    <button id="btn" onclick="downloadFeed()" style="padding:20px 40px;background:#2563eb;color:white;border:none;border-radius:8px;font-size:20px;cursor:pointer">Download merchant-feed.tsv</button>
+    <br><br><p style="color:gray">Upload to Merchant Center → Datei hochladen</p>
     </body></html>"""
     return Response(content=html, media_type="text/html")
 

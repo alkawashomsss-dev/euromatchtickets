@@ -252,7 +252,7 @@ async def google_merchant_feed():
         # Product ID - max 50 chars
         product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
         
-        # ALL 33 Merchant Center target countries
+        # ALL target countries - Google auto-converts EUR to local currency
         all_target_countries = [
             "AT", "FI", "FR", "GR", "IE", "IT", "NL", "ES", "PT",
             "GB", "CH", "PL", "SE", "DK", "NO", "RO", "UA", "RU", "TR",
@@ -262,61 +262,26 @@ async def google_merchant_feed():
             "AU", "HK", "JP",
         ]
         
-        # 25 currency zones covering all 33 countries
-        currency_zones = [
-            {"suffix": "", "currency": "EUR", "rate": 1.0, "countries": ["AT", "FI", "FR", "GR", "IE", "IT", "NL", "ES", "PT"]},
-            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86, "countries": ["GB"]},
-            {"suffix": "-chf", "currency": "CHF", "rate": 0.94, "countries": ["CH"]},
-            {"suffix": "-pln", "currency": "PLN", "rate": 4.28, "countries": ["PL"]},
-            {"suffix": "-sek", "currency": "SEK", "rate": 11.2, "countries": ["SE"]},
-            {"suffix": "-dkk", "currency": "DKK", "rate": 7.46, "countries": ["DK"]},
-            {"suffix": "-nok", "currency": "NOK", "rate": 11.5, "countries": ["NO"]},
-            {"suffix": "-ron", "currency": "RON", "rate": 4.97, "countries": ["RO"]},
-            {"suffix": "-uah", "currency": "UAH", "rate": 44.5, "countries": ["UA"]},
-            {"suffix": "-rub", "currency": "RUB", "rate": 98.0, "countries": ["RU"]},
-            {"suffix": "-try", "currency": "TRY", "rate": 34.5, "countries": ["TR"]},
-            {"suffix": "-czk", "currency": "CZK", "rate": 25.2, "countries": ["CZ"]},
-            {"suffix": "-huf", "currency": "HUF", "rate": 395.0, "countries": ["HU"]},
-            {"suffix": "-usd", "currency": "USD", "rate": 1.08, "countries": ["US"]},
-            {"suffix": "-cad", "currency": "CAD", "rate": 1.47, "countries": ["CA"]},
-            {"suffix": "-ars", "currency": "ARS", "rate": 950.0, "countries": ["AR"]},
-            {"suffix": "-uyu", "currency": "UYU", "rate": 43.5, "countries": ["UY"]},
-            {"suffix": "-mxn", "currency": "MXN", "rate": 18.5, "countries": ["MX"]},
-            {"suffix": "-aed", "currency": "AED", "rate": 3.97, "countries": ["AE"]},
-            {"suffix": "-sar", "currency": "SAR", "rate": 4.05, "countries": ["SA"]},
-            {"suffix": "-kwd", "currency": "KWD", "rate": 0.33, "countries": ["KW"]},
-            {"suffix": "-lbp", "currency": "LBP", "rate": 97000.0, "countries": ["LB"]},
-            {"suffix": "-aud", "currency": "AUD", "rate": 1.65, "countries": ["AU"]},
-            {"suffix": "-hkd", "currency": "HKD", "rate": 8.45, "countries": ["HK"]},
-            {"suffix": "-jpy", "currency": "JPY", "rate": 163.0, "countries": ["JP"]},
-        ]
+        # Single currency (EUR) - Google converts automatically
+        ship = ''.join(f'<g:shipping><g:country>{c}</g:country><g:price>0 EUR</g:price></g:shipping>' for c in all_target_countries)
         
-        for zone in currency_zones:
-            z_price = round(price_low * zone["rate"])
-            if z_price < 1:
-                z_price = 1
-            z_id = product_id if not zone["suffix"] else (product_id[:46] + zone["suffix"] if len(product_id) > 46 else product_id + zone["suffix"])
-            
-            # Shipping to ALL 33 target countries (currency matches product price)
-            ship = ''.join(f'<g:shipping><g:country>{c}</g:country><g:price>0 {zone["currency"]}</g:price></g:shipping>' for c in all_target_countries)
-            
-            xml_parts.append(
-                f'<item>'
-                f'<g:id>{_xml_escape(z_id)}</g:id>'
-                f'<g:title>{_xml_escape(clean_title)}</g:title>'
-                f'<g:description>{_xml_escape(desc[:300])}</g:description>'
-                f'<g:link>{base_url}/{slug}</g:link>'
-                f'<g:image_link>{img_url}</g:image_link>'
-                f'<g:price>{z_price} {zone["currency"]}</g:price>'
-                f'<g:availability>in_stock</g:availability>'
-                f'<g:condition>new</g:condition>'
-                f'<g:brand>EuroMatchTickets</g:brand>'
-                f'<g:google_product_category>499969</g:google_product_category>'
-                f'<g:product_type>{_xml_escape(product_type)}</g:product_type>'
-                f'<g:identifier_exists>false</g:identifier_exists>'
-                f'{ship}'
-                f'</item>'
-            )
+        xml_parts.append(
+            f'<item>'
+            f'<g:id>{_xml_escape(product_id)}</g:id>'
+            f'<g:title>{_xml_escape(clean_title)}</g:title>'
+            f'<g:description>{_xml_escape(desc[:300])}</g:description>'
+            f'<g:link>{base_url}/{slug}</g:link>'
+            f'<g:image_link>{img_url}</g:image_link>'
+            f'<g:price>{price_low} EUR</g:price>'
+            f'<g:availability>in_stock</g:availability>'
+            f'<g:condition>new</g:condition>'
+            f'<g:brand>EuroMatchTickets</g:brand>'
+            f'<g:google_product_category>499969</g:google_product_category>'
+            f'<g:product_type>{_xml_escape(product_type)}</g:product_type>'
+            f'<g:identifier_exists>false</g:identifier_exists>'
+            f'{ship}'
+            f'</item>'
+        )
 
     xml_parts.append('</channel>')
     xml_parts.append('</rss>')
