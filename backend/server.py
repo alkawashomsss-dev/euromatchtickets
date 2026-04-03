@@ -374,6 +374,15 @@ async def shutdown():
 
 
 
+# ─── MERCHANT FEED: Direct XML route (MUST be before catch-all) ────────────
+@app.get("/merchant-feed.xml")
+@app.get("/feed.xml")
+async def serve_merchant_feed_direct():
+    """Serve Google Merchant Center feed as XML - bypasses all SPA routing"""
+    from routes.seo import google_merchant_feed
+    return await google_merchant_feed()
+
+
 # ─── Production: Serve React Frontend with 410 for old pages ────────────────
 # This catch-all MUST be after all API routes so they take priority
 static_build_dir = pathlib.Path(__file__).parent / "static"
