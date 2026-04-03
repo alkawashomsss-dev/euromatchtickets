@@ -160,12 +160,10 @@ def _xml_escape(text):
 
 def _build_clean_gmc_description(title, category, city, venue, year):
     """Generate a clean, factual description for Google Merchant Center.
-    No promotional language, no pricing, no conversational tone - purely informational."""
+    ONLY product info - no marketplace mentions, no promotional text."""
     import re as _re
-    # Remove pricing from title before using in description
     clean_name = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', title, flags=_re.IGNORECASE).strip()
     clean_name = _re.sub(r'\s*\|\s*.*$', '', clean_name).strip()
-    # Remove "Tickets" word to avoid "Tickets for X Tickets"
     clean_name = _re.sub(r'\s*Tickets?\s*$', '', clean_name, flags=_re.IGNORECASE).strip()
     clean_name = _re.sub(r'\s*Tickets?\s+', ' ', clean_name, flags=_re.IGNORECASE).strip()
     
@@ -173,17 +171,17 @@ def _build_clean_gmc_description(title, category, city, venue, year):
     city_text = f", {city}" if city and city != "Europe" else ""
     
     if category == "f1":
-        return f"Tickets for {clean_name}{venue_text}{city_text}. Formula 1 World Championship {year} season. Includes circuit access and seating. Secondary ticket marketplace."
+        return f"Ticket for {clean_name}{venue_text}{city_text}. Formula 1 {year} season race. Includes circuit access and seated grandstand."
     elif category == "football":
-        return f"Tickets for {clean_name}{venue_text}{city_text}. {year} season football match. Includes stadium entry and allocated seating. Secondary ticket marketplace."
+        return f"Ticket for {clean_name}{venue_text}{city_text}. {year} season football match. Includes stadium entry and allocated seat."
     elif category == "concert":
-        return f"Tickets for {clean_name}{venue_text}{city_text}. Live concert event, {year}. Includes venue entry and seating category. Secondary ticket marketplace."
+        return f"Ticket for {clean_name}{venue_text}{city_text}. Live concert, {year}. Includes venue entry and seat allocation."
     elif category == "worldcup":
-        return f"Tickets for {clean_name}{venue_text}{city_text}. FIFA World Cup {year} match. Includes stadium access and seating. Secondary ticket marketplace."
+        return f"Ticket for {clean_name}{venue_text}{city_text}. FIFA World Cup {year} match. Includes stadium entry and allocated seat."
     elif category in ("motorsport", "motogp"):
-        return f"Tickets for {clean_name}{venue_text}{city_text}. Motorsport event, {year} season. Includes circuit access and grandstand seating. Secondary ticket marketplace."
+        return f"Ticket for {clean_name}{venue_text}{city_text}. Motorsport race, {year} season. Includes circuit access and grandstand seat."
     else:
-        return f"Tickets for {clean_name}{venue_text}{city_text}. Event in {year}. Includes venue entry. Secondary ticket marketplace."
+        return f"Ticket for {clean_name}{venue_text}{city_text}. Event in {year}. Includes venue entry and seat allocation."
 
 
 # Brand mapping by category for Google Merchant Center
