@@ -35,10 +35,11 @@ All 12+ pages updated with:
 - Removed fake 97% discount (g:sale_price scam)
 - Using actual prices only
 
-### Merchant Feed Currency Mismatch Fix (2026-04-04) - DONE
-- Matched feed exactly to Merchant Center's 27 target countries with 20 local currencies
-- Countries: AT, FI, FR, GR, IE, IT, NL, ES (EUR), GB (GBP), CH (CHF), PL (PLN), SE (SEK), DK (DKK), NO (NOK), RO (RON), UA (UAH), RU (RUB), TR (TRY), US (USD), CA (CAD), AR (ARS), PE (PEN), UY (UYU), AE (AED), SA (SAR), AU (AUD), NZ (NZD)
-- 24,000 products total, removed non-target countries (Korea etc.) that caused registration errors
+### Merchant Feed Full 33-Country Coverage (2026-04-04) - DONE
+- 25 currencies covering all 33 Merchant Center target countries
+- 30,000 products (1,200 × 25 currencies), 25MB file
+- Added direct /merchant-feed.xml route in server.py to bypass SPA HTML issue
+- Countries: AT, FI, FR, GR, IE, IT, NL, ES, PT (EUR), GB (GBP), CH (CHF), PL (PLN), SE (SEK), DK (DKK), NO (NOK), RO (RON), UA (UAH), RU (RUB), TR (TRY), CZ (CZK), HU (HUF), US (USD), CA (CAD), AR (ARS), UY (UYU), MX (MXN), AE (AED), SA (SAR), KW (KWD), LB (LBP), AU (AUD), HK (HKD), JP (JPY)
 
 ## Reusable Components Created
 - `ConversionElements.jsx`: ScarcityBadges, ScarcityBadgesLight, TrustBar, CompetitorLine

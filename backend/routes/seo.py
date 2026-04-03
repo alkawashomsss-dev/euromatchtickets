@@ -242,20 +242,43 @@ async def google_merchant_feed():
         # Product ID - max 50 chars
         product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
         
-        # ALL 27 Merchant Center target countries
+        # ALL 33 Merchant Center target countries
         all_target_countries = [
-            "AT", "FI", "FR", "GR", "IE", "IT", "NL", "ES",
+            "AT", "FI", "FR", "GR", "IE", "IT", "NL", "ES", "PT",
             "GB", "CH", "PL", "SE", "DK", "NO", "RO", "UA", "RU", "TR",
-            "US", "CA", "AR", "PE", "UY",
-            "AE", "SA",
-            "AU", "NZ",
+            "CZ", "HU",
+            "US", "CA", "AR", "UY", "MX",
+            "AE", "SA", "KW", "LB",
+            "AU", "HK", "JP",
         ]
         
-        # Top 3 currencies only - small file, guaranteed to work
+        # 25 currency zones covering all 33 countries
         currency_zones = [
-            {"suffix": "", "currency": "EUR", "rate": 1.0},
-            {"suffix": "-usd", "currency": "USD", "rate": 1.08},
-            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86},
+            {"suffix": "", "currency": "EUR", "rate": 1.0, "countries": ["AT", "FI", "FR", "GR", "IE", "IT", "NL", "ES", "PT"]},
+            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86, "countries": ["GB"]},
+            {"suffix": "-chf", "currency": "CHF", "rate": 0.94, "countries": ["CH"]},
+            {"suffix": "-pln", "currency": "PLN", "rate": 4.28, "countries": ["PL"]},
+            {"suffix": "-sek", "currency": "SEK", "rate": 11.2, "countries": ["SE"]},
+            {"suffix": "-dkk", "currency": "DKK", "rate": 7.46, "countries": ["DK"]},
+            {"suffix": "-nok", "currency": "NOK", "rate": 11.5, "countries": ["NO"]},
+            {"suffix": "-ron", "currency": "RON", "rate": 4.97, "countries": ["RO"]},
+            {"suffix": "-uah", "currency": "UAH", "rate": 44.5, "countries": ["UA"]},
+            {"suffix": "-rub", "currency": "RUB", "rate": 98.0, "countries": ["RU"]},
+            {"suffix": "-try", "currency": "TRY", "rate": 34.5, "countries": ["TR"]},
+            {"suffix": "-czk", "currency": "CZK", "rate": 25.2, "countries": ["CZ"]},
+            {"suffix": "-huf", "currency": "HUF", "rate": 395.0, "countries": ["HU"]},
+            {"suffix": "-usd", "currency": "USD", "rate": 1.08, "countries": ["US"]},
+            {"suffix": "-cad", "currency": "CAD", "rate": 1.47, "countries": ["CA"]},
+            {"suffix": "-ars", "currency": "ARS", "rate": 950.0, "countries": ["AR"]},
+            {"suffix": "-uyu", "currency": "UYU", "rate": 43.5, "countries": ["UY"]},
+            {"suffix": "-mxn", "currency": "MXN", "rate": 18.5, "countries": ["MX"]},
+            {"suffix": "-aed", "currency": "AED", "rate": 3.97, "countries": ["AE"]},
+            {"suffix": "-sar", "currency": "SAR", "rate": 4.05, "countries": ["SA"]},
+            {"suffix": "-kwd", "currency": "KWD", "rate": 0.33, "countries": ["KW"]},
+            {"suffix": "-lbp", "currency": "LBP", "rate": 97000.0, "countries": ["LB"]},
+            {"suffix": "-aud", "currency": "AUD", "rate": 1.65, "countries": ["AU"]},
+            {"suffix": "-hkd", "currency": "HKD", "rate": 8.45, "countries": ["HK"]},
+            {"suffix": "-jpy", "currency": "JPY", "rate": 163.0, "countries": ["JP"]},
         ]
         
         for zone in currency_zones:
@@ -264,13 +287,14 @@ async def google_merchant_feed():
                 z_price = 1
             z_id = product_id if not zone["suffix"] else (product_id[:46] + zone["suffix"] if len(product_id) > 46 else product_id + zone["suffix"])
             
-            ship = ''.join(f'<g:shipping><g:country>{c}</g:country><g:service>E-Ticket</g:service><g:price>0 {zone["currency"]}</g:price></g:shipping>' for c in all_target_countries)
+            # Shipping ONLY to countries that use this currency (avoids currency mismatch)
+            ship = ''.join(f'<g:shipping><g:country>{c}</g:country><g:price>0 {zone["currency"]}</g:price></g:shipping>' for c in zone["countries"])
             
             xml_parts.append(
                 f'<item>'
                 f'<g:id>{_xml_escape(z_id)}</g:id>'
                 f'<g:title>{_xml_escape(clean_title)}</g:title>'
-                f'<g:description>{_xml_escape(desc[:500])}</g:description>'
+                f'<g:description>{_xml_escape(desc[:300])}</g:description>'
                 f'<g:link>{base_url}/{slug}</g:link>'
                 f'<g:image_link>{img_url}</g:image_link>'
                 f'<g:price>{z_price} {zone["currency"]}</g:price>'
