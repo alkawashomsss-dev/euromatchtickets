@@ -242,36 +242,37 @@ async def google_merchant_feed():
         # Product ID - max 50 chars
         product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
         
+        # ALL 27 Merchant Center target countries
+        all_target_countries = [
+            "AT", "FI", "FR", "GR", "IE", "IT", "NL", "ES",
+            "GB", "CH", "PL", "SE", "DK", "NO", "RO", "UA", "RU", "TR",
+            "US", "CA", "AR", "PE", "UY",
+            "AE", "SA",
+            "AU", "NZ",
+        ]
+        
         # Currency zones - EXACTLY matching Merchant Center target countries (27 countries)
         currency_zones = [
-            # Eurozone countries from target list
-            {
-                "suffix": "", "currency": "EUR", "rate": 1.0,
-                "countries": ["AT", "FI", "FR", "GR", "IE", "IT", "NL", "ES"]
-            },
-            # Non-Euro Europe
-            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86, "countries": ["GB"]},
-            {"suffix": "-chf", "currency": "CHF", "rate": 0.94, "countries": ["CH"]},
-            {"suffix": "-pln", "currency": "PLN", "rate": 4.28, "countries": ["PL"]},
-            {"suffix": "-sek", "currency": "SEK", "rate": 11.2, "countries": ["SE"]},
-            {"suffix": "-dkk", "currency": "DKK", "rate": 7.46, "countries": ["DK"]},
-            {"suffix": "-nok", "currency": "NOK", "rate": 11.5, "countries": ["NO"]},
-            {"suffix": "-ron", "currency": "RON", "rate": 4.97, "countries": ["RO"]},
-            {"suffix": "-uah", "currency": "UAH", "rate": 44.5, "countries": ["UA"]},
-            {"suffix": "-rub", "currency": "RUB", "rate": 98.0, "countries": ["RU"]},
-            {"suffix": "-try", "currency": "TRY", "rate": 34.5, "countries": ["TR"]},
-            # Americas
-            {"suffix": "-usd", "currency": "USD", "rate": 1.08, "countries": ["US"]},
-            {"suffix": "-cad", "currency": "CAD", "rate": 1.47, "countries": ["CA"]},
-            {"suffix": "-ars", "currency": "ARS", "rate": 950.0, "countries": ["AR"]},
-            {"suffix": "-pen", "currency": "PEN", "rate": 4.0, "countries": ["PE"]},
-            {"suffix": "-uyu", "currency": "UYU", "rate": 43.5, "countries": ["UY"]},
-            # Middle East
-            {"suffix": "-aed", "currency": "AED", "rate": 3.97, "countries": ["AE"]},
-            {"suffix": "-sar", "currency": "SAR", "rate": 4.05, "countries": ["SA"]},
-            # Asia-Pacific
-            {"suffix": "-aud", "currency": "AUD", "rate": 1.65, "countries": ["AU"]},
-            {"suffix": "-nzd", "currency": "NZD", "rate": 1.82, "countries": ["NZ"]},
+            {"suffix": "", "currency": "EUR", "rate": 1.0},
+            {"suffix": "-gbp", "currency": "GBP", "rate": 0.86},
+            {"suffix": "-chf", "currency": "CHF", "rate": 0.94},
+            {"suffix": "-pln", "currency": "PLN", "rate": 4.28},
+            {"suffix": "-sek", "currency": "SEK", "rate": 11.2},
+            {"suffix": "-dkk", "currency": "DKK", "rate": 7.46},
+            {"suffix": "-nok", "currency": "NOK", "rate": 11.5},
+            {"suffix": "-ron", "currency": "RON", "rate": 4.97},
+            {"suffix": "-uah", "currency": "UAH", "rate": 44.5},
+            {"suffix": "-rub", "currency": "RUB", "rate": 98.0},
+            {"suffix": "-try", "currency": "TRY", "rate": 34.5},
+            {"suffix": "-usd", "currency": "USD", "rate": 1.08},
+            {"suffix": "-cad", "currency": "CAD", "rate": 1.47},
+            {"suffix": "-ars", "currency": "ARS", "rate": 950.0},
+            {"suffix": "-pen", "currency": "PEN", "rate": 4.0},
+            {"suffix": "-uyu", "currency": "UYU", "rate": 43.5},
+            {"suffix": "-aed", "currency": "AED", "rate": 3.97},
+            {"suffix": "-sar", "currency": "SAR", "rate": 4.05},
+            {"suffix": "-aud", "currency": "AUD", "rate": 1.65},
+            {"suffix": "-nzd", "currency": "NZD", "rate": 1.82},
         ]
         
         for zone in currency_zones:
@@ -293,8 +294,8 @@ async def google_merchant_feed():
             xml_parts.append(f'  <g:google_product_category>499969</g:google_product_category>')
             xml_parts.append(f'  <g:product_type>{_xml_escape(product_type)}</g:product_type>')
             xml_parts.append(f'  <g:identifier_exists>false</g:identifier_exists>')
-            # Shipping ONLY to countries that use this currency
-            for ship_country in zone["countries"]:
+            # Shipping to ALL 27 target countries - currency matches product price
+            for ship_country in all_target_countries:
                 xml_parts.append(f'  <g:shipping>')
                 xml_parts.append(f'    <g:country>{ship_country}</g:country>')
                 xml_parts.append(f'    <g:service>Digital Delivery</g:service>')
