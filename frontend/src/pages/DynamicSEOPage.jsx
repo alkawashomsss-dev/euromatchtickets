@@ -243,10 +243,10 @@ export default function DynamicSEOPage() {
           concert: `${BASE}/images/heroes/concert-purple-lg.webp`,
           worldcup: `${BASE}/images/heroes/football-stadium-lg.webp`,
         };
-        const eventImage = page.image_url || page.image || CAT_IMAGES[page.category] || `${BASE}/images/heroes/football-stadium-lg.webp`;
+        const eventImage = page.image_url || page.image || `${BASE}/product-images/${page.slug}.jpg`;
         const eventName = page.event_name || page.artist || page.title?.split("|")[0]?.split("–")[0]?.trim();
-        const eventDesc = page.description || page.meta_description || `Buy verified ${eventName} tickets on EuroMatchTickets. Cheapest prices in Europe with instant QR e-ticket delivery and FanProtect money-back guarantee.`;
-        const productDesc = `${eventName} tickets available now. From €${page.price_low || 49}. Verified sellers, instant QR delivery, FanProtect guarantee. Europe's cheapest ticket marketplace.`;
+        const eventDesc = page.meta_description || page.description || `Buy verified ${eventName} tickets on EuroMatchTickets.`;
+        const productDesc = page.meta_description || `${eventName} tickets available now. From €${page.price_low || 49}. Verified sellers, instant QR delivery, FanProtect guarantee.`;
 
         return (
           <>
@@ -422,7 +422,7 @@ export default function DynamicSEOPage() {
           {/* Image */}
           {page.image && (
             <div className="absolute top-0 right-0 w-1/3 h-full hidden lg:block opacity-20">
-              <img loading="lazy" src={page.image} alt={page.title} className="w-full h-full object-cover" />
+              <img loading="lazy" src={page.image} alt={`${page.event_name || page.artist || page.title?.split('|')[0]?.trim()} tickets ${page.venue || ''} ${page.city || ''} ${page.year || 2026}`.trim()} className="w-full h-full object-cover" />
             </div>
           )}
         </div>
