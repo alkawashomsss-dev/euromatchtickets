@@ -366,8 +366,8 @@ async def google_merchant_feed():
         # Build description - MUST be purely factual for Google Merchant Center
         desc = _build_clean_gmc_description(clean_title, cat, city, venue, year)
 
-        # Image URL - unique dynamic image per product
-        img_url = f"{base_url}/api/merchant/product-image/{slug}.jpg"
+        # Image URL - unique static JPEG per product
+        img_url = f"{base_url}/product-images/{slug}.jpg"
 
         # Google product category
         g_cat = GOOGLE_PRODUCT_CATEGORIES.get(cat, "Arts & Entertainment > Event Tickets")
@@ -495,7 +495,7 @@ async def google_merchant_feed_tsv():
         desc = desc.replace('\t', ' ').replace('\n', ' ')[:300]
         clean_title = clean_title.replace('\t', ' ')
 
-        img_url = f"{base_url}/api/merchant/product-image/{slug}.jpg"
+        img_url = f"{base_url}/product-images/{slug}.jpg"
         product_type = f"Event Tickets > {cat.replace('_', ' ').title()}"
         product_id = slug[:50] if len(slug) <= 50 else slug[:42] + slug[-8:]
         brand = GMC_BRAND_MAP.get(cat, "EuroMatchTickets")
