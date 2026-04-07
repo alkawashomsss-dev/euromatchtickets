@@ -24,7 +24,7 @@ const SEOHead = ({
   const pageCanonicalUrl = canonicalUrl || `${BASE_URL}${location.pathname}`;
   
   const defaultTitle = 'EuroMatchTickets - Buy Football, F1 & Concert Tickets';
-  const defaultDescription = 'Buy verified tickets for Champions League, Formula 1, Premier League, La Liga, and top concerts across Europe. 100% secure with instant QR delivery.';
+  const defaultDescription = 'Europe\u2019s cheapest event ticket shop! Buy verified tickets for Champions League, Formula 1, concerts and 500+ events. Instant QR delivery, FanProtect guarantee!';
   const defaultImage = `${BASE_URL}/og-image.jpg`;
 
   const fullTitle = title && typeof title === 'string' && title.trim() 
