@@ -70,14 +70,20 @@ async def get_events(
     if date_to:
         query["event_date"]["$lte"] = date_to
     if search:
-        query["$or"] = [
-            {"title": {"$regex": search, "$options": "i"}},
-            {"artist": {"$regex": search, "$options": "i"}},
-            {"home_team": {"$regex": search, "$options": "i"}},
-            {"away_team": {"$regex": search, "$options": "i"}},
-            {"venue": {"$regex": search, "$options": "i"}},
-            {"city": {"$regex": search, "$options": "i"}}
-        ]
+        # Split search into words for better multi-word matching
+        words = search.strip().split()
+        field_list = ["title", "artist", "home_team", "away_team", "venue", "city", "event_type"]
+        if len(words) > 1:
+            # Build word conditions - each word must appear in at least one field
+            word_conditions = []
+            for word in words:
+                if len(word) < 2:
+                    continue
+                word_conditions.append({"$or": [{f: {"$regex": word, "$options": "i"}} for f in field_list]})
+            if word_conditions:
+                query["$and"] = word_conditions
+        else:
+            query["$or"] = [{f: {"$regex": search, "$options": "i"}} for f in field_list]
 
     # Lightweight projection for list views - exclude heavy fields
     projection = {"_id": 0, "description": 0}

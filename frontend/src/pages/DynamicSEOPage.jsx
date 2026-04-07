@@ -101,18 +101,26 @@ export default function DynamicSEOPage() {
       try {
         const res = await axios.get(`${API}/seo/page/${slug}`);
         setPage(res.data);
-        // Find matching event for Buy buttons
-        const keywords = slug.replace(/-tickets.*$/, '').replace(/-20\d{2}.*$/, '').replace(/-/g, ' ').trim();
-        if (keywords.length > 2) {
-          try {
-            const evRes = await axios.get(`${API}/events?search=${encodeURIComponent(keywords)}&limit=1`);
-            if (evRes.data && evRes.data.length > 0) {
-              const ev = evRes.data[0];
-              setBuyLink(`/event/${ev.slug || ev.event_id}`);
-            } else {
-              setBuyLink(`/events?search=${encodeURIComponent(keywords)}`);
-            }
-          } catch { setBuyLink(`/events?search=${encodeURIComponent(keywords)}`); }
+        // Find matching event for Buy buttons - try progressively shorter search terms
+        const rawKeywords = slug.replace(/-tickets.*$/, '').replace(/-20\d{2}.*$/, '').replace(/-/g, ' ').trim();
+        if (rawKeywords.length > 2) {
+          let foundEvent = false;
+          // Try full keywords first, then progressively remove last word
+          const words = rawKeywords.split(' ');
+          for (let i = words.length; i >= Math.min(2, words.length) && !foundEvent; i--) {
+            const searchTerm = words.slice(0, i).join(' ');
+            try {
+              const evRes = await axios.get(`${API}/events?search=${encodeURIComponent(searchTerm)}&limit=1`);
+              if (evRes.data && evRes.data.length > 0) {
+                const ev = evRes.data[0];
+                setBuyLink(`/event/${ev.slug || ev.event_id}`);
+                foundEvent = true;
+              }
+            } catch { /* continue to next attempt */ }
+          }
+          if (!foundEvent) {
+            setBuyLink(`/events?search=${encodeURIComponent(words.slice(0, 2).join(' '))}`);
+          }
         }
       } catch (err) {
         const status = err?.response?.status;
@@ -121,17 +129,18 @@ export default function DynamicSEOPage() {
         }
         setNotFound(true);
         // Still try to find matching event for fallback page
-        const keywords = slug.replace(/-tickets.*$/, '').replace(/-20\d{2}.*$/, '').replace(/-/g, ' ').trim();
-        if (keywords.length > 2) {
-          try {
-            const evRes = await axios.get(`${API}/events?search=${encodeURIComponent(keywords)}&limit=1`);
-            if (evRes.data && evRes.data.length > 0) {
-              const ev = evRes.data[0];
-              setBuyLink(`/event/${ev.slug || ev.event_id}`);
-            } else {
-              setBuyLink(`/events?search=${encodeURIComponent(keywords)}`);
-            }
-          } catch { setBuyLink(`/events?search=${encodeURIComponent(keywords)}`); }
+        const rawKw = slug.replace(/-tickets.*$/, '').replace(/-20\d{2}.*$/, '').replace(/-/g, ' ').trim();
+        if (rawKw.length > 2) {
+          const w = rawKw.split(' ');
+          for (let i = w.length; i >= Math.min(2, w.length); i--) {
+            try {
+              const evRes = await axios.get(`${API}/events?search=${encodeURIComponent(w.slice(0, i).join(' '))}&limit=1`);
+              if (evRes.data && evRes.data.length > 0) {
+                setBuyLink(`/event/${evRes.data[0].slug || evRes.data[0].event_id}`);
+                break;
+              }
+            } catch { /* continue */ }
+          }
         }
       } finally {
         setLoading(false);
