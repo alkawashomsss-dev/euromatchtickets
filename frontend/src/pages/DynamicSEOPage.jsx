@@ -91,6 +91,7 @@ export default function DynamicSEOPage() {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [gone, setGone] = useState(false);
+  const [buyLink, setBuyLink] = useState("/events");
 
   // Get pre-hydrated FAQ data from vanilla JS
   const prehydratedFAQ = typeof window !== 'undefined' ? window.__seoFAQ : null;
@@ -100,12 +101,38 @@ export default function DynamicSEOPage() {
       try {
         const res = await axios.get(`${API}/seo/page/${slug}`);
         setPage(res.data);
+        // Find matching event for Buy buttons
+        const keywords = slug.replace(/-tickets.*$/, '').replace(/-20\d{2}.*$/, '').replace(/-/g, ' ').trim();
+        if (keywords.length > 2) {
+          try {
+            const evRes = await axios.get(`${API}/events?search=${encodeURIComponent(keywords)}&limit=1`);
+            if (evRes.data && evRes.data.length > 0) {
+              const ev = evRes.data[0];
+              setBuyLink(`/event/${ev.slug || ev.event_id}`);
+            } else {
+              setBuyLink(`/events?search=${encodeURIComponent(keywords)}`);
+            }
+          } catch { setBuyLink(`/events?search=${encodeURIComponent(keywords)}`); }
+        }
       } catch (err) {
         const status = err?.response?.status;
         if (status === 410) {
           setGone(true);
         }
         setNotFound(true);
+        // Still try to find matching event for fallback page
+        const keywords = slug.replace(/-tickets.*$/, '').replace(/-20\d{2}.*$/, '').replace(/-/g, ' ').trim();
+        if (keywords.length > 2) {
+          try {
+            const evRes = await axios.get(`${API}/events?search=${encodeURIComponent(keywords)}&limit=1`);
+            if (evRes.data && evRes.data.length > 0) {
+              const ev = evRes.data[0];
+              setBuyLink(`/event/${ev.slug || ev.event_id}`);
+            } else {
+              setBuyLink(`/events?search=${encodeURIComponent(keywords)}`);
+            }
+          } catch { setBuyLink(`/events?search=${encodeURIComponent(keywords)}`); }
+        }
       } finally {
         setLoading(false);
       }
@@ -159,7 +186,7 @@ export default function DynamicSEOPage() {
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 mt-4">{prettyName}</h1>
             <p className="text-lg text-slate-400 max-w-3xl mb-6">Buy verified {prettyName.toLowerCase()} at Europe's cheapest prices. 100% guaranteed with instant QR delivery and FanProtect buyer protection.</p>
             <div className="flex flex-wrap items-center gap-4">
-              <Link to="/events">
+              <Link to={buyLink}>
                 <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl">
                   <Ticket className="w-5 h-5 mr-2" /> Secure Your Seat Now
                 </Button>
@@ -436,7 +463,7 @@ export default function DynamicSEOPage() {
                   <div className="text-3xl font-bold text-emerald-600">{"\u20ac"}{page.price_low}</div>
                   {page.price_high && <span className="text-xs text-slate-400 line-through">{"\u20ac"}{page.price_high} on Viagogo</span>}
                 </div>
-                <Link to="/events">
+                <Link to={buyLink}>
                   <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl" data-testid="seo-buy-btn">
                     <Ticket className="w-5 h-5 mr-2" /> Secure Your Seat Now
                   </Button>
@@ -519,7 +546,7 @@ export default function DynamicSEOPage() {
               <div className="bg-emerald-900/30 border border-emerald-800/50 rounded-xl p-6 text-center">
                 <p className="text-emerald-600 font-semibold mb-2">Limited Availability</p>
                 <p className="text-slate-500 text-sm mb-4">Prices increase as events approach. Book now for the best deals.</p>
-                <Link to="/events">
+                <Link to={buyLink}>
                   <Button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white" data-testid="seo-sidebar-buy-btn">
                     Browse All Tickets
                   </Button>
@@ -554,7 +581,7 @@ export default function DynamicSEOPage() {
                   <p className="text-emerald-400 text-xs">From €{page.price_low} · <span className="text-orange-400">{Math.max(3, ((page.slug || '').length % 15) + 2)} tickets left at this price</span></p>
                 </div>
               </div>
-              <Link to="/events">
+              <Link to={buyLink}>
                 <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 text-sm rounded-lg whitespace-nowrap" data-testid="sticky-buy-btn">
                   <Ticket className="w-4 h-4 mr-1" /> Buy Now
                 </Button>
