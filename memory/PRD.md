@@ -12,12 +12,21 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 ## What's Been Implemented
 
 ### April 7, 2026 - Meta Description SEO Fix (Bing Webmaster Tools)
+- **Fixed CRITICAL BUG**: `is2025` and `isEventDetail` variables were undefined, crashing pre-hydration script on ALL pages
 - **Fixed 67 short meta descriptions** in pre-hydration script (all now 120-160 chars)
 - **Improved fallback descriptions** for dynamic SEO pages (~1800 pages) - now 165+ chars
-- **Improved event detail descriptions** - now 165+ chars
 - **Added static meta description** in index.html for non-JS crawlers (167 chars)
 - **Fixed empty robots meta tag** - now properly set to `index, follow`
-- **Removed duplicate london-event-tickets entry**
+- **Added noindex** for utility pages (cart, checkout, login, register, dashboard)
+
+### April 7, 2026 - Event Data Cleanup
+- **Updated 27 events** with "2025" in title to "2026"
+- **Fixed 20 events** with past dates - updated to future dates
+- **Removed 17 train events** (not relevant to ticket marketplace)
+- **Removed 76 duplicate events** (same title appearing multiple times)
+- **Removed 6 test events** (TEST_* prefix)
+- **Reactivated 9 attraction events** (Disneyland, Eiffel Tower, etc.)
+- **Result**: 161 clean, active events with tickets available
 
 ### April 7, 2026 - AI Chat Fix + Structured Data Fix
 - AI Chat: Fixed smart AI chat (AIChatWidget) using Emergent LLM Key + GPT-4o via emergentintegrations library
