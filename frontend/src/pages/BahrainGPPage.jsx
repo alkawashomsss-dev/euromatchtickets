@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { API } from "../App";
 import { Calendar, MapPin, Shield, Zap, Flag, Ticket, ChevronRight, Check, Star, Clock, Thermometer, Moon, ArrowRight, AlertCircle, Users, TrendingUp } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -28,6 +30,13 @@ const Countdown = ({ target }) => {
 };
 
 const BahrainGPPage = () => {
+  const [eventLink, setEventLink] = useState('/events?search=Bahrain+Grand+Prix');
+
+  useEffect(() => {
+    axios.get(`${API}/events?search=Bahrain+Grand+Prix&limit=1`).then(r => {
+      if (r.data.length > 0) setEventLink(`/event/${r.data[0].slug || r.data[0].event_id}`);
+    }).catch(() => {});
+  }, []);
   const tickets = [
     { section: "General Admission", price: 59, originalPrice: 89, available: 389, badge: null, features: ["3-Day circuit access", "Big screen viewing zones", "Fan Zone entertainment"] },
     { section: "Main Grandstand", price: 119, originalPrice: 159, available: 112, badge: "BEST VALUE", features: ["Pit straight view", "Covered seating", "Giant TV screens"] },
@@ -192,7 +201,7 @@ const BahrainGPPage = () => {
                   <p className="text-xs text-slate-500 line-through">&euro;{t.originalPrice}</p>
                   <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
                 </div>
-                <Link to={`/checkout?event=bahrain-gp&category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                <Link to={`${eventLink}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                   <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-black font-bold px-6">Buy</Button>
                 </Link>
               </div>

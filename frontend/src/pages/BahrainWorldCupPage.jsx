@@ -33,6 +33,13 @@ const Countdown = ({ target }) => {
 };
 
 const BahrainWorldCupPage = () => {
+  const [eventLink, setEventLink] = useState('/events?search=World+Cup+2026');
+
+  useEffect(() => {
+    axios.get(`${API}/events?search=World+Cup+2026&limit=1`).then(r => {
+      if (r.data.length > 0) setEventLink(`/event/${r.data[0].slug || r.data[0].event_id}`);
+    }).catch(() => {});
+  }, []);
   const [events, setEvents] = useState([]);
   const [stats, setStats] = useState({ available: 0, lowest: 149 });
 
@@ -164,7 +171,7 @@ const BahrainWorldCupPage = () => {
                   <p className="text-2xl font-extrabold text-slate-900">&euro;{t.price}</p>
                   <p className="text-[10px] text-slate-400">per ticket</p>
                 </div>
-                <Link to={`/checkout?event=world-cup-2026&category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                <Link to={`${eventLink}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                   <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6">Buy</Button>
                 </Link>
               </div>

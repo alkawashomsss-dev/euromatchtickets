@@ -1,10 +1,20 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { API } from "../App";
 import { Crown, Wine, Anchor, Gem, Star, ChevronRight, Check, Shield } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 
 const MonacoExperiencePage = () => {
+  const [eventLink, setEventLink] = useState('/events?search=Monaco+Grand+Prix');
+
+  useEffect(() => {
+    axios.get(`${API}/events?search=Monaco+Grand+Prix&limit=1`).then(r => {
+      if (r.data.length > 0) setEventLink(`/event/${r.data[0].slug || r.data[0].event_id}`);
+    }).catch(() => {});
+  }, []);
   const experiences = [
     { title: "Yacht Hospitality", price: "€2,995", desc: "Watch F1 cars race past from your private yacht in Port Hercule harbour. Unlimited champagne, gourmet catering, helicopter transfers available. The ultimate Monaco experience.", features: ["Private yacht with 360° views", "All-inclusive champagne & gourmet food", "Helicopter transfer option", "Celebrity sighting guaranteed"], tier: "ULTRA VIP" },
     { title: "Champions Club", price: "€1,295", desc: "5-star hospitality suite overlooking the circuit. Meet-and-greet with F1 personalities, Michelin-star dining, exclusive pit lane walks.", features: ["Track-side luxury terrace", "Michelin-star dining experience", "Pit lane walk before the race", "Exclusive F1 driver appearances"], tier: "VIP" },
@@ -61,7 +71,7 @@ const MonacoExperiencePage = () => {
                 </div>
                 <div className="text-right flex-shrink-0">
                   <p className="text-3xl font-black bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">{e.price}</p>
-                  <Link to={`/checkout?event=monaco-gp&category=${encodeURIComponent(e.title)}`}><Button className="mt-2 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-bold">Book Now</Button></Link>
+                  <Link to={`${eventLink}?category=${encodeURIComponent(e.title)}`}><Button className="mt-2 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-bold">Book Now</Button></Link>
                 </div>
               </div>
             </div>

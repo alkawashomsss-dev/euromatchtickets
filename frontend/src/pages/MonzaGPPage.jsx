@@ -1,4 +1,7 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { API } from "../App";
 import { Calendar, MapPin, Trophy, Star, Shield, Zap, Flag, Ticket, ChevronRight, Check, Timer, TrendingUp, Users, AlertCircle } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -7,6 +10,13 @@ import { BreadcrumbStructuredData, FAQStructuredData } from "../components/Struc
 import { ScarcityBadgesLight, TrustBar } from "../components/ConversionElements";
 
 const MonzaGPPage = () => {
+  const [eventLink, setEventLink] = useState('/events?search=Monza+Grand+Prix');
+
+  useEffect(() => {
+    axios.get(`${API}/events?search=Monza&limit=1`).then(r => {
+      if (r.data.length > 0) setEventLink(`/event/${r.data[0].slug || r.data[0].event_id}`);
+    }).catch(() => {});
+  }, []);
   const tickets = [
     { section: "General Admission (Prato)", price: 69, originalPrice: 109, available: 456, badge: "CHEAPEST", features: ["Roam the circuit freely", "Big screen areas", "Fan Zone access"], color: "border-emerald-500/30" },
     { section: "Parabolica Grandstand", price: 149, originalPrice: 199, available: 123, badge: "FAN FAVOURITE", features: ["Legendary final corner", "High-speed exit view", "Podium visible"], color: "border-red-500/30" },
@@ -205,7 +215,7 @@ const MonzaGPPage = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-red-500 font-medium">{t.available} left</span>
-                    <Link to={`/checkout?event=monza-gp&category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                    <Link to={`${eventLink}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                       <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">Buy Now</Button>
                     </Link>
                   </div>

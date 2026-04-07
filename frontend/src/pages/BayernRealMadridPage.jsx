@@ -33,6 +33,13 @@ const Countdown = ({ target }) => {
 };
 
 const BayernRealMadridPage = () => {
+  const [eventLink, setEventLink] = useState('/events?search=Bayern+Munich+Real+Madrid');
+
+  useEffect(() => {
+    axios.get(`${API}/events?search=Bayern+Munich+Real+Madrid&limit=1`).then(r => {
+      if (r.data.length > 0) setEventLink(`/event/${r.data[0].slug || r.data[0].event_id}`);
+    }).catch(() => {});
+  }, []);
   const [events, setEvents] = useState([]);
   const [stats, setStats] = useState({ available: 0, lowest: 199 });
 
@@ -178,7 +185,7 @@ const BayernRealMadridPage = () => {
                   <p className="text-2xl font-extrabold text-slate-900">&euro;{t.price}</p>
                   <p className="text-[10px] text-slate-400">per ticket</p>
                 </div>
-                <Link to={`/checkout?event=bayern-real-madrid&category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                <Link to={`${eventLink}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                   <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-6">Buy</Button>
                 </Link>
               </div>

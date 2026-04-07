@@ -1,4 +1,7 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { API } from "../App";
 import { Calendar, MapPin, Trophy, Star, Shield, Zap, Flag, Ticket, ChevronRight, Check, Crown, Gem, Wine, Anchor } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -6,6 +9,13 @@ import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 
 const MonacoGPPage = () => {
+  const [eventLink, setEventLink] = useState('/events?search=Monaco+Grand+Prix');
+
+  useEffect(() => {
+    axios.get(`${API}/events?search=Monaco+Grand+Prix&limit=1`).then(r => {
+      if (r.data.length > 0) setEventLink(`/event/${r.data[0].slug || r.data[0].event_id}`);
+    }).catch(() => {});
+  }, []);
   const tickets = [
     { section: "Sector Rocher", price: 195, originalPrice: 299, available: 145, features: ["Casino Square views", "Harbour backdrop", "Classic Monaco vantage point"] },
     { section: "Grandstand K (Casino)", price: 389, originalPrice: 599, available: 67, badge: "ICONIC", features: ["Legendary Casino hairpin", "Slowest corner in F1", "Best photo spot"] },
@@ -190,7 +200,7 @@ const MonacoGPPage = () => {
                   <p className="text-xs text-slate-500 line-through">&euro;{t.originalPrice}</p>
                   <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
                 </div>
-                <Link to={`/checkout?event=monaco-gp&category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                <Link to={`${eventLink}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                   <Button className="bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-black font-bold px-6">Book</Button>
                 </Link>
               </div>
