@@ -249,9 +249,16 @@ export default function DynamicSEOPage() {
         const productDesc = page.meta_description || `${eventName} tickets. From EUR ${page.price_low || 49}. Verified sellers, instant QR delivery.`;
         
         // Category-specific organizer and brand
-        const orgMap = { f1: "Formula One World Championship", football: "UEFA", concert: eventName, worldcup: "FIFA", motorsport: "FIM", motogp: "FIM MotoGP" };
+        const orgMap = { 
+          f1: { name: "Formula One World Championship", url: "https://www.formula1.com" },
+          football: { name: "UEFA", url: "https://www.uefa.com" },
+          concert: { name: eventName, url: `https://euromatchtickets.com/${page.slug}` },
+          worldcup: { name: "FIFA", url: "https://www.fifa.com" },
+          motorsport: { name: "FIM", url: "https://www.fim-moto.com" },
+          motogp: { name: "FIM MotoGP", url: "https://www.motogp.com" }
+        };
         const brandMap = { f1: "Formula 1", football: "UEFA", concert: page.artist || eventName, worldcup: "FIFA", motorsport: "MotoGP", motogp: "MotoGP" };
-        const organizer = orgMap[page.category] || eventName;
+        const organizer = orgMap[page.category] || { name: eventName, url: `https://euromatchtickets.com/${page.slug}` };
         const brand = brandMap[page.category] || "EuroMatchTickets";
         
         // Smart date generation
@@ -294,7 +301,7 @@ export default function DynamicSEOPage() {
             },
             "performer": {
               "@type": page.artist ? "PerformingGroup" : "Organization",
-              "name": page.artist || organizer
+              "name": page.artist || organizer.name
             },
             "offers": {
               "@type": "AggregateOffer",
@@ -307,7 +314,7 @@ export default function DynamicSEOPage() {
               "validFrom": "2025-06-01",
               "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": BASE }
             },
-            "organizer": { "@type": "Organization", "name": organizer }
+            "organizer": { "@type": "Organization", "name": organizer.name, "url": organizer.url }
           },
           {
             "@type": "Product",

@@ -11,16 +11,9 @@ from utils.helpers import get_current_user, require_auth, require_admin
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api")
 
-# AI Chat
+# AI Chat using Emergent LLM
 chat_histories = {}
-openai_client = None
-try:
-    from openai import OpenAI
-    api_key = os.environ.get('OPENAI_API_KEY') or os.environ.get('EMERGENT_LLM_KEY')
-    if api_key:
-        openai_client = OpenAI(api_key=api_key)
-except ImportError:
-    pass
+EMERGENT_KEY = os.environ.get('EMERGENT_LLM_KEY', '')
 
 SUPPORT_MSG = """You are the AI customer support assistant for EuroMatchTickets, Europe's #1 ticket marketplace for football matches and concerts.
 Help customers find tickets, answer questions about orders/payments, explain refund policy (full refund if cancelled, 48h window).
@@ -31,21 +24,34 @@ Keep responses concise. Direct unknowns to support@euromatchtickets.com"""
 @router.post("/chat/support")
 async def chat_support(chat_msg: ChatMessage):
     try:
-        if not openai_client:
+        if not EMERGENT_KEY:
             return {"response": "AI support is currently unavailable. Please email support@euromatchtickets.com"}
+        
+        from emergentintegrations.llm.chat import LlmChat, UserMessage
+        
         sid = chat_msg.session_id
-        if sid not in chat_histories:
-            chat_histories[sid] = []
-        chat_histories[sid].append({"role": "user", "content": chat_msg.message})
-        messages = [{"role": "system", "content": SUPPORT_MSG}] + chat_histories[sid][-10:]
-        response = openai_client.chat.completions.create(model="gpt-4o", messages=messages, max_tokens=500)
-        ai_resp = response.choices[0].message.content
-        chat_histories[sid].append({"role": "assistant", "content": ai_resp})
-        await db.chat_logs.insert_one({"session_id": sid, "user_message": chat_msg.message, "ai_response": ai_resp, "timestamp": datetime.now(timezone.utc).isoformat()})
+        
+        chat = LlmChat(
+            api_key=EMERGENT_KEY,
+            session_id=f"emt-{sid}",
+            system_message=SUPPORT_MSG
+        ).with_model("openai", "gpt-4o")
+        
+        user_message = UserMessage(text=chat_msg.message)
+        ai_resp = await chat.send_message(user_message)
+        
+        # Store in DB
+        await db.chat_logs.insert_one({
+            "session_id": sid,
+            "user_message": chat_msg.message,
+            "ai_response": ai_resp,
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        })
+        
         return {"response": ai_resp}
     except Exception as e:
         logger.error(f"Chat error: {e}")
-        return {"response": "I'm having trouble. Please email support@euromatchtickets.com"}
+        return {"response": "I'm having trouble connecting. Please email support@euromatchtickets.com"}
 
 
 # Raffle

@@ -11,32 +11,39 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 
 ## What's Been Implemented
 
-### April 7, 2026 - Comprehensive 13-Point SEO Overhaul
-1. **noindex Fix**: Activated all 664 inactive pages → 1,890 total active
-2. **Event Ended Pages**: 410 Gone → "Event Ended" with related events instead of deletion
-3. **Canonical Fix**: Proper canonical URLs via SEOHead.jsx + pre-hydration
-4. **SEO-friendly URLs**: Already implemented (slugs)
-5. **Domain Unification**: Canonicals → https://euromatchtickets.com
-6. **Sitemap + robots.txt**: Updated (2,263 URLs, 11 sitemaps), robots.txt blocks technical pages
-7. **Conversion Optimization**: Scarcity indicators ("X tickets left"), Sticky CTA bar, demand badges ("X viewing now"), FAQ Schema
-8. **Internal Linking**: RelatedEventsSection cross-links categories
-9. **Multi-language Pages**: /es, /de, /fr, /it active
-10. **Re-indexing**: 2,125 URLs submitted via IndexNow
-11. **Redirects**: Proper 301 redirect logic
-12. **Performance**: Lazy loading, HTTPS, compressed images
-13. **Merchant Feed**: 1,864 products, unique images, 0 promo words, EUR only
+### April 7, 2026 - AI Chat Fix + Structured Data Fix
+- **AI Chat**: Fixed smart AI chat (AIChatWidget) using Emergent LLM Key + GPT-4o via emergentintegrations library
+- **Organizer URL Fix**: Added `url` field to all Event organizers in Schema.org (Google Search Console warning resolved)
+  - F1 → formula1.com, Football → uefa.com, World Cup → fifa.com, MotoGP → motogp.com
 
-### April 4, 2026 - Structured Data + SEO Titles
-- Event/Product/FAQPage/BreadcrumbList Schema with proper organizers (FIA, UEFA, FIFA)
-- 1,890 pages with optimized titles + meta descriptions + FAQs
-- 1,864 unique product images (static JPEG)
+### April 7, 2026 - Comprehensive 13-Point SEO Overhaul
+1. noindex Fix: 1,890 total active pages (activated 664 inactive)
+2. Event Ended: 410 → "Event Ended" with related events
+3. Canonical: Proper canonical via SEOHead.jsx + pre-hydration
+4. SEO-friendly URLs: Slugs already implemented
+5. Domain Unification: Canonicals → https://euromatchtickets.com
+6. Sitemap + robots.txt: 2,263 URLs, 11 sitemaps
+7. Conversion: Scarcity indicators + Sticky CTA + FAQ Schema
+8. Internal Linking: RelatedEventsSection
+9. Multi-language: /es, /de, /fr, /it
+10. Re-indexing: 2,125 URLs submitted
+11. Proper 301 redirects
+12. Performance: Lazy loading, HTTPS
+13. Merchant Feed: 1,864 products, unique images, 0 promo words, EUR only
 
 ### Previous Work
 - Global Setup Merchant Feed (EUR only)
-- Site-wide price reduction
-- MotoGP/Isle of Man TT maps
-- International SEO (ES, DE, FR, IT)
+- Google Structured Data (Event + Product + FAQPage + Breadcrumb)
+- Optimized titles + meta descriptions + FAQs for all pages
+- 1,864 unique product images
 - Bing/IndexNow integration
+
+## 3rd Party Integrations
+- **Emergent LLM Key**: GPT-4o for AI Chat Support (via emergentintegrations)
+- **Google Merchant Center**: XML Feed
+- **Bing URL Submission API**
+- **IndexNow** (Yandex, Bing, Seznam, Naver)
+- **Emergent-managed Google Auth**
 
 ## Pending
 - P2: Login Flow (needs user Google OAuth credentials)
@@ -44,8 +51,7 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 
 ## Upcoming
 - P1: Owner Dashboard (charts, sales reports)
-- P2: Activate next SEO page batch
 - P2: More international SEO pages
 
 ## Future
-- Price Comparison Tables | Affiliate Program | Performance Max support | Video highlights
+- Price Comparison Tables | Affiliate Program | Performance Max | Video highlights
