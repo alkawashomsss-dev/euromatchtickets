@@ -199,6 +199,11 @@
 
       /* ===== DETECT REMOVED 2025 PAGES ===== */
       var isNoIndex=false;
+      var is2025=p.indexOf('2025')!==-1;
+      var isEventDetail=p.indexOf('/event/')===0;
+      /* Utility pages that should NOT be indexed */
+      var noIndexPages=['/cart','/checkout','/login','/register','/dashboard','/my-tickets','/owner','/search','/callback','/auth'];
+      var isUtilityPage=noIndexPages.indexOf(p)!==-1;
 
       /* ===== GET PAGE METADATA ===== */
       var m=M[pq]||M[p];
@@ -206,8 +211,16 @@
       if(is2025){
         /* 2025 pages are permanently removed - signal noindex immediately */
         t='Page Removed | EuroMatchTickets';
-        d='This event page has been permanently removed. Browse current 2026 events at EuroMatchTickets.';
+        d='This event page has been permanently removed. Browse current 2026 events and buy tickets at EuroMatchTickets. Verified sellers, instant delivery!';
         h1='Page Removed';
+        isNoIndex=true;
+      } else if(isUtilityPage){
+        /* Utility pages should not be indexed */
+        isNoIndex=true;
+        var slug=p.replace(/^\//,'').replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
+        t=slug+' | EuroMatchTickets';
+        d='Europe\u2019s cheapest ticket marketplace! Buy verified tickets for Champions League, F1, Taylor Swift and 500+ events. Instant QR delivery, FanProtect guarantee!';
+        h1=slug;
       } else if(isEventDetail){
         /* /event/* detail pages - generate SEO-friendly title */
         var evSlug=p.replace('/event/','').replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
@@ -225,7 +238,7 @@
           h1='Buy '+slug+' Tickets';
         } else {
           t='Buy Tickets | Champions League, F1, Concerts | EuroMatchTickets';
-          d='Buy Champions League tickets, Taylor Swift tickets, F1 tickets. Verified sellers, instant QR delivery.';
+          d='Europe\u2019s cheapest ticket marketplace! Buy verified tickets for Champions League, F1, Taylor Swift and 500+ events. Instant QR delivery, FanProtect guarantee!';
           h1='Buy Football, F1 & Concert Tickets';
         }
       }
