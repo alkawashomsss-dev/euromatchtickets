@@ -211,7 +211,7 @@
         /* /event/* detail pages - generate SEO-friendly title */
         var evSlug=p.replace('/event/','').replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
         t=evSlug+' Tickets | EuroMatchTickets';
-        d='Buy '+evSlug+' tickets at the cheapest price. 100% verified sellers, instant QR delivery. FanProtect guarantee!';
+        d='Buy '+evSlug+' tickets. Verified sellers, instant QR delivery. FanProtect guarantee.';
         h1='Buy '+evSlug+' Tickets';
       } else if(m){
         t=m[0]; d=m[1]; h1=m[2];
@@ -220,11 +220,11 @@
         var slug=p.replace(/^\//,'').replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
         if(slug){
           t=slug+' | EuroMatchTickets';
-          d='Buy '+slug+' tickets at Europe\'s cheapest prices. 100% verified sellers, instant QR delivery.';
+          d='Buy '+slug+' tickets. Verified sellers, instant QR delivery, secure payment.';
           h1='Buy '+slug+' Tickets';
         } else {
           t='Buy Tickets | Champions League, F1, Concerts | EuroMatchTickets';
-          d='Buy Champions League tickets from \u20ac85, Taylor Swift from \u20ac89, F1 from \u20ac89. Verified sellers, instant QR delivery.';
+          d='Buy Champions League tickets, Taylor Swift tickets, F1 tickets. Verified sellers, instant QR delivery.';
           h1='Buy Football, F1 & Concert Tickets';
         }
       }

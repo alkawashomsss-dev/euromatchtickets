@@ -551,3 +551,4 @@ frontend/public/merchant-feed.xml
 # Environment files
 *.env
 *.env.*
+frontend/node_modules/.cache/default-development/50.pack

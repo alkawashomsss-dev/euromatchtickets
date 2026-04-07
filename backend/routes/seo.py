@@ -164,8 +164,9 @@ def _build_clean_gmc_description(title, category, city, venue, year):
     import re as _re
     clean_name = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', title, flags=_re.IGNORECASE).strip()
     clean_name = _re.sub(r'\s*\|\s*.*$', '', clean_name).strip()
-    # Remove promotional suffixes like "– Verified", "– UEFA Verified", etc.
     clean_name = _re.sub(r'\s*[\u2013\u2014–—-]+\s*(Verified|UEFA|FIFA|F1|Seller).*$', '', clean_name, flags=_re.IGNORECASE).strip()
+    clean_name = _re.sub(r'^(Buy|Get|Order|Book|How to Buy|How to Get|How to Book)\s+', '', clean_name, flags=_re.IGNORECASE).strip()
+    clean_name = _re.sub(r'\b(Cheap|Cheapest|Best|Top|Ranked|Verified)\b', '', clean_name, flags=_re.IGNORECASE).strip()
     clean_name = _re.sub(r'\s*Tickets?\s*$', '', clean_name, flags=_re.IGNORECASE).strip()
     clean_name = _re.sub(r'\s*Tickets?\s+', ' ', clean_name, flags=_re.IGNORECASE).strip()
     
@@ -248,9 +249,9 @@ async def generate_product_image(slug: str):
     for s in ["| EuroMatchTickets", "| EMT"]:
         clean_title = clean_title.replace(s, "").strip()
     clean_title = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', clean_title, flags=_re.IGNORECASE).strip()
-    clean_title = _re.sub(r'^(Buy|Get|Order|Book|Grab|Shop)\s+', '', clean_title, flags=_re.IGNORECASE).strip()
+    clean_title = _re.sub(r'^(Buy|Get|Order|Book|Grab|Shop|How to Buy|How to Get|How to Book)\s+', '', clean_title, flags=_re.IGNORECASE).strip()
     clean_title = _re.sub(r'\s*[\u2013\u2014–—-]+\s*(Verified|UEFA|FIFA|F1|Seller).*$', '', clean_title, flags=_re.IGNORECASE).strip()
-    clean_title = _re.sub(r'\b(Cheap|Cheapest|Best|Top|Ranked)\b', '', clean_title, flags=_re.IGNORECASE).strip()
+    clean_title = _re.sub(r'\b(Cheap|Cheapest|Best|Top|Ranked|Verified)\b', '', clean_title, flags=_re.IGNORECASE).strip()
     clean_title = _re.sub(r'\s{2,}', ' ', clean_title).strip().rstrip(' \u2013\u2014\u2015\u2010-!.')
 
     # Pick base image based on slug hash for consistent variety
@@ -356,17 +357,10 @@ async def google_merchant_feed():
         import re as _re
         clean_title = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', clean_title, flags=_re.IGNORECASE).strip()
         clean_title = _re.sub(r'\s*€\d+[\d,.]*', '', clean_title).strip()
-        clean_title = _re.sub(r'^(Buy|Get|Order|Book|Grab|Shop)\s+', '', clean_title, flags=_re.IGNORECASE).strip()
-        # Remove promotional suffixes (– Verified, – UEFA Verified, etc.)
+        clean_title = _re.sub(r'^(Buy|Get|Order|Book|Grab|Shop|How to Buy|How to Get|How to Book)\s+', '', clean_title, flags=_re.IGNORECASE).strip()
         clean_title = _re.sub(r'\s*[\u2013\u2014–—-]+\s*(Verified|UEFA|FIFA|F1|Seller).*$', '', clean_title, flags=_re.IGNORECASE).strip()
-        clean_title = _re.sub(r'\s*[–—-]+\s*[!.]*\s*$', '', clean_title).strip()
-        clean_title = _re.sub(r'[!]+$', '', clean_title).strip()
-        clean_title = _re.sub(r'\s*[\|–—-]\s*$', '', clean_title).strip()
-        # Remove promotional words from title
         clean_title = _re.sub(r'\b(Cheap|Cheapest|Best|Top|Ranked|Verified)\b', '', clean_title, flags=_re.IGNORECASE).strip()
-        clean_title = _re.sub(r'\s{2,}', ' ', clean_title).strip()
-        # Final cleanup
-        clean_title = clean_title.rstrip(' \u2013\u2014\u2015\u2010-!.')
+        clean_title = _re.sub(r'\s{2,}', ' ', clean_title).strip().rstrip(' \u2013\u2014\u2015\u2010-!.')
 
         # Build description - MUST be purely factual for Google Merchant Center
         desc = _build_clean_gmc_description(clean_title, cat, city, venue, year)
@@ -490,11 +484,7 @@ async def google_merchant_feed_tsv():
             clean_title = clean_title.replace(s, "").strip()
         clean_title = _re.sub(r'\s*(from|ab|depuis|da)\s*€?\d+[\d,.]*', '', clean_title, flags=_re.IGNORECASE).strip()
         clean_title = _re.sub(r'\s*€\d+[\d,.]*', '', clean_title).strip()
-        clean_title = _re.sub(r'^(Buy|Get|Order|Book|Grab|Shop)\s+', '', clean_title, flags=_re.IGNORECASE).strip()
-        clean_title = _re.sub(r'\s*[\u2013\u2014–—-]+\s*(Verified|UEFA|FIFA|F1|Seller).*$', '', clean_title, flags=_re.IGNORECASE).strip()
-        clean_title = _re.sub(r'\s*[–—-]+\s*[!.]*\s*$', '', clean_title).strip()
-        clean_title = _re.sub(r'[!]+$', '', clean_title).strip()
-        clean_title = _re.sub(r'\s*[\|–—-]\s*$', '', clean_title).strip()
+        clean_title = _re.sub(r'^(Buy|Get|Order|Book|Grab|Shop|How to Buy|How to Get|How to Book)\s+', '', clean_title, flags=_re.IGNORECASE).strip()
         clean_title = _re.sub(r'\b(Cheap|Cheapest|Best|Top|Ranked|Verified)\b', '', clean_title, flags=_re.IGNORECASE).strip()
         clean_title = _re.sub(r'\s{2,}', ' ', clean_title).strip().rstrip(' \u2013\u2014\u2015\u2010-!.')
 
@@ -807,7 +797,15 @@ async def get_seo_page(slug: str):
         raise HTTPException(status_code=404, detail="Page not found")
     # Return 410 Gone for inactive pages - tells Google to REMOVE from index
     if not page.get("active", False):
-        raise HTTPException(status_code=410, detail="Page removed")
+        # Instead of 410, return the page with ended_event flag + related events
+        cat = page.get("category", "other")
+        related = await db.seo_pages.find(
+            {"active": True, "category": cat, "slug": {"$ne": slug}},
+            {"_id": 0, "slug": 1, "title": 1, "price_low": 1, "city": 1}
+        ).limit(6).to_list(6)
+        page["event_ended"] = True
+        page["related_events"] = related
+        return page
     return page
 
 

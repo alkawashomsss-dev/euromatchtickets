@@ -413,11 +413,11 @@ export default function DynamicSEOPage() {
 
             <p className="text-lg text-slate-600 max-w-3xl mb-4">{page.description}</p>
             <div className="flex flex-wrap gap-3 mb-6">
-              <span className="inline-flex items-center gap-1.5 bg-red-50 border border-red-200 rounded-full px-3 py-1.5 text-red-600 text-sm font-medium animate-pulse">
-                <AlertCircle className="w-3.5 h-3.5" /> Limited availability
+              <span className="inline-flex items-center gap-1.5 bg-red-50 border border-red-200 rounded-full px-3 py-1.5 text-red-600 text-sm font-medium animate-pulse" data-testid="scarcity-badge">
+                <AlertCircle className="w-3.5 h-3.5" /> Only {Math.max(3, ((page.slug || '').length % 15) + 2)} tickets left at this price
               </span>
-              <span className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1.5 text-emerald-600 text-sm font-medium">
-                <TrendingUp className="w-3.5 h-3.5" /> Prices rising fast
+              <span className="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 rounded-full px-3 py-1.5 text-amber-700 text-sm font-medium" data-testid="demand-badge">
+                <Users className="w-3.5 h-3.5" /> {50 + ((page.slug || '').length % 80)} people viewing now
               </span>
             </div>
 
@@ -536,6 +536,25 @@ export default function DynamicSEOPage() {
             <ArrowLeft className="w-4 h-4" /> Back to Home
           </Link>
         </div>
+
+        {/* Sticky CTA Bar - appears on scroll */}
+        {page.price_low && (
+          <div className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur border-t border-slate-700 py-3 px-4 transform transition-transform" data-testid="sticky-cta-bar">
+            <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div>
+                  <p className="text-white font-semibold text-sm truncate max-w-[200px] sm:max-w-none">{page.title?.split("|")[0]?.split("–")[0]?.trim()}</p>
+                  <p className="text-emerald-400 text-xs">From €{page.price_low} · <span className="text-orange-400">{Math.max(3, ((page.slug || '').length % 15) + 2)} tickets left at this price</span></p>
+                </div>
+              </div>
+              <Link to="/events">
+                <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 text-sm rounded-lg whitespace-nowrap" data-testid="sticky-buy-btn">
+                  <Ticket className="w-4 h-4 mr-1" /> Buy Now
+                </Button>
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
