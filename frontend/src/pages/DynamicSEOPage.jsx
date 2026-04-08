@@ -158,13 +158,14 @@ export default function DynamicSEOPage() {
   }
 
   if (gone) {
+    // Page was explicitly deactivated - redirect to events to keep user engaged
     return (
       <div className="min-h-screen bg-[hsl(210,20%,98%)] flex flex-col items-center justify-center gap-6 px-4" data-testid="seo-page-not-found">
-        <h1 className="text-4xl font-black text-slate-900">Page Removed</h1>
-        <p className="text-slate-500 text-center max-w-md">This event has ended and the page has been permanently removed.</p>
+        <h1 className="text-4xl font-black text-slate-900">Event Ended</h1>
+        <p className="text-slate-500 text-center max-w-md">This event has ended. Browse our latest events and find great tickets at the cheapest prices!</p>
         <div className="flex gap-3">
-          <Link to="/events"><Button>Browse Events</Button></Link>
-          <Link to="/"><Button variant="outline">Home</Button></Link>
+          <Link to={buyLink}><Button className="bg-emerald-600 hover:bg-emerald-500 text-white">Browse Similar Events</Button></Link>
+          <Link to="/events"><Button variant="outline">All Events</Button></Link>
         </div>
       </div>
     );
