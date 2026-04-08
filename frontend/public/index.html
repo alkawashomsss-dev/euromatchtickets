@@ -224,20 +224,10 @@
       } else if(isEventDetail){
         /* /event/* detail pages */
         var evSlug=p.replace('/event/','');
-        /* event_id-based URLs (event_xxx, premium_xxx, etc.) should not be indexed - redirect to slug */
-        var isEventIdUrl=/^(event_|premium_|ucl_|league_|wc2026_|motogp_|tt_)/.test(evSlug);
-        if(isEventIdUrl){
-          isNoIndex=true;
-          var evName=evSlug.replace(/_/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
-          t=evName+' | EuroMatchTickets';
-          d='This event page has moved. Please visit our events page for the latest tickets and availability. Verified sellers, instant delivery!';
-          h1=evName;
-        } else {
-          var evName=evSlug.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
-          t=evName+' Tickets | EuroMatchTickets';
-          d='Buy '+evName+' tickets at the lowest prices in Europe. 100% verified sellers, instant QR e-ticket delivery, FanProtect money-back guarantee. Secure your seats now!';
-          h1='Buy '+evName+' Tickets';
-        }
+        var evName=evSlug.replace(/[-_]/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
+        t=evName+' Tickets | EuroMatchTickets';
+        d='Buy '+evName+' tickets at the lowest prices in Europe. 100% verified sellers, instant QR e-ticket delivery, FanProtect money-back guarantee. Secure your seats now!';
+        h1='Buy '+evName+' Tickets';
       } else if(m){
         t=m[0]; d=m[1]; h1=m[2];
       } else {
