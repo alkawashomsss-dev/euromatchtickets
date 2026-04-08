@@ -44,10 +44,21 @@ export default function EventDetailsPage() {
   useEffect(() => {
     setLoading(true);
     axios.get(`${API}/events/${eventId}`)
-      .then(res => { setEvent(res.data); setLoading(false); })
+      .then(res => {
+        setEvent(res.data);
+        setLoading(false);
+        // Redirect event_id URLs to slug URLs for SEO canonical consistency
+        const slug = res.data.slug;
+        if (slug && eventId !== slug) {
+          const isEventId = /^(event_|premium_|ucl_|league_|wc2026_|motogp_|tt_)/.test(eventId);
+          if (isEventId) {
+            navigate(`/event/${slug}`, { replace: true });
+          }
+        }
+      })
       .catch(() => setLoading(false));
     window.scrollTo(0, 0);
-  }, [eventId]);
+  }, [eventId, navigate]);
 
   if (loading) return (
     <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">

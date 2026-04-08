@@ -113,7 +113,8 @@ async def get_event(event_id: str):
     if not event:
         event = await db.events.find_one({"slug": event_id}, {"_id": 0})
     if not event:
-        raise HTTPException(status_code=404, detail="Event not found")
+        # Return 410 Gone for deleted events so Google stops indexing them
+        raise HTTPException(status_code=410, detail="Event permanently removed")
 
     eid = event["event_id"]
     tickets = await db.tickets.find({"event_id": eid, "status": "available"}, {"_id": 0}).to_list(500)

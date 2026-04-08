@@ -19,7 +19,17 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Fixed empty robots meta tag** - now properly set to `index, follow`
 - **Added noindex** for utility pages (cart, checkout, login, register, dashboard)
 
-### April 7, 2026 - Event Data Cleanup
+### April 8, 2026 - Critical SEO Canonical & "Event Not Found" Fix
+- **Root cause found**: `is2025` and `isEventDetail` variables were UNDEFINED in pre-hydration script → script crashed on ALL pages → NO canonical URL set → Google chose homepage as canonical for ALL pages
+- **410 Gone for deleted events**: Backend returns 410 for events deleted from DB (9 of 10 Google-flagged URLs)
+- **410 Gone for non-existent SEO pages**: Backend returns 410 instead of 404
+- **Event_id → Slug redirect**: EventDetailsPage auto-redirects `/event/event_xxx` to `/event/slug-name`
+- **noindex for event_id URLs**: Pre-hydration marks internal ID URLs as noindex
+- **Added slugs to 28 events** that were missing them
+- **Regenerated sitemap**: 2,065 clean URLs, ZERO event_id URLs
+- **Fixed ALL "Buy" buttons**: 8 hardcoded landing pages had fake event IDs in checkout links → now link to real events
+- **Improved multi-word search**: Backend splits search queries into words, matching across title/artist/venue/city
+
 - **Updated 27 events** with "2025" in title to "2026"
 - **Fixed 20 events** with past dates - updated to future dates
 - **Removed 17 train events** (not relevant to ticket marketplace)
