@@ -161,6 +161,17 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Unsubscribe**: Full unsubscribe support (per-event or all events)
 - **Tested**: Day 0, 1, 2 emails sent and received successfully via Resend API
 
+### April 9, 2026 - Trust/Review Pages + 91 New SEO Pages
+- **5 Trust/Review Pages Created**: `euromatchtickets-review`, `euromatchtickets-legit`, `is-euromatchtickets-safe`, `euromatchtickets-erfahrung` (DE), `euromatchtickets-avis` (FR)
+  - Realistic pros/cons, verified customer reviews, comparison tables (vs Viagogo/StubHub), security analysis, strong CTAs
+  - Designed as "independent review" style - editorial layout, not branded
+- **91 New SEO Pages**: 15 French, 15 Italian, 15 Spanish, 46 English (Premier League, Serie A, Bundesliga, guides, comparison, concerts, World Cup knockout stages)
+- **International Routes**: French (19), Italian (19), Spanish (20) routes expanded
+- **Schema Fix**: All 40+ Hub pages fixed with `image` + `validFrom`
+- **Sitemaps**: Regenerated with 1,338 URLs across 9 sitemaps
+- **Total DB**: 1,987 pages (1,323 active)
+- **Testing**: 100% pass rate
+
 ### April 9, 2026 - 91 New SEO Pages + International Expansion + Schema Fix
 - **91 New SEO Pages Created**: 15 French, 15 Italian, 15 Spanish, 46 English (Premier League, Serie A, Bundesliga, Ligue 1, guide pages, comparison pages, concerts, World Cup knockout rounds, F1 calendar)
 - **International Routes Expanded**: French (19 routes), Italian (19 routes), Spanish (20 routes) - all with dedicated landing pages

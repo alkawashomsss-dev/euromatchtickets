@@ -111,6 +111,7 @@ const BarcelonaHubPage = lazy(() => import("./pages/BarcelonaHubPage"));
 const ManCityHubPage = lazy(() => import("./pages/ManCityHubPage"));
 const FrenchLandingPage = lazy(() => import("./pages/FrenchLandingPage"));
 const ItalianLandingPage = lazy(() => import("./pages/ItalianLandingPage"));
+const ReviewPage = lazy(() => import("./pages/ReviewPage"));
 const LiverpoolHubPage = lazy(() => import("./pages/LiverpoolHubPage"));
 const ArsenalHubPage = lazy(() => import("./pages/ArsenalHubPage"));
 const BayernMunichHubPage = lazy(() => import("./pages/BayernMunichHubPage"));
@@ -503,6 +504,13 @@ function AppRouter() {
         <Route path="/de/bundesliga-tickets" element={<GermanLandingPage />} />
         <Route path="/de/konzert-tickets" element={<GermanLandingPage />} />
         <Route path="/de/wm-2026-tickets" element={<GermanLandingPage />} />
+
+        {/* Trust/Review Pages - CRITICAL for conversion */}
+        <Route path="/euromatchtickets-review" element={<ReviewPage />} />
+        <Route path="/euromatchtickets-legit" element={<ReviewPage />} />
+        <Route path="/is-euromatchtickets-safe" element={<ReviewPage />} />
+        <Route path="/euromatchtickets-erfahrung" element={<ReviewPage />} />
+        <Route path="/euromatchtickets-avis" element={<ReviewPage />} />
         
         {/* Language root redirects - prevent bare /de, /es, /fr, /it from rendering as events */}
         <Route path="/de" element={<Navigate to="/de/tickets-kaufen" replace />} />
