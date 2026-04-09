@@ -95,11 +95,6 @@ const LANG_REDIRECTS = {
 export default function DynamicSEOPage() {
   const { slug } = useParams();
 
-  // Guard: redirect bare language codes to their landing pages
-  if (slug && LANG_REDIRECTS[slug.toLowerCase()]) {
-    return <Navigate to={LANG_REDIRECTS[slug.toLowerCase()]} replace />;
-  }
-
   const [page, setPage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -109,7 +104,11 @@ export default function DynamicSEOPage() {
   // Get pre-hydrated FAQ data from vanilla JS
   const prehydratedFAQ = typeof window !== 'undefined' ? window.__seoFAQ : null;
 
+  // Check if slug is a bare language code
+  const isLangRedirect = slug && LANG_REDIRECTS[slug.toLowerCase()];
+
   useEffect(() => {
+    if (isLangRedirect) return; // Skip fetch for language redirects
     const fetchPage = async () => {
       try {
         const res = await axios.get(`${API}/seo/page/${slug}`);
@@ -161,6 +160,11 @@ export default function DynamicSEOPage() {
     };
     fetchPage();
   }, [slug]);
+
+  // Redirect bare language codes to their landing pages (after all hooks)
+  if (isLangRedirect) {
+    return <Navigate to={LANG_REDIRECTS[slug.toLowerCase()]} replace />;
+  }
 
   if (loading) {
     return (
