@@ -91,6 +91,19 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Updated pre-hydration**: All 10 city pages in `index.html` metadata map updated with new titles/descriptions
 - **Result**: City pages now render with prices, FAQ accordion, internal links, and rich content
 
+### April 9, 2026 - Gold Pages SEO + 2025→2026 Redirect System
+- **Created 3 gold landing pages** optimized for Google Search Console top keywords:
+  1. **Belgian GP / Spa F1** (8 keyword variants): `spa-f1-tickets`, `belgian-gp-tickets`, `belgium-f1-tickets`, `f1-spa-tickets`, `belgium-gp-tickets`, `formula-1-belgium-tickets` + updated `belgian-grand-prix-2026-tickets`, `spa-francorchamps-tickets`
+  2. **Taylor Swift London/Wembley** (3 new pages): `taylor-swift-wembley-tickets`, `taylor-swift-uk-tickets`, `taylor-swift-concert-tickets` + updated `taylor-swift-london-tickets-2026`, `taylor-swift-tickets-2026`
+  3. **Bahrain GP** (3 new pages): `bahrain-f1-tickets`, `f1-bahrain-tickets`, `formula-1-bahrain-tickets` + updated `bahrain-gp-tickets`, `bahrain-grand-prix-2026-tickets`
+- **All pages have**: Rich content (2000+ chars), FAQ (5-6 items), prices, tables, transport info
+- **2025→2026 Redirect**: 664 active 2025 pages deactivated with `redirect_to` field pointing to 2026 equivalent
+  - Backend returns `{redirect_to: "slug-2026"}` for deactivated 2025 pages
+  - Frontend auto-redirects via `<Navigate>`
+  - Pre-hydration sets `noindex` + canonical → 2026 for crawlers
+- **Sitemap regenerated**: 1512 URLs across 9 category sitemaps (no 2025 pages)
+- **Build verified**: `craco build` passes (hooks order fix applied)
+
 ## Pending
 - P2: Login Flow (needs user Google OAuth credentials)
 - P2: Google Indexing API (needs Service Account key)

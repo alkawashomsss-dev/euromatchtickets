@@ -104,6 +104,8 @@ export default function DynamicSEOPage() {
   // Get pre-hydrated FAQ data from vanilla JS
   const prehydratedFAQ = typeof window !== 'undefined' ? window.__seoFAQ : null;
 
+  const [redirectTo, setRedirectTo] = useState(null);
+
   // Check if slug is a bare language code
   const isLangRedirect = slug && LANG_REDIRECTS[slug.toLowerCase()];
 
@@ -112,6 +114,11 @@ export default function DynamicSEOPage() {
     const fetchPage = async () => {
       try {
         const res = await axios.get(`${API}/seo/page/${slug}`);
+        // Handle 301 redirect (2025→2026)
+        if (res.data && res.data.redirect_to) {
+          setRedirectTo(`/${res.data.redirect_to}`);
+          return;
+        }
         setPage(res.data);
         // Find matching event for Buy buttons - try progressively shorter search terms
         const rawKeywords = slug.replace(/-tickets.*$/, '').replace(/-20\d{2}.*$/, '').replace(/-/g, ' ').trim();
@@ -164,6 +171,11 @@ export default function DynamicSEOPage() {
   // Redirect bare language codes to their landing pages (after all hooks)
   if (isLangRedirect) {
     return <Navigate to={LANG_REDIRECTS[slug.toLowerCase()]} replace />;
+  }
+
+  // Handle 301 redirect (e.g., 2025→2026 pages)
+  if (redirectTo) {
+    return <Navigate to={redirectTo} replace />;
   }
 
   if (loading) {

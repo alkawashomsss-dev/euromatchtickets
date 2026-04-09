@@ -795,7 +795,10 @@ async def get_seo_page(slug: str):
     page = await db.seo_pages.find_one({"slug": slug}, {"_id": 0})
     if not page:
         raise HTTPException(status_code=404, detail="Page not found")
-    # Only return 410 for explicitly deactivated pages
+    # Redirect for deactivated pages with a redirect_to target (e.g., 2025→2026)
+    if page.get("active") == False and page.get("redirect_to"):
+        return {"redirect_to": page["redirect_to"], "slug": slug}
+    # Only return 410 for explicitly deactivated pages without redirect
     if page.get("active") == False:
         raise HTTPException(status_code=410, detail="Page permanently removed")
     # Return 410 Gone for inactive pages - tells Google to REMOVE from index
