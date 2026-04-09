@@ -80,6 +80,17 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Verified**: All canonical URLs correct, hreflang tags present, robots `index, follow` on real pages, no bare paths in sitemap
 - **Test result**: 15/15 tests passed (100%)
 
+### April 9, 2026 - City Pages SEO Overhaul
+- **Problem**: 10 city `-event-tickets` pages had thin content (~320 chars), no prices, generic titles, and no FAQs
+- **Fix**: Updated all 10 city pages (Paris, London, Madrid, Barcelona, Milan, Amsterdam, Dubai, Istanbul, Lisbon, Munich) with:
+  - Rich SEO titles with CTAs and event names (e.g., "Paris Event Tickets 2026 – Football, Concerts & More")
+  - Detailed meta descriptions with prices and urgency (120-160 chars)
+  - Rich markdown content (1500-2500 chars) with event tables, venue details, and transport info
+  - Prices (price_low/price_high) for all pages
+  - 4 FAQ items per page for Google FAQ rich snippets
+- **Updated pre-hydration**: All 10 city pages in `index.html` metadata map updated with new titles/descriptions
+- **Result**: City pages now render with prices, FAQ accordion, internal links, and rich content
+
 ## Pending
 - P2: Login Flow (needs user Google OAuth credentials)
 - P2: Google Indexing API (needs Service Account key)
