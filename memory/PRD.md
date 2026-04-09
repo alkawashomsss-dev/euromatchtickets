@@ -71,9 +71,19 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **IndexNow** (Yandex, Bing, Seznam, Naver)
 - **Emergent-managed Google Auth**
 
+### April 9, 2026 - Critical "de" Bug Fix (Bare Language Path Redirects)
+- **Root cause**: Visiting bare language paths (`/de`, `/es`, `/fr`, `/it`) matched the `/:slug` catch-all route, displaying the language code as event name (e.g., "Buy verified de tickets", "About De")
+- **Fix applied in 3 files**:
+  - `App.js`: Added `<Navigate>` redirect routes for `/de`→`/de/tickets-kaufen`, `/es`→`/es/comprar-entradas`, `/fr`→`/fr/acheter-billets`, `/it`→`/it/biglietti`
+  - `DynamicSEOPage.jsx`: Added `LANG_REDIRECTS` guard that returns `<Navigate>` for 2-letter language code slugs
+  - `index.html`: Pre-hydration script now detects bare language paths, sets `noindex`, and points canonical to proper landing page
+- **Verified**: All canonical URLs correct, hreflang tags present, robots `index, follow` on real pages, no bare paths in sitemap
+- **Test result**: 15/15 tests passed (100%)
+
 ## Pending
 - P2: Login Flow (needs user Google OAuth credentials)
 - P2: Google Indexing API (needs Service Account key)
+- P2: Google Merchant Center Feed monitoring
 
 ## Upcoming
 - P1: Owner Dashboard (charts, sales reports)
