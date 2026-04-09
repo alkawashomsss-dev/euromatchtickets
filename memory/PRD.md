@@ -118,6 +118,13 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **DynamicSEOPage.jsx Enhanced**:
   - Reviews badge: "★★★★★ 4.9/5 (12,847 reviews)" under H1
   - Subheadline: "Official resale tickets for {venue}. Instant delivery. 100% money-back guarantee."
+
+## Pending
+- P2: Login Flow (needs user Google OAuth credentials)
+
+## Upcoming
+- P1: Owner Dashboard with email stats + alert stats
+- P2: Event-specific email templates (different content for F1 vs concerts)
   - Price display: "From €129 | Limited availability" (green badge)
   - Trust Row: 4 items (Verified, QR, 4.9/5, Stripe)
   - Sticky CTA Bar: "XX tickets left · XX viewing now"
@@ -154,13 +161,16 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Unsubscribe**: Full unsubscribe support (per-event or all events)
 - **Tested**: Day 0, 1, 2 emails sent and received successfully via Resend API
 
-## Pending
-- P2: Login Flow (needs user Google OAuth credentials)
-
-## Upcoming
-- P1: Set up cron job for `/api/emails/process-drip` (daily at 10am)
-- P1: Owner Dashboard with email stats + alert stats
-- P2: Event-specific email templates (different content for F1 vs concerts)
+### April 9, 2026 - Email Drip Scheduler (Background Cron)
+- **Email Drip Bot**: Added `email_drip_scheduler()` as background task in `server.py`
+  - Runs automatically every 12 hours (no external cron needed)
+  - Waits 2 minutes after server startup before first run
+  - Processes all active subscribers, sends Day 1/2/3 emails based on subscription date
+  - Duplicate prevention: checks `email_log` before sending
+  - Logging: stores run results in `email_drip_logs` collection
+  - Error resilience: retries after 1 hour on failure
+- **Startup confirmed**: "Email Drip Bot started - processes emails every 12 hours"
+- **Build**: ✅ Passes
 - P2: Google Indexing API (needs Service Account key)
 - P2: Google Merchant Center Feed monitoring
 

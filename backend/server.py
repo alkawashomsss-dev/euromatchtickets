@@ -347,6 +347,74 @@ async def auto_reindex_loop():
             await asyncio.sleep(30 * 60)
 
 
+async def email_drip_scheduler():
+    """Background task: process drip emails every 12 hours (10am and 10pm UTC)."""
+    from routes.emails import send_single_email
+    # Wait 2 minutes after startup
+    await asyncio.sleep(120)
+
+    while True:
+        try:
+            now = datetime.now(timezone.utc)
+            logger.info("Email Drip Bot: Processing pending drip emails...")
+
+            subscribers = await db.price_alerts.find({"active": True}, {"_id": 0}).to_list(10000)
+            sent_count = {"day_1": 0, "day_2": 0, "day_3": 0}
+            errors = 0
+
+            for sub in subscribers:
+                email = sub.get("email")
+                event_slug = sub.get("event_slug")
+                event_name = sub.get("event_name", "Event Tickets")
+                subscribed_at = sub.get("subscribed_at")
+
+                if not email or not event_slug or not subscribed_at:
+                    continue
+
+                try:
+                    sub_time = datetime.fromisoformat(subscribed_at.replace("Z", "+00:00"))
+                except (ValueError, TypeError):
+                    continue
+
+                days_since = (now - sub_time).days
+
+                for day in [1, 2, 3]:
+                    if days_since >= day:
+                        already_sent = await db.email_log.find_one({
+                            "email": email, "event_slug": event_slug, "day": day,
+                        })
+                        if already_sent:
+                            continue
+
+                        email_id = await send_single_email(email, event_name, event_slug, day)
+                        if email_id:
+                            await db.email_log.insert_one({
+                                "email": email, "event_slug": event_slug,
+                                "event_name": event_name, "day": day,
+                                "email_id": email_id,
+                                "sent_at": now.isoformat(), "status": "sent",
+                            })
+                            sent_count[f"day_{day}"] += 1
+                        else:
+                            errors += 1
+
+            total_sent = sum(sent_count.values())
+            logger.info(f"Email Drip Bot: Done! Sent {total_sent} emails (D1:{sent_count['day_1']}, D2:{sent_count['day_2']}, D3:{sent_count['day_3']}), Errors: {errors}")
+
+            # Store log
+            await db.email_drip_logs.insert_one({
+                "sent": sent_count, "errors": errors,
+                "total_subscribers": len(subscribers),
+                "run_at": now.isoformat(),
+            })
+
+            # Run every 12 hours
+            await asyncio.sleep(12 * 60 * 60)
+        except Exception as e:
+            logger.error(f"Email Drip Bot Error: {e}")
+            await asyncio.sleep(60 * 60)
+
+
 @app.on_event("startup")
 async def startup():
     asyncio.create_task(cleanup_expired_events())
@@ -355,6 +423,8 @@ async def startup():
     logger.info("Bing Indexing Bot started - submits 100 URLs/day")
     asyncio.create_task(auto_reindex_loop())
     logger.info("Auto-Indexing Bot started - reindexes every 6 hours")
+    asyncio.create_task(email_drip_scheduler())
+    logger.info("Email Drip Bot started - processes emails every 12 hours")
     # Auto-seed new events if they don't exist
     count = await db.events.count_documents({"title": {"$regex": "Super Bowl LXI", "$options": "i"}})
     if count == 0:
