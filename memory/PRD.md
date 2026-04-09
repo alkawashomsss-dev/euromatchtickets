@@ -161,6 +161,14 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Unsubscribe**: Full unsubscribe support (per-event or all events)
 - **Tested**: Day 0, 1, 2 emails sent and received successfully via Resend API
 
+### April 9, 2026 - 91 New SEO Pages + International Expansion + Schema Fix
+- **91 New SEO Pages Created**: 15 French, 15 Italian, 15 Spanish, 46 English (Premier League, Serie A, Bundesliga, Ligue 1, guide pages, comparison pages, concerts, World Cup knockout rounds, F1 calendar)
+- **International Routes Expanded**: French (19 routes), Italian (19 routes), Spanish (20 routes) - all with dedicated landing pages
+- **Schema Fix (image + validFrom)**: Fixed all 40+ Hub/Page components to include `image` and `validFrom` in both Event and Product schemas
+- **Sitemaps Regenerated**: 9 sub-sitemaps with 1,333 total URLs
+- **Database**: 1,982 total pages (1,318 active, 664 inactive/2025)
+- **Testing**: 100% pass rate - backend and frontend verified by testing agent
+
 ### April 9, 2026 - Schema Fix (image + validFrom) for ALL Pages
 - **Fixed P0 Schema Bug**: All 40+ Hub/Event/Concert pages were missing `image` and `validFrom` fields in their Structured Data schemas
 - **Root Cause**: Individual page components (BarcelonaHubPage, RealMadridHubPage, F1TicketsPage, etc.) had hardcoded schemas without these Google-required fields
