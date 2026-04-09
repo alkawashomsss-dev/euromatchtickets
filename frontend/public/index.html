@@ -204,11 +204,22 @@
       /* Utility pages that should NOT be indexed */
       var noIndexPages=['/cart','/checkout','/login','/register','/dashboard','/my-tickets','/owner','/search','/callback','/auth'];
       var isUtilityPage=noIndexPages.indexOf(p)!==-1;
+      /* Bare language root paths - redirect canonical to landing page */
+      var langRoots={'/de':'/de/tickets-kaufen','/es':'/es/comprar-entradas','/fr':'/fr/acheter-billets','/it':'/it/biglietti'};
+      var isBareLangRoot=langRoots.hasOwnProperty(p);
 
       /* ===== GET PAGE METADATA ===== */
       var m=M[pq]||M[p];
       var t,d,h1;
-      if(is2025){
+      if(isBareLangRoot){
+        /* Bare language paths like /de, /es - noindex + redirect canonical to proper landing */
+        isNoIndex=true;
+        var landingPath=langRoots[p];
+        var landingMeta=M[landingPath];
+        if(landingMeta){t=landingMeta[0];d=landingMeta[1];h1=landingMeta[2];}
+        else{t='EuroMatchTickets';d='Europe\u2019s cheapest ticket marketplace!';h1='Buy Tickets';}
+        u=B+landingPath;
+      } else if(is2025){
         /* 2025 pages are permanently removed - signal noindex immediately */
         t='Page Removed | EuroMatchTickets';
         d='This event page has been permanently removed. Browse current 2026 events and buy tickets at EuroMatchTickets. Verified sellers, instant delivery!';

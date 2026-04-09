@@ -459,6 +459,12 @@ function AppRouter() {
         <Route path="/de/konzert-tickets" element={<GermanLandingPage />} />
         <Route path="/de/wm-2026-tickets" element={<GermanLandingPage />} />
         
+        {/* Language root redirects - prevent bare /de, /es, /fr, /it from rendering as events */}
+        <Route path="/de" element={<Navigate to="/de/tickets-kaufen" replace />} />
+        <Route path="/es" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/fr" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/it" element={<Navigate to="/it/biglietti" replace />} />
+
         {/* Dynamic SEO Pages - handles city pages, event pages, and all generated content */}
         <Route path="/:slug" element={<DynamicSEOPage />} />
         

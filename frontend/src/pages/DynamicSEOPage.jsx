@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import { ArrowLeft, Shield, Clock, CreditCard, Star, ChevronRight, Tag, MapPin, Calendar, Ticket, ChevronDown, HelpCircle, AlertCircle, Users, TrendingUp, Globe } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -85,8 +85,21 @@ const renderMarkdown = (md) => {
   return html;
 };
 
+const LANG_REDIRECTS = {
+  de: '/de/tickets-kaufen',
+  es: '/es/comprar-entradas',
+  fr: '/fr/acheter-billets',
+  it: '/it/biglietti',
+};
+
 export default function DynamicSEOPage() {
   const { slug } = useParams();
+
+  // Guard: redirect bare language codes to their landing pages
+  if (slug && LANG_REDIRECTS[slug.toLowerCase()]) {
+    return <Navigate to={LANG_REDIRECTS[slug.toLowerCase()]} replace />;
+  }
+
   const [page, setPage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
