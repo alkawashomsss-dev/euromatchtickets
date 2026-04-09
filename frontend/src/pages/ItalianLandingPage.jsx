@@ -38,7 +38,8 @@ const ItalianLandingPage = () => {
   ];
 
   const reviewSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@type": "Product",
     "name": "Biglietti EuroMatchTickets - Italia",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1834", "bestRating": "5" },

@@ -12,6 +12,7 @@ const RealMadridHubPage = () => {
     "@type": "SportsEvent",
     "name": "Real Madrid CF 2025-26 Season",
     "description": "Buy Real Madrid tickets for La Liga, Champions League, and all matches at Santiago Bernabeu. Cheapest prices guaranteed.",
+    "image": "https://euromatchtickets.com/og-image.jpg",
     "startDate": "2025-08-15",
     "endDate": "2026-06-01",
     "eventStatus": "https://schema.org/EventScheduled",
@@ -20,11 +21,12 @@ const RealMadridHubPage = () => {
     "performer": { "@type": "SportsTeam", "name": "Real Madrid CF" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "75", "highPrice": "2500", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/real-madrid-tickets" }
+              "offerCount": "100", "lowPrice": "75", "highPrice": "2500", "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/real-madrid-tickets" }
   };
 
   const reviewSchema = {
     "@context": "https://schema.org",
+    "image": "https://euromatchtickets.com/og-image.jpg",
     "@type": "Product",
     "name": "Real Madrid Tickets 2025-26",
     "description": "Verified Real Madrid match tickets with instant QR delivery",
@@ -35,7 +37,7 @@ const RealMadridHubPage = () => {
       { "@type": "Review", "name": "El Clasico tickets at great prices", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "James T." }, "reviewBody": "Got El Clasico tickets at amazing prices. QR code worked perfectly at the gate.", "datePublished": "2026-01-15" },
       { "@type": "Review", "name": "Easy booking from Tokyo", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Yuki H." }, "reviewBody": "Flew from Tokyo for Real Madrid vs Man City. EuroMatchTickets made it so easy!", "datePublished": "2025-12-08" }
     ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "75", "highPrice": "2500", "offerCount": "412" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "75", "highPrice": "2500", "offerCount": "412" , "validFrom": "2025-01-01" }
   };
 
   const matches = [

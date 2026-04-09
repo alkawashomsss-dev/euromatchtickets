@@ -8,7 +8,8 @@ import { ScarcityBadges, TrustBar } from "../components/ConversionElements";
 
 const ArsenalHubPage = () => {
   const reviewSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@type": "Product",
     "name": "Arsenal FC Tickets 2025-26",
     "description": "Verified Arsenal FC match tickets with instant QR delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
@@ -17,7 +18,7 @@ const ArsenalHubPage = () => {
       { "@type": "Review", "name": "Emirates European night was unreal", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Jack W." }, "reviewBody": "Emirates on a European night is unreal! Saka was incredible. Cheapest tickets I found.", "datePublished": "2026-02-18" },
       { "@type": "Review", "name": "Best North London Derby experience", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Amira F." }, "reviewBody": "North London Derby was the best football experience of my life! Great prices.", "datePublished": "2026-01-10" }
     ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1500", "offerCount": "245" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1500", "offerCount": "245" , "validFrom": "2025-01-01" }
   };
 
   const matches = [

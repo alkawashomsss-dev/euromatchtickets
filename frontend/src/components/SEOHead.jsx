@@ -37,8 +37,9 @@ const SEOHead = ({
   const ogImage = image && typeof image === 'string' ? image : defaultImage;
 
   useEffect(() => {
-    // Clean up pre-hydration per-page schemas to prevent duplication with React-managed schemas
-    ['ph-event', 'ph-bread', 'ph-faq'].forEach(id => {
+    // Only clean up breadcrumb and FAQ pre-hydration schemas
+    // Keep ph-event as a fallback until React renders its own Event schema
+    ['ph-bread', 'ph-faq'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.remove();
     });

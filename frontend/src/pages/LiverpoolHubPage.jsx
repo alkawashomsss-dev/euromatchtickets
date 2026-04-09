@@ -8,7 +8,8 @@ import { ScarcityBadges, TrustBar, CompetitorLine } from "../components/Conversi
 
 const LiverpoolHubPage = () => {
   const reviewSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@type": "Product",
     "name": "Liverpool FC Tickets 2025-26",
     "description": "Verified Liverpool FC match tickets with instant QR delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
@@ -17,7 +18,7 @@ const LiverpoolHubPage = () => {
       { "@type": "Review", "name": "Anfield Champions League night was incredible", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Steven G." }, "reviewBody": "Anfield on a Champions League night is something else! Tickets were cheapest I found.", "datePublished": "2026-02-12" },
       { "@type": "Review", "name": "YNWA live gave me goosebumps", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Lisa M." }, "reviewBody": "You'll Never Walk Alone live gave me goosebumps. Amazing prices on EuroMatchTickets!", "datePublished": "2026-01-25" }
     ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800", "offerCount": "278" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800", "offerCount": "278" , "validFrom": "2025-01-01" }
   };
 
   const matches = [

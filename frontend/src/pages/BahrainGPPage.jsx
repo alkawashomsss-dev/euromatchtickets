@@ -63,7 +63,8 @@ const BahrainGPPage = () => {
   ];
 
   const reviewSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@type": "Product",
     "name": "Bahrain Grand Prix 2026 Tickets",
     "description": "Verified Bahrain F1 tickets with instant QR delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
@@ -72,7 +73,7 @@ const BahrainGPPage = () => {
       { "@type": "Review", "name": "Magical Bahrain night race atmosphere", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Ahmed K." }, "reviewBody": "The night race atmosphere was magical! Tickets were €30 cheaper than the official site. QR code worked perfectly.", "datePublished": "2026-01-20" },
       { "@type": "Review", "name": "Turn 1 grandstand braking heat experience", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sarah L." }, "reviewBody": "Turn 1 grandstand was incredible! Could feel the braking heat. Best F1 experience ever.", "datePublished": "2025-12-15" }
     ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "59", "highPrice": "1495", "offerCount": "723" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "59", "highPrice": "1495", "offerCount": "723" , "validFrom": "2025-01-01" }
   };
 
   return (

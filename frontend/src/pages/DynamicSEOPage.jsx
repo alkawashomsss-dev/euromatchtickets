@@ -105,6 +105,14 @@ export default function DynamicSEOPage() {
   // Get pre-hydrated FAQ data from vanilla JS
   const prehydratedFAQ = typeof window !== 'undefined' ? window.__seoFAQ : null;
 
+  // Remove pre-hydration Event schema once React has rendered its own
+  useEffect(() => {
+    if (page && !loading) {
+      const phEvent = document.getElementById('ph-event');
+      if (phEvent) phEvent.remove();
+    }
+  }, [page, loading]);
+
   const [redirectTo, setRedirectTo] = useState(null);
 
   // Check if slug is a bare language code
@@ -343,68 +351,68 @@ export default function DynamicSEOPage() {
 
         return (
           <>
-      {/* Structured Data - Event + Product + Review Schema */}
+      {/* Structured Data - Event Schema (separate for Google Rich Results) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": page.category === "concert" ? "MusicEvent" : "SportsEvent",
-            "name": eventName,
-            "description": eventDesc,
-            "image": [`${BASE}/product-images/${page.slug}.jpg`],
-            "url": `${BASE}/${page.slug}`,
-            "startDate": smartStartDate,
-            "endDate": smartEndDate,
-            "eventStatus": "https://schema.org/EventScheduled",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "location": {
-              "@type": "Place",
-              "name": page.venue || page.city || "Europe",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": page.city || "Europe",
-                "addressCountry": page.country || "EU"
-              }
-            },
-            "performer": {
-              "@type": page.artist ? "PerformingGroup" : "Organization",
-              "name": page.artist || organizer.name
-            },
-            "offers": {
-              "@type": "AggregateOffer",
-              "lowPrice": String(page.price_low || 49),
-              "highPrice": String(page.price_high || (page.price_low ? page.price_low * 8 : 1500)),
-              "priceCurrency": "EUR",
-              "offerCount": "100",
-              "availability": "https://schema.org/InStock",
-              "url": `${BASE}/${page.slug}`,
-              "validFrom": "2025-06-01",
-              "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": BASE }
-            },
-            "organizer": { "@type": "Organization", "name": organizer.name, "url": organizer.url }
-          },
-          {
-            "@type": "Product",
-            "name": `${eventName} Tickets`,
-            "description": productDesc,
-            "image": [`${BASE}/product-images/${page.slug}.jpg`],
-            "url": `${BASE}/${page.slug}`,
-            "brand": { "@type": "Organization", "name": brand },
-            "offers": {
-              "@type": "AggregateOffer",
-              "lowPrice": String(page.price_low || 49),
-              "highPrice": String(page.price_high || (page.price_low ? page.price_low * 8 : 1500)),
-              "priceCurrency": "EUR",
-              "offerCount": "100",
-              "availability": "https://schema.org/InStock",
-              "url": `${BASE}/${page.slug}`
-            },
-            "aggregateRating": { "@type": "AggregateRating", "ratingValue": ratingValue, "reviewCount": reviewCount, "bestRating": "5", "worstRating": "1" },
-            "review": [
-              { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "Tickets arrived instantly via QR code. Smooth process.", "datePublished": "2026-01-15" },
-              { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Great prices and the FanProtect guarantee gave me confidence.", "datePublished": "2026-02-08" }
-            ]
+        "@type": page.category === "concert" ? "MusicEvent" : "SportsEvent",
+        "name": eventName,
+        "description": eventDesc,
+        "image": `${BASE}/og-image.jpg`,
+        "url": `${BASE}/${page.slug}`,
+        "startDate": smartStartDate,
+        "endDate": smartEndDate,
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": page.venue || page.city || "Europe",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": page.city || "Europe",
+            "addressCountry": page.country || "EU"
           }
+        },
+        "performer": {
+          "@type": page.artist ? "PerformingGroup" : "Organization",
+          "name": page.artist || organizer.name
+        },
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": String(page.price_low || 49),
+          "highPrice": String(page.price_high || (page.price_low ? page.price_low * 8 : 1500)),
+          "priceCurrency": "EUR",
+          "offerCount": "100",
+          "availability": "https://schema.org/InStock",
+          "url": `${BASE}/${page.slug}`,
+          "validFrom": "2025-01-01",
+          "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": BASE }
+        },
+        "organizer": { "@type": "Organization", "name": organizer.name, "url": organizer.url }
+      })}} />
+
+      {/* Structured Data - Product Schema (separate for Google Merchant) */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": `${eventName} Tickets`,
+        "description": productDesc,
+        "image": `${BASE}/og-image.jpg`,
+        "url": `${BASE}/${page.slug}`,
+        "brand": { "@type": "Organization", "name": brand },
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": String(page.price_low || 49),
+          "highPrice": String(page.price_high || (page.price_low ? page.price_low * 8 : 1500)),
+          "priceCurrency": "EUR",
+          "offerCount": "100",
+          "availability": "https://schema.org/InStock",
+          "url": `${BASE}/${page.slug}`,
+          "validFrom": "2025-01-01"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": ratingValue, "reviewCount": reviewCount, "bestRating": "5", "worstRating": "1" },
+        "review": [
+          { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "Tickets arrived instantly via QR code. Smooth process.", "datePublished": "2026-01-15" },
+          { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Great prices and the FanProtect guarantee gave me confidence.", "datePublished": "2026-02-08" }
         ]
       })}} />
 

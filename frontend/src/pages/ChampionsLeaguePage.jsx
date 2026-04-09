@@ -29,6 +29,7 @@ const ChampionsLeaguePage = () => {
 
   const reviewSchema = {
     "@context": "https://schema.org",
+    "image": "https://euromatchtickets.com/og-image.jpg",
     "@type": "Product",
     "name": "UEFA Champions League 2025-26 Tickets",
     "description": "Verified UEFA Champions League match tickets with instant QR delivery",
@@ -66,7 +67,7 @@ const ChampionsLeaguePage = () => {
         "datePublished": "2025-12-10"
       }
     ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "85", "highPrice": "1500", "offerCount": "299" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "85", "highPrice": "1500", "offerCount": "299" , "validFrom": "2025-01-01" }
   };
 
   const matches = [

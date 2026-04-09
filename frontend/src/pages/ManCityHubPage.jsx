@@ -12,6 +12,7 @@ const ManCityHubPage = () => {
     "@type": "SportsEvent",
     "name": "Manchester City FC 2025-26 Season",
     "description": "Buy Manchester City tickets for Premier League, Champions League at Etihad Stadium. Cheapest prices guaranteed.",
+    "image": "https://euromatchtickets.com/og-image.jpg",
     "startDate": "2025-08-15",
     "endDate": "2026-06-01",
     "eventStatus": "https://schema.org/EventScheduled",
@@ -20,11 +21,12 @@ const ManCityHubPage = () => {
     "performer": { "@type": "SportsTeam", "name": "Manchester City FC" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "65", "highPrice": "1800", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/manchester-city-tickets" }
+              "offerCount": "100", "lowPrice": "65", "highPrice": "1800", "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/manchester-city-tickets" }
   };
 
   const reviewSchema = {
     "@context": "https://schema.org",
+    "image": "https://euromatchtickets.com/og-image.jpg",
     "@type": "Product",
     "name": "Manchester City Tickets 2025-26",
     "description": "Verified Manchester City match tickets with instant QR delivery",
@@ -34,7 +36,7 @@ const ManCityHubPage = () => {
       { "@type": "Review", "name": "Haaland hat-trick at electric Etihad", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "David L." }, "reviewBody": "Watched Haaland score a hat-trick! Etihad was electric. Cheapest tickets I found online.", "datePublished": "2026-02-10" },
       { "@type": "Review", "name": "Man City vs Real Madrid was incredible", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sarah M." }, "reviewBody": "Man City vs Real Madrid in the Champions League was incredible. Tickets arrived instantly.", "datePublished": "2026-01-18" }
     ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800", "offerCount": "234" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800", "offerCount": "234" , "validFrom": "2025-01-01" }
   };
 
   const matches = [

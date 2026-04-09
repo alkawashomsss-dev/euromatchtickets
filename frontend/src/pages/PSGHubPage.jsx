@@ -20,11 +20,12 @@ const PSGHubPage = () => {
   ];
 
   const reviewSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@type": "Product",
     "name": "PSG Paris Saint-Germain Tickets 2025-26",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1847", "bestRating": "5", "worstRating": "1" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "55", "highPrice": "1500", "offerCount": "366" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "55", "highPrice": "1500", "offerCount": "366" , "validFrom": "2025-01-01" }
   };
 
   return (

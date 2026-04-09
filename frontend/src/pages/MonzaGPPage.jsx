@@ -44,7 +44,8 @@ const MonzaGPPage = () => {
   ];
 
   const reviewSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@type": "Product",
     "name": "Italian Grand Prix Monza 2026 Tickets",
     "description": "Verified Monza F1 tickets with instant QR delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
@@ -53,7 +54,7 @@ const MonzaGPPage = () => {
       { "@type": "Review", "name": "Unreal Tifosi atmosphere at Monza", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "The Tifosi atmosphere is unreal! Monza was my first F1 race and I'm hooked. Got general admission for just €69.", "datePublished": "2026-01-18" },
       { "@type": "Review", "name": "Incredible Parabolica grandstand F1 sound", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Julia S." }, "reviewBody": "Parabolica grandstand is incredible. The sound of F1 cars at 340km/h is something you never forget!", "datePublished": "2025-12-22" }
     ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "1995", "offerCount": "876" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "1995", "offerCount": "876" , "validFrom": "2025-01-01" }
   };
 
   return (

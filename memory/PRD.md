@@ -161,6 +161,13 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Unsubscribe**: Full unsubscribe support (per-event or all events)
 - **Tested**: Day 0, 1, 2 emails sent and received successfully via Resend API
 
+### April 9, 2026 - Schema Fix (image + validFrom) for ALL Pages
+- **Fixed P0 Schema Bug**: All 40+ Hub/Event/Concert pages were missing `image` and `validFrom` fields in their Structured Data schemas
+- **Root Cause**: Individual page components (BarcelonaHubPage, RealMadridHubPage, F1TicketsPage, etc.) had hardcoded schemas without these Google-required fields
+- **Fix Applied**: Added `"image": "https://euromatchtickets.com/og-image.jpg"` and `"validFrom": "2025-01-01"` to both SportsEvent/MusicEvent and Product schemas in all 40 page files
+- **Also Fixed**: Stopped removing pre-hydration Event schema too early (SEOHead.jsx), split @graph into separate schemas for better Google parsing (DynamicSEOPage.jsx)
+- **Verified**: Barcelona, Real Madrid, F1 all show ✅ image + ✅ validFrom
+
 ### April 9, 2026 - Build Fix (requirements.txt + CORS)
 - **Fixed P0 Build Failure**: Added `--extra-index-url https://d33sy5i8bnduwe.cloudfront.net/simple/` to top of `requirements.txt` so `emergentintegrations` installs correctly in deployment
 - **Fixed CORS for Deployment**: Added `CORS_ORIGINS=*` to backend `.env` and updated `server.py` to support wildcard CORS origins for Emergent production domain

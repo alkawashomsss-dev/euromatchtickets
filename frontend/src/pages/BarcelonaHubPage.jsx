@@ -12,6 +12,7 @@ const BarcelonaHubPage = () => {
     "@type": "SportsEvent",
     "name": "FC Barcelona 2025-26 Season",
     "description": "Buy FC Barcelona tickets for La Liga, Champions League, and concerts at Spotify Camp Nou. Cheapest prices guaranteed.",
+    "image": "https://euromatchtickets.com/og-image.jpg",
     "startDate": "2025-08-15",
     "endDate": "2026-06-01",
     "eventStatus": "https://schema.org/EventScheduled",
@@ -20,11 +21,12 @@ const BarcelonaHubPage = () => {
     "performer": { "@type": "SportsTeam", "name": "FC Barcelona" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "65", "highPrice": "2200", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/barcelona-tickets" }
+              "offerCount": "100", "lowPrice": "65", "highPrice": "2200", "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/barcelona-tickets" }
   };
 
   const reviewSchema = {
     "@context": "https://schema.org",
+    "image": "https://euromatchtickets.com/og-image.jpg",
     "@type": "Product",
     "name": "FC Barcelona Tickets 2025-26",
     "description": "Verified FC Barcelona match and concert tickets at Camp Nou with instant QR delivery",
@@ -35,7 +37,7 @@ const BarcelonaHubPage = () => {
       { "@type": "Review", "name": "Best El Clasico night of my life", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Tom B." }, "reviewBody": "Barcelona vs Real Madrid - El Clasico - best night of my life. Tickets were legit and cheap.", "datePublished": "2026-01-22" },
       { "@type": "Review", "name": "Smooth Coldplay Camp Nou booking", "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" }, "author": { "@type": "Person", "name": "Priya S." }, "reviewBody": "Booked Coldplay at Camp Nou through EuroMatchTickets. Smooth process, instant delivery.", "datePublished": "2025-11-30" }
     ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "2200", "offerCount": "587" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "2200", "offerCount": "587" , "validFrom": "2025-01-01" }
   };
 
   const matches = [

@@ -21,11 +21,12 @@ const BayernMunichHubPage = () => {
   ];
 
   const reviewSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@type": "Product",
     "name": "Bayern Munich Tickets 2025-26",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2156", "bestRating": "5", "worstRating": "1" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "2000", "offerCount": "347" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "2000", "offerCount": "347" , "validFrom": "2025-01-01" }
   };
 
   return (

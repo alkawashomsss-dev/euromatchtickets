@@ -39,14 +39,15 @@ const ColdplayPage = () => {
   ];
 
   const reviewSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@type": "Product",
     "name": "Coldplay European Tour 2026 Tickets",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "3456", "bestRating": "5", "worstRating": "1" },
     "review": [
       { "@type": "Review", "name": "Best concert experience with LED wristbands", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Laura B." }, "reviewBody": "Best concert I've ever been to! The LED wristbands were magical. Got my tickets cheaper than anywhere else!", "datePublished": "2026-01-25" }
     ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "495", "offerCount": "2400" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "495", "offerCount": "2400" , "validFrom": "2025-01-01" }
   };
 
   return (
