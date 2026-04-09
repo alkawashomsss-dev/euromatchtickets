@@ -110,6 +110,11 @@ if react_url:
 preview_url = os.environ.get('PREVIEW_URL', '')
 if preview_url:
     ALLOWED_ORIGINS.append(preview_url)
+cors_origins = os.environ.get('CORS_ORIGINS', '')
+if cors_origins == '*':
+    ALLOWED_ORIGINS = ["*"]
+elif cors_origins:
+    ALLOWED_ORIGINS.extend([o.strip() for o in cors_origins.split(',')])
 
 app.add_middleware(
     CORSMiddleware,

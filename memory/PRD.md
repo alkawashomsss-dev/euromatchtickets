@@ -161,6 +161,11 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Unsubscribe**: Full unsubscribe support (per-event or all events)
 - **Tested**: Day 0, 1, 2 emails sent and received successfully via Resend API
 
+### April 9, 2026 - Build Fix (requirements.txt + CORS)
+- **Fixed P0 Build Failure**: Added `--extra-index-url https://d33sy5i8bnduwe.cloudfront.net/simple/` to top of `requirements.txt` so `emergentintegrations` installs correctly in deployment
+- **Fixed CORS for Deployment**: Added `CORS_ORIGINS=*` to backend `.env` and updated `server.py` to support wildcard CORS origins for Emergent production domain
+- **Build**: ✅ Passes, deployment unblocked
+
 ### April 9, 2026 - Email Drip Scheduler (Background Cron)
 - **Email Drip Bot**: Added `email_drip_scheduler()` as background task in `server.py`
   - Runs automatically every 12 hours (no external cron needed)
