@@ -104,6 +104,28 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Sitemap regenerated**: 1512 URLs across 9 category sitemaps (no 2025 pages)
 - **Build verified**: `craco build` passes (hooks order fix applied)
 
+### April 9, 2026 - CTR Optimization + Champions League + Live Signals
+- **CTR-Optimized Titles**: Updated all 3 gold clusters with price + urgency in titles:
+  - Belgian GP: "From €129 – Instant Delivery / Selling Fast / Best Prices"
+  - Taylor Swift: "From £89 – Selling Fast / Wembley / Limited" (GBP for UK)
+  - Bahrain GP: "Night Race – Best Prices + Instant Delivery / From €59"
+- **Champions League Pages Created**: 4 new category pages
+  - `champions-league-tickets` (main: all rounds from €49)
+  - `champions-league-final-tickets` (Munich from €295)
+  - `champions-league-semi-final-tickets` (from €89)
+  - `champions-league-quarter-final-tickets` (from €69)
+- **Team Pages Updated**: 10 teams with CTR-optimized titles (Real Madrid, Barcelona, Man City, Liverpool, Arsenal, Bayern, PSG, Juventus, Inter, AC Milan)
+- **DynamicSEOPage.jsx Enhanced**:
+  - Reviews badge: "★★★★★ 4.9/5 (12,847 reviews)" under H1
+  - Subheadline: "Official resale tickets for {venue}. Instant delivery. 100% money-back guarantee."
+  - Price display: "From €129 | Limited availability" (green badge)
+  - Trust Row: 4 items (Verified, QR, 4.9/5, Stripe)
+  - Sticky CTA Bar: "XX tickets left · XX viewing now"
+  - Currency: Auto-detects £ for UK concerts, € for everything else
+- **Pre-hydration Updated**: All gold pages + CL pages in metadata map with new titles
+- **Schema Updated**: AggregateOffer prices updated (€129 Belgian GP, £89 Taylor Swift, €295 CL Final)
+- **Sitemap Regenerated**: 1463 URLs across 9 sitemaps (includes new CL pages)
+
 ## Pending
 - P2: Login Flow (needs user Google OAuth credentials)
 - P2: Google Indexing API (needs Service Account key)

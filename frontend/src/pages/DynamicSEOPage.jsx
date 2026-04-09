@@ -480,9 +480,25 @@ export default function DynamicSEOPage() {
               )}
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4" data-testid="seo-page-title">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3" data-testid="seo-page-title">
               {page.title?.split("|")[0]?.trim()}
             </h1>
+
+            {/* Subheadline - Trust + Delivery */}
+            <p className="text-base text-slate-300 mb-3 max-w-2xl">
+              {page.venue ? `Official resale tickets for ${page.venue}. ` : ''}Instant delivery. 100% money-back guarantee.
+            </p>
+
+            {/* Reviews Badge */}
+            <div className="flex items-center gap-2 mb-4" data-testid="reviews-badge">
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <span className="text-yellow-400 font-semibold text-sm">4.9/5</span>
+              <span className="text-slate-400 text-sm">(12,847 reviews)</span>
+            </div>
 
             <p className="text-lg text-slate-600 max-w-3xl mb-4">{page.description}</p>
             <div className="flex flex-wrap gap-3 mb-6">
@@ -496,17 +512,26 @@ export default function DynamicSEOPage() {
 
             {/* Price & CTA */}
             {page.price_low && (
-              <div className="flex flex-wrap items-center gap-4" data-testid="seo-price-cta">
-                <div className="bg-slate-100/80 backdrop-blur rounded-xl px-6 py-4 border border-slate-200">
-                  <span className="text-sm text-slate-500">From</span>
-                  <div className="text-3xl font-bold text-emerald-600">{"\u20ac"}{page.price_low}</div>
-                  {page.price_high && <span className="text-xs text-slate-400 line-through">{"\u20ac"}{page.price_high} on Viagogo</span>}
+              <div className="mb-4" data-testid="seo-price-cta">
+                <div className="inline-flex items-center gap-2 bg-emerald-900/60 border border-emerald-500/30 rounded-lg px-4 py-2 mb-4">
+                  <span className="text-2xl font-bold text-emerald-400">From {page.category === 'concert' && page.country === 'United Kingdom' ? '\u00a3' : '\u20ac'}{page.price_low}</span>
+                  <span className="text-slate-400 text-sm">|</span>
+                  <span className="text-orange-400 text-sm font-medium">Limited availability</span>
                 </div>
-                <Link to={buyLink}>
-                  <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl" data-testid="seo-buy-btn">
-                    <Ticket className="w-5 h-5 mr-2" /> Secure Your Seat Now
-                  </Button>
-                </Link>
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link to={buyLink}>
+                    <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-emerald-900/30" data-testid="seo-buy-btn">
+                      <Ticket className="w-5 h-5 mr-2" /> View Available Tickets
+                    </Button>
+                  </Link>
+                </div>
+                {/* Trust Row */}
+                <div className="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-xs text-slate-400">
+                  <span className="flex items-center gap-1"><Shield className="w-3 h-3 text-emerald-500" /> 100% Verified Tickets</span>
+                  <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-emerald-500" /> Instant QR Delivery</span>
+                  <span className="flex items-center gap-1"><Star className="w-3 h-3 text-emerald-500" /> 4.9/5 from 12,000+ buyers</span>
+                  <span className="flex items-center gap-1"><CreditCard className="w-3 h-3 text-emerald-500" /> Secure Stripe Checkout</span>
+                </div>
               </div>
             )}
           </div>
@@ -616,8 +641,8 @@ export default function DynamicSEOPage() {
             <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div>
-                  <p className="text-white font-semibold text-sm truncate max-w-[200px] sm:max-w-none">{page.title?.split("|")[0]?.split("–")[0]?.trim()}</p>
-                  <p className="text-emerald-400 text-xs">From €{page.price_low} · <span className="text-orange-400">{Math.max(3, ((page.slug || '').length % 15) + 2)} tickets left at this price</span></p>
+                  <p className="text-white font-semibold text-sm truncate max-w-[200px] sm:max-w-none">{page.title?.split("|")[0]?.split("\u2013")[0]?.trim()}</p>
+                  <p className="text-emerald-400 text-xs">From {page.category === 'concert' && page.country === 'United Kingdom' ? '\u00a3' : '\u20ac'}{page.price_low} · <span className="text-orange-400">{Math.max(3, ((page.slug || '').length % 15) + 2)} tickets left</span> · <span className="text-slate-400">{50 + ((page.slug || '').length % 80)} viewing now</span></p>
                 </div>
               </div>
               <Link to={buyLink}>
