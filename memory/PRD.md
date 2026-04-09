@@ -136,12 +136,31 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Files**: `PriceDropAlert.jsx` (new), `DynamicSEOPage.jsx` (integrated), `seo.py` (new endpoints)
 - **Build**: ✅ Passes
 
+### April 9, 2026 - Email Automation (Resend Integration)
+- **Resend Integration**: Connected to Resend API for transactional emails
+- **4-Step Drip Campaign**:
+  - Day 0 (instant): "Your ticket alert is active" - sent automatically on subscription
+  - Day 1: "Tickets are selling fast" - urgency
+  - Day 2: "Price update: Tickets increased" - FOMO
+  - Day 3: "Last chance for best prices" - final push
+- **Professional HTML Templates**: Branded emails with event badge, CTA button, trust row, unsubscribe link
+- **APIs Created** (`/app/backend/routes/emails.py`):
+  - `POST /api/emails/send-welcome` - Send Day 0 email
+  - `POST /api/emails/process-drip` - Process all pending drip emails (run via cron)
+  - `GET /api/emails/stats` - Email sending statistics
+  - `GET /api/emails/unsubscribe` - Unsubscribe endpoint
+- **Auto-Welcome**: Day 0 email fires automatically via `asyncio.create_task` when user subscribes
+- **Duplicate Prevention**: Email log tracks sent emails, prevents re-sending same day's email
+- **Unsubscribe**: Full unsubscribe support (per-event or all events)
+- **Tested**: Day 0, 1, 2 emails sent and received successfully via Resend API
+
 ## Pending
 - P2: Login Flow (needs user Google OAuth credentials)
 
 ## Upcoming
-- P1: Owner Dashboard (charts, sales reports, alert stats)
-- P2: Email flow automation (Day 1: "selling fast", Day 2: "prices increased 12%", Day 3: "last chance")
+- P1: Set up cron job for `/api/emails/process-drip` (daily at 10am)
+- P1: Owner Dashboard with email stats + alert stats
+- P2: Event-specific email templates (different content for F1 vs concerts)
 - P2: Google Indexing API (needs Service Account key)
 - P2: Google Merchant Center Feed monitoring
 

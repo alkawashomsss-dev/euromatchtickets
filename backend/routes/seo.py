@@ -1586,6 +1586,14 @@ async def subscribe_price_alert(req: PriceAlertRequest):
         "active": True,
     })
 
+    # Send Day 0 welcome email automatically
+    try:
+        from routes.emails import send_single_email
+        import asyncio
+        asyncio.create_task(send_single_email(email, req.event_name or "Event Tickets", req.event_slug, day=0))
+    except Exception:
+        pass  # Don't block subscription if email fails
+
     total = await db.price_alerts.count_documents({"event_slug": req.event_slug})
     return {"status": "subscribed", "message": "You'll be notified when prices drop!", "subscribers": total}
 

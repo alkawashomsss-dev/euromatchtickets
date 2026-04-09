@@ -34,6 +34,7 @@ from routes.alerts import router as alerts_router, set_db as alerts_set_db
 from routes.seed import router as seed_router
 from routes.sitemap_routes import router as sitemap_router
 from routes.chat import router as chat_router
+from routes.emails import router as emails_router, set_db as emails_set_db
 
 app = FastAPI(title="EuroMatchTickets API", version="2.0")
 
@@ -127,9 +128,11 @@ app.include_router(alerts_router)
 app.include_router(seed_router)
 app.include_router(sitemap_router)
 app.include_router(chat_router)
+app.include_router(emails_router)
 
 # Set DB for alerts
 alerts_set_db(db)
+emails_set_db(db)
 
 # Serve uploaded files
 from fastapi.staticfiles import StaticFiles
