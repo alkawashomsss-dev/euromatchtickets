@@ -6,6 +6,7 @@ import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { InternalLinks } from "../components/InternalLinks";
 import { RelatedEventsSection } from "../components/RelatedEventsSection";
+import { PriceDropAlert, ExitIntentPopup } from "../components/PriceDropAlert";
 import axios from "axios";
 import { API } from "../App";
 
@@ -439,6 +440,19 @@ export default function DynamicSEOPage() {
       })()}
 
       <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="dynamic-seo-page">
+        {/* Dynamic urgency: realistic numbers that change every 5 minutes */}
+        {(() => {
+          const slugHash = (page?.slug || '').split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+          const timeSeed = Math.floor(Date.now() / 300000);
+          const ticketsLeft = 3 + ((slugHash + timeSeed) % 19);
+          const viewingNow = 12 + ((slugHash + timeSeed * 3) % 85);
+          // Store for use in sticky bar
+          if (typeof window !== 'undefined') {
+            window.__ticketsLeft = ticketsLeft;
+            window.__viewingNow = viewingNow;
+          }
+          return null;
+        })()}
         {/* Hero */}
         <div className={`relative bg-gradient-to-b ${style.bg} py-16 sm:py-20`}>
           <div className="max-w-5xl mx-auto px-4">
@@ -532,6 +546,12 @@ export default function DynamicSEOPage() {
                   <span className="flex items-center gap-1"><Star className="w-3 h-3 text-emerald-500" /> 4.9/5 from 12,000+ buyers</span>
                   <span className="flex items-center gap-1"><CreditCard className="w-3 h-3 text-emerald-500" /> Secure Stripe Checkout</span>
                 </div>
+                {/* Price Drop Alert - Inline */}
+                <PriceDropAlert
+                  eventSlug={page.slug}
+                  eventName={page.event_name || page.title?.split("|")[0]?.trim() || ""}
+                  currency={page.category === 'concert' && page.country === 'United Kingdom' ? '\u00a3' : '\u20ac'}
+                />
               </div>
             )}
           </div>
@@ -642,7 +662,7 @@ export default function DynamicSEOPage() {
               <div className="flex items-center gap-3">
                 <div>
                   <p className="text-white font-semibold text-sm truncate max-w-[200px] sm:max-w-none">{page.title?.split("|")[0]?.split("\u2013")[0]?.trim()}</p>
-                  <p className="text-emerald-400 text-xs">From {page.category === 'concert' && page.country === 'United Kingdom' ? '\u00a3' : '\u20ac'}{page.price_low} · <span className="text-orange-400">{Math.max(3, ((page.slug || '').length % 15) + 2)} tickets left</span> · <span className="text-slate-400">{50 + ((page.slug || '').length % 80)} viewing now</span></p>
+                  <p className="text-emerald-400 text-xs">From {page.category === 'concert' && page.country === 'United Kingdom' ? '\u00a3' : '\u20ac'}{page.price_low} · <span className="text-orange-400">{typeof window !== 'undefined' && window.__ticketsLeft ? window.__ticketsLeft : (3 + ((page.slug || '').length % 19))} tickets left</span> · <span className="text-slate-400">{typeof window !== 'undefined' && window.__viewingNow ? window.__viewingNow : (12 + ((page.slug || '').length % 85))} viewing now</span></p>
                 </div>
               </div>
               <Link to={buyLink}>
@@ -653,6 +673,14 @@ export default function DynamicSEOPage() {
             </div>
           </div>
         )}
+
+        {/* Exit Intent Popup */}
+        <ExitIntentPopup
+          eventName={page.event_name || page.title?.split("|")[0]?.trim() || ""}
+          eventSlug={page.slug}
+          currency={page.category === 'concert' && page.country === 'United Kingdom' ? '\u00a3' : '\u20ac'}
+          priceLow={page.price_low}
+        />
       </div>
     </>
   );

@@ -1554,3 +1554,52 @@ async def force_index_all():
         results["engines"]["google_sitemap_pings"] = google_pings
     
     return {"status": "success", **results}
+
+
+# ============================================================
+# PRICE DROP ALERT - Lead Capture
+# ============================================================
+
+from pydantic import BaseModel, EmailStr
+
+class PriceAlertRequest(BaseModel):
+    email: str
+    event_slug: str
+    event_name: str = ""
+
+@router.post("/alerts/subscribe")
+async def subscribe_price_alert(req: PriceAlertRequest):
+    """Subscribe to price drop alerts for an event."""
+    email = req.email.strip().lower()
+    if not email or "@" not in email or "." not in email:
+        raise HTTPException(status_code=400, detail="Invalid email address")
+
+    existing = await db.price_alerts.find_one({"email": email, "event_slug": req.event_slug})
+    if existing:
+        return {"status": "already_subscribed", "message": "You're already subscribed to alerts for this event."}
+
+    await db.price_alerts.insert_one({
+        "email": email,
+        "event_slug": req.event_slug,
+        "event_name": req.event_name,
+        "subscribed_at": datetime.now(timezone.utc).isoformat(),
+        "active": True,
+    })
+
+    total = await db.price_alerts.count_documents({"event_slug": req.event_slug})
+    return {"status": "subscribed", "message": "You'll be notified when prices drop!", "subscribers": total}
+
+@router.get("/alerts/stats")
+async def get_alert_stats():
+    """Get price alert subscription stats (owner dashboard)."""
+    total = await db.price_alerts.count_documents({})
+    pipeline = [
+        {"$group": {"_id": "$event_slug", "count": {"$sum": 1}, "event_name": {"$first": "$event_name"}}},
+        {"$sort": {"count": -1}},
+        {"$limit": 20}
+    ]
+    top_events = []
+    async for doc in db.price_alerts.aggregate(pipeline):
+        top_events.append({"slug": doc["_id"], "count": doc["count"], "event_name": doc.get("event_name", "")})
+    
+    return {"total_subscribers": total, "top_events": top_events}

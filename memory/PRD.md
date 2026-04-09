@@ -126,8 +126,22 @@ Build euromatchtickets.com, an aggressive SEO-focused ticket marketplace with ma
 - **Schema Updated**: AggregateOffer prices updated (€129 Belgian GP, £89 Taylor Swift, €295 CL Final)
 - **Sitemap Regenerated**: 1463 URLs across 9 sitemaps (includes new CL pages)
 
+### April 9, 2026 - Price Drop Alert + Exit Intent Popup (Lead Capture)
+- **New Feature**: Price Drop Alert system for capturing leads and retargeting
+  - **Inline Alert** (under Trust Row): "↓ Get alerted when prices drop" + email input + "Notify Me" button
+  - **Exit Intent Popup**: Triggers when user moves cursor to leave page (after 5s delay). Shows event preview, price, email form
+  - **Backend API**: `POST /api/alerts/subscribe` stores email + event_slug in `price_alerts` collection. Duplicate detection prevents re-subscription
+  - **Stats API**: `GET /api/alerts/stats` returns total subscribers + top events (for owner dashboard)
+- **Dynamic Urgency Numbers**: Changed from static slug-based to time-based (updates every 5 minutes). Range: 3-21 tickets left, 12-96 viewing. Different per page, realistic variation
+- **Files**: `PriceDropAlert.jsx` (new), `DynamicSEOPage.jsx` (integrated), `seo.py` (new endpoints)
+- **Build**: ✅ Passes
+
 ## Pending
 - P2: Login Flow (needs user Google OAuth credentials)
+
+## Upcoming
+- P1: Owner Dashboard (charts, sales reports, alert stats)
+- P2: Email flow automation (Day 1: "selling fast", Day 2: "prices increased 12%", Day 3: "last chance")
 - P2: Google Indexing API (needs Service Account key)
 - P2: Google Merchant Center Feed monitoring
 
