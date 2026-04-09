@@ -511,6 +511,8 @@ function AppRouter() {
         <Route path="/is-euromatchtickets-safe" element={<ReviewPage />} />
         <Route path="/euromatchtickets-erfahrung" element={<ReviewPage />} />
         <Route path="/euromatchtickets-avis" element={<ReviewPage />} />
+        <Route path="/euromatchtickets-opiniones" element={<ReviewPage />} />
+        <Route path="/euromatchtickets-recensioni" element={<ReviewPage />} />
         
         {/* Language root redirects - prevent bare /de, /es, /fr, /it from rendering as events */}
         <Route path="/de" element={<Navigate to="/de/tickets-kaufen" replace />} />

@@ -40,6 +40,20 @@ const REVIEW_VARIANTS = {
     subtitle: "Notre analyse complete et honnete de la plateforme",
     metaDesc: "Avis EuroMatchTickets 2026. Experiences clients, avantages et inconvenients. EuroMatchTickets est-il fiable? Lisez avant d'acheter.",
   },
+  "euromatchtickets-opiniones": {
+    lang: "es",
+    title: "EuroMatchTickets Opiniones 2026 – Es Fiable?",
+    h1: "EuroMatchTickets Opiniones & Valoraciones 2026",
+    subtitle: "Analisis honesto e independiente de la plataforma",
+    metaDesc: "Opiniones EuroMatchTickets 2026. Experiencias reales, ventajas y desventajas. Es EuroMatchTickets fiable? Lee antes de comprar.",
+  },
+  "euromatchtickets-recensioni": {
+    lang: "it",
+    title: "EuroMatchTickets Recensioni 2026 – E Affidabile?",
+    h1: "EuroMatchTickets Recensioni & Valutazioni 2026",
+    subtitle: "Analisi onesta e indipendente della piattaforma",
+    metaDesc: "Recensioni EuroMatchTickets 2026. Esperienze reali, pro e contro. EuroMatchTickets e affidabile? Leggi prima di acquistare.",
+  },
 };
 
 const REVIEWS = [
@@ -67,6 +81,9 @@ const ReviewPage = () => {
   const variant = REVIEW_VARIANTS[slug] || REVIEW_VARIANTS["euromatchtickets-review"];
   const isGerman = variant.lang === "de";
   const isFrench = variant.lang === "fr";
+  const isSpanish = variant.lang === "es";
+  const isItalian = variant.lang === "it";
+  const t = (en, de, fr, es, it) => isGerman ? de : isFrench ? fr : isSpanish ? es : isItalian ? it : en;
 
   useEffect(() => {
     document.title = variant.title;
@@ -131,18 +148,18 @@ const ReviewPage = () => {
             <div className="mt-6 bg-[#1a2236] rounded-xl p-6 border border-gray-700/50">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <p className="text-sm text-gray-400 mb-1">{isGerman ? "Gesamtbewertung" : isFrench ? "Note globale" : "Overall Rating"}</p>
+                  <p className="text-sm text-gray-400 mb-1">{t("Overall Rating", "Gesamtbewertung", "Note globale", "Valoracion General", "Valutazione Generale")}</p>
                   <div className="flex items-center gap-3">
                     <span className="text-4xl font-bold text-white">{avgRating}</span>
                     <div>
                       <ReviewStars rating={Math.round(avgRating)} />
-                      <p className="text-xs text-gray-500 mt-1">{isGerman ? "Basierend auf" : isFrench ? "Base sur" : "Based on"} {REVIEWS.length} {isGerman ? "Bewertungen" : isFrench ? "avis" : "verified reviews"}</p>
+                      <p className="text-xs text-gray-500 mt-1">{t("Based on", "Basierend auf", "Base sur", "Basado en", "Basato su")} {REVIEWS.length} {t("verified reviews", "Bewertungen", "avis", "opiniones verificadas", "recensioni verificate")}</p>
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 bg-emerald-500/10 px-4 py-2 rounded-lg border border-emerald-500/20">
                   <Shield className="w-5 h-5 text-emerald-400" />
-                  <span className="text-emerald-400 font-semibold text-sm">{isGerman ? "Verifiziert & Serios" : isFrench ? "Verifie & Fiable" : "Verified & Legitimate"}</span>
+                  <span className="text-emerald-400 font-semibold text-sm">{t("Verified & Legitimate", "Verifiziert & Serios", "Verifie & Fiable", "Verificado y Legitimo", "Verificato & Affidabile")}</span>
                 </div>
               </div>
             </div>
@@ -152,33 +169,41 @@ const ReviewPage = () => {
           <section className="mb-10">
             <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
               <Users className="w-5 h-5 text-blue-400" />
-              {isGerman ? "Wer ist EuroMatchTickets?" : isFrench ? "Qui est EuroMatchTickets?" : "Who is EuroMatchTickets?"}
+              {isGerman ? "Wer ist EuroMatchTickets?" : isFrench ? "Qui est EuroMatchTickets?" : isSpanish ? "Quien es EuroMatchTickets?" : isItalian ? "Chi e EuroMatchTickets?" : "Who is EuroMatchTickets?"}
             </h2>
             <div className="text-gray-300 space-y-3 leading-relaxed">
               <p>{isGerman 
                 ? "EuroMatchTickets ist ein europäischer Ticket-Marktplatz, der sich auf Sport- und Konzertveranstaltungen spezialisiert hat. Die Plattform verkauft über 500.000 Tickets jährlich und deckt Events wie die Champions League, Formel 1, Premier League und große Konzerte ab."
                 : isFrench
                 ? "EuroMatchTickets est une marketplace europeenne specialisee dans les billets de sport et concerts. La plateforme vend plus de 500 000 billets par an pour des evenements comme la Champions League, la F1, la Premier League et les grands concerts."
+                : isSpanish
+                ? "EuroMatchTickets es un marketplace europeo especializado en entradas de deportes y conciertos. La plataforma vende mas de 500.000 entradas al ano para eventos como la Champions League, Formula 1, Premier League y grandes conciertos."
+                : isItalian
+                ? "EuroMatchTickets e un marketplace europeo specializzato in biglietti per sport e concerti. La piattaforma vende oltre 500.000 biglietti all'anno per eventi come Champions League, Formula 1, Premier League e grandi concerti."
                 : "EuroMatchTickets is a European ticket marketplace specializing in sports and concert events. The platform sells over 500,000 tickets annually, covering events like the Champions League, Formula 1, Premier League, and major concerts."
               }</p>
               <p>{isGerman
                 ? "Wichtig zu verstehen: EuroMatchTickets ist ein Marktplatz (ähnlich wie StubHub oder Viagogo). Das bedeutet, dass die Preise über dem Nennwert liegen können, da Tickets von verifizierten Verkäufern stammen."
                 : isFrench
                 ? "Important a comprendre : EuroMatchTickets est une marketplace (similaire a StubHub ou Viagogo). Les prix peuvent etre superieurs a la valeur nominale car les billets proviennent de vendeurs verifies."
+                : isSpanish
+                ? "Importante entender: EuroMatchTickets es un marketplace (similar a StubHub o Viagogo). Los precios pueden estar por encima del valor nominal ya que las entradas provienen de vendedores verificados."
+                : isItalian
+                ? "Importante da capire: EuroMatchTickets e un marketplace (simile a StubHub o Viagogo). I prezzi possono essere superiori al valore nominale poiche i biglietti provengono da venditori verificati."
                 : "Important to understand: EuroMatchTickets is a marketplace (similar to StubHub or Viagogo). This means prices can be above face value, as tickets come from verified sellers."
               }</p>
               <div className="grid grid-cols-3 gap-4 mt-4">
                 <div className="bg-[#1a2236] rounded-lg p-4 text-center border border-gray-700/30">
                   <p className="text-2xl font-bold text-white">500K+</p>
-                  <p className="text-xs text-gray-400">{isGerman ? "Tickets verkauft" : isFrench ? "Billets vendus" : "Tickets Sold"}</p>
+                  <p className="text-xs text-gray-400">{t("Tickets Sold", "Tickets verkauft", "Billets vendus", "Entradas Vendidas", "Biglietti Venduti")}</p>
                 </div>
                 <div className="bg-[#1a2236] rounded-lg p-4 text-center border border-gray-700/30">
                   <p className="text-2xl font-bold text-white">4.8/5</p>
-                  <p className="text-xs text-gray-400">{isGerman ? "Kundenbewertung" : isFrench ? "Note clients" : "Customer Rating"}</p>
+                  <p className="text-xs text-gray-400">{t("Customer Rating", "Kundenbewertung", "Note clients", "Valoracion", "Valutazione")}</p>
                 </div>
                 <div className="bg-[#1a2236] rounded-lg p-4 text-center border border-gray-700/30">
                   <p className="text-2xl font-bold text-white">12K+</p>
-                  <p className="text-xs text-gray-400">{isGerman ? "Bewertungen" : isFrench ? "Avis" : "Reviews"}</p>
+                  <p className="text-xs text-gray-400">{t("Reviews", "Bewertungen", "Avis", "Opiniones", "Recensioni")}</p>
                 </div>
               </div>
             </div>
