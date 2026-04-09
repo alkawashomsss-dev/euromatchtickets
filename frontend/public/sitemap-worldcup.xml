@@ -100,9 +100,9 @@
   </url>
   <url>
     <loc>https://euromatchtickets.com/world-cup-2026-group-stage-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.90</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/world-cup-2026-round-of-16-tickets</loc>
@@ -112,15 +112,15 @@
   </url>
   <url>
     <loc>https://euromatchtickets.com/world-cup-2026-quarter-final-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.90</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/world-cup-2026-semi-final-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.90</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/world-cup-2026-third-place-play-off-tickets</loc>
@@ -130,7 +130,7 @@
   </url>
   <url>
     <loc>https://euromatchtickets.com/world-cup-2026-final-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
@@ -187,5 +187,23 @@
     <lastmod>2026-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/fr/billets-coupe-du-monde-2026</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/it/biglietti-coppa-del-mondo-2026</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/how-to-buy-world-cup-tickets</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>

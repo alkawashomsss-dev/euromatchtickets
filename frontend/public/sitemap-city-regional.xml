@@ -22,9 +22,9 @@
   </url>
   <url>
     <loc>https://euromatchtickets.com/paris-events</loc>
-    <lastmod>2026-03-30</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.00</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/munich-events</loc>
@@ -34,9 +34,9 @@
   </url>
   <url>
     <loc>https://euromatchtickets.com/milan-events</loc>
-    <lastmod>2026-03-30</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.00</priority>
+    <priority>0.70</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/berlin-events</loc>
@@ -46,9 +46,9 @@
   </url>
   <url>
     <loc>https://euromatchtickets.com/amsterdam-events</loc>
-    <lastmod>2026-03-30</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.00</priority>
+    <priority>0.65</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/manchester-events</loc>
@@ -121,6 +121,48 @@
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/rome-events</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/lisbon-events</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/naples-events</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/turin-events</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/seville-events</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/marseille-events</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/lyon-events</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
   </url>
   <url>
     <loc>https://euromatchtickets.com/london-events-tickets-2026</loc>
