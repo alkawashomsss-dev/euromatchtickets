@@ -41,7 +41,7 @@ function EarningsCalc({ price, qty }) {
       <div className="grid grid-cols-3 gap-4 text-center">
         <div>
           <div className="text-slate-500 text-xs">Gross Revenue</div>
-          <div className="text-white font-bold text-lg">{"\u20ac"}{gross.toLocaleString()}</div>
+          <div className="text-slate-900 font-bold text-lg">{"\u20ac"}{gross.toLocaleString()}</div>
         </div>
         <div>
           <div className="text-slate-500 text-xs">Platform Fee (8%)</div>
@@ -129,7 +129,7 @@ export default function SellTicketsPage() {
               Sell Your Tickets.<br />
               <span className="text-emerald-600">Get Paid Fast.</span>
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl mb-8">
+            <p className="text-lg text-slate-300 max-w-2xl mb-8">
               Turn your unused tickets into cash. List in under 2 minutes. 
               Reach millions of verified buyers. Get paid within 48 hours of the event.
             </p>
@@ -149,7 +149,7 @@ export default function SellTicketsPage() {
 
           {/* How it works */}
           <div id="how-it-works" className="mb-16">
-            <h2 className="text-2xl font-bold text-white text-center mb-10">How Selling Works</h2>
+            <h2 className="text-2xl font-bold text-slate-900 text-center mb-10">How Selling Works</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 { icon: Upload, title: "1. List Your Tickets", desc: "Upload your tickets in under 2 minutes. Add event details, set your price, and attach the PDF or QR code." },
@@ -160,7 +160,7 @@ export default function SellTicketsPage() {
                   <div className="w-14 h-14 rounded-full bg-emerald-900/30 flex items-center justify-center mx-auto mb-4">
                     <s.icon className="w-7 h-7 text-emerald-600" />
                   </div>
-                  <h3 className="text-white font-bold text-lg mb-3">{s.title}</h3>
+                  <h3 className="text-slate-900 font-bold text-lg mb-3">{s.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
                 </div>
               ))}
@@ -169,7 +169,7 @@ export default function SellTicketsPage() {
 
           {/* Trust */}
           <div className="bg-white border border-slate-200 rounded-2xl p-8 mb-16">
-            <h2 className="text-2xl font-bold text-white text-center mb-8">Why Sellers Choose EuroMatchTickets</h2>
+            <h2 className="text-2xl font-bold text-slate-900 text-center mb-8">Why Sellers Choose EuroMatchTickets</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { icon: Shield, title: "Seller Protection", desc: "Your tickets and earnings are fully protected. We handle disputes and guarantee payment." },
@@ -179,7 +179,7 @@ export default function SellTicketsPage() {
               ].map((t, i) => (
                 <div key={i} className="text-center">
                   <t.icon className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
-                  <h3 className="text-white font-semibold mb-2">{t.title}</h3>
+                  <h3 className="text-slate-900 font-semibold mb-2">{t.title}</h3>
                   <p className="text-slate-400 text-sm">{t.desc}</p>
                 </div>
               ))}
@@ -188,7 +188,7 @@ export default function SellTicketsPage() {
 
           {/* Fee comparison */}
           <div className="mb-16">
-            <h2 className="text-2xl font-bold text-white text-center mb-8">Compare Seller Fees</h2>
+            <h2 className="text-2xl font-bold text-slate-900 text-center mb-8">Compare Seller Fees</h2>
             <div className="overflow-x-auto">
               <table className="w-full max-w-3xl mx-auto border border-slate-200 rounded-xl overflow-hidden" data-testid="fee-comparison-table">
                 <thead className="bg-white">
@@ -203,7 +203,7 @@ export default function SellTicketsPage() {
                   <tr className="border-t border-slate-200 bg-emerald-900/10">
                     <td className="px-6 py-4 text-emerald-600 font-bold">EuroMatchTickets</td>
                     <td className="px-6 py-4 text-center text-emerald-600 font-bold">8%</td>
-                    <td className="px-6 py-4 text-center text-white">48 hours</td>
+                    <td className="px-6 py-4 text-center text-slate-900 font-medium">48 hours</td>
                     <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-emerald-600 mx-auto" /></td>
                   </tr>
                   <tr className="border-t border-slate-200">
@@ -231,7 +231,7 @@ export default function SellTicketsPage() {
 
           {/* CTA */}
           <div className="text-center py-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Ready to Sell?</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Ready to Sell?</h2>
             <p className="text-slate-500 mb-6">Sign in with Google and list your first tickets in under 2 minutes.</p>
             <Button onClick={login} className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-6 text-lg rounded-xl" data-testid="sell-cta-signin">
               Sign In & Start Selling <ArrowRight className="w-5 h-5 ml-2" />
@@ -250,11 +250,11 @@ export default function SellTicketsPage() {
           <div className="w-16 h-16 rounded-full bg-emerald-600/20 flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-10 h-10 text-emerald-600" />
           </div>
-          <h2 className="text-2xl font-bold text-white mb-3">Tickets Listed Successfully!</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-3">Tickets Listed Successfully!</h2>
           <p className="text-slate-500 mb-6">{success.message}</p>
           <div className="bg-slate-50 rounded-lg p-4 mb-6 text-left space-y-2">
-            <div className="flex justify-between"><span className="text-slate-500">Listing ID</span><span className="text-white font-mono text-sm">{success.listing_id}</span></div>
-            <div className="flex justify-between"><span className="text-slate-500">Tickets Created</span><span className="text-white">{success.tickets_created}</span></div>
+            <div className="flex justify-between"><span className="text-slate-500">Listing ID</span><span className="text-slate-900 font-mono text-sm">{success.listing_id}</span></div>
+            <div className="flex justify-between"><span className="text-slate-500">Tickets Created</span><span className="text-slate-900">{success.tickets_created}</span></div>
           </div>
           <div className="flex gap-3">
             <Button onClick={() => { setSuccess(null); setStep(1); setForm(p => ({...p, event_name:"", description:""})); }} className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white">
@@ -275,7 +275,7 @@ export default function SellTicketsPage() {
       <div className="max-w-3xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-white mb-2" data-testid="sell-form-title">List Your Tickets</h1>
+          <h1 className="text-3xl font-bold text-slate-900 mb-2" data-testid="sell-form-title">List Your Tickets</h1>
           <p className="text-slate-500">Fill in the details below. It takes less than 2 minutes.</p>
         </div>
 
@@ -295,7 +295,7 @@ export default function SellTicketsPage() {
           {/* STEP 1: Event Details */}
           {step === 1 && (
             <div className="space-y-5" data-testid="sell-step-1">
-              <h2 className="text-xl font-bold text-white mb-4">Event Details</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Event Details</h2>
               <div>
                 <label className="text-slate-600 text-sm mb-1.5 block">Event Name *</label>
                 <Input value={form.event_name} onChange={e => set("event_name", e.target.value)} placeholder="e.g. Taylor Swift Eras Tour - London" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-event-name" />
@@ -335,7 +335,7 @@ export default function SellTicketsPage() {
           {/* STEP 2: Ticket Details */}
           {step === 2 && (
             <div className="space-y-5" data-testid="sell-step-2">
-              <h2 className="text-xl font-bold text-white mb-4">Ticket Details</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Ticket Details</h2>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-slate-600 text-sm mb-1.5 block">Category</label>
@@ -379,7 +379,7 @@ export default function SellTicketsPage() {
           {/* STEP 3: Upload & Submit */}
           {step === 3 && (
             <div className="space-y-5" data-testid="sell-step-3">
-              <h2 className="text-xl font-bold text-white mb-4">Upload Tickets & Confirm</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Upload Tickets & Confirm</h2>
               <div className="border-2 border-dashed border-slate-200 rounded-xl p-8 text-center hover:border-emerald-600/50 transition-colors cursor-pointer" onClick={() => document.getElementById("ticket-file-input")?.click()} data-testid="sell-upload-area">
                 <Upload className="w-10 h-10 text-slate-400 mx-auto mb-3" />
                 {file ? (
@@ -398,13 +398,13 @@ export default function SellTicketsPage() {
 
               {/* Summary */}
               <div className="bg-slate-50 rounded-xl p-6 space-y-3" data-testid="sell-summary">
-                <h3 className="text-white font-semibold mb-3">Listing Summary</h3>
-                <div className="flex justify-between"><span className="text-slate-500">Event</span><span className="text-white">{form.event_name}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Venue</span><span className="text-white">{form.venue}, {form.city}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Category</span><span className="text-white capitalize">{form.category}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Tickets</span><span className="text-white">{form.num_tickets}</span></div>
+                <h3 className="text-slate-900 font-semibold mb-3">Listing Summary</h3>
+                <div className="flex justify-between"><span className="text-slate-500">Event</span><span className="text-slate-900">{form.event_name}</span></div>
+                <div className="flex justify-between"><span className="text-slate-500">Venue</span><span className="text-slate-900">{form.venue}, {form.city}</span></div>
+                <div className="flex justify-between"><span className="text-slate-500">Category</span><span className="text-slate-900 capitalize">{form.category}</span></div>
+                <div className="flex justify-between"><span className="text-slate-500">Tickets</span><span className="text-slate-900">{form.num_tickets}</span></div>
                 <div className="flex justify-between"><span className="text-slate-500">Price per ticket</span><span className="text-emerald-600 font-bold">{"\u20ac"}{form.price_per_ticket}</span></div>
-                {file && <div className="flex justify-between"><span className="text-slate-500">File</span><span className="text-white">{file.name}</span></div>}
+                {file && <div className="flex justify-between"><span className="text-slate-500">File</span><span className="text-slate-900">{file.name}</span></div>}
               </div>
 
               {error && <div className="bg-red-900/20 border border-red-700/50 rounded-lg p-3 text-red-600 text-sm">{error}</div>}
