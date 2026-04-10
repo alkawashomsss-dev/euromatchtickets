@@ -125,6 +125,7 @@ const MonzaTravelTipsPage = lazy(() => import("./pages/MonzaTravelTipsPage"));
 const UltimateF1GuidePage = lazy(() => import("./pages/UltimateF1GuidePage"));
 const MonacoExperiencePage = lazy(() => import("./pages/MonacoExperiencePage"));
 const BahrainNightRaceGuidePage = lazy(() => import("./pages/BahrainNightRaceGuidePage"));
+const SocialHubPage = lazy(() => import("./pages/SocialHubPage"));
 
 // Marketing tools (lazy)
 const AIChatWidget = lazy(() => import("./components/AIChatWidget"));
@@ -292,6 +293,8 @@ function AppRouter() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:articleId" element={<BlogArticlePage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
+        <Route path="/social" element={<SocialHubPage />} />
+        <Route path="/follow" element={<SocialHubPage />} />
         <Route path="/faq" element={<FAQPage />} />
         
         {/* Landing Pages for Google Ads */}

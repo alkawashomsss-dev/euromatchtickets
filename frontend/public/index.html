@@ -11,7 +11,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#09090b" />
     <meta name="google-site-verification" content="0p2i17vvx2NmkSyj1iBqQdzC4mOakD_CtjomY_DytY4" />
-    
+
+    <!-- Meta (Facebook) Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','YOUR_META_PIXEL_ID');fbq('track','PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+    <!-- TikTok Pixel -->
+    <script>
+    !function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=
+    ["page","track","identify","instances","debug","on","off","once","ready","alias",
+    "group","enableCookie","disableCookie"];ttq.setAndDefer=function(t,e){t[e]=function()
+    {t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)
+    ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)
+    ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";
+    ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._o=ttq._o||{};ttq._o[e]=n||{};
+    var o=d.createElement("script");o.type="text/javascript";o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;
+    var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+    ttq.load('YOUR_TIKTOK_PIXEL_ID');ttq.page();
+    }(window,document,'ttq');
+    </script>
+
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA4_ID"></script>
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());gtag('config','YOUR_GA4_ID');
+    </script>
+
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://js.stripe.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -199,7 +232,9 @@
         '/istanbul-event-tickets':['Istanbul Event Tickets 2026 \u2013 Football & Concerts','Buy Istanbul event tickets 2026! Galatasaray from \u20ac25, Fenerbahce from \u20ac25, concerts from \u20ac35. Verified sellers, instant QR delivery!','Istanbul Event Tickets 2026 \u2013 Football, Concerts & More'],
         '/lisbon-event-tickets':['Lisbon Event Tickets 2026 \u2013 Benfica & Sporting','Buy Lisbon event tickets 2026! Benfica from \u20ac25, Sporting CP from \u20ac25, concerts from \u20ac35. Verified sellers, instant QR delivery!','Lisbon Event Tickets 2026 \u2013 Benfica, Sporting & Concerts'],
         '/munich-event-tickets':['Munich Event Tickets 2026 \u2013 Bayern Munich & More','Buy Munich event tickets 2026! Bayern Munich from \u20ac65, Allianz Arena concerts from \u20ac49, Oktoberfest. Verified sellers, instant QR delivery!','Munich Event Tickets 2026 \u2013 Bayern Munich, Concerts & Oktoberfest'],
-        '/cheap-concert-tickets-europe':['Cheap Concert Tickets Europe 2026','Buy cheap concert tickets across Europe 2026. Coldplay, Taylor Swift, Ed Sheeran and 100+ artists. From \u20ac39. Verified, instant delivery!','Cheap Concert Tickets Europe']
+        '/cheap-concert-tickets-europe':['Cheap Concert Tickets Europe 2026','Buy cheap concert tickets across Europe 2026. Coldplay, Taylor Swift, Ed Sheeran and 100+ artists. From \u20ac39. Verified, instant delivery!','Cheap Concert Tickets Europe'],
+        '/social':['EuroMatchTickets Social Hub | Follow for Price Drops','Follow EuroMatchTickets on TikTok, Instagram and YouTube for exclusive ticket deals, price drop alerts, and VIP experience previews. Join 30K+ followers.','Follow EuroMatchTickets for Price Drops'],
+        '/follow':['Follow EuroMatchTickets | Price Drop Alerts','Follow us on TikTok, Instagram and YouTube for exclusive ticket deals and price drops. Be the first to know when prices drop.','Follow EuroMatchTickets']
       };
 
       /* ===== HREFLANG LANGUAGE MAPPING ===== */
