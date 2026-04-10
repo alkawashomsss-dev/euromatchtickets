@@ -67,7 +67,7 @@ function SellerStats() {
       ].map((s, i) => (
         <div key={i} className="bg-white/90 border border-slate-200 rounded-xl p-4 text-center">
           <s.icon className={`w-6 h-6 ${s.color} mx-auto mb-2`} />
-          <div className="text-white font-bold text-xl">{s.value}</div>
+          <div className="text-slate-900 font-bold text-xl">{s.value}</div>
           <div className="text-slate-500 text-xs">{s.label}</div>
         </div>
       ))}
@@ -298,32 +298,32 @@ export default function SellTicketsPage() {
               <h2 className="text-xl font-bold text-white mb-4">Event Details</h2>
               <div>
                 <label className="text-slate-600 text-sm mb-1.5 block">Event Name *</label>
-                <Input value={form.event_name} onChange={e => set("event_name", e.target.value)} placeholder="e.g. Taylor Swift Eras Tour - London" className="bg-slate-100 border-slate-200 text-white" data-testid="sell-event-name" />
+                <Input value={form.event_name} onChange={e => set("event_name", e.target.value)} placeholder="e.g. Taylor Swift Eras Tour - London" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-event-name" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-slate-600 text-sm mb-1.5 block">Event Date *</label>
-                  <Input type="datetime-local" value={form.event_date} onChange={e => set("event_date", e.target.value)} className="bg-slate-100 border-slate-200 text-white" data-testid="sell-event-date" />
+                  <Input type="datetime-local" value={form.event_date} onChange={e => set("event_date", e.target.value)} className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-event-date" />
                 </div>
                 <div>
                   <label className="text-slate-600 text-sm mb-1.5 block">Event Type</label>
-                  <select value={form.event_type} onChange={e => set("event_type", e.target.value)} className="w-full h-10 px-3 bg-slate-100 border border-slate-200 rounded-md text-white" data-testid="sell-event-type">
+                  <select value={form.event_type} onChange={e => set("event_type", e.target.value)} className="w-full h-10 px-3 bg-slate-100 border border-slate-200 rounded-md text-slate-900" data-testid="sell-event-type">
                     {EVENT_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
                   </select>
                 </div>
               </div>
               <div>
                 <label className="text-slate-600 text-sm mb-1.5 block">Venue *</label>
-                <Input value={form.venue} onChange={e => set("venue", e.target.value)} placeholder="e.g. Wembley Stadium" className="bg-slate-100 border-slate-200 text-white" data-testid="sell-venue" />
+                <Input value={form.venue} onChange={e => set("venue", e.target.value)} placeholder="e.g. Wembley Stadium" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-venue" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-slate-600 text-sm mb-1.5 block">City *</label>
-                  <Input value={form.city} onChange={e => set("city", e.target.value)} placeholder="e.g. London" className="bg-slate-100 border-slate-200 text-white" data-testid="sell-city" />
+                  <Input value={form.city} onChange={e => set("city", e.target.value)} placeholder="e.g. London" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-city" />
                 </div>
                 <div>
                   <label className="text-slate-600 text-sm mb-1.5 block">Country</label>
-                  <Input value={form.country} onChange={e => set("country", e.target.value)} placeholder="e.g. UK" className="bg-slate-100 border-slate-200 text-white" data-testid="sell-country" />
+                  <Input value={form.country} onChange={e => set("country", e.target.value)} placeholder="e.g. UK" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-country" />
                 </div>
               </div>
               <Button onClick={() => setStep(2)} disabled={!form.event_name || !form.event_date || !form.venue || !form.city} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-5 rounded-xl mt-4" data-testid="sell-next-step-1">
@@ -339,33 +339,33 @@ export default function SellTicketsPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-slate-600 text-sm mb-1.5 block">Category</label>
-                  <select value={form.category} onChange={e => set("category", e.target.value)} className="w-full h-10 px-3 bg-slate-100 border border-slate-200 rounded-md text-white" data-testid="sell-category">
+                  <select value={form.category} onChange={e => set("category", e.target.value)} className="w-full h-10 px-3 bg-slate-100 border border-slate-200 rounded-md text-slate-900" data-testid="sell-category">
                     {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="text-slate-600 text-sm mb-1.5 block">Section / Block</label>
-                  <Input value={form.section} onChange={e => set("section", e.target.value)} placeholder="e.g. Block A, Row 12" className="bg-slate-100 border-slate-200 text-white" data-testid="sell-section" />
+                  <Input value={form.section} onChange={e => set("section", e.target.value)} placeholder="e.g. Block A, Row 12" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-section" />
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div>
                   <label className="text-slate-600 text-sm mb-1.5 block">Number of Tickets *</label>
-                  <Input type="number" min={1} max={50} value={form.num_tickets} onChange={e => set("num_tickets", parseInt(e.target.value) || 1)} className="bg-slate-100 border-slate-200 text-white" data-testid="sell-num-tickets" />
+                  <Input type="number" min={1} max={50} value={form.num_tickets} onChange={e => set("num_tickets", parseInt(e.target.value) || 1)} className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-num-tickets" />
                 </div>
                 <div>
                   <label className="text-slate-600 text-sm mb-1.5 block">Your Price ({"\u20ac"}) *</label>
-                  <Input type="number" min={1} step={0.01} value={form.price_per_ticket} onChange={e => set("price_per_ticket", e.target.value)} placeholder="149.00" className="bg-slate-100 border-slate-200 text-white" data-testid="sell-price" />
+                  <Input type="number" min={1} step={0.01} value={form.price_per_ticket} onChange={e => set("price_per_ticket", e.target.value)} placeholder="149.00" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-price" />
                 </div>
                 <div>
                   <label className="text-slate-600 text-sm mb-1.5 block">Face Value ({"\u20ac"})</label>
-                  <Input type="number" min={0} step={0.01} value={form.original_price} onChange={e => set("original_price", e.target.value)} placeholder="200.00" className="bg-slate-100 border-slate-200 text-white" data-testid="sell-face-value" />
+                  <Input type="number" min={0} step={0.01} value={form.original_price} onChange={e => set("original_price", e.target.value)} placeholder="200.00" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-face-value" />
                 </div>
               </div>
               <EarningsCalc price={parseFloat(form.price_per_ticket) || 0} qty={form.num_tickets} />
               <div>
                 <label className="text-slate-600 text-sm mb-1.5 block">Description (optional)</label>
-                <textarea value={form.description} onChange={e => set("description", e.target.value)} placeholder="Any additional details about the tickets..." rows={3} className="w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-md text-white resize-none" data-testid="sell-description" />
+                <textarea value={form.description} onChange={e => set("description", e.target.value)} placeholder="Any additional details about the tickets..." rows={3} className="w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-md text-slate-900 resize-none" data-testid="sell-description" />
               </div>
               <div className="flex gap-3 mt-4">
                 <Button variant="outline" onClick={() => setStep(1)} className="border-slate-200 text-slate-600">Back</Button>

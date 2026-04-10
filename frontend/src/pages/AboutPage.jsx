@@ -120,8 +120,8 @@ const AboutPage = () => {
               <Building2 className="w-3 h-3 mr-1" />
               UK Registered Company
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">About EuroMatchTickets</h1>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">About EuroMatchTickets</h1>
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               Europe's most trusted ticket marketplace. Officially registered, fully compliant, and dedicated to getting you to the events you love.
             </p>
           </div>
@@ -131,7 +131,7 @@ const AboutPage = () => {
             {stats.map((stat, idx) => (
               <div key={idx} className="bg-white border border-slate-200 rounded-xl p-6 text-center">
                 <stat.icon className="w-8 h-8 mx-auto mb-3 text-violet-600" />
-                <div className="text-3xl font-bold mb-1">{stat.value}</div>
+                <div className="text-3xl font-bold mb-1 text-slate-900">{stat.value}</div>
                 <div className="text-sm text-slate-500">{stat.label}</div>
               </div>
             ))}
