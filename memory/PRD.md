@@ -9,89 +9,39 @@ Build `euromatchtickets.com`, a ticket marketplace with primary focus on achievi
 
 ## Core Features (Implemented)
 - Event browsing with massive scale SEO-optimized landing pages
-- Google Merchant Center XML feed
-- Schema.org/JSON-LD integration (AggregateOffer, SportsEvent, FAQPage)
+- Schema.org/JSON-LD integration
 - Dynamic Trust/Review pages (EN, DE, FR, ES, IT)
 - VIP Ticket Experiences with event-specific images & descriptions
-- Multi-lingual SEO pages (ES, DE, FR, IT)
+- Multi-lingual SEO pages
 - Static sitemap.xml with 356+ URLs
-- Proper canonical URL handling
-- Pre-hydration SEO script for instant meta tag rendering
-- FanProtect guarantee system
-- Email Drip Campaign system
-- Interactive venue maps (MotoGP, Isle of Man TT)
-- Social Media Content Kit (TikTok, Instagram, YouTube Shorts)
-- **Retargeting Pixels** (Meta/Facebook, TikTok, Google Analytics 4)
-- **Social Hub Page** with live viewers, countdown, price drop alerts
-- **Killer Sales Pages** (Spa F1 golden page with VIP, video, countdown)
+- Retargeting Pixels (Meta, TikTok, GA4)
+- Social Hub Page with live viewers, countdown, price drop alerts
+- Killer Sales Pages (Spa F1 golden page)
+- Social Media Content Kit + AI-Generated Video + Professional Assets
 
-## Recent Completed Work (April 10, 2026)
+## Completed Work (April 10, 2026)
+- CSS text visibility fixes (AboutPage, SellTicketsPage)
+- VIP Experience complete rewrite (event-specific)
+- Spa F1 Golden Sales Page (hero, video, VIP, Paddock Club CTA, reviews)
+- Retargeting Pixels (Meta, TikTok, GA4 - placeholder IDs)
+- Social Hub Page (/social, /follow)
+- Social Media Content Kit (SOCIAL_MEDIA_KIT_2026.md)
+- AI Video: 12s adrenaline montage (Sora 2) - 9/10 viral rating
+- Professional branding images (profile pics, cover banner, TikTok thumbnail)
 
-### Session 1 - CSS & VIP Fixes
-- **CSS Text Visibility Fix:** Fixed white-on-white text across SellTicketsPage and AboutPage
-- **VIP Experience Upgrade:** Complete rewrite with event-specific images (F1 Paddock Club, Football Skybox, Concert Backstage, MotoGP VIP Village)
-
-### Session 2 - Golden Page, Pixels & Social Hub
-- **Spa F1 Golden Page:** Complete rewrite of `/f1-belgian-grand-prix-spa-tickets` as a killer sales page:
-  - Hero with aerial Spa image, live viewers count, "Selling Fast" badge
-  - Countdown timer to race day
-  - "Buy Spa F1 Tickets" + "Upgrade to Paddock Club" CTAs
-  - Video section with YouTube embed (Sergio Perez onboard lap)
-  - "VIP Experience at Spa" section with Paddock Club gallery, perks grid
-  - Two VIP packages: Hospitality Lounge (€1,189) and Paddock Club (€3,489)
-  - Verified buyer reviews with star ratings
-  - SEO keyword cloud
-  - Final conversion CTA section
-- **Retargeting Pixels:** Added Meta Pixel, TikTok Pixel, and GA4 to index.html (placeholder IDs - user needs to replace)
-- **Social Hub Page:** New `/social` and `/follow` pages with:
-  - Live viewer count
-  - "Follow for Price Drops" headline
-  - TikTok, Instagram, YouTube, Twitter/X social cards
-  - Next event countdown timer
-  - Upcoming events list with price drop alerts
-  - TikTok video previews
-  - Email subscribe form for price drop alerts
-- **Social Media Content Kit:** Created comprehensive kit at `/app/memory/SOCIAL_MEDIA_KIT_2026.md`
-
-## Pixel IDs (User Needs to Replace)
-- Meta Pixel: `YOUR_META_PIXEL_ID` → Replace in `/app/frontend/public/index.html`
-- TikTok Pixel: `YOUR_TIKTOK_PIXEL_ID` → Replace in `/app/frontend/public/index.html`
-- Google Analytics 4: `YOUR_GA4_ID` → Replace in `/app/frontend/public/index.html`
-
-## Key Architecture
-```
-/app/
-├── backend/ (FastAPI)
-│   ├── server.py
-│   └── routes/ (seo.py, seed.py, etc.)
-├── frontend/ (React)
-│   ├── public/
-│   │   ├── index.html (SEO pre-hydration + retargeting pixels)
-│   │   └── sitemap.xml (356 URLs)
-│   └── src/
-│       ├── components/
-│       │   ├── SEOHead.jsx (canonical, meta, hreflang)
-│       │   ├── VIPExperience.jsx (event-specific VIP)
-│       │   └── InteractiveVenueMap.jsx
-│       └── pages/
-│           ├── SpaGPPage.jsx (Golden sales page)
-│           ├── SocialHubPage.jsx (Social + countdown)
-│           ├── DynamicSEOPage.jsx
-│           └── ReviewPage.jsx (Trust pages)
-└── memory/
-    ├── PRD.md
-    └── SOCIAL_MEDIA_KIT_2026.md
-```
+## Pixel IDs (User Needs to Replace in index.html)
+- Meta Pixel: `YOUR_META_PIXEL_ID`
+- TikTok Pixel: `YOUR_TIKTOK_PIXEL_ID`
+- Google Analytics 4: `YOUR_GA4_ID`
 
 ## Upcoming Tasks
-- P1: Replace pixel placeholder IDs with real ones (user provides)
-- P1: Optimize top landing pages for GSC keywords (Taylor Swift, Champions League)
-- P1: Enhance Owner Dashboard (email campaign stats, sales reports)
-- P2: Activate next batch of 100 SEO pages
-- P2: Custom email templates by event type
+- P1: Replace pixel placeholder IDs with real ones
+- P1: Optimize landing pages for GSC keywords (Taylor Swift, Champions League)
+- P1: More golden sales pages (Taylor Swift, Champions League Final)
+- P2: Owner Dashboard enhancement (email stats)
+- P2: Activate next 100 SEO pages
 
 ## Future/Backlog
-- A/B testing for SEO page titles and email subjects
-- More golden sales pages (Taylor Swift, Champions League Final)
-- Video/GIF highlights on event pages
+- A/B testing for titles/subjects
+- Custom email templates by event type
 - Ticket Supplier Affiliate Program
