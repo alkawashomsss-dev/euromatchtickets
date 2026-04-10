@@ -8,7 +8,7 @@ import asyncio
 import logging
 
 from fastapi import FastAPI, Request
-from fastapi.responses import Response
+from fastapi.responses import Response, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from dotenv import load_dotenv
@@ -138,6 +138,15 @@ app.include_router(emails_router)
 # Set DB for alerts
 alerts_set_db(db)
 emails_set_db(db)
+
+# Direct download endpoint for media files
+@app.get("/api/download/video")
+async def download_video():
+    video_path = "/app/frontend/public/euromatchtickets_tiktok.mp4"
+    if os.path.exists(video_path):
+        return FileResponse(video_path, media_type="video/mp4", filename="EuroMatchTickets_Adrenaline.mp4")
+    return {"error": "Video not found"}
+
 
 # Serve uploaded files
 from fastapi.staticfiles import StaticFiles
