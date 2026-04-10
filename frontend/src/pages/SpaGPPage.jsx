@@ -194,7 +194,7 @@ const SpaGPPage = () => {
               </div>
             ) : (
               <iframe
-                src="https://www.youtube.com/embed/KVE_WIpZs7Q?autoplay=1&rel=0"
+                src="https://www.youtube.com/embed/Zjt72i2PEEE?autoplay=1&rel=0"
                 className="w-full h-full"
                 allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen
