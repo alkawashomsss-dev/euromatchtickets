@@ -77,103 +77,105 @@ const EventCard = ({ event, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.4, delay: index * 0.06 }}
     >
       <Link 
         to={`/event/${event.slug || event.event_id}`}
         data-testid={`event-card-${event.slug || event.event_id}`}
-        className="event-card group block glass-card-hover"
+        className="group block bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
       >
         {/* Image */}
-        <div className="relative h-48 overflow-hidden rounded-t-3xl">
+        <div className="relative h-48 overflow-hidden">
           <img 
             src={event.image_url || `${getEventImagePath(event)}-md.webp`}
-            alt={event.image_alt || `${event.title} tickets - EuroMatchTickets`}
+            alt={event.image_alt || `${event.title} tickets`}
             loading="lazy" decoding="async" width="400" height="192"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           
-          {/* Badges */}
-          <div className="absolute top-3 left-3 flex flex-col gap-1.5">
-            <Badge className={isMatch ? "tag-match text-xs" : "tag-concert text-xs"}>
-              {isMatch ? <Trophy className="w-3 h-3 mr-1" /> : <Music className="w-3 h-3 mr-1" />}
+          {/* Category Badge - Top Left */}
+          <div className="absolute top-3 left-3">
+            <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-black uppercase tracking-wider text-white ${isMatch ? 'bg-[#15803d]' : 'bg-[#e10600]'}`}>
+              {isMatch ? <Trophy className="w-3 h-3" /> : <Music className="w-3 h-3" />}
               {isMatch ? "Match" : "Concert"}
-            </Badge>
+            </span>
+          </div>
+
+          {/* Featured / Urgency - Top Right */}
+          <div className="absolute top-3 right-3 flex flex-col gap-1.5 items-end">
+            {event.featured && (
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-black uppercase tracking-wider bg-white text-[#0f172a]">
+                <Sparkles className="w-3 h-3" /> Featured
+              </span>
+            )}
             {isLimited && (
-              <Badge className="bg-red-500 text-white border-0 text-[10px] animate-pulse">
-                <AlertCircle className="w-3 h-3 mr-0.5" /> Only {ticketsLeft} left
-              </Badge>
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-black bg-[#e10600] text-white animate-pulse">
+                <AlertCircle className="w-3 h-3" /> {ticketsLeft} left!
+              </span>
             )}
             {isFast && (
-              <Badge className="bg-amber-500 text-white border-0 text-[10px]">
-                <TrendingUp className="w-3 h-3 mr-0.5" /> Selling Fast
-              </Badge>
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-black bg-white text-[#0f172a]">
+                <TrendingUp className="w-3 h-3" /> Selling Fast
+              </span>
             )}
           </div>
-          {event.featured && (
-            <div className="absolute top-3 right-3">
-              <Badge className="bg-amber-50 text-amber-700 border border-amber-200 text-[10px]">
-                <Sparkles className="w-3 h-3 mr-0.5" /> Featured
-              </Badge>
-            </div>
-          )}
+
+          {/* Date overlay bottom-left */}
+          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1.5 rounded-lg">
+            <Calendar className="w-3 h-3" />
+            {dateInfo.month} {dateInfo.date}
+          </div>
         </div>
 
         {/* Content */}
-        <div className="p-5">
-          <div className="flex items-start justify-between gap-2 mb-1">
-            <h3 className="text-lg font-bold text-slate-900 group-hover:text-slate-700 transition-colors line-clamp-1 flex-1">
-              {event.title}
-            </h3>
-            <CountdownTimer targetDate={event.event_date} />
+        <div className="p-4">
+          <h3 className="text-base font-black text-[#0f172a] group-hover:text-[#e10600] transition-colors line-clamp-1 mb-1">
+            {event.title}
+          </h3>
+
+          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-3">
+            <MapPin className="w-3 h-3" />{event.venue ? `${event.venue}, ` : ''}{event.city}
           </div>
-          {event.subtitle && <p className="text-slate-500 text-sm mb-3">{event.subtitle}</p>}
 
           {isMatch && event.home_team && (
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center justify-center gap-3 py-2 mb-3 bg-[#f8fafc] rounded-lg border border-slate-100">
               <div className="flex items-center gap-1.5">
-                <div className="w-7 h-7 bg-slate-100 rounded-full p-1 flex items-center justify-center">
-                  <img src={event.home_logo} alt="" className="w-5 h-5 object-contain" onError={(e) => e.target.style.display='none'} />
+                <div className="w-6 h-6 bg-white rounded-full p-0.5 shadow-sm flex items-center justify-center">
+                  <img src={event.home_logo} alt="" className="w-4 h-4 object-contain" onError={(e) => e.target.style.display='none'} />
                 </div>
-                <span className="font-medium text-sm text-slate-800">{event.home_team}</span>
+                <span className="font-black text-sm text-[#0f172a]">{event.home_team}</span>
               </div>
-              <span className="text-slate-400 text-xs font-bold">VS</span>
+              <span className="text-[#e10600] text-xs font-black">VS</span>
               <div className="flex items-center gap-1.5">
-                <span className="font-medium text-sm text-slate-800">{event.away_team}</span>
-                <div className="w-7 h-7 bg-slate-100 rounded-full p-1 flex items-center justify-center">
-                  <img src={event.away_logo} alt="" className="w-5 h-5 object-contain" onError={(e) => e.target.style.display='none'} />
+                <span className="font-black text-sm text-[#0f172a]">{event.away_team}</span>
+                <div className="w-6 h-6 bg-white rounded-full p-0.5 shadow-sm flex items-center justify-center">
+                  <img src={event.away_logo} alt="" className="w-4 h-4 object-contain" onError={(e) => e.target.style.display='none'} />
                 </div>
               </div>
             </div>
           )}
 
-          <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
-            <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />{dateInfo.month} {dateInfo.date}</span>
-            <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{event.city}</span>
-          </div>
-
-          <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+          <div className="flex items-center justify-between pt-3 border-t border-slate-100">
             {event.lowest_price ? (
-              <div>
-                <span className="text-slate-400 text-xs">From</span>
-                <span className="text-2xl font-bold text-slate-900 ml-2">&euro;{event.lowest_price.toFixed(0)}</span>
+              <div className="flex items-baseline gap-1">
+                <span className="text-xs text-slate-400 font-medium">From</span>
+                <span className="text-xl font-black text-[#0f172a]">&euro;{event.lowest_price.toFixed(0)}</span>
               </div>
             ) : (
               <span className="text-slate-400 text-sm">Price TBA</span>
             )}
             {ticketsLeft > 0 && (
-              <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                isLimited ? 'bg-red-50 text-red-600 border border-red-200'
-                : isFast ? 'bg-amber-50 text-amber-700 border border-amber-200'
-                : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+              <span className={`text-xs font-bold px-2.5 py-1 rounded ${
+                isLimited ? 'bg-[#e10600] text-white'
+                : isFast ? 'bg-[#0f172a] text-white'
+                : 'bg-[#15803d] text-white'
               }`}>
-                <Ticket className="w-3 h-3" />
-                <span>{ticketsLeft} available</span>
-              </div>
+                {ticketsLeft} available
+              </span>
             )}
           </div>
         </div>

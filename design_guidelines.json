@@ -1,131 +1,104 @@
 {
-  "project_name": "EuroMatchTickets - Legendary Edition",
-  "version": "2.0",
-  "theme": "light",
-  "design_philosophy": {
-    "core_concept": "The Modern Aristocrat",
-    "description": "A fusion of Swiss precision and luxury hospitality. It feels like entering a First Class lounge—bright, airy, exclusive, and hyper-functional. We reject the 'dark mode gamer' aesthetic for a 'platinum card' feel.",
-    "principles": [
-      "Fusion over Imitation: Mix 'Swiss Poster' typography with 'Luxury Hotel' textures.",
-      "Emotion First: Every interaction must feel expensive (weighty animations, smooth scrolls).",
-      "Content is King: Events are the heroes. Use massive imagery and negative space.",
-      "Zoom In: Close-ups of emotions (fans screaming, drivers focusing) > generic wide shots.",
-      "Negative Space: 3x more whitespace than competitors. Luxury is space.",
-      "Glassmorphism: Use 'Crystal Glass' (high blur, high saturation) not 'Muddy Plastic'."
-    ]
+  "theme": "hybrid-high-contrast",
+  "archetype": "The Performance Pro / Swiss Brutalist",
+  "colors": {
+    "primary_accent": "#e10600",
+    "primary_accent_hover": "#b80500",
+    "dark_base": "#0f172a",
+    "dark_surface": "#1e293b",
+    "light_base": "#f8fafc",
+    "light_surface": "#ffffff",
+    "text_dark": "#020617",
+    "text_light": "#ffffff",
+    "muted_text": "#64748b",
+    "border_color": "#e2e8f0",
+    "forbidden_colors": ["purple", "violet", "orange", "yellow", "cyan", "fuchsia", "pink", "teal", "pastel"]
   },
   "typography": {
-    "font_family": {
-      "heading": "Space Grotesk, sans-serif",
-      "body": "Outfit, sans-serif",
-      "accent": "Unbounded, sans-serif"
-    },
-    "rules": [
-      "Headings (H1-H3): Space Grotesk. Weight: 700/800. Tracking: -0.03em. Leading: 1.1.",
-      "Body: Outfit. Weight: 400/500. Leading: 1.6. Tracking: normal.",
-      "Overlines/Labels: Space Grotesk or Unbounded. Uppercase. Tracking: 0.1em. Text-xs.",
-      "Buttons: Outfit. Weight: 600. Tracking: 0.02em."
+    "fonts_to_import": [
+      "https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
     ],
-    "scale": {
-      "h1": "text-6xl md:text-8xl lg:text-9xl",
-      "h2": "text-4xl md:text-6xl",
-      "h3": "text-3xl md:text-4xl",
-      "body-lg": "text-lg md:text-xl",
-      "body-base": "text-base",
-      "caption": "text-sm text-muted-foreground"
-    }
-  },
-  "colors": {
-    "palette": {
-      "background": "hsl(210, 20%, 98%)",
-      "foreground": "hsl(222, 47%, 11%)",
-      "card": "rgba(255, 255, 255, 0.65)",
-      "card_foreground": "hsl(222, 47%, 11%)",
-      "popover": "hsl(0, 0%, 100%)",
-      "popover_foreground": "hsl(222, 47%, 11%)",
-      "primary": "hsl(222, 47%, 11%)",
-      "primary_foreground": "hsl(210, 40%, 98%)",
-      "secondary": "hsl(210, 40%, 96.1%)",
-      "secondary_foreground": "hsl(222, 47%, 11%)",
-      "muted": "hsl(210, 40%, 96.1%)",
-      "muted_foreground": "hsl(215.4, 16.3%, 46.9%)",
-      "accent": "hsl(43, 96%, 56%)",
-      "accent_foreground": "hsl(222, 47%, 11%)",
-      "destructive": "hsl(0, 84.2%, 60.2%)",
-      "destructive_foreground": "hsl(210, 40%, 98%)",
-      "border": "hsla(222, 47%, 11%, 0.1)",
-      "input": "hsla(222, 47%, 11%, 0.1)",
-      "ring": "hsl(222, 47%, 11%)"
+    "headings": {
+      "font_family": "'Oswald', sans-serif",
+      "style": "uppercase, tracking-tight, font-bold"
     },
-    "gradients": {
-      "hero_mesh": "radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%)",
-      "glass_surface": "linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4))",
-      "gold_accent": "linear-gradient(135deg, #FFD700 0%, #FDB931 100%)"
+    "body": {
+      "font_family": "'Inter', sans-serif",
+      "style": "leading-relaxed"
+    },
+    "labels": {
+      "style": "uppercase, tracking-[0.1em], text-xs, font-bold"
     }
   },
   "layout": {
-    "grid_system": "Bento Grid (Mode A)",
-    "container_width": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-    "spacing": {
-      "section_padding": "py-24 md:py-32",
-      "element_gap": "gap-8 md:gap-12"
-    },
-    "border_radius": {
-      "card": "rounded-3xl",
-      "button": "rounded-full",
-      "input": "rounded-xl"
-    }
+    "spacing": "Generous spacing. Use p-8 or p-12 for sections. gap-8 for grids.",
+    "cards": "Square or very slightly rounded (max rounded-sm). bg-white, 1px border border-slate-200, thick top border (border-t-4 border-[#e10600]).",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "general": "Mobile-first approach. Ensure columns collapse to 1 on mobile."
   },
-  "components": {
-    "cards": {
-      "style": "Glassmorphism Crystal",
-      "classes": "bg-white/60 backdrop-blur-2xl border border-white/40 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500",
-      "hover": "hover:bg-white/80"
-    },
-    "buttons": {
-      "primary": "bg-primary text-primary-foreground rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300",
-      "secondary": "bg-white text-primary border border-primary/10 rounded-full px-8 py-4 text-lg font-semibold hover:bg-gray-50 transition-all duration-300",
-      "accent": "bg-accent text-accent-foreground rounded-full px-8 py-4 text-lg font-bold shadow-gold hover:shadow-gold-lg hover:scale-105 transition-all duration-300"
-    },
-    "inputs": {
-      "style": "bg-white/50 backdrop-blur-md border-border focus:ring-2 focus:ring-primary/20 transition-all duration-300 rounded-xl h-14 px-6 text-lg"
-    }
+  "visual_enhancers": {
+    "borders": "Use sharp borders. Thick red accents for active states, tabs, or premium elements.",
+    "shadows": "Minimalist. shadow-sm default, shadow-md on hover. Avoid muddy large shadows.",
+    "textures": "Clean solids. No gradients, no glassmorphism."
   },
   "motion": {
-    "library": "framer-motion",
-    "settings": {
-      "transition_spring": { "type": "spring", "stiffness": 100, "damping": 20 },
-      "transition_ease": { "duration": 0.6, "ease": [0.22, 1, 0.36, 1] }
-    },
-    "interactions": {
-      "hover_lift": "whileHover={{ y: -5 }}",
-      "click_press": "whileTap={{ scale: 0.98 }}",
-      "entrance": "initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}"
-    }
+    "hover": "Snappy. transition-transform duration-200. Hover on cards: -translate-y-1 shadow-lg.",
+    "buttons": "transition-colors duration-200. Color fill on hover. Red to darker red."
   },
-  "assets": {
-    "images": {
-      "hero_football": "https://images.unsplash.com/photo-1665413813194-3b80d79b6421?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzZ8MHwxfHNlYXJjaHwyfHxwcmVtaWVyJTIwbGVhZ3VlJTIwc3RhZGl1bSUyMGF0bW9zcGhlcmV8ZW58MHx8fHwxNzczNzc3OTYwfDA&ixlib=rb-4.1.0&q=85",
-      "hero_f1": "https://images.unsplash.com/photo-1686643134714-d927afe2ee0f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwzfHxmb3JtdWxhJTIwMSUyMHJhY2UlMjBjYXIlMjBkeW5hbWljJTIwYmx1cnJ5JTIwc3BlZWR8ZW58MHx8fHwxNzczNzc3OTYxfDA&ixlib=rb-4.1.0&q=85",
-      "hero_concert": "https://images.unsplash.com/photo-1690645454289-0ae7004a479d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NjV8MHwxfHNlYXJjaHwzfHxjb25jZXJ0JTIwY3Jvd2QlMjBldXBob3JpYyUyMGxpZ2h0c3xlbnwwfHx8fDE3NzM3Nzc5NjV8MA&ixlib=rb-4.1.0&q=85",
-      "hero_motogp": "https://images.unsplash.com/photo-1761778500894-e200f0dfa770?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHwyfHxtb3RvcmN5Y2xlJTIwdHJhY2slMjBhc3BoYWx0fGVufDB8fHx8MTc3Mzc3Nzk3Nnww&ixlib=rb-4.1.0&q=85",
-      "background_texture": "https://images.unsplash.com/photo-1759178459554-c27da3a5ecc6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjB3aGl0ZSUyMGdvbGQlMjBhYnN0cmFjdCUyMDNkJTIwd2F2ZXxlbnwwfHx8fDE3NzM3Nzc5Nzd8MA&ixlib=rb-4.1.0&q=85"
-    }
+  "components": {
+    "button_primary": "bg-[#e10600] text-white rounded-none px-6 py-3 font-bold uppercase tracking-wide hover:bg-[#b80500] focus:ring-2 focus:ring-[#e10600] focus:ring-offset-2 transition-colors",
+    "button_secondary": "bg-slate-900 text-white rounded-none px-6 py-3 font-bold uppercase tracking-wide hover:bg-slate-800 transition-colors",
+    "badges": "bg-slate-900 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider, or bg-[#e10600] for VIP/Hot tickets.",
+    "navbar": "bg-slate-950 text-white sticky top-0 z-50 border-b border-slate-800 py-4",
+    "footer": "bg-slate-950 text-slate-300 py-16 border-t-4 border-[#e10600]"
   },
-  "universal_guidelines": {
-    "colors": "No gradients for text. High contrast always.",
-    "spacing": "Use p-8 or p-12 for containers. Don't crowd content.",
-    "accessibility": "Ensure text contrast > 4.5:1. Use ARIA labels.",
-    "testing": "All interactive elements must have data-testid attributes."
+  "media": {
+    "style": "High contrast, high saturation images. No vintage filters. Professional sports photography.",
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1742412615437-4cefe005d82c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHw0fHxmb3JtdWxhJTIwMSUyMHJhY2luZyUyMGNhcnxlbnwwfHx8fDE3NzU5MDczMzd8MA&ixlib=rb-4.1.0&q=85",
+        "description": "F1 race car speeding down track",
+        "category": "hero_banner"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1774487671620-b9174d206849?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwyfHxmb3JtdWxhJTIwMSUyMHJhY2luZyUyMGNhcnxlbnwwfHx8fDE3NzU5MDczMzd8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Formula 1 race car on track",
+        "category": "f1_event_card"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1549923015-badf41b04831?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxzdGFkaXVtJTIwZm9vdGJhbGwlMjBtYXRjaHxlbnwwfHx8fDE3NzU5MDczMzd8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Aerial view of soccer stadium",
+        "category": "football_event_card"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1604364260242-1156640c0dfb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwzfHxjb25jZXJ0JTIwY3Jvd2QlMjBsaXZlfGVufDB8fHx8MTc3NTkwNzMzN3ww&ixlib=rb-4.1.0&q=85",
+        "description": "Concert crowd at night",
+        "category": "concert_event_card"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1761950143597-69cef2686bfa?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwyfHx2aXAlMjBsdXh1cnklMjBsb3VuZ2V8ZW58MHx8fHwxNzc1OTA3MzM3fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Luxurious seating area",
+        "category": "vip_experiences"
+      }
+    ]
   },
   "instructions_to_main_agent": [
-    "1. UPDATE TAILWIND CONFIG: Replace the dark mode colors in `tailwind.config.js` with the palette provided above. Set `darkMode: 'class'` but default to light.",
-    "2. UPDATE CSS VARIABLES: In `index.css`, update the `:root` variables to match the Light Mode palette. Remove the dark background logic.",
-    "3. COMPONENT REFRESH: Rewrite `App.js` and major components to use the new 'Glassmorphism Crystal' styles. Remove all `bg-zinc-900` classes and replace with `bg-white/60 backdrop-blur-xl`.",
-    "4. TYPOGRAPHY: Ensure `Space Grotesk` is used for all headings with `tracking-tight`.",
-    "5. MOTION: Add `framer-motion` to all page transitions and card interactions.",
-    "6. TRUST: Add a dedicated 'Trust & Guarantee' section with emerald green shields/icons in the hero or just below it.",
-    "7. HEADER: Make the header sticky, glassmorphism, with a big 'Sign In' or 'My Tickets' pill button.",
-    "8. MOBILE: Ensure the 'Buy' button is sticky at the bottom on mobile screens."
+    "CLEANUP FIRST: Delete or comment out conflicting CSS rules in App.css and index.css that enforce random purple/cyan/orange/yellow colors or broken dark themes. Apply standard Tailwind classes instead.",
+    "COLOR ENFORCEMENT: Strictly prohibit the use of tailwind colors: purple, violet, fuchsia, pink, orange, yellow, cyan, teal. If they exist in the codebase, replace them with slate or red.",
+    "THEME: Implement a light theme for the main content area (bg-slate-50 or white) so the event cards pop. Use a dark theme (bg-slate-950) for the Navbar and Footer to frame the site and give a premium feel.",
+    "CARDS: Event cards must be 'bg-white', 'text-slate-900', with a sharp 'rounded-none' or 'rounded-sm' border. Add 'border-t-4 border-[#e10600]' to make them look like premium Formula 1 UI.",
+    "TYPOGRAPHY: Import and use 'Oswald' font for all headings to give it that aggressive, sporty, premium look. Use 'Inter' for body.",
+    "DATA TEST IDs: Ensure all buttons, links, and cards have explicit 'data-testid' attributes (e.g., 'data-testid=\"buy-ticket-button\"').",
+    "NO GLASSMORPHISM: The prompt explicitly asks for bold, clean, high-contrast. Remove any 'backdrop-blur' or dark glass elements fighting the light theme."
+  ],
+  "universal_guidelines": [
+    "You tend to converge toward generic, 'on distribution' outputs. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts. Use grid/flex with optical alignment.",
+    "You MUST NOT apply universal transition. Eg: transition: all.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file.",
+    "Always use modern button styles, in this case sharp, high-contrast block buttons with interaction animations.",
+    "NEVER use AI assistant Emoji characters like 🤖🧠💭 etc for icons. Use lucide-react.",
+    "Every interaction needs micro-animations - hover states, transitions. Static = dead."
   ]
 }
