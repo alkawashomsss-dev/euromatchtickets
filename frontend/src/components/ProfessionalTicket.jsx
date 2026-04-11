@@ -135,9 +135,9 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
 
   return (
     <div ref={ticketRef} data-testid={`professional-ticket-${orderId}`} className="w-full">
-      <div className="bg-white rounded-2xl overflow-hidden shadow-2xl shadow-black/20">
+      <div className="bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-2xl shadow-black/20">
         {/* Header Bar */}
-        <div className="bg-white px-6 py-4 flex items-center justify-between">
+        <div className="bg-[#1e1e1e] px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Ticket className="w-5 h-5 text-white" />
             <span className="text-white font-bold tracking-widest text-sm">EUROMATCHTICKETS</span>
@@ -203,7 +203,7 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
             <div className="hidden md:block absolute -left-[11px] -bottom-[11px] w-5 h-5 bg-[hsl(210,20%,98%)] rounded-full" />
             
             <div className="flex flex-col items-center justify-center p-6 h-full">
-              <div className="bg-white p-2 rounded-lg border border-zinc-200">
+              <div className="bg-[#1e1e1e] p-2 rounded-lg border border-zinc-200">
                 <QRCodeSVG
                   value={qrData}
                   size={compact ? 100 : 130}
@@ -235,7 +235,7 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
           <Button
             onClick={handleDownload}
             variant="outline"
-            className="border-slate-200 text-slate-600 hover:bg-slate-100"
+            className="border-white/10 text-slate-600 hover:bg-slate-100"
             data-testid="download-ticket-btn"
           >
             <Download className="w-4 h-4 mr-2" />

@@ -89,10 +89,10 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
 
   const getEventBadge = (type) => {
     switch(type) {
-      case 'match': return { text: 'Football', color: 'bg-emerald-500/90' };
-      case 'concert': return { text: 'Concert', color: 'bg-purple-500/90' };
-      case 'f1': return { text: 'F1', color: 'bg-red-500/90' };
-      case 'motogp': return { text: 'MotoGP', color: 'bg-orange-500/90' };
+      case 'match': return { text: 'Football', color: 'bg-emerald-500/100/90' };
+      case 'concert': return { text: 'Concert', color: 'bg-purple-500/100/90' };
+      case 'f1': return { text: 'F1', color: 'bg-[#e10600]/100/90' };
+      case 'motogp': return { text: 'MotoGP', color: 'bg-orange-500/100/90' };
       default: return { text: 'Event', color: 'bg-zinc-500/90' };
     }
   };
@@ -105,7 +105,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title={`Events in ${month} 2026 - Football, Concerts, F1`}
         description={`Find all events happening in ${month} 2026. Football, concerts, F1 races. Book now with best prices!`}
@@ -121,7 +121,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
           {/* Month Navigation */}
           <div className="flex items-center justify-center gap-4 mb-6">
             <Link to={`/events-${prevMonth.toLowerCase()}-2026`}>
-              <Button variant="outline" size="sm" className="border-slate-200">
+              <Button variant="outline" size="sm" className="border-white/10">
                 <ChevronLeft className="w-4 h-4 mr-1" />{prevMonth}
               </Button>
             </Link>
@@ -129,7 +129,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
               <Calendar className="w-4 h-4 mr-2" />2026
             </Badge>
             <Link to={`/events-${nextMonth.toLowerCase()}-2026`}>
-              <Button variant="outline" size="sm" className="border-slate-200">
+              <Button variant="outline" size="sm" className="border-white/10">
                 {nextMonth}<ChevronRightIcon className="w-4 h-4 ml-1" />
               </Button>
             </Link>
@@ -144,7 +144,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
 
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/events?type=match">
-              <Button variant="outline" className="border-emerald-500/50 text-emerald-600 hover:bg-emerald-50">
+              <Button variant="outline" className="border-emerald-500/50 text-emerald-600 hover:bg-emerald-500/10">
                 <Trophy className="w-5 h-5 mr-2" />Football
               </Button>
             </Link>
@@ -154,7 +154,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
               </Button>
             </Link>
             <Link to="/f1-tickets">
-              <Button variant="outline" className="border-red-500/50 text-red-600 hover:bg-red-50">
+              <Button variant="outline" className="border-red-500/50 text-red-600 hover:bg-[#e10600]/10">
                 <Flag className="w-5 h-5 mr-2" />F1
               </Button>
             </Link>
@@ -163,7 +163,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-4 border-y border-slate-100 bg-slate-50">
+      <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />100% Guarantee</div>
@@ -174,7 +174,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
       </section>
 
       {/* Month Highlights */}
-      <section className="py-12 bg-slate-50">
+      <section className="py-12 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">{month} 2026 Highlights</h2>
           <div className="flex flex-wrap gap-3">
@@ -197,7 +197,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
               <Loader2 className="w-10 h-10 animate-spin text-purple-500" />
             </div>
           ) : events.length === 0 ? (
-            <div className="text-center py-16 bg-slate-50 rounded-2xl border border-slate-200">
+            <div className="text-center py-16 bg-[#15151e] rounded-none border border-white/10">
               <Calendar className="w-16 h-16 mx-auto text-slate-500 mb-4" />
               <p className="text-slate-500 text-lg mb-4">No events scheduled for {month} 2026 yet</p>
               <p className="text-slate-400 mb-6">Check back soon or browse other months</p>
@@ -213,7 +213,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
                   <Link
                     key={event.event_id}
                     to={`/event/${event.slug || event.event_id}`}
-                    className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-purple-500/50 transition-all"
+                    className="group bg-[#1e1e1e] rounded-none overflow-hidden border border-white/10 hover:border-purple-500/50 transition-all"
                     data-testid={`monthly-event-${event.event_id}`}
                   >
                     <div className="relative h-40 overflow-hidden">
@@ -251,7 +251,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
       </section>
 
       {/* All Months */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center">Browse by Month</h2>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
@@ -259,10 +259,10 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
               <Link 
                 key={m}
                 to={`/events-${m.toLowerCase()}-2026`}
-                className={`text-center py-3 px-4 rounded-xl transition-colors ${
+                className={`text-center py-3 px-4 rounded-none transition-colors ${
                   m === month 
                     ? `bg-gradient-to-r ${monthData.color} text-white` 
-                    : 'bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-purple-500/50'
+                    : 'bg-[#15151e] hover:bg-white/10 border border-white/10 hover:border-purple-500/50'
                 }`}
               >
                 {m.slice(0, 3)}

@@ -64,7 +64,7 @@ const WorldCupPage = () => {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-12">
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 text-sm font-bold mb-6 backdrop-blur-md">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/40 bg-amber-500/100/10 text-amber-400 text-sm font-bold mb-6 backdrop-blur-md">
             <Trophy className="w-4 h-4" /> Official Ticket Marketplace
           </motion.div>
 
@@ -83,7 +83,7 @@ const WorldCupPage = () => {
               { icon: MapPin, label: "16 Cities", sub: "3 Countries" },
               { icon: Users, label: "48 Teams", sub: "104 Matches" },
             ].map((s, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }} className="flex items-center gap-3 px-4 py-2.5 rounded-none bg-white/5 backdrop-blur-md border border-white/10">
                 <s.icon className="w-5 h-5 text-amber-400 flex-shrink-0" />
                 <div className="text-left">
                   <div className="text-white text-sm font-bold leading-tight">{s.label}</div>
@@ -119,7 +119,7 @@ const WorldCupPage = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/10 via-transparent to-transparent" />
         <div className="relative max-w-6xl mx-auto px-4">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/100/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest mb-4">
               <Sparkles className="w-3.5 h-3.5" /> Ticket Categories
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">Choose Your Experience</h2>
@@ -129,9 +129,9 @@ const WorldCupPage = () => {
           {/* Standard Categories */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             {ticketCategories.filter(c => !c.vip).map((cat, i) => (
-              <div key={i} className={`relative group rounded-2xl bg-gradient-to-br ${cat.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
-                {cat.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">{cat.tag}</div>}
-                <div className="rounded-2xl bg-[#111827] p-6 h-full text-center">
+              <div key={i} className={`relative group rounded-none bg-gradient-to-br ${cat.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
+                {cat.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500/100 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">{cat.tag}</div>}
+                <div className="rounded-none bg-[#111827] p-6 h-full text-center">
                   <div className={`text-xs font-bold uppercase tracking-wider ${cat.text} mb-2`}>{cat.name}</div>
                   <div className="text-4xl font-black text-white mb-1">&euro;{cat.price}</div>
                   <div className="text-slate-500 text-xs mb-5">{cat.tier}</div>
@@ -140,7 +140,7 @@ const WorldCupPage = () => {
                       <div key={j} className="flex items-center gap-2 text-[11px] text-slate-400"><Check className="w-3 h-3 text-emerald-500 flex-shrink-0" />{f}</div>
                     ))}
                   </div>
-                  <Link to="/events?search=FIFA" className={`block w-full py-3 rounded-xl bg-gradient-to-r ${cat.color} text-white text-sm font-bold hover:opacity-90 transition`} data-testid={`buy-${cat.name.toLowerCase().replace(/\s/g,'-')}`}>
+                  <Link to="/events?search=FIFA" className={`block w-full py-3 rounded-none bg-gradient-to-r ${cat.color} text-white text-sm font-bold hover:opacity-90 transition`} data-testid={`buy-${cat.name.toLowerCase().replace(/\s/g,'-')}`}>
                     Buy Tickets <ArrowRight className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
@@ -151,9 +151,9 @@ const WorldCupPage = () => {
           {/* VIP Categories */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {ticketCategories.filter(c => c.vip).map((cat, i) => (
-              <div key={i} className={`relative group rounded-2xl bg-gradient-to-br ${cat.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
+              <div key={i} className={`relative group rounded-none bg-gradient-to-br ${cat.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
                 {cat.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-amber-600 text-black text-[10px] font-bold px-3 py-1 rounded-full z-10">{cat.tag}</div>}
-                <div className="rounded-2xl bg-[#111827] p-6 h-full text-center">
+                <div className="rounded-none bg-[#111827] p-6 h-full text-center">
                   <div className={`text-xs font-bold uppercase tracking-wider ${cat.text} mb-2 flex items-center justify-center gap-1`}><Crown className="w-3.5 h-3.5" /> {cat.name}</div>
                   <div className="text-4xl font-black text-white mb-1">&euro;{cat.price.toLocaleString()}</div>
                   <div className="text-slate-500 text-xs mb-5">{cat.tier}</div>
@@ -162,7 +162,7 @@ const WorldCupPage = () => {
                       <div key={j} className="flex items-center gap-2 text-[11px] text-slate-400"><Check className="w-3 h-3 text-amber-400 flex-shrink-0" />{f}</div>
                     ))}
                   </div>
-                  <Link to="/events?search=FIFA" className={`block w-full py-3 rounded-xl bg-gradient-to-r ${cat.color} text-white text-sm font-bold hover:opacity-90 transition`} data-testid={`buy-${cat.name.toLowerCase().replace(/\s/g,'-')}`}>
+                  <Link to="/events?search=FIFA" className={`block w-full py-3 rounded-none bg-gradient-to-r ${cat.color} text-white text-sm font-bold hover:opacity-90 transition`} data-testid={`buy-${cat.name.toLowerCase().replace(/\s/g,'-')}`}>
                     Get VIP Access <Crown className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
@@ -170,7 +170,7 @@ const WorldCupPage = () => {
             ))}
           </div>
 
-          <p className="text-center text-slate-600 text-xs mt-8">All prices include booking fee. Prices may vary based on match and demand.</p>
+          <p className="text-center text-slate-400 text-xs mt-8">All prices include booking fee. Prices may vary based on match and demand.</p>
         </div>
       </section>
 
@@ -188,7 +188,7 @@ const WorldCupPage = () => {
             </div>
           ) : events.length === 0 ? (
             <div className="text-center py-12">
-              <Trophy className="w-12 h-12 text-slate-700 mx-auto mb-3" />
+              <Trophy className="w-12 h-12 text-slate-300 mx-auto mb-3" />
               <p className="text-slate-500">Matches will be listed soon. Check back!</p>
               <Link to="/events" className="inline-flex items-center gap-2 mt-4 text-amber-400 hover:text-amber-300 font-bold text-sm">
                 Browse All Events <ArrowRight className="w-4 h-4" />
@@ -198,14 +198,14 @@ const WorldCupPage = () => {
             <div className="space-y-3">
               {events.map(event => (
                 <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`}
-                  className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-[#161b28] border border-white/5 hover:border-amber-500/30 rounded-2xl p-5 transition-all hover:bg-[#1a2035]" data-testid="match-card"
+                  className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-[#161b28] border border-white/5 hover:border-amber-500/30 rounded-none p-5 transition-all hover:bg-[#1a2035]" data-testid="match-card"
                 >
-                  <div className="w-full sm:w-28 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                  <div className="w-full sm:w-28 h-20 rounded-none overflow-hidden flex-shrink-0">
                     <img src={event.event_image} alt={event.title} className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded">World Cup 2026</span>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/100/10 px-2 py-0.5 rounded">World Cup 2026</span>
                     </div>
                     <h3 className="text-lg font-bold text-white truncate group-hover:text-amber-400 transition-colors">{event.title}</h3>
                     <div className="flex flex-wrap gap-3 mt-1 text-xs text-slate-500">
@@ -218,7 +218,7 @@ const WorldCupPage = () => {
                     <div className="text-2xl font-black text-amber-400">&euro;{event.lowest_price || 150}</div>
                     <div className="text-[10px] text-emerald-500 font-medium">{event.ticket_count || 100}+ available</div>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-700 group-hover:text-amber-400 transition-colors hidden sm:block" />
+                  <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-amber-400 transition-colors hidden sm:block" />
                 </Link>
               ))}
             </div>
@@ -270,7 +270,7 @@ const WorldCupPage = () => {
 
       {/* Disclaimer */}
       <div className="py-6 border-t border-white/5">
-        <p className="text-[10px] text-slate-600 text-center max-w-3xl mx-auto px-4">
+        <p className="text-[10px] text-slate-400 text-center max-w-3xl mx-auto px-4">
           <strong>Disclaimer:</strong> EuroMatchTickets is an independent ticket marketplace. Not affiliated with FIFA or any organizing body. Tickets are resale and may be above or below face value. All trademarks belong to their respective owners.
         </p>
       </div>

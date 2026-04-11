@@ -23,7 +23,7 @@ const Countdown = ({ target }) => {
   return (
     <div className="flex gap-2 justify-center">
       {[{ v: d, l: "Days" }, { v: h, l: "Hrs" }, { v: m, l: "Min" }, { v: s, l: "Sec" }].map((u, i) => (
-        <div key={i} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-lg px-3 py-2 min-w-[56px] text-center">
+        <div key={i} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-none px-3 py-2 min-w-[56px] text-center">
           <div className="text-xl sm:text-2xl font-black text-white">{String(u.v).padStart(2, '0')}</div>
           <div className="text-[9px] text-emerald-300 uppercase tracking-wider font-bold">{u.l}</div>
         </div>
@@ -90,7 +90,7 @@ const BahrainWorldCupPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="bahrain-worldcup-page">
+    <div className="min-h-screen bg-[#0e0e14]" data-testid="bahrain-worldcup-page">
       <SEOHead
         title="Bahrain World Cup Tickets 2026 | Buy FIFA WC Passes"
         description="Buy Bahrain World Cup 2026 tickets from €89. FIFA World Cup matches, fan zone passes. Verified tickets, instant QR delivery, FanProtect guarantee."
@@ -111,7 +111,7 @@ const BahrainWorldCupPage = () => {
         </div>
         <div className="relative max-w-5xl mx-auto px-4 text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0}
-            className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 rounded-full px-4 py-2 mb-5 text-sm text-emerald-300 backdrop-blur-sm">
+            className="inline-flex items-center gap-2 bg-emerald-500/100/20 border border-emerald-400/30 rounded-full px-4 py-2 mb-5 text-sm text-emerald-300 backdrop-blur-sm">
             <Globe className="w-4 h-4" /> FIFA World Cup 2026 &trade;
           </motion.div>
 
@@ -131,7 +131,7 @@ const BahrainWorldCupPage = () => {
           </motion.div>
 
           <motion.div variants={fadeUp} custom={4} initial="hidden" animate="visible" className="flex flex-wrap justify-center gap-4 mb-6">
-            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl px-5 py-3 text-center">
+            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-none px-5 py-3 text-center">
               <p className="text-[10px] text-white/50 uppercase tracking-widest">From</p>
               <p className="text-3xl font-extrabold text-amber-400">&euro;89</p>
             </div>
@@ -152,14 +152,14 @@ const BahrainWorldCupPage = () => {
 
       {/* TICKETS */}
       <section id="tickets" className="max-w-5xl mx-auto px-4 -mt-8 relative z-10 mb-16">
-        <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2"><Ticket className="w-5 h-5 text-emerald-600" /> World Cup 2026 Ticket Options</h2>
+        <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Ticket className="w-5 h-5 text-emerald-600" /> World Cup 2026 Ticket Options</h2>
         <div className="space-y-3">
           {tickets.map((t, i) => (
             <motion.div key={i} variants={fadeUp} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              className="bg-[#1e1e1e] rounded-none border border-white/10 p-5 hover:shadow-md transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-bold text-slate-900">{t.section}</h3>
+                  <h3 className="font-bold text-white">{t.section}</h3>
                   {t.tag && <span className="text-[10px] font-bold bg-emerald-100 text-emerald-600 px-2 py-0.5 rounded-full">{t.tag}</span>}
                 </div>
                 <div className="flex flex-wrap gap-2 mt-2">
@@ -168,7 +168,7 @@ const BahrainWorldCupPage = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <p className="text-2xl font-extrabold text-slate-900">&euro;{t.price}</p>
+                  <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
                   <p className="text-[10px] text-slate-400">per ticket</p>
                 </div>
                 <Link to={`${eventLink}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
@@ -183,27 +183,27 @@ const BahrainWorldCupPage = () => {
       {/* SEO Content */}
       <section className="max-w-4xl mx-auto px-4 mb-16 space-y-8">
         <div>
-          <h2 className="text-xl font-bold text-slate-900 mb-3">Bahrain World Cup 2026 - Everything You Need to Know</h2>
-          <p className="text-slate-600 leading-relaxed">The FIFA World Cup 2026 is the biggest sporting event on the planet, and fans from Bahrain are among the most passionate in the Middle East. Whether Bahrain qualifies for the tournament or you're a Bahraini fan supporting your favorite team, EuroMatchTickets has you covered with verified tickets at the cheapest prices.</p>
+          <h2 className="text-xl font-bold text-white mb-3">Bahrain World Cup 2026 - Everything You Need to Know</h2>
+          <p className="text-slate-400 leading-relaxed">The FIFA World Cup 2026 is the biggest sporting event on the planet, and fans from Bahrain are among the most passionate in the Middle East. Whether Bahrain qualifies for the tournament or you're a Bahraini fan supporting your favorite team, EuroMatchTickets has you covered with verified tickets at the cheapest prices.</p>
         </div>
         <div>
-          <h2 className="text-xl font-bold text-slate-900 mb-3">Buy Bahrain World Cup Tickets Online</h2>
-          <p className="text-slate-600 leading-relaxed">Purchasing World Cup 2026 tickets from Bahrain has never been easier. Our platform offers instant QR delivery, so you receive your tickets within minutes of purchase. No waiting, no uncertainty. Every ticket is verified and backed by our FanProtect guarantee &mdash; if your tickets aren't valid, you get a full refund.</p>
+          <h2 className="text-xl font-bold text-white mb-3">Buy Bahrain World Cup Tickets Online</h2>
+          <p className="text-slate-400 leading-relaxed">Purchasing World Cup 2026 tickets from Bahrain has never been easier. Our platform offers instant QR delivery, so you receive your tickets within minutes of purchase. No waiting, no uncertainty. Every ticket is verified and backed by our FanProtect guarantee &mdash; if your tickets aren't valid, you get a full refund.</p>
         </div>
         <div>
-          <h2 className="text-xl font-bold text-slate-900 mb-3">World Cup 2026 Venues and Schedule</h2>
-          <p className="text-slate-600 leading-relaxed">The World Cup 2026 will take place across 16 iconic stadiums in the USA, Canada, and Mexico. Key venues include MetLife Stadium (New Jersey), SoFi Stadium (Los Angeles), AT&amp;T Stadium (Dallas), Azteca Stadium (Mexico City), and BMO Field (Toronto). Group stage matches run from June 11-28, knockout rounds begin June 29, and the final is July 19, 2026.</p>
+          <h2 className="text-xl font-bold text-white mb-3">World Cup 2026 Venues and Schedule</h2>
+          <p className="text-slate-400 leading-relaxed">The World Cup 2026 will take place across 16 iconic stadiums in the USA, Canada, and Mexico. Key venues include MetLife Stadium (New Jersey), SoFi Stadium (Los Angeles), AT&amp;T Stadium (Dallas), Azteca Stadium (Mexico City), and BMO Field (Toronto). Group stage matches run from June 11-28, knockout rounds begin June 29, and the final is July 19, 2026.</p>
         </div>
       </section>
 
       {/* Related Events */}
       {events.length > 0 && (
         <section className="max-w-5xl mx-auto px-4 mb-16">
-          <h2 className="text-lg font-bold text-slate-900 mb-4">Related Events</h2>
+          <h2 className="text-lg font-bold text-white mb-4">Related Events</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {events.slice(0, 6).map(e => (
-              <Link key={e.event_id} to={`/event/${e.slug || e.event_id}`} className="bg-white rounded-xl border border-slate-200 p-4 hover:shadow-md transition-all">
-                <h3 className="font-bold text-sm text-slate-900 mb-1">{e.title}</h3>
+              <Link key={e.event_id} to={`/event/${e.slug || e.event_id}`} className="bg-[#1e1e1e] rounded-none border border-white/10 p-4 hover:shadow-md transition-all">
+                <h3 className="font-bold text-sm text-white mb-1">{e.title}</h3>
                 <p className="text-xs text-slate-500 flex items-center gap-1"><MapPin className="w-3 h-3" />{e.venue}, {e.city}</p>
                 <p className="text-xs text-slate-500 flex items-center gap-1 mt-1"><Calendar className="w-3 h-3" />{new Date(e.event_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
               </Link>
@@ -214,12 +214,12 @@ const BahrainWorldCupPage = () => {
 
       {/* FAQ */}
       <section className="max-w-4xl mx-auto px-4 mb-16">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">FAQ &ndash; Bahrain World Cup 2026 Tickets</h2>
+        <h2 className="text-xl font-bold text-white mb-4">FAQ &ndash; Bahrain World Cup 2026 Tickets</h2>
         <FAQStructuredData faqs={faqs} />
         <div className="space-y-2">
           {faqs.map((f, i) => (
-            <details key={i} className="group rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition">
-              <summary className="p-4 font-bold text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between">
+            <details key={i} className="group rounded-none border border-white/10 bg-[#1e1e1e] hover:border-white/15 transition">
+              <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">
                 {f.question}
                 <ChevronRight className="w-4 h-4 text-slate-400 group-open:rotate-90 transition-transform" />
               </summary>

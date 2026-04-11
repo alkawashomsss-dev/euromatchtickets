@@ -46,7 +46,7 @@ const WorldCupLandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="FIFA World Cup 2026 Tickets | Buy Official Online"
         description="Get official FIFA World Cup 2026 tickets. Prices from €150. Instant QR delivery. 100% money-back guarantee. Over 50,000 tickets available."
@@ -68,11 +68,11 @@ const WorldCupLandingPage = () => {
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
           {/* Trust Badge */}
           <div className="flex justify-center gap-3 mb-6">
-            <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200 px-4 py-2">
+            <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-200 px-4 py-2">
               <Shield className="w-4 h-4 mr-2" />
               FanProtect™ 100% Guarantee
             </Badge>
-            <Badge className="bg-amber-50 text-amber-600 border-amber-200 px-4 py-2">
+            <Badge className="bg-amber-500/10 text-amber-600 border-amber-200 px-4 py-2">
               <Star className="w-4 h-4 mr-2" />
               4.9/5 from 10,000+ Reviews
             </Badge>
@@ -85,7 +85,7 @@ const WorldCupLandingPage = () => {
             <span className="text-white">Official Tickets</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-slate-400 mb-8 max-w-3xl mx-auto">
             Book your tickets now for the World Cup in USA, Mexico & Canada
             <br />
             <span className="text-emerald-600 font-bold">Prices starting from €150!</span>
@@ -93,15 +93,15 @@ const WorldCupLandingPage = () => {
 
           {/* Countdown Timer */}
           <div className="flex justify-center gap-4 mb-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[80px]">
+            <div className="bg-white/10 backdrop-blur-sm rounded-none p-4 min-w-[80px]">
               <div className="text-3xl font-bold text-white">{timeLeft.days}</div>
               <div className="text-xs text-slate-500">Days</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[80px]">
+            <div className="bg-white/10 backdrop-blur-sm rounded-none p-4 min-w-[80px]">
               <div className="text-3xl font-bold text-white">{timeLeft.hours}</div>
               <div className="text-xs text-slate-500">Hours</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[80px]">
+            <div className="bg-white/10 backdrop-blur-sm rounded-none p-4 min-w-[80px]">
               <div className="text-3xl font-bold text-white">{timeLeft.minutes}</div>
               <div className="text-xs text-slate-500">Minutes</div>
             </div>
@@ -143,39 +143,39 @@ const WorldCupLandingPage = () => {
       </div>
 
       {/* Features Section */}
-      <div className="py-20 bg-white">
+      <div className="py-20 bg-[#1e1e1e]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
             Why Buy from <span className="text-emerald-600">EuroMatchTickets</span>?
           </h2>
 
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
-              <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#15151e] border border-white/10 rounded-none p-6 text-center">
+              <div className="w-14 h-14 bg-emerald-500/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="font-bold mb-2">100% Guarantee</h3>
               <p className="text-sm text-slate-500">Every ticket verified. Full refund if match cancelled.</p>
             </div>
 
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
-              <div className="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#15151e] border border-white/10 rounded-none p-6 text-center">
+              <div className="w-14 h-14 bg-cyan-500/20 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-7 h-7 text-cyan-600" />
               </div>
               <h3 className="font-bold mb-2">Instant Delivery</h3>
               <p className="text-sm text-slate-500">QR Code to your email within minutes of purchase.</p>
             </div>
 
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
-              <div className="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#15151e] border border-white/10 rounded-none p-6 text-center">
+              <div className="w-14 h-14 bg-amber-500/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <CreditCard className="w-7 h-7 text-amber-600" />
               </div>
               <h3 className="font-bold mb-2">Secure Payment</h3>
               <p className="text-sm text-slate-500">Stripe - the world's most secure payment gateway.</p>
             </div>
 
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
-              <div className="w-14 h-14 bg-violet-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#15151e] border border-white/10 rounded-none p-6 text-center">
+              <div className="w-14 h-14 bg-violet-50 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Users className="w-7 h-7 text-violet-600" />
               </div>
               <h3 className="font-bold mb-2">24/7 Support</h3>
@@ -193,7 +193,7 @@ const WorldCupLandingPage = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Group Stage */}
-            <div className="bg-white border border-slate-200 rounded-2xl p-6">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
               <h3 className="text-xl font-bold mb-2">Group Stage</h3>
               <p className="text-slate-500 text-sm mb-4">48 Matches - June 2026</p>
               <div className="text-4xl font-bold text-emerald-600 mb-4">
@@ -211,8 +211,8 @@ const WorldCupLandingPage = () => {
             </div>
 
             {/* Knockout */}
-            <div className="bg-gradient-to-b from-amber-900/20 to-slate-900 border-2 border-amber-500/50 rounded-2xl p-6 relative">
-              <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-black">Most Popular</Badge>
+            <div className="bg-gradient-to-b from-amber-900/20 to-slate-900 border-2 border-amber-500/50 rounded-none p-6 relative">
+              <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500/100 text-black">Most Popular</Badge>
               <h3 className="text-xl font-bold mb-2">Knockout Rounds</h3>
               <p className="text-slate-500 text-sm mb-4">Round of 16 + Quarter + Semi</p>
               <div className="text-4xl font-bold text-amber-600 mb-4">
@@ -225,12 +225,12 @@ const WorldCupLandingPage = () => {
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-amber-600" /> Best seats available</li>
               </ul>
               <Link to="/events?category=World Cup">
-                <Button className="w-full bg-amber-500 hover:bg-amber-600 text-black">Book Now</Button>
+                <Button className="w-full bg-amber-500/100 hover:bg-amber-600 text-black">Book Now</Button>
               </Link>
             </div>
 
             {/* Final */}
-            <div className="bg-white border border-slate-200 rounded-2xl p-6">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
               <h3 className="text-xl font-bold mb-2">Final - New York</h3>
               <p className="text-slate-500 text-sm mb-4">July 19, 2026</p>
               <div className="text-4xl font-bold text-violet-600 mb-4">
@@ -251,32 +251,32 @@ const WorldCupLandingPage = () => {
       </div>
 
       {/* Reviews Section */}
-      <div className="py-20 bg-white">
+      <div className="py-20 bg-[#1e1e1e]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <div className="bg-[#15151e] border border-white/10 rounded-none p-6">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-600" />)}
               </div>
-              <p className="text-slate-600 mb-4">"Booked World Cup 2022 tickets from EuroMatchTickets - excellent experience! Tickets arrived instantly."</p>
+              <p className="text-slate-400 mb-4">"Booked World Cup 2022 tickets from EuroMatchTickets - excellent experience! Tickets arrived instantly."</p>
               <p className="text-sm text-slate-400">— James T. | UK</p>
             </div>
 
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <div className="bg-[#15151e] border border-white/10 rounded-none p-6">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-600" />)}
               </div>
-              <p className="text-slate-600 mb-4">"Best prices I found online. Saved over €200 compared to other websites!"</p>
+              <p className="text-slate-400 mb-4">"Best prices I found online. Saved over €200 compared to other websites!"</p>
               <p className="text-sm text-slate-400">— Maria S. | Germany</p>
             </div>
 
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <div className="bg-[#15151e] border border-white/10 rounded-none p-6">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-600" />)}
               </div>
-              <p className="text-slate-600 mb-4">"Customer support was amazing. They helped me choose the best seats for the match."</p>
+              <p className="text-slate-400 mb-4">"Customer support was amazing. They helped me choose the best seats for the match."</p>
               <p className="text-sm text-slate-400">— Alex K. | USA</p>
             </div>
           </div>

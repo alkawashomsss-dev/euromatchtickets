@@ -93,7 +93,7 @@ const VIPImageGallery = ({ images }) => {
   const [active, setActive] = useState(0);
   return (
     <div className="space-y-3" data-testid="vip-gallery">
-      <div className="relative rounded-2xl overflow-hidden aspect-[16/9]">
+      <div className="relative rounded-none overflow-hidden aspect-[16/9]">
         <AnimatePresence mode="wait">
           <motion.img
             key={active}
@@ -115,7 +115,7 @@ const VIPImageGallery = ({ images }) => {
       <div className="grid grid-cols-4 gap-2">
         {images.map((img, i) => (
           <button key={i} onClick={() => setActive(i)}
-            className={`relative rounded-lg overflow-hidden aspect-[16/10] transition-all ${
+            className={`relative rounded-none overflow-hidden aspect-[16/10] transition-all ${
               i === active ? "ring-2 ring-amber-500 brightness-100" : "brightness-50 hover:brightness-75"
             }`}>
             <img src={img.src} alt={img.label} className="w-full h-full object-cover" loading="lazy" />
@@ -134,7 +134,7 @@ const VIPPerks = ({ perks }) => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: i * 0.08 }}
-        className={`bg-gradient-to-br ${p.color} border border-white/5 rounded-xl p-4 backdrop-blur-sm`}>
+        className={`bg-gradient-to-br ${p.color} border border-white/5 rounded-none p-4 backdrop-blur-sm`}>
         <p.icon className={`w-5 h-5 ${p.iconColor} mb-2`} />
         <h4 className="font-bold text-white text-sm">{p.title}</h4>
         <p className="text-white/40 text-[11px] mt-0.5 leading-snug">{p.desc}</p>
@@ -154,13 +154,13 @@ const VIPExperienceSection = ({ event, vipTickets, onBuy }) => {
   const totalVIP = vipTickets.reduce((s, t) => s + t.count, 0);
 
   return (
-    <section className="relative rounded-2xl overflow-hidden" data-testid="vip-experience-section">
+    <section className="relative rounded-none overflow-hidden" data-testid="vip-experience-section">
       <div className="bg-[#0c0a14] p-6 sm:p-8 space-y-6">
         {/* Header */}
         <div className="flex items-start justify-between">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-none flex items-center justify-center">
                 <Crown className="w-4 h-4 text-black" />
               </div>
               <div>
@@ -193,16 +193,16 @@ const VIPExperienceSection = ({ event, vipTickets, onBuy }) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white/[0.03] border border-amber-500/10 hover:border-amber-500/30 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all group"
+              className="bg-white/[0.03] border border-amber-500/10 hover:border-amber-500/30 rounded-none p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all group"
               data-testid={`vip-tier-${i}`}>
               <div className="flex items-center gap-3 flex-1">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500/20 to-amber-600/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-none bg-gradient-to-br from-amber-500/20 to-amber-600/10 flex items-center justify-center flex-shrink-0">
                   <Crown className="w-5 h-5 text-amber-500" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
                     <h4 className="font-bold text-white text-sm">{tier.section} &middot; {tier.category === 'platinum' ? 'Platinum' : 'VIP'}</h4>
-                    {tier.count < 10 && <span className="text-[9px] font-black bg-red-500/20 text-red-400 px-2 py-0.5 rounded-full">LAST {tier.count}</span>}
+                    {tier.count < 10 && <span className="text-[9px] font-black bg-[#e10600]/100/20 text-red-400 px-2 py-0.5 rounded-full">LAST {tier.count}</span>}
                   </div>
                   <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1">
                     {config.tierFeatures.map((f, j) => (
@@ -217,7 +217,7 @@ const VIPExperienceSection = ({ event, vipTickets, onBuy }) => {
                   <p className="text-[10px] text-white/30">{tier.count} available</p>
                 </div>
                 <button onClick={() => onBuy && onBuy(tier)}
-                  className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-black text-sm px-5 py-2.5 rounded-lg transition-all shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40"
+                  className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-black text-sm px-5 py-2.5 rounded-none transition-all shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40"
                   data-testid={`vip-buy-${i}`}>
                   Buy VIP
                 </button>

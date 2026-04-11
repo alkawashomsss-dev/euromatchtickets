@@ -29,7 +29,7 @@ export const ScarcityBadgesLight = ({ ticketsLeft = 847, viewers = 312, priceInc
 );
 
 export const TrustBar = () => (
-  <section className="py-5 border-y border-slate-200 bg-white" data-testid="trust-bar">
+  <section className="py-5 border-y border-white/10 bg-[#1e1e1e]" data-testid="trust-bar">
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex flex-wrap justify-center gap-8 text-sm">
         <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" /><span className="font-medium">500,000+ Tickets Sold</span></div>

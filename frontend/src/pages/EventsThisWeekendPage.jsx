@@ -76,7 +76,7 @@ const EventsThisWeekendPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Events This Weekend | EuroMatchTickets"
         description="Find events happening this weekend. Football matches, concerts, motorsport. Book last-minute tickets with instant delivery."
@@ -88,7 +88,7 @@ const EventsThisWeekendPage = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-orange-900/20 via-zinc-950 to-purple-900/20" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-16 text-center">
-          <Badge className="bg-orange-50 text-orange-600 border-orange-200 mb-4">
+          <Badge className="bg-orange-500/10 text-orange-600 border-orange-200 mb-4">
             <Clock className="w-4 h-4 mr-2" />This Weekend
           </Badge>
           
@@ -102,7 +102,7 @@ const EventsThisWeekendPage = () => {
 
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/events?type=match">
-              <Button variant="outline" className="border-emerald-500/50 text-emerald-600 hover:bg-emerald-50">
+              <Button variant="outline" className="border-emerald-500/50 text-emerald-600 hover:bg-emerald-500/10">
                 <Trophy className="w-5 h-5 mr-2" />Football
               </Button>
             </Link>
@@ -112,7 +112,7 @@ const EventsThisWeekendPage = () => {
               </Button>
             </Link>
             <Link to="/f1-tickets">
-              <Button variant="outline" className="border-red-500/50 text-red-600 hover:bg-red-50">
+              <Button variant="outline" className="border-red-500/50 text-red-600 hover:bg-[#e10600]/10">
                 <Flag className="w-5 h-5 mr-2" />F1
               </Button>
             </Link>
@@ -121,7 +121,7 @@ const EventsThisWeekendPage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-4 border-y border-slate-100 bg-slate-50">
+      <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />100% Guarantee</div>
@@ -141,7 +141,7 @@ const EventsThisWeekendPage = () => {
               <Loader2 className="w-10 h-10 animate-spin text-purple-500" />
             </div>
           ) : events.length === 0 ? (
-            <div className="text-center py-16 bg-slate-50 rounded-2xl border border-slate-200">
+            <div className="text-center py-16 bg-[#15151e] rounded-none border border-white/10">
               <Clock className="w-16 h-16 mx-auto text-slate-500 mb-4" />
               <p className="text-slate-500 text-lg mb-4">No events scheduled for this weekend</p>
               <Link to="/events">
@@ -154,7 +154,7 @@ const EventsThisWeekendPage = () => {
                 <Link
                   key={event.event_id}
                   to={`/event/${event.slug || event.event_id}`}
-                  className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-orange-500/50 transition-all"
+                  className="group bg-[#1e1e1e] rounded-none overflow-hidden border border-white/10 hover:border-orange-500/50 transition-all"
                   data-testid={`weekend-event-${event.event_id}`}
                 >
                   <div className="relative h-40 overflow-hidden">
@@ -164,7 +164,7 @@ const EventsThisWeekendPage = () => {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900" />
-                    <Badge className="absolute top-3 left-3 bg-orange-500/90 text-white">
+                    <Badge className="absolute top-3 left-3 bg-orange-500/100/90 text-white">
                       {getEventIcon(event.event_type)}
                       <span className="ml-1">This Weekend</span>
                     </Badge>
@@ -191,18 +191,18 @@ const EventsThisWeekendPage = () => {
       </section>
 
       {/* Last Minute Tips */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center">Last-Minute Booking Tips</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-2xl border border-slate-200">
+            <div className="bg-[#1e1e1e] p-6 rounded-none border border-white/10">
               <h3 className="font-bold mb-2 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-orange-600" />Instant QR Delivery
               </h3>
               <p className="text-slate-500">No waiting for physical tickets. Get your QR code instantly after purchase and head straight to the venue.</p>
             </div>
-            <div className="bg-white p-6 rounded-2xl border border-slate-200">
+            <div className="bg-[#1e1e1e] p-6 rounded-none border border-white/10">
               <h3 className="font-bold mb-2 flex items-center gap-2">
                 <Shield className="w-5 h-5 text-emerald-600" />100% Guarantee
               </h3>

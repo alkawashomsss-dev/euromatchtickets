@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 const RefundPolicyPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <Helmet>
         <title>Refund Policy | EuroMatchTickets</title>
         <meta name="description" content="Learn about EuroMatchTickets refund policy and buyer protection. We guarantee your purchase with our comprehensive refund policy." />
@@ -11,9 +11,9 @@ const RefundPolicyPage = () => {
       </Helmet>
 
       {/* Header */}
-      <section className="py-16 bg-slate-50 border-b border-slate-100">
+      <section className="py-16 bg-[#15151e] border-b border-white/5">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center mx-auto mb-6">
+          <div className="w-16 h-16 rounded-none bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
             <Shield className="w-8 h-8 text-emerald-600" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Refund Policy</h1>
@@ -26,25 +26,25 @@ const RefundPolicyPage = () => {
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         {/* EuroMatchTickets Guarantee */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-none p-8">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <Shield className="w-6 h-6 text-emerald-600" />
               The EuroMatchTickets Guarantee
             </h2>
-            <p className="text-slate-600 text-lg leading-relaxed mb-6">
+            <p className="text-slate-400 text-lg leading-relaxed mb-6">
               Every ticket purchase on EuroMatchTickets is protected. If something goes wrong, 
               we've got you covered with a full refund.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="bg-white rounded-xl p-4 text-center">
+              <div className="bg-[#1e1e1e] rounded-none p-4 text-center">
                 <CheckCircle className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
                 <p className="font-semibold">100% Money Back</p>
               </div>
-              <div className="bg-white rounded-xl p-4 text-center">
+              <div className="bg-[#1e1e1e] rounded-none p-4 text-center">
                 <Clock className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                 <p className="font-semibold">Fast Processing</p>
               </div>
-              <div className="bg-white rounded-xl p-4 text-center">
+              <div className="bg-[#1e1e1e] rounded-none p-4 text-center">
                 <Shield className="w-8 h-8 text-violet-600 mx-auto mb-2" />
                 <p className="font-semibold">No Questions Asked</p>
               </div>
@@ -58,27 +58,27 @@ const RefundPolicyPage = () => {
             <CheckCircle className="w-6 h-6 text-emerald-600" />
             Delivery & Shipping
           </h2>
-          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6">
+          <div className="bg-emerald-500/10 border border-emerald-200 rounded-none p-6">
             <div className="space-y-4">
               <div className="flex items-start gap-4">
                 <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold mb-1">Free Digital Delivery</h3>
-                  <p className="text-slate-600">All tickets are delivered <strong>free of charge</strong> as digital e-tickets via email. There are <strong>no shipping costs</strong> and no physical delivery required.</p>
+                  <p className="text-slate-400">All tickets are delivered <strong>free of charge</strong> as digital e-tickets via email. There are <strong>no shipping costs</strong> and no physical delivery required.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold mb-1">Instant QR Code Delivery</h3>
-                  <p className="text-slate-600">After purchase, you will receive your tickets instantly via email as QR codes or PDF files. No waiting, no postal delivery.</p>
+                  <p className="text-slate-400">After purchase, you will receive your tickets instantly via email as QR codes or PDF files. No waiting, no postal delivery.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold mb-1">Worldwide Access</h3>
-                  <p className="text-slate-600">Since all tickets are digital, delivery is available worldwide at no additional cost. Shipping: <strong>Free (0.00 EUR)</strong> to all countries.</p>
+                  <p className="text-slate-400">Since all tickets are digital, delivery is available worldwide at no additional cost. Shipping: <strong>Free (0.00 EUR)</strong> to all countries.</p>
                 </div>
               </div>
             </div>
@@ -87,9 +87,9 @@ const RefundPolicyPage = () => {
 
         {/* Resale Marketplace Disclosure */}
         <section className="mb-12">
-          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+          <div className="bg-blue-500/10 border border-blue-200 rounded-none p-6">
             <h3 className="font-semibold mb-2">Independent Resale Marketplace</h3>
-            <p className="text-slate-600">EuroMatchTickets is an independent ticket resale marketplace. We are not affiliated with any event organizer, venue, or box office. Prices may be above or below face value. All tickets are verified and guaranteed authentic by our FanProtect Guarantee.</p>
+            <p className="text-slate-400">EuroMatchTickets is an independent ticket resale marketplace. We are not affiliated with any event organizer, venue, or box office. Prices may be above or below face value. All tickets are verified and guaranteed authentic by our FanProtect Guarantee.</p>
           </div>
         </section>
 
@@ -122,7 +122,7 @@ const RefundPolicyPage = () => {
                 desc: "If the same tickets were sold to multiple buyers, the affected buyers will be refunded."
               }
             ].map((item, index) => (
-              <div key={index} className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
+              <div key={index} className="flex items-start gap-4 p-4 bg-[#1e1e1e] border border-white/5 rounded-none">
                 <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold mb-1">{item.title}</h3>
@@ -158,7 +158,7 @@ const RefundPolicyPage = () => {
                 desc: "Inability to attend due to personal reasons (illness, travel issues) is not covered."
               }
             ].map((item, index) => (
-              <div key={index} className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
+              <div key={index} className="flex items-start gap-4 p-4 bg-[#1e1e1e] border border-white/5 rounded-none">
                 <XCircle className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold mb-1">{item.title}</h3>
@@ -172,7 +172,7 @@ const RefundPolicyPage = () => {
         {/* How to Request */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">How to Request a Refund</h2>
-          <div className="bg-white border border-slate-100 rounded-2xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-6">
             <ol className="space-y-4">
               <li className="flex items-start gap-4">
                 <span className="w-8 h-8 rounded-full bg-violet-50 flex items-center justify-center text-violet-600 font-bold flex-shrink-0">1</span>
@@ -208,7 +208,7 @@ const RefundPolicyPage = () => {
 
         {/* Important Notes */}
         <section>
-          <div className="bg-violet-50 border border-purple-500/20 rounded-2xl p-6">
+          <div className="bg-violet-50 border border-purple-500/20 rounded-none p-6">
             <h3 className="font-semibold mb-4 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5 text-violet-600" />
               Important Notes
@@ -229,7 +229,7 @@ const RefundPolicyPage = () => {
           </p>
           <a 
             href="/contact" 
-            className="inline-flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-purple-500/100 hover:bg-purple-600 text-white px-6 py-3 rounded-full font-semibold transition-colors"
           >
             Contact Support
           </a>

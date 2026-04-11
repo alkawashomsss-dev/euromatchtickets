@@ -36,7 +36,7 @@ const ZandvoortGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Dutch GP Tickets 2026 | Zandvoort F1 Prices"
         description="Buy Dutch Grand Prix 2026 Zandvoort tickets from €189. Max Verstappen's home race! Orange army atmosphere. General admission, grandstand, VIP. €10 cheaper."
@@ -46,7 +46,7 @@ const ZandvoortGPPage = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-orange-50 text-orange-600 border-orange-200 mb-6">
+          <Badge className="bg-orange-500/10 text-orange-600 border-orange-200 mb-6">
             <Trophy className="w-4 h-4 mr-2" />Max Verstappen's Home Race! 🧡
           </Badge>
           
@@ -61,18 +61,18 @@ const ZandvoortGPPage = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Calendar className="w-5 h-5 text-orange-600" /><span>August 28-30, 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <MapPin className="w-5 h-5 text-orange-600" /><span>Zandvoort, NL</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-orange-500/10 rounded-full">
               <Users className="w-5 h-5 text-orange-600" /><span>Orange Army!</span>
             </div>
           </div>
 
-          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€189</div>
             <div className="text-emerald-600 text-sm mt-1">Save €10 vs competitors</div>
@@ -80,7 +80,7 @@ const ZandvoortGPPage = () => {
         </div>
       </section>
 
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
@@ -96,15 +96,15 @@ const ZandvoortGPPage = () => {
           <h2 className="text-3xl font-bold mb-8">Zandvoort F1 2026 Tickets</h2>
           <div className="grid gap-4">
             {tickets.map((ticket, i) => (
-              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-orange-200 rounded-2xl p-6 transition-all">
+              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-orange-200 rounded-none p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center">
+                  <div className="w-14 h-14 bg-orange-500/10 rounded-none flex items-center justify-center">
                     <Ticket className="w-7 h-7 text-orange-600" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold">{ticket.section}</h3>
-                      {ticket.popular && <Badge className="bg-orange-50 text-orange-600 text-xs">HOT</Badge>}
+                      {ticket.popular && <Badge className="bg-orange-500/10 text-orange-600 text-xs">HOT</Badge>}
                     </div>
                     <p className="text-slate-400 text-sm">Dutch Grand Prix 2026 • 3-Day Pass</p>
                   </div>
@@ -115,7 +115,7 @@ const ZandvoortGPPage = () => {
                     <div className="text-xs text-slate-400 line-through">€{ticket.originalPrice}</div>
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
-                  <Link to="/events?type=f1"><Button className="bg-orange-500 hover:bg-orange-600">Buy Now</Button></Link>
+                  <Link to="/events?type=f1"><Button className="bg-orange-500/100 hover:bg-orange-600">Buy Now</Button></Link>
                 </div>
               </div>
             ))}
@@ -129,7 +129,7 @@ const ZandvoortGPPage = () => {
           <div className="flex flex-wrap gap-2">
             {["Dutch GP tickets", "Zandvoort F1 tickets", "Max Verstappen home race", "F1 Netherlands tickets", 
               "Zandvoort 2026", "Orange army F1", "Dutch Grand Prix 2026", "Zandvoort grandstand"].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">{term}</span>
+              <span key={i} className="px-3 py-1 bg-[#15151e] text-slate-500 rounded-full text-sm">{term}</span>
             ))}
           </div>
         </div>
@@ -140,7 +140,7 @@ const ZandvoortGPPage = () => {
           <h2 className="text-3xl font-bold mb-4">Join the Orange Army! 🧡</h2>
           <p className="text-slate-500 mb-8">Max Verstappen's home Grand Prix - The best atmosphere in F1</p>
           <Link to="/events?type=f1">
-            <Button size="lg" className="bg-orange-500 hover:bg-orange-600 px-8">
+            <Button size="lg" className="bg-orange-500/100 hover:bg-orange-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />Buy Zandvoort Tickets
             </Button>
           </Link>

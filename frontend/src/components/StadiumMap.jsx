@@ -150,7 +150,7 @@ export const StadiumMap = ({ stadiumId, onSelectSection }) => {
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+    <div className="bg-[#1e1e1e] border border-white/10 rounded-2xl overflow-hidden">
       {/* Stadium Header */}
       <div className="relative h-48 overflow-hidden">
         <img 
@@ -176,7 +176,7 @@ export const StadiumMap = ({ stadiumId, onSelectSection }) => {
         </h4>
         
         {/* Visual Map */}
-        <div className="bg-slate-50 rounded-xl p-4 mb-6">
+        <div className="bg-[#15151e] rounded-xl p-4 mb-6">
           <div className="aspect-[2/1] relative bg-emerald-900/30 rounded-lg border-2 border-emerald-600/30 flex items-center justify-center">
             {/* Pitch/Track */}
             <div className="text-center text-emerald-600/50">
@@ -222,7 +222,7 @@ export const StadiumMap = ({ stadiumId, onSelectSection }) => {
               className={`w-full flex items-center justify-between p-4 rounded-xl transition-all ${
                 selectedSection === section.id
                   ? 'bg-purple-500/20 border-purple-500'
-                  : 'bg-slate-50 hover:bg-slate-100 border-transparent'
+                  : 'bg-[#15151e] hover:bg-slate-100 border-transparent'
               } border`}
             >
               <div className="flex items-center gap-3">
@@ -258,7 +258,7 @@ export const StadiumPreview = ({ stadiumId }) => {
   const lowestPrice = Math.min(...stadium.sections.map(s => s.price));
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-4 hover:border-purple-500/50 transition-colors">
+    <div className="bg-[#1e1e1e] border border-white/10 rounded-xl p-4 hover:border-purple-500/50 transition-colors">
       <div className="flex items-center gap-4">
         <img 
           src={stadium.image} 

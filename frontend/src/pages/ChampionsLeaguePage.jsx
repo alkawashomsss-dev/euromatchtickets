@@ -98,7 +98,7 @@ const ChampionsLeaguePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="champions-league-page">
+    <div className="min-h-screen bg-[#0e0e14]" data-testid="champions-league-page">
       <SEOHead 
         title="Buy Champions League Tickets 2026 | UCL Final Munich €85"
         description="Buy UEFA Champions League tickets from €85. UCL Final 2026 Munich, Semi-finals, Quarter-finals. Real Madrid, Man City, Barcelona. Verified. Instant QR. Cheapest in Europe!"
@@ -110,11 +110,11 @@ const ChampionsLeaguePage = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2 mb-6 animate-pulse">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-200 rounded-full px-4 py-2 mb-6 animate-pulse">
             <Zap className="w-4 h-4 text-blue-600" />
             <span className="text-blue-600 font-medium">Knockout Stage Tickets Available!</span>
           </div>
-          <Badge className="bg-blue-50 text-blue-600 border-blue-200 mb-6">
+          <Badge className="bg-blue-500/10 text-blue-600 border-blue-200 mb-6">
             <Trophy className="w-4 h-4 mr-2" />UEFA Champions League
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
@@ -125,22 +125,22 @@ const ChampionsLeaguePage = () => {
             Secure your seat now with instant QR delivery. 100% Buyer Protection.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-6">
-            <span className="inline-flex items-center gap-1.5 bg-red-500/10 border border-red-500/20 rounded-full px-3 py-1.5 text-red-500 text-sm font-medium animate-pulse">
+            <span className="inline-flex items-center gap-1.5 bg-[#e10600]/100/10 border border-red-500/20 rounded-full px-3 py-1.5 text-red-500 text-sm font-medium animate-pulse">
               <AlertCircle className="w-3.5 h-3.5" /> Only 156 Final tickets remaining
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 rounded-full px-3 py-1.5 text-amber-600 text-sm font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/100/10 border border-amber-500/20 rounded-full px-3 py-1.5 text-amber-600 text-sm font-medium">
               <Eye className="w-3.5 h-3.5" /> 489 people viewing UCL tickets now
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1.5 text-emerald-600 text-sm font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/100/10 border border-emerald-500/20 rounded-full px-3 py-1.5 text-emerald-600 text-sm font-medium">
               <TrendingUp className="w-3.5 h-3.5" /> Prices up 18% this week
             </span>
           </div>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Calendar className="w-5 h-5 text-blue-600" /><span>Sep 2025 - May 2026</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><MapPin className="w-5 h-5 text-blue-600" /><span>Final: Munich</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Users className="w-5 h-5 text-blue-600" /><span>36 Teams</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Calendar className="w-5 h-5 text-blue-600" /><span>Sep 2025 - May 2026</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><MapPin className="w-5 h-5 text-blue-600" /><span>Final: Munich</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Users className="w-5 h-5 text-blue-600" /><span>36 Teams</span></div>
           </div>
-          <div className="inline-block bg-white/90 border border-slate-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-white/10 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">&euro;85</div>
             <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Up to 40% cheaper than Viagogo &amp; StubHub</div>
@@ -149,7 +149,7 @@ const ChampionsLeaguePage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>500,000+ Tickets Sold</span></div>
@@ -166,9 +166,9 @@ const ChampionsLeaguePage = () => {
           <h2 className="text-3xl font-bold mb-8 text-center">Top Champions League Matches 2026</h2>
           <div className="grid gap-4">
             {matches.map((match, i) => (
-              <Link key={i} to={match.link} className="group flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-blue-200 rounded-2xl p-6 transition-all" data-testid={`match-card-${i}`}>
+              <Link key={i} to={match.link} className="group flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-blue-200 rounded-none p-6 transition-all" data-testid={`match-card-${i}`}>
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center"><Trophy className="w-7 h-7 text-blue-600" /></div>
+                  <div className="w-14 h-14 bg-blue-500/10 rounded-none flex items-center justify-center"><Trophy className="w-7 h-7 text-blue-600" /></div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold group-hover:text-blue-600">{match.home} vs {match.away}</h3>
@@ -180,7 +180,7 @@ const ChampionsLeaguePage = () => {
                 <div className="flex items-center gap-4">
                   <span className="text-cyan-600 text-sm">{match.tickets} left</span>
                   <div className="text-right"><div className="text-xs text-slate-400">From</div><div className="text-xl font-bold text-blue-600">&euro;{match.price}</div></div>
-                  <Button className="bg-blue-500 hover:bg-blue-600" data-testid={`match-cta-${i}`}>Secure Seat</Button>
+                  <Button className="bg-blue-500/100 hover:bg-blue-600" data-testid={`match-cta-${i}`}>Secure Seat</Button>
                 </div>
               </Link>
             ))}
@@ -189,12 +189,12 @@ const ChampionsLeaguePage = () => {
       </section>
 
       {/* Content Hub - About UCL */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6 text-slate-900">Buy Champions League Tickets 2025-26</h2>
-          <div className="prose max-w-none text-slate-600 space-y-4">
+          <h2 className="text-2xl font-bold mb-6 text-white">Buy Champions League Tickets 2025-26</h2>
+          <div className="prose max-w-none text-slate-400 space-y-4">
             <p>The <strong>UEFA Champions League 2025-26</strong> features the new expanded format with 36 teams in a league phase. The <strong>Final will be held in Munich</strong> at the Allianz Arena on May 30, 2026. EuroMatchTickets offers the <strong>cheapest Champions League tickets</strong> in Europe with instant QR delivery and a money-back guarantee.</p>
-            <h3 className="text-lg font-semibold text-slate-800">Key Dates</h3>
+            <h3 className="text-lg font-semibold text-white">Key Dates</h3>
             <ul>
               <li><strong>League Phase:</strong> September 2025 - January 2026</li>
               <li><strong>Knockout Playoffs:</strong> February 2026</li>
@@ -203,7 +203,7 @@ const ChampionsLeaguePage = () => {
               <li><strong>Semi-Finals:</strong> May 2026</li>
               <li><strong>Final:</strong> May 30, 2026 - Allianz Arena, Munich</li>
             </ul>
-            <h3 className="text-lg font-semibold text-slate-800">Why Buy From EuroMatchTickets?</h3>
+            <h3 className="text-lg font-semibold text-white">Why Buy From EuroMatchTickets?</h3>
             <p>We are Europe's <strong>#1 ticket marketplace</strong> for Champions League matches. Every ticket is <strong>100% verified</strong>, delivered instantly as a QR code, and backed by our <Link to="/buyer-protection" className="text-blue-600 hover:underline">FanProtect guarantee</Link>. Our prices are the cheapest you'll find - guaranteed.</p>
           </div>
         </div>
@@ -212,16 +212,16 @@ const ChampionsLeaguePage = () => {
       {/* Reviews Section */}
       <section className="py-16" data-testid="ucl-reviews">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-2 text-center text-slate-900">What Fans Say</h2>
+          <h2 className="text-2xl font-bold mb-2 text-center text-white">What Fans Say</h2>
           <p className="text-center text-slate-500 mb-8">4.8/5 average rating from 3,247 verified ticket buyers</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {reviews.map((r, i) => (
-              <div key={i} className="bg-white border border-slate-100 rounded-2xl p-5" data-testid={`review-${i}`}>
+              <div key={i} className="bg-[#1e1e1e] border border-white/5 rounded-none p-5" data-testid={`review-${i}`}>
                 <div className="flex items-center gap-1 mb-2">
                   {[...Array(r.rating)].map((_, j) => <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
                   {[...Array(5 - r.rating)].map((_, j) => <Star key={j} className="w-4 h-4 text-slate-200" />)}
                 </div>
-                <p className="text-slate-600 text-sm mb-3">"{r.text}"</p>
+                <p className="text-slate-400 text-sm mb-3">"{r.text}"</p>
                 <div className="text-xs text-slate-400">{r.name} &middot; {r.country} &middot; {r.date}</div>
               </div>
             ))}
@@ -233,13 +233,13 @@ const ChampionsLeaguePage = () => {
       </section>
 
       {/* Internal Links Hub - CRITICAL FOR SEO */}
-      <section className="py-16 bg-slate-50" data-testid="internal-links-hub">
+      <section className="py-16 bg-[#15151e]" data-testid="internal-links-hub">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center text-slate-900">More Events on EuroMatchTickets</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center text-white">More Events on EuroMatchTickets</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Football */}
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2"><Trophy className="w-5 h-5 text-blue-600" /> Football</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3 flex items-center gap-2"><Trophy className="w-5 h-5 text-blue-600" /> Football</h3>
               <ul className="space-y-2">
                 <li><Link to="/real-madrid-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Real Madrid Tickets</Link></li>
                 <li><Link to="/barcelona-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Barcelona Tickets</Link></li>
@@ -250,8 +250,8 @@ const ChampionsLeaguePage = () => {
               </ul>
             </div>
             {/* F1 */}
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2"><Zap className="w-5 h-5 text-red-500" /> Formula 1</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3 flex items-center gap-2"><Zap className="w-5 h-5 text-red-500" /> Formula 1</h3>
               <ul className="space-y-2">
                 <li><Link to="/f1-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />F1 Tickets 2026</Link></li>
                 <li><Link to="/monaco-grand-prix-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Monaco Grand Prix</Link></li>
@@ -261,8 +261,8 @@ const ChampionsLeaguePage = () => {
               </ul>
             </div>
             {/* Concerts */}
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2"><Star className="w-5 h-5 text-purple-500" /> Concerts</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3 flex items-center gap-2"><Star className="w-5 h-5 text-purple-500" /> Concerts</h3>
               <ul className="space-y-2">
                 <li><Link to="/taylor-swift-wembley-2026-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Taylor Swift Wembley</Link></li>
                 <li><Link to="/the-weeknd-tour-2026" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />The Weeknd Tour 2026</Link></li>
@@ -272,8 +272,8 @@ const ChampionsLeaguePage = () => {
               </ul>
             </div>
             {/* More */}
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2"><Ticket className="w-5 h-5 text-emerald-500" /> More Events</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3 flex items-center gap-2"><Ticket className="w-5 h-5 text-emerald-500" /> More Events</h3>
               <ul className="space-y-2">
                 <li><Link to="/motogp-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />MotoGP Tickets</Link></li>
                 <li><Link to="/super-bowl-2026-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Super Bowl 2026</Link></li>
@@ -289,15 +289,15 @@ const ChampionsLeaguePage = () => {
       {/* FAQ Section */}
       <section className="py-16" data-testid="ucl-faq">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center text-slate-900">Champions League Tickets FAQ</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center text-white">Champions League Tickets FAQ</h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <details key={i} className="bg-white border border-slate-100 rounded-xl p-5 group" data-testid={`faq-${i}`}>
-                <summary className="font-semibold cursor-pointer text-slate-900 flex items-center justify-between">
+              <details key={i} className="bg-[#1e1e1e] border border-white/5 rounded-none p-5 group" data-testid={`faq-${i}`}>
+                <summary className="font-semibold cursor-pointer text-white flex items-center justify-between">
                   {faq.question}
                   <ArrowRight className="w-4 h-4 text-slate-400 group-open:rotate-90 transition-transform" />
                 </summary>
-                <p className="mt-3 text-slate-600">{faq.answer}</p>
+                <p className="mt-3 text-slate-400">{faq.answer}</p>
               </details>
             ))}
           </div>
@@ -311,7 +311,7 @@ const ChampionsLeaguePage = () => {
           <p className="text-blue-100 mb-8 text-lg">Tickets are selling fast. Secure your spot now with Europe's cheapest prices and instant delivery.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/events?type=match">
-              <Button className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-3" data-testid="cta-browse-matches">Browse All Matches</Button>
+              <Button className="bg-[#1e1e1e] text-blue-600 hover:bg-blue-500/10 text-lg px-8 py-3" data-testid="cta-browse-matches">Browse All Matches</Button>
             </Link>
             <Link to="/buyer-protection">
               <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">FanProtect Guarantee</Button>

@@ -57,7 +57,7 @@ const ReviewsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Customer Reviews - 4.9/5 Rating | 2,940+ Verified Reviews"
         description="Read verified reviews from 2,940+ customers who bought tickets on EuroMatchTickets. 4.9/5 average rating. F1, MotoGP, World Cup, Champions League tickets."
@@ -70,10 +70,10 @@ const ReviewsPage = () => {
       ]} />
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-purple-900/20 to-slate-950 border-b border-slate-100">
+      <section className="py-16 bg-gradient-to-b from-purple-900/20 to-slate-950 border-b border-white/5">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-2 mb-6">
+            <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-200 rounded-full px-4 py-2 mb-6">
               <CheckCircle className="w-4 h-4 text-emerald-600" />
               <span className="text-emerald-600 text-sm font-medium">All Reviews Verified</span>
             </div>
@@ -86,7 +86,7 @@ const ReviewsPage = () => {
           <ReviewsStats />
 
           {/* Rating Breakdown */}
-          <div className="bg-white border border-slate-100 rounded-2xl p-8 max-w-3xl mx-auto mt-8">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-8 max-w-3xl mx-auto mt-8">
             <div className="flex flex-col md:flex-row items-center gap-8">
               {/* Average Rating */}
               <div className="text-center">
@@ -132,7 +132,7 @@ const ReviewsPage = () => {
               href="https://www.trustpilot.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 hover:border-emerald-500/50 transition-colors"
+              className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-200 rounded-none px-4 py-3 hover:border-emerald-500/50 transition-colors"
             >
               <div className="flex gap-0.5">
                 {[1,2,3,4,5].map(i => (
@@ -143,8 +143,8 @@ const ReviewsPage = () => {
               <ExternalLink className="w-4 h-4 text-emerald-600" />
             </a>
             
-            <div className="flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3">
-              <div className="w-6 h-6 bg-white rounded flex items-center justify-center">
+            <div className="flex items-center gap-2 bg-blue-500/10 border border-blue-200 rounded-none px-4 py-3">
+              <div className="w-6 h-6 bg-[#1e1e1e] rounded flex items-center justify-center">
                 <span className="text-blue-600 font-bold text-sm">G</span>
               </div>
               <div className="flex gap-0.5">
@@ -159,7 +159,7 @@ const ReviewsPage = () => {
       </section>
 
       {/* Language Filter */}
-      <section className="py-6 border-b border-slate-100 bg-slate-50">
+      <section className="py-6 border-b border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-4">
@@ -182,7 +182,7 @@ const ReviewsPage = () => {
 
       {/* Submit Review Form */}
       {showForm && (
-        <section className="py-8 border-b border-slate-100">
+        <section className="py-8 border-b border-white/5">
           <div className="max-w-2xl mx-auto px-4 md:px-8">
             <SubmitReviewForm />
           </div>
@@ -204,37 +204,37 @@ const ReviewsPage = () => {
       </section>
 
       {/* Why Trust Us */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-2xl font-bold text-center mb-8">Why Fans Trust EuroMatchTickets</h2>
           
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 text-center">
+              <div className="w-14 h-14 bg-emerald-500/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="font-semibold mb-2">100% Verified</h3>
               <p className="text-sm text-slate-500">Every ticket checked before sale</p>
             </div>
             
-            <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 bg-violet-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 text-center">
+              <div className="w-14 h-14 bg-violet-50 rounded-none flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="w-7 h-7 text-violet-600" />
               </div>
               <h3 className="font-semibold mb-2">Best Prices</h3>
               <p className="text-sm text-slate-500">Up to 25% cheaper than competitors</p>
             </div>
             
-            <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 text-center">
+              <div className="w-14 h-14 bg-cyan-500/20 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Users className="w-7 h-7 text-cyan-600" />
               </div>
               <h3 className="font-semibold mb-2">2M+ Fans</h3>
               <p className="text-sm text-slate-500">Trusted by fans worldwide</p>
             </div>
             
-            <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
-              <div className="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 text-center">
+              <div className="w-14 h-14 bg-amber-500/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Award className="w-7 h-7 text-amber-600" />
               </div>
               <h3 className="font-semibold mb-2">Money-Back</h3>

@@ -45,23 +45,23 @@ const ArsenalHubPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="arsenal-hub-page">
+    <div className="min-h-screen bg-[#0e0e14]" data-testid="arsenal-hub-page">
       <SEOHead title="Arsenal Tickets 2026 | Emirates, UCL, Premier League €65" description="Buy Arsenal FC tickets from \u20AC65. Premier League, Champions League, North London Derby at Emirates. Saka, Odegaard. Verified. Instant QR. Cheapest!" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-red-800/40 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-red-50 text-red-700 border-red-200 mb-6"><Trophy className="w-4 h-4 mr-2" />Arsenal FC</Badge>
+          <Badge className="bg-[#e10600]/10 text-red-700 border-red-200 mb-6"><Trophy className="w-4 h-4 mr-2" />Arsenal FC</Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Arsenal Tickets 2025-26<span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-red-400 to-amber-400 bg-clip-text text-transparent">Emirates Stadium &middot; Premier League &middot; Champions League</span></h1>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
           <ScarcityBadges ticketsLeft={356} viewers={241} priceIncrease="10%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Calendar className="w-5 h-5 text-red-600" /><span>2025-26 Season</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><MapPin className="w-5 h-5 text-red-600" /><span>Emirates Stadium, London</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Users className="w-5 h-5 text-red-600" /><span>60,704 Capacity</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Calendar className="w-5 h-5 text-red-600" /><span>2025-26 Season</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><MapPin className="w-5 h-5 text-red-600" /><span>Emirates Stadium, London</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Users className="w-5 h-5 text-red-600" /><span>60,704 Capacity</span></div>
           </div>
-          <div className="inline-block bg-white/90 border border-slate-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-white/10 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div><div className="text-5xl font-bold text-white">&euro;65</div>
             <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Up to 40% cheaper than Viagogo &amp; StubHub</div>
           </div>
@@ -72,14 +72,14 @@ const ArsenalHubPage = () => {
 
       <section className="py-16" data-testid="afc-matches">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center text-slate-900">Arsenal Matches 2026</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center text-white">Arsenal Matches 2026</h2>
           <div className="grid gap-4">
             {matches.map((m, i) => (
-              <Link key={i} to={m.link} className="group flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-red-200 rounded-2xl p-6 transition-all" data-testid={`afc-match-${i}`}>
+              <Link key={i} to={m.link} className="group flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-red-200 rounded-none p-6 transition-all" data-testid={`afc-match-${i}`}>
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center"><Trophy className="w-7 h-7 text-red-600" /></div>
+                  <div className="w-14 h-14 bg-[#e10600]/10 rounded-none flex items-center justify-center"><Trophy className="w-7 h-7 text-red-600" /></div>
                   <div>
-                    <div className="flex items-center gap-2"><h3 className="font-bold text-slate-900 group-hover:text-red-600">{m.home} vs {m.away}</h3>{m.hot && <Badge className="bg-red-100 text-red-600 text-xs animate-pulse">HOT</Badge>}</div>
+                    <div className="flex items-center gap-2"><h3 className="font-bold text-white group-hover:text-red-600">{m.home} vs {m.away}</h3>{m.hot && <Badge className="bg-red-100 text-red-600 text-xs animate-pulse">HOT</Badge>}</div>
                     <p className="text-slate-400 text-sm">{m.label} &middot; {m.date} &middot; {m.venue}</p>
                   </div>
                 </div>
@@ -94,10 +94,10 @@ const ArsenalHubPage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6 text-slate-900">Buy Arsenal Tickets 2025-26</h2>
-          <div className="prose max-w-none text-slate-600 space-y-4">
+          <h2 className="text-2xl font-bold mb-6 text-white">Buy Arsenal Tickets 2025-26</h2>
+          <div className="prose max-w-none text-slate-400 space-y-4">
             <p><strong>Arsenal FC</strong> under Mikel Arteta has become one of the most exciting teams in Europe. The Gunners are serious contenders for the <strong>Premier League title and Champions League</strong>, with a squad featuring <strong>Bukayo Saka, Martin Odegaard, Declan Rice, and William Saliba</strong>.</p>
             <p>The <strong>Emirates Stadium</strong> in North London holds 60,704 fans and has become a fortress under Arteta. EuroMatchTickets offers the <strong>cheapest Arsenal tickets</strong> with instant QR delivery and <Link to="/buyer-protection" className="text-red-600 hover:underline">FanProtect guarantee</Link>.</p>
           </div>
@@ -106,13 +106,13 @@ const ArsenalHubPage = () => {
 
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-2 text-center text-slate-900">Fan Reviews</h2>
+          <h2 className="text-2xl font-bold mb-2 text-center text-white">Fan Reviews</h2>
           <p className="text-center text-slate-500 mb-8">4.8/5 from 2,187 verified buyers</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {reviews.map((r, i) => (
-              <div key={i} className="bg-white border border-slate-100 rounded-2xl p-5">
+              <div key={i} className="bg-[#1e1e1e] border border-white/5 rounded-none p-5">
                 <div className="flex items-center gap-1 mb-2">{[...Array(r.rating)].map((_, j) => <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}{[...Array(5 - r.rating)].map((_, j) => <Star key={j} className="w-4 h-4 text-slate-200" />)}</div>
-                <p className="text-slate-600 text-sm mb-3">"{r.text}"</p>
+                <p className="text-slate-400 text-sm mb-3">"{r.text}"</p>
                 <div className="text-xs text-slate-400">{r.name} &middot; {r.country} &middot; {r.date}</div>
               </div>
             ))}
@@ -121,12 +121,12 @@ const ArsenalHubPage = () => {
       </section>
 
       {/* Link Wheel */}
-      <section className="py-16 bg-slate-50" data-testid="afc-link-hub">
+      <section className="py-16 bg-[#15151e]" data-testid="afc-link-hub">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center text-slate-900">More Events</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center text-white">More Events</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3">Link Wheel</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3">Link Wheel</h3>
               <ul className="space-y-2">
                 <li><Link to="/liverpool-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Liverpool</Link></li>
                 <li><Link to="/real-madrid-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Real Madrid</Link></li>
@@ -138,24 +138,24 @@ const ArsenalHubPage = () => {
                 <li><Link to="/champions-league-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Champions League</Link></li>
               </ul>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3">Football</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3">Football</h3>
               <ul className="space-y-2">
                 <li><Link to="/el-clasico-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />El Clasico</Link></li>
                 <li><Link to="/world-cup-2026" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />World Cup 2026</Link></li>
                 <li><Link to="/events?type=match" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />All Matches</Link></li>
               </ul>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3">More</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3">More</h3>
               <ul className="space-y-2">
                 <li><Link to="/f1-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />F1 Tickets</Link></li>
                 <li><Link to="/taylor-swift-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Taylor Swift</Link></li>
                 <li><Link to="/events" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />All Events</Link></li>
               </ul>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3">International</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3">International</h3>
               <ul className="space-y-2">
                 <li><Link to="/fr/acheter-billets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Acheter Billets</Link></li>
                 <li><Link to="/it/biglietti" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Biglietti</Link></li>
@@ -169,12 +169,12 @@ const ArsenalHubPage = () => {
 
       <section className="py-16" data-testid="afc-faq">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center text-slate-900">Arsenal Tickets FAQ</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center text-white">Arsenal Tickets FAQ</h2>
           <div className="space-y-4">
             {faqs.map((f, i) => (
-              <details key={i} className="bg-white border border-slate-100 rounded-xl p-5 group">
-                <summary className="font-semibold cursor-pointer text-slate-900 flex items-center justify-between">{f.question}<ArrowRight className="w-4 h-4 text-slate-400 group-open:rotate-90 transition-transform" /></summary>
-                <p className="mt-3 text-slate-600">{f.answer}</p>
+              <details key={i} className="bg-[#1e1e1e] border border-white/5 rounded-none p-5 group">
+                <summary className="font-semibold cursor-pointer text-white flex items-center justify-between">{f.question}<ArrowRight className="w-4 h-4 text-slate-400 group-open:rotate-90 transition-transform" /></summary>
+                <p className="mt-3 text-slate-400">{f.answer}</p>
               </details>
             ))}
           </div>
@@ -185,7 +185,7 @@ const ArsenalHubPage = () => {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Come On You Gunners!</h2>
           <p className="text-red-100 mb-8 text-lg">Premier League, Champions League, North London Derby - all at the Emirates.</p>
-          <Link to="/events?type=match"><Button className="bg-white text-red-700 hover:bg-red-50 text-lg px-8 py-3">Browse Matches</Button></Link>
+          <Link to="/events?type=match"><Button className="bg-[#1e1e1e] text-red-700 hover:bg-[#e10600]/10 text-lg px-8 py-3">Browse Matches</Button></Link>
         </div>
       </section>
 

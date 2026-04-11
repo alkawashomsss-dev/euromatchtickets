@@ -65,7 +65,7 @@ const RealMadridHubPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="real-madrid-hub-page">
+    <div className="min-h-screen bg-[#0e0e14]" data-testid="real-madrid-hub-page">
       <SEOHead
         title="Real Madrid Tickets 2026 | Bernabeu, UCL, El Clasico"
         description="Buy Real Madrid tickets from \u20AC75. La Liga, Champions League, El Clasico at Santiago Bernabeu. 100% verified. Instant QR delivery. Cheapest prices guaranteed."
@@ -77,7 +77,7 @@ const RealMadridHubPage = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-purple-50 text-purple-700 border-purple-200 mb-6"><Trophy className="w-4 h-4 mr-2" />Real Madrid CF</Badge>
+          <Badge className="bg-purple-500/10 text-purple-700 border-purple-200 mb-6"><Trophy className="w-4 h-4 mr-2" />Real Madrid CF</Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Real Madrid Tickets 2025-26
             <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-purple-400 to-amber-400 bg-clip-text text-transparent">Santiago Bernabeu &middot; La Liga &middot; Champions League</span>
@@ -85,11 +85,11 @@ const RealMadridHubPage = () => {
           <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
           <ScarcityBadges ticketsLeft={512} viewers={378} priceIncrease="22%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Calendar className="w-5 h-5 text-purple-600" /><span>2025-26 Season</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><MapPin className="w-5 h-5 text-purple-600" /><span>Santiago Bernabeu, Madrid</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Users className="w-5 h-5 text-purple-600" /><span>81,044 Capacity</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Calendar className="w-5 h-5 text-purple-600" /><span>2025-26 Season</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><MapPin className="w-5 h-5 text-purple-600" /><span>Santiago Bernabeu, Madrid</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Users className="w-5 h-5 text-purple-600" /><span>81,044 Capacity</span></div>
           </div>
-          <div className="inline-block bg-white/90 border border-slate-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-white/10 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">&euro;75</div>
             <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Up to 40% cheaper than Viagogo &amp; StubHub</div>
@@ -102,15 +102,15 @@ const RealMadridHubPage = () => {
       {/* Matches */}
       <section className="py-16" data-testid="rm-matches">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center text-slate-900">Real Madrid Matches &amp; Tickets 2026</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center text-white">Real Madrid Matches &amp; Tickets 2026</h2>
           <div className="grid gap-4">
             {matches.map((m, i) => (
-              <Link key={i} to={m.link} className="group flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-purple-200 rounded-2xl p-6 transition-all" data-testid={`rm-match-${i}`}>
+              <Link key={i} to={m.link} className="group flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-purple-200 rounded-none p-6 transition-all" data-testid={`rm-match-${i}`}>
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center"><Trophy className="w-7 h-7 text-purple-600" /></div>
+                  <div className="w-14 h-14 bg-purple-500/10 rounded-none flex items-center justify-center"><Trophy className="w-7 h-7 text-purple-600" /></div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-bold text-slate-900 group-hover:text-purple-600">{m.home} vs {m.away}</h3>
+                      <h3 className="font-bold text-white group-hover:text-purple-600">{m.home} vs {m.away}</h3>
                       {m.hot && <Badge className="bg-red-100 text-red-600 text-xs animate-pulse">HOT</Badge>}
                     </div>
                     <p className="text-slate-400 text-sm">{m.label} &middot; {m.date} &middot; {m.venue}</p>
@@ -131,14 +131,14 @@ const RealMadridHubPage = () => {
       </section>
 
       {/* Content */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6 text-slate-900">Buy Real Madrid Tickets 2025-26</h2>
-          <div className="prose max-w-none text-slate-600 space-y-4">
+          <h2 className="text-2xl font-bold mb-6 text-white">Buy Real Madrid Tickets 2025-26</h2>
+          <div className="prose max-w-none text-slate-400 space-y-4">
             <p><strong>Real Madrid CF</strong> is the most decorated club in European football with <strong>15 Champions League titles</strong>. The 2025-26 season sees the galacticos compete for La Liga, Champions League, Copa del Rey, and the Club World Cup. Watch <strong>Vinicius Jr., Jude Bellingham, and Kylian Mbapp&eacute;</strong> live at the iconic <strong>Santiago Bernab&eacute;u</strong>.</p>
-            <h3 className="text-lg font-semibold text-slate-800">Santiago Bernabeu Stadium</h3>
+            <h3 className="text-lg font-semibold text-white">Santiago Bernabeu Stadium</h3>
             <p>The newly renovated Santiago Bernab&eacute;u is one of the world's greatest football stadiums. With a <strong>retractable roof, 360-degree screen</strong>, and capacity of 81,044, it offers an unforgettable matchday experience. EuroMatchTickets has tickets for every section - from <strong>Fondo Sur</strong> ultras area to <strong>VIP hospitality boxes</strong>.</p>
-            <h3 className="text-lg font-semibold text-slate-800">Why Buy From EuroMatchTickets?</h3>
+            <h3 className="text-lg font-semibold text-white">Why Buy From EuroMatchTickets?</h3>
             <p>We offer the <strong>cheapest Real Madrid tickets</strong> in Europe. All tickets are <strong>100% verified</strong>, delivered instantly as QR codes, and backed by our <Link to="/buyer-protection" className="text-purple-600 hover:underline">FanProtect guarantee</Link>.</p>
           </div>
         </div>
@@ -147,13 +147,13 @@ const RealMadridHubPage = () => {
       {/* Reviews */}
       <section className="py-16" data-testid="rm-reviews">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-2 text-center text-slate-900">What Fans Say About Real Madrid Tickets</h2>
+          <h2 className="text-2xl font-bold mb-2 text-center text-white">What Fans Say About Real Madrid Tickets</h2>
           <p className="text-center text-slate-500 mb-8">4.9/5 from 2,841 verified buyers</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {reviews.map((r, i) => (
-              <div key={i} className="bg-white border border-slate-100 rounded-2xl p-5">
+              <div key={i} className="bg-[#1e1e1e] border border-white/5 rounded-none p-5">
                 <div className="flex items-center gap-1 mb-2">{[...Array(r.rating)].map((_, j) => <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}</div>
-                <p className="text-slate-600 text-sm mb-3">"{r.text}"</p>
+                <p className="text-slate-400 text-sm mb-3">"{r.text}"</p>
                 <div className="text-xs text-slate-400">{r.name} &middot; {r.country} &middot; {r.date}</div>
               </div>
             ))}
@@ -162,12 +162,12 @@ const RealMadridHubPage = () => {
       </section>
 
       {/* LINK WHEEL - Internal Links Hub */}
-      <section className="py-16 bg-slate-50" data-testid="rm-link-hub">
+      <section className="py-16 bg-[#15151e]" data-testid="rm-link-hub">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center text-slate-900">More Tickets on EuroMatchTickets</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center text-white">More Tickets on EuroMatchTickets</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2"><Trophy className="w-5 h-5 text-purple-600" /> Real Madrid</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3 flex items-center gap-2"><Trophy className="w-5 h-5 text-purple-600" /> Real Madrid</h3>
               <ul className="space-y-2">
                 <li><Link to="/real-madrid-champions-league-tickets-2026" className="text-purple-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />UCL Tickets</Link></li>
                 <li><Link to="/real-madrid-la-liga-tickets-2026" className="text-purple-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />La Liga Tickets</Link></li>
@@ -175,8 +175,8 @@ const RealMadridHubPage = () => {
                 <li><Link to="/bayern-vs-real-madrid-tickets" className="text-purple-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />vs Bayern Munich</Link></li>
               </ul>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2"><Trophy className="w-5 h-5 text-blue-600" /> Link Wheel</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3 flex items-center gap-2"><Trophy className="w-5 h-5 text-blue-600" /> Link Wheel</h3>
               <ul className="space-y-2">
                 <li><Link to="/barcelona-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Barcelona Tickets</Link></li>
                 <li><Link to="/manchester-city-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Man City Tickets</Link></li>
@@ -188,8 +188,8 @@ const RealMadridHubPage = () => {
                 <li><Link to="/world-cup-2026" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />World Cup 2026</Link></li>
               </ul>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2"><Zap className="w-5 h-5 text-red-500" /> More Sports</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3 flex items-center gap-2"><Zap className="w-5 h-5 text-red-500" /> More Sports</h3>
               <ul className="space-y-2">
                 <li><Link to="/f1-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />F1 Tickets 2026</Link></li>
                 <li><Link to="/motogp-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />MotoGP Tickets</Link></li>
@@ -197,8 +197,8 @@ const RealMadridHubPage = () => {
                 <li><Link to="/events" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />All Events</Link></li>
               </ul>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
-              <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2"><Star className="w-5 h-5 text-purple-500" /> Concerts</h3>
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
+              <h3 className="font-bold text-white mb-3 flex items-center gap-2"><Star className="w-5 h-5 text-purple-500" /> Concerts</h3>
               <ul className="space-y-2">
                 <li><Link to="/taylor-swift-wembley-2026-tickets" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />Taylor Swift</Link></li>
                 <li><Link to="/the-weeknd-tour-2026" className="text-blue-600 hover:underline text-sm flex items-center gap-1"><ArrowRight className="w-3 h-3" />The Weeknd</Link></li>
@@ -213,12 +213,12 @@ const RealMadridHubPage = () => {
       {/* FAQ */}
       <section className="py-16" data-testid="rm-faq">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center text-slate-900">Real Madrid Tickets FAQ</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center text-white">Real Madrid Tickets FAQ</h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <details key={i} className="bg-white border border-slate-100 rounded-xl p-5 group">
-                <summary className="font-semibold cursor-pointer text-slate-900 flex items-center justify-between">{faq.question}<ArrowRight className="w-4 h-4 text-slate-400 group-open:rotate-90 transition-transform" /></summary>
-                <p className="mt-3 text-slate-600">{faq.answer}</p>
+              <details key={i} className="bg-[#1e1e1e] border border-white/5 rounded-none p-5 group">
+                <summary className="font-semibold cursor-pointer text-white flex items-center justify-between">{faq.question}<ArrowRight className="w-4 h-4 text-slate-400 group-open:rotate-90 transition-transform" /></summary>
+                <p className="mt-3 text-slate-400">{faq.answer}</p>
               </details>
             ))}
           </div>
@@ -231,7 +231,7 @@ const RealMadridHubPage = () => {
           <h2 className="text-3xl font-bold text-white mb-4">Don't Miss Real Madrid Live</h2>
           <p className="text-purple-100 mb-8 text-lg">El Clasico, Champions League, La Liga - all at the legendary Bernabeu.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/events?type=match"><Button className="bg-white text-purple-700 hover:bg-purple-50 text-lg px-8 py-3">Browse All Matches</Button></Link>
+            <Link to="/events?type=match"><Button className="bg-[#1e1e1e] text-purple-700 hover:bg-purple-500/10 text-lg px-8 py-3">Browse All Matches</Button></Link>
             <Link to="/buyer-protection"><Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">FanProtect Guarantee</Button></Link>
           </div>
         </div>

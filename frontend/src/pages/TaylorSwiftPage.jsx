@@ -12,12 +12,12 @@ import { motion } from "framer-motion";
 const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png";
 
 const shows = [
-  { date: "Jun 19, 2026", day: "Friday", time: "18:00", status: "Few Left", badge: "bg-red-500" },
-  { date: "Jun 20, 2026", day: "Saturday", time: "18:00", status: "Selling Fast", badge: "bg-amber-500" },
-  { date: "Jun 21, 2026", day: "Sunday", time: "18:00", status: "Available", badge: "bg-emerald-500" },
-  { date: "Jun 26, 2026", day: "Friday", time: "18:00", status: "Available", badge: "bg-emerald-500" },
-  { date: "Jun 27, 2026", day: "Saturday", time: "18:00", status: "Selling Fast", badge: "bg-amber-500" },
-  { date: "Jun 28, 2026", day: "Sunday", time: "18:00", status: "New!", badge: "bg-blue-500" },
+  { date: "Jun 19, 2026", day: "Friday", time: "18:00", status: "Few Left", badge: "bg-[#e10600]/100" },
+  { date: "Jun 20, 2026", day: "Saturday", time: "18:00", status: "Selling Fast", badge: "bg-amber-500/100" },
+  { date: "Jun 21, 2026", day: "Sunday", time: "18:00", status: "Available", badge: "bg-emerald-500/100" },
+  { date: "Jun 26, 2026", day: "Friday", time: "18:00", status: "Available", badge: "bg-emerald-500/100" },
+  { date: "Jun 27, 2026", day: "Saturday", time: "18:00", status: "Selling Fast", badge: "bg-amber-500/100" },
+  { date: "Jun 28, 2026", day: "Sunday", time: "18:00", status: "New!", badge: "bg-blue-500/100" },
 ];
 
 const packages = [
@@ -38,7 +38,7 @@ const Countdown = ({ target }) => {
   return (
     <div className="flex gap-2 justify-center">
       {[{ v: d, l: "Days" }, { v: h, l: "Hrs" }, { v: m, l: "Min" }, { v: s, l: "Sec" }].map((u, i) => (
-        <div key={i} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-lg px-3 py-2 min-w-[56px] text-center">
+        <div key={i} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-none px-3 py-2 min-w-[56px] text-center">
           <div className="text-xl sm:text-2xl font-black text-white">{String(u.v).padStart(2, '0')}</div>
           <div className="text-[9px] text-pink-300 uppercase tracking-wider font-bold">{u.l}</div>
         </div>
@@ -140,7 +140,7 @@ const TaylorSwiftPage = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {shows.map((s, i) => (
-              <a key={i} href="#tickets" className="group flex items-center gap-4 bg-white/[0.03] border border-white/5 hover:border-pink-500/30 rounded-xl p-4 transition-all hover:bg-white/[0.05]">
+              <a key={i} href="#tickets" className="group flex items-center gap-4 bg-white/[0.03] border border-white/5 hover:border-pink-500/30 rounded-none p-4 transition-all hover:bg-white/[0.05]">
                 <div className="text-center min-w-[52px]">
                   <div className="text-2xl font-black text-white">{s.date.split(' ')[1].replace(',','')}</div>
                   <div className="text-[10px] text-slate-500 uppercase">{s.date.split(' ')[0]}</div>
@@ -170,9 +170,9 @@ const TaylorSwiftPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             {packages.filter(p => !p.vip).map((p, i) => (
-              <div key={i} className={`relative group rounded-2xl bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
+              <div key={i} className={`relative group rounded-none bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
                 {p.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-500 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">{p.tag}</div>}
-                <div className="rounded-2xl bg-[#111827] p-6 h-full flex flex-col text-center">
+                <div className="rounded-none bg-[#111827] p-6 h-full flex flex-col text-center">
                   <div className={`text-xs font-bold uppercase tracking-wider ${p.text} mb-2`}>{p.name}</div>
                   <div className="text-4xl font-black text-white mb-1">&euro;{p.price}</div>
                   <div className="text-slate-500 text-xs mb-5">{p.tier}</div>
@@ -181,7 +181,7 @@ const TaylorSwiftPage = () => {
                       <div key={j} className="flex items-center gap-2 text-[11px] text-slate-400"><Check className="w-3 h-3 text-pink-400 flex-shrink-0" />{f}</div>
                     ))}
                   </div>
-                  <Link to="/events?search=Taylor+Swift" className={`block w-full py-3 rounded-xl bg-gradient-to-r ${p.color} text-white text-sm font-bold hover:opacity-90 transition`}>
+                  <Link to="/events?search=Taylor+Swift" className={`block w-full py-3 rounded-none bg-gradient-to-r ${p.color} text-white text-sm font-bold hover:opacity-90 transition`}>
                     Buy Now <ArrowRight className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
@@ -191,9 +191,9 @@ const TaylorSwiftPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {packages.filter(p => p.vip).map((p, i) => (
-              <div key={i} className={`relative group rounded-2xl bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
+              <div key={i} className={`relative group rounded-none bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
                 {p.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-pink-400 to-purple-500 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">{p.tag}</div>}
-                <div className="rounded-2xl bg-[#111827] p-6 h-full flex flex-col text-center">
+                <div className="rounded-none bg-[#111827] p-6 h-full flex flex-col text-center">
                   <div className={`text-xs font-bold uppercase tracking-wider ${p.text} mb-2 flex items-center justify-center gap-1`}><Crown className="w-3.5 h-3.5" /> {p.name}</div>
                   <div className="text-4xl font-black text-white mb-1">&euro;{p.price}</div>
                   <div className="text-slate-500 text-xs mb-5">{p.tier}</div>
@@ -202,7 +202,7 @@ const TaylorSwiftPage = () => {
                       <div key={j} className="flex items-center gap-2 text-[11px] text-slate-400"><Check className="w-3 h-3 text-amber-400 flex-shrink-0" />{f}</div>
                     ))}
                   </div>
-                  <Link to="/events?search=Taylor+Swift" className={`block w-full py-3 rounded-xl bg-gradient-to-r ${p.color} text-white text-sm font-bold hover:opacity-90 transition`}>
+                  <Link to="/events?search=Taylor+Swift" className={`block w-full py-3 rounded-none bg-gradient-to-r ${p.color} text-white text-sm font-bold hover:opacity-90 transition`}>
                     Get VIP Access <Crown className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
@@ -252,7 +252,7 @@ const TaylorSwiftPage = () => {
               { name: "Athletics 2026", link: "/world-athletics-2026-tickets", emoji: "🏃" },
               { name: "All Events", link: "/events", emoji: "🎟️" },
             ].map((e, i) => (
-              <Link key={i} to={e.link} className="flex items-center gap-2 bg-white/[0.03] border border-white/5 hover:border-pink-500/30 rounded-xl p-3 text-sm text-slate-400 hover:text-white transition">
+              <Link key={i} to={e.link} className="flex items-center gap-2 bg-white/[0.03] border border-white/5 hover:border-pink-500/30 rounded-none p-3 text-sm text-slate-400 hover:text-white transition">
                 <span>{e.emoji}</span> {e.name} <ChevronRight className="w-3.5 h-3.5 ml-auto" />
               </Link>
             ))}
@@ -276,7 +276,7 @@ const TaylorSwiftPage = () => {
       </section>
 
       <div className="py-6 border-t border-white/5">
-        <p className="text-[10px] text-slate-600 text-center max-w-3xl mx-auto px-4">
+        <p className="text-[10px] text-slate-400 text-center max-w-3xl mx-auto px-4">
           <strong>Disclaimer:</strong> EuroMatchTickets is an independent ticket marketplace and official alternative to primary vendors. Not affiliated with Taylor Swift or her management. Tickets are resale.
         </p>
       </div>

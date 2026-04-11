@@ -30,9 +30,9 @@ const leagueConfig = {
 };
 
 const categoryConfig = {
-  vip: { name: "VIP", color: "bg-purple-500", textColor: "text-violet-600", description: "Premium hospitality with best views" },
-  cat1: { name: "Category 1", color: "bg-blue-500", textColor: "text-blue-600", description: "Lower tier, close to the pitch" },
-  cat2: { name: "Category 2", color: "bg-green-500", textColor: "text-green-600", description: "Mid-tier, great atmosphere" },
+  vip: { name: "VIP", color: "bg-purple-500/100", textColor: "text-violet-600", description: "Premium hospitality with best views" },
+  cat1: { name: "Category 1", color: "bg-blue-500/100", textColor: "text-blue-600", description: "Lower tier, close to the pitch" },
+  cat2: { name: "Category 2", color: "bg-green-500/100", textColor: "text-green-600", description: "Mid-tier, great atmosphere" },
   cat3: { name: "Category 3", color: "bg-slate-400", textColor: "text-slate-400", description: "Upper tier, full stadium view" }
 };
 
@@ -53,10 +53,10 @@ const TicketCard = ({ ticket, onSelect, selected }) => {
     <div
       data-testid={`ticket-${ticket.ticket_id}`}
       onClick={() => onSelect(ticket)}
-      className={`cursor-pointer p-4 rounded-xl border transition-all duration-200 ${
+      className={`cursor-pointer p-4 rounded-none border transition-all duration-200 ${
         selected 
-          ? 'border-green-500 bg-green-500/10' 
-          : 'border-slate-200 bg-slate-900/50 hover:border-white/30'
+          ? 'border-green-500 bg-green-500/100/10' 
+          : 'border-white/10 bg-slate-900/50 hover:border-white/30'
       }`}
     >
       <div className="flex items-start justify-between">
@@ -205,7 +205,7 @@ const MatchDetailsPage = () => {
               <h1 className="text-3xl md:text-5xl font-black uppercase">{match.home_team}</h1>
             </div>
             
-            <span className="text-4xl font-black text-slate-600">VS</span>
+            <span className="text-4xl font-black text-slate-400">VS</span>
             
             <div className="flex items-center gap-4">
               <h1 className="text-3xl md:text-5xl font-black uppercase">{match.away_team}</h1>
@@ -256,10 +256,10 @@ const MatchDetailsPage = () => {
                       data-testid={`category-${key}`}
                       onClick={() => handleCategorySelect(key)}
                       disabled={!catData || catData.count === 0}
-                      className={`p-4 rounded-xl border transition-all ${
+                      className={`p-4 rounded-none border transition-all ${
                         selectedCategory === key 
                           ? 'border-white bg-white/10' 
-                          : 'border-slate-200 hover:border-white/30'
+                          : 'border-white/10 hover:border-white/30'
                       } ${(!catData || catData.count === 0) ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
                       <div className="flex items-center gap-2 mb-2">
@@ -338,7 +338,7 @@ const MatchDetailsPage = () => {
                       <span>{selectedTicket.row} / {selectedTicket.seat}</span>
                     </div>
                     
-                    <hr className="border-slate-200" />
+                    <hr className="border-white/10" />
                     
                     <div className="flex justify-between">
                       <span className="text-slate-400">Ticket Price</span>
@@ -352,7 +352,7 @@ const MatchDetailsPage = () => {
                       <span>€{commission.toFixed(2)}</span>
                     </div>
                     
-                    <hr className="border-slate-200" />
+                    <hr className="border-white/10" />
                     
                     <div className="flex justify-between text-xl font-black">
                       <span>Total</span>

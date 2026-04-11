@@ -34,7 +34,7 @@ const GunsNRosesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Guns N' Roses Tour 2026 Tickets | Europe Stadium"
         description="Buy Guns N Roses 2026 European tour tickets from €95. Stadium shows - Berlin, London Tottenham, Hamburg, Cologne, Munich. Sweet Child O Mine live!"
@@ -48,7 +48,7 @@ const GunsNRosesPage = () => {
             <Zap className="w-4 h-4 text-cyan-600" />
             <span className="text-cyan-600 font-medium">Legendary Rock Tour 2026!</span>
           </div>
-          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
+          <Badge className="bg-[#e10600]/10 text-red-600 border-red-200 mb-6">
             <Skull className="w-4 h-4 mr-2" />Stadium Rock
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -57,11 +57,11 @@ const GunsNRosesPage = () => {
           </h1>
           <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">The most dangerous band in the world returns! Axl, Slash & Duff bring the ultimate rock n roll experience to European stadiums.</p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Calendar className="w-5 h-5 text-cyan-600" /><span>June - July 2026</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><MapPin className="w-5 h-5 text-cyan-600" /><span>8 Stadium Shows</span></div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full"><Users className="w-5 h-5 text-cyan-600" /><span>3+ Hour Sets</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Calendar className="w-5 h-5 text-cyan-600" /><span>June - July 2026</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><MapPin className="w-5 h-5 text-cyan-600" /><span>8 Stadium Shows</span></div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Users className="w-5 h-5 text-cyan-600" /><span>3+ Hour Sets</span></div>
           </div>
-          <div className="inline-block bg-white/90 border border-slate-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-white/10 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">€95</div>
             <div className="text-emerald-600 text-sm mt-1">Verified</div>
@@ -69,7 +69,7 @@ const GunsNRosesPage = () => {
         </div>
       </section>
 
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Verified</span></div>
@@ -84,13 +84,13 @@ const GunsNRosesPage = () => {
           <h2 className="text-3xl font-bold mb-8 text-center">Guns N Roses 2026 European Dates</h2>
           <div className="grid gap-4">
             {shows.map((show, i) => (
-              <Link key={i} to="/events?type=concert" className="group flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-cyan-500/30 rounded-2xl p-6 transition-all">
+              <Link key={i} to="/events?type=concert" className="group flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-cyan-500/30 rounded-none p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center"><Music className="w-7 h-7 text-cyan-600" /></div>
+                  <div className="w-14 h-14 bg-cyan-500/20 rounded-none flex items-center justify-center"><Music className="w-7 h-7 text-cyan-600" /></div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold group-hover:text-cyan-600">{show.venue}</h3>
-                      {show.hot && <Badge className="bg-red-50 text-red-600 text-xs animate-pulse">HOT</Badge>}
+                      {show.hot && <Badge className="bg-[#e10600]/10 text-red-600 text-xs animate-pulse">HOT</Badge>}
                     </div>
                     <p className="text-slate-400 text-sm">{show.date} - {show.city}, {show.country}</p>
                   </div>
@@ -106,7 +106,7 @@ const GunsNRosesPage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">Guns N Roses European Tour 2026</h2>
           <div className="prose prose-invert max-w-none text-slate-500">

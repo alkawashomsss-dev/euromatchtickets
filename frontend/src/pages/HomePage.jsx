@@ -36,9 +36,9 @@ const FadeInSection = ({ children, className = "", delay = 0 }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -46,28 +46,7 @@ const FadeInSection = ({ children, className = "", delay = 0 }) => {
   );
 };
 
-/* ─── Countdown Timer ─── */
-const CountdownTimer = ({ targetDate }) => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0 });
-  useEffect(() => {
-    const calc = () => {
-      const diff = new Date(targetDate) - new Date();
-      if (diff > 0) setTimeLeft({ days: Math.floor(diff / 864e5), hours: Math.floor((diff / 36e5) % 24) });
-    };
-    calc();
-    const t = setInterval(calc, 60000);
-    return () => clearInterval(t);
-  }, [targetDate]);
-  if (timeLeft.days > 30) return null;
-  return (
-    <div className="flex items-center gap-1 text-xs text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">
-      <Timer className="w-3 h-3" />
-      <span className="font-medium">{timeLeft.days}d {timeLeft.hours}h</span>
-    </div>
-  );
-};
-
-/* ─── Event Card ─── */
+/* ─── Event Card - F1 Style ─── */
 const EventCard = ({ event, index }) => {
   const dateInfo = formatDate(event.event_date);
   const isMatch = event.event_type === "match";
@@ -77,55 +56,55 @@ const EventCard = ({ event, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.06 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
     >
       <Link 
         to={`/event/${event.slug || event.event_id}`}
         data-testid={`event-card-${event.slug || event.event_id}`}
-        className="group block bg-white border border-slate-200 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-200 hover:border-[#e10600]"
+        className="group block bg-[#1e1e1e] border border-white/6 overflow-hidden hover:border-[#e10600] transition-colors duration-150"
       >
         {/* Image */}
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative h-52 overflow-hidden">
           <img 
             src={event.image_url || `${getEventImagePath(event)}-md.webp`}
             alt={event.image_alt || `${event.title} tickets`}
-            loading="lazy" decoding="async" width="400" height="192"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy" decoding="async" width="400" height="208"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
           
           {/* Category Badge - Top Left */}
           <div className="absolute top-3 left-3">
-            <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-white ${isMatch ? 'bg-[#0f172a]' : 'bg-[#e10600]'}`}>
+            <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-white ${isMatch ? 'bg-[#15803d]' : 'bg-[#e10600]'}`}>
               {isMatch ? <Trophy className="w-3 h-3" /> : <Music className="w-3 h-3" />}
-              {isMatch ? "Match" : "Concert"}
+              {isMatch ? "MATCH" : "CONCERT"}
             </span>
           </div>
 
-          {/* Featured / Urgency - Top Right */}
+          {/* Urgency badges */}
           <div className="absolute top-3 right-3 flex flex-col gap-1.5 items-end">
             {event.featured && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-black uppercase tracking-wider bg-white text-[#0f172a]">
-                <Sparkles className="w-3 h-3" /> Featured
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider bg-[#facc15] text-black">
+                <Sparkles className="w-3 h-3" /> FEATURED
               </span>
             )}
             {isLimited && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-black bg-[#e10600] text-white animate-pulse">
-                <AlertCircle className="w-3 h-3" /> {ticketsLeft} left!
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-black bg-[#e10600] text-white animate-pulse">
+                <AlertCircle className="w-3 h-3" /> {ticketsLeft} LEFT!
               </span>
             )}
-            {isFast && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-black bg-white text-[#0f172a]">
-                <TrendingUp className="w-3 h-3" /> Selling Fast
+            {isFast && !isLimited && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-black bg-[#facc15] text-black">
+                <TrendingUp className="w-3 h-3" /> SELLING FAST
               </span>
             )}
           </div>
 
           {/* Date overlay bottom-left */}
-          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1.5 rounded-lg">
+          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-black/70 text-white text-xs font-bold px-2.5 py-1.5 uppercase tracking-wide">
             <Calendar className="w-3 h-3" />
             {dateInfo.month} {dateInfo.date}
           </div>
@@ -133,50 +112,42 @@ const EventCard = ({ event, index }) => {
 
         {/* Content */}
         <div className="p-4">
-          <h3 className="text-base font-black text-[#0f172a] group-hover:text-[#e10600] transition-colors line-clamp-1 mb-1">
+          <h3 className="text-base font-black text-white group-hover:text-[#e10600] transition-colors line-clamp-1 mb-1 uppercase tracking-tight">
             {event.title}
           </h3>
 
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-3">
+          <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-3">
             <MapPin className="w-3 h-3" />{event.venue ? `${event.venue}, ` : ''}{event.city}
           </div>
 
           {isMatch && event.home_team && (
-            <div className="flex items-center justify-center gap-3 py-2 mb-3 bg-[#f8fafc] rounded-lg border border-slate-100">
+            <div className="flex items-center justify-center gap-3 py-2 mb-3 bg-white/5 border border-white/8">
               <div className="flex items-center gap-1.5">
-                <div className="w-6 h-6 bg-white rounded-full p-0.5 shadow-sm flex items-center justify-center">
+                <div className="w-6 h-6 bg-white/10 p-0.5 flex items-center justify-center">
                   <img src={event.home_logo} alt="" className="w-4 h-4 object-contain" onError={(e) => e.target.style.display='none'} />
                 </div>
-                <span className="font-black text-sm text-[#0f172a]">{event.home_team}</span>
+                <span className="font-black text-sm text-white">{event.home_team}</span>
               </div>
               <span className="text-[#e10600] text-xs font-black">VS</span>
               <div className="flex items-center gap-1.5">
-                <span className="font-black text-sm text-[#0f172a]">{event.away_team}</span>
-                <div className="w-6 h-6 bg-white rounded-full p-0.5 shadow-sm flex items-center justify-center">
+                <span className="font-black text-sm text-white">{event.away_team}</span>
+                <div className="w-6 h-6 bg-white/10 p-0.5 flex items-center justify-center">
                   <img src={event.away_logo} alt="" className="w-4 h-4 object-contain" onError={(e) => e.target.style.display='none'} />
                 </div>
               </div>
             </div>
           )}
 
-          <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+          <div className="flex items-center justify-between pt-3 border-t border-white/8">
             {event.lowest_price ? (
               <div className="flex items-baseline gap-1">
-                <span className="text-xs text-slate-400 font-medium">From</span>
-                <span className="text-xl font-black text-[#0f172a]">&euro;{event.lowest_price.toFixed(0)}</span>
+                <span className="text-xs text-slate-500 font-medium uppercase">From</span>
+                <span className="text-xl font-black text-white">&euro;{event.lowest_price.toFixed(0)}</span>
               </div>
             ) : (
-              <span className="text-slate-400 text-sm">Price TBA</span>
+              <span className="text-slate-500 text-sm uppercase font-bold">Price TBA</span>
             )}
-            {ticketsLeft > 0 && (
-              <span className={`text-xs font-bold px-2.5 py-1 rounded ${
-                isLimited ? 'bg-[#e10600] text-white'
-                : isFast ? 'bg-[#0f172a] text-white'
-                : 'bg-[#0f172a] text-white'
-              }`}>
-                {ticketsLeft} available
-              </span>
-            )}
+            <ChevronRight className="w-5 h-5 text-slate-600 group-hover:text-[#e10600] transition-colors" />
           </div>
         </div>
       </Link>
@@ -194,7 +165,7 @@ const HomePage = () => {
 
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
@@ -215,7 +186,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Buy F1, Football & Concert Tickets 2026 | EuroMatchTickets"
         description="Europe's #1 official alternative ticket marketplace. Cheapest verified tickets for World Cup 2026, Taylor Swift, Super Bowl, Champions League, F1, MotoGP."
@@ -234,57 +205,53 @@ const HomePage = () => {
               <img src="/images/heroes/worldcup-trophy.jpg" alt="FIFA World Cup 2026" className="absolute inset-0 w-full h-full object-cover" fetchPriority="high" decoding="sync" />
             </picture>
           </motion.div>
-          {/* Overlay mesh */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e14] via-black/70 to-black/40" />
           <div className="absolute inset-0 hero-mesh" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/30" />
         </div>
 
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 w-full py-20 md:py-32">
           <div className="max-w-4xl">
             {/* Live tag */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-8">
-              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2.5 rounded-full">
-                <span className="w-2 h-2 bg-[#e10600] rounded-full animate-pulse" />
-                <span className="text-white/90 text-sm font-medium tracking-wide">TICKETS ON SALE NOW</span>
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-6">
+              <span className="inline-flex items-center gap-2 bg-[#e10600] px-4 py-2">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                <span className="text-white text-xs font-black tracking-widest uppercase">TICKETS ON SALE NOW</span>
               </span>
             </motion.div>
             
             {/* Headline */}
             <motion.h1 
-              initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mb-6 leading-[0.95] tracking-tight"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mb-6 leading-[0.95] tracking-tighter"
             >
-              <span className="text-white font-extrabold">FIFA WORLD CUP</span>
-              <br />
-              <span className="text-[#e10600] font-extrabold">
-                2026 TICKETS
-              </span>
+              <span className="text-white font-black block">FIFA WORLD CUP</span>
+              <span className="text-[#e10600] font-black block">2026 TICKETS</span>
             </motion.h1>
             
             {/* Subtitle */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="mb-8">
-              <p className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="mb-8">
+              <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed">
                 Be part of history. Verified tickets for the biggest football event ever. 
-                <span className="text-[#e10600] font-semibold"> 100% secure</span> with instant QR delivery.
+                <span className="text-[#e10600] font-bold"> 100% secure</span> with instant QR delivery.
               </p>
             </motion.div>
 
             {/* CTA Row */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-12">
-              <div className="glass-dark px-6 py-4 rounded-2xl">
-                <span className="text-slate-400 text-xs uppercase tracking-widest">Tickets from</span>
-                <div className="text-3xl md:text-4xl font-extrabold text-[#e10600] mt-0.5">&euro;150</div>
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
+              <div className="bg-[#15151e] border border-white/10 px-5 py-3">
+                <span className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Tickets from</span>
+                <div className="text-3xl md:text-4xl font-black text-[#e10600] mt-0.5">&euro;150</div>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/world-cup-2026">
-                  <Button data-testid="buy-worldcup-btn" className="bg-[#e10600] hover:bg-[#b80500] text-white text-lg h-14 px-8 rounded-none font-bold shadow-[0_4px_20px_rgba(225,6,0,0.3)] transition-all hover:scale-105 active:scale-[0.97]">
+                  <Button data-testid="buy-worldcup-btn" className="bg-[#e10600] hover:bg-red-700 text-white text-base h-13 px-8 rounded-none font-black uppercase tracking-wider transition-colors duration-150">
                     Buy World Cup Tickets
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link to="/events">
-                  <Button data-testid="explore-events-btn" className="bg-white/10 hover:bg-white/20 border border-white/30 text-white text-lg h-14 px-8 rounded-none backdrop-blur-sm transition-all">
+                  <Button data-testid="explore-events-btn" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base h-13 px-8 rounded-none font-bold uppercase tracking-wider transition-colors duration-150">
                     <Ticket className="w-5 h-5 mr-2" /> All Events
                   </Button>
                 </Link>
@@ -292,15 +259,15 @@ const HomePage = () => {
             </motion.div>
 
             {/* Trust Strip */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.5 }} className="flex flex-wrap items-center gap-6">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }} className="flex flex-wrap items-center gap-6">
               {[
-                { icon: CheckCircle, text: "Verified Tickets", color: "text-emerald-600" },
-                { icon: Lock, text: "Secure Payment", color: "text-blue-600" },
-                { icon: Zap, text: "Instant Delivery", color: "text-amber-600" },
-                { icon: Headphones, text: "24/7 Support", color: "text-white/70" },
+                { icon: CheckCircle, text: "Verified Tickets" },
+                { icon: Lock, text: "Secure Payment" },
+                { icon: Zap, text: "Instant Delivery" },
+                { icon: Headphones, text: "24/7 Support" },
               ].map((t, i) => (
-                <span key={i} className="flex items-center gap-2 text-sm text-white/80">
-                  <t.icon className={`w-4 h-4 ${t.color}`} />{t.text}
+                <span key={i} className="flex items-center gap-2 text-sm text-white/60">
+                  <t.icon className="w-4 h-4 text-[#e10600]" />{t.text}
                 </span>
               ))}
             </motion.div>
@@ -309,20 +276,20 @@ const HomePage = () => {
       </section>
 
       {/* ═══════ TRUST TICKER ═══════ */}
-      <section className="py-5 bg-white border-y border-slate-100 overflow-hidden">
+      <section className="py-3 bg-[#15151e] border-y border-white/5 overflow-hidden">
         <div className="flex animate-ticker whitespace-nowrap">
           {[...Array(2)].map((_, setIdx) => (
             <div key={setIdx} className="flex items-center gap-12 px-6">
               {[
-                { icon: Shield, text: "100% Buyer Protection", color: "text-emerald-600" },
-                { icon: Ticket, text: "Instant QR Delivery", color: "text-slate-700" },
-                { icon: Star, text: "4.9/5 from 12,847 reviews", color: "text-amber-600" },
-                { icon: Lock, text: "SSL Encrypted Payments", color: "text-blue-600" },
-                { icon: Globe, text: "Serving 25+ Countries", color: "text-slate-700" },
-                { icon: CheckCircle, text: "Verified Sellers Only", color: "text-emerald-600" },
+                { icon: Shield, text: "100% Buyer Protection" },
+                { icon: Ticket, text: "Instant QR Delivery" },
+                { icon: Star, text: "4.9/5 from 12,847 reviews" },
+                { icon: Lock, text: "SSL Encrypted Payments" },
+                { icon: Globe, text: "Serving 25+ Countries" },
+                { icon: CheckCircle, text: "Verified Sellers Only" },
               ].map((item, i) => (
-                <span key={`${setIdx}-${i}`} className="flex items-center gap-2 text-sm font-medium text-slate-600">
-                  <item.icon className={`w-4 h-4 ${item.color}`} />
+                <span key={`${setIdx}-${i}`} className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  <item.icon className="w-3.5 h-3.5 text-[#e10600]" />
                   {item.text}
                 </span>
               ))}
@@ -332,93 +299,106 @@ const HomePage = () => {
       </section>
 
       {/* ═══════ HOTTEST EVENTS CAROUSEL ═══════ */}
-      <div className="bg-[#0a0e1a]">
+      <div className="bg-[#0e0e14]">
         <FeaturedEventsCarousel />
       </div>
 
       {/* ═══════ FEATURED EVENTS ═══════ */}
-      <section className="py-24 relative">
+      <section className="py-16 md:py-24 bg-[#0e0e14]">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <FadeInSection>
-            <div className="flex items-end justify-between mb-14">
+            <div className="flex items-end justify-between mb-10">
               <div>
-                <span className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-3 block">Don't Miss Out</span>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900">Featured Events</h2>
+                <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-2 block">DON'T MISS OUT</span>
+                <h2 className="text-3xl md:text-4xl font-black text-white">FEATURED EVENTS</h2>
               </div>
-              <Link to="/events" className="hidden md:flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors font-medium group">
+              <Link to="/events" className="hidden md:flex items-center gap-2 text-slate-400 hover:text-white transition-colors font-bold text-sm uppercase tracking-wider group">
                 View All <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </FadeInSection>
 
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1,2,3,4,5,6].map(i => <div key={i} className="h-96 rounded-3xl shimmer" />)}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[1,2,3,4,5,6].map(i => <div key={i} className="h-80 shimmer" />)}
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {featuredEvents.map((event, i) => <EventCard key={event.event_id} event={event} index={i} />)}
             </div>
           )}
           
-          <div className="md:hidden text-center mt-8">
-            <Link to="/events" className="btn-secondary inline-flex items-center gap-2">View All Events <ArrowRight className="w-4 h-4" /></Link>
+          <div className="md:hidden text-center mt-6">
+            <Link to="/events" className="btn-secondary inline-flex items-center gap-2 text-sm">VIEW ALL EVENTS <ArrowRight className="w-4 h-4" /></Link>
           </div>
         </div>
       </section>
 
-      {/* ═══════ CATEGORIES BENTO ═══════ */}
-      <section className="py-24 bg-white">
+      {/* ═══════ CATEGORIES - F1 STYLE FULL-WIDTH IMAGE CARDS ═══════ */}
+      <section className="py-16 md:py-24 bg-[#15151e]">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <FadeInSection>
-            <span className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-3 block">Browse By Category</span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-14">Find Your Perfect Event</h2>
+            <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-2 block">BROWSE BY CATEGORY</span>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-10">FIND YOUR EVENT</h2>
           </FadeInSection>
 
-          {/* Top Row - Hot Events */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-4">
-            {[
-              { to: "/taylor-swift-london-tickets", label: "ERAS TOUR", title: "Taylor Swift London", price: "From €89", color: "from-pink-600 to-purple-800", accent: "text-pink-300" },
-              { to: "/bayern-vs-real-madrid-tickets", label: "UCL CLASSIC", title: "Bayern vs Real Madrid", price: "From €199", color: "from-red-700 to-red-900", accent: "text-red-300" },
-              { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "Bahrain World Cup", price: "From €89", color: "from-amber-700 to-amber-900", accent: "text-amber-300" },
-              { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From €85", color: "from-blue-800 to-blue-950", accent: "text-blue-300" },
-              { to: "/f1-bahrain-grand-prix-tickets", label: "F1 NIGHT RACE", title: "Bahrain GP", price: "From €149", color: "from-emerald-700 to-emerald-900", accent: "text-emerald-300" },
-              { to: "/f1-tickets-2026", label: "F1 2026", title: "F1 Tickets", price: "From €120", color: "from-violet-800 to-violet-950", accent: "text-violet-300" },
-            ].map((cat, i) => (
-              <FadeInSection key={cat.to} delay={i * 0.08}>
-                <Link to={cat.to} className="group relative h-44 rounded-2xl overflow-hidden block">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${cat.color}`} />
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/10" />
-                  <div className="relative h-full flex flex-col justify-end p-5">
-                    <span className={`text-xs font-bold ${cat.accent} mb-1 uppercase tracking-wider`}>{cat.label}</span>
-                    <h3 className="text-lg font-bold text-white">{cat.title}</h3>
-                    <p className="text-xs text-white/60">{cat.price}</p>
+          {/* Big Category Cards - F1 Style with full-width images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <FadeInSection delay={0.05}>
+              <Link to="/events?type=match" data-testid="category-matches" className="group relative h-72 overflow-hidden block">
+                <OptimizedImage basePath={getCategoryHero("football")} alt="Football Tickets" className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="relative h-full flex flex-col justify-end p-6">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Trophy className="w-8 h-8 text-[#e10600]" />
+                    <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">FOOTBALL</h3>
                   </div>
-                </Link>
-              </FadeInSection>
-            ))}
+                  <p className="text-slate-300 text-sm mb-3">Champions League, World Cup, Premier League & more</p>
+                  <span className="flex items-center text-[#e10600] group-hover:translate-x-2 transition-transform font-black text-sm uppercase tracking-wider">
+                    Browse Matches <ChevronRight className="w-5 h-5 ml-1" />
+                  </span>
+                </div>
+              </Link>
+            </FadeInSection>
+            <FadeInSection delay={0.1}>
+              <Link to="/events?type=concert" data-testid="category-concerts" className="group relative h-72 overflow-hidden block">
+                <OptimizedImage basePath={getCategoryHero("concert")} alt="Concert Tickets" className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="relative h-full flex flex-col justify-end p-6">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Music className="w-8 h-8 text-[#e10600]" />
+                    <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">CONCERTS</h3>
+                  </div>
+                  <p className="text-slate-300 text-sm mb-3">Taylor Swift, Bruno Mars, The Weeknd & more</p>
+                  <span className="flex items-center text-[#e10600] group-hover:translate-x-2 transition-transform font-black text-sm uppercase tracking-wider">
+                    Browse Concerts <ChevronRight className="w-5 h-5 ml-1" />
+                  </span>
+                </div>
+              </Link>
+            </FadeInSection>
           </div>
 
-          {/* Racing Row */}
+          {/* Racing Row - Full Width Cards */}
           <FadeInSection delay={0.15}>
-            <div className="mb-8 mt-12">
-              <h3 className="text-xl font-bold text-slate-900 mb-5 flex items-center gap-2">
-                <Flag className="w-5 h-5 text-red-600" /> Racing Tickets
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="mb-6">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-1 h-6 bg-[#e10600]" />
+                <h3 className="text-lg font-black text-white uppercase tracking-wider">Racing Tickets</h3>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                 {[
-                  { to: "/f1-tickets", title: "F1 Tickets", sub: "23 Grand Prix", price: "From \u20ac89", color: "from-red-600 to-red-800" },
-                  { to: "/f1-2026-schedule", title: "F1 Schedule", sub: "Full Calendar", price: "Mar - Dec 2026", color: "from-red-500 to-red-700" },
-                  { to: "/motogp-tickets", title: "MotoGP", sub: "21 Championship Races", price: "From \u20ac69", color: "from-orange-600 to-orange-800" },
-                  { to: "/motogp-2026-schedule", title: "MotoGP Schedule", sub: "Full Calendar", price: "Mar - Nov 2026", color: "from-orange-500 to-orange-700" },
-                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", price: "From \u20ac149", color: "from-amber-600 to-amber-800" },
+                  { to: "/f1-tickets", title: "F1 Tickets", sub: "23 Grand Prix", price: "From \u20ac89", color: "from-red-700 to-red-900" },
+                  { to: "/f1-2026-schedule", title: "F1 Schedule", sub: "Full Calendar", price: "Mar - Dec 2026", color: "from-red-600 to-red-800" },
+                  { to: "/motogp-tickets", title: "MotoGP", sub: "21 Races", price: "From \u20ac69", color: "from-orange-700 to-orange-900" },
+                  { to: "/motogp-2026-schedule", title: "MotoGP Schedule", sub: "Full Calendar", price: "Mar - Nov 2026", color: "from-orange-600 to-orange-800" },
+                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", price: "From \u20ac149", color: "from-amber-700 to-amber-900" },
                 ].map((item) => (
-                  <Link key={item.to} to={item.to} className="group relative h-40 rounded-2xl overflow-hidden block hover:scale-[1.03] transition-transform duration-300">
+                  <Link key={item.to} to={item.to} className="group relative h-36 overflow-hidden block hover:ring-2 hover:ring-[#e10600] transition-all duration-150">
                     <div className={`absolute inset-0 bg-gradient-to-br ${item.color}`} />
                     <div className="relative h-full flex flex-col justify-end p-4">
-                      <h3 className="text-base font-bold text-white">{item.title}</h3>
-                      <p className="text-xs text-white/60">{item.sub}</p>
-                      <span className="text-emerald-300 text-xs font-bold mt-1">{item.price}</span>
+                      <h3 className="text-sm font-black text-white uppercase tracking-tight">{item.title}</h3>
+                      <p className="text-[10px] text-white/50 uppercase">{item.sub}</p>
+                      <span className="text-[#facc15] text-xs font-black mt-1">{item.price}</span>
                     </div>
                   </Link>
                 ))}
@@ -426,64 +406,55 @@ const HomePage = () => {
             </div>
           </FadeInSection>
 
-          {/* Big Category Cards */}
+          {/* Hot Events Grid */}
           <FadeInSection delay={0.2}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-              <Link to="/events?type=concert" data-testid="category-concerts" className="group relative h-80 rounded-3xl overflow-hidden block">
-                <OptimizedImage basePath={getCategoryHero("concert")} alt="Concerts" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
-                <div className="absolute inset-0 bg-violet-600/10 group-hover:bg-violet-600/20 transition-colors" />
-                <div className="relative h-full flex flex-col justify-end p-8">
-                  <Music className="w-10 h-10 text-violet-300 mb-3" />
-                  <h3 className="text-3xl font-bold text-white mb-2">Concerts</h3>
-                  <p className="text-slate-300 mb-4">Taylor Swift, Bruno Mars, The Weeknd & more</p>
-                  <span className="flex items-center text-violet-300 group-hover:translate-x-2 transition-transform font-medium">
-                    Browse Concerts <ChevronRight className="w-5 h-5 ml-1" />
-                  </span>
-                </div>
-              </Link>
-              <Link to="/events?type=match" data-testid="category-matches" className="group relative h-80 rounded-3xl overflow-hidden block">
-                <OptimizedImage basePath={getCategoryHero("football")} alt="Football" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
-                <div className="absolute inset-0 bg-emerald-600/10 group-hover:bg-emerald-600/20 transition-colors" />
-                <div className="relative h-full flex flex-col justify-end p-8">
-                  <Trophy className="w-10 h-10 text-emerald-300 mb-3" />
-                  <h3 className="text-3xl font-bold text-white mb-2">Football</h3>
-                  <p className="text-slate-300 mb-4">Champions League, World Cup, Super Bowl & more</p>
-                  <span className="flex items-center text-emerald-300 group-hover:translate-x-2 transition-transform font-medium">
-                    Browse Matches <ChevronRight className="w-5 h-5 ml-1" />
-                  </span>
-                </div>
-              </Link>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              {[
+                { to: "/taylor-swift-london-tickets", label: "ERAS TOUR", title: "Taylor Swift", price: "From \u20ac89", color: "from-pink-700 to-purple-900" },
+                { to: "/bayern-vs-real-madrid-tickets", label: "UCL CLASSIC", title: "Bayern vs Real", price: "From \u20ac199", color: "from-red-800 to-red-950" },
+                { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "World Cup", price: "From \u20ac89", color: "from-amber-800 to-amber-950" },
+                { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From \u20ac85", color: "from-blue-800 to-blue-950" },
+                { to: "/f1-bahrain-grand-prix-tickets", label: "NIGHT RACE", title: "Bahrain GP", price: "From \u20ac149", color: "from-emerald-800 to-emerald-950" },
+                { to: "/f1-tickets-2026", label: "FULL SEASON", title: "F1 2026", price: "From \u20ac120", color: "from-slate-700 to-slate-900" },
+              ].map((cat, i) => (
+                <Link key={cat.to} to={cat.to} className="group relative h-40 overflow-hidden block hover:ring-2 hover:ring-[#e10600] transition-all duration-150">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${cat.color}`} />
+                  <div className="relative h-full flex flex-col justify-end p-4">
+                    <span className="text-[9px] font-black text-[#e10600] mb-0.5 uppercase tracking-widest">{cat.label}</span>
+                    <h3 className="text-sm font-black text-white uppercase tracking-tight">{cat.title}</h3>
+                    <p className="text-[10px] text-white/40">{cat.price}</p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </FadeInSection>
         </div>
       </section>
 
       {/* ═══════ HOW IT WORKS ═══════ */}
-      <section className="py-24">
+      <section className="py-16 md:py-24 bg-[#0e0e14]">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <FadeInSection className="text-center mb-16">
-            <span className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-3 block">Simple & Fast</span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">How It Works</h2>
-            <p className="text-slate-500 max-w-xl mx-auto text-lg">Get your tickets in 3 easy steps</p>
+          <FadeInSection className="text-center mb-12">
+            <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-2 block">SIMPLE & FAST</span>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">HOW IT WORKS</h2>
+            <p className="text-slate-500 max-w-xl mx-auto text-sm">Get your tickets in 3 easy steps</p>
           </FadeInSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { step: "01", title: "Find Your Event", desc: "Browse concerts, matches, F1 races and more across Europe", icon: <Ticket className="w-8 h-8" />, color: "bg-slate-900" },
-              { step: "02", title: "Choose Your Seats", desc: "Select from VIP to standing with interactive venue maps", icon: <MapPin className="w-8 h-8" />, color: "bg-amber-400" },
-              { step: "03", title: "Get Your QR Code", desc: "Receive your verified digital ticket instantly", icon: <Shield className="w-8 h-8" />, color: "bg-emerald-500" },
+              { step: "01", title: "FIND YOUR EVENT", desc: "Browse concerts, matches, F1 races and more across Europe", icon: <Ticket className="w-7 h-7" />, bg: "bg-[#e10600]" },
+              { step: "02", title: "CHOOSE YOUR SEATS", desc: "Select from VIP to standing with interactive venue maps", icon: <MapPin className="w-7 h-7" />, bg: "bg-[#facc15] text-black" },
+              { step: "03", title: "GET YOUR QR CODE", desc: "Receive your verified digital ticket instantly", icon: <Shield className="w-7 h-7" />, bg: "bg-[#15803d]" },
             ].map((item, index) => (
-              <FadeInSection key={index} delay={index * 0.12}>
-                <div className="relative p-8 md:p-10 rounded-3xl bg-white border border-slate-100 hover:border-slate-200 transition-all group hover:shadow-xl">
-                  <span className="text-7xl font-extrabold text-slate-100 group-hover:text-slate-200/80 transition-colors absolute top-4 right-6 select-none">{item.step}</span>
+              <FadeInSection key={index} delay={index * 0.1}>
+                <div className="relative p-6 md:p-8 bg-[#1e1e1e] border border-white/6 hover:border-[#e10600] transition-colors duration-150 group">
+                  <span className="text-6xl font-black text-white/5 absolute top-3 right-4 select-none">{item.step}</span>
                   <div className="relative">
-                    <div className={`w-16 h-16 rounded-2xl ${item.color} flex items-center justify-center text-white mb-6 shadow-lg`}>
+                    <div className={`w-14 h-14 ${item.bg} flex items-center justify-center text-white mb-5`}>
                       {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                    <p className="text-slate-500">{item.desc}</p>
+                    <h3 className="text-lg font-black text-white mb-2 tracking-tight">{item.title}</h3>
+                    <p className="text-slate-500 text-sm">{item.desc}</p>
                   </div>
                 </div>
               </FadeInSection>
@@ -493,60 +464,78 @@ const HomePage = () => {
       </section>
 
       {/* ═══════ TRUST & SECURITY ═══════ */}
-      <section className="py-24 bg-white">
+      <section className="py-16 md:py-24 bg-[#15151e]">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <FadeInSection className="text-center mb-14">
-            <Badge className="bg-emerald-50 text-emerald-700 border-emerald-200 mb-4 text-xs">
-              <Shield className="w-3.5 h-3.5 mr-1.5" /> TRUSTED PLATFORM
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Why Fans Trust Us</h2>
-            <p className="text-slate-500 max-w-xl mx-auto text-lg">Your purchase is protected with our comprehensive guarantee</p>
+          <FadeInSection className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-[#15803d]/20 border border-[#15803d]/30 px-4 py-1.5 mb-4">
+              <Shield className="w-3.5 h-3.5 text-[#15803d]" />
+              <span className="text-[10px] font-black text-[#15803d] uppercase tracking-widest">TRUSTED PLATFORM</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">WHY FANS TRUST US</h2>
+            <p className="text-slate-500 max-w-xl mx-auto text-sm">Your purchase is protected with our comprehensive guarantee</p>
+          </FadeInSection>
+
+          {/* Trustpilot-style Rating */}
+          <FadeInSection className="flex flex-col items-center mb-10">
+            <div className="flex items-center gap-3 bg-[#1e1e1e] border border-white/8 px-6 py-4">
+              <div className="flex gap-0.5">
+                {[1,2,3,4,5].map(i => (
+                  <div key={i} className="w-7 h-7 bg-[#00b67a] flex items-center justify-center">
+                    <Star className="w-4 h-4 text-white fill-white" />
+                  </div>
+                ))}
+              </div>
+              <div className="ml-2">
+                <span className="text-white font-black text-lg">Excellent</span>
+                <span className="text-slate-400 text-xs block">4.9/5 from 12,847 reviews</span>
+              </div>
+            </div>
           </FadeInSection>
 
           {/* Trust Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
             {[
-              { label: "Live Events", icon: Ticket, color: "text-slate-900", bg: "bg-slate-100" },
-              { label: "Buyer Protected", icon: Shield, color: "text-emerald-600", bg: "bg-emerald-50" },
-              { label: "Europe-Wide", icon: Globe, color: "text-blue-600", bg: "bg-blue-50" },
-              { label: "24/7 Support", icon: Headphones, color: "text-amber-600", bg: "bg-amber-50" },
+              { label: "Live Events", icon: Ticket },
+              { label: "Buyer Protected", icon: Shield },
+              { label: "Europe-Wide", icon: Globe },
+              { label: "24/7 Support", icon: Headphones },
             ].map((stat, idx) => (
-              <FadeInSection key={idx} delay={idx * 0.08}>
-                <div className="bg-white border border-slate-100 rounded-2xl p-6 text-center hover:shadow-lg transition-shadow">
-                  <div className={`w-14 h-14 ${stat.bg} rounded-2xl flex items-center justify-center mx-auto mb-3`}>
-                    <stat.icon className={`w-7 h-7 ${stat.color}`} />
+              <FadeInSection key={idx} delay={idx * 0.06}>
+                <div className="bg-[#1e1e1e] border border-white/6 p-5 text-center hover:border-[#e10600] transition-colors duration-150">
+                  <div className="w-12 h-12 bg-[#e10600]/10 flex items-center justify-center mx-auto mb-3">
+                    <stat.icon className="w-6 h-6 text-[#e10600]" />
                   </div>
-                  <p className="text-sm text-slate-700 font-semibold">{stat.label}</p>
+                  <p className="text-xs text-white font-bold uppercase tracking-wider">{stat.label}</p>
                 </div>
               </FadeInSection>
             ))}
           </div>
 
           {/* Trust Feature Cards */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-4">
             {[
-              { icon: Shield, title: "100% Buyer Protection", desc: "Full refund if tickets are invalid or not delivered. Every ticket verified.", to: "/buyer-protection", color: "text-emerald-600", bg: "bg-emerald-50", border: "hover:border-emerald-200" },
-              { icon: Lock, title: "Secure Payments", desc: "Bank-level 256-bit SSL encryption via Stripe. Your details are always safe.", to: "/payment-info", color: "text-blue-600", bg: "bg-blue-50", border: "hover:border-blue-200" },
-              { icon: CheckCircle, title: "Verified Sellers", desc: "Every seller undergoes ID verification. Every ticket authenticated.", to: null, color: "text-slate-900", bg: "bg-slate-100", border: "hover:border-slate-300" },
+              { icon: Shield, title: "100% BUYER PROTECTION", desc: "Full refund if tickets are invalid or not delivered. Every ticket verified.", to: "/buyer-protection" },
+              { icon: Lock, title: "SECURE PAYMENTS", desc: "Bank-level 256-bit SSL encryption via Stripe. Your details are always safe.", to: "/payment-info" },
+              { icon: CheckCircle, title: "VERIFIED SELLERS", desc: "Every seller undergoes ID verification. Every ticket authenticated.", to: null },
             ].map((item, i) => (
-              <FadeInSection key={i} delay={i * 0.1}>
+              <FadeInSection key={i} delay={i * 0.08}>
                 {item.to ? (
-                  <Link to={item.to} className={`bg-white border border-slate-100 rounded-2xl p-7 ${item.border} transition-all group block hover:shadow-lg`}>
-                    <div className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-5`}>
-                      <item.icon className={`w-7 h-7 ${item.color}`} />
+                  <Link to={item.to} className="bg-[#1e1e1e] border border-white/6 p-6 hover:border-[#e10600] transition-colors duration-150 group block">
+                    <div className="w-12 h-12 bg-[#e10600]/10 flex items-center justify-center mb-4">
+                      <item.icon className="w-6 h-6 text-[#e10600]" />
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-slate-700">{item.title}</h3>
+                    <h3 className="text-base font-black text-white mb-2 tracking-tight">{item.title}</h3>
                     <p className="text-slate-500 text-sm mb-3">{item.desc}</p>
-                    <span className={`${item.color} text-sm flex items-center gap-1 font-medium`}>Learn more <ArrowRight className="w-4 h-4" /></span>
+                    <span className="text-[#e10600] text-xs flex items-center gap-1 font-black uppercase tracking-wider">Learn more <ArrowRight className="w-3 h-3" /></span>
                   </Link>
                 ) : (
-                  <div className={`bg-white border border-slate-100 rounded-2xl p-7 ${item.border} transition-all hover:shadow-lg`}>
-                    <div className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-5`}>
-                      <item.icon className={`w-7 h-7 ${item.color}`} />
+                  <div className="bg-[#1e1e1e] border border-white/6 p-6 hover:border-[#e10600] transition-colors duration-150">
+                    <div className="w-12 h-12 bg-[#e10600]/10 flex items-center justify-center mb-4">
+                      <item.icon className="w-6 h-6 text-[#e10600]" />
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
+                    <h3 className="text-base font-black text-white mb-2 tracking-tight">{item.title}</h3>
                     <p className="text-slate-500 text-sm mb-3">{item.desc}</p>
-                    <span className="text-emerald-600 text-sm flex items-center gap-1"><CheckCircle className="w-4 h-4" /> Identity verified</span>
+                    <span className="text-[#15803d] text-xs flex items-center gap-1 font-bold"><CheckCircle className="w-3 h-3" /> Identity verified</span>
                   </div>
                 )}
               </FadeInSection>
@@ -554,38 +543,31 @@ const HomePage = () => {
           </div>
 
           {/* Security Logos */}
-          <div className="flex flex-wrap items-center justify-center gap-8 mt-14 pt-8 border-t border-slate-100">
+          <div className="flex flex-wrap items-center justify-center gap-8 mt-10 pt-6 border-t border-white/6">
             {[
               { icon: CreditCard, text: "Powered by Stripe" },
               { icon: Lock, text: "SSL Encrypted" },
               { icon: Award, text: "GDPR Compliant" },
             ].map((item, i) => (
-              <span key={i} className="flex items-center gap-2 text-slate-400 text-sm"><item.icon className="w-4 h-4" />{item.text}</span>
+              <span key={i} className="flex items-center gap-2 text-slate-600 text-xs uppercase tracking-wider"><item.icon className="w-3.5 h-3.5" />{item.text}</span>
             ))}
-            <Link to="/buyer-protection" className="flex items-center gap-2 text-emerald-600 hover:text-emerald-700 transition-colors text-sm font-medium">
-              <Shield className="w-4 h-4" /> Buyer Protection &rarr;
-            </Link>
           </div>
         </div>
       </section>
 
       {/* ═══════ CTA ═══════ */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-slate-900" />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[#e10600]" />
         <FadeInSection className="max-w-[1440px] mx-auto px-4 md:px-8 relative text-center">
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
-            Ready for Your Next
-            <br />
-            <span className="bg-gradient-to-r from-amber-300 to-amber-400 bg-clip-text text-transparent">
-              Unforgettable Experience?
-            </span>
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter">
+            READY FOR YOUR NEXT<br />
+            UNFORGETTABLE EXPERIENCE?
           </h2>
-          <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
+          <p className="text-white/70 text-base mb-8 max-w-2xl mx-auto">
             Join thousands of fans who trust EuroMatchTickets for their live event tickets
           </p>
           <Link to="/events">
-            <Button data-testid="cta-btn" className="btn-accent text-lg h-14 px-12">
+            <Button data-testid="cta-btn" className="bg-white text-[#e10600] hover:bg-white/90 text-base h-13 px-10 rounded-none font-black uppercase tracking-wider">
               Explore All Events <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
@@ -593,22 +575,23 @@ const HomePage = () => {
       </section>
 
       {/* ═══════ REVIEWS ═══════ */}
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-20 bg-[#0e0e14]">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <FadeInSection className="text-center mb-12">
-            <Badge className="mb-4 bg-amber-50 text-amber-700 border-amber-200 text-xs">
-              <Star className="w-3 h-3 mr-1 fill-amber-500 text-amber-500" /> 4.9/5 from 2,940+ reviews
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">What Fans Say</h2>
-            <p className="text-slate-500">Real reviews from verified ticket buyers worldwide</p>
+          <FadeInSection className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-[#facc15]/10 border border-[#facc15]/20 px-4 py-1.5 mb-4">
+              <Star className="w-3.5 h-3.5 text-[#facc15] fill-[#facc15]" />
+              <span className="text-[10px] font-black text-[#facc15] uppercase tracking-widest">4.9/5 FROM 2,940+ REVIEWS</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">WHAT FANS SAY</h2>
+            <p className="text-slate-500 text-sm">Real reviews from verified ticket buyers worldwide</p>
           </FadeInSection>
           
           <ReviewsStats />
-          <div className="mt-10"><ReviewsGrid limit={6} /></div>
+          <div className="mt-8"><ReviewsGrid limit={6} /></div>
           
           <div className="text-center mt-8">
             <Link to="/reviews">
-              <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50 rounded-full px-8">
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-none px-8 font-bold uppercase tracking-wider text-sm">
                 View All Reviews <ChevronRight className="w-4 h-4 ml-1" />
               </Button>
             </Link>

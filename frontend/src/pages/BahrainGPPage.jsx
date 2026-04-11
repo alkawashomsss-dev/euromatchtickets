@@ -20,7 +20,7 @@ const Countdown = ({ target }) => {
   return (
     <div className="flex gap-3 justify-center">
       {[{ v: d, l: "DAYS" }, { v: h, l: "HRS" }, { v: m, l: "MIN" }, { v: s, l: "SEC" }].map((u, i) => (
-        <div key={i} className="bg-amber-500/10 border border-amber-500/30 rounded-xl px-4 py-3 min-w-[68px] text-center backdrop-blur-md">
+        <div key={i} className="bg-amber-500/100/10 border border-amber-500/30 rounded-none px-4 py-3 min-w-[68px] text-center backdrop-blur-md">
           <div className="text-2xl sm:text-3xl font-black text-amber-400 tabular-nums">{String(u.v).padStart(2, '0')}</div>
           <div className="text-[9px] text-amber-300/70 uppercase tracking-[0.2em] font-bold mt-1">{u.l}</div>
         </div>
@@ -97,7 +97,7 @@ const BahrainGPPage = () => {
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23f59e0b\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 text-xs font-bold mb-5 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/40 bg-amber-500/100/10 text-amber-400 text-xs font-bold mb-5 backdrop-blur-md">
             <Moon className="w-4 h-4" /> LIGHTS OUT IN
           </div>
 
@@ -114,34 +114,34 @@ const BahrainGPPage = () => {
             Secure your seat now with instant QR delivery. 100% Buyer Protection.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-4">
-            <span className="inline-flex items-center gap-1.5 bg-red-500/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
+            <span className="inline-flex items-center gap-1.5 bg-[#e10600]/100/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
               <AlertCircle className="w-3.5 h-3.5" /> Only 234 tickets left
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/100/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
               <Users className="w-3.5 h-3.5" /> 189 people viewing now
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/100/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
               <TrendingUp className="w-3.5 h-3.5" /> Prices up 18% this week
             </span>
           </div>
 
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <span className="flex items-center gap-2 text-xs text-amber-300/70 bg-amber-500/5 border border-amber-500/20 rounded-full px-4 py-2">
+            <span className="flex items-center gap-2 text-xs text-amber-300/70 bg-amber-500/100/5 border border-amber-500/20 rounded-full px-4 py-2">
               <Calendar className="w-3.5 h-3.5" /> March 6-8, 2026
             </span>
-            <span className="flex items-center gap-2 text-xs text-amber-300/70 bg-amber-500/5 border border-amber-500/20 rounded-full px-4 py-2">
+            <span className="flex items-center gap-2 text-xs text-amber-300/70 bg-amber-500/100/5 border border-amber-500/20 rounded-full px-4 py-2">
               <MapPin className="w-3.5 h-3.5" /> Sakhir, Bahrain
             </span>
-            <span className="flex items-center gap-2 text-xs text-amber-300/70 bg-amber-500/5 border border-amber-500/20 rounded-full px-4 py-2">
+            <span className="flex items-center gap-2 text-xs text-amber-300/70 bg-amber-500/100/5 border border-amber-500/20 rounded-full px-4 py-2">
               <Moon className="w-3.5 h-3.5" /> Night Race
             </span>
-            <span className="flex items-center gap-2 text-xs text-amber-300/70 bg-amber-500/5 border border-amber-500/20 rounded-full px-4 py-2">
+            <span className="flex items-center gap-2 text-xs text-amber-300/70 bg-amber-500/100/5 border border-amber-500/20 rounded-full px-4 py-2">
               <Thermometer className="w-3.5 h-3.5" /> 22°C
             </span>
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-6">
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-6 py-4 text-center">
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-none px-6 py-4 text-center">
               <p className="text-[10px] text-white/40 uppercase tracking-widest">From</p>
               <p className="text-4xl font-extrabold text-amber-400">&euro;59</p>
               <p className="text-[10px] text-emerald-400 font-bold">30% OFF official price</p>
@@ -168,9 +168,9 @@ const BahrainGPPage = () => {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {circuitSections.map((s, i) => (
-            <div key={i} className={`rounded-xl p-5 border transition-all ${s.highlight ? 'bg-amber-500/10 border-amber-500/30 hover:border-amber-500/50' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}>
+            <div key={i} className={`rounded-none p-5 border transition-all ${s.highlight ? 'bg-amber-500/100/10 border-amber-500/30 hover:border-amber-500/50' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}>
               <div className="flex items-center gap-2 mb-2">
-                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${s.highlight ? 'bg-amber-500/30 text-amber-300' : 'bg-white/10 text-white/60'}`}>{s.name}</span>
+                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${s.highlight ? 'bg-amber-500/100/30 text-amber-300' : 'bg-white/10 text-white/60'}`}>{s.name}</span>
                 {s.highlight && <span className="text-[10px] text-amber-400 font-bold">MUST-SEE</span>}
               </div>
               <p className="text-sm text-slate-400">{s.desc}</p>
@@ -186,11 +186,11 @@ const BahrainGPPage = () => {
         </h2>
         <div className="space-y-3">
           {tickets.map((t, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/10 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4" data-testid={`bahrain-ticket-${i}`}>
+            <div key={i} className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-none p-5 hover:bg-white/10 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4" data-testid={`bahrain-ticket-${i}`}>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <h3 className="font-bold text-white">{t.section}</h3>
-                  {t.badge && <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${t.badge === 'EXCLUSIVE' ? 'bg-amber-500/30 text-amber-300' : t.badge === 'VIP' ? 'bg-purple-500/30 text-purple-300' : t.badge === 'HOT' ? 'bg-red-500/30 text-red-300' : 'bg-emerald-500/30 text-emerald-300'}`}>{t.badge}</span>}
+                  {t.badge && <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${t.badge === 'EXCLUSIVE' ? 'bg-amber-500/100/30 text-amber-300' : t.badge === 'VIP' ? 'bg-purple-500/100/30 text-purple-300' : t.badge === 'HOT' ? 'bg-[#e10600]/100/30 text-red-300' : 'bg-emerald-500/100/30 text-emerald-300'}`}>{t.badge}</span>}
                 </div>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {t.features.map((f, j) => <span key={j} className="text-[11px] text-slate-400 flex items-center gap-1"><Check className="w-3 h-3 text-emerald-500" />{f}</span>)}
@@ -213,7 +213,7 @@ const BahrainGPPage = () => {
 
       {/* NIGHT RACE EXPERIENCE */}
       <section className="max-w-5xl mx-auto px-4 pb-16">
-        <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/10 border border-amber-500/20 rounded-2xl p-8">
+        <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/10 border border-amber-500/20 rounded-none p-8">
           <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
             <Moon className="w-5 h-5 text-amber-400" /> The Night Race Experience
           </h2>
@@ -252,7 +252,7 @@ const BahrainGPPage = () => {
         <FAQStructuredData faqs={faqs} />
         <div className="space-y-2">
           {faqs.map((f, i) => (
-            <details key={i} className="group rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+            <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
               <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">
                 {f.question}
                 <ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" />
@@ -267,11 +267,11 @@ const BahrainGPPage = () => {
       <section className="max-w-5xl mx-auto px-4 pb-16">
         <h2 className="text-lg font-bold text-white mb-4">Bahrain GP Deep Dive</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <Link to="/bahrain-f1-night-race-guide" className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 hover:border-amber-500/40 transition-all">
+          <Link to="/bahrain-f1-night-race-guide" className="bg-amber-500/100/10 border border-amber-500/20 rounded-none p-4 hover:border-amber-500/40 transition-all">
             <p className="font-bold text-white text-sm">Night Race Guide</p>
             <p className="text-xs text-amber-300/60 mt-1">What makes it special + tips</p>
           </Link>
-          <Link to="/ultimate-f1-tickets-guide-2026" className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 hover:border-amber-500/40 transition-all">
+          <Link to="/ultimate-f1-tickets-guide-2026" className="bg-amber-500/100/10 border border-amber-500/20 rounded-none p-4 hover:border-amber-500/40 transition-all">
             <p className="font-bold text-white text-sm">Ultimate F1 Guide 2026</p>
             <p className="text-xs text-amber-300/60 mt-1">Every race compared</p>
           </Link>
@@ -292,7 +292,7 @@ const BahrainGPPage = () => {
             { to: "/champions-league-tickets", label: "Champions League", price: "49", color: "from-blue-500/20 to-indigo-500/20" },
             { to: "/taylor-swift-london-tickets", label: "Taylor Swift", price: "89", color: "from-pink-500/20 to-purple-500/20" },
           ].map((l, i) => (
-            <Link key={i} to={l.to} className={`bg-gradient-to-br ${l.color} border border-white/10 rounded-xl p-4 hover:border-white/30 transition-all`}>
+            <Link key={i} to={l.to} className={`bg-gradient-to-br ${l.color} border border-white/10 rounded-none p-4 hover:border-white/30 transition-all`}>
               <p className="font-bold text-white text-sm">{l.label}</p>
               <p className="text-amber-400 text-xs font-bold mt-1">From &euro;{l.price}</p>
             </Link>

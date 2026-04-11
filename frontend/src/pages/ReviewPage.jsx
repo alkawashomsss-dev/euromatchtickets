@@ -138,14 +138,14 @@ const ReviewPage = () => {
           {/* Hero */}
           <div className="mb-10">
             <div className="flex items-center gap-2 mb-3">
-              <span className="bg-emerald-500/10 text-emerald-400 text-xs px-3 py-1 rounded-full border border-emerald-500/20">Verified Review</span>
+              <span className="bg-emerald-500/100/10 text-emerald-400 text-xs px-3 py-1 rounded-full border border-emerald-500/20">Verified Review</span>
               <span className="text-gray-500 text-xs">8 min read</span>
             </div>
             <h1 data-testid="review-h1" className="text-3xl sm:text-4xl font-bold text-white mb-3 leading-tight">{variant.h1}</h1>
             <p className="text-lg text-gray-400">{variant.subtitle}</p>
             
             {/* Quick verdict box */}
-            <div className="mt-6 bg-[#1a2236] rounded-xl p-6 border border-gray-700/50">
+            <div className="mt-6 bg-[#1a2236] rounded-none p-6 border border-gray-700/50">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <p className="text-sm text-gray-400 mb-1">{t("Overall Rating", "Gesamtbewertung", "Note globale", "Valoracion General", "Valutazione Generale")}</p>
@@ -157,7 +157,7 @@ const ReviewPage = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 bg-emerald-500/10 px-4 py-2 rounded-lg border border-emerald-500/20">
+                <div className="flex items-center gap-2 bg-emerald-500/100/10 px-4 py-2 rounded-none border border-emerald-500/20">
                   <Shield className="w-5 h-5 text-emerald-400" />
                   <span className="text-emerald-400 font-semibold text-sm">{t("Verified & Legitimate", "Verifiziert & Serios", "Verifie & Fiable", "Verificado y Legitimo", "Verificato & Affidabile")}</span>
                 </div>
@@ -193,15 +193,15 @@ const ReviewPage = () => {
                 : "Important to understand: EuroMatchTickets is a marketplace (similar to StubHub or Viagogo). This means prices can be above face value, as tickets come from verified sellers."
               }</p>
               <div className="grid grid-cols-3 gap-4 mt-4">
-                <div className="bg-[#1a2236] rounded-lg p-4 text-center border border-gray-700/30">
+                <div className="bg-[#1a2236] rounded-none p-4 text-center border border-gray-700/30">
                   <p className="text-2xl font-bold text-white">500K+</p>
                   <p className="text-xs text-gray-400">{t("Tickets Sold", "Tickets verkauft", "Billets vendus", "Entradas Vendidas", "Biglietti Venduti")}</p>
                 </div>
-                <div className="bg-[#1a2236] rounded-lg p-4 text-center border border-gray-700/30">
+                <div className="bg-[#1a2236] rounded-none p-4 text-center border border-gray-700/30">
                   <p className="text-2xl font-bold text-white">4.8/5</p>
                   <p className="text-xs text-gray-400">{t("Customer Rating", "Kundenbewertung", "Note clients", "Valoracion", "Valutazione")}</p>
                 </div>
-                <div className="bg-[#1a2236] rounded-lg p-4 text-center border border-gray-700/30">
+                <div className="bg-[#1a2236] rounded-none p-4 text-center border border-gray-700/30">
                   <p className="text-2xl font-bold text-white">12K+</p>
                   <p className="text-xs text-gray-400">{t("Reviews", "Bewertungen", "Avis", "Opiniones", "Recensioni")}</p>
                 </div>
@@ -217,12 +217,12 @@ const ReviewPage = () => {
             </h2>
             <div className="space-y-4">
               {REVIEWS.map((review, i) => (
-                <div key={i} className="bg-[#1a2236] rounded-xl p-5 border border-gray-700/30">
+                <div key={i} className="bg-[#1a2236] rounded-none p-5 border border-gray-700/30">
                   <div className="flex items-start justify-between mb-2">
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="font-semibold text-white">{review.name}</span>
-                        {review.verified && <span className="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/20">Verified Buyer</span>}
+                        {review.verified && <span className="text-[10px] bg-emerald-500/100/10 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/20">Verified Buyer</span>}
                       </div>
                       <p className="text-xs text-gray-500">{review.country} · {review.date} · {review.event}</p>
                     </div>
@@ -240,7 +240,7 @@ const ReviewPage = () => {
               {isGerman ? "Vor- und Nachteile" : isFrench ? "Avantages et Inconvenients" : "Pros & Cons"}
             </h2>
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="bg-emerald-500/5 rounded-xl p-5 border border-emerald-500/20">
+              <div className="bg-emerald-500/100/5 rounded-none p-5 border border-emerald-500/20">
                 <h3 className="font-semibold text-emerald-400 mb-3 flex items-center gap-2">
                   <ThumbsUp className="w-4 h-4" />
                   {isGerman ? "Vorteile" : isFrench ? "Avantages" : "Pros"}
@@ -261,7 +261,7 @@ const ReviewPage = () => {
                   ))}
                 </ul>
               </div>
-              <div className="bg-red-500/5 rounded-xl p-5 border border-red-500/20">
+              <div className="bg-[#e10600]/100/5 rounded-none p-5 border border-red-500/20">
                 <h3 className="font-semibold text-red-400 mb-3 flex items-center gap-2">
                   <ThumbsDown className="w-4 h-4" />
                   {isGerman ? "Nachteile" : isFrench ? "Inconvenients" : "Cons"}
@@ -289,7 +289,7 @@ const ReviewPage = () => {
               <Lock className="w-5 h-5 text-blue-400" />
               {isGerman ? "Ist EuroMatchTickets sicher?" : isFrench ? "EuroMatchTickets est-il sur?" : "Is EuroMatchTickets Safe?"}
             </h2>
-            <div className="bg-[#1a2236] rounded-xl p-6 border border-gray-700/30 space-y-4">
+            <div className="bg-[#1a2236] rounded-none p-6 border border-gray-700/30 space-y-4">
               {[
                 { icon: Shield, title: isGerman ? "FanProtect Garantie" : isFrench ? "Garantie FanProtect" : "FanProtect Guarantee", desc: isGerman ? "100% Geld-zurück-Garantie bei ungültigen Tickets oder Eventabsage." : isFrench ? "Remboursement 100% si les billets sont invalides ou l'evenement est annule." : "100% money-back guarantee if tickets are invalid or event is cancelled. This is their strongest selling point." },
                 { icon: CreditCard, title: isGerman ? "Stripe-Zahlung" : isFrench ? "Paiement Stripe" : "Stripe Payment Processing", desc: isGerman ? "Zahlungen werden über Stripe abgewickelt — den gleichen Anbieter wie Shopify und Amazon." : isFrench ? "Les paiements sont traites par Stripe — le meme fournisseur que Shopify et Amazon." : "Payments processed through Stripe — the same provider used by Shopify, Amazon, and Google. Your card details never touch their servers." },
@@ -297,7 +297,7 @@ const ReviewPage = () => {
                 { icon: Clock, title: isGerman ? "Sofortlieferung" : isFrench ? "Livraison instantanee" : "Instant Delivery", desc: isGerman ? "Tickets werden als QR-Codes per E-Mail geliefert — in der Regel innerhalb von Minuten." : isFrench ? "Les billets sont livres par QR code par email — generalement en quelques minutes." : "Tickets delivered as QR codes via email — usually within minutes, not days." },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
-                  <div className="bg-blue-500/10 p-2 rounded-lg">
+                  <div className="bg-blue-500/100/10 p-2 rounded-none">
                     <item.icon className="w-5 h-5 text-blue-400" />
                   </div>
                   <div>
@@ -315,7 +315,7 @@ const ReviewPage = () => {
               {isGerman ? "Vergleich mit Konkurrenten" : isFrench ? "Comparaison avec les concurrents" : "How It Compares"}
             </h2>
             <div className="overflow-x-auto">
-              <table className="w-full bg-[#1a2236] rounded-xl overflow-hidden border border-gray-700/30">
+              <table className="w-full bg-[#1a2236] rounded-none overflow-hidden border border-gray-700/30">
                 <thead>
                   <tr className="border-b border-gray-700/50">
                     <th className="text-left p-4 text-sm text-gray-400 font-medium">{isGerman ? "Kriterium" : isFrench ? "Critere" : "Feature"}</th>
@@ -353,7 +353,7 @@ const ReviewPage = () => {
               <AlertTriangle className="w-5 h-5 text-amber-400" />
               {isGerman ? "Was Sie wissen sollten" : isFrench ? "Ce que vous devez savoir" : "What You Should Know"}
             </h2>
-            <div className="bg-amber-500/5 rounded-xl p-6 border border-amber-500/20 space-y-3">
+            <div className="bg-amber-500/100/5 rounded-none p-6 border border-amber-500/20 space-y-3">
               <p className="text-gray-300 text-sm leading-relaxed">
                 {isGerman
                   ? "Seien wir ehrlich: EuroMatchTickets ist ein Marktplatz, kein offizieller Tickethändler. Das bedeutet:"
@@ -382,7 +382,7 @@ const ReviewPage = () => {
             <h2 className="text-xl font-bold text-white mb-4">
               {isGerman ? "Unser Fazit" : isFrench ? "Notre Verdict" : "Our Verdict"}
             </h2>
-            <div className="bg-[#1a2236] rounded-xl p-6 border border-gray-700/30">
+            <div className="bg-[#1a2236] rounded-none p-6 border border-gray-700/30">
               <p className="text-gray-300 leading-relaxed mb-4">
                 {isGerman
                   ? "EuroMatchTickets ist eine seriöse und zuverlässige Plattform für den Kauf von Event-Tickets in Europa. Die FanProtect-Garantie, die schnelle Lieferung und die im Vergleich niedrigeren Preise machen es zu einer guten Wahl. Wie bei jedem Marktplatz liegen die Preise über dem Nennwert, aber das ist der Kompromiss für den Zugang zu ausverkauften Events."
@@ -391,7 +391,7 @@ const ReviewPage = () => {
                   : "EuroMatchTickets is a legitimate and reliable platform for buying event tickets in Europe. The FanProtect guarantee, fast delivery, and comparatively lower prices make it a solid choice. Like any marketplace, prices are above face value, but that's the trade-off for access to sold-out events."
                 }
               </p>
-              <div className="flex items-center gap-3 bg-emerald-500/10 p-4 rounded-lg border border-emerald-500/20">
+              <div className="flex items-center gap-3 bg-emerald-500/100/10 p-4 rounded-none border border-emerald-500/20">
                 <div className="text-3xl font-bold text-emerald-400">8.5/10</div>
                 <div>
                   <p className="text-emerald-400 font-semibold">{isGerman ? "Empfohlen" : isFrench ? "Recommande" : "Recommended"}</p>
@@ -403,7 +403,7 @@ const ReviewPage = () => {
 
           {/* CTA */}
           <section className="mb-10">
-            <div className="bg-gradient-to-r from-blue-600/20 to-emerald-600/20 rounded-xl p-8 border border-blue-500/20 text-center">
+            <div className="bg-gradient-to-r from-blue-600/20 to-emerald-600/20 rounded-none p-8 border border-blue-500/20 text-center">
               <h2 className="text-2xl font-bold text-white mb-2">
                 {isGerman ? "Verfügbare Tickets prüfen" : isFrench ? "Verifier les billets disponibles" : "Check Available Tickets"}
               </h2>
@@ -411,15 +411,15 @@ const ReviewPage = () => {
                 {isGerman ? "Preise vergleichen, bevor sie steigen" : isFrench ? "Comparez les prix avant qu'ils n'augmentent" : "Compare prices before they increase"}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link to="/events" className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors" data-testid="review-cta-events">
+                <Link to="/events" className="inline-flex items-center gap-2 bg-emerald-500/100 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded-none transition-colors" data-testid="review-cta-events">
                   {isGerman ? "Alle Events ansehen" : isFrench ? "Voir tous les evenements" : "Browse All Events"}
                   <ChevronRight className="w-4 h-4" />
                 </Link>
-                <Link to="/champions-league-tickets" className="inline-flex items-center gap-2 bg-[#1a2236] hover:bg-[#243050] text-white font-semibold px-6 py-3 rounded-lg border border-gray-600 transition-colors" data-testid="review-cta-cl">
+                <Link to="/champions-league-tickets" className="inline-flex items-center gap-2 bg-[#1a2236] hover:bg-[#243050] text-white font-semibold px-6 py-3 rounded-none border border-gray-600 transition-colors" data-testid="review-cta-cl">
                   Champions League
                   <ExternalLink className="w-3 h-3" />
                 </Link>
-                <Link to="/f1-tickets" className="inline-flex items-center gap-2 bg-[#1a2236] hover:bg-[#243050] text-white font-semibold px-6 py-3 rounded-lg border border-gray-600 transition-colors" data-testid="review-cta-f1">
+                <Link to="/f1-tickets" className="inline-flex items-center gap-2 bg-[#1a2236] hover:bg-[#243050] text-white font-semibold px-6 py-3 rounded-none border border-gray-600 transition-colors" data-testid="review-cta-f1">
                   Formula 1
                   <ExternalLink className="w-3 h-3" />
                 </Link>

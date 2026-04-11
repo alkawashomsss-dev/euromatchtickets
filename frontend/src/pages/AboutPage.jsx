@@ -101,7 +101,7 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="About EuroMatchTickets | Official UK Company Info"
         description="EuroMatchTickets Ltd. is a UK-registered company (No. 14892376) based in London. Europe's trusted ticket marketplace since 2024. 2.4M+ tickets sold."
@@ -116,7 +116,7 @@ const AboutPage = () => {
       <section className="py-16 bg-gradient-to-b from-purple-900/20 to-slate-950">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-emerald-50 text-emerald-600 border-emerald-200">
+            <Badge className="mb-4 bg-emerald-500/10 text-emerald-600 border-emerald-200">
               <Building2 className="w-3 h-3 mr-1" />
               UK Registered Company
             </Badge>
@@ -129,9 +129,9 @@ const AboutPage = () => {
           {/* Stats */}
           <div className="grid md:grid-cols-4 gap-4">
             {stats.map((stat, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-xl p-6 text-center">
+              <div key={idx} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 text-center">
                 <stat.icon className="w-8 h-8 mx-auto mb-3 text-violet-600" />
-                <div className="text-3xl font-bold mb-1 text-slate-900">{stat.value}</div>
+                <div className="text-3xl font-bold mb-1 text-white">{stat.value}</div>
                 <div className="text-sm text-slate-500">{stat.label}</div>
               </div>
             ))}
@@ -145,26 +145,26 @@ const AboutPage = () => {
           <div className="grid md:grid-cols-2 gap-8">
             
             {/* Official Registration */}
-            <div className="bg-white border border-slate-200 rounded-xl p-8">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
               <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
                 <Shield className="w-5 h-5 text-emerald-600" />
                 Official Company Registration
               </h2>
               
               <div className="space-y-4">
-                <div className="flex justify-between py-3 border-b border-slate-200">
+                <div className="flex justify-between py-3 border-b border-white/10">
                   <span className="text-slate-500">Company Name</span>
                   <span className="font-semibold">{companyInfo.name}</span>
                 </div>
-                <div className="flex justify-between py-3 border-b border-slate-200">
+                <div className="flex justify-between py-3 border-b border-white/10">
                   <span className="text-slate-500">Registration Number</span>
                   <span className="font-mono text-emerald-600">{companyInfo.registrationNumber}</span>
                 </div>
-                <div className="flex justify-between py-3 border-b border-slate-200">
+                <div className="flex justify-between py-3 border-b border-white/10">
                   <span className="text-slate-500">VAT Number</span>
                   <span className="font-mono">{companyInfo.vatNumber}</span>
                 </div>
-                <div className="flex justify-between py-3 border-b border-slate-200">
+                <div className="flex justify-between py-3 border-b border-white/10">
                   <span className="text-slate-500">Founded</span>
                   <span>{companyInfo.founded}</span>
                 </div>
@@ -186,7 +186,7 @@ const AboutPage = () => {
             </div>
 
             {/* Contact & Address */}
-            <div className="bg-white border border-slate-200 rounded-xl p-8">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
               <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-cyan-600" />
                 Headquarters & Contact
@@ -222,19 +222,19 @@ const AboutPage = () => {
                   <h3 className="text-sm text-slate-500 mb-3">Follow Us</h3>
                   <div className="flex gap-3">
                     <a href={companyInfo.social.linkedin} target="_blank" rel="noopener noreferrer" 
-                       className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                       className="w-10 h-10 bg-slate-100 rounded-none flex items-center justify-center hover:bg-blue-600 transition-colors">
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a href={companyInfo.social.twitter} target="_blank" rel="noopener noreferrer"
-                       className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-sky-500 transition-colors">
+                       className="w-10 h-10 bg-slate-100 rounded-none flex items-center justify-center hover:bg-sky-500 transition-colors">
                       <Twitter className="w-5 h-5" />
                     </a>
                     <a href={companyInfo.social.facebook} target="_blank" rel="noopener noreferrer"
-                       className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                       className="w-10 h-10 bg-slate-100 rounded-none flex items-center justify-center hover:bg-blue-700 transition-colors">
                       <Facebook className="w-5 h-5" />
                     </a>
                     <a href={companyInfo.social.instagram} target="_blank" rel="noopener noreferrer"
-                       className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-pink-600 transition-colors">
+                       className="w-10 h-10 bg-slate-100 rounded-none flex items-center justify-center hover:bg-pink-600 transition-colors">
                       <Instagram className="w-5 h-5" />
                     </a>
                   </div>
@@ -246,12 +246,12 @@ const AboutPage = () => {
       </section>
 
       {/* Certifications */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-2xl font-bold text-center mb-8">Certifications & Compliance</h2>
           <div className="grid md:grid-cols-4 gap-4">
             {certifications.map((cert, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-xl p-6 text-center">
+              <div key={idx} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 text-center">
                 <div className="text-4xl mb-3">{cert.logo}</div>
                 <div className="font-semibold text-sm">{cert.name}</div>
               </div>
@@ -268,9 +268,9 @@ const AboutPage = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {/* Trustpilot */}
             <a href="https://www.trustpilot.com/review/euromatchtickets.com" target="_blank" rel="noopener noreferrer"
-               className="bg-white border border-slate-200 rounded-xl p-6 hover:border-emerald-500/50 transition-colors">
+               className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 hover:border-emerald-500/50 transition-colors">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-emerald-500/100 rounded-none flex items-center justify-center">
                   <span className="text-xl">⭐</span>
                 </div>
                 <div>
@@ -294,9 +294,9 @@ const AboutPage = () => {
 
             {/* Google Reviews */}
             <a href="https://www.google.com/search?q=euromatchtickets+reviews" target="_blank" rel="noopener noreferrer"
-               className="bg-white border border-slate-200 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+               className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 hover:border-blue-500/50 transition-colors">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-[#1e1e1e] rounded-none flex items-center justify-center">
                   <span className="text-blue-600 font-bold text-xl">G</span>
                 </div>
                 <div>
@@ -320,9 +320,9 @@ const AboutPage = () => {
 
             {/* Facebook Reviews */}
             <a href="https://facebook.com/euromatchtickets/reviews" target="_blank" rel="noopener noreferrer"
-               className="bg-white border border-slate-200 rounded-xl p-6 hover:border-blue-700/50 transition-colors">
+               className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 hover:border-blue-700/50 transition-colors">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-blue-600 rounded-none flex items-center justify-center">
                   <Facebook className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -348,7 +348,7 @@ const AboutPage = () => {
       </section>
 
       {/* Team */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-2xl font-bold text-center mb-8">Leadership Team</h2>
           <div className="grid md:grid-cols-4 gap-6">

@@ -144,7 +144,7 @@ const FAQPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Frequently Asked Questions - Help Center"
         description="Find answers to common questions about buying tickets on EuroMatchTickets. Learn about our buyer protection, payment methods, ticket delivery, and."
@@ -158,7 +158,7 @@ const FAQPage = () => {
       ]} />
 
       {/* Hero */}
-      <section className="py-16 bg-slate-50 border-b border-slate-100">
+      <section className="py-16 bg-[#15151e] border-b border-white/5">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <HelpCircle className="w-16 h-16 mx-auto mb-6 text-violet-600" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">How Can We Help?</h1>
@@ -174,7 +174,7 @@ const FAQPage = () => {
               placeholder="Search for answers..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-slate-100 border border-slate-200 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+              className="w-full pl-12 pr-4 py-4 bg-slate-100 border border-white/10 rounded-none text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
             />
           </div>
         </div>
@@ -190,10 +190,10 @@ const FAQPage = () => {
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(cat.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-none transition-all ${
                       activeCategory === cat.id 
                         ? 'bg-violet-50 text-violet-600 border border-violet-200' 
-                        : 'bg-white text-slate-500 border border-slate-100 hover:bg-slate-100'
+                        : 'bg-[#1e1e1e] text-slate-500 border border-white/5 hover:bg-white/10'
                     }`}
                   >
                     {cat.icon}
@@ -218,11 +218,11 @@ const FAQPage = () => {
                 return (
                   <div 
                     key={itemKey}
-                    className="bg-white border border-slate-100 rounded-xl overflow-hidden"
+                    className="bg-[#1e1e1e] border border-white/5 rounded-none overflow-hidden"
                   >
                     <button
                       onClick={() => toggleItem(itemKey)}
-                      className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors"
+                      className="w-full flex items-center justify-between p-6 text-left hover:bg-[#15151e] transition-colors"
                     >
                       <h3 className="font-semibold text-lg pr-4">{faq.question}</h3>
                       <ChevronDown 
@@ -245,7 +245,7 @@ const FAQPage = () => {
       </div>
 
       {/* Contact Section */}
-      <section className="py-16 bg-slate-50 border-t border-slate-100">
+      <section className="py-16 bg-[#15151e] border-t border-white/5">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Still Have Questions?</h2>
           <p className="text-slate-500 mb-8">
@@ -254,14 +254,14 @@ const FAQPage = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <Link 
               to="/contact"
-              className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-xl font-medium transition-colors"
+              className="flex items-center gap-2 bg-purple-500/100 hover:bg-purple-600 text-white px-6 py-3 rounded-none font-medium transition-colors"
             >
               <Mail className="w-5 h-5" />
               Contact Support
             </Link>
             <a 
               href="mailto:support@euromatchtickets.com"
-              className="flex items-center gap-2 bg-slate-100 hover:bg-slate-100 text-white px-6 py-3 rounded-xl font-medium transition-colors border border-slate-200"
+              className="flex items-center gap-2 bg-slate-100 hover:bg-white/10 text-white px-6 py-3 rounded-none font-medium transition-colors border border-white/10"
             >
               <Mail className="w-5 h-5" />
               support@euromatchtickets.com

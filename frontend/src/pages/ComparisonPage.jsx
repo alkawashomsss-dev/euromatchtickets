@@ -83,7 +83,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title={`EuroMatchTickets vs ${competitor} - Honest Comparison`}
         description={`Compare EuroMatchTickets and ${competitor}. See prices, fees, guarantees. Find out which ticket marketplace is better for you in 2026.`}
@@ -99,7 +99,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
           <div className="flex items-center justify-center gap-8 mb-8">
             {/* EuroMatchTickets */}
             <div className="text-center">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-600 to-emerald-600 flex items-center justify-center mb-3 mx-auto">
+              <div className="w-20 h-20 rounded-none bg-gradient-to-br from-purple-600 to-emerald-600 flex items-center justify-center mb-3 mx-auto">
                 <Trophy className="w-10 h-10 text-white" />
               </div>
               <span className="text-xl font-bold">EuroMatchTickets</span>
@@ -109,7 +109,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
 
             {/* Competitor */}
             <div className="text-center">
-              <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${competitorInfo.color} flex items-center justify-center mb-3 mx-auto`}>
+              <div className={`w-20 h-20 rounded-none bg-gradient-to-br ${competitorInfo.color} flex items-center justify-center mb-3 mx-auto`}>
                 <span className="text-3xl font-bold text-white">{competitor[0]}</span>
               </div>
               <span className="text-xl font-bold">{competitor}</span>
@@ -130,9 +130,9 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Feature Comparison</h2>
           
-          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+          <div className="bg-[#1e1e1e] rounded-none border border-white/10 overflow-hidden">
             {/* Header */}
-            <div className="grid grid-cols-3 bg-slate-50 p-4 font-bold">
+            <div className="grid grid-cols-3 bg-[#15151e] p-4 font-bold">
               <div>Feature</div>
               <div className="text-center text-violet-600">EuroMatchTickets</div>
               <div className="text-center text-slate-500">{competitor}</div>
@@ -142,7 +142,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
             {comparisons.map((row, idx) => (
               <div 
                 key={idx}
-                className={`grid grid-cols-3 p-4 border-t border-slate-200 ${idx % 2 === 0 ? 'bg-slate-50' : ''}`}
+                className={`grid grid-cols-3 p-4 border-t border-white/10 ${idx % 2 === 0 ? 'bg-[#15151e]' : ''}`}
               >
                 <div className="font-medium">{row.feature}</div>
                 <div className={`text-center flex items-center justify-center gap-2 ${row.winner === 'euro' ? 'text-emerald-600' : 'text-slate-500'}`}>
@@ -160,7 +160,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
           {/* CTA After Table */}
           <div className="mt-8 text-center">
             <Link to="/events">
-              <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-10 py-5 text-lg rounded-full shadow-lg hover:shadow-xl transition-all" data-testid="comparison-buy-cta">
+              <Button size="lg" className="bg-emerald-500/100 hover:bg-emerald-600 text-white font-bold px-10 py-5 text-lg rounded-full shadow-lg hover:shadow-xl transition-all" data-testid="comparison-buy-cta">
                 Buy Tickets Now <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
@@ -170,13 +170,13 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Why Choose EuroMatchTickets?</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#1e1e1e] p-6 rounded-none border border-white/10 text-center">
+              <div className="w-16 h-16 rounded-none bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
                 <DollarSign className="w-8 h-8 text-emerald-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">0% Buyer Fees</h3>
@@ -184,8 +184,8 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               <Link to="/events" className="text-emerald-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Browse Tickets <ArrowRight className="w-4 h-4" /></Link>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-violet-50 flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#1e1e1e] p-6 rounded-none border border-white/10 text-center">
+              <div className="w-16 h-16 rounded-none bg-violet-50 flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Instant QR Delivery</h3>
@@ -193,8 +193,8 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               <Link to="/events" className="text-violet-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Get Tickets <ArrowRight className="w-4 h-4" /></Link>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#1e1e1e] p-6 rounded-none border border-white/10 text-center">
+              <div className="w-16 h-16 rounded-none bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">100% Money-Back</h3>
@@ -208,13 +208,13 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
       {/* Verdict */}
       <section className="py-16">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <div className="bg-gradient-to-br from-purple-900/30 to-emerald-900/30 p-8 rounded-2xl border border-violet-200">
+          <div className="bg-gradient-to-br from-purple-900/30 to-emerald-900/30 p-8 rounded-none border border-violet-200">
             <h2 className="text-2xl font-bold mb-4">The Verdict</h2>
-            <p className="text-lg text-slate-600 mb-6">
+            <p className="text-lg text-slate-400 mb-6">
               {seoData?.verdict || `EuroMatchTickets offers better prices, lower fees, and instant delivery compared to ${competitor}. With our 100% guarantee and 24/7 support, you can book with confidence.`}
             </p>
             <Link to="/events">
-              <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-10 py-5 text-lg rounded-full shadow-lg">
+              <Button size="lg" className="bg-emerald-500/100 hover:bg-emerald-600 text-white font-bold px-10 py-5 text-lg rounded-full shadow-lg">
                 Buy Tickets Now <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
@@ -223,7 +223,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
       </section>
 
       {/* Other Comparisons */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center">Compare With Other Platforms</h2>
           <div className="flex flex-wrap justify-center gap-4">
@@ -231,7 +231,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               <Link 
                 key={comp}
                 to={`/euromatchtickets-vs-${comp.toLowerCase()}`}
-                className="bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-purple-500/50 px-6 py-3 rounded-full transition-colors"
+                className="bg-[#15151e] hover:bg-white/10 border border-white/10 hover:border-purple-500/50 px-6 py-3 rounded-full transition-colors"
               >
                 vs {comp}
               </Link>

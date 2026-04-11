@@ -76,7 +76,7 @@ const CityTicketsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title={`${city} Event Tickets 2026 - Best Prices`}
         description={`Buy tickets for events in ${city}, ${cityInfo.country}. Football matches, concerts, F1 races. Best prices, 100% guarantee. From €29. Instant delivery!`}
@@ -119,7 +119,7 @@ const CityTicketsPage = () => {
               </Button>
             </Link>
             <Link to="/f1-tickets">
-              <Button variant="outline" className="border-red-500/50 text-red-600 hover:bg-red-50">
+              <Button variant="outline" className="border-red-500/50 text-red-600 hover:bg-[#e10600]/10">
                 <Flag className="w-5 h-5 mr-2" />F1 Tickets
               </Button>
             </Link>
@@ -128,7 +128,7 @@ const CityTicketsPage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-4 border-y border-slate-100 bg-slate-50">
+      <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />100% Guarantee</div>
@@ -148,7 +148,7 @@ const CityTicketsPage = () => {
               <Loader2 className="w-10 h-10 animate-spin text-purple-500" />
             </div>
           ) : events.length === 0 ? (
-            <div className="text-center py-16 bg-slate-50 rounded-2xl border border-slate-200">
+            <div className="text-center py-16 bg-[#15151e] rounded-none border border-white/10">
               <p className="text-slate-500 text-lg mb-4">No events currently in {city}</p>
               <Link to="/events">
                 <Button className="bg-purple-600 hover:bg-purple-700">Browse All Events</Button>
@@ -160,7 +160,7 @@ const CityTicketsPage = () => {
                 <Link
                   key={event.event_id}
                   to={`/event/${event.slug || event.event_id}`}
-                  className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-purple-500/50 transition-all"
+                  className="group bg-[#1e1e1e] rounded-none overflow-hidden border border-white/10 hover:border-purple-500/50 transition-all"
                 >
                   <div className="relative h-40 overflow-hidden">
                     <img 
@@ -195,7 +195,7 @@ const CityTicketsPage = () => {
       </section>
 
       {/* SEO Content */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">Why Buy {city} Tickets from EuroMatchTickets?</h2>
           <div className="prose prose-invert max-w-none">
@@ -227,7 +227,7 @@ const CityTicketsPage = () => {
                 <Link
                   key={key}
                   to={`/${key}-tickets`}
-                  className="bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-purple-500/50 px-4 py-2 rounded-full transition-colors"
+                  className="bg-[#15151e] hover:bg-white/10 border border-white/10 hover:border-purple-500/50 px-4 py-2 rounded-full transition-colors"
                 >
                   {info.emoji} {key.charAt(0).toUpperCase() + key.slice(1)}
                 </Link>

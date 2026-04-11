@@ -92,14 +92,14 @@ const SEOBotDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pb-12">
+    <div className="min-h-screen bg-[#0e0e14] pb-12">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-cyan-600 rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-cyan-600 rounded-none flex items-center justify-center">
                 <Bot className="w-6 h-6" />
               </div>
               <div>
@@ -135,22 +135,22 @@ const SEOBotDashboard = () => {
 
         {/* Bot Status Cards */}
         <div className="grid md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white border border-slate-200 rounded-xl p-5">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-5">
             <div className="flex items-center justify-between mb-3">
               <span className="text-slate-500 text-sm">Bot Status</span>
               {botStatus?.is_running ? (
-                <Badge className="bg-emerald-50 text-emerald-600">Running</Badge>
+                <Badge className="bg-emerald-500/10 text-emerald-600">Running</Badge>
               ) : (
-                <Badge className="bg-blue-50 text-blue-600">Idle</Badge>
+                <Badge className="bg-blue-500/10 text-blue-600">Idle</Badge>
               )}
             </div>
             <div className="flex items-center gap-2">
-              <div className={`w-3 h-3 rounded-full ${botStatus?.is_running ? 'bg-emerald-500 animate-pulse' : 'bg-blue-500'}`} />
+              <div className={`w-3 h-3 rounded-full ${botStatus?.is_running ? 'bg-emerald-500/100 animate-pulse' : 'bg-blue-500/100'}`} />
               <span className="font-semibold">{botStatus?.is_running ? "Optimizing..." : "Monitoring"}</span>
             </div>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl p-5">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-5">
             <div className="flex items-center justify-between mb-3">
               <span className="text-slate-500 text-sm">Keywords Tracked</span>
               <Search className="w-4 h-4 text-violet-600" />
@@ -158,7 +158,7 @@ const SEOBotDashboard = () => {
             <div className="text-2xl font-bold">{botStatus?.total_keywords_tracked || 0}</div>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl p-5">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-5">
             <div className="flex items-center justify-between mb-3">
               <span className="text-slate-500 text-sm">Last Update</span>
               <Clock className="w-4 h-4 text-cyan-600" />
@@ -170,7 +170,7 @@ const SEOBotDashboard = () => {
             </div>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl p-5">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-5">
             <div className="flex items-center justify-between mb-3">
               <span className="text-slate-500 text-sm">Next Update</span>
               <RefreshCw className="w-4 h-4 text-amber-600" />
@@ -189,10 +189,10 @@ const SEOBotDashboard = () => {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-none transition-colors ${
                 selectedCategory === cat.id
                   ? "bg-purple-600 text-white"
-                  : "bg-slate-100 text-slate-500 hover:bg-slate-100"
+                  : "bg-slate-100 text-slate-500 hover:bg-white/10"
               }`}
             >
               <span>{cat.icon}</span>
@@ -204,7 +204,7 @@ const SEOBotDashboard = () => {
         <div className="grid lg:grid-cols-3 gap-6">
           
           {/* Keywords List */}
-          <div className="lg:col-span-2 bg-white border border-slate-200 rounded-xl p-6">
+          <div className="lg:col-span-2 bg-[#1e1e1e] border border-white/10 rounded-none p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-bold flex items-center gap-2">
                 <Target className="w-5 h-5 text-violet-600" />
@@ -217,7 +217,7 @@ const SEOBotDashboard = () => {
               {(keywords.keywords || []).map((kw, idx) => (
                 <div 
                   key={idx}
-                  className="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors"
+                  className="flex items-center justify-between p-3 bg-[#15151e] rounded-none hover:bg-white/10 transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-slate-400 text-sm w-6">{idx + 1}</span>
@@ -226,7 +226,7 @@ const SEOBotDashboard = () => {
                   <div className="flex items-center gap-3">
                     <div className="w-24 h-2 bg-zinc-700 rounded-full overflow-hidden">
                       <div 
-                        className={`h-full ${kw.score >= 80 ? 'bg-emerald-500' : kw.score >= 60 ? 'bg-yellow-500' : 'bg-red-500'}`}
+                        className={`h-full ${kw.score >= 80 ? 'bg-emerald-500/100' : kw.score >= 60 ? 'bg-yellow-500' : 'bg-[#e10600]/100'}`}
                         style={{ width: `${kw.score}%` }}
                       />
                     </div>
@@ -240,7 +240,7 @@ const SEOBotDashboard = () => {
           </div>
 
           {/* Content Ideas */}
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
             <h2 className="text-lg font-bold flex items-center gap-2 mb-6">
               <Sparkles className="w-5 h-5 text-amber-600" />
               Content Ideas
@@ -250,7 +250,7 @@ const SEOBotDashboard = () => {
               {contentIdeas.slice(0, 10).map((idea, idx) => (
                 <div 
                   key={idx}
-                  className="p-3 bg-slate-50 rounded-lg border border-slate-200/50 hover:border-purple-500/50 transition-colors cursor-pointer"
+                  className="p-3 bg-[#15151e] rounded-none border border-white/10/50 hover:border-purple-500/50 transition-colors cursor-pointer"
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <Badge variant="outline" className="text-xs">
@@ -269,7 +269,7 @@ const SEOBotDashboard = () => {
         </div>
 
         {/* Update History */}
-        <div className="mt-8 bg-white border border-slate-200 rounded-xl p-6">
+        <div className="mt-8 bg-[#1e1e1e] border border-white/10 rounded-none p-6">
           <h2 className="text-lg font-bold flex items-center gap-2 mb-6">
             <BarChart3 className="w-5 h-5 text-cyan-600" />
             Recent Updates
@@ -278,7 +278,7 @@ const SEOBotDashboard = () => {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="text-left text-slate-400 text-sm border-b border-slate-200">
+                <tr className="text-left text-slate-400 text-sm border-b border-white/10">
                   <th className="pb-3">Timestamp</th>
                   <th className="pb-3">Status</th>
                   <th className="pb-3">Actions</th>
@@ -286,18 +286,18 @@ const SEOBotDashboard = () => {
               </thead>
               <tbody>
                 {(botStatus?.update_history || []).reverse().map((update, idx) => (
-                  <tr key={idx} className="border-b border-slate-200/50">
+                  <tr key={idx} className="border-b border-white/10/50">
                     <td className="py-3 text-sm">
                       {new Date(update.timestamp).toLocaleString()}
                     </td>
                     <td className="py-3">
                       {update.success ? (
-                        <Badge className="bg-emerald-50 text-emerald-600">
+                        <Badge className="bg-emerald-500/10 text-emerald-600">
                           <CheckCircle className="w-3 h-3 mr-1" />
                           Success
                         </Badge>
                       ) : (
-                        <Badge className="bg-red-50 text-red-600">
+                        <Badge className="bg-[#e10600]/10 text-red-600">
                           <AlertCircle className="w-3 h-3 mr-1" />
                           Failed
                         </Badge>
@@ -321,11 +321,11 @@ const SEOBotDashboard = () => {
         </div>
 
         {/* How It Works */}
-        <div className="mt-8 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20 rounded-xl p-6">
+        <div className="mt-8 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20 rounded-none p-6">
           <h2 className="text-lg font-bold mb-4">🤖 How the SEO Bot Works</h2>
           <div className="grid md:grid-cols-4 gap-4 text-sm">
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-violet-50 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-violet-50 rounded-none flex items-center justify-center flex-shrink-0">
                 <span className="font-bold text-violet-600">1</span>
               </div>
               <div>
@@ -334,7 +334,7 @@ const SEOBotDashboard = () => {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-cyan-500/20 rounded-none flex items-center justify-center flex-shrink-0">
                 <span className="font-bold text-cyan-600">2</span>
               </div>
               <div>
@@ -343,7 +343,7 @@ const SEOBotDashboard = () => {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-emerald-500/10 rounded-none flex items-center justify-center flex-shrink-0">
                 <span className="font-bold text-emerald-600">3</span>
               </div>
               <div>
@@ -352,7 +352,7 @@ const SEOBotDashboard = () => {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-amber-500/10 rounded-none flex items-center justify-center flex-shrink-0">
                 <span className="font-bold text-amber-600">4</span>
               </div>
               <div>

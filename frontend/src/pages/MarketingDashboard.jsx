@@ -61,14 +61,14 @@ const MarketingDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center">
         <RefreshCw className="w-8 h-8 animate-spin text-purple-500" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pb-16">
+    <div className="min-h-screen bg-[#0e0e14] pb-16">
       <div className="max-w-7xl mx-auto px-4">
         
         {/* Header */}
@@ -82,25 +82,25 @@ const MarketingDashboard = () => {
 
         {/* Stats Overview */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white border border-slate-200 rounded-xl p-4">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4">
             <div className="flex items-center gap-2 text-slate-500 mb-2">
               <Users className="w-4 h-4" />Referrals
             </div>
             <div className="text-3xl font-bold">{referralData?.stats?.total_referrals || 0}</div>
           </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-4">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4">
             <div className="flex items-center gap-2 text-slate-500 mb-2">
               <DollarSign className="w-4 h-4" />Earnings
             </div>
             <div className="text-3xl font-bold text-emerald-600">€{referralData?.stats?.total_earnings || 0}</div>
           </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-4">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4">
             <div className="flex items-center gap-2 text-slate-500 mb-2">
               <Target className="w-4 h-4" />Target
             </div>
             <div className="text-3xl font-bold text-violet-600">1000</div>
           </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-4">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4">
             <div className="flex items-center gap-2 text-slate-500 mb-2">
               <TrendingUp className="w-4 h-4" />Progress
             </div>
@@ -111,9 +111,9 @@ const MarketingDashboard = () => {
         <div className="grid lg:grid-cols-2 gap-8">
           
           {/* Referral Program */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-none bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
                 <Gift className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -124,13 +124,13 @@ const MarketingDashboard = () => {
 
             {referralData && (
               <>
-                <div className="bg-slate-50 rounded-xl p-4 mb-4">
+                <div className="bg-[#15151e] rounded-none p-4 mb-4">
                   <label className="text-slate-500 text-sm mb-2 block">Your Referral Link</label>
                   <div className="flex gap-2">
                     <input 
                       value={referralData.referral_link}
                       readOnly
-                      className="flex-1 bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm"
+                      className="flex-1 bg-[#1e1e1e] border border-white/10 rounded-none px-4 py-2 text-sm"
                     />
                     <Button 
                       onClick={() => copyToClipboard(referralData.referral_link, 'link')}
@@ -185,9 +185,9 @@ const MarketingDashboard = () => {
           </div>
 
           {/* Social Media Posts */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-none bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center">
                 <Share2 className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -198,7 +198,7 @@ const MarketingDashboard = () => {
 
             <div className="space-y-4 max-h-[400px] overflow-y-auto">
               {socialPosts.map((post, idx) => (
-                <div key={idx} className="bg-slate-50 rounded-xl p-4">
+                <div key={idx} className="bg-[#15151e] rounded-none p-4">
                   <div className="flex items-center gap-2 mb-2">
                     <Badge className={`
                       ${post.platform === 'twitter' ? 'bg-[#1DA1F2]' : ''}
@@ -211,7 +211,7 @@ const MarketingDashboard = () => {
                     </Badge>
                     <span className="text-slate-400 text-sm">{post.event_title}</span>
                   </div>
-                  <p className="text-sm text-slate-600 whitespace-pre-wrap mb-3">{post.content}</p>
+                  <p className="text-sm text-slate-400 whitespace-pre-wrap mb-3">{post.content}</p>
                   <Button 
                     size="sm"
                     onClick={() => copyToClipboard(post.content, `post-${idx}`)}
@@ -226,16 +226,16 @@ const MarketingDashboard = () => {
 
             <Button 
               onClick={fetchData}
-              className="w-full mt-4 bg-slate-100 hover:bg-slate-100"
+              className="w-full mt-4 bg-slate-100 hover:bg-white/10"
             >
               <RefreshCw className="w-4 h-4 mr-2" />Generate New Posts
             </Button>
           </div>
 
           {/* Monthly Growth Plan */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 lg:col-span-2">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-600 to-orange-600 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-none bg-gradient-to-br from-amber-600 to-orange-600 flex items-center justify-center">
                 <Calendar className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -249,7 +249,7 @@ const MarketingDashboard = () => {
                 {Object.entries(growthPlan.monthly_plan)
                   .filter(([key]) => key.startsWith('week'))
                   .map(([weekKey, week]) => (
-                    <div key={weekKey} className="bg-slate-50 rounded-xl p-4">
+                    <div key={weekKey} className="bg-[#15151e] rounded-none p-4">
                       <div className="flex items-center justify-between mb-3">
                         <Badge className="bg-violet-50 text-violet-600 border-violet-200">
                           {weekKey.replace('_', ' ').toUpperCase()}
@@ -272,9 +272,9 @@ const MarketingDashboard = () => {
           </div>
 
           {/* Growth Tactics */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-none bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center">
                 <Zap className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -285,10 +285,10 @@ const MarketingDashboard = () => {
 
             <div className="space-y-3">
               {growthPlan?.growth_tactics?.slice(0, 6).map((tactic, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold ${
-                    tactic.potential_impact === 'high' ? 'bg-emerald-50 text-emerald-600' :
-                    tactic.potential_impact === 'medium' ? 'bg-amber-50 text-amber-600' :
+                <div key={idx} className="flex items-start gap-3 p-3 bg-[#15151e] rounded-none">
+                  <div className={`w-8 h-8 rounded-none flex items-center justify-center text-sm font-bold ${
+                    tactic.potential_impact === 'high' ? 'bg-emerald-500/10 text-emerald-600' :
+                    tactic.potential_impact === 'medium' ? 'bg-amber-500/10 text-amber-600' :
                     'bg-zinc-500/20 text-slate-500'
                   }`}>
                     {idx + 1}
@@ -303,9 +303,9 @@ const MarketingDashboard = () => {
           </div>
 
           {/* High Value Keywords */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-600 to-rose-600 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-none bg-gradient-to-br from-red-600 to-rose-600 flex items-center justify-center">
                 <Target className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -316,14 +316,14 @@ const MarketingDashboard = () => {
 
             <div className="space-y-2">
               {growthPlan?.high_value_keywords?.map((kw, idx) => (
-                <div key={idx} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                <div key={idx} className="flex items-center justify-between p-3 bg-[#15151e] rounded-none">
                   <span className="text-sm">{kw.keyword}</span>
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-slate-400">{kw.volume?.toLocaleString()} searches</span>
                     <Badge className={`text-xs ${
-                      kw.difficulty === 'low' ? 'bg-emerald-50 text-emerald-600' :
-                      kw.difficulty === 'medium' ? 'bg-amber-50 text-amber-600' :
-                      'bg-red-50 text-red-600'
+                      kw.difficulty === 'low' ? 'bg-emerald-500/10 text-emerald-600' :
+                      kw.difficulty === 'medium' ? 'bg-amber-500/10 text-amber-600' :
+                      'bg-[#e10600]/10 text-red-600'
                     }`}>
                       {kw.difficulty}
                     </Badge>
@@ -338,21 +338,21 @@ const MarketingDashboard = () => {
         {/* Quick Actions */}
         <div className="mt-8 grid md:grid-cols-3 gap-4">
           <Link to="/seo-dashboard" className="block">
-            <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl p-6 hover:shadow-lg hover:shadow-purple-500/20 transition-all">
+            <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-none p-6 hover:shadow-lg hover:shadow-purple-500/20 transition-all">
               <Megaphone className="w-8 h-8 mb-3" />
               <h3 className="text-xl font-bold mb-1">SEO Dashboard</h3>
               <p className="text-purple-200 text-sm">Submit URLs to search engines</p>
             </div>
           </Link>
           <Link to="/events" className="block">
-            <div className="bg-gradient-to-br from-blue-600 to-cyan-600 rounded-xl p-6 hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+            <div className="bg-gradient-to-br from-blue-600 to-cyan-600 rounded-none p-6 hover:shadow-lg hover:shadow-blue-500/20 transition-all">
               <BarChart3 className="w-8 h-8 mb-3" />
               <h3 className="text-xl font-bold mb-1">Browse Events</h3>
               <p className="text-blue-200 text-sm">Share events on social media</p>
             </div>
           </Link>
           <a href="https://analytics.google.com" target="_blank" rel="noopener noreferrer" className="block">
-            <div className="bg-gradient-to-br from-amber-600 to-orange-600 rounded-xl p-6 hover:shadow-lg hover:shadow-amber-500/20 transition-all">
+            <div className="bg-gradient-to-br from-amber-600 to-orange-600 rounded-none p-6 hover:shadow-lg hover:shadow-amber-500/20 transition-all">
               <ExternalLink className="w-8 h-8 mb-3" />
               <h3 className="text-xl font-bold mb-1">Analytics</h3>
               <p className="text-amber-200 text-sm">Track your traffic & sales</p>

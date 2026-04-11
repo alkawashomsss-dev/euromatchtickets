@@ -36,7 +36,7 @@ const BahrainNightRaceGuidePage = () => {
 
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-bold mb-6"><Moon className="w-4 h-4" /> NIGHT RACE GUIDE</div>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/100/10 text-amber-400 text-xs font-bold mb-6"><Moon className="w-4 h-4" /> NIGHT RACE GUIDE</div>
           <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">Bahrain F1 Night Race Guide 2026</h1>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">What makes the desert night race so special? Everything you need to know before you go.</p>
           <p className="text-xs text-slate-500 mt-4">Updated March 2026 &bull; From fans who've attended 5+ Bahrain GPs</p>
@@ -48,7 +48,7 @@ const BahrainNightRaceGuidePage = () => {
         <h2 className="text-xl font-bold text-white mb-6">6 Reasons Bahrain Night Race Is Unmissable</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {reasons.map((r, i) => (
-            <div key={i} className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 hover:bg-amber-500/10 transition-all">
+            <div key={i} className="bg-amber-500/100/5 border border-amber-500/20 rounded-none p-5 hover:bg-amber-500/100/10 transition-all">
               <h3 className="font-bold text-amber-300 mb-2">{i + 1}. {r.title}</h3>
               <p className="text-sm text-slate-400 leading-relaxed">{r.desc}</p>
             </div>
@@ -61,7 +61,7 @@ const BahrainNightRaceGuidePage = () => {
         <h2 className="text-xl font-bold text-white mb-6">Bahrain GP Weekend Schedule</h2>
         <div className="space-y-3">
           {schedule.map((d, i) => (
-            <div key={i} className={`bg-white/5 border rounded-xl p-5 ${i === 3 ? 'border-amber-500/30' : 'border-white/10'}`}>
+            <div key={i} className={`bg-white/5 border rounded-none p-5 ${i === 3 ? 'border-amber-500/30' : 'border-white/10'}`}>
               <div className="flex items-start gap-4">
                 <span className={`font-black ${i === 3 ? 'text-amber-400' : 'text-slate-500'}`}>{d.day}</span>
                 <div><p className="text-sm text-white">{d.events}</p><p className={`text-xs mt-1 ${i === 3 ? 'text-amber-400 font-bold' : 'text-slate-500'}`}>{d.tip}</p></div>
@@ -73,7 +73,7 @@ const BahrainNightRaceGuidePage = () => {
 
       {/* Practical Tips */}
       <section className="max-w-4xl mx-auto px-4 pb-16">
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <div className="bg-white/5 border border-white/10 rounded-none p-6">
           <h2 className="text-xl font-bold text-white mb-4">What to Bring</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {["Sunscreen for daytime (UV is strong!)", "Light jacket for nighttime (drops to 18°C)", "Phone charger - your ticket is digital", "Camera with good low-light capability", "Comfortable shoes (lots of walking)", "Cash for food vendors (some don't take cards)", "Ear plugs or ear defenders (F1 = 130dB)", "Download the F1 app for live timing"].map((t, i) => (
@@ -85,10 +85,10 @@ const BahrainNightRaceGuidePage = () => {
 
       {/* CTA */}
       <section className="max-w-4xl mx-auto px-4 pb-16">
-        <div className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl p-8 text-center">
+        <div className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-none p-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-2">Experience the Night Race</h2>
           <p className="text-amber-100 mb-4">Bahrain GP tickets from €59 &bull; Cheapest F1 race in the world</p>
-          <Link to="/f1-bahrain-grand-prix-tickets"><Button size="lg" className="bg-white text-amber-700 hover:bg-amber-50 font-bold px-8 rounded-full">Buy Bahrain GP Tickets</Button></Link>
+          <Link to="/f1-bahrain-grand-prix-tickets"><Button size="lg" className="bg-[#1e1e1e] text-amber-700 hover:bg-amber-500/10 font-bold px-8 rounded-full">Buy Bahrain GP Tickets</Button></Link>
         </div>
       </section>
 
@@ -97,7 +97,7 @@ const BahrainNightRaceGuidePage = () => {
         <h2 className="text-xl font-bold text-white mb-4">FAQ - Bahrain Night Race</h2>
         <FAQStructuredData faqs={faqs} />
         <div className="space-y-2">{faqs.map((f, i) => (
-          <details key={i} className="group rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+          <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
             <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">{f.question}<ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" /></summary>
             <p className="px-4 pb-4 text-slate-400 text-sm leading-relaxed">{f.answer}</p>
           </details>
@@ -108,10 +108,10 @@ const BahrainNightRaceGuidePage = () => {
       <section className="max-w-4xl mx-auto px-4 pb-16">
         <h2 className="text-lg font-bold text-white mb-4">More F1 Guides</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <Link to="/f1-bahrain-grand-prix-tickets" className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-amber-500/30 transition-all"><p className="font-bold text-white text-sm">Buy Bahrain GP Tickets</p><p className="text-xs text-amber-400">From €59</p></Link>
-          <Link to="/ultimate-f1-tickets-guide-2026" className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-amber-500/30 transition-all"><p className="font-bold text-white text-sm">Ultimate F1 Guide 2026</p><p className="text-xs text-slate-500">Every race compared</p></Link>
-          <Link to="/monaco-gp-vip-experience" className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-amber-500/30 transition-all"><p className="font-bold text-white text-sm">Monaco GP VIP Guide</p><p className="text-xs text-slate-500">Yacht hospitality</p></Link>
-          <Link to="/monza-best-seats-guide" className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-amber-500/30 transition-all"><p className="font-bold text-white text-sm">Monza Best Seats Guide</p><p className="text-xs text-slate-500">Every grandstand rated</p></Link>
+          <Link to="/f1-bahrain-grand-prix-tickets" className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-amber-500/30 transition-all"><p className="font-bold text-white text-sm">Buy Bahrain GP Tickets</p><p className="text-xs text-amber-400">From €59</p></Link>
+          <Link to="/ultimate-f1-tickets-guide-2026" className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-amber-500/30 transition-all"><p className="font-bold text-white text-sm">Ultimate F1 Guide 2026</p><p className="text-xs text-slate-500">Every race compared</p></Link>
+          <Link to="/monaco-gp-vip-experience" className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-amber-500/30 transition-all"><p className="font-bold text-white text-sm">Monaco GP VIP Guide</p><p className="text-xs text-slate-500">Yacht hospitality</p></Link>
+          <Link to="/monza-best-seats-guide" className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-amber-500/30 transition-all"><p className="font-bold text-white text-sm">Monza Best Seats Guide</p><p className="text-xs text-slate-500">Every grandstand rated</p></Link>
         </div>
       </section>
     </div>

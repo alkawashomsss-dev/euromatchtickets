@@ -5,10 +5,10 @@ import axios from "axios";
 import { API } from "../App";
 
 const catConfig = {
-  f1: { icon: Flag, color: "text-red-700", border: "border-red-200", bg: "bg-red-50" },
+  f1: { icon: Flag, color: "text-red-700", border: "border-red-200", bg: "bg-[#e10600]/10" },
   football: { icon: Trophy, color: "text-blue-700", border: "border-blue-200", bg: "bg-blue-50" },
   concert: { icon: Music, color: "text-violet-700", border: "border-violet-200", bg: "bg-violet-50" },
-  worldcup: { icon: Globe, color: "text-emerald-700", border: "border-emerald-200", bg: "bg-emerald-50" },
+  worldcup: { icon: Globe, color: "text-emerald-700", border: "border-emerald-200", bg: "bg-emerald-500/10" },
   match: { icon: Trophy, color: "text-blue-700", border: "border-blue-200", bg: "bg-blue-50" },
 };
 
@@ -16,11 +16,11 @@ const LinkCard = ({ item }) => {
   const cfg = catConfig[item.category] || catConfig.football;
   const Icon = cfg.icon;
   return (
-    <Link to={item.url} className={`group block rounded-lg border ${cfg.border} ${cfg.bg} p-4 hover:scale-[1.02] transition-all`} data-testid={`related-link-${item.url}`}>
+    <Link to={item.url} className={`group block rounded-none border ${cfg.border} ${cfg.bg} p-4 hover:scale-[1.02] transition-all`} data-testid={`related-link-${item.url}`}>
       <div className="flex items-start gap-3">
         <Icon className={`w-5 h-5 ${cfg.color} mt-0.5 flex-shrink-0`} />
         <div className="min-w-0">
-          <p className="text-slate-900 text-sm font-medium truncate group-hover:text-emerald-600 transition">{item.title}</p>
+          <p className="text-white text-sm font-medium truncate group-hover:text-emerald-600 transition">{item.title}</p>
           <div className="flex items-center gap-2 mt-1">
             {item.city && <span className="text-slate-500 text-xs flex items-center gap-1"><MapPin className="w-3 h-3" />{item.city}</span>}
             {item.date && <span className="text-slate-500 text-xs flex items-center gap-1"><Calendar className="w-3 h-3" />{item.date}</span>}
@@ -38,7 +38,7 @@ const Section = ({ title, icon: Icon, iconColor, items }) => {
     <div>
       <div className="flex items-center gap-2 mb-4">
         <Icon className={`w-5 h-5 ${iconColor}`} />
-        <h3 className="text-lg font-bold text-slate-900">{title}</h3>
+        <h3 className="text-lg font-bold text-white">{title}</h3>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {items.map((item, i) => <LinkCard key={i} item={item} />)}
@@ -68,7 +68,7 @@ export const RelatedEventsSection = ({ slug, category, city }) => {
   }[category] || "Events";
 
   return (
-    <div className="border-t border-slate-200 pt-10 mt-10 space-y-8" data-testid="related-events-section">
+    <div className="border-t border-white/10 pt-10 mt-10 space-y-8" data-testid="related-events-section">
       <Section title={`Related ${catLabel}`} icon={Flame} iconColor="text-orange-400" items={related_pages} />
       {city && <Section title={`More Events in ${city}`} icon={MapPin} iconColor="text-amber-400" items={city_events} />}
       <Section title="Upcoming Events" icon={Calendar} iconColor="text-emerald-400" items={upcoming_events} />

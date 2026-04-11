@@ -69,7 +69,7 @@ export default function ChatWidget() {
 
   return (
     <div
-      className="fixed bottom-5 right-5 z-50 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden"
+      className="fixed bottom-5 right-5 z-50 w-80 sm:w-96 bg-[#1e1e1e] rounded-2xl shadow-2xl border border-white/10 flex flex-col overflow-hidden"
       style={{ maxHeight: "500px" }}
       data-testid="chat-widget-window"
     >
@@ -108,7 +108,7 @@ export default function ChatWidget() {
                 <button
                   key={i}
                   onClick={() => sendMessage(q)}
-                  className="block w-full text-left text-xs bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 px-3 py-2 rounded-lg border border-slate-200 hover:border-emerald-300 transition-colors"
+                  className="block w-full text-left text-xs bg-[#15151e] hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 px-3 py-2 rounded-lg border border-white/10 hover:border-emerald-300 transition-colors"
                   data-testid={`quick-question-${i}`}
                 >
                   {q}
@@ -127,7 +127,7 @@ export default function ChatWidget() {
               className={`max-w-[80%] px-3 py-2 rounded-xl text-sm leading-relaxed ${
                 msg.role === "user"
                   ? "bg-emerald-600 text-white rounded-br-sm"
-                  : "bg-slate-100 text-slate-800 rounded-bl-sm"
+                  : "bg-slate-100 text-white rounded-bl-sm"
               }`}
               data-testid={`chat-message-${i}`}
             >
@@ -146,7 +146,7 @@ export default function ChatWidget() {
       </div>
 
       {/* Input */}
-      <div className="px-3 py-2 border-t border-slate-200 flex-shrink-0">
+      <div className="px-3 py-2 border-t border-white/10 flex-shrink-0">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -159,7 +159,7 @@ export default function ChatWidget() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask about tickets..."
-            className="flex-1 text-sm px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
+            className="flex-1 text-sm px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
             data-testid="chat-input"
             disabled={loading}
           />

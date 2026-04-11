@@ -96,7 +96,7 @@ const IsleOfManTTPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Isle of Man TT Tickets 2025-2026 | Race Passes"
         description="Buy Isle of Man TT tickets 2025 & 2026 from €149. World's most thrilling motorcycle race. Grandstand passes, VIP. Instant QR delivery + FanProtect."
@@ -110,12 +110,12 @@ const IsleOfManTTPage = () => {
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/2611686/pexels-photo-2611686.jpeg')] opacity-10 bg-cover bg-center" />
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-[#e10600]/10 border border-red-200 rounded-full px-4 py-2 mb-6">
             <AlertTriangle className="w-4 h-4 text-red-600" />
             <span className="text-red-600 font-medium">The World's Most Dangerous Race</span>
           </div>
           
-          <Badge className="bg-amber-50 text-amber-600 border-amber-200 mb-6 ml-2">
+          <Badge className="bg-amber-500/10 text-amber-600 border-amber-200 mb-6 ml-2">
             <Trophy className="w-4 h-4 mr-2" />Since 1907 - 117 Years of Racing History
           </Badge>
           
@@ -130,18 +130,18 @@ const IsleOfManTTPage = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Mountain className="w-5 h-5 text-amber-600" /><span>37.73 Mile Course</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Clock className="w-5 h-5 text-amber-600" /><span>200+ MPH Speeds</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-emerald-50 rounded-full border border-emerald-200">
+            <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-200">
               <Ticket className="w-5 h-5 text-emerald-600" /><span className="text-emerald-600">From €149</span>
             </div>
           </div>
 
-          <div className="inline-block bg-white/90 border border-amber-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-amber-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Race Week Tickets from</div>
             <div className="text-5xl font-bold text-amber-600">€149</div>
             <div className="text-amber-600 text-sm mt-1">VIP Packages Available</div>
@@ -150,7 +150,7 @@ const IsleOfManTTPage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
@@ -185,7 +185,7 @@ const IsleOfManTTPage = () => {
                 <Link 
                   key={event.event_id}
                   to={`/event/${event.slug || event.event_id}`}
-                  className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-amber-500/50 transition-all hover:scale-[1.02]"
+                  className="group bg-[#1e1e1e] rounded-none overflow-hidden border border-white/10 hover:border-amber-500/50 transition-all hover:scale-[1.02]"
                 >
                   <div className="relative h-40 overflow-hidden">
                     <img 
@@ -195,7 +195,7 @@ const IsleOfManTTPage = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
                     {event.featured && (
-                      <Badge className="absolute top-3 left-3 bg-amber-500 text-white">
+                      <Badge className="absolute top-3 left-3 bg-amber-500/100 text-white">
                         Featured Event
                       </Badge>
                     )}
@@ -235,7 +235,7 @@ const IsleOfManTTPage = () => {
       </section>
 
       {/* About the TT */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">About the Isle of Man TT</h2>
           
@@ -247,15 +247,15 @@ const IsleOfManTTPage = () => {
             </p>
             
             <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-xl p-6 text-center border border-slate-200">
+              <div className="bg-[#1e1e1e] rounded-none p-6 text-center border border-white/10">
                 <div className="text-4xl font-bold text-amber-600 mb-2">264</div>
                 <div className="text-slate-500">Casualties Since 1907</div>
               </div>
-              <div className="bg-white rounded-xl p-6 text-center border border-slate-200">
+              <div className="bg-[#1e1e1e] rounded-none p-6 text-center border border-white/10">
                 <div className="text-4xl font-bold text-amber-600 mb-2">135.452</div>
                 <div className="text-slate-500">Lap Record (MPH)</div>
               </div>
-              <div className="bg-white rounded-xl p-6 text-center border border-slate-200">
+              <div className="bg-[#1e1e1e] rounded-none p-6 text-center border border-white/10">
                 <div className="text-4xl font-bold text-amber-600 mb-2">117</div>
                 <div className="text-slate-500">Years of History</div>
               </div>
@@ -270,22 +270,22 @@ const IsleOfManTTPage = () => {
           <h2 className="text-3xl font-bold mb-8 text-center">Isle of Man TT FAQ</h2>
           
           <div className="space-y-4">
-            <div className="bg-white rounded-xl p-6 border border-slate-200">
+            <div className="bg-[#1e1e1e] rounded-none p-6 border border-white/10">
               <h3 className="font-bold text-lg mb-2">When is Isle of Man TT 2026?</h3>
               <p className="text-slate-500">The Isle of Man TT 2026 runs from May 30th to June 13th, 2026. Practice week starts May 30th, with racing from June 6th-13th.</p>
             </div>
             
-            <div className="bg-white rounded-xl p-6 border border-slate-200">
+            <div className="bg-[#1e1e1e] rounded-none p-6 border border-white/10">
               <h3 className="font-bold text-lg mb-2">How do I get to the Isle of Man?</h3>
               <p className="text-slate-500">You can reach the Isle of Man by ferry from Liverpool, Heysham, Dublin, or Belfast. Flights are available from many UK airports. Book early during TT fortnight!</p>
             </div>
             
-            <div className="bg-white rounded-xl p-6 border border-slate-200">
+            <div className="bg-[#1e1e1e] rounded-none p-6 border border-white/10">
               <h3 className="font-bold text-lg mb-2">Do I need tickets to watch the TT?</h3>
               <p className="text-slate-500">Most spectator areas around the course are FREE! Grandstand tickets (at the start/finish) and VIP hospitality packages are available for purchase.</p>
             </div>
             
-            <div className="bg-white rounded-xl p-6 border border-slate-200">
+            <div className="bg-[#1e1e1e] rounded-none p-6 border border-white/10">
               <h3 className="font-bold text-lg mb-2">What's included in VIP tickets?</h3>
               <p className="text-slate-500">VIP packages include premium grandstand seating, hospitality suite access, gourmet food, open bar, paddock tours, and rider meet & greets.</p>
             </div>
@@ -311,7 +311,7 @@ const IsleOfManTTPage = () => {
               onClick={() => navigate('/motogp-tickets')} 
               size="lg" 
               variant="outline"
-              className="border-slate-200 hover:border-orange-500 hover:text-orange-600"
+              className="border-white/10 hover:border-orange-500 hover:text-orange-600"
             >
               <Bike className="w-5 h-5 mr-2" />
               Browse MotoGP Tickets

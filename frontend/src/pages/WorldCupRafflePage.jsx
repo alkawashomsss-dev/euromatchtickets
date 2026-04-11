@@ -84,7 +84,7 @@ const WorldCupRafflePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Win FIFA World Cup 2026 Trip - VIP Raffle €100 Entry"
         description="Enter our World Cup 2026 raffle for just €100! Win an all-inclusive trip for 2: flights, 7 nights hotel, and match tickets. Limited entries available."
@@ -103,7 +103,7 @@ const WorldCupRafflePage = () => {
               <Trophy className="w-4 h-4 mr-2" />
               OFFICIAL RAFFLE
             </Badge>
-            <Badge className="bg-red-50 text-red-600 border-red-200 px-4 py-2 text-sm">
+            <Badge className="bg-[#e10600]/10 text-red-600 border-red-200 px-4 py-2 text-sm">
               <Timer className="w-4 h-4 mr-2" />
               LIMITED ENTRIES
             </Badge>
@@ -117,13 +117,13 @@ const WorldCupRafflePage = () => {
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-8">
+          <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-8">
             Enter for just <span className="text-cyan-600 font-bold">€100</span> and win an all-inclusive trip for 
             <span className="text-cyan-600 font-bold"> 2 people</span>!
           </p>
 
           {/* Prize Value */}
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 rounded-2xl px-8 py-4 mb-8">
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 rounded-none px-8 py-4 mb-8">
             <Gift className="w-8 h-8 text-cyan-600" />
             <div className="text-left">
               <p className="text-sm text-slate-500">Total Prize Value</p>
@@ -136,7 +136,7 @@ const WorldCupRafflePage = () => {
             <Button 
               onClick={handleBuyEntry}
               disabled={loading}
-              className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-black font-bold text-xl px-12 py-8 rounded-2xl shadow-2xl shadow-cyan-500/30 transform hover:scale-105 transition-all"
+              className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-black font-bold text-xl px-12 py-8 rounded-none shadow-2xl shadow-cyan-500/30 transform hover:scale-105 transition-all"
               data-testid="buy-raffle-entry-btn"
             >
               {loading ? (
@@ -155,7 +155,7 @@ const WorldCupRafflePage = () => {
       </section>
 
       {/* What You Win */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#1e1e1e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <Badge className="bg-cyan-500/20 text-cyan-600 border-cyan-500/30 mb-4">
@@ -170,7 +170,7 @@ const WorldCupRafflePage = () => {
             {prizes.map((prize, idx) => (
               <div 
                 key={idx}
-                className="bg-white/90 border border-cyan-500/20 rounded-2xl p-6 text-center hover:border-cyan-500/50 transition-all hover:transform hover:scale-105"
+                className="bg-white/90 border border-cyan-500/20 rounded-none p-6 text-center hover:border-cyan-500/50 transition-all hover:transform hover:scale-105"
               >
                 <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <prize.icon className="w-8 h-8 text-cyan-600" />
@@ -199,7 +199,7 @@ const WorldCupRafflePage = () => {
                   <div className="w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <Check className="w-4 h-4 text-black" />
                   </div>
-                  <span className="text-slate-600">{item}</span>
+                  <span className="text-slate-400">{item}</span>
                 </div>
               ))}
             </div>
@@ -218,7 +218,7 @@ const WorldCupRafflePage = () => {
           <div className="grid md:grid-cols-4 gap-6">
             {howItWorks.map((step, idx) => (
               <div key={idx} className="relative">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 text-center h-full">
+                <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 text-center h-full">
                   <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 text-black font-bold text-xl">
                     {step.step}
                   </div>
@@ -252,15 +252,15 @@ const WorldCupRafflePage = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
-            <div className="bg-white border border-slate-200 rounded-xl px-6 py-4">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none px-6 py-4">
               <p className="text-3xl font-bold text-white">500</p>
               <p className="text-sm text-slate-500">Max Entries</p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl px-6 py-4">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none px-6 py-4">
               <p className="text-3xl font-bold text-cyan-600">1:500</p>
               <p className="text-sm text-slate-500">Win Odds</p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl px-6 py-4">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none px-6 py-4">
               <p className="text-3xl font-bold text-green-600">€100</p>
               <p className="text-sm text-slate-500">Entry Price</p>
             </div>
@@ -303,7 +303,7 @@ const WorldCupRafflePage = () => {
           <Button 
             onClick={handleBuyEntry}
             disabled={loading}
-            className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-black font-bold text-xl px-12 py-8 rounded-2xl shadow-2xl shadow-cyan-500/30"
+            className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-black font-bold text-xl px-12 py-8 rounded-none shadow-2xl shadow-cyan-500/30"
             data-testid="buy-raffle-entry-btn-bottom"
           >
             <Trophy className="w-6 h-6 mr-3" />

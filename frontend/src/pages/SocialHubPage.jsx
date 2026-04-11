@@ -29,7 +29,7 @@ const TIKTOK_VIDEOS = [
 
 const CountdownUnit = ({ value, label }) => (
   <div className="text-center">
-    <div className="text-3xl md:text-4xl font-black text-white tabular-nums bg-white/5 rounded-xl px-3 py-2 border border-white/10">
+    <div className="text-3xl md:text-4xl font-black text-white tabular-nums bg-white/5 rounded-none px-3 py-2 border border-white/10">
       {String(value).padStart(2, '0')}
     </div>
     <div className="text-[10px] text-white/30 uppercase mt-1 tracking-widest">{label}</div>
@@ -93,8 +93,8 @@ const SocialHubPage = () => {
         <div className="relative max-w-5xl mx-auto px-4 text-center">
           {/* Live badge */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-center mb-6">
-            <span className="flex items-center gap-2 bg-red-500/20 border border-red-500/30 text-red-400 text-sm font-bold px-4 py-2 rounded-full" data-testid="live-viewers">
-              <span className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse" />
+            <span className="flex items-center gap-2 bg-[#e10600]/100/20 border border-red-500/30 text-red-400 text-sm font-bold px-4 py-2 rounded-full" data-testid="live-viewers">
+              <span className="w-2.5 h-2.5 bg-[#e10600]/100 rounded-full animate-pulse" />
               {liveViewers} people viewing right now
             </span>
           </motion.div>
@@ -112,9 +112,9 @@ const SocialHubPage = () => {
             {SOCIALS.map((s, i) => (
               <motion.a key={i} href={s.url} target="_blank" rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
-                className="group block bg-white/[0.04] border border-white/10 hover:border-amber-500/40 rounded-2xl p-5 text-center transition-all hover:bg-white/[0.06]"
+                className="group block bg-white/[0.04] border border-white/10 hover:border-amber-500/40 rounded-none p-5 text-center transition-all hover:bg-white/[0.06]"
                 data-testid={`social-${s.name.toLowerCase()}`}>
-                <div className={`w-12 h-12 ${s.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
+                <div className={`w-12 h-12 ${s.color} rounded-none flex items-center justify-center mx-auto mb-3`}>
                   <img src={s.icon} alt={s.name} className="w-6 h-6 invert" loading="lazy" />
                 </div>
                 <h3 className="text-white font-bold text-sm">{s.name}</h3>
@@ -132,7 +132,7 @@ const SocialHubPage = () => {
       {/* ═══ NEXT EVENT COUNTDOWN ═══ */}
       <section className="py-16 bg-gradient-to-b from-white/[0.02] to-transparent" data-testid="countdown-section">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 mb-4">
+          <Badge className="bg-amber-500/100/20 text-amber-400 border-amber-500/30 mb-4">
             <Clock className="w-3 h-3 mr-1" /> Next Big Event
           </Badge>
           <h2 className="text-3xl font-black text-white mb-2">{nextEvent.name}</h2>
@@ -149,7 +149,7 @@ const SocialHubPage = () => {
           </div>
 
           <Link to={nextEvent.slug}>
-            <Button size="lg" className="bg-amber-500 hover:bg-amber-400 text-black font-black px-8 py-5 text-lg rounded-xl shadow-lg shadow-amber-500/20">
+            <Button size="lg" className="bg-amber-500/100 hover:bg-amber-400 text-black font-black px-8 py-5 text-lg rounded-none shadow-lg shadow-amber-500/20">
               <Ticket className="w-5 h-5 mr-2" /> Get Tickets Now
             </Button>
           </Link>
@@ -168,18 +168,18 @@ const SocialHubPage = () => {
               return (
                 <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between bg-white/[0.03] border border-white/10 hover:border-amber-500/30 rounded-xl p-4 transition-all group"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between bg-white/[0.03] border border-white/10 hover:border-amber-500/30 rounded-none p-4 transition-all group"
                   data-testid={`event-${i}`}>
                   <div className="flex items-center gap-3 mb-3 sm:mb-0">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-black ${
-                      ev.category === 'F1' ? 'bg-red-500/20 text-red-400' :
-                      ev.category === 'Football' ? 'bg-blue-500/20 text-blue-400' :
-                      'bg-purple-500/20 text-purple-400'
+                    <div className={`w-10 h-10 rounded-none flex items-center justify-center text-xs font-black ${
+                      ev.category === 'F1' ? 'bg-[#e10600]/100/20 text-red-400' :
+                      ev.category === 'Football' ? 'bg-blue-500/100/20 text-blue-400' :
+                      'bg-purple-500/100/20 text-purple-400'
                     }`}>{ev.category === 'F1' ? 'F1' : ev.category === 'Football' ? 'FB' : 'MU'}</div>
                     <div>
                       <div className="flex items-center gap-2">
                         <h3 className="text-white font-bold text-sm">{ev.name}</h3>
-                        {ev.hot && <Badge className="bg-red-500/20 text-red-400 text-[9px]">HOT</Badge>}
+                        {ev.hot && <Badge className="bg-[#e10600]/100/20 text-red-400 text-[9px]">HOT</Badge>}
                       </div>
                       {cd && <p className="text-white/20 text-xs">{cd.days}d {cd.hours}h {cd.mins}m remaining</p>}
                     </div>
@@ -190,7 +190,7 @@ const SocialHubPage = () => {
                       <p className="text-lg font-black text-white">&euro;{ev.price}</p>
                     </div>
                     <Link to={ev.slug}>
-                      <Button size="sm" className="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black font-bold rounded-lg transition-all">
+                      <Button size="sm" className="bg-amber-500/100/20 hover:bg-amber-500/100 text-amber-400 hover:text-black font-bold rounded-none transition-all">
                         Buy <ArrowRight className="w-3 h-3 ml-1" />
                       </Button>
                     </Link>
@@ -218,7 +218,7 @@ const SocialHubPage = () => {
             {TIKTOK_VIDEOS.map((v, i) => (
               <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="relative aspect-[9/14] rounded-xl overflow-hidden group cursor-pointer border border-white/10">
+                className="relative aspect-[9/14] rounded-none overflow-hidden group cursor-pointer border border-white/10">
                 <img src={v.thumb} alt={v.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-3">
@@ -246,13 +246,13 @@ const SocialHubPage = () => {
           {!subscribed ? (
             <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md mx-auto" data-testid="subscribe-form">
               <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com" required
-                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-amber-500/50" />
-              <Button type="submit" className="bg-amber-500 hover:bg-amber-400 text-black font-black px-6 py-3 rounded-xl" data-testid="subscribe-btn">
+                className="flex-1 bg-white/5 border border-white/10 rounded-none px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-amber-500/50" />
+              <Button type="submit" className="bg-amber-500/100 hover:bg-amber-400 text-black font-black px-6 py-3 rounded-none" data-testid="subscribe-btn">
                 <Bell className="w-4 h-4 mr-1" /> Subscribe
               </Button>
             </form>
           ) : (
-            <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="bg-emerald-500/20 border border-emerald-500/30 rounded-xl p-4 max-w-md mx-auto" data-testid="subscribed-msg">
+            <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="bg-emerald-500/100/20 border border-emerald-500/30 rounded-none p-4 max-w-md mx-auto" data-testid="subscribed-msg">
               <p className="text-emerald-400 font-bold">You're in! We'll notify you of price drops.</p>
             </motion.div>
           )}

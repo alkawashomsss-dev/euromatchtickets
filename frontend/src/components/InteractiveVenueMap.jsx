@@ -85,7 +85,7 @@ const InteractiveVenueMap = ({ groupedSections, selectedSection, onSectionSelect
     const data = sectionMap[section];
     if (!data || !hoveredSection || hoveredSection !== section) return null;
     return (
-      <div className="absolute z-50 -top-2 left-1/2 -translate-x-1/2 -translate-y-full bg-slate-900 text-white text-xs rounded-lg px-3 py-2 shadow-xl pointer-events-none whitespace-nowrap">
+      <div className="absolute z-50 -top-2 left-1/2 -translate-x-1/2 -translate-y-full bg-slate-900 text-white text-xs rounded-none px-3 py-2 shadow-xl pointer-events-none whitespace-nowrap">
         <div className="font-bold">{section}</div>
         <div>{data.count} tickets from €{Math.round(data.lowest_price)}</div>
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-slate-900 rotate-45" />
@@ -209,7 +209,7 @@ const InteractiveVenueMap = ({ groupedSections, selectedSection, onSectionSelect
           {Object.keys(sectionMap).filter(s => sectionMap[s].count > 0).map(s => (
             <button key={s} onClick={() => handleClick(s)}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
-                selectedSection === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400'
+                selectedSection === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-[#1e1e1e] text-slate-300 border-white/10 hover:border-slate-400'
               }`} data-testid={`map-legend-${s.toLowerCase().replace(/\s/g,'-')}`}>
               <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: getSectionColor(s) }} />
               {s} <span className="text-slate-400">({sectionMap[s].count})</span>
@@ -342,7 +342,7 @@ const InteractiveVenueMap = ({ groupedSections, selectedSection, onSectionSelect
           {Object.keys(sectionMap).filter(s => sectionMap[s].count > 0).map(s => (
             <button key={s} onClick={() => handleClick(s)}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
-                selectedSection === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400'
+                selectedSection === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-[#1e1e1e] text-slate-300 border-white/10 hover:border-slate-400'
               }`} data-testid={`map-legend-${s.toLowerCase().replace(/\s/g,'-')}`}>
               <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: getSectionColor(s) }} />
               {s} <span className="text-slate-400">({sectionMap[s].count})</span>
@@ -502,7 +502,7 @@ const InteractiveVenueMap = ({ groupedSections, selectedSection, onSectionSelect
           {Object.keys(sectionMap).filter(s => sectionMap[s].count > 0).map(s => (
             <button key={s} onClick={() => handleClick(s)}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
-                selectedSection === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400'
+                selectedSection === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-[#1e1e1e] text-slate-300 border-white/10 hover:border-slate-400'
               }`} data-testid={`map-legend-${s.toLowerCase().replace(/\s/g,'-')}`}>
               <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: getSectionColor(s) }} />
               {s} <span className="text-slate-400">({sectionMap[s].count})</span>
@@ -602,7 +602,7 @@ const InteractiveVenueMap = ({ groupedSections, selectedSection, onSectionSelect
           {Object.keys(sectionMap).filter(s => sectionMap[s].count > 0).map(s => (
             <button key={s} onClick={() => handleClick(s)}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
-                selectedSection === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400'
+                selectedSection === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-[#1e1e1e] text-slate-300 border-white/10 hover:border-slate-400'
               }`} data-testid={`map-legend-${s.toLowerCase().replace(/\s/g,'-')}`}>
               <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: getSectionColor(s) }} />
               {s} <span className="text-slate-400">({sectionMap[s].count})</span>
@@ -698,7 +698,7 @@ const InteractiveVenueMap = ({ groupedSections, selectedSection, onSectionSelect
         {Object.keys(sectionMap).filter(s => sectionMap[s].count > 0).map(s => (
           <button key={s} onClick={() => handleClick(s)}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
-              selectedSection === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-400'
+              selectedSection === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-[#1e1e1e] text-slate-300 border-white/10 hover:border-slate-400'
             }`} data-testid={`map-legend-${s.toLowerCase().replace(/\s/g,'-')}`}>
             <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: getSectionColor(s) }} />
             {s} <span className="text-slate-400">({sectionMap[s].count})</span>

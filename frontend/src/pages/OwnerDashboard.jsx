@@ -92,14 +92,14 @@ const OwnerDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -115,20 +115,20 @@ const OwnerDashboard = () => {
 
         {/* Revenue Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white border border-slate-100 rounded-2xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-none bg-emerald-500/10 flex items-center justify-center">
                 <DollarSign className="w-6 h-6 text-emerald-600" />
               </div>
-              <Badge className="bg-emerald-50 text-emerald-600">Revenue</Badge>
+              <Badge className="bg-emerald-500/10 text-emerald-600">Revenue</Badge>
             </div>
             <div className="text-3xl font-bold">€{dashboard?.revenue?.total?.toLocaleString() || 0}</div>
             <p className="text-slate-400 text-sm mt-1">Total Revenue</p>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-2xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-none bg-violet-50 flex items-center justify-center">
                 <TrendingUp className="w-6 h-6 text-violet-600" />
               </div>
               <Badge className="bg-violet-50 text-violet-600">10%</Badge>
@@ -137,9 +137,9 @@ const OwnerDashboard = () => {
             <p className="text-slate-400 text-sm mt-1">Your Commission</p>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-2xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-none bg-violet-50 flex items-center justify-center">
                 <Wallet className="w-6 h-6 text-violet-600" />
               </div>
               <Badge className="bg-violet-50 text-violet-600">Pending</Badge>
@@ -148,12 +148,12 @@ const OwnerDashboard = () => {
             <p className="text-slate-400 text-sm mt-1">Pending Payouts ({dashboard?.payouts?.pending_count || 0})</p>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-2xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-none bg-blue-500/10 flex items-center justify-center">
                 <CreditCard className="w-6 h-6 text-blue-600" />
               </div>
-              <Badge className="bg-blue-50 text-blue-600">Paid</Badge>
+              <Badge className="bg-blue-500/10 text-blue-600">Paid</Badge>
             </div>
             <div className="text-3xl font-bold">€{dashboard?.payouts?.total_paid?.toLocaleString() || 0}</div>
             <p className="text-slate-400 text-sm mt-1">Total Paid to Sellers</p>
@@ -162,8 +162,8 @@ const OwnerDashboard = () => {
 
         {/* Orders Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center gap-4">
-            <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-4 flex items-center gap-4">
+            <div className="w-10 h-10 rounded-none bg-cyan-500/20 flex items-center justify-center">
               <Clock className="w-5 h-5 text-cyan-600" />
             </div>
             <div>
@@ -172,8 +172,8 @@ const OwnerDashboard = () => {
             </div>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center gap-4">
-            <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-4 flex items-center gap-4">
+            <div className="w-10 h-10 rounded-none bg-emerald-500/10 flex items-center justify-center">
               <CheckCircle className="w-5 h-5 text-emerald-600" />
             </div>
             <div>
@@ -182,8 +182,8 @@ const OwnerDashboard = () => {
             </div>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center gap-4">
-            <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-4 flex items-center gap-4">
+            <div className="w-10 h-10 rounded-none bg-[#e10600]/10 flex items-center justify-center">
               <XCircle className="w-5 h-5 text-red-600" />
             </div>
             <div>
@@ -194,15 +194,15 @@ const OwnerDashboard = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-4 mb-6 border-b border-slate-100 pb-4">
+        <div className="flex gap-4 mb-6 border-b border-white/5 pb-4">
           {["overview", "sellers", "payouts"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`px-4 py-2 rounded-none font-medium transition-colors ${
                 activeTab === tab
-                  ? "bg-purple-500 text-white"
-                  : "text-slate-500 hover:text-white hover:bg-slate-100"
+                  ? "bg-purple-500/100 text-white"
+                  : "text-slate-500 hover:text-white hover:bg-white/10"
               }`}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -212,8 +212,8 @@ const OwnerDashboard = () => {
 
         {/* Tab Content */}
         {activeTab === "overview" && (
-          <div className="bg-white border border-slate-100 rounded-2xl">
-            <div className="p-6 border-b border-slate-100">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none">
+            <div className="p-6 border-b border-white/5">
               <h2 className="text-xl font-bold">Recent Orders</h2>
             </div>
             <div className="divide-y divide-white/5">
@@ -227,9 +227,9 @@ const OwnerDashboard = () => {
                     <div className="text-right">
                       <p className="font-bold">€{order.total_amount?.toFixed(2)}</p>
                       <Badge className={
-                        order.status === "completed" ? "bg-emerald-50 text-emerald-600" :
+                        order.status === "completed" ? "bg-emerald-500/10 text-emerald-600" :
                         order.status === "pending" ? "bg-cyan-500/20 text-cyan-600" :
-                        "bg-red-50 text-red-600"
+                        "bg-[#e10600]/10 text-red-600"
                       }>
                         {order.status}
                       </Badge>
@@ -244,8 +244,8 @@ const OwnerDashboard = () => {
         )}
 
         {activeTab === "sellers" && (
-          <div className="bg-white border border-slate-100 rounded-2xl">
-            <div className="p-6 border-b border-slate-100">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none">
+            <div className="p-6 border-b border-white/5">
               <h2 className="text-xl font-bold">Sellers & Balances</h2>
             </div>
             <div className="divide-y divide-white/5">
@@ -256,11 +256,11 @@ const OwnerDashboard = () => {
                       <p className="font-medium">{seller.name}</p>
                       <p className="text-sm text-slate-400">{seller.email}</p>
                       <div className="flex gap-2 mt-2">
-                        <Badge className="bg-zinc-700 text-slate-600">
+                        <Badge className="bg-zinc-700 text-slate-400">
                           {seller.orders_count} sales
                         </Badge>
                         <Badge className={
-                          seller.kyc_status === "verified" ? "bg-emerald-50 text-emerald-600" :
+                          seller.kyc_status === "verified" ? "bg-emerald-500/10 text-emerald-600" :
                           seller.kyc_status === "pending" ? "bg-cyan-500/20 text-cyan-600" :
                           "bg-zinc-700 text-slate-500"
                         }>
@@ -297,8 +297,8 @@ const OwnerDashboard = () => {
         )}
 
         {activeTab === "payouts" && (
-          <div className="bg-white border border-slate-100 rounded-2xl">
-            <div className="p-6 border-b border-slate-100">
+          <div className="bg-[#1e1e1e] border border-white/5 rounded-none">
+            <div className="p-6 border-b border-white/5">
               <h2 className="text-xl font-bold">Payout History</h2>
             </div>
             <div className="divide-y divide-white/5">
@@ -319,9 +319,9 @@ const OwnerDashboard = () => {
                       <div>
                         <p className="text-xl font-bold">€{payout.amount?.toFixed(2)}</p>
                         <Badge className={
-                          payout.status === "completed" ? "bg-emerald-50 text-emerald-600" :
+                          payout.status === "completed" ? "bg-emerald-500/10 text-emerald-600" :
                           payout.status === "pending" ? "bg-cyan-500/20 text-cyan-600" :
-                          "bg-blue-50 text-blue-600"
+                          "bg-blue-500/10 text-blue-600"
                         }>
                           {payout.status}
                         </Badge>
@@ -330,7 +330,7 @@ const OwnerDashboard = () => {
                         <Button
                           size="sm"
                           onClick={() => handleCompletePayout(payout.payout_id)}
-                          className="bg-emerald-500 hover:bg-emerald-600"
+                          className="bg-emerald-500/100 hover:bg-emerald-600"
                         >
                           <CheckCircle className="w-4 h-4 mr-1" />
                           Mark Paid
@@ -348,13 +348,13 @@ const OwnerDashboard = () => {
 
         {/* Payout Dialog */}
         <Dialog open={showPayoutDialog} onOpenChange={setShowPayoutDialog}>
-          <DialogContent className="bg-white border-slate-200">
+          <DialogContent className="bg-[#1e1e1e] border-white/10">
             <DialogHeader>
               <DialogTitle>Create Payout</DialogTitle>
             </DialogHeader>
             <div className="space-y-4">
               {selectedSeller && (
-                <div className="bg-slate-100 rounded-lg p-4">
+                <div className="bg-slate-100 rounded-none p-4">
                   <p className="font-medium">{selectedSeller.name}</p>
                   <p className="text-sm text-slate-500">{selectedSeller.email}</p>
                   <p className="text-sm text-emerald-600 mt-2">
@@ -369,7 +369,7 @@ const OwnerDashboard = () => {
                   value={payoutAmount}
                   onChange={(e) => setPayoutAmount(e.target.value)}
                   placeholder="0.00"
-                  className="bg-slate-100 border-slate-200"
+                  className="bg-slate-100 border-white/10"
                 />
               </div>
               <div>
@@ -378,7 +378,7 @@ const OwnerDashboard = () => {
                   value={payoutNotes}
                   onChange={(e) => setPayoutNotes(e.target.value)}
                   placeholder="Bank transfer reference, etc."
-                  className="bg-slate-100 border-slate-200"
+                  className="bg-slate-100 border-white/10"
                 />
               </div>
               <Button

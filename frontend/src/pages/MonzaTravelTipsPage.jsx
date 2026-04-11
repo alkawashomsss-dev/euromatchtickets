@@ -29,40 +29,40 @@ const MonzaTravelTipsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="monza-tips-page">
+    <div className="min-h-screen bg-[#0e0e14]" data-testid="monza-tips-page">
       <SEOHead title="Monza F1 Tips & Travel Guide 2026 - Expert Advice" description="Expert tips for Monza Italian Grand Prix 2026. What to bring, best food spots, photography tips, weather advice, weekend schedule. From fans who've been 10+ times." canonicalUrl="https://euromatchtickets.com/monza-f1-travel-tips" />
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Monza GP", url: "https://euromatchtickets.com/f1-italian-grand-prix-monza-tickets" }, { name: "Travel Tips", url: "https://euromatchtickets.com/monza-f1-travel-tips" }]} />
 
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4">
           <p className="text-sm text-slate-500 mb-2">Updated March 2026 &bull; From fans who've attended 10+ Monza GPs</p>
-          <h1 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">Monza F1 Tips & Travel Guide 2026</h1>
-          <p className="text-lg text-slate-600 mb-10">Everything the official guide doesn't tell you. Insider tips from our team who've attended every Monza GP since 2015.</p>
+          <h1 className="text-3xl md:text-4xl font-black text-white mb-4">Monza F1 Tips & Travel Guide 2026</h1>
+          <p className="text-lg text-slate-400 mb-10">Everything the official guide doesn't tell you. Insider tips from our team who've attended every Monza GP since 2015.</p>
 
           {/* Tips Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {tips.map((t, i) => (
-              <div key={i} className="bg-white rounded-2xl border border-slate-200 p-6" data-testid={`tip-${i}`}>
+              <div key={i} className="bg-[#1e1e1e] rounded-none border border-white/10 p-6" data-testid={`tip-${i}`}>
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center"><t.icon className="w-4 h-4 text-red-600" /></div>
-                  <h2 className="font-bold text-slate-900">{t.title}</h2>
+                  <div className="w-8 h-8 bg-[#e10600]/10 rounded-none flex items-center justify-center"><t.icon className="w-4 h-4 text-red-600" /></div>
+                  <h2 className="font-bold text-white">{t.title}</h2>
                 </div>
                 <ul className="space-y-2">
-                  {t.items.map((item, j) => <li key={j} className="text-sm text-slate-600 flex items-start gap-2"><Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0 mt-0.5" />{item}</li>)}
+                  {t.items.map((item, j) => <li key={j} className="text-sm text-slate-400 flex items-start gap-2"><Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0 mt-0.5" />{item}</li>)}
                 </ul>
               </div>
             ))}
           </div>
 
           {/* Weekend Schedule */}
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Monza GP Weekend Schedule</h2>
+          <h2 className="text-2xl font-bold text-white mb-6">Monza GP Weekend Schedule</h2>
           <div className="space-y-3 mb-12">
             {weekendSchedule.map((d, i) => (
-              <div key={i} className={`bg-white rounded-xl border p-5 ${i === 3 ? 'border-red-300 ring-2 ring-red-50' : 'border-slate-200'}`}>
+              <div key={i} className={`bg-[#1e1e1e] rounded-none border p-5 ${i === 3 ? 'border-red-300 ring-2 ring-red-50' : 'border-white/10'}`}>
                 <div className="flex items-start gap-4">
                   <div className={`text-lg font-black ${i === 3 ? 'text-red-600' : 'text-slate-400'}`}>{d.day}</div>
                   <div>
-                    <p className="text-sm text-slate-700">{d.events}</p>
+                    <p className="text-sm text-slate-300">{d.events}</p>
                     <p className={`text-xs mt-1 ${i === 3 ? 'text-red-600 font-bold' : 'text-slate-400'}`}>{d.tip}</p>
                   </div>
                 </div>
@@ -71,23 +71,23 @@ const MonzaTravelTipsPage = () => {
           </div>
 
           {/* CTA */}
-          <div className="bg-red-600 rounded-2xl p-8 text-center text-white">
+          <div className="bg-red-600 rounded-none p-8 text-center text-white">
             <h2 className="text-2xl font-bold mb-2">Ready for Monza 2026?</h2>
             <p className="text-red-100 mb-4">Grab your tickets now from &euro;69 &bull; Prices increase closer to race day</p>
-            <Link to="/f1-italian-grand-prix-monza-tickets"><Button size="lg" className="bg-white text-red-600 hover:bg-red-50 font-bold px-8 rounded-full">Buy Monza GP Tickets</Button></Link>
+            <Link to="/f1-italian-grand-prix-monza-tickets"><Button size="lg" className="bg-[#1e1e1e] text-red-600 hover:bg-[#e10600]/10 font-bold px-8 rounded-full">Buy Monza GP Tickets</Button></Link>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-12 bg-slate-50">
+      <section className="py-12 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">FAQ - Monza Tips</h2>
+          <h2 className="text-2xl font-bold text-white mb-6">FAQ - Monza Tips</h2>
           <FAQStructuredData faqs={faqs} />
           <div className="space-y-3">{faqs.map((f, i) => (
-            <details key={i} className="group bg-white rounded-xl border border-slate-200">
-              <summary className="p-5 font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between">{f.question}<ChevronRight className="w-4 h-4 text-slate-400 group-open:rotate-90 transition-transform" /></summary>
-              <p className="px-5 pb-5 text-slate-600 text-sm leading-relaxed">{f.answer}</p>
+            <details key={i} className="group bg-[#1e1e1e] rounded-none border border-white/10">
+              <summary className="p-5 font-bold text-white cursor-pointer list-none flex items-center justify-between">{f.question}<ChevronRight className="w-4 h-4 text-slate-400 group-open:rotate-90 transition-transform" /></summary>
+              <p className="px-5 pb-5 text-slate-400 text-sm leading-relaxed">{f.answer}</p>
             </details>
           ))}</div>
         </div>
@@ -96,12 +96,12 @@ const MonzaTravelTipsPage = () => {
       {/* Content Cluster */}
       <section className="py-12">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-lg font-bold text-slate-900 mb-4">Complete Monza F1 Guide</h2>
+          <h2 className="text-lg font-bold text-white mb-4">Complete Monza F1 Guide</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <Link to="/f1-italian-grand-prix-monza-tickets" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-red-300 transition-all"><p className="font-bold text-slate-900 text-sm">Buy Monza Tickets</p><p className="text-xs text-emerald-600">From €69</p></Link>
-            <Link to="/monza-best-seats-guide" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-red-300 transition-all"><p className="font-bold text-slate-900 text-sm">Best Seats Guide</p><p className="text-xs text-slate-500">Every grandstand rated</p></Link>
-            <Link to="/monza-ticket-prices" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-red-300 transition-all"><p className="font-bold text-slate-900 text-sm">Ticket Prices Compared</p><p className="text-xs text-slate-500">Save up to 40%</p></Link>
-            <Link to="/how-to-get-to-monza" className="bg-white border border-slate-200 rounded-xl p-4 hover:border-red-300 transition-all"><p className="font-bold text-slate-900 text-sm">How to Get to Monza</p><p className="text-xs text-slate-500">From Milan in 45 min</p></Link>
+            <Link to="/f1-italian-grand-prix-monza-tickets" className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 hover:border-red-300 transition-all"><p className="font-bold text-white text-sm">Buy Monza Tickets</p><p className="text-xs text-emerald-600">From €69</p></Link>
+            <Link to="/monza-best-seats-guide" className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 hover:border-red-300 transition-all"><p className="font-bold text-white text-sm">Best Seats Guide</p><p className="text-xs text-slate-500">Every grandstand rated</p></Link>
+            <Link to="/monza-ticket-prices" className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 hover:border-red-300 transition-all"><p className="font-bold text-white text-sm">Ticket Prices Compared</p><p className="text-xs text-slate-500">Save up to 40%</p></Link>
+            <Link to="/how-to-get-to-monza" className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 hover:border-red-300 transition-all"><p className="font-bold text-white text-sm">How to Get to Monza</p><p className="text-xs text-slate-500">From Milan in 45 min</p></Link>
           </div>
         </div>
       </section>

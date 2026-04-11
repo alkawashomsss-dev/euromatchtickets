@@ -36,7 +36,7 @@ const SilverstoneGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="British GP Tickets 2026 | Silverstone F1 Prices"
         description="Buy British Grand Prix 2026 Silverstone tickets from €149. Best grandstands Copse, Club, Maggotts. VIP Hospitality available. 100% Buyer Protection. €10."
@@ -49,12 +49,12 @@ const SilverstoneGPPage = () => {
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg')] opacity-15 bg-cover bg-center" />
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-200 rounded-full px-4 py-2 mb-6">
             <Trophy className="w-4 h-4 text-blue-600" />
             <span className="text-blue-600 font-medium">Home of British Motorsport</span>
           </div>
           
-          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
+          <Badge className="bg-[#e10600]/10 text-red-600 border-red-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® World Championship
           </Badge>
           
@@ -69,21 +69,21 @@ const SilverstoneGPPage = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Calendar className="w-5 h-5 text-blue-600" />
               <span>July 3-5, 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <MapPin className="w-5 h-5 text-blue-600" />
               <span>Silverstone, UK</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Users className="w-5 h-5 text-blue-600" />
               <span>5.891 km Circuit</span>
             </div>
           </div>
 
-          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€149</div>
             <div className="text-emerald-600 text-sm mt-1">Save €10 vs F1.com & StubHub</div>
@@ -92,7 +92,7 @@ const SilverstoneGPPage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
@@ -109,15 +109,15 @@ const SilverstoneGPPage = () => {
           <h2 className="text-3xl font-bold mb-8">Silverstone F1 2026 Tickets</h2>
           <div className="grid gap-4">
             {tickets.map((ticket, i) => (
-              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-blue-200 rounded-none p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
+                  <div className="w-14 h-14 bg-blue-500/10 rounded-none flex items-center justify-center">
                     <Ticket className="w-7 h-7 text-blue-600" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold">{ticket.section}</h3>
-                      {ticket.popular && <Badge className="bg-orange-50 text-orange-600 text-xs">POPULAR</Badge>}
+                      {ticket.popular && <Badge className="bg-orange-500/10 text-orange-600 text-xs">POPULAR</Badge>}
                     </div>
                     <p className="text-slate-400 text-sm">British Grand Prix 2026 • 3-Day Pass</p>
                   </div>
@@ -129,7 +129,7 @@ const SilverstoneGPPage = () => {
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
                   <Link to="/events?type=f1">
-                    <Button className="bg-blue-500 hover:bg-blue-600">Buy Now</Button>
+                    <Button className="bg-blue-500/100 hover:bg-blue-600">Buy Now</Button>
                   </Link>
                 </div>
               </div>
@@ -139,7 +139,7 @@ const SilverstoneGPPage = () => {
       </section>
 
       {/* SEO Content */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">About British Grand Prix at Silverstone</h2>
           <div className="prose prose-invert max-w-none">
@@ -173,7 +173,7 @@ const SilverstoneGPPage = () => {
               "British GP hospitality", "Silverstone camping", "Silverstone VIP",
               "buy Silverstone tickets", "UK F1 tickets", "F1 UK 2026"
             ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">
+              <span key={i} className="px-3 py-1 bg-[#15151e] text-slate-500 rounded-full text-sm">
                 {term}
               </span>
             ))}
@@ -187,7 +187,7 @@ const SilverstoneGPPage = () => {
           <h2 className="text-3xl font-bold mb-4">Experience Silverstone 2026!</h2>
           <p className="text-slate-500 mb-8">Join 400,000 fans at the home of British motorsport</p>
           <Link to="/events?type=f1">
-            <Button size="lg" className="bg-blue-500 hover:bg-blue-600 px-8">
+            <Button size="lg" className="bg-blue-500/100 hover:bg-blue-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />
               Buy Silverstone Tickets
             </Button>

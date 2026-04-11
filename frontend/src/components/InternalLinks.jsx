@@ -90,7 +90,7 @@ export const InternalLinks = ({ category = "f1", slug = "", city = "", showRelat
   return (
     <div className="space-y-6" data-testid="internal-links">
       {/* Static category links */}
-      <div className="bg-white border border-slate-200 rounded-xl p-5">
+      <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-5">
         <div className="flex items-center gap-2 mb-4">
           <primary.icon className="w-4 h-4 text-emerald-400" />
           <h3 className="font-bold text-white text-sm">{primary.title}</h3>
@@ -109,7 +109,7 @@ export const InternalLinks = ({ category = "f1", slug = "", city = "", showRelat
 
       {/* Dynamic related pages from DB */}
       {dynamicLinks.length > 0 && (
-        <div className="bg-white border border-slate-200 rounded-xl p-5" data-testid="dynamic-internal-links">
+        <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-5" data-testid="dynamic-internal-links">
           <div className="flex items-center gap-2 mb-4">
             <MapPin className="w-4 h-4 text-amber-400" />
             <h3 className="font-bold text-white text-sm">Related Events</h3>
@@ -135,7 +135,7 @@ export const InternalLinks = ({ category = "f1", slug = "", city = "", showRelat
         const group = linkGroups[cat];
         if (!group) return null;
         return (
-          <div key={cat} className="bg-white border border-slate-200 rounded-xl p-5">
+          <div key={cat} className="bg-[#1e1e1e] border border-white/10 rounded-none p-5">
             <div className="flex items-center gap-2 mb-4">
               <group.icon className="w-4 h-4 text-slate-400" />
               <h3 className="font-bold text-white text-sm">{group.title}</h3>

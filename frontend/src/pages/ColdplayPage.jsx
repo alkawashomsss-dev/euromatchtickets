@@ -16,12 +16,12 @@ const ColdplayPage = () => {
     }).catch(() => {});
   }, []);
   const shows = [
-    { date: "Jun 12, 2026", venue: "Wembley Stadium", city: "London", time: "19:00", status: "Selling Fast", badge: "bg-amber-500" },
-    { date: "Jun 13, 2026", venue: "Wembley Stadium", city: "London", time: "19:00", status: "Few Left", badge: "bg-red-500" },
-    { date: "Jun 20, 2026", venue: "Stade de France", city: "Paris", time: "20:00", status: "Available", badge: "bg-emerald-500" },
-    { date: "Jun 27, 2026", venue: "Olympiastadion", city: "Berlin", time: "19:30", status: "Available", badge: "bg-emerald-500" },
-    { date: "Jul 04, 2026", venue: "Camp Nou", city: "Barcelona", time: "20:30", status: "New!", badge: "bg-blue-500" },
-    { date: "Jul 11, 2026", venue: "San Siro", city: "Milan", time: "20:00", status: "Selling Fast", badge: "bg-amber-500" },
+    { date: "Jun 12, 2026", venue: "Wembley Stadium", city: "London", time: "19:00", status: "Selling Fast", badge: "bg-amber-500/100" },
+    { date: "Jun 13, 2026", venue: "Wembley Stadium", city: "London", time: "19:00", status: "Few Left", badge: "bg-[#e10600]/100" },
+    { date: "Jun 20, 2026", venue: "Stade de France", city: "Paris", time: "20:00", status: "Available", badge: "bg-emerald-500/100" },
+    { date: "Jun 27, 2026", venue: "Olympiastadion", city: "Berlin", time: "19:30", status: "Available", badge: "bg-emerald-500/100" },
+    { date: "Jul 04, 2026", venue: "Camp Nou", city: "Barcelona", time: "20:30", status: "New!", badge: "bg-blue-500/100" },
+    { date: "Jul 11, 2026", venue: "San Siro", city: "Milan", time: "20:00", status: "Selling Fast", badge: "bg-amber-500/100" },
   ];
 
   const packages = [
@@ -60,7 +60,7 @@ const ColdplayPage = () => {
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a40] via-[#050520] to-[#050520]" />
         <div className="absolute top-[20%] left-[10%] w-64 h-64 rounded-full bg-cyan-500/10 blur-[100px]" />
-        <div className="absolute top-[40%] right-[15%] w-48 h-48 rounded-full bg-purple-500/10 blur-[80px]" />
+        <div className="absolute top-[40%] right-[15%] w-48 h-48 rounded-full bg-purple-500/100/10 blur-[80px]" />
         <div className="absolute bottom-[20%] left-[30%] w-56 h-56 rounded-full bg-yellow-500/5 blur-[90px]" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-14">
@@ -75,19 +75,19 @@ const ColdplayPage = () => {
 
           <p className="text-base sm:text-lg text-slate-400 mb-4 max-w-2xl mx-auto">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
           <div className="flex flex-wrap justify-center gap-3 mb-4">
-            <span className="inline-flex items-center gap-1.5 bg-red-500/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
+            <span className="inline-flex items-center gap-1.5 bg-[#e10600]/100/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
               <AlertCircle className="w-3.5 h-3.5" /> Only 189 Wembley tickets left
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/100/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
               <Users className="w-3.5 h-3.5" /> 534 people viewing now
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/100/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
               <TrendingUp className="w-3.5 h-3.5" /> Prices up 22% this week
             </span>
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-6">
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-6 py-4 text-center">
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-none px-6 py-4 text-center">
               <p className="text-[10px] text-white/40 uppercase tracking-widest">From</p>
               <p className="text-4xl font-extrabold bg-gradient-to-r from-cyan-300 to-yellow-300 bg-clip-text text-transparent">&euro;69</p>
             </div>
@@ -112,7 +112,7 @@ const ColdplayPage = () => {
         <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Calendar className="w-5 h-5 text-cyan-400" /> Coldplay European Tour Dates 2026</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {shows.map((s, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all">
+            <div key={i} className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-none p-4 hover:bg-white/10 transition-all">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white font-bold">{s.date}</span>
                 <span className={`text-[10px] font-bold text-white px-2 py-0.5 rounded-full ${s.badge}`}>{s.status}</span>
@@ -128,7 +128,7 @@ const ColdplayPage = () => {
         <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Ticket className="w-5 h-5 text-cyan-400" /> Ticket Options</h2>
         <div className="space-y-3">
           {packages.map((t, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/10 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4" data-testid={`coldplay-ticket-${i}`}>
+            <div key={i} className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-none p-5 hover:bg-white/10 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4" data-testid={`coldplay-ticket-${i}`}>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <h3 className="font-bold text-white">{t.name}</h3>
@@ -151,7 +151,7 @@ const ColdplayPage = () => {
         <h2 className="text-xl font-bold text-white mb-4">FAQ - Coldplay Tour Tickets</h2>
         <FAQStructuredData faqs={faqs} />
         <div className="space-y-2">{faqs.map((f, i) => (
-          <details key={i} className="group rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+          <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
             <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">{f.question}<ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" /></summary>
             <p className="px-4 pb-4 text-slate-400 text-sm leading-relaxed">{f.answer}</p>
           </details>
@@ -163,7 +163,7 @@ const ColdplayPage = () => {
         <h2 className="text-lg font-bold text-white mb-4">More Concerts & Events</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[{ to: "/taylor-swift-london-tickets", label: "Taylor Swift", price: "89" }, { to: "/the-weeknd-tour-2026", label: "The Weeknd", price: "65" }, { to: "/bruno-mars-tour-2026", label: "Bruno Mars", price: "69" }, { to: "/metallica-sphere-las-vegas-tickets", label: "Metallica", price: "195" }, { to: "/champions-league-tickets", label: "Champions League", price: "49" }, { to: "/f1-tickets", label: "F1 Tickets", price: "59" }, { to: "/world-cup-2026", label: "World Cup 2026", price: "65" }, { to: "/harry-styles-tickets", label: "Harry Styles", price: "65" }].map((l, i) => (
-            <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-cyan-500/30 transition-all"><p className="font-bold text-white text-sm">{l.label}</p><p className="text-cyan-400 text-xs font-bold mt-1">From &euro;{l.price}</p></Link>
+            <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-cyan-500/30 transition-all"><p className="font-bold text-white text-sm">{l.label}</p><p className="text-cyan-400 text-xs font-bold mt-1">From &euro;{l.price}</p></Link>
           ))}
         </div>
       </section>

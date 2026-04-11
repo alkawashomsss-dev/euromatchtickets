@@ -108,14 +108,14 @@ const SEODashboardPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <Header />
       
       <main className="pt-24 pb-16">
         <div className="max-w-6xl mx-auto px-4">
           {/* Hero */}
           <div className="text-center mb-12">
-            <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200 mb-4">
+            <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-200 mb-4">
               <Bot className="w-4 h-4 mr-2" />
               SEO Automation System
             </Badge>
@@ -129,7 +129,7 @@ const SEODashboardPage = () => {
           </div>
 
           {/* Status Bar */}
-          <div className="bg-white rounded-2xl p-6 mb-8 border border-slate-200">
+          <div className="bg-[#1e1e1e] rounded-none p-6 mb-8 border border-white/10">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <h3 className="font-bold text-lg mb-1">Indexing Status</h3>
@@ -155,10 +155,10 @@ const SEODashboardPage = () => {
             {seoTools.map((tool) => (
               <div 
                 key={tool.id}
-                className="bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-200 transition-colors"
+                className="bg-[#1e1e1e] rounded-none p-6 border border-white/10 hover:border-white/10 transition-colors"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center`}>
+                  <div className={`w-12 h-12 rounded-none bg-gradient-to-br ${tool.color} flex items-center justify-center`}>
                     <tool.icon className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
@@ -181,7 +181,7 @@ const SEODashboardPage = () => {
 
                 {/* Results */}
                 {results[tool.id] && (
-                  <div className="mt-4 p-3 bg-slate-50 rounded-lg">
+                  <div className="mt-4 p-3 bg-[#15151e] rounded-none">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle className="w-4 h-4 text-emerald-600" />
                       <span className="text-sm font-medium text-emerald-600">
@@ -198,16 +198,16 @@ const SEODashboardPage = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200">
+          <div className="bg-[#1e1e1e] rounded-none p-6 border border-white/10">
             <h3 className="font-bold text-lg mb-4">Quick SEO Links</h3>
             <div className="grid md:grid-cols-3 gap-4">
               <a 
                 href="https://search.google.com/search-console" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors"
+                className="flex items-center gap-3 p-4 bg-[#15151e] rounded-none hover:bg-white/10 transition-colors"
               >
-                <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-blue-500/10 rounded-none flex items-center justify-center">
                   <Search className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
@@ -221,9 +221,9 @@ const SEODashboardPage = () => {
                 href="https://www.bing.com/webmasters" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors"
+                className="flex items-center gap-3 p-4 bg-[#15151e] rounded-none hover:bg-white/10 transition-colors"
               >
-                <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-cyan-500/20 rounded-none flex items-center justify-center">
                   <Globe className="w-5 h-5 text-cyan-600" />
                 </div>
                 <div>
@@ -237,9 +237,9 @@ const SEODashboardPage = () => {
                 href={`${API}/sitemap.xml`}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors"
+                className="flex items-center gap-3 p-4 bg-[#15151e] rounded-none hover:bg-white/10 transition-colors"
               >
-                <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-emerald-500/10 rounded-none flex items-center justify-center">
                   <FileText className="w-5 h-5 text-emerald-600" />
                 </div>
                 <div>
@@ -252,12 +252,12 @@ const SEODashboardPage = () => {
           </div>
 
           {/* Instructions */}
-          <div className="mt-8 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl p-6 border border-purple-500/20">
+          <div className="mt-8 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-none p-6 border border-purple-500/20">
             <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-violet-600" />
               How to Get on Google's First Page
             </h3>
-            <ol className="space-y-3 text-slate-600">
+            <ol className="space-y-3 text-slate-400">
               <li className="flex items-start gap-3">
                 <span className="w-6 h-6 bg-violet-50 rounded-full flex items-center justify-center text-sm font-bold text-violet-600">1</span>
                 <span><strong>Submit Sitemap:</strong> Add <code className="bg-slate-100 px-2 py-1 rounded text-sm">euromatchtickets.com/sitemap.xml</code> to Google Search Console</span>

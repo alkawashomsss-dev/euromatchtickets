@@ -7,7 +7,7 @@ const VenueInfoSection = ({ event }) => {
   const mapUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${venueQuery}&zoom=14`;
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-testid="venue-info">
+    <div className="bg-[#1e1e1e] rounded-none border border-white/10 overflow-hidden shadow-sm" data-testid="venue-info">
       {/* Map */}
       <div className="h-48 md:h-56 bg-slate-100 relative">
         <iframe
@@ -22,7 +22,7 @@ const VenueInfoSection = ({ event }) => {
 
       {/* Info */}
       <div className="p-5">
-        <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+        <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
           <MapPin className="w-5 h-5 text-emerald-600" /> {event.venue}
         </h3>
         <p className="text-sm text-slate-500 mb-4">
@@ -40,7 +40,7 @@ const VenueInfoSection = ({ event }) => {
               <item.icon className="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0" />
               <div>
                 <p className="text-slate-400">{item.label}</p>
-                <p className="text-slate-700 font-medium">{item.value}</p>
+                <p className="text-slate-300 font-medium">{item.value}</p>
               </div>
             </div>
           ))}
@@ -50,7 +50,7 @@ const VenueInfoSection = ({ event }) => {
           href={`https://www.google.com/maps/search/?api=1&query=${venueQuery}`}
           target="_blank" 
           rel="noopener noreferrer"
-          className="mt-4 w-full flex items-center justify-center gap-2 py-2.5 bg-slate-50 hover:bg-slate-100 text-slate-700 text-sm font-medium rounded-xl border border-slate-200 transition-colors"
+          className="mt-4 w-full flex items-center justify-center gap-2 py-2.5 bg-[#15151e] hover:bg-slate-100 text-slate-300 text-sm font-medium rounded-none border border-white/10 transition-colors"
           data-testid="venue-directions-link"
         >
           <MapPin className="w-4 h-4" /> Get Directions

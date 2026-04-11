@@ -17,7 +17,7 @@ const PurchaseSuccessPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Purchase Complete | EuroMatchTickets"
         description="Thank you for your purchase. Your tickets are on the way."
@@ -25,7 +25,7 @@ const PurchaseSuccessPage = () => {
 
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         {/* Success Icon */}
-        <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6">
+        <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
           <CheckCircle className="w-10 h-10 text-emerald-600" />
         </div>
 
@@ -38,7 +38,7 @@ const PurchaseSuccessPage = () => {
         </p>
 
         {/* Order Details Box */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-6 mb-8 text-left">
+        <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 mb-8 text-left">
           <h2 className="font-bold mb-4 flex items-center gap-2">
             <Ticket className="w-5 h-5 text-emerald-600" />
             What happens next?

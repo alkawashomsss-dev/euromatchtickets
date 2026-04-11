@@ -27,7 +27,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <Helmet>
         <title>Contact Us | EuroMatchTickets</title>
         <meta name="description" content="Get in touch with EuroMatchTickets support team. We're here to help with ticket purchases, seller questions, and any issues." />
@@ -35,7 +35,7 @@ const ContactPage = () => {
       </Helmet>
 
       {/* Header */}
-      <section className="py-16 bg-slate-50 border-b border-slate-100">
+      <section className="py-16 bg-[#15151e] border-b border-white/5">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
           <p className="text-xl text-slate-500">
@@ -51,8 +51,8 @@ const ContactPage = () => {
             <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
             
             <div className="space-y-4">
-              <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
-                <div className="w-10 h-10 rounded-lg bg-violet-50 flex items-center justify-center text-violet-600">
+              <div className="flex items-start gap-4 p-4 bg-[#1e1e1e] border border-white/5 rounded-none">
+                <div className="w-10 h-10 rounded-none bg-violet-50 flex items-center justify-center text-violet-600">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
@@ -63,8 +63,8 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
-                <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
+              <div className="flex items-start gap-4 p-4 bg-[#1e1e1e] border border-white/5 rounded-none">
+                <div className="w-10 h-10 rounded-none bg-emerald-500/10 flex items-center justify-center text-emerald-600">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
@@ -75,8 +75,8 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
+              <div className="flex items-start gap-4 p-4 bg-[#1e1e1e] border border-white/5 rounded-none">
+                <div className="w-10 h-10 rounded-none bg-blue-500/10 flex items-center justify-center text-blue-600">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -88,8 +88,8 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl">
-                <div className="w-10 h-10 rounded-lg bg-violet-50 flex items-center justify-center text-violet-600">
+              <div className="flex items-start gap-4 p-4 bg-[#1e1e1e] border border-white/5 rounded-none">
+                <div className="w-10 h-10 rounded-none bg-violet-50 flex items-center justify-center text-violet-600">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
@@ -104,7 +104,7 @@ const ContactPage = () => {
 
           {/* Contact Form */}
           <div className="md:col-span-2">
-            <div className="bg-white border border-slate-100 rounded-2xl p-8">
+            <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-8">
               <div className="flex items-center gap-3 mb-6">
                 <MessageSquare className="w-6 h-6 text-violet-600" />
                 <h2 className="text-2xl font-bold">Send us a Message</h2>
@@ -119,7 +119,7 @@ const ContactPage = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                       placeholder="John Doe"
-                      className="bg-slate-100 border-slate-200"
+                      className="bg-slate-100 border-white/10"
                     />
                   </div>
                   <div>
@@ -130,7 +130,7 @@ const ContactPage = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                       placeholder="john@example.com"
-                      className="bg-slate-100 border-slate-200"
+                      className="bg-slate-100 border-white/10"
                     />
                   </div>
                 </div>
@@ -142,7 +142,7 @@ const ContactPage = () => {
                     value={formData.subject}
                     onChange={(e) => setFormData({...formData, subject: e.target.value})}
                     placeholder="How can we help?"
-                    className="bg-slate-100 border-slate-200"
+                    className="bg-slate-100 border-white/10"
                   />
                 </div>
 
@@ -154,7 +154,7 @@ const ContactPage = () => {
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                     placeholder="Tell us more about your inquiry..."
                     rows={6}
-                    className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 bg-slate-100 border border-white/10 rounded-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
                   />
                 </div>
 
@@ -187,7 +187,7 @@ const ContactPage = () => {
               { q: "How do I become a seller?", a: "Sign in to your account and click 'Become a Seller' in your profile menu." },
               { q: "Are the tickets legitimate?", a: "Yes, all sellers are verified and tickets are guaranteed authentic under our EuroMatchTickets Guarantee." }
             ].map((faq, index) => (
-              <div key={index} className="bg-white border border-slate-100 rounded-xl p-6">
+              <div key={index} className="bg-[#1e1e1e] border border-white/5 rounded-none p-6">
                 <h3 className="font-semibold mb-2">{faq.q}</h3>
                 <p className="text-slate-500">{faq.a}</p>
               </div>

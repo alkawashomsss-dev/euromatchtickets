@@ -31,7 +31,7 @@ const Countdown = () => {
   return (
     <div className="flex gap-3 justify-center" data-testid="countdown">
       {[{ v: d, l: "Days" }, { v: h, l: "Hours" }, { v: m, l: "Min" }, { v: s, l: "Sec" }].map((u, i) => (
-        <motion.div key={i} initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: i * 0.1 }} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3 min-w-[70px] text-center">
+        <motion.div key={i} initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: i * 0.1 }} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-none px-4 py-3 min-w-[70px] text-center">
           <div className="text-2xl sm:text-3xl font-black text-white">{String(u.v).padStart(2, '0')}</div>
           <div className="text-[10px] text-red-300 uppercase tracking-wider font-bold">{u.l}</div>
         </motion.div>
@@ -86,7 +86,7 @@ const SuperBowlPage = () => {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-16">
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/40 bg-red-500/10 text-red-400 text-xs font-bold mb-4 backdrop-blur-md animate-pulse">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/40 bg-[#e10600]/100/10 text-red-400 text-xs font-bold mb-4 backdrop-blur-md animate-pulse">
             <Flame className="w-4 h-4" /> {liveStats.available > 0 ? `${liveStats.available} tickets available` : 'Limited Availability'}
           </motion.div>
 
@@ -106,7 +106,7 @@ const SuperBowlPage = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="flex flex-wrap justify-center gap-3 mt-8 mb-6 text-xs text-slate-400">
             <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><Users className="w-3.5 h-3.5 text-red-400" /> {liveStats.available > 0 ? `${liveStats.available} tickets left` : 'Selling Fast'}</span>
             {liveStats.lowest > 0 && <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><TrendingUp className="w-3.5 h-3.5 text-amber-400" /> From &euro;{Math.round(liveStats.lowest)}</span>}
-            <span className="flex items-center gap-1.5 bg-red-500/10 border border-red-500/30 rounded-full px-3 py-1.5 backdrop-blur-sm text-red-300"><Flame className="w-3.5 h-3.5" /> High Demand</span>
+            <span className="flex items-center gap-1.5 bg-[#e10600]/100/10 border border-red-500/30 rounded-full px-3 py-1.5 backdrop-blur-sm text-red-300"><Flame className="w-3.5 h-3.5" /> High Demand</span>
           </motion.div>
 
           <motion.a initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} href="#tickets" className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-extrabold rounded-full text-lg shadow-[0_0_50px_rgba(220,38,38,0.4)] hover:shadow-[0_0_70px_rgba(220,38,38,0.6)] transition-all" data-testid="hero-cta">
@@ -132,7 +132,7 @@ const SuperBowlPage = () => {
               { icon: "🎤", title: "Epic Halftime Show", desc: "World-class artists perform the most-watched musical event on the planet" },
               { icon: "🏆", title: "Once in a Lifetime", desc: "Be part of history — the Super Bowl is the most coveted ticket in all of sports" },
             ].map((item, i) => (
-              <div key={i} className="bg-white/[0.03] border border-white/5 rounded-2xl p-8 hover:border-red-500/20 transition-all">
+              <div key={i} className="bg-white/[0.03] border border-white/5 rounded-none p-8 hover:border-red-500/20 transition-all">
                 <div className="text-4xl mb-4">{item.icon}</div>
                 <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
                 <p className="text-sm text-slate-500">{item.desc}</p>
@@ -147,7 +147,7 @@ const SuperBowlPage = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/10 via-transparent to-transparent" />
         <div className="relative max-w-6xl mx-auto px-4">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#e10600]/100/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-widest mb-4">
               <Sparkles className="w-3.5 h-3.5" /> Super Bowl Packages
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">Choose Your Super Bowl Experience</h2>
@@ -156,11 +156,11 @@ const SuperBowlPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             {packages.filter(p => !p.vip).map((p, i) => (
-              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} className={`relative group rounded-2xl bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
-                {p.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">{p.tag}</div>}
-                <div className="rounded-2xl bg-[#111827] p-6 h-full flex flex-col">
+              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} className={`relative group rounded-none bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
+                {p.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500/100 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">{p.tag}</div>}
+                <div className="rounded-none bg-[#111827] p-6 h-full flex flex-col">
                   <div className={`text-xs font-bold uppercase tracking-wider ${p.text} mb-2 text-center`}>{p.name}</div>
-                  <div className="text-center mb-1"><span className="text-slate-600 line-through text-sm">&euro;{p.orig.toLocaleString()}</span></div>
+                  <div className="text-center mb-1"><span className="text-slate-400 line-through text-sm">&euro;{p.orig.toLocaleString()}</span></div>
                   <div className="text-4xl font-black text-white mb-1 text-center">&euro;{p.price.toLocaleString()}</div>
                   <div className="text-slate-500 text-xs mb-5 text-center">{p.tier}</div>
                   <div className="space-y-1.5 mb-5 flex-1">
@@ -168,7 +168,7 @@ const SuperBowlPage = () => {
                       <div key={j} className="flex items-center gap-2 text-[11px] text-slate-400"><Check className="w-3 h-3 text-emerald-500 flex-shrink-0" />{f}</div>
                     ))}
                   </div>
-                  <Link to="/events?search=Super+Bowl" className={`block w-full py-3 rounded-xl bg-gradient-to-r ${p.color} text-white text-sm font-bold text-center hover:opacity-90 transition`}>
+                  <Link to="/events?search=Super+Bowl" className={`block w-full py-3 rounded-none bg-gradient-to-r ${p.color} text-white text-sm font-bold text-center hover:opacity-90 transition`}>
                     Buy Now <ArrowRight className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
@@ -178,11 +178,11 @@ const SuperBowlPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {packages.filter(p => p.vip).map((p, i) => (
-              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} className={`relative group rounded-2xl bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
+              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} className={`relative group rounded-none bg-gradient-to-br ${p.color} p-[1px] hover:scale-[1.03] transition-transform duration-300`}>
                 {p.tag && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">{p.tag}</div>}
-                <div className="rounded-2xl bg-[#111827] p-6 h-full flex flex-col">
+                <div className="rounded-none bg-[#111827] p-6 h-full flex flex-col">
                   <div className={`text-xs font-bold uppercase tracking-wider ${p.text} mb-2 flex items-center justify-center gap-1`}><Crown className="w-3.5 h-3.5" /> {p.name}</div>
-                  <div className="text-center mb-1"><span className="text-slate-600 line-through text-sm">&euro;{p.orig.toLocaleString()}</span></div>
+                  <div className="text-center mb-1"><span className="text-slate-400 line-through text-sm">&euro;{p.orig.toLocaleString()}</span></div>
                   <div className="text-4xl font-black text-white mb-1 text-center">&euro;{p.price.toLocaleString()}</div>
                   <div className="text-slate-500 text-xs mb-5 text-center">{p.tier}</div>
                   <div className="space-y-1.5 mb-5 flex-1">
@@ -190,7 +190,7 @@ const SuperBowlPage = () => {
                       <div key={j} className="flex items-center gap-2 text-[11px] text-slate-400"><Check className="w-3 h-3 text-amber-400 flex-shrink-0" />{f}</div>
                     ))}
                   </div>
-                  <Link to="/events?search=Super+Bowl" className={`block w-full py-3 rounded-xl bg-gradient-to-r ${p.color} text-white text-sm font-bold text-center hover:opacity-90 transition`}>
+                  <Link to="/events?search=Super+Bowl" className={`block w-full py-3 rounded-none bg-gradient-to-r ${p.color} text-white text-sm font-bold text-center hover:opacity-90 transition`}>
                     Get VIP Access <Crown className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
@@ -198,7 +198,7 @@ const SuperBowlPage = () => {
             ))}
           </div>
 
-          <p className="text-center text-slate-600 text-xs mt-8">Prices include booking fee. Subject to availability and demand.</p>
+          <p className="text-center text-slate-400 text-xs mt-8">Prices include booking fee. Subject to availability and demand.</p>
         </div>
       </section>
 
@@ -206,7 +206,7 @@ const SuperBowlPage = () => {
       <section className="py-16 bg-[#0d1017]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-extrabold text-white mb-8 text-center">Super Bowl 2026 Price Comparison</h2>
-          <div className="bg-white/[0.03] border border-white/5 rounded-2xl overflow-hidden">
+          <div className="bg-white/[0.03] border border-white/5 rounded-none overflow-hidden">
             <table className="w-full text-sm">
               <thead><tr className="border-b border-white/10">
                 <th className="text-left text-slate-400 font-medium p-4">Platform</th>
@@ -215,7 +215,7 @@ const SuperBowlPage = () => {
                 <th className="text-center text-slate-400 font-medium p-4">Delivery</th>
               </tr></thead>
               <tbody>
-                <tr className="border-b border-white/5 bg-red-500/5">
+                <tr className="border-b border-white/5 bg-[#e10600]/100/5">
                   <td className="p-4 font-bold text-white">EuroMatchTickets</td>
                   <td className="p-4 text-center text-emerald-400 font-bold">&euro;899</td>
                   <td className="p-4 text-center text-emerald-400">10%</td>
@@ -275,7 +275,7 @@ const SuperBowlPage = () => {
               { name: "Monaco GP", link: "/monaco-grand-prix-tickets", emoji: "🏎️" },
               { name: "Taylor Swift", link: "/events?search=Taylor+Swift", emoji: "🎤" },
             ].map((e, i) => (
-              <Link key={i} to={e.link} className="flex items-center gap-2 bg-white/[0.03] border border-white/5 hover:border-red-500/30 rounded-xl p-3 text-sm text-slate-400 hover:text-white transition">
+              <Link key={i} to={e.link} className="flex items-center gap-2 bg-white/[0.03] border border-white/5 hover:border-red-500/30 rounded-none p-3 text-sm text-slate-400 hover:text-white transition">
                 <span>{e.emoji}</span> {e.name} <ChevronRight className="w-3.5 h-3.5 ml-auto" />
               </Link>
             ))}
@@ -305,7 +305,7 @@ const SuperBowlPage = () => {
       </section>
 
       <div className="py-6 border-t border-white/5">
-        <p className="text-[10px] text-slate-600 text-center max-w-3xl mx-auto px-4">
+        <p className="text-[10px] text-slate-400 text-center max-w-3xl mx-auto px-4">
           <strong>Disclaimer:</strong> EuroMatchTickets is an independent ticket marketplace. Not affiliated with the NFL, Super Bowl, or any organizing body. Tickets are resale and may be above or below face value.
         </p>
       </div>

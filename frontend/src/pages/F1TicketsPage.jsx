@@ -240,14 +240,14 @@ const F1TicketsPage = () => {
   const displayRaces = featuredRaces.length > 0 ? featuredRaces : races.slice(0, 6);
 
   const positionBadge = (pos) => {
-    if (pos === 1) return <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-400 text-slate-900 font-black text-xs">1</span>;
-    if (pos === 2) return <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-300 text-slate-900 font-black text-xs">2</span>;
-    if (pos === 3) return <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-700 text-white font-black text-xs">3</span>;
-    return <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-700 text-slate-300 font-bold text-xs">{pos}</span>;
+    if (pos === 1) return <span className="inline-flex items-center justify-center w-7 h-7 rounded-none bg-amber-400 text-white font-black text-xs">1</span>;
+    if (pos === 2) return <span className="inline-flex items-center justify-center w-7 h-7 rounded-none bg-slate-300 text-white font-black text-xs">2</span>;
+    if (pos === 3) return <span className="inline-flex items-center justify-center w-7 h-7 rounded-none bg-amber-700 text-white font-black text-xs">3</span>;
+    return <span className="inline-flex items-center justify-center w-7 h-7 rounded-none bg-slate-700 text-slate-300 font-bold text-xs">{pos}</span>;
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="f1-tickets-page">
+    <div className="min-h-screen bg-[#0e0e14]" data-testid="f1-tickets-page">
       <SEOHead
         title="F1 Tickets 2026 | Cheapest Grand Prix Prices"
         description="Buy F1 2026 tickets at best prices. Full 2026 calendar, driver standings, team info. Monaco GP from \u20ac289, Silverstone from \u20ac149, Monza from \u20ac99. All 24 races."
@@ -258,11 +258,11 @@ const F1TicketsPage = () => {
       <section className="relative py-20 overflow-hidden" data-testid="f1-hero">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-red-500/20 border border-red-500/30 rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-[#e10600]/100/20 border border-red-500/30 rounded-none px-4 py-2 mb-6">
             <Flame className="w-4 h-4 text-red-400" />
             <span className="text-red-300 font-medium text-sm">2026 Season Live - Round 3 Complete</span>
           </div>
-          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
+          <Badge className="bg-[#e10600]/10 text-red-600 border-red-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1 World Championship 2026
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
@@ -276,13 +276,13 @@ const F1TicketsPage = () => {
             <strong className="text-white"> Best prices guaranteed - No service fees!</strong>
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-4">
-            <span className="inline-flex items-center gap-1.5 bg-red-500/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
+            <span className="inline-flex items-center gap-1.5 bg-[#e10600]/100/20 border border-red-500/30 rounded-none px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
               <AlertCircle className="w-3.5 h-3.5" /> Only 847 tickets left for Monaco GP
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/100/20 border border-amber-500/30 rounded-none px-3 py-1.5 text-amber-300 text-sm font-medium">
               <Users className="w-3.5 h-3.5" /> 312 people viewing F1 tickets now
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/100/20 border border-emerald-500/30 rounded-none px-3 py-1.5 text-emerald-300 text-sm font-medium">
               <TrendingUp className="w-3.5 h-3.5" /> Prices up 12% this week
             </span>
           </div>
@@ -293,13 +293,13 @@ const F1TicketsPage = () => {
               { icon: Calendar, label: "Mar - Dec 2026" },
               { icon: MapPin, label: "21 Countries" },
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-slate-200 text-sm">
+              <div key={i} className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-none text-slate-200 text-sm">
                 <item.icon className="w-4 h-4 text-red-400" />
                 <span>{item.label}</span>
               </div>
             ))}
           </div>
-          <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+          <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-none p-6">
             <div className="text-slate-400 text-sm">Tickets from</div>
             <div className="text-5xl font-black text-white">&#8364;89</div>
             <div className="text-emerald-400 text-sm mt-1 font-medium">Up to 40% cheaper than competitors</div>
@@ -308,18 +308,18 @@ const F1TicketsPage = () => {
       </section>
 
       {/* ═══════════════ TRUST BAR ═══════════════ */}
-      <section className="py-5 border-y border-slate-200 bg-white" data-testid="f1-trust-bar">
+      <section className="py-4 border-y border-white/6 bg-[#15151e]" data-testid="f1-trust-bar">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             {[
-              { icon: Shield, label: "500,000+ Tickets Sold", color: "text-emerald-600" },
-              { icon: Star, label: "4.9/5 from 12,000+ Reviews", color: "text-amber-600" },
-              { icon: Globe, label: "Trusted in 25+ Countries", color: "text-blue-600" },
-              { icon: Zap, label: "Instant QR Delivery", color: "text-emerald-600" },
+              { icon: Shield, label: "500,000+ Tickets Sold" },
+              { icon: Star, label: "4.9/5 from 12,000+ Reviews" },
+              { icon: Globe, label: "Trusted in 25+ Countries" },
+              { icon: Zap, label: "Instant QR Delivery" },
             ].map((item, i) => (
-              <div key={i} className={`flex items-center gap-2 ${item.color}`}>
-                <item.icon className="w-4 h-4" />
-                <span className="font-medium">{item.label}</span>
+              <div key={i} className="flex items-center gap-2 text-slate-400">
+                <item.icon className="w-3.5 h-3.5 text-[#e10600]" />
+                <span className="font-bold text-xs uppercase tracking-wider">{item.label}</span>
               </div>
             ))}
           </div>
@@ -327,9 +327,9 @@ const F1TicketsPage = () => {
       </section>
 
       {/* ═══════════════ PRICE COMPARISON ═══════════════ */}
-      <section className="py-10 bg-slate-50" data-testid="f1-price-comparison">
+      <section className="py-10 bg-[#0e0e14]" data-testid="f1-price-comparison">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-xl font-bold text-center text-slate-800 mb-6">Compare Our F1 Ticket Prices</h2>
+          <h2 className="text-xl font-black text-center text-white mb-6 uppercase tracking-tight">Compare Our F1 Ticket Prices</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { name: "F1.com Official", price: "399", strike: true },
@@ -337,9 +337,9 @@ const F1TicketsPage = () => {
               { name: "Viagogo", price: "365", strike: true },
               { name: "EuroMatchTickets", price: "189", strike: false, best: true },
             ].map((s, i) => (
-              <div key={i} className={`text-center p-4 rounded-xl ${s.best ? 'bg-emerald-50 border-2 border-emerald-500 ring-2 ring-emerald-500/20' : 'bg-white border border-slate-200'}`}>
-                <div className={`text-xs mb-1 ${s.best ? 'text-emerald-700 font-bold' : 'text-slate-400'}`}>{s.name}</div>
-                <div className={`font-black text-xl ${s.strike ? 'text-red-500 line-through' : 'text-emerald-600'}`}>&#8364;{s.price}</div>
+              <div key={i} className={`text-center p-4 ${s.best ? 'bg-[#15803d]/10 border-2 border-[#15803d]' : 'bg-[#1e1e1e] border border-white/8'}`}>
+                <div className={`text-xs mb-1 font-bold uppercase tracking-wider ${s.best ? 'text-[#15803d]' : 'text-slate-500'}`}>{s.name}</div>
+                <div className={`font-black text-xl ${s.strike ? 'text-red-500 line-through' : 'text-[#15803d]'}`}>&#8364;{s.price}</div>
               </div>
             ))}
           </div>
@@ -348,24 +348,24 @@ const F1TicketsPage = () => {
       </section>
 
       {/* ═══════════════ STANDINGS & TEAMS ═══════════════ */}
-      <section className="py-14 bg-white" data-testid="f1-standings-section">
+      <section className="py-14 bg-[#15151e]" data-testid="f1-standings-section">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">F1 2026 Championship Standings</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase tracking-tight">F1 2026 Championship Standings</h2>
             <p className="text-slate-500 text-sm">Live after Round 3 - Japanese Grand Prix, Suzuka</p>
           </div>
 
           <Tabs defaultValue="drivers" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-6 h-11" data-testid="standings-tabs">
-              <TabsTrigger value="drivers" className="text-xs sm:text-sm">Drivers 2026</TabsTrigger>
-              <TabsTrigger value="constructors" className="text-xs sm:text-sm">Teams 2026</TabsTrigger>
-              <TabsTrigger value="lineups" className="text-xs sm:text-sm">All Lineups</TabsTrigger>
-              <TabsTrigger value="champions" className="text-xs sm:text-sm">2025 Champions</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-4 mb-6 h-11 bg-white/5 rounded-none" data-testid="standings-tabs">
+              <TabsTrigger value="drivers" className="text-xs sm:text-sm rounded-none data-[state=active]:bg-[#e10600] data-[state=active]:text-white">Drivers 2026</TabsTrigger>
+              <TabsTrigger value="constructors" className="text-xs sm:text-sm rounded-none data-[state=active]:bg-[#e10600] data-[state=active]:text-white">Teams 2026</TabsTrigger>
+              <TabsTrigger value="lineups" className="text-xs sm:text-sm rounded-none data-[state=active]:bg-[#e10600] data-[state=active]:text-white">All Lineups</TabsTrigger>
+              <TabsTrigger value="champions" className="text-xs sm:text-sm rounded-none data-[state=active]:bg-[#e10600] data-[state=active]:text-white">2025 Champions</TabsTrigger>
             </TabsList>
 
             {/* ── Drivers Standings 2026 ── */}
             <TabsContent value="drivers" data-testid="driver-standings-tab">
-              <div className="border border-slate-200 rounded-xl overflow-hidden">
+              <div className="border border-white/10 rounded-none overflow-hidden">
                 <Table>
                   <TableHeader>
                     <TableRow className="bg-slate-900 hover:bg-slate-900">
@@ -378,17 +378,17 @@ const F1TicketsPage = () => {
                   </TableHeader>
                   <TableBody>
                     {driverStandings2026.map((d) => (
-                      <TableRow key={d.pos} className={d.pos <= 3 ? 'bg-amber-50/50' : ''} data-testid={`driver-row-${d.pos}`}>
+                      <TableRow key={d.pos} className={d.pos <= 3 ? 'bg-amber-500/10/50' : ''} data-testid={`driver-row-${d.pos}`}>
                         <TableCell className="text-center">{positionBadge(d.pos)}</TableCell>
-                        <TableCell className="font-bold text-slate-900">{d.driver}</TableCell>
+                        <TableCell className="font-bold text-white">{d.driver}</TableCell>
                         <TableCell className="text-slate-500 hidden sm:table-cell">{d.nat}</TableCell>
                         <TableCell>
                           <span className="inline-flex items-center gap-2">
-                            <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: d.color }} />
-                            <span className="text-slate-700">{d.team}</span>
+                            <span className="w-3 h-3 rounded-none flex-shrink-0" style={{ backgroundColor: d.color }} />
+                            <span className="text-slate-300">{d.team}</span>
                           </span>
                         </TableCell>
-                        <TableCell className="text-right font-black text-lg text-slate-900">{d.pts}</TableCell>
+                        <TableCell className="text-right font-black text-lg text-white">{d.pts}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -399,7 +399,7 @@ const F1TicketsPage = () => {
 
             {/* ── Constructor Standings 2026 ── */}
             <TabsContent value="constructors" data-testid="constructor-standings-tab">
-              <div className="border border-slate-200 rounded-xl overflow-hidden">
+              <div className="border border-white/10 rounded-none overflow-hidden">
                 <Table>
                   <TableHeader>
                     <TableRow className="bg-slate-900 hover:bg-slate-900">
@@ -411,16 +411,16 @@ const F1TicketsPage = () => {
                   </TableHeader>
                   <TableBody>
                     {constructorStandings2026.map((t) => (
-                      <TableRow key={t.pos} className={t.pos <= 3 ? 'bg-amber-50/50' : ''} data-testid={`constructor-row-${t.pos}`}>
+                      <TableRow key={t.pos} className={t.pos <= 3 ? 'bg-amber-500/10/50' : ''} data-testid={`constructor-row-${t.pos}`}>
                         <TableCell className="text-center">{positionBadge(t.pos)}</TableCell>
                         <TableCell>
                           <span className="inline-flex items-center gap-2">
-                            <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: t.color }} />
-                            <span className="font-bold text-slate-900">{t.team}</span>
+                            <span className="w-3 h-3 rounded-none flex-shrink-0" style={{ backgroundColor: t.color }} />
+                            <span className="font-bold text-white">{t.team}</span>
                           </span>
                         </TableCell>
                         <TableCell className="text-slate-500 text-sm hidden sm:table-cell">{t.drivers}</TableCell>
-                        <TableCell className="text-right font-black text-lg text-slate-900">{t.pts}</TableCell>
+                        <TableCell className="text-right font-black text-lg text-white">{t.pts}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -433,22 +433,22 @@ const F1TicketsPage = () => {
             <TabsContent value="lineups" data-testid="team-lineups-tab">
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {teamsDrivers2026.map((t) => (
-                  <div key={t.team} className="border border-slate-200 rounded-xl p-4 hover:shadow-md transition-shadow" data-testid={`team-card-${t.team.replace(/\s/g, '-').toLowerCase()}`}>
+                  <div key={t.team} className="border border-white/10 rounded-none p-4 hover:shadow-md transition-shadow" data-testid={`team-card-${t.team.replace(/\s/g, '-').toLowerCase()}`}>
                     <div className="flex items-center gap-2 mb-3">
                       <span className="w-4 h-10 rounded-sm" style={{ backgroundColor: t.color }} />
                       <div>
-                        <h3 className="font-bold text-slate-900 text-sm">{t.team}</h3>
+                        <h3 className="font-bold text-white text-sm">{t.team}</h3>
                         <span className="text-xs text-slate-400">{t.engine} Engine</span>
                       </div>
                     </div>
                     <div className="space-y-1.5">
-                      <div className="flex items-center gap-2 text-sm bg-slate-50 rounded-lg px-3 py-2">
+                      <div className="flex items-center gap-2 text-sm bg-[#0e0e14] rounded-none px-3 py-2">
                         <Car className="w-3.5 h-3.5 text-slate-500" />
-                        <span className="text-slate-700 font-medium">{t.d1}</span>
+                        <span className="text-slate-300 font-medium">{t.d1}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm bg-slate-50 rounded-lg px-3 py-2">
+                      <div className="flex items-center gap-2 text-sm bg-[#0e0e14] rounded-none px-3 py-2">
                         <Car className="w-3.5 h-3.5 text-slate-500" />
-                        <span className="text-slate-700 font-medium">{t.d2}</span>
+                        <span className="text-slate-300 font-medium">{t.d2}</span>
                       </div>
                     </div>
                   </div>
@@ -458,16 +458,16 @@ const F1TicketsPage = () => {
 
             {/* ── 2025 Champions ── */}
             <TabsContent value="champions" data-testid="champions-2025-tab">
-              <div className="mb-6 bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-xl p-5">
+              <div className="mb-6 bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-none p-5">
                 <div className="flex items-center gap-3 mb-3">
                   <Crown className="w-8 h-8 text-amber-500" />
                   <div>
-                    <h3 className="font-bold text-slate-900 text-lg">2025 World Champion: Lando Norris</h3>
+                    <h3 className="font-bold text-white text-lg">2025 World Champion: Lando Norris</h3>
                     <p className="text-slate-500 text-sm">McLaren Mercedes - 423 Points - Won by just 2 points over Verstappen</p>
                   </div>
                 </div>
               </div>
-              <div className="border border-slate-200 rounded-xl overflow-hidden">
+              <div className="border border-white/10 rounded-none overflow-hidden">
                 <Table>
                   <TableHeader>
                     <TableRow className="bg-slate-900 hover:bg-slate-900">
@@ -479,11 +479,11 @@ const F1TicketsPage = () => {
                   </TableHeader>
                   <TableBody>
                     {driverStandings2025.map((d) => (
-                      <TableRow key={d.pos} className={d.pos === 1 ? 'bg-amber-50' : ''}>
+                      <TableRow key={d.pos} className={d.pos === 1 ? 'bg-amber-500/10' : ''}>
                         <TableCell className="text-center">{positionBadge(d.pos)}</TableCell>
-                        <TableCell className="font-bold text-slate-900">{d.driver}</TableCell>
-                        <TableCell className="text-slate-600">{d.team}</TableCell>
-                        <TableCell className="text-right font-black text-lg text-slate-900">{d.pts}</TableCell>
+                        <TableCell className="font-bold text-white">{d.driver}</TableCell>
+                        <TableCell className="text-slate-400">{d.team}</TableCell>
+                        <TableCell className="text-right font-black text-lg text-white">{d.pts}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -496,17 +496,17 @@ const F1TicketsPage = () => {
       </section>
 
       {/* ═══════════════ FEATURED RACES FROM API ═══════════════ */}
-      <section className="py-14 bg-slate-50" data-testid="f1-featured-races">
+      <section className="py-14 bg-[#0e0e14]" data-testid="f1-featured-races">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold text-slate-900">Featured F1 Races 2026</h2>
-            <Link to="/events?type=f1" className="text-red-600 hover:text-red-800 flex items-center gap-1 text-sm font-medium">
+            <h2 className="text-2xl font-black text-white uppercase tracking-tight">Featured F1 Races 2026</h2>
+            <Link to="/events?type=f1" className="text-[#e10600] hover:text-red-400 flex items-center gap-1 text-sm font-black uppercase tracking-wider">
               View All <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
           {loading ? (
             <div className="flex justify-center py-12">
-              <div className="w-8 h-8 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
+              <div className="w-8 h-8 border-2 border-red-500 border-t-transparent rounded-none animate-spin" />
             </div>
           ) : (
             <div className="grid gap-3">
@@ -514,18 +514,18 @@ const F1TicketsPage = () => {
                 <Link
                   key={race.event_id || i}
                   to={`/event/${race.slug || race.event_id}`}
-                  className="group flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-200 hover:border-red-300 rounded-xl p-5 transition-all hover:shadow-sm"
+                  className="group flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/6 hover:border-[#e10600] p-5 transition-colors duration-150"
                   data-testid={`featured-race-${i}`}
                 >
                   <div className="flex items-center gap-4 mb-3 md:mb-0">
-                    <div className="w-12 h-12 bg-red-50 rounded-lg flex items-center justify-center text-2xl">
+                    <div className="w-12 h-12 bg-[#e10600]/10 flex items-center justify-center text-2xl">
                       {countryFlags[race.country] || <Flag className="w-5 h-5 text-red-500" />}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-bold text-slate-900 group-hover:text-red-600 transition-colors">{race.title}</h3>
+                        <h3 className="font-black text-white group-hover:text-[#e10600] transition-colors uppercase tracking-tight">{race.title}</h3>
                         {race.featured && (
-                          <Badge className="bg-orange-50 text-orange-600 border-orange-200 text-xs">
+                          <Badge className="bg-[#facc15] text-black border-transparent text-xs font-black uppercase rounded-none">
                             <Flame className="w-3 h-3 mr-1" />HOT
                           </Badge>
                         )}
@@ -534,12 +534,12 @@ const F1TicketsPage = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="text-emerald-600 text-sm font-medium">{race.available_tickets || 0} tickets</span>
+                    <span className="text-[#15803d] text-sm font-bold">{race.available_tickets || 0} tickets</span>
                     <div className="text-right">
-                      <div className="text-xs text-slate-400">From</div>
-                      <div className="text-xl font-black text-red-600">&#8364;{race.lowest_price ? Math.round(race.lowest_price) : '89'}</div>
+                      <div className="text-xs text-slate-500">From</div>
+                      <div className="text-xl font-black text-[#e10600]">&#8364;{race.lowest_price ? Math.round(race.lowest_price) : '89'}</div>
                     </div>
-                    <Button className="bg-red-500 hover:bg-red-600 text-white" data-testid={`buy-btn-${i}`}>
+                    <Button className="bg-[#e10600] hover:bg-red-700 text-white rounded-none font-black uppercase text-xs" data-testid={`buy-btn-${i}`}>
                       <Ticket className="w-4 h-4 mr-2" />Buy
                     </Button>
                   </div>
@@ -549,7 +549,7 @@ const F1TicketsPage = () => {
           )}
           <div className="text-center mt-8">
             <Link to="/events?type=f1">
-              <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white px-8" data-testid="view-all-races-btn">
+              <Button size="lg" className="bg-[#e10600]/100 hover:bg-red-600 text-white px-8" data-testid="view-all-races-btn">
                 <Flag className="w-5 h-5 mr-2" />View All {races.length || 24} F1 Races
               </Button>
             </Link>
@@ -558,13 +558,13 @@ const F1TicketsPage = () => {
       </section>
 
       {/* ═══════════════ FULL 2026 RACE CALENDAR ═══════════════ */}
-      <section className="py-14 bg-white" data-testid="f1-calendar-section">
+      <section className="py-14 bg-[#15151e]" data-testid="f1-calendar-section">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">F1 2026 Calendar - Full Schedule & Ticket Prices</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase tracking-tight">F1 2026 Calendar - Full Schedule & Ticket Prices</h2>
             <p className="text-slate-500 text-sm">Buy tickets for all 24 Formula 1 Grand Prix races - 6 Sprint weekends included</p>
           </div>
-          <div className="border border-slate-200 rounded-xl overflow-hidden">
+          <div className="border border-white/10 rounded-none overflow-hidden">
             <Table>
               <TableHeader>
                 <TableRow className="bg-slate-900 hover:bg-slate-900">
@@ -581,19 +581,19 @@ const F1TicketsPage = () => {
                   const matchedEvent = races.find(e => e.title?.includes(r.country) || e.title?.includes(r.gp.split(' ')[0]));
                   const Row = matchedEvent ? Link : 'tr';
                   const rowProps = matchedEvent
-                    ? { to: `/event/${matchedEvent.slug || matchedEvent.event_id}`, className: "border-b transition-colors hover:bg-red-50 cursor-pointer flex-none table-row" }
+                    ? { to: `/event/${matchedEvent.slug || matchedEvent.event_id}`, className: "border-b transition-colors hover:bg-[#e10600]/10 cursor-pointer flex-none table-row" }
                     : {};
                   return (
-                    <TableRow key={r.round} className="hover:bg-red-50/40" data-testid={`calendar-row-${r.round}`}>
+                    <TableRow key={r.round} className="hover:bg-[#e10600]/10/40" data-testid={`calendar-row-${r.round}`}>
                       <TableCell className="text-center font-bold text-slate-500">{r.round}</TableCell>
                       <TableCell>
                         <div className="flex items-center gap-2">
                           <span className="text-lg">{codeFlags[r.flag]}</span>
-                          <span className="font-bold text-slate-900 text-sm">{r.gp}</span>
+                          <span className="font-bold text-white text-sm">{r.gp}</span>
                         </div>
                       </TableCell>
                       <TableCell className="text-slate-500 text-sm hidden md:table-cell">{r.circuit}</TableCell>
-                      <TableCell className="text-slate-600 text-sm hidden sm:table-cell font-medium">{r.dates}</TableCell>
+                      <TableCell className="text-slate-400 text-sm hidden sm:table-cell font-medium">{r.dates}</TableCell>
                       <TableCell className="text-center hidden sm:table-cell">
                         {r.sprint ? (
                           <Badge className="bg-purple-100 text-purple-700 border-purple-200 text-xs">Sprint</Badge>
@@ -603,7 +603,7 @@ const F1TicketsPage = () => {
                       </TableCell>
                       <TableCell className="text-right">
                         {matchedEvent ? (
-                          <Link to={`/event/${matchedEvent.slug || matchedEvent.event_id}`} className="inline-flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors">
+                          <Link to={`/event/${matchedEvent.slug || matchedEvent.event_id}`} className="inline-flex items-center gap-1 bg-[#e10600]/100 hover:bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-none transition-colors">
                             &#8364;{matchedEvent.lowest_price ? Math.round(matchedEvent.lowest_price) : r.price}
                           </Link>
                         ) : (
@@ -617,17 +617,17 @@ const F1TicketsPage = () => {
             </Table>
           </div>
           <div className="mt-4 flex flex-wrap gap-3 justify-center">
-            <Badge className="bg-purple-50 text-purple-700 border-purple-200">6 Sprint Race Weekends</Badge>
-            <Badge className="bg-blue-50 text-blue-700 border-blue-200">24 Races Total</Badge>
-            <Badge className="bg-amber-50 text-amber-700 border-amber-200">Season: March - December</Badge>
+            <Badge className="bg-purple-500/10 text-purple-700 border-purple-200">6 Sprint Race Weekends</Badge>
+            <Badge className="bg-blue-500/10 text-blue-700 border-blue-200">24 Races Total</Badge>
+            <Badge className="bg-amber-500/10 text-amber-700 border-amber-200">Season: March - December</Badge>
           </div>
         </div>
       </section>
 
       {/* ═══════════════ TICKET CATEGORIES ═══════════════ */}
-      <section className="py-14 bg-slate-50" data-testid="f1-ticket-categories">
+      <section className="py-14 bg-[#0e0e14]" data-testid="f1-ticket-categories">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center text-slate-900 mb-8">Choose Your F1 Experience</h2>
+          <h2 className="text-2xl font-black text-center text-white mb-8 uppercase tracking-tight">Choose Your F1 Experience</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { name: "General Admission", price: "\u20ac89 - \u20ac199", desc: "Access to general viewing areas around the circuit", icon: Users },
@@ -635,11 +635,11 @@ const F1TicketsPage = () => {
               { name: "VIP Hospitality", price: "\u20ac989 - \u20ac1,989", desc: "Premium experience with gourmet food & open bar", icon: Trophy },
               { name: "Paddock Club", price: "\u20ac2,989 - \u20ac5,989", desc: "The ultimate F1 experience with pit lane access", icon: Star }
             ].map((cat, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition-all" data-testid={`ticket-cat-${i}`}>
-                <cat.icon className="w-9 h-9 text-red-500 mb-3" />
-                <h3 className="text-base font-bold text-slate-900 mb-1">{cat.name}</h3>
+              <div key={i} className="bg-[#1e1e1e] border border-white/8 p-5 hover:border-[#e10600] transition-colors duration-150" data-testid={`ticket-cat-${i}`}>
+                <cat.icon className="w-9 h-9 text-[#e10600] mb-3" />
+                <h3 className="text-base font-black text-white mb-1 uppercase tracking-tight">{cat.name}</h3>
                 <p className="text-slate-500 text-sm mb-3">{cat.desc}</p>
-                <div className="text-lg font-black text-emerald-600">{cat.price}</div>
+                <div className="text-lg font-black text-[#15803d]">{cat.price}</div>
               </div>
             ))}
           </div>
@@ -647,9 +647,9 @@ const F1TicketsPage = () => {
       </section>
 
       {/* ═══════════════ ALL RACE TICKET LINKS (SEO KEYWORDS) ═══════════════ */}
-      <section className="py-14 bg-white" data-testid="f1-all-race-links">
+      <section className="py-14 bg-[#15151e]" data-testid="f1-all-race-links">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center text-slate-900 mb-2">Buy F1 2026 Grand Prix Tickets - All Races</h2>
+          <h2 className="text-2xl font-black text-center text-white mb-2 uppercase tracking-tight">Buy F1 2026 Grand Prix Tickets - All Races</h2>
           <p className="text-slate-500 text-sm text-center mb-8">Cheapest Formula 1 tickets for every Grand Prix - 0% fees, instant delivery</p>
           {races.filter(r => r.title?.includes('2026')).length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -687,21 +687,21 @@ const F1TicketsPage = () => {
                   <Link
                     key={race.event_id || i}
                     to={`/event/${race.slug || race.event_id}`}
-                    className={`flex items-center gap-3 p-4 rounded-xl border transition-all hover:scale-[1.02] ${
+                    className={`flex items-center gap-3 p-4 border transition-colors duration-150 ${
                       seo.hot
-                        ? 'bg-red-50 border-red-200 hover:border-red-400'
-                        : 'bg-white border-slate-200 hover:border-slate-400'
+                        ? 'bg-[#e10600]/5 border-[#e10600]/30 hover:border-[#e10600]'
+                        : 'bg-[#1e1e1e] border-white/8 hover:border-white/20'
                     }`}
                     data-testid={`race-link-${race.event_id}`}
                   >
                     <span className="text-2xl flex-shrink-0">{countryFlags[race.country] || <Flag className="w-5 h-5 text-red-500" />}</span>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-slate-900 text-sm">{seo.kw}</h3>
+                      <h3 className="font-black text-white text-sm uppercase tracking-tight">{seo.kw}</h3>
                       <span className="text-slate-500 text-xs block truncate">{seo.sub}</span>
                     </div>
                     <div className="text-right flex-shrink-0">
                       <div className="text-xs text-slate-400">from</div>
-                      <span className="font-black text-emerald-600">&#8364;{race.lowest_price ? Math.round(race.lowest_price) : '89'}</span>
+                      <span className="font-black text-[#e10600]">&#8364;{race.lowest_price ? Math.round(race.lowest_price) : '89'}</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-slate-400 flex-shrink-0" />
                   </Link>
@@ -715,9 +715,9 @@ const F1TicketsPage = () => {
       </section>
 
       {/* ═══════════════ WHY BUY FROM US ═══════════════ */}
-      <section className="py-14 bg-slate-50" data-testid="f1-why-buy">
+      <section className="py-14 bg-[#0e0e14]" data-testid="f1-why-buy">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center text-slate-900 mb-8">Why Buy F1 Tickets From Us?</h2>
+          <h2 className="text-2xl font-black text-center text-white mb-8 uppercase tracking-tight">Why Buy F1 Tickets From Us?</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {[
               { title: "Best Prices Guaranteed", desc: "Up to 40% cheaper than official F1 and major competitors" },
@@ -725,12 +725,12 @@ const F1TicketsPage = () => {
               { title: "Instant QR Delivery", desc: "Receive your tickets immediately via email after purchase" },
               { title: "0% Service Fees", desc: "The price you see is the final price you pay - no hidden charges" }
             ].map((item, i) => (
-              <div key={i} className="flex items-start gap-3 p-4 bg-white rounded-xl border border-slate-200">
-                <div className="w-9 h-9 bg-red-50 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Star className="w-4 h-4 text-red-500" />
+              <div key={i} className="flex items-start gap-3 p-4 bg-[#1e1e1e] border border-white/8">
+                <div className="w-9 h-9 bg-[#e10600]/10 flex items-center justify-center flex-shrink-0">
+                  <Star className="w-4 h-4 text-[#e10600]" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm mb-0.5">{item.title}</h3>
+                  <h3 className="font-black text-white text-sm mb-0.5 uppercase tracking-tight">{item.title}</h3>
                   <p className="text-slate-500 text-sm">{item.desc}</p>
                 </div>
               </div>
@@ -748,7 +748,7 @@ const F1TicketsPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/events?type=f1">
-              <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white px-8" data-testid="cta-browse-btn" onClick={() => window.trackCTAClick?.('Secure Your Seat Now', 'F1 Tickets', 'bottom')}>
+              <Button size="lg" className="bg-[#e10600]/100 hover:bg-red-600 text-white px-8" data-testid="cta-browse-btn" onClick={() => window.trackCTAClick?.('Secure Your Seat Now', 'F1 Tickets', 'bottom')}>
                 <Ticket className="w-5 h-5 mr-2" />Secure Your Seat Now
               </Button>
             </Link>
@@ -776,14 +776,14 @@ const F1TicketsPage = () => {
 
       {/* ═══════════════ INTERNAL LINKS ═══════════════ */}
       <section className="py-10 max-w-7xl mx-auto px-4">
-        <div className="mb-6 p-5 bg-gradient-to-r from-red-900/20 via-slate-900/50 to-amber-900/20 rounded-xl border border-white/5 flex flex-wrap items-center justify-between gap-4">
+        <div className="mb-6 p-5 bg-gradient-to-r from-red-900/20 via-slate-900/50 to-amber-900/20 rounded-none border border-white/5 flex flex-wrap items-center justify-between gap-4">
           <div>
             <p className="text-white font-bold">Looking for other events?</p>
             <p className="text-slate-400 text-sm">Champions League, World Cup 2026, MotoGP and more!</p>
           </div>
           <div className="flex gap-3">
-            <Link to="/super-bowl-2026-tickets" className="bg-red-600 hover:bg-red-500 text-white text-sm font-bold px-4 py-2 rounded-lg transition">Super Bowl 2026</Link>
-            <Link to="/world-cup-2026" className="bg-amber-600 hover:bg-amber-500 text-white text-sm font-bold px-4 py-2 rounded-lg transition">World Cup 2026</Link>
+            <Link to="/super-bowl-2026-tickets" className="bg-red-600 hover:bg-[#e10600]/100 text-white text-sm font-bold px-4 py-2 rounded-none transition">Super Bowl 2026</Link>
+            <Link to="/world-cup-2026" className="bg-amber-600 hover:bg-amber-500/100 text-white text-sm font-bold px-4 py-2 rounded-none transition">World Cup 2026</Link>
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-6">

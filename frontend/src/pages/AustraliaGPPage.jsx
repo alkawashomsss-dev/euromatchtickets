@@ -39,7 +39,7 @@ const AustraliaGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Australian GP Tickets 2026 | Melbourne F1 Prices"
         description="Buy Australian Grand Prix 2026 Melbourne tickets from €159. Albert Park Circuit. Jones, Brabham, Prost grandstands. VIP Hospitality. 100% Ticket."
@@ -49,7 +49,7 @@ const AustraliaGPPage = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-blue-50 text-blue-600 border-blue-200 mb-6">
+          <Badge className="bg-blue-500/10 text-blue-600 border-blue-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® Australian Grand Prix
           </Badge>
           
@@ -64,22 +64,22 @@ const AustraliaGPPage = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Calendar className="w-5 h-5 text-blue-600" /><span>March 13-15, 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <MapPin className="w-5 h-5 text-blue-600" /><span>Melbourne, Australia</span>
             </div>
           </div>
 
-          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€159</div>
           </div>
         </div>
       </section>
 
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex items-center gap-2 justify-center text-emerald-600"><Shield className="w-5 h-5" /><span className="text-sm">100% Ticket Guarantee</span></div>
@@ -95,13 +95,13 @@ const AustraliaGPPage = () => {
           <h2 className="text-3xl font-bold mb-8">Buy Melbourne F1 2026 Tickets</h2>
           <div className="grid gap-4">
             {tickets.map((ticket, i) => (
-              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-blue-200 rounded-2xl p-6 transition-all">
+              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-blue-200 rounded-none p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center"><Ticket className="w-7 h-7 text-blue-600" /></div>
+                  <div className="w-14 h-14 bg-blue-500/10 rounded-none flex items-center justify-center"><Ticket className="w-7 h-7 text-blue-600" /></div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold">{ticket.section}</h3>
-                      {ticket.popular && <Badge className="bg-orange-50 text-orange-600 text-xs">POPULAR</Badge>}
+                      {ticket.popular && <Badge className="bg-orange-500/10 text-orange-600 text-xs">POPULAR</Badge>}
                     </div>
                     <p className="text-slate-400 text-sm">Australian Grand Prix 2026 • 3-Day Pass</p>
                   </div>
@@ -112,7 +112,7 @@ const AustraliaGPPage = () => {
                     <div className="text-xs text-slate-400 line-through">€{ticket.originalPrice}</div>
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
-                  <Link to="/events?type=f1"><Button className="bg-blue-500 hover:bg-blue-600">Buy Now</Button></Link>
+                  <Link to="/events?type=f1"><Button className="bg-blue-500/100 hover:bg-blue-600">Buy Now</Button></Link>
                 </div>
               </div>
             ))}
@@ -120,12 +120,12 @@ const AustraliaGPPage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8 flex items-center gap-2"><HelpCircle className="w-6 h-6 text-blue-600" />FAQ - Australian GP Tickets</h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
+              <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <h3 className="font-bold text-white mb-2">{faq.q}</h3>
                 <p className="text-slate-500">{faq.a}</p>
               </div>
@@ -134,12 +134,12 @@ const AustraliaGPPage = () => {
         </div>
       </section>
 
-      <section className="py-12 border-t border-slate-100">
+      <section className="py-12 border-t border-white/5">
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-lg font-bold mb-4">Related Searches:</h3>
           <div className="flex flex-wrap gap-2">
             {["Australian GP tickets", "Melbourne F1 tickets", "Albert Park tickets", "F1 Australia 2026", "Melbourne Grand Prix", "buy Australian GP tickets", "F1 season opener 2026"].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">{term}</span>
+              <span key={i} className="px-3 py-1 bg-[#15151e] text-slate-500 rounded-full text-sm">{term}</span>
             ))}
           </div>
         </div>
@@ -149,7 +149,7 @@ const AustraliaGPPage = () => {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Start Your F1 Season in Melbourne!</h2>
           <p className="text-slate-500 mb-8">The perfect way to kick off the 2026 F1 season</p>
-          <Link to="/events?type=f1"><Button size="lg" className="bg-blue-500 hover:bg-blue-600 px-8"><Ticket className="w-5 h-5 mr-2" />Buy Melbourne Tickets</Button></Link>
+          <Link to="/events?type=f1"><Button size="lg" className="bg-blue-500/100 hover:bg-blue-600 px-8"><Ticket className="w-5 h-5 mr-2" />Buy Melbourne Tickets</Button></Link>
         </div>
       </section>
     </div>

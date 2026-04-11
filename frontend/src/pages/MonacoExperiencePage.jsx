@@ -59,12 +59,12 @@ const MonacoExperiencePage = () => {
       <section className="max-w-5xl mx-auto px-4 pb-16">
         <div className="space-y-4">
           {experiences.map((e, i) => (
-            <div key={i} className="bg-white/5 border border-amber-400/10 rounded-2xl p-6 hover:border-amber-400/30 transition-all" data-testid={`vip-package-${i}`}>
+            <div key={i} className="bg-white/5 border border-amber-400/10 rounded-none p-6 hover:border-amber-400/30 transition-all" data-testid={`vip-package-${i}`}>
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     <h2 className="text-xl font-bold text-white">{e.title}</h2>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${e.tier === 'ULTRA VIP' ? 'bg-amber-400/30 text-amber-200' : e.tier === 'VIP' ? 'bg-purple-500/30 text-purple-300' : e.tier === 'PREMIUM' ? 'bg-red-500/30 text-red-300' : 'bg-emerald-500/30 text-emerald-300'}`}>{e.tier}</span>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${e.tier === 'ULTRA VIP' ? 'bg-amber-400/30 text-amber-200' : e.tier === 'VIP' ? 'bg-purple-500/100/30 text-purple-300' : e.tier === 'PREMIUM' ? 'bg-[#e10600]/100/30 text-red-300' : 'bg-emerald-500/100/30 text-emerald-300'}`}>{e.tier}</span>
                   </div>
                   <p className="text-sm text-slate-400 mb-3">{e.desc}</p>
                   <div className="flex flex-wrap gap-2">{e.features.map((f, j) => <span key={j} className="text-xs text-slate-400 flex items-center gap-1"><Check className="w-3 h-3 text-amber-400" />{f}</span>)}</div>
@@ -85,7 +85,7 @@ const MonacoExperiencePage = () => {
         <div className="space-y-0">
           {dayPlan.map((d, i) => (
             <div key={i} className="flex gap-4 items-start pb-4 last:pb-0">
-              <div className="flex flex-col items-center"><div className="w-14 bg-amber-400/10 border border-amber-400/20 rounded-lg px-2 py-1 text-center text-amber-300 text-xs font-bold flex-shrink-0">{d.time}</div>{i < dayPlan.length - 1 && <div className="w-0.5 h-full bg-amber-400/10 mt-2" />}</div>
+              <div className="flex flex-col items-center"><div className="w-14 bg-amber-400/10 border border-amber-400/20 rounded-none px-2 py-1 text-center text-amber-300 text-xs font-bold flex-shrink-0">{d.time}</div>{i < dayPlan.length - 1 && <div className="w-0.5 h-full bg-amber-400/10 mt-2" />}</div>
               <p className="text-sm text-slate-300 pt-1">{d.activity}</p>
             </div>
           ))}
@@ -97,7 +97,7 @@ const MonacoExperiencePage = () => {
         <h2 className="text-xl font-bold text-white mb-4">FAQ - Monaco GP VIP</h2>
         <FAQStructuredData faqs={faqs} />
         <div className="space-y-2">{faqs.map((f, i) => (
-          <details key={i} className="group rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+          <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
             <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">{f.question}<ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" /></summary>
             <p className="px-4 pb-4 text-slate-400 text-sm leading-relaxed">{f.answer}</p>
           </details>
@@ -108,8 +108,8 @@ const MonacoExperiencePage = () => {
       <section className="max-w-4xl mx-auto px-4 pb-16">
         <h2 className="text-lg font-bold text-white mb-4">More Monaco GP Pages</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <Link to="/f1-monaco-grand-prix-tickets" className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-amber-400/30 transition-all"><p className="font-bold text-white text-sm">Buy Monaco GP Tickets</p><p className="text-xs text-amber-400">From €195</p></Link>
-          <Link to="/ultimate-f1-tickets-guide-2026" className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-amber-400/30 transition-all"><p className="font-bold text-white text-sm">Ultimate F1 Guide 2026</p><p className="text-xs text-slate-500">Every race compared</p></Link>
+          <Link to="/f1-monaco-grand-prix-tickets" className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-amber-400/30 transition-all"><p className="font-bold text-white text-sm">Buy Monaco GP Tickets</p><p className="text-xs text-amber-400">From €195</p></Link>
+          <Link to="/ultimate-f1-tickets-guide-2026" className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-amber-400/30 transition-all"><p className="font-bold text-white text-sm">Ultimate F1 Guide 2026</p><p className="text-xs text-slate-500">Every race compared</p></Link>
         </div>
       </section>
     </div>

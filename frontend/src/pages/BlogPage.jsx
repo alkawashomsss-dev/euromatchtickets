@@ -9,13 +9,13 @@ import { API } from "../App";
 
 // Category colors
 const categoryColors = {
-  "F1": "bg-red-50 text-red-600 border-red-200",
-  "World Cup": "bg-emerald-50 text-emerald-600 border-emerald-200",
-  "Football": "bg-blue-50 text-blue-600 border-blue-200",
+  "F1": "bg-[#e10600]/10 text-red-600 border-red-200",
+  "World Cup": "bg-emerald-500/10 text-emerald-600 border-emerald-200",
+  "Football": "bg-blue-500/10 text-blue-600 border-blue-200",
   "Concerts": "bg-violet-50 text-violet-600 border-violet-200",
-  "City Guide": "bg-amber-50 text-amber-600 border-amber-200",
+  "City Guide": "bg-amber-500/10 text-amber-600 border-amber-200",
   "Comparison": "bg-cyan-500/20 text-cyan-600 border-cyan-500/30",
-  "MotoGP": "bg-orange-50 text-orange-600 border-orange-200"
+  "MotoGP": "bg-orange-500/10 text-orange-600 border-orange-200"
 };
 
 // Fallback category images (used only if article has no specific image)
@@ -142,7 +142,7 @@ const BlogPage = () => {
   const featuredArticles = articles.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Blog - Ticket Guides & News | EuroMatchTickets"
         description="Expert guides on buying F1, World Cup, football and concert tickets. Daily updated articles with best prices and tips."
@@ -152,7 +152,7 @@ const BlogPage = () => {
       <div className="bg-gradient-to-b from-purple-900/20 to-transparent py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-4">
-            <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200">
+            <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-200">
               <Zap className="w-3 h-3 mr-1" />
               AI-Powered Content
             </Badge>
@@ -195,23 +195,23 @@ const BlogPage = () => {
         {/* Stats Bar */}
         {stats && (
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
-            <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 text-center">
               <div className="text-2xl font-bold text-violet-600">{stats.events_covered?.f1_races || stats.events_covered?.f1 || 11}</div>
               <div className="text-xs text-slate-400">F1 Races</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 text-center">
               <div className="text-2xl font-bold text-emerald-600">{stats.events_covered?.worldcup_matches || stats.events_covered?.worldcup || 6}</div>
               <div className="text-xs text-slate-400">World Cup</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 text-center">
               <div className="text-2xl font-bold text-blue-600">{stats.events_covered?.football_clubs || stats.events_covered?.football || 8}</div>
               <div className="text-xs text-slate-400">Football Clubs</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 text-center">
               <div className="text-2xl font-bold text-pink-600">{stats.events_covered?.concerts || 8}</div>
               <div className="text-xs text-slate-400">Concerts</div>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-4 text-center">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 text-center">
               <div className="text-2xl font-bold text-amber-600">{stats.total_keywords || stats.keywords_database || 80}</div>
               <div className="text-xs text-slate-400">SEO Keywords</div>
             </div>
@@ -227,7 +227,7 @@ const BlogPage = () => {
               placeholder="Search articles..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
+              className="w-full pl-12 pr-4 py-3 bg-[#1e1e1e] border border-white/10 rounded-none text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500"
             />
           </div>
           <div className="flex gap-2 flex-wrap">
@@ -235,10 +235,10 @@ const BlogPage = () => {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-none text-sm font-medium transition-all ${
                   selectedCategory === cat
                     ? 'bg-purple-600 text-white'
-                    : 'bg-slate-100 text-slate-500 hover:bg-slate-100'
+                    : 'bg-slate-100 text-slate-500 hover:bg-white/10'
                 }`}
               >
                 {cat}
@@ -266,7 +266,7 @@ const BlogPage = () => {
                     <Link 
                       key={article.id || idx}
                       to={`/blog/${article.slug || article.id}`}
-                      className="group bg-white border border-slate-100 rounded-2xl overflow-hidden hover:border-violet-200 transition-all"
+                      className="group bg-[#1e1e1e] border border-white/5 rounded-none overflow-hidden hover:border-violet-200 transition-all"
                     >
                       <div className="aspect-video relative overflow-hidden">
                         <img 
@@ -289,7 +289,7 @@ const BlogPage = () => {
                         )}
                         {article.min_price && (
                           <div className="absolute bottom-3 right-3">
-                            <Badge className="bg-emerald-500/90 text-white">
+                            <Badge className="bg-emerald-500/100/90 text-white">
                               From €{article.min_price}
                             </Badge>
                           </div>
@@ -335,9 +335,9 @@ const BlogPage = () => {
                     <Link
                       key={article.id || idx}
                       to={`/blog/${article.slug || article.id}`}
-                      className="group flex gap-4 bg-white border border-slate-100 rounded-xl p-4 hover:border-violet-200 transition-all"
+                      className="group flex gap-4 bg-[#1e1e1e] border border-white/5 rounded-none p-4 hover:border-violet-200 transition-all"
                     >
-                      <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                      <div className="w-24 h-24 rounded-none overflow-hidden flex-shrink-0">
                         <img 
                           src={getArticleImage(article)} 
                           alt={article.title_en || article.title}
@@ -373,7 +373,7 @@ const BlogPage = () => {
         )}
 
         {/* SEO Content */}
-        <div className="mt-16 bg-gradient-to-r from-purple-900/20 to-pink-900/20 border border-purple-500/20 rounded-2xl p-8">
+        <div className="mt-16 bg-gradient-to-r from-purple-900/20 to-pink-900/20 border border-purple-500/20 rounded-none p-8">
           <h2 className="text-2xl font-bold mb-4">🎯 Your Ultimate Ticket Buying Resource</h2>
           <div className="grid md:grid-cols-2 gap-6 text-slate-500">
             <div>

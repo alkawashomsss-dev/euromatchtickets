@@ -40,7 +40,7 @@ export const PriceAlertButton = ({ event }) => {
 
   if (subscribed) {
     return (
-      <div className="flex items-center gap-2 px-4 py-2.5 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-sm font-medium" data-testid="alert-subscribed">
+      <div className="flex items-center gap-2 px-4 py-2.5 bg-emerald-500/10 border border-emerald-200 rounded-none text-emerald-700 text-sm font-medium" data-testid="alert-subscribed">
         <Check className="w-4 h-4" /> Price Alert Active
       </div>
     );
@@ -65,13 +65,13 @@ export const PriceAlertButton = ({ event }) => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="flex-1 px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:border-amber-400 outline-none"
+                className="flex-1 px-3 py-2.5 bg-[#15151e] border border-white/10 rounded-none text-sm text-white placeholder:text-slate-400 focus:border-amber-400 outline-none"
                 data-testid="alert-email-input"
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl font-bold text-sm transition-colors whitespace-nowrap disabled:opacity-50"
+                className="px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-white rounded-none font-bold text-sm transition-colors whitespace-nowrap disabled:opacity-50"
                 data-testid="alert-submit-btn"
               >
                 {loading ? "..." : "Activate"}
@@ -85,7 +85,7 @@ export const PriceAlertButton = ({ event }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={() => setShowForm(true)}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-amber-700 font-bold text-sm transition-colors"
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-amber-500/10 hover:bg-amber-100 border border-amber-200 rounded-none text-amber-700 font-bold text-sm transition-colors"
             data-testid="alert-trigger-btn"
           >
             <Bell className="w-4 h-4" /> Get Price Alerts
@@ -105,11 +105,11 @@ export const ScarcityBadge = ({ available, total }) => {
 
   return (
     <div
-      className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-bold ${
+      className={`flex items-center gap-2 px-3 py-2 rounded-none text-sm font-bold ${
         isUrgent 
-          ? 'bg-red-50 border border-red-200 text-red-700' 
+          ? 'bg-[#e10600]/10 border border-red-200 text-red-700' 
           : isMedium 
-            ? 'bg-amber-50 border border-amber-200 text-amber-700' 
+            ? 'bg-amber-500/10 border border-amber-200 text-amber-700' 
             : 'bg-blue-50 border border-blue-200 text-blue-700'
       }`}
       data-testid="scarcity-badge"
@@ -136,7 +136,7 @@ export const HighDemandBadge = ({ eventId }) => {
   }, [eventId]);
 
   return (
-    <div className="flex items-center gap-2 px-3 py-2 bg-violet-50 border border-violet-200 rounded-xl text-violet-700 text-sm" data-testid="demand-badge">
+    <div className="flex items-center gap-2 px-3 py-2 bg-violet-50 border border-violet-200 rounded-none text-violet-700 text-sm" data-testid="demand-badge">
       <Eye className="w-4 h-4" />
       <span className="font-medium">{viewers} people viewing this now</span>
     </div>
@@ -155,7 +155,7 @@ export const SocialProofCounter = ({ eventId }) => {
   if (booked < 5) return null;
 
   return (
-    <div className="flex items-center gap-2 px-3 py-2 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-sm" data-testid="social-proof">
+    <div className="flex items-center gap-2 px-3 py-2 bg-emerald-500/10 border border-emerald-200 rounded-none text-emerald-700 text-sm" data-testid="social-proof">
       <Users className="w-4 h-4" />
       <span className="font-medium">{booked} people booked this today</span>
     </div>
@@ -198,7 +198,7 @@ export const UrgencyCountdown = ({ eventDate, compact = false }) => {
 
   return (
     <div 
-      className={`rounded-xl border p-3 ${isUrgent ? 'bg-red-50 border-red-200' : isSoon ? 'bg-amber-50 border-amber-200' : 'bg-slate-50 border-slate-200'}`}
+      className={`rounded-none border p-3 ${isUrgent ? 'bg-[#e10600]/10 border-red-200' : isSoon ? 'bg-amber-500/10 border-amber-200' : 'bg-[#15151e] border-white/10'}`}
       data-testid="urgency-countdown"
     >
       <div className="flex items-center justify-between mb-2">
@@ -214,7 +214,7 @@ export const UrgencyCountdown = ({ eventDate, compact = false }) => {
           { val: timeLeft.mins, label: 'Mins' },
         ].map((t) => (
           <div key={t.label} className="text-center flex-1">
-            <div className={`text-2xl font-extrabold ${isUrgent ? 'text-red-700' : isSoon ? 'text-amber-700' : 'text-slate-900'}`}>
+            <div className={`text-2xl font-extrabold ${isUrgent ? 'text-red-700' : isSoon ? 'text-amber-700' : 'text-white'}`}>
               {String(t.val).padStart(2, '0')}
             </div>
             <div className="text-[10px] text-slate-400 uppercase tracking-wider">{t.label}</div>

@@ -44,14 +44,14 @@ const PriceAlertsPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-12">
         <div className="flex items-center justify-between mb-8">
           <div>
@@ -79,17 +79,17 @@ const PriceAlertsPage = () => {
               return (
                 <div 
                   key={alert.alert_id}
-                  className={`bg-white border rounded-2xl p-6 ${
+                  className={`bg-[#1e1e1e] border rounded-none p-6 ${
                     priceReached 
-                      ? 'border-emerald-500/50 bg-emerald-500/5' 
+                      ? 'border-emerald-500/50 bg-emerald-500/100/5' 
                       : alert.status === 'triggered'
                       ? 'border-violet-200 opacity-60'
-                      : 'border-slate-100'
+                      : 'border-white/5'
                   }`}
                 >
                   <div className="flex flex-col md:flex-row md:items-center gap-4">
                     {/* Event Image */}
-                    <div className="w-full md:w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                    <div className="w-full md:w-20 h-20 rounded-none overflow-hidden flex-shrink-0">
                       <img 
                         src={event?.event_image || (isMatch 
                           ? "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg"
@@ -113,7 +113,7 @@ const PriceAlertsPage = () => {
                             ? 'border-purple-500/50 text-violet-600' 
                             : priceReached 
                             ? 'border-emerald-500/50 text-emerald-600'
-                            : 'border-slate-200 text-slate-500'
+                            : 'border-white/10 text-slate-500'
                           }
                         >
                           {alert.status === 'triggered' 
@@ -167,7 +167,7 @@ const PriceAlertsPage = () => {
                         variant="ghost" 
                         size="icon"
                         onClick={() => handleDeleteAlert(alert.alert_id)}
-                        className="text-red-600 hover:text-red-300 hover:bg-red-50"
+                        className="text-red-600 hover:text-red-300 hover:bg-[#e10600]/10"
                       >
                         <Trash2 className="w-4 h-4" />
                       </Button>

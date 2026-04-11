@@ -72,7 +72,7 @@ const ChampionsLeagueTicketsPage = () => {
         canonicalUrl="https://euromatchtickets.com/champions-league-tickets"
       />
 
-      <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+      <div className="min-h-screen bg-[#0e0e14]">
         {/* Hero Section */}
         <div className="relative h-[60vh] overflow-hidden">
           <div 
@@ -85,8 +85,8 @@ const ChampionsLeagueTicketsPage = () => {
           
           <div className="relative z-10 h-full flex flex-col justify-end pb-12 px-4 md:px-8 max-w-[1440px] mx-auto">
             <div className="flex items-center gap-4 mb-4">
-              <div className="flex items-center gap-2 bg-red-50 border border-red-500/50 px-3 py-1.5 rounded-full">
-                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+              <div className="flex items-center gap-2 bg-[#e10600]/10 border border-red-500/50 px-3 py-1.5 rounded-full">
+                <div className="w-2 h-2 bg-[#e10600]/100 rounded-full animate-pulse" />
                 <span className="text-red-600 text-sm font-medium">{viewersNow} people viewing</span>
               </div>
             </div>
@@ -100,7 +100,7 @@ const ChampionsLeagueTicketsPage = () => {
               Champions League 2025/26
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-600 mb-6 max-w-2xl">
+            <p className="text-xl md:text-2xl text-slate-400 mb-6 max-w-2xl">
               The pinnacle of European club football. Quarter Finals to Final.
             </p>
           </div>
@@ -130,13 +130,13 @@ const ChampionsLeagueTicketsPage = () => {
             {matches.map((match, idx) => (
               <div 
                 key={idx}
-                className="p-6 rounded-2xl bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border border-blue-500/20 hover:border-blue-500/50 transition-all"
+                className="p-6 rounded-none bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border border-blue-500/20 hover:border-blue-500/50 transition-all"
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                     match.stage === 'FINAL' 
-                      ? 'bg-amber-500 text-black' 
-                      : 'bg-blue-500 text-white'
+                      ? 'bg-amber-500/100 text-black' 
+                      : 'bg-blue-500/100 text-white'
                   }`}>
                     {match.stage}
                   </span>
@@ -177,14 +177,14 @@ const ChampionsLeagueTicketsPage = () => {
         </div>
 
         {/* Teams Section */}
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-12 border-t border-slate-100">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-12 border-t border-white/5">
           <h2 className="text-2xl font-bold mb-8">Popular Teams - UCL 2025/26</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {['Real Madrid', 'Barcelona', 'Man City', 'Bayern Munich', 'Liverpool', 'PSG', 'Inter Milan', 'Arsenal', 'Dortmund', 'Juventus', 'Chelsea', 'AC Milan'].map((team, idx) => (
               <button
                 key={idx}
                 onClick={() => navigate('/events?type=match')}
-                className="p-4 bg-white border border-slate-100 rounded-xl hover:border-blue-500/50 transition-all text-center"
+                className="p-4 bg-[#1e1e1e] border border-white/5 rounded-none hover:border-blue-500/50 transition-all text-center"
               >
                 <span className="font-semibold">{team}</span>
               </button>
@@ -193,15 +193,15 @@ const ChampionsLeagueTicketsPage = () => {
         </div>
 
         {/* SEO Content */}
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-12 border-t border-slate-100">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-12 border-t border-white/5">
           <div className="prose prose-invert max-w-none">
             <h2 className="text-3xl font-bold mb-6">Buy UEFA Champions League Tickets</h2>
-            <p className="text-slate-600 text-lg leading-relaxed mb-6">
+            <p className="text-slate-400 text-lg leading-relaxed mb-6">
               The UEFA Champions League is the most prestigious club competition in world football. 
               Watch Europe's elite clubs battle for glory - from the knockout stages to the Final.
             </p>
             <h3 className="text-2xl font-bold mb-4">UCL 2025/26 Key Dates</h3>
-            <ul className="text-slate-600 space-y-2 mb-6">
+            <ul className="text-slate-400 space-y-2 mb-6">
               <li>⚽ Quarter Finals: April 2026</li>
               <li>⚽ Semi Finals: April-May 2026</li>
               <li>⚽ Final: May 31, 2026 - Munich, Germany</li>

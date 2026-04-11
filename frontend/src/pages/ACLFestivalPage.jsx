@@ -48,7 +48,7 @@ const ACLFestivalPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       
       <title>ACL Festival 2026 Tickets | Austin City Limits | Ultimate Pass $25,650 | EuroMatchTickets</title>
@@ -56,7 +56,7 @@ const ACLFestivalPage = () => {
       <meta name="keywords" content="ACL Festival tickets, Austin City Limits 2026, ACL 2026, ACL VIP tickets, ACL Platinum, buy ACL tickets, ACL festival pass" />
 
       {/* Language Selector */}
-      <div className="fixed top-20 right-4 z-50 flex gap-1 bg-white/90 rounded-lg p-1 border border-slate-200">
+      <div className="fixed top-20 right-4 z-50 flex gap-1 bg-white/90 rounded-none p-1 border border-white/10">
         {Object.keys(TRANSLATIONS).map(l => (
           <button key={l} onClick={() => setLang(l)} className={`px-2 py-1 rounded text-xs font-bold ${lang === l ? 'bg-green-600 text-white' : 'text-slate-500 hover:text-white'}`}>
             {l.toUpperCase()}
@@ -88,9 +88,9 @@ const ACLFestivalPage = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 bg-emerald-50 text-emerald-600 px-4 py-2 rounded-full"><Shield className="w-5 h-5" />100% Guarantee</div>
+            <div className="flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full"><Shield className="w-5 h-5" />100% Guarantee</div>
             <div className="flex items-center gap-2 bg-violet-50 text-violet-600 px-4 py-2 rounded-full"><Zap className="w-5 h-5" />Instant QR</div>
-            <div className="flex items-center gap-2 bg-amber-50 text-amber-600 px-4 py-2 rounded-full"><Star className="w-5 h-5" />5% Cheaper</div>
+            <div className="flex items-center gap-2 bg-amber-500/10 text-amber-600 px-4 py-2 rounded-full"><Star className="w-5 h-5" />5% Cheaper</div>
           </div>
 
           <div className="text-4xl font-bold text-white mb-6">
@@ -113,27 +113,27 @@ const ACLFestivalPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center">Festival Passes</h2>
           <div className="grid md:grid-cols-5 gap-4">
-            <div className="bg-white border border-slate-200 rounded-xl p-5 text-center">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-5 text-center">
               <div className="text-slate-500 font-bold mb-2 text-sm">Day Pass</div>
               <div className="text-2xl font-bold text-white mb-1">$332</div>
               <p className="text-xs text-slate-400">Single day access</p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-5 text-center">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-5 text-center">
               <div className="text-green-600 font-bold mb-2 text-sm">Weekend</div>
               <div className="text-2xl font-bold text-green-600 mb-1">$712</div>
               <p className="text-xs text-slate-400">3-day weekend</p>
             </div>
-            <div className="bg-white border border-amber-200 rounded-xl p-5 text-center">
+            <div className="bg-[#1e1e1e] border border-amber-200 rounded-none p-5 text-center">
               <div className="text-amber-600 font-bold mb-2 text-sm">VIP Weekend</div>
               <div className="text-2xl font-bold text-amber-600 mb-1">$2,375</div>
               <p className="text-xs text-slate-400">Premium access</p>
             </div>
-            <div className="bg-white border border-violet-200 rounded-xl p-5 text-center">
+            <div className="bg-[#1e1e1e] border border-violet-200 rounded-none p-5 text-center">
               <Badge className="bg-purple-600 text-white text-xs mb-2">PLATINUM</Badge>
               <div className="text-2xl font-bold text-violet-600 mb-1">$4,892</div>
               <p className="text-xs text-slate-400">All weekends + perks</p>
             </div>
-            <div className="bg-gradient-to-br from-pink-900/30 to-slate-900/50 border border-pink-500/50 rounded-xl p-5 text-center">
+            <div className="bg-gradient-to-br from-pink-900/30 to-slate-900/50 border border-pink-500/50 rounded-none p-5 text-center">
               <Badge className="bg-gradient-to-r from-pink-600 to-purple-600 text-white text-xs mb-2">ULTIMATE</Badge>
               <div className="text-2xl font-bold text-pink-600 mb-1">$25,650</div>
               <p className="text-xs text-slate-400">VIP everything</p>
@@ -143,7 +143,7 @@ const ACLFestivalPage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-4 border-y border-slate-100 bg-white">
+      <section className="py-4 border-y border-white/5 bg-[#1e1e1e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />100% Money-Back</div>
@@ -163,10 +163,10 @@ const ACLFestivalPage = () => {
           ) : (
             <div className="space-y-4">
               {events.map((event) => (
-                <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`} className="block bg-white border border-slate-200 hover:border-green-500/50 rounded-xl p-6 transition-all group">
+                <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`} className="block bg-[#1e1e1e] border border-white/10 hover:border-green-500/50 rounded-none p-6 transition-all group">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-green-600 to-teal-600 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-none bg-gradient-to-br from-green-600 to-teal-600 flex items-center justify-center">
                         <PartyPopper className="w-8 h-8 text-white" />
                       </div>
                       <div>
@@ -195,17 +195,17 @@ const ACLFestivalPage = () => {
       </section>
 
       {/* SEO Content */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">ACL Festival 2026 - Austin City Limits</h2>
           <div className="prose prose-invert">
-            <p className="text-slate-600 mb-4">
+            <p className="text-slate-400 mb-4">
               Austin City Limits Music Festival returns to Zilker Park for its 25th anniversary in October 2026. 
               Experience eight stages, 130+ acts, and the legendary Austin food scene over two weekends.
             </p>
             <h3 className="text-xl font-bold mt-6 mb-3">Ultimate Experience Pass - $25,650</h3>
-            <p className="text-slate-600 mb-4">The most exclusive ACL experience ever offered includes:</p>
-            <ul className="text-slate-600 space-y-2">
+            <p className="text-slate-400 mb-4">The most exclusive ACL experience ever offered includes:</p>
+            <ul className="text-slate-400 space-y-2">
               <li>• All-access pass for both weekends</li>
               <li>• Private viewing platforms at every stage</li>
               <li>• Artist meet & greets</li>
@@ -216,7 +216,7 @@ const ACLFestivalPage = () => {
               <li>• Lifetime ACL membership</li>
             </ul>
             <h3 className="text-xl font-bold mt-6 mb-3">Expected Headliners 2026</h3>
-            <p className="text-slate-600">
+            <p className="text-slate-400">
               Past headliners include Radiohead, Pearl Jam, Red Hot Chili Peppers, The Cure, Foo Fighters, 
               Billie Eilish, and more. 2026 lineup announcement coming soon!
             </p>

@@ -5,7 +5,7 @@ import { Button } from '../components/ui/button';
 
 const BuyerProtectionPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <Helmet>
         <title>Buyer Protection & Ticket Guarantee | EuroMatchTickets</title>
         <meta name="description" content="Learn about EuroMatchTickets buyer protection policy. 100% money-back guarantee if tickets are invalid or not delivered. Secure verified ticket marketplace." />
@@ -13,9 +13,9 @@ const BuyerProtectionPage = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-emerald-500/10 to-slate-950 border-b border-slate-100">
+      <section className="py-16 bg-gradient-to-b from-emerald-500/10 to-slate-950 border-b border-white/5">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <div className="w-20 h-20 mx-auto bg-emerald-50 rounded-full flex items-center justify-center mb-6 animate-pulse">
+          <div className="w-20 h-20 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center mb-6 animate-pulse">
             <Shield className="w-10 h-10 text-emerald-600" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -33,21 +33,21 @@ const BuyerProtectionPage = () => {
           <h2 className="text-2xl font-bold mb-6 text-center">Our Triple Guarantee</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto bg-emerald-50 rounded-2xl flex items-center justify-center mb-4">
+              <div className="w-16 h-16 mx-auto bg-emerald-500/10 rounded-none flex items-center justify-center mb-4">
                 <BadgeCheck className="w-8 h-8 text-emerald-600" />
               </div>
               <h3 className="font-bold text-lg mb-2">Valid Tickets</h3>
               <p className="text-slate-500 text-sm">Every ticket is verified before sale. Invalid? Full refund.</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-4">
+              <div className="w-16 h-16 mx-auto bg-cyan-500/20 rounded-none flex items-center justify-center mb-4">
                 <Clock className="w-8 h-8 text-cyan-600" />
               </div>
               <h3 className="font-bold text-lg mb-2">On-Time Delivery</h3>
               <p className="text-slate-500 text-sm">Tickets not received before the event? Full refund.</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto bg-violet-50 rounded-2xl flex items-center justify-center mb-4">
+              <div className="w-16 h-16 mx-auto bg-violet-50 rounded-none flex items-center justify-center mb-4">
                 <RefreshCw className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="font-bold text-lg mb-2">Event Cancelled</h3>
@@ -91,8 +91,8 @@ const BuyerProtectionPage = () => {
                 desc: "After successful event entry, the seller receives payment. If there's any issue, funds are returned to you."
               }
             ].map((item) => (
-              <div key={item.step} className="flex gap-4 items-start bg-white border border-slate-200 rounded-xl p-6">
-                <div className="w-10 h-10 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">
+              <div key={item.step} className="flex gap-4 items-start bg-[#1e1e1e] border border-white/10 rounded-none p-6">
+                <div className="w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-600 font-bold flex-shrink-0">
                   {item.step}
                 </div>
                 <div>
@@ -112,12 +112,12 @@ const BuyerProtectionPage = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-white border border-emerald-500/20 rounded-xl p-6">
+            <div className="bg-[#1e1e1e] border border-emerald-500/20 rounded-none p-6">
               <h3 className="font-bold text-emerald-600 mb-4 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5" />
                 You ARE Protected When:
               </h3>
-              <ul className="space-y-3 text-slate-600">
+              <ul className="space-y-3 text-slate-400">
                 <li className="flex items-start gap-2">
                   <span className="text-emerald-600 mt-1">✓</span>
                   <span>Tickets are not delivered before the event</span>
@@ -141,12 +141,12 @@ const BuyerProtectionPage = () => {
               </ul>
             </div>
             
-            <div className="bg-white border border-red-500/20 rounded-xl p-6">
+            <div className="bg-[#1e1e1e] border border-red-500/20 rounded-none p-6">
               <h3 className="font-bold text-red-600 mb-4 flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5" />
                 NOT Covered:
               </h3>
-              <ul className="space-y-3 text-slate-600">
+              <ul className="space-y-3 text-slate-400">
                 <li className="flex items-start gap-2">
                   <span className="text-red-600 mt-1">✗</span>
                   <span>You changed your mind after purchase</span>
@@ -179,7 +179,7 @@ const BuyerProtectionPage = () => {
             How to Claim a Refund
           </h2>
           
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
             <ol className="space-y-4">
               <li className="flex gap-4">
                 <span className="w-8 h-8 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-600 font-bold flex-shrink-0">1</span>
@@ -227,8 +227,8 @@ const BuyerProtectionPage = () => {
               { icon: BadgeCheck, title: "Seller Verification", desc: "ID check for all sellers" },
               { icon: Shield, title: "Fraud Detection", desc: "AI-powered fraud prevention" }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-xl p-4 flex items-center gap-4">
-                <div className="w-12 h-12 bg-violet-50 rounded-xl flex items-center justify-center">
+              <div key={idx} className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 flex items-center gap-4">
+                <div className="w-12 h-12 bg-violet-50 rounded-none flex items-center justify-center">
                   <item.icon className="w-6 h-6 text-violet-600" />
                 </div>
                 <div>
@@ -241,23 +241,23 @@ const BuyerProtectionPage = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-2xl p-8 text-center">
+        <section className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-none p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Need Help?</h2>
           <p className="text-slate-500 mb-6">Our support team is here to help with any issues.</p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <div className="flex items-center gap-2 text-slate-600">
+            <div className="flex items-center gap-2 text-slate-400">
               <Mail className="w-5 h-5 text-violet-600" />
               <a href="mailto:Alkawashoms@gmail.com" className="hover:text-violet-600">Alkawashoms@gmail.com</a>
             </div>
-            <div className="flex items-center gap-2 text-slate-600">
+            <div className="flex items-center gap-2 text-slate-400">
               <Phone className="w-5 h-5 text-violet-600" />
               <span>+49 178 130 4137</span>
             </div>
           </div>
           
           <Link to="/contact">
-            <Button className="bg-purple-500 hover:bg-purple-600">
+            <Button className="bg-purple-500/100 hover:bg-purple-600">
               Contact Support
             </Button>
           </Link>

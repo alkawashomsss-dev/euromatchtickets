@@ -1,20 +1,20 @@
 /* ============================================
    EUROMATCHTICKETS - F1 PROFESSIONAL DESIGN
-   Colors: Navy #0f172a + Red #e10600 + White
+   Colors: Red #e10600 + Dark #15151e + White
    Fonts: Oswald (headings) + Inter (body)
    ============================================ */
 
 /* ─── BASE ─── */
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #f8fafc;
-  color: #020617;
+  background-color: #0e0e14;
+  color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ─── LINKS ─── */
 a, a:visited, a:link, a:active { color: inherit; text-decoration: none; }
-a h3, a:visited h3, a h2, a:visited h2 { color: #020617 !important; }
+a h3, a:visited h3, a h2, a:visited h2 { color: #ffffff !important; }
 a:hover h3, a:hover h2 { color: #e10600 !important; }
 
 /* ─── TYPOGRAPHY ─── */
@@ -27,24 +27,23 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── CARDS ─── */
 .glass-card, .event-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 2px;
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease;
 }
 
 .glass-card:hover, .event-card:hover, .glass-card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
   border-color: #e10600;
 }
 
 /* ─── TAGS / BADGES ─── */
 .tag-match {
-  background: #0f172a;
+  background: #15803d;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: none;
@@ -53,16 +52,16 @@ h1, h2, h3, h4, h5, h6 {
 .tag-concert {
   background: #e10600;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: none;
 }
 
 .tag-vip {
-  background: #e10600;
-  color: #ffffff;
-  font-weight: 700;
+  background: #facc15;
+  color: #000000;
+  font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: none;
@@ -72,57 +71,57 @@ h1, h2, h3, h4, h5, h6 {
 .btn-crystal {
   background: #e10600;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  transition: background 0.2s ease;
+  transition: background 0.15s ease;
 }
 .btn-crystal:hover { background: #b80500; }
 
 .btn-gold {
-  background: #0f172a;
-  color: #ffffff;
-  font-weight: 700;
+  background: #ffffff;
+  color: #15151e;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  transition: background 0.2s ease;
+  transition: background 0.15s ease;
 }
-.btn-gold:hover { background: #1e293b; }
+.btn-gold:hover { background: #f1f5f9; }
 
 /* ─── INPUTS ─── */
 .input-glass {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  color: #020617;
-  transition: border-color 0.2s ease;
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transition: border-color 0.15s ease;
 }
 .input-glass:focus {
   border-color: #e10600;
-  box-shadow: 0 0 0 2px rgba(225, 6, 0, 0.1);
+  box-shadow: 0 0 0 2px rgba(225, 6, 0, 0.15);
   outline: none;
 }
 
 /* ─── GRADIENTS ─── */
-.gradient-primary { background: #0f172a; }
+.gradient-primary { background: #15151e; }
 .gradient-match { background: #15803d; }
 .gradient-concert { background: #e10600; }
 .gradient-gold { background: #e10600; }
 .gradient-vip { background: #e10600; }
-.gradient-hero { background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7), transparent); }
+.gradient-hero { background: linear-gradient(to bottom, rgba(14, 14, 20, 0.95), rgba(14, 14, 20, 0.6), transparent); }
 .gradient-glow { background: transparent; }
 .stadium-glow { background: transparent; }
 .stadium-glow-gold { background: transparent; }
 
 /* ─── EFFECTS ─── */
-.crystal-glow { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); }
-.crystal-border { border: 1px solid #e2e8f0; }
+.crystal-glow { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3); }
+.crystal-border { border: 1px solid rgba(255, 255, 255, 0.08); }
 .glass-panel {
-  background: rgba(15, 23, 42, 0.95);
+  background: #15151e;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .noise-overlay { display: none; }
 .neon-text-cyan { color: #e10600; }
-.neon-text-gold { color: #e10600; }
+.neon-text-gold { color: #facc15; }
 
 /* ─── ANIMATIONS ─── */
 @keyframes shimmer {
@@ -134,12 +133,12 @@ h1, h2, h3, h4, h5, h6 {
   50% { transform: translateY(-6px); }
 }
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(225, 6, 0, 0.1); }
-  50% { box-shadow: 0 0 16px rgba(225, 6, 0, 0.2); }
+  0%, 100% { box-shadow: 0 0 8px rgba(225, 6, 0, 0.15); }
+  50% { box-shadow: 0 0 20px rgba(225, 6, 0, 0.3); }
 }
 
 .shimmer {
-  background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%);
+  background: linear-gradient(90deg, #1e1e1e 0%, #2a2a2a 50%, #1e1e1e 100%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -152,18 +151,18 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+  background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.5) 100%);
   pointer-events: none;
 }
 
 /* ─── SCROLLBAR ─── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f8fafc; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+::-webkit-scrollbar-track { background: #0e0e14; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
 
 /* ─── SELECTION ─── */
-::selection { background: rgba(225, 6, 0, 0.12); color: #020617; }
+::selection { background: rgba(225, 6, 0, 0.3); color: #fff; }
 :focus-visible { outline: 2px solid #e10600; outline-offset: 2px; }
 
 /* ─── RESPONSIVE ─── */

@@ -115,7 +115,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title={`${data.title} - Price Guide 2026`}
         description={data.description}
@@ -131,7 +131,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-slate-950" />
         
         <div className="relative max-w-6xl mx-auto px-4 pt-16 text-center">
-          <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200 mb-4">
+          <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-200 mb-4">
             <DollarSign className="w-4 h-4 mr-2" />Price Guide 2026
           </Badge>
           
@@ -149,7 +149,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-4 border-y border-slate-100 bg-slate-50">
+      <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />100% Guarantee</div>
@@ -168,7 +168,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
             {data.categories.map((cat, idx) => (
               <div 
                 key={idx}
-                className={`bg-white p-6 rounded-2xl border ${idx === 2 ? 'border-purple-500/50 bg-gradient-to-br from-purple-900/20 to-slate-900/50' : 'border-slate-200'}`}
+                className={`bg-[#1e1e1e] p-6 rounded-none border ${idx === 2 ? 'border-purple-500/50 bg-gradient-to-br from-purple-900/20 to-slate-900/50' : 'border-white/10'}`}
               >
                 <div className="text-4xl mb-4">{cat.icon}</div>
                 <h3 className="text-xl font-bold mb-2">{cat.name}</h3>
@@ -181,13 +181,13 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
       </section>
 
       {/* Cheapest vs Most Expensive */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Cheapest */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-none bg-emerald-500/10 flex items-center justify-center">
                   <TrendingDown className="w-6 h-6 text-emerald-600" />
                 </div>
                 <h2 className="text-2xl font-bold">Most Affordable</h2>
@@ -195,7 +195,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
               
               <div className="space-y-4">
                 {data.cheapestRaces.map((item, idx) => (
-                  <div key={idx} className="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                  <div key={idx} className="bg-[#1e1e1e] p-4 rounded-none border border-white/10 flex items-center justify-between">
                     <div>
                       <h3 className="font-bold">{item.name}</h3>
                       <div className="text-sm text-slate-500 flex items-center gap-1">
@@ -211,7 +211,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
             {/* Most Expensive */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-none bg-[#e10600]/10 flex items-center justify-center">
                   <TrendingUp className="w-6 h-6 text-red-600" />
                 </div>
                 <h2 className="text-2xl font-bold">Premium Events</h2>
@@ -219,7 +219,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
               
               <div className="space-y-4">
                 {data.expensiveRaces.map((item, idx) => (
-                  <div key={idx} className="bg-white p-4 rounded-xl border border-slate-200 flex items-center justify-between">
+                  <div key={idx} className="bg-[#1e1e1e] p-4 rounded-none border border-white/10 flex items-center justify-between">
                     <div>
                       <h3 className="font-bold">{item.name}</h3>
                       <div className="text-sm text-slate-500 flex items-center gap-1">
@@ -240,7 +240,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Money-Saving Tips</h2>
           
-          <div className="bg-white p-8 rounded-2xl border border-slate-200">
+          <div className="bg-[#1e1e1e] p-8 rounded-none border border-white/10">
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <span className="text-emerald-600 font-bold">1.</span>
@@ -268,7 +268,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Book?</h2>
           <p className="text-slate-500 mb-6">Find the best prices on EuroMatchTickets with 0% buyer fees and instant delivery.</p>
@@ -289,7 +289,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
               <Link 
                 key={type}
                 to={`/${type}-ticket-prices-2026`}
-                className="bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-purple-500/50 px-6 py-3 rounded-full transition-colors capitalize"
+                className="bg-[#15151e] hover:bg-white/10 border border-white/10 hover:border-purple-500/50 px-6 py-3 rounded-full transition-colors capitalize"
               >
                 {type === 'f1' ? 'F1' : type} Prices
               </Link>

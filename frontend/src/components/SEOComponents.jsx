@@ -85,7 +85,7 @@ export const RelatedEvents = ({ currentEvent, events = [] }) => {
           <a
             key={event.event_id}
             href={`/event/${event.slug || event.event_id}`}
-            className="block p-4 bg-white border border-white/5 rounded-xl hover:border-cyan-500/50 transition-all"
+            className="block p-4 bg-[#1e1e1e] border border-white/5 rounded-xl hover:border-cyan-500/50 transition-all"
           >
             <p className="font-semibold text-sm line-clamp-2">{event.title}</p>
             <p className="text-xs text-slate-400 mt-1">{event.city}</p>
@@ -134,7 +134,7 @@ export const InternalLinks = ({ currentCategory }) => {
           <a
             key={idx}
             href={link.url}
-            className="px-3 py-1.5 bg-slate-50 border border-white/5 rounded-full text-sm hover:border-cyan-500/50 hover:text-cyan-400 transition-all"
+            className="px-3 py-1.5 bg-[#15151e] border border-white/5 rounded-full text-sm hover:border-cyan-500/50 hover:text-cyan-400 transition-all"
           >
             {link.name}
           </a>

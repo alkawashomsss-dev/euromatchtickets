@@ -384,7 +384,7 @@ export const ReviewCard = ({ review, compact = false }) => {
   };
 
   return (
-    <div className={`bg-white border border-slate-200 rounded-xl ${compact ? 'p-4' : 'p-6'} hover:shadow-md transition-all`}>
+    <div className={`bg-[#1e1e1e] border border-white/10 rounded-none ${compact ? 'p-4' : 'p-6'} hover:shadow-md transition-all`}>
       {/* Header */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
@@ -393,9 +393,9 @@ export const ReviewCard = ({ review, compact = false }) => {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-slate-900">{review.name}</span>
+              <span className="font-semibold text-white">{review.name}</span>
               {review.verified && (
-                <span className="flex items-center gap-1 text-xs text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                <span className="flex items-center gap-1 text-xs text-emerald-600 bg-emerald-500/10 border border-emerald-200 px-2 py-0.5 rounded-full">
                   <CheckCircle className="w-3 h-3" />
                   <span className="hidden sm:inline">Verified</span>
                 </span>
@@ -420,15 +420,15 @@ export const ReviewCard = ({ review, compact = false }) => {
       </div>
 
       {/* Content */}
-      <h4 className="font-semibold mb-2 text-slate-900">{review.title}</h4>
+      <h4 className="font-semibold mb-2 text-white">{review.title}</h4>
       <p className={`text-slate-500 ${compact ? 'text-sm line-clamp-2' : 'text-sm leading-relaxed'}`}>
         {review.text}
       </p>
 
       {/* Event Tag */}
-      <div className="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100">
-        <Ticket className="w-4 h-4 text-slate-700" />
-        <span className="text-sm text-slate-700 font-medium">{review.event}</span>
+      <div className="flex items-center gap-2 mt-3 pt-3 border-t border-white/5">
+        <Ticket className="w-4 h-4 text-slate-300" />
+        <span className="text-sm text-slate-300 font-medium">{review.event}</span>
       </div>
 
       {/* Actions */}
@@ -437,12 +437,12 @@ export const ReviewCard = ({ review, compact = false }) => {
           <button 
             onClick={handleHelpful}
             disabled={voted}
-            className={`flex items-center gap-2 text-sm ${voted ? 'text-emerald-600' : 'text-slate-400 hover:text-slate-600'} transition-colors`}
+            className={`flex items-center gap-2 text-sm ${voted ? 'text-emerald-600' : 'text-slate-400 hover:text-slate-400'} transition-colors`}
           >
             <ThumbsUp className={`w-4 h-4 ${voted ? 'fill-emerald-600' : ''}`} />
             <span>Helpful ({helpful})</span>
           </button>
-          <button className="text-slate-400 hover:text-slate-600 text-xs flex items-center gap-1">
+          <button className="text-slate-400 hover:text-slate-400 text-xs flex items-center gap-1">
             <Flag className="w-3 h-3" />
             Report
           </button>
@@ -457,10 +457,10 @@ export const ReviewsStats = () => {
   const stats = calculateStats();
   
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+    <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 shadow-sm">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div className="text-center">
-          <div className="text-4xl font-bold text-slate-900">{stats.avgRating}</div>
+          <div className="text-4xl font-bold text-white">{stats.avgRating}</div>
           <div className="flex justify-center gap-0.5 my-2">
             {[1, 2, 3, 4, 5].map((star) => (
               <Star key={star} className="w-5 h-5 fill-amber-400 text-amber-400" />
@@ -469,7 +469,7 @@ export const ReviewsStats = () => {
           <div className="text-sm text-slate-500">Average Rating</div>
         </div>
         <div className="text-center">
-          <div className="text-4xl font-bold text-slate-900">{stats.total.toLocaleString()}</div>
+          <div className="text-4xl font-bold text-white">{stats.total.toLocaleString()}</div>
           <div className="text-sm text-slate-500 mt-2">Total Reviews</div>
         </div>
         <div className="text-center">
@@ -477,7 +477,7 @@ export const ReviewsStats = () => {
           <div className="text-sm text-slate-500 mt-2">5-Star Reviews</div>
         </div>
         <div className="text-center">
-          <div className="text-4xl font-bold text-slate-900">100%</div>
+          <div className="text-4xl font-bold text-white">100%</div>
           <div className="text-sm text-slate-500 mt-2">Verified Purchases</div>
         </div>
       </div>
@@ -537,7 +537,7 @@ export const ReviewsGrid = ({ limit = 6, eventType = null, lang = null }) => {
     return (
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {[...Array(Math.min(limit, 6))].map((_, i) => (
-          <div key={i} className="bg-white border border-slate-200 rounded-xl p-6 animate-pulse">
+          <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 animate-pulse">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-11 h-11 rounded-full bg-slate-200" />
               <div className="space-y-2">
@@ -662,7 +662,7 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
   if (submitted && pendingReview) {
     return (
       <div className="space-y-4">
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+        <div className="bg-emerald-500/10 border border-emerald-200 rounded-none p-4">
           <div className="flex items-center gap-2 text-emerald-600 mb-2">
             <CheckCircle className="w-5 h-5" />
             <span className="font-semibold">Review Submitted!</span>
@@ -672,7 +672,7 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
         
         {/* Show user their pending review */}
         <div className="relative">
-          <div className="absolute top-2 right-2 bg-amber-50 text-amber-700 border border-amber-200 text-xs px-2 py-1 rounded-full">
+          <div className="absolute top-2 right-2 bg-amber-500/10 text-amber-700 border border-amber-200 text-xs px-2 py-1 rounded-full">
             Pending Approval
           </div>
           <ReviewCard review={pendingReview} />
@@ -682,15 +682,15 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border border-slate-200 rounded-xl p-6 space-y-4 shadow-sm">
-      <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-        <User className="w-5 h-5 text-slate-700" />
+    <form onSubmit={handleSubmit} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 space-y-4 shadow-sm">
+      <h3 className="text-lg font-bold text-white flex items-center gap-2">
+        <User className="w-5 h-5 text-slate-300" />
         Write a Review
       </h3>
       
       <div className="grid md:grid-cols-2 gap-4">
-        <input type="text" placeholder="Your Name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:border-slate-400 outline-none text-slate-900 placeholder:text-slate-400" data-testid="review-name-input" />
-        <input type="email" placeholder="Your Email (not published)" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:border-slate-400 outline-none text-slate-900 placeholder:text-slate-400" data-testid="review-email-input" />
+        <input type="text" placeholder="Your Name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="bg-[#15151e] border border-white/10 rounded-none px-4 py-3 focus:border-slate-400 outline-none text-white placeholder:text-slate-400" data-testid="review-name-input" />
+        <input type="email" placeholder="Your Email (not published)" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="bg-[#15151e] border border-white/10 rounded-none px-4 py-3 focus:border-slate-400 outline-none text-white placeholder:text-slate-400" data-testid="review-email-input" />
       </div>
       
       <div>
@@ -704,11 +704,11 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
         </div>
       </div>
       
-      <input type="text" placeholder="Review Title" required value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:border-slate-400 outline-none text-slate-900 placeholder:text-slate-400" data-testid="review-title-input" />
+      <input type="text" placeholder="Review Title" required value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} className="w-full bg-[#15151e] border border-white/10 rounded-none px-4 py-3 focus:border-slate-400 outline-none text-white placeholder:text-slate-400" data-testid="review-title-input" />
       
-      <textarea placeholder="Share your experience..." required rows={4} value={formData.text} onChange={(e) => setFormData({ ...formData, text: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:border-slate-400 outline-none resize-none text-slate-900 placeholder:text-slate-400" data-testid="review-content-input" />
+      <textarea placeholder="Share your experience..." required rows={4} value={formData.text} onChange={(e) => setFormData({ ...formData, text: e.target.value })} className="w-full bg-[#15151e] border border-white/10 rounded-none px-4 py-3 focus:border-slate-400 outline-none resize-none text-white placeholder:text-slate-400" data-testid="review-content-input" />
       
-      <input type="text" placeholder="Event Name (optional)" value={formData.event} onChange={(e) => setFormData({ ...formData, event: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:border-slate-400 outline-none text-slate-900 placeholder:text-slate-400" data-testid="review-event-input" />
+      <input type="text" placeholder="Event Name (optional)" value={formData.event} onChange={(e) => setFormData({ ...formData, event: e.target.value })} className="w-full bg-[#15151e] border border-white/10 rounded-none px-4 py-3 focus:border-slate-400 outline-none text-white placeholder:text-slate-400" data-testid="review-event-input" />
       
       <Button type="submit" disabled={submitting} className="w-full bg-slate-900 hover:bg-slate-800 text-white" data-testid="submit-review-btn">
         {submitting ? (
@@ -745,7 +745,7 @@ export const ReviewsLanguageFilter = ({ selected, onChange }) => {
           className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-colors ${
             selected === lang.code
               ? 'bg-slate-900 text-white'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              : 'bg-slate-100 text-slate-400 hover:bg-slate-200'
           }`}
         >
           <span>{lang.flag}</span>

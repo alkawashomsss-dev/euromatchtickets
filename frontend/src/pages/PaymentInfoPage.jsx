@@ -3,7 +3,7 @@ import { CreditCard, Lock, Shield, CheckCircle, AlertCircle, RefreshCw, Globe, B
 
 const PaymentInfoPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <Helmet>
         <title>Payment Information | EuroMatchTickets - Secure Payments</title>
         <meta name="description" content="Learn about secure payment methods at EuroMatchTickets. We accept all major credit cards, Apple Pay, Google Pay. 100% secure with Stripe." />
@@ -11,9 +11,9 @@ const PaymentInfoPage = () => {
       </Helmet>
 
       {/* Header */}
-      <section className="py-16 bg-slate-50 border-b border-slate-100">
+      <section className="py-16 bg-[#15151e] border-b border-white/5">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <div className="w-16 h-16 mx-auto bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
+          <div className="w-16 h-16 mx-auto bg-blue-500/10 rounded-none flex items-center justify-center mb-6">
             <CreditCard className="w-8 h-8 text-blue-600" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Payment Information</h1>
@@ -25,9 +25,9 @@ const PaymentInfoPage = () => {
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         {/* Security Banner */}
-        <div className="bg-gradient-to-r from-emerald-500/10 to-blue-500/10 border border-emerald-500/20 rounded-2xl p-6 mb-12">
+        <div className="bg-gradient-to-r from-emerald-500/10 to-blue-500/10 border border-emerald-500/20 rounded-none p-6 mb-12">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-emerald-500/10 rounded-none flex items-center justify-center">
               <Lock className="w-6 h-6 text-emerald-600" />
             </div>
             <div>
@@ -41,56 +41,56 @@ const PaymentInfoPage = () => {
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">Accepted Payment Methods</h2>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-white border border-slate-200 rounded-xl p-6">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
               <div className="flex items-center gap-3 mb-4">
                 <CreditCard className="w-6 h-6 text-blue-600" />
                 <h3 className="text-lg font-semibold">Credit & Debit Cards</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {['Visa', 'Mastercard', 'American Express', 'Maestro'].map((card) => (
-                  <span key={card} className="px-3 py-1 bg-slate-100 rounded-lg text-sm text-slate-600">
+                  <span key={card} className="px-3 py-1 bg-slate-100 rounded-none text-sm text-slate-400">
                     {card}
                   </span>
                 ))}
               </div>
             </div>
             
-            <div className="bg-white border border-slate-200 rounded-xl p-6">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
               <div className="flex items-center gap-3 mb-4">
                 <Globe className="w-6 h-6 text-violet-600" />
                 <h3 className="text-lg font-semibold">Digital Wallets</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {['Apple Pay', 'Google Pay', 'Link by Stripe'].map((wallet) => (
-                  <span key={wallet} className="px-3 py-1 bg-slate-100 rounded-lg text-sm text-slate-600">
+                  <span key={wallet} className="px-3 py-1 bg-slate-100 rounded-none text-sm text-slate-400">
                     {wallet}
                   </span>
                 ))}
               </div>
             </div>
             
-            <div className="bg-white border border-slate-200 rounded-xl p-6">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
               <div className="flex items-center gap-3 mb-4">
                 <Banknote className="w-6 h-6 text-emerald-600" />
                 <h3 className="text-lg font-semibold">Bank Transfers</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {['SEPA', 'iDEAL', 'Bancontact', 'Giropay', 'SOFORT'].map((method) => (
-                  <span key={method} className="px-3 py-1 bg-slate-100 rounded-lg text-sm text-slate-600">
+                  <span key={method} className="px-3 py-1 bg-slate-100 rounded-none text-sm text-slate-400">
                     {method}
                   </span>
                 ))}
               </div>
             </div>
             
-            <div className="bg-white border border-slate-200 rounded-xl p-6">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
               <div className="flex items-center gap-3 mb-4">
                 <Shield className="w-6 h-6 text-cyan-600" />
                 <h3 className="text-lg font-semibold">Buy Now, Pay Later</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {['Klarna', 'Afterpay'].map((bnpl) => (
-                  <span key={bnpl} className="px-3 py-1 bg-slate-100 rounded-lg text-sm text-slate-600">
+                  <span key={bnpl} className="px-3 py-1 bg-slate-100 rounded-none text-sm text-slate-400">
                     {bnpl}
                   </span>
                 ))}
@@ -102,7 +102,7 @@ const PaymentInfoPage = () => {
         {/* Currencies */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">Supported Currencies</h2>
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
             <p className="text-slate-500 mb-4">
               We display prices in EUR (Euro) but accept payments in multiple currencies:
             </p>
@@ -117,7 +117,7 @@ const PaymentInfoPage = () => {
                 { code: 'DKK', name: 'Danish Krone', flag: '🇩🇰' },
                 { code: 'PLN', name: 'Polish Zloty', flag: '🇵🇱' }
               ].map((currency) => (
-                <span key={currency.code} className="px-4 py-2 bg-slate-100 rounded-lg text-sm">
+                <span key={currency.code} className="px-4 py-2 bg-slate-100 rounded-none text-sm">
                   {currency.flag} {currency.code}
                 </span>
               ))}
@@ -135,7 +135,7 @@ const PaymentInfoPage = () => {
               { step: 3, title: "Instant Confirmation", desc: "Receive immediate order confirmation and digital ticket via email." },
               { step: 4, title: "Attend Event", desc: "Show your QR code at the venue entrance. That's it!" }
             ].map((item) => (
-              <div key={item.step} className="flex gap-4 items-start bg-white border border-slate-200 rounded-xl p-6">
+              <div key={item.step} className="flex gap-4 items-start bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <div className="w-10 h-10 bg-violet-50 rounded-full flex items-center justify-center text-violet-600 font-bold flex-shrink-0">
                   {item.step}
                 </div>
@@ -151,17 +151,17 @@ const PaymentInfoPage = () => {
         {/* Fees */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">Fees & Charges</h2>
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
             <div className="space-y-4">
-              <div className="flex justify-between items-center pb-4 border-b border-slate-200">
+              <div className="flex justify-between items-center pb-4 border-b border-white/10">
                 <span className="text-slate-500">Ticket Price</span>
                 <span className="font-semibold">As Listed</span>
               </div>
-              <div className="flex justify-between items-center pb-4 border-b border-slate-200">
+              <div className="flex justify-between items-center pb-4 border-b border-white/10">
                 <span className="text-slate-500">Service Fee</span>
                 <span className="font-semibold">10% of ticket price</span>
               </div>
-              <div className="flex justify-between items-center pb-4 border-b border-slate-200">
+              <div className="flex justify-between items-center pb-4 border-b border-white/10">
                 <span className="text-slate-500">Payment Processing</span>
                 <span className="text-emerald-600 font-semibold">Included</span>
               </div>
@@ -186,7 +186,7 @@ const PaymentInfoPage = () => {
               { icon: CheckCircle, title: "Fraud Detection", desc: "Advanced AI systems detect and prevent fraudulent transactions." },
               { icon: RefreshCw, title: "3D Secure", desc: "Additional verification layer for card payments." }
             ].map((feature, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-xl p-6">
+              <div key={idx} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <feature.icon className="w-8 h-8 text-emerald-600 mb-3" />
                 <h3 className="font-semibold text-lg mb-1">{feature.title}</h3>
                 <p className="text-slate-500 text-sm">{feature.desc}</p>
@@ -206,7 +206,7 @@ const PaymentInfoPage = () => {
               { q: "Can I get a refund?", a: "Refunds are available under our Buyer Guarantee if tickets are invalid, not delivered, or the event is cancelled. See our Refund Policy for details." },
               { q: "Do you charge in my local currency?", a: "Prices are displayed in EUR, but your bank will convert to your local currency at their exchange rate." }
             ].map((faq, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-xl p-6">
+              <div key={idx} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <h3 className="font-semibold text-lg mb-2 flex items-center gap-2">
                   <AlertCircle className="w-5 h-5 text-violet-600" />
                   {faq.q}

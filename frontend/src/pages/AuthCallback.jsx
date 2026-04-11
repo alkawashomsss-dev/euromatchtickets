@@ -112,17 +112,17 @@ const AuthCallback = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center px-4">
       <div className="text-center max-w-md" data-testid="auth-callback">
         {error ? (
           <div data-testid="auth-error">
             <AlertTriangle className="w-12 h-12 text-red-600 mx-auto mb-4" />
             <div className="text-red-600 mb-4 text-sm">{error}</div>
             <div className="flex gap-3 justify-center">
-              <Button onClick={handleRetry} variant="outline" className="border-slate-200 text-slate-600" data-testid="auth-retry-btn">
+              <Button onClick={handleRetry} variant="outline" className="border-white/10 text-slate-400" data-testid="auth-retry-btn">
                 <RefreshCw className="w-4 h-4 mr-2" /> Try Again
               </Button>
-              <Button onClick={() => navigate('/')} variant="outline" className="border-slate-200 text-slate-600" data-testid="auth-home-btn">
+              <Button onClick={() => navigate('/')} variant="outline" className="border-white/10 text-slate-400" data-testid="auth-home-btn">
                 Go Home
               </Button>
             </div>

@@ -159,7 +159,7 @@ const MotoGPTicketsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="MotoGP Tickets 2026 | Buy Moto GP Race Passes"
         description="Buy MotoGP tickets 2026 from €69. Moto GP calendar 2026: Mugello, Silverstone, Assen. VIP Village. MotoGP tickets price from €69. Instant QR delivery."
@@ -171,7 +171,7 @@ const MotoGPTicketsPage = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-orange-50 text-orange-600 border-orange-200 mb-6">
+          <Badge className="bg-orange-500/10 text-orange-600 border-orange-200 mb-6">
             <Bike className="w-4 h-4 mr-2" />MotoGP™ World Championship
           </Badge>
           
@@ -186,18 +186,18 @@ const MotoGPTicketsPage = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Flag className="w-5 h-5 text-orange-600" /><span>{events.length} Races</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Calendar className="w-5 h-5 text-orange-600" /><span>March - November 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-emerald-50 rounded-full border border-emerald-200">
+            <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-200">
               <Ticket className="w-5 h-5 text-emerald-600" /><span className="text-emerald-600">From €69</span>
             </div>
           </div>
 
-          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">General Admission from</div>
             <div className="text-5xl font-bold text-emerald-600">€69</div>
             <div className="text-emerald-600 text-sm mt-1">Save 30% vs official MotoGP.com</div>
@@ -206,7 +206,7 @@ const MotoGPTicketsPage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
@@ -241,7 +241,7 @@ const MotoGPTicketsPage = () => {
                 <Link 
                   key={event.event_id}
                   to={`/event/${event.slug || event.event_id}`}
-                  className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-orange-500/50 transition-all hover:scale-[1.02]"
+                  className="group bg-[#1e1e1e] rounded-none overflow-hidden border border-white/10 hover:border-orange-500/50 transition-all hover:scale-[1.02]"
                 >
                   <div className="relative h-40 overflow-hidden">
                     <img 
@@ -251,7 +251,7 @@ const MotoGPTicketsPage = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
                     {event.featured && (
-                      <Badge className="absolute top-3 left-3 bg-orange-500 text-white">
+                      <Badge className="absolute top-3 left-3 bg-orange-500/100 text-white">
                         Featured Race
                       </Badge>
                     )}
@@ -291,27 +291,27 @@ const MotoGPTicketsPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">MotoGP Tickets FAQ</h2>
           
           <div className="space-y-4">
-            <div className="bg-white rounded-xl p-6 border border-slate-200">
+            <div className="bg-[#1e1e1e] rounded-none p-6 border border-white/10">
               <h3 className="font-bold text-lg mb-2">What's included in MotoGP weekend tickets?</h3>
               <p className="text-slate-500">All MotoGP weekend tickets include access to Friday practice, Saturday qualifying, and Sunday races for all classes (MotoGP, Moto2, Moto3).</p>
             </div>
             
-            <div className="bg-white rounded-xl p-6 border border-slate-200">
+            <div className="bg-[#1e1e1e] rounded-none p-6 border border-white/10">
               <h3 className="font-bold text-lg mb-2">Are MotoGP tickets cheaper than official prices?</h3>
               <p className="text-slate-500">Yes! Our tickets are typically 20-30% cheaper than official MotoGP.com prices. We source tickets directly from season pass holders and corporate allocations.</p>
             </div>
             
-            <div className="bg-white rounded-xl p-6 border border-slate-200">
+            <div className="bg-[#1e1e1e] rounded-none p-6 border border-white/10">
               <h3 className="font-bold text-lg mb-2">Which MotoGP races are best for first-timers?</h3>
               <p className="text-slate-500">Mugello (Italy), Assen (Netherlands), and Silverstone (UK) are considered the best for atmosphere. Barcelona and Valencia offer great value and accessibility.</p>
             </div>
             
-            <div className="bg-white rounded-xl p-6 border border-slate-200">
+            <div className="bg-[#1e1e1e] rounded-none p-6 border border-white/10">
               <h3 className="font-bold text-lg mb-2">Do you offer MotoGP paddock access?</h3>
               <p className="text-slate-500">Yes! We offer VIP Village and Paddock Access packages at select races. These include pit walks, rider meet-and-greets, and premium hospitality.</p>
             </div>
@@ -337,7 +337,7 @@ const MotoGPTicketsPage = () => {
               onClick={() => navigate('/f1-tickets')} 
               size="lg" 
               variant="outline"
-              className="border-slate-200 hover:border-red-500 hover:text-red-600"
+              className="border-white/10 hover:border-red-500 hover:text-red-600"
             >
               <Flag className="w-5 h-5 mr-2" />
               Browse F1 Tickets
@@ -347,15 +347,15 @@ const MotoGPTicketsPage = () => {
       </section>
       {/* Cross-promotion */}
       <section className="py-8 max-w-5xl mx-auto px-4">
-        <div className="p-5 bg-gradient-to-r from-red-50 via-white to-amber-50 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <div className="p-5 bg-gradient-to-r from-red-50 via-white to-amber-50 rounded-none border border-white/10 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-slate-900 font-bold">Looking for other major events?</p>
+            <p className="text-white font-bold">Looking for other major events?</p>
             <p className="text-slate-500 text-sm">Check out the Super Bowl, World Cup, and World Athletics Championship!</p>
           </div>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/super-bowl-2026-tickets" className="bg-red-600 hover:bg-red-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition">Super Bowl 2026</Link>
-            <Link to="/world-cup-2026" className="bg-amber-600 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition">World Cup 2026</Link>
-            <Link to="/world-athletics-2026-tickets" className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition">Athletics 2026</Link>
+            <Link to="/super-bowl-2026-tickets" className="bg-red-600 hover:bg-[#e10600]/100 text-white text-sm font-bold px-5 py-2.5 rounded-none transition">Super Bowl 2026</Link>
+            <Link to="/world-cup-2026" className="bg-amber-600 hover:bg-amber-500/100 text-white text-sm font-bold px-5 py-2.5 rounded-none transition">World Cup 2026</Link>
+            <Link to="/world-athletics-2026-tickets" className="bg-blue-600 hover:bg-blue-500/100 text-white text-sm font-bold px-5 py-2.5 rounded-none transition">Athletics 2026</Link>
           </div>
         </div>
       </section>

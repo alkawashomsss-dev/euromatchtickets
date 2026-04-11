@@ -12,18 +12,18 @@ import { API } from "../App";
 
 /* FAQ Accordion Item */
 const FAQItem = ({ question, answer, isOpen, onClick, index }) => (
-  <div className="border border-slate-200 rounded-lg overflow-hidden" data-testid={`faq-item-${index}`}>
+  <div className="border border-white/10 rounded-none overflow-hidden" data-testid={`faq-item-${index}`}>
     <button
       onClick={onClick}
-      className="w-full flex items-center justify-between px-5 py-4 text-left bg-white hover:bg-slate-50 transition-colors"
+      className="w-full flex items-center justify-between px-5 py-4 text-left bg-[#1e1e1e] hover:bg-[#15151e] transition-colors"
       aria-expanded={isOpen}
     >
-      <span className="font-semibold text-slate-900 text-sm pr-4">{question}</span>
+      <span className="font-semibold text-white text-sm pr-4">{question}</span>
       <ChevronDown className={`w-4 h-4 text-slate-400 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
     </button>
     {isOpen && (
-      <div className="px-5 pb-4 bg-white border-t border-slate-100">
-        <p className="text-slate-600 text-sm leading-relaxed pt-3">{answer}</p>
+      <div className="px-5 pb-4 bg-[#1e1e1e] border-t border-white/5">
+        <p className="text-slate-400 text-sm leading-relaxed pt-3">{answer}</p>
       </div>
     )}
   </div>
@@ -37,7 +37,7 @@ const FAQSection = ({ faqs, title }) => {
     <section className="mt-10" data-testid="faq-section">
       <div className="flex items-center gap-3 mb-5">
         <HelpCircle className="w-5 h-5 text-emerald-500" />
-        <h2 className="text-xl font-bold text-slate-900">{title || 'Frequently Asked Questions'}</h2>
+        <h2 className="text-xl font-bold text-white">{title || 'Frequently Asked Questions'}</h2>
       </div>
       <div className="space-y-2">
         {faqs.map((faq, i) => (
@@ -66,22 +66,22 @@ const categoryStyles = {
 const renderMarkdown = (md) => {
   if (!md) return "";
   let html = md;
-  html = html.replace(/^### (.+)$/gm, '<h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">$1</h3>');
-  html = html.replace(/^## (.+)$/gm, '<h2 class="text-xl font-bold text-slate-900 mt-8 mb-3 border-b border-slate-200 pb-2">$1</h2>');
-  html = html.replace(/^# (.+)$/gm, '<h1 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">$1</h1>');
-  html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="text-slate-900 font-semibold">$1</strong>');
+  html = html.replace(/^### (.+)$/gm, '<h3 class="text-lg font-bold text-white mt-6 mb-2">$1</h3>');
+  html = html.replace(/^## (.+)$/gm, '<h2 class="text-xl font-bold text-white mt-8 mb-3 border-b border-white/10 pb-2">$1</h2>');
+  html = html.replace(/^# (.+)$/gm, '<h1 class="text-2xl sm:text-3xl font-bold text-white mb-4">$1</h1>');
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>');
   html = html.replace(/^\| (.+)/gm, (match) => {
     const cells = match.split("|").filter(c => c.trim());
     if (cells.every(c => c.trim().match(/^[-:]+$/))) return "";
-    const row = cells.map(c => `<td class="px-3 py-2 border border-slate-200 text-sm">${c.trim()}</td>`).join("");
-    return `<tr class="hover:bg-slate-50">${row}</tr>`;
+    const row = cells.map(c => `<td class="px-3 py-2 border border-white/10 text-sm">${c.trim()}</td>`).join("");
+    return `<tr class="hover:bg-[#15151e]">${row}</tr>`;
   });
-  html = html.replace(/((<tr[^]*?<\/tr>\s*)+)/g, '<div class="overflow-x-auto my-4"><table class="w-full border-collapse border border-slate-200 rounded-lg">$1</table></div>');
-  html = html.replace(/^- (.+)$/gm, '<li class="text-slate-600 ml-4 mb-1 list-disc">$1</li>');
+  html = html.replace(/((<tr[^]*?<\/tr>\s*)+)/g, '<div class="overflow-x-auto my-4"><table class="w-full border-collapse border border-white/10 rounded-none">$1</table></div>');
+  html = html.replace(/^- (.+)$/gm, '<li class="text-slate-400 ml-4 mb-1 list-disc">$1</li>');
   html = html.replace(/((<li[^]*?<\/li>\s*)+)/g, '<ul class="my-3">$1</ul>');
   html = html.replace(/^(?!<[hultd]|<div|<str)(.+)$/gm, (match) => {
     if (match.trim() === "") return "";
-    return `<p class="text-slate-600 mb-3 leading-relaxed">${match}</p>`;
+    return `<p class="text-slate-400 mb-3 leading-relaxed">${match}</p>`;
   });
   return html;
 };
@@ -189,7 +189,7 @@ export default function DynamicSEOPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center">
         <div className="animate-spin w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full" />
       </div>
     );
@@ -198,11 +198,11 @@ export default function DynamicSEOPage() {
   if (gone) {
     // Page was explicitly deactivated - redirect to events to keep user engaged
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex flex-col items-center justify-center gap-6 px-4" data-testid="seo-page-not-found">
-        <h1 className="text-4xl font-black text-slate-900">Event Ended</h1>
+      <div className="min-h-screen bg-[#0e0e14] flex flex-col items-center justify-center gap-6 px-4" data-testid="seo-page-not-found">
+        <h1 className="text-4xl font-black text-white">Event Ended</h1>
         <p className="text-slate-500 text-center max-w-md">This event has ended. Browse our latest events and find great tickets at the cheapest prices!</p>
         <div className="flex gap-3">
-          <Link to={buyLink}><Button className="bg-emerald-600 hover:bg-emerald-500 text-white">Browse Similar Events</Button></Link>
+          <Link to={buyLink}><Button className="bg-emerald-600 hover:bg-emerald-500/100 text-white">Browse Similar Events</Button></Link>
           <Link to="/events"><Button variant="outline">All Events</Button></Link>
         </div>
       </div>
@@ -220,7 +220,7 @@ export default function DynamicSEOPage() {
     const fallbackStyle = categoryStyles[cat] || categoryStyles.f1;
 
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="dynamic-seo-page">
+      <div className="min-h-screen bg-[#0e0e14]" data-testid="dynamic-seo-page">
         <div className={`relative bg-gradient-to-b ${fallbackStyle.bg} py-16 sm:py-20`}>
           <div className="max-w-5xl mx-auto px-4">
             <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6">
@@ -228,14 +228,14 @@ export default function DynamicSEOPage() {
               <ChevronRight className="w-3 h-3" />
               <Link to="/events" className="hover:text-white transition">Events</Link>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-slate-600">{prettyName}</span>
+              <span className="text-slate-400">{prettyName}</span>
             </nav>
             <Badge className={fallbackStyle.badge}>{cat.toUpperCase()}</Badge>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 mt-4">{prettyName}</h1>
             <p className="text-lg text-slate-400 max-w-3xl mb-6">Buy verified {prettyName.toLowerCase()} at Europe's cheapest prices. 100% guaranteed with instant QR delivery and FanProtect buyer protection.</p>
             <div className="flex flex-wrap items-center gap-4">
               <Link to={buyLink}>
-                <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl">
+                <Button className="bg-emerald-600 hover:bg-emerald-500/100 text-white px-8 py-6 text-lg rounded-none">
                   <Ticket className="w-5 h-5 mr-2" /> Secure Your Seat Now
                 </Button>
               </Link>
@@ -246,10 +246,10 @@ export default function DynamicSEOPage() {
         <div className="max-w-5xl mx-auto px-4 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <h2 className="text-xl font-bold text-slate-900 mb-4">About {prettyName}</h2>
-              <p className="text-slate-600 mb-4 leading-relaxed">Looking for {prettyName.toLowerCase()}? EuroMatchTickets offers the cheapest verified tickets in Europe with instant e-ticket delivery. Every purchase is protected by our FanProtect money-back guarantee.</p>
-              <h3 className="text-lg font-bold text-slate-900 mt-6 mb-2">Why Buy From EuroMatchTickets?</h3>
-              <ul className="space-y-2 text-slate-600">
+              <h2 className="text-xl font-bold text-white mb-4">About {prettyName}</h2>
+              <p className="text-slate-400 mb-4 leading-relaxed">Looking for {prettyName.toLowerCase()}? EuroMatchTickets offers the cheapest verified tickets in Europe with instant e-ticket delivery. Every purchase is protected by our FanProtect money-back guarantee.</p>
+              <h3 className="text-lg font-bold text-white mt-6 mb-2">Why Buy From EuroMatchTickets?</h3>
+              <ul className="space-y-2 text-slate-400">
                 <li className="flex items-start gap-2"><Shield className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />100% verified tickets with FanProtect guarantee</li>
                 <li className="flex items-start gap-2"><Clock className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Instant e-ticket delivery via QR code</li>
                 <li className="flex items-start gap-2"><CreditCard className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Secure payment with Stripe encryption</li>
@@ -261,8 +261,8 @@ export default function DynamicSEOPage() {
               )}
             </div>
             <div className="space-y-6">
-              <div className="bg-white border border-slate-200 rounded-xl p-6">
-                <h3 className="font-bold text-slate-900 mb-4">Buyer Protection</h3>
+              <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
+                <h3 className="font-bold text-white mb-4">Buyer Protection</h3>
                 <div className="space-y-3">
                   {[
                     { icon: Shield, text: "500,000+ Tickets Sold", sub: "100% Money Back Guarantee" },
@@ -273,18 +273,18 @@ export default function DynamicSEOPage() {
                     <div key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
                       <div>
-                        <p className="text-slate-900 text-sm font-medium">{item.text}</p>
+                        <p className="text-white text-sm font-medium">{item.text}</p>
                         <p className="text-slate-400 text-xs">{item.sub}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="bg-emerald-900/30 border border-emerald-800/50 rounded-xl p-6 text-center">
+              <div className="bg-emerald-900/30 border border-emerald-800/50 rounded-none p-6 text-center">
                 <p className="text-emerald-600 font-semibold mb-2">Limited Availability</p>
                 <p className="text-slate-500 text-sm mb-4">Prices increase as events approach. Book now for the best deals.</p>
                 <Link to="/events">
-                  <Button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white">View Available Seats</Button>
+                  <Button className="w-full bg-emerald-600 hover:bg-emerald-500/100 text-white">View Available Seats</Button>
                 </Link>
               </div>
             </div>
@@ -447,7 +447,7 @@ export default function DynamicSEOPage() {
         );
       })()}
 
-      <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="dynamic-seo-page">
+      <div className="min-h-screen bg-[#0e0e14]" data-testid="dynamic-seo-page">
         {/* Dynamic urgency: realistic numbers that change every 5 minutes */}
         {(() => {
           const slugHash = (page?.slug || '').split('').reduce((a, c) => a + c.charCodeAt(0), 0);
@@ -475,13 +475,13 @@ export default function DynamicSEOPage() {
               {page.category !== "concerts" && page.category !== "football" && page.category !== "sports" && page.category !== "events" && (
                 <>
                   <ChevronRight className="w-3 h-3" />
-                  <span className="text-slate-600">{page.event_name || page.artist || page.city || page.stage || ""}</span>
+                  <span className="text-slate-400">{page.event_name || page.artist || page.city || page.stage || ""}</span>
                 </>
               )}
             </nav>
 
             {/* Google Merchant Center Required: Resale Marketplace Disclosure */}
-            <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 text-xs px-3 py-1.5 rounded-md mb-4" data-testid="resale-disclosure">
+            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-200 text-amber-800 text-xs px-3 py-1.5 rounded-md mb-4" data-testid="resale-disclosure">
               <Shield className="w-3 h-3 flex-shrink-0" />
               <span>Independent resale marketplace. Prices may be above or below face value. All sales are final. <Link to="/buyer-protection" className="underline font-medium">FanProtect Guarantee</Link></span>
             </div>
@@ -491,12 +491,12 @@ export default function DynamicSEOPage() {
                 {page.category?.toUpperCase()}
               </Badge>
               {page.city && page.city !== "Europe" && (
-                <Badge variant="outline" className="text-slate-600 border-slate-300">
+                <Badge variant="outline" className="text-slate-400 border-white/15">
                   <MapPin className="w-3 h-3 mr-1" /> {page.city}
                 </Badge>
               )}
               {page.year && (
-                <Badge variant="outline" className="text-slate-600 border-slate-300">
+                <Badge variant="outline" className="text-slate-400 border-white/15">
                   <Calendar className="w-3 h-3 mr-1" /> {page.year}
                 </Badge>
               )}
@@ -522,12 +522,12 @@ export default function DynamicSEOPage() {
               <span className="text-slate-400 text-sm">(12,847 reviews)</span>
             </div>
 
-            <p className="text-lg text-slate-600 max-w-3xl mb-4">{page.description}</p>
+            <p className="text-lg text-slate-400 max-w-3xl mb-4">{page.description}</p>
             <div className="flex flex-wrap gap-3 mb-6">
-              <span className="inline-flex items-center gap-1.5 bg-red-50 border border-red-200 rounded-full px-3 py-1.5 text-red-600 text-sm font-medium animate-pulse" data-testid="scarcity-badge">
+              <span className="inline-flex items-center gap-1.5 bg-[#e10600]/10 border border-red-200 rounded-full px-3 py-1.5 text-red-600 text-sm font-medium animate-pulse" data-testid="scarcity-badge">
                 <AlertCircle className="w-3.5 h-3.5" /> Only {Math.max(3, ((page.slug || '').length % 15) + 2)} tickets left at this price
               </span>
-              <span className="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 rounded-full px-3 py-1.5 text-amber-700 text-sm font-medium" data-testid="demand-badge">
+              <span className="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-200 rounded-full px-3 py-1.5 text-amber-700 text-sm font-medium" data-testid="demand-badge">
                 <Users className="w-3.5 h-3.5" /> {50 + ((page.slug || '').length % 80)} people viewing now
               </span>
             </div>
@@ -535,14 +535,14 @@ export default function DynamicSEOPage() {
             {/* Price & CTA */}
             {page.price_low && (
               <div className="mb-4" data-testid="seo-price-cta">
-                <div className="inline-flex items-center gap-2 bg-emerald-900/60 border border-emerald-500/30 rounded-lg px-4 py-2 mb-4">
+                <div className="inline-flex items-center gap-2 bg-emerald-900/60 border border-emerald-500/30 rounded-none px-4 py-2 mb-4">
                   <span className="text-2xl font-bold text-emerald-400">From {page.category === 'concert' && page.country === 'United Kingdom' ? '\u00a3' : '\u20ac'}{page.price_low}</span>
                   <span className="text-slate-400 text-sm">|</span>
                   <span className="text-orange-400 text-sm font-medium">Limited availability</span>
                 </div>
                 <div className="flex flex-wrap items-center gap-4">
                   <Link to={buyLink}>
-                    <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-emerald-900/30" data-testid="seo-buy-btn">
+                    <Button className="bg-emerald-600 hover:bg-emerald-500/100 text-white px-8 py-6 text-lg rounded-none shadow-lg shadow-emerald-900/30" data-testid="seo-buy-btn">
                       <Ticket className="w-5 h-5 mr-2" /> View Available Tickets
                     </Button>
                   </Link>
@@ -591,22 +591,22 @@ export default function DynamicSEOPage() {
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Quick Info Card */}
-              <div className="bg-white border border-slate-200 rounded-xl p-6" data-testid="seo-sidebar-info">
-                <h3 className="font-bold text-slate-900 mb-4">Quick Info</h3>
+              <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6" data-testid="seo-sidebar-info">
+                <h3 className="font-bold text-white mb-4">Quick Info</h3>
                 {page.city && (
-                  <div className="flex items-center gap-2 text-slate-600 mb-3">
+                  <div className="flex items-center gap-2 text-slate-400 mb-3">
                     <MapPin className="w-4 h-4 text-slate-400" />
                     <span>{page.city}{page.country ? `, ${page.country}` : ""}</span>
                   </div>
                 )}
                 {page.venue && (
-                  <div className="flex items-center gap-2 text-slate-600 mb-3">
+                  <div className="flex items-center gap-2 text-slate-400 mb-3">
                     <Tag className="w-4 h-4 text-slate-400" />
                     <span>{page.venue}</span>
                   </div>
                 )}
                 {page.year && (
-                  <div className="flex items-center gap-2 text-slate-600 mb-3">
+                  <div className="flex items-center gap-2 text-slate-400 mb-3">
                     <Calendar className="w-4 h-4 text-slate-400" />
                     <span>{page.year} Season</span>
                   </div>
@@ -614,8 +614,8 @@ export default function DynamicSEOPage() {
               </div>
 
               {/* Trust Signals */}
-              <div className="bg-white border border-slate-200 rounded-xl p-6" data-testid="seo-trust-signals">
-                <h3 className="font-bold text-slate-900 mb-4">Buyer Protection</h3>
+              <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6" data-testid="seo-trust-signals">
+                <h3 className="font-bold text-white mb-4">Buyer Protection</h3>
                 <div className="space-y-3">
                   {[
                     { icon: Shield, text: "500,000+ Tickets Sold", sub: "100% Money Back Guarantee" },
@@ -626,7 +626,7 @@ export default function DynamicSEOPage() {
                     <div key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
                       <div>
-                        <p className="text-slate-900 text-sm font-medium">{item.text}</p>
+                        <p className="text-white text-sm font-medium">{item.text}</p>
                         <p className="text-slate-400 text-xs">{item.sub}</p>
                       </div>
                     </div>
@@ -635,11 +635,11 @@ export default function DynamicSEOPage() {
               </div>
 
               {/* CTA */}
-              <div className="bg-emerald-900/30 border border-emerald-800/50 rounded-xl p-6 text-center">
+              <div className="bg-emerald-900/30 border border-emerald-800/50 rounded-none p-6 text-center">
                 <p className="text-emerald-600 font-semibold mb-2">Limited Availability</p>
                 <p className="text-slate-500 text-sm mb-4">Prices increase as events approach. Book now for the best deals.</p>
                 <Link to={buyLink}>
-                  <Button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white" data-testid="seo-sidebar-buy-btn">
+                  <Button className="w-full bg-emerald-600 hover:bg-emerald-500/100 text-white" data-testid="seo-sidebar-buy-btn">
                     Browse All Tickets
                   </Button>
                 </Link>
@@ -674,7 +674,7 @@ export default function DynamicSEOPage() {
                 </div>
               </div>
               <Link to={buyLink}>
-                <Button className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 text-sm rounded-lg whitespace-nowrap" data-testid="sticky-buy-btn">
+                <Button className="bg-emerald-600 hover:bg-emerald-500/100 text-white px-6 py-2 text-sm rounded-none whitespace-nowrap" data-testid="sticky-buy-btn">
                   <Ticket className="w-4 h-4 mr-1" /> Buy Now
                 </Button>
               </Link>

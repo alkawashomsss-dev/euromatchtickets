@@ -32,7 +32,7 @@ const HowToBuyF1TicketsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="How to Buy F1 Tickets 2026 | Complete Guide"
         description="Learn how to buy Formula 1 tickets safely online. Step-by-step guide for purchasing F1 Grand Prix tickets. Best prices, 100% guarantee, instant delivery."
@@ -55,7 +55,7 @@ const HowToBuyF1TicketsPage = () => {
       </section>
 
       {/* Trust Badges */}
-      <section className="py-8 border-y border-slate-100 bg-slate-50">
+      <section className="py-8 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6">
             <div className="flex items-center gap-2 text-emerald-600">
@@ -110,8 +110,8 @@ const HowToBuyF1TicketsPage = () => {
                 tips: ["Instant delivery via email", "Mobile QR code - no printing needed", "PDF download also available"]
               }
             ].map((item) => (
-              <div key={item.step} className="flex gap-6 bg-white border border-slate-200 rounded-2xl p-6">
-                <div className="flex-shrink-0 w-16 h-16 bg-red-50 rounded-full flex items-center justify-center">
+              <div key={item.step} className="flex gap-6 bg-[#1e1e1e] border border-white/10 rounded-none p-6">
+                <div className="flex-shrink-0 w-16 h-16 bg-[#e10600]/10 rounded-full flex items-center justify-center">
                   <span className="text-2xl font-bold text-red-600">{item.step}</span>
                 </div>
                 <div className="flex-1">
@@ -136,7 +136,7 @@ const HowToBuyF1TicketsPage = () => {
       </section>
 
       {/* Why Buy From Us */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-10 text-center">Why Buy F1 Tickets From EuroMatchTickets?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -148,7 +148,7 @@ const HowToBuyF1TicketsPage = () => {
               { icon: Headphones, title: "24/7 Customer Support", desc: "Our team is available around the clock via chat, email, or phone." },
               { icon: FileCheck, title: "German Company", desc: "Registered in Germany with full legal compliance. Invoice included." }
             ].map((item, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
+              <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <item.icon className="w-10 h-10 text-emerald-600 mb-4" />
                 <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                 <p className="text-slate-500 text-sm">{item.desc}</p>
@@ -171,7 +171,7 @@ const HowToBuyF1TicketsPage = () => {
               { q: "When should I buy F1 tickets?", a: "We recommend booking 3-6 months in advance for the best prices and seat selection. Popular races like Monaco, Silverstone, and Singapore sell out fastest." },
               { q: "Can I resell my F1 tickets?", a: "Yes, tickets purchased from EuroMatchTickets are fully transferable. You can resell through our platform or gift them to someone else." }
             ].map((faq, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
+              <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
                 <p className="text-slate-500">{faq.a}</p>
               </div>
@@ -181,13 +181,13 @@ const HowToBuyF1TicketsPage = () => {
       </section>
 
       {/* Price Comparison */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8 text-center">F1 Ticket Price Comparison 2026</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-left">
               <thead>
-                <tr className="border-b border-slate-200">
+                <tr className="border-b border-white/10">
                   <th className="py-3 px-4">Race</th>
                   <th className="py-3 px-4">F1.com</th>
                   <th className="py-3 px-4">StubHub</th>
@@ -203,7 +203,7 @@ const HowToBuyF1TicketsPage = () => {
                   { race: "Singapore GP", f1: "€399", stub: "€379", ours: "€189", save: "€190" },
                   { race: "Abu Dhabi GP", f1: "€349", stub: "€329", ours: "€169", save: "€160" },
                 ].map((row, i) => (
-                  <tr key={i} className="border-b border-slate-200">
+                  <tr key={i} className="border-b border-white/10">
                     <td className="py-3 px-4 font-medium">{row.race}</td>
                     <td className="py-3 px-4 text-slate-400 line-through">{row.f1}</td>
                     <td className="py-3 px-4 text-slate-400 line-through">{row.stub}</td>
@@ -224,7 +224,7 @@ const HowToBuyF1TicketsPage = () => {
           <h2 className="text-3xl font-bold mb-6">Ready to Buy Your F1 Tickets?</h2>
           <p className="text-slate-500 mb-8">Browse all 23 races and find your perfect F1 experience</p>
           <Link to="/f1-tickets">
-            <Button size="lg" className="bg-red-500 hover:bg-red-600 px-8">
+            <Button size="lg" className="bg-[#e10600]/100 hover:bg-red-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />
               Browse F1 Tickets 2026
             </Button>
@@ -242,7 +242,7 @@ const HowToBuyF1TicketsPage = () => {
               "best F1 ticket prices", "F1 ticket guarantee", "where to buy F1 tickets",
               "F1 2026 tickets", "Formula 1 ticket guide", "F1 hospitality packages"
             ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">{term}</span>
+              <span key={i} className="px-3 py-1 bg-[#15151e] text-slate-500 rounded-full text-sm">{term}</span>
             ))}
           </div>
         </div>

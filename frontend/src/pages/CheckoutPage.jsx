@@ -60,7 +60,7 @@ export default function CheckoutPage() {
   };
 
   if (loading) return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
+    <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center">
       <div className="w-10 h-10 border-2 border-slate-900 border-t-transparent rounded-full animate-spin" />
     </div>
   );
@@ -71,28 +71,28 @@ export default function CheckoutPage() {
   const dateStr = d.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-24 pb-16" data-testid="checkout-page">
+    <div className="min-h-screen bg-[#0e0e14] pt-24 pb-16" data-testid="checkout-page">
       <div className="max-w-3xl mx-auto px-4">
-        <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-slate-500 hover:text-slate-900 mb-6 transition" data-testid="checkout-back-btn">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-slate-500 hover:text-white mb-6 transition" data-testid="checkout-back-btn">
           <ChevronLeft className="w-4 h-4" /> Back
         </button>
 
-        <h1 className="text-2xl font-extrabold text-slate-900 mb-8">Secure Checkout</h1>
+        <h1 className="text-2xl font-extrabold text-white mb-8">Secure Checkout</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {/* Order Summary - Left */}
           <div className="md:col-span-3 space-y-4">
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-              <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <div className="bg-[#1e1e1e] rounded-none border border-white/10 p-6 shadow-sm">
+              <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                 <Ticket className="w-5 h-5 text-emerald-600" /> Order Summary
               </h2>
 
               <div className="flex gap-4 mb-5">
                 {event.event_image && (
-                  <img src={event.event_image} alt={event.title} className="w-24 h-24 rounded-xl object-cover flex-shrink-0" />
+                  <img src={event.event_image} alt={event.title} className="w-24 h-24 rounded-none object-cover flex-shrink-0" />
                 )}
                 <div>
-                  <h3 className="font-bold text-slate-900">{event.title}</h3>
+                  <h3 className="font-bold text-white">{event.title}</h3>
                   <div className="flex items-center gap-1 text-sm text-slate-500 mt-1">
                     <Calendar className="w-3.5 h-3.5" /> {dateStr}
                   </div>
@@ -102,22 +102,22 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="border-t border-slate-100 pt-4">
+              <div className="border-t border-white/5 pt-4">
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full">{category}</span>
+                  <span className="bg-emerald-500/10 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full">{category}</span>
                   <span className="text-xs text-slate-400">1x Ticket</span>
                 </div>
 
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-between text-slate-600">
+                  <div className="flex justify-between text-slate-400">
                     <span>Ticket Price</span>
                     <span className="font-medium">&euro;{price}</span>
                   </div>
-                  <div className="flex justify-between text-slate-600">
+                  <div className="flex justify-between text-slate-400">
                     <span>Service Fee (10%)</span>
                     <span className="font-medium">&euro;{commission}</span>
                   </div>
-                  <div className="flex justify-between text-lg font-extrabold text-slate-900 border-t border-slate-100 pt-3 mt-2">
+                  <div className="flex justify-between text-lg font-extrabold text-white border-t border-white/5 pt-3 mt-2">
                     <span>Total</span>
                     <span className="text-emerald-600">&euro;{total}</span>
                   </div>
@@ -133,10 +133,10 @@ export default function CheckoutPage() {
                 { icon: Lock, label: "Secure Payment", sub: "256-bit SSL encryption" },
                 { icon: CreditCard, label: "Stripe Powered", sub: "PCI DSS Level 1" },
               ].map((t, i) => (
-                <div key={i} className="bg-white rounded-xl border border-slate-200 p-3 flex items-start gap-2.5">
+                <div key={i} className="bg-[#1e1e1e] rounded-none border border-white/10 p-3 flex items-start gap-2.5">
                   <t.icon className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-xs font-bold text-slate-900">{t.label}</p>
+                    <p className="text-xs font-bold text-white">{t.label}</p>
                     <p className="text-[10px] text-slate-400">{t.sub}</p>
                   </div>
                 </div>
@@ -146,16 +146,16 @@ export default function CheckoutPage() {
 
           {/* Pay Button - Right */}
           <div className="md:col-span-2">
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm sticky top-24">
+            <div className="bg-[#1e1e1e] rounded-none border border-white/10 p-6 shadow-sm sticky top-24">
               <div className="text-center mb-5">
                 <p className="text-sm text-slate-500 mb-1">You'll pay</p>
-                <p className="text-4xl font-extrabold text-slate-900">&euro;{total}</p>
+                <p className="text-4xl font-extrabold text-white">&euro;{total}</p>
               </div>
 
               <button
                 onClick={handleCheckout}
                 disabled={processing}
-                className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 disabled:bg-emerald-300 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
+                className="w-full py-4 bg-emerald-500/100 hover:bg-emerald-600 disabled:bg-emerald-300 text-white font-bold rounded-none transition-all shadow-lg hover:shadow-xl text-lg"
                 data-testid="checkout-pay-btn"
               >
                 {processing ? (

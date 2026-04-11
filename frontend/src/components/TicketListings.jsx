@@ -31,10 +31,10 @@ const SectionTicketList = ({ group, eventId, onBuy }) => {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`rounded-xl overflow-hidden hover:shadow-sm transition-all ${
+      className={`rounded-none overflow-hidden hover:shadow-sm transition-all ${
         isVIP
           ? 'bg-gradient-to-r from-[#0c0a14] to-[#15111f] border border-amber-500/20 hover:border-amber-500/40'
-          : 'bg-white border border-slate-100 hover:border-slate-200'
+          : 'bg-[#1e1e1e] border border-white/5 hover:border-white/10'
       }`}
       data-testid={`section-${group.category}-${group.section.toLowerCase().replace(/\s/g,'-')}`}
     >
@@ -42,18 +42,18 @@ const SectionTicketList = ({ group, eventId, onBuy }) => {
       <div className="flex items-center justify-between p-4 cursor-pointer"
         onClick={() => setExpanded(!expanded)} data-testid={`section-toggle-${group.section.toLowerCase().replace(/\s/g,'-')}`}>
         <div className="flex items-center gap-3 flex-1 min-w-0">
-          <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-            isVIP ? 'bg-gradient-to-br from-amber-500/20 to-amber-600/10' : 'bg-slate-50'
+          <div className={`w-10 h-10 rounded-none flex items-center justify-center flex-shrink-0 ${
+            isVIP ? 'bg-gradient-to-br from-amber-500/20 to-amber-600/10' : 'bg-[#15151e]'
           }`}>
-            {isVIP ? <Crown className="w-5 h-5 text-amber-500" /> : <Ticket className="w-5 h-5 text-slate-600" />}
+            {isVIP ? <Crown className="w-5 h-5 text-amber-500" /> : <Ticket className="w-5 h-5 text-slate-400" />}
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className={`font-bold text-sm ${isVIP ? 'text-white' : 'text-slate-900'}`}>{group.section}</h3>
+              <h3 className={`font-bold text-sm ${isVIP ? 'text-white' : 'text-white'}`}>{group.section}</h3>
               <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
-                isVIP ? 'text-amber-400 bg-amber-500/10 border border-amber-500/20' : 'text-slate-500 bg-slate-100'
+                isVIP ? 'text-amber-400 bg-amber-500/100/10 border border-amber-500/20' : 'text-slate-500 bg-slate-100'
               }`}>{catLabel}</span>
-              {isLow && <span className="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-full">LOW STOCK</span>}
+              {isLow && <span className="text-[10px] font-bold text-red-600 bg-[#e10600]/10 px-2 py-0.5 rounded-full">LOW STOCK</span>}
             </div>
             <p className={`text-xs mt-0.5 ${isVIP ? 'text-white/40' : 'text-slate-400'}`}>{group.count} ticket{group.count !== 1 ? 's' : ''} available{isVIP ? ' · VIP Hospitality included' : ''}</p>
           </div>
@@ -65,10 +65,10 @@ const SectionTicketList = ({ group, eventId, onBuy }) => {
           </div>
           <button
             onClick={(e) => { e.stopPropagation(); onBuy(sortedTickets[0]); }}
-            className={`font-bold text-sm px-5 py-2.5 rounded-lg transition-all shadow-sm hover:shadow-md hidden sm:block ${
+            className={`font-bold text-sm px-5 py-2.5 rounded-none transition-all shadow-sm hover:shadow-md hidden sm:block ${
               isVIP
                 ? 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black'
-                : 'bg-emerald-500 hover:bg-emerald-600 text-white'
+                : 'bg-emerald-500/100 hover:bg-emerald-600 text-white'
             }`}
             data-testid={`buy-quick-${group.section.toLowerCase().replace(/\s/g,'-')}`}
           >
@@ -84,10 +84,10 @@ const SectionTicketList = ({ group, eventId, onBuy }) => {
       <div className="px-4 pb-3 sm:hidden">
         <button
           onClick={() => onBuy(sortedTickets[0])}
-          className={`w-full font-bold text-sm py-2.5 rounded-lg transition-all ${
+          className={`w-full font-bold text-sm py-2.5 rounded-none transition-all ${
             isVIP
               ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black'
-              : 'bg-emerald-500 hover:bg-emerald-600 text-white'
+              : 'bg-emerald-500/100 hover:bg-emerald-600 text-white'
           }`}
           data-testid={`buy-quick-mobile-${group.section.toLowerCase().replace(/\s/g,'-')}`}
         >
@@ -105,15 +105,15 @@ const SectionTicketList = ({ group, eventId, onBuy }) => {
             transition={{ duration: 0.25 }}
             className="overflow-hidden"
           >
-            <div className="border-t border-slate-100 bg-slate-50/50">
-              <div className="px-4 py-2 grid grid-cols-[1fr_auto_auto] gap-4 text-[10px] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-100">
+            <div className="border-t border-white/5 bg-[#15151e]/50">
+              <div className="px-4 py-2 grid grid-cols-[1fr_auto_auto] gap-4 text-[10px] text-slate-400 uppercase tracking-wider font-semibold border-b border-white/5">
                 <span>Ticket</span>
                 <span>Price</span>
                 <span className="w-20"></span>
               </div>
               {sortedTickets.map((ticket, i) => (
                 <div key={ticket.ticket_id}
-                  className="px-4 py-3 grid grid-cols-[1fr_auto_auto] gap-4 items-center border-b border-slate-50 last:border-0 hover:bg-white transition-colors"
+                  className="px-4 py-3 grid grid-cols-[1fr_auto_auto] gap-4 items-center border-b border-slate-50 last:border-0 hover:bg-[#1e1e1e] transition-colors"
                   data-testid={`ticket-row-${ticket.ticket_id}`}
                 >
                   <div className="flex items-center gap-2">
@@ -121,17 +121,17 @@ const SectionTicketList = ({ group, eventId, onBuy }) => {
                       {i + 1}
                     </span>
                     <div>
-                      <p className="text-sm font-medium text-slate-700">{group.section} &middot; {catLabel}</p>
+                      <p className="text-sm font-medium text-slate-300">{group.section} &middot; {catLabel}</p>
                       <p className="text-[11px] text-slate-400">Verified &middot; Instant QR delivery</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-base font-bold text-slate-900">&euro;{ticket.price.toFixed(2)}</p>
+                    <p className="text-base font-bold text-white">&euro;{ticket.price.toFixed(2)}</p>
                     <p className="text-[10px] text-slate-400">each</p>
                   </div>
                   <button
                     onClick={() => onBuy(ticket)}
-                    className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs px-4 py-2 rounded-lg transition-all w-20"
+                    className="bg-emerald-500/100 hover:bg-emerald-600 text-white font-semibold text-xs px-4 py-2 rounded-none transition-all w-20"
                     data-testid={`buy-ticket-${ticket.ticket_id}`}
                   >
                     Buy
@@ -186,7 +186,7 @@ const TicketListings = ({ groupedSections, eventId, selectedSection, onClearFilt
 
   if (!groupedSections || groupedSections.length === 0) {
     return (
-      <div className="text-center py-12 bg-white rounded-2xl border border-slate-200" data-testid="no-tickets">
+      <div className="text-center py-12 bg-[#1e1e1e] rounded-none border border-white/10" data-testid="no-tickets">
         <Ticket className="w-8 h-8 text-slate-300 mx-auto mb-3" />
         <p className="text-slate-500 font-medium">No tickets available for this event</p>
       </div>
@@ -198,7 +198,7 @@ const TicketListings = ({ groupedSections, eventId, selectedSection, onClearFilt
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
         <div>
-          <h2 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+          <h2 className="text-xl font-extrabold text-white flex items-center gap-2">
             <Ticket className="w-5 h-5 text-emerald-600" />
             {totalTickets} Tickets Available
           </h2>
@@ -208,7 +208,7 @@ const TicketListings = ({ groupedSections, eventId, selectedSection, onClearFilt
         <div className="flex items-center gap-2">
           {/* Sort */}
           <select value={sortBy} onChange={e => setSortBy(e.target.value)}
-            className="text-xs border border-slate-200 rounded-lg px-3 py-2 text-slate-600 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+            className="text-xs border border-white/10 rounded-none px-3 py-2 text-slate-400 bg-[#1e1e1e] focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             data-testid="sort-tickets">
             <option value="price_low">Price: Low to High</option>
             <option value="price_high">Price: High to Low</option>
@@ -221,7 +221,7 @@ const TicketListings = ({ groupedSections, eventId, selectedSection, onClearFilt
       <div className="flex flex-wrap gap-2 mb-4">
         <button onClick={() => { setFilterCategory(null); if (onClearFilter) onClearFilter(); }}
           className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
-            !filterCategory && !selectedSection ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-600 border-slate-200 hover:border-slate-400'
+            !filterCategory && !selectedSection ? 'bg-slate-900 text-white border-slate-900' : 'bg-[#1e1e1e] text-slate-400 border-white/10 hover:border-slate-400'
           }`} data-testid="filter-all">
           All Tickets
         </button>
@@ -229,7 +229,7 @@ const TicketListings = ({ groupedSections, eventId, selectedSection, onClearFilt
           <button key={cat}
             onClick={() => { setFilterCategory(filterCategory === cat ? null : cat); if (onClearFilter) onClearFilter(); }}
             className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
-              filterCategory === cat ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-600 border-slate-200 hover:border-slate-400'
+              filterCategory === cat ? 'bg-slate-900 text-white border-slate-900' : 'bg-[#1e1e1e] text-slate-400 border-white/10 hover:border-slate-400'
             }`} data-testid={`filter-${cat}`}>
             {formatCategory(cat)}
           </button>
@@ -238,7 +238,7 @@ const TicketListings = ({ groupedSections, eventId, selectedSection, onClearFilt
 
       {/* Active filter */}
       {selectedSection && (
-        <div className="flex items-center gap-2 mb-4 px-3 py-2 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-700" data-testid="active-filter">
+        <div className="flex items-center gap-2 mb-4 px-3 py-2 bg-emerald-500/10 border border-emerald-200 rounded-none text-sm text-emerald-700" data-testid="active-filter">
           <Filter className="w-4 h-4" />
           Showing: <strong>{selectedSection}</strong>
           <button onClick={onClearFilter} className="ml-auto text-emerald-600 hover:text-emerald-800 text-xs font-bold">Clear</button>
@@ -259,7 +259,7 @@ const TicketListings = ({ groupedSections, eventId, selectedSection, onClearFilt
       )}
 
       {/* Trust Bar */}
-      <div className="mt-5 p-4 bg-slate-50 rounded-xl border border-slate-100 flex flex-wrap items-center justify-center gap-5 text-xs text-slate-500">
+      <div className="mt-5 p-4 bg-[#15151e] rounded-none border border-white/5 flex flex-wrap items-center justify-center gap-5 text-xs text-slate-500">
         <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-emerald-500" /> FanProtect Guarantee</span>
         <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> 100% Verified</span>
         <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-amber-500" /> Instant QR Delivery</span>

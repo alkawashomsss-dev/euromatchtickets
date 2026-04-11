@@ -36,7 +36,7 @@ const MotoGPSchedulePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="MotoGP 2026 Schedule & Tickets | Full Calendar"
         description="Complete MotoGP 2026 race schedule with all 21 Grand Prix dates, locations, and tickets. Mugello, Assen, Silverstone, Barcelona. Buy MotoGP tickets from."
@@ -47,7 +47,7 @@ const MotoGPSchedulePage = () => {
       <section className="relative py-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-orange-50 text-orange-600 border-orange-200 mb-6">
+          <Badge className="bg-orange-500/10 text-orange-600 border-orange-200 mb-6">
             <Bike className="w-4 h-4 mr-2" />MotoGP™ World Championship
           </Badge>
           
@@ -62,13 +62,13 @@ const MotoGPSchedulePage = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Bike className="w-5 h-5 text-orange-600" /><span>21 Races</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Calendar className="w-5 h-5 text-orange-600" /><span>March - November 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <MapPin className="w-5 h-5 text-orange-600" /><span>19 Countries</span>
             </div>
           </div>
@@ -76,7 +76,7 @@ const MotoGPSchedulePage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
@@ -94,7 +94,7 @@ const MotoGPSchedulePage = () => {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-white border-b border-slate-200">
+                <tr className="bg-[#1e1e1e] border-b border-white/10">
                   <th className="py-4 px-4 text-left">Round</th>
                   <th className="py-4 px-4 text-left">Race</th>
                   <th className="py-4 px-4 text-left">Circuit</th>
@@ -105,16 +105,16 @@ const MotoGPSchedulePage = () => {
               </thead>
               <tbody>
                 {races.map((race) => (
-                  <tr key={race.round} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                  <tr key={race.round} className="border-b border-white/10 hover:bg-[#15151e] transition-colors">
                     <td className="py-4 px-4">
-                      <span className="w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center text-orange-600 font-bold text-sm">
+                      <span className="w-8 h-8 bg-orange-500/10 rounded-full flex items-center justify-center text-orange-600 font-bold text-sm">
                         {race.round}
                       </span>
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-2">
                         <span className="font-bold">{race.name}</span>
-                        {race.legendary && <Badge className="bg-amber-50 text-amber-600 text-xs"><Trophy className="w-3 h-3" /></Badge>}
+                        {race.legendary && <Badge className="bg-amber-500/10 text-amber-600 text-xs"><Trophy className="w-3 h-3" /></Badge>}
                       </div>
                       <div className="text-sm text-slate-400">{race.location}</div>
                     </td>
@@ -125,7 +125,7 @@ const MotoGPSchedulePage = () => {
                     </td>
                     <td className="py-4 px-4 text-center">
                       <Link to="/motogp-tickets">
-                        <Button size="sm" className="bg-orange-500 hover:bg-orange-600">
+                        <Button size="sm" className="bg-orange-500/100 hover:bg-orange-600">
                           <Ticket className="w-4 h-4 mr-1" />Buy
                         </Button>
                       </Link>
@@ -139,7 +139,7 @@ const MotoGPSchedulePage = () => {
       </section>
 
       {/* Featured Races */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">🏆 Legendary MotoGP Circuits</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -147,10 +147,10 @@ const MotoGPSchedulePage = () => {
               <Link 
                 key={race.round} 
                 to="/motogp-tickets"
-                className="bg-white border border-slate-200 hover:border-orange-500/50 rounded-xl p-4 transition-all group"
+                className="bg-[#1e1e1e] border border-white/10 hover:border-orange-500/50 rounded-none p-4 transition-all group"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <Badge className="bg-orange-50 text-orange-600 text-xs">Round {race.round}</Badge>
+                  <Badge className="bg-orange-500/10 text-orange-600 text-xs">Round {race.round}</Badge>
                   {race.legendary && <Trophy className="w-4 h-4 text-amber-600" />}
                 </div>
                 <h3 className="font-bold group-hover:text-orange-600 transition-colors">{race.name}</h3>
@@ -178,7 +178,7 @@ const MotoGPSchedulePage = () => {
               { q: "What is the best MotoGP race to attend?", a: "Mugello (Italian GP) and Assen (Dutch GP) are legendary for their atmosphere. They're considered the 'must-see' MotoGP events." },
               { q: "What is the cheapest MotoGP race?", a: "Spanish GP at Jerez and Catalunya GP at Barcelona offer tickets from €69 - best value in MotoGP!" },
             ].map((faq, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
+              <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
                 <p className="text-slate-500">{faq.a}</p>
               </div>
@@ -193,7 +193,7 @@ const MotoGPSchedulePage = () => {
           <h2 className="text-3xl font-bold mb-6">Ready for MotoGP 2026?</h2>
           <p className="text-slate-500 mb-8">Book your tickets now and save up to 30%</p>
           <Link to="/motogp-tickets">
-            <Button size="lg" className="bg-orange-500 hover:bg-orange-600 px-8">
+            <Button size="lg" className="bg-orange-500/100 hover:bg-orange-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />Browse All MotoGP Tickets
             </Button>
           </Link>
@@ -210,7 +210,7 @@ const MotoGPSchedulePage = () => {
               "MotoGP 2026 races", "MotoGP season 2026", "when is Mugello MotoGP",
               "MotoGP tickets 2026", "motorcycle racing schedule", "MotoGP European races"
             ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">{term}</span>
+              <span key={i} className="px-3 py-1 bg-[#15151e] text-slate-500 rounded-full text-sm">{term}</span>
             ))}
           </div>
         </div>

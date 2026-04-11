@@ -45,8 +45,8 @@ const PSGHubPage = () => {
           </h1>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-8">Experience the magic of French football at the Parc des Princes. Champions League, Ligue 1, Le Classique.</p>
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <span className="flex items-center gap-2 text-xs text-blue-300/60 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2"><MapPin className="w-3.5 h-3.5" /> Paris, France</span>
-            <span className="flex items-center gap-2 text-xs text-blue-300/60 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2"><Calendar className="w-3.5 h-3.5" /> 2025-26 Season</span>
+            <span className="flex items-center gap-2 text-xs text-blue-300/60 bg-blue-500/100/10 border border-blue-500/20 rounded-full px-4 py-2"><MapPin className="w-3.5 h-3.5" /> Paris, France</span>
+            <span className="flex items-center gap-2 text-xs text-blue-300/60 bg-blue-500/100/10 border border-blue-500/20 rounded-full px-4 py-2"><Calendar className="w-3.5 h-3.5" /> 2025-26 Season</span>
           </div>
           <Link to="/events?search=PSG"><Button size="lg" className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white font-bold px-8 rounded-full" data-testid="psg-cta"><Ticket className="w-5 h-5 mr-2" /> Get PSG Tickets from &euro;55</Button></Link>
           <div className="flex flex-wrap justify-center gap-4 mt-6 text-[11px] text-white/40">
@@ -61,8 +61,8 @@ const PSGHubPage = () => {
       <section className="py-16"><div className="max-w-5xl mx-auto px-4">
         <h2 className="text-xl font-bold text-white mb-6">Upcoming PSG Matches</h2>
         <div className="space-y-3">{matches.map((m, i) => (
-          <Link key={i} to={m.link} className="flex flex-col sm:flex-row sm:items-center justify-between bg-white/5 border border-white/10 hover:border-blue-500/30 rounded-xl p-5 transition-all" data-testid={`psg-match-${i}`}>
-            <div><div className="flex items-center gap-2 mb-1"><h3 className="font-bold text-white">{m.home} vs {m.away}</h3>{m.hot && <span className="text-[10px] bg-red-500/30 text-red-300 px-2 py-0.5 rounded-full font-bold">HOT</span>}</div><p className="text-sm text-slate-500">{m.label} &bull; {m.venue} &bull; {m.date}</p></div>
+          <Link key={i} to={m.link} className="flex flex-col sm:flex-row sm:items-center justify-between bg-white/5 border border-white/10 hover:border-blue-500/30 rounded-none p-5 transition-all" data-testid={`psg-match-${i}`}>
+            <div><div className="flex items-center gap-2 mb-1"><h3 className="font-bold text-white">{m.home} vs {m.away}</h3>{m.hot && <span className="text-[10px] bg-[#e10600]/100/30 text-red-300 px-2 py-0.5 rounded-full font-bold">HOT</span>}</div><p className="text-sm text-slate-500">{m.label} &bull; {m.venue} &bull; {m.date}</p></div>
             <div className="flex items-center gap-4 mt-3 sm:mt-0"><span className="text-xs text-blue-400/60">{m.tickets} left</span><span className="text-xl font-bold text-white">&euro;{m.price}</span><Button className="bg-blue-600 hover:bg-blue-700 text-white">Buy</Button></div>
           </Link>
         ))}</div>
@@ -73,7 +73,7 @@ const PSGHubPage = () => {
         <h2 className="text-xl font-bold text-white mb-6">FAQ - PSG Tickets</h2>
         <FAQStructuredData faqs={faqs} />
         <div className="space-y-2">{faqs.map((f, i) => (
-          <details key={i} className="group rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+          <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
             <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">{f.question}<ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" /></summary>
             <p className="px-4 pb-4 text-slate-400 text-sm leading-relaxed">{f.answer}</p>
           </details>
@@ -85,7 +85,7 @@ const PSGHubPage = () => {
         <h2 className="text-lg font-bold text-white mb-4">More Teams & Events</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[{ to: "/real-madrid-tickets", label: "Real Madrid", price: "49" }, { to: "/barcelona-tickets", label: "FC Barcelona", price: "45" }, { to: "/bayern-munich-tickets", label: "Bayern Munich", price: "65" }, { to: "/juventus-tickets", label: "Juventus", price: "55" }, { to: "/liverpool-tickets", label: "Liverpool FC", price: "45" }, { to: "/manchester-city-tickets", label: "Man City", price: "55" }, { to: "/champions-league-tickets", label: "Champions League", price: "49" }, { to: "/f1-tickets", label: "F1 Tickets", price: "59" }].map((l, i) => (
-            <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-blue-500/30 transition-all"><p className="font-bold text-white text-sm">{l.label}</p><p className="text-blue-400 text-xs font-bold mt-1">From &euro;{l.price}</p></Link>
+            <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-blue-500/30 transition-all"><p className="font-bold text-white text-sm">{l.label}</p><p className="text-blue-400 text-xs font-bold mt-1">From &euro;{l.price}</p></Link>
           ))}
         </div>
       </div></section>

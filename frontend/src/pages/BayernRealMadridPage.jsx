@@ -23,7 +23,7 @@ const Countdown = ({ target }) => {
   return (
     <div className="flex gap-2 justify-center">
       {[{ v: d, l: "Days" }, { v: h, l: "Hrs" }, { v: m, l: "Min" }, { v: s, l: "Sec" }].map((u, i) => (
-        <div key={i} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-lg px-3 py-2 min-w-[56px] text-center">
+        <div key={i} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-none px-3 py-2 min-w-[56px] text-center">
           <div className="text-xl sm:text-2xl font-black text-white">{String(u.v).padStart(2, '0')}</div>
           <div className="text-[9px] text-blue-300 uppercase tracking-wider font-bold">{u.l}</div>
         </div>
@@ -100,7 +100,7 @@ const BayernRealMadridPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="bayern-real-madrid-page">
+    <div className="min-h-screen bg-[#0e0e14]" data-testid="bayern-real-madrid-page">
       <SEOHead
         title="Bayern vs Real Madrid Tickets 2026 | UCL Best Prices"
         description="Buy Bayern Munich vs Real Madrid Champions League tickets from €199. Allianz Arena, Munich. Verified tickets, instant QR delivery, FanProtect guarantee."
@@ -121,7 +121,7 @@ const BayernRealMadridPage = () => {
         </div>
         <div className="relative max-w-5xl mx-auto px-4 text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0}
-            className="inline-flex items-center gap-2 bg-red-500/20 border border-red-400/30 rounded-full px-4 py-2 mb-5 text-sm text-red-300 backdrop-blur-sm">
+            className="inline-flex items-center gap-2 bg-[#e10600]/100/20 border border-red-400/30 rounded-full px-4 py-2 mb-5 text-sm text-red-300 backdrop-blur-sm">
             <Award className="w-4 h-4" /> UEFA Champions League 2025/26
           </motion.div>
 
@@ -141,11 +141,11 @@ const BayernRealMadridPage = () => {
           </motion.div>
 
           <motion.div variants={fadeUp} custom={4} initial="hidden" animate="visible" className="flex flex-wrap justify-center gap-4 mb-6">
-            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl px-5 py-3 text-center">
+            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-none px-5 py-3 text-center">
               <p className="text-[10px] text-white/50 uppercase tracking-widest">From</p>
               <p className="text-3xl font-extrabold text-amber-400">&euro;{stats.lowest}</p>
             </div>
-            <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-xl px-4 py-3 backdrop-blur-sm">
+            <div className="bg-emerald-500/100/10 border border-emerald-400/30 rounded-none px-4 py-3 backdrop-blur-sm">
               <p className="text-emerald-300 font-bold text-sm flex items-center gap-1"><TrendingDown className="w-4 h-4" /> Save &euro;{Math.round(stats.lowest * 0.35)}</p>
               <p className="text-[11px] text-white/50">vs official sellers</p>
             </div>
@@ -166,14 +166,14 @@ const BayernRealMadridPage = () => {
 
       {/* TICKETS */}
       <section id="tickets" className="max-w-5xl mx-auto px-4 -mt-8 relative z-10 mb-16">
-        <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2"><Ticket className="w-5 h-5 text-red-600" /> Select Your Tickets</h2>
+        <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Ticket className="w-5 h-5 text-red-600" /> Select Your Tickets</h2>
         <div className="space-y-3">
           {tickets.map((t, i) => (
             <motion.div key={i} variants={fadeUp} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              className="bg-[#1e1e1e] rounded-none border border-white/10 p-5 hover:shadow-md transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-bold text-slate-900">{t.section}</h3>
+                  <h3 className="font-bold text-white">{t.section}</h3>
                   {t.tag && <span className="text-[10px] font-bold bg-red-100 text-red-600 px-2 py-0.5 rounded-full">{t.tag}</span>}
                 </div>
                 <div className="flex flex-wrap gap-2 mt-2">
@@ -182,7 +182,7 @@ const BayernRealMadridPage = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <p className="text-2xl font-extrabold text-slate-900">&euro;{t.price}</p>
+                  <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
                   <p className="text-[10px] text-slate-400">per ticket</p>
                 </div>
                 <Link to={`${eventLink}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
@@ -198,8 +198,8 @@ const BayernRealMadridPage = () => {
       <section className="max-w-4xl mx-auto px-4 mb-16 space-y-8">
         {h2content.map((c, i) => (
           <div key={i}>
-            <h2 className="text-xl font-bold text-slate-900 mb-3">{c.title}</h2>
-            <p className="text-slate-600 leading-relaxed">{c.text}</p>
+            <h2 className="text-xl font-bold text-white mb-3">{c.title}</h2>
+            <p className="text-slate-400 leading-relaxed">{c.text}</p>
           </div>
         ))}
       </section>
@@ -207,11 +207,11 @@ const BayernRealMadridPage = () => {
       {/* Live Events */}
       {events.length > 0 && (
         <section className="max-w-5xl mx-auto px-4 mb-16">
-          <h2 className="text-lg font-bold text-slate-900 mb-4">Related Bayern Munich & Real Madrid Events</h2>
+          <h2 className="text-lg font-bold text-white mb-4">Related Bayern Munich & Real Madrid Events</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {events.slice(0, 6).map(e => (
-              <Link key={e.event_id} to={`/event/${e.slug || e.event_id}`} className="bg-white rounded-xl border border-slate-200 p-4 hover:shadow-md transition-all">
-                <h3 className="font-bold text-sm text-slate-900 mb-1">{e.title}</h3>
+              <Link key={e.event_id} to={`/event/${e.slug || e.event_id}`} className="bg-[#1e1e1e] rounded-none border border-white/10 p-4 hover:shadow-md transition-all">
+                <h3 className="font-bold text-sm text-white mb-1">{e.title}</h3>
                 <p className="text-xs text-slate-500 flex items-center gap-1"><MapPin className="w-3 h-3" />{e.venue}, {e.city}</p>
                 <p className="text-xs text-slate-500 flex items-center gap-1 mt-1"><Calendar className="w-3 h-3" />{new Date(e.event_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
                 {e.lowest_price && <p className="text-emerald-600 font-bold text-sm mt-2">From &euro;{Math.round(e.lowest_price)}</p>}
@@ -223,12 +223,12 @@ const BayernRealMadridPage = () => {
 
       {/* FAQ */}
       <section className="max-w-4xl mx-auto px-4 mb-16">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">FAQ &ndash; Bayern Munich vs Real Madrid Tickets</h2>
+        <h2 className="text-xl font-bold text-white mb-4">FAQ &ndash; Bayern Munich vs Real Madrid Tickets</h2>
         <FAQStructuredData faqs={faqs} />
         <div className="space-y-2">
           {faqs.map((f, i) => (
-            <details key={i} className="group rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition" data-testid={`faq-${i}`}>
-              <summary className="p-4 font-bold text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between">
+            <details key={i} className="group rounded-none border border-white/10 bg-[#1e1e1e] hover:border-white/15 transition" data-testid={`faq-${i}`}>
+              <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">
                 {f.question}
                 <ChevronRight className="w-4 h-4 text-slate-400 group-open:rotate-90 transition-transform" />
               </summary>

@@ -23,7 +23,7 @@ const Countdown = ({ target }) => {
   return (
     <div className="flex gap-2 justify-center">
       {[{ v: d, l: "Days" }, { v: h, l: "Hrs" }, { v: m, l: "Min" }, { v: s, l: "Sec" }].map((u, i) => (
-        <div key={i} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-lg px-3 py-2 min-w-[56px] text-center">
+        <div key={i} className="bg-white/10 backdrop-blur-md border border-white/10 rounded-none px-3 py-2 min-w-[56px] text-center">
           <div className="text-xl sm:text-2xl font-black text-white">{String(u.v).padStart(2, '0')}</div>
           <div className="text-[9px] text-pink-300 uppercase tracking-wider font-bold">{u.l}</div>
         </div>
@@ -80,12 +80,12 @@ const TaylorSwiftLondonPage = () => {
   };
 
   const shows = [
-    { date: "Jun 19, 2026", venue: "Wembley Stadium", time: "18:00", status: "Few Left", badge: "bg-red-500" },
-    { date: "Jun 20, 2026", venue: "Wembley Stadium", time: "18:00", status: "Selling Fast", badge: "bg-amber-500" },
-    { date: "Jun 21, 2026", venue: "Wembley Stadium", time: "18:00", status: "Available", badge: "bg-emerald-500" },
-    { date: "Jun 26, 2026", venue: "Wembley Stadium", time: "18:00", status: "Available", badge: "bg-emerald-500" },
-    { date: "Jun 27, 2026", venue: "Wembley Stadium", time: "18:00", status: "Selling Fast", badge: "bg-amber-500" },
-    { date: "Jun 28, 2026", venue: "Wembley Stadium", time: "18:00", status: "New!", badge: "bg-blue-500" },
+    { date: "Jun 19, 2026", venue: "Wembley Stadium", time: "18:00", status: "Few Left", badge: "bg-[#e10600]/100" },
+    { date: "Jun 20, 2026", venue: "Wembley Stadium", time: "18:00", status: "Selling Fast", badge: "bg-amber-500/100" },
+    { date: "Jun 21, 2026", venue: "Wembley Stadium", time: "18:00", status: "Available", badge: "bg-emerald-500/100" },
+    { date: "Jun 26, 2026", venue: "Wembley Stadium", time: "18:00", status: "Available", badge: "bg-emerald-500/100" },
+    { date: "Jun 27, 2026", venue: "Wembley Stadium", time: "18:00", status: "Selling Fast", badge: "bg-amber-500/100" },
+    { date: "Jun 28, 2026", venue: "Wembley Stadium", time: "18:00", status: "New!", badge: "bg-blue-500/100" },
   ];
 
   const packages = [
@@ -143,13 +143,13 @@ const TaylorSwiftLondonPage = () => {
           <motion.p variants={fadeUp} custom={2} initial="hidden" animate="visible"
             className="text-base sm:text-lg text-slate-400 mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</motion.p>
           <div className="flex flex-wrap justify-center gap-3 mb-4">
-            <span className="inline-flex items-center gap-1.5 bg-red-500/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
+            <span className="inline-flex items-center gap-1.5 bg-[#e10600]/100/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
               <AlertCircle className="w-3.5 h-3.5" /> Only {stats.available || 156} Wembley tickets left
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/100/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
               <Users className="w-3.5 h-3.5" /> 1,247 people viewing now
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/100/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
               <TrendingUp className="w-3.5 h-3.5" /> Prices up 30% this month
             </span>
           </div>
@@ -159,7 +159,7 @@ const TaylorSwiftLondonPage = () => {
           </motion.div>
 
           <motion.div variants={fadeUp} custom={4} initial="hidden" animate="visible" className="flex flex-wrap justify-center gap-4 mb-6">
-            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl px-5 py-3 text-center">
+            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-none px-5 py-3 text-center">
               <p className="text-[10px] text-white/50 uppercase tracking-widest">From</p>
               <p className="text-3xl font-extrabold text-pink-400">&euro;{stats.lowest}</p>
             </div>
@@ -185,7 +185,7 @@ const TaylorSwiftLondonPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {shows.map((s, i) => (
             <motion.div key={i} variants={fadeUp} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all">
+              className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-none p-4 hover:bg-white/10 transition-all">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white font-bold">{s.date}</span>
                 <span className={`text-[10px] font-bold text-white px-2 py-0.5 rounded-full ${s.badge}`}>{s.status}</span>
@@ -203,7 +203,7 @@ const TaylorSwiftLondonPage = () => {
         <div className="space-y-3">
           {packages.map((t, i) => (
             <motion.div key={i} variants={fadeUp} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/10 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-none p-5 hover:bg-white/10 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <h3 className="font-bold text-white">{t.name}</h3>
@@ -251,7 +251,7 @@ const TaylorSwiftLondonPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {events.map(e => (
               <Link key={e.event_id} to={`/event/${e.slug || e.event_id}`}
-                className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all">
+                className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-none p-4 hover:bg-white/10 transition-all">
                 <h3 className="font-bold text-sm text-white mb-1">{e.title}</h3>
                 <p className="text-xs text-slate-400 flex items-center gap-1"><MapPin className="w-3 h-3" />{e.venue}, {e.city}</p>
                 <p className="text-xs text-slate-400 flex items-center gap-1 mt-1"><Calendar className="w-3 h-3" />{new Date(e.event_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
@@ -268,7 +268,7 @@ const TaylorSwiftLondonPage = () => {
         <FAQStructuredData faqs={faqs} />
         <div className="space-y-2">
           {faqs.map((f, i) => (
-            <details key={i} className="group rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+            <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
               <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">
                 {f.question}
                 <ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" />

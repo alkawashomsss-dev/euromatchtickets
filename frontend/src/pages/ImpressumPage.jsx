@@ -3,16 +3,16 @@ import { Building2, Mail, MapPin, FileText, Scale } from 'lucide-react';
 
 const ImpressumPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <Helmet>
         <title>Impressum | EuroMatchTickets</title>
         <meta name="description" content="Impressum und rechtliche Informationen von EuroMatchTickets. Angaben gemäß § 5 TMG." />
       </Helmet>
 
       {/* Header */}
-      <section className="py-16 bg-slate-50 border-b border-slate-100">
+      <section className="py-16 bg-[#15151e] border-b border-white/5">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <div className="w-16 h-16 mx-auto bg-violet-50 rounded-2xl flex items-center justify-center mb-6">
+          <div className="w-16 h-16 mx-auto bg-violet-50 rounded-none flex items-center justify-center mb-6">
             <Scale className="w-8 h-8 text-violet-600" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Impressum</h1>
@@ -25,13 +25,13 @@ const ImpressumPage = () => {
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         <div className="space-y-8">
           {/* Company Info */}
-          <section className="bg-white border border-slate-200 rounded-2xl p-8">
+          <section className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <Building2 className="w-6 h-6 text-violet-600" />
               Information according to §5 TMG
             </h2>
             
-            <div className="space-y-4 text-slate-600">
+            <div className="space-y-4 text-slate-400">
               <div>
                 <h3 className="font-semibold text-white text-lg">Alex Heimbeck</h3>
               </div>
@@ -48,7 +48,7 @@ const ImpressumPage = () => {
           </section>
 
           {/* Contact */}
-          <section className="bg-white border border-slate-200 rounded-2xl p-8">
+          <section className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <Mail className="w-6 h-6 text-emerald-600" />
               Contact
@@ -57,7 +57,7 @@ const ImpressumPage = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-emerald-600" />
-                <a href="mailto:support@euromatchtickets.com" className="text-slate-600 hover:text-white">
+                <a href="mailto:support@euromatchtickets.com" className="text-slate-400 hover:text-white">
                   support@euromatchtickets.com
                 </a>
               </div>
@@ -65,12 +65,12 @@ const ImpressumPage = () => {
           </section>
 
           {/* Responsible for Content */}
-          <section className="bg-white border border-slate-200 rounded-2xl p-8">
+          <section className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
             <h2 className="text-2xl font-bold mb-6">
               Responsible for content according to §55 Abs. 2 RStV
             </h2>
             
-            <div className="text-slate-600">
+            <div className="text-slate-400">
               <p className="font-semibold text-white">Alex Heimbeck</p>
               <p>Erzgießereistraße 15</p>
               <p>80335 München</p>
@@ -79,7 +79,7 @@ const ImpressumPage = () => {
           </section>
 
           {/* EU Dispute Resolution */}
-          <section className="bg-white border border-slate-200 rounded-2xl p-8">
+          <section className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
             <h2 className="text-2xl font-bold mb-6">
               EU Dispute Resolution
             </h2>
@@ -103,7 +103,7 @@ const ImpressumPage = () => {
           </section>
 
           {/* Dispute Resolution */}
-          <section className="bg-white border border-slate-200 rounded-2xl p-8">
+          <section className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
             <h2 className="text-2xl font-bold mb-6">
               Consumer Dispute Resolution
             </h2>
@@ -117,7 +117,7 @@ const ImpressumPage = () => {
           </section>
 
           {/* Liability */}
-          <section className="bg-white border border-slate-200 rounded-2xl p-8">
+          <section className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
             <h2 className="text-2xl font-bold mb-6">
               Liability for Content
             </h2>
@@ -140,7 +140,7 @@ const ImpressumPage = () => {
           </section>
 
           {/* Disclaimer */}
-          <section className="bg-white border border-slate-200 rounded-2xl p-8">
+          <section className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
             <h2 className="text-2xl font-bold mb-6">
               Disclaimer
             </h2>
@@ -155,7 +155,7 @@ const ImpressumPage = () => {
           </section>
 
           {/* Copyright */}
-          <section className="bg-white border border-slate-200 rounded-2xl p-8">
+          <section className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
             <h2 className="text-2xl font-bold mb-6">
               Copyright
             </h2>

@@ -35,7 +35,7 @@ export const PriceDropAlert = ({ eventSlug, eventName, currency = "€" }) => {
 
   if (status === "success" || status === "exists") {
     return (
-      <div className="flex items-center gap-2 bg-emerald-900/40 border border-emerald-500/20 rounded-lg px-4 py-3 mt-3" data-testid="price-alert-success">
+      <div className="flex items-center gap-2 bg-emerald-900/40 border border-emerald-500/20 rounded-none px-4 py-3 mt-3" data-testid="price-alert-success">
         <Bell className="w-4 h-4 text-emerald-400 flex-shrink-0" />
         <p className="text-emerald-300 text-sm">{msg}</p>
       </div>
@@ -54,14 +54,14 @@ export const PriceDropAlert = ({ eventSlug, eventName, currency = "€" }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
-          className="flex-1 bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm placeholder:text-slate-500 focus:border-emerald-500 focus:outline-none"
+          className="flex-1 bg-slate-800 border border-slate-600 rounded-none px-3 py-2 text-white text-sm placeholder:text-slate-500 focus:border-emerald-500 focus:outline-none"
           data-testid="price-alert-email"
           required
         />
         <Button
           type="submit"
           disabled={status === "loading"}
-          className="bg-amber-600 hover:bg-amber-500 text-white px-4 py-2 text-sm rounded-lg whitespace-nowrap"
+          className="bg-amber-600 hover:bg-amber-500/100 text-white px-4 py-2 text-sm rounded-none whitespace-nowrap"
           data-testid="price-alert-submit"
         >
           <Bell className="w-3.5 h-3.5 mr-1" />
@@ -128,7 +128,7 @@ export const ExitIntentPopup = ({ eventName, eventSlug, currency = "€", priceL
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm" data-testid="exit-intent-popup">
-      <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 max-w-md w-full mx-4 shadow-2xl relative">
+      <div className="bg-slate-900 border border-slate-700 rounded-none p-6 max-w-md w-full mx-4 shadow-2xl relative">
         {/* Close */}
         <button onClick={handleClose} className="absolute top-3 right-3 text-slate-500 hover:text-white" data-testid="exit-popup-close">
           <X className="w-5 h-5" />
@@ -141,7 +141,7 @@ export const ExitIntentPopup = ({ eventName, eventSlug, currency = "€", priceL
             </div>
             <h3 className="text-xl font-bold text-white mb-2">You're all set!</h3>
             <p className="text-slate-400 text-sm">We'll email you when prices drop for {eventName}.</p>
-            <Button onClick={handleClose} className="mt-4 bg-emerald-600 hover:bg-emerald-500 text-white">
+            <Button onClick={handleClose} className="mt-4 bg-emerald-600 hover:bg-emerald-500/100 text-white">
               Continue Browsing
             </Button>
           </div>
@@ -159,8 +159,8 @@ export const ExitIntentPopup = ({ eventName, eventSlug, currency = "€", priceL
             </div>
 
             {/* Event preview */}
-            <div className="bg-slate-800 rounded-lg p-3 flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center flex-shrink-0">
+            <div className="bg-slate-800 rounded-none p-3 flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-emerald-900/50 rounded-none flex items-center justify-center flex-shrink-0">
                 <Ticket className="w-5 h-5 text-emerald-400" />
               </div>
               <div className="min-w-0">
@@ -176,7 +176,7 @@ export const ExitIntentPopup = ({ eventName, eventSlug, currency = "€", priceL
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email to get alerts"
-                className="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white text-sm placeholder:text-slate-500 focus:border-emerald-500 focus:outline-none mb-3"
+                className="w-full bg-slate-800 border border-slate-600 rounded-none px-4 py-3 text-white text-sm placeholder:text-slate-500 focus:border-emerald-500 focus:outline-none mb-3"
                 data-testid="exit-popup-email"
                 required
                 autoFocus
@@ -184,7 +184,7 @@ export const ExitIntentPopup = ({ eventName, eventSlug, currency = "€", priceL
               <Button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 text-sm font-semibold rounded-lg"
+                className="w-full bg-emerald-600 hover:bg-emerald-500/100 text-white py-3 text-sm font-semibold rounded-none"
                 data-testid="exit-popup-submit"
               >
                 <Bell className="w-4 h-4 mr-2" />

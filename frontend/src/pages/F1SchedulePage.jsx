@@ -52,7 +52,7 @@ const F1SchedulePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="F1 Schedule 2026 | F1 Calendar 2026 & Tickets"
         description="F1 2026 calendar with all 24 Grand Prix dates. Formula 1 schedule 2026: Monaco, Silverstone, Bahrain, Abu Dhabi. Buy F1 tickets from €120."
@@ -63,7 +63,7 @@ const F1SchedulePage = () => {
       <section className="relative py-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
+          <Badge className="bg-[#e10600]/10 text-red-600 border-red-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® World Championship
           </Badge>
           
@@ -78,13 +78,13 @@ const F1SchedulePage = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Flag className="w-5 h-5 text-red-600" /><span>24 Races</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Calendar className="w-5 h-5 text-red-600" /><span>March - December 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <MapPin className="w-5 h-5 text-red-600" /><span>21 Countries</span>
             </div>
           </div>
@@ -92,7 +92,7 @@ const F1SchedulePage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
@@ -110,7 +110,7 @@ const F1SchedulePage = () => {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-white border-b border-slate-200">
+                <tr className="bg-[#1e1e1e] border-b border-white/10">
                   <th className="py-4 px-4 text-left">Round</th>
                   <th className="py-4 px-4 text-left">Race</th>
                   <th className="py-4 px-4 text-left">Location</th>
@@ -121,16 +121,16 @@ const F1SchedulePage = () => {
               </thead>
               <tbody>
                 {races.map((race) => (
-                  <tr key={race.round} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                  <tr key={race.round} className="border-b border-white/10 hover:bg-[#15151e] transition-colors">
                     <td className="py-4 px-4">
-                      <span className="w-8 h-8 bg-red-50 rounded-full flex items-center justify-center text-red-600 font-bold text-sm">
+                      <span className="w-8 h-8 bg-[#e10600]/10 rounded-full flex items-center justify-center text-red-600 font-bold text-sm">
                         {race.round}
                       </span>
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-2">
                         <span className="font-bold">{race.name}</span>
-                        {race.legendary && <Badge className="bg-amber-50 text-amber-600 text-xs"><Trophy className="w-3 h-3" /></Badge>}
+                        {race.legendary && <Badge className="bg-amber-500/10 text-amber-600 text-xs"><Trophy className="w-3 h-3" /></Badge>}
                         {race.night && <Badge className="bg-violet-50 text-violet-600 text-xs"><Moon className="w-3 h-3" /></Badge>}
                       </div>
                       <div className="text-sm text-slate-400">{race.circuit}</div>
@@ -142,7 +142,7 @@ const F1SchedulePage = () => {
                     </td>
                     <td className="py-4 px-4 text-center">
                       <Link to={race.href}>
-                        <Button size="sm" className="bg-red-500 hover:bg-red-600">
+                        <Button size="sm" className="bg-[#e10600]/100 hover:bg-red-600">
                           <Ticket className="w-4 h-4 mr-1" />Buy
                         </Button>
                       </Link>
@@ -156,7 +156,7 @@ const F1SchedulePage = () => {
       </section>
 
       {/* Featured Races */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">🔥 Most Popular F1 Races 2026</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -164,10 +164,10 @@ const F1SchedulePage = () => {
               <Link 
                 key={race.round} 
                 to={race.href}
-                className="bg-white border border-slate-200 hover:border-red-500/50 rounded-xl p-4 transition-all group"
+                className="bg-[#1e1e1e] border border-white/10 hover:border-red-500/50 rounded-none p-4 transition-all group"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <Badge className="bg-red-50 text-red-600 text-xs">Round {race.round}</Badge>
+                  <Badge className="bg-[#e10600]/10 text-red-600 text-xs">Round {race.round}</Badge>
                   {race.night && <Moon className="w-4 h-4 text-violet-600" />}
                 </div>
                 <h3 className="font-bold group-hover:text-red-600 transition-colors">{race.name}</h3>
@@ -194,7 +194,7 @@ const F1SchedulePage = () => {
               <Link 
                 key={race.round} 
                 to={race.href}
-                className="flex items-center gap-4 bg-gradient-to-r from-purple-900/20 to-slate-900/50 border border-violet-200 hover:border-purple-500/50 rounded-xl p-4 transition-all"
+                className="flex items-center gap-4 bg-gradient-to-r from-purple-900/20 to-slate-900/50 border border-violet-200 hover:border-purple-500/50 rounded-none p-4 transition-all"
               >
                 <div className="w-12 h-12 bg-violet-50 rounded-full flex items-center justify-center">
                   <Moon className="w-6 h-6 text-violet-600" />
@@ -211,7 +211,7 @@ const F1SchedulePage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8">F1 2026 Schedule FAQ</h2>
           <div className="space-y-4">
@@ -222,7 +222,7 @@ const F1SchedulePage = () => {
               { q: "Which F1 races are night races in 2026?", a: "The 2026 night races are: Bahrain GP, Saudi Arabian GP, Singapore GP, Las Vegas GP, Qatar GP, and Abu Dhabi GP (twilight)." },
               { q: "What is the cheapest F1 race to attend in 2026?", a: "The Hungarian GP and Italian GP (Monza) offer the best value with General Admission from €99." },
             ].map((faq, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
+              <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
                 <p className="text-slate-500">{faq.a}</p>
               </div>
@@ -237,7 +237,7 @@ const F1SchedulePage = () => {
           <h2 className="text-3xl font-bold mb-6">Ready for F1 2026?</h2>
           <p className="text-slate-500 mb-8">Book your tickets now and save up to 50% vs official prices</p>
           <Link to="/f1-tickets">
-            <Button size="lg" className="bg-red-500 hover:bg-red-600 px-8">
+            <Button size="lg" className="bg-[#e10600]/100 hover:bg-red-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />Browse All F1 Tickets
             </Button>
           </Link>
@@ -255,7 +255,7 @@ const F1SchedulePage = () => {
               "when is Monaco GP 2026", "F1 night races 2026", "F1 European races 2026",
               "F1 tickets 2026", "Formula 1 schedule", "F1 race calendar"
             ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">{term}</span>
+              <span key={i} className="px-3 py-1 bg-[#15151e] text-slate-500 rounded-full text-sm">{term}</span>
             ))}
           </div>
         </div>

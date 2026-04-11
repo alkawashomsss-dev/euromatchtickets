@@ -3,16 +3,16 @@ import { Shield, Lock, Eye, Database, Globe, Mail, Cookie, Server, UserCheck } f
 
 const PrivacyPolicyPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <Helmet>
         <title>Datenschutzerklärung / Privacy Policy | EuroMatchTickets</title>
         <meta name="description" content="Datenschutzerklärung von EuroMatchTickets. Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO/GDPR." />
       </Helmet>
 
       {/* Header */}
-      <section className="py-12 bg-slate-50 border-b border-slate-100">
+      <section className="py-12 bg-[#15151e] border-b border-white/5">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <div className="w-16 h-16 mx-auto bg-emerald-50 rounded-2xl flex items-center justify-center mb-6">
+          <div className="w-16 h-16 mx-auto bg-emerald-500/10 rounded-none flex items-center justify-center mb-6">
             <Shield className="w-8 h-8 text-emerald-600" />
           </div>
           <h1 className="text-4xl font-bold mb-4">Datenschutzerklärung</h1>
@@ -23,8 +23,8 @@ const PrivacyPolicyPage = () => {
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         {/* GDPR Compliance Badge */}
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-8 flex items-center gap-4">
-          <div className="w-16 h-16 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0">
+        <div className="bg-emerald-500/10 border border-emerald-200 rounded-none p-6 mb-8 flex items-center gap-4">
+          <div className="w-16 h-16 bg-emerald-500/10 rounded-none flex items-center justify-center flex-shrink-0">
             <span className="text-3xl">🇪🇺</span>
           </div>
           <div>
@@ -38,7 +38,7 @@ const PrivacyPolicyPage = () => {
 
         <div className="space-y-8">
           {/* 1. Verantwortlicher */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <UserCheck className="w-6 h-6 text-violet-600" />
               1. Verantwortlicher / Data Controller
@@ -47,7 +47,7 @@ const PrivacyPolicyPage = () => {
               <p className="mb-4">
                 Verantwortlicher für die Datenverarbeitung auf dieser Website ist:
               </p>
-              <div className="bg-slate-50 rounded-lg p-4">
+              <div className="bg-[#15151e] rounded-none p-4">
                 <p><strong className="text-white">Alex Heimbeck</strong></p>
                 <p>Erzgießereistraße 15</p>
                 <p>80335 München</p>
@@ -60,7 +60,7 @@ const PrivacyPolicyPage = () => {
           </section>
 
           {/* 2. Erhebung und Speicherung */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <Database className="w-6 h-6 text-violet-600" />
               2. Erhebung und Speicherung personenbezogener Daten
@@ -98,7 +98,7 @@ const PrivacyPolicyPage = () => {
           </section>
 
           {/* 3. Cookies */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <Cookie className="w-6 h-6 text-violet-600" />
               3. Cookies und Tracking
@@ -110,22 +110,22 @@ const PrivacyPolicyPage = () => {
               </p>
               
               <div className="grid md:grid-cols-2 gap-4 mt-4">
-                <div className="bg-slate-50 rounded-lg p-4">
+                <div className="bg-[#15151e] rounded-none p-4">
                   <h4 className="font-semibold text-emerald-600 mb-2">Notwendige Cookies</h4>
                   <p className="text-sm">Erforderlich für den Betrieb der Website (Session, Warenkorb, Login)</p>
                   <p className="text-xs text-slate-400 mt-2">Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO</p>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-4">
+                <div className="bg-[#15151e] rounded-none p-4">
                   <h4 className="font-semibold text-blue-600 mb-2">Analyse-Cookies</h4>
                   <p className="text-sm">Google Analytics zur Verbesserung unserer Website (nur mit Einwilligung)</p>
                   <p className="text-xs text-slate-400 mt-2">Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO</p>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-4">
+                <div className="bg-[#15151e] rounded-none p-4">
                   <h4 className="font-semibold text-pink-600 mb-2">Marketing-Cookies</h4>
                   <p className="text-sm">Facebook Pixel für personalisierte Werbung (nur mit Einwilligung)</p>
                   <p className="text-xs text-slate-400 mt-2">Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO</p>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-4">
+                <div className="bg-[#15151e] rounded-none p-4">
                   <h4 className="font-semibold text-orange-600 mb-2">Präferenz-Cookies</h4>
                   <p className="text-sm">Speichern Ihre Einstellungen (Sprache, Region)</p>
                   <p className="text-xs text-slate-400 mt-2">Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO</p>
@@ -140,7 +140,7 @@ const PrivacyPolicyPage = () => {
           </section>
 
           {/* 4. Google Analytics */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <Globe className="w-6 h-6 text-violet-600" />
               4. Google Analytics
@@ -177,7 +177,7 @@ const PrivacyPolicyPage = () => {
           </section>
 
           {/* 5. Facebook Pixel */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <Eye className="w-6 h-6 text-violet-600" />
               5. Facebook Pixel
@@ -205,7 +205,7 @@ const PrivacyPolicyPage = () => {
           </section>
 
           {/* 6. Stripe Payment */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <Lock className="w-6 h-6 text-violet-600" />
               6. Zahlungsabwicklung (Stripe)
@@ -230,7 +230,7 @@ const PrivacyPolicyPage = () => {
           </section>
 
           {/* 7. Ihre Rechte */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <Shield className="w-6 h-6 text-emerald-600" />
               7. Ihre Rechte (DSGVO Art. 15-21)
@@ -239,27 +239,27 @@ const PrivacyPolicyPage = () => {
               <p>Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
               
               <div className="grid md:grid-cols-2 gap-3">
-                <div className="bg-slate-50 rounded-lg p-3">
+                <div className="bg-[#15151e] rounded-none p-3">
                   <h4 className="font-semibold text-white text-sm">Auskunftsrecht (Art. 15)</h4>
                   <p className="text-xs">Recht auf Auskunft über Ihre gespeicherten Daten</p>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-3">
+                <div className="bg-[#15151e] rounded-none p-3">
                   <h4 className="font-semibold text-white text-sm">Berichtigung (Art. 16)</h4>
                   <p className="text-xs">Recht auf Korrektur unrichtiger Daten</p>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-3">
+                <div className="bg-[#15151e] rounded-none p-3">
                   <h4 className="font-semibold text-white text-sm">Löschung (Art. 17)</h4>
                   <p className="text-xs">Recht auf Löschung ("Recht auf Vergessenwerden")</p>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-3">
+                <div className="bg-[#15151e] rounded-none p-3">
                   <h4 className="font-semibold text-white text-sm">Einschränkung (Art. 18)</h4>
                   <p className="text-xs">Recht auf Einschränkung der Verarbeitung</p>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-3">
+                <div className="bg-[#15151e] rounded-none p-3">
                   <h4 className="font-semibold text-white text-sm">Datenübertragbarkeit (Art. 20)</h4>
                   <p className="text-xs">Recht auf Erhalt Ihrer Daten in portablem Format</p>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-3">
+                <div className="bg-[#15151e] rounded-none p-3">
                   <h4 className="font-semibold text-white text-sm">Widerspruch (Art. 21)</h4>
                   <p className="text-xs">Recht auf Widerspruch gegen bestimmte Verarbeitungen</p>
                 </div>
@@ -269,7 +269,7 @@ const PrivacyPolicyPage = () => {
                 <strong className="text-white">Beschwerderecht:</strong> Sie haben das Recht, sich bei einer 
                 Datenschutz-Aufsichtsbehörde zu beschweren. Zuständig ist:
               </p>
-              <div className="bg-slate-50 rounded-lg p-4 text-sm">
+              <div className="bg-[#15151e] rounded-none p-4 text-sm">
                 <p>Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)</p>
                 <p>Promenade 18, 91522 Ansbach</p>
                 <p>poststelle@lda.bayern.de</p>
@@ -278,7 +278,7 @@ const PrivacyPolicyPage = () => {
           </section>
 
           {/* 8. Datensicherheit */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <Server className="w-6 h-6 text-violet-600" />
               8. Datensicherheit
@@ -297,7 +297,7 @@ const PrivacyPolicyPage = () => {
           </section>
 
           {/* 9. Speicherdauer */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4">9. Speicherdauer</h2>
             <div className="text-slate-500 leading-relaxed space-y-4">
               <p>
@@ -314,7 +314,7 @@ const PrivacyPolicyPage = () => {
           </section>
 
           {/* 10. Kontakt */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
               <Mail className="w-6 h-6 text-violet-600" />
               10. Kontakt für Datenschutzanfragen
@@ -323,7 +323,7 @@ const PrivacyPolicyPage = () => {
               <p className="mb-4">
                 Für Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte kontaktieren Sie uns:
               </p>
-              <div className="bg-slate-50 rounded-lg p-4">
+              <div className="bg-[#15151e] rounded-none p-4">
                 <p><strong className="text-white">E-Mail:</strong> <a href="mailto:support@euromatchtickets.com" className="text-violet-600 hover:underline">support@euromatchtickets.com</a></p>
                 <p><strong className="text-white">Betreff:</strong> "Datenschutzanfrage"</p>
                 <p className="mt-2 text-sm">Wir werden Ihre Anfrage innerhalb von 30 Tagen bearbeiten.</p>
@@ -332,7 +332,7 @@ const PrivacyPolicyPage = () => {
           </section>
 
           {/* 11. Änderungen */}
-          <section className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <section className="bg-[#15151e] border border-white/10 rounded-none p-6">
             <h2 className="text-2xl font-bold mb-4">11. Änderungen dieser Datenschutzerklärung</h2>
             <div className="text-slate-500 leading-relaxed">
               <p>

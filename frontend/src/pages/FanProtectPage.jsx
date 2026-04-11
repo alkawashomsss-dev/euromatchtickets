@@ -99,7 +99,7 @@ const FanProtectPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="FanProtect Guarantee | 100% Ticket Protection"
         description="Our FanProtect Guarantee ensures 100% authentic tickets, full refunds for cancelled events, on-time delivery, and 24/7 support. Buy with confidence."
@@ -116,7 +116,7 @@ const FanProtectPage = () => {
               <Shield className="w-12 h-12 text-white" />
             </div>
             
-            <Badge className="mb-6 bg-emerald-50 text-emerald-600 border-emerald-200 text-sm px-4 py-2">
+            <Badge className="mb-6 bg-emerald-500/10 text-emerald-600 border-emerald-200 text-sm px-4 py-2">
               <Lock className="w-4 h-4 mr-2" />
               Industry-Leading Protection
             </Badge>
@@ -146,7 +146,7 @@ const FanProtectPage = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-12 bg-white border-y border-slate-100">
+      <section className="py-12 bg-[#1e1e1e] border-y border-white/5">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, idx) => (
@@ -171,9 +171,9 @@ const FanProtectPage = () => {
             {guarantees.map((item, idx) => (
               <div 
                 key={idx}
-                className={`bg-white border border-slate-200 rounded-2xl p-8 hover:border-${item.color}-500/50 transition-all group`}
+                className={`bg-[#1e1e1e] border border-white/10 rounded-none p-8 hover:border-${item.color}-500/50 transition-all group`}
               >
-                <div className={`w-14 h-14 bg-${item.color}-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                <div className={`w-14 h-14 bg-${item.color}-500/20 rounded-none flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                   <item.icon className={`w-7 h-7 text-${item.color}-400`} />
                 </div>
                 <h3 className="text-xl font-bold mb-3">{item.title}</h3>
@@ -185,7 +185,7 @@ const FanProtectPage = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-3xl font-bold text-center mb-4">How We Protect You</h2>
           <p className="text-slate-500 text-center mb-12 max-w-2xl mx-auto">
@@ -195,7 +195,7 @@ const FanProtectPage = () => {
           <div className="grid md:grid-cols-4 gap-6">
             {process.map((item, idx) => (
               <div key={idx} className="relative">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 text-center h-full">
+                <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 text-center h-full">
                   <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                     {item.step}
                   </div>
@@ -214,7 +214,7 @@ const FanProtectPage = () => {
       {/* Trust Badges */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <div className="bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-emerald-500/20 rounded-2xl p-8 md:p-12 text-center">
+          <div className="bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-emerald-500/20 rounded-none p-8 md:p-12 text-center">
             <FileCheck className="w-16 h-16 mx-auto mb-6 text-emerald-600" />
             <h2 className="text-2xl font-bold mb-4">Verified & Trusted</h2>
             <p className="text-slate-500 mb-8 max-w-xl mx-auto">
@@ -223,19 +223,19 @@ const FanProtectPage = () => {
             </p>
             
             <div className="flex flex-wrap justify-center gap-6">
-              <div className="flex items-center gap-2 bg-slate-50 rounded-full px-4 py-2">
+              <div className="flex items-center gap-2 bg-[#15151e] rounded-full px-4 py-2">
                 <span className="text-2xl">🛡️</span>
                 <span className="text-sm">STAR Member</span>
               </div>
-              <div className="flex items-center gap-2 bg-slate-50 rounded-full px-4 py-2">
+              <div className="flex items-center gap-2 bg-[#15151e] rounded-full px-4 py-2">
                 <span className="text-2xl">🔒</span>
                 <span className="text-sm">PCI Compliant</span>
               </div>
-              <div className="flex items-center gap-2 bg-slate-50 rounded-full px-4 py-2">
+              <div className="flex items-center gap-2 bg-[#15151e] rounded-full px-4 py-2">
                 <span className="text-2xl">📋</span>
                 <span className="text-sm">GDPR Ready</span>
               </div>
-              <div className="flex items-center gap-2 bg-slate-50 rounded-full px-4 py-2">
+              <div className="flex items-center gap-2 bg-[#15151e] rounded-full px-4 py-2">
                 <span className="text-2xl">✅</span>
                 <span className="text-sm">UK Registered</span>
               </div>
@@ -252,7 +252,7 @@ const FanProtectPage = () => {
             Every ticket is backed by our FanProtect Guarantee. Shop worry-free today.
           </p>
           <Link to="/events">
-            <Button className="bg-white text-emerald-700 hover:bg-zinc-100 px-10 py-6 text-lg font-semibold">
+            <Button className="bg-[#1e1e1e] text-emerald-700 hover:bg-zinc-100 px-10 py-6 text-lg font-semibold">
               Browse Protected Events
             </Button>
           </Link>

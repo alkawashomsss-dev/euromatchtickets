@@ -30,7 +30,7 @@ const SpanishLandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white" data-testid="spanish-landing-page">
+    <div className="min-h-screen bg-[#1e1e1e]" data-testid="spanish-landing-page">
       <SEOHead
         title="Comprar Entradas - Champions League, F1, Conciertos"
         description="Compra entradas para Champions League, F1, La Liga, conciertos y más. Los precios más bajos garantizados. Entrega inmediata por QR. Garantía FanProtect."
@@ -41,12 +41,12 @@ const SpanishLandingPage = () => {
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-slate-950 via-red-950 to-slate-950 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-red-500 rounded-full blur-3xl anim-pulse-slow" />
+          <div className="absolute top-10 left-10 w-72 h-72 bg-[#e10600]/100 rounded-full blur-3xl anim-pulse-slow" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-yellow-500 rounded-full blur-3xl anim-pulse-slow" style={{animationDelay: '2s'}} />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-24">
           <div className="inline-flex items-center gap-2 bg-red-600/20 border border-red-500/30 rounded-full px-4 py-1.5 text-sm mb-6 anim-fade-in">
-            <span className="w-2 h-2 bg-red-500 rounded-full anim-blink" />
+            <span className="w-2 h-2 bg-[#e10600]/100 rounded-full anim-blink" />
             <span>{viewersNow} personas comprando ahora</span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4 leading-tight anim-slide-up">
@@ -57,10 +57,10 @@ const SpanishLandingPage = () => {
             Champions League, F1, La Liga, Premier League, conciertos exclusivos. Precios imbatibles con entrega inmediata y garantía total.
           </p>
           <div className="flex flex-wrap gap-4 anim-slide-up" style={{animationDelay: '0.3s'}}>
-            <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-6 text-lg font-bold rounded-xl" onClick={() => navigate("/events")}>
+            <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-6 text-lg font-bold rounded-none" onClick={() => navigate("/events")}>
               Ver Todas las Entradas <ChevronRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-xl" onClick={() => navigate("/world-cup-2026")}>
+            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-none" onClick={() => navigate("/world-cup-2026")}>
               Copa del Mundo 2026
             </Button>
           </div>
@@ -76,9 +76,9 @@ const SpanishLandingPage = () => {
       <section className="max-w-7xl mx-auto px-4 py-14">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {ventajas.map((v, i) => (
-            <div key={i} className="text-center p-5 rounded-2xl border border-slate-100 hover:border-red-200 hover:shadow-lg transition-all anim-fade-in-up" style={{animationDelay: `${i * 0.1}s`}}>
+            <div key={i} className="text-center p-5 rounded-none border border-white/5 hover:border-red-200 hover:shadow-lg transition-all anim-fade-in-up" style={{animationDelay: `${i * 0.1}s`}}>
               <v.icono className="w-8 h-8 text-red-600 mx-auto mb-3" />
-              <h3 className="font-bold text-slate-900 mb-1">{v.titulo}</h3>
+              <h3 className="font-bold text-white mb-1">{v.titulo}</h3>
               <p className="text-sm text-slate-500">{v.desc}</p>
             </div>
           ))}
@@ -87,17 +87,17 @@ const SpanishLandingPage = () => {
 
       {/* Eventos Populares */}
       <section className="max-w-7xl mx-auto px-4 py-12">
-        <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-2">Eventos Más Populares</h2>
+        <h2 className="text-2xl md:text-3xl font-black text-white mb-2">Eventos Más Populares</h2>
         <p className="text-slate-500 mb-8">Las entradas más buscadas de Europa - precios desde solo €38</p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {eventos.map((e, i) => (
-            <Link key={i} to={e.enlace} className="group relative bg-white rounded-2xl border border-slate-100 hover:border-red-300 hover:shadow-xl transition-all overflow-hidden anim-fade-in-up" style={{animationDelay: `${i * 0.08}s`}}>
+            <Link key={i} to={e.enlace} className="group relative bg-[#1e1e1e] rounded-none border border-white/5 hover:border-red-300 hover:shadow-xl transition-all overflow-hidden anim-fade-in-up" style={{animationDelay: `${i * 0.08}s`}}>
               <div className="p-5">
                 <div className="flex items-start justify-between mb-3">
-                  <span className="inline-flex items-center gap-1 text-[10px] font-bold bg-red-50 text-red-600 px-2 py-0.5 rounded-full">{e.tag}</span>
+                  <span className="inline-flex items-center gap-1 text-[10px] font-bold bg-[#e10600]/10 text-red-600 px-2 py-0.5 rounded-full">{e.tag}</span>
                   <e.icono className="w-5 h-5 text-slate-300 group-hover:text-red-500 transition-colors" />
                 </div>
-                <h3 className="font-bold text-slate-900 text-lg mb-2 group-hover:text-red-600 transition-colors">{e.titulo}</h3>
+                <h3 className="font-bold text-white text-lg mb-2 group-hover:text-red-600 transition-colors">{e.titulo}</h3>
                 <div className="space-y-1 text-sm text-slate-500">
                   <p className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />{e.fecha}</p>
                   <p className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{e.lugar}</p>
@@ -105,7 +105,7 @@ const SpanishLandingPage = () => {
                 <div className="mt-4 flex items-center justify-between">
                   <div>
                     <span className="text-xs text-slate-400">Desde</span>
-                    <span className="text-2xl font-black text-slate-900 ml-1">€{e.precio}</span>
+                    <span className="text-2xl font-black text-white ml-1">€{e.precio}</span>
                   </div>
                   <span className="text-xs font-semibold text-red-600 group-hover:translate-x-1 transition-transform flex items-center">
                     Comprar <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
@@ -119,8 +119,8 @@ const SpanishLandingPage = () => {
 
       {/* SEO Content */}
       <section className="max-w-4xl mx-auto px-4 py-14">
-        <h2 className="text-2xl font-black text-slate-900 mb-4">Comprar Entradas Online - La Mejor Plataforma de Europa</h2>
-        <div className="prose prose-slate max-w-none text-slate-600 space-y-4">
+        <h2 className="text-2xl font-black text-white mb-4">Comprar Entradas Online - La Mejor Plataforma de Europa</h2>
+        <div className="prose prose-slate max-w-none text-slate-400 space-y-4">
           <p>
             <strong>EuroMatchTickets</strong> es la plataforma líder para comprar entradas para eventos deportivos y conciertos en Europa. 
             Ofrecemos los <strong>precios más bajos garantizados</strong> para la Champions League, La Liga, Premier League, Formula 1, 
@@ -131,7 +131,7 @@ const SpanishLandingPage = () => {
             ¿<strong>Entradas F1 Gran Premio de España</strong>? En EuroMatchTickets encontrarás todas las entradas que necesitas 
             con entrega inmediata por QR y nuestra garantía de protección total FanProtect.
           </p>
-          <h3 className="text-xl font-bold text-slate-800">¿Por qué comprar entradas en EuroMatchTickets?</h3>
+          <h3 className="text-xl font-bold text-white">¿Por qué comprar entradas en EuroMatchTickets?</h3>
           <ul>
             <li><strong>Precios imbatibles</strong> - Somos hasta un 40% más baratos que StubHub y Viagogo</li>
             <li><strong>Garantía FanProtect</strong> - 100% de reembolso si el evento se cancela</li>
@@ -139,7 +139,7 @@ const SpanishLandingPage = () => {
             <li><strong>+50,000 entradas</strong> - La mayor selección de entradas en Europa</li>
             <li><strong>Pago seguro</strong> - Visa, Mastercard, AMEX, Apple Pay, Google Pay</li>
           </ul>
-          <h3 className="text-xl font-bold text-slate-800">Entradas Disponibles</h3>
+          <h3 className="text-xl font-bold text-white">Entradas Disponibles</h3>
           <p>
             Descubre nuestra amplia selección: <Link to="/champions-league-tickets" className="text-red-600 hover:underline">entradas Champions League</Link>, 
             <Link to="/el-clasico-tickets" className="text-red-600 hover:underline"> entradas El Clásico</Link>, 
@@ -155,7 +155,7 @@ const SpanishLandingPage = () => {
         <div className="max-w-4xl mx-auto px-4 text-center text-white">
           <h2 className="text-3xl font-black mb-3">¿Listo para vivir la experiencia?</h2>
           <p className="text-red-100 mb-6">Compra tus entradas ahora y ahorra hasta un 40% vs otros sitios</p>
-          <Button size="lg" className="bg-white text-red-600 hover:bg-red-50 font-bold text-lg px-10 py-6 rounded-xl" onClick={() => navigate("/events")}>
+          <Button size="lg" className="bg-[#1e1e1e] text-red-600 hover:bg-[#e10600]/10 font-bold text-lg px-10 py-6 rounded-none" onClick={() => navigate("/events")}>
             Explorar Entradas <Ticket className="ml-2 w-5 h-5" />
           </Button>
         </div>

@@ -23,7 +23,7 @@ export const ExitIntentPopup = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl p-8 max-w-md w-full border border-purple-500/30 relative animate-in zoom-in-95">
+      <div className="bg-[#1e1e1e] rounded-3xl p-8 max-w-md w-full border border-purple-500/30 relative animate-in zoom-in-95">
         <button 
           onClick={onClose}
           className="absolute top-4 right-4 text-slate-400 hover:text-white"
@@ -50,7 +50,7 @@ export const ExitIntentPopup = ({ onClose }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-slate-100 border-slate-200 h-12 rounded-xl"
+                className="bg-slate-100 border-white/10 h-12 rounded-xl"
               />
               <Button type="submit" className="w-full h-12 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-xl">
                 <Mail className="w-5 h-5 mr-2" />
@@ -121,14 +121,14 @@ export const SmartShareButton = ({ url, title, description, eventType = 'event' 
       <Button
         onClick={() => setShowShare(!showShare)}
         variant="outline"
-        className="border-slate-200 hover:border-purple-500 hover:text-purple-400"
+        className="border-white/10 hover:border-purple-500 hover:text-purple-400"
       >
         <Share2 className="w-4 h-4 mr-2" />
         Share & Earn
       </Button>
 
       {showShare && (
-        <div className="absolute top-full mt-2 right-0 bg-white rounded-2xl p-4 border border-slate-200 shadow-xl z-50 w-72">
+        <div className="absolute top-full mt-2 right-0 bg-[#1e1e1e] rounded-2xl p-4 border border-white/10 shadow-xl z-50 w-72">
           <div className="mb-3">
             <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30 mb-2">
               Share & Get €5 Credit!
@@ -156,7 +156,7 @@ export const SmartShareButton = ({ url, title, description, eventType = 'event' 
             <Input
               value={shareUrl}
               readOnly
-              className="bg-slate-100 border-slate-200 text-xs h-10"
+              className="bg-slate-100 border-white/10 text-xs h-10"
             />
             <Button
               onClick={copyLink}
@@ -192,7 +192,7 @@ export const PushNotificationBanner = ({ onClose }) => {
   if (permission === 'granted') return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-white rounded-2xl p-4 border border-slate-200 shadow-xl z-40 animate-in slide-in-from-bottom">
+    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-[#1e1e1e] rounded-2xl p-4 border border-white/10 shadow-xl z-40 animate-in slide-in-from-bottom">
       <div className="flex items-start gap-4">
         <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0">
           <Bell className="w-6 h-6 text-white" />
@@ -269,7 +269,7 @@ export const SocialProofNotification = () => {
   if (!show || !notification) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 bg-white rounded-xl p-3 border border-slate-200 shadow-xl z-30 animate-in slide-in-from-left max-w-xs">
+    <div className="fixed bottom-4 left-4 bg-[#1e1e1e] rounded-xl p-3 border border-white/10 shadow-xl z-30 animate-in slide-in-from-left max-w-xs">
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 bg-emerald-500/20 rounded-full flex items-center justify-center">
           <Check className="w-5 h-5 text-emerald-400" />

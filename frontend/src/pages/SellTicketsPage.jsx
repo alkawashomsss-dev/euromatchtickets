@@ -34,14 +34,14 @@ function EarningsCalc({ price, qty }) {
   const net = Math.round((gross - fee) * 100) / 100;
   if (!price || !qty) return null;
   return (
-    <div className="bg-emerald-900/20 border border-emerald-700/40 rounded-xl p-5 mt-4" data-testid="earnings-calculator">
+    <div className="bg-emerald-900/20 border border-emerald-700/40 rounded-none p-5 mt-4" data-testid="earnings-calculator">
       <h4 className="text-emerald-600 font-semibold mb-3 flex items-center gap-2">
         <TrendingUp className="w-4 h-4" /> Your Estimated Earnings
       </h4>
       <div className="grid grid-cols-3 gap-4 text-center">
         <div>
           <div className="text-slate-500 text-xs">Gross Revenue</div>
-          <div className="text-slate-900 font-bold text-lg">{"\u20ac"}{gross.toLocaleString()}</div>
+          <div className="text-white font-bold text-lg">{"\u20ac"}{gross.toLocaleString()}</div>
         </div>
         <div>
           <div className="text-slate-500 text-xs">Platform Fee (8%)</div>
@@ -65,9 +65,9 @@ function SellerStats() {
         { icon: Globe, value: "45+", label: "Countries", color: "text-violet-600" },
         { icon: CreditCard, value: "48h", label: "Payout Speed", color: "text-amber-600" },
       ].map((s, i) => (
-        <div key={i} className="bg-white/90 border border-slate-200 rounded-xl p-4 text-center">
+        <div key={i} className="bg-white/90 border border-white/10 rounded-none p-4 text-center">
           <s.icon className={`w-6 h-6 ${s.color} mx-auto mb-2`} />
-          <div className="text-slate-900 font-bold text-xl">{s.value}</div>
+          <div className="text-white font-bold text-xl">{s.value}</div>
           <div className="text-slate-500 text-xs">{s.label}</div>
         </div>
       ))}
@@ -117,7 +117,7 @@ export default function SellTicketsPage() {
   // NOT LOGGED IN - Show landing
   if (!user) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="sell-tickets-page">
+      <div className="min-h-screen bg-[#0e0e14]" data-testid="sell-tickets-page">
         {/* Hero */}
         <div className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/30 via-slate-900 to-slate-950" />
@@ -134,10 +134,10 @@ export default function SellTicketsPage() {
               Reach millions of verified buyers. Get paid within 48 hours of the event.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button onClick={login} className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-xl" data-testid="sell-signin-btn">
+              <Button onClick={login} className="bg-emerald-600 hover:bg-emerald-500/100 text-white px-8 py-6 text-lg rounded-none" data-testid="sell-signin-btn">
                 Start Selling Now <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button variant="outline" className="border-slate-200 text-slate-600 px-8 py-6 text-lg rounded-xl" onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}>
+              <Button variant="outline" className="border-white/10 text-slate-400 px-8 py-6 text-lg rounded-none" onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}>
                 How It Works
               </Button>
             </div>
@@ -149,18 +149,18 @@ export default function SellTicketsPage() {
 
           {/* How it works */}
           <div id="how-it-works" className="mb-16">
-            <h2 className="text-2xl font-bold text-slate-900 text-center mb-10">How Selling Works</h2>
+            <h2 className="text-2xl font-bold text-white text-center mb-10">How Selling Works</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 { icon: Upload, title: "1. List Your Tickets", desc: "Upload your tickets in under 2 minutes. Add event details, set your price, and attach the PDF or QR code." },
                 { icon: Users, title: "2. We Find Buyers", desc: "Your tickets are shown to millions of verified buyers actively searching for events. Our SEO reaches 1,700+ pages." },
                 { icon: DollarSign, title: "3. Get Paid", desc: "When your tickets sell, you receive payment within 48 hours via bank transfer. Simple, fast, secure." },
               ].map((s, i) => (
-                <div key={i} className="bg-white border border-slate-200 rounded-xl p-8 text-center hover:border-emerald-700/50 transition-all">
+                <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-8 text-center hover:border-emerald-700/50 transition-all">
                   <div className="w-14 h-14 rounded-full bg-emerald-900/30 flex items-center justify-center mx-auto mb-4">
                     <s.icon className="w-7 h-7 text-emerald-600" />
                   </div>
-                  <h3 className="text-slate-900 font-bold text-lg mb-3">{s.title}</h3>
+                  <h3 className="text-white font-bold text-lg mb-3">{s.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
                 </div>
               ))}
@@ -168,8 +168,8 @@ export default function SellTicketsPage() {
           </div>
 
           {/* Trust */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-8 mb-16">
-            <h2 className="text-2xl font-bold text-slate-900 text-center mb-8">Why Sellers Choose EuroMatchTickets</h2>
+          <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-8 mb-16">
+            <h2 className="text-2xl font-bold text-white text-center mb-8">Why Sellers Choose EuroMatchTickets</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { icon: Shield, title: "Seller Protection", desc: "Your tickets and earnings are fully protected. We handle disputes and guarantee payment." },
@@ -179,7 +179,7 @@ export default function SellTicketsPage() {
               ].map((t, i) => (
                 <div key={i} className="text-center">
                   <t.icon className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
-                  <h3 className="text-slate-900 font-semibold mb-2">{t.title}</h3>
+                  <h3 className="text-white font-semibold mb-2">{t.title}</h3>
                   <p className="text-slate-400 text-sm">{t.desc}</p>
                 </div>
               ))}
@@ -188,10 +188,10 @@ export default function SellTicketsPage() {
 
           {/* Fee comparison */}
           <div className="mb-16">
-            <h2 className="text-2xl font-bold text-slate-900 text-center mb-8">Compare Seller Fees</h2>
+            <h2 className="text-2xl font-bold text-white text-center mb-8">Compare Seller Fees</h2>
             <div className="overflow-x-auto">
-              <table className="w-full max-w-3xl mx-auto border border-slate-200 rounded-xl overflow-hidden" data-testid="fee-comparison-table">
-                <thead className="bg-white">
+              <table className="w-full max-w-3xl mx-auto border border-white/10 rounded-none overflow-hidden" data-testid="fee-comparison-table">
+                <thead className="bg-[#1e1e1e]">
                   <tr>
                     <th className="px-6 py-4 text-left text-slate-500 font-medium">Platform</th>
                     <th className="px-6 py-4 text-center text-slate-500 font-medium">Seller Fee</th>
@@ -200,25 +200,25 @@ export default function SellTicketsPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-t border-slate-200 bg-emerald-900/10">
+                  <tr className="border-t border-white/10 bg-emerald-900/10">
                     <td className="px-6 py-4 text-emerald-600 font-bold">EuroMatchTickets</td>
                     <td className="px-6 py-4 text-center text-emerald-600 font-bold">8%</td>
-                    <td className="px-6 py-4 text-center text-slate-900 font-medium">48 hours</td>
+                    <td className="px-6 py-4 text-center text-white font-medium">48 hours</td>
                     <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-emerald-600 mx-auto" /></td>
                   </tr>
-                  <tr className="border-t border-slate-200">
+                  <tr className="border-t border-white/10">
                     <td className="px-6 py-4 text-slate-500">StubHub</td>
                     <td className="px-6 py-4 text-center text-red-600">15%</td>
                     <td className="px-6 py-4 text-center text-slate-400">5-8 days</td>
                     <td className="px-6 py-4 text-center text-slate-500">Limited</td>
                   </tr>
-                  <tr className="border-t border-slate-200">
+                  <tr className="border-t border-white/10">
                     <td className="px-6 py-4 text-slate-500">Viagogo</td>
                     <td className="px-6 py-4 text-center text-red-600">20%</td>
                     <td className="px-6 py-4 text-center text-slate-400">7-10 days</td>
                     <td className="px-6 py-4 text-center text-slate-500">Minimal</td>
                   </tr>
-                  <tr className="border-t border-slate-200">
+                  <tr className="border-t border-white/10">
                     <td className="px-6 py-4 text-slate-500">Ticketmaster Resale</td>
                     <td className="px-6 py-4 text-center text-red-600">10-15%</td>
                     <td className="px-6 py-4 text-center text-slate-400">3-5 days</td>
@@ -231,9 +231,9 @@ export default function SellTicketsPage() {
 
           {/* CTA */}
           <div className="text-center py-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Ready to Sell?</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Ready to Sell?</h2>
             <p className="text-slate-500 mb-6">Sign in with Google and list your first tickets in under 2 minutes.</p>
-            <Button onClick={login} className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-6 text-lg rounded-xl" data-testid="sell-cta-signin">
+            <Button onClick={login} className="bg-emerald-600 hover:bg-emerald-500/100 text-white px-10 py-6 text-lg rounded-none" data-testid="sell-cta-signin">
               Sign In & Start Selling <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </div>
@@ -245,22 +245,22 @@ export default function SellTicketsPage() {
   // SUCCESS STATE
   if (success) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center px-4" data-testid="sell-success">
-        <div className="bg-white border border-slate-200 rounded-2xl p-10 max-w-lg w-full text-center">
+      <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center px-4" data-testid="sell-success">
+        <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-10 max-w-lg w-full text-center">
           <div className="w-16 h-16 rounded-full bg-emerald-600/20 flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-10 h-10 text-emerald-600" />
           </div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-3">Tickets Listed Successfully!</h2>
+          <h2 className="text-2xl font-bold text-white mb-3">Tickets Listed Successfully!</h2>
           <p className="text-slate-500 mb-6">{success.message}</p>
-          <div className="bg-slate-50 rounded-lg p-4 mb-6 text-left space-y-2">
-            <div className="flex justify-between"><span className="text-slate-500">Listing ID</span><span className="text-slate-900 font-mono text-sm">{success.listing_id}</span></div>
-            <div className="flex justify-between"><span className="text-slate-500">Tickets Created</span><span className="text-slate-900">{success.tickets_created}</span></div>
+          <div className="bg-[#15151e] rounded-none p-4 mb-6 text-left space-y-2">
+            <div className="flex justify-between"><span className="text-slate-500">Listing ID</span><span className="text-white font-mono text-sm">{success.listing_id}</span></div>
+            <div className="flex justify-between"><span className="text-slate-500">Tickets Created</span><span className="text-white">{success.tickets_created}</span></div>
           </div>
           <div className="flex gap-3">
-            <Button onClick={() => { setSuccess(null); setStep(1); setForm(p => ({...p, event_name:"", description:""})); }} className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white">
+            <Button onClick={() => { setSuccess(null); setStep(1); setForm(p => ({...p, event_name:"", description:""})); }} className="flex-1 bg-emerald-600 hover:bg-emerald-500/100 text-white">
               List More Tickets
             </Button>
-            <Button variant="outline" className="flex-1 border-slate-200 text-slate-600" onClick={() => navigate("/seller")}>
+            <Button variant="outline" className="flex-1 border-white/10 text-slate-400" onClick={() => navigate("/seller")}>
               View Dashboard
             </Button>
           </div>
@@ -271,11 +271,11 @@ export default function SellTicketsPage() {
 
   // LISTING FORM (LOGGED IN)
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="sell-tickets-form">
+    <div className="min-h-screen bg-[#0e0e14]" data-testid="sell-tickets-form">
       <div className="max-w-3xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2" data-testid="sell-form-title">List Your Tickets</h1>
+          <h1 className="text-3xl font-bold text-white mb-2" data-testid="sell-form-title">List Your Tickets</h1>
           <p className="text-slate-500">Fill in the details below. It takes less than 2 minutes.</p>
         </div>
 
@@ -291,42 +291,42 @@ export default function SellTicketsPage() {
           ))}
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-2xl p-8">
+        <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-8">
           {/* STEP 1: Event Details */}
           {step === 1 && (
             <div className="space-y-5" data-testid="sell-step-1">
-              <h2 className="text-xl font-bold text-slate-900 mb-4">Event Details</h2>
+              <h2 className="text-xl font-bold text-white mb-4">Event Details</h2>
               <div>
-                <label className="text-slate-600 text-sm mb-1.5 block">Event Name *</label>
-                <Input value={form.event_name} onChange={e => set("event_name", e.target.value)} placeholder="e.g. Taylor Swift Eras Tour - London" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-event-name" />
+                <label className="text-slate-400 text-sm mb-1.5 block">Event Name *</label>
+                <Input value={form.event_name} onChange={e => set("event_name", e.target.value)} placeholder="e.g. Taylor Swift Eras Tour - London" className="bg-slate-100 border-white/10 text-white" data-testid="sell-event-name" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-slate-600 text-sm mb-1.5 block">Event Date *</label>
-                  <Input type="datetime-local" value={form.event_date} onChange={e => set("event_date", e.target.value)} className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-event-date" />
+                  <label className="text-slate-400 text-sm mb-1.5 block">Event Date *</label>
+                  <Input type="datetime-local" value={form.event_date} onChange={e => set("event_date", e.target.value)} className="bg-slate-100 border-white/10 text-white" data-testid="sell-event-date" />
                 </div>
                 <div>
-                  <label className="text-slate-600 text-sm mb-1.5 block">Event Type</label>
-                  <select value={form.event_type} onChange={e => set("event_type", e.target.value)} className="w-full h-10 px-3 bg-slate-100 border border-slate-200 rounded-md text-slate-900" data-testid="sell-event-type">
+                  <label className="text-slate-400 text-sm mb-1.5 block">Event Type</label>
+                  <select value={form.event_type} onChange={e => set("event_type", e.target.value)} className="w-full h-10 px-3 bg-slate-100 border border-white/10 rounded-md text-white" data-testid="sell-event-type">
                     {EVENT_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
                   </select>
                 </div>
               </div>
               <div>
-                <label className="text-slate-600 text-sm mb-1.5 block">Venue *</label>
-                <Input value={form.venue} onChange={e => set("venue", e.target.value)} placeholder="e.g. Wembley Stadium" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-venue" />
+                <label className="text-slate-400 text-sm mb-1.5 block">Venue *</label>
+                <Input value={form.venue} onChange={e => set("venue", e.target.value)} placeholder="e.g. Wembley Stadium" className="bg-slate-100 border-white/10 text-white" data-testid="sell-venue" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-slate-600 text-sm mb-1.5 block">City *</label>
-                  <Input value={form.city} onChange={e => set("city", e.target.value)} placeholder="e.g. London" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-city" />
+                  <label className="text-slate-400 text-sm mb-1.5 block">City *</label>
+                  <Input value={form.city} onChange={e => set("city", e.target.value)} placeholder="e.g. London" className="bg-slate-100 border-white/10 text-white" data-testid="sell-city" />
                 </div>
                 <div>
-                  <label className="text-slate-600 text-sm mb-1.5 block">Country</label>
-                  <Input value={form.country} onChange={e => set("country", e.target.value)} placeholder="e.g. UK" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-country" />
+                  <label className="text-slate-400 text-sm mb-1.5 block">Country</label>
+                  <Input value={form.country} onChange={e => set("country", e.target.value)} placeholder="e.g. UK" className="bg-slate-100 border-white/10 text-white" data-testid="sell-country" />
                 </div>
               </div>
-              <Button onClick={() => setStep(2)} disabled={!form.event_name || !form.event_date || !form.venue || !form.city} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-5 rounded-xl mt-4" data-testid="sell-next-step-1">
+              <Button onClick={() => setStep(2)} disabled={!form.event_name || !form.event_date || !form.venue || !form.city} className="w-full bg-emerald-600 hover:bg-emerald-500/100 text-white py-5 rounded-none mt-4" data-testid="sell-next-step-1">
                 Continue to Ticket Details <ChevronRight className="w-5 h-5 ml-1" />
               </Button>
             </div>
@@ -335,41 +335,41 @@ export default function SellTicketsPage() {
           {/* STEP 2: Ticket Details */}
           {step === 2 && (
             <div className="space-y-5" data-testid="sell-step-2">
-              <h2 className="text-xl font-bold text-slate-900 mb-4">Ticket Details</h2>
+              <h2 className="text-xl font-bold text-white mb-4">Ticket Details</h2>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-slate-600 text-sm mb-1.5 block">Category</label>
-                  <select value={form.category} onChange={e => set("category", e.target.value)} className="w-full h-10 px-3 bg-slate-100 border border-slate-200 rounded-md text-slate-900" data-testid="sell-category">
+                  <label className="text-slate-400 text-sm mb-1.5 block">Category</label>
+                  <select value={form.category} onChange={e => set("category", e.target.value)} className="w-full h-10 px-3 bg-slate-100 border border-white/10 rounded-md text-white" data-testid="sell-category">
                     {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="text-slate-600 text-sm mb-1.5 block">Section / Block</label>
-                  <Input value={form.section} onChange={e => set("section", e.target.value)} placeholder="e.g. Block A, Row 12" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-section" />
+                  <label className="text-slate-400 text-sm mb-1.5 block">Section / Block</label>
+                  <Input value={form.section} onChange={e => set("section", e.target.value)} placeholder="e.g. Block A, Row 12" className="bg-slate-100 border-white/10 text-white" data-testid="sell-section" />
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="text-slate-600 text-sm mb-1.5 block">Number of Tickets *</label>
-                  <Input type="number" min={1} max={50} value={form.num_tickets} onChange={e => set("num_tickets", parseInt(e.target.value) || 1)} className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-num-tickets" />
+                  <label className="text-slate-400 text-sm mb-1.5 block">Number of Tickets *</label>
+                  <Input type="number" min={1} max={50} value={form.num_tickets} onChange={e => set("num_tickets", parseInt(e.target.value) || 1)} className="bg-slate-100 border-white/10 text-white" data-testid="sell-num-tickets" />
                 </div>
                 <div>
-                  <label className="text-slate-600 text-sm mb-1.5 block">Your Price ({"\u20ac"}) *</label>
-                  <Input type="number" min={1} step={0.01} value={form.price_per_ticket} onChange={e => set("price_per_ticket", e.target.value)} placeholder="149.00" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-price" />
+                  <label className="text-slate-400 text-sm mb-1.5 block">Your Price ({"\u20ac"}) *</label>
+                  <Input type="number" min={1} step={0.01} value={form.price_per_ticket} onChange={e => set("price_per_ticket", e.target.value)} placeholder="149.00" className="bg-slate-100 border-white/10 text-white" data-testid="sell-price" />
                 </div>
                 <div>
-                  <label className="text-slate-600 text-sm mb-1.5 block">Face Value ({"\u20ac"})</label>
-                  <Input type="number" min={0} step={0.01} value={form.original_price} onChange={e => set("original_price", e.target.value)} placeholder="200.00" className="bg-slate-100 border-slate-200 text-slate-900" data-testid="sell-face-value" />
+                  <label className="text-slate-400 text-sm mb-1.5 block">Face Value ({"\u20ac"})</label>
+                  <Input type="number" min={0} step={0.01} value={form.original_price} onChange={e => set("original_price", e.target.value)} placeholder="200.00" className="bg-slate-100 border-white/10 text-white" data-testid="sell-face-value" />
                 </div>
               </div>
               <EarningsCalc price={parseFloat(form.price_per_ticket) || 0} qty={form.num_tickets} />
               <div>
-                <label className="text-slate-600 text-sm mb-1.5 block">Description (optional)</label>
-                <textarea value={form.description} onChange={e => set("description", e.target.value)} placeholder="Any additional details about the tickets..." rows={3} className="w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-md text-slate-900 resize-none" data-testid="sell-description" />
+                <label className="text-slate-400 text-sm mb-1.5 block">Description (optional)</label>
+                <textarea value={form.description} onChange={e => set("description", e.target.value)} placeholder="Any additional details about the tickets..." rows={3} className="w-full px-3 py-2 bg-slate-100 border border-white/10 rounded-md text-white resize-none" data-testid="sell-description" />
               </div>
               <div className="flex gap-3 mt-4">
-                <Button variant="outline" onClick={() => setStep(1)} className="border-slate-200 text-slate-600">Back</Button>
-                <Button onClick={() => setStep(3)} disabled={!form.price_per_ticket} className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white py-5 rounded-xl" data-testid="sell-next-step-2">
+                <Button variant="outline" onClick={() => setStep(1)} className="border-white/10 text-slate-400">Back</Button>
+                <Button onClick={() => setStep(3)} disabled={!form.price_per_ticket} className="flex-1 bg-emerald-600 hover:bg-emerald-500/100 text-white py-5 rounded-none" data-testid="sell-next-step-2">
                   Continue to Upload <ChevronRight className="w-5 h-5 ml-1" />
                 </Button>
               </div>
@@ -379,8 +379,8 @@ export default function SellTicketsPage() {
           {/* STEP 3: Upload & Submit */}
           {step === 3 && (
             <div className="space-y-5" data-testid="sell-step-3">
-              <h2 className="text-xl font-bold text-slate-900 mb-4">Upload Tickets & Confirm</h2>
-              <div className="border-2 border-dashed border-slate-200 rounded-xl p-8 text-center hover:border-emerald-600/50 transition-colors cursor-pointer" onClick={() => document.getElementById("ticket-file-input")?.click()} data-testid="sell-upload-area">
+              <h2 className="text-xl font-bold text-white mb-4">Upload Tickets & Confirm</h2>
+              <div className="border-2 border-dashed border-white/10 rounded-none p-8 text-center hover:border-emerald-600/50 transition-colors cursor-pointer" onClick={() => document.getElementById("ticket-file-input")?.click()} data-testid="sell-upload-area">
                 <Upload className="w-10 h-10 text-slate-400 mx-auto mb-3" />
                 {file ? (
                   <div>
@@ -389,7 +389,7 @@ export default function SellTicketsPage() {
                   </div>
                 ) : (
                   <div>
-                    <p className="text-slate-600 font-medium">Upload Ticket PDF or QR Code</p>
+                    <p className="text-slate-400 font-medium">Upload Ticket PDF or QR Code</p>
                     <p className="text-slate-400 text-sm mt-1">PDF, PNG, JPG accepted. Max 10MB.</p>
                   </div>
                 )}
@@ -397,21 +397,21 @@ export default function SellTicketsPage() {
               </div>
 
               {/* Summary */}
-              <div className="bg-slate-50 rounded-xl p-6 space-y-3" data-testid="sell-summary">
-                <h3 className="text-slate-900 font-semibold mb-3">Listing Summary</h3>
-                <div className="flex justify-between"><span className="text-slate-500">Event</span><span className="text-slate-900">{form.event_name}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Venue</span><span className="text-slate-900">{form.venue}, {form.city}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Category</span><span className="text-slate-900 capitalize">{form.category}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Tickets</span><span className="text-slate-900">{form.num_tickets}</span></div>
+              <div className="bg-[#15151e] rounded-none p-6 space-y-3" data-testid="sell-summary">
+                <h3 className="text-white font-semibold mb-3">Listing Summary</h3>
+                <div className="flex justify-between"><span className="text-slate-500">Event</span><span className="text-white">{form.event_name}</span></div>
+                <div className="flex justify-between"><span className="text-slate-500">Venue</span><span className="text-white">{form.venue}, {form.city}</span></div>
+                <div className="flex justify-between"><span className="text-slate-500">Category</span><span className="text-white capitalize">{form.category}</span></div>
+                <div className="flex justify-between"><span className="text-slate-500">Tickets</span><span className="text-white">{form.num_tickets}</span></div>
                 <div className="flex justify-between"><span className="text-slate-500">Price per ticket</span><span className="text-emerald-600 font-bold">{"\u20ac"}{form.price_per_ticket}</span></div>
-                {file && <div className="flex justify-between"><span className="text-slate-500">File</span><span className="text-slate-900">{file.name}</span></div>}
+                {file && <div className="flex justify-between"><span className="text-slate-500">File</span><span className="text-white">{file.name}</span></div>}
               </div>
 
-              {error && <div className="bg-red-900/20 border border-red-700/50 rounded-lg p-3 text-red-600 text-sm">{error}</div>}
+              {error && <div className="bg-red-900/20 border border-red-700/50 rounded-none p-3 text-red-600 text-sm">{error}</div>}
 
               <div className="flex gap-3 mt-4">
-                <Button variant="outline" onClick={() => setStep(2)} className="border-slate-200 text-slate-600">Back</Button>
-                <Button onClick={handleSubmit} disabled={loading} className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white py-5 rounded-xl" data-testid="sell-submit-btn">
+                <Button variant="outline" onClick={() => setStep(2)} className="border-white/10 text-slate-400">Back</Button>
+                <Button onClick={handleSubmit} disabled={loading} className="flex-1 bg-emerald-600 hover:bg-emerald-500/100 text-white py-5 rounded-none" data-testid="sell-submit-btn">
                   {loading ? (
                     <div className="flex items-center gap-2"><div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> Listing...</div>
                   ) : (

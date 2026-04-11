@@ -48,7 +48,7 @@ const FrenchLandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white" data-testid="french-landing-page">
+    <div className="min-h-screen bg-[#1e1e1e]" data-testid="french-landing-page">
       <SEOHead
         title="Acheter Billets - Champions League, F1, Concerts | EuroMatchTickets"
         description="Achetez des billets pour Champions League, F1 Monaco, PSG, concerts et plus. Prix les plus bas garantis. Livraison instantanee par QR. Garantie FanProtect."
@@ -61,7 +61,7 @@ const FrenchLandingPage = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-slate-900 to-red-900/30" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-blue-500/100/20 border border-blue-400/30 rounded-full px-4 py-2 mb-6">
             <Users className="w-4 h-4 text-blue-300" />
             <span className="text-blue-200 text-sm font-medium">{viewersNow} personnes consultent ce site</span>
           </div>
@@ -77,7 +77,7 @@ const FrenchLandingPage = () => {
               </div>
             ))}
           </div>
-          <Button onClick={() => navigate("/events")} className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 rounded-xl" data-testid="fr-browse-btn">
+          <Button onClick={() => navigate("/events")} className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 rounded-none" data-testid="fr-browse-btn">
             Voir Tous les Evenements <ChevronRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
@@ -86,15 +86,15 @@ const FrenchLandingPage = () => {
       {/* Events */}
       <section className="py-16" data-testid="fr-events">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-10 text-slate-900">Evenements Populaires</h2>
+          <h2 className="text-3xl font-bold text-center mb-10 text-white">Evenements Populaires</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {evenements.map((e, i) => (
-              <Link key={i} to={e.lien} className="group bg-white border border-slate-100 hover:border-blue-200 hover:shadow-lg rounded-2xl p-6 transition-all" data-testid={`fr-event-${i}`}>
+              <Link key={i} to={e.lien} className="group bg-[#1e1e1e] border border-white/5 hover:border-blue-200 hover:shadow-lg rounded-none p-6 transition-all" data-testid={`fr-event-${i}`}>
                 <div className="flex items-center justify-between mb-4">
                   <e.icone className="w-8 h-8 text-blue-600" />
-                  <span className="text-xs font-bold bg-blue-50 text-blue-600 px-3 py-1 rounded-full">{e.tag}</span>
+                  <span className="text-xs font-bold bg-blue-500/10 text-blue-600 px-3 py-1 rounded-full">{e.tag}</span>
                 </div>
-                <h3 className="font-bold text-slate-900 text-lg mb-2 group-hover:text-blue-600">{e.titre}</h3>
+                <h3 className="font-bold text-white text-lg mb-2 group-hover:text-blue-600">{e.titre}</h3>
                 <div className="flex items-center gap-2 text-slate-400 text-sm mb-1"><Calendar className="w-4 h-4" />{e.date}</div>
                 <div className="flex items-center gap-2 text-slate-400 text-sm mb-4"><MapPin className="w-4 h-4" />{e.lieu}</div>
                 <div className="flex items-center justify-between">
@@ -108,14 +108,14 @@ const FrenchLandingPage = () => {
       </section>
 
       {/* Trust */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-10 text-slate-900">Pourquoi Choisir EuroMatchTickets?</h2>
+          <h2 className="text-2xl font-bold text-center mb-10 text-white">Pourquoi Choisir EuroMatchTickets?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {avantages.map((a, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-slate-100 text-center">
+              <div key={i} className="bg-[#1e1e1e] rounded-none p-6 border border-white/5 text-center">
                 <a.icone className="w-10 h-10 text-blue-600 mx-auto mb-4" />
-                <h3 className="font-bold text-slate-900 mb-2">{a.titre}</h3>
+                <h3 className="font-bold text-white mb-2">{a.titre}</h3>
                 <p className="text-slate-500 text-sm">{a.desc}</p>
               </div>
             ))}
@@ -126,9 +126,9 @@ const FrenchLandingPage = () => {
       {/* Internal Links */}
       <section className="py-16" data-testid="fr-links">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-8 text-slate-900">Plus d'Evenements</h2>
+          <h2 className="text-2xl font-bold text-center mb-8 text-white">Plus d'Evenements</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
               <h3 className="font-bold mb-3">Football</h3>
               <ul className="space-y-2">
                 <li><Link to="/champions-league-tickets" className="text-blue-600 hover:underline text-sm">Champions League</Link></li>
@@ -138,7 +138,7 @@ const FrenchLandingPage = () => {
                 <li><Link to="/world-cup-2026" className="text-blue-600 hover:underline text-sm">Coupe du Monde 2026</Link></li>
               </ul>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
               <h3 className="font-bold mb-3">Formule 1</h3>
               <ul className="space-y-2">
                 <li><Link to="/f1-tickets" className="text-blue-600 hover:underline text-sm">Tous les GP F1</Link></li>
@@ -148,7 +148,7 @@ const FrenchLandingPage = () => {
                 <li><Link to="/it/biglietti" className="text-blue-600 hover:underline text-sm">Biglietti (IT)</Link></li>
               </ul>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100">
+            <div className="bg-[#1e1e1e] rounded-none p-5 border border-white/5">
               <h3 className="font-bold mb-3">Concerts</h3>
               <ul className="space-y-2">
                 <li><Link to="/taylor-swift-tickets" className="text-blue-600 hover:underline text-sm">Taylor Swift</Link></li>
@@ -162,14 +162,14 @@ const FrenchLandingPage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 bg-slate-50" data-testid="fr-faq">
+      <section className="py-16 bg-[#15151e]" data-testid="fr-faq">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-8 text-slate-900">Questions Frequentes</h2>
+          <h2 className="text-2xl font-bold text-center mb-8 text-white">Questions Frequentes</h2>
           <div className="space-y-4">
             {faqs.map((f, i) => (
-              <details key={i} className="bg-white border border-slate-100 rounded-xl p-5 group">
-                <summary className="font-semibold cursor-pointer text-slate-900">{f.question}</summary>
-                <p className="mt-3 text-slate-600">{f.answer}</p>
+              <details key={i} className="bg-[#1e1e1e] border border-white/5 rounded-none p-5 group">
+                <summary className="font-semibold cursor-pointer text-white">{f.question}</summary>
+                <p className="mt-3 text-slate-400">{f.answer}</p>
               </details>
             ))}
           </div>

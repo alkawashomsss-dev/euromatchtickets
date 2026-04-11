@@ -39,7 +39,7 @@ const SpainGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Spanish GP Tickets 2026 | Barcelona F1 Prices"
         description="Buy Spanish Grand Prix 2026 Barcelona tickets from €119. Circuit de Barcelona-Catalunya. Grandstand G, C, H. VIP Hospitality. 100% Ticket Guarantee."
@@ -64,15 +64,15 @@ const SpainGPPage = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Calendar className="w-5 h-5 text-amber-600" /><span>June 5-7, 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <MapPin className="w-5 h-5 text-amber-600" /><span>Barcelona, Spain</span>
             </div>
           </div>
 
-          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€119</div>
             <div className="text-emerald-600 text-sm mt-1">Best value European F1 race!</div>
@@ -80,7 +80,7 @@ const SpainGPPage = () => {
         </div>
       </section>
 
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex items-center gap-2 justify-center text-emerald-600"><Shield className="w-5 h-5" /><span className="text-sm">100% Ticket Guarantee</span></div>
@@ -96,13 +96,13 @@ const SpainGPPage = () => {
           <h2 className="text-3xl font-bold mb-8">Buy Barcelona F1 2026 Tickets</h2>
           <div className="grid gap-4">
             {tickets.map((ticket, i) => (
-              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-yellow-500/30 rounded-2xl p-6 transition-all">
+              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-yellow-500/30 rounded-none p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-yellow-500/20 rounded-xl flex items-center justify-center"><Ticket className="w-7 h-7 text-amber-600" /></div>
+                  <div className="w-14 h-14 bg-yellow-500/20 rounded-none flex items-center justify-center"><Ticket className="w-7 h-7 text-amber-600" /></div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold">{ticket.section}</h3>
-                      {ticket.popular && <Badge className="bg-orange-50 text-orange-600 text-xs">POPULAR</Badge>}
+                      {ticket.popular && <Badge className="bg-orange-500/10 text-orange-600 text-xs">POPULAR</Badge>}
                     </div>
                     <p className="text-slate-400 text-sm">Spanish Grand Prix 2026 • 3-Day Pass</p>
                   </div>
@@ -121,12 +121,12 @@ const SpainGPPage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8 flex items-center gap-2"><HelpCircle className="w-6 h-6 text-amber-600" />FAQ - Spanish GP Tickets</h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6">
+              <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <h3 className="font-bold text-white mb-2">{faq.q}</h3>
                 <p className="text-slate-500">{faq.a}</p>
               </div>
@@ -135,12 +135,12 @@ const SpainGPPage = () => {
         </div>
       </section>
 
-      <section className="py-12 border-t border-slate-100">
+      <section className="py-12 border-t border-white/5">
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-lg font-bold mb-4">Related Searches:</h3>
           <div className="flex flex-wrap gap-2">
             {["Spanish GP tickets", "Barcelona F1 tickets", "Catalunya F1 2026", "F1 Spain tickets", "buy Barcelona GP tickets", "Circuit de Catalunya tickets", "Spanish Grand Prix 2026"].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">{term}</span>
+              <span key={i} className="px-3 py-1 bg-[#15151e] text-slate-500 rounded-full text-sm">{term}</span>
             ))}
           </div>
         </div>

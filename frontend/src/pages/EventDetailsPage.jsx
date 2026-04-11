@@ -61,14 +61,14 @@ export default function EventDetailsPage() {
   }, [eventId, navigate]);
 
   if (loading) return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
+    <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center">
       <div className="w-10 h-10 border-2 border-slate-900 border-t-transparent rounded-full animate-spin" />
     </div>
   );
   if (!event) return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center text-center p-8">
+    <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center text-center p-8">
       <div>
-        <h1 className="text-3xl font-extrabold text-slate-900 mb-4">Event Not Found</h1>
+        <h1 className="text-3xl font-extrabold text-white mb-4">Event Not Found</h1>
         <button onClick={() => navigate('/events')} className="text-emerald-600 hover:underline font-medium">Browse All Events</button>
       </div>
     </div>
@@ -102,7 +102,7 @@ export default function EventDetailsPage() {
   const isMotorsport = event.event_type === 'motogp' || event.event_type === 'f1' || event.event_type === 'isle_of_man_tt' || (event.title || '').toLowerCase().includes('isle of man');
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="event-details-page">
+    <div className="min-h-screen bg-[#0e0e14]" data-testid="event-details-page">
       <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={false} />
       <EventStructuredData event={event} />
       <BreadcrumbStructuredData items={[
@@ -156,18 +156,18 @@ export default function EventDetailsPage() {
 
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-wrap items-center gap-4 mb-6">
-              <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl px-5 py-3">
+              <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-none px-5 py-3">
                 <p className="text-[10px] text-white/50 uppercase tracking-widest">From</p>
                 <p className="text-3xl font-extrabold text-amber-400">&euro;{lowestPrice}</p>
               </div>
               {savings > 10 && (
-                <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl px-4 py-3 backdrop-blur-sm">
+                <div className="bg-emerald-500/100/10 border border-emerald-400/30 rounded-none px-4 py-3 backdrop-blur-sm">
                   <p className="text-emerald-300 font-bold text-sm flex items-center gap-1"><TrendingDown className="w-4 h-4" /> Save &euro;{savings}</p>
                   <p className="text-[11px] text-white/50">vs official sellers</p>
                 </div>
               )}
               <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-emerald-500 hover:bg-emerald-400 text-white font-bold px-8 py-3.5 rounded-full text-base transition-all shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_30px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-[0.97]"
+                className="bg-emerald-500/100 hover:bg-emerald-400 text-white font-bold px-8 py-3.5 rounded-full text-base transition-all shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_30px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-[0.97]"
                 data-testid="hero-cta">
                 View All Tickets
               </button>
@@ -197,14 +197,14 @@ export default function EventDetailsPage() {
 
             {/* Venue Map Section */}
             <FadeIn>
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-testid="venue-map-section">
+              <div className="bg-[#1e1e1e] rounded-none border border-white/10 shadow-sm overflow-hidden" data-testid="venue-map-section">
                 <div className="flex items-center justify-between p-5 pb-3">
                   <div className="flex items-center gap-2">
                     <Grid3X3 className="w-5 h-5 text-emerald-600" />
-                    <h2 className="text-lg font-bold text-slate-900">Select Your Section</h2>
+                    <h2 className="text-lg font-bold text-white">Select Your Section</h2>
                   </div>
                   <button onClick={() => setShowMap(!showMap)}
-                    className="text-xs text-slate-500 hover:text-slate-700 flex items-center gap-1 transition">
+                    className="text-xs text-slate-500 hover:text-slate-300 flex items-center gap-1 transition">
                     {showMap ? 'Hide' : 'Show'} Map <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showMap ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
@@ -246,8 +246,8 @@ export default function EventDetailsPage() {
 
             {/* Price Comparison */}
             <FadeIn delay={0.15}>
-              <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm" data-testid="price-comparison">
-                <h3 className="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
+              <div className="bg-[#1e1e1e] rounded-none border border-white/10 p-6 shadow-sm" data-testid="price-comparison">
+                <h3 className="text-lg font-bold text-white mb-1 flex items-center gap-2">
                   <TrendingDown className="w-5 h-5 text-emerald-600" /> Price Comparison
                 </h3>
                 <p className="text-sm text-slate-500 mb-4">How we compare to other ticket sellers</p>
@@ -257,7 +257,7 @@ export default function EventDetailsPage() {
                     { name: 'StubHub / Viagogo', price: Math.round(lowestPrice * 1.25), delivery: '1-7 days' },
                     { name: 'Other Resellers', price: Math.round(lowestPrice * 1.15), delivery: '3-5 days' },
                   ].map((comp, i) => (
-                    <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
+                    <div key={i} className="flex items-center justify-between p-3 rounded-none bg-[#15151e] border border-white/5">
                       <div className="flex items-center gap-3">
                         <div className="w-2 h-2 rounded-full bg-slate-300" />
                         <span className="text-sm text-slate-500">{comp.name}</span>
@@ -268,11 +268,11 @@ export default function EventDetailsPage() {
                       </div>
                     </div>
                   ))}
-                  <div className="flex items-center justify-between p-3.5 rounded-xl bg-emerald-50 border-2 border-emerald-300 relative">
-                    <div className="absolute -top-2.5 left-4 bg-emerald-500 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">BEST DEAL</div>
+                  <div className="flex items-center justify-between p-3.5 rounded-none bg-emerald-500/10 border-2 border-emerald-300 relative">
+                    <div className="absolute -top-2.5 left-4 bg-emerald-500/100 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">BEST DEAL</div>
                     <div className="flex items-center gap-3">
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                      <span className="text-sm font-bold text-slate-900">EuroMatchTickets</span>
+                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/100" />
+                      <span className="text-sm font-bold text-white">EuroMatchTickets</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-xl font-extrabold text-emerald-600">&euro;{lowestPrice}</span>
@@ -280,7 +280,7 @@ export default function EventDetailsPage() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 flex items-center justify-center gap-2 p-2.5 rounded-lg bg-emerald-50/50 border border-emerald-100">
+                <div className="mt-4 flex items-center justify-center gap-2 p-2.5 rounded-none bg-emerald-500/10/50 border border-emerald-100">
                   <TrendingDown className="w-4 h-4 text-emerald-600" />
                   <span className="text-xs font-bold text-emerald-700">Save up to &euro;{savings} vs official sellers</span>
                 </div>
@@ -290,19 +290,19 @@ export default function EventDetailsPage() {
             {/* Why Choose Us */}
             <FadeIn delay={0.2}>
               <div data-testid="why-choose-us">
-                <h2 className="text-xl font-extrabold text-slate-900 mb-4">Why 50,000+ Fans Choose Us</h2>
+                <h2 className="text-xl font-extrabold text-white mb-4">Why 50,000+ Fans Choose Us</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
-                    { icon: Shield, title: '100% Buyer Protection', desc: 'FanProtect covers every purchase.', color: 'text-emerald-600', bg: 'bg-emerald-50' },
-                    { icon: Zap, title: 'Instant QR Delivery', desc: 'Tickets on your phone in seconds.', color: 'text-amber-600', bg: 'bg-amber-50' },
-                    { icon: TrendingDown, title: 'Best Price Guarantee', desc: `Save €${savings} vs official sellers.`, color: 'text-blue-600', bg: 'bg-blue-50' },
+                    { icon: Shield, title: '100% Buyer Protection', desc: 'FanProtect covers every purchase.', color: 'text-emerald-600', bg: 'bg-emerald-500/10' },
+                    { icon: Zap, title: 'Instant QR Delivery', desc: 'Tickets on your phone in seconds.', color: 'text-amber-600', bg: 'bg-amber-500/10' },
+                    { icon: TrendingDown, title: 'Best Price Guarantee', desc: `Save €${savings} vs official sellers.`, color: 'text-blue-600', bg: 'bg-blue-500/10' },
                     { icon: Headphones, title: 'Real Human Support', desc: 'Fan support before, during & after.', color: 'text-violet-600', bg: 'bg-violet-50' },
                   ].map((item, i) => (
-                    <div key={i} className="bg-white rounded-xl border border-slate-200 p-4 hover:shadow-md transition-all">
-                      <div className={`w-10 h-10 ${item.bg} rounded-lg flex items-center justify-center mb-2`}>
+                    <div key={i} className="bg-[#1e1e1e] rounded-none border border-white/10 p-4 hover:shadow-md transition-all">
+                      <div className={`w-10 h-10 ${item.bg} rounded-none flex items-center justify-center mb-2`}>
                         <item.icon className={`w-5 h-5 ${item.color}`} />
                       </div>
-                      <h3 className="font-bold text-slate-900 text-sm mb-0.5">{item.title}</h3>
+                      <h3 className="font-bold text-white text-sm mb-0.5">{item.title}</h3>
                       <p className="text-xs text-slate-500">{item.desc}</p>
                     </div>
                   ))}
@@ -331,12 +331,12 @@ export default function EventDetailsPage() {
             {/* FAQ */}
             <FadeIn delay={0.3}>
               <div data-testid="faq-section">
-                <h2 className="text-xl font-extrabold text-slate-900 mb-4">FAQ &ndash; {event.title}</h2>
+                <h2 className="text-xl font-extrabold text-white mb-4">FAQ &ndash; {event.title}</h2>
                 <FAQStructuredData faqs={eventFAQs} />
                 <div className="space-y-2">
                   {eventFAQs.map((faq, i) => (
-                    <details key={i} className="group rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition" data-testid={`faq-${i}`}>
-                      <summary className="p-4 font-bold text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between">
+                    <details key={i} className="group rounded-none border border-white/10 bg-[#1e1e1e] hover:border-white/15 transition" data-testid={`faq-${i}`}>
+                      <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">
                         {faq.question}
                         <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0" />
                       </summary>
@@ -354,23 +354,23 @@ export default function EventDetailsPage() {
 
               {/* Quick Buy Card */}
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm" data-testid="quick-buy-card">
+                className="bg-[#1e1e1e] rounded-none border border-white/10 p-5 shadow-sm" data-testid="quick-buy-card">
                 <div className="text-center mb-4">
                   <p className="text-xs text-slate-400 uppercase tracking-widest">Tickets from</p>
                   <p className="text-4xl font-extrabold text-emerald-600 mt-1">&euro;{lowestPrice}</p>
                   <p className="text-[11px] text-slate-400 mt-0.5">per person &middot; all fees included</p>
                 </div>
                 <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-base transition-all shadow-md hover:shadow-lg mb-4"
+                  className="w-full py-3.5 bg-emerald-500/100 hover:bg-emerald-600 text-white font-bold rounded-none text-base transition-all shadow-md hover:shadow-lg mb-4"
                   data-testid="sidebar-cta">
                   View {totalAvailable} Tickets
                 </button>
                 <div className="space-y-2">
                   {['Instant QR delivery', '100% verified tickets', 'FanProtect guarantee', 'Secure Stripe checkout', `Save €${savings} vs others`].map((t, i) => (
-                    <div key={i} className="flex items-center gap-2 text-[12px] text-slate-600"><Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />{t}</div>
+                    <div key={i} className="flex items-center gap-2 text-[12px] text-slate-400"><Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />{t}</div>
                   ))}
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-100 grid grid-cols-4 gap-2">
+                <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-4 gap-2">
                   {[
                     { name: 'VISA', bg: 'bg-blue-600 text-white' },
                     { name: 'MC', bg: 'bg-red-600 text-white' },
@@ -392,7 +392,7 @@ export default function EventDetailsPage() {
               <UrgencyCountdown eventDate={event.event_date} />
 
               {/* Price Alert */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
+              <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 shadow-sm">
                 <PriceAlertButton event={event} />
                 <div className="mt-2">
                   <AlertWatchersCount eventId={event.event_id} />
@@ -400,8 +400,8 @@ export default function EventDetailsPage() {
               </div>
 
               {/* Event Details */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
-                <h3 className="font-bold text-sm text-slate-900 mb-3">Event Details</h3>
+              <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 shadow-sm">
+                <h3 className="font-bold text-sm text-white mb-3">Event Details</h3>
                 <div className="space-y-2 text-[13px]">
                   {[
                     { label: 'Date', value: shortDate },
@@ -412,7 +412,7 @@ export default function EventDetailsPage() {
                   ].map((r, i) => (
                     <div key={i} className="flex justify-between">
                       <span className="text-slate-400">{r.label}</span>
-                      <span className={r.green ? 'text-emerald-600 font-bold' : 'text-slate-700'}>{r.value}</span>
+                      <span className={r.green ? 'text-emerald-600 font-bold' : 'text-slate-300'}>{r.value}</span>
                     </div>
                   ))}
                 </div>
@@ -422,7 +422,7 @@ export default function EventDetailsPage() {
               <VenueInfoSection event={event} />
 
               {/* Reviews */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
+              <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 shadow-sm">
                 <div className="flex items-center gap-2 mb-2.5">
                   <div className="flex gap-0.5">{[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />)}</div>
                   <span className="text-xs text-slate-500">4.8/5 (2,847)</span>
@@ -432,8 +432,8 @@ export default function EventDetailsPage() {
                   { name: 'Sophie M.', text: 'Instant delivery. QR worked perfectly.', flag: 'FR' },
                   { name: 'Thomas K.', text: 'Cheapest prices. Real guarantee.', flag: 'UK' },
                 ].map((r, i) => (
-                  <div key={i} className="py-2 border-t border-slate-100 first:border-0">
-                    <p className="text-slate-600 text-xs italic">"{r.text}"</p>
+                  <div key={i} className="py-2 border-t border-white/5 first:border-0">
+                    <p className="text-slate-400 text-xs italic">"{r.text}"</p>
                     <p className="text-slate-400 text-[11px] mt-0.5">{r.name} &middot; {r.flag}</p>
                   </div>
                 ))}
@@ -453,10 +453,10 @@ export default function EventDetailsPage() {
         <div className="flex items-center justify-between gap-3">
           <div>
             <p className="text-[10px] text-slate-500 uppercase">From</p>
-            <p className="text-xl font-extrabold text-slate-900">&euro;{lowestPrice}</p>
+            <p className="text-xl font-extrabold text-white">&euro;{lowestPrice}</p>
           </div>
           <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-full text-sm transition-all shadow-md">
+            className="bg-emerald-500/100 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-full text-sm transition-all shadow-md">
             View {totalAvailable} Tickets
           </button>
         </div>

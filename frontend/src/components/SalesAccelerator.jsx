@@ -31,7 +31,7 @@ export const UrgencyCountdown = ({ endTime, onExpire }) => {
   }, [endTime, onExpire]);
 
   return (
-    <div className="flex items-center gap-2 bg-red-500/20 border border-red-500/30 rounded-xl px-4 py-2">
+    <div className="flex items-center gap-2 bg-[#e10600]/100/20 border border-red-500/30 rounded-none px-4 py-2">
       <Clock className="w-5 h-5 text-red-400 animate-pulse" />
       <span className="text-red-400 font-bold">
         {String(timeLeft.hours).padStart(2, '0')}:
@@ -50,7 +50,7 @@ export const ScarcityIndicator = ({ ticketsLeft = 5, totalTickets = 100 }) => {
   const isCritical = ticketsLeft <= 3;
 
   return (
-    <div className={`rounded-xl p-3 ${isCritical ? 'bg-red-500/20 border border-red-500/40' : isLow ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-slate-50 border border-slate-200'}`}>
+    <div className={`rounded-none p-3 ${isCritical ? 'bg-[#e10600]/100/20 border border-red-500/40' : isLow ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-[#15151e] border border-white/10'}`}>
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           {isCritical ? (
@@ -58,17 +58,17 @@ export const ScarcityIndicator = ({ ticketsLeft = 5, totalTickets = 100 }) => {
           ) : (
             <Flame className="w-5 h-5 text-orange-400" />
           )}
-          <span className={`font-bold ${isCritical ? 'text-red-400' : isLow ? 'text-orange-400' : 'text-slate-600'}`}>
+          <span className={`font-bold ${isCritical ? 'text-red-400' : isLow ? 'text-orange-400' : 'text-slate-400'}`}>
             {isCritical ? 'Almost Sold Out!' : isLow ? 'Selling Fast!' : 'Available'}
           </span>
         </div>
-        <Badge className={`${isCritical ? 'bg-red-500' : isLow ? 'bg-orange-500' : 'bg-emerald-500'} text-white`}>
+        <Badge className={`${isCritical ? 'bg-[#e10600]/100' : isLow ? 'bg-orange-500' : 'bg-emerald-500/100'} text-white`}>
           {ticketsLeft} left
         </Badge>
       </div>
       <div className="w-full bg-zinc-700 rounded-full h-2">
         <div 
-          className={`h-2 rounded-full transition-all ${isCritical ? 'bg-red-500' : isLow ? 'bg-orange-500' : 'bg-emerald-500'}`}
+          className={`h-2 rounded-full transition-all ${isCritical ? 'bg-[#e10600]/100' : isLow ? 'bg-orange-500' : 'bg-emerald-500/100'}`}
           style={{ width: `${100 - percentage}%` }}
         />
       </div>
@@ -96,7 +96,7 @@ export const LiveViewers = ({ eventId }) => {
   }, [eventId]);
 
   return (
-    <div className="flex items-center gap-2 bg-purple-500/20 border border-purple-500/30 rounded-xl px-4 py-2">
+    <div className="flex items-center gap-2 bg-purple-500/20 border border-purple-500/30 rounded-none px-4 py-2">
       <div className="relative">
         <Eye className="w-5 h-5 text-purple-400" />
         <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full animate-ping" />
@@ -122,7 +122,7 @@ export const PriceComparison = ({ ourPrice, competitorPrices }) => {
   const maxSaving = Math.max(...savings.map(s => s.saving));
 
   return (
-    <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-4">
+    <div className="bg-emerald-500/100/10 border border-emerald-500/30 rounded-none p-4">
       <div className="flex items-center gap-2 mb-3">
         <TrendingDown className="w-5 h-5 text-emerald-400" />
         <span className="font-bold text-emerald-400">You Save Up To €{maxSaving}!</span>
@@ -133,11 +133,11 @@ export const PriceComparison = ({ ourPrice, competitorPrices }) => {
             <span className="text-slate-500">{comp.name}</span>
             <div className="flex items-center gap-2">
               <span className="text-slate-400 line-through">€{comp.price}</span>
-              <Badge className="bg-emerald-500/20 text-emerald-400">-{comp.savingPercent}%</Badge>
+              <Badge className="bg-emerald-500/100/20 text-emerald-400">-{comp.savingPercent}%</Badge>
             </div>
           </div>
         ))}
-        <div className="flex items-center justify-between pt-2 border-t border-slate-200">
+        <div className="flex items-center justify-between pt-2 border-t border-white/10">
           <span className="font-bold text-white">Our Price</span>
           <span className="text-2xl font-bold text-emerald-400">€{ourPrice}</span>
         </div>
@@ -158,7 +158,7 @@ export const WhatsAppButton = ({ eventTitle, price }) => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition-colors"
+      className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-none transition-colors"
     >
       <MessageCircle className="w-5 h-5" />
       Buy via WhatsApp
@@ -191,7 +191,7 @@ export const FlashSaleBanner = ({ discount = 20, endsAt }) => {
   }, [endsAt]);
 
   return (
-    <div className="bg-gradient-to-r from-red-600 to-orange-600 rounded-2xl p-4 mb-6 relative overflow-hidden">
+    <div className="bg-gradient-to-r from-red-600 to-orange-600 rounded-none p-4 mb-6 relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PC9zdmc+')] opacity-50" />
       <div className="relative flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -203,7 +203,7 @@ export const FlashSaleBanner = ({ discount = 20, endsAt }) => {
             <p className="text-white/80">Save {discount}% on all tickets</p>
           </div>
         </div>
-        <div className="text-center bg-white/20 rounded-xl px-6 py-3">
+        <div className="text-center bg-white/20 rounded-none px-6 py-3">
           <div className="text-3xl font-mono font-bold text-white">
             {String(timeLeft.hours).padStart(2, '0')}:
             {String(timeLeft.minutes).padStart(2, '0')}:
@@ -288,19 +288,19 @@ export const RecentlyBoughtPopup = () => {
   if (!show || !purchase) return null;
 
   return (
-    <div className="fixed bottom-24 left-4 bg-white rounded-2xl p-4 border border-slate-200 shadow-xl z-40 animate-in slide-in-from-left max-w-sm">
+    <div className="fixed bottom-24 left-4 bg-[#1e1e1e] rounded-none p-4 border border-white/10 shadow-xl z-40 animate-in slide-in-from-left max-w-sm">
       <div className="flex items-start gap-3">
-        <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center">
+        <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center">
           <ShoppingCart className="w-6 h-6 text-emerald-600" />
         </div>
         <div>
-          <p className="font-bold text-slate-900">
+          <p className="font-bold text-white">
             {purchase.name} from {purchase.city}
           </p>
           <p className="text-sm text-slate-500">
             Just bought <span className="text-emerald-600 font-medium">{purchase.tickets} tickets</span> for
           </p>
-          <p className="text-sm text-slate-700 font-medium">{purchase.event}</p>
+          <p className="text-sm text-slate-300 font-medium">{purchase.event}</p>
           <p className="text-xs text-slate-400 mt-1">{purchase.time}</p>
         </div>
       </div>
@@ -314,7 +314,7 @@ export const OneClickBuyButton = ({ ticketId, price, onBuy, loading }) => {
     <Button
       onClick={() => onBuy(ticketId)}
       disabled={loading}
-      className="w-full h-14 text-lg font-bold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 rounded-xl shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02]"
+      className="w-full h-14 text-lg font-bold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 rounded-none shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02]"
     >
       {loading ? (
         <span className="flex items-center gap-2">
@@ -344,9 +344,9 @@ export const TrustBadges = () => {
   return (
     <div className="flex flex-wrap justify-center gap-3 py-4">
       {badges.map((badge, i) => (
-        <div key={i} className="flex items-center gap-2 bg-slate-50 rounded-full px-4 py-2 border border-slate-200">
+        <div key={i} className="flex items-center gap-2 bg-[#15151e] rounded-full px-4 py-2 border border-white/10">
           <span className="text-lg">{badge.icon}</span>
-          <span className="text-sm text-slate-600">{badge.text}</span>
+          <span className="text-sm text-slate-400">{badge.text}</span>
         </div>
       ))}
     </div>
@@ -370,11 +370,11 @@ export const LimitedTimeOffer = ({ originalPrice, salePrice, expiresIn = 3600 })
   const seconds = secondsLeft % 60;
 
   return (
-    <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-2xl p-5">
+    <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-none p-5">
       <div className="flex items-center gap-2 mb-3">
         <Timer className="w-5 h-5 text-yellow-400 animate-pulse" />
         <span className="font-bold text-yellow-400">LIMITED TIME OFFER</span>
-        <Badge className="bg-red-500 text-white ml-auto animate-pulse">-{discount}%</Badge>
+        <Badge className="bg-[#e10600]/100 text-white ml-auto animate-pulse">-{discount}%</Badge>
       </div>
       
       <div className="flex items-center justify-between">
@@ -383,7 +383,7 @@ export const LimitedTimeOffer = ({ originalPrice, salePrice, expiresIn = 3600 })
           <div className="text-3xl font-bold text-white">€{salePrice}</div>
         </div>
         
-        <div className="text-center bg-white rounded-xl px-4 py-2">
+        <div className="text-center bg-[#1e1e1e] rounded-none px-4 py-2">
           <div className="text-2xl font-mono font-bold text-yellow-400">
             {String(hours).padStart(2, '0')}:{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
           </div>
@@ -409,7 +409,7 @@ export const StickyBuyBar = ({ price, ticketsLeft, onBuy }) => {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-slate-200 p-4 z-50 animate-in slide-in-from-bottom">
+    <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-white/10 p-4 z-50 animate-in slide-in-from-bottom">
       <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <div>
@@ -417,7 +417,7 @@ export const StickyBuyBar = ({ price, ticketsLeft, onBuy }) => {
             <div className="text-sm text-slate-500">Best available</div>
           </div>
           {ticketsLeft <= 10 && (
-            <Badge className="bg-red-500/20 text-red-400 border border-red-500/30 animate-pulse">
+            <Badge className="bg-[#e10600]/100/20 text-red-400 border border-red-500/30 animate-pulse">
               Only {ticketsLeft} left!
             </Badge>
           )}

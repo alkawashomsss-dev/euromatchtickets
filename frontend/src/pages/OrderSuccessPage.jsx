@@ -69,7 +69,7 @@ const OrderSuccessPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-3 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-slate-500">Processing your payment...</p>
@@ -80,7 +80,7 @@ const OrderSuccessPage = () => {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-[hsl(210,20%,98%)] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center">
         <div className="text-center">
           <p className="text-slate-500 mb-4">Order not found or payment failed</p>
           <Link to="/events">
@@ -92,11 +92,11 @@ const OrderSuccessPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]" data-testid="order-success-page">
+    <div className="min-h-screen bg-[#0e0e14]" data-testid="order-success-page">
       <div className="max-w-[900px] mx-auto px-4 py-12">
         {/* Success Header */}
         <div className="text-center mb-10">
-          <div className="w-20 h-20 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-6 animate-bounce">
+          <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6 animate-bounce">
             <Check className="w-10 h-10 text-emerald-600" />
           </div>
           <h1 className="text-3xl font-bold mb-2" data-testid="success-title">Payment Successful!</h1>
@@ -107,7 +107,7 @@ const OrderSuccessPage = () => {
         <ProfessionalTicket order={order} />
 
         {/* Price Summary */}
-        <div className="bg-white border border-slate-100 rounded-xl p-6 mt-6 max-w-md mx-auto">
+        <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-6 mt-6 max-w-md mx-auto">
           <div className="flex justify-between items-center mb-3">
             <span className="text-slate-500 text-sm">Ticket Price</span>
             <span className="text-white font-medium">{"\u20ac"}{order.ticket_price?.toFixed(2)}</span>
@@ -116,7 +116,7 @@ const OrderSuccessPage = () => {
             <span className="text-slate-500 text-sm">Service Fee</span>
             <span className="text-white font-medium">{"\u20ac"}{order.commission?.toFixed(2)}</span>
           </div>
-          <div className="border-t border-slate-200 pt-3 flex justify-between items-center">
+          <div className="border-t border-white/10 pt-3 flex justify-between items-center">
             <span className="text-white font-semibold">Total Paid</span>
             <span className="text-2xl font-bold text-emerald-600">{"\u20ac"}{order.total_amount?.toFixed(2)}</span>
           </div>
@@ -131,13 +131,13 @@ const OrderSuccessPage = () => {
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
           <Link to="/my-tickets">
-            <Button className="bg-purple-600 hover:bg-purple-500 w-full sm:w-auto" data-testid="view-my-tickets-btn">
+            <Button className="bg-purple-600 hover:bg-purple-500/100 w-full sm:w-auto" data-testid="view-my-tickets-btn">
               <Ticket className="w-4 h-4 mr-2" />
               View My Tickets
             </Button>
           </Link>
           <Link to="/events">
-            <Button variant="outline" className="border-slate-200 w-full sm:w-auto">
+            <Button variant="outline" className="border-white/10 w-full sm:w-auto">
               Browse More Events
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>

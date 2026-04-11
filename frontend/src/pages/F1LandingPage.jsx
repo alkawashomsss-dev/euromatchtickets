@@ -17,7 +17,7 @@ const F1LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="F1 Tickets 2026 | Buy Formula 1 Tickets Online"
         description="Buy F1 tickets 2026 season. F1 calendar 2026: Monaco, Silverstone, Bahrain, Abu Dhabi & more. From €120. F1 schedule 2026 with instant delivery + guarantee."
@@ -37,11 +37,11 @@ const F1LandingPage = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
           <div className="flex justify-center gap-3 mb-6">
-            <Badge className="bg-red-50 text-red-600 border-red-200 px-4 py-2">
+            <Badge className="bg-[#e10600]/10 text-red-600 border-red-200 px-4 py-2">
               <Flag className="w-4 h-4 mr-2" />
               2026 Full Season
             </Badge>
-            <Badge className="bg-amber-50 text-amber-600 border-amber-200 px-4 py-2">
+            <Badge className="bg-amber-500/10 text-amber-600 border-amber-200 px-4 py-2">
               <Star className="w-4 h-4 mr-2" />
               24 Races Available
             </Badge>
@@ -52,7 +52,7 @@ const F1LandingPage = () => {
             <span className="text-white"> Tickets 2026</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-slate-400 mb-8 max-w-3xl mx-auto">
             Attend the world's greatest races - Monaco, Silverstone, Las Vegas & more!
             <br />
             <span className="text-red-600 font-bold">Prices starting from €120!</span>
@@ -96,10 +96,10 @@ const F1LandingPage = () => {
               <Link 
                 key={idx}
                 to="/events?category=F1"
-                className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-red-500/50 transition-all"
+                className="group relative bg-[#1e1e1e] border border-white/10 rounded-none overflow-hidden hover:border-red-500/50 transition-all"
               >
                 {race.hot && (
-                  <Badge className="absolute top-3 right-3 z-10 bg-red-500 text-white">Hot!</Badge>
+                  <Badge className="absolute top-3 right-3 z-10 bg-[#e10600]/100 text-white">Hot!</Badge>
                 )}
                 <div className="aspect-video relative overflow-hidden">
                   <img 
@@ -125,7 +125,7 @@ const F1LandingPage = () => {
                       <span className="text-2xl font-bold text-red-600">€{race.price}</span>
                       <span className="text-sm text-slate-400 ml-2">from</span>
                     </div>
-                    <Button size="sm" variant="outline" className="border-red-500/50 text-red-600 hover:bg-red-50">
+                    <Button size="sm" variant="outline" className="border-red-500/50 text-red-600 hover:bg-[#e10600]/10">
                       Book Now
                     </Button>
                   </div>
@@ -137,13 +137,13 @@ const F1LandingPage = () => {
       </div>
 
       {/* Categories */}
-      <div className="py-20 bg-white">
+      <div className="py-20 bg-[#1e1e1e]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Ticket Categories</h2>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-              <h3 className="text-xl font-bold mb-2 text-slate-600">General Admission</h3>
+            <div className="bg-[#15151e] border border-white/10 rounded-none p-6">
+              <h3 className="text-xl font-bold mb-2 text-slate-400">General Admission</h3>
               <div className="text-3xl font-bold text-emerald-600 mb-4">From €120</div>
               <ul className="space-y-2 text-sm text-slate-500">
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-600" /> Track access</li>
@@ -152,8 +152,8 @@ const F1LandingPage = () => {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-b from-amber-900/20 to-zinc-800/50 border-2 border-amber-500/50 rounded-2xl p-6">
-              <Badge className="bg-amber-500 text-black mb-2">Most Popular</Badge>
+            <div className="bg-gradient-to-b from-amber-900/20 to-zinc-800/50 border-2 border-amber-500/50 rounded-none p-6">
+              <Badge className="bg-amber-500/100 text-black mb-2">Most Popular</Badge>
               <h3 className="text-xl font-bold mb-2 text-white">Grandstand</h3>
               <div className="text-3xl font-bold text-amber-600 mb-4">From €250</div>
               <ul className="space-y-2 text-sm text-slate-500">
@@ -163,8 +163,8 @@ const F1LandingPage = () => {
               </ul>
             </div>
 
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-              <h3 className="text-xl font-bold mb-2 text-slate-600">VIP Hospitality</h3>
+            <div className="bg-[#15151e] border border-white/10 rounded-none p-6">
+              <h3 className="text-xl font-bold mb-2 text-slate-400">VIP Hospitality</h3>
               <div className="text-3xl font-bold text-violet-600 mb-4">From €800</div>
               <ul className="space-y-2 text-sm text-slate-500">
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-violet-600" /> Paddock access</li>
@@ -185,7 +185,7 @@ const F1LandingPage = () => {
 
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#e10600]/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-red-600" />
               </div>
               <h3 className="font-bold mb-2">100% Verified</h3>
@@ -193,7 +193,7 @@ const F1LandingPage = () => {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-amber-500/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-8 h-8 text-amber-600" />
               </div>
               <h3 className="font-bold mb-2">Instant Delivery</h3>
@@ -201,7 +201,7 @@ const F1LandingPage = () => {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-emerald-500/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Star className="w-8 h-8 text-emerald-600" />
               </div>
               <h3 className="font-bold mb-2">Best Prices</h3>
@@ -209,7 +209,7 @@ const F1LandingPage = () => {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-violet-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-violet-50 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Flag className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="font-bold mb-2">All 24 Races</h3>
@@ -220,7 +220,7 @@ const F1LandingPage = () => {
       </div>
 
       {/* Final CTA */}
-      <div className="py-20 bg-white">
+      <div className="py-20 bg-[#1e1e1e]">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="bg-gradient-to-r from-red-900/30 to-amber-900/30 border border-red-200 rounded-3xl p-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">

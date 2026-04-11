@@ -2,11 +2,11 @@ import { Shield, AlertTriangle, CreditCard, Mail, Phone, MapPin } from "lucide-r
 
 const TermsPage = () => {
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)] pt-32 pb-16">
+    <div className="min-h-screen bg-[#0e0e14] pt-32 pb-16">
       <div className="max-w-4xl mx-auto px-4 md:px-8">
         
         {/* Important Disclosure - Required for Google Ads */}
-        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-8">
+        <div className="bg-amber-500/10 border border-amber-200 rounded-none p-6 mb-8">
           <div className="flex items-start gap-4">
             <AlertTriangle className="w-8 h-8 text-amber-600 flex-shrink-0 mt-1" />
             <div>
@@ -23,7 +23,7 @@ const TermsPage = () => {
 
         <h1 className="text-4xl md:text-5xl font-bold mb-8">Terms & Conditions</h1>
         
-        <div className="space-y-8 text-slate-600">
+        <div className="space-y-8 text-slate-400">
           
           {/* About Us */}
           <section>
@@ -54,13 +54,13 @@ const TermsPage = () => {
               All ticket prices displayed on EuroMatchTickets are set by individual sellers. These prices may be:
             </p>
             <div className="grid md:grid-cols-2 gap-4 mb-4">
-              <div className="bg-white border border-slate-100 rounded-xl p-4">
+              <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-4">
                 <h3 className="font-semibold text-emerald-600 mb-2">Above Face Value</h3>
                 <p className="text-sm text-slate-500">
                   For high-demand events, tickets may be priced higher than the original purchase price.
                 </p>
               </div>
-              <div className="bg-white border border-slate-100 rounded-xl p-4">
+              <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-4">
                 <h3 className="font-semibold text-blue-600 mb-2">Below Face Value</h3>
                 <p className="text-sm text-slate-500">
                   Some sellers may list tickets below face value for various reasons.
@@ -81,25 +81,25 @@ const TermsPage = () => {
             </p>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-6 h-6 bg-emerald-500/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <span className="text-emerald-600 text-sm">✓</span>
                 </div>
                 <span><strong>Valid Tickets:</strong> Your tickets will be valid for entry to the event</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-6 h-6 bg-emerald-500/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <span className="text-emerald-600 text-sm">✓</span>
                 </div>
                 <span><strong>On-Time Delivery:</strong> Tickets will be delivered before the event</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-6 h-6 bg-emerald-500/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <span className="text-emerald-600 text-sm">✓</span>
                 </div>
                 <span><strong>Full Refund:</strong> If the event is cancelled and not rescheduled</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-6 h-6 bg-emerald-500/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <span className="text-emerald-600 text-sm">✓</span>
                 </div>
                 <span><strong>Customer Support:</strong> 24/7 assistance for any issues</span>
@@ -123,7 +123,7 @@ const TermsPage = () => {
           </section>
 
           {/* Contact Information */}
-          <section className="bg-white border border-slate-100 rounded-2xl p-6">
+          <section className="bg-[#1e1e1e] border border-white/5 rounded-none p-6">
             <h2 className="text-2xl font-bold text-white mb-4">Contact Us</h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="flex items-center gap-3">

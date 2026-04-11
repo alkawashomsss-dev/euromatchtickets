@@ -49,7 +49,7 @@ const MetallicaPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       
       <title>Metallica Sphere Las Vegas Tickets 2026 | Snake Pit VIP $2,755 | EuroMatchTickets</title>
@@ -57,7 +57,7 @@ const MetallicaPage = () => {
       <meta name="keywords" content="Metallica tickets, Metallica Sphere, Metallica Las Vegas, Metallica concert 2026, Metallica VIP, Snake Pit tickets, buy Metallica tickets" />
 
       {/* Language Selector */}
-      <div className="fixed top-20 right-4 z-50 flex gap-1 bg-white/90 rounded-lg p-1 border border-slate-200">
+      <div className="fixed top-20 right-4 z-50 flex gap-1 bg-white/90 rounded-none p-1 border border-white/10">
         {Object.keys(TRANSLATIONS).map(l => (
           <button key={l} onClick={() => setLang(l)} className={`px-2 py-1 rounded text-xs font-bold ${lang === l ? 'bg-orange-600 text-white' : 'text-slate-500 hover:text-white'}`}>
             {l.toUpperCase()}
@@ -88,9 +88,9 @@ const MetallicaPage = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 bg-emerald-50 text-emerald-600 px-4 py-2 rounded-full"><Shield className="w-5 h-5" />100% Guarantee</div>
+            <div className="flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full"><Shield className="w-5 h-5" />100% Guarantee</div>
             <div className="flex items-center gap-2 bg-violet-50 text-violet-600 px-4 py-2 rounded-full"><Zap className="w-5 h-5" />Instant QR</div>
-            <div className="flex items-center gap-2 bg-amber-50 text-amber-600 px-4 py-2 rounded-full"><Star className="w-5 h-5" />5% Cheaper</div>
+            <div className="flex items-center gap-2 bg-amber-500/10 text-amber-600 px-4 py-2 rounded-full"><Star className="w-5 h-5" />5% Cheaper</div>
           </div>
 
           <div className="text-4xl font-bold text-white mb-6">
@@ -113,22 +113,22 @@ const MetallicaPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-center">Ticket Categories</h2>
           <div className="grid md:grid-cols-4 gap-4">
-            <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 text-center">
               <div className="text-slate-500 font-bold mb-2">General</div>
               <div className="text-3xl font-bold text-white mb-2">$617</div>
               <p className="text-sm text-slate-500">Standard seating</p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
+            <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 text-center">
               <div className="text-blue-600 font-bold mb-2">Premium</div>
               <div className="text-3xl font-bold text-blue-600 mb-2">$902</div>
               <p className="text-sm text-slate-500">Enhanced view</p>
             </div>
-            <div className="bg-white border border-amber-200 rounded-xl p-6 text-center">
+            <div className="bg-[#1e1e1e] border border-amber-200 rounded-none p-6 text-center">
               <div className="text-amber-600 font-bold mb-2">VIP</div>
               <div className="text-3xl font-bold text-amber-600 mb-2">$1,710</div>
               <p className="text-sm text-slate-500">VIP lounge access</p>
             </div>
-            <div className="bg-gradient-to-br from-red-900/30 to-slate-900/50 border border-red-500/50 rounded-xl p-6 text-center">
+            <div className="bg-gradient-to-br from-red-900/30 to-slate-900/50 border border-red-500/50 rounded-none p-6 text-center">
               <Badge className="bg-red-600 text-white mb-2">SNAKE PIT</Badge>
               <div className="text-3xl font-bold text-red-600 mb-2">$2,755</div>
               <p className="text-sm text-slate-500">Floor access, meet band</p>
@@ -138,7 +138,7 @@ const MetallicaPage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-4 border-y border-slate-100 bg-white">
+      <section className="py-4 border-y border-white/5 bg-[#1e1e1e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />100% Money-Back</div>
@@ -158,10 +158,10 @@ const MetallicaPage = () => {
           ) : (
             <div className="space-y-4">
               {events.map((event) => (
-                <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`} className="block bg-white border border-slate-200 hover:border-orange-500/50 rounded-xl p-6 transition-all group">
+                <Link key={event.event_id} to={`/event/${event.slug || event.event_id}`} className="block bg-[#1e1e1e] border border-white/10 hover:border-orange-500/50 rounded-none p-6 transition-all group">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-none bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center">
                         <Flame className="w-8 h-8 text-white" />
                       </div>
                       <div>
@@ -190,20 +190,20 @@ const MetallicaPage = () => {
       </section>
 
       {/* SEO Content */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">Metallica at The Sphere Las Vegas 2026</h2>
           <div className="prose prose-invert">
-            <p className="text-slate-600 mb-4">
+            <p className="text-slate-400 mb-4">
               Experience Metallica like never before at The Sphere in Las Vegas. The world's most advanced entertainment venue 
               meets the world's biggest metal band for an unprecedented residency in August 2026.
             </p>
-            <p className="text-slate-600 mb-4">
+            <p className="text-slate-400 mb-4">
               The Sphere's 160,000 square feet of LED display wraps around the audience, creating a 360-degree visual experience 
               that will transform Metallica's legendary stage show into something truly unforgettable.
             </p>
             <h3 className="text-xl font-bold mt-6 mb-3">Snake Pit Experience - $2,755</h3>
-            <ul className="text-slate-600 space-y-2">
+            <ul className="text-slate-400 space-y-2">
               <li>• Floor standing area directly in front of stage</li>
               <li>• Exclusive Snake Pit entrance</li>
               <li>• Meet & greet opportunity with band</li>

@@ -60,7 +60,7 @@ const UltimateF1GuidePage = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-red-900/30 via-[#0b0d17] to-[#0b0d17]" />
         <div className="relative max-w-5xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-bold mb-6 backdrop-blur-md"><Flag className="w-4 h-4" /> DEFINITIVE GUIDE</div>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-[#e10600]/100/10 text-red-400 text-xs font-bold mb-6 backdrop-blur-md"><Flag className="w-4 h-4" /> DEFINITIVE GUIDE</div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tighter mb-4">
             Ultimate F1 Tickets Guide
             <span className="block bg-gradient-to-r from-red-400 to-amber-400 bg-clip-text text-transparent text-2xl sm:text-3xl mt-2">2026 Season - Every Race Compared</span>
@@ -74,7 +74,7 @@ const UltimateF1GuidePage = () => {
       <section className="max-w-5xl mx-auto px-4 pb-12">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[{ label: "Cheapest Race", val: "€59" }, { label: "Total Races", val: "15+" }, { label: "Avg Saving", val: "35%" }, { label: "Rating", val: "4.8/5" }].map((s, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center"><p className="text-2xl font-black text-white">{s.val}</p><p className="text-xs text-slate-500">{s.label}</p></div>
+            <div key={i} className="bg-white/5 border border-white/10 rounded-none p-4 text-center"><p className="text-2xl font-black text-white">{s.val}</p><p className="text-xs text-slate-500">{s.label}</p></div>
           ))}
         </div>
       </section>
@@ -84,7 +84,7 @@ const UltimateF1GuidePage = () => {
         <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2"><Trophy className="w-5 h-5 text-amber-400" /> Our Picks</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {bestValue.map((b, i) => (
-            <Link key={i} to={b.link} className="bg-white/5 border border-amber-400/20 rounded-xl p-4 hover:bg-white/10 transition-all">
+            <Link key={i} to={b.link} className="bg-white/5 border border-amber-400/20 rounded-none p-4 hover:bg-white/10 transition-all">
               <p className="text-[10px] text-amber-400 font-bold uppercase">{b.label}</p>
               <p className="font-bold text-white mt-1">{b.race}</p>
               <p className="text-emerald-400 text-sm font-bold">{b.price}</p>
@@ -98,12 +98,12 @@ const UltimateF1GuidePage = () => {
         <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2"><Flag className="w-5 h-5 text-red-500" /> Every 2026 F1 Race - Rated & Priced</h2>
         <div className="space-y-3">
           {races.map((r, i) => (
-            <Link key={i} to={r.link} className="flex flex-col sm:flex-row sm:items-center justify-between bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-red-500/30 transition-all" data-testid={`f1-race-${i}`}>
+            <Link key={i} to={r.link} className="flex flex-col sm:flex-row sm:items-center justify-between bg-white/5 border border-white/10 rounded-none p-5 hover:bg-white/10 hover:border-red-500/30 transition-all" data-testid={`f1-race-${i}`}>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-xs text-white/40 font-bold w-6">#{i + 1}</span>
                   <h3 className="font-bold text-white">{r.name}</h3>
-                  <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${r.type.includes('Night') ? 'bg-amber-500/30 text-amber-300' : r.type === 'Twilight' ? 'bg-purple-500/30 text-purple-300' : r.type === 'Street' ? 'bg-blue-500/30 text-blue-300' : 'bg-white/10 text-white/40'}`}>{r.type}</span>
+                  <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${r.type.includes('Night') ? 'bg-amber-500/100/30 text-amber-300' : r.type === 'Twilight' ? 'bg-purple-500/100/30 text-purple-300' : r.type === 'Street' ? 'bg-blue-500/100/30 text-blue-300' : 'bg-white/10 text-white/40'}`}>{r.type}</span>
                 </div>
                 <p className="text-sm text-slate-500 ml-8">{r.circuit} &bull; {r.date}</p>
                 <p className="text-xs text-slate-400 ml-8 mt-1">{r.highlight}</p>
@@ -122,7 +122,7 @@ const UltimateF1GuidePage = () => {
 
       {/* Buying Tips */}
       <section className="max-w-4xl mx-auto px-4 pb-16">
-        <div className="bg-gradient-to-br from-red-900/30 to-amber-900/10 border border-red-500/20 rounded-2xl p-8">
+        <div className="bg-gradient-to-br from-red-900/30 to-amber-900/10 border border-red-500/20 rounded-none p-8">
           <h2 className="text-2xl font-bold text-white mb-6">F1 Ticket Buying Tips</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-400">
             <div><h3 className="font-bold text-red-300 mb-2">When to Buy</h3><p>Buy 6-9 months before for the best prices. Early-bird tickets are 20-30% cheaper. Race week prices spike by 40%+. Set a price alert and buy when you see a deal.</p></div>
@@ -150,7 +150,7 @@ const UltimateF1GuidePage = () => {
         <h2 className="text-xl font-bold text-white mb-4">FAQ - F1 Tickets 2026</h2>
         <FAQStructuredData faqs={faqs} />
         <div className="space-y-2">{faqs.map((f, i) => (
-          <details key={i} className="group rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+          <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
             <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">{f.question}<ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" /></summary>
             <p className="px-4 pb-4 text-slate-400 text-sm leading-relaxed">{f.answer}</p>
           </details>
@@ -171,7 +171,7 @@ const UltimateF1GuidePage = () => {
             { to: "/f1-ticket-prices-guide", label: "F1 Price Guide", tag: "PRICES" },
             { to: "/best-f1-races-europe", label: "Best European Races", tag: "TOP 10" },
           ].map((l, i) => (
-            <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-red-500/30 transition-all">
+            <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-red-500/30 transition-all">
               <p className="font-bold text-white text-sm">{l.label}</p>
               <span className="text-[9px] text-red-400 font-bold mt-1 inline-block">{l.tag}</span>
             </Link>

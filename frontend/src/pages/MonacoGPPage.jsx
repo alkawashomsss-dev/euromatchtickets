@@ -108,7 +108,7 @@ const MonacoGPPage = () => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-6">
-            <div className="bg-white/5 backdrop-blur-md border border-amber-400/20 rounded-xl px-6 py-4 text-center">
+            <div className="bg-white/5 backdrop-blur-md border border-amber-400/20 rounded-none px-6 py-4 text-center">
               <p className="text-[10px] text-amber-300/50 uppercase tracking-widest">From</p>
               <p className="text-4xl font-extrabold bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">&euro;195</p>
               <p className="text-[10px] text-emerald-400 font-bold">55% OFF vs F1.com</p>
@@ -133,7 +133,7 @@ const MonacoGPPage = () => {
         <h2 className="text-2xl font-bold text-white mb-8 text-center">The Monaco GP Experience</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {experiences.map((exp, i) => (
-            <div key={i} className="bg-white/5 border border-amber-400/10 rounded-2xl p-6 hover:border-amber-400/30 transition-all">
+            <div key={i} className="bg-white/5 border border-amber-400/10 rounded-none p-6 hover:border-amber-400/30 transition-all">
               <exp.icon className="w-8 h-8 text-amber-400 mb-3" />
               <h3 className="font-bold text-white mb-2">{exp.title}</h3>
               <p className="text-sm text-slate-400 leading-relaxed">{exp.desc}</p>
@@ -180,15 +180,15 @@ const MonacoGPPage = () => {
         </h2>
         <div className="space-y-3">
           {tickets.map((t, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-5 hover:border-amber-400/30 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4" data-testid={`monaco-ticket-${i}`}>
+            <div key={i} className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-none p-5 hover:border-amber-400/30 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4" data-testid={`monaco-ticket-${i}`}>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <h3 className="font-bold text-white">{t.section}</h3>
                   {t.badge && <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                     t.badge === 'ULTRA VIP' ? 'bg-amber-400/30 text-amber-200' :
-                    t.badge === 'VIP' ? 'bg-purple-500/30 text-purple-300' :
-                    t.badge === 'ICONIC' ? 'bg-red-500/30 text-red-300' :
-                    'bg-emerald-500/30 text-emerald-300'
+                    t.badge === 'VIP' ? 'bg-purple-500/100/30 text-purple-300' :
+                    t.badge === 'ICONIC' ? 'bg-[#e10600]/100/30 text-red-300' :
+                    'bg-emerald-500/100/30 text-emerald-300'
                   }`}>{t.badge}</span>}
                 </div>
                 <div className="flex flex-wrap gap-2 mt-2">
@@ -228,7 +228,7 @@ const MonacoGPPage = () => {
         <FAQStructuredData faqs={faqs} />
         <div className="space-y-2">
           {faqs.map((f, i) => (
-            <details key={i} className="group rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+            <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
               <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">
                 {f.question}
                 <ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" />
@@ -243,11 +243,11 @@ const MonacoGPPage = () => {
       <section className="max-w-5xl mx-auto px-4 pb-16">
         <h2 className="text-lg font-bold text-white mb-4">Monaco GP Deep Dive</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <Link to="/monaco-gp-vip-experience" className="bg-amber-400/5 border border-amber-400/20 rounded-xl p-4 hover:border-amber-400/40 transition-all">
+          <Link to="/monaco-gp-vip-experience" className="bg-amber-400/5 border border-amber-400/20 rounded-none p-4 hover:border-amber-400/40 transition-all">
             <p className="font-bold text-white text-sm">VIP & Yacht Experience Guide</p>
             <p className="text-xs text-amber-300/60 mt-1">Champions Club, yacht hospitality</p>
           </Link>
-          <Link to="/ultimate-f1-tickets-guide-2026" className="bg-amber-400/5 border border-amber-400/20 rounded-xl p-4 hover:border-amber-400/40 transition-all">
+          <Link to="/ultimate-f1-tickets-guide-2026" className="bg-amber-400/5 border border-amber-400/20 rounded-none p-4 hover:border-amber-400/40 transition-all">
             <p className="font-bold text-white text-sm">Ultimate F1 Guide 2026</p>
             <p className="text-xs text-amber-300/60 mt-1">Every race compared</p>
           </Link>
@@ -268,7 +268,7 @@ const MonacoGPPage = () => {
             { to: "/champions-league-tickets", label: "Champions League", price: "49", tag: "UCL" },
             { to: "/super-bowl-2026-tickets", label: "Super Bowl", price: "495", tag: "NFL" },
           ].map((l, i) => (
-            <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-amber-400/30 transition-all">
+            <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-amber-400/30 transition-all">
               <p className="font-bold text-white text-sm">{l.label}</p>
               <div className="flex items-center justify-between mt-2">
                 <span className="text-amber-400 text-xs font-bold">From &euro;{l.price}</span>

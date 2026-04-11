@@ -196,7 +196,7 @@ const BlogArticlePage = () => {
   const shareUrl = `https://euromatchtickets.com/blog/${articleId}`;
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title={article.title}
         description={article.metaDescription}
@@ -276,8 +276,8 @@ const BlogArticlePage = () => {
             prose-headings:font-bold prose-headings:text-white
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
             prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-4
-            prose-ul:text-slate-600 prose-ol:text-slate-600
+            prose-p:text-slate-400 prose-p:leading-relaxed prose-p:mb-4
+            prose-ul:text-slate-400 prose-ol:text-slate-400
             prose-li:mb-2
             prose-strong:text-white
             prose-a:text-violet-600 prose-a:no-underline hover:prose-a:underline"
@@ -285,7 +285,7 @@ const BlogArticlePage = () => {
         />
 
         {/* Share Section */}
-        <div className="mt-12 pt-8 border-t border-slate-200">
+        <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-3">
               <Share2 className="w-5 h-5 text-slate-500" />
@@ -296,7 +296,7 @@ const BlogArticlePage = () => {
                 href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(article.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-slate-100 rounded-lg hover:bg-slate-100 transition-colors"
+                className="p-2 bg-slate-100 rounded-none hover:bg-white/10 transition-colors"
               >
                 <Twitter className="w-5 h-5" />
               </a>
@@ -304,7 +304,7 @@ const BlogArticlePage = () => {
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-slate-100 rounded-lg hover:bg-slate-100 transition-colors"
+                className="p-2 bg-slate-100 rounded-none hover:bg-white/10 transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>
@@ -312,7 +312,7 @@ const BlogArticlePage = () => {
                 href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(article.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-slate-100 rounded-lg hover:bg-slate-100 transition-colors"
+                className="p-2 bg-slate-100 rounded-none hover:bg-white/10 transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -321,7 +321,7 @@ const BlogArticlePage = () => {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 bg-gradient-to-r from-purple-900/30 to-pink-900/30 border border-purple-500/20 rounded-2xl p-8 text-center">
+        <div className="mt-12 bg-gradient-to-r from-purple-900/30 to-pink-900/30 border border-purple-500/20 rounded-none p-8 text-center">
           <h3 className="text-2xl font-bold mb-3">Ready to Buy Tickets?</h3>
           <p className="text-slate-500 mb-6">
             Browse thousands of verified tickets for football matches and concerts across Europe.
@@ -346,9 +346,9 @@ const BlogArticlePage = () => {
                   <Link 
                     key={id}
                     to={`/blog/${id}`}
-                    className="group bg-white border border-slate-100 rounded-xl p-4 hover:border-violet-200 transition-all flex gap-4"
+                    className="group bg-[#1e1e1e] border border-white/5 rounded-none p-4 hover:border-violet-200 transition-all flex gap-4"
                   >
-                    <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                    <div className="w-24 h-24 rounded-none overflow-hidden flex-shrink-0">
                       <img 
                         src={related.image} 
                         alt={related.title}

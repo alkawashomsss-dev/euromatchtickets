@@ -36,7 +36,7 @@ const SingaporeGPPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[hsl(210,20%,98%)]">
+    <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Singapore GP Tickets 2026 | F1 Marina Bay Prices"
         description="Buy Singapore Grand Prix 2026 tickets from €189. Spectacular F1 Night Race at Marina Bay. Turn 1, Pit Grandstand, VIP available. 100% Buyer Protection."
@@ -54,7 +54,7 @@ const SingaporeGPPage = () => {
             <span className="text-violet-600 font-medium">The Original F1 Night Race 🌙</span>
           </div>
           
-          <Badge className="bg-red-50 text-red-600 border-red-200 mb-6">
+          <Badge className="bg-[#e10600]/10 text-red-600 border-red-200 mb-6">
             <Flag className="w-4 h-4 mr-2" />Formula 1® World Championship
           </Badge>
           
@@ -69,11 +69,11 @@ const SingaporeGPPage = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Calendar className="w-5 h-5 text-violet-600" />
               <span>September 18-20, 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
+            <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <MapPin className="w-5 h-5 text-violet-600" />
               <span>Marina Bay, Singapore</span>
             </div>
@@ -83,7 +83,7 @@ const SingaporeGPPage = () => {
             </div>
           </div>
 
-          <div className="inline-block bg-white/90 border border-emerald-200 rounded-2xl p-6">
+          <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€189</div>
             <div className="text-emerald-600 text-sm mt-1">Save €10 vs F1.com & StubHub</div>
@@ -92,7 +92,7 @@ const SingaporeGPPage = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="py-6 border-y border-slate-100 bg-slate-50">
+      <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
@@ -109,15 +109,15 @@ const SingaporeGPPage = () => {
           <h2 className="text-3xl font-bold mb-8">Singapore GP 2026 Tickets</h2>
           <div className="grid gap-4">
             {tickets.map((ticket, i) => (
-              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-white border border-slate-100 hover:border-violet-200 rounded-2xl p-6 transition-all">
+              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-violet-200 rounded-none p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
-                  <div className="w-14 h-14 bg-violet-50 rounded-xl flex items-center justify-center">
+                  <div className="w-14 h-14 bg-violet-50 rounded-none flex items-center justify-center">
                     <Ticket className="w-7 h-7 text-violet-600" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold">{ticket.section}</h3>
-                      {ticket.popular && <Badge className="bg-orange-50 text-orange-600 text-xs">POPULAR</Badge>}
+                      {ticket.popular && <Badge className="bg-orange-500/10 text-orange-600 text-xs">POPULAR</Badge>}
                     </div>
                     <p className="text-slate-400 text-sm">Singapore Grand Prix 2026 • 3-Day Pass</p>
                   </div>
@@ -129,7 +129,7 @@ const SingaporeGPPage = () => {
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
                   <Link to="/events?type=f1">
-                    <Button className="bg-purple-500 hover:bg-purple-600">Buy Now</Button>
+                    <Button className="bg-purple-500/100 hover:bg-purple-600">Buy Now</Button>
                   </Link>
                 </div>
               </div>
@@ -139,7 +139,7 @@ const SingaporeGPPage = () => {
       </section>
 
       {/* SEO Content */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-[#15151e]">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">About Singapore Grand Prix</h2>
           <div className="prose prose-invert max-w-none">
@@ -174,7 +174,7 @@ const SingaporeGPPage = () => {
               "Singapore GP grandstand", "F1 Singapore", "Singapore race tickets",
               "buy Singapore GP tickets", "Singapore F1 2026", "Marina Bay tickets"
             ].map((term, i) => (
-              <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 rounded-full text-sm">
+              <span key={i} className="px-3 py-1 bg-[#15151e] text-slate-500 rounded-full text-sm">
                 {term}
               </span>
             ))}
@@ -188,7 +188,7 @@ const SingaporeGPPage = () => {
           <h2 className="text-3xl font-bold mb-4">Experience F1 Under Lights!</h2>
           <p className="text-slate-500 mb-8">The most spectacular night race in motorsport</p>
           <Link to="/events?type=f1">
-            <Button size="lg" className="bg-purple-500 hover:bg-purple-600 px-8">
+            <Button size="lg" className="bg-purple-500/100 hover:bg-purple-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />
               Buy Singapore GP Tickets
             </Button>

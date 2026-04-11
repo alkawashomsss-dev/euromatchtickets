@@ -59,52 +59,52 @@ const FeaturedEventsCarousel = () => {
   }, []);
 
   return (
-    <section className="py-12 sm:py-16" data-testid="featured-carousel">
+    <section className="py-10 sm:py-14" data-testid="featured-carousel">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6">
           <div>
-            <div className="flex items-center gap-2 text-red-500 text-xs font-bold uppercase tracking-widest mb-1">
-              <Flame className="w-4 h-4" /> Hottest Events
+            <div className="flex items-center gap-2 text-[#e10600] text-[10px] font-black uppercase tracking-widest mb-1">
+              <Flame className="w-4 h-4" /> HOTTEST EVENTS
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Don't Miss Out</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">DON'T MISS OUT</h2>
           </div>
-          <div className="flex gap-2">
-            <button onClick={() => setIdx(p => (p - 1 + events.length) % events.length)} className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition" aria-label="Previous">
+          <div className="flex gap-1.5">
+            <button onClick={() => setIdx(p => (p - 1 + events.length) % events.length)} className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15 transition-colors duration-150" aria-label="Previous">
               <ChevronLeft className="w-5 h-5 text-white" />
             </button>
-            <button onClick={() => setIdx(p => (p + 1) % events.length)} className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition" aria-label="Next">
+            <button onClick={() => setIdx(p => (p + 1) % events.length)} className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15 transition-colors duration-150" aria-label="Next">
               <ChevronRight className="w-5 h-5 text-white" />
             </button>
           </div>
         </div>
 
-        <Link to={ev.link} className="group block relative rounded-3xl overflow-hidden h-[340px] sm:h-[380px] transition-transform hover:scale-[1.005]">
-          <img src={ev.image} alt={ev.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-          <div className={`absolute inset-0 bg-gradient-to-r ${ev.gradient} opacity-60`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <Link to={ev.link} className="group block relative overflow-hidden h-[320px] sm:h-[380px]">
+          <img src={ev.image} alt={ev.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+          <div className={`absolute inset-0 bg-gradient-to-r ${ev.gradient} opacity-50`} />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
           <div className="relative h-full flex flex-col justify-end p-6 sm:p-10">
-            <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full w-fit mb-3">{ev.badge}</span>
-            <h3 className="text-3xl sm:text-5xl font-black text-white mb-1" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>{ev.title}</h3>
-            <p className="text-white/70 text-sm sm:text-base mb-5">{ev.subtitle}</p>
+            <span className="bg-[#e10600] text-white text-[10px] font-black uppercase px-3 py-1 w-fit mb-3 tracking-wider">{ev.badge}</span>
+            <h3 className="text-3xl sm:text-5xl font-black text-white mb-1 uppercase tracking-tighter" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>{ev.title}</h3>
+            <p className="text-white/60 text-sm sm:text-base mb-5">{ev.subtitle}</p>
 
             <div className="flex flex-wrap items-end gap-6">
               {/* Countdown */}
-              <div className="flex gap-2">
-                {[{ v: cd.d, l: "d" }, { v: cd.h, l: "h" }, { v: cd.m, l: "m" }, { v: cd.s, l: "s" }].map((u, i) => (
-                  <div key={i} className="bg-black/40 backdrop-blur-md border border-white/10 rounded-lg px-2.5 py-1.5 text-center min-w-[44px]">
+              <div className="flex gap-1.5">
+                {[{ v: cd.d, l: "D" }, { v: cd.h, l: "H" }, { v: cd.m, l: "M" }, { v: cd.s, l: "S" }].map((u, i) => (
+                  <div key={i} className="bg-black/60 border border-white/10 px-2.5 py-1.5 text-center min-w-[44px]">
                     <span className="text-lg font-black text-white">{String(u.v).padStart(2, '0')}</span>
-                    <span className="text-[9px] text-white/50 ml-0.5">{u.l}</span>
+                    <span className="text-[9px] text-white/40 ml-0.5 font-bold">{u.l}</span>
                   </div>
                 ))}
               </div>
 
               <div className="ml-auto flex items-center gap-4">
                 <div>
-                  <div className="text-[10px] text-white/50 uppercase">From</div>
-                  <div className={`text-3xl font-black text-white`}>&euro;{ev.price}</div>
+                  <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">From</div>
+                  <div className="text-3xl font-black text-white">&euro;{ev.price}</div>
                 </div>
-                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:bg-white/30 transition">
+                <div className="w-12 h-12 bg-[#e10600] flex items-center justify-center group-hover:bg-red-700 transition-colors duration-150">
                   <ArrowRight className="w-5 h-5 text-white" />
                 </div>
               </div>
@@ -113,9 +113,9 @@ const FeaturedEventsCarousel = () => {
         </Link>
 
         {/* Dots */}
-        <div className="flex justify-center gap-2 mt-5">
+        <div className="flex justify-center gap-1.5 mt-4">
           {events.map((_, i) => (
-            <button key={i} onClick={() => setIdx(i)} className={`w-2 h-2 rounded-full transition-all ${i === idx ? 'bg-white w-6' : 'bg-white/20 hover:bg-white/40'}`} aria-label={`Go to slide ${i+1}`} />
+            <button key={i} onClick={() => setIdx(i)} className={`h-1 transition-all duration-150 ${i === idx ? 'bg-[#e10600] w-8' : 'bg-white/15 hover:bg-white/30 w-6'}`} aria-label={`Go to slide ${i+1}`} />
           ))}
         </div>
       </div>
