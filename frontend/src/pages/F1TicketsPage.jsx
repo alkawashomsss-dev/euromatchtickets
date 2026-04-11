@@ -670,7 +670,7 @@ const F1TicketsPage = () => {
                   "Canadian": { kw: "Buy Canadian GP Tickets 2026", sub: "Montreal Circuit Gilles Villeneuve - Sprint" },
                   "Spanish Grand Prix": { kw: "Buy Barcelona F1 Tickets 2026", sub: "Spanish GP - Circuit de Catalunya" },
                   "Austrian": { kw: "Buy Austrian GP Tickets 2026", sub: "Red Bull Ring Spielberg - F1 Sprint" },
-                  "Belgian": { kw: "Buy Spa F1 Tickets 2026", sub: "Belgian GP - Spa-Francorchamps Circuit" },
+                  "Belgian": { kw: "Buy Spa F1 Tickets 2026", sub: "Belgian GP - Spa-Francorchamps Circuit", directLink: "/spa-f1-tickets" },
                   "Hungarian": { kw: "Buy Hungarian GP Tickets 2026", sub: "Hungaroring Budapest - F1 Grand Prix" },
                   "Dutch": { kw: "Buy Zandvoort F1 Tickets 2026", sub: "Dutch GP Sprint - Final Year at Zandvoort", hot: true },
                   "Madrid": { kw: "Buy Madrid GP Tickets 2026", sub: "NEW - Madrid Grand Prix Debut Race", hot: true },
@@ -686,7 +686,7 @@ const F1TicketsPage = () => {
                 return (
                   <Link
                     key={race.event_id || i}
-                    to={`/event/${race.slug || race.event_id}`}
+                    to={seo.directLink || `/event/${race.slug || race.event_id}`}
                     className={`flex items-center gap-3 p-4 border transition-colors duration-150 ${
                       seo.hot
                         ? 'bg-[#e10600]/5 border-[#e10600]/30 hover:border-[#e10600]'

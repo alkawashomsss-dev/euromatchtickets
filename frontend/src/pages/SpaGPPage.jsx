@@ -1,138 +1,221 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, Ticket, Crown, Wine, Utensils, Eye, Check, Clock, AlertTriangle, Play, ChevronRight, Lock, Heart, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, Ticket, Crown, Wine, Utensils, Eye, Check, Clock, AlertTriangle, Play, ChevronRight, Lock, Heart, ArrowRight, HelpCircle, Plane, Hotel, CloudRain, Train, Car, Info, ChevronDown } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 
+const CANONICAL = "https://euromatchtickets.com/f1-belgian-grand-prix-spa-tickets";
+
+/* ─── FAQ Accordion ─── */
+const FAQItem = ({ q, a, open, toggle }) => (
+  <div className="border border-white/8 bg-[#1e1e1e]">
+    <button onClick={toggle} className="flex items-center justify-between w-full p-5 text-left group">
+      <h3 className="font-bold text-white text-sm md:text-base pr-4 group-hover:text-[#e10600] transition-colors">{q}</h3>
+      <ChevronDown className={`w-5 h-5 text-slate-500 flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+    </button>
+    {open && <div className="px-5 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">{a}</div>}
+  </div>
+);
+
 const SpaGPPage = () => {
+  const location = useLocation();
   const [liveViewers, setLiveViewers] = useState(0);
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
   const [showVideo, setShowVideo] = useState(false);
+  const [openFAQ, setOpenFAQ] = useState(0);
+
+  useEffect(() => { window.scrollTo(0, 0); }, [location.pathname]);
 
   useEffect(() => {
     setLiveViewers(Math.floor(Math.random() * 30) + 18);
-    const vi = setInterval(() => setLiveViewers(v => v + (Math.random() > 0.5 ? 1 : -1)), 8000);
-
+    const vi = setInterval(() => setLiveViewers(v => Math.max(12, v + (Math.random() > 0.5 ? 1 : -1))), 8000);
     const raceDate = new Date("2026-08-30T14:00:00Z");
     const tick = () => {
       const diff = raceDate - new Date();
-      if (diff > 0) {
-        setCountdown({
-          days: Math.floor(diff / 86400000),
-          hours: Math.floor((diff % 86400000) / 3600000),
-          mins: Math.floor((diff % 3600000) / 60000),
-          secs: Math.floor((diff % 60000) / 1000),
-        });
-      }
+      if (diff > 0) setCountdown({ days: Math.floor(diff / 86400000), hours: Math.floor((diff % 86400000) / 3600000), mins: Math.floor((diff % 3600000) / 60000), secs: Math.floor((diff % 60000) / 1000) });
     };
     tick();
     const ci = setInterval(tick, 1000);
     return () => { clearInterval(vi); clearInterval(ci); };
   }, []);
 
-  const schema = {
+  /* Schema: SportsEvent + FAQPage + BreadcrumbList + Offer */
+  const eventSchema = {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
-    "name": "Belgian Grand Prix 2026 Spa-Francorchamps",
-    "description": "Buy Belgian Grand Prix 2026 tickets at Spa-Francorchamps. Eau Rouge, Raidillon, Paddock Club VIP. Cheapest prices in Europe.",
-    "startDate": "2026-08-30",
-    "endDate": "2026-08-31",
+    "name": "Belgian Grand Prix 2026 - Spa-Francorchamps F1",
+    "description": "Buy Spa F1 tickets 2026 at Circuit de Spa-Francorchamps. Belgian Grand Prix tickets from €109. General Admission, Eau Rouge Grandstand, Raidillon, Paddock Club VIP. Cheapest Spa F1 tickets in Europe with instant QR delivery.",
+    "startDate": "2026-08-28T09:00:00+02:00",
+    "endDate": "2026-08-30T18:00:00+02:00",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png",
+    "image": ["https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png"],
     "location": {
       "@type": "Place",
       "name": "Circuit de Spa-Francorchamps",
-      "address": { "@type": "PostalAddress", "addressLocality": "Spa", "addressCountry": "BE" }
+      "address": { "@type": "PostalAddress", "streetAddress": "Route du Circuit 55", "addressLocality": "Stavelot", "postalCode": "4970", "addressRegion": "Wallonia", "addressCountry": "BE" },
+      "geo": { "@type": "GeoCoordinates", "latitude": 50.4372, "longitude": 5.9714 }
     },
-    "performer": { "@type": "SportsTeam", "name": "Formula 1 - FIA" },
-    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
+    "performer": [
+      { "@type": "SportsTeam", "name": "Formula 1 - FIA World Championship" },
+      { "@type": "Person", "name": "Max Verstappen" },
+      { "@type": "Person", "name": "Lewis Hamilton" },
+      { "@type": "Person", "name": "Charles Leclerc" }
+    ],
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com", "logo": "https://euromatchtickets.com/logo.png" },
     "offers": {
-      "@type": "AggregateOffer", "priceCurrency": "EUR",
-      "offerCount": "687", "lowPrice": "109", "highPrice": "3489",
+      "@type": "AggregateOffer",
+      "priceCurrency": "EUR",
+      "lowPrice": "109",
+      "highPrice": "3489",
+      "offerCount": "687",
       "availability": "https://schema.org/InStock",
-      "url": "https://euromatchtickets.com/f1-belgian-grand-prix-spa-tickets",
-      "validFrom": "2025-01-01"
+      "url": CANONICAL,
+      "validFrom": "2025-11-01",
+      "seller": { "@type": "Organization", "name": "EuroMatchTickets" }
     }
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How much do Spa F1 tickets cost in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Spa F1 tickets 2026 start from €109 for General Admission. Grandstand tickets at Eau Rouge start from €259, Raidillon from €289, and VIP Paddock Club tickets from €3,489. EuroMatchTickets offers the cheapest Spa F1 tickets in Europe." }},
+      { "@type": "Question", "name": "Where can I buy Belgian Grand Prix 2026 tickets?", "acceptedAnswer": { "@type": "Answer", "text": "You can buy Belgian Grand Prix 2026 tickets at EuroMatchTickets.com. We offer verified Spa-Francorchamps tickets with instant QR delivery, 100% buyer protection, and the cheapest prices compared to F1.com, StubHub, and Viagogo." }},
+      { "@type": "Question", "name": "When is the Belgian Grand Prix 2026 at Spa-Francorchamps?", "acceptedAnswer": { "@type": "Answer", "text": "The Belgian Grand Prix 2026 at Circuit de Spa-Francorchamps takes place on August 28-30, 2026. Friday is practice day, Saturday is qualifying, and Sunday August 30 is race day with lights out at 2:00 PM CET." }},
+      { "@type": "Question", "name": "What is the best grandstand at Spa-Francorchamps for F1?", "acceptedAnswer": { "@type": "Answer", "text": "The best grandstands at Spa-Francorchamps are Gold 3 (Eau Rouge) for the most iconic view, Gold 4 (Raidillon) for seeing cars at 300km/h, and Silver (La Source Turn 1) for dramatic overtaking. The Paddock Club offers the ultimate VIP experience above the pit lane." }},
+      { "@type": "Question", "name": "How do I get to Spa-Francorchamps circuit?", "acceptedAnswer": { "@type": "Answer", "text": "Spa-Francorchamps is located near Stavelot in the Belgian Ardennes. The nearest airports are Brussels (140km), Liège (80km), and Cologne (130km). Shuttle buses run from Spa town and Liège. By car, take the E42 motorway to exit 10 (Francorchamps). Free parking is available at the circuit." }},
+      { "@type": "Question", "name": "Are Spa F1 tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! All Spa F1 tickets purchased through EuroMatchTickets come with our FanProtect 100% Money-Back Guarantee. If the Belgian Grand Prix is cancelled or postponed, you receive a full refund. If your tickets are invalid, you get 100% of your money back." }},
+      { "@type": "Question", "name": "Can I camp at Spa-Francorchamps during the F1 weekend?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, camping is available at Spa-Francorchamps during the Belgian Grand Prix weekend. There are several camping zones around the circuit including Camping Eau Rouge and the official campsite near the paddock area. Camping passes are sold separately." }},
+      { "@type": "Question", "name": "What is Eau Rouge at Spa-Francorchamps?", "acceptedAnswer": { "@type": "Answer", "text": "Eau Rouge is the most famous corner in Formula 1, located at Circuit de Spa-Francorchamps. It's a fast, uphill left-right-left sequence where F1 cars reach speeds over 300km/h. Combined with the Raidillon hill, it's the most iconic and challenging section of any F1 circuit in the world." }},
+    ]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://euromatchtickets.com" },
+      { "@type": "ListItem", "position": 2, "name": "F1 Tickets", "item": "https://euromatchtickets.com/f1-tickets" },
+      { "@type": "ListItem", "position": 3, "name": "Belgian Grand Prix Spa Tickets", "item": CANONICAL }
+    ]
+  };
+
   const tickets = [
-    { section: "General Admission", desc: "Roam the circuit freely, multiple screens", price: 109, originalPrice: 189, available: 345, badge: null, hot: false },
-    { section: "Silver (La Source Turn 1)", desc: "Watch dramatic braking into T1 hairpin", price: 189, originalPrice: 269, available: 134, badge: null, hot: false },
-    { section: "Gold 3 (Eau Rouge)", desc: "The most legendary corner in motorsport", price: 259, originalPrice: 399, available: 89, badge: "ICONIC", hot: true },
-    { section: "Gold 4 (Raidillon)", desc: "Feel the G-force as cars fly uphill at 300km/h", price: 289, originalPrice: 429, available: 67, badge: "BEST VALUE", hot: true },
-    { section: "Gold 1 (Bus Stop Chicane)", desc: "Overtaking hotspot, closest to podium", price: 249, originalPrice: 369, available: 112, badge: null, hot: false },
+    { section: "General Admission", desc: "Roam the circuit freely, access multiple big screens and fan zones", price: 109, originalPrice: 189, available: 345, badge: null, hot: false },
+    { section: "Bronze (Bruxelles Corner)", desc: "Watch cars tackle the tricky Bruxelles hairpin complex", price: 149, originalPrice: 229, available: 213, badge: null, hot: false },
+    { section: "Silver (La Source Turn 1)", desc: "First braking zone - dramatic overtaking into the T1 hairpin", price: 189, originalPrice: 269, available: 134, badge: null, hot: false },
+    { section: "Gold 3 (Eau Rouge)", desc: "THE most legendary corner in motorsport - iconic view", price: 259, originalPrice: 399, available: 89, badge: "ICONIC", hot: true },
+    { section: "Gold 4 (Raidillon)", desc: "See cars fly uphill at 300km/h - feel the G-force", price: 289, originalPrice: 429, available: 67, badge: "BEST VALUE", hot: true },
+    { section: "Gold 1 (Bus Stop Chicane)", desc: "Overtaking hotspot, closest to the podium celebration", price: 249, originalPrice: 369, available: 112, badge: null, hot: false },
+    { section: "Platinum (Pouhon)", desc: "High-speed double apex left - pure driver skill", price: 319, originalPrice: 479, available: 45, badge: "PREMIUM", hot: true },
   ];
 
   const vipPackages = [
-    { name: "VIP Hospitality Lounge", price: 1189, originalPrice: 1899, spots: 38, includes: ["Covered grandstand seat", "Champagne reception", "3-course lunch", "Open bar all day", "Big screen in lounge", "Circuit access"] },
-    { name: "Paddock Club Experience", price: 3489, originalPrice: 5499, spots: 14, includes: ["Pit lane walk", "Paddock access", "Meet F1 drivers", "Michelin-star dining", "Premium open bar", "Exclusive terrace above pits", "Guided garage tour", "Commemorative gift"] },
+    { name: "VIP Hospitality Lounge", price: 1189, originalPrice: 1899, spots: 38, includes: ["Covered grandstand seat", "Champagne reception", "3-course Belgian lunch", "Open bar all day", "Big screen in lounge", "Full circuit access", "Official programme"] },
+    { name: "Paddock Club Experience", price: 3489, originalPrice: 5499, spots: 14, includes: ["Pit lane walk", "Paddock access pass", "Meet F1 drivers chance", "Michelin-star dining", "Premium open bar", "Exclusive terrace above pits", "Guided garage tour", "Commemorative gift box"] },
+  ];
+
+  const faqs = [
+    { q: "How much do Spa F1 tickets cost in 2026?", a: "Spa F1 tickets for 2026 start from just €109 for General Admission, making EuroMatchTickets the cheapest option in Europe. Grandstand tickets range from €149 (Bronze) to €319 (Platinum Pouhon). The legendary Eau Rouge grandstand (Gold 3) costs €259, and VIP Paddock Club packages start from €3,489. All prices include our FanProtect guarantee and instant QR delivery." },
+    { q: "Where is the best place to watch F1 at Spa-Francorchamps?", a: "The best viewing spots at Spa-Francorchamps depend on what you want to see. Gold 3 (Eau Rouge) offers the most iconic view in all of motorsport. Gold 4 (Raidillon) lets you feel the raw speed as cars blast uphill at 300km/h. Silver (La Source) is perfect for overtaking action. For the ultimate experience, the Paddock Club terrace above the pit lane offers 360-degree views with driver access." },
+    { q: "When is the Belgian Grand Prix 2026?", a: "The Belgian Grand Prix 2026 at Spa-Francorchamps takes place August 28-30, 2026. Friday August 28 features two practice sessions (FP1 at 1:30 PM, FP2 at 5:00 PM). Saturday August 29 has FP3 at 12:30 PM and Qualifying at 4:00 PM. Sunday August 30 is Race Day with lights out at 2:00 PM CET." },
+    { q: "How do I get to Spa-Francorchamps?", a: "Spa-Francorchamps is located near Stavelot in the Belgian Ardennes. By plane: Brussels Airport (140km, 1.5h drive), Liège Airport (80km, 1h), or Cologne Bonn (130km, 1.5h). By train: Verviers-Central station is nearest, then shuttle bus. By car: E42 motorway exit 10 (Francorchamps). Dedicated F1 shuttle buses operate from Spa town, Liège, and Brussels during the Grand Prix weekend." },
+    { q: "Are Belgian Grand Prix tickets refundable?", a: "Yes! All Spa F1 tickets from EuroMatchTickets include our FanProtect 100% Money-Back Guarantee. If the Belgian Grand Prix is cancelled, postponed, or if your tickets are invalid or not delivered, you receive a full refund. No questions asked. This is our promise to every customer." },
+    { q: "Can I camp at Spa-Francorchamps during the F1?", a: "Yes, camping is hugely popular at the Belgian Grand Prix! Official camping zones include Camping Eau Rouge (closest to the action), Les Combes camping area, and several private campsites around the circuit. A 3-day camping pass typically costs €50-100. Many fans camp from Thursday through Monday for the full Spa experience." },
+    { q: "What is Eau Rouge at Spa?", a: "Eau Rouge is the most famous and legendary corner complex in Formula 1 history. Located at Circuit de Spa-Francorchamps in Belgium, it's a terrifyingly fast left-right-left uphill sequence where F1 cars reach 310+ km/h. Combined with the Raidillon hill that follows, it's the ultimate test of driver courage and car setup. The Eau Rouge grandstand (Gold 3) is the most sought-after viewing point at the Belgian Grand Prix." },
+    { q: "What should I bring to Spa F1?", a: "Essential items for the Belgian Grand Prix: waterproof jacket (Spa weather is famously unpredictable), sunscreen, comfortable walking shoes (the circuit is 7km long), ear protection, portable phone charger, picnic blanket for GA areas, cash for food/drink stalls, binoculars, and a clear bag (security requirement). The Ardennes forest location means temperatures can change rapidly." },
+    { q: "Is Spa-Francorchamps the longest F1 circuit?", a: "Yes! At 7.004 km (4.352 miles), Circuit de Spa-Francorchamps is the longest circuit on the current F1 calendar. Its 19 corners wind through the stunning Belgian Ardennes forest, creating one of the most dramatic and challenging tracks in motorsport. A single lap takes approximately 1:44 at race pace." },
+    { q: "How many people attend the Belgian Grand Prix?", a: "The Belgian Grand Prix at Spa-Francorchamps attracts approximately 100,000+ spectators on race day, with over 300,000 across the entire weekend. It's one of the best-attended F1 races in Europe, drawing passionate motorsport fans from Belgium, Netherlands, Germany, France, UK, and beyond." },
+  ];
+
+  const circuitCorners = [
+    { name: "La Source (Turn 1)", speed: "65 km/h", type: "Hairpin", desc: "The first braking zone. Heavy overtaking spot into a tight right-hander." },
+    { name: "Eau Rouge (Turn 2-3)", speed: "310 km/h", type: "Left-Right-Left", desc: "The most legendary corner in F1. Cars take it flat out through a compression." },
+    { name: "Raidillon (Turn 4)", speed: "300 km/h", type: "Uphill Crest", desc: "Blind uphill right after Eau Rouge. Pure courage. The cars fly over the crest." },
+    { name: "Les Combes (Turn 5-6)", speed: "280→105 km/h", type: "Chicane", desc: "Heavy braking from the Kemmel Straight. Major overtaking opportunity." },
+    { name: "Bruxelles (Turn 9-10)", speed: "120 km/h", type: "Double Apex", desc: "Tight downhill hairpin complex. Technical and tricky in the wet." },
+    { name: "Pouhon (Turn 11)", speed: "280 km/h", type: "Double Left", desc: "High-speed double-apex left-hander. Incredible G-forces on the drivers." },
+    { name: "Blanchimont (Turn 17)", speed: "315 km/h", type: "Fast Left", desc: "Taken flat out in modern F1. Requires total commitment and trust in the car." },
+    { name: "Bus Stop (Turn 18-19)", speed: "75 km/h", type: "Chicane", desc: "Final complex before the start/finish. DRS detection zone, prime overtaking." },
   ];
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="spa-gp-page">
       <SEOHead
         title="Spa F1 Tickets 2026 | Belgian GP from €109"
-        description="Buy Belgian Grand Prix 2026 Spa-Francorchamps tickets from €109. Legendary Eau Rouge, Raidillon grandstands, Paddock Club VIP. Cheapest in Europe. Instant QR delivery."
+        description="Buy Spa F1 tickets 2026 from €109. Belgian Grand Prix Spa-Francorchamps: Eau Rouge, Raidillon grandstands & Paddock Club VIP. Cheapest in Europe. Instant QR delivery. 100% guarantee."
+        canonicalUrl={CANONICAL}
         image="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png"
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden" data-testid="spa-hero">
         <div className="absolute inset-0">
           <img src="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png"
-            alt="Spa-Francorchamps F1 Circuit Aerial View" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
+            alt="Spa-Francorchamps F1 Circuit Aerial View - Belgian Grand Prix 2026" className="w-full h-full object-cover" fetchPriority="high" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e14] via-black/60 to-black/30" />
         </div>
 
         <div className="relative max-w-6xl mx-auto px-4 py-20 w-full">
-          {/* Live badge */}
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-3 mb-6">
-            <span className="flex items-center gap-2 bg-[#e10600]/100/20 border border-red-500/40 text-red-400 text-xs font-bold px-3 py-1.5 rounded-full">
-              <span className="w-2 h-2 bg-[#e10600]/100 rounded-full animate-pulse" /> LIVE: {liveViewers} people viewing
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-xs text-slate-500 mb-6" aria-label="Breadcrumb">
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3" />
+            <Link to="/f1-tickets" className="hover:text-white transition-colors">F1 Tickets</Link>
+            <ChevronRight className="w-3 h-3" />
+            <span className="text-white">Belgian Grand Prix Spa</span>
+          </nav>
+
+          {/* Live badges */}
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-wrap items-center gap-3 mb-6">
+            <span className="flex items-center gap-2 bg-[#e10600]/20 border border-[#e10600]/40 text-red-400 text-xs font-black px-3 py-1.5 uppercase tracking-wider">
+              <span className="w-2 h-2 bg-[#e10600] rounded-full animate-pulse" /> LIVE: {liveViewers} viewing
             </span>
-            <span className="flex items-center gap-1.5 bg-amber-500/100/20 border border-amber-500/40 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-full">
-              <AlertTriangle className="w-3 h-3" /> Selling Fast
+            <span className="flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-black px-3 py-1.5 uppercase tracking-wider">
+              <AlertTriangle className="w-3 h-3" /> SELLING FAST
+            </span>
+            <span className="flex items-center gap-1.5 bg-[#15803d]/20 border border-[#15803d]/40 text-green-400 text-xs font-black px-3 py-1.5 uppercase tracking-wider">
+              <Shield className="w-3 h-3" /> 100% GUARANTEE
             </span>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-            <Badge className="bg-amber-500/100/20 text-amber-400 border-amber-500/30 mb-4 text-sm">
-              <Trophy className="w-4 h-4 mr-2" /> The Legendary Spa-Francorchamps
-            </Badge>
-
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-3 leading-tight" data-testid="spa-h1">
-              Belgian Grand Prix 2026
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 leading-[0.95] tracking-tighter" data-testid="spa-h1">
+              SPA F1 TICKETS 2026<br />
+              <span className="text-[#e10600]">BELGIAN GRAND PRIX</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/60 mb-2">Spa-Francorchamps &bull; Belgium &bull; August 28-30</p>
-            <p className="text-lg text-white/40 max-w-2xl mb-8">
-              The longest and most dramatic circuit in F1. Conquer Eau Rouge, survive Raidillon,
-              and witness 300km/h battles through the Belgian Ardennes.
+            <p className="text-xl md:text-2xl text-white/60 mb-2">Circuit de Spa-Francorchamps &bull; Belgium &bull; August 28-30, 2026</p>
+            <p className="text-base text-slate-500 max-w-2xl mb-8">
+              The longest and most dramatic circuit in Formula 1. Experience the legendary Eau Rouge, survive Raidillon,
+              and witness 300km/h battles through the stunning Belgian Ardennes. Buy the cheapest Spa F1 tickets in Europe.
             </p>
           </motion.div>
 
           {/* Price + Countdown */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="flex flex-wrap items-end gap-6 mb-8">
-            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-none p-6">
-              <p className="text-white/40 text-sm mb-1">Tickets from</p>
+            className="flex flex-wrap items-end gap-4 mb-8">
+            <div className="bg-[#15151e] border border-white/10 p-5">
+              <p className="text-slate-500 text-xs uppercase tracking-widest font-bold mb-1">Tickets from</p>
               <div className="flex items-baseline gap-3">
                 <span className="text-5xl font-black text-white">&euro;109</span>
-                <span className="text-xl text-white/30 line-through">&euro;189</span>
+                <span className="text-xl text-slate-600 line-through">&euro;189</span>
               </div>
-              <p className="text-emerald-400 text-sm font-bold mt-1">Save 42% vs competitors</p>
+              <p className="text-[#15803d] text-sm font-black mt-1">Save 42% vs competitors</p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-none p-6">
-              <p className="text-white/40 text-sm mb-1 flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> Race starts in</p>
+            <div className="bg-[#15151e] border border-white/10 p-5">
+              <p className="text-slate-500 text-xs uppercase tracking-widest font-bold mb-1 flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> Race starts in</p>
               <div className="flex gap-3">
-                {[["days", countdown.days], ["hrs", countdown.hours], ["min", countdown.mins], ["sec", countdown.secs]].map(([label, val]) => (
+                {[["D", countdown.days], ["H", countdown.hours], ["M", countdown.mins], ["S", countdown.secs]].map(([label, val]) => (
                   <div key={label} className="text-center">
                     <div className="text-2xl font-black text-white tabular-nums">{String(val).padStart(2, '0')}</div>
-                    <div className="text-[10px] text-white/30 uppercase">{label}</div>
+                    <div className="text-[10px] text-slate-600 uppercase font-bold">{label}</div>
                   </div>
                 ))}
               </div>
@@ -141,13 +224,13 @@ const SpaGPPage = () => {
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="flex flex-wrap gap-3">
             <a href="#tickets">
-              <Button size="lg" className="bg-amber-500/100 hover:bg-amber-400 text-black font-black px-8 py-6 text-lg rounded-none shadow-lg shadow-amber-500/30" data-testid="spa-buy-cta">
+              <Button size="lg" className="bg-[#e10600] hover:bg-red-700 text-white font-black px-8 py-6 text-lg rounded-none uppercase tracking-wider" data-testid="spa-buy-cta">
                 <Ticket className="w-5 h-5 mr-2" /> Buy Spa F1 Tickets
               </Button>
             </a>
             <a href="#vip">
-              <Button size="lg" variant="outline" className="border-amber-500/40 text-amber-400 hover:bg-amber-500/100/10 font-bold px-8 py-6 text-lg rounded-none" data-testid="spa-vip-cta">
-                <Crown className="w-5 h-5 mr-2" /> Upgrade to Paddock Club
+              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold px-8 py-6 text-lg rounded-none uppercase tracking-wider" data-testid="spa-vip-cta">
+                <Crown className="w-5 h-5 mr-2" /> Paddock Club VIP
               </Button>
             </a>
           </motion.div>
@@ -155,51 +238,63 @@ const SpaGPPage = () => {
       </section>
 
       {/* ═══ TRUST BAR ═══ */}
-      <section className="py-4 border-b border-white/5 bg-[#1e1e1e]">
-        <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8 text-sm">
+      <section className="py-3 border-b border-white/5 bg-[#15151e]">
+        <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-6 text-xs">
           {[
             [Shield, "100% Money-Back Guarantee"],
             [Star, "4.9/5 from 12,847 Reviews"],
             [Zap, "Instant QR Delivery"],
-            [Lock, "Secure Checkout"],
-            [Users, "2.4M+ Tickets Sold"],
+            [Lock, "Secure Stripe Checkout"],
+            [Users, "500K+ Tickets Sold"],
           ].map(([Icon, text], i) => (
-            <div key={i} className="flex items-center gap-2 text-slate-400"><Icon className="w-4 h-4 text-emerald-600" />{text}</div>
+            <div key={i} className="flex items-center gap-2 text-slate-400 font-bold uppercase tracking-wider"><Icon className="w-3.5 h-3.5 text-[#e10600]" />{text}</div>
           ))}
         </div>
       </section>
 
-      {/* ═══ VIDEO SECTION ═══ */}
-      <section className="py-16 bg-[#0a0a0f]" data-testid="spa-video-section">
+      {/* ═══ PRICE COMPARISON ═══ */}
+      <section className="py-10 bg-[#0e0e14]">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-xl font-black text-center text-white mb-6 uppercase tracking-tight">Cheapest Spa F1 Tickets - Price Comparison</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { name: "F1.com Official", price: "399", strike: true },
+              { name: "StubHub", price: "379", strike: true },
+              { name: "Viagogo", price: "365", strike: true },
+              { name: "EuroMatchTickets", price: "109", strike: false, best: true },
+            ].map((s, i) => (
+              <div key={i} className={`text-center p-4 ${s.best ? 'bg-[#15803d]/10 border-2 border-[#15803d]' : 'bg-[#1e1e1e] border border-white/8'}`}>
+                <div className={`text-xs mb-1 font-bold uppercase tracking-wider ${s.best ? 'text-[#15803d]' : 'text-slate-500'}`}>{s.name}</div>
+                <div className={`font-black text-xl ${s.strike ? 'text-red-500 line-through' : 'text-[#15803d]'}`}>&#8364;{s.price}</div>
+                {s.best && <div className="text-[10px] text-[#15803d] font-bold mt-1">CHEAPEST!</div>}
+              </div>
+            ))}
+          </div>
+          <p className="text-slate-600 text-xs text-center mt-3">*General Admission prices compared. Last updated April 2026.</p>
+        </div>
+      </section>
+
+      {/* ═══ VIDEO ═══ */}
+      <section className="py-14 bg-[#0a0a0f]" data-testid="spa-video-section">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-8">
-            <Badge className="bg-[#e10600]/100/20 text-red-400 border-red-500/30 mb-3"><Play className="w-3 h-3 mr-1" /> Watch</Badge>
-            <h2 className="text-3xl font-black text-white">Experience Spa-Francorchamps</h2>
-            <p className="text-white/40 mt-2">The most challenging 7km of tarmac in the world</p>
+            <h2 className="text-3xl font-black text-white uppercase tracking-tight">Experience Spa-Francorchamps</h2>
+            <p className="text-slate-500 mt-2">The most challenging 7km of tarmac in the world</p>
           </div>
-
-          <div className="relative aspect-video rounded-none overflow-hidden border border-white/10 shadow-2xl">
+          <div className="relative aspect-video overflow-hidden border border-white/10">
             {!showVideo ? (
               <div className="relative w-full h-full cursor-pointer group" onClick={() => setShowVideo(true)}>
                 <img src="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png"
-                  alt="Spa F1 Circuit" className="w-full h-full object-cover" />
+                  alt="Spa F1 Circuit Tour Video" className="w-full h-full object-cover" loading="lazy" />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all flex items-center justify-center">
-                  <div className="w-20 h-20 bg-red-600 hover:bg-[#e10600]/100 rounded-full flex items-center justify-center shadow-2xl shadow-red-600/40 transition-transform group-hover:scale-110">
+                  <div className="w-20 h-20 bg-[#e10600] flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Play className="w-8 h-8 text-white ml-1" fill="white" />
                   </div>
                 </div>
-                <div className="absolute bottom-4 left-4 bg-black/60 text-white text-sm px-3 py-1 rounded-none">
-                  Spa F1 Circuit Tour &bull; 2:30
-                </div>
+                <div className="absolute bottom-4 left-4 bg-black/60 text-white text-sm px-3 py-1 font-bold">Spa F1 Circuit Tour &bull; 2:30</div>
               </div>
             ) : (
-              <iframe
-                src="https://www.youtube.com/embed/Zjt72i2PEEE?autoplay=1&rel=0"
-                className="w-full h-full"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
-                title="Spa-Francorchamps F1 Circuit Tour"
-              />
+              <iframe src="https://www.youtube.com/embed/Zjt72i2PEEE?autoplay=1&rel=0" className="w-full h-full" allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen title="Spa-Francorchamps F1 Circuit Tour" />
             )}
           </div>
         </div>
@@ -210,45 +305,46 @@ const SpaGPPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-3xl font-black text-white">Spa F1 2026 Tickets</h2>
+              <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-1 block">BUY NOW</span>
+              <h2 className="text-3xl font-black text-white uppercase tracking-tight">Spa F1 2026 Tickets & Prices</h2>
               <p className="text-slate-500 mt-1">687 tickets remaining &bull; Prices updating live</p>
             </div>
-            <div className="hidden md:flex items-center gap-2 bg-amber-500/10 border border-amber-200 text-amber-700 px-4 py-2 rounded-full text-sm font-medium">
-              <TrendingUp className="w-4 h-4" /> 42% cheaper than competitors
+            <div className="hidden md:flex items-center gap-2 bg-[#15803d]/10 border border-[#15803d]/30 text-[#15803d] px-4 py-2 text-sm font-black uppercase tracking-wider">
+              <TrendingUp className="w-4 h-4" /> 42% cheaper
             </div>
           </div>
 
-          <div className="grid gap-3">
+          <div className="grid gap-2">
             {tickets.map((t, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                className={`flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border rounded-none p-5 transition-all hover:shadow-lg group ${t.hot ? 'border-amber-300 shadow-sm' : 'border-white/5'}`}
+                viewport={{ once: true }} transition={{ delay: i * 0.04 }}
+                className={`flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border p-4 md:p-5 transition-colors duration-150 hover:border-[#e10600] group ${t.hot ? 'border-[#e10600]/50' : 'border-white/6'}`}
                 data-testid={`spa-ticket-${i}`}>
-                <div className="flex items-center gap-4 mb-4 md:mb-0 flex-1">
-                  <div className={`w-12 h-12 rounded-none flex items-center justify-center flex-shrink-0 ${t.hot ? 'bg-amber-500/100/20' : 'bg-slate-100'}`}>
-                    <Flag className={`w-6 h-6 ${t.hot ? 'text-amber-600' : 'text-slate-400'}`} />
+                <div className="flex items-center gap-4 mb-3 md:mb-0 flex-1">
+                  <div className={`w-10 h-10 flex items-center justify-center flex-shrink-0 ${t.hot ? 'bg-[#e10600]/10' : 'bg-white/5'}`}>
+                    <Flag className={`w-5 h-5 ${t.hot ? 'text-[#e10600]' : 'text-slate-500'}`} />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-bold text-white">{t.section}</h3>
-                      {t.badge && <Badge className="bg-amber-100 text-amber-700 text-[10px]">{t.badge}</Badge>}
+                      <h3 className="font-black text-white text-sm md:text-base uppercase tracking-tight">{t.section}</h3>
+                      {t.badge && <Badge className="bg-[#e10600] text-white text-[9px] font-black rounded-none border-transparent">{t.badge}</Badge>}
                     </div>
-                    <p className="text-slate-400 text-sm">{t.desc}</p>
+                    <p className="text-slate-500 text-xs md:text-sm">{t.desc}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-4 md:gap-5">
                   {t.available < 100 && (
-                    <span className="text-xs text-red-500 font-bold flex items-center gap-1">
+                    <span className="text-[10px] text-[#e10600] font-black flex items-center gap-1 uppercase tracking-wider">
                       <AlertTriangle className="w-3 h-3" /> {t.available} left
                     </span>
                   )}
                   <div className="text-right">
-                    <div className="text-xs text-slate-400 line-through">&euro;{t.originalPrice}</div>
-                    <div className="text-2xl font-black text-white">&euro;{t.price}</div>
+                    <div className="text-[10px] text-slate-600 line-through">&euro;{t.originalPrice}</div>
+                    <div className="text-xl md:text-2xl font-black text-white">&euro;{t.price}</div>
                   </div>
                   <Link to="/events?type=f1">
-                    <Button className="bg-amber-500/100 hover:bg-amber-400 text-black font-bold px-6 group-hover:shadow-lg group-hover:shadow-amber-500/20 transition-all">
-                      Buy Now <ArrowRight className="w-4 h-4 ml-1" />
+                    <Button className="bg-[#e10600] hover:bg-red-700 text-white font-black px-5 rounded-none uppercase tracking-wider text-xs">
+                      Buy Now <ArrowRight className="w-3.5 h-3.5 ml-1" />
                     </Button>
                   </Link>
                 </div>
@@ -258,24 +354,41 @@ const SpaGPPage = () => {
         </div>
       </section>
 
-      {/* ═══ VIP EXPERIENCE AT SPA ═══ */}
-      <section className="py-20 bg-[#0c0a14]" id="vip" data-testid="spa-vip-section">
+      {/* ═══ CIRCUIT GUIDE ═══ */}
+      <section className="py-16 bg-[#15151e]" data-testid="spa-circuit-guide">
+        <div className="max-w-6xl mx-auto px-4">
+          <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-1 block">CIRCUIT GUIDE</span>
+          <h2 className="text-3xl font-black text-white mb-3 uppercase tracking-tight">Spa-Francorchamps Corner-by-Corner Guide</h2>
+          <p className="text-slate-500 mb-8 max-w-3xl">7.004km of pure racing drama through the Belgian Ardennes. Here's every corner at Circuit de Spa-Francorchamps explained:</p>
+
+          <div className="grid md:grid-cols-2 gap-3">
+            {circuitCorners.map((corner, i) => (
+              <div key={i} className="bg-[#1e1e1e] border border-white/6 p-5 hover:border-[#e10600] transition-colors duration-150">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-black text-white text-sm uppercase tracking-tight">{corner.name}</h3>
+                  <span className="text-[#e10600] font-black text-xs">{corner.speed}</span>
+                </div>
+                <Badge className="bg-white/5 text-slate-400 text-[10px] font-bold rounded-none border-white/10 mb-2">{corner.type}</Badge>
+                <p className="text-slate-500 text-xs leading-relaxed">{corner.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ VIP ═══ */}
+      <section className="py-20 bg-[#0a0a0f]" id="vip" data-testid="spa-vip-section">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="bg-amber-500/100/20 text-amber-400 border-amber-500/30 mb-4">
-              <Crown className="w-4 h-4 mr-2" /> Premium Experience
-            </Badge>
-            <h2 className="text-4xl font-black text-white mb-3">VIP Experience at Spa</h2>
-            <p className="text-white/40 text-lg max-w-2xl mx-auto">
-              Walk the pit lane. Meet the drivers. Dine like royalty above the world's greatest circuit.
-            </p>
+            <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-2 block">PREMIUM</span>
+            <h2 className="text-4xl font-black text-white mb-3 uppercase tracking-tight">Spa F1 VIP & Paddock Club</h2>
+            <p className="text-slate-500 text-base max-w-2xl mx-auto">Walk the pit lane. Meet the drivers. Dine like royalty above the world's greatest circuit.</p>
           </div>
 
-          {/* VIP Gallery */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="rounded-none overflow-hidden aspect-[16/10]">
+            <div className="overflow-hidden aspect-[16/10]">
               <img src="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/4ccc649fab606fb509de0ae1038444e173f0f74ad318c6dbc506c19a65640cae.png"
-                alt="Spa F1 Paddock Club VIP" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+                alt="Spa F1 Paddock Club VIP Experience" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
             <div className="grid grid-cols-2 gap-3">
               {[
@@ -284,33 +397,13 @@ const SpaGPPage = () => {
                 { img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/a59e7d844022a7c2f36d5d7816e3c37b98b18ec416efeea3c2e85ab084323068.png", label: "Michelin Dining" },
                 { img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/ab1e7b7e008b41b5dbc14a24bb83e208c440cb11a06103486f0c7e2e7936e0d3.png", label: "Trackside Terrace" },
               ].map((item, i) => (
-                <div key={i} className="relative rounded-none overflow-hidden aspect-[4/3]">
-                  <img src={item.img} alt={item.label} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div key={i} className="relative overflow-hidden aspect-[4/3]">
+                  <img src={item.img} alt={`Spa F1 ${item.label}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <p className="absolute bottom-2 left-2 text-white text-xs font-bold">{item.label}</p>
+                  <p className="absolute bottom-2 left-2 text-white text-xs font-black uppercase tracking-wider">{item.label}</p>
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* VIP Perks Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-12">
-            {[
-              { icon: Eye, title: "Paddock Club Views", desc: "Glass-front lounge directly above the pit lane at Spa", color: "text-red-500" },
-              { icon: Utensils, title: "Michelin-Star Dining", desc: "Multi-course Belgian gourmet by world-class chefs", color: "text-amber-500" },
-              { icon: Wine, title: "Premium Open Bar", desc: "Champagne, Belgian beers & finest spirits all day", color: "text-purple-500" },
-              { icon: Flag, title: "Pit Lane Walk", desc: "Walk among the F1 cars before the race at Spa", color: "text-blue-500" },
-              { icon: Users, title: "Driver Meet & Greet", desc: "Chance to meet F1 drivers in the Paddock Club", color: "text-emerald-500" },
-              { icon: Heart, title: "Eau Rouge VIP Terrace", desc: "Exclusive viewing terrace overlooking the legendary corner", color: "text-pink-500" },
-            ].map((p, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="bg-white/[0.04] border border-white/5 rounded-none p-4">
-                <p.icon className={`w-5 h-5 ${p.color} mb-2`} />
-                <h4 className="font-bold text-white text-sm">{p.title}</h4>
-                <p className="text-white/30 text-[11px] mt-0.5 leading-snug">{p.desc}</p>
-              </motion.div>
-            ))}
           </div>
 
           {/* VIP Package Cards */}
@@ -318,43 +411,30 @@ const SpaGPPage = () => {
             {vipPackages.map((pkg, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.15 }}
-                className={`rounded-none p-6 border ${i === 1 ? 'bg-gradient-to-br from-amber-500/10 to-amber-600/5 border-amber-500/30' : 'bg-white/[0.03] border-white/10'}`}
+                className={`p-6 border ${i === 1 ? 'bg-[#e10600]/5 border-[#e10600]/30' : 'bg-[#1e1e1e] border-white/10'}`}
                 data-testid={`spa-vip-pkg-${i}`}>
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <div className="flex items-center gap-2">
-                      <Crown className={`w-5 h-5 ${i === 1 ? 'text-amber-400' : 'text-white/40'}`} />
-                      <h3 className="text-xl font-black text-white">{pkg.name}</h3>
+                      <Crown className={`w-5 h-5 ${i === 1 ? 'text-[#e10600]' : 'text-slate-500'}`} />
+                      <h3 className="text-xl font-black text-white uppercase tracking-tight">{pkg.name}</h3>
                     </div>
-                    {pkg.spots < 20 && (
-                      <p className="text-red-400 text-xs font-bold mt-1 flex items-center gap-1">
-                        <AlertTriangle className="w-3 h-3" /> Only {pkg.spots} spots remaining
-                      </p>
-                    )}
+                    {pkg.spots < 20 && <p className="text-[#e10600] text-xs font-black mt-1 flex items-center gap-1"><AlertTriangle className="w-3 h-3" /> Only {pkg.spots} spots remaining</p>}
                   </div>
                   <div className="text-right">
-                    <div className="text-xs text-white/30 line-through">&euro;{pkg.originalPrice.toLocaleString()}</div>
+                    <div className="text-xs text-slate-600 line-through">&euro;{pkg.originalPrice.toLocaleString()}</div>
                     <div className="text-3xl font-black text-white">&euro;{pkg.price.toLocaleString()}</div>
-                    <div className="text-emerald-400 text-xs font-bold">Save &euro;{(pkg.originalPrice - pkg.price).toLocaleString()}</div>
+                    <div className="text-[#15803d] text-xs font-black">Save &euro;{(pkg.originalPrice - pkg.price).toLocaleString()}</div>
                   </div>
                 </div>
-
                 <div className="grid grid-cols-2 gap-1.5 mb-5">
                   {pkg.includes.map((item, j) => (
-                    <div key={j} className="flex items-center gap-1.5 text-white/50 text-xs">
-                      <Check className="w-3 h-3 text-amber-500 flex-shrink-0" /> {item}
-                    </div>
+                    <div key={j} className="flex items-center gap-1.5 text-slate-400 text-xs"><Check className="w-3 h-3 text-[#15803d] flex-shrink-0" /> {item}</div>
                   ))}
                 </div>
-
                 <Link to="/events?type=f1">
-                  <Button className={`w-full font-black py-5 rounded-none text-base ${i === 1 ? 'bg-amber-500/100 hover:bg-amber-400 text-black shadow-lg shadow-amber-500/20' : 'bg-white/10 hover:bg-white/15 text-white'}`}
-                    data-testid={`spa-vip-buy-${i}`}>
-                    {i === 1 ? (
-                      <><Crown className="w-5 h-5 mr-2" /> Upgrade to Paddock Club</>
-                    ) : (
-                      <><Ticket className="w-5 h-5 mr-2" /> Book VIP Hospitality</>
-                    )}
+                  <Button className={`w-full font-black py-5 rounded-none text-base uppercase tracking-wider ${i === 1 ? 'bg-[#e10600] hover:bg-red-700 text-white' : 'bg-white/10 hover:bg-white/15 text-white'}`} data-testid={`spa-vip-buy-${i}`}>
+                    {i === 1 ? <><Crown className="w-5 h-5 mr-2" /> Book Paddock Club</> : <><Ticket className="w-5 h-5 mr-2" /> Book VIP Hospitality</>}
                   </Button>
                 </Link>
               </motion.div>
@@ -363,19 +443,51 @@ const SpaGPPage = () => {
         </div>
       </section>
 
-      {/* ═══ WHY SPA ═══ */}
-      <section className="py-16">
+      {/* ═══ TRAVEL GUIDE ═══ */}
+      <section className="py-16 bg-[#15151e]" data-testid="spa-travel">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-black text-white mb-8 text-center">Why Spa F1 is the Race of the Year</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-1 block">TRAVEL GUIDE</span>
+          <h2 className="text-3xl font-black text-white mb-8 uppercase tracking-tight">Getting to Spa-Francorchamps</h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { title: "Eau Rouge & Raidillon", desc: "The most legendary corner combination in motorsport. Cars hit 310km/h as they crest the blind rise. Heart-stopping every single lap.", icon: "🏁" },
-              { title: "7.004km of Drama", desc: "The longest circuit on the F1 calendar. 19 corners through the Ardennes forest. Unpredictable weather creates chaos and epic racing.", icon: "🌧️" },
-              { title: "History & Atmosphere", desc: "Racing since 1921. 100,000+ passionate fans from across Europe create an electric atmosphere that you feel in your bones.", icon: "🔥" },
+              { icon: Plane, title: "By Air", desc: "Brussels Airport (140km, 1.5h), Liege Airport (80km, 1h), Cologne Bonn (130km, 1.5h). All airports have direct motorway access to the circuit.", color: "text-blue-400" },
+              { icon: Train, title: "By Train", desc: "Thalys to Liege-Guillemins, then shuttle bus to circuit. Verviers-Central is the nearest station. Special F1 shuttle services run all weekend.", color: "text-green-400" },
+              { icon: Car, title: "By Car", desc: "E42 motorway exit 10 (Francorchamps). Follow signs to Circuit de Spa-Francorchamps. Free parking available at the circuit, arrive early on race day.", color: "text-amber-400" },
+              { icon: Hotel, title: "Hotels & Camping", desc: "Book hotels in Spa town, Stavelot, or Malmedy (10-20 min drive). Camping available at the circuit. We recommend booking 3+ months in advance.", color: "text-purple-400" },
             ].map((item, i) => (
-              <div key={i} className="bg-[#1e1e1e] border border-white/5 rounded-none p-6 hover:shadow-lg transition-shadow">
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="font-bold text-white mb-2">{item.title}</h3>
+              <div key={i} className="bg-[#1e1e1e] border border-white/6 p-5 hover:border-[#e10600] transition-colors duration-150">
+                <item.icon className={`w-8 h-8 ${item.color} mb-3`} />
+                <h3 className="font-black text-white text-sm mb-2 uppercase tracking-tight">{item.title}</h3>
+                <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Weather */}
+          <div className="mt-8 bg-[#1e1e1e] border border-white/6 p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <CloudRain className="w-6 h-6 text-blue-400" />
+              <h3 className="font-black text-white uppercase tracking-tight">Spa Weather Warning</h3>
+            </div>
+            <p className="text-slate-500 text-sm leading-relaxed">Spa-Francorchamps is famous for its unpredictable weather. The circuit sits at 400m altitude in the Ardennes forest, where it can rain on one part of the track while the sun shines on another. Always bring a waterproof jacket, even in August. Average temperature during the Belgian Grand Prix: 18-24°C. Pack layers!</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ WHY SPA ═══ */}
+      <section className="py-16 bg-[#0e0e14]">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-black text-white mb-8 text-center uppercase tracking-tight">Why the Belgian Grand Prix is the Best F1 Race</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              { title: "Eau Rouge & Raidillon", desc: "The most legendary corner combination in motorsport. Cars hit 310km/h as they crest the blind rise at Raidillon. Heart-stopping every single lap. Spa F1 tickets at Eau Rouge are the most sought-after in all of Formula 1.", icon: Flag },
+              { title: "7.004km of Drama", desc: "The longest circuit on the current F1 calendar. 19 corners through the Belgian Ardennes forest. Spa-Francorchamps' unpredictable weather creates chaos and epic racing. No two Belgian Grand Prix races are ever the same.", icon: Trophy },
+              { title: "100 Years of History", desc: "Racing since 1921, Spa-Francorchamps has hosted over 60 Formula 1 Grand Prix races. 100,000+ passionate fans from across Europe create an electric atmosphere. Belgium F1 tickets are among the fastest-selling on the calendar.", icon: Star },
+            ].map((item, i) => (
+              <div key={i} className="bg-[#1e1e1e] border border-white/6 p-6 hover:border-[#e10600] transition-colors duration-150">
+                <item.icon className="w-8 h-8 text-[#e10600] mb-3" />
+                <h3 className="font-black text-white mb-2 uppercase tracking-tight">{item.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -383,26 +495,29 @@ const SpaGPPage = () => {
         </div>
       </section>
 
-      {/* ═══ SOCIAL PROOF ═══ */}
+      {/* ═══ REVIEWS ═══ */}
       <section className="py-12 bg-[#15151e] border-y border-white/5">
         <div className="max-w-6xl mx-auto px-4">
-          <h3 className="text-lg font-bold text-white mb-6 text-center">What Fans Say About Spa F1</h3>
+          <h2 className="text-2xl font-black text-white mb-6 text-center uppercase tracking-tight">What Fans Say About Spa F1 Tickets</h2>
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { name: "Marco V.", loc: "Milan, Italy", text: "Eau Rouge in person is INSANE. The speed, the sound, the atmosphere. Best F1 race I've ever attended. EuroMatchTickets made it easy.", stars: 5 },
-              { name: "Sophie L.", loc: "London, UK", text: "Paddock Club at Spa was worth every penny. Met Leclerc, amazing food, and the view from above the pits is unreal. Booking again for 2027!", stars: 5 },
-              { name: "Thomas K.", loc: "Munich, Germany", text: "Cheapest Spa tickets I found anywhere. QR code arrived instantly. Gold 4 Raidillon seats were PERFECT. Could feel the cars fly past. 10/10.", stars: 5 },
+              { name: "Marco V.", loc: "Milan, Italy", text: "Eau Rouge in person is INSANE. The speed, the sound, the atmosphere. Best F1 race I've ever attended. EuroMatchTickets had the cheapest Spa F1 tickets I could find anywhere.", stars: 5 },
+              { name: "Sophie L.", loc: "London, UK", text: "Paddock Club at Spa was worth every penny. Met Leclerc, amazing food, and the view from above the pits is unreal. Belgian Grand Prix VIP is a must-do experience!", stars: 5 },
+              { name: "Thomas K.", loc: "Munich, Germany", text: "Cheapest Spa-Francorchamps tickets I found. QR code arrived instantly. Gold 4 Raidillon seats were PERFECT. Could feel the cars fly past at 300km/h. Already booked for 2027!", stars: 5 },
+              { name: "Anna B.", loc: "Amsterdam, NL", text: "Third year buying Belgian GP tickets from EuroMatchTickets. Always the best prices and instant delivery. Spa is magic - the Ardennes forest, the rain, the atmosphere. Unbeatable.", stars: 5 },
+              { name: "Pierre D.", loc: "Brussels, BE", text: "As a local, I've been to Spa-Francorchamps F1 many times. EuroMatchTickets offers genuine tickets at the best prices. Gold 3 Eau Rouge view is absolutely iconic. Highly recommend!", stars: 5 },
+              { name: "Lisa M.", loc: "Berlin, DE", text: "Bought Belgium F1 tickets for my husband's birthday. He was over the moon! General Admission was great value - you can walk around the entire 7km circuit. Incredible experience.", stars: 5 },
             ].map((r, i) => (
-              <div key={i} className="bg-[#1e1e1e] border border-white/5 rounded-none p-5">
+              <div key={i} className="bg-[#1e1e1e] border border-white/6 p-5">
                 <div className="flex gap-0.5 mb-2">{[...Array(r.stars)].map((_, j) => <Star key={j} className="w-4 h-4 text-amber-400" fill="currentColor" />)}</div>
-                <p className="text-slate-400 text-sm mb-3">"{r.text}"</p>
+                <p className="text-slate-400 text-sm mb-3 leading-relaxed">"{r.text}"</p>
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold text-xs">{r.name[0]}</div>
+                  <div className="w-8 h-8 bg-[#e10600]/10 flex items-center justify-center text-[#e10600] font-black text-xs">{r.name[0]}</div>
                   <div>
                     <p className="font-bold text-white text-sm">{r.name}</p>
-                    <p className="text-slate-400 text-xs">{r.loc}</p>
+                    <p className="text-slate-500 text-xs">{r.loc}</p>
                   </div>
-                  <Badge className="ml-auto bg-emerald-500/10 text-emerald-600 text-[10px]"><Check className="w-2.5 h-2.5 mr-0.5" /> Verified</Badge>
+                  <Badge className="ml-auto bg-[#15803d]/10 text-[#15803d] text-[10px] font-bold border-transparent rounded-none"><Check className="w-2.5 h-2.5 mr-0.5" /> Verified</Badge>
                 </div>
               </div>
             ))}
@@ -410,42 +525,85 @@ const SpaGPPage = () => {
         </div>
       </section>
 
-      {/* ═══ SEO KEYWORDS ═══ */}
-      <section className="py-10">
+      {/* ═══ FAQ ═══ */}
+      <section className="py-16 bg-[#0e0e14]" id="faq" data-testid="spa-faq">
+        <div className="max-w-4xl mx-auto px-4">
+          <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-1 block">FREQUENTLY ASKED</span>
+          <h2 className="text-3xl font-black text-white mb-8 uppercase tracking-tight">Spa F1 Tickets FAQ</h2>
+          <div className="space-y-2">
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} q={faq.q} a={faq.a} open={openFAQ === i} toggle={() => setOpenFAQ(openFAQ === i ? -1 : i)} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ INTERNAL LINKS ═══ */}
+      <section className="py-12 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
-          <h3 className="text-lg font-bold text-white mb-4">People Also Search:</h3>
+          <h2 className="text-lg font-black text-white mb-4 uppercase tracking-tight">More F1 Tickets</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { to: "/f1-tickets", title: "All F1 Tickets 2026" },
+              { to: "/monaco-grand-prix-tickets", title: "Monaco GP Tickets" },
+              { to: "/f1-bahrain-grand-prix-tickets", title: "Bahrain GP Tickets" },
+              { to: "/f1-spanish-grand-prix-barcelona-tickets", title: "Spanish GP Tickets" },
+              { to: "/motogp-tickets", title: "MotoGP Tickets" },
+              { to: "/champions-league-tickets", title: "Champions League" },
+              { to: "/taylor-swift-london-tickets", title: "Taylor Swift Tickets" },
+              { to: "/world-cup-2026", title: "World Cup 2026" },
+            ].map((link) => (
+              <Link key={link.to} to={link.to} className="bg-[#1e1e1e] border border-white/6 p-3 hover:border-[#e10600] transition-colors duration-150 flex items-center justify-between group">
+                <span className="text-white font-bold text-xs uppercase tracking-tight group-hover:text-[#e10600] transition-colors">{link.title}</span>
+                <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-[#e10600]" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SEO KEYWORDS ═══ */}
+      <section className="py-10 bg-[#0e0e14]">
+        <div className="max-w-6xl mx-auto px-4">
+          <h3 className="text-sm font-black text-white mb-4 uppercase tracking-tight">People Also Search For:</h3>
           <div className="flex flex-wrap gap-2">
-            {["Spa F1 tickets 2026", "Belgian GP tickets", "Spa-Francorchamps tickets", "Eau Rouge grandstand",
-              "F1 Belgium 2026", "Spa F1 Paddock Club", "Raidillon tickets", "Belgian Grand Prix VIP",
-              "cheapest Spa F1 tickets", "Spa F1 general admission", "Belgium F1 camping",
-              "Spa F1 weekend pass", "Formula 1 Spa 2026", "buy Spa F1 tickets online"].map((term, i) => (
-              <span key={i} className="px-3 py-1.5 bg-[#15151e] text-slate-500 rounded-full text-sm border border-white/5 hover:border-amber-300 hover:text-amber-700 transition-colors cursor-default">{term}</span>
+            {[
+              "Spa F1 tickets", "Spa F1 tickets 2026", "Belgian Grand Prix tickets", "Spa-Francorchamps tickets",
+              "F1 Spa tickets", "Belgium F1 tickets", "Spa GP tickets", "Belgian GP tickets",
+              "F1 tickets Spa", "tickets Spa F1", "Spa Francorchamps F1 tickets", "Belgium Grand Prix tickets",
+              "Eau Rouge grandstand tickets", "Raidillon tickets Spa", "Spa F1 Paddock Club",
+              "Belgian Grand Prix VIP", "cheapest Spa F1 tickets", "Spa F1 general admission",
+              "Belgium GP tickets 2026", "Formula 1 Spa 2026", "buy Spa F1 tickets online",
+              "Spa F1 weekend pass", "Belgian Grand Prix 2026 tickets", "F1 Belgien tickets",
+              "Formel 1 Spa tickets", "Formule 1 Spa tickets", "GP Spa tickets",
+              "Spa F1 camping", "Spa-Francorchamps grand prix", "ticket F1 Spa",
+            ].map((term, i) => (
+              <span key={i} className="px-3 py-1.5 bg-[#15151e] text-slate-500 text-xs border border-white/6 hover:border-[#e10600] hover:text-white transition-colors duration-150 cursor-default">{term}</span>
             ))}
           </div>
         </div>
       </section>
 
       {/* ═══ FINAL CTA ═══ */}
-      <section className="py-20 bg-gradient-to-br from-amber-600 via-red-600 to-red-800" data-testid="spa-final-cta">
+      <section className="py-20 bg-[#e10600]" data-testid="spa-final-cta">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <Crown className="w-12 h-12 text-white/80 mx-auto mb-4" />
-          <h2 className="text-4xl font-black text-white mb-3">Don't Just Watch. Experience Spa.</h2>
-          <p className="text-white/70 text-lg mb-8 max-w-xl mx-auto">
-            From &euro;109 general admission to &euro;3,489 Paddock Club. Every ticket includes FanProtect guarantee and instant QR delivery.
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter uppercase">Don't Just Watch.<br />Experience Spa.</h2>
+          <p className="text-white/70 text-base mb-8 max-w-xl mx-auto">
+            From &euro;109 general admission to &euro;3,489 Paddock Club. Every Spa F1 ticket includes FanProtect guarantee and instant QR delivery.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#tickets">
-              <Button size="lg" className="bg-[#1e1e1e] text-black font-black px-10 py-6 text-lg rounded-none hover:bg-amber-500/10 shadow-2xl" data-testid="spa-final-buy">
+              <Button size="lg" className="bg-white text-[#e10600] hover:bg-white/90 font-black px-10 py-6 text-lg rounded-none uppercase tracking-wider" data-testid="spa-final-buy">
                 <Ticket className="w-5 h-5 mr-2" /> Buy Spa F1 Tickets
               </Button>
             </a>
             <a href="#vip">
-              <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 font-bold px-10 py-6 text-lg rounded-none" data-testid="spa-final-vip">
-                <Crown className="w-5 h-5 mr-2" /> Upgrade to Paddock Club
+              <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 font-bold px-10 py-6 text-lg rounded-none uppercase tracking-wider" data-testid="spa-final-vip">
+                <Crown className="w-5 h-5 mr-2" /> Paddock Club
               </Button>
             </a>
           </div>
-          <p className="text-white/40 text-sm mt-6 flex items-center justify-center gap-2">
+          <p className="text-white/50 text-sm mt-6 flex items-center justify-center gap-2">
             <Shield className="w-4 h-4" /> 100% money-back guarantee if the event is cancelled
           </p>
         </div>

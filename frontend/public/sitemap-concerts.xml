@@ -2954,4 +2954,29 @@
     <changefreq>weekly</changefreq>
     <priority>0.00</priority>
   </url>
+  <!-- Taylor Swift keyword variation URLs -->
+  <url>
+    <loc>https://euromatchtickets.com/taylor-swift-tickets-wembley</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/taylor-swift-wembley-tickets</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/taylor-swift-concert-london</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/taylor-swift-eras-tour-london</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
 </urlset>

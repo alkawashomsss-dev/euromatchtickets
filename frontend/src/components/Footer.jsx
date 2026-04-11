@@ -117,6 +117,8 @@ const Footer = () => {
             <ul className="space-y-2">
               {[
                 { label: "F1 Tickets", to: "/f1-tickets" },
+                { label: "Spa F1 Tickets", to: "/spa-f1-tickets" },
+                { label: "Belgian GP", to: "/belgian-grand-prix-tickets" },
                 { label: "MotoGP", to: "/motogp-tickets" },
                 { label: "World Athletics", to: "/world-athletics-2026-tickets" },
                 { label: "Monaco GP", to: "/monaco-grand-prix-tickets" },

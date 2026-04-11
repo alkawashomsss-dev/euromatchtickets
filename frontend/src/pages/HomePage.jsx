@@ -303,6 +303,73 @@ const HomePage = () => {
         <FeaturedEventsCarousel />
       </div>
 
+      {/* ═══════ TRENDING NOW - SEO POWER SECTION ═══════ */}
+      <section className="py-10 bg-[#15151e] border-y border-white/5">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+          <FadeInSection>
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-1.5 h-8 bg-[#e10600]" />
+              <div>
+                <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest">TRENDING NOW</span>
+                <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight">Most Popular Tickets</h2>
+              </div>
+            </div>
+          </FadeInSection>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Spa F1 - Primary Push */}
+            <FadeInSection delay={0.05}>
+              <Link to="/spa-f1-tickets" className="group block relative h-56 overflow-hidden border-2 border-[#e10600]/30 hover:border-[#e10600] transition-colors duration-150">
+                <img src="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png"
+                  alt="Spa F1 Tickets 2026 - Belgian Grand Prix" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                <div className="absolute top-3 left-3 flex items-center gap-2">
+                  <span className="bg-[#e10600] text-white text-[9px] font-black px-2 py-0.5 uppercase tracking-wider">#1 TRENDING</span>
+                  <span className="bg-[#facc15] text-black text-[9px] font-black px-2 py-0.5 uppercase tracking-wider">SELLING FAST</span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 className="text-xl font-black text-white uppercase tracking-tight group-hover:text-[#e10600] transition-colors">SPA F1 TICKETS 2026</h3>
+                  <p className="text-slate-400 text-xs">Belgian Grand Prix &bull; Spa-Francorchamps &bull; Aug 28-30</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <span className="text-[#15803d] font-black text-sm">From &euro;109</span>
+                    <span className="text-[#e10600] font-black text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">Buy Tickets <ChevronRight className="w-3 h-3" /></span>
+                  </div>
+                </div>
+              </Link>
+            </FadeInSection>
+            {/* Taylor Swift */}
+            <FadeInSection delay={0.1}>
+              <Link to="/taylor-swift-london-tickets" className="group block relative h-56 overflow-hidden border border-white/8 hover:border-[#e10600] transition-colors duration-150">
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-900 to-purple-900" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="bg-[#e10600] text-white text-[9px] font-black px-2 py-0.5 uppercase tracking-wider w-fit mb-auto">#2 TRENDING</span>
+                  <h3 className="text-xl font-black text-white uppercase tracking-tight group-hover:text-[#e10600] transition-colors">TAYLOR SWIFT LONDON</h3>
+                  <p className="text-slate-400 text-xs">Eras Tour &bull; Wembley Stadium &bull; Summer 2026</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <span className="text-[#15803d] font-black text-sm">From &euro;89</span>
+                    <span className="text-[#e10600] font-black text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">Buy Tickets <ChevronRight className="w-3 h-3" /></span>
+                  </div>
+                </div>
+              </Link>
+            </FadeInSection>
+            {/* MotoGP */}
+            <FadeInSection delay={0.15}>
+              <Link to="/motogp-tickets" className="group block relative h-56 overflow-hidden border border-white/8 hover:border-[#e10600] transition-colors duration-150">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-900 to-red-950" />
+                <div className="relative h-full flex flex-col justify-end p-4">
+                  <span className="bg-amber-500 text-black text-[9px] font-black px-2 py-0.5 uppercase tracking-wider w-fit mb-auto">#3 TRENDING</span>
+                  <h3 className="text-xl font-black text-white uppercase tracking-tight group-hover:text-[#e10600] transition-colors">MOTOGP TICKETS 2026</h3>
+                  <p className="text-slate-400 text-xs">All MotoGP Races &bull; 21 Grand Prix &bull; Full Season</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <span className="text-[#15803d] font-black text-sm">From &euro;69</span>
+                    <span className="text-[#e10600] font-black text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">Buy Tickets <ChevronRight className="w-3 h-3" /></span>
+                  </div>
+                </div>
+              </Link>
+            </FadeInSection>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════ FEATURED EVENTS ═══════ */}
       <section className="py-16 md:py-24 bg-[#0e0e14]">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">

@@ -317,6 +317,42 @@ function AppRouter() {
         <Route path="/f1-las-vegas-grand-prix-tickets" element={<LasVegasGPPage />} />
         <Route path="/f1-abu-dhabi-grand-prix-tickets" element={<AbuDhabiGPPage />} />
         <Route path="/f1-belgian-grand-prix-spa-tickets" element={<SpaGPPage />} />
+        {/* Spa/Belgian GP keyword variations - all canonical to main URL */}
+        <Route path="/spa-f1-tickets" element={<SpaGPPage />} />
+        <Route path="/spa-f1-tickets-2026" element={<SpaGPPage />} />
+        <Route path="/spa-francorchamps-tickets" element={<SpaGPPage />} />
+        <Route path="/spa-francorchamps-f1-tickets" element={<SpaGPPage />} />
+        <Route path="/f1-spa-tickets" element={<SpaGPPage />} />
+        <Route path="/spa-grand-prix-tickets" element={<SpaGPPage />} />
+        <Route path="/spa-gp-tickets" element={<SpaGPPage />} />
+        <Route path="/belgium-f1-tickets" element={<SpaGPPage />} />
+        <Route path="/belgian-grand-prix-tickets" element={<SpaGPPage />} />
+        <Route path="/belgian-gp-tickets" element={<SpaGPPage />} />
+        <Route path="/belgium-grand-prix-tickets" element={<SpaGPPage />} />
+        <Route path="/f1-tickets-spa" element={<SpaGPPage />} />
+        <Route path="/f1-tickets-spa-2026" element={<SpaGPPage />} />
+        <Route path="/tickets-spa-f1" element={<SpaGPPage />} />
+        <Route path="/ticket-f1-spa" element={<SpaGPPage />} />
+        <Route path="/spa-tickets-f1" element={<SpaGPPage />} />
+        <Route path="/spa-ticket-f1" element={<SpaGPPage />} />
+        <Route path="/belgian-f1-tickets" element={<SpaGPPage />} />
+        <Route path="/formula-1-spa-tickets" element={<SpaGPPage />} />
+        <Route path="/formula-1-belgium-tickets" element={<SpaGPPage />} />
+        <Route path="/f1-belgien-tickets" element={<SpaGPPage />} />
+        <Route path="/formel-1-spa-tickets" element={<SpaGPPage />} />
+        <Route path="/formule-1-spa-tickets" element={<SpaGPPage />} />
+        <Route path="/gp-spa-tickets" element={<SpaGPPage />} />
+        <Route path="/gp-belgie-tickets" element={<SpaGPPage />} />
+        <Route path="/spa-francorchamps-grand-prix-tickets" element={<SpaGPPage />} />
+        <Route path="/belgian-grand-prix-2026-tickets" element={<SpaGPPage />} />
+        <Route path="/spa-grand-prix-2026" element={<SpaGPPage />} />
+        <Route path="/spa-paddock-club-tickets" element={<SpaGPPage />} />
+        <Route path="/f1-spa-francorchamps-tickets" element={<SpaGPPage />} />
+        <Route path="/belgium-gp-tickets" element={<SpaGPPage />} />
+        <Route path="/f1-belgie-tickets" element={<SpaGPPage />} />
+        <Route path="/f1-kaarten-spa" element={<SpaGPPage />} />
+        <Route path="/grand-prix-spa-tickets" element={<SpaGPPage />} />
+        <Route path="/grand-prix-belgie-tickets" element={<SpaGPPage />} />
         <Route path="/f1-dutch-grand-prix-zandvoort-tickets" element={<ZandvoortGPPage />} />
         <Route path="/f1-miami-grand-prix-tickets" element={<MiamiGPPage />} />
         <Route path="/f1-japanese-grand-prix-suzuka-tickets" element={<JapanGPPage />} />
@@ -411,6 +447,10 @@ function AppRouter() {
         <Route path="/taylor-swift-london-tickets" element={<TaylorSwiftLondonPage />} />
         <Route path="/taylor-swift-tickets-london" element={<TaylorSwiftLondonPage />} />
         <Route path="/taylor-swift-tickets" element={<TaylorSwiftLondonPage />} />
+        <Route path="/taylor-swift-tickets-wembley" element={<TaylorSwiftLondonPage />} />
+        <Route path="/taylor-swift-wembley-tickets" element={<TaylorSwiftLondonPage />} />
+        <Route path="/taylor-swift-concert-london" element={<TaylorSwiftLondonPage />} />
+        <Route path="/taylor-swift-eras-tour-london" element={<TaylorSwiftLondonPage />} />
         
         {/* Team Hub Pages */}
         <Route path="/real-madrid-tickets" element={<RealMadridHubPage />} />

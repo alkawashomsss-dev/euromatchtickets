@@ -247,11 +247,11 @@ const Header = () => {
             <div className="flex items-center h-10 gap-0 overflow-x-auto">
               {[
                 { label: "Tickets", to: "/events", active: true },
+                { label: "Spa F1 Tickets", to: "/spa-f1-tickets" },
                 { label: "F1 2026", to: "/f1-tickets-2026" },
                 { label: "Champions League", to: "/champions-league-tickets" },
                 { label: "World Cup 2026", to: "/world-cup-2026" },
                 { label: "Taylor Swift", to: "/taylor-swift-london-tickets" },
-                { label: "Monaco GP", to: "/monaco-grand-prix-tickets" },
                 { label: "MotoGP", to: "/motogp-tickets" },
               ].map((item) => (
                 <Link
