@@ -1,322 +1,172 @@
 /* ============================================
-   EUROMATCHTICKETS - F1 PROFESSIONAL EDITION
-   Clean, Bold, High-Contrast
+   EUROMATCHTICKETS - F1 PROFESSIONAL DESIGN
+   Colors: Navy #0f172a + Red #e10600 + White
+   Fonts: Oswald (headings) + Inter (body)
    ============================================ */
 
-/* ─── Link Colors ─── */
+/* ─── BASE ─── */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc;
+  color: #020617;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── LINKS ─── */
 a, a:visited, a:link, a:active { color: inherit; text-decoration: none; }
-a h3, a:visited h3 { color: #0f172a !important; }
-a:hover h3 { color: #e10600 !important; }
+a h3, a:visited h3, a h2, a:visited h2 { color: #020617 !important; }
+a:hover h3, a:hover h2 { color: #e10600 !important; }
 
-/* ─── Typography ─── */
-.font-display {
-  font-family: 'Space Grotesk', sans-serif;
-  letter-spacing: -0.03em;
+/* ─── TYPOGRAPHY ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
 }
 
-.font-body {
-  font-family: 'Outfit', sans-serif;
-}
+.font-display { font-family: 'Oswald', sans-serif; letter-spacing: -0.02em; }
+.font-body { font-family: 'Inter', sans-serif; }
 
-/* ─── Glass Morphism (dark sections only) ─── */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-card {
-  background: white;
-  border: 1px solid #e5e7eb;
-  transition: all 0.25s ease;
-}
-
-.glass-card:hover {
-  border-color: #e10600;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Accent Effects */
-.crystal-glow {
-  box-shadow: 0 4px 20px rgba(225, 6, 0, 0.08);
-}
-
-.crystal-border {
-  border: 1px solid #e10600;
-}
-
-/* Text Accent */
-.neon-text-cyan {
-  color: #e10600;
-}
-
-.neon-text-gold {
-  color: #e10600;
-}
-
-/* Subtle Glow Backgrounds */
-.stadium-glow {
-  background: radial-gradient(ellipse at center top, rgba(225, 6, 0, 0.04) 0%, transparent 60%);
-}
-
-.stadium-glow-gold {
-  background: radial-gradient(ellipse at center top, rgba(225, 6, 0, 0.04) 0%, transparent 60%);
-}
-
-.gradient-glow {
-  background: radial-gradient(circle at center, rgba(225, 6, 0, 0.04) 0%, transparent 70%);
-}
-
-.gradient-vip {
-  background: linear-gradient(135deg, #e10600 0%, #dc2626 100%);
-}
-
-/* Animations */
-@keyframes glow-pulse {
-  0%, 100% { 
-    box-shadow: 0 0 10px rgba(225, 6, 0, 0.15);
-  }
-  50% { 
-    box-shadow: 0 0 20px rgba(225, 6, 0, 0.25);
-  }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes spotlight {
-  0%, 100% { opacity: 0.5; transform: translateX(-50%) rotate(0deg); }
-  50% { opacity: 1; transform: translateX(-50%) rotate(5deg); }
-}
-
-.animate-glow-pulse {
-  animation: glow-pulse 2s ease-in-out infinite;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  animation: shimmer 2s linear infinite;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-  background-size: 200% 100%;
-}
-
-/* Premium Button Styles */
-.btn-crystal {
-  background: #e10600;
-  color: white;
-  border: none;
-  font-weight: 800;
-  transition: all 0.2s ease;
-}
-
-.btn-crystal:hover {
-  background: #b91c1c;
-  box-shadow: 0 4px 20px rgba(225, 6, 0, 0.2);
-  transform: translateY(-1px);
-}
-
-.btn-gold {
-  background: #e10600;
-  color: white;
-  font-weight: 800;
-  transition: all 0.2s ease;
-}
-
-.btn-gold:hover {
-  background: #b91c1c;
-  box-shadow: 0 4px 20px rgba(225, 6, 0, 0.2);
-  transform: translateY(-1px);
-}
-
-/* Event Card Styles - Clean Professional White Cards */
-.event-card {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
+/* ─── CARDS ─── */
+.glass-card, .event-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 2px;
   overflow: hidden;
-  transition: all 0.25s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.event-card:hover {
-  border-color: #e10600;
+.glass-card:hover, .event-card:hover, .glass-card-hover:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #e10600;
 }
 
-/* Tag Styles - F1 Bold Style */
+/* ─── TAGS / BADGES ─── */
 .tag-match {
-  background: #15803d;
-  color: white;
+  background: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   border: none;
-  font-weight: 800;
-  letter-spacing: 0.02em;
 }
 
 .tag-concert {
   background: #e10600;
-  color: white;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   border: none;
-  font-weight: 800;
-  letter-spacing: 0.02em;
 }
 
 .tag-vip {
   background: #e10600;
-  color: white;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   border: none;
-  font-weight: 800;
 }
 
-/* Input Styles */
+/* ─── BUTTONS ─── */
+.btn-crystal {
+  background: #e10600;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.2s ease;
+}
+.btn-crystal:hover { background: #b80500; }
+
+.btn-gold {
+  background: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.2s ease;
+}
+.btn-gold:hover { background: #1e293b; }
+
+/* ─── INPUTS ─── */
 .input-glass {
-  background: white;
-  border: 1px solid #e5e7eb;
-  transition: all 0.2s ease;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #020617;
+  transition: border-color 0.2s ease;
 }
-
 .input-glass:focus {
   border-color: #e10600;
-  box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.1);
+  box-shadow: 0 0 0 2px rgba(225, 6, 0, 0.1);
   outline: none;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* ─── GRADIENTS ─── */
+.gradient-primary { background: #0f172a; }
+.gradient-match { background: #15803d; }
+.gradient-concert { background: #e10600; }
+.gradient-gold { background: #e10600; }
+.gradient-vip { background: #e10600; }
+.gradient-hero { background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7), transparent); }
+.gradient-glow { background: transparent; }
+.stadium-glow { background: transparent; }
+.stadium-glow-gold { background: transparent; }
+
+/* ─── EFFECTS ─── */
+.crystal-glow { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); }
+.crystal-border { border: 1px solid #e2e8f0; }
+.glass-panel {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.noise-overlay { display: none; }
+.neon-text-cyan { color: #e10600; }
+.neon-text-gold { color: #e10600; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(225, 6, 0, 0.1); }
+  50% { box-shadow: 0 0 16px rgba(225, 6, 0, 0.2); }
 }
 
-::-webkit-scrollbar-track {
-  background: #f8fafc;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* Image Vignette Effect */
-.image-vignette {
-  position: relative;
-}
-
-.image-vignette::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.5) 100%);
-  pointer-events: none;
-}
-
-/* Shimmer Loading */
 .shimmer {
   background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
+.animate-glow-pulse { animation: glow-pulse 2s ease-in-out infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
 
-/* Selection */
-::selection {
-  background: rgba(225, 6, 0, 0.15);
-  color: #0f172a;
-}
-
-/* Focus Visible */
-:focus-visible {
-  outline: 2px solid #e10600;
-  outline-offset: 2px;
-}
-
-/* Noise Texture - Disabled for clean look */
-.noise-overlay {
-  display: none;
+/* ─── IMAGE ─── */
+.image-vignette { position: relative; }
+.image-vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
 }
 
-/* === Lightweight CSS Animations (no JS, zero perf impact) === */
-@keyframes anim-pulse-slow-kf {
-  0%, 100% { opacity: 0.08; transform: scale(1); }
-  50% { opacity: 0.15; transform: scale(1.05); }
-}
-@keyframes anim-fade-in-kf {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes anim-slide-up-kf {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes anim-fade-in-up-kf {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes anim-blink-kf {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-@keyframes anim-shimmer-kf {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-.anim-pulse-slow { animation: anim-pulse-slow-kf 6s ease-in-out infinite; }
-.anim-fade-in { animation: anim-fade-in-kf 0.6s ease-out both; }
-.anim-slide-up { animation: anim-slide-up-kf 0.7s cubic-bezier(0.22,1,0.36,1) both; }
-.anim-fade-in-up { animation: anim-fade-in-up-kf 0.5s ease-out both; }
-.anim-blink { animation: anim-blink-kf 1.5s ease-in-out infinite; }
-.anim-shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
-  background-size: 200% 100%;
-  animation: anim-shimmer-kf 3s linear infinite;
-}
-/* Reduced motion for accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .anim-pulse-slow, .anim-fade-in, .anim-slide-up, .anim-fade-in-up, .anim-blink, .anim-shimmer {
-    animation: none !important;
-  }
-}
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f8fafc; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-/* === Motorsport Adrenaline Animations === */
-@keyframes speed-line {
-  0% { transform: translateX(-100%); opacity: 0; }
-  10% { opacity: 0.6; }
-  90% { opacity: 0.6; }
-  100% { transform: translateX(200%); opacity: 0; }
-}
-@keyframes race-glow {
-  0%, 100% { box-shadow: 0 0 8px rgba(239,68,68,0.2); }
-  50% { box-shadow: 0 0 20px rgba(239,68,68,0.5), 0 0 40px rgba(239,68,68,0.1); }
-}
-@keyframes checkered-sweep {
-  0% { background-position: -100% 0; }
-  100% { background-position: 200% 0; }
-}
-.anim-speed-line { animation: speed-line 2s linear infinite; }
-.anim-speed-line-2 { animation: speed-line 2.5s linear infinite; animation-delay: 0.8s; }
-.anim-speed-line-3 { animation: speed-line 1.8s linear infinite; animation-delay: 1.5s; }
-.anim-race-glow { animation: race-glow 2s ease-in-out infinite; }
-.anim-checkered {
-  background: repeating-linear-gradient(90deg, transparent 0 8px, rgba(255,255,255,0.03) 8px 16px);
-  background-size: 200% 100%;
-  animation: checkered-sweep 8s linear infinite;
-}
-/* Card entrance with stagger */
-@keyframes card-pop {
-  from { opacity: 0; transform: translateY(20px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-.anim-card-pop { animation: card-pop 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+/* ─── SELECTION ─── */
+::selection { background: rgba(225, 6, 0, 0.12); color: #020617; }
+:focus-visible { outline: 2px solid #e10600; outline-offset: 2px; }
 
-
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
+  h1 { font-size: 2rem !important; }
+}

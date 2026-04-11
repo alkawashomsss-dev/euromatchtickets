@@ -85,7 +85,7 @@ const EventCard = ({ event, index }) => {
       <Link 
         to={`/event/${event.slug || event.event_id}`}
         data-testid={`event-card-${event.slug || event.event_id}`}
-        className="group block bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+        className="group block bg-white border border-slate-200 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-200 hover:border-[#e10600]"
       >
         {/* Image */}
         <div className="relative h-48 overflow-hidden">
@@ -99,7 +99,7 @@ const EventCard = ({ event, index }) => {
           
           {/* Category Badge - Top Left */}
           <div className="absolute top-3 left-3">
-            <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-black uppercase tracking-wider text-white ${isMatch ? 'bg-[#15803d]' : 'bg-[#e10600]'}`}>
+            <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-white ${isMatch ? 'bg-[#0f172a]' : 'bg-[#e10600]'}`}>
               {isMatch ? <Trophy className="w-3 h-3" /> : <Music className="w-3 h-3" />}
               {isMatch ? "Match" : "Concert"}
             </span>
@@ -172,7 +172,7 @@ const EventCard = ({ event, index }) => {
               <span className={`text-xs font-bold px-2.5 py-1 rounded ${
                 isLimited ? 'bg-[#e10600] text-white'
                 : isFast ? 'bg-[#0f172a] text-white'
-                : 'bg-[#15803d] text-white'
+                : 'bg-[#0f172a] text-white'
               }`}>
                 {ticketsLeft} available
               </span>
@@ -244,7 +244,7 @@ const HomePage = () => {
             {/* Live tag */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-8">
               <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2.5 rounded-full">
-                <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                <span className="w-2 h-2 bg-[#e10600] rounded-full animate-pulse" />
                 <span className="text-white/90 text-sm font-medium tracking-wide">TICKETS ON SALE NOW</span>
               </span>
             </motion.div>
@@ -256,7 +256,7 @@ const HomePage = () => {
             >
               <span className="text-white font-extrabold">FIFA WORLD CUP</span>
               <br />
-              <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-300 bg-clip-text text-transparent font-extrabold">
+              <span className="text-[#e10600] font-extrabold">
                 2026 TICKETS
               </span>
             </motion.h1>
@@ -265,7 +265,7 @@ const HomePage = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="mb-8">
               <p className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed">
                 Be part of history. Verified tickets for the biggest football event ever. 
-                <span className="text-amber-600 font-semibold"> 100% secure</span> with instant QR delivery.
+                <span className="text-[#e10600] font-semibold"> 100% secure</span> with instant QR delivery.
               </p>
             </motion.div>
 
@@ -273,18 +273,18 @@ const HomePage = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-12">
               <div className="glass-dark px-6 py-4 rounded-2xl">
                 <span className="text-slate-400 text-xs uppercase tracking-widest">Tickets from</span>
-                <div className="text-3xl md:text-4xl font-extrabold text-amber-600 mt-0.5">&euro;150</div>
+                <div className="text-3xl md:text-4xl font-extrabold text-[#e10600] mt-0.5">&euro;150</div>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/world-cup-2026">
-                  <Button data-testid="buy-worldcup-btn" className="bg-amber-400 hover:bg-amber-300 text-slate-900 text-lg h-14 px-8 rounded-full font-bold shadow-[0_4px_30px_rgba(245,158,11,0.4)] hover:shadow-[0_8px_40px_rgba(245,158,11,0.5)] transition-all hover:scale-105 active:scale-[0.97]">
+                  <Button data-testid="buy-worldcup-btn" className="bg-[#e10600] hover:bg-[#b80500] text-white text-lg h-14 px-8 rounded-none font-bold shadow-[0_4px_20px_rgba(225,6,0,0.3)] transition-all hover:scale-105 active:scale-[0.97]">
                     Buy World Cup Tickets
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link to="/events">
-                  <Button data-testid="explore-events-btn" className="bg-white/10 hover:bg-white/20 border border-white/30 text-white text-lg h-14 px-8 rounded-full backdrop-blur-sm transition-all">
+                  <Button data-testid="explore-events-btn" className="bg-white/10 hover:bg-white/20 border border-white/30 text-white text-lg h-14 px-8 rounded-none backdrop-blur-sm transition-all">
                     <Ticket className="w-5 h-5 mr-2" /> All Events
                   </Button>
                 </Link>

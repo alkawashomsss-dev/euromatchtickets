@@ -1,104 +1,105 @@
 {
-  "theme": "hybrid-high-contrast",
-  "archetype": "The Performance Pro / Swiss Brutalist",
-  "colors": {
-    "primary_accent": "#e10600",
-    "primary_accent_hover": "#b80500",
-    "dark_base": "#0f172a",
-    "dark_surface": "#1e293b",
-    "light_base": "#f8fafc",
-    "light_surface": "#ffffff",
-    "text_dark": "#020617",
-    "text_light": "#ffffff",
-    "muted_text": "#64748b",
-    "border_color": "#e2e8f0",
-    "forbidden_colors": ["purple", "violet", "orange", "yellow", "cyan", "fuchsia", "pink", "teal", "pastel"]
+  "project_context": {
+    "name": "euromatchtickets.com redesign",
+    "type": "ecommerce",
+    "archetype": "The Performance Pro",
+    "theme": "dark",
+    "core_emotion": "Premium, high-octane, authoritative, urgent"
   },
   "typography": {
-    "fonts_to_import": [
-      "https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
-    ],
-    "headings": {
-      "font_family": "'Oswald', sans-serif",
-      "style": "uppercase, tracking-tight, font-bold"
-    },
-    "body": {
-      "font_family": "'Inter', sans-serif",
-      "style": "leading-relaxed"
-    },
-    "labels": {
-      "style": "uppercase, tracking-[0.1em], text-xs, font-bold"
-    }
+    "primary_heading_font": "Oswald",
+    "body_font": "Inter",
+    "heading_strategy": "Headings MUST be uppercase, bold to black weight, with tight tracking (tracking-tight or tracking-tighter). Used for event titles, section headers, and call-to-actions.",
+    "body_strategy": "Clean, highly legible sans-serif for dates, descriptions, and pricing. Slight tracking increase for legibility on dark backgrounds.",
+    "font_imports": "Ensure Oswald and Inter are imported from Google Fonts."
   },
-  "layout": {
-    "spacing": "Generous spacing. Use p-8 or p-12 for sections. gap-8 for grids.",
-    "cards": "Square or very slightly rounded (max rounded-sm). bg-white, 1px border border-slate-200, thick top border (border-t-4 border-[#e10600]).",
-    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-    "general": "Mobile-first approach. Ensure columns collapse to 1 on mobile."
-  },
-  "visual_enhancers": {
-    "borders": "Use sharp borders. Thick red accents for active states, tabs, or premium elements.",
-    "shadows": "Minimalist. shadow-sm default, shadow-md on hover. Avoid muddy large shadows.",
-    "textures": "Clean solids. No gradients, no glassmorphism."
-  },
-  "motion": {
-    "hover": "Snappy. transition-transform duration-200. Hover on cards: -translate-y-1 shadow-lg.",
-    "buttons": "transition-colors duration-200. Color fill on hover. Red to darker red."
-  },
-  "components": {
-    "button_primary": "bg-[#e10600] text-white rounded-none px-6 py-3 font-bold uppercase tracking-wide hover:bg-[#b80500] focus:ring-2 focus:ring-[#e10600] focus:ring-offset-2 transition-colors",
-    "button_secondary": "bg-slate-900 text-white rounded-none px-6 py-3 font-bold uppercase tracking-wide hover:bg-slate-800 transition-colors",
-    "badges": "bg-slate-900 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider, or bg-[#e10600] for VIP/Hot tickets.",
-    "navbar": "bg-slate-950 text-white sticky top-0 z-50 border-b border-slate-800 py-4",
-    "footer": "bg-slate-950 text-slate-300 py-16 border-t-4 border-[#e10600]"
-  },
-  "media": {
-    "style": "High contrast, high saturation images. No vintage filters. Professional sports photography.",
-    "images": [
-      {
-        "url": "https://images.unsplash.com/photo-1742412615437-4cefe005d82c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHw0fHxmb3JtdWxhJTIwMSUyMHJhY2luZyUyMGNhcnxlbnwwfHx8fDE3NzU5MDczMzd8MA&ixlib=rb-4.1.0&q=85",
-        "description": "F1 race car speeding down track",
-        "category": "hero_banner"
-      },
-      {
-        "url": "https://images.unsplash.com/photo-1774487671620-b9174d206849?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwyfHxmb3JtdWxhJTIwMSUyMHJhY2luZyUyMGNhcnxlbnwwfHx8fDE3NzU5MDczMzd8MA&ixlib=rb-4.1.0&q=85",
-        "description": "Formula 1 race car on track",
-        "category": "f1_event_card"
-      },
-      {
-        "url": "https://images.unsplash.com/photo-1549923015-badf41b04831?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxzdGFkaXVtJTIwZm9vdGJhbGwlMjBtYXRjaHxlbnwwfHx8fDE3NzU5MDczMzd8MA&ixlib=rb-4.1.0&q=85",
-        "description": "Aerial view of soccer stadium",
-        "category": "football_event_card"
-      },
-      {
-        "url": "https://images.unsplash.com/photo-1604364260242-1156640c0dfb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwzfHxjb25jZXJ0JTIwY3Jvd2QlMjBsaXZlfGVufDB8fHx8MTc3NTkwNzMzN3ww&ixlib=rb-4.1.0&q=85",
-        "description": "Concert crowd at night",
-        "category": "concert_event_card"
-      },
-      {
-        "url": "https://images.unsplash.com/photo-1761950143597-69cef2686bfa?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwyfHx2aXAlMjBsdXh1cnklMjBsb3VuZ2V8ZW58MHx8fHwxNzc1OTA3MzM3fDA&ixlib=rb-4.1.0&q=85",
-        "description": "Luxurious seating area",
-        "category": "vip_experiences"
-      }
+  "colors": {
+    "primary": "#e10600",
+    "background_base": "#15151e",
+    "background_surface": "#0f172a",
+    "background_card": "#1e1e1e",
+    "text_primary": "#ffffff",
+    "text_secondary": "#94a3b8",
+    "accent_warning": "#facc15",
+    "trust_green": "#00b67a",
+    "anti_patterns": [
+      "NO glassmorphism or transparent backgrounds in the header/nav.",
+      "NO pastel colors.",
+      "NO purple, violet, or teal.",
+      "NO generic Vercel/Stripe soft aesthetic."
     ]
   },
+  "layouts": {
+    "header": "Two-tier navigation: Top bar is SOLID RED (#e10600) with white text. Sub-navigation is SOLID DARK CHARCOAL (#15151e). NO transparency.",
+    "hero": "Edge-to-edge full width layout. Large imagery with a heavy gradient overlay to ensure text legibility. Action-oriented.",
+    "cards": "Strictly sharp corners (rounded-none). Full-width image cards for events with dark gradient overlays at the bottom for text. Use dense, high-contrast bento style layouts where applicable.",
+    "spacing": "Generous vertical spacing between sections (py-16 or py-24). Tight, utilitarian spacing within event lists (p-4) to maximize data density."
+  },
+  "components": {
+    "buttons": "Sharp corners (rounded-none). Primary buttons use bg-[#e10600] text-white with hover:bg-red-700. Text is uppercase, bold, and uses tracking-wider.",
+    "badges": "Status badges (e.g., 'Sehr beliebt: hohe Nachfrage', 'Selling Fast') use bg-[#facc15] text-black, bold, uppercase, small text (text-xs), with sharp edges.",
+    "trust_signals": "Crucial element: Trustpilot-style rating blocks. Use 5 stars in green (#00b67a), '4.4/5' text rating, and 'Excellent' badges prominently in the hero and footer.",
+    "event_list": "Clean list format. Include country flags next to event names. Use distinct 'FILTERS' buttons. Include arrow indicators (chevron-right) for clear navigation.",
+    "categories": "Full-width image cards with bold text overlays for 'HOSPITALITY', 'EXPERIENCES', etc."
+  },
+  "visual_enhancers": {
+    "borders": "Use 1px solid borders (border-white/10) to separate dark sections. No soft shadows.",
+    "overlays": "bg-gradient-to-t from-black via-black/80 to-transparent is MANDATORY over card images to maintain text contrast.",
+    "textures": "Keep it clean and solid. The 'Performance Pro' archetype relies on extreme contrast rather than noise/grain."
+  },
+  "motion": {
+    "strategy": "Minimalist, snappy, athletic. No slow, floaty animations.",
+    "hover_states": "Quick transitions (duration-150). Translate-y-[-2px] with a crisp shadow, or a solid border color change."
+  },
+  "media": {
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1773142181818-5842662aea51?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwxfHxmb3JtdWxhJTIwMSUyMHJhY2luZyUyMGNhcnMlMjB0cmFja3xlbnwwfHx8fDE3NzU5MDgxNzB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "F1 race cars speeding around a track",
+        "category": "hero"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1686412537658-3c7035c37be0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwzfHxmb3JtdWxhJTIwMSUyMHJhY2luZyUyMGNhcnMlMjB0cmFja3xlbnwwfHx8fDE3NzU5MDgxNzB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Cars driving down a race track",
+        "category": "event_card"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1652090379496-4219a00c8ebf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwyfHxmb3JtdWxhJTIwMSUyMHJhY2luZyUyMGNhcnMlMjB0cmFja3xlbnwwfHx8fDE3NzU5MDgxNzB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Race cars on a track",
+        "category": "event_card"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1761381629538-cf46cfa51e1c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwzfHxjb25jZXJ0JTIwY3Jvd2QlMjBzdGFkaXVtJTIwbmlnaHR8ZW58MHx8fHwxNzc1OTA4MTcwfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Concert crowd night",
+        "category": "category_card"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1759156207343-9dfefd8b7d33?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwyfHxzcG9ydHMlMjBmYW5zJTIwY2hlZXJpbmclMjBzdGFkaXVtfGVufDB8fHx8MTc3NTkwODE3MHww&ixlib=rb-4.1.0&q=85",
+        "description": "Crowded stadium with fans holding banners",
+        "category": "hospitality_card"
+      }
+    ],
+    "icons": "Use lucide-react for standard icons. For flags, use a reliable SVG approach or a specialized flag icon package if available, else mock with SVGs."
+  },
   "instructions_to_main_agent": [
-    "CLEANUP FIRST: Delete or comment out conflicting CSS rules in App.css and index.css that enforce random purple/cyan/orange/yellow colors or broken dark themes. Apply standard Tailwind classes instead.",
-    "COLOR ENFORCEMENT: Strictly prohibit the use of tailwind colors: purple, violet, fuchsia, pink, orange, yellow, cyan, teal. If they exist in the codebase, replace them with slate or red.",
-    "THEME: Implement a light theme for the main content area (bg-slate-50 or white) so the event cards pop. Use a dark theme (bg-slate-950) for the Navbar and Footer to frame the site and give a premium feel.",
-    "CARDS: Event cards must be 'bg-white', 'text-slate-900', with a sharp 'rounded-none' or 'rounded-sm' border. Add 'border-t-4 border-[#e10600]' to make them look like premium Formula 1 UI.",
-    "TYPOGRAPHY: Import and use 'Oswald' font for all headings to give it that aggressive, sporty, premium look. Use 'Inter' for body.",
-    "DATA TEST IDs: Ensure all buttons, links, and cards have explicit 'data-testid' attributes (e.g., 'data-testid=\"buy-ticket-button\"').",
-    "NO GLASSMORPHISM: The prompt explicitly asks for bold, clean, high-contrast. Remove any 'backdrop-blur' or dark glass elements fighting the light theme."
+    "STRICT RULE: Absolutely no rounded corners anywhere. Use `rounded-none` for all buttons, cards, badges, and containers.",
+    "STRICT RULE: No glassmorphism. Headers and backgrounds must be solid colors (#e10600 for header, #15151e for body).",
+    "All Headings must use the Oswald font (font-oswald), uppercase, and tight tracking.",
+    "Implement a Trustpilot-like review block in the hero and footer sections.",
+    "Create a detailed event listing page with 'Day selector' cards (e.g., 3 days, 2 days, 1 day) and a 'FILTERS' button.",
+    "Use high-contrast text. Any text over images MUST have a heavy dark gradient behind it.",
+    "Ensure the application works perfectly on mobile (Mobile-first design)."
   ],
-  "universal_guidelines": [
-    "You tend to converge toward generic, 'on distribution' outputs. Avoid this: make creative, distinctive frontends that surprise and delight.",
-    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
-    "Don't make generic centered layouts. Use grid/flex with optical alignment.",
-    "You MUST NOT apply universal transition. Eg: transition: all.",
-    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file.",
-    "Always use modern button styles, in this case sharp, high-contrast block buttons with interaction animations.",
-    "NEVER use AI assistant Emoji characters like 🤖🧠💭 etc for icons. Use lucide-react.",
-    "Every interaction needs micro-animations - hover states, transitions. Static = dead."
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Prioritize using pre-existing components from src/components/ui when applicable.",
+    "Components MUST use named exports (export const ComponentName = ...).",
+    "Pages MUST use default exports (export default function PageName() {...}).",
+    "All interactive and key informational elements MUST include a `data-testid` attribute (kebab-case, role-based).",
+    "Use sonner for toasts.",
+    "Ensure dark colors are used independently without gradients.",
+    "Create depth through layered design elements with z-index hierarchy, NOT soft shadows.",
+    "Do NOT center align the app container.",
+    "Add transitions for specific interactive elements excluding transforms (do not use transition-all).",
+    "Provide the UI/UX in .js or .jsx, NOT .tsx (as per constraints)."
   ]
 }
