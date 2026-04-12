@@ -20,37 +20,42 @@ Build euromatchtickets.com, a premium ticket marketplace with aggressive SEO, to
 - 30+ Spa F1 keyword route variations in App.js
 - SpaGPPage massive SEO golden page
 - Pre-hydration canonical/meta scripts in index.html
-- 9 sitemap XML files (core, f1, football, concerts, worldcup, cities, events, international, guides)
+- 9 sitemap XML files covering 2,307 URLs
 - French/Italian/Spanish/German landing pages
-- Trust/review SEO pages (euromatchtickets-review, -legit, -safe, etc.)
+- Trust/review SEO pages (7 language variants)
 - Comparison pages (vs StubHub, Viagogo, Ticketmaster, SeatGeek)
+- CTR-optimized titles with prices ("From €109 | 42% Cheaper")
 
 ### Blog & Content (DONE - April 12, 2026)
 - 7 hardcoded SEO blog articles in BlogArticlePage.jsx
-- BlogPage.jsx rewritten with hardcoded articles, category filter, search
-- All 7 blog URLs added to sitemap-guides.xml
-- Blog cross-links added to: Footer, HomePage, SpaGPPage, BlogArticlePage
+- BlogPage.jsx with category filter and search
+- All 7 blog URLs indexed in sitemap-guides.xml
+- Cross-links in: Footer, HomePage, SpaGPPage, BlogArticlePage
+
+### Newsletter System (DONE - April 12, 2026)
+- NewsletterSignup component on 8 major pages
+- Backend POST /api/newsletter/subscribe (MongoDB)
+- "GET TICKET PRICE ALERTS" with email + "Notify Me"
+- Present on: HomePage, BlogPage, BlogArticlePage, SpaGPPage, TaylorSwiftLondonPage, MonacoGPPage, F1TicketsPage, ChampionsLeaguePage
 
 ### Internal Linking (DONE - April 12, 2026)
-- Footer: Added "Guides & Blog" section (7 links to blog articles)
-- HomePage: "Latest Guides & Tips" section (4 featured blog cards)
-- SpaGPPage: "Related Guides" section (3 blog article links)
-- BlogArticlePage: "More Guides" cross-links + multi-CTA ticket buttons
-- BlogPage: Cross-linking sections to F1, Football, Concerts ticket pages
+- Footer: "Guides & Blog" section (7 links)
+- HomePage: "Latest Guides & Tips" section (4 cards)
+- SpaGPPage: "Related Guides" section (3 links)
+- BlogArticlePage: Multi-CTA ticket buttons + "More Guides"
+- BlogPage: Cross-linking to F1, Football, Concerts pages
 
-### Speed Optimizations (DONE - April 12, 2026)
-- Added preconnect/dns-prefetch for images.pexels.com and static.prod-images
-- PageLoader spinner updated to red theme (#e10600)
-- All blog images use loading="lazy"
+### Speed Optimizations (DONE)
+- preconnect/dns-prefetch for images.pexels.com, static.prod-images
+- lazy loading on all blog images
+- PageLoader red theme
 
-## Pages Count
-- 90+ unique page components
-- 30+ Spa F1 keyword routes
-- 19 French routes, 19 Italian routes, 20 Spanish routes, 6 German routes
-- 12 monthly event pages
-- 7 blog articles
-- 4 comparison pages
-- 8 team hub pages
+### Full Sitemap Indexing (DONE - April 12, 2026)
+- 2,307 total URLs indexed
+- All trust/review pages (7 languages)
+- All blog articles (7)
+- Spa Paddock Club, Super Bowl 2027, Bayern vs Real Madrid CL
+- Keyword aliases use canonical tags (not duplicated in sitemap)
 
 ## Pending / Backlog
 - P1: Owner Dashboard charts & sales reports
@@ -65,3 +70,4 @@ Build euromatchtickets.com, a premium ticket marketplace with aggressive SEO, to
 - iteration_46.json: 100% Pass (Dark Theme)
 - iteration_47.json: 100% Pass (SEO Routing)
 - iteration_48.json: 100% Pass (Blog, Cross-linking, Sitemap)
+- iteration_49.json: 100% Pass (Newsletter, CTAs, SEO Titles)
