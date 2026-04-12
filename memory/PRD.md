@@ -1,85 +1,67 @@
 # EuroMatchTickets - Product Requirements Document
 
-## Overview
-**euromatchtickets.com** - Premium ticket marketplace for sports and entertainment events across Europe. Focus: aggressive SEO, conversion optimization, professional F1-style UI/UX.
+## Original Problem Statement
+Build euromatchtickets.com, a premium ticket marketplace with aggressive SEO, top Google rankings, high conversion rates, and deep buyer trust. Full-stack FastAPI/React. Premium dark-themed F1-style UI/UX.
 
-## Design System (Updated April 11, 2026)
-- **Primary Red**: #e10600 (Header, CTAs, accents)
-- **Dark BG**: #0e0e14 | **Surface**: #15151e | **Card**: #1e1e1e
-- **Font**: Oswald (headings, uppercase, bold) + Inter (body)
-- **Style**: Sharp edges (rounded-none), F1 Tickets inspired
+## Architecture
+- Frontend: React (CRA) + Tailwind + Shadcn/UI + Framer Motion
+- Backend: FastAPI + MongoDB
+- Auth: Emergent-managed Google OAuth
+- Theme: Dark (#0e0e14 bg, #e10600 red accents, F1/Global-Tickets style)
 
 ## What's Been Implemented
 
-### Phase 1-3: Core Platform, SEO Engine, Marketing (Complete)
-- Full event marketplace with auth, tickets, checkout
-- 100+ SEO landing pages with Schema.org
-- Static sitemap, pre-hydration script, international pages
-- Social Hub, retargeting pixels, email campaigns
+### UI/UX (DONE)
+- Complete dark/red premium theme across 100+ components
+- Cookie banner matching dark theme
+- Trust elements, reviews, social proof
 
-### Phase 4: UI/UX Redesign (April 11, 2026 - COMPLETE)
-- Bold red F1-style header (#e10600) with dark sub-nav
-- Complete dark theme across ALL 100+ pages
-- Dark cookie consent banner (no purple!)
-- Updated Footer, event cards, all components
-- Mobile-responsive dark design
-- 100% test pass rate (iteration_46.json)
+### SEO (DONE)
+- 30+ Spa F1 keyword route variations in App.js
+- SpaGPPage massive SEO golden page
+- Pre-hydration canonical/meta scripts in index.html
+- 9 sitemap XML files (core, f1, football, concerts, worldcup, cities, events, international, guides)
+- French/Italian/Spanish/German landing pages
+- Trust/review SEO pages (euromatchtickets-review, -legit, -safe, etc.)
+- Comparison pages (vs StubHub, Viagogo, Ticketmaster, SeatGeek)
 
-### Phase 5: SEO Domination Strategy (April 11, 2026 - COMPLETE)
-- **Spa F1 Mega Page**: 3000+ word comprehensive SEO page covering:
-  - Detailed ticket listings with 7 sections + 2 VIP packages
-  - Corner-by-corner circuit guide (8 corners)
-  - 10 interactive FAQ items with FAQ Schema
-  - Travel guide (airport, train, car, hotel)
-  - Weather section, reviews section
-  - Price comparison table vs competitors
-  - Video embed section
-  - "People Also Search For" keyword cloud (30+ terms)
-- **35+ Keyword Variation Routes**: Every search query has its own URL:
-  - /spa-f1-tickets, /belgian-grand-prix-tickets, /belgium-f1-tickets
-  - /spa-gp-tickets, /f1-spa-tickets, /spa-francorchamps-tickets
-  - /formel-1-spa-tickets (German), /formule-1-spa-tickets (French)
-  - /gp-belgie-tickets (Dutch), /f1-kaarten-spa (Dutch)
-  - All with correct canonical redirects to primary URL
-- **Schema.org JSON-LD**: SportsEvent, FAQPage, BreadcrumbList, AggregateOffer
-- **Internal Linking Boost**:
-  - Header sub-nav: "Spa F1 Tickets" prominently featured
-  - Footer: "Spa F1 Tickets" + "Belgian GP" links
-  - Homepage: "Trending Now" section with Spa as #1
-  - F1 Tickets page: Direct link to Spa page for Belgian GP
-- **Taylor Swift Keyword Routes**: 
-  - /taylor-swift-tickets-wembley, /taylor-swift-wembley-tickets
-  - /taylor-swift-concert-london, /taylor-swift-eras-tour-london
-- **Sitemaps Updated**: 24 new Spa URLs + 4 Taylor Swift URLs
-- **Pre-hydration Metadata**: All 35+ routes have custom title/description
-- 100% test pass rate (iteration_47.json)
+### Blog & Content (DONE - April 12, 2026)
+- 7 hardcoded SEO blog articles in BlogArticlePage.jsx
+- BlogPage.jsx rewritten with hardcoded articles, category filter, search
+- All 7 blog URLs added to sitemap-guides.xml
+- Blog cross-links added to: Footer, HomePage, SpaGPPage, BlogArticlePage
 
-## Keywords Targeted (from Google Search Console)
-| Keyword | Impressions | Route |
-|---------|------------|-------|
-| spa f1 tickets | 19 | /spa-f1-tickets |
-| spa francorchamps tickets | 18 | /spa-francorchamps-tickets |
-| f1 spa tickets | 13 | /f1-spa-tickets |
-| spa grand prix tickets | 12 | /spa-grand-prix-tickets |
-| spa francorchamps f1 tickets | 12 | /spa-francorchamps-f1-tickets |
-| belgian grand prix tickets | 7 | /belgian-grand-prix-tickets |
-| taylor swift london tickets | 5 | /taylor-swift-london-tickets |
-| motogp tickets | 3 | /motogp-tickets |
-| entradas champions league | 3 | /es/entradas-champions-league |
+### Internal Linking (DONE - April 12, 2026)
+- Footer: Added "Guides & Blog" section (7 links to blog articles)
+- HomePage: "Latest Guides & Tips" section (4 featured blog cards)
+- SpaGPPage: "Related Guides" section (3 blog article links)
+- BlogArticlePage: "More Guides" cross-links + multi-CTA ticket buttons
+- BlogPage: Cross-linking sections to F1, Football, Concerts ticket pages
 
-## Known Issues / Blockers
-- **P1**: Sora 2 Video Budget Exhausted (user must add balance)
-- **P2**: Login - Using Emergent-managed Google OAuth
+### Speed Optimizations (DONE - April 12, 2026)
+- Added preconnect/dns-prefetch for images.pexels.com and static.prod-images
+- PageLoader spinner updated to red theme (#e10600)
+- All blog images use loading="lazy"
 
-## Upcoming Tasks
-1. P1: Enhance Owner Dashboard (stats, email reports)
-2. P2: Add French/Italian SEO landing pages
-3. P2: Activate next batch of 100 SEO pages
-4. P2: Custom email templates by event type
+## Pages Count
+- 90+ unique page components
+- 30+ Spa F1 keyword routes
+- 19 French routes, 19 Italian routes, 20 Spanish routes, 6 German routes
+- 12 monthly event pages
+- 7 blog articles
+- 4 comparison pages
+- 8 team hub pages
 
-## Future/Backlog
-- Price Comparison Tables improvement
-- Ticket Supplier Affiliate Program
-- A/B testing for SEO titles
-- Video highlights on event pages
-- Retargeting Pixel segmentation
+## Pending / Backlog
+- P1: Owner Dashboard charts & sales reports
+- P2: French/Italian SEO page content expansion
+- P2: Custom email templates per event type
+- P3: Retargeting pixel segmentation
+- P3: A/B testing for SEO page titles
+- BLOCKED: Sora 2 video (needs Universal Key balance)
+- BLOCKED: Login with user's own Google OAuth credentials
+
+## Testing Status
+- iteration_46.json: 100% Pass (Dark Theme)
+- iteration_47.json: 100% Pass (SEO Routing)
+- iteration_48.json: 100% Pass (Blog, Cross-linking, Sitemap)
