@@ -48,12 +48,24 @@ const FadeInSection = ({ children, className = "", delay = 0 }) => {
 };
 
 /* ─── Event Card - F1 Style ─── */
+const eventTypeConfig = {
+  match: { label: "MATCH", icon: "trophy", bg: "bg-[#15803d]" },
+  football: { label: "FOOTBALL", icon: "trophy", bg: "bg-[#15803d]" },
+  f1: { label: "F1", icon: "flag", bg: "bg-[#e10600]" },
+  concert: { label: "CONCERT", icon: "music", bg: "bg-purple-600" },
+  motogp: { label: "MOTOGP", icon: "flag", bg: "bg-orange-600" },
+  festival: { label: "FESTIVAL", icon: "music", bg: "bg-pink-600" },
+  tennis: { label: "TENNIS", icon: "trophy", bg: "bg-emerald-600" },
+  isle_of_man_tt: { label: "ISLE OF MAN TT", icon: "flag", bg: "bg-amber-600" },
+};
+
 const EventCard = ({ event, index }) => {
   const dateInfo = formatDate(event.event_date);
-  const isMatch = event.event_type === "match";
+  const cfg = eventTypeConfig[event.event_type] || { label: event.event_type?.toUpperCase() || "EVENT", icon: "trophy", bg: "bg-slate-600" };
   const ticketsLeft = event.available_tickets || 0;
   const isLimited = ticketsLeft > 0 && ticketsLeft <= 10;
   const isFast = ticketsLeft > 10 && ticketsLeft <= 25;
+  const IconComp = cfg.icon === "music" ? Music : cfg.icon === "flag" ? Flag : Trophy;
 
   return (
     <motion.div
@@ -79,9 +91,9 @@ const EventCard = ({ event, index }) => {
           
           {/* Category Badge - Top Left */}
           <div className="absolute top-3 left-3">
-            <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-white ${isMatch ? 'bg-[#15803d]' : 'bg-[#e10600]'}`}>
-              {isMatch ? <Trophy className="w-3 h-3" /> : <Music className="w-3 h-3" />}
-              {isMatch ? "MATCH" : "CONCERT"}
+            <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-white ${cfg.bg}`}>
+              <IconComp className="w-3 h-3" />
+              {cfg.label}
             </span>
           </div>
 

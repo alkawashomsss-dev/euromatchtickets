@@ -33,10 +33,13 @@ const formatDate = (dateStr) => {
 const getEventTypeInfo = (type) => {
   const types = {
     match: { label: "Football", icon: Trophy, color: "bg-[#15803d] text-white border-transparent" },
-    concert: { label: "Concert", icon: Music, color: "bg-[#e10600] text-white border-transparent" },
+    football: { label: "Football", icon: Trophy, color: "bg-[#15803d] text-white border-transparent" },
+    concert: { label: "Concert", icon: Music, color: "bg-purple-600 text-white border-transparent" },
     f1: { label: "Formula 1", icon: Flag, color: "bg-[#e10600] text-white border-transparent" },
     motogp: { label: "MotoGP", icon: Flag, color: "bg-orange-600 text-white border-transparent" },
     isle_of_man_tt: { label: "Isle of Man TT", icon: Flag, color: "bg-amber-600 text-white border-transparent" },
+    festival: { label: "Festival", icon: Music, color: "bg-pink-600 text-white border-transparent" },
+    tennis: { label: "Tennis", icon: Trophy, color: "bg-emerald-600 text-white border-transparent" },
   };
   return types[type] || types.match;
 };
