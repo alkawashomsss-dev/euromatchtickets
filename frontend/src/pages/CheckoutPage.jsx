@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API, useAuth } from "../App";
 import { Shield, Zap, Lock, CreditCard, ChevronLeft, Calendar, MapPin, Ticket, Check } from "lucide-react";
+import SEOHead from "../components/SEOHead";
 import { toast } from "sonner";
 
 export default function CheckoutPage() {
@@ -72,6 +73,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-[#0e0e14] pt-24 pb-16" data-testid="checkout-page">
+      <SEOHead title="Checkout | EuroMatchTickets" description="Complete your ticket purchase" noIndex={true} />
       <div className="max-w-3xl mx-auto px-4">
         <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-slate-500 hover:text-white mb-6 transition" data-testid="checkout-back-btn">
           <ChevronLeft className="w-4 h-4" /> Back
