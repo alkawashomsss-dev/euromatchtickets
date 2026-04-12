@@ -7,6 +7,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { NewsletterSignup } from "../components/NewsletterSignup";
 
 const MonacoGPPage = () => {
   const [eventLink, setEventLink] = useState('/events?search=Monaco+Grand+Prix');
@@ -65,7 +66,7 @@ const MonacoGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0a0a1a]" data-testid="monaco-gp-page">
       <SEOHead
-        title="Monaco GP Tickets 2026 | Monte Carlo F1 from €195"
+        title="Monaco GP Tickets 2026 | From €195 | Harbour Views"
         description="Buy Monaco Grand Prix 2026 tickets from €195. Casino Square, harbour views, yacht hospitality. 55% cheaper than F1.com! FanProtect guarantee + instant QR delivery."
         canonicalUrl="https://euromatchtickets.com/f1-monaco-grand-prix-tickets"
       />
@@ -286,6 +287,12 @@ const MonacoGPPage = () => {
           {["Monaco GP tickets", "Monte Carlo F1", "Monaco Grand Prix 2026", "F1 Monaco hospitality", "Monaco GP yacht", "Casino Square F1", "Monaco paddock club", "buy Monaco GP tickets", "Monaco GP cheap tickets", "F1 Monaco 2026", "Monaco Grand Prix VIP"].map((term, i) => (
             <span key={i} className="px-3 py-1 bg-white/5 text-white/25 rounded-full text-xs border border-white/5">{term}</span>
           ))}
+        </div>
+      </section>
+      {/* Newsletter */}
+      <section className="py-12 bg-[#0a0a0f]">
+        <div className="max-w-4xl mx-auto px-4">
+          <NewsletterSignup source="monaco-gp" />
         </div>
       </section>
     </div>

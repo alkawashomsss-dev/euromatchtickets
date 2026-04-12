@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { NewsletterSignup } from "../components/NewsletterSignup";
 
 const ChampionsLeaguePage = () => {
   const schema = {
@@ -100,7 +101,7 @@ const ChampionsLeaguePage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="champions-league-page">
       <SEOHead 
-        title="Buy Champions League Tickets 2026 | UCL Final Munich €85"
+        title="Champions League Tickets 2026 | UCL Final from €85 | Guaranteed"
         description="Buy UEFA Champions League tickets from €85. UCL Final 2026 Munich, Semi-finals, Quarter-finals. Real Madrid, Man City, Barcelona. Verified. Instant QR. Cheapest in Europe!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -326,6 +327,13 @@ const ChampionsLeaguePage = () => {
         { name: "Champions League Tickets", url: "https://euromatchtickets.com/champions-league-tickets" }
       ]} />
       <FAQStructuredData faqs={faqs} />
+
+      {/* Newsletter */}
+      <section className="py-12 bg-[#0a0a0f]">
+        <div className="max-w-4xl mx-auto px-4">
+          <NewsletterSignup source="champions-league" />
+        </div>
+      </section>
     </div>
   );
 };

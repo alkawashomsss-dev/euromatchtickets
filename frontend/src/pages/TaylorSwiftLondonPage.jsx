@@ -7,6 +7,7 @@ import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
+import { NewsletterSignup } from "../components/NewsletterSignup";
 import { motion } from "framer-motion";
 
 const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png";
@@ -108,7 +109,7 @@ const TaylorSwiftLondonPage = () => {
   return (
     <div className="min-h-screen bg-[#0a0610]" data-testid="taylorswift-london-page">
       <SEOHead
-        title="Taylor Swift Tickets London 2026 | Wembley from €89"
+        title="Taylor Swift London Tickets 2026 | Wembley from €89 | Verified"
         description="Buy Taylor Swift London Wembley tickets 2026 from €89. Eras Tour 6 nights. Floor, VIP, seated. 100% verified, instant QR delivery. Selling fast - book now!"
         canonicalUrl="https://euromatchtickets.com/taylor-swift-london-tickets"
       />
@@ -280,6 +281,13 @@ const TaylorSwiftLondonPage = () => {
       </section>
 
       <TrustSection />
+
+      {/* Newsletter */}
+      <section className="py-12 bg-[#0a0a0f]">
+        <div className="max-w-4xl mx-auto px-4">
+          <NewsletterSignup source="taylor-swift-london" />
+        </div>
+      </section>
     </div>
   );
 };

@@ -13,6 +13,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { InternalLinks } from "../components/InternalLinks";
+import { NewsletterSignup } from "../components/NewsletterSignup";
 import axios from 'axios';
 import { API } from '../App';
 
@@ -249,7 +250,7 @@ const F1TicketsPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="f1-tickets-page">
       <SEOHead
-        title="F1 Tickets 2026 | Cheapest Grand Prix Prices"
+        title="F1 Tickets 2026 | All Grand Prix from €79 | 42% Cheaper"
         description="Buy F1 2026 tickets at best prices. Full 2026 calendar, driver standings, team info. Monaco GP from \u20ac289, Silverstone from \u20ac149, Monza from \u20ac99. All 24 races."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -790,6 +791,12 @@ const F1TicketsPage = () => {
           <InternalLinks category="f1" showRelated={false} />
           <InternalLinks category="football" showRelated={false} />
           <InternalLinks category="concert" showRelated={false} />
+        </div>
+      </section>
+      {/* Newsletter */}
+      <section className="py-12 bg-[#0a0a0f]">
+        <div className="max-w-4xl mx-auto px-4">
+          <NewsletterSignup source="f1-tickets" />
         </div>
       </section>
     </div>

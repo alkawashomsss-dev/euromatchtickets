@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Calendar, Clock, ArrowLeft, Share2, Facebook, Twitter, Linkedin, ChevronRight } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import { NewsletterSignup } from "../components/NewsletterSignup";
 
 // Blog article content - In production, this would come from a CMS
 const articleContent = {
@@ -767,6 +768,11 @@ const BlogArticlePage = () => {
               </Button>
             </Link>
           </div>
+        </div>
+
+        {/* Newsletter Signup */}
+        <div className="mt-10">
+          <NewsletterSignup source={`blog-${articleId}`} />
         </div>
 
         {/* Blog Cross-Links */}

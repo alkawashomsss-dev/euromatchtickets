@@ -5,6 +5,7 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import { NewsletterSignup } from "../components/NewsletterSignup";
 
 const CANONICAL = "https://euromatchtickets.com/f1-belgian-grand-prix-spa-tickets";
 
@@ -605,6 +606,13 @@ const SpaGPPage = () => {
               <p className="text-xs text-slate-500 mt-1">Step-by-step beginner's guide.</p>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ═══ NEWSLETTER ═══ */}
+      <section className="py-12 bg-[#0a0a0f]">
+        <div className="max-w-4xl mx-auto px-4">
+          <NewsletterSignup source="spa-gp-page" />
         </div>
       </section>
 

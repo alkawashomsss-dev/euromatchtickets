@@ -13,6 +13,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import OptimizedImage from "../components/OptimizedImage";
+import { NewsletterSignup } from "../components/NewsletterSignup";
 import FeaturedEventsCarousel from "../components/FeaturedEventsCarousel";
 import { getEventImagePath, getCategoryHero } from "../utils/eventImages";
 import { TrustSection, TrustBar } from "../components/TrustElements";
@@ -188,7 +189,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Buy F1, Football & Concert Tickets 2026 | EuroMatchTickets"
+        title="EuroMatchTickets | F1, Football & Concert Tickets | 42% Cheaper"
         description="Europe's #1 official alternative ticket marketplace. Cheapest verified tickets for World Cup 2026, Taylor Swift, Super Bowl, Champions League, F1, MotoGP."
         image="https://euromatchtickets.com/og-image.jpg"
       />
@@ -696,6 +697,13 @@ const HomePage = () => {
               </Button>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ═══════ NEWSLETTER ═══════ */}
+      <section className="py-16 bg-[#0a0a0f]">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+          <NewsletterSignup source="homepage" />
         </div>
       </section>
     </div>

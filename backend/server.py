@@ -6,6 +6,7 @@ import os
 import sys
 import asyncio
 import logging
+from datetime import datetime, timezone
 
 from fastapi import FastAPI, Request
 from fastapi.responses import Response, FileResponse
@@ -139,6 +140,24 @@ app.include_router(emails_router)
 alerts_set_db(db)
 emails_set_db(db)
 
+# ─── Newsletter Subscribe ───
+@app.post("/api/newsletter/subscribe")
+async def newsletter_subscribe(data: dict):
+    email = data.get("email", "").strip().lower()
+    if not email or "@" not in email:
+        return {"success": False, "message": "Invalid email"}
+    existing = await db.newsletter.find_one({"email": email})
+    if existing:
+        return {"success": True, "message": "Already subscribed"}
+    await db.newsletter.insert_one({
+        "email": email,
+        "source": data.get("source", "unknown"),
+        "subscribed_at": datetime.now(timezone.utc).isoformat(),
+        "active": True
+    })
+    count = await db.newsletter.count_documents({"active": True})
+    return {"success": True, "message": "Subscribed!", "total": count}
+
 # Direct download endpoint for media files
 @app.get("/api/download/video")
 async def download_video():
@@ -176,8 +195,6 @@ async def indexnow_key_file():
 async def api_root():
     return {"status": "EuroMatchTickets API v2.0", "version": "2.0"}
 
-
-from datetime import datetime, timezone
 
 # Background tasks
 async def cleanup_expired_events():

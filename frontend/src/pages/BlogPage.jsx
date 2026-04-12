@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Calendar, Clock, ArrowRight, Search, Flag, Music, Trophy, TrendingUp, BookOpen } from "lucide-react";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import { NewsletterSignup } from "../components/NewsletterSignup";
 
 const categoryColors = {
   "F1": "bg-[#e10600]/20 text-[#ff4d4d] border-[#e10600]/30",
@@ -102,7 +103,7 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="blog-page">
       <SEOHead 
-        title="Blog - F1 Ticket Guides, Travel Tips & Concert Reviews"
+        title="F1 & Concert Ticket Guides 2026 | Expert Tips | EuroMatchTickets Blog"
         description="Expert guides on buying F1, Champions League, World Cup and concert tickets. Spa-Francorchamps travel guide, best F1 circuits 2026, Taylor Swift London tips. Best prices guaranteed."
       />
 
@@ -329,6 +330,11 @@ const BlogPage = () => {
               </ul>
             </div>
           </div>
+        </div>
+
+        {/* Newsletter */}
+        <div className="mt-14">
+          <NewsletterSignup source="blog-page" />
         </div>
       </div>
     </div>

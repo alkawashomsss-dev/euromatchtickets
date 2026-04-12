@@ -1,0 +1,76 @@
+{
+  "summary": "Completed comprehensive testing for Newsletter signup component + CTAs + SEO titles. All 14 requested features are working correctly. Newsletter component renders on all 8 major pages (HomePage, BlogPage, BlogArticlePage, SpaGPPage, TaylorSwiftLondonPage, MonacoGPPage, F1TicketsPage, ChampionsLeaguePage). Newsletter API POST /api/newsletter/subscribe works correctly. Newsletter email submission shows success message 'You're in!'. BlogArticlePage has all 4 ticket CTAs (F1 Tickets, Champions League, Taylor Swift, All Events). SEO titles contain required text ('42% Cheaper' on HomePage, 'from €79' on F1TicketsPage). Dark theme (#0e0e14) consistent throughout all tested pages.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "MonacoGPPage",
+        "issues": ["Minor React hydration warning about <tr> inside <span> in price comparison table - cosmetic only, does not affect functionality"]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/app/test_reports/iteration_49.json"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "100%"
+  },
+  "test_credentials": "None required - all pages public. Newsletter API is POST /api/newsletter/subscribe with JSON body {email, source}",
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Newsletter implementation complete. NewsletterSignup component with data-testid='newsletter-signup' renders on all major pages. After successful submission, shows data-testid='newsletter-success' with 'You're in!' message. Newsletter API stores emails in MongoDB 'newsletter' collection. Dark theme (#0e0e14 bg, #e10600 red) consistent throughout.",
+  "test_results": {
+    "newsletter_component_presence": {
+      "homepage": "PASS - data-testid='newsletter-signup' found",
+      "blog_page": "PASS - data-testid='newsletter-signup' found",
+      "blog_article_page": "PASS - data-testid='newsletter-signup' found",
+      "spa_gp_page": "PASS - data-testid='newsletter-signup' found",
+      "taylor_swift_london_page": "PASS - data-testid='newsletter-signup' found",
+      "monaco_gp_page": "PASS - data-testid='newsletter-signup' found",
+      "f1_tickets_page": "PASS - data-testid='newsletter-signup' found",
+      "champions_league_page": "PASS - data-testid='newsletter-signup' found"
+    },
+    "newsletter_api": {
+      "endpoint": "POST /api/newsletter/subscribe",
+      "test_email": "test_newsletter_49@example.com",
+      "response": {"success": true, "message": "Subscribed!", "total": 2},
+      "status": "PASS"
+    },
+    "newsletter_submission_flow": {
+      "email_input": "PASS - data-testid='newsletter-email' found and fillable",
+      "submit_button": "PASS - data-testid='newsletter-submit' found and clickable",
+      "success_message": "PASS - data-testid='newsletter-success' with 'You're in!' displayed after submission"
+    },
+    "blog_article_ctas": {
+      "f1_tickets_cta": "PASS - Found",
+      "champions_league_cta": "PASS - Found",
+      "taylor_swift_cta": "PASS - Found",
+      "all_events_cta": "PASS - Found"
+    },
+    "seo_titles": {
+      "homepage": {
+        "title": "EuroMatchTickets | F1, Football & Concert Tickets | 42% Cheaper",
+        "contains_42_percent_cheaper": "PASS"
+      },
+      "f1_tickets_page": {
+        "title": "F1 Tickets 2026 | All Grand Prix from €79 | 42% Cheaper",
+        "contains_from_79": "PASS"
+      }
+    },
+    "dark_theme_consistency": {
+      "homepage_background": "rgb(14, 14, 20) - PASS",
+      "blog_page_background": "rgb(14, 14, 20) - PASS",
+      "f1_tickets_page_background": "rgb(14, 14, 20) - PASS"
+    }
+  }
+}
