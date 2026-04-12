@@ -388,4 +388,16 @@
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
+  <!-- Trust & Review Pages -->
+  <url><loc>https://euromatchtickets.com/euromatchtickets-review</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://euromatchtickets.com/euromatchtickets-legit</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://euromatchtickets.com/is-euromatchtickets-safe</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://euromatchtickets.com/euromatchtickets-erfahrung</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://euromatchtickets.com/euromatchtickets-avis</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://euromatchtickets.com/euromatchtickets-opiniones</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://euromatchtickets.com/euromatchtickets-recensioni</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <!-- Social & Other -->
+  <url><loc>https://euromatchtickets.com/social</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.60</priority></url>
+  <url><loc>https://euromatchtickets.com/follow</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.55</priority></url>
+  <url><loc>https://euromatchtickets.com/super-bowl-2027-tickets</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
 </urlset>
