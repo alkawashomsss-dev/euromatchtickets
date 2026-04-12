@@ -584,6 +584,30 @@ const SpaGPPage = () => {
         </div>
       </section>
 
+      {/* ═══ RELATED GUIDES ═══ */}
+      <section className="py-12 bg-[#0e0e14]">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-xl font-black text-white uppercase tracking-wider mb-6">Related Guides</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            <Link to="/blog/best-f1-circuits-2026" className="group bg-[#161620] border border-white/5 p-5 hover:border-[#e10600]/30 transition-all">
+              <p className="text-[10px] text-[#e10600] uppercase tracking-widest font-bold mb-1">F1 Guide</p>
+              <h3 className="font-bold text-sm text-white group-hover:text-[#e10600] transition-colors">10 Best F1 Circuits to Visit in 2026</h3>
+              <p className="text-xs text-slate-500 mt-1">Spa ranked #1. See why.</p>
+            </Link>
+            <Link to="/blog/spa-francorchamps-travel-guide-2026" className="group bg-[#161620] border border-white/5 p-5 hover:border-[#e10600]/30 transition-all">
+              <p className="text-[10px] text-[#e10600] uppercase tracking-widest font-bold mb-1">Travel Guide</p>
+              <h3 className="font-bold text-sm text-white group-hover:text-[#e10600] transition-colors">Spa-Francorchamps Travel Guide 2026</h3>
+              <p className="text-xs text-slate-500 mt-1">Hotels, transport & insider tips.</p>
+            </Link>
+            <Link to="/blog/how-to-buy-f1-tickets-2026" className="group bg-[#161620] border border-white/5 p-5 hover:border-[#e10600]/30 transition-all">
+              <p className="text-[10px] text-[#e10600] uppercase tracking-widest font-bold mb-1">Buying Guide</p>
+              <h3 className="font-bold text-sm text-white group-hover:text-[#e10600] transition-colors">How to Buy F1 Tickets 2026</h3>
+              <p className="text-xs text-slate-500 mt-1">Step-by-step beginner's guide.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ FINAL CTA ═══ */}
       <section className="py-20 bg-[#e10600]" data-testid="spa-final-cta">
         <div className="max-w-4xl mx-auto px-4 text-center">

@@ -33,7 +33,7 @@ const Footer = () => {
 
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8">
           {/* Brand */}
           <div className="col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
@@ -123,6 +123,24 @@ const Footer = () => {
                 { label: "World Athletics", to: "/world-athletics-2026-tickets" },
                 { label: "Monaco GP", to: "/monaco-grand-prix-tickets" },
                 { label: "This Weekend", to: "/events-this-weekend" },
+              ].map(link => (
+                <li key={link.label}><Link to={link.to} className="text-slate-500 hover:text-white text-xs transition-colors duration-150">{link.label}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Guides & Blog */}
+          <div>
+            <h4 className="font-black mb-3 text-white text-xs uppercase tracking-wider">Guides & Blog</h4>
+            <ul className="space-y-2">
+              {[
+                { label: "All Guides", to: "/blog" },
+                { label: "Best F1 Circuits 2026", to: "/blog/best-f1-circuits-2026" },
+                { label: "Spa Travel Guide", to: "/blog/spa-francorchamps-travel-guide-2026" },
+                { label: "How to Buy F1 Tickets", to: "/blog/how-to-buy-f1-tickets-2026" },
+                { label: "Taylor Swift London", to: "/blog/taylor-swift-eras-tour-london-guide-2026" },
+                { label: "Best Seats Bernabeu", to: "/blog/best-seats-santiago-bernabeu" },
+                { label: "Buy UCL Tickets Safely", to: "/blog/how-to-buy-champions-league-tickets-safely" },
               ].map(link => (
                 <li key={link.label}><Link to={link.to} className="text-slate-500 hover:text-white text-xs transition-colors duration-150">{link.label}</Link></li>
               ))}

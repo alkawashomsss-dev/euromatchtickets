@@ -736,17 +736,53 @@ const BlogArticlePage = () => {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 bg-gradient-to-r from-purple-900/30 to-pink-900/30 border border-purple-500/20 rounded-none p-8 text-center">
-          <h3 className="text-2xl font-bold mb-3">Ready to Buy Tickets?</h3>
-          <p className="text-slate-500 mb-6">
-            Browse thousands of verified tickets for football matches and concerts across Europe.
+        <div className="mt-12 bg-[#161620] border border-[#e10600]/20 p-8">
+          <h3 className="text-2xl font-black text-white mb-3">Ready to Buy Tickets?</h3>
+          <p className="text-slate-400 mb-6">
+            Browse thousands of verified tickets for F1, football matches and concerts across Europe. Every ticket includes FanProtect guarantee.
           </p>
-          <Link to="/events">
-            <Button className="btn-accent">
-              Explore Events
-              <ChevronRight className="w-4 h-4 ml-2" />
-            </Button>
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link to="/f1-tickets">
+              <Button className="bg-[#e10600] hover:bg-[#b80500] text-white font-bold">
+                F1 Tickets
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
+            <Link to="/champions-league-tickets">
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold">
+                Champions League
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
+            <Link to="/taylor-swift-london-tickets">
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold">
+                Taylor Swift
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
+            <Link to="/events">
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold">
+                All Events
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Blog Cross-Links */}
+        <div className="mt-8 bg-[#161620] border border-white/5 p-6">
+          <h3 className="text-sm font-black text-white uppercase tracking-wider mb-4">More Guides</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {Object.entries(articleContent)
+              .filter(([id]) => id !== articleId)
+              .slice(0, 4)
+              .map(([id, a]) => (
+                <Link key={id} to={`/blog/${id}`} className="text-xs text-slate-400 hover:text-[#e10600] transition-colors line-clamp-2">
+                  {a.title}
+                </Link>
+              ))
+            }
+          </div>
         </div>
 
         {/* Related Articles */}

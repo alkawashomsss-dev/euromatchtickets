@@ -137,8 +137,8 @@ const MarketingBotButton = lazy(() => import("./components/AIMarketingBot").then
 
 // Page loader component
 const PageLoader = () => (
-  <div className="min-h-[60vh] flex items-center justify-center">
-    <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+  <div className="min-h-[60vh] flex items-center justify-center bg-[#0e0e14]">
+    <div className="w-8 h-8 border-2 border-[#e10600] border-t-transparent rounded-full animate-spin" />
   </div>
 );
 

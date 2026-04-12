@@ -622,6 +622,39 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* ═══════ LATEST GUIDES ═══════ */}
+      <section className="py-16 bg-[#0e0e14]">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+          <FadeInSection className="flex items-center justify-between mb-8">
+            <div>
+              <p className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-1">Expert Guides</p>
+              <h2 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">Latest Guides & Tips</h2>
+            </div>
+            <Link to="/blog" className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-1">
+              All Guides <ChevronRight className="w-4 h-4" />
+            </Link>
+          </FadeInSection>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { slug: "best-f1-circuits-2026", title: "10 Best F1 Circuits to Visit in 2026", cat: "F1", img: "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg" },
+              { slug: "spa-francorchamps-travel-guide-2026", title: "Spa-Francorchamps Travel Guide 2026", cat: "F1", img: "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg" },
+              { slug: "taylor-swift-eras-tour-london-guide-2026", title: "Taylor Swift London 2026 - Fan Guide", cat: "Concerts", img: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg" },
+              { slug: "how-to-buy-f1-tickets-2026", title: "How to Buy F1 Tickets - Beginner Guide", cat: "F1", img: "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg" },
+            ].map(g => (
+              <Link key={g.slug} to={`/blog/${g.slug}`} className="group bg-[#161620] border border-white/5 overflow-hidden hover:border-[#e10600]/30 transition-all" data-testid={`home-guide-${g.slug}`}>
+                <div className="aspect-[16/9] overflow-hidden">
+                  <img src={g.img} alt={g.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="p-4">
+                  <p className="text-[9px] text-[#e10600] uppercase tracking-widest font-bold mb-1">{g.cat}</p>
+                  <h3 className="text-sm font-bold text-white group-hover:text-[#e10600] transition-colors line-clamp-2">{g.title}</h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══════ CTA ═══════ */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[#e10600]" />
