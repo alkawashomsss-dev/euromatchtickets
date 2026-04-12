@@ -44,8 +44,8 @@ const Header = () => {
             <span className="text-amber-400 font-bold">Notice:</span> Independent resale marketplace. Prices may differ from face value.
             <a href="/terms" className="underline ml-1 text-white/60 hover:text-white">Learn more</a>
           </p>
-          <a href="mailto:support@euromatchtickets.com" className="hidden sm:flex items-center gap-1 text-[10px] text-slate-400 hover:text-white transition-colors">
-            <Phone className="w-3 h-3" /> Need help?
+          <a href="tel:+498920174141" className="hidden sm:flex items-center gap-1 text-[10px] text-slate-400 hover:text-white transition-colors">
+            <Phone className="w-3 h-3" /> +49 89 20174141
           </a>
         </div>
       </div>

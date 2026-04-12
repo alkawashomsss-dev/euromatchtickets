@@ -52,25 +52,38 @@ const ContactPage = () => {
             
             <div className="space-y-4">
               <div className="flex items-start gap-4 p-4 bg-[#1e1e1e] border border-white/5 rounded-none">
-                <div className="w-10 h-10 rounded-none bg-violet-50 flex items-center justify-center text-violet-600">
+                <div className="w-10 h-10 rounded-none bg-violet-50/10 flex items-center justify-center text-violet-400">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Email Support</h3>
-                  <a href="mailto:Alkawashoms@gmail.com" className="text-slate-500 hover:text-violet-600">
-                    Alkawashoms@gmail.com
+                  <h3 className="font-semibold mb-1 text-white">Email Support</h3>
+                  <a href="mailto:support@euromatchtickets.com" className="text-slate-400 hover:text-violet-400">
+                    support@euromatchtickets.com
                   </a>
                 </div>
               </div>
 
               <div className="flex items-start gap-4 p-4 bg-[#1e1e1e] border border-white/5 rounded-none">
-                <div className="w-10 h-10 rounded-none bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                <div className="w-10 h-10 rounded-none bg-emerald-500/10 flex items-center justify-center text-emerald-400">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Phone Support</h3>
-                  <a href="tel:+491781304137" className="text-slate-500 hover:text-emerald-600">
-                    +49 178 130 4137
+                  <h3 className="font-semibold mb-1 text-white">Phone Support (Lisa AI)</h3>
+                  <a href="tel:+498920174141" className="text-slate-400 hover:text-emerald-400 block">
+                    +49 89 20174141
+                  </a>
+                  <p className="text-xs text-slate-600 mt-1">24/7 - Deutsch & English</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-4 bg-[#1e1e1e] border border-white/5 rounded-none">
+                <div className="w-10 h-10 rounded-none bg-[#25D366]/10 flex items-center justify-center text-[#25D366]">
+                  <MessageSquare className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1 text-white">WhatsApp</h3>
+                  <a href="https://wa.me/498920174141?text=Hi%20EuroMatchTickets%2C%20I%20need%20help%20with%20tickets" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#25D366]">
+                    Chat with us on WhatsApp
                   </a>
                 </div>
               </div>

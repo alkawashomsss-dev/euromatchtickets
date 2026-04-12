@@ -399,14 +399,14 @@ const LocalBusinessStructuredData = () => {
       "image": "https://euromatchtickets.com/og-image.jpg",
       "description": "Europe's #1 trusted ticket marketplace for FIFA World Cup 2026, Champions League, Premier League, F1, MotoGP, concerts and more. 100% verified tickets with instant QR delivery.",
       "priceRange": "€€",
-      "telephone": "+49-89-12345678",
+      "telephone": "+49-89-20174141",
       "email": "support@euromatchtickets.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Erzgieereistr. 15",
+        "streetAddress": "Fürstenrieder Str. 33",
         "addressLocality": "Munich",
         "addressRegion": "Bayern",
-        "postalCode": "80335",
+        "postalCode": "80686",
         "addressCountry": "DE"
       },
       "geo": {

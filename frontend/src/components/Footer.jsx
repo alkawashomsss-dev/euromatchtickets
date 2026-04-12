@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { 
-  Ticket, Shield, CreditCard, Mail, MapPin,
+  Ticket, Shield, CreditCard, Mail, MapPin, Phone,
   Facebook, Twitter, Instagram, Linkedin,
   CheckCircle, Lock, Globe, Award, Clock, Star
 } from "lucide-react";
@@ -200,6 +200,9 @@ const Footer = () => {
       <div className="border-t border-white/6">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row items-center justify-center gap-5 text-xs text-slate-600">
+            <a href="tel:+498920174141" className="flex items-center gap-1.5 hover:text-white transition-colors duration-150">
+              <Phone className="w-3.5 h-3.5" /> +49 89 20174141
+            </a>
             <a href="mailto:support@euromatchtickets.com" className="flex items-center gap-1.5 hover:text-white transition-colors duration-150">
               <Mail className="w-3.5 h-3.5" /> support@euromatchtickets.com
             </a>

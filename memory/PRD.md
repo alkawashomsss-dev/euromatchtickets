@@ -1,45 +1,16 @@
-# EuroMatchTickets - Product Requirements Document
-
-## Original Problem Statement
-Build euromatchtickets.com, a premium ticket marketplace. Aggressive SEO, top Google rankings, high conversions, deep buyer trust. Dark theme (#0e0e14, #e10600 red).
+# EuroMatchTickets - PRD
 
 ## Architecture
-- Frontend: React (CRA) + Tailwind + Shadcn/UI + Framer Motion
-- Backend: FastAPI + MongoDB
-- Auth: Emergent-managed Google OAuth
+React + FastAPI + MongoDB. Dark theme (#0e0e14, #e10600).
 
-## What's Been Implemented
-
-### Mobile Performance Optimization (DONE - April 12, 2026)
-- Deferred tracking scripts (FB Pixel, TikTok, GA4) - load 2.5s after page
-- Google Fonts non-render-blocking (media="print" + preload trick)
-- Removed duplicate font @import from CSS
-- content-visibility: auto on below-fold sections (Categories, How It Works, Trust)
-- Reduced framer-motion animation complexity (shorter duration, capped delays)
-- Removed dead ChatWidget import from App.js bundle
-- prefers-reduced-motion support for battery-saving mode
-- GPU-optimized image transforms
-
-### Event URL Fix (DONE - April 12, 2026)
-- Ugly event_id URLs auto-redirect to slug URLs
-- 157 events all have SEO-friendly slugs
-- "Event Not Found" improved with navigation buttons
-- noIndex on ugly URLs
-
-### Newsletter System (DONE)
-- 8 major pages, backend POST /api/newsletter/subscribe
-
-### SEO & Indexing (DONE)
-- 2,307+ URLs in 9 sitemaps
-- CTR-optimized titles with prices
-- Blog articles, trust pages, all indexed
-
-### Internal Linking (DONE)
-- Footer, HomePage, SpaGPPage, BlogArticlePage cross-linked
-
-## Testing: iterations 46-49 all 100% pass
+## Implemented
+- Phone: +49 89 20174141 (Lisa AI) in Header, Footer, Contact, StructuredData
+- WhatsApp + Phone floating button on all pages
+- Newsletter on 8 pages, 2307 URLs indexed, Blog 7 articles
+- Event slug redirect, noIndex ugly URLs, CTR-optimized titles
+- Mobile perf: deferred tracking, non-blocking fonts, content-visibility
 
 ## Pending
-- P1: Owner Dashboard charts
+- P1: Owner Dashboard
 - P2: French/Italian SEO expansion
-- BLOCKED: Sora 2 video, Google OAuth credentials
+- BLOCKED: Sora 2 video, Google OAuth
