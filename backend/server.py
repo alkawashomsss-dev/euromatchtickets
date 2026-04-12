@@ -539,19 +539,43 @@ if static_build_dir.exists():
     # Serve files in build root (manifest.json, favicon, images, etc.)
     @app.get("/{full_path:path}")
     async def serve_frontend(full_path: str, request: Request):
-        # Return HTTP 410 Gone for old 2025 pages - Google will permanently de-index
-        if "2025" in full_path and not full_path.startswith("api/"):
-            html_410 = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><title>Page Removed | EuroMatchTickets</title></head><body><h1>Page Permanently Removed</h1><p>This event page has been permanently removed. <a href="https://euromatchtickets.com/events">Browse current events</a>.</p></body></html>'
-            return Response(content=html_410, media_type="text/html", status_code=410)
+        from fastapi.responses import RedirectResponse
 
-        # Return HTTP 410 Gone for old /event/* detail pages with hash IDs
-        # These are internal pages that should not be indexed
+        # ── 301 Redirect: old 2025 pages → 2026 equivalent ──
+        if "2025" in full_path and not full_path.startswith("api/"):
+            new_path = full_path.replace("-2025", "-2026").replace("2025", "2026")
+            return RedirectResponse(
+                url=f"https://euromatchtickets.com/{new_path}",
+                status_code=301
+            )
+
+        # ── 301 Redirect: ugly event IDs → clean slug URLs ──
         if full_path.startswith("event/") and not full_path.startswith("events"):
             event_id = full_path.replace("event/", "")
-            event_exists = await db.events.find_one({"event_id": event_id})
-            if not event_exists:
-                html_410 = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><title>Event Removed | EuroMatchTickets</title></head><body><h1>Event Removed</h1><p>This event is no longer available. <a href="https://euromatchtickets.com/events">Browse current events</a>.</p></body></html>'
-                return Response(content=html_410, media_type="text/html", status_code=410)
+            # Check if it's an ugly ID (contains underscore or hash pattern)
+            if "_" in event_id or (len(event_id) > 8 and "-" not in event_id):
+                event = await db.events.find_one({"event_id": event_id}, {"_id": 0, "slug": 1})
+                if event and event.get("slug"):
+                    return RedirectResponse(
+                        url=f"https://euromatchtickets.com/event/{event['slug']}",
+                        status_code=301
+                    )
+                # Also try partial match for old format IDs
+                if not event:
+                    event = await db.events.find_one(
+                        {"event_id": {"$regex": event_id}},
+                        {"_id": 0, "slug": 1}
+                    )
+                    if event and event.get("slug"):
+                        return RedirectResponse(
+                            url=f"https://euromatchtickets.com/event/{event['slug']}",
+                            status_code=301
+                        )
+                # If event truly doesn't exist, redirect to events page
+                return RedirectResponse(
+                    url="https://euromatchtickets.com/events",
+                    status_code=301
+                )
 
         # Try to serve static file (images, manifest, etc.) from build root
         file_path = static_build_dir / full_path

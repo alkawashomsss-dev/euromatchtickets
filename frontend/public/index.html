@@ -70,7 +70,32 @@
     (function(){
       var B='https://euromatchtickets.com';
       var p=location.pathname.replace(/\/+$/,'')||'/';
+
+      /* ── 301-equivalent redirect: 2025 pages → 2026 ── */
+      if(p.indexOf('2025')!==-1){
+        var np=p.replace(/-2025/g,'-2026').replace(/2025/g,'2026');
+        location.replace(B+np);
+        return;
+      }
+
+      /* ── Redirect ugly event IDs to /events ── */
+      if(p.indexOf('/event/')===0){
+        var eid=p.replace('/event/','');
+        if(eid.indexOf('_')!==-1 || (eid.length>8 && eid.indexOf('-')===-1)){
+          /* Let React handle the slug redirect via API */
+        }
+      }
+
       var u=B+(p==='/'?'/':p);
+
+      /* Block internal pages from indexing */
+      if(p==='/checkout' || p.indexOf('/order/')===0 || p==='/my-tickets' || p==='/admin' || p==='/owner'){
+        var noIdx=document.createElement('meta');
+        noIdx.name='robots';
+        noIdx.content='noindex, nofollow';
+        document.head.appendChild(noIdx);
+        return;
+      }
 
       /* Handle query parameter pages (e.g. /events?type=concert) */
       var qs=location.search;

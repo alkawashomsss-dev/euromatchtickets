@@ -795,15 +795,17 @@ async def get_seo_page(slug: str):
     page = await db.seo_pages.find_one({"slug": slug}, {"_id": 0})
     if not page:
         raise HTTPException(status_code=404, detail="Page not found")
-    # Redirect for deactivated pages with a redirect_to target (e.g., 2025→2026)
-    if page.get("active") == False and page.get("redirect_to"):
-        return {"redirect_to": page["redirect_to"], "slug": slug}
-    # Only return 410 for explicitly deactivated pages without redirect
+    # Redirect for deactivated pages → find active equivalent
     if page.get("active") == False:
-        raise HTTPException(status_code=410, detail="Page permanently removed")
-    # Return 410 Gone for inactive pages - tells Google to REMOVE from index
-    if not page.get("active", False):
-        # Instead of 410, return the page with ended_event flag + related events
+        if page.get("redirect_to"):
+            return {"redirect_to": page["redirect_to"], "slug": slug}
+        # Auto-redirect 2025 → 2026
+        if "2025" in slug:
+            new_slug = slug.replace("-2025", "-2026").replace("2025", "2026")
+            target = await db.seo_pages.find_one({"slug": new_slug, "active": True}, {"_id": 0, "slug": 1})
+            if target:
+                return {"redirect_to": target["slug"], "slug": slug}
+        # Find similar active page in same category
         cat = page.get("category", "other")
         related = await db.seo_pages.find(
             {"active": True, "category": cat, "slug": {"$ne": slug}},
