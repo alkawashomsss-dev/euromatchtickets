@@ -340,7 +340,8 @@ const HomePage = () => {
             {/* Taylor Swift */}
             <FadeInSection delay={0.1}>
               <Link to="/taylor-swift-london-tickets" className="group block relative h-56 overflow-hidden border border-white/8 hover:border-[#e10600] transition-colors duration-150">
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-900 to-purple-900" />
+                <img src="https://images.unsplash.com/photo-1770737639812-bd3c709da73b?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=80&w=800" alt="Taylor Swift Eras Tour London Tickets 2026" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                 <div className="relative h-full flex flex-col justify-end p-4">
                   <span className="bg-[#e10600] text-white text-[9px] font-black px-2 py-0.5 uppercase tracking-wider w-fit mb-auto">#2 TRENDING</span>
                   <h3 className="text-xl font-black text-white uppercase tracking-tight group-hover:text-[#e10600] transition-colors">TAYLOR SWIFT LONDON</h3>
@@ -355,7 +356,8 @@ const HomePage = () => {
             {/* MotoGP */}
             <FadeInSection delay={0.15}>
               <Link to="/motogp-tickets" className="group block relative h-56 overflow-hidden border border-white/8 hover:border-[#e10600] transition-colors duration-150">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-900 to-red-950" />
+                <img src="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/baf0ba765e1206aefd8046ef9406b38847ffe26b7b2e8c7769fe72d0ea3861c9.png" alt="MotoGP Tickets 2026 - All Grand Prix" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="relative h-full flex flex-col justify-end p-4">
                   <span className="bg-amber-500 text-black text-[9px] font-black px-2 py-0.5 uppercase tracking-wider w-fit mb-auto">#3 TRENDING</span>
                   <h3 className="text-xl font-black text-white uppercase tracking-tight group-hover:text-[#e10600] transition-colors">MOTOGP TICKETS 2026</h3>
@@ -455,14 +457,15 @@ const HomePage = () => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                 {[
-                  { to: "/f1-tickets", title: "F1 Tickets", sub: "23 Grand Prix", price: "From \u20ac89", color: "from-red-700 to-red-900" },
-                  { to: "/f1-2026-schedule", title: "F1 Schedule", sub: "Full Calendar", price: "Mar - Dec 2026", color: "from-red-600 to-red-800" },
-                  { to: "/motogp-tickets", title: "MotoGP", sub: "21 Races", price: "From \u20ac69", color: "from-orange-700 to-orange-900" },
-                  { to: "/motogp-2026-schedule", title: "MotoGP Schedule", sub: "Full Calendar", price: "Mar - Nov 2026", color: "from-orange-600 to-orange-800" },
-                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", price: "From \u20ac149", color: "from-amber-700 to-amber-900" },
+                  { to: "/f1-tickets", title: "F1 Tickets", sub: "23 Grand Prix", price: "From \u20ac89", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/abb0bc14a4fcdab87c908c8cf9232506b4ea3aa5c54262f7ab461ee8d7d709ca.png" },
+                  { to: "/f1-2026-schedule", title: "F1 Schedule", sub: "Full Calendar", price: "Mar - Dec 2026", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png" },
+                  { to: "/motogp-tickets", title: "MotoGP", sub: "21 Races", price: "From \u20ac69", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/baf0ba765e1206aefd8046ef9406b38847ffe26b7b2e8c7769fe72d0ea3861c9.png" },
+                  { to: "/motogp-2026-schedule", title: "MotoGP Schedule", sub: "Full Calendar", price: "Mar - Nov 2026", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/baf0ba765e1206aefd8046ef9406b38847ffe26b7b2e8c7769fe72d0ea3861c9.png" },
+                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", price: "From \u20ac149", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/baf0ba765e1206aefd8046ef9406b38847ffe26b7b2e8c7769fe72d0ea3861c9.png" },
                 ].map((item) => (
                   <Link key={item.to} to={item.to} className="group relative h-36 overflow-hidden block hover:ring-2 hover:ring-[#e10600] transition-all duration-150">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color}`} />
+                    <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
                     <div className="relative h-full flex flex-col justify-end p-4">
                       <h3 className="text-sm font-black text-white uppercase tracking-tight">{item.title}</h3>
                       <p className="text-[10px] text-white/50 uppercase">{item.sub}</p>
@@ -478,15 +481,16 @@ const HomePage = () => {
           <FadeInSection delay={0.2}>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {[
-                { to: "/taylor-swift-london-tickets", label: "ERAS TOUR", title: "Taylor Swift", price: "From \u20ac89", color: "from-pink-700 to-purple-900" },
-                { to: "/bayern-vs-real-madrid-tickets", label: "UCL CLASSIC", title: "Bayern vs Real", price: "From \u20ac199", color: "from-red-800 to-red-950" },
-                { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "World Cup", price: "From \u20ac89", color: "from-amber-800 to-amber-950" },
-                { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From \u20ac85", color: "from-blue-800 to-blue-950" },
-                { to: "/f1-bahrain-grand-prix-tickets", label: "NIGHT RACE", title: "Bahrain GP", price: "From \u20ac149", color: "from-emerald-800 to-emerald-950" },
-                { to: "/f1-tickets-2026", label: "FULL SEASON", title: "F1 2026", price: "From \u20ac120", color: "from-slate-700 to-slate-900" },
+                { to: "/taylor-swift-london-tickets", label: "ERAS TOUR", title: "Taylor Swift", price: "From \u20ac89", img: "https://images.unsplash.com/photo-1770737639812-bd3c709da73b?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=80&w=400" },
+                { to: "/bayern-vs-real-madrid-tickets", label: "UCL CLASSIC", title: "Bayern vs Real", price: "From \u20ac199", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/35405278ece6848751ff21246eaaa3ea32e2c93c5a41cda6db0dd5379726831b.png" },
+                { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "World Cup", price: "From \u20ac89", img: "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=400" },
+                { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From \u20ac85", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/35405278ece6848751ff21246eaaa3ea32e2c93c5a41cda6db0dd5379726831b.png" },
+                { to: "/f1-bahrain-grand-prix-tickets", label: "NIGHT RACE", title: "Bahrain GP", price: "From \u20ac149", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/abb0bc14a4fcdab87c908c8cf9232506b4ea3aa5c54262f7ab461ee8d7d709ca.png" },
+                { to: "/f1-tickets-2026", label: "FULL SEASON", title: "F1 2026", price: "From \u20ac120", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png" },
               ].map((cat, i) => (
                 <Link key={cat.to} to={cat.to} className="group relative h-40 overflow-hidden block hover:ring-2 hover:ring-[#e10600] transition-all duration-150">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${cat.color}`} />
+                  <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
                   <div className="relative h-full flex flex-col justify-end p-4">
                     <span className="text-[9px] font-black text-[#e10600] mb-0.5 uppercase tracking-widest">{cat.label}</span>
                     <h3 className="text-sm font-black text-white uppercase tracking-tight">{cat.title}</h3>
@@ -510,15 +514,18 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { step: "01", title: "FIND YOUR EVENT", desc: "Browse concerts, matches, F1 races and more across Europe", icon: <Ticket className="w-7 h-7" />, bg: "bg-[#e10600]" },
-              { step: "02", title: "CHOOSE YOUR SEATS", desc: "Select from VIP to standing with interactive venue maps", icon: <MapPin className="w-7 h-7" />, bg: "bg-[#facc15] text-black" },
-              { step: "03", title: "GET YOUR QR CODE", desc: "Receive your verified digital ticket instantly", icon: <Shield className="w-7 h-7" />, bg: "bg-[#15803d]" },
+              { step: "01", title: "FIND YOUR EVENT", desc: "Browse concerts, matches, F1 races and more across Europe", icon: <Ticket className="w-7 h-7" />, bg: "bg-[#e10600]", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/c81d55ecab50a35b17dca3dfb7f64b287f0b82b8d7d635c75c2e385822b29c1e.png" },
+              { step: "02", title: "CHOOSE YOUR SEATS", desc: "Select from VIP to standing with interactive venue maps", icon: <MapPin className="w-7 h-7" />, bg: "bg-[#facc15] text-black", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/3e42214e87107974158e3ba1ed1a8e361f44157d7d89c7128361b2f46bee913f.png" },
+              { step: "03", title: "GET YOUR QR CODE", desc: "Receive your verified digital ticket instantly", icon: <Shield className="w-7 h-7" />, bg: "bg-[#15803d]", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/cb060f002664f85a8dbf5d4fe28761ca72114222f8e0b9792664777f27ba4e65.png" },
             ].map((item, index) => (
               <FadeInSection key={index} delay={index * 0.1}>
-                <div className="relative p-6 md:p-8 bg-[#1e1e1e] border border-white/6 hover:border-[#e10600] transition-colors duration-150 group">
-                  <span className="text-6xl font-black text-white/5 absolute top-3 right-4 select-none">{item.step}</span>
-                  <div className="relative">
-                    <div className={`w-14 h-14 ${item.bg} flex items-center justify-center text-white mb-5`}>
+                <div className="relative bg-[#1e1e1e] border border-white/6 hover:border-[#e10600] transition-colors duration-150 group overflow-hidden">
+                  <div className="h-48 overflow-hidden">
+                    <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                  </div>
+                  <div className="p-6 md:p-8 relative">
+                    <span className="text-6xl font-black text-white/5 absolute top-0 right-4 select-none">{item.step}</span>
+                    <div className={`w-14 h-14 ${item.bg} flex items-center justify-center text-white mb-5 -mt-12 relative z-10 shadow-xl`}>
                       {item.icon}
                     </div>
                     <h3 className="text-lg font-black text-white mb-2 tracking-tight">{item.title}</h3>
