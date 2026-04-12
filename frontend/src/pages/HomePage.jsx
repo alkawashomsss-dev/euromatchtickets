@@ -37,9 +37,9 @@ const FadeInSection = ({ children, className = "", delay = 0 }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.35, delay: Math.min(delay, 0.15), ease: "easeOut" }}
       className={className}
     >
       {children}
@@ -57,10 +57,10 @@ const EventCard = ({ event, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
+      transition={{ duration: 0.2, delay: Math.min(index * 0.03, 0.15) }}
     >
       <Link 
         to={`/event/${event.slug || event.event_id}`}
@@ -403,7 +403,7 @@ const HomePage = () => {
       </section>
 
       {/* ═══════ CATEGORIES - F1 STYLE FULL-WIDTH IMAGE CARDS ═══════ */}
-      <section className="py-16 md:py-24 bg-[#15151e]">
+      <section className="py-16 md:py-24 bg-[#15151e] content-lazy">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <FadeInSection>
             <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-2 block">BROWSE BY CATEGORY</span>
@@ -500,7 +500,7 @@ const HomePage = () => {
       </section>
 
       {/* ═══════ HOW IT WORKS ═══════ */}
-      <section className="py-16 md:py-24 bg-[#0e0e14]">
+      <section className="py-16 md:py-24 bg-[#0e0e14] content-lazy">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <FadeInSection className="text-center mb-12">
             <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-2 block">SIMPLE & FAST</span>
@@ -532,7 +532,7 @@ const HomePage = () => {
       </section>
 
       {/* ═══════ TRUST & SECURITY ═══════ */}
-      <section className="py-16 md:py-24 bg-[#15151e]">
+      <section className="py-16 md:py-24 bg-[#15151e] content-lazy">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <FadeInSection className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-[#15803d]/20 border border-[#15803d]/30 px-4 py-1.5 mb-4">

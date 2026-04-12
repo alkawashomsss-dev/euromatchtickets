@@ -10,7 +10,6 @@ import { LanguageProvider } from "./i18n/LanguageProvider";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieConsentBanner from "./components/CookieConsentBanner";
-import ChatWidget from "./components/ChatWidget";
 import ScrollToTop from "./components/common/ScrollToTop";
 import { TrustBar } from "./components/TrustElements";
 import { OrganizationStructuredData, WebsiteStructuredData, LocalBusinessStructuredData } from "./components/StructuredData";
