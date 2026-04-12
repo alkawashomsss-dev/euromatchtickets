@@ -45,15 +45,13 @@ export default function EventDetailsPage() {
     setLoading(true);
     axios.get(`${API}/events/${eventId}`)
       .then(res => {
-        setEvent(res.data);
+        const data = res.data;
+        setEvent(data);
         setLoading(false);
-        // Redirect event_id URLs to slug URLs for SEO canonical consistency
-        const slug = res.data.slug;
-        if (slug && eventId !== slug) {
-          const isEventId = /^(event_|premium_|ucl_|league_|wc2026_|motogp_|tt_)/.test(eventId);
-          if (isEventId) {
-            navigate(`/event/${slug}`, { replace: true });
-          }
+        // If backend tells us to redirect to slug URL, do it immediately
+        const redirectSlug = data._redirect_to_slug || data.slug;
+        if (redirectSlug && eventId !== redirectSlug) {
+          navigate(`/event/${redirectSlug}`, { replace: true });
         }
       })
       .catch(() => setLoading(false));
@@ -67,9 +65,15 @@ export default function EventDetailsPage() {
   );
   if (!event) return (
     <div className="min-h-screen bg-[#0e0e14] flex items-center justify-center text-center p-8">
-      <div>
-        <h1 className="text-3xl font-extrabold text-white mb-4">Event Not Found</h1>
-        <button onClick={() => navigate('/events')} className="text-emerald-600 hover:underline font-medium">Browse All Events</button>
+      <div className="max-w-md">
+        <SEOHead title="Event Not Available" description="This event is no longer available. Browse all upcoming events at EuroMatchTickets." noIndex={true} />
+        <h1 className="text-3xl font-black text-white mb-3 uppercase tracking-tight">Event Not Available</h1>
+        <p className="text-slate-400 text-sm mb-6">This event may have ended or been removed. Check out our latest events below.</p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <button onClick={() => navigate('/events')} className="bg-[#e10600] text-white font-bold px-6 py-3 hover:bg-[#b80500] transition-colors" data-testid="event-not-found-browse">Browse All Events</button>
+          <button onClick={() => navigate('/f1-tickets')} className="bg-white/10 text-white font-bold px-6 py-3 hover:bg-white/20 transition-colors">F1 Tickets</button>
+          <button onClick={() => navigate('/champions-league-tickets')} className="bg-white/10 text-white font-bold px-6 py-3 hover:bg-white/20 transition-colors">Champions League</button>
+        </div>
       </div>
     </div>
   );
@@ -85,9 +89,11 @@ export default function EventDetailsPage() {
   const isF1 = event.event_type === 'f1';
   const isConcert = event.event_type === 'concert';
   const catLabel = isF1 ? 'Formula 1' : isConcert ? 'Concert' : event.event_type === 'motogp' ? 'MotoGP' : 'Football';
-  const pageUrl = `https://euromatchtickets.com/event/${event.slug || event.event_id}`;
-  const seoTitle = `Buy ${event.title} Tickets ${d.getFullYear()} – Cheapest Prices | EuroMatchTickets`;
-  const seoDesc = `${event.title} tickets from €${lowestPrice}. ${event.venue}, ${event.city}. Save vs official sellers. Instant QR delivery. FanProtect guarantee.`;
+  const canonicalSlug = event.slug || eventId;
+  const pageUrl = `https://euromatchtickets.com/event/${canonicalSlug}`;
+  const isUglyUrl = eventId !== canonicalSlug;
+  const seoTitle = `Buy ${event.title} Tickets ${d.getFullYear()} | From €${lowestPrice}`;
+  const seoDesc = `${event.title} tickets from €${lowestPrice}. ${event.venue}, ${event.city}. 42% cheaper than official. Instant QR delivery. FanProtect guarantee.`;
   const officialPrice = Math.round(lowestPrice * 1.35);
   const savings = Math.round(officialPrice - lowestPrice);
 
@@ -103,7 +109,7 @@ export default function EventDetailsPage() {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="event-details-page">
-      <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={false} />
+      <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={isUglyUrl} />
       <EventStructuredData event={event} />
       <BreadcrumbStructuredData items={[
         { name: 'Home', url: 'https://euromatchtickets.com' },

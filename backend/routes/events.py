@@ -107,14 +107,19 @@ async def get_events(
 
 
 @router.get("/events/{event_id}")
-async def get_event(event_id: str):
+async def get_event(event_id: str, request: Request):
+    from fastapi.responses import RedirectResponse
     # Try by event_id first, then by slug
     event = await db.events.find_one({"event_id": event_id}, {"_id": 0})
     if not event:
         event = await db.events.find_one({"slug": event_id}, {"_id": 0})
     if not event:
-        # Return 410 Gone for deleted events so Google stops indexing them
-        raise HTTPException(status_code=410, detail="Event permanently removed")
+        raise HTTPException(status_code=404, detail="Event not found")
+
+    # If accessed by ugly event_id and has a slug, return slug info for client redirect
+    slug = event.get("slug")
+    if slug and event_id != slug and event_id == event.get("event_id"):
+        event["_redirect_to_slug"] = slug
 
     eid = event["event_id"]
     tickets = await db.tickets.find({"event_id": eid, "status": "available"}, {"_id": 0}).to_list(500)
