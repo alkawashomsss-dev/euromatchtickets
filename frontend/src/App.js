@@ -1,6 +1,6 @@
 import { useEffect, useState, createContext, useContext, lazy, Suspense } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useParams, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Toaster } from "sonner";
 import { HelmetProvider } from 'react-helmet-async';
@@ -134,6 +134,14 @@ const PushNotificationBanner = lazy(() => import("./components/MarketingTools").
 const SocialProofNotification = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.SocialProofNotification })));
 const FloatingCTA = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.FloatingCTA })));
 const MarketingBotButton = lazy(() => import("./components/AIMarketingBot").then(m => ({ default: m.MarketingBotButton })));
+
+/* Redirect ugly event IDs (/event/ucl_xxx) to /events */
+const EventRouteGuard = () => {
+  const { eventId } = useParams();
+  const isUgly = eventId && (eventId.includes('_') || (eventId.length > 8 && !eventId.includes('-')));
+  if (isUgly) return <Navigate to="/events" replace />;
+  return <EventDetailsPage />;
+};
 
 // Page loader component
 const PageLoader = () => (
@@ -279,7 +287,7 @@ function AppRouter() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
-        <Route path="/event/:eventId" element={<EventDetailsPage />} />
+        <Route path="/event/:eventId" element={<EventRouteGuard />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/terms" element={<TermsPage />} />

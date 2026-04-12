@@ -78,11 +78,12 @@
         return;
       }
 
-      /* ── Redirect ugly event IDs to /events ── */
+      /* ── REDIRECT ugly event IDs to /events immediately ── */
       if(p.indexOf('/event/')===0){
         var eid=p.replace('/event/','');
         if(eid.indexOf('_')!==-1 || (eid.length>8 && eid.indexOf('-')===-1)){
-          /* Let React handle the slug redirect via API */
+          location.replace(B+'/events');
+          return;
         }
       }
 
@@ -391,36 +392,22 @@
         d='Europe\u2019s cheapest ticket marketplace! Buy verified tickets for Champions League, F1, Taylor Swift and 500+ events. Instant QR delivery, FanProtect guarantee!';
         h1=slug;
       } else if(isEventDetail){
-        /* /event/* detail pages */
+        /* /event/* detail pages - only clean slug URLs reach here */
         var evSlug=p.replace('/event/','');
-        /* Detect ugly event IDs (contain underscore or no hyphens = hash ID) */
-        var isUglyId=evSlug.indexOf('_')!==-1 || (evSlug.length>8 && evSlug.indexOf('-')===-1);
-        if(isUglyId){
-          /* BLOCK ugly IDs from indexing - these should 301 redirect */
-          isNoIndex=true;
-          t='Event Tickets | EuroMatchTickets';
-          d='Find tickets for this event at EuroMatchTickets.com. Verified sellers, instant QR delivery.';
-          h1='Event Tickets';
-        } else {
-          /* Clean slug URL - generate nice title */
-          var evName=evSlug.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
-          /* Remove common suffixes for cleaner title */
-          evName=evName.replace(/ Tickets$/i,'').replace(/ \d{4}$/,'');
-          t='Buy '+evName+' Tickets | Cheapest Verified | EuroMatchTickets';
-          d='Buy '+evName+' tickets at the lowest prices in Europe. 42% cheaper than official. Instant QR delivery, FanProtect 100% money-back guarantee!';
-          h1='Buy '+evName+' Tickets';
-        }
+        var evName=evSlug.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
+        evName=evName.replace(/ Tickets$/i,'').replace(/ \d{4}$/,'');
+        t='Buy '+evName+' Tickets | Cheapest Verified | EuroMatchTickets';
+        d='Buy '+evName+' tickets at the lowest prices in Europe. 42% cheaper than official. Instant QR delivery, FanProtect 100% money-back guarantee!';
+        h1='Buy '+evName+' Tickets';
       } else if(m){
         t=m[0]; d=m[1]; h1=m[2];
       } else {
         /* Smart fallback: generate title from URL slug */
         var slug=p.replace(/^\//,'').replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
-        /* Block ugly auto-generated slugs from indexing */
+        /* Block ugly auto-generated slugs - redirect to events */
         if(slug && (slug.indexOf('_')!==-1 || /[0-9a-f]{8,}/i.test(slug))){
-          isNoIndex=true;
-          t='Tickets | EuroMatchTickets';
-          d='Find event tickets at EuroMatchTickets.com';
-          h1='Tickets';
+          location.replace(B+'/events');
+          return;
         } else if(slug){
           t=slug+' | Buy Cheap Tickets | EuroMatchTickets';
           d='Buy '+slug+' tickets at Europe\u2019s cheapest prices. 42% cheaper than official. Verified sellers, instant QR delivery. FanProtect money-back guarantee!';
