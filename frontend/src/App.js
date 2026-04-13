@@ -302,7 +302,7 @@ function AppRouter() {
         <Route path="/blog/:articleId" element={<BlogArticlePage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/social" element={<SocialHubPage />} />
-        <Route path="/follow" element={<SocialHubPage />} />
+        <Route path="/follow" element={<Navigate to="/social" replace />} />
         <Route path="/faq" element={<FAQPage />} />
         
         {/* Landing Pages for Google Ads */}
@@ -445,13 +445,13 @@ function AppRouter() {
         
         {/* Major Events */}
         <Route path="/super-bowl-2026-tickets" element={<SuperBowlPage />} />
-        <Route path="/super-bowl-2027-tickets" element={<SuperBowlPage />} />
+        <Route path="/super-bowl-2027-tickets" element={<Navigate to="/super-bowl-2026-tickets" replace />} />
         <Route path="/world-athletics-2026-tickets" element={<WorldAthleticsPage />} />
         <Route path="/taylor-swift-wembley-2026-tickets" element={<Navigate to="/taylor-swift-london-tickets" replace />} />
         <Route path="/bayern-vs-real-madrid-tickets" element={<BayernRealMadridPage />} />
-        <Route path="/bayern-real-madrid-champions-league-tickets" element={<BayernRealMadridPage />} />
+        <Route path="/bayern-real-madrid-champions-league-tickets" element={<Navigate to="/bayern-vs-real-madrid-tickets" replace />} />
         <Route path="/bahrain-world-cup-tickets-2026" element={<BahrainWorldCupPage />} />
-        <Route path="/buy-bahrain-world-cup-tickets" element={<BahrainWorldCupPage />} />
+        <Route path="/buy-bahrain-world-cup-tickets" element={<Navigate to="/bahrain-world-cup-tickets-2026" replace />} />
         <Route path="/taylor-swift-london-tickets" element={<TaylorSwiftLondonPage />} />
         <Route path="/taylor-swift-tickets-london" element={<Navigate to="/taylor-swift-london-tickets" replace />} />
         <Route path="/taylor-swift-tickets" element={<Navigate to="/taylor-swift-london-tickets" replace />} />
@@ -486,84 +486,84 @@ function AppRouter() {
 
         {/* French SEO Pages */}
         <Route path="/fr/acheter-billets" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-champions-league" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-f1" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-concerts" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-real-madrid" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-barcelone" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-psg" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-coupe-du-monde-2026" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-taylor-swift" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-ligue-1" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-coldplay" element={<FrenchLandingPage />} />
-        <Route path="/fr/grand-prix-monaco-f1" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-marseille" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-lyon" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-bruno-mars" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-ed-sheeran" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-finale-champions-league" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-el-clasico" element={<FrenchLandingPage />} />
-        <Route path="/fr/billets-grand-prix-france" element={<FrenchLandingPage />} />
+        <Route path="/fr/billets-champions-league" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-f1" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-concerts" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-real-madrid" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-barcelone" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-psg" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-coupe-du-monde-2026" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-taylor-swift" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-ligue-1" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-coldplay" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/grand-prix-monaco-f1" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-marseille" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-lyon" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-bruno-mars" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-ed-sheeran" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-finale-champions-league" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-el-clasico" element={<Navigate to="/fr/acheter-billets" replace />} />
+        <Route path="/fr/billets-grand-prix-france" element={<Navigate to="/fr/acheter-billets" replace />} />
 
         {/* Italian SEO Pages */}
         <Route path="/it/biglietti" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-champions-league" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-f1" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-concerti" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-juventus" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-milan" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-inter" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-roma" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-napoli" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-serie-a" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-coppa-del-mondo-2026" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-taylor-swift" element={<ItalianLandingPage />} />
-        <Route path="/it/gran-premio-italia-f1" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-coldplay" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-finale-champions-league" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-derby-italia" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-bruno-mars" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-ed-sheeran" element={<ItalianLandingPage />} />
-        <Route path="/it/biglietti-el-clasico" element={<ItalianLandingPage />} />
+        <Route path="/it/biglietti-champions-league" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-f1" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-concerti" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-juventus" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-milan" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-inter" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-roma" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-napoli" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-serie-a" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-coppa-del-mondo-2026" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-taylor-swift" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/gran-premio-italia-f1" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-coldplay" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-finale-champions-league" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-derby-italia" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-bruno-mars" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-ed-sheeran" element={<Navigate to="/it/biglietti" replace />} />
+        <Route path="/it/biglietti-el-clasico" element={<Navigate to="/it/biglietti" replace />} />
         
         {/* Spanish SEO Pages */}
         <Route path="/es/comprar-entradas" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-champions-league" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-f1" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-conciertos" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-copa-del-mundo-2026" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-real-madrid" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-barcelona" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-el-clasico" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-atletico-madrid" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-taylor-swift" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-coldplay" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-bruno-mars" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-la-liga" element={<SpanishLandingPage />} />
-        <Route path="/es/gran-premio-espana-f1" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-final-champions" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-ed-sheeran" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-sevilla" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-valencia" element={<SpanishLandingPage />} />
-        <Route path="/es/gran-premio-monaco-f1" element={<SpanishLandingPage />} />
-        <Route path="/es/entradas-betis" element={<SpanishLandingPage />} />
+        <Route path="/es/entradas-champions-league" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-f1" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-conciertos" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-copa-del-mundo-2026" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-real-madrid" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-barcelona" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-el-clasico" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-atletico-madrid" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-taylor-swift" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-coldplay" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-bruno-mars" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-la-liga" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/gran-premio-espana-f1" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-final-champions" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-ed-sheeran" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-sevilla" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-valencia" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/gran-premio-monaco-f1" element={<Navigate to="/es/comprar-entradas" replace />} />
+        <Route path="/es/entradas-betis" element={<Navigate to="/es/comprar-entradas" replace />} />
         
         {/* German SEO Pages */}
         <Route path="/de/tickets-kaufen" element={<GermanLandingPage />} />
-        <Route path="/de/champions-league-tickets" element={<GermanLandingPage />} />
-        <Route path="/de/formel-1-tickets" element={<GermanLandingPage />} />
-        <Route path="/de/bundesliga-tickets" element={<GermanLandingPage />} />
-        <Route path="/de/konzert-tickets" element={<GermanLandingPage />} />
-        <Route path="/de/wm-2026-tickets" element={<GermanLandingPage />} />
+        <Route path="/de/champions-league-tickets" element={<Navigate to="/de/tickets-kaufen" replace />} />
+        <Route path="/de/formel-1-tickets" element={<Navigate to="/de/tickets-kaufen" replace />} />
+        <Route path="/de/bundesliga-tickets" element={<Navigate to="/de/tickets-kaufen" replace />} />
+        <Route path="/de/konzert-tickets" element={<Navigate to="/de/tickets-kaufen" replace />} />
+        <Route path="/de/wm-2026-tickets" element={<Navigate to="/de/tickets-kaufen" replace />} />
 
         {/* Trust/Review Pages - CRITICAL for conversion */}
         <Route path="/euromatchtickets-review" element={<ReviewPage />} />
-        <Route path="/euromatchtickets-legit" element={<ReviewPage />} />
-        <Route path="/is-euromatchtickets-safe" element={<ReviewPage />} />
-        <Route path="/euromatchtickets-erfahrung" element={<ReviewPage />} />
-        <Route path="/euromatchtickets-avis" element={<ReviewPage />} />
-        <Route path="/euromatchtickets-opiniones" element={<ReviewPage />} />
-        <Route path="/euromatchtickets-recensioni" element={<ReviewPage />} />
+        <Route path="/euromatchtickets-legit" element={<Navigate to="/euromatchtickets-review" replace />} />
+        <Route path="/is-euromatchtickets-safe" element={<Navigate to="/euromatchtickets-review" replace />} />
+        <Route path="/euromatchtickets-erfahrung" element={<Navigate to="/euromatchtickets-review" replace />} />
+        <Route path="/euromatchtickets-avis" element={<Navigate to="/euromatchtickets-review" replace />} />
+        <Route path="/euromatchtickets-opiniones" element={<Navigate to="/euromatchtickets-review" replace />} />
+        <Route path="/euromatchtickets-recensioni" element={<Navigate to="/euromatchtickets-review" replace />} />
         
         {/* Language root redirects - prevent bare /de, /es, /fr, /it from rendering as events */}
         <Route path="/de" element={<Navigate to="/de/tickets-kaufen" replace />} />

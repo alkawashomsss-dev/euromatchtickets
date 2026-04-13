@@ -190,7 +190,7 @@ const WorldCupPage = () => {
             <div className="text-center py-12">
               <Trophy className="w-12 h-12 text-slate-300 mx-auto mb-3" />
               <p className="text-slate-500">Matches will be listed soon. Check back!</p>
-              <Link to="/events" className="inline-flex items-center gap-2 mt-4 text-amber-400 hover:text-amber-300 font-bold text-sm">
+              <Link to="/events?type=worldcup" className="inline-flex items-center gap-2 mt-4 text-amber-400 hover:text-amber-300 font-bold text-sm">
                 Browse All Events <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
