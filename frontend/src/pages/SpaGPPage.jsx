@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, Ticket, Crown, Wine, Utensils, Eye, Check, Clock, AlertTriangle, Play, ChevronRight, Lock, Heart, ArrowRight, HelpCircle, Plane, Hotel, CloudRain, Train, Car, Info, ChevronDown } from "lucide-react";
+import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, Ticket, Crown, Wine, Utensils, Eye, Check, Clock, AlertTriangle, ChevronRight, Lock, Heart, ArrowRight, HelpCircle, Plane, Hotel, CloudRain, Train, Car, Info, ChevronDown } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
@@ -24,7 +24,6 @@ const SpaGPPage = () => {
   const location = useLocation();
   const [liveViewers, setLiveViewers] = useState(0);
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
-  const [showVideo, setShowVideo] = useState(false);
   const [openFAQ, setOpenFAQ] = useState(0);
 
   useEffect(() => { window.scrollTo(0, 0); }, [location.pathname]);
@@ -275,7 +274,7 @@ const SpaGPPage = () => {
         </div>
       </section>
 
-      {/* ═══ VIDEO ═══ */}
+      {/* ═══ EXPERIENCE ═══ */}
       <section className="py-14 bg-[#0a0a0f]" data-testid="spa-video-section">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-8">
@@ -283,20 +282,14 @@ const SpaGPPage = () => {
             <p className="text-slate-500 mt-2">The most challenging 7km of tarmac in the world</p>
           </div>
           <div className="relative aspect-video overflow-hidden border border-white/10">
-            {!showVideo ? (
-              <div className="relative w-full h-full cursor-pointer group" onClick={() => setShowVideo(true)}>
-                <img src="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png"
-                  alt="Spa F1 Circuit Tour Video" className="w-full h-full object-cover" loading="lazy" />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all flex items-center justify-center">
-                  <div className="w-20 h-20 bg-[#e10600] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 text-white ml-1" fill="white" />
-                  </div>
-                </div>
-                <div className="absolute bottom-4 left-4 bg-black/60 text-white text-sm px-3 py-1 font-bold">Spa F1 Circuit Tour &bull; 2:30</div>
+            <img src="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png"
+              alt="Spa-Francorchamps F1 Circuit Eau Rouge 2026" className="w-full h-full object-cover" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+              <div>
+                <p className="text-white font-black text-2xl uppercase tracking-tight">Eau Rouge &bull; Raidillon &bull; La Source</p>
+                <p className="text-slate-300 text-sm mt-1">7.004 km &bull; 19 turns &bull; 330 km/h top speed</p>
               </div>
-            ) : (
-              <iframe src="https://www.youtube.com/embed/Zjt72i2PEEE?autoplay=1&rel=0" className="w-full h-full" allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen title="Spa-Francorchamps F1 Circuit Tour" />
-            )}
+            </div>
           </div>
         </div>
       </section>

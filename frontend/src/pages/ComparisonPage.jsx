@@ -190,7 +190,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               </div>
               <h3 className="text-xl font-bold mb-2">Instant QR Delivery</h3>
               <p className="text-slate-500 mb-4">Get your tickets immediately as a QR code. No waiting, no shipping, no stress.</p>
-              <Link to="/events" className="text-violet-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Get Tickets <ArrowRight className="w-4 h-4" /></Link>
+              <Link to="/checkout" className="text-violet-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Get Tickets <ArrowRight className="w-4 h-4" /></Link>
             </div>
 
             <div className="bg-[#1e1e1e] p-6 rounded-none border border-white/10 text-center">

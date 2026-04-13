@@ -48,7 +48,7 @@ const PSGHubPage = () => {
             <span className="flex items-center gap-2 text-xs text-blue-300/60 bg-blue-500/100/10 border border-blue-500/20 rounded-full px-4 py-2"><MapPin className="w-3.5 h-3.5" /> Paris, France</span>
             <span className="flex items-center gap-2 text-xs text-blue-300/60 bg-blue-500/100/10 border border-blue-500/20 rounded-full px-4 py-2"><Calendar className="w-3.5 h-3.5" /> 2025-26 Season</span>
           </div>
-          <Link to="/events?search=PSG"><Button size="lg" className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white font-bold px-8 rounded-full" data-testid="psg-cta"><Ticket className="w-5 h-5 mr-2" /> Get PSG Tickets from &euro;55</Button></Link>
+          <Link to="/checkout?event=psg-tickets"><Button size="lg" className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white font-bold px-8 rounded-full" data-testid="psg-cta"><Ticket className="w-5 h-5 mr-2" /> Get PSG Tickets from &euro;55</Button></Link>
           <div className="flex flex-wrap justify-center gap-4 mt-6 text-[11px] text-white/40">
             <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> FanProtect Guarantee</span>
             <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> Instant QR Delivery</span>
