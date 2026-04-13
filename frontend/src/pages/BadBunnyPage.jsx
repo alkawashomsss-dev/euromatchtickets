@@ -14,7 +14,7 @@ const BadBunnyPage = () => {
     "endDate": "2026-06-29",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": { "@type": "Place", "name": "Tottenham Hotspur Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "MusicGroup", "name": "Bad Bunny" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },

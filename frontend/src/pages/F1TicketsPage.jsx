@@ -146,7 +146,7 @@ const F1TicketsPage = () => {
         "endDate": "2026-12-06",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "image": ["https://euromatchtickets.com/og-image.jpg"],
+        "image": ["https://euromatchtickets.com/logo-192.png"],
         "url": "https://euromatchtickets.com/f1-tickets",
         "location": { "@type": "Place", "name": "24 Circuits Worldwide", "address": { "@type": "PostalAddress", "addressCountry": "GB" } },
         "organizer": { "@type": "Organization", "name": "Formula 1", "url": "https://www.formula1.com" },
@@ -167,7 +167,7 @@ const F1TicketsPage = () => {
         "@type": "Product",
         "name": "F1 2026 Grand Prix Tickets",
         "description": "Buy Formula 1 2026 tickets for all 24 Grand Prix races. Cheapest prices with 0% fees.",
-        "image": "https://euromatchtickets.com/og-image.jpg",
+        "image": "https://euromatchtickets.com/logo-192.png",
         "url": "https://euromatchtickets.com/f1-tickets",
         "brand": { "@type": "Organization", "name": "EuroMatchTickets" },
         "offers": {
@@ -197,7 +197,7 @@ const F1TicketsPage = () => {
             "name": `${r.gp} 2026`,
             "startDate": `2026-${String(r.dates.split(' ')[0] === 'Mar' ? '03' : r.dates.split(' ')[0] === 'Apr' ? '04' : r.dates.split(' ')[0] === 'May' ? '05' : r.dates.split(' ')[0] === 'Jun' ? '06' : r.dates.split(' ')[0] === 'Jul' ? '07' : r.dates.split(' ')[0] === 'Aug' ? '08' : r.dates.split(' ')[0] === 'Sep' ? '09' : r.dates.split(' ')[0] === 'Oct' ? '10' : r.dates.split(' ')[0] === 'Nov' ? '11' : '12')}-${r.dates.split('-')[0].split(' ').pop().padStart(2, '0')}`,
             "location": { "@type": "Place", "name": r.circuit, "address": { "@type": "PostalAddress", "addressCountry": r.flag } },
-            "image": "https://euromatchtickets.com/og-image.jpg",
+            "image": "https://euromatchtickets.com/logo-192.png",
             "offers": {
               "@type": "AggregateOffer",
               "lowPrice": r.price,

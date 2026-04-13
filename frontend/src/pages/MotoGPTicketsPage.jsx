@@ -47,7 +47,7 @@ const MotoGPTicketsPage = () => {
           "name": "MotoGP Italian Grand Prix Mugello 2026",
           "startDate": "2026-05-29",
           "endDate": "2026-05-31",
-          "image": "https://euromatchtickets.com/logo.png",
+          "image": "https://euromatchtickets.com/logo-192.png",
           "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
           "eventStatus": "https://schema.org/EventScheduled",
           "location": {

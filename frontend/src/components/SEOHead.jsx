@@ -25,7 +25,7 @@ const SEOHead = ({
   
   const defaultTitle = 'EuroMatchTickets - Buy Football, F1 & Concert Tickets';
   const defaultDescription = 'Europe\u2019s cheapest event ticket shop! Buy verified tickets for Champions League, Formula 1, concerts and 500+ events. Instant QR delivery, FanProtect guarantee!';
-  const defaultImage = `${BASE_URL}/og-image.jpg`;
+  const defaultImage = `${BASE_URL}/logo-192.png`;
 
   const fullTitle = title && typeof title === 'string' && title.trim() 
     ? (title.includes('EuroMatchTickets') ? title : 

@@ -115,9 +115,9 @@ const ReviewPage = () => {
         "@type": "Article",
         "headline": variant.h1,
         "description": variant.metaDesc,
-        "image": `${BASE}/og-image.jpg`,
+        "image": `${BASE}/logo-192.png`,
         "author": { "@type": "Person", "name": "Editorial Team" },
-        "publisher": { "@type": "Organization", "name": "TicketReviews", "logo": { "@type": "ImageObject", "url": `${BASE}/og-image.jpg` }},
+        "publisher": { "@type": "Organization", "name": "TicketReviews", "logo": { "@type": "ImageObject", "url": `${BASE}/logo-192.png` }},
         "datePublished": "2026-01-15",
         "dateModified": "2026-04-09"
       })}} />

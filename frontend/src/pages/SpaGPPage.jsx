@@ -64,7 +64,7 @@ const SpaGPPage = () => {
       { "@type": "Person", "name": "Lewis Hamilton" },
       { "@type": "Person", "name": "Charles Leclerc" }
     ],
-    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com", "logo": "https://euromatchtickets.com/logo.png" },
+    "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com", "logo": "https://euromatchtickets.com/logo-192.png" },
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "EUR",

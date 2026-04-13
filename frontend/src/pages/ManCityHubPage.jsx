@@ -12,7 +12,7 @@ const ManCityHubPage = () => {
     "@type": "SportsEvent",
     "name": "Manchester City FC 2025-26 Season",
     "description": "Buy Manchester City tickets for Premier League, Champions League at Etihad Stadium. Cheapest prices guaranteed.",
-    "image": "https://euromatchtickets.com/og-image.jpg",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "startDate": "2025-08-15",
     "endDate": "2026-06-01",
     "eventStatus": "https://schema.org/EventScheduled",
@@ -26,7 +26,7 @@ const ManCityHubPage = () => {
 
   const reviewSchema = {
     "@context": "https://schema.org",
-    "image": "https://euromatchtickets.com/og-image.jpg",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Manchester City Tickets 2025-26",
     "description": "Verified Manchester City match tickets with instant QR delivery",

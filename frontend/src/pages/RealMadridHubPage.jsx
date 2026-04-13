@@ -12,7 +12,7 @@ const RealMadridHubPage = () => {
     "@type": "SportsEvent",
     "name": "Real Madrid CF 2025-26 Season",
     "description": "Buy Real Madrid tickets for La Liga, Champions League, and all matches at Santiago Bernabeu. Cheapest prices guaranteed.",
-    "image": "https://euromatchtickets.com/og-image.jpg",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "startDate": "2025-08-15",
     "endDate": "2026-06-01",
     "eventStatus": "https://schema.org/EventScheduled",
@@ -26,7 +26,7 @@ const RealMadridHubPage = () => {
 
   const reviewSchema = {
     "@context": "https://schema.org",
-    "image": "https://euromatchtickets.com/og-image.jpg",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Real Madrid Tickets 2025-26",
     "description": "Verified Real Madrid match tickets with instant QR delivery",

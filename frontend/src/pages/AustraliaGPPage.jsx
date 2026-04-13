@@ -14,7 +14,7 @@ const AustraliaGPPage = () => {
     "endDate": "2026-03-16",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": { "@type": "Place", "name": "Albert Park Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },

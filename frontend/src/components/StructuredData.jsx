@@ -289,7 +289,7 @@ const OrganizationStructuredData = () => {
         "width": 600,
         "height": 600
       },
-      "image": "https://euromatchtickets.com/og-image.jpg",
+      "image": "https://euromatchtickets.com/logo-192.png",
       "description": "Europe's trusted ticket marketplace for football, Formula 1, and concert tickets.",
       "foundingDate": "2024",
       "address": {
@@ -396,7 +396,7 @@ const LocalBusinessStructuredData = () => {
       "alternateName": "Euro Match Tickets",
       "url": "https://euromatchtickets.com",
       "logo": "https://euromatchtickets.com/logo512.png",
-      "image": "https://euromatchtickets.com/og-image.jpg",
+      "image": "https://euromatchtickets.com/logo-192.png",
       "description": "Europe's #1 trusted ticket marketplace for FIFA World Cup 2026, Champions League, Premier League, F1, MotoGP, concerts and more. 100% verified tickets with instant QR delivery.",
       "priceRange": "€€",
       "telephone": "+49-89-20174141",

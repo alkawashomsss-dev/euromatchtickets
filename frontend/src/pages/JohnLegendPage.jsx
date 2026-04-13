@@ -44,7 +44,7 @@ const JohnLegendPage = () => {
     "endDate": "2026-03-01",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "performer": {"@type": "Person", "name": "John Legend"},
     "location": {"@type": "Place", "name": "Etihad Arena", "address": {"@type": "PostalAddress", "addressLocality": "Abu Dhabi", "addressCountry": "AE"}},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },

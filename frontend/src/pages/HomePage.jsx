@@ -203,7 +203,7 @@ const HomePage = () => {
       <SEOHead 
         title="EuroMatchTickets | F1, Football & Concert Tickets | 42% Cheaper"
         description="Europe's #1 official alternative ticket marketplace. Cheapest verified tickets for World Cup 2026, Taylor Swift, Super Bowl, Champions League, F1, MotoGP."
-        image="https://euromatchtickets.com/og-image.jpg"
+        image="https://euromatchtickets.com/logo-192.png"
       />
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }]} />
       <FAQStructuredData faqs={commonTicketFAQs} />

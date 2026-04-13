@@ -63,7 +63,7 @@ const BahrainGPPage = () => {
   ];
 
   const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Bahrain Grand Prix 2026 Tickets",
     "description": "Verified Bahrain F1 tickets with instant QR delivery",

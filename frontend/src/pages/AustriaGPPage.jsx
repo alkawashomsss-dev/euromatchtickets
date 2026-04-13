@@ -14,7 +14,7 @@ const AustriaGPPage = () => {
     "endDate": "2026-07-06",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": { "@type": "Place", "name": "Red Bull Ring", "address": { "@type": "PostalAddress", "addressLocality": "Spielberg", "addressCountry": "AT" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },

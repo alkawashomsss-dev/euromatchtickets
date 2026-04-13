@@ -114,7 +114,7 @@ const Maroon5Page = () => {
     "endDate": "2026-12-31",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": { "@type": "Place", "name": "Multiple Venues", "address": { "@type": "PostalAddress", "addressLocality": "Europe", "addressCountry": "EU" } },
     "performer": {"@type": "MusicGroup", "name": "Maroon 5"},
     "description": t.description,

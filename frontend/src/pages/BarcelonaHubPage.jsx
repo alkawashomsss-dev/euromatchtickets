@@ -12,7 +12,7 @@ const BarcelonaHubPage = () => {
     "@type": "SportsEvent",
     "name": "FC Barcelona 2025-26 Season",
     "description": "Buy FC Barcelona tickets for La Liga, Champions League, and concerts at Spotify Camp Nou. Cheapest prices guaranteed.",
-    "image": "https://euromatchtickets.com/og-image.jpg",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "startDate": "2025-08-15",
     "endDate": "2026-06-01",
     "eventStatus": "https://schema.org/EventScheduled",
@@ -26,7 +26,7 @@ const BarcelonaHubPage = () => {
 
   const reviewSchema = {
     "@context": "https://schema.org",
-    "image": "https://euromatchtickets.com/og-image.jpg",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "FC Barcelona Tickets 2025-26",
     "description": "Verified FC Barcelona match and concert tickets at Camp Nou with instant QR delivery",

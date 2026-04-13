@@ -38,7 +38,7 @@ const FrenchLandingPage = () => {
   ];
 
   const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Billets EuroMatchTickets - France",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },

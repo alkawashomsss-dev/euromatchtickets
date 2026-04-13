@@ -39,7 +39,7 @@ const ACLFestivalPage = () => {
     "name": "ACL Festival 2026 - Austin City Limits",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": {"@type": "Place", "name": "Zilker Park", "address": {"@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "Texas", "addressCountry": "US"}},
     "startDate": "2026-10-02",
     "endDate": "2026-10-10",

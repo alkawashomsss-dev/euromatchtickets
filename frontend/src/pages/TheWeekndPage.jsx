@@ -14,7 +14,7 @@ const TheWeekndPage = () => {
     "endDate": "2026-07-08",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": {
       "@type": "Place",
       "name": "Stade de France",

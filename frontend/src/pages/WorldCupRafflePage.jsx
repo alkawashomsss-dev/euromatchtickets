@@ -23,7 +23,7 @@ const WorldCupRafflePage = () => {
     "endDate": "2026-05-01",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": { "@type": "Place", "name": "MetLife Stadium", "address": { "@type": "PostalAddress", "addressLocality": "New York", "addressCountry": "US" } },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "performer": { "@type": "Organization", "name": "FIFA World Cup 2026" },

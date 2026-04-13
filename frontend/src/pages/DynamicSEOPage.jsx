@@ -357,7 +357,7 @@ export default function DynamicSEOPage() {
         "@type": page.category === "concert" ? "MusicEvent" : "SportsEvent",
         "name": eventName,
         "description": eventDesc || `Buy ${eventName} tickets at the lowest prices. Verified sellers, instant QR delivery, FanProtect guarantee.`,
-        "image": page.image_url || `${BASE}/logo.png`,
+        "image": page.image_url || `${BASE}/logo-192.png`,
         "url": `${BASE}/${page.slug}`,
         "startDate": smartStartDate,
         "endDate": smartEndDate,
@@ -396,7 +396,7 @@ export default function DynamicSEOPage() {
         "@type": "Product",
         "name": `${eventName} Tickets`,
         "description": productDesc,
-        "image": page.image_url || `${BASE}/logo.png`,
+        "image": page.image_url || `${BASE}/logo-192.png`,
         "url": `${BASE}/${page.slug}`,
         "brand": { "@type": "Organization", "name": brand },
         "offers": {

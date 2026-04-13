@@ -71,7 +71,7 @@ const TaylorSwiftLondonPage = () => {
 
   const reviewSchema = {
     "@context": "https://schema.org",
-    "image": "https://euromatchtickets.com/og-image.jpg",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Taylor Swift London Wembley Tickets 2026",
     "description": "Verified Taylor Swift Eras Tour London tickets with instant QR delivery",

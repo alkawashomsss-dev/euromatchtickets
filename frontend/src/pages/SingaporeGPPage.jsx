@@ -14,7 +14,7 @@ const SingaporeGPPage = () => {
     "endDate": "2026-09-21",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": {
       "@type": "Place",
       "name": "Marina Bay Street Circuit",

@@ -16,7 +16,7 @@ const ChampionsLeaguePage = () => {
     "endDate": "2026-05-30",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": {
       "@type": "Place",
       "name": "Allianz Arena",
@@ -30,7 +30,7 @@ const ChampionsLeaguePage = () => {
 
   const reviewSchema = {
     "@context": "https://schema.org",
-    "image": "https://euromatchtickets.com/og-image.jpg",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "UEFA Champions League 2025-26 Tickets",
     "description": "Verified UEFA Champions League match tickets with instant QR delivery",

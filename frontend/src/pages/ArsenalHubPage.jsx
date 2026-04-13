@@ -8,7 +8,7 @@ import { ScarcityBadges, TrustBar } from "../components/ConversionElements";
 
 const ArsenalHubPage = () => {
   const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Arsenal FC Tickets 2025-26",
     "description": "Verified Arsenal FC match tickets with instant QR delivery",

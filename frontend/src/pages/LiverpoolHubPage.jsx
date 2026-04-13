@@ -8,7 +8,7 @@ import { ScarcityBadges, TrustBar, CompetitorLine } from "../components/Conversi
 
 const LiverpoolHubPage = () => {
   const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Liverpool FC Tickets 2025-26",
     "description": "Verified Liverpool FC match tickets with instant QR delivery",

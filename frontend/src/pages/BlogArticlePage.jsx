@@ -642,7 +642,7 @@ const BlogArticlePage = () => {
           "logo": {
             "@type": "ImageObject",
             "name": "EuroMatchTickets Logo",
-            "url": "https://euromatchtickets.com/logo.png"
+            "url": "https://euromatchtickets.com/logo-192.png"
           }
         },
         "datePublished": article.date,

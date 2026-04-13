@@ -50,7 +50,7 @@ const WorldCup2026Page = () => {
     "description": "FIFA World Cup 2026 tickets. Final, Semi-Finals, Quarter-Finals, Group Stage. USA, Canada, Mexico.",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": [
       {"@type": "Place", "name": "MetLife Stadium", "address": {"@type": "PostalAddress", "addressLocality": "New York", "addressCountry": "US"}},
       {"@type": "Place", "name": "AT&T Stadium", "address": {"@type": "PostalAddress", "addressLocality": "Dallas", "addressCountry": "US"}},

@@ -21,7 +21,7 @@ const BayernMunichHubPage = () => {
   ];
 
   const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/og-image.jpg",
+    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Bayern Munich Tickets 2025-26",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },

@@ -14,7 +14,7 @@ const MotoGPMugelloPage = () => {
     "endDate": "2026-06-14",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://euromatchtickets.com/logo.png",
+    "image": "https://euromatchtickets.com/logo-192.png",
     "location": { "@type": "Place", "name": "Mugello Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Scarperia e San Piero", "addressCountry": "IT" } },
     "performer": {"@type": "SportsTeam", "name": "MotoGP - FIM"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },

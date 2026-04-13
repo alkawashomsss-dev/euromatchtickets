@@ -62,7 +62,7 @@ const AboutPage = () => {
     "name": "EuroMatchTickets Ltd.",
     "alternateName": "EuroMatchTickets",
     "url": "https://euromatchtickets.com",
-    "logo": "https://euromatchtickets.com/logo.png",
+    "logo": "https://euromatchtickets.com/logo-192.png",
     "description": "Europe's leading ticket marketplace for sports events, concerts, and entertainment.",
     "foundingDate": "2024",
     "founders": [
