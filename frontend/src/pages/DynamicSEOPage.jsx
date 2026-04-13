@@ -396,7 +396,7 @@ export default function DynamicSEOPage() {
         "@type": "Product",
         "name": `${eventName} Tickets`,
         "description": productDesc,
-        "image": `${BASE}/og-image.jpg`,
+        "image": page.image_url || `${BASE}/logo.png`,
         "url": `${BASE}/${page.slug}`,
         "brand": { "@type": "Organization", "name": brand },
         "offers": {
