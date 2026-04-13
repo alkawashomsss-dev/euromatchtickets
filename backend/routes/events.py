@@ -71,17 +71,20 @@ async def get_events(
         query["event_date"]["$lte"] = date_to
     if search:
         # Split search into words for better multi-word matching
-        words = search.strip().split()
-        field_list = ["title", "artist", "home_team", "away_team", "venue", "city", "event_type"]
+        words = [w for w in search.strip().split() if len(w) >= 2]
+        field_list = ["title", "artist", "home_team", "away_team", "venue", "city", "event_type", "league", "subtitle"]
         if len(words) > 1:
-            # Build word conditions - each word must appear in at least one field
+            # First try: each word in ANY field of the SAME event (strict AND)
             word_conditions = []
             for word in words:
-                if len(word) < 2:
-                    continue
                 word_conditions.append({"$or": [{f: {"$regex": word, "$options": "i"}} for f in field_list]})
-            if word_conditions:
-                query["$and"] = word_conditions
+            # Use $or to also match if ALL words appear across any fields
+            # This handles "Bayern Barcelona" → finds events with either word
+            query["$or"] = [
+                {"$and": word_conditions},  # strict: all words in same event
+                *[{f: {"$regex": search.replace(" ", ".*"), "$options": "i"}} for f in field_list],  # fuzzy: words in sequence
+                *[{f: {"$regex": word, "$options": "i"}} for word in words for f in field_list],  # any word match
+            ]
         else:
             query["$or"] = [{f: {"$regex": search, "$options": "i"}} for f in field_list]
 
