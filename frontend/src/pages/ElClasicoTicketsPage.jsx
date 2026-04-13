@@ -175,7 +175,7 @@ const ElClasicoTicketsPage = () => {
                       <div className="text-sm text-slate-400 line-through">€{cat.originalPrice}</div>
                       <div className="text-3xl font-bold text-white">€{cat.price}</div>
                       <Button 
-                        onClick={() => navigate('/events?type=match')}
+                        onClick={() => navigate(`/checkout?event=el-clasico-2026&category=${encodeURIComponent(cat.name)}&price=${cat.price}`)}
                         className="mt-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 px-6"
                       >
                         Buy Now

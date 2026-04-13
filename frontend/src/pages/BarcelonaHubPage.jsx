@@ -251,7 +251,7 @@ const BarcelonaHubPage = () => {
           <p className="text-red-100 mb-8 text-lg">Football, concerts, culture - all at the legendary Camp Nou.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/events?type=match"><Button className="bg-[#1e1e1e] text-red-700 hover:bg-[#e10600]/10 text-lg px-8 py-3">Football Matches</Button></Link>
-            <Link to="/events?type=concert"><Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">Concert Tickets</Button></Link>
+            <Link to="/checkout?event=concerts-2026"><Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">Concert Tickets</Button></Link>
           </div>
         </div>
       </section>

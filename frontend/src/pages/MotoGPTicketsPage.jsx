@@ -229,7 +229,7 @@ const MotoGPTicketsPage = () => {
             <div className="text-center py-20">
               <p className="text-slate-500 text-xl">No MotoGP events available at the moment.</p>
               <Button 
-                onClick={() => navigate('/events')} 
+                onClick={() => navigate('/checkout?event=motogp-2026')} 
                 className="mt-4 bg-orange-600 hover:bg-orange-700"
               >
                 View All Events
@@ -326,7 +326,7 @@ const MotoGPTicketsPage = () => {
           <p className="text-slate-500 mb-8">Book your tickets now and save up to 30% off official prices!</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button 
-              onClick={() => navigate('/events?type=motogp')} 
+              onClick={() => navigate('/checkout?event=motogp-2026')} 
               size="lg" 
               className="bg-orange-600 hover:bg-orange-700"
             >

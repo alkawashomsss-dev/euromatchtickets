@@ -128,7 +128,7 @@ const MiamiGPPage = () => {
                     <div className="text-xs text-slate-400 line-through">€{ticket.originalPrice}</div>
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
-                  <Link to="/events?type=f1"><Button className="bg-cyan-500 hover:bg-cyan-600">Buy Now</Button></Link>
+                  <Link to="/checkout?event=miami-grand-prix-2026"><Button className="bg-cyan-500 hover:bg-cyan-600">Buy Now</Button></Link>
                 </div>
               </div>
             ))}
@@ -188,7 +188,7 @@ const MiamiGPPage = () => {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Don't Miss Miami GP 2026!</h2>
           <p className="text-slate-500 mb-8">Experience F1 American style - Beach, sun, and world-class racing</p>
-          <Link to="/events?type=f1">
+          <Link to="/checkout?event=miami-grand-prix-2026">
             <Button size="lg" className="bg-cyan-500 hover:bg-cyan-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />Buy Miami GP Tickets
             </Button>

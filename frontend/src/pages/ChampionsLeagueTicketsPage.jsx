@@ -165,7 +165,7 @@ const ChampionsLeagueTicketsPage = () => {
                     <div className="text-3xl font-bold text-white">€{match.price}</div>
                   </div>
                   <Button 
-                    onClick={() => navigate('/events?type=match')}
+                    onClick={() => navigate('/checkout?event=champions-league-2026')}
                     className="bg-blue-600 hover:bg-blue-700 px-6"
                   >
                     Get Tickets
@@ -183,7 +183,7 @@ const ChampionsLeagueTicketsPage = () => {
             {['Real Madrid', 'Barcelona', 'Man City', 'Bayern Munich', 'Liverpool', 'PSG', 'Inter Milan', 'Arsenal', 'Dortmund', 'Juventus', 'Chelsea', 'AC Milan'].map((team, idx) => (
               <button
                 key={idx}
-                onClick={() => navigate('/events?type=match')}
+                onClick={() => navigate('/checkout?event=champions-league-2026')}
                 className="p-4 bg-[#1e1e1e] border border-white/5 rounded-none hover:border-blue-500/50 transition-all text-center"
               >
                 <span className="font-semibold">{team}</span>

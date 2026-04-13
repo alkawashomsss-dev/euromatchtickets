@@ -44,7 +44,7 @@ const JuventusHubPage = () => {
               <div className="inline-flex items-center gap-2 bg-[#1e1e1e] text-black text-xs font-bold px-4 py-2 rounded-full mb-6"><Trophy className="w-3 h-3" /> JUVENTUS FC</div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">Juventus<br /><span className="text-slate-400">Tickets 2026</span></h1>
               <p className="text-lg text-slate-400 max-w-xl mb-8">La Vecchia Signora - Italy's most successful club. 36 Serie A titles. Allianz Stadium, Turin. Every match available at the cheapest prices in Europe.</p>
-              <Link to="/events?search=Juventus"><Button size="lg" className="bg-[#1e1e1e] hover:bg-white/10 text-black font-bold px-8 rounded-full" data-testid="juventus-cta"><Ticket className="w-5 h-5 mr-2" /> Browse Juventus Matches from &euro;45</Button></Link>
+              <Link to="/checkout?event=juventus-tickets"><Button size="lg" className="bg-[#1e1e1e] hover:bg-white/10 text-black font-bold px-8 rounded-full" data-testid="juventus-cta"><Ticket className="w-5 h-5 mr-2" /> Browse Juventus Matches from &euro;45</Button></Link>
             </div>
             <div className="bg-[#1e1e1e] rounded-none shadow-xl p-6 min-w-[280px]">
               <h3 className="text-sm font-bold text-slate-400 uppercase mb-4">ALLIANZ STADIUM</h3>

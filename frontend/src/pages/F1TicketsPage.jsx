@@ -501,7 +501,7 @@ const F1TicketsPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-black text-white uppercase tracking-tight">Featured F1 Races 2026</h2>
-            <Link to="/events?type=f1" className="text-[#e10600] hover:text-red-400 flex items-center gap-1 text-sm font-black uppercase tracking-wider">
+            <Link to="/checkout?event=f1-tickets-2026" className="text-[#e10600] hover:text-red-400 flex items-center gap-1 text-sm font-black uppercase tracking-wider">
               View All <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
@@ -549,7 +549,7 @@ const F1TicketsPage = () => {
             </div>
           )}
           <div className="text-center mt-8">
-            <Link to="/events?type=f1">
+            <Link to="/checkout?event=f1-tickets-2026">
               <Button size="lg" className="bg-[#e10600]/100 hover:bg-red-600 text-white px-8" data-testid="view-all-races-btn">
                 <Flag className="w-5 h-5 mr-2" />View All {races.length || 24} F1 Races
               </Button>
@@ -748,7 +748,7 @@ const F1TicketsPage = () => {
             New regulations, new teams, new champions. Up to 40% cheaper than Viagogo &amp; StubHub!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/events?type=f1">
+            <Link to="/checkout?event=f1-tickets-2026">
               <Button size="lg" className="bg-[#e10600]/100 hover:bg-red-600 text-white px-8" data-testid="cta-browse-btn" onClick={() => window.trackCTAClick?.('Secure Your Seat Now', 'F1 Tickets', 'bottom')}>
                 <Ticket className="w-5 h-5 mr-2" />Secure Your Seat Now
               </Button>

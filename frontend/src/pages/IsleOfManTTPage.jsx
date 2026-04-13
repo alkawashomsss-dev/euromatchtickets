@@ -173,7 +173,7 @@ const IsleOfManTTPage = () => {
             <div className="text-center py-20">
               <p className="text-slate-500 text-xl mb-4">No Isle of Man TT events available at the moment.</p>
               <Button 
-                onClick={() => navigate('/events')} 
+                onClick={() => navigate('/checkout?event=isle-of-man-tt-2026')} 
                 className="bg-amber-600 hover:bg-amber-700"
               >
                 View All Events
@@ -300,7 +300,7 @@ const IsleOfManTTPage = () => {
           <p className="text-slate-500 mb-8">Book your Isle of Man TT tickets now and be part of motorsport history!</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button 
-              onClick={() => navigate('/events?type=isle_of_man_tt')} 
+              onClick={() => navigate('/checkout?event=isle-of-man-tt-2026')} 
               size="lg" 
               className="bg-amber-600 hover:bg-amber-700"
             >
