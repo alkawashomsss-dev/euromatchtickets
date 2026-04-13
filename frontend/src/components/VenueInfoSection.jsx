@@ -4,7 +4,8 @@ const VenueInfoSection = ({ event }) => {
   if (!event?.venue) return null;
 
   const venueQuery = encodeURIComponent(`${event.venue}, ${event.city}${event.country ? `, ${event.country}` : ''}`);
-  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${venueQuery}&zoom=14`;
+  const mapKey = process.env.REACT_APP_GOOGLE_MAPS_KEY || "";
+  const mapUrl = mapKey ? `https://www.google.com/maps/embed/v1/place?key=${mapKey}&q=${venueQuery}&zoom=14` : "";
 
   return (
     <div className="bg-[#1e1e1e] rounded-none border border-white/10 overflow-hidden shadow-sm" data-testid="venue-info">

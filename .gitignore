@@ -475,3 +475,6 @@ credentials.json
 *.pem
 *.key
 .credentials
+
+# Protect secrets
+backend/.env
