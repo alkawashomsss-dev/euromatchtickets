@@ -549,6 +549,33 @@ if static_build_dir.exists():
                 status_code=301
             )
 
+        # ── 301 Redirect: Spa F1 keyword variations → canonical ──
+        spa_redirects = [
+            "spa-f1-tickets", "spa-f1-tickets-2026", "spa-francorchamps-tickets",
+            "spa-francorchamps-f1-tickets", "f1-spa-tickets", "spa-grand-prix-tickets",
+            "spa-gp-tickets", "belgium-f1-tickets", "belgian-grand-prix-tickets",
+            "belgian-gp-tickets", "belgium-grand-prix-tickets", "f1-tickets-spa",
+            "f1-tickets-spa-2026", "tickets-spa-f1", "ticket-f1-spa", "spa-tickets-f1",
+            "spa-ticket-f1", "belgian-f1-tickets", "formula-1-spa-tickets",
+            "formula-1-belgium-tickets", "f1-belgien-tickets", "formel-1-spa-tickets",
+            "formule-1-spa-tickets", "gp-spa-tickets", "gp-belgie-tickets",
+            "spa-francorchamps-grand-prix-tickets", "belgian-grand-prix-2026-tickets",
+            "spa-grand-prix-2026", "spa-paddock-club-tickets", "f1-spa-francorchamps-tickets",
+            "belgium-gp-tickets", "f1-belgie-tickets", "f1-kaarten-spa",
+            "grand-prix-spa-tickets", "grand-prix-belgie-tickets",
+        ]
+        if full_path in spa_redirects:
+            return RedirectResponse(url="https://euromatchtickets.com/f1-belgian-grand-prix-spa-tickets", status_code=301)
+
+        # ── 301 Redirect: Taylor Swift variations → canonical ──
+        ts_redirects = [
+            "taylor-swift-tickets-london", "taylor-swift-tickets", "taylor-swift-tickets-wembley",
+            "taylor-swift-wembley-tickets", "taylor-swift-concert-london",
+            "taylor-swift-eras-tour-london", "taylor-swift-wembley-2026-tickets",
+        ]
+        if full_path in ts_redirects:
+            return RedirectResponse(url="https://euromatchtickets.com/taylor-swift-london-tickets", status_code=301)
+
         # ── 301 Redirect: ugly event IDs → clean slug URLs ──
         if full_path.startswith("event/") and not full_path.startswith("events"):
             event_id = full_path.replace("event/", "")
