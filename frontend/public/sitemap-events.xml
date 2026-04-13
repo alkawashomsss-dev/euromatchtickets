@@ -158,7 +158,7 @@
     <changefreq>daily</changefreq>
     <priority>0.75</priority>
     <image:image>
-      <image:loc>https://images.unsplash.com/photo-1760539619607-a6be20a04635?w=800&amp;q=80</image:loc>
+      <image:loc>https://images.unsplash.com/photo-1761381629538-cf46cfa51e1c?w=800&amp;q=80</image:loc>
       <image:title>Tomorrowland 2026</image:title>
     </image:image>
   </url>
@@ -198,7 +198,7 @@
     <changefreq>daily</changefreq>
     <priority>0.75</priority>
     <image:image>
-      <image:loc>https://images.unsplash.com/photo-1760539619607-a6be20a04635?w=800&amp;q=80</image:loc>
+      <image:loc>https://images.unsplash.com/photo-1767319979296-9cd162c5a21a?w=800&amp;q=80</image:loc>
       <image:title>Primavera Sound Barcelona 2026</image:title>
     </image:image>
   </url>
@@ -268,7 +268,7 @@
     <changefreq>daily</changefreq>
     <priority>0.75</priority>
     <image:image>
-      <image:loc>https://images.unsplash.com/photo-1774618522136-c23bc97f53d3?w=800&amp;q=80</image:loc>
+      <image:loc>https://images.unsplash.com/photo-1759828941146-a03bcdfb5364?w=800&amp;q=80</image:loc>
       <image:title>Belgian Grand Prix 2026</image:title>
     </image:image>
   </url>
@@ -278,7 +278,7 @@
     <changefreq>daily</changefreq>
     <priority>0.75</priority>
     <image:image>
-      <image:loc>https://images.unsplash.com/photo-1774618522136-c23bc97f53d3?w=800&amp;q=80</image:loc>
+      <image:loc>https://images.unsplash.com/photo-1775144817340-21f38aadb70c?w=800&amp;q=80</image:loc>
       <image:title>Dutch Grand Prix 2026</image:title>
     </image:image>
   </url>
@@ -298,7 +298,7 @@
     <changefreq>daily</changefreq>
     <priority>0.75</priority>
     <image:image>
-      <image:loc>https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800</image:loc>
+      <image:loc>https://images.unsplash.com/photo-1760256993642-aa07f42d3796?w=800&amp;q=80</image:loc>
       <image:title>Hungarian Grand Prix 2026</image:title>
     </image:image>
   </url>
@@ -798,7 +798,7 @@
     <changefreq>daily</changefreq>
     <priority>0.75</priority>
     <image:image>
-      <image:loc>https://images.unsplash.com/photo-1766019462906-da2bf9cbb5af?w=800&amp;q=80</image:loc>
+      <image:loc>https://images.unsplash.com/photo-1562660415-2381855700b8?w=800&amp;q=80</image:loc>
       <image:title>Harry Styles - Love On Tour 2026</image:title>
     </image:image>
   </url>
@@ -940,16 +940,6 @@
     <image:image>
       <image:loc>https://images.unsplash.com/photo-1544367946-af49aa3a7b86?w=800&amp;q=80</image:loc>
       <image:title>El Clasico: Real Madrid vs Barcelona</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/el-clasico-barcelona-vs-real-madrid-2026-tickets</loc>
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>https://images.unsplash.com/photo-1769859177914-f66488d71193?w=800&amp;q=80</image:loc>
-      <image:title>El Clasico: Barcelona vs Real Madrid</image:title>
     </image:image>
   </url>
   <url>
@@ -1498,7 +1488,7 @@
     <changefreq>daily</changefreq>
     <priority>0.75</priority>
     <image:image>
-      <image:loc>https://images.unsplash.com/photo-1769859177914-f66488d71193?w=800&amp;q=80</image:loc>
+      <image:loc>https://images.unsplash.com/photo-1705593973313-75de7bf95b56?w=800&amp;q=80</image:loc>
       <image:title>FIFA Club World Cup 2026 - Real Madrid vs Flamengo</image:title>
     </image:image>
   </url>
