@@ -8,7 +8,7 @@ import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 
 const ColdplayPage = () => {
-  const [eventLink, setEventLink] = useState('/events?search=Coldplay');
+  const [eventLink, setEventLink] = useState('/checkout?event=coldplay-2026');
 
   useEffect(() => {
     axios.get(`${API}/events?search=Coldplay&limit=1`).then(r => {
@@ -139,7 +139,7 @@ const ColdplayPage = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-right"><p className="text-2xl font-extrabold text-white">&euro;{t.price}</p><p className="text-[10px] text-slate-500">per ticket</p></div>
-                <Link to={`${eventLink}?category=${encodeURIComponent(t.name)}&price=${t.price}`}><Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold px-6">Buy</Button></Link>
+                <Link to={`${checkoutBase}?category=${encodeURIComponent(t.name)}&price=${t.price}`}><Button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold px-6">Buy</Button></Link>
               </div>
             </div>
           ))}

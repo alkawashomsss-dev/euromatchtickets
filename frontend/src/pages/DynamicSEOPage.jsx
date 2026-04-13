@@ -100,7 +100,7 @@ export default function DynamicSEOPage() {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [gone, setGone] = useState(false);
-  const [buyLink, setBuyLink] = useState("/events");
+  const [buyLink, setBuyLink] = useState("/checkout");
 
   // Get pre-hydrated FAQ data from vanilla JS
   const prehydratedFAQ = typeof window !== 'undefined' ? window.__seoFAQ : null;

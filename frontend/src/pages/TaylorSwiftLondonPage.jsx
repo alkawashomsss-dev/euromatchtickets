@@ -51,7 +51,8 @@ const TaylorSwiftLondonPage = () => {
     }).catch(() => {});
   }, []);
 
-  const eventLink = events.length > 0 ? `/event/${events[0].slug || events[0].event_id}` : '/events?search=Taylor+Swift';
+  // Buy buttons always go to checkout - NEVER to /events
+  const checkoutBase = "/checkout?event=taylor-swift-london-2026";
 
   const schema = {
     "@context": "https://schema.org", "@type": "MusicEvent",
@@ -223,7 +224,7 @@ const TaylorSwiftLondonPage = () => {
                   <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
                   <p className="text-[10px] text-slate-500">per ticket</p>
                 </div>
-                <Link to={`${eventLink}?category=${encodeURIComponent(t.name)}&price=${t.price}`}>
+                <Link to={`${checkoutBase}&category=${encodeURIComponent(t.name)}&price=${t.price}`}>
                   <Button className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-bold px-6">Buy</Button>
                 </Link>
               </div>

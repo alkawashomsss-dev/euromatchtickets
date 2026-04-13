@@ -10,7 +10,7 @@ import { BreadcrumbStructuredData, FAQStructuredData } from "../components/Struc
 import { ScarcityBadgesLight, TrustBar } from "../components/ConversionElements";
 
 const MonzaGPPage = () => {
-  const [eventLink, setEventLink] = useState('/events?search=Monza+Grand+Prix');
+  const [eventLink, setEventLink] = useState('/checkout?event=monza-grand-prix');
 
   useEffect(() => {
     axios.get(`${API}/events?search=Monza&limit=1`).then(r => {
@@ -216,7 +216,7 @@ const MonzaGPPage = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-red-500 font-medium">{t.available} left</span>
-                    <Link to={`${eventLink}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                    <Link to={`${checkoutBase}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                       <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">Buy Now</Button>
                     </Link>
                   </div>

@@ -8,7 +8,7 @@ import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 
 const MonacoExperiencePage = () => {
-  const [eventLink, setEventLink] = useState('/events?search=Monaco+Grand+Prix');
+  const [eventLink, setEventLink] = useState('/checkout?event=monaco-grand-prix');
 
   useEffect(() => {
     axios.get(`${API}/events?search=Monaco+Grand+Prix&limit=1`).then(r => {
@@ -71,7 +71,7 @@ const MonacoExperiencePage = () => {
                 </div>
                 <div className="text-right flex-shrink-0">
                   <p className="text-3xl font-black bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">{e.price}</p>
-                  <Link to={`${eventLink}?category=${encodeURIComponent(e.title)}`}><Button className="mt-2 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-bold">Book Now</Button></Link>
+                  <Link to={`${checkoutBase}?category=${encodeURIComponent(e.title)}`}><Button className="mt-2 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-bold">Book Now</Button></Link>
                 </div>
               </div>
             </div>

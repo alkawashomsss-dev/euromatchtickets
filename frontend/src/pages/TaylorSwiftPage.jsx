@@ -182,7 +182,7 @@ const TaylorSwiftPage = () => {
                       <div key={j} className="flex items-center gap-2 text-[11px] text-slate-400"><Check className="w-3 h-3 text-pink-400 flex-shrink-0" />{f}</div>
                     ))}
                   </div>
-                  <Link to="/events?search=Taylor+Swift" className={`block w-full py-3 rounded-none bg-gradient-to-r ${p.color} text-white text-sm font-bold hover:opacity-90 transition`}>
+                  <Link to="/checkout?event=taylor-swift-london-2026" className={`block w-full py-3 rounded-none bg-gradient-to-r ${p.color} text-white text-sm font-bold hover:opacity-90 transition`}>
                     Buy Now <ArrowRight className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
@@ -203,7 +203,7 @@ const TaylorSwiftPage = () => {
                       <div key={j} className="flex items-center gap-2 text-[11px] text-slate-400"><Check className="w-3 h-3 text-amber-400 flex-shrink-0" />{f}</div>
                     ))}
                   </div>
-                  <Link to="/events?search=Taylor+Swift" className={`block w-full py-3 rounded-none bg-gradient-to-r ${p.color} text-white text-sm font-bold hover:opacity-90 transition`}>
+                  <Link to="/checkout?event=taylor-swift-london-2026" className={`block w-full py-3 rounded-none bg-gradient-to-r ${p.color} text-white text-sm font-bold hover:opacity-90 transition`}>
                     Get VIP Access <Crown className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>

@@ -10,7 +10,7 @@ import { BreadcrumbStructuredData, FAQStructuredData } from "../components/Struc
 import { NewsletterSignup } from "../components/NewsletterSignup";
 
 const MonacoGPPage = () => {
-  const [eventLink, setEventLink] = useState('/events?search=Monaco+Grand+Prix');
+  const [eventLink, setEventLink] = useState('/checkout?event=monaco-grand-prix');
 
   useEffect(() => {
     axios.get(`${API}/events?search=Monaco+Grand+Prix&limit=1`).then(r => {
@@ -202,7 +202,7 @@ const MonacoGPPage = () => {
                   <p className="text-xs text-slate-500 line-through">&euro;{t.originalPrice}</p>
                   <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
                 </div>
-                <Link to={`${eventLink}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                <Link to={`${checkoutBase}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                   <Button className="bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-black font-bold px-6">Book</Button>
                 </Link>
               </div>

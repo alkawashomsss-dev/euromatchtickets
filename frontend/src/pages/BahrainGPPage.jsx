@@ -30,7 +30,7 @@ const Countdown = ({ target }) => {
 };
 
 const BahrainGPPage = () => {
-  const [eventLink, setEventLink] = useState('/events?search=Bahrain+Grand+Prix');
+  const [eventLink, setEventLink] = useState('/checkout?event=bahrain-grand-prix');
 
   useEffect(() => {
     axios.get(`${API}/events?search=Bahrain+Grand+Prix&limit=1`).then(r => {
@@ -202,7 +202,7 @@ const BahrainGPPage = () => {
                   <p className="text-xs text-slate-500 line-through">&euro;{t.originalPrice}</p>
                   <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
                 </div>
-                <Link to={`${eventLink}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                <Link to={`${checkoutBase}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                   <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-black font-bold px-6">Buy</Button>
                 </Link>
               </div>
