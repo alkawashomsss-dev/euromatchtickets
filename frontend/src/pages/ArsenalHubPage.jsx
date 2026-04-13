@@ -23,10 +23,10 @@ const ArsenalHubPage = () => {
 
   const matches = [
     { home: "Arsenal", away: "Bayern Munich", label: "UCL Quarter-Final", venue: "Emirates Stadium", date: "Apr 2026", price: 165, tickets: 24, hot: true, link: "/champions-league-tickets" },
-    { home: "Arsenal", away: "Tottenham", label: "North London Derby", venue: "Emirates Stadium", date: "Mar 2026", price: 175, tickets: 18, hot: true, link: "/events?type=match" },
-    { home: "Arsenal", away: "Man City", label: "Premier League", venue: "Emirates Stadium", date: "Apr 2026", price: 155, tickets: 33, hot: true, link: "/events?type=match" },
-    { home: "Arsenal", away: "Liverpool", label: "Premier League", venue: "Emirates Stadium", date: "May 2026", price: 145, tickets: 29, hot: true, link: "/events?type=match" },
-    { home: "Arsenal", away: "Chelsea", label: "London Derby", venue: "Emirates Stadium", date: "Mar 2026", price: 135, tickets: 45, link: "/events?type=match" },
+    { home: "Arsenal", away: "Tottenham", label: "North London Derby", venue: "Emirates Stadium", date: "Mar 2026", price: 175, tickets: 18, hot: true, link: "/checkout?event=match" },
+    { home: "Arsenal", away: "Man City", label: "Premier League", venue: "Emirates Stadium", date: "Apr 2026", price: 155, tickets: 33, hot: true, link: "/checkout?event=match" },
+    { home: "Arsenal", away: "Liverpool", label: "Premier League", venue: "Emirates Stadium", date: "May 2026", price: 145, tickets: 29, hot: true, link: "/checkout?event=match" },
+    { home: "Arsenal", away: "Chelsea", label: "London Derby", venue: "Emirates Stadium", date: "Mar 2026", price: 135, tickets: 45, link: "/checkout?event=match" },
   ];
 
   const reviews = [
@@ -185,7 +185,7 @@ const ArsenalHubPage = () => {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Come On You Gunners!</h2>
           <p className="text-red-100 mb-8 text-lg">Premier League, Champions League, North London Derby - all at the Emirates.</p>
-          <Link to="/events?type=match"><Button className="bg-[#1e1e1e] text-red-700 hover:bg-[#e10600]/10 text-lg px-8 py-3">Browse Matches</Button></Link>
+          <Link to="/checkout?event=football-tickets"><Button className="bg-[#1e1e1e] text-red-700 hover:bg-[#e10600]/10 text-lg px-8 py-3">Browse Matches</Button></Link>
         </div>
       </section>
 

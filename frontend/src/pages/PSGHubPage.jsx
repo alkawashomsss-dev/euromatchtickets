@@ -6,10 +6,10 @@ import { BreadcrumbStructuredData, FAQStructuredData } from "../components/Struc
 
 const PSGHubPage = () => {
   const matches = [
-    { home: "PSG", away: "Real Madrid", label: "UCL Round of 16", venue: "Parc des Princes", date: "Feb 2026", price: 145, tickets: 56, hot: true, link: "/events?search=PSG+Real+Madrid" },
-    { home: "PSG", away: "Marseille", label: "Le Classique", venue: "Parc des Princes", date: "Mar 2026", price: 125, tickets: 78, hot: true, link: "/events?search=PSG+Marseille" },
-    { home: "PSG", away: "Lyon", label: "Ligue 1", venue: "Parc des Princes", date: "Apr 2026", price: 75, tickets: 134, link: "/events?search=PSG+Lyon" },
-    { home: "PSG", away: "Monaco", label: "Ligue 1", venue: "Parc des Princes", date: "May 2026", price: 85, tickets: 98, link: "/events?search=PSG+Monaco" },
+    { home: "PSG", away: "Real Madrid", label: "UCL Round of 16", venue: "Parc des Princes", date: "Feb 2026", price: 145, tickets: 56, hot: true, link: "/checkout?event=psg-vs-real-madrid" },
+    { home: "PSG", away: "Marseille", label: "Le Classique", venue: "Parc des Princes", date: "Mar 2026", price: 125, tickets: 78, hot: true, link: "/checkout?event=psg-vs-marseille" },
+    { home: "PSG", away: "Lyon", label: "Ligue 1", venue: "Parc des Princes", date: "Apr 2026", price: 75, tickets: 134, link: "/checkout?event=psg-vs-lyon" },
+    { home: "PSG", away: "Monaco", label: "Ligue 1", venue: "Parc des Princes", date: "May 2026", price: 85, tickets: 98, link: "/checkout?event=psg-vs-monaco" },
   ];
 
   const faqs = [

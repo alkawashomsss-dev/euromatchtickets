@@ -90,7 +90,7 @@ const PRICE_DATA = {
       { name: 'La Liga', city: 'Spain', price: '€49+' },
     ],
     expensiveRaces: [
-      { name: 'UCL Final', city: 'TBD', price: '€999+' },
+      { name: 'UCL Final', city: 'Munich', price: '€999+' },
       { name: 'El Clasico', city: 'Madrid/Barcelona', price: '€299+' },
       { name: 'North London Derby', city: 'London', price: '€199+' },
     ],

@@ -199,7 +199,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               </div>
               <h3 className="text-xl font-bold mb-2">100% Money-Back</h3>
               <p className="text-slate-500 mb-4">Full refund if the event is cancelled. Your purchase is always protected.</p>
-              <Link to="/events" className="text-blue-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Shop Now <ArrowRight className="w-4 h-4" /></Link>
+              <Link to="/checkout" className="text-blue-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Shop Now <ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>

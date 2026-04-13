@@ -23,10 +23,10 @@ const LiverpoolHubPage = () => {
 
   const matches = [
     { home: "Liverpool", away: "Real Madrid", label: "UCL Semi-Final", venue: "Anfield", date: "May 2026", price: 185, tickets: 22, hot: true, link: "/champions-league-tickets" },
-    { home: "Liverpool", away: "Man City", label: "Premier League", venue: "Anfield", date: "Mar 2026", price: 165, tickets: 31, hot: true, link: "/events?type=match" },
-    { home: "Liverpool", away: "Man United", label: "Northwest Derby", venue: "Anfield", date: "Apr 2026", price: 155, tickets: 28, hot: true, link: "/events?type=match" },
-    { home: "Liverpool", away: "Everton", label: "Merseyside Derby", venue: "Anfield", date: "Mar 2026", price: 135, tickets: 35, hot: true, link: "/events?type=match" },
-    { home: "Liverpool", away: "Arsenal", label: "Premier League", venue: "Anfield", date: "Apr 2026", price: 145, tickets: 42, link: "/events?type=match" },
+    { home: "Liverpool", away: "Man City", label: "Premier League", venue: "Anfield", date: "Mar 2026", price: 165, tickets: 31, hot: true, link: "/checkout?event=match" },
+    { home: "Liverpool", away: "Man United", label: "Northwest Derby", venue: "Anfield", date: "Apr 2026", price: 155, tickets: 28, hot: true, link: "/checkout?event=match" },
+    { home: "Liverpool", away: "Everton", label: "Merseyside Derby", venue: "Anfield", date: "Mar 2026", price: 135, tickets: 35, hot: true, link: "/checkout?event=match" },
+    { home: "Liverpool", away: "Arsenal", label: "Premier League", venue: "Anfield", date: "Apr 2026", price: 145, tickets: 42, link: "/checkout?event=match" },
   ];
 
   const reviews = [
@@ -185,7 +185,7 @@ const LiverpoolHubPage = () => {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">You'll Never Walk Alone</h2>
           <p className="text-red-100 mb-8 text-lg">Experience the magic of Anfield. Premier League, Champions League, derbies.</p>
-          <Link to="/events?type=match"><Button className="bg-[#1e1e1e] text-red-700 hover:bg-[#e10600]/10 text-lg px-8 py-3">Browse Matches</Button></Link>
+          <Link to="/checkout?event=football-tickets"><Button className="bg-[#1e1e1e] text-red-700 hover:bg-[#e10600]/10 text-lg px-8 py-3">Browse Matches</Button></Link>
         </div>
       </section>
 

@@ -128,7 +128,7 @@ const LasVegasGPPage = () => {
                     <div className="text-xs text-slate-400 line-through">€{ticket.originalPrice}</div>
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
-                  <Link to="/events?type=f1">
+                  <Link to="/checkout?event=las-vegas-grand-prix-2026">
                     <Button className="bg-pink-500 hover:bg-pink-600">Buy Now</Button>
                   </Link>
                 </div>
@@ -186,7 +186,7 @@ const LasVegasGPPage = () => {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">What Happens in Vegas... F1! 🎰</h2>
           <p className="text-slate-500 mb-8">The most glamorous race weekend of the year</p>
-          <Link to="/events?type=f1">
+          <Link to="/checkout?event=las-vegas-grand-prix-2026">
             <Button size="lg" className="bg-pink-500 hover:bg-pink-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />
               Buy Las Vegas GP Tickets

@@ -74,10 +74,10 @@ const ChampionsLeaguePage = () => {
   const matches = [
     { home: "Real Madrid", away: "Manchester City", venue: "Santiago Bernabeu", city: "Madrid", date: "Feb 2026", price: 185, tickets: 34, hot: true, link: "/real-madrid-champions-league-tickets-2026" },
     { home: "Bayern Munich", away: "Barcelona", venue: "Allianz Arena", city: "Munich", date: "Feb 2026", price: 165, tickets: 45, hot: true, link: "/bayern-vs-real-madrid-tickets" },
-    { home: "PSG", away: "Liverpool", venue: "Parc des Princes", city: "Paris", date: "Mar 2026", price: 155, tickets: 52, link: "/events?type=match" },
-    { home: "Inter Milan", away: "Arsenal", venue: "San Siro", city: "Milan", date: "Mar 2026", price: 125, tickets: 67, link: "/events?type=match" },
-    { home: "Atletico Madrid", away: "Juventus", venue: "Metropolitano", city: "Madrid", date: "Apr 2026", price: 115, tickets: 78, link: "/events?type=match" },
-    { home: "UCL Final 2026", away: "TBD vs TBD", venue: "Allianz Arena", city: "Munich", date: "May 30, 2026", price: 450, tickets: 23, hot: true, link: "/events?type=match" },
+    { home: "PSG", away: "Liverpool", venue: "Parc des Princes", city: "Paris", date: "Mar 2026", price: 155, tickets: 52, link: "/checkout?event=champions-league-2026" },
+    { home: "Inter Milan", away: "Arsenal", venue: "San Siro", city: "Milan", date: "Mar 2026", price: 125, tickets: 67, link: "/checkout?event=champions-league-2026" },
+    { home: "Atletico Madrid", away: "Juventus", venue: "Metropolitano", city: "Madrid", date: "Apr 2026", price: 115, tickets: 78, link: "/checkout?event=champions-league-2026" },
+    { home: "UCL Final 2026", away: "Allianz Arena, Munich", venue: "Allianz Arena", city: "Munich", date: "May 30, 2026", price: 450, tickets: 23, hot: true, link: "/checkout?event=champions-league-final-2026" },
   ];
 
   const reviews = [

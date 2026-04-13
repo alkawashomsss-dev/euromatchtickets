@@ -18,8 +18,8 @@ const GermanLandingPage = () => {
     { titel: "Bayern München vs Real Madrid", datum: "April 2026", ort: "Allianz Arena, München", preis: 59, icon: Trophy, link: "/bayern-vs-real-madrid-tickets", tag: "UCL" },
     { titel: "Formel 1 - Großer Preis von Monaco", datum: "Mai 2026", ort: "Circuit de Monaco", preis: 99, icon: Flag, link: "/f1-monaco-grand-prix-tickets", tag: "PREMIUM" },
     { titel: "FIFA Weltmeisterschaft 2026", datum: "Jun-Jul 2026", ort: "USA, Mexiko, Kanada", preis: 89, icon: Trophy, link: "/world-cup-2026", tag: "EVENT DES JAHRES" },
-    { titel: "Rammstein Europa Tour 2026", datum: "Sommer 2026", ort: "Verschiedene Städte", preis: 79, icon: Music, link: "/events", tag: "AUSVERKAUFT" },
-    { titel: "Bundesliga - BVB vs Bayern", datum: "Saison 2026", ort: "Signal Iduna Park", preis: 49, icon: Trophy, link: "/events", tag: "DER KLASSIKER" },
+    { titel: "Rammstein Europa Tour 2026", datum: "Sommer 2026", ort: "Verschiedene Städte", preis: 79, icon: Music, link: "/checkout", tag: "AUSVERKAUFT" },
+    { titel: "Bundesliga - BVB vs Bayern", datum: "Saison 2026", ort: "Signal Iduna Park", preis: 49, icon: Trophy, link: "/checkout", tag: "DER KLASSIKER" },
   ];
 
   const vorteile = [

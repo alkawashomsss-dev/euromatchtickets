@@ -273,7 +273,7 @@ const SuperBowlPage = () => {
               { name: "MotoGP", link: "/motogp-tickets", emoji: "🏍️" },
               { name: "El Clasico", link: "/el-clasico-tickets", emoji: "⚽" },
               { name: "Monaco GP", link: "/monaco-grand-prix-tickets", emoji: "🏎️" },
-              { name: "Taylor Swift", link: "/events?search=Taylor+Swift", emoji: "🎤" },
+              { name: "Taylor Swift", link: "/checkout?event=taylor-swift-2026", emoji: "🎤" },
             ].map((e, i) => (
               <Link key={i} to={e.link} className="flex items-center gap-2 bg-white/[0.03] border border-white/5 hover:border-red-500/30 rounded-none p-3 text-sm text-slate-400 hover:text-white transition">
                 <span>{e.emoji}</span> {e.name} <ChevronRight className="w-3.5 h-3.5 ml-auto" />

@@ -79,7 +79,7 @@ const BadBunnyPage = () => {
           <h2 className="text-3xl font-bold mb-8 text-center">Bad Bunny London 2026</h2>
           <div className="grid gap-4">
             {shows.map((show, i) => (
-              <Link key={i} to="/events?type=concert" className="group flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-violet-200 rounded-none p-6 transition-all">
+              <Link key={i} to="/checkout?event=bad-bunny-2026" className="group flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/5 hover:border-violet-200 rounded-none p-6 transition-all">
                 <div className="flex items-center gap-4 mb-4 md:mb-0">
                   <div className="w-14 h-14 bg-violet-50 rounded-none flex items-center justify-center"><Music className="w-7 h-7 text-violet-600" /></div>
                   <div>

@@ -6,10 +6,10 @@ import { BreadcrumbStructuredData, FAQStructuredData } from "../components/Struc
 
 const JuventusHubPage = () => {
   const matches = [
-    { home: "Juventus", away: "AC Milan", label: "Serie A Derby", venue: "Allianz Stadium", date: "Mar 2026", price: 95, tickets: 78, hot: true, link: "/events?search=Juventus+Milan" },
-    { home: "Juventus", away: "Inter Milan", label: "Derby d'Italia", venue: "Allianz Stadium", date: "Apr 2026", price: 115, tickets: 56, hot: true, link: "/events?search=Juventus+Inter" },
-    { home: "Juventus", away: "Napoli", label: "Serie A", venue: "Allianz Stadium", date: "May 2026", price: 85, tickets: 89, hot: true, link: "/events?search=Juventus+Napoli" },
-    { home: "Juventus", away: "Roma", label: "Serie A", venue: "Allianz Stadium", date: "Mar 2026", price: 75, tickets: 123, link: "/events?search=Juventus+Roma" },
+    { home: "Juventus", away: "AC Milan", label: "Serie A Derby", venue: "Allianz Stadium", date: "Mar 2026", price: 95, tickets: 78, hot: true, link: "/checkout?event=juventus-vs-milan" },
+    { home: "Juventus", away: "Inter Milan", label: "Derby d'Italia", venue: "Allianz Stadium", date: "Apr 2026", price: 115, tickets: 56, hot: true, link: "/checkout?event=juventus-vs-inter" },
+    { home: "Juventus", away: "Napoli", label: "Serie A", venue: "Allianz Stadium", date: "May 2026", price: 85, tickets: 89, hot: true, link: "/checkout?event=juventus-vs-napoli" },
+    { home: "Juventus", away: "Roma", label: "Serie A", venue: "Allianz Stadium", date: "Mar 2026", price: 75, tickets: 123, link: "/checkout?event=juventus-vs-roma" },
   ];
 
   const faqs = [

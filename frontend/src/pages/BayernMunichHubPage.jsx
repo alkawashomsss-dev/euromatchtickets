@@ -7,10 +7,10 @@ import { BreadcrumbStructuredData, FAQStructuredData } from "../components/Struc
 const BayernMunichHubPage = () => {
   const matches = [
     { home: "Bayern Munich", away: "Real Madrid", label: "UCL Semi-Final", venue: "Allianz Arena", date: "Apr 2026", price: 185, tickets: 34, hot: true, link: "/bayern-vs-real-madrid-tickets" },
-    { home: "Bayern Munich", away: "Borussia Dortmund", label: "Der Klassiker", venue: "Allianz Arena", date: "Mar 2026", price: 125, tickets: 67, hot: true, link: "/events?search=Bayern+Dortmund" },
-    { home: "Bayern Munich", away: "Barcelona", label: "UCL Quarter-Final", venue: "Allianz Arena", date: "Apr 2026", price: 165, tickets: 45, hot: true, link: "/events?search=Bayern+Barcelona" },
-    { home: "Bayern Munich", away: "RB Leipzig", label: "Bundesliga", venue: "Allianz Arena", date: "Mar 2026", price: 85, tickets: 112, link: "/events?search=Bayern+Leipzig" },
-    { home: "Bayern Munich", away: "Bayer Leverkusen", label: "Bundesliga Top", venue: "Allianz Arena", date: "May 2026", price: 95, tickets: 89, link: "/events?search=Bayern+Leverkusen" },
+    { home: "Bayern Munich", away: "Borussia Dortmund", label: "Der Klassiker", venue: "Allianz Arena", date: "Mar 2026", price: 125, tickets: 67, hot: true, link: "/checkout?event=bayern-vs-dortmund" },
+    { home: "Bayern Munich", away: "Barcelona", label: "UCL Quarter-Final", venue: "Allianz Arena", date: "Apr 2026", price: 165, tickets: 45, hot: true, link: "/checkout?event=bayern-vs-barcelona" },
+    { home: "Bayern Munich", away: "RB Leipzig", label: "Bundesliga", venue: "Allianz Arena", date: "Mar 2026", price: 85, tickets: 112, link: "/checkout?event=bayern-vs-leipzig" },
+    { home: "Bayern Munich", away: "Bayer Leverkusen", label: "Bundesliga Top", venue: "Allianz Arena", date: "May 2026", price: 95, tickets: 89, link: "/checkout?event=bayern-vs-leverkusen" },
   ];
 
   const faqs = [

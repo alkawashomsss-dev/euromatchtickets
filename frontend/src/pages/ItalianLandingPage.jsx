@@ -16,7 +16,7 @@ const ItalianLandingPage = () => {
   const eventi = [
     { titolo: "Finale Champions League 2026", data: "30 Maggio 2026", luogo: "Allianz Arena, Monaco", prezzo: 85, icona: Trophy, link: "/champions-league-tickets", tag: "POPOLARE" },
     { titolo: "AC Milan - Champions League", data: "Feb-Mag 2026", luogo: "San Siro, Milano", prezzo: 95, icona: Trophy, link: "/champions-league-tickets", tag: "RICHIESTO" },
-    { titolo: "Juventus vs Inter - Derby d'Italia", data: "Aprile 2026", luogo: "Allianz Stadium, Torino", prezzo: 85, icona: Trophy, link: "/events?type=match", tag: "DERBY" },
+    { titolo: "Juventus vs Inter - Derby d'Italia", data: "Aprile 2026", luogo: "Allianz Stadium, Torino", prezzo: 85, icona: Trophy, link: "/checkout?event=football-tickets", tag: "DERBY" },
     { titolo: "Gran Premio d'Italia F1 2026", data: "Settembre 2026", luogo: "Monza, Milano", prezzo: 89, icona: Flag, link: "/f1-tickets", tag: "CLASSICO" },
     { titolo: "Taylor Swift - Eras Tour Milano", data: "2026", luogo: "San Siro, Milano", prezzo: 89, icona: Music, link: "/taylor-swift-tickets", tag: "ESAURITO PRESTO" },
     { titolo: "Coppa del Mondo FIFA 2026", data: "Giu-Lug 2026", luogo: "USA, Messico, Canada", prezzo: 89, icona: Trophy, link: "/world-cup-2026", tag: "EVENTO DELL'ANNO" },
