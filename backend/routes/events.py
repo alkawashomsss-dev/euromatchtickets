@@ -70,28 +70,35 @@ async def get_events(
     if date_to:
         query["event_date"]["$lte"] = date_to
     if search:
-        # Split search into words for better multi-word matching
         words = [w for w in search.strip().split() if len(w) >= 2]
         field_list = ["title", "artist", "home_team", "away_team", "venue", "city", "event_type", "league", "subtitle"]
         if len(words) > 1:
-            # First try: each word in ANY field of the SAME event (strict AND)
+            # Each word must appear in at least one field (AND logic)
             word_conditions = []
             for word in words:
                 word_conditions.append({"$or": [{f: {"$regex": word, "$options": "i"}} for f in field_list]})
-            # Use $or to also match if ALL words appear across any fields
-            # This handles "Bayern Barcelona" → finds events with either word
-            query["$or"] = [
-                {"$and": word_conditions},  # strict: all words in same event
-                *[{f: {"$regex": search.replace(" ", ".*"), "$options": "i"}} for f in field_list],  # fuzzy: words in sequence
-                *[{f: {"$regex": word, "$options": "i"}} for word in words for f in field_list],  # any word match
-            ]
+            strict_query = {**query, "$and": word_conditions}
+            # Try strict AND first
+            strict_results = await db.events.find(strict_query, {"_id": 0, "description": 0}).sort("event_date", 1).limit(min(limit, 200)).to_list(min(limit, 200))
+            if strict_results:
+                events_raw = strict_results
+            else:
+                # Fallback: any word matches (OR)
+                query["$or"] = [{f: {"$regex": word, "$options": "i"}} for word in words for f in field_list]
+                events_raw = None
         else:
             query["$or"] = [{f: {"$regex": search, "$options": "i"}} for f in field_list]
+            events_raw = None
+    else:
+        events_raw = None
 
-    # Lightweight projection for list views - exclude heavy fields
+    # Lightweight projection for list views
     projection = {"_id": 0, "description": 0}
 
-    events = await db.events.find(query, projection).sort("event_date", 1).limit(min(limit, 200)).to_list(min(limit, 200))
+    if events_raw is None:
+        events = await db.events.find(query, projection).sort("event_date", 1).limit(min(limit, 200)).to_list(min(limit, 200))
+    else:
+        events = events_raw
 
     if events:
         event_ids = [e["event_id"] for e in events]

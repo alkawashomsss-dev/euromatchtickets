@@ -38,11 +38,14 @@ const TaylorSwiftLondonPage = () => {
   const [stats, setStats] = useState({ available: 0, lowest: 89 });
 
   useEffect(() => {
-    axios.get(`${API}/events?search=Taylor+Swift`).then(r => {
-      if (r.data.length > 0) {
-        setEvents(r.data);
-        const total = r.data.reduce((s, e) => s + (e.available_tickets || 0), 0);
-        const prices = r.data.map(e => e.lowest_price || 89).filter(Boolean);
+    axios.get(`${API}/events?search=Taylor+Swift&event_type=concert`).then(r => {
+      const tsEvents = (r.data || []).filter(e => 
+        (e.title || '').toLowerCase().includes('taylor swift')
+      );
+      if (tsEvents.length > 0) {
+        setEvents(tsEvents);
+        const total = tsEvents.reduce((s, e) => s + (e.available_tickets || 0), 0);
+        const prices = tsEvents.map(e => e.lowest_price || 89).filter(Boolean);
         setStats({ available: total || 1200, lowest: prices.length ? Math.min(...prices) : 89 });
       }
     }).catch(() => {});
