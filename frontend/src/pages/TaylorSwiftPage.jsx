@@ -84,6 +84,7 @@ const TaylorSwiftPage = () => {
         title="Taylor Swift Tickets 2026 | Wembley London from €89"
         description="Buy Taylor Swift tickets 2026 from €89. Eras Tour Wembley Stadium London, 6 nights. Verified tickets, instant QR delivery. Cheapest prices - selling fast!"
         canonicalUrl="https://euromatchtickets.com/taylor-swift-wembley-2026-tickets"
+        image="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Taylor Swift Eras Tour London 2026" price={89} highPrice={2999} url="https://euromatchtickets.com/taylor-swift-london-tickets" category="concert" venue="Wembley Stadium" city="London" />

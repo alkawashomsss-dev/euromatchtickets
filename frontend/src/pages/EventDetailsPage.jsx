@@ -110,7 +110,7 @@ export default function EventDetailsPage() {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="event-details-page">
-      <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={isUglyUrl} />
+      <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={isUglyUrl} image={event.image_url} />
       <EventStructuredData event={event} />
       <ProductSchema
         name={event.title}

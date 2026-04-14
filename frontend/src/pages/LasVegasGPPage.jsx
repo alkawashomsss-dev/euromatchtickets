@@ -42,6 +42,7 @@ const LasVegasGPPage = () => {
       <SEOHead 
         title="Las Vegas GP Tickets 2026 | F1 Night Race Prices"
         description="Buy Las Vegas Grand Prix 2026 tickets from €249. F1 on the Strip! Sphere Grandstand, Strip View, VIP Hospitality. Night race past casinos. 100% Buyer."
+        image="https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Las Vegas Grand Prix 2026" price={249} highPrice={5999} url="https://euromatchtickets.com/f1-las-vegas-grand-prix-tickets" category="f1" venue="Las Vegas Strip Circuit" city="Las Vegas" />

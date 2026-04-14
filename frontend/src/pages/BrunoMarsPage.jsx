@@ -43,6 +43,7 @@ const BrunoMarsPage = () => {
       <SEOHead 
         title="Bruno Mars Tour 2026 Tickets | Wembley & Europe"
         description="Buy Bruno Mars The Romantic Tour 2026 tickets. Official European stadium tour - 6 nights Wembley London, Berlin, Amsterdam, Madrid, Milan. Verified."
+        image="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Bruno Mars Tour 2026" price={89} highPrice={1999} url="https://euromatchtickets.com/bruno-mars-tour-2026" category="concert" venue="Wembley Stadium" city="London" />

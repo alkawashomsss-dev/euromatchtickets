@@ -45,6 +45,7 @@ const SpainGPPage = () => {
       <SEOHead 
         title="Spanish GP Tickets 2026 | Barcelona F1 Prices"
         description="Buy Spanish Grand Prix 2026 Barcelona tickets from €119. Circuit de Barcelona-Catalunya. Grandstand G, C, H. VIP Hospitality. 100% Ticket Guarantee."
+        image="https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Spanish Grand Prix Barcelona 2026" price={129} highPrice={2999} url="https://euromatchtickets.com/f1-spanish-grand-prix-barcelona-tickets" category="f1" venue="Circuit de Barcelona-Catalunya" city="Barcelona" />

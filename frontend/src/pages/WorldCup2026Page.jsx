@@ -7,6 +7,7 @@ import { API } from '../App';
 import axios from 'axios';
 import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import SEOHead from "../components/SEOHead";
 
 const TRANSLATIONS = {
   en: { title: "FIFA World Cup 2026 Tickets", subtitle: "USA • Canada • Mexico", buyNow: "Secure Your Seat Now", from: "From", final: "World Cup Final", guarantee: "100% Guarantee" },
@@ -76,6 +77,12 @@ const WorldCup2026Page = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <SEOHead
+        title="FIFA World Cup 2026 Tickets | USA Mexico Canada"
+        description="Buy FIFA World Cup 2026 tickets from €99. Group stages, knockout rounds, and final. Cheapest verified tickets in Europe."
+        image="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=630&fit=crop"
+        canonicalUrl="https://euromatchtickets.com/world-cup-2026"
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026" category="worldcup" venue="Multiple Venues" city="USA/Mexico/Canada" />
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "World Cup 2026", url: "https://euromatchtickets.com/world-cup-2026" }]} />

@@ -76,6 +76,7 @@ const SuperBowlPage = () => {
       <SEOHead
         title="Super Bowl 2026 Tickets | VIP & Best Seats"
         description="Buy Super Bowl LXII 2027 tickets from €899. VIP suites, hospitality packages & premium seats at Levi's Stadium, Santa Clara. 100% verified with instant QR."
+        image="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Super Bowl 2027" price={2499} highPrice={29999} url="https://euromatchtickets.com/super-bowl-2026-tickets" category="football" venue="SoFi Stadium" city="Los Angeles" />

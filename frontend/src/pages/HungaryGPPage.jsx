@@ -45,6 +45,7 @@ const HungaryGPPage = () => {
       <SEOHead 
         title="Hungarian GP Tickets 2026 | Budapest F1 Prices"
         description="Buy Hungarian Grand Prix 2026 Budapest tickets from €99. Cheapest F1 race! Hungaroring circuit. VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
+        image="https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Hungarian Grand Prix Budapest 2026" price={119} highPrice={2799} url="https://euromatchtickets.com/f1-hungarian-grand-prix-budapest-tickets" category="f1" venue="Hungaroring" city="Budapest" />

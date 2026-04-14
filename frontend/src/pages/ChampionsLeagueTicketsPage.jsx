@@ -72,6 +72,7 @@ const ChampionsLeagueTicketsPage = () => {
         description="Buy Champions League 2025 tickets. UCL semi final, final Munich 2025. Bayern Munich, Real Madrid, Barcelona. Verified tickets + instant QR delivery."
         keywords="champions league tickets, ucl 2025 tickets, ticket champions league 2025, champions league semi final 2025 tickets, buy ticket final champions league 2025, champions league munich tickets"
         canonicalUrl="https://euromatchtickets.com/champions-league-tickets"
+        image="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200&h=630&fit=crop"
       />
 
       <ProductSchema name="Champions League Tickets 2026" price={99} highPrice={4999} url="https://euromatchtickets.com/champions-league-tickets" category="football" venue="Various Stadiums" city="Europe" />

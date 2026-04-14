@@ -24,6 +24,7 @@ const F1LandingPage = () => {
         title="F1 Tickets 2026 | Buy Formula 1 Tickets Online"
         description="Buy F1 tickets 2026 season. F1 calendar 2026: Monaco, Silverstone, Bahrain, Abu Dhabi & more. From €120. F1 schedule 2026 with instant delivery + guarantee."
         canonicalUrl="https://euromatchtickets.com/f1-tickets-2026"
+        image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200&h=630&fit=crop"
       />
 
       <ProductSchema name="F1 Tickets 2026 All Grand Prix" price={79} highPrice={8999} url="https://euromatchtickets.com/f1-tickets" category="f1" venue="Various Circuits" city="Worldwide" />

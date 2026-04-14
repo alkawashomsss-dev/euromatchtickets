@@ -7,6 +7,7 @@ import { API } from '../App';
 import axios from 'axios';
 import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import SEOHead from "../components/SEOHead";
 
 const TRANSLATIONS = {
   en: { title: "Metallica Sphere Las Vegas 2026", subtitle: "M72 World Tour - The Sphere Experience", buyNow: "Secure Your Seat Now", from: "From", snakePit: "Snake Pit VIP" },
@@ -52,6 +53,12 @@ const MetallicaPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <SEOHead
+        title="Metallica M72 Tour 2026 | Sphere Las Vegas Tickets"
+        description="Buy Metallica tickets for the M72 World Tour 2026 at the Sphere Las Vegas. From €99. Verified tickets, instant QR delivery."
+        image="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=1200&h=630&fit=crop"
+        canonicalUrl="https://euromatchtickets.com/metallica-sphere-las-vegas-tickets"
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Metallica M72 Tour 2026" price={99} highPrice={2499} url="https://euromatchtickets.com/metallica-sphere-las-vegas-tickets" category="concert" venue="Sphere" city="Las Vegas" />
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Metallica Sphere Las Vegas", url: "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets" }]} />

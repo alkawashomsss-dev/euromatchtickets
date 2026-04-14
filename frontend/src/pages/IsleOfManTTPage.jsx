@@ -102,6 +102,7 @@ const IsleOfManTTPage = () => {
       <SEOHead 
         title="Isle of Man TT Tickets 2025-2026 | Race Passes"
         description="Buy Isle of Man TT tickets 2025 & 2026 from €149. World's most thrilling motorcycle race. Grandstand passes, VIP. Instant QR delivery + FanProtect."
+        image="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

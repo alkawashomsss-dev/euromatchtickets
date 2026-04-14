@@ -45,6 +45,7 @@ const AustraliaGPPage = () => {
       <SEOHead 
         title="Australian GP Tickets 2026 | Melbourne F1 Prices"
         description="Buy Australian Grand Prix 2026 Melbourne tickets from €159. Albert Park Circuit. Jones, Brabham, Prost grandstands. VIP Hospitality. 100% Ticket."
+        image="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Australian Grand Prix Melbourne 2026" price={169} highPrice={3999} url="https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets" category="f1" venue="Albert Park Circuit" city="Melbourne" />

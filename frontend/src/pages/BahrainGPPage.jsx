@@ -82,6 +82,7 @@ const BahrainGPPage = () => {
         title="Bahrain GP Tickets 2026 | Night Race from €59"
         description="Buy Bahrain Grand Prix 2026 tickets from €59. F1 night race at Sakhir. Grandstand, VIP & Paddock Club. 30% cheaper! Instant QR delivery + FanProtect guarantee."
         canonicalUrl="https://euromatchtickets.com/f1-bahrain-grand-prix-tickets"
+        image="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       <BreadcrumbStructuredData items={[

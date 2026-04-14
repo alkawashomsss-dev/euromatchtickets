@@ -45,6 +45,7 @@ const AustriaGPPage = () => {
       <SEOHead 
         title="Austrian GP Tickets 2026 | Red Bull Ring F1 Prices"
         description="Buy Austrian Grand Prix 2026 Red Bull Ring tickets from €119. Mountain circuit in Spielberg! VIP Hospitality. 100% Ticket Guarantee. Instant delivery!"
+        image="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Austrian Grand Prix 2026" price={139} highPrice={2999} url="https://euromatchtickets.com/f1-austrian-grand-prix-red-bull-ring-tickets" category="f1" venue="Red Bull Ring" city="Spielberg" />

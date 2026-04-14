@@ -47,6 +47,7 @@ const WorldAthleticsPage = () => {
       <SEOHead
         title="World Athletics 2026 Tickets | Best Prices & VIP"
         description="Buy World Athletics Ultimate Championship 2026 tickets from €79. VIP track-side packages, hospitality access. Watch Olympic champions live. 100% verified."
+        image="https://images.unsplash.com/photo-1532444458054-01a7dd3e9fca?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="World Athletics Championships 2026" price={49} highPrice={999} url="https://euromatchtickets.com/world-athletics-2026-tickets" category="athletics" venue="Olympic Stadium" city="Budapest" />

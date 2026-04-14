@@ -52,6 +52,7 @@ const WorldCupLandingPage = () => {
       <SEOHead 
         title="FIFA World Cup 2026 Tickets | Buy Official Online"
         description="Get official FIFA World Cup 2026 tickets. Prices from €150. Instant QR delivery. 100% money-back guarantee. Over 50,000 tickets available."
+        image="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=630&fit=crop"
       />
       <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026-tickets" category="worldcup" venue="MetLife Stadium" city="New York" />
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "World Cup 2026 Tickets", url: "https://euromatchtickets.com/world-cup-2026-tickets" }]} />

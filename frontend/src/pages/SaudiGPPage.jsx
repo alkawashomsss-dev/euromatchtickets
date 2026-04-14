@@ -45,6 +45,7 @@ const SaudiGPPage = () => {
       <SEOHead 
         title="Saudi GP Tickets 2026 | Jeddah F1 Night Race"
         description="Buy Saudi Arabian Grand Prix 2026 Jeddah tickets from €169. Fastest street circuit! Night race on the Red Sea. VIP Hospitality. 100% Ticket Guarantee."
+        image="https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Saudi Arabian Grand Prix 2026" price={199} highPrice={4499} url="https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets" category="f1" venue="Jeddah Corniche Circuit" city="Jeddah" />

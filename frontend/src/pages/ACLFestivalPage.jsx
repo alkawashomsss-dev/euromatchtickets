@@ -7,6 +7,7 @@ import { API } from '../App';
 import axios from 'axios';
 import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import SEOHead from "../components/SEOHead";
 
 const TRANSLATIONS = {
   en: { title: "ACL Festival 2026 Tickets", subtitle: "Austin City Limits - The Ultimate Festival", buyNow: "Buy Pass", from: "From", ultimate: "Ultimate Experience" },
@@ -51,6 +52,12 @@ const ACLFestivalPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <SEOHead
+        title="ACL Festival Austin 2026 | Weekend Passes"
+        description="Buy ACL Festival Austin 2026 passes from €149. Zilker Park. 3-day passes, VIP, and single day tickets available."
+        image="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200&h=630&fit=crop"
+        canonicalUrl="https://euromatchtickets.com/acl-festival-2026"
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="ACL Festival Austin 2026" price={149} highPrice={1999} url="https://euromatchtickets.com/acl-festival-2026" category="festival" venue="Zilker Park" city="Austin" />
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Festivals", url: "https://euromatchtickets.com/events?type=festival" }, { name: "ACL Festival Austin 2026", url: "https://euromatchtickets.com/acl-festival-2026" }]} />

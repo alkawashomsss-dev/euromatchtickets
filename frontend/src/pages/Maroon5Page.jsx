@@ -7,6 +7,7 @@ import { API } from '../App';
 import axios from 'axios';
 import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import SEOHead from "../components/SEOHead";
 
 // Multilingual SEO content
 const TRANSLATIONS = {
@@ -135,6 +136,12 @@ const Maroon5Page = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <SEOHead
+        title="Maroon 5 World Tour 2026 | Munich Tickets"
+        description="Buy Maroon 5 World Tour 2026 tickets from €79. Olympiastadion Munich. Verified sellers, instant QR delivery."
+        image="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&h=630&fit=crop"
+        canonicalUrl="https://euromatchtickets.com/maroon-5-tour-2026"
+      />
       {/* SEO Meta Tags */}
       <title>{t.title} | EuroMatchTickets</title>
       <meta name="description" content={t.description} />

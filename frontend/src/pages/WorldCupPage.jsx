@@ -52,6 +52,7 @@ const WorldCupPage = () => {
       <SEOHead 
         title="FIFA World Cup 2026 Tickets | Cheapest Prices"
         description="Buy FIFA World Cup 2026 tickets for all matches. Opening ceremony Mexico, group stage, quarter finals, semi finals and World Cup Final in New York."
+        image="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(worldCupSchema) }} />
       <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026-tickets" category="worldcup" venue="Multiple Venues" city="USA/Mexico/Canada" />

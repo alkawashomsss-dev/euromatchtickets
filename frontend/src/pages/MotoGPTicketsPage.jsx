@@ -165,6 +165,7 @@ const MotoGPTicketsPage = () => {
       <SEOHead 
         title="MotoGP Tickets 2026 | Buy Moto GP Race Passes"
         description="Buy MotoGP tickets 2026 from €69. Moto GP calendar 2026: Mugello, Silverstone, Assen. VIP Village. MotoGP tickets price from €69. Instant QR delivery."
+        image="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

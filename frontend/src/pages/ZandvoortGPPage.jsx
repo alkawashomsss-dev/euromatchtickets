@@ -42,6 +42,7 @@ const ZandvoortGPPage = () => {
       <SEOHead 
         title="Dutch GP Tickets 2026 | Zandvoort F1 Prices"
         description="Buy Dutch Grand Prix 2026 Zandvoort tickets from €189. Max Verstappen's home race! Orange army atmosphere. General admission, grandstand, VIP. €10 cheaper."
+        image="https://images.unsplash.com/photo-1541447271487-09612b3f49f7?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Dutch Grand Prix Zandvoort 2026" price={149} highPrice={2999} url="https://euromatchtickets.com/f1-dutch-grand-prix-zandvoort-tickets" category="f1" venue="Circuit Zandvoort" city="Zandvoort" />

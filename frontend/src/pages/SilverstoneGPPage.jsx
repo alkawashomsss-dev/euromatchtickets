@@ -42,6 +42,7 @@ const SilverstoneGPPage = () => {
       <SEOHead 
         title="British GP Tickets 2026 | Silverstone F1 Prices"
         description="Buy British Grand Prix 2026 Silverstone tickets from €149. Best grandstands Copse, Club, Maggotts. VIP Hospitality available. 100% Buyer Protection. €10."
+        image="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="British Grand Prix Silverstone 2026" price={149} highPrice={3499} url="https://euromatchtickets.com/f1-british-grand-prix-silverstone-tickets" category="f1" venue="Silverstone Circuit" city="Silverstone" />

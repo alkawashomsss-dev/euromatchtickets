@@ -42,6 +42,7 @@ const AbuDhabiGPPage = () => {
       <SEOHead 
         title="Abu Dhabi GP Tickets 2026 | F1 Yas Marina Prices"
         description="Buy Abu Dhabi Grand Prix 2026 tickets from €169. F1 Season Finale at Yas Marina! Twilight race, Yas Hotel views. VIP Hospitality. 100% Buyer Protection."
+        image="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Abu Dhabi Grand Prix 2026" price={199} highPrice={4499} url="https://euromatchtickets.com/f1-abu-dhabi-grand-prix-tickets" category="f1" venue="Yas Marina Circuit" city="Abu Dhabi" />

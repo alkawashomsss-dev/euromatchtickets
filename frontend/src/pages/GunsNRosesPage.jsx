@@ -40,6 +40,7 @@ const GunsNRosesPage = () => {
       <SEOHead 
         title="Guns N' Roses Tour 2026 Tickets | Europe Stadium"
         description="Buy Guns N Roses 2026 European tour tickets from €95. Stadium shows - Berlin, London Tottenham, Hamburg, Cologne, Munich. Sweet Child O Mine live!"
+        image="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Guns N Roses Tour 2026" price={89} highPrice={1999} url="https://euromatchtickets.com/guns-n-roses-tour-2026" category="concert" venue="Olympic Stadium" city="London" />

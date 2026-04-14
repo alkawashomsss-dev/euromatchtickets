@@ -35,6 +35,7 @@ const BadBunnyPage = () => {
       <SEOHead 
         title="Bad Bunny London 2026 Tickets | Tottenham Stadium"
         description="Buy Bad Bunny London 2026 tickets from €145. DeBi TiRAR MaS FOToS World Tour - Tottenham Hotspur Stadium June 27-28. El Conejo Malo live! Verified tickets."
+        image="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Bad Bunny London 2026" price={79} highPrice={1499} url="https://euromatchtickets.com/bad-bunny-london-2026" category="concert" venue="Tottenham Hotspur Stadium" city="London" />

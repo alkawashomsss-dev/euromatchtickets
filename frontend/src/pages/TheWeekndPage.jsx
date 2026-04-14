@@ -42,6 +42,7 @@ const TheWeekndPage = () => {
       <SEOHead 
         title="The Weeknd Tour 2026 Tickets | Concert & European Tour"
         description="Buy The Weeknd tour 2026 tickets from €95. Concert The Weeknd 2026 European dates. Paris, London, Berlin. Instant QR delivery + FanProtect guarantee."
+        image="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="The Weeknd Tour 2026" price={79} highPrice={1999} url="https://euromatchtickets.com/the-weeknd-tour-2026" category="concert" venue="Wembley Stadium" city="London" />

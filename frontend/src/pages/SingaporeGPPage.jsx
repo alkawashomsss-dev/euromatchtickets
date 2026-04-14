@@ -42,6 +42,7 @@ const SingaporeGPPage = () => {
       <SEOHead 
         title="Singapore GP Tickets 2026 | F1 Marina Bay Prices"
         description="Buy Singapore Grand Prix 2026 tickets from €189. Spectacular F1 Night Race at Marina Bay. Turn 1, Pit Grandstand, VIP available. 100% Buyer Protection."
+        image="https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Singapore Grand Prix 2026" price={189} highPrice={4999} url="https://euromatchtickets.com/f1-singapore-grand-prix-tickets" category="f1" venue="Marina Bay Street Circuit" city="Singapore" />

@@ -7,6 +7,7 @@ import { API } from '../App';
 import axios from 'axios';
 import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import SEOHead from "../components/SEOHead";
 
 const TRANSLATIONS = {
   en: { title: "Harry Styles Tickets 2026", subtitle: "Together Together Tour - Official Tickets", buyNow: "Secure Your Seat Now", from: "From", vipTitle: "VIP Packages Available", berlinVip: "Berlin VIP Experience €15,300" },
@@ -58,6 +59,12 @@ const HarryStylesPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <SEOHead
+        title="Harry Styles Love On Tour 2026 | London Tickets"
+        description="Buy Harry Styles Love On Tour 2026 tickets from €79. Wembley Stadium London. Cheapest verified tickets with instant QR delivery."
+        image="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1200&h=630&fit=crop"
+        canonicalUrl="https://euromatchtickets.com/harry-styles-tickets"
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Harry Styles Love On Tour 2026" price={79} highPrice={1999} url="https://euromatchtickets.com/harry-styles-tickets" category="concert" venue="Wembley Stadium" city="London" />
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Harry Styles Tour 2026", url: "https://euromatchtickets.com/harry-styles-tickets" }]} />

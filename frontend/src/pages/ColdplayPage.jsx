@@ -52,7 +52,9 @@ const ColdplayPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050520]" data-testid="coldplay-page">
-      <SEOHead title="Coldplay Tickets Europe 2026 | Tour from €69" description="Buy Coldplay European tour 2026 tickets from €69. London, Paris, Berlin, Barcelona, Milan. Music of the Spheres. Verified sellers, instant QR delivery!" canonicalUrl="https://euromatchtickets.com/coldplay-tour-2026" />
+      <SEOHead title="Coldplay Tickets Europe 2026 | Tour from €69" description="Buy Coldplay European tour 2026 tickets from €69. London, Paris, Berlin, Barcelona, Milan. Music of the Spheres. Verified sellers, instant QR delivery!" canonicalUrl="https://euromatchtickets.com/coldplay-tour-2026"
+        image="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&h=630&fit=crop"
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Coldplay Tour 2026", url: "https://euromatchtickets.com/coldplay-tour-2026" }]} />
 

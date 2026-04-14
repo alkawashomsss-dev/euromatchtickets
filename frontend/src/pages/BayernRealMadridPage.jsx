@@ -106,6 +106,7 @@ const BayernRealMadridPage = () => {
         title="Bayern vs Real Madrid Tickets 2026 | UCL Best Prices"
         description="Buy Bayern Munich vs Real Madrid Champions League tickets from €199. Allianz Arena, Munich. Verified tickets, instant QR delivery, FanProtect guarantee."
         canonicalUrl="https://euromatchtickets.com/bayern-vs-real-madrid-tickets"
+        image="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Bayern Munich vs Real Madrid UCL 2026" price={129} highPrice={2999} url="https://euromatchtickets.com/bayern-munich-vs-real-madrid-tickets" category="football" venue="Allianz Arena" city="Munich" />

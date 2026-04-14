@@ -280,6 +280,7 @@ const F1TicketsPage = () => {
       <SEOHead
         title="F1 Tickets 2026 | All Grand Prix from €79 | 42% Cheaper"
         description="Buy F1 2026 tickets at best prices. Full 2026 calendar, driver standings, team info. Monaco GP from \u20ac289, Silverstone from \u20ac149, Monza from \u20ac99. All 24 races."
+        image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

@@ -46,6 +46,7 @@ const ElClasicoTicketsPage = () => {
         description="Buy El Clasico tickets - Real Madrid vs Barcelona. Category 1-4, VIP Hospitality available. Santiago Bernabeu & Camp Nou. Secure booking, instant delivery!"
         keywords="El Clasico tickets, Real Madrid vs Barcelona tickets, buy El Clasico, La Liga tickets, Bernabeu tickets, Camp Nou tickets, El Clasico 2026"
         canonicalUrl="https://euromatchtickets.com/el-clasico-tickets"
+        image="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=1200&h=630&fit=crop"
       />
 
       <ProductSchema name="El Clasico Real Madrid vs Barcelona 2026" price={149} highPrice={3999} url="https://euromatchtickets.com/el-clasico-tickets" category="football" venue="Santiago Bernabeu" city="Madrid" />
