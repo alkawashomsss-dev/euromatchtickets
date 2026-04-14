@@ -267,79 +267,167 @@ async def resolve_event(slug_or_id: str):
 
 @router.post("/events/cleanup-duplicates")
 async def cleanup_duplicates():
-    """Remove duplicate events keeping the one with most tickets or best slug.
-    Also fixes event dates with script-generated timestamps."""
+    """MEGA cleanup: fix slugs, TBDs, ugly IDs, bad timestamps, duplicates."""
+    import re
     from collections import defaultdict
     
-    events = await db.events.find({}, {"_id": 1, "event_id": 1, "title": 1, "slug": 1, "event_type": 1, "event_date": 1}).to_list(1000)
+    stats = {"slugs_fixed": 0, "tbd_deleted": 0, "dates_fixed": 0, "duplicates_deleted": 0, "ugly_deleted": 0}
     
-    # Group by normalized title
-    groups = defaultdict(list)
-    for e in events:
-        title = (e.get("title") or "").strip().lower()
-        key = title.replace(" - ", " ").replace("2026", "").replace("2027", "").strip()
-        groups[key].append(e)
-    
-    deleted_ids = []
-    for key, group in groups.items():
-        if len(group) <= 1:
-            continue
-        # Keep the one with cleanest slug (shortest, has dashes, no ugly IDs)
-        def score(e):
-            slug = e.get("slug", "")
-            eid = e.get("event_id", "")
-            s = 0
-            if slug and "-" in slug:
-                s += 10
-            if "event_" in eid or "premium_" in eid:
-                s -= 5
-            # Prefer shorter slugs
-            s -= len(slug) / 100
-            # Check tickets count
-            return s
-        
-        group.sort(key=score, reverse=True)
-        keep = group[0]
-        for dup in group[1:]:
-            deleted_ids.append(dup["_id"])
-    
-    # Delete duplicates
-    deleted_count = 0
-    for _id in deleted_ids:
-        result = await db.events.delete_one({"_id": _id})
-        deleted_count += result.deleted_count
-    
-    # Fix script-generated timestamps
     type_times = {
         "f1": "14:00:00Z", "motogp": "14:00:00Z",
         "match": "21:00:00Z", "football": "21:00:00Z",
         "concert": "20:00:00Z", "festival": "12:00:00Z",
         "tennis": "11:00:00Z", "attraction": "10:00:00Z",
-        "worldcup": "21:00:00Z",
+        "worldcup": "21:00:00Z", "isle_of_man_tt": "10:00:00Z",
     }
     
+    # === STEP 1: Delete TBD events ===
+    tbd_result = await db.events.delete_many({
+        "$or": [
+            {"title": {"$regex": "TBD vs TBD", "$options": "i"}},
+            {"title": {"$regex": "^TBD$", "$options": "i"}},
+            {"venue": "TBD Stadium", "city": "TBD"},
+        ]
+    })
+    stats["tbd_deleted"] = tbd_result.deleted_count
+    
+    # === STEP 2: Generate slugs for events without them ===
+    no_slug = await db.events.find({"$or": [{"slug": {"$exists": False}}, {"slug": ""}, {"slug": None}]}).to_list(1000)
+    for e in no_slug:
+        title = e.get("title", "event")
+        year = "2026"
+        # Generate clean slug
+        slug = title.lower().strip()
+        slug = re.sub(r'[^a-z0-9\s-]', '', slug)
+        slug = re.sub(r'\s+', '-', slug).strip('-')
+        if year not in slug:
+            slug = f"{slug}-{year}"
+        slug = f"{slug}-tickets"
+        slug = re.sub(r'-+', '-', slug)
+        
+        await db.events.update_one({"_id": e["_id"]}, {"$set": {"slug": slug}})
+        stats["slugs_fixed"] += 1
+    
+    # === STEP 3: Fix all bad timestamps ===
     all_events = await db.events.find({}, {"_id": 1, "event_date": 1, "event_type": 1}).to_list(1000)
-    fixed_dates = 0
     for e in all_events:
         d = str(e.get("event_date", ""))
-        needs_fix = any(bad in d for bad in ["T05:32", "T09:55", "T22:20", "T06:", "T18:21"])
-        if needs_fix:
+        bad_patterns = ["T02:08", "T02:09", "T02:10", "T02:11", "T02:12", "T05:32", "T09:55", "T22:20", "T06:", "T18:21", "T05:"]
+        needs_fix = any(p in d for p in bad_patterns)
+        if needs_fix and "T" in d:
             date_part = d.split("T")[0]
             time_part = type_times.get(e.get("event_type", "match"), "20:00:00Z")
-            new_date = f"{date_part}T{time_part}"
-            await db.events.update_one({"_id": e["_id"]}, {"$set": {"event_date": new_date}})
-            fixed_dates += 1
-        elif d and "T" not in d and len(d) == 10:
+            await db.events.update_one({"_id": e["_id"]}, {"$set": {"event_date": f"{date_part}T{time_part}"}})
+            stats["dates_fixed"] += 1
+        elif d and "T" not in d and len(d) >= 10:
             time_part = type_times.get(e.get("event_type", "match"), "20:00:00Z")
-            await db.events.update_one({"_id": e["_id"]}, {"$set": {"event_date": f"{d}T{time_part}"}})
-            fixed_dates += 1
+            await db.events.update_one({"_id": e["_id"]}, {"$set": {"event_date": f"{d[:10]}T{time_part}"}})
+            stats["dates_fixed"] += 1
+    
+    # === STEP 4: Delete duplicates (keep best slug) ===
+    events = await db.events.find({}, {"_id": 1, "event_id": 1, "title": 1, "slug": 1, "event_type": 1}).to_list(1000)
+    groups = defaultdict(list)
+    for e in events:
+        title = (e.get("title") or "").strip().lower()
+        key = re.sub(r'[^a-z0-9]', '', title)
+        groups[key].append(e)
+    
+    for key, group in groups.items():
+        if len(group) <= 1:
+            continue
+        def score(e):
+            slug = e.get("slug", "")
+            eid = e.get("event_id", "")
+            s = 0
+            if slug and "-" in slug and len(slug) > 10: s += 10
+            if "event_" in eid or "premium_" in eid or "ucl_" in eid: s -= 5
+            return s
+        group.sort(key=score, reverse=True)
+        for dup in group[1:]:
+            await db.events.delete_one({"_id": dup["_id"]})
+            stats["duplicates_deleted"] += 1
+    
+    # === STEP 5: Fix World Cup match types → worldcup ===
+    await db.events.update_many(
+        {"title": {"$regex": "FIFA World Cup|World Cup 2026", "$options": "i"}, "event_type": "match"},
+        {"$set": {"event_type": "worldcup"}}
+    )
     
     remaining = await db.events.count_documents({})
-    return {
-        "deleted_duplicates": deleted_count,
-        "fixed_dates": fixed_dates,
-        "remaining_events": remaining
+    stats["remaining_events"] = remaining
+    return stats
+
+
+@router.post("/events/mega-fix")
+async def mega_fix_events():
+    """One-shot mega fix for Production DB - fixes ALL known issues."""
+    import re
+    from collections import defaultdict
+    
+    stats = {"slugs_fixed": 0, "tbd_deleted": 0, "dates_fixed": 0, "duplicates_deleted": 0}
+    
+    type_times = {
+        "f1": "14:00:00Z", "motogp": "14:00:00Z",
+        "match": "21:00:00Z", "football": "21:00:00Z",
+        "concert": "20:00:00Z", "festival": "12:00:00Z",
+        "tennis": "11:00:00Z", "attraction": "10:00:00Z",
+        "worldcup": "21:00:00Z", "isle_of_man_tt": "10:00:00Z",
     }
+    
+    # 1. Delete TBD events
+    r = await db.events.delete_many({"$or": [
+        {"title": {"$regex": "TBD vs TBD", "$options": "i"}},
+        {"venue": "TBD Stadium"},
+    ]})
+    stats["tbd_deleted"] = r.deleted_count
+    
+    # 2. Fix slugs
+    no_slug = await db.events.find({"$or": [{"slug": {"$exists": False}}, {"slug": ""}, {"slug": None}]}).to_list(1000)
+    for e in no_slug:
+        title = e.get("title", "event")
+        slug = title.lower().strip()
+        slug = re.sub(r'[^a-z0-9\s-]', '', slug)
+        slug = re.sub(r'\s+', '-', slug).strip('-')
+        if "2026" not in slug and "2027" not in slug:
+            slug = f"{slug}-2026"
+        slug = f"{slug}-tickets"
+        slug = re.sub(r'-+', '-', slug)
+        await db.events.update_one({"_id": e["_id"]}, {"$set": {"slug": slug}})
+        stats["slugs_fixed"] += 1
+    
+    # 3. Fix ALL bad timestamps
+    all_ev = await db.events.find({}, {"_id": 1, "event_date": 1, "event_type": 1}).to_list(1000)
+    for e in all_ev:
+        d = str(e.get("event_date", ""))
+        bads = ["T02:0", "T02:1", "T05:3", "T09:5", "T22:2", "T06:", "T18:2"]
+        if any(p in d for p in bads) and "T" in d:
+            dp = d.split("T")[0]
+            tp = type_times.get(e.get("event_type", "match"), "20:00:00Z")
+            await db.events.update_one({"_id": e["_id"]}, {"$set": {"event_date": f"{dp}T{tp}"}})
+            stats["dates_fixed"] += 1
+    
+    # 4. Delete duplicates
+    events = await db.events.find({}, {"_id": 1, "event_id": 1, "title": 1, "slug": 1}).to_list(1000)
+    groups = defaultdict(list)
+    for e in events:
+        key = re.sub(r'[^a-z0-9]', '', (e.get("title") or "").lower())
+        groups[key].append(e)
+    for key, grp in groups.items():
+        if len(grp) <= 1:
+            continue
+        grp.sort(key=lambda x: (10 if (x.get("slug") or "") and "-" in x.get("slug","") else 0) - (5 if "event_" in x.get("event_id","") or "premium_" in x.get("event_id","") else 0), reverse=True)
+        for dup in grp[1:]:
+            await db.events.delete_one({"_id": dup["_id"]})
+            stats["duplicates_deleted"] += 1
+    
+    # 5. Fix World Cup types
+    await db.events.update_many(
+        {"title": {"$regex": "FIFA World Cup|World Cup 2026", "$options": "i"}, "event_type": "match"},
+        {"$set": {"event_type": "worldcup"}}
+    )
+    
+    stats["remaining"] = await db.events.count_documents({})
+    return stats
 
 
 @router.post("/events/seed-justin-bieber")
