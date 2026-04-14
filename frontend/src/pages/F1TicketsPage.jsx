@@ -115,6 +115,34 @@ const raceCalendar2026 = [
   { round: 24, gp: "Abu Dhabi Grand Prix", circuit: "Yas Marina Circuit", country: "UAE", flag: "AE", dates: "Dec 4-6", sprint: false, price: "169" },
 ];
 
+// ── Clean URL mapping for each GP - SEO critical! Never link to ugly event IDs ──
+const gpCleanLinks = {
+  "Australian Grand Prix": "/f1-australian-grand-prix-melbourne-tickets",
+  "Chinese Grand Prix": "/checkout?event=f1-chinese-grand-prix-2026",
+  "Japanese Grand Prix": "/f1-japanese-grand-prix-suzuka-tickets",
+  "Bahrain Grand Prix": "/f1-bahrain-grand-prix-tickets",
+  "Saudi Arabian Grand Prix": "/f1-saudi-arabian-grand-prix-jeddah-tickets",
+  "Miami Grand Prix": "/f1-miami-grand-prix-tickets",
+  "Canadian Grand Prix": "/checkout?event=f1-canadian-grand-prix-2026",
+  "Monaco Grand Prix": "/f1-monaco-grand-prix-tickets",
+  "Spanish Grand Prix": "/f1-spanish-grand-prix-barcelona-tickets",
+  "Austrian Grand Prix": "/f1-austrian-grand-prix-red-bull-ring-tickets",
+  "British Grand Prix": "/f1-british-grand-prix-silverstone-tickets",
+  "Belgian Grand Prix": "/f1-belgian-grand-prix-spa-tickets",
+  "Hungarian Grand Prix": "/f1-hungarian-grand-prix-budapest-tickets",
+  "Dutch Grand Prix": "/f1-dutch-grand-prix-zandvoort-tickets",
+  "Italian Grand Prix": "/f1-italian-grand-prix-monza-tickets",
+  "Madrid Grand Prix": "/checkout?event=f1-madrid-grand-prix-2026",
+  "Azerbaijan Grand Prix": "/checkout?event=f1-azerbaijan-grand-prix-2026",
+  "Singapore Grand Prix": "/f1-singapore-grand-prix-tickets",
+  "United States Grand Prix": "/checkout?event=f1-us-grand-prix-2026",
+  "Mexico City Grand Prix": "/checkout?event=f1-mexico-grand-prix-2026",
+  "Sao Paulo Grand Prix": "/checkout?event=f1-brazil-grand-prix-2026",
+  "Las Vegas Grand Prix": "/f1-las-vegas-grand-prix-tickets",
+  "Qatar Grand Prix": "/checkout?event=f1-qatar-grand-prix-2026",
+  "Abu Dhabi Grand Prix": "/f1-abu-dhabi-grand-prix-tickets",
+};
+
 const F1TicketsPage = () => {
   const [races, setRaces] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -511,10 +539,13 @@ const F1TicketsPage = () => {
             </div>
           ) : (
             <div className="grid gap-3">
-              {displayRaces.map((race, i) => (
+              {displayRaces.map((race, i) => {
+                const gpName = Object.keys(gpCleanLinks).find(gp => race.title?.includes(gp.split(' ')[0]));
+                const cleanLink = gpName ? gpCleanLinks[gpName] : `/checkout?event=${race.slug || race.event_id}`;
+                return (
                 <Link
                   key={race.event_id || i}
-                  to={`/event/${race.slug || race.event_id}`}
+                  to={cleanLink}
                   className="group flex flex-col md:flex-row md:items-center justify-between bg-[#1e1e1e] border border-white/6 hover:border-[#e10600] p-5 transition-colors duration-150"
                   data-testid={`featured-race-${i}`}
                 >
@@ -545,7 +576,8 @@ const F1TicketsPage = () => {
                     </Button>
                   </div>
                 </Link>
-              ))}
+              );
+              })}
             </div>
           )}
           <div className="text-center mt-8">
@@ -580,10 +612,8 @@ const F1TicketsPage = () => {
               <TableBody>
                 {raceCalendar2026.map((r) => {
                   const matchedEvent = races.find(e => e.title?.includes(r.country) || e.title?.includes(r.gp.split(' ')[0]));
-                  const Row = matchedEvent ? Link : 'tr';
-                  const rowProps = matchedEvent
-                    ? { to: `/event/${matchedEvent.slug || matchedEvent.event_id}`, className: "border-b transition-colors hover:bg-[#e10600]/10 cursor-pointer flex-none table-row" }
-                    : {};
+                  const cleanLink = gpCleanLinks[r.gp];
+                  const ticketPrice = matchedEvent?.lowest_price ? Math.round(matchedEvent.lowest_price) : r.price;
                   return (
                     <TableRow key={r.round} className="hover:bg-[#e10600]/10/40" data-testid={`calendar-row-${r.round}`}>
                       <TableCell className="text-center font-bold text-slate-500">{r.round}</TableCell>
@@ -603,9 +633,9 @@ const F1TicketsPage = () => {
                         )}
                       </TableCell>
                       <TableCell className="text-right">
-                        {matchedEvent ? (
-                          <Link to={`/event/${matchedEvent.slug || matchedEvent.event_id}`} className="inline-flex items-center gap-1 bg-[#e10600]/100 hover:bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-none transition-colors">
-                            &#8364;{matchedEvent.lowest_price ? Math.round(matchedEvent.lowest_price) : r.price}
+                        {cleanLink ? (
+                          <Link to={cleanLink} className="inline-flex items-center gap-1 bg-[#e10600]/100 hover:bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-none transition-colors">
+                            &#8364;{ticketPrice}
                           </Link>
                         ) : (
                           <span className="font-black text-red-600">&#8364;{r.price}</span>
@@ -684,10 +714,12 @@ const F1TicketsPage = () => {
                 };
                 const match = Object.keys(seoMap).find(k => race.title?.includes(k));
                 const seo = match ? seoMap[match] : { kw: `Buy ${race.title} Tickets`, sub: race.venue };
+                const gpNameMatch = Object.keys(gpCleanLinks).find(gp => race.title?.includes(gp.split(' ')[0]));
+                const raceCleanLink = seo.directLink || (gpNameMatch ? gpCleanLinks[gpNameMatch] : `/checkout?event=${race.slug || race.event_id}`);
                 return (
                   <Link
                     key={race.event_id || i}
-                    to={seo.directLink || `/event/${race.slug || race.event_id}`}
+                    to={raceCleanLink}
                     className={`flex items-center gap-3 p-4 border transition-colors duration-150 ${
                       seo.hot
                         ? 'bg-[#e10600]/5 border-[#e10600]/30 hover:border-[#e10600]'
