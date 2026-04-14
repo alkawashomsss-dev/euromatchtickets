@@ -24,15 +24,32 @@ export default function CheckoutPage() {
     if (!eventId) { navigate("/events"); return; }
     axios.get(`${API}/events/${eventId}`)
       .then(res => { setEvent(res.data); setLoading(false); })
-      .catch(() => { toast.error("Event not found"); navigate("/events"); });
+      .catch(() => {
+        // Build event from slug instead of redirecting away
+        const prettyName = eventId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()).replace(/\d{4}.*tickets?$/i, '').trim();
+        const fallbackEvent = {
+          title: prettyName || 'Event Ticket',
+          event_date: new Date(Date.now() + 90 * 86400000).toISOString(),
+          venue: '',
+          city: 'Europe',
+          slug: eventId,
+          event_id: eventId,
+          tickets: [],
+          categories: {},
+        };
+        setEvent(fallbackEvent);
+        setLoading(false);
+      });
   }, [eventId, navigate]);
 
   const getPrice = () => {
     if (urlPrice) return parseInt(urlPrice);
-    if (!event) return 0;
+    if (!event) return 99;
     const base = event.tickets?.length > 0
       ? event.tickets.reduce((min, t) => t.price < min ? t.price : min, Infinity)
-      : Object.values(event.categories || {}).reduce((min, c) => c.lowest_price < min ? c.lowest_price : min, 99);
+      : Object.keys(event.categories || {}).length > 0
+        ? Object.values(event.categories).reduce((min, c) => c.lowest_price < min ? c.lowest_price : min, 99)
+        : event.price_from || 99;
     const lp = Math.round(base);
     if (category === "Grandstand") return Math.round(lp * 1.8);
     if (category === "VIP Hospitality") return Math.round(lp * 4.5);
