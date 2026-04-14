@@ -3,6 +3,7 @@ import { Calendar, MapPin, Ticket, Shield, Zap, Star, Bike, HelpCircle, CreditCa
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const MotoGPMugelloPage = () => {
   const schema = {
@@ -40,6 +41,7 @@ const MotoGPMugelloPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "MotoGP", url: "https://euromatchtickets.com/motogp-tickets" }, { name: "Italian MotoGP Mugello", url: "https://euromatchtickets.com/motogp-mugello-tickets" }]} />
       <SEOHead 
         title="Italian MotoGP Tickets 2026 | Mugello Circuit"
         description="Buy Italian MotoGP 2026 Mugello tickets from €79. The best atmosphere in motorcycle racing! Tribuna Centrale, Poggio Secco. 100% Ticket Guarantee. Instant."

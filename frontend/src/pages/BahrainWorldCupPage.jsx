@@ -171,7 +171,7 @@ const BahrainWorldCupPage = () => {
                   <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
                   <p className="text-[10px] text-slate-400">per ticket</p>
                 </div>
-                <Link to={`${checkoutBase}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                <Link to={`/checkout?event=world-cup-2026-bahrain&category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                   <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6">Buy</Button>
                 </Link>
               </div>

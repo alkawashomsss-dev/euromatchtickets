@@ -6,6 +6,7 @@ import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles,
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
@@ -78,6 +79,7 @@ const SuperBowlPage = () => {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Super Bowl 2027" price={2499} highPrice={29999} url="https://euromatchtickets.com/super-bowl-2026-tickets" category="football" venue="SoFi Stadium" city="Los Angeles" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "American Football", url: "https://euromatchtickets.com/events" }, { name: "Super Bowl 2027", url: "https://euromatchtickets.com/super-bowl-2026-tickets" }]} />
 
       {/* HERO */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">

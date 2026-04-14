@@ -1,9 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import { Building2, Mail, MapPin, FileText, Scale } from 'lucide-react';
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const ImpressumPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Impressum", url: "https://euromatchtickets.com/impressum" }]} />
       <Helmet>
         <title>Impressum | EuroMatchTickets</title>
         <meta name="description" content="Impressum und rechtliche Informationen von EuroMatchTickets. Angaben gemäß § 5 TMG." />

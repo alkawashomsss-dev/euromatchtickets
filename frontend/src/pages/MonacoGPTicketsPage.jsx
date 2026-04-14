@@ -4,6 +4,7 @@ import { Calendar, MapPin, Clock, Users, Shield, Zap, Trophy, Star, ChevronRight
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import axios from "axios";
 import { API } from "../App";
 
@@ -65,6 +66,7 @@ const MonacoGPTicketsPage = () => {
       />
 
       <ProductSchema name="Monaco Grand Prix 2026" price={249} highPrice={8999} url="https://euromatchtickets.com/f1-monaco-grand-prix-tickets" category="f1" venue="Circuit de Monaco" city="Monte Carlo" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Monaco GP 2026", url: "https://euromatchtickets.com/f1-monaco-grand-prix-tickets" }]} />
 
       <div className="min-h-screen bg-[#0e0e14]">
         {/* Hero Section */}

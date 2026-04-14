@@ -4,6 +4,7 @@ import { Calendar, MapPin, Users, Shield, Zap, Trophy, Ticket, Star } from "luci
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import axios from "axios";
 import { API } from "../App";
 
@@ -48,6 +49,7 @@ const ElClasicoTicketsPage = () => {
       />
 
       <ProductSchema name="El Clasico Real Madrid vs Barcelona 2026" price={149} highPrice={3999} url="https://euromatchtickets.com/el-clasico-tickets" category="football" venue="Santiago Bernabeu" city="Madrid" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Football", url: "https://euromatchtickets.com/events?type=match" }, { name: "El Clasico Tickets", url: "https://euromatchtickets.com/el-clasico-tickets" }]} />
 
       <div className="min-h-screen bg-[#0e0e14]">
         {/* Hero Section */}

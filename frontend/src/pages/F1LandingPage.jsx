@@ -5,6 +5,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const F1LandingPage = () => {
   // F1 2026 Calendar
@@ -26,6 +27,7 @@ const F1LandingPage = () => {
       />
 
       <ProductSchema name="F1 Tickets 2026 All Grand Prix" price={79} highPrice={8999} url="https://euromatchtickets.com/f1-tickets" category="f1" venue="Various Circuits" city="Worldwide" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets 2026", url: "https://euromatchtickets.com/f1-tickets" }]} />
 
       {/* Hero Section */}
       <div className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">

@@ -3,6 +3,7 @@ import { Calendar, MapPin, Ticket, Shield, Zap, Star, Bike, HelpCircle, CreditCa
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const MotoGPSchedulePage = () => {
   const schema = {
@@ -37,6 +38,7 @@ const MotoGPSchedulePage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "MotoGP", url: "https://euromatchtickets.com/motogp-tickets" }, { name: "MotoGP Schedule 2026", url: "https://euromatchtickets.com/motogp-schedule" }]} />
       <SEOHead 
         title="MotoGP 2026 Schedule & Tickets | Full Calendar"
         description="Complete MotoGP 2026 race schedule with all 21 Grand Prix dates, locations, and tickets. Mugello, Assen, Silverstone, Barcelona. Buy MotoGP tickets from."

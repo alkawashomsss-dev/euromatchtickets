@@ -84,6 +84,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Price Comparison", url: "https://euromatchtickets.com/compare" }]} />
       <SEOHead 
         title={`EuroMatchTickets vs ${competitor} - Honest Comparison`}
         description={`Compare EuroMatchTickets and ${competitor}. See prices, fees, guarantees. Find out which ticket marketplace is better for you in 2026.`}

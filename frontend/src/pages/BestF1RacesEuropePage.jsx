@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Trophy, MapPin, Calendar, Star, Ticket, ChevronRight } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const BestF1RacesEuropePage = () => {
   const schema = {
@@ -124,6 +125,7 @@ const BestF1RacesEuropePage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Blog", url: "https://euromatchtickets.com/blog" }, { name: "Best F1 Races Europe", url: "https://euromatchtickets.com/best-f1-races-europe" }]} />
       <SEOHead 
         title="Best F1 Races in Europe 2026 | Top 8 Grand Prix"
         description="Discover the best Formula 1 races to attend in Europe 2026. Monaco, Silverstone, Monza, Spa ranked with prices, pros & cons. Expert recommendations for."

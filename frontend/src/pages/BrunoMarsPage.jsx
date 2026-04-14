@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const BrunoMarsPage = () => {
   const schema = {
@@ -45,6 +46,7 @@ const BrunoMarsPage = () => {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Bruno Mars Tour 2026" price={89} highPrice={1999} url="https://euromatchtickets.com/bruno-mars-tour-2026" category="concert" venue="Wembley Stadium" city="London" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Bruno Mars Tour 2026", url: "https://euromatchtickets.com/bruno-mars-tour-2026" }]} />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-rose-500/10 to-slate-950" />

@@ -1,8 +1,10 @@
 import { Shield, AlertTriangle, CreditCard, Mail, Phone, MapPin } from "lucide-react";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const TermsPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14] pt-32 pb-16">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Terms & Conditions", url: "https://euromatchtickets.com/terms" }]} />
       <div className="max-w-4xl mx-auto px-4 md:px-8">
         
         {/* Important Disclosure - Required for Google Ads */}

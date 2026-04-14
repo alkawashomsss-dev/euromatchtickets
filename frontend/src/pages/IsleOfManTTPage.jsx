@@ -5,6 +5,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import axios from "axios";
 import { API } from "../App";
 
@@ -105,6 +106,7 @@ const IsleOfManTTPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <ProductSchema name="Isle of Man TT 2026" price={79} highPrice={999} url="https://euromatchtickets.com/isle-of-man-tt-tickets" category="motogp" venue="Snaefell Mountain Course" city="Douglas" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Motorsport", url: "https://euromatchtickets.com/events?type=motogp" }, { name: "Isle of Man TT 2026", url: "https://euromatchtickets.com/isle-of-man-tt-tickets" }]} />
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">

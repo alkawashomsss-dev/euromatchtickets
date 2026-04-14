@@ -6,6 +6,7 @@ import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 // Multilingual SEO content
 const TRANSLATIONS = {
@@ -148,6 +149,7 @@ const Maroon5Page = () => {
       
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Maroon 5 World Tour 2026" price={79} highPrice={1499} url="https://euromatchtickets.com/maroon-5-tour-2026" category="concert" venue="Olympiastadion" city="Munich" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Maroon 5 Tour 2026", url: "https://euromatchtickets.com/maroon-5-tour-2026" }]} />
 
       {/* Language Selector */}
       <div className="fixed top-20 right-4 z-50 flex gap-1 bg-white/90 rounded-none p-1 border border-white/10">

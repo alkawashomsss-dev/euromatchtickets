@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { Shield, Star, Clock, CreditCard, AlertTriangle, Check, X, ExternalLink, ChevronRight, Users, Award, Lock, ThumbsUp, ThumbsDown } from 'lucide-react';
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const BASE = "https://euromatchtickets.com";
 
@@ -121,6 +122,7 @@ const ReviewPage = () => {
         "datePublished": "2026-01-15",
         "dateModified": "2026-04-09"
       })}} />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Reviews", url: "https://euromatchtickets.com/reviews" }]} />
 
       <div className="min-h-screen bg-[#0a0f1c]">
         {/* Header - editorial style, NOT like the main site */}

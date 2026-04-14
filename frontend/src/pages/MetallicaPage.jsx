@@ -6,6 +6,7 @@ import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const TRANSLATIONS = {
   en: { title: "Metallica Sphere Las Vegas 2026", subtitle: "M72 World Tour - The Sphere Experience", buyNow: "Secure Your Seat Now", from: "From", snakePit: "Snake Pit VIP" },
@@ -53,6 +54,7 @@ const MetallicaPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Metallica M72 Tour 2026" price={99} highPrice={2499} url="https://euromatchtickets.com/metallica-sphere-las-vegas-tickets" category="concert" venue="Sphere" city="Las Vegas" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Metallica Sphere Las Vegas", url: "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets" }]} />
       
       <title>Metallica Sphere Las Vegas Tickets 2026 | Snake Pit VIP $2,755 | EuroMatchTickets</title>
       <meta name="description" content="Buy Metallica tickets for The Sphere Las Vegas 2026. M72 World Tour. Snake Pit VIP from $2,755. Best prices guaranteed, instant QR delivery." />

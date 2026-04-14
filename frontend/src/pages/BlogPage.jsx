@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Calendar, Clock, ArrowRight, Search, Flag, Music, Trophy, TrendingUp, BookOpen } from "lucide-react";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { NewsletterSignup } from "../components/NewsletterSignup";
 
 const categoryColors = {
@@ -102,6 +103,7 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="blog-page">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Blog", url: "https://euromatchtickets.com/blog" }]} />
       <SEOHead 
         title="F1 & Concert Ticket Guides 2026 | Expert Tips | EuroMatchTickets Blog"
         description="Expert guides on buying F1, Champions League, World Cup and concert tickets. Spa-Francorchamps travel guide, best F1 circuits 2026, Taylor Swift London tips. Best prices guaranteed."

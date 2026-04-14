@@ -2,10 +2,12 @@ import { Helmet } from 'react-helmet-async';
 import { Shield, CheckCircle, RefreshCw, Clock, Mail, Phone, AlertTriangle, BadgeCheck, Lock, CreditCard } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const BuyerProtectionPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Buyer Protection", url: "https://euromatchtickets.com/buyer-protection" }]} />
       <Helmet>
         <title>Buyer Protection & Ticket Guarantee | EuroMatchTickets</title>
         <meta name="description" content="Learn about EuroMatchTickets buyer protection policy. 100% money-back guarantee if tickets are invalid or not delivered. Secure verified ticket marketplace." />

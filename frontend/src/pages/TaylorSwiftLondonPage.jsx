@@ -224,7 +224,7 @@ const TaylorSwiftLondonPage = () => {
                   <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
                   <p className="text-[10px] text-slate-500">per ticket</p>
                 </div>
-                <Link to={`${checkoutBase}&category=${encodeURIComponent(t.name)}&price=${t.price}`}>
+                <Link to={`/checkout?event=taylor-swift-london-2026&category=${encodeURIComponent(t.name)}&price=${t.price}`}>
                   <Button className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-bold px-6">Buy</Button>
                 </Link>
               </div>

@@ -6,6 +6,7 @@ import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles,
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
@@ -49,6 +50,7 @@ const WorldAthleticsPage = () => {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="World Athletics Championships 2026" price={49} highPrice={999} url="https://euromatchtickets.com/world-athletics-2026-tickets" category="athletics" venue="Olympic Stadium" city="Budapest" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Athletics", url: "https://euromatchtickets.com/events?type=athletics" }, { name: "World Athletics 2026", url: "https://euromatchtickets.com/world-athletics-2026-tickets" }]} />
 
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">

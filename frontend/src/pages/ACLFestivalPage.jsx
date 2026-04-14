@@ -6,6 +6,7 @@ import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const TRANSLATIONS = {
   en: { title: "ACL Festival 2026 Tickets", subtitle: "Austin City Limits - The Ultimate Festival", buyNow: "Buy Pass", from: "From", ultimate: "Ultimate Experience" },
@@ -52,6 +53,7 @@ const ACLFestivalPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="ACL Festival Austin 2026" price={149} highPrice={1999} url="https://euromatchtickets.com/acl-festival-2026" category="festival" venue="Zilker Park" city="Austin" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Festivals", url: "https://euromatchtickets.com/events?type=festival" }, { name: "ACL Festival Austin 2026", url: "https://euromatchtickets.com/acl-festival-2026" }]} />
       
       <title>ACL Festival 2026 Tickets | Austin City Limits | Ultimate Pass $25,650 | EuroMatchTickets</title>
       <meta name="description" content="Buy ACL Festival 2026 tickets. Austin City Limits October 2026. Ultimate Experience pass $25,650, Platinum $4,892. Best prices, instant delivery." />

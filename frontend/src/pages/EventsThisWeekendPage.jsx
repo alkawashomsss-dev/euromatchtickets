@@ -77,6 +77,7 @@ const EventsThisWeekendPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Events This Weekend", url: "https://euromatchtickets.com/events-this-weekend" }]} />
       <SEOHead 
         title="Events This Weekend | EuroMatchTickets"
         description="Find events happening this weekend. Football matches, concerts, motorsport. Book last-minute tickets with instant delivery."

@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const ZandvoortGPPage = () => {
   const schema = {
@@ -44,6 +45,7 @@ const ZandvoortGPPage = () => {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Dutch Grand Prix Zandvoort 2026" price={149} highPrice={2999} url="https://euromatchtickets.com/f1-dutch-grand-prix-zandvoort-tickets" category="f1" venue="Circuit Zandvoort" city="Zandvoort" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Dutch GP Zandvoort 2026", url: "https://euromatchtickets.com/f1-dutch-grand-prix-zandvoort-tickets" }]} />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-slate-900 to-slate-950" />

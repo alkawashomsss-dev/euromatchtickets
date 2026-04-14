@@ -1,9 +1,11 @@
 import { Shield, CheckCircle, XCircle, AlertTriangle, Clock } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const RefundPolicyPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Refund Policy", url: "https://euromatchtickets.com/refund-policy" }]} />
       <Helmet>
         <title>Refund Policy | EuroMatchTickets</title>
         <meta name="description" content="Learn about EuroMatchTickets refund policy and buyer protection. We guarantee your purchase with our comprehensive refund policy." />

@@ -71,7 +71,7 @@ const MonacoExperiencePage = () => {
                 </div>
                 <div className="text-right flex-shrink-0">
                   <p className="text-3xl font-black bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">{e.price}</p>
-                  <Link to={`${checkoutBase}?category=${encodeURIComponent(e.title)}`}><Button className="mt-2 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-bold">Book Now</Button></Link>
+                  <Link to={`/checkout?event=f1-monaco-grand-prix-2026&category=${encodeURIComponent(e.title)}`}><Button className="mt-2 bg-gradient-to-r from-amber-400 to-amber-600 text-black font-bold">Book Now</Button></Link>
                 </div>
               </div>
             </div>

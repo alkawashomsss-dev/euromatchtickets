@@ -216,7 +216,7 @@ const MonzaGPPage = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-red-500 font-medium">{t.available} left</span>
-                    <Link to={`${checkoutBase}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                    <Link to={`/checkout?event=f1-italian-grand-prix-monza-2026&category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                       <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">Buy Now</Button>
                     </Link>
                   </div>

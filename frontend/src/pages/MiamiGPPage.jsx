@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const MiamiGPPage = () => {
   const schema = {
@@ -47,6 +48,7 @@ const MiamiGPPage = () => {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ProductSchema name="Miami Grand Prix 2026" price={229} highPrice={4999} url="https://euromatchtickets.com/f1-miami-grand-prix-tickets" category="f1" venue="Miami International Autodrome" city="Miami" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Miami GP 2026", url: "https://euromatchtickets.com/f1-miami-grand-prix-tickets" }]} />
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">

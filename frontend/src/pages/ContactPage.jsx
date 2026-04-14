@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { toast } from "sonner";
 import { Helmet } from 'react-helmet-async';
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -28,6 +29,7 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Contact Us", url: "https://euromatchtickets.com/contact" }]} />
       <Helmet>
         <title>Contact Us | EuroMatchTickets</title>
         <meta name="description" content="Get in touch with EuroMatchTickets support team. We're here to help with ticket purchases, seller questions, and any issues." />

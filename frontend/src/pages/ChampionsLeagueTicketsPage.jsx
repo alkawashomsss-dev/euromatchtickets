@@ -4,6 +4,7 @@ import { Calendar, MapPin, Users, Shield, Zap, Trophy, Ticket, Star } from "luci
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const ChampionsLeagueTicketsPage = () => {
   const navigate = useNavigate();
@@ -74,6 +75,7 @@ const ChampionsLeagueTicketsPage = () => {
       />
 
       <ProductSchema name="Champions League Tickets 2026" price={99} highPrice={4999} url="https://euromatchtickets.com/champions-league-tickets" category="football" venue="Various Stadiums" city="Europe" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Football", url: "https://euromatchtickets.com/events?type=match" }, { name: "Champions League Tickets", url: "https://euromatchtickets.com/champions-league-tickets" }]} />
 
       <div className="min-h-screen bg-[#0e0e14]">
         {/* Hero Section */}

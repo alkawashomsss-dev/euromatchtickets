@@ -1,9 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import { Shield, Lock, Eye, Database, Globe, Mail, Cookie, Server, UserCheck } from 'lucide-react';
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const PrivacyPolicyPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Privacy Policy", url: "https://euromatchtickets.com/privacy-policy" }]} />
       <Helmet>
         <title>Datenschutzerklärung / Privacy Policy | EuroMatchTickets</title>
         <meta name="description" content="Datenschutzerklärung von EuroMatchTickets. Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO/GDPR." />

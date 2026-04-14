@@ -5,6 +5,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import axios from "axios";
 import { API } from "../App";
 
@@ -53,6 +54,7 @@ const WorldCupLandingPage = () => {
         description="Get official FIFA World Cup 2026 tickets. Prices from €150. Instant QR delivery. 100% money-back guarantee. Over 50,000 tickets available."
       />
       <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026-tickets" category="worldcup" venue="MetLife Stadium" city="New York" />
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "World Cup 2026 Tickets", url: "https://euromatchtickets.com/world-cup-2026-tickets" }]} />
 
       {/* Hero Section */}
       <div className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">

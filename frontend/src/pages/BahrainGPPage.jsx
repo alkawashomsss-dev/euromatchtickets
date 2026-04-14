@@ -202,7 +202,7 @@ const BahrainGPPage = () => {
                   <p className="text-xs text-slate-500 line-through">&euro;{t.originalPrice}</p>
                   <p className="text-2xl font-extrabold text-white">&euro;{t.price}</p>
                 </div>
-                <Link to={`${checkoutBase}?category=${encodeURIComponent(t.section)}&price=${t.price}`}>
+                <Link to={`/checkout?event=f1-bahrain-grand-prix-2026&category=${encodeURIComponent(t.section)}&price=${t.price}`}>
                   <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-black font-bold px-6">Buy</Button>
                 </Link>
               </div>

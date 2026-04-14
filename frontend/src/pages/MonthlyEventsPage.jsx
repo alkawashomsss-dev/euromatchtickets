@@ -106,6 +106,7 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Monthly Events", url: "https://euromatchtickets.com/events-this-month" }]} />
       <SEOHead 
         title={`Events in ${month} 2026 - Football, Concerts, F1`}
         description={`Find all events happening in ${month} 2026. Football, concerts, F1 races. Book now with best prices!`}

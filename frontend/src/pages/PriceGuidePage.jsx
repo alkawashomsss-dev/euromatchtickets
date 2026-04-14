@@ -116,6 +116,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Ticket Prices Guide", url: "https://euromatchtickets.com/prices" }]} />
       <SEOHead 
         title={`${data.title} - Price Guide 2026`}
         description={data.description}

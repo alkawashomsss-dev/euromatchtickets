@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Shield, Ticket, CreditCard, Clock, CheckCircle, Star, Award, Users, Globe, Headphones, FileCheck, Lock } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const HowToBuyF1TicketsPage = () => {
   const schema = {
@@ -33,6 +34,7 @@ const HowToBuyF1TicketsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Blog", url: "https://euromatchtickets.com/blog" }, { name: "How to Buy F1 Tickets", url: "https://euromatchtickets.com/how-to-buy-f1-tickets" }]} />
       <SEOHead 
         title="How to Buy F1 Tickets 2026 | Complete Guide"
         description="Learn how to buy Formula 1 tickets safely online. Step-by-step guide for purchasing F1 Grand Prix tickets. Best prices, 100% guarantee, instant delivery."

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Shield, Star, Ticket, Trophy, Zap, ChevronRight, Music, Flag, Bike } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const GermanLandingPage = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const GermanLandingPage = () => {
 
   return (
     <div className="min-h-screen bg-[#1e1e1e]" data-testid="german-landing-page">
+      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Tickets Deutschland", url: "https://euromatchtickets.com/de" }]} />
       <SEOHead
         title="Tickets Kaufen - Champions League, F1, Bundesliga"
         description="Kaufen Sie Tickets für Champions League, F1, Bundesliga, Konzerte und mehr. Günstigste Preise garantiert. Sofortige Lieferung per QR. FanProtect Garantie."
