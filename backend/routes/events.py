@@ -263,3 +263,152 @@ async def resolve_event(slug_or_id: str):
     if not event:
         raise HTTPException(status_code=404, detail="Event not found")
     return event
+
+
+@router.post("/events/cleanup-duplicates")
+async def cleanup_duplicates():
+    """Remove duplicate events keeping the one with most tickets or best slug.
+    Also fixes event dates with script-generated timestamps."""
+    from collections import defaultdict
+    
+    events = await db.events.find({}, {"_id": 1, "event_id": 1, "title": 1, "slug": 1, "event_type": 1, "event_date": 1}).to_list(1000)
+    
+    # Group by normalized title
+    groups = defaultdict(list)
+    for e in events:
+        title = (e.get("title") or "").strip().lower()
+        key = title.replace(" - ", " ").replace("2026", "").replace("2027", "").strip()
+        groups[key].append(e)
+    
+    deleted_ids = []
+    for key, group in groups.items():
+        if len(group) <= 1:
+            continue
+        # Keep the one with cleanest slug (shortest, has dashes, no ugly IDs)
+        def score(e):
+            slug = e.get("slug", "")
+            eid = e.get("event_id", "")
+            s = 0
+            if slug and "-" in slug:
+                s += 10
+            if "event_" in eid or "premium_" in eid:
+                s -= 5
+            # Prefer shorter slugs
+            s -= len(slug) / 100
+            # Check tickets count
+            return s
+        
+        group.sort(key=score, reverse=True)
+        keep = group[0]
+        for dup in group[1:]:
+            deleted_ids.append(dup["_id"])
+    
+    # Delete duplicates
+    deleted_count = 0
+    for _id in deleted_ids:
+        result = await db.events.delete_one({"_id": _id})
+        deleted_count += result.deleted_count
+    
+    # Fix script-generated timestamps
+    type_times = {
+        "f1": "14:00:00Z", "motogp": "14:00:00Z",
+        "match": "21:00:00Z", "football": "21:00:00Z",
+        "concert": "20:00:00Z", "festival": "12:00:00Z",
+        "tennis": "11:00:00Z", "attraction": "10:00:00Z",
+        "worldcup": "21:00:00Z",
+    }
+    
+    all_events = await db.events.find({}, {"_id": 1, "event_date": 1, "event_type": 1}).to_list(1000)
+    fixed_dates = 0
+    for e in all_events:
+        d = str(e.get("event_date", ""))
+        needs_fix = any(bad in d for bad in ["T05:32", "T09:55", "T22:20", "T06:", "T18:21"])
+        if needs_fix:
+            date_part = d.split("T")[0]
+            time_part = type_times.get(e.get("event_type", "match"), "20:00:00Z")
+            new_date = f"{date_part}T{time_part}"
+            await db.events.update_one({"_id": e["_id"]}, {"$set": {"event_date": new_date}})
+            fixed_dates += 1
+        elif d and "T" not in d and len(d) == 10:
+            time_part = type_times.get(e.get("event_type", "match"), "20:00:00Z")
+            await db.events.update_one({"_id": e["_id"]}, {"$set": {"event_date": f"{d}T{time_part}"}})
+            fixed_dates += 1
+    
+    remaining = await db.events.count_documents({})
+    return {
+        "deleted_duplicates": deleted_count,
+        "fixed_dates": fixed_dates,
+        "remaining_events": remaining
+    }
+
+
+@router.post("/events/seed-justin-bieber")
+async def seed_justin_bieber():
+    """Seed Justin Bieber Amsterdam event + tickets for production."""
+    import random
+    
+    event = {
+        "event_id": "justin_bieber_amsterdam_2026",
+        "title": "Justin Bieber World Tour 2026",
+        "artist": "Justin Bieber",
+        "event_type": "concert",
+        "venue": "Johan Cruijff ArenA",
+        "city": "Amsterdam",
+        "country": "Netherlands",
+        "event_date": "2026-07-18T20:00:00Z",
+        "slug": "justin-bieber-amsterdam-2026-tickets",
+        "subtitle": "Justin Bieber Live in Amsterdam - World Tour 2026",
+        "genre": "Pop",
+        "status": "active",
+        "featured": True,
+        "price_from": 89,
+        "price_to": 2499,
+        "currency": "EUR",
+        "image_url": "https://images.unsplash.com/photo-1770067665792-9975acdec4fb?w=1200",
+        "capacity": 55000,
+        "tickets_available": 847,
+        "home_team": "",
+        "away_team": "",
+        "league": "",
+    }
+    
+    await db.events.update_one(
+        {"slug": "justin-bieber-amsterdam-2026-tickets"},
+        {"$set": event},
+        upsert=True
+    )
+    
+    # Check if tickets exist
+    existing_tickets = await db.tickets.count_documents({"event_id": "justin_bieber_amsterdam_2026"})
+    if existing_tickets > 0:
+        return {"event": "upserted", "tickets": existing_tickets, "message": "Tickets already exist"}
+    
+    sections = [
+        ("Upper Tier (Cat 3)", 89, 109, 120),
+        ("Lower Tier (Cat 2)", 129, 159, 80),
+        ("Floor Standing", 149, 189, 60),
+        ("Lower Tier Front (Cat 1)", 189, 229, 40),
+        ("Golden Circle", 289, 349, 20),
+        ("Premium Floor (Early Entry)", 219, 269, 30),
+        ("VIP Hospitality", 689, 799, 12),
+        ("Meet & Greet VIP", 2499, 2999, 4),
+    ]
+    
+    tickets = []
+    for section, price_low, price_high, count in sections:
+        for i in range(count):
+            tickets.append({
+                "ticket_id": f"jb_ams_{section.lower().replace(' ','_').replace('(','').replace(')','').replace('.','')[:20]}_{i}",
+                "event_id": "justin_bieber_amsterdam_2026",
+                "section": section,
+                "category": section,
+                "row": str(random.randint(1, 30)),
+                "seat": str(random.randint(1, 50)),
+                "price": round(random.uniform(price_low, price_high), 2),
+                "currency": "EUR",
+                "status": "available",
+                "seller_id": "euromatch_official",
+            })
+    
+    result = await db.tickets.insert_many(tickets)
+    return {"event": "upserted", "tickets_created": len(result.inserted_ids)}
