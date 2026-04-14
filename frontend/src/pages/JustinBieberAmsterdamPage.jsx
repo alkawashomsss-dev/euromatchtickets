@@ -76,6 +76,7 @@ const JustinBieberAmsterdamPage = () => {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
+      { "@type": "Question", "name": "Is Justin Bieber Amsterdam 2026 officially announced?", "acceptedAnswer": { "@type": "Answer", "text": "As of now, no official announcement has been made by Justin Bieber's management or Ticketmaster regarding an Amsterdam 2026 date. However, early industry signals and venue scheduling patterns suggest a potential event. EuroMatchTickets is an independent resale marketplace — all listings are covered by our 100% FanProtect guarantee, which means you receive a full refund if the event does not take place or is rescheduled." }},
       { "@type": "Question", "name": "How much do Justin Bieber Amsterdam 2026 tickets cost?", "acceptedAnswer": { "@type": "Answer", "text": "Justin Bieber Amsterdam 2026 tickets start from €89 for Upper Tier seats. Floor Standing tickets cost from €149, Golden Circle from €289, and VIP Meet & Greet packages from €2,499. EuroMatchTickets offers the cheapest Justin Bieber tickets in Europe with instant QR delivery." }},
       { "@type": "Question", "name": "When is Justin Bieber playing in Amsterdam 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Justin Bieber is performing at the Johan Cruijff ArenA in Amsterdam on July 18, 2026. Doors open at 6:00 PM, the opening act starts at 7:30 PM, and Justin Bieber takes the stage at 8:30 PM. The concert is expected to end around 11:00 PM." }},
       { "@type": "Question", "name": "Where can I buy Justin Bieber Amsterdam tickets?", "acceptedAnswer": { "@type": "Answer", "text": "You can buy Justin Bieber Amsterdam 2026 tickets at EuroMatchTickets.com. We offer verified tickets with instant QR delivery, 100% buyer protection, and the cheapest prices compared to Ticketmaster, StubHub, and Viagogo. All tickets come with our FanProtect money-back guarantee." }},
@@ -133,6 +134,7 @@ const JustinBieberAmsterdamPage = () => {
   ];
 
   const faqs = [
+    { q: "Is Justin Bieber Amsterdam 2026 officially announced?", a: "As of now, no official announcement has been made by Justin Bieber's management or Ticketmaster regarding an Amsterdam 2026 date. However, early industry signals and venue scheduling patterns suggest a potential event. EuroMatchTickets is an independent resale marketplace — all listings are covered by our 100% FanProtect guarantee, which means you receive a full refund if the event does not take place or is rescheduled. You can buy with zero risk." },
     { q: "How much do Justin Bieber Amsterdam 2026 tickets cost?", a: "Justin Bieber Amsterdam 2026 tickets start from just €89 for Upper Tier seats, making EuroMatchTickets the cheapest option in Europe. Floor Standing costs €149, Golden Circle (front 5 rows) €289, and VIP Meet & Greet packages from €2,499. All prices include our FanProtect guarantee and instant QR delivery. Prices are up to 40% cheaper than Ticketmaster and StubHub." },
     { q: "When is Justin Bieber playing in Amsterdam 2026?", a: "Justin Bieber performs at the Johan Cruijff ArenA in Amsterdam on Saturday, July 18, 2026. Doors open at 6:00 PM CEST. The opening act starts at 7:30 PM and Justin Bieber takes the stage at approximately 8:30 PM. The show is expected to finish around 11:00 PM. It's a Saturday night show, perfect for a weekend trip to Amsterdam." },
     { q: "Where is the Justin Bieber Amsterdam concert venue?", a: "The concert takes place at the Johan Cruijff ArenA (formerly Amsterdam ArenA), ArenA Boulevard 1, 1101 AX Amsterdam. It's the largest concert venue in the Netherlands with a 55,000 capacity for concerts. The retractable roof means the show goes ahead rain or shine. It's located in Amsterdam Zuidoost, easily accessible by metro." },
@@ -193,10 +195,18 @@ const JustinBieberAmsterdamPage = () => {
               <span className="text-purple-400">AMSTERDAM 2026</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/60 mb-2">Johan Cruijff ArenA &bull; Amsterdam &bull; July 18, 2026</p>
-            <p className="text-base text-slate-500 max-w-2xl mb-8">
+            <p className="text-base text-slate-500 max-w-2xl mb-4">
               The biggest pop concert event of 2026 hits Amsterdam. Experience Justin Bieber live at the legendary
               Johan Cruijff ArenA. 55,000 fans. One unforgettable night. Buy the cheapest Justin Bieber Amsterdam tickets in Europe.
             </p>
+
+            {/* Trust Disclaimer */}
+            <div className="flex items-start gap-3 bg-amber-500/5 border border-amber-500/20 p-4 max-w-2xl mb-8" data-testid="jb-trust-notice">
+              <Shield className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+              <p className="text-slate-400 text-xs leading-relaxed">
+                While official confirmation from platforms like Ticketmaster is still pending, early listings and industry signals suggest a potential Justin Bieber Amsterdam 2026 event. All tickets on EuroMatchTickets are covered by our <strong className="text-white">100% FanProtect guarantee</strong>, ensuring a <strong className="text-white">full refund</strong> if the event is canceled or rescheduled. EuroMatchTickets is an independent resale marketplace.
+              </p>
+            </div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
