@@ -136,11 +136,30 @@ const SocialProofNotification = lazy(() => import("./components/MarketingTools")
 const FloatingCTA = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.FloatingCTA })));
 const MarketingBotButton = lazy(() => import("./components/AIMarketingBot").then(m => ({ default: m.MarketingBotButton })));
 
-/* Redirect ugly event IDs (/event/ucl_xxx) to /events */
+/* Map event slugs to dedicated landing pages */
+const DEDICATED_PAGES = {
+  'justin-bieber-amsterdam-2026-tickets': '/justin-bieber-amsterdam-2026-tickets',
+  'f1-belgian-grand-prix-spa-tickets': '/f1-belgian-grand-prix-spa-tickets',
+  'f1-monaco-grand-prix-tickets': '/f1-monaco-grand-prix-tickets',
+  'taylor-swift-london-tickets': '/taylor-swift-london-tickets',
+  'the-weeknd-tour-2026': '/the-weeknd-tour-2026',
+  'bruno-mars-tour-2026': '/bruno-mars-tour-2026',
+  'coldplay-tour-2026': '/coldplay-tour-2026',
+  'bad-bunny-london-2026': '/bad-bunny-london-2026',
+  'guns-n-roses-tour-2026': '/guns-n-roses-tour-2026',
+  'monaco-grand-prix-tickets': '/monaco-grand-prix-tickets',
+  'el-clasico-tickets': '/el-clasico-tickets',
+  'champions-league-tickets': '/champions-league-tickets',
+  'super-bowl-2026-tickets': '/super-bowl-2026-tickets',
+};
+
+/* Redirect ugly event IDs (/event/ucl_xxx) to /events, or to dedicated pages */
 const EventRouteGuard = () => {
   const { eventId } = useParams();
   const isUgly = eventId && (eventId.includes('_') || (eventId.length > 8 && !eventId.includes('-')));
   if (isUgly) return <Navigate to="/events" replace />;
+  const dedicatedPage = DEDICATED_PAGES[eventId];
+  if (dedicatedPage) return <Navigate to={dedicatedPage} replace />;
   return <EventDetailsPage />;
 };
 
