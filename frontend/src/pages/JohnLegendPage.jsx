@@ -5,6 +5,7 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
+import ProductSchema from "../components/ProductSchema";
 
 const TRANSLATIONS = {
   en: { title: "John Legend Abu Dhabi Concert 2026", subtitle: "Official Tickets - 5% Cheaper", buyNow: "Secure Your Seat Now", from: "From", guarantee: "100% Guarantee" },
@@ -55,6 +56,7 @@ const JohnLegendPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="John Legend Live 2026" price={89} highPrice={1499} url="https://euromatchtickets.com/john-legend-tour-2026" category="concert" venue="Etihad Arena" city="Abu Dhabi" />
 
       {/* Language Selector */}
       <div className="fixed top-20 right-4 z-50 flex gap-1 bg-white/90 rounded-none p-1 border border-white/10">

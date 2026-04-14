@@ -5,6 +5,7 @@ import { API } from "../App";
 import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles, Zap, Crown, ArrowRight, Check, Users } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
@@ -53,6 +54,7 @@ const WorldCupPage = () => {
         description="Buy FIFA World Cup 2026 tickets for all matches. Opening ceremony Mexico, group stage, quarter finals, semi finals and World Cup Final in New York."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(worldCupSchema) }} />
+      <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026-tickets" category="worldcup" venue="Multiple Venues" city="USA/Mexico/Canada" />
 
       {/* ════════ HERO ════════ */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">

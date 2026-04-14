@@ -5,6 +5,7 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 import { NewsletterSignup } from "../components/NewsletterSignup";
 
 const CANONICAL = "https://euromatchtickets.com/f1-belgian-grand-prix-spa-tickets";
@@ -153,6 +154,7 @@ const SpaGPPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <ProductSchema name="Belgian Grand Prix Spa 2026" description="Buy Spa F1 tickets for the 2026 Belgian Grand Prix at Spa-Francorchamps from €109. General Admission, Eau Rouge Gold, Paddock Club VIP. Cheapest verified tickets with instant QR delivery." price={109} highPrice={3489} image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200" url={CANONICAL} category="f1" venue="Circuit de Spa-Francorchamps" city="Stavelot" />
 
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden" data-testid="spa-hero">

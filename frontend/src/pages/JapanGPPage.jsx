@@ -3,6 +3,7 @@ import { Calendar, MapPin, Trophy, Star, Shield, Zap, Flag, Ticket, HelpCircle, 
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const JapanGPPage = () => {
   const schema = {
@@ -45,6 +46,7 @@ const JapanGPPage = () => {
         description="Buy Japanese Grand Prix 2026 Suzuka tickets from €189. The legendary figure-8 circuit! 130R, S-Curves, Hairpin grandstands. VIP Hospitality. 100% Ticket."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Japanese Grand Prix Suzuka 2026" price={179} highPrice={3999} url="https://euromatchtickets.com/f1-japanese-grand-prix-suzuka-tickets" category="f1" venue="Suzuka International Racing Course" city="Suzuka" />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-rose-600/30 via-slate-900 to-slate-950" />

@@ -3,6 +3,7 @@ import { Calendar, MapPin, Music, Star, Shield, Users, TrendingUp, Zap, Skull } 
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const GunsNRosesPage = () => {
   const schema = {
@@ -40,6 +41,7 @@ const GunsNRosesPage = () => {
         description="Buy Guns N Roses 2026 European tour tickets from €95. Stadium shows - Berlin, London Tottenham, Hamburg, Cologne, Munich. Sweet Child O Mine live!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Guns N Roses Tour 2026" price={89} highPrice={1999} url="https://euromatchtickets.com/guns-n-roses-tour-2026" category="concert" venue="Olympic Stadium" city="London" />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-red-500/10 to-slate-950" />

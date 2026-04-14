@@ -3,6 +3,7 @@ import { Calendar, MapPin, Shield, Zap, Flag, Ticket, HelpCircle, CreditCard, He
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const AustraliaGPPage = () => {
   const schema = {
@@ -45,6 +46,7 @@ const AustraliaGPPage = () => {
         description="Buy Australian Grand Prix 2026 Melbourne tickets from €159. Albert Park Circuit. Jones, Brabham, Prost grandstands. VIP Hospitality. 100% Ticket."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Australian Grand Prix Melbourne 2026" price={169} highPrice={3999} url="https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets" category="f1" venue="Albert Park Circuit" city="Melbourne" />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-slate-900 to-slate-950" />

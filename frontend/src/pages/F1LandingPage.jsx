@@ -4,6 +4,7 @@ import { Flag, Shield, Zap, Star, ChevronRight, Check, MapPin, Ticket } from "lu
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const F1LandingPage = () => {
   // F1 2026 Calendar
@@ -23,6 +24,8 @@ const F1LandingPage = () => {
         description="Buy F1 tickets 2026 season. F1 calendar 2026: Monaco, Silverstone, Bahrain, Abu Dhabi & more. From €120. F1 schedule 2026 with instant delivery + guarantee."
         canonicalUrl="https://euromatchtickets.com/f1-tickets-2026"
       />
+
+      <ProductSchema name="F1 Tickets 2026 All Grand Prix" price={79} highPrice={8999} url="https://euromatchtickets.com/f1-tickets" category="f1" venue="Various Circuits" city="Worldwide" />
 
       {/* Hero Section */}
       <div className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">

@@ -3,6 +3,7 @@ import { Calendar, MapPin, Shield, Zap, Flag, Ticket, HelpCircle, CreditCard, He
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const SaudiGPPage = () => {
   const schema = {
@@ -45,6 +46,7 @@ const SaudiGPPage = () => {
         description="Buy Saudi Arabian Grand Prix 2026 Jeddah tickets from €169. Fastest street circuit! Night race on the Red Sea. VIP Hospitality. 100% Ticket Guarantee."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Saudi Arabian Grand Prix 2026" price={199} highPrice={4499} url="https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets" category="f1" venue="Jeddah Corniche Circuit" city="Jeddah" />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-green-600/30 via-slate-900 to-slate-950" />

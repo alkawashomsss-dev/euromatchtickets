@@ -5,6 +5,7 @@ import { API } from "../App";
 import { Calendar, MapPin, Ticket, Star, Shield, ChevronRight, Sparkles, Zap, Crown, ArrowRight, Check, Users, Clock, Flame, Eye, TrendingUp, Heart, Music } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
@@ -85,6 +86,7 @@ const TaylorSwiftPage = () => {
         canonicalUrl="https://euromatchtickets.com/taylor-swift-wembley-2026-tickets"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Taylor Swift Eras Tour London 2026" price={89} highPrice={2999} url="https://euromatchtickets.com/taylor-swift-london-tickets" category="concert" venue="Wembley Stadium" city="London" />
 
       {/* HERO */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">

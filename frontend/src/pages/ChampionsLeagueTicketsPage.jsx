@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Users, Shield, Zap, Trophy, Ticket, Star } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const ChampionsLeagueTicketsPage = () => {
   const navigate = useNavigate();
@@ -71,6 +72,8 @@ const ChampionsLeagueTicketsPage = () => {
         keywords="champions league tickets, ucl 2025 tickets, ticket champions league 2025, champions league semi final 2025 tickets, buy ticket final champions league 2025, champions league munich tickets"
         canonicalUrl="https://euromatchtickets.com/champions-league-tickets"
       />
+
+      <ProductSchema name="Champions League Tickets 2026" price={99} highPrice={4999} url="https://euromatchtickets.com/champions-league-tickets" category="football" venue="Various Stadiums" city="Europe" />
 
       <div className="min-h-screen bg-[#0e0e14]">
         {/* Hero Section */}

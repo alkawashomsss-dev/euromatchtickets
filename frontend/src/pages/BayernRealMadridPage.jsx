@@ -5,6 +5,7 @@ import { API } from "../App";
 import { Calendar, MapPin, Ticket, Shield, Zap, Star, Users, Clock, Flag, Award, ChevronRight, Check, TrendingDown } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
@@ -107,6 +108,7 @@ const BayernRealMadridPage = () => {
         canonicalUrl="https://euromatchtickets.com/bayern-vs-real-madrid-tickets"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Bayern Munich vs Real Madrid UCL 2026" price={129} highPrice={2999} url="https://euromatchtickets.com/bayern-munich-vs-real-madrid-tickets" category="football" venue="Allianz Arena" city="Munich" />
       <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
         { name: "Football Tickets", url: "https://euromatchtickets.com/football-tickets" },

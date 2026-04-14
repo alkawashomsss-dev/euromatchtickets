@@ -3,6 +3,7 @@ import { Calendar, MapPin, Shield, Zap, Flag, Ticket, HelpCircle, CreditCard, He
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const AustriaGPPage = () => {
   const schema = {
@@ -45,6 +46,7 @@ const AustriaGPPage = () => {
         description="Buy Austrian Grand Prix 2026 Red Bull Ring tickets from €119. Mountain circuit in Spielberg! VIP Hospitality. 100% Ticket Guarantee. Instant delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Austrian Grand Prix 2026" price={139} highPrice={2999} url="https://euromatchtickets.com/f1-austrian-grand-prix-red-bull-ring-tickets" category="f1" venue="Red Bull Ring" city="Spielberg" />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/30 via-slate-900 to-slate-950" />

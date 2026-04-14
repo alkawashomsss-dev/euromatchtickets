@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Users, Shield, Zap, Trophy, Ticket, Star } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 import axios from "axios";
 import { API } from "../App";
 
@@ -45,6 +46,8 @@ const ElClasicoTicketsPage = () => {
         keywords="El Clasico tickets, Real Madrid vs Barcelona tickets, buy El Clasico, La Liga tickets, Bernabeu tickets, Camp Nou tickets, El Clasico 2026"
         canonicalUrl="https://euromatchtickets.com/el-clasico-tickets"
       />
+
+      <ProductSchema name="El Clasico Real Madrid vs Barcelona 2026" price={149} highPrice={3999} url="https://euromatchtickets.com/el-clasico-tickets" category="football" venue="Santiago Bernabeu" city="Madrid" />
 
       <div className="min-h-screen bg-[#0e0e14]">
         {/* Hero Section */}

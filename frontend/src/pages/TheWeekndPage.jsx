@@ -3,6 +3,7 @@ import { Calendar, MapPin, Ticket, Music, Star, Shield, Users, TrendingUp, Zap }
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const TheWeekndPage = () => {
   const schema = {
@@ -42,6 +43,7 @@ const TheWeekndPage = () => {
         description="Buy The Weeknd tour 2026 tickets from €95. Concert The Weeknd 2026 European dates. Paris, London, Berlin. Instant QR delivery + FanProtect guarantee."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="The Weeknd Tour 2026" price={79} highPrice={1999} url="https://euromatchtickets.com/the-weeknd-tour-2026" category="concert" venue="Wembley Stadium" city="London" />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 via-slate-900 to-slate-950" />

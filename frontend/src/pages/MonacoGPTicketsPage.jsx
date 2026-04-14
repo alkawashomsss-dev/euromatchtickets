@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Clock, Users, Shield, Zap, Trophy, Star, ChevronRight, Ticket } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 import axios from "axios";
 import { API } from "../App";
 
@@ -62,6 +63,8 @@ const MonacoGPTicketsPage = () => {
         description="Buy Monaco Grand Prix 2026 tickets. Grandstand, VIP Hospitality & Paddock Club available. Secure booking, instant delivery. Limited availability - Book now!"
         image="https://static.prod-images.emergentagent.com/jobs/775fd9a1-fbbf-459e-af56-55fb2499685c/images/1ad01909b1565e2be44a7b26803868d06378b04d70810a060231d8ef9d1b0c17.png"
       />
+
+      <ProductSchema name="Monaco Grand Prix 2026" price={249} highPrice={8999} url="https://euromatchtickets.com/f1-monaco-grand-prix-tickets" category="f1" venue="Circuit de Monaco" city="Monte Carlo" />
 
       <div className="min-h-screen bg-[#0e0e14]">
         {/* Hero Section */}

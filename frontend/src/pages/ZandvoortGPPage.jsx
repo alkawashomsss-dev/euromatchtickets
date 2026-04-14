@@ -3,6 +3,7 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const ZandvoortGPPage = () => {
   const schema = {
@@ -42,6 +43,7 @@ const ZandvoortGPPage = () => {
         description="Buy Dutch Grand Prix 2026 Zandvoort tickets from €189. Max Verstappen's home race! Orange army atmosphere. General admission, grandstand, VIP. €10 cheaper."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Dutch Grand Prix Zandvoort 2026" price={149} highPrice={2999} url="https://euromatchtickets.com/f1-dutch-grand-prix-zandvoort-tickets" category="f1" venue="Circuit Zandvoort" city="Zandvoort" />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-slate-900 to-slate-950" />

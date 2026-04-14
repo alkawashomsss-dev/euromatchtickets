@@ -3,6 +3,7 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const LasVegasGPPage = () => {
   const schema = {
@@ -42,6 +43,7 @@ const LasVegasGPPage = () => {
         description="Buy Las Vegas Grand Prix 2026 tickets from €249. F1 on the Strip! Sphere Grandstand, Strip View, VIP Hospitality. Night race past casinos. 100% Buyer."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Las Vegas Grand Prix 2026" price={249} highPrice={5999} url="https://euromatchtickets.com/f1-las-vegas-grand-prix-tickets" category="f1" venue="Las Vegas Strip Circuit" city="Las Vegas" />
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">

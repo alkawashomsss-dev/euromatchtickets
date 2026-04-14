@@ -4,6 +4,7 @@ import { Calendar, MapPin, Ticket, Flag, ChevronRight, Shield, Zap, Star, Bike, 
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 import axios from "axios";
 import { API } from "../App";
 
@@ -166,6 +167,7 @@ const MotoGPTicketsPage = () => {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <ProductSchema name="MotoGP Tickets 2026" price={49} highPrice={1999} url="https://euromatchtickets.com/motogp-tickets" category="motogp" venue="Various Circuits" city="Europe" />
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">

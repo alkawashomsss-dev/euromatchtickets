@@ -3,6 +3,7 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const SilverstoneGPPage = () => {
   const schema = {
@@ -42,6 +43,7 @@ const SilverstoneGPPage = () => {
         description="Buy British Grand Prix 2026 Silverstone tickets from €149. Best grandstands Copse, Club, Maggotts. VIP Hospitality available. 100% Buyer Protection. €10."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="British Grand Prix Silverstone 2026" price={149} highPrice={3499} url="https://euromatchtickets.com/f1-british-grand-prix-silverstone-tickets" category="f1" venue="Silverstone Circuit" city="Silverstone" />
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">

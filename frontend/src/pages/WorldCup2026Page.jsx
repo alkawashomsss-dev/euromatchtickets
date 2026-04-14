@@ -5,6 +5,7 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
+import ProductSchema from "../components/ProductSchema";
 
 const TRANSLATIONS = {
   en: { title: "FIFA World Cup 2026 Tickets", subtitle: "USA • Canada • Mexico", buyNow: "Secure Your Seat Now", from: "From", final: "World Cup Final", guarantee: "100% Guarantee" },
@@ -75,6 +76,7 @@ const WorldCup2026Page = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026" category="worldcup" venue="Multiple Venues" city="USA/Mexico/Canada" />
       
       <title>FIFA World Cup 2026 Tickets | Final $1,425 | Semi-Finals | Group Stage | EuroMatchTickets</title>
       <meta name="description" content="Buy FIFA World Cup 2026 tickets. Final in New York from $1,425. Semi-Finals, Quarter-Finals, Group Stage matches. Argentina vs France rematch. Best prices, instant delivery." />

@@ -3,6 +3,7 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const MiamiGPPage = () => {
   const schema = {
@@ -45,6 +46,7 @@ const MiamiGPPage = () => {
         description="Buy Miami Grand Prix 2026 tickets from €249. F1 Miami International Autodrome. Beach Grandstand, Turn 1, Marina views. VIP Hospitality. 100% Ticket."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Miami Grand Prix 2026" price={229} highPrice={4999} url="https://euromatchtickets.com/f1-miami-grand-prix-tickets" category="f1" venue="Miami International Autodrome" city="Miami" />
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">

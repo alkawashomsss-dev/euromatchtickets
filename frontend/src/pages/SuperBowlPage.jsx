@@ -5,6 +5,7 @@ import { API } from "../App";
 import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles, Zap, Crown, ArrowRight, Check, Users, Clock, Flame, Eye, TrendingUp } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
@@ -76,6 +77,7 @@ const SuperBowlPage = () => {
         description="Buy Super Bowl LXII 2027 tickets from €899. VIP suites, hospitality packages & premium seats at Levi's Stadium, Santa Clara. 100% verified with instant QR."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Super Bowl 2027" price={2499} highPrice={29999} url="https://euromatchtickets.com/super-bowl-2026-tickets" category="football" venue="SoFi Stadium" city="Los Angeles" />
 
       {/* HERO */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">

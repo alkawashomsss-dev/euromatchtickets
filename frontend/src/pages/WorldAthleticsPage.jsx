@@ -5,6 +5,7 @@ import { API } from "../App";
 import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles, Zap, Crown, ArrowRight, Check, Users, Flame, Eye } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
@@ -47,6 +48,7 @@ const WorldAthleticsPage = () => {
         description="Buy World Athletics Ultimate Championship 2026 tickets from €79. VIP track-side packages, hospitality access. Watch Olympic champions live. 100% verified."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="World Athletics Championships 2026" price={49} highPrice={999} url="https://euromatchtickets.com/world-athletics-2026-tickets" category="athletics" venue="Olympic Stadium" city="Budapest" />
 
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">

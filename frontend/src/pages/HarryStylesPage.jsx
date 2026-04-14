@@ -5,6 +5,7 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
+import ProductSchema from "../components/ProductSchema";
 
 const TRANSLATIONS = {
   en: { title: "Harry Styles Tickets 2026", subtitle: "Together Together Tour - Official Tickets", buyNow: "Secure Your Seat Now", from: "From", vipTitle: "VIP Packages Available", berlinVip: "Berlin VIP Experience €15,300" },
@@ -57,6 +58,7 @@ const HarryStylesPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Harry Styles Love On Tour 2026" price={79} highPrice={1999} url="https://euromatchtickets.com/harry-styles-tickets" category="concert" venue="Wembley Stadium" city="London" />
       
       {/* SEO Meta */}
       <title>Harry Styles Tickets 2026 | Together Together Tour | VIP from €15,300 | EuroMatchTickets</title>

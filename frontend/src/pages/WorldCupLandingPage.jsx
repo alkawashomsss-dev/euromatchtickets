@@ -4,6 +4,7 @@ import { Trophy, Shield, Zap, Clock, Star, ChevronRight, Check, Users, Ticket, C
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 import axios from "axios";
 import { API } from "../App";
 
@@ -51,6 +52,7 @@ const WorldCupLandingPage = () => {
         title="FIFA World Cup 2026 Tickets | Buy Official Online"
         description="Get official FIFA World Cup 2026 tickets. Prices from €150. Instant QR delivery. 100% money-back guarantee. Over 50,000 tickets available."
       />
+      <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026-tickets" category="worldcup" venue="MetLife Stadium" city="New York" />
 
       {/* Hero Section */}
       <div className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">

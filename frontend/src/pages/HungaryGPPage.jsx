@@ -3,6 +3,7 @@ import { Calendar, MapPin, Shield, Zap, Flag, Ticket, HelpCircle, CreditCard, He
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const HungaryGPPage = () => {
   const schema = {
@@ -45,6 +46,7 @@ const HungaryGPPage = () => {
         description="Buy Hungarian Grand Prix 2026 Budapest tickets from €99. Cheapest F1 race! Hungaroring circuit. VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Hungarian Grand Prix Budapest 2026" price={119} highPrice={2799} url="https://euromatchtickets.com/f1-hungarian-grand-prix-budapest-tickets" category="f1" venue="Hungaroring" city="Budapest" />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/30 via-slate-900 to-slate-950" />

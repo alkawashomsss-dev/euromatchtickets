@@ -3,6 +3,7 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import ProductSchema from "../components/ProductSchema";
 
 const SingaporeGPPage = () => {
   const schema = {
@@ -42,6 +43,7 @@ const SingaporeGPPage = () => {
         description="Buy Singapore Grand Prix 2026 tickets from €189. Spectacular F1 Night Race at Marina Bay. Turn 1, Pit Grandstand, VIP available. 100% Buyer Protection."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ProductSchema name="Singapore Grand Prix 2026" price={189} highPrice={4999} url="https://euromatchtickets.com/f1-singapore-grand-prix-tickets" category="f1" venue="Marina Bay Street Circuit" city="Singapore" />
 
       {/* Hero */}
       <section className="relative py-20 overflow-hidden">

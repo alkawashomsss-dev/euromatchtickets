@@ -12,6 +12,7 @@ import { RelatedEventsSection } from "../components/RelatedEventsSection";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import EventStructuredData from "../components/StructuredData";
+import ProductSchema from "../components/ProductSchema";
 import { RecentlyBoughtPopup } from "../components/SalesAccelerator";
 import VenueInfoSection from "../components/VenueInfoSection";
 import InteractiveVenueMap from "../components/InteractiveVenueMap";
@@ -111,6 +112,18 @@ export default function EventDetailsPage() {
     <div className="min-h-screen bg-[#0e0e14]" data-testid="event-details-page">
       <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={isUglyUrl} />
       <EventStructuredData event={event} />
+      <ProductSchema
+        name={event.title}
+        description={seoDesc}
+        price={lowestPrice}
+        highPrice={lowestPrice * 8}
+        image={event.image_url}
+        url={pageUrl}
+        category={event.event_type}
+        venue={event.venue}
+        city={event.city}
+        date={event.event_date}
+      />
       <BreadcrumbStructuredData items={[
         { name: 'Home', url: 'https://euromatchtickets.com' },
         { name: catLabel, url: `https://euromatchtickets.com/${isF1 ? 'f1-tickets' : isConcert ? 'concerts' : 'events'}` },
