@@ -17,9 +17,15 @@ router = APIRouter(prefix="/api")
 stripe.api_key = STRIPE_API_KEY
 
 # Email service
+import sys
+_backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _backend_dir not in sys.path:
+    sys.path.insert(0, _backend_dir)
 try:
     from email_service import send_order_confirmation, send_seller_notification, send_price_drop_alert
-except ImportError:
+    logger.info("Email service loaded successfully")
+except ImportError as e:
+    logger.warning(f"Email service not available: {e}")
     async def send_order_confirmation(*a, **k): pass
     async def send_seller_notification(*a, **k): pass
     async def send_price_drop_alert(*a, **k): pass
