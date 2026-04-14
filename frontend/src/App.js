@@ -139,6 +139,7 @@ const MarketingBotButton = lazy(() => import("./components/AIMarketingBot").then
 /* Map event slugs to dedicated landing pages */
 const DEDICATED_PAGES = {
   'justin-bieber-amsterdam-2026-tickets': '/justin-bieber-amsterdam-2026-tickets',
+  'justin-bieber-amsterdam-tickets-2026': '/justin-bieber-amsterdam-2026-tickets',
   'f1-belgian-grand-prix-spa-tickets': '/f1-belgian-grand-prix-spa-tickets',
   'f1-monaco-grand-prix-tickets': '/f1-monaco-grand-prix-tickets',
   'taylor-swift-london-tickets': '/taylor-swift-london-tickets',
@@ -482,6 +483,7 @@ function AppRouter() {
         
         {/* Justin Bieber Amsterdam - Canonical + Keyword Variations */}
         <Route path="/justin-bieber-amsterdam-2026-tickets" element={<JustinBieberAmsterdamPage />} />
+        <Route path="/justin-bieber-amsterdam-tickets-2026" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
         <Route path="/justin-bieber-amsterdam-tickets" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
         <Route path="/justin-bieber-amsterdam-2026" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
         <Route path="/justin-bieber-amsterdam" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
