@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { API } from "../App";
@@ -183,12 +183,33 @@ const EventsPage = () => {
     setSearchParams(params);
   };
 
+  const [searchText, setSearchText] = useState(filters.search);
+  const debounceRef = useRef(null);
+
+  const handleSearchChange = (value) => {
+    setSearchText(value);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      const newFilters = { ...filters, search: value };
+      setFilters(newFilters);
+      const params = new URLSearchParams();
+      if (newFilters.type && newFilters.type !== 'all') params.set('type', newFilters.type);
+      if (newFilters.city && newFilters.city !== 'all') params.set('city', newFilters.city);
+      if (value) params.set('search', value);
+      setSearchParams(params);
+    }, 400);
+  };
+
   const handleSearch = (e) => {
-    if (e.key === 'Enter') handleFilterChange('search', e.target.value);
+    if (e.key === 'Enter') {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+      handleFilterChange('search', e.target.value);
+    }
   };
 
   const clearFilters = () => {
     setFilters({ type: '', city: '', search: '' });
+    setSearchText('');
     setSearchParams({});
   };
 
@@ -241,7 +262,8 @@ const EventsPage = () => {
             <Input
               data-testid="search-input"
               placeholder="Search events, artists, teams, venues..."
-              defaultValue={filters.search}
+              value={searchText}
+              onChange={(e) => handleSearchChange(e.target.value)}
               onKeyDown={handleSearch}
               className="pl-12 bg-[#1e1e1e] border-white/10 text-white placeholder:text-slate-600 focus:border-[#e10600] h-12 rounded-none"
             />
