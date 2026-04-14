@@ -139,7 +139,7 @@ async def get_event(event_id: str, request: Request):
     # Group by category
     categories = {}
     for ticket in tickets:
-        cat = ticket["category"]
+        cat = ticket.get("category", ticket.get("section", "General"))
         if cat not in categories:
             categories[cat] = {"count": 0, "lowest_price": float('inf')}
         categories[cat]["count"] += 1
