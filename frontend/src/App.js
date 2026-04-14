@@ -103,6 +103,7 @@ const BayernRealMadridPage = lazy(() => import("./pages/BayernRealMadridPage"));
 const BahrainWorldCupPage = lazy(() => import("./pages/BahrainWorldCupPage"));
 const TaylorSwiftLondonPage = lazy(() => import("./pages/TaylorSwiftLondonPage"));
 const TaylorSwiftPage = lazy(() => import("./pages/TaylorSwiftPage"));
+const JustinBieberAmsterdamPage = lazy(() => import("./pages/JustinBieberAmsterdamPage"));
 const SpanishLandingPage = lazy(() => import("./pages/SpanishLandingPage"));
 const GermanLandingPage = lazy(() => import("./pages/GermanLandingPage"));
 const RealMadridHubPage = lazy(() => import("./pages/RealMadridHubPage"));
@@ -460,6 +461,28 @@ function AppRouter() {
         <Route path="/taylor-swift-concert-london" element={<Navigate to="/taylor-swift-london-tickets" replace />} />
         <Route path="/taylor-swift-eras-tour-london" element={<Navigate to="/taylor-swift-london-tickets" replace />} />
         
+        {/* Justin Bieber Amsterdam - Canonical + Keyword Variations */}
+        <Route path="/justin-bieber-amsterdam-2026-tickets" element={<JustinBieberAmsterdamPage />} />
+        <Route path="/justin-bieber-amsterdam-tickets" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-amsterdam-2026" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-amsterdam" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-concert-amsterdam" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-concert-amsterdam-2026" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-tickets-amsterdam" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-tickets-amsterdam-2026" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-tour-amsterdam-2026" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-world-tour-amsterdam" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-johan-cruijff-arena" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-arena-amsterdam" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/bieber-amsterdam-tickets" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/bieber-amsterdam-2026" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-kaartjes-amsterdam" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-tickets-kopen" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-nederland-2026" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-live-amsterdam" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/buy-justin-bieber-amsterdam-tickets" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+        <Route path="/justin-bieber-europe-tour-2026" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />
+
         {/* Team Hub Pages */}
         <Route path="/real-madrid-tickets" element={<RealMadridHubPage />} />
         <Route path="/barcelona-tickets" element={<BarcelonaHubPage />} />

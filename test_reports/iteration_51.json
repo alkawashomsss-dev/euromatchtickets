@@ -1,0 +1,62 @@
+{
+  "summary": "All 14 requested features for Justin Bieber Amsterdam 2026 page and Spa F1 page enhancements are working correctly. Justin Bieber page loads at canonical URL with correct H1, title, pricing (€89), venue (Johan Cruijff ArenA), FAQ section, ticket section with Buy Now buttons, VIP Meet & Greet section, MusicEvent structured data, internal links, and SEO keyword tags. All 3 tested redirects work correctly. Spa F1 page loads with H1, ticket section, and new 2026 Season Preview content. API returns Justin Bieber event and sitemap includes the page.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/test_reports/iteration_51.json"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "100%"
+  },
+  "test_credentials": "None required - all pages public",
+  "seed_data_creation": "Justin Bieber Amsterdam event already in MongoDB",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Justin Bieber Amsterdam page uses JustinBieberAmsterdamPage.jsx component. Routes defined in App.js lines 464-484 with canonical at /justin-bieber-amsterdam-2026-tickets and 20+ redirect variations. Spa F1 page enhanced with 2026 Season Preview section at lines 652-686 in SpaGPPage.jsx.",
+  "test_results": {
+    "justin_bieber_amsterdam_page": {
+      "page_loads": "PASS - data-testid='justin-bieber-amsterdam-page' found",
+      "h1_correct": "PASS - 'JUSTIN BIEBER AMSTERDAM 2026' displayed",
+      "title_correct": "PASS - 'Justin Bieber Amsterdam 2026 Tickets | Concert from €89'",
+      "pricing_89": "PASS - €89 pricing displayed",
+      "venue_johan_cruijff": "PASS - 'Johan Cruijff ArenA' displayed",
+      "faq_section": "PASS - data-testid='jb-faq' found",
+      "tickets_section": "PASS - data-testid='jb-tickets-section' found",
+      "vip_section": "PASS - data-testid='jb-vip-section' found",
+      "buy_now_buttons": "PASS - 8 buttons linking to /checkout?event=justin-bieber-amsterdam-2026-tickets",
+      "structured_data": "PASS - MusicEvent JSON-LD schema found",
+      "internal_links": "PASS - 'More Concert Tickets' section with links to other concerts",
+      "seo_keywords": "PASS - 'People Also Search For' section with keyword tags"
+    },
+    "redirects": {
+      "/justin-bieber-amsterdam-tickets": "PASS - Redirects to /justin-bieber-amsterdam-2026-tickets",
+      "/bieber-amsterdam-tickets": "PASS - Redirects to /justin-bieber-amsterdam-2026-tickets",
+      "/justin-bieber-kaartjes-amsterdam": "PASS - Redirects to /justin-bieber-amsterdam-2026-tickets"
+    },
+    "spa_f1_page": {
+      "page_loads": "PASS - data-testid='spa-gp-page' found",
+      "h1_correct": "PASS - 'SPA F1 TICKETS 2026 BELGIAN GRAND PRIX' displayed",
+      "tickets_section": "PASS - data-testid='spa-tickets-section' found",
+      "2026_season_preview": "PASS - 'Spa F1 2026 - What to Expect' section found",
+      "faq_section": "PASS - data-testid='spa-faq' found",
+      "vip_section": "PASS - data-testid='spa-vip-section' found",
+      "circuit_guide": "PASS - data-testid='spa-circuit-guide' found",
+      "travel_section": "PASS - data-testid='spa-travel' found"
+    },
+    "backend_api": {
+      "events_search_justin_bieber": "PASS - Returns Justin Bieber Amsterdam event with slug, venue, pricing",
+      "sitemap_includes_jb_page": "PASS - /justin-bieber-amsterdam-2026-tickets in sitemap.xml"
+    }
+  }
+}

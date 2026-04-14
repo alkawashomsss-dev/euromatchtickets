@@ -650,6 +650,41 @@ const SpaGPPage = () => {
         </div>
       </section>
 
+      {/* ═══ 2026 SEASON PREVIEW ═══ */}
+      <section className="py-14 bg-[#15151e]">
+        <div className="max-w-4xl mx-auto px-4">
+          <article className="prose-sm text-slate-400 space-y-6">
+            <h2 className="text-2xl font-black text-white uppercase tracking-tight">Spa F1 2026 - What to Expect at the Belgian Grand Prix</h2>
+            <p>The <strong className="text-white">2026 Belgian Grand Prix at Spa-Francorchamps</strong> promises to be one of the most exciting F1 races of the season. With the new 2026 F1 regulations delivering closer racing, the unique layout of <strong className="text-white">Circuit de Spa-Francorchamps</strong> will produce even more thrilling overtaking. The famous <em>Kemmel Straight</em> after Eau Rouge, combined with the new DRS zones, means fans with <strong className="text-white">Spa F1 tickets</strong> will witness non-stop wheel-to-wheel action.</p>
+
+            <h3 className="text-lg font-black text-white mt-8">Belgian Grand Prix 2026 Ticket Categories Explained</h3>
+            <p>Choosing the right <strong className="text-white">Spa-Francorchamps ticket</strong> is crucial. Here's what each category offers:</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li><strong className="text-white">General Admission (GA)</strong>: Freedom to roam the entire 7km circuit. Access all public viewing areas, fan zones, big screens, and food courts. Best for fans who want variety.</li>
+              <li><strong className="text-white">Bronze (Bruxelles Corner)</strong>: A technical section where cars navigate a tricky hairpin complex. Great for seeing driver skill up close.</li>
+              <li><strong className="text-white">Silver (La Source Turn 1)</strong>: The first braking zone after the start. Dramatic overtaking, safety car restarts, and lap-1 chaos happen right here.</li>
+              <li><strong className="text-white">Gold 3 (Eau Rouge)</strong>: THE most iconic corner in F1 history. Watch cars blast through the compression at 310km/h. The view is unforgettable.</li>
+              <li><strong className="text-white">Gold 4 (Raidillon)</strong>: Adjacent to Eau Rouge, this grandstand offers a unique elevated perspective as cars crest the blind hill.</li>
+              <li><strong className="text-white">Platinum (Pouhon)</strong>: The high-speed double-apex left-hander where G-forces push drivers to their limits. A connoisseur's choice.</li>
+              <li><strong className="text-white">Paddock Club VIP</strong>: The ultimate Spa F1 experience. Walk the pit lane, meet drivers, enjoy Michelin-star dining, and watch from the terrace above the pits.</li>
+            </ul>
+
+            <h3 className="text-lg font-black text-white mt-8">Spa-Francorchamps F1 History & Legacy</h3>
+            <p><strong className="text-white">Circuit de Spa-Francorchamps</strong> has been the spiritual home of Formula 1 since 1950. Over 60 Grand Prix races have been held here, producing some of the sport's most memorable moments. From Michael Schumacher's first win in 1992 to the dramatic 2021 rain-affected race, <strong className="text-white">Spa F1 tickets</strong> guarantee a place in motorsport history.</p>
+            <p>The circuit's unique microclimate in the <strong className="text-white">Belgian Ardennes</strong> forest means weather can change in seconds. It's not uncommon for rain to fall on one corner while sunshine bathes another. This unpredictability makes the <strong className="text-white">Belgian Grand Prix</strong> one of the most strategically complex races on the F1 calendar, and one of the most exciting to attend live.</p>
+
+            <h3 className="text-lg font-black text-white mt-8">Spa F1 Tickets vs Competitors - Why EuroMatchTickets Wins</h3>
+            <p>When you search for <strong className="text-white">Spa F1 tickets</strong>, <strong className="text-white">Belgian GP tickets</strong>, or <strong className="text-white">Spa-Francorchamps F1 tickets</strong>, you'll find many options. Here's why 500,000+ fans choose EuroMatchTickets:</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li><strong className="text-white">Price</strong>: General Admission from &euro;109 vs &euro;189+ on F1.com and &euro;365+ on Viagogo. That's 42% savings.</li>
+              <li><strong className="text-white">Delivery</strong>: Instant QR code to your phone. No waiting for postal delivery, no risk of lost tickets.</li>
+              <li><strong className="text-white">Guarantee</strong>: FanProtect 100% money-back if the Belgian Grand Prix is cancelled or your tickets don't work.</li>
+              <li><strong className="text-white">Selection</strong>: Every grandstand available - from GA to Paddock Club. 687 tickets currently listed.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       {/* ═══ NEWSLETTER ═══ */}
       <section className="py-12 bg-[#0a0a0f]">
         <div className="max-w-4xl mx-auto px-4">

@@ -82,6 +82,7 @@ async def _build_full_sitemap():
         ("/bahrain-world-cup-tickets-2026", "0.95", "daily"),
         ("/world-athletics-2026-tickets", "0.90", "daily"),
         ("/el-clasico-tickets", "0.90", "daily"),
+        ("/justin-bieber-amsterdam-2026-tickets", "0.95", "daily"),
         ("/monaco-grand-prix-tickets", "0.90", "daily"),
         ("/f1-bahrain-grand-prix-tickets", "0.95", "daily"),
         ("/f1-tickets-2026", "0.95", "daily"),
