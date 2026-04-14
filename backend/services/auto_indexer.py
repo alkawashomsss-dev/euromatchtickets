@@ -16,7 +16,9 @@ logger = logging.getLogger(__name__)
 
 SITE = "https://euromatchtickets.com"
 INDEXNOW_KEY = os.environ.get("INDEXNOW_KEY", "dd91242c079d4538a9ae74378aaad957")
-PUBLIC_DIR = "/app/frontend/public"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+PUBLIC_DIR = os.path.join(ROOT_DIR, "frontend", "public")
 
 INDEXNOW_ENDPOINTS = [
     ("Bing", "https://www.bing.com/indexnow"),
@@ -46,11 +48,26 @@ def collect_sitemap_urls():
 def regenerate_sitemaps():
     """Run the sitemap generation script."""
     try:
+        gen_script = os.path.join(ROOT_DIR, "generate_sitemaps.py")
+        python_paths = ["/root/.venv/bin/python3", "python3", "python"]
+        python_bin = None
+        for p in python_paths:
+            if os.path.exists(p):
+                python_bin = p
+                break
+        if not python_bin:
+            import sys
+            python_bin = sys.executable
+        
+        if not os.path.exists(gen_script):
+            logger.warning(f"Auto-Index: Sitemap script not found at {gen_script}, using API sitemaps only")
+            return True
+        
         result = subprocess.run(
-            ["/root/.venv/bin/python3", "/app/generate_sitemaps.py"],
+            [python_bin, gen_script],
             capture_output=True, text=True, timeout=120,
-            cwd="/app",
-            env={**os.environ, "PYTHONPATH": "/app"}
+            cwd=ROOT_DIR,
+            env={**os.environ, "PYTHONPATH": ROOT_DIR}
         )
         if result.returncode == 0:
             logger.info("Auto-Index: Sitemaps regenerated successfully")
