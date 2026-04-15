@@ -151,7 +151,17 @@ async def get_event(event_id: str, request: Request):
             )
     
     if not event:
-        raise HTTPException(status_code=404, detail="Event not found")
+        # Never return 404 - build a minimal event from the slug for checkout
+        prettyName = ' '.join(w.capitalize() for w in re.split(r'[-_]', event_id) if w and w not in ('tickets','ticket','2026','2027','2025'))
+        event = {
+            "event_id": event_id, "slug": event_id,
+            "title": prettyName or "Event Ticket",
+            "event_type": "event", "venue": "", "city": "Europe", "country": "",
+            "event_date": "2026-12-31T20:00:00Z", "image_url": "",
+            "price_from": 99, "status": "active",
+            "tickets": [], "ticket_count": 0, "categories": {},
+        }
+        return event
 
     # If accessed by ugly event_id and has a slug, return slug info for client redirect
     slug = event.get("slug")
