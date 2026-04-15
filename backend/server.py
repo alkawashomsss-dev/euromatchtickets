@@ -621,7 +621,7 @@ if static_build_dir.exists():
             seo_meta = await _get_page_seo(full_path)
             if seo_meta:
                 t, d, img = seo_meta["title"], seo_meta["desc"], seo_meta.get("image", "")
-                canon = f"https://euromatchtickets.com/{full_path}" if full_path else "https://euromatchtickets.com"
+                canon = f"https://euromatchtickets.com/{full_path.lstrip('/')}" if full_path else "https://euromatchtickets.com"
                 
                 # Replace default meta description with page-specific
                 html = html.replace(

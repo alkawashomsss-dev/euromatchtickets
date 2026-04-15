@@ -93,8 +93,8 @@ export default function EventDetailsPage() {
   const canonicalSlug = event.slug || eventId;
   const pageUrl = `https://euromatchtickets.com/event/${canonicalSlug}`;
   const isUglyUrl = eventId !== canonicalSlug;
-  const seoTitle = `Buy ${event.title} Tickets ${d.getFullYear()} | From €${lowestPrice}`;
-  const seoDesc = `${event.title} tickets from €${lowestPrice}. ${event.venue}, ${event.city}. 42% cheaper than official. Instant QR delivery. FanProtect guarantee.`;
+  const seoTitle = `Buy ${event.title} Tickets | ${event.venue ? event.venue + ' | ' : ''}From €${lowestPrice}`;
+  const seoDesc = `${event.title} tickets from €${lowestPrice}. ${event.venue}${event.venue && event.city ? ', ' : ''}${event.city}. 42% cheaper than official sellers. Instant QR delivery. FanProtect 100% guarantee.`;
   const officialPrice = Math.round(lowestPrice * 1.35);
   const savings = Math.round(officialPrice - lowestPrice);
 

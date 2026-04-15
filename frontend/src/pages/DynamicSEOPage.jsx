@@ -255,10 +255,6 @@ export default function DynamicSEOPage() {
                 <li className="flex items-start gap-2"><CreditCard className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Secure payment with Stripe encryption</li>
                 <li className="flex items-start gap-2"><Star className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />4.8/5 rating from 12,000+ verified buyers</li>
               </ul>
-              {/* FAQ Section for fallback pages */}
-              {prehydratedFAQ && prehydratedFAQ.length > 0 && (
-                <FAQSection faqs={prehydratedFAQ} title={`${prettyName} - FAQ`} />
-              )}
             </div>
             <div className="space-y-6">
               <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
