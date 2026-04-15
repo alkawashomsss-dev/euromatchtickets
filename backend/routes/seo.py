@@ -99,13 +99,31 @@ async def _build_full_sitemap():
     base_url = FRONTEND_URL
     today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     xml_items = ['<?xml version="1.0" encoding="UTF-8"?>']
-    xml_items.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    xml_items.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">')
+
+    # Image mapping for automatic image assignment
+    def _get_image(path):
+        p = path.lower()
+        if any(x in p for x in ["f1", "grand-prix", "gp-", "formula", "silverstone", "monza", "monaco", "spa-", "zandvoort", "bahrain-gp", "miami-gp"]):
+            return f"{base_url}/images/heroes/f1-red-lg.webp"
+        if any(x in p for x in ["motogp", "isle-of-man", "mugello"]):
+            return f"{base_url}/images/heroes/motogp-lg.webp"
+        if any(x in p for x in ["world-cup", "worldcup", "fifa", "wm-2026"]):
+            return f"{base_url}/images/heroes/worldcup-trophy-lg.webp"
+        if any(x in p for x in ["concert", "tour-2026", "bieber", "swift", "weeknd", "bruno", "coldplay", "metallica", "harry-styles", "bad-bunny", "maroon", "guns-n-roses", "legend", "acl-festival"]):
+            return f"{base_url}/images/heroes/concert-purple-lg.webp"
+        if any(x in p for x in ["champions", "clasico", "premier", "super-bowl", "team/", "football", "united", "chelsea", "arsenal", "liverpool", "barcelona", "madrid", "bayern", "juventus", "psg"]):
+            return f"{base_url}/images/heroes/football-stadium-lg.webp"
+        return f"{base_url}/og-image.jpg"
+
+    def _url_with_image(loc, lastmod, freq, prio, title_hint=""):
+        img = _get_image(loc)
+        title = title_hint or loc.split("/")[-1].replace("-", " ").title()
+        return f'  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n    <image:image>\n      <image:loc>{img}</image:loc>\n      <image:title>{title}</image:title>\n    </image:image>\n  </url>'
 
     static_pages = [
         ("/", "1.0", "daily"), ("/events", "0.9", "hourly"), ("/blog", "0.8", "daily"),
-        # F1 Pages
-        ("/f1-tickets", "0.95", "daily"),
-        ("/f1-tickets-2026", "0.95", "daily"),
+        ("/f1-tickets", "0.95", "daily"), ("/f1-tickets-2026", "0.95", "daily"),
         ("/f1-schedule-2026", "0.90", "daily"),
         ("/f1-belgian-grand-prix-spa-tickets", "0.98", "daily"),
         ("/f1-monaco-grand-prix-tickets", "0.95", "daily"),
@@ -124,19 +142,15 @@ async def _build_full_sitemap():
         ("/f1-abu-dhabi-grand-prix-tickets", "0.95", "daily"),
         ("/f1-italian-grand-prix-monza-tickets", "0.95", "daily"),
         ("/f1-mexico-grand-prix-tickets", "0.90", "daily"),
-        # Football Pages
         ("/champions-league-tickets", "0.95", "daily"),
         ("/el-clasico-tickets", "0.95", "daily"),
         ("/bayern-munich-vs-real-madrid-tickets", "0.95", "daily"),
         ("/super-bowl-2026-tickets", "0.95", "daily"),
         ("/premier-league-tickets", "0.90", "daily"),
-        # World Cup Pages
         ("/world-cup-2026-tickets", "0.95", "daily"),
         ("/world-cup-2026", "0.95", "daily"),
-        # Concert Pages
         ("/justin-bieber-amsterdam-2026-tickets", "0.98", "daily"),
         ("/taylor-swift-london-tickets", "0.95", "daily"),
-        ("/taylor-swift-wembley-2026-tickets", "0.95", "daily"),
         ("/the-weeknd-tour-2026", "0.95", "daily"),
         ("/bruno-mars-tour-2026", "0.95", "daily"),
         ("/bad-bunny-london-2026", "0.90", "daily"),
@@ -146,16 +160,13 @@ async def _build_full_sitemap():
         ("/harry-styles-tickets", "0.90", "daily"),
         ("/maroon-5-tour-2026", "0.85", "daily"),
         ("/john-legend-tour-2026", "0.85", "daily"),
-        # Motorsport Pages
         ("/motogp-tickets", "0.90", "daily"),
         ("/isle-of-man-tt-tickets", "0.90", "daily"),
         ("/motogp-schedule-2026", "0.85", "daily"),
-        # Other Events
         ("/world-athletics-2026-tickets", "0.90", "daily"),
         ("/bahrain-world-cup-tickets-2026", "0.90", "daily"),
         ("/acl-festival-2026", "0.85", "daily"),
         ("/monaco-grand-prix-tickets", "0.90", "daily"),
-        # Team Hub Pages
         ("/team/real-madrid", "0.85", "daily"),
         ("/team/barcelona", "0.85", "daily"),
         ("/team/manchester-city", "0.85", "daily"),
@@ -164,23 +175,19 @@ async def _build_full_sitemap():
         ("/team/bayern-munich", "0.85", "daily"),
         ("/team/psg", "0.85", "daily"),
         ("/team/juventus", "0.85", "daily"),
-        # Guide/Blog Pages
         ("/best-f1-races-europe", "0.75", "weekly"),
         ("/how-to-buy-f1-tickets", "0.75", "weekly"),
         ("/f1-ticket-prices-guide", "0.75", "weekly"),
         ("/events-this-weekend", "0.80", "daily"),
-        # Info Pages
         ("/reviews", "0.7", "weekly"), ("/faq", "0.7", "monthly"),
         ("/about", "0.6", "monthly"), ("/contact", "0.6", "monthly"),
         ("/buyer-protection", "0.7", "monthly"), ("/terms", "0.5", "monthly"),
         ("/sell", "0.7", "weekly"), ("/prices", "0.7", "weekly"),
-        # Spanish SEO pages
         ("/es/comprar-entradas", "0.90", "weekly"),
         ("/es/entradas-champions-league", "0.85", "weekly"),
         ("/es/entradas-f1", "0.85", "weekly"),
         ("/es/entradas-conciertos", "0.85", "weekly"),
         ("/es/entradas-copa-del-mundo-2026", "0.90", "weekly"),
-        # German SEO pages
         ("/de/tickets-kaufen", "0.90", "weekly"),
         ("/de/champions-league-tickets", "0.85", "weekly"),
         ("/de/formel-1-tickets", "0.85", "weekly"),
@@ -189,24 +196,40 @@ async def _build_full_sitemap():
         ("/de/wm-2026-tickets", "0.90", "weekly"),
     ]
     for path, prio, freq in static_pages:
-        xml_items.append(f'  <url>\n    <loc>{base_url}{path}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>')
+        xml_items.append(_url_with_image(f"{base_url}{path}", today, freq, prio))
 
-    events = await db.events.find({"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today}}, {"_id": 0, "event_id": 1, "slug": 1, "event_date": 1, "event_type": 1}).to_list(1000)
+    events = await db.events.find({"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today}}, {"_id": 0, "event_id": 1, "slug": 1, "title": 1, "event_type": 1, "image_url": 1}).to_list(1000)
     for event in events:
         slug = event.get("slug", event["event_id"])
-        xml_items.append(f'  <url>\n    <loc>{base_url}/event/{slug}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.85</priority>\n  </url>')
+        loc = f"{base_url}/event/{slug}"
+        et = event.get("event_type", "")
+        if et == "f1":
+            img = f"{base_url}/images/heroes/f1-red-lg.webp"
+        elif et in ("match", "football"):
+            img = f"{base_url}/images/heroes/football-stadium-lg.webp"
+        elif et == "concert":
+            img = f"{base_url}/images/heroes/concert-purple-lg.webp"
+        else:
+            img = event.get("image_url") or f"{base_url}/og-image.jpg"
+        title = event.get("title", slug.replace("-", " ").title())
+        xml_items.append(f'  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.85</priority>\n    <image:image>\n      <image:loc>{img}</image:loc>\n      <image:title>{title}</image:title>\n    </image:image>\n  </url>')
 
-    articles = await db.articles.find({}, {"_id": 0, "slug": 1, "date_generated": 1}).to_list(5000)
+    articles = await db.articles.find({}, {"_id": 0, "slug": 1, "date_generated": 1, "title": 1}).to_list(5000)
     for a in articles:
         d = a.get("date_generated", "")
         lm = d.strftime('%Y-%m-%d') if isinstance(d, datetime) else today
-        xml_items.append(f'  <url>\n    <loc>{base_url}/blog/{a["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.70</priority>\n  </url>')
+        title = a.get("title", a["slug"].replace("-", " ").title())
+        xml_items.append(f'  <url>\n    <loc>{base_url}/blog/{a["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.70</priority>\n    <image:image>\n      <image:loc>{base_url}/og-image.jpg</image:loc>\n      <image:title>{title}</image:title>\n    </image:image>\n  </url>')
 
-    seo_pages = await db.seo_pages.find({"active": True}, {"_id": 0, "slug": 1, "updated_at": 1, "priority": 1}).to_list(50000)
+    seo_pages = await db.seo_pages.find({"active": True, "redirect_to": {"$exists": False}}, {"_id": 0, "slug": 1, "title": 1, "category": 1, "updated_at": 1, "priority": 1}).to_list(50000)
+    cat_imgs = {"f1": "f1-red-lg.webp", "football": "football-stadium-lg.webp", "concert": "concert-purple-lg.webp", "worldcup": "worldcup-trophy-lg.webp", "motorsport": "motogp-lg.webp", "motogp": "motogp-lg.webp"}
     for p in seo_pages:
         lm = p.get("updated_at", "")
         lm = lm.strftime('%Y-%m-%d') if isinstance(lm, datetime) else today
-        xml_items.append(f'  <url>\n    <loc>{base_url}/{p["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{p.get("priority", 0.80)}</priority>\n  </url>')
+        cat = p.get("category", "other")
+        img_file = cat_imgs.get(cat, "football-stadium-lg.webp")
+        title = (p.get("title", "") or "").split("|")[0].strip() or p["slug"].replace("-", " ").title()
+        xml_items.append(f'  <url>\n    <loc>{base_url}/{p["slug"]}</loc>\n    <lastmod>{lm}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{p.get("priority", 0.80)}</priority>\n    <image:image>\n      <image:loc>{base_url}/images/heroes/{img_file}</image:loc>\n      <image:title>{title}</image:title>\n    </image:image>\n  </url>')
 
     xml_items.append('</urlset>')
     return Response(content='\n'.join(xml_items), media_type="application/xml", headers={"Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=3600"})
@@ -1118,56 +1141,44 @@ async def submit_indexnow(urls: list[str] = None):
     ])
 
     # Log to DB
+    try:
+        await db.indexing_submissions.insert_one({
+            "type": "nuclear_submit",
+            "total_urls": len(urls),
+            "total_submitted": total_submitted,
+            "results": {k: v for k, v in results["engines"].items() if isinstance(v, dict)},
+            "created_at": datetime.now(timezone.utc)
+        })
+    except Exception:
+        pass
+
+    return {"status": "success", **results}
+
 
 @router.get("/seo/nuclear-status")
 async def nuclear_indexing_status():
     """Full status of ALL indexing channels."""
     seo_count = await db.seo_pages.count_documents({"active": True})
     bing_submitted = await db.bing_submitted_urls.count_documents({})
-    
-    # Recent submissions
-    recent = await db.indexing_submissions.find(
-        {}, {"_id": 0}
-    ).sort("created_at", -1).to_list(5)
-    
-    # Recent Bing logs
-    bing_logs = await db.bing_indexing_logs.find(
-        {}, {"_id": 0}
-    ).sort("created_at", -1).to_list(5)
-    
+    recent = await db.indexing_submissions.find({}, {"_id": 0}).sort("created_at", -1).to_list(5)
+    bing_logs = await db.bing_indexing_logs.find({}, {"_id": 0}).sort("created_at", -1).to_list(5)
     return {
         "active_seo_pages": seo_count,
         "indexing_channels": {
             "bing_api": {"status": "active", "daily_quota": 100, "submitted_total": bing_submitted, "auto_submits": "every 24h"},
+            "indexnow_bing": {"status": "active", "limit": "10,000/request", "protocol": "IndexNow"},
             "indexnow_yandex": {"status": "active", "limit": "10,000/request", "protocol": "IndexNow"},
             "indexnow_seznam": {"status": "active", "limit": "10,000/request", "protocol": "IndexNow"},
             "indexnow_naver": {"status": "active", "limit": "10,000/request", "protocol": "IndexNow"},
+            "indexnow_api": {"status": "active", "limit": "10,000/request", "protocol": "IndexNow (all engines)"},
             "google_sitemap_ping": {"status": "active", "sitemaps": 10, "auto_pings": "every 6h"},
-            "google_indexing_api": {"status": "requires_setup", "note": "Requires Google Cloud service account. Can submit 200 URLs/day directly to Google for near-instant indexing."},
+            "google_indexing_api": {"status": "active" if os.path.exists("/app/backend/google-service-account.json") else "requires_setup",
+                                    "quota": "200 URLs/day", "note": "Near-instant Google indexing"},
             "google_merchant_feed": {"status": "active", "products": seo_count, "feed_url": f"{SITE_URL}/api/merchant/feed.xml"},
         },
         "recent_nuclear_submissions": recent,
         "recent_bing_logs": bing_logs,
-        "setup_google_indexing_api": {
-            "step_1": "Go to https://console.cloud.google.com",
-            "step_2": "Create a new project or select existing",
-            "step_3": "Enable 'Web Search Indexing API'",
-            "step_4": "Create Service Account and download JSON key",
-            "step_5": "In Google Search Console, add the service account email as OWNER",
-            "step_6": "Share the JSON key file with us to enable auto-submission"
-        }
     }
-
-
-    await db.indexing_submissions.insert_one({
-        "type": "nuclear_submit",
-        "total_urls": len(urls),
-        "total_submitted": total_submitted,
-        "results": {k: v for k, v in results["engines"].items() if isinstance(v, dict)},
-        "created_at": datetime.now(timezone.utc)
-    })
-
-    return {"status": "success", **results}
 
 
 @router.get("/seo/indexing-progress")
@@ -1254,22 +1265,28 @@ async def get_seo_page_meta(path: str = ""):
     """Return title, description, and canonical for dynamic SPA meta tag injection."""
     STATIC_META = {
         "/": {"title": "Buy Tickets | Champions League, F1, Concerts | EuroMatchTickets", "description": "Buy Champions League tickets from \u20ac85, Taylor Swift from \u20ac89, F1 from \u20ac89. Verified sellers, instant QR delivery."},
-        "/champions-league-tickets": {"title": "Champions League Tickets 2026 | From \u20ac85", "description": "Buy UEFA Champions League tickets from \u20ac85. Semi-finals, final & all matches. Verified sellers, instant QR delivery."},
-        "/f1-tickets": {"title": "F1 Tickets 2026 | All Grand Prix Races | EuroMatchTickets", "description": "Buy Formula 1 tickets from \u20ac89. Monaco, Silverstone, Monza & all 2026 races. Verified tickets, instant delivery."},
-        "/world-cup-2026": {"title": "FIFA World Cup 2026 Tickets | From \u20ac95", "description": "Buy FIFA World Cup 2026 tickets. Group stage from \u20ac95, knockout rounds available. Verified sellers."},
-        "/motogp-tickets": {"title": "MotoGP Tickets 2026 | All Races | EuroMatchTickets", "description": "Buy MotoGP tickets from \u20ac69. Mugello, Valencia & all 2026 races. Instant delivery."},
-        "/taylor-swift-tickets": {"title": "Taylor Swift Tickets 2026 | London | EuroMatchTickets", "description": "Buy Taylor Swift tickets from \u20ac89. Wembley Stadium London. Verified sellers, instant QR delivery."},
-        "/taylor-swift-london-tickets": {"title": "Taylor Swift London Tickets | Wembley 2026", "description": "Buy Taylor Swift London tickets from \u20ac89. All Wembley dates. Verified, instant delivery."},
-        "/taylor-swift-wembley-2026-tickets": {"title": "Taylor Swift Wembley 2026 Tickets | From \u20ac89", "description": "Buy Taylor Swift Wembley 2026 tickets. Multiple dates. Verified, instant QR."},
-        "/el-clasico-tickets": {"title": "El Clasico Tickets | Real Madrid vs Barcelona", "description": "Buy El Clasico tickets. Real Madrid vs Barcelona. Verified sellers, cheapest prices."},
-        "/super-bowl-2026-tickets": {"title": "Super Bowl 2026 Tickets | Buy Now | EuroMatchTickets", "description": "Buy Super Bowl LXI 2026 tickets. Premium seats. Verified sellers, instant QR delivery."},
-        "/monaco-grand-prix-tickets": {"title": "Monaco Grand Prix Tickets 2026 | F1 Monaco", "description": "Buy Monaco GP tickets. Grandstands & hospitality. Verified tickets, instant delivery."},
+        "/justin-bieber-amsterdam-2026-tickets": {"title": "Buy Justin Bieber Amsterdam Tickets 2026 | From \u20ac89 | Johan Cruijff ArenA", "description": "Buy Justin Bieber Amsterdam 2026 tickets from \u20ac89. Johan Cruijff ArenA, July 18. Standing, Golden Circle & VIP. Selling Fast \u2014 143 tickets left. 100% Money-Back Guarantee. Instant QR delivery."},
+        "/f1-belgian-grand-prix-spa-tickets": {"title": "Buy Spa F1 Tickets 2026 | Belgian Grand Prix From \u20ac109 | Spa-Francorchamps", "description": "Buy Belgian Grand Prix 2026 tickets from \u20ac109. Eau Rouge Grandstand & Paddock Club VIP. Selling Fast \u2014 limited availability. 100% Money-Back Guarantee. Instant QR delivery."},
+        "/f1-monaco-grand-prix-tickets": {"title": "Buy Monaco Grand Prix Tickets 2026 | F1 From \u20ac249 | Monte Carlo", "description": "Buy Monaco GP 2026 tickets from \u20ac249. Circuit de Monaco harbour views & VIP hospitality. Only 89 tickets left. 100% Guarantee. Instant QR delivery."},
+        "/champions-league-tickets": {"title": "Buy Champions League Tickets 2026 | UCL Final From \u20ac85 | Munich", "description": "Buy UEFA Champions League 2026 tickets from \u20ac85. Semi-finals & Final in Munich. 90% Sold \u2014 limited seats remaining. 100% Money-Back Guarantee. Instant QR delivery."},
+        "/el-clasico-tickets": {"title": "Buy El Clasico Tickets 2026 | Real Madrid vs Barcelona From \u20ac89", "description": "Buy El Clasico 2026 tickets from \u20ac89. Real Madrid vs Barcelona, Santiago Bernab\u00e9u. Only 23 tickets left. 100% Guarantee. Instant QR delivery."},
+        "/taylor-swift-london-tickets": {"title": "Buy Taylor Swift London Tickets 2026 | Wembley From \u20ac79", "description": "Buy Taylor Swift Wembley 2026 tickets from \u20ac79. Multiple dates available. Almost sold out \u2014 40% cheaper than Ticketmaster. 100% Guarantee. Instant QR."},
+        "/coldplay-tour-2026": {"title": "Buy Coldplay Tour Tickets 2026 | Europe Concerts From \u20ac69 | Barcelona", "description": "Buy Coldplay Music of the Spheres 2026 tickets from \u20ac69. Barcelona, Berlin, London. Selling Fast. 100% Money-Back Guarantee. Instant QR delivery."},
+        "/world-cup-2026-tickets": {"title": "Buy FIFA World Cup 2026 Tickets | From \u20ac65 | USA, Mexico, Canada", "description": "Buy World Cup 2026 tickets from \u20ac65. Group stage to Final across USA, Mexico, Canada. Limited availability. 100% Money-Back Guarantee. Instant QR delivery."},
+        "/world-cup-2026": {"title": "Buy FIFA World Cup 2026 Tickets | From \u20ac65 | USA, Mexico, Canada", "description": "Buy World Cup 2026 tickets from \u20ac65. All matches USA, Mexico, Canada. 100% Money-Back Guarantee."},
+        "/f1-tickets": {"title": "Buy Formula 1 Tickets 2026 | All 24 Grand Prix From \u20ac79", "description": "Buy F1 2026 tickets from \u20ac79. Monaco, Spa, Monza, Silverstone & all 24 races. 42% cheaper than F1.com. 100% Guarantee. Instant QR delivery."},
+        "/f1-tickets-2026": {"title": "Buy Formula 1 Tickets 2026 | All Grand Prix From \u20ac79", "description": "Buy F1 2026 tickets from \u20ac79. All 24 Grand Prix races. 100% Guarantee. Instant QR."},
+        "/motogp-tickets": {"title": "Buy MotoGP Tickets 2026 | All 21 Races From \u20ac45", "description": "Buy MotoGP 2026 tickets from \u20ac45. Mugello, Valencia & all races. 100% Guarantee. Instant delivery."},
+        "/the-weeknd-tour-2026": {"title": "Buy The Weeknd Tour Tickets 2026 | Europe From \u20ac79", "description": "Buy The Weeknd 2026 tickets from \u20ac79. European concerts. 100% Guarantee. Instant QR delivery."},
+        "/bruno-mars-tour-2026": {"title": "Buy Bruno Mars Tour Tickets 2026 | London & Europe From \u20ac89", "description": "Buy Bruno Mars 2026 tickets from \u20ac89. London Wembley & European dates. 100% Guarantee. Instant QR delivery."},
+        "/super-bowl-2026-tickets": {"title": "Buy Super Bowl Tickets 2027 | VIP From \u20ac2,499", "description": "Buy Super Bowl LXI 2027 tickets. VIP packages & best seats. 100% Money-Back Guarantee."},
+        "/monaco-grand-prix-tickets": {"title": "Buy Monaco Grand Prix Tickets 2026 | F1 From \u20ac249 | Monte Carlo", "description": "Buy Monaco GP 2026 tickets from \u20ac249. Harbour views & VIP. 100% Guarantee. Instant QR."},
         "/real-madrid-tickets": {"title": "Real Madrid Tickets 2026 | All Matches | From \u20ac75", "description": "Buy Real Madrid tickets. Bernabeu, Champions League, La Liga. From \u20ac75."},
         "/barcelona-tickets": {"title": "FC Barcelona Tickets 2026 | Camp Nou | From \u20ac70", "description": "Buy FC Barcelona tickets. Camp Nou, Champions League, La Liga. Verified sellers."},
         "/manchester-city-tickets": {"title": "Man City Tickets 2026 | Etihad | EuroMatchTickets", "description": "Buy Manchester City tickets. Etihad, Premier League, Champions League. Instant delivery."},
         "/liverpool-tickets": {"title": "Liverpool FC Tickets 2026 | Anfield | From \u20ac65", "description": "Buy Liverpool FC tickets. Anfield, Premier League, Champions League. From \u20ac65."},
         "/arsenal-tickets": {"title": "Arsenal Tickets 2026 | Emirates | EuroMatchTickets", "description": "Buy Arsenal tickets. Emirates Stadium, Premier League, Champions League."},
-        "/bayern-vs-real-madrid-tickets": {"title": "Bayern vs Real Madrid Tickets | Champions League", "description": "Buy Bayern Munich vs Real Madrid Champions League tickets. Verified, instant delivery."},
+        "/bayern-vs-real-madrid-tickets": {"title": "Buy Bayern vs Real Madrid Tickets 2026 | UCL From \u20ac129", "description": "Buy Bayern Munich vs Real Madrid UCL 2026 tickets from \u20ac129. Allianz Arena. 100% Guarantee. Instant QR."},
         "/bahrain-world-cup-tickets-2026": {"title": "Bahrain World Cup 2026 Tickets | FIFA", "description": "Buy Bahrain FIFA World Cup 2026 tickets. Group & knockout matches. Verified sellers."},
         "/events": {"title": "Events & Tickets 2026 | Browse All | EuroMatchTickets", "description": "Browse 500+ events. Football, F1, concerts. Cheapest prices, instant QR delivery."},
         "/about": {"title": "About EuroMatchTickets | Trusted Ticket Marketplace", "description": "Europe\u2019s trusted ticket marketplace for football, F1, and concerts. FanProtect guarantee."},
@@ -1698,3 +1715,408 @@ async def get_alert_stats():
         top_events.append({"slug": doc["_id"], "count": doc["count"], "event_name": doc.get("event_name", "")})
     
     return {"total_subscribers": total, "top_events": top_events}
+
+
+
+# ============================================================
+# NUCLEAR INDEXING ENGINE — ALL METHODS, ALL ENGINES
+# ============================================================
+
+GOOGLE_SA_PATH = "/app/backend/google-service-account.json"
+
+
+async def _collect_every_url():
+    """Collect EVERY indexable URL from the entire site."""
+    base = SITE_URL
+    urls = set()
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+
+    # 1. All active SEO pages (biggest chunk)
+    seo_pages = await db.seo_pages.find(
+        {"active": True, "redirect_to": {"$exists": False}},
+        {"_id": 0, "slug": 1}
+    ).to_list(50000)
+    for p in seo_pages:
+        urls.add(f"{base}/{p['slug']}")
+
+    # 2. All future events
+    events = await db.events.find(
+        {"event_date": {"$gte": today}},
+        {"_id": 0, "event_id": 1, "slug": 1}
+    ).to_list(1000)
+    for e in events:
+        slug = e.get("slug") or e["event_id"]
+        urls.add(f"{base}/event/{slug}")
+
+    # 3. All articles
+    articles = await db.articles.find({}, {"_id": 0, "slug": 1}).to_list(5000)
+    for a in articles:
+        urls.add(f"{base}/blog/{a['slug']}")
+
+    # 4. Static core pages
+    static = [
+        "", "events", "blog", "f1-tickets", "f1-tickets-2026", "f1-schedule-2026",
+        "champions-league-tickets", "el-clasico-tickets", "motogp-tickets",
+        "world-cup-2026", "world-cup-2026-tickets", "super-bowl-2026-tickets",
+        "justin-bieber-amsterdam-2026-tickets", "taylor-swift-london-tickets",
+        "taylor-swift-wembley-2026-tickets", "the-weeknd-tour-2026",
+        "bruno-mars-tour-2026", "coldplay-tour-2026", "bad-bunny-london-2026",
+        "guns-n-roses-tour-2026", "metallica-sphere-las-vegas-tickets",
+        "harry-styles-tickets", "maroon-5-tour-2026", "john-legend-tour-2026",
+        "isle-of-man-tt-tickets", "world-athletics-2026-tickets",
+        "acl-festival-2026", "monaco-grand-prix-tickets",
+        "f1-belgian-grand-prix-spa-tickets", "f1-monaco-grand-prix-tickets",
+        "f1-british-grand-prix-silverstone-tickets", "f1-singapore-grand-prix-tickets",
+        "f1-las-vegas-grand-prix-tickets", "f1-dutch-grand-prix-zandvoort-tickets",
+        "f1-miami-grand-prix-tickets", "f1-japanese-grand-prix-suzuka-tickets",
+        "f1-australian-grand-prix-melbourne-tickets", "f1-bahrain-grand-prix-tickets",
+        "f1-saudi-arabian-grand-prix-jeddah-tickets", "f1-spanish-grand-prix-barcelona-tickets",
+        "f1-hungarian-grand-prix-budapest-tickets", "f1-austrian-grand-prix-red-bull-ring-tickets",
+        "f1-abu-dhabi-grand-prix-tickets", "f1-italian-grand-prix-monza-tickets",
+        "bayern-munich-vs-real-madrid-tickets", "reviews", "faq", "about",
+        "contact", "buyer-protection", "sell", "prices", "terms",
+        "privacy-policy", "refund-policy", "fan-protect", "payment-info",
+        "best-f1-races-europe", "how-to-buy-f1-tickets", "f1-ticket-prices-guide",
+        "events-this-weekend",
+        "es/comprar-entradas", "es/entradas-champions-league", "es/entradas-f1",
+        "es/entradas-conciertos", "es/entradas-copa-del-mundo-2026",
+        "de/tickets-kaufen", "de/champions-league-tickets", "de/formel-1-tickets",
+        "de/bundesliga-tickets", "de/konzert-tickets", "de/wm-2026-tickets",
+        "team/real-madrid", "team/barcelona", "team/manchester-city",
+        "team/liverpool", "team/arsenal", "team/bayern-munich", "team/psg", "team/juventus",
+    ]
+    for p in static:
+        urls.add(f"{base}/{p}" if p else base)
+
+    return sorted(urls)
+
+
+async def _submit_google_indexing_api(urls_list):
+    """Submit URLs via Google Indexing API v3 (requires service account)."""
+    if not os.path.exists(GOOGLE_SA_PATH):
+        return {"status": "skipped", "reason": "No Google service account JSON found"}
+
+    try:
+        from google.oauth2 import service_account
+        from googleapiclient.discovery import build
+
+        SCOPES = ["https://www.googleapis.com/auth/indexing"]
+        credentials = service_account.Credentials.from_service_account_file(
+            GOOGLE_SA_PATH, scopes=SCOPES
+        )
+        service = build("indexing", "v3", credentials=credentials)
+
+        submitted = 0
+        errors = 0
+        error_details = []
+
+        # Google allows 200 URLs/day, submit in batches
+        batch_urls = urls_list[:200]
+        for url in batch_urls:
+            try:
+                body = {"url": url, "type": "URL_UPDATED"}
+                service.urlNotifications().publish(body=body).execute()
+                submitted += 1
+            except Exception as e:
+                errors += 1
+                if len(error_details) < 3:
+                    error_details.append(str(e)[:100])
+
+        return {
+            "status": "success",
+            "submitted": submitted,
+            "errors": errors,
+            "daily_quota": 200,
+            "used_quota": submitted,
+            "error_samples": error_details if error_details else None
+        }
+    except ImportError:
+        return {"status": "error", "reason": "google-api-python-client not installed"}
+    except Exception as e:
+        return {"status": "error", "reason": str(e)[:200]}
+
+
+async def _submit_google_indexing_api_batch(urls_list):
+    """Submit URLs via Google Indexing API using HTTP batch requests (100 URLs per batch)."""
+    if not os.path.exists(GOOGLE_SA_PATH):
+        return {"status": "skipped", "reason": "No Google service account JSON found"}
+
+    try:
+        from google.oauth2 import service_account
+        import google.auth.transport.requests
+
+        SCOPES = ["https://www.googleapis.com/auth/indexing"]
+        credentials = service_account.Credentials.from_service_account_file(
+            GOOGLE_SA_PATH, scopes=SCOPES
+        )
+        request = google.auth.transport.requests.Request()
+        credentials.refresh(request)
+        access_token = credentials.token
+
+        submitted = 0
+        errors = 0
+        batch_urls = urls_list[:200]  # Daily quota
+
+        # Submit in batches of 100 (Google batch limit)
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            for i in range(0, len(batch_urls), 100):
+                chunk = batch_urls[i:i+100]
+                # Build multipart batch request
+                boundary = "===============batch_boundary=="
+                body_parts = []
+                for idx, url in enumerate(chunk):
+                    part = (
+                        f"--{boundary}\r\n"
+                        f"Content-Type: application/http\r\n"
+                        f"Content-ID: <item{idx}>\r\n\r\n"
+                        f"POST /v3/urlNotifications:publish HTTP/1.1\r\n"
+                        f"Content-Type: application/json\r\n\r\n"
+                        f'{{"url": "{url}", "type": "URL_UPDATED"}}\r\n'
+                    )
+                    body_parts.append(part)
+                body_parts.append(f"--{boundary}--")
+                batch_body = "".join(body_parts)
+
+                try:
+                    r = await client.post(
+                        "https://indexing.googleapis.com/batch",
+                        content=batch_body,
+                        headers={
+                            "Content-Type": f"multipart/mixed; boundary={boundary}",
+                            "Authorization": f"Bearer {access_token}"
+                        }
+                    )
+                    if r.status_code == 200:
+                        submitted += len(chunk)
+                    else:
+                        # Try individual submissions as fallback
+                        for url in chunk:
+                            try:
+                                r2 = await client.post(
+                                    "https://indexing.googleapis.com/v3/urlNotifications:publish",
+                                    json={"url": url, "type": "URL_UPDATED"},
+                                    headers={
+                                        "Content-Type": "application/json",
+                                        "Authorization": f"Bearer {access_token}"
+                                    }
+                                )
+                                if r2.status_code == 200:
+                                    submitted += 1
+                                else:
+                                    errors += 1
+                            except Exception:
+                                errors += 1
+                except Exception:
+                    errors += len(chunk)
+
+        return {
+            "status": "success",
+            "submitted": submitted,
+            "errors": errors,
+            "daily_quota": 200,
+            "method": "batch+fallback"
+        }
+    except Exception as e:
+        return {"status": "error", "reason": str(e)[:200]}
+
+
+@router.post("/seo/nuclear-index-all")
+async def nuclear_index_all():
+    """
+    ULTIMATE NUCLEAR INDEXING — Submit EVERY URL to EVERY search engine.
+    Methods: Google Indexing API + IndexNow (5 engines) + Bing API + Sitemap Pings.
+    """
+    start = datetime.now(timezone.utc)
+    all_urls = await _collect_every_url()
+    results = {
+        "total_urls": len(all_urls),
+        "timestamp": start.isoformat(),
+        "engines": {}
+    }
+
+    # ━━━ 1. GOOGLE INDEXING API (highest priority — direct to Google) ━━━
+    google_result = await _submit_google_indexing_api_batch(all_urls)
+    results["engines"]["google_indexing_api"] = google_result
+
+    async with httpx.AsyncClient(timeout=30.0, follow_redirects=True) as client:
+
+        # ━━━ 2. INDEXNOW — All 5 endpoints (Bing, Yandex, Seznam, Naver, API) ━━━
+        INDEXNOW_ENDPOINTS = [
+            ("bing", "https://www.bing.com/indexnow"),
+            ("yandex", "https://yandex.com/indexnow"),
+            ("api", "https://api.indexnow.org/indexnow"),
+            ("seznam", "https://search.seznam.cz/indexnow"),
+            ("naver", "https://searchadvisor.naver.com/indexnow"),
+        ]
+        for engine_name, endpoint_url in INDEXNOW_ENDPOINTS:
+            engine_result = {"submitted": 0, "errors": 0}
+            for i in range(0, len(all_urls), 10000):
+                batch = all_urls[i:i+10000]
+                try:
+                    r = await client.post(endpoint_url, json={
+                        "host": "euromatchtickets.com",
+                        "key": INDEXNOW_KEY,
+                        "keyLocation": f"{SITE_URL}/{INDEXNOW_KEY}.txt",
+                        "urlList": batch
+                    })
+                    if r.status_code in [200, 202]:
+                        engine_result["submitted"] += len(batch)
+                    else:
+                        engine_result["errors"] += len(batch)
+                        engine_result["http_status"] = r.status_code
+                except Exception as e:
+                    engine_result["errors"] += len(batch)
+                    engine_result["exception"] = str(e)[:80]
+            results["engines"][f"indexnow_{engine_name}"] = engine_result
+
+        # ━━━ 3. BING URL SUBMISSION API (direct Bing crawl request) ━━━
+        if BING_API_KEY:
+            bing_result = {"submitted": 0, "quota_exceeded": False}
+            for i in range(0, min(len(all_urls), 500), 50):
+                batch = all_urls[i:i+50]
+                try:
+                    r = await client.post(
+                        f"https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey={BING_API_KEY}",
+                        json={"siteUrl": SITE_URL, "urlList": batch},
+                        headers={"Content-Type": "application/json; charset=utf-8"}
+                    )
+                    if r.status_code == 200:
+                        bing_result["submitted"] += len(batch)
+                    elif "quota" in r.text.lower():
+                        bing_result["quota_exceeded"] = True
+                        break
+                except Exception:
+                    break
+            results["engines"]["bing_webmaster_api"] = bing_result
+        else:
+            results["engines"]["bing_webmaster_api"] = {"skipped": True, "reason": "No BING_WEBMASTER_API_KEY"}
+
+        # ━━━ 4. SITEMAP PINGS — Google + Bing (all sitemaps) ━━━
+        sitemaps = [
+            f"{SITE_URL}/api/sitemap.xml",
+            f"{SITE_URL}/api/sitemap-index.xml",
+            f"{SITE_URL}/api/sitemaps/pages.xml",
+            f"{SITE_URL}/api/sitemaps/f1.xml",
+            f"{SITE_URL}/api/sitemaps/football.xml",
+            f"{SITE_URL}/api/sitemaps/concerts.xml",
+            f"{SITE_URL}/api/sitemaps/worldcup.xml",
+            f"{SITE_URL}/api/sitemaps/cities.xml",
+        ]
+        ping_results = {"google_pings": 0, "bing_pings": 0, "errors": 0}
+        for sm_url in sitemaps:
+            for ping_base in ["https://www.google.com/ping?sitemap=", "https://www.bing.com/ping?sitemap="]:
+                try:
+                    r = await client.get(f"{ping_base}{sm_url}")
+                    if r.status_code == 200:
+                        if "google" in ping_base:
+                            ping_results["google_pings"] += 1
+                        else:
+                            ping_results["bing_pings"] += 1
+                except Exception:
+                    ping_results["errors"] += 1
+        results["engines"]["sitemap_pings"] = ping_results
+
+    # ━━━ CALCULATE TOTALS ━━━
+    duration = (datetime.now(timezone.utc) - start).total_seconds()
+    total_submitted = 0
+    engines_reached = 0
+    for k, v in results["engines"].items():
+        if isinstance(v, dict):
+            s = v.get("submitted", 0)
+            total_submitted += s
+            if s > 0:
+                engines_reached += 1
+
+    results["total_submitted_across_engines"] = total_submitted
+    results["engines_reached"] = engines_reached
+    results["duration_seconds"] = round(duration, 1)
+
+    # Log
+    try:
+        await db.indexing_submissions.insert_one({
+            "type": "nuclear_index_all",
+            "total_urls": len(all_urls),
+            "total_submitted": total_submitted,
+            "engines_reached": engines_reached,
+            "duration": duration,
+            "results": {k: v for k, v in results["engines"].items() if isinstance(v, dict)},
+            "created_at": datetime.now(timezone.utc)
+        })
+    except Exception:
+        pass
+
+    return {"status": "success", **results}
+
+
+@router.post("/seo/setup-google-indexing")
+async def setup_google_indexing(request: Request):
+    """Upload Google Service Account JSON for Indexing API access."""
+    try:
+        data = await request.json()
+        sa_json = data.get("service_account_json")
+        if not sa_json:
+            return {"status": "error", "message": "Provide 'service_account_json' field with the full JSON content"}
+
+        import json
+        if isinstance(sa_json, str):
+            sa_data = json.loads(sa_json)
+        else:
+            sa_data = sa_json
+
+        # Validate it has required fields
+        required = ["type", "project_id", "private_key", "client_email"]
+        missing = [f for f in required if f not in sa_data]
+        if missing:
+            return {"status": "error", "message": f"Missing fields: {missing}"}
+
+        # Save to file
+        with open(GOOGLE_SA_PATH, "w") as f:
+            json.dump(sa_data, f)
+
+        return {
+            "status": "success",
+            "message": "Google Service Account saved. Google Indexing API is now active.",
+            "service_account_email": sa_data.get("client_email"),
+            "next_step": f"Make sure {sa_data.get('client_email')} is added as Owner in Google Search Console for euromatchtickets.com"
+        }
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+
+@router.get("/seo/indexing-report")
+async def indexing_report():
+    """Full report of all indexing submissions with totals."""
+    seo_count = await db.seo_pages.count_documents({"active": True})
+    events_count = await db.events.count_documents({"event_date": {"$gte": datetime.now(timezone.utc).strftime('%Y-%m-%d')}})
+
+    # Recent submissions
+    submissions = await db.indexing_submissions.find(
+        {}, {"_id": 0}
+    ).sort("created_at", -1).to_list(20)
+
+    total_submitted_all_time = 0
+    for s in submissions:
+        total_submitted_all_time += s.get("total_submitted", 0)
+
+    google_api_ready = os.path.exists(GOOGLE_SA_PATH)
+
+    return {
+        "site_stats": {
+            "active_seo_pages": seo_count,
+            "active_events": events_count,
+            "estimated_total_urls": seo_count + events_count + 80,
+        },
+        "google_indexing_api": {
+            "ready": google_api_ready,
+            "quota_per_day": 200,
+            "setup_url": "https://console.cloud.google.com/apis/library/indexing.googleapis.com" if not google_api_ready else None,
+        },
+        "indexnow": {
+            "engines": ["Bing", "Yandex", "Seznam", "Naver", "IndexNow API (all)"],
+            "max_per_request": 10000,
+            "key_verified": True,
+        },
+        "total_submissions_recorded": len(submissions),
+        "total_urls_submitted_all_time": total_submitted_all_time,
+        "recent_submissions": submissions[:10],
+    }

@@ -7,6 +7,7 @@ import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
 import { NewsletterSignup } from "../components/NewsletterSignup";
+import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 
 const CANONICAL = "https://euromatchtickets.com/f1-belgian-grand-prix-spa-tickets";
 
@@ -146,8 +147,8 @@ const SpaGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="spa-gp-page">
       <SEOHead
-        title="Spa F1 Tickets 2026 | Belgian GP Spa-Francorchamps from €109"
-        description="Buy Spa F1 tickets from €109 — 42% cheaper than F1.com! Belgian Grand Prix 2026 at Spa-Francorchamps. Eau Rouge grandstand, Paddock Club VIP. 500K+ sold. Instant QR. FanProtect guarantee. Only 687 left!"
+        title="Buy Spa F1 Tickets 2026 | Belgian Grand Prix From €109 | Spa-Francorchamps"
+        description="Buy Belgian Grand Prix 2026 tickets from €109. Eau Rouge Grandstand & Paddock Club VIP. Selling Fast — limited availability. 100% Money-Back Guarantee. Instant QR delivery."
         canonicalUrl={CANONICAL}
         image="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png"
       />
@@ -686,6 +687,9 @@ const SpaGPPage = () => {
           </article>
         </div>
       </section>
+
+      {/* ═══ RELATED F1 RACES ═══ */}
+      <RelatedEventsLinks category="spa-f1" title="More F1 Races You'll Love" />
 
       {/* ═══ NEWSLETTER ═══ */}
       <section className="py-12 bg-[#0a0a0f]">

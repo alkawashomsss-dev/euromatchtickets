@@ -526,6 +526,12 @@ function AppRouter() {
         <Route path="/psg-tickets" element={<PSGHubPage />} />
         <Route path="/juventus-tickets" element={<JuventusHubPage />} />
         <Route path="/coldplay-tour-2026" element={<ColdplayPage />} />
+        <Route path="/coldplay-tour-2026-tickets" element={<Navigate to="/coldplay-tour-2026" replace />} />
+        <Route path="/formula-1-tickets" element={<Navigate to="/f1-tickets" replace />} />
+        <Route path="/formula-1-tickets-2026" element={<Navigate to="/f1-tickets" replace />} />
+        <Route path="/fifa-world-cup-2026-tickets" element={<Navigate to="/world-cup-2026-tickets" replace />} />
+        <Route path="/monaco-grand-prix-2026-tickets" element={<Navigate to="/f1-monaco-grand-prix-tickets" replace />} />
+        <Route path="/premier-league-tickets" element={<Navigate to="/champions-league-tickets" replace />} />
         {/* GSC keyword redirects - team tickets */}
         <Route path="/west-ham-tickets" element={<Navigate to="/events?search=west+ham" replace />} />
         <Route path="/feyenoord-tickets" element={<Navigate to="/events?search=feyenoord" replace />} />

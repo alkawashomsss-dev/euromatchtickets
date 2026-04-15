@@ -13,6 +13,10 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/acheter-billets"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Es Comprar Entradas</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/es/entradas-champions-league</loc>
@@ -25,6 +29,10 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/billets-champions-league"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti-champions-league"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/champions-league-tickets"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Es Entradas Champions League</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/es/entradas-f1</loc>
@@ -37,12 +45,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/billets-f1"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti-f1"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/f1-tickets"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Es Entradas F1</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/es/entradas-conciertos</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Es Entradas Conciertos</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/es/entradas-copa-del-mundo-2026</loc>
@@ -53,6 +69,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://euromatchtickets.com/world-cup-2026"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://euromatchtickets.com/es/entradas-copa-del-mundo-2026"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/world-cup-2026"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Es Entradas Copa Del Mundo 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/de/tickets-kaufen</loc>
@@ -65,6 +85,10 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/acheter-billets"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>De Tickets Kaufen</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/de/champions-league-tickets</loc>
@@ -77,6 +101,10 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/billets-champions-league"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti-champions-league"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/champions-league-tickets"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>De Champions League Tickets</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/de/formel-1-tickets</loc>
@@ -89,18 +117,30 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/billets-f1"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti-f1"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/f1-tickets"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>De Formel 1 Tickets</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/de/bundesliga-tickets</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>De Bundesliga Tickets</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/de/konzert-tickets</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>De Konzert Tickets</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/de/wm-2026-tickets</loc>
@@ -111,6 +151,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://euromatchtickets.com/world-cup-2026"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://euromatchtickets.com/es/entradas-copa-del-mundo-2026"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/world-cup-2026"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>De Wm 2026 Tickets</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/fr/acheter-billets</loc>
@@ -123,6 +167,10 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/acheter-billets"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Fr Acheter Billets</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/fr/billets-champions-league</loc>
@@ -135,6 +183,10 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/billets-champions-league"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti-champions-league"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/champions-league-tickets"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Fr Billets Champions League</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/fr/billets-f1</loc>
@@ -147,12 +199,20 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/billets-f1"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti-f1"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/f1-tickets"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Fr Billets F1</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/fr/billets-concerts</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Fr Billets Concerts</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/it/biglietti</loc>
@@ -165,6 +225,10 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/acheter-billets"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>It Biglietti</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/it/biglietti-champions-league</loc>
@@ -177,6 +241,10 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/billets-champions-league"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti-champions-league"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/champions-league-tickets"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>It Biglietti Champions League</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/it/biglietti-f1</loc>
@@ -189,11 +257,19 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://euromatchtickets.com/fr/billets-f1"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://euromatchtickets.com/it/biglietti-f1"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://euromatchtickets.com/f1-tickets"/>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>It Biglietti F1</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/it/biglietti-concerti</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>It Biglietti Concerti</image:title>
+    </image:image>
   </url>
 </urlset>

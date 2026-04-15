@@ -5,6 +5,7 @@ import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 
 const ChampionsLeagueTicketsPage = () => {
   const navigate = useNavigate();
@@ -68,8 +69,8 @@ const ChampionsLeagueTicketsPage = () => {
   return (
     <>
       <SEOHead
-        title="Champions League Tickets 2025/26 | Buy UCL Tickets"
-        description="Buy Champions League 2025 tickets. UCL semi final, final Munich 2025. Bayern Munich, Real Madrid, Barcelona. Verified tickets + instant QR delivery."
+        title="Buy Champions League Tickets 2026 | UCL Final From €85 | Munich"
+        description="Buy UEFA Champions League 2026 tickets from €85. Semi-finals & Final in Munich. 90% Sold — limited seats remaining. 100% Money-Back Guarantee. Instant QR delivery."
         keywords="champions league tickets, ucl 2025 tickets, ticket champions league 2025, champions league semi final 2025 tickets, buy ticket final champions league 2025, champions league munich tickets"
         canonicalUrl="https://euromatchtickets.com/champions-league-tickets"
         image="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200&h=630&fit=crop"
@@ -215,6 +216,7 @@ const ChampionsLeagueTicketsPage = () => {
           </div>
         </div>
       </div>
+      <RelatedEventsLinks category="champions-league" title="More Events You'll Love" />
     </>
   );
 };

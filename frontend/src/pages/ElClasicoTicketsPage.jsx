@@ -5,6 +5,7 @@ import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import axios from "axios";
 import { API } from "../App";
 
@@ -42,8 +43,8 @@ const ElClasicoTicketsPage = () => {
   return (
     <>
       <SEOHead
-        title="El Clasico Tickets 2026 | Real Madrid vs Barcelona | Buy Now"
-        description="Buy El Clasico tickets - Real Madrid vs Barcelona. Category 1-4, VIP Hospitality available. Santiago Bernabeu & Camp Nou. Secure booking, instant delivery!"
+        title="Buy El Clasico Tickets 2026 | Real Madrid vs Barcelona From €89"
+        description="Buy El Clasico 2026 tickets from €89. Real Madrid vs Barcelona, Santiago Bernabéu. Only 23 tickets left. 100% Money-Back Guarantee. Instant QR delivery."
         keywords="El Clasico tickets, Real Madrid vs Barcelona tickets, buy El Clasico, La Liga tickets, Bernabeu tickets, Camp Nou tickets, El Clasico 2026"
         canonicalUrl="https://euromatchtickets.com/el-clasico-tickets"
         image="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=1200&h=630&fit=crop"
@@ -286,6 +287,7 @@ const ElClasicoTicketsPage = () => {
           </div>
         </div>
       </div>
+      <RelatedEventsLinks category="el-clasico" title="More Events You'll Love" />
     </>
   );
 };

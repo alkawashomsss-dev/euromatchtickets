@@ -70,20 +70,61 @@ for group in HREFLANG_GROUPS:
 # ---------------------------------------------------------------------------
 IMAGE_MAP = {
     "/":                              {"url": f"{SITE}/og-image.jpg",              "title": "EuroMatchTickets - Europe's #1 Ticket Marketplace"},
-    "/champions-league-tickets":      {"url": f"{SITE}/images/heroes/worldcup-trophy-md.webp", "title": "Champions League Tickets 2026"},
-    "/f1-tickets":                    {"url": f"{SITE}/images/heroes/worldcup-trophy-md.webp", "title": "F1 Grand Prix Tickets 2026"},
-    "/world-cup-2026":                {"url": f"{SITE}/images/heroes/worldcup-trophy-md.webp", "title": "FIFA World Cup 2026 Tickets"},
-    "/taylor-swift-tickets":          {"url": f"{SITE}/og-image.jpg",              "title": "Taylor Swift Concert Tickets 2026"},
-    "/real-madrid-tickets":           {"url": f"{SITE}/og-image.jpg",              "title": "Real Madrid Tickets - Santiago Bernabeu"},
-    "/barcelona-tickets":             {"url": f"{SITE}/og-image.jpg",              "title": "FC Barcelona Tickets - Camp Nou"},
-    "/manchester-city-tickets":       {"url": f"{SITE}/og-image.jpg",              "title": "Manchester City Tickets - Etihad Stadium"},
-    "/liverpool-tickets":             {"url": f"{SITE}/og-image.jpg",              "title": "Liverpool FC Tickets - Anfield"},
-    "/arsenal-tickets":               {"url": f"{SITE}/og-image.jpg",              "title": "Arsenal Tickets - Emirates Stadium"},
-    "/bayern-munich-tickets":         {"url": f"{SITE}/og-image.jpg",              "title": "Bayern Munich Tickets - Allianz Arena"},
-    "/psg-tickets":                   {"url": f"{SITE}/og-image.jpg",              "title": "PSG Tickets - Parc des Princes"},
-    "/juventus-tickets":              {"url": f"{SITE}/og-image.jpg",              "title": "Juventus Tickets - Allianz Stadium"},
-    "/coldplay-tour-2026":            {"url": f"{SITE}/og-image.jpg",              "title": "Coldplay European Tour 2026"},
+    "/champions-league-tickets":      {"url": f"{SITE}/images/heroes/football-stadium-lg.webp", "title": "Champions League Tickets 2026"},
+    "/f1-tickets":                    {"url": f"{SITE}/images/heroes/f1-red-lg.webp", "title": "F1 Grand Prix Tickets 2026"},
+    "/f1-tickets-2026":               {"url": f"{SITE}/images/heroes/f1-red-lg.webp", "title": "Formula 1 Tickets 2026"},
+    "/world-cup-2026":                {"url": f"{SITE}/images/heroes/worldcup-trophy-lg.webp", "title": "FIFA World Cup 2026 Tickets"},
+    "/world-cup-2026-tickets":        {"url": f"{SITE}/images/heroes/worldcup-trophy-lg.webp", "title": "FIFA World Cup 2026 Tickets"},
+    "/taylor-swift-tickets":          {"url": f"{SITE}/images/heroes/concert-purple-lg.webp", "title": "Taylor Swift Concert Tickets 2026"},
+    "/taylor-swift-london-tickets":   {"url": f"{SITE}/images/heroes/concert-purple-lg.webp", "title": "Taylor Swift London Wembley 2026"},
+    "/el-clasico-tickets":            {"url": f"{SITE}/images/heroes/football-match-lg.webp", "title": "El Clasico Real Madrid vs Barcelona"},
+    "/super-bowl-2026-tickets":       {"url": f"{SITE}/images/heroes/football-stadium-lg.webp", "title": "Super Bowl 2026 Tickets"},
+    "/monaco-grand-prix-tickets":     {"url": f"{SITE}/images/heroes/monaco-lg.webp", "title": "Monaco Grand Prix 2026"},
+    "/bayern-vs-real-madrid-tickets":  {"url": f"{SITE}/images/heroes/football-match-lg.webp", "title": "Bayern vs Real Madrid UCL"},
+    "/bahrain-world-cup-tickets-2026": {"url": f"{SITE}/images/heroes/worldcup-final-lg.webp", "title": "Bahrain World Cup 2026"},
+    "/world-athletics-2026-tickets":  {"url": f"{SITE}/images/heroes/football-stadium-lg.webp", "title": "World Athletics 2026"},
+    "/motogp-tickets":                {"url": f"{SITE}/images/heroes/motogp-lg.webp", "title": "MotoGP Tickets 2026"},
+    "/events":                        {"url": f"{SITE}/og-image.jpg", "title": "All Events & Tickets"},
+    "/real-madrid-tickets":           {"url": f"{SITE}/images/heroes/football-stadium-lg.webp", "title": "Real Madrid Tickets"},
+    "/barcelona-tickets":             {"url": f"{SITE}/images/heroes/football-match-lg.webp", "title": "FC Barcelona Tickets"},
+    "/manchester-city-tickets":       {"url": f"{SITE}/images/heroes/football-lg.webp", "title": "Manchester City Tickets"},
+    "/liverpool-tickets":             {"url": f"{SITE}/images/heroes/football-penalty-lg.webp", "title": "Liverpool FC Tickets"},
+    "/arsenal-tickets":               {"url": f"{SITE}/images/heroes/football-stadium-lg.webp", "title": "Arsenal Tickets"},
+    "/bayern-munich-tickets":         {"url": f"{SITE}/images/heroes/football-match-lg.webp", "title": "Bayern Munich Tickets"},
+    "/psg-tickets":                   {"url": f"{SITE}/images/heroes/football-lg.webp", "title": "PSG Tickets"},
+    "/juventus-tickets":              {"url": f"{SITE}/images/heroes/football-stadium-lg.webp", "title": "Juventus Tickets"},
+    "/bruno-mars-tour-2026":          {"url": f"{SITE}/images/heroes/concert-live-lg.webp", "title": "Bruno Mars Tour 2026"},
+    "/the-weeknd-tour-2026":          {"url": f"{SITE}/images/heroes/concert-drums-lg.webp", "title": "The Weeknd Tour 2026"},
+    "/guns-n-roses-tour-2026":        {"url": f"{SITE}/images/heroes/concert-lg.webp", "title": "Guns N Roses Tour 2026"},
+    "/bad-bunny-london-2026":         {"url": f"{SITE}/images/heroes/concert-purple-lg.webp", "title": "Bad Bunny London 2026"},
+    "/maroon-5-tickets":              {"url": f"{SITE}/images/heroes/concert-live-lg.webp", "title": "Maroon 5 Tickets"},
+    "/john-legend-abu-dhabi-tickets": {"url": f"{SITE}/images/heroes/concert-drums-lg.webp", "title": "John Legend Tickets"},
+    "/harry-styles-tickets":          {"url": f"{SITE}/images/heroes/concert-purple-lg.webp", "title": "Harry Styles Tickets"},
+    "/metallica-sphere-las-vegas-tickets": {"url": f"{SITE}/images/heroes/concert-lg.webp", "title": "Metallica Sphere Las Vegas"},
+    "/acl-festival-2026-tickets":     {"url": f"{SITE}/images/heroes/concert-live-lg.webp", "title": "ACL Festival 2026"},
+    "/coldplay-tour-2026":            {"url": f"{SITE}/images/heroes/concert-drums-lg.webp", "title": "Coldplay European Tour 2026"},
 }
+
+# Category-based image for dynamic SEO pages
+CATEGORY_IMAGES = {
+    "f1": [f"{SITE}/images/heroes/f1-red-lg.webp", f"{SITE}/images/heroes/f1-race-lg.webp", f"{SITE}/images/heroes/f1-pitstop-lg.webp", f"{SITE}/images/heroes/f1-lg.webp"],
+    "football": [f"{SITE}/images/heroes/football-stadium-lg.webp", f"{SITE}/images/heroes/football-match-lg.webp", f"{SITE}/images/heroes/football-penalty-lg.webp", f"{SITE}/images/heroes/football-lg.webp"],
+    "concert": [f"{SITE}/images/heroes/concert-purple-lg.webp", f"{SITE}/images/heroes/concert-live-lg.webp", f"{SITE}/images/heroes/concert-drums-lg.webp", f"{SITE}/images/heroes/concert-lg.webp"],
+    "concerts": [f"{SITE}/images/heroes/concert-purple-lg.webp", f"{SITE}/images/heroes/concert-live-lg.webp", f"{SITE}/images/heroes/concert-drums-lg.webp", f"{SITE}/images/heroes/concert-lg.webp"],
+    "worldcup": [f"{SITE}/images/heroes/worldcup-trophy-lg.webp", f"{SITE}/images/heroes/worldcup-final-lg.webp", f"{SITE}/images/heroes/worldcup-lg.webp"],
+    "motorsport": [f"{SITE}/images/heroes/motogp-lg.webp", f"{SITE}/images/heroes/motogp-orange-lg.webp"],
+    "motogp": [f"{SITE}/images/heroes/motogp-lg.webp", f"{SITE}/images/heroes/motogp-orange-lg.webp"],
+    "city": [f"{SITE}/images/heroes/football-stadium-lg.webp", f"{SITE}/images/heroes/concert-live-lg.webp"],
+    "sports": [f"{SITE}/images/heroes/football-stadium-lg.webp", f"{SITE}/images/heroes/football-match-lg.webp"],
+    "events": [f"{SITE}/images/heroes/football-stadium-lg.webp", f"{SITE}/images/heroes/concert-purple-lg.webp"],
+}
+
+def _cat_image(slug, category):
+    """Pick a category image based on slug hash for variety."""
+    pool = CATEGORY_IMAGES.get(category, [f"{SITE}/images/heroes/football-stadium-lg.webp"])
+    idx = int(hashlib.md5(slug.encode()).hexdigest(), 16) % len(pool)
+    title = slug.replace("-", " ").replace("2026", "").strip().title()
+    return {"url": pool[idx], "title": title}
 
 # ---------------------------------------------------------------------------
 # Priority tiers
@@ -212,7 +253,6 @@ def build_core():
         ("/motogp-tickets",                 "main_cat", "daily"),
         ("/taylor-swift-tickets",           "main_cat", "daily"),
         ("/taylor-swift-london-tickets",    "main_cat", "daily"),
-        ("/taylor-swift-wembley-2026-tickets", "event_static", "daily"),
         ("/el-clasico-tickets",             "hub",      "daily"),
         ("/super-bowl-2026-tickets",        "main_cat", "daily"),
         ("/monaco-grand-prix-tickets",      "event_static", "daily"),
@@ -249,7 +289,8 @@ def build_core():
         "/acl-festival-2026-tickets", "/coldplay-tour-2026",
     ]
     for path in concert_pages:
-        urls.append(_url_block(f"{SITE}{path}", changefreq="weekly", priority=PRIORITY_TIERS["event_static"]))
+        urls.append(_url_block(f"{SITE}{path}", changefreq="weekly", priority=PRIORITY_TIERS["event_static"],
+                              image=IMAGE_MAP.get(path, _cat_image(path.lstrip("/"), "concert"))))
 
     # Info pages
     info_pages = [
@@ -262,16 +303,12 @@ def build_core():
         ("/impressum",        "0.35"), ("/world-cup-raffle",  "0.70"),
     ]
     for path, prio in info_pages:
-        urls.append(_url_block(f"{SITE}{path}", changefreq="monthly", priority=prio))
+        urls.append(_url_block(f"{SITE}{path}", changefreq="monthly", priority=prio,
+                              image={"url": f"{SITE}/og-image.jpg", "title": path.strip("/").replace("-", " ").title()}))
 
-    # Filtered event pages (important for SEO - each type gets its own canonical)
-    event_type_pages = [
-        ("/events?type=concert", "0.85"),
-        ("/events?type=match",   "0.85"),
-        ("/events?type=f1",      "0.85"),
-    ]
-    for path, prio in event_type_pages:
-        urls.append(_url_block(f"{SITE}{path}", changefreq="daily", priority=prio))
+    # Premier League redirect page (in sitemap for discovery)
+    urls.append(_url_block(f"{SITE}/premier-league-tickets", changefreq="daily", priority="0.90",
+                          image={"url": f"{SITE}/images/heroes/football-stadium-lg.webp", "title": "Premier League Tickets 2026"}))
 
     return write_sitemap("sitemap-core.xml", urls)
 
@@ -294,7 +331,8 @@ def build_f1_motorsport():
         "/f1-hungarian-grand-prix-budapest-tickets",   "/f1-austrian-grand-prix-red-bull-ring-tickets",
     ]
     for path in f1_static:
-        urls.append(_url_block(f"{SITE}{path}", changefreq="daily", priority=PRIORITY_TIERS["event_static"]))
+        urls.append(_url_block(f"{SITE}{path}", changefreq="daily", priority=PRIORITY_TIERS["event_static"],
+                              image=_cat_image(path.lstrip("/"), "f1")))
 
     # F1 guide pages
     f1_guides = [
@@ -307,7 +345,8 @@ def build_f1_motorsport():
         "/monaco-gp-vip-experience", "/bahrain-f1-night-race-guide",
     ]
     for path in f1_guides:
-        urls.append(_url_block(f"{SITE}{path}", changefreq="weekly", priority=PRIORITY_TIERS["guide"]))
+        urls.append(_url_block(f"{SITE}{path}", changefreq="weekly", priority=PRIORITY_TIERS["guide"],
+                              image=_cat_image(path.lstrip("/"), "f1")))
 
     # MotoGP / TT static pages
     moto_static = [
@@ -315,7 +354,8 @@ def build_f1_motorsport():
         "/isle-of-man-tt-tickets", "/motogp-ticket-prices-2026",
     ]
     for path in moto_static:
-        urls.append(_url_block(f"{SITE}{path}", changefreq="weekly", priority=PRIORITY_TIERS["event_static"]))
+        urls.append(_url_block(f"{SITE}{path}", changefreq="weekly", priority=PRIORITY_TIERS["event_static"],
+                              image=_cat_image(path.lstrip("/"), "motorsport")))
 
     # Dynamic F1 SEO pages from DB
     static_slugs = {p.lstrip("/") for p in f1_static + f1_guides + moto_static}
@@ -329,6 +369,7 @@ def build_f1_motorsport():
             urls.append(_url_block(
                 f"{SITE}/{p['slug']}", lastmod=dt_to_str(p.get("updated_at")),
                 changefreq="weekly", priority=f"{prio:.2f}",
+                image=_cat_image(p["slug"], "f1"),
             ))
 
     return write_sitemap("sitemap-f1-motorsport.xml", urls)
@@ -348,6 +389,7 @@ def build_football():
         urls.append(_url_block(
             f"{SITE}/{p['slug']}", lastmod=dt_to_str(p.get("updated_at")),
             changefreq="weekly", priority=f"{prio:.2f}",
+            image=_cat_image(p["slug"], "football"),
         ))
     return write_sitemap("sitemap-football.xml", urls)
 
@@ -366,6 +408,7 @@ def build_concerts():
         urls.append(_url_block(
             f"{SITE}/{p['slug']}", lastmod=dt_to_str(p.get("updated_at")),
             changefreq="weekly", priority=f"{prio:.2f}",
+            image=_cat_image(p["slug"], "concert"),
         ))
     return write_sitemap("sitemap-concerts.xml", urls)
 
@@ -384,6 +427,7 @@ def build_worldcup():
         urls.append(_url_block(
             f"{SITE}/{p['slug']}", lastmod=dt_to_str(p.get("updated_at")),
             changefreq="daily", priority=f"{prio:.2f}",
+            image=_cat_image(p["slug"], "worldcup"),
         ))
     return write_sitemap("sitemap-worldcup.xml", urls)
 
@@ -399,9 +443,11 @@ def build_city():
     )
     for p in cursor:
         prio = min(p.get("priority", 65), 80) / 100
+        cat = "city"
         urls.append(_url_block(
             f"{SITE}/{p['slug']}", lastmod=dt_to_str(p.get("updated_at")),
             changefreq="weekly", priority=f"{prio:.2f}",
+            image=_cat_image(p["slug"], cat),
         ))
     return write_sitemap("sitemap-city-regional.xml", urls)
 
@@ -426,8 +472,17 @@ def build_events():
             lm = TODAY
 
         img = None
+        et = e.get("event_type", "")
         if e.get("image_url"):
             img = {"url": e["image_url"], "title": e.get("title", "")}
+        elif et == "f1":
+            img = {"url": f"{SITE}/images/heroes/f1-red-lg.webp", "title": e.get("title", slug)}
+        elif et in ("match", "football"):
+            img = {"url": f"{SITE}/images/heroes/football-stadium-lg.webp", "title": e.get("title", slug)}
+        elif et == "concert":
+            img = {"url": f"{SITE}/images/heroes/concert-purple-lg.webp", "title": e.get("title", slug)}
+        else:
+            img = {"url": f"{SITE}/og-image.jpg", "title": e.get("title", slug)}
 
         urls.append(_url_block(loc, lastmod=lm, changefreq="daily",
                                priority=PRIORITY_TIERS["event_detail"], image=img))
@@ -474,7 +529,8 @@ def build_international():
     for path, prio, freq in intl_pages:
         hreflang = PATH_TO_HREFLANG.get(path)
         urls.append(_url_block(f"{SITE}{path}", changefreq=freq, priority=prio,
-                               hreflang=hreflang))
+                               hreflang=hreflang,
+                               image={"url": f"{SITE}/og-image.jpg", "title": path.strip("/").replace("-", " ").replace("/", " ").title()}))
 
     return write_sitemap("sitemap-international.xml", urls)
 
@@ -493,7 +549,8 @@ def build_guides():
     ]
     for path in comparisons:
         urls.append(_url_block(f"{SITE}{path}", changefreq="monthly",
-                               priority=PRIORITY_TIERS["comparison"]))
+                               priority=PRIORITY_TIERS["comparison"],
+                               image={"url": f"{SITE}/og-image.jpg", "title": path.strip("/").replace("-", " ").title()}))
 
     price_guides = [
         "/f1-ticket-prices-2026", "/motogp-ticket-prices-2026",
@@ -501,7 +558,8 @@ def build_guides():
     ]
     for path in price_guides:
         urls.append(_url_block(f"{SITE}{path}", changefreq="weekly",
-                               priority=PRIORITY_TIERS["guide"]))
+                               priority=PRIORITY_TIERS["guide"],
+                               image=_cat_image(path.lstrip("/"), "f1" if "f1" in path else "concert" if "concert" in path else "football")))
 
     # Monthly event pages
     for month in ["january","february","march","april","may","june",
@@ -509,11 +567,13 @@ def build_guides():
         urls.append(_url_block(
             f"{SITE}/events-{month}-2026", changefreq="weekly",
             priority=PRIORITY_TIERS["monthly"],
+            image={"url": f"{SITE}/og-image.jpg", "title": f"Events {month.title()} 2026"},
         ))
 
     # Weekend events
     urls.append(_url_block(f"{SITE}/events-this-weekend", changefreq="daily",
-                           priority="0.75"))
+                           priority="0.75",
+                           image={"url": f"{SITE}/og-image.jpg", "title": "Events This Weekend"}))
 
     return write_sitemap("sitemap-guides.xml", urls)
 

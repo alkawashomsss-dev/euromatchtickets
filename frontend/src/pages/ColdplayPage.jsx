@@ -6,6 +6,7 @@ import { Calendar, MapPin, Star, Shield, Zap, Ticket, ChevronRight, Check, Music
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 
 const ColdplayPage = () => {
   const [eventLink, setEventLink] = useState('/checkout?event=coldplay-2026');
@@ -52,7 +53,7 @@ const ColdplayPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050520]" data-testid="coldplay-page">
-      <SEOHead title="Coldplay Tickets Europe 2026 | Tour from €69" description="Buy Coldplay European tour 2026 tickets from €69. London, Paris, Berlin, Barcelona, Milan. Music of the Spheres. Verified sellers, instant QR delivery!" canonicalUrl="https://euromatchtickets.com/coldplay-tour-2026"
+      <SEOHead title="Buy Coldplay Tour Tickets 2026 | Europe Concerts From €69 | Barcelona" description="Buy Coldplay Music of the Spheres 2026 tickets from €69. Barcelona, Berlin, London. Selling Fast. 100% Money-Back Guarantee. Instant QR delivery." canonicalUrl="https://euromatchtickets.com/coldplay-tour-2026"
         image="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
@@ -180,3 +181,4 @@ const ColdplayPage = () => {
 };
 
 export default ColdplayPage;
+ldplayPage;

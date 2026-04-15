@@ -6,6 +6,7 @@ import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import axios from "axios";
 import { API } from "../App";
 
@@ -50,8 +51,8 @@ const WorldCupLandingPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="FIFA World Cup 2026 Tickets | Buy Official Online"
-        description="Get official FIFA World Cup 2026 tickets. Prices from €150. Instant QR delivery. 100% money-back guarantee. Over 50,000 tickets available."
+        title="Buy FIFA World Cup 2026 Tickets | From €65 | USA, Mexico, Canada"
+        description="Buy World Cup 2026 tickets from €65. Group stage to Final across USA, Mexico, Canada. Limited availability. 100% Money-Back Guarantee. Instant QR delivery."
         image="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=630&fit=crop"
       />
       <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026-tickets" category="worldcup" venue="MetLife Stadium" city="New York" />
@@ -351,3 +352,4 @@ const WorldCupLandingPage = () => {
 };
 
 export default WorldCupLandingPage;
+ndingPage;

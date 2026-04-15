@@ -13,6 +13,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { InternalLinks } from "../components/InternalLinks";
+import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import axios from 'axios';
 import { API } from '../App';
@@ -278,7 +279,7 @@ const F1TicketsPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="f1-tickets-page">
       <SEOHead
-        title="F1 Tickets 2026 | All Grand Prix from €79 | 42% Cheaper"
+        title="Buy Formula 1 Tickets 2026 | All 24 Grand Prix From €79"
         description="Buy F1 2026 tickets at best prices. Full 2026 calendar, driver standings, team info. Monaco GP from \u20ac289, Silverstone from \u20ac149, Monza from \u20ac99. All 24 races."
         image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200&h=630&fit=crop"
       />
@@ -826,6 +827,7 @@ const F1TicketsPage = () => {
           <InternalLinks category="concert" showRelated={false} />
         </div>
       </section>
+      <RelatedEventsLinks category="f1-tickets" title="Top F1 Races & More Events" />
       {/* Newsletter */}
       <section className="py-12 bg-[#0a0a0f]">
         <div className="max-w-4xl mx-auto px-4">

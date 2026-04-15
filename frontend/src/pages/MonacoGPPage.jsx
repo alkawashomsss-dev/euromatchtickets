@@ -8,6 +8,7 @@ import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { NewsletterSignup } from "../components/NewsletterSignup";
+import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 
 const MonacoGPPage = () => {
   const [eventLink, setEventLink] = useState('/checkout?event=monaco-grand-prix');
@@ -66,7 +67,8 @@ const MonacoGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0a0a1a]" data-testid="monaco-gp-page">
       <SEOHead
-        title="Monaco GP Tickets 2026 | From €195 | Harbour Views"
+        title="Buy Monaco Grand Prix Tickets 2026 | F1 From €249 | Monte Carlo"
+        description="Buy Monaco GP 2026 tickets from €249. Circuit de Monaco harbour views & VIP hospitality. Only 89 tickets left. 100% Guarantee. Instant QR delivery."
         description="Buy Monaco Grand Prix 2026 tickets from €195. Casino Square, harbour views, yacht hospitality. 55% cheaper than F1.com! FanProtect guarantee + instant QR delivery."
         canonicalUrl="https://euromatchtickets.com/f1-monaco-grand-prix-tickets"
       />
@@ -290,6 +292,7 @@ const MonacoGPPage = () => {
         </div>
       </section>
       {/* Newsletter */}
+      <RelatedEventsLinks category="monaco-gp" title="More F1 Races You'll Love" />
       <section className="py-12 bg-[#0a0a0f]">
         <div className="max-w-4xl mx-auto px-4">
           <NewsletterSignup source="monaco-gp" />

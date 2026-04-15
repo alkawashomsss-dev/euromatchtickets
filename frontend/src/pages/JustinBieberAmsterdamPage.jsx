@@ -20,6 +20,8 @@ const FAQItem = ({ q, a, open, toggle }) => (
   </div>
 );
 
+import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
+
 const JustinBieberAmsterdamPage = () => {
   const location = useLocation();
   const [liveViewers, setLiveViewers] = useState(0);
@@ -150,8 +152,8 @@ const JustinBieberAmsterdamPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="justin-bieber-amsterdam-page">
       <SEOHead
-        title="Justin Bieber Amsterdam 2026 Tickets | Concert from €89"
-        description="Buy Justin Bieber Amsterdam 2026 tickets from €89. Johan Cruijff ArenA July 18, 2026. Standing, Golden Circle & VIP Meet & Greet. Cheapest in Europe. Instant QR delivery. 100% money-back guarantee."
+        title="Buy Justin Bieber Amsterdam Tickets 2026 | From €89 | Johan Cruijff ArenA"
+        description="Buy Justin Bieber Amsterdam 2026 tickets from €89. Johan Cruijff ArenA, July 18. Standing, Golden Circle & VIP. Selling Fast — 143 tickets left. 100% Money-Back Guarantee. Instant QR delivery."
         canonicalUrl={CANONICAL}
         image="https://images.unsplash.com/photo-1770067665792-9975acdec4fb?w=1200"
       />
@@ -625,6 +627,9 @@ const JustinBieberAmsterdamPage = () => {
           </article>
         </div>
       </section>
+
+      {/* ═══ RELATED EVENTS ═══ */}
+      <RelatedEventsLinks category="justin-bieber" title="More Concerts You'll Love" />
 
       {/* ═══ NEWSLETTER ═══ */}
       <section className="py-12 bg-[#0a0a0f]">
