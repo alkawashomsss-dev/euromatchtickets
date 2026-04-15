@@ -611,8 +611,103 @@ if static_build_dir.exists():
             content_type = mimetypes.guess_type(str(file_path))[0] or "application/octet-stream"
             return Response(content=file_path.read_bytes(), media_type=content_type)
 
-        # SPA catch-all: serve index.html for all React routes
+        # SPA catch-all: serve index.html with SSR meta injection for SEO
         index_file = static_build_dir / "index.html"
         if index_file.exists():
-            return Response(content=index_file.read_text(), media_type="text/html")
+            html = index_file.read_text()
+            
+            # SSR Meta injection - inject real <title>, description, canonical, og tags
+            # into raw HTML so Google sees them WITHOUT JavaScript execution
+            seo_meta = await _get_page_seo(full_path)
+            if seo_meta:
+                t, d, img = seo_meta["title"], seo_meta["desc"], seo_meta.get("image", "")
+                canon = f"https://euromatchtickets.com/{full_path}" if full_path else "https://euromatchtickets.com"
+                
+                # Replace default meta description with page-specific
+                html = html.replace(
+                    '<meta name="description" content="Europe\'s cheapest event ticket shop! Buy verified tickets for Champions League from €49, F1 from €59, Taylor Swift from €79. Instant QR delivery, FanProtect guarantee!" />',
+                    f'<meta name="description" content="{d}" />'
+                )
+                # Inject title tag, canonical, and OG tags right before </head>
+                inject = f'''<title>{t}</title>
+    <link rel="canonical" href="{canon}" />
+    <meta property="og:title" content="{t}" />
+    <meta property="og:description" content="{d}" />
+    <meta property="og:url" content="{canon}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="EuroMatchTickets" />'''
+                if img:
+                    inject += f'\n    <meta property="og:image" content="{img}" />'
+                    inject += f'\n    <meta name="twitter:image" content="{img}" />'
+                inject += '\n    <meta name="twitter:card" content="summary_large_image" />'
+                inject += f'\n    <meta name="twitter:title" content="{t}" />'
+                
+                html = html.replace('<!-- canonical set dynamically by pre-hydration script -->', inject)
+            
+            return Response(content=html, media_type="text/html")
         return Response(content="Not Found", status_code=404)
+
+
+# SEO metadata lookup for SSR injection
+async def _get_page_seo(path: str):
+    """Get SEO metadata for a page path - used for server-side meta injection."""
+    
+    # Static page SEO map - most important pages
+    STATIC_SEO = {
+        "f1-belgian-grand-prix-spa-tickets": {"title": "Spa F1 Tickets 2026 | Belgian GP Spa-Francorchamps From €109", "desc": "Buy Spa F1 tickets from €109 — 42% cheaper than F1.com! Belgian GP Spa-Francorchamps 2026. Eau Rouge grandstand, Paddock Club VIP. 500K+ sold. Instant QR.", "image": "https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200"},
+        "justin-bieber-amsterdam-2026-tickets": {"title": "Justin Bieber Amsterdam 2026 Tickets | Concert from €89", "desc": "Buy Justin Bieber Amsterdam 2026 tickets from €89. Johan Cruijff ArenA July 18. Standing, Golden Circle & VIP. Cheapest in Europe. Instant QR!", "image": "https://images.unsplash.com/photo-1770067665792-9975acdec4fb?w=1200"},
+        "champions-league-tickets": {"title": "Champions League Tickets 2026 — From €49 | 90% Sold", "desc": "UCL Semi-Finals & Final Munich 2026. From €49. Verified sellers, instant QR delivery. FanProtect money-back guarantee.", "image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200"},
+        "el-clasico-tickets": {"title": "El Clasico Tickets — Real Madrid vs Barcelona | From €89", "desc": "El Clasico from €89. Santiago Bernabeu. Verified tickets, instant QR delivery. Only 23 left!", "image": "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=1200"},
+        "world-cup-2026-tickets": {"title": "FIFA World Cup 2026 Tickets — From €65 | Limited!", "desc": "World Cup USA/Canada/Mexico 2026. Group stage €65, Final from €495. Instant delivery. FanProtect guarantee!", "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200"},
+        "world-cup-2026": {"title": "FIFA World Cup 2026 Tickets — From €65", "desc": "Buy World Cup 2026 tickets from €65. All matches USA, Mexico, Canada. Cheapest verified tickets!", "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200"},
+        "f1-tickets": {"title": "F1 Tickets 2026 — All Grand Prix | From €79 | 42% Off", "desc": "All 24 F1 races from €79! Spa €109, Monaco €195, Monza €69. 42% cheaper than F1.com. Instant QR!", "image": "https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200"},
+        "taylor-swift-london-tickets": {"title": "Taylor Swift London 2026 — Wembley From €79 | Last Tickets!", "desc": "Taylor Swift Wembley 2026 from €79. 40% cheaper! Multiple dates. Verified, instant QR. Almost sold out!", "image": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200"},
+        "the-weeknd-tour-2026": {"title": "The Weeknd Tour 2026 Tickets | European Concert from €79", "desc": "The Weeknd After Hours Til Dawn Tour 2026. Europe concerts from €79. Verified tickets, instant QR!", "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200"},
+        "bruno-mars-tour-2026": {"title": "Bruno Mars Tour 2026 Tickets | London & Europe from €89", "desc": "Bruno Mars Romantic Tour 2026. London Wembley & Europe from €89. Cheapest verified tickets!", "image": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200"},
+        "bad-bunny-london-2026": {"title": "Bad Bunny London 2026 Tickets | Tottenham Stadium from €79", "desc": "Bad Bunny London 2026 Tottenham Stadium from €79. Verified tickets, instant QR delivery!", "image": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1200"},
+        "motogp-tickets": {"title": "MotoGP Tickets 2026 — All 21 Races | From €45", "desc": "Every MotoGP race from €45! Mugello, Valencia, Silverstone. 30% cheaper. Instant QR!", "image": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200"},
+        "isle-of-man-tt-tickets": {"title": "Isle of Man TT 2026 Tickets | Race Passes from €79", "desc": "Isle of Man TT 2026 tickets from €79. Superbike, Senior TT, Full Week Pass. Instant delivery!", "image": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200"},
+        "super-bowl-2026-tickets": {"title": "Super Bowl 2027 Tickets | VIP & Best Seats from €2,499", "desc": "Super Bowl LXI 2027 tickets. VIP packages, best seats. SoFi Stadium. FanProtect guarantee!", "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1200"},
+        "f1-monaco-grand-prix-tickets": {"title": "Monaco GP 2026 Tickets | F1 Monte Carlo from €249", "desc": "Monaco Grand Prix 2026 from €249. Circuit de Monaco. Grandstand, VIP. Cheapest verified!", "image": "https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=1200"},
+        "f1-british-grand-prix-silverstone-tickets": {"title": "British GP 2026 Tickets | Silverstone F1 from €149", "desc": "Silverstone British Grand Prix 2026 from €149. All grandstands + Paddock Club. Instant QR!", "image": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200"},
+        "f1-singapore-grand-prix-tickets": {"title": "Singapore GP 2026 Tickets | F1 Night Race from €189", "desc": "Singapore Grand Prix Night Race 2026 from €189. Marina Bay Circuit. Verified, instant delivery!", "image": "https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?w=1200"},
+        "f1-las-vegas-grand-prix-tickets": {"title": "Las Vegas GP 2026 Tickets | F1 Night Race from €249", "desc": "Las Vegas Grand Prix 2026 Night Race from €249. The Strip Circuit. VIP available!", "image": "https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=1200"},
+        "bayern-munich-vs-real-madrid-tickets": {"title": "Bayern vs Real Madrid Tickets 2026 | UCL from €129", "desc": "Bayern Munich vs Real Madrid UCL 2026 from €129. Allianz Arena. Verified, instant QR!", "image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200"},
+        "bayern-munich-tickets": {"title": "Bayern Munich Tickets 2026 | Allianz Arena from €49", "desc": "Buy Bayern Munich tickets. Bundesliga & Champions League. Allianz Arena from €49. Instant delivery!", "image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200"},
+        "world-athletics-2026-tickets": {"title": "World Athletics Championships 2026 Tickets | From €49", "desc": "World Athletics 2026 Budapest from €49. 100m Final, Marathon, all events. Verified tickets!", "image": "https://images.unsplash.com/photo-1532444458054-01a7dd3e9fca?w=1200"},
+        "harry-styles-tickets": {"title": "Harry Styles Tour 2026 Tickets | London from €79", "desc": "Harry Styles Love On Tour 2026 from €79. Wembley London. Cheapest verified tickets!", "image": "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1200"},
+        "metallica-sphere-las-vegas-tickets": {"title": "Metallica Sphere Las Vegas Tickets 2026 | From €99", "desc": "Metallica M72 Tour at the Sphere Las Vegas 2026 from €99. Immersive experience. Instant QR!", "image": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=1200"},
+        "f1-dutch-grand-prix-zandvoort-tickets": {"title": "Dutch GP 2026 Tickets | Zandvoort F1 from €149", "desc": "Dutch Grand Prix Zandvoort 2026 from €149. Circuit Zandvoort. All grandstands. Instant QR!", "image": "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?w=1200"},
+        "f1-miami-grand-prix-tickets": {"title": "Miami GP 2026 Tickets | F1 from €229", "desc": "Miami Grand Prix 2026 from €229. Beach & Marina seats. VIP available. Instant delivery!", "image": "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=1200"},
+        "f1-bahrain-grand-prix-tickets": {"title": "Bahrain GP 2026 Tickets | F1 Night Race from €149", "desc": "Bahrain Grand Prix 2026 from €149. Sakhir International Circuit. All grandstands. Instant QR!", "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200"},
+        "f1-italian-grand-prix-monza-tickets": {"title": "Italian GP 2026 Tickets | Monza F1 from €89", "desc": "Monza Italian Grand Prix 2026 from €89. Autodromo Nazionale. Cheapest in Europe. Instant QR!", "image": "https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200"},
+        "coldplay-tour-2026": {"title": "Coldplay Tour 2026 Tickets | Europe Concerts from €79", "desc": "Coldplay Music of the Spheres Tour 2026. Barcelona & Berlin from €79. Verified, instant QR!", "image": "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200"},
+        "guns-n-roses-tour-2026": {"title": "Guns N' Roses Tour 2026 Tickets | Europe from €89", "desc": "Guns N' Roses European Stadium Tour 2026 from €89. Verified tickets, instant QR delivery!", "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200"},
+    }
+    
+    seo = STATIC_SEO.get(path)
+    if seo:
+        return seo
+    
+    # Check if it's an event page
+    if path.startswith("event/"):
+        slug = path.replace("event/", "")
+        event = await db.events.find_one({"slug": slug}, {"_id": 0, "title": 1, "venue": 1, "city": 1, "image_url": 1, "price_from": 1})
+        if event:
+            price = event.get("price_from", 99)
+            return {
+                "title": f"Buy {event['title']} Tickets | From €{price}",
+                "desc": f"{event['title']} tickets from €{price}. {event.get('venue', '')}, {event.get('city', '')}. Verified sellers, instant QR delivery. FanProtect guarantee.",
+                "image": event.get("image_url", "")
+            }
+    
+    # Check SEO pages DB
+    seo_page = await db.seo_pages.find_one({"slug": path, "active": True}, {"_id": 0, "title": 1, "meta_description": 1, "image": 1})
+    if seo_page:
+        return {
+            "title": seo_page.get("title", ""),
+            "desc": seo_page.get("meta_description", ""),
+            "image": seo_page.get("image", "")
+        }
+    
+    return None
