@@ -542,6 +542,56 @@ async def seed_justin_bieber():
 
 
 
+@router.post("/events/fix-prices")
+async def fix_all_prices():
+    """Fix all events with price_from = 0 and delete past 2025 events."""
+    PRICES = {"f1": 109, "motogp": 49, "concert": 79, "festival": 89, "football": 79,
+              "match": 79, "worldcup": 99, "tennis": 69, "athletics": 49, "isle_of_man_tt": 49, "attraction": 29}
+    
+    # Delete 2025 events
+    del_r = await db.events.delete_many({"event_date": {"$regex": "^2025-"}})
+    
+    events = await db.events.find({"$or": [{"price_from": 0}, {"price_from": None}, {"price_from": {"$exists": False}}]}).to_list(500)
+    fixed = 0
+    for e in events:
+        etype = e.get("event_type", "match")
+        title = (e.get("title") or "").lower()
+        price = PRICES.get(etype, 79)
+        if "final" in title: price = int(price * 2.5)
+        elif "semi" in title: price = int(price * 1.8)
+        elif "vip" in title or "premium" in title: price = int(price * 4)
+        elif "monaco" in title: price = 249
+        elif "las vegas" in title: price = 249
+        elif "singapore" in title: price = 189
+        elif "el clasico" in title: price = 149
+        elif "super bowl" in title: price = 2499
+        elif "tomorrowland" in title: price = 199
+        elif "glastonbury" in title: price = 299
+        elif "wimbledon" in title and "centre" in title: price = 199
+        elif "wimbledon" in title: price = 89
+        elif "roland garros" in title and "final" in title: price = 179
+        elif "roland garros" in title: price = 99
+        elif "disneyland" in title and "2 day" in title: price = 159
+        elif "disneyland" in title: price = 89
+        elif any(x in title for x in ["eiffel","louvre","colosseum","vatican","sagrada","anne frank","tower of london","london eye"]): price = 35
+        elif "europa park" in title or "portaventura" in title: price = 49
+        elif "oktoberfest" in title: price = 45
+        elif "metallica" in title and "sphere" in title: price = 149
+        elif "taylor swift" in title: price = 89
+        elif "champions league" in title and "final" in title: price = 195
+        elif "champions league" in title: price = 145
+        elif "bayern" in title and "real madrid" in title: price = 129
+        elif "club world cup" in title and "final" in title: price = 149
+        elif "club world cup" in title: price = 89
+        await db.events.update_one({"_id": e["_id"]}, {"$set": {"price_from": price, "price_to": price * 6}})
+        fixed += 1
+    
+    remaining = await db.events.count_documents({})
+    zero = await db.events.count_documents({"$or": [{"price_from": 0}, {"price_from": None}]})
+    return {"deleted_2025": del_r.deleted_count, "prices_fixed": fixed, "still_zero": zero, "total": remaining}
+
+
+
 @router.post("/events/seed-all-missing")
 async def seed_all_missing():
     """Seed ALL events that checkout buttons reference but don't exist in DB."""
