@@ -723,7 +723,7 @@ function App() {
             />
             <AppRouter />
             <Suspense fallback={null}>
-              <ContactFloating />
+              <AIChatWidget />
               <SocialProofNotification />
               {showExitPopup && <ExitIntentPopup onClose={() => setShowExitPopup(false)} />}
               {showPushBanner && <PushNotificationBanner onClose={() => setShowPushBanner(false)} />}
