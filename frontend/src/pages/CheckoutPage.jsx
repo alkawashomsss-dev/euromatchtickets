@@ -22,24 +22,16 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     if (!eventId) { navigate("/events"); return; }
+    const prettyName = eventId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()).replace(/\d{4}.*tickets?$/i, '').replace(/\d{4}$/,'').trim();
+    const fallbackEvent = {
+      title: prettyName || 'Event Ticket',
+      event_date: new Date(Date.now() + 90 * 86400000).toISOString(),
+      venue: '', city: 'Europe', slug: eventId, event_id: eventId,
+      tickets: [], categories: {},
+    };
     axios.get(`${API}/events/${eventId}`)
       .then(res => { setEvent(res.data); setLoading(false); })
-      .catch(() => {
-        // Build event from slug instead of redirecting away
-        const prettyName = eventId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()).replace(/\d{4}.*tickets?$/i, '').trim();
-        const fallbackEvent = {
-          title: prettyName || 'Event Ticket',
-          event_date: new Date(Date.now() + 90 * 86400000).toISOString(),
-          venue: '',
-          city: 'Europe',
-          slug: eventId,
-          event_id: eventId,
-          tickets: [],
-          categories: {},
-        };
-        setEvent(fallbackEvent);
-        setLoading(false);
-      });
+      .catch(() => { setEvent(fallbackEvent); setLoading(false); });
   }, [eventId, navigate]);
 
   const getPrice = () => {
