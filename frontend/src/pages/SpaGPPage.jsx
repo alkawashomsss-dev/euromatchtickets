@@ -146,8 +146,8 @@ const SpaGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="spa-gp-page">
       <SEOHead
-        title="Spa F1 Tickets 2026 | Belgian GP from €109"
-        description="Buy Spa F1 tickets 2026 from €109. Belgian Grand Prix Spa-Francorchamps: Eau Rouge, Raidillon grandstands & Paddock Club VIP. Cheapest in Europe. Instant QR delivery. 100% guarantee."
+        title="Spa F1 Tickets 2026 | Belgian GP Spa-Francorchamps from €109"
+        description="Buy Spa F1 tickets from €109 — 42% cheaper than F1.com! Belgian Grand Prix 2026 at Spa-Francorchamps. Eau Rouge grandstand, Paddock Club VIP. 500K+ sold. Instant QR. FanProtect guarantee. Only 687 left!"
         canonicalUrl={CANONICAL}
         image="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png"
       />

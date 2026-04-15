@@ -351,6 +351,17 @@ function AppRouter() {
         <Route path="/spa-f1-tickets-2026" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
         <Route path="/spa-francorchamps-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
         <Route path="/spa-francorchamps-f1-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/spa-francorchamps-tickets-2023" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/spa-formel-1-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/f1-spa-2025-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/spa-f1-2023-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/spa-2025-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/spa-2025-f1-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/f1-karten-spa" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/f1-spa-2024-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/spa-grand-prix-2025-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/spa-francorchamps-2025-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
+        <Route path="/spa-francorchamps-2023-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
         <Route path="/f1-spa-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
         <Route path="/spa-grand-prix-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
         <Route path="/spa-gp-tickets" element={<Navigate to="/f1-belgian-grand-prix-spa-tickets" replace />} />
@@ -514,6 +525,19 @@ function AppRouter() {
         <Route path="/psg-tickets" element={<PSGHubPage />} />
         <Route path="/juventus-tickets" element={<JuventusHubPage />} />
         <Route path="/coldplay-tour-2026" element={<ColdplayPage />} />
+        {/* GSC keyword redirects - team tickets */}
+        <Route path="/west-ham-tickets" element={<Navigate to="/events?search=west+ham" replace />} />
+        <Route path="/feyenoord-tickets" element={<Navigate to="/events?search=feyenoord" replace />} />
+        <Route path="/bayern-tickets" element={<Navigate to="/bayern-munich-tickets" replace />} />
+        <Route path="/bayern-munchen-tickets" element={<Navigate to="/bayern-munich-tickets" replace />} />
+        <Route path="/bayern-munchen-kaarten" element={<Navigate to="/bayern-munich-tickets" replace />} />
+        <Route path="/lyon-tickets" element={<Navigate to="/events?search=lyon" replace />} />
+        <Route path="/porto-tickets" element={<Navigate to="/events?search=porto" replace />} />
+        <Route path="/tottenham-tickets" element={<Navigate to="/events?search=tottenham" replace />} />
+        <Route path="/manchester-united-tickets" element={<Navigate to="/events?search=manchester+united" replace />} />
+        <Route path="/man-utd-tickets" element={<Navigate to="/events?search=manchester+united" replace />} />
+        <Route path="/cheap-west-ham-tickets" element={<Navigate to="/events?search=west+ham" replace />} />
+        <Route path="/rb-leipzig-tickets" element={<Navigate to="/events?search=leipzig" replace />} />
 
         {/* Content Cluster Pages - Monza */}
         <Route path="/monza-best-seats-guide" element={<MonzaBestSeatsPage />} />
