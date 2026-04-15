@@ -635,26 +635,41 @@ if static_build_dir.exists():
                 t, d, img = seo_meta["title"], seo_meta["desc"], seo_meta.get("image", "")
                 canon = f"https://euromatchtickets.com/{full_path.lstrip('/')}" if full_path else "https://euromatchtickets.com"
                 
-                # Replace default meta description with page-specific
-                html = html.replace(
-                    '<meta name="description" content="Europe\'s cheapest event ticket shop! Buy verified tickets for Champions League from €49, F1 from €59, Taylor Swift from €79. Instant QR delivery, FanProtect guarantee!" />',
-                    f'<meta name="description" content="{d}" />'
-                )
-                # Inject title tag, canonical, and OG tags right before </head>
-                inject = f'''<title>{t}</title>
-    <link rel="canonical" href="{canon}" />
-    <meta property="og:title" content="{t}" />
-    <meta property="og:description" content="{d}" />
-    <meta property="og:url" content="{canon}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="EuroMatchTickets" />'''
-                if img:
-                    inject += f'\n    <meta property="og:image" content="{img}" />'
-                    inject += f'\n    <meta name="twitter:image" content="{img}" />'
-                inject += '\n    <meta name="twitter:card" content="summary_large_image" />'
-                inject += f'\n    <meta name="twitter:title" content="{t}" />'
+                # Escape quotes in title/description for HTML attributes
+                t_safe = t.replace('"', '&quot;')
+                d_safe = d.replace('"', '&quot;')
                 
-                html = html.replace('<!-- canonical set dynamically by pre-hydration script -->', inject)
+                # Replace default meta description with page-specific
+                # Try both self-closing and non-self-closing variants
+                for old_desc in [
+                    '<meta name="description" content="Europe\'s cheapest event ticket shop! Buy verified tickets for Champions League from €49, F1 from €59, Taylor Swift from €79. Instant QR delivery, FanProtect guarantee!" />',
+                    '<meta name="description" content="Europe\'s cheapest event ticket shop! Buy verified tickets for Champions League from €49, F1 from €59, Taylor Swift from €79. Instant QR delivery, FanProtect guarantee!"/>',
+                    '<meta name="description" content="Europe&#x27;s cheapest event ticket shop! Buy verified tickets for Champions League from €49, F1 from €59, Taylor Swift from €79. Instant QR delivery, FanProtect guarantee!"/>',
+                ]:
+                    if old_desc in html:
+                        html = html.replace(old_desc, f'<meta name="description" content="{d_safe}"/>')
+                        break
+                
+                # Build injection block
+                inject = f'<title>{t}</title>'
+                inject += f'<link rel="canonical" href="{canon}"/>'
+                inject += f'<meta property="og:title" content="{t_safe}"/>'
+                inject += f'<meta property="og:description" content="{d_safe}"/>'
+                inject += f'<meta property="og:url" content="{canon}"/>'
+                inject += '<meta property="og:type" content="website"/>'
+                inject += '<meta property="og:site_name" content="EuroMatchTickets"/>'
+                if img:
+                    inject += f'<meta property="og:image" content="{img}"/>'
+                    inject += f'<meta name="twitter:image" content="{img}"/>'
+                inject += '<meta name="twitter:card" content="summary_large_image"/>'
+                inject += f'<meta name="twitter:title" content="{t_safe}"/>'
+                
+                # Strategy 1: Replace the HTML comment (dev mode)
+                if '<!-- canonical set dynamically by pre-hydration script -->' in html:
+                    html = html.replace('<!-- canonical set dynamically by pre-hydration script -->', inject)
+                # Strategy 2: Inject before </head> (production build - comments stripped)
+                elif '</head>' in html:
+                    html = html.replace('</head>', inject + '</head>')
             
             return Response(content=html, media_type="text/html")
         return Response(content="Not Found", status_code=404)
@@ -704,6 +719,10 @@ async def _get_page_seo(path: str):
     seo = STATIC_SEO.get(path)
     if seo:
         return seo
+    
+    # Homepage
+    if not path or path == "/":
+        return {"title": "Buy Tickets | Champions League, F1, Concerts | EuroMatchTickets", "desc": "Buy Champions League tickets from €85, F1 from €79, Taylor Swift from €79. Verified sellers, instant QR delivery. 100% Money-Back Guarantee.", "image": "https://euromatchtickets.com/og-image.jpg"}
     
     # Check if it's an event page
     if path.startswith("event/"):
