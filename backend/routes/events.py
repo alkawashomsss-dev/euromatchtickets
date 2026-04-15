@@ -124,6 +124,8 @@ async def get_event(event_id: str, request: Request):
     event = await db.events.find_one({"event_id": event_id}, {"_id": 0})
     if not event:
         event = await db.events.find_one({"slug": event_id}, {"_id": 0})
+    if not event:
+        event = await db.events.find_one({"alt_slugs": event_id}, {"_id": 0})
     
     # Fuzzy match: extract keywords from slug and search
     if not event:
@@ -537,3 +539,92 @@ async def seed_justin_bieber():
     
     result = await db.tickets.insert_many(tickets)
     return {"event": "upserted", "tickets_created": len(result.inserted_ids)}
+
+
+
+@router.post("/events/seed-all-missing")
+async def seed_all_missing():
+    """Seed ALL events that checkout buttons reference but don't exist in DB."""
+    import random as rnd
+    
+    EVENTS = [
+        ("australian-grand-prix-2026-tickets","australia-grand-prix-2026","Australian Grand Prix 2026","f1","Albert Park Circuit","Melbourne","Australia","2026-04-06T05:00:00Z",169),
+        ("austrian-grand-prix-2026-tickets","austria-grand-prix-2026","Austrian Grand Prix 2026","f1","Red Bull Ring","Spielberg","Austria","2026-07-05T13:00:00Z",139),
+        ("bahrain-grand-prix-2026-tickets","bahrain-grand-prix","Bahrain Grand Prix 2026","f1","Bahrain International Circuit","Sakhir","Bahrain","2026-03-08T15:00:00Z",149),
+        ("saudi-arabian-grand-prix-2026-tickets","saudi-grand-prix-2026","Saudi Arabian Grand Prix 2026","f1","Jeddah Corniche Circuit","Jeddah","Saudi Arabia","2026-03-22T17:00:00Z",199),
+        ("japanese-grand-prix-2026-tickets","japan-grand-prix-2026","Japanese Grand Prix 2026","f1","Suzuka Circuit","Suzuka","Japan","2026-04-20T05:00:00Z",179),
+        ("chinese-grand-prix-2026-tickets","f1-chinese-grand-prix-2026","Chinese Grand Prix 2026","f1","Shanghai International Circuit","Shanghai","China","2026-05-04T07:00:00Z",159),
+        ("miami-grand-prix-2026-tickets","miami-grand-prix-2026","Miami Grand Prix 2026","f1","Miami Autodrome","Miami","USA","2026-05-18T20:00:00Z",229),
+        ("canadian-grand-prix-2026-tickets","f1-canadian-grand-prix-2026","Canadian Grand Prix 2026","f1","Circuit Gilles Villeneuve","Montreal","Canada","2026-06-28T18:00:00Z",159),
+        ("spanish-grand-prix-2026-tickets","spain-grand-prix-2026","Spanish Grand Prix 2026","f1","Barcelona-Catalunya","Barcelona","Spain","2026-06-14T13:00:00Z",129),
+        ("hungarian-grand-prix-2026-tickets","hungary-grand-prix-2026","Hungarian Grand Prix 2026","f1","Hungaroring","Budapest","Hungary","2026-08-02T13:00:00Z",119),
+        ("british-grand-prix-2026-tickets","silverstone-grand-prix-2026","British Grand Prix 2026","f1","Silverstone","Silverstone","UK","2026-07-19T14:00:00Z",149),
+        ("dutch-grand-prix-2026-tickets","zandvoort-grand-prix-2026","Dutch Grand Prix 2026","f1","Circuit Zandvoort","Zandvoort","Netherlands","2026-09-06T13:00:00Z",149),
+        ("italian-grand-prix-2026-tickets","f1-italian-grand-prix-monza-2026","Italian Grand Prix 2026","f1","Monza","Monza","Italy","2026-09-13T13:00:00Z",89),
+        ("monaco-grand-prix-2026-tickets","f1-monaco-grand-prix-2026","Monaco Grand Prix 2026","f1","Circuit de Monaco","Monte Carlo","Monaco","2026-05-31T13:00:00Z",249),
+        ("singapore-grand-prix-2026-tickets","singapore-grand-prix-2026","Singapore Grand Prix 2026","f1","Marina Bay","Singapore","Singapore","2026-10-04T20:00:00Z",189),
+        ("las-vegas-grand-prix-2026-tickets","las-vegas-grand-prix-2026","Las Vegas Grand Prix 2026","f1","Las Vegas Strip","Las Vegas","USA","2026-11-22T22:00:00Z",249),
+        ("united-states-grand-prix-2026-tickets","f1-us-grand-prix-2026","United States Grand Prix 2026","f1","COTA","Austin","USA","2026-10-18T19:00:00Z",189),
+        ("mexico-city-grand-prix-2026-tickets","f1-mexico-grand-prix-2026","Mexico City Grand Prix 2026","f1","Autodromo Hermanos Rodriguez","Mexico City","Mexico","2026-10-25T20:00:00Z",129),
+        ("brazilian-grand-prix-2026-tickets","f1-brazil-grand-prix-2026","Brazilian Grand Prix 2026","f1","Interlagos","Sao Paulo","Brazil","2026-11-08T17:00:00Z",139),
+        ("qatar-grand-prix-2026-tickets","f1-qatar-grand-prix-2026","Qatar Grand Prix 2026","f1","Lusail Circuit","Lusail","Qatar","2026-11-29T17:00:00Z",179),
+        ("abu-dhabi-grand-prix-2026-tickets","abu-dhabi-grand-prix-2026","Abu Dhabi Grand Prix 2026","f1","Yas Marina","Abu Dhabi","UAE","2026-12-06T13:00:00Z",199),
+        ("azerbaijan-grand-prix-2026-tickets","f1-azerbaijan-grand-prix-2026","Azerbaijan Grand Prix 2026","f1","Baku City Circuit","Baku","Azerbaijan","2026-09-20T11:00:00Z",149),
+        ("taylor-swift-eras-tour-london-2026-tickets","taylor-swift-london-2026","Taylor Swift Eras Tour London 2026","concert","Wembley Stadium","London","UK","2026-06-19T18:30:00Z",89),
+        ("the-weeknd-tour-2026-tickets","the-weeknd-2026","The Weeknd Tour 2026","concert","Wembley Stadium","London","UK","2026-09-05T20:00:00Z",79),
+        ("bruno-mars-tour-2026-tickets","bruno-mars-2026","Bruno Mars Tour 2026","concert","Wembley Stadium","London","UK","2026-09-19T20:00:00Z",89),
+        ("bad-bunny-london-2026-tickets","bad-bunny-2026","Bad Bunny London 2026","concert","Tottenham Stadium","London","UK","2026-08-22T20:00:00Z",79),
+        ("coldplay-tour-2026-tickets","coldplay-2026","Coldplay Tour 2026","concert","Olympiastadion","Berlin","Germany","2026-07-04T19:30:00Z",79),
+        ("guns-n-roses-tour-2026-tickets","guns-n-roses-2026","Guns N Roses Tour 2026","concert","Olympic Stadium","London","UK","2026-07-25T19:00:00Z",89),
+        ("champions-league-2026-tickets","champions-league-2026","UEFA Champions League Final 2026","football","Allianz Arena","Munich","Germany","2026-05-30T20:00:00Z",99),
+        ("bayern-munich-vs-real-madrid-ucl-2026-tickets","bayern-munich-vs-real-madrid-ucl-2026","Bayern vs Real Madrid UCL 2026","football","Allianz Arena","Munich","Germany","2026-04-08T20:00:00Z",129),
+        ("bayern-vs-dortmund-2026-tickets","bayern-vs-dortmund","Bayern vs Dortmund","football","Allianz Arena","Munich","Germany","2026-10-24T17:30:00Z",89),
+        ("bayern-vs-barcelona-2026-tickets","bayern-vs-barcelona","Bayern vs Barcelona UCL","football","Allianz Arena","Munich","Germany","2026-11-05T20:00:00Z",119),
+        ("bayern-vs-leipzig-2026-tickets","bayern-vs-leipzig","Bayern vs RB Leipzig","football","Allianz Arena","Munich","Germany","2026-09-19T17:30:00Z",69),
+        ("bayern-vs-leverkusen-2026-tickets","bayern-vs-leverkusen","Bayern vs Bayer Leverkusen","football","Allianz Arena","Munich","Germany","2026-12-12T17:30:00Z",69),
+        ("juventus-2026-tickets","juventus-tickets","Juventus FC Serie A 2026","football","Allianz Stadium","Turin","Italy","2026-09-12T20:45:00Z",49),
+        ("juventus-vs-inter-2026-tickets","juventus-vs-inter","Juventus vs Inter Milan","football","Allianz Stadium","Turin","Italy","2026-10-03T20:45:00Z",89),
+        ("juventus-vs-milan-2026-tickets","juventus-vs-milan","Juventus vs AC Milan","football","Allianz Stadium","Turin","Italy","2026-11-07T20:45:00Z",79),
+        ("juventus-vs-napoli-2026-tickets","juventus-vs-napoli","Juventus vs Napoli","football","Allianz Stadium","Turin","Italy","2026-12-14T18:00:00Z",69),
+        ("juventus-vs-roma-2026-tickets","juventus-vs-roma","Juventus vs AS Roma","football","Allianz Stadium","Turin","Italy","2027-01-17T20:45:00Z",59),
+        ("psg-2026-tickets","psg-tickets","Paris Saint-Germain Ligue 1","football","Parc des Princes","Paris","France","2026-09-12T20:45:00Z",59),
+        ("psg-vs-marseille-2026-tickets","psg-vs-marseille","PSG vs Marseille Le Classique","football","Parc des Princes","Paris","France","2026-10-24T20:45:00Z",99),
+        ("psg-vs-lyon-2026-tickets","psg-vs-lyon","PSG vs Lyon Ligue 1","football","Parc des Princes","Paris","France","2026-11-21T20:45:00Z",69),
+        ("psg-vs-monaco-2026-tickets","psg-vs-monaco","PSG vs Monaco Ligue 1","football","Parc des Princes","Paris","France","2026-12-19T20:45:00Z",69),
+        ("psg-vs-real-madrid-2026-tickets","psg-vs-real-madrid","PSG vs Real Madrid UCL","football","Parc des Princes","Paris","France","2026-11-05T20:00:00Z",129),
+        ("motogp-mugello-2026-tickets","motogp-mugello-2026","Italian MotoGP Mugello 2026","motogp","Mugello Circuit","Mugello","Italy","2026-05-31T13:00:00Z",49),
+        ("world-cup-2026-bahrain-tickets","world-cup-2026-bahrain","World Cup 2026 Bahrain","worldcup","MetLife Stadium","New York","USA","2026-06-15T18:00:00Z",99),
+    ]
+    
+    created = 0
+    for slug, alt, title, etype, venue, city, country, date, price in EVENTS:
+        existing = await db.events.find_one({"$or": [{"slug": slug}, {"slug": alt}, {"alt_slugs": alt}]})
+        if existing:
+            if alt and alt not in (existing.get("alt_slugs") or []):
+                await db.events.update_one({"_id": existing["_id"]}, {"$addToSet": {"alt_slugs": alt}})
+            continue
+        
+        eid = slug.replace("-tickets", "").replace("-", "_")
+        await db.events.update_one({"slug": slug}, {"$set": {
+            "event_id": eid, "slug": slug, "title": title, "event_type": etype,
+            "venue": venue, "city": city, "country": country, "event_date": date,
+            "price_from": price, "price_to": price * 8, "currency": "EUR",
+            "status": "active", "image_url": "", "home_team": "", "away_team": "",
+            "league": "", "alt_slugs": [alt] if alt else [],
+        }}, upsert=True)
+        
+        sections = [("General Admission", price, price*1.3, 40), ("Category 2", price*1.4, price*1.8, 30),
+                     ("Category 1", price*2, price*2.5, 20), ("VIP", price*4, price*5, 8)]
+        tickets = []
+        for sec, lo, hi, cnt in sections:
+            for i in range(cnt):
+                tickets.append({"ticket_id": f"{eid}_{sec[:10]}_{i}", "event_id": eid, "section": sec,
+                    "category": sec, "row": str(rnd.randint(1,30)), "seat": str(rnd.randint(1,50)),
+                    "price": round(rnd.uniform(lo, hi), 2), "currency": "EUR", "status": "available",
+                    "seller_id": "euromatch_official"})
+        if tickets:
+            await db.tickets.insert_many(tickets)
+        created += 1
+    
+    total = await db.events.count_documents({})
+    return {"created": created, "total_events": total}
