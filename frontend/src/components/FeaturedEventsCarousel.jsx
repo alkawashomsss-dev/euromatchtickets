@@ -4,6 +4,17 @@ import { Ticket, ChevronLeft, ChevronRight, Flame, ArrowRight } from "lucide-rea
 
 const events = [
   {
+    title: "Justin Bieber",
+    subtitle: "Johan Cruijff ArenA, Amsterdam",
+    date: "2026-07-18T20:00:00+02:00",
+    price: "89",
+    link: "/justin-bieber-amsterdam-2026-tickets",
+    gradient: "from-purple-600 via-violet-600 to-indigo-700",
+    accent: "text-purple-400",
+    badge: "73% Sold",
+    image: "https://images.unsplash.com/photo-1770067665792-9975acdec4fb?w=1200",
+  },
+  {
     title: "Taylor Swift",
     subtitle: "The Eras Tour 2026 – Wembley",
     date: "2026-06-19T18:00:00+01:00",
@@ -13,17 +24,6 @@ const events = [
     accent: "text-pink-400",
     badge: "6 Nights",
     image: "https://static.prod-images.emergentagent.com/jobs/4a0723d8-569f-4f37-a12d-b96fbae88e33/images/6abbdd7a05846d21824781f9c8f6e515efcd3ce88e98a77c9e1039bf33a5cbc9.png",
-  },
-  {
-    title: "Super Bowl LX",
-    subtitle: "Levi's Stadium, Santa Clara",
-    date: "2026-02-08T18:00:00-05:00",
-    price: "899",
-    link: "/super-bowl-2026-tickets",
-    gradient: "from-red-700 via-red-600 to-amber-700",
-    accent: "text-red-400",
-    badge: "VIP Available",
-    image: "https://static.prod-images.emergentagent.com/jobs/4a0723d8-569f-4f37-a12d-b96fbae88e33/images/45944c725832f3a437f2bc805d12a6b4a19fae5d783c15acc66d1ce2f243ec58.png",
   },
   {
     title: "FIFA World Cup",

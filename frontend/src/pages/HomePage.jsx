@@ -116,10 +116,10 @@ const EventCard = ({ event, index }) => {
             )}
           </div>
 
-          {/* Date overlay bottom-left */}
+          {/* Date + Time overlay bottom-left */}
           <div className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-black/70 text-white text-xs font-bold px-2.5 py-1.5 uppercase tracking-wide">
             <Calendar className="w-3 h-3" />
-            {dateInfo.month} {dateInfo.date}
+            {dateInfo.month} {dateInfo.date}{dateInfo.time ? ` • ${dateInfo.time}` : ''}
           </div>
         </div>
 
@@ -130,7 +130,7 @@ const EventCard = ({ event, index }) => {
           </h3>
 
           <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-3">
-            <MapPin className="w-3 h-3" />{event.venue ? `${event.venue}, ` : ''}{event.city}
+            <MapPin className="w-3 h-3" />{event.venue && event.venue !== 'TBA' && event.venue !== '' ? `${event.venue}, ` : ''}{event.city && event.city !== 'TBD' && event.city !== 'Europe' ? event.city : ''}
           </div>
 
           {(event.event_type === 'match' || event.event_type === 'football') && event.home_team && event.away_team && event.home_team.trim() && event.away_team.trim() && (
@@ -185,11 +185,22 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const [featuredRes, concertsRes, matchesRes] = await Promise.all([
-          axios.get(`${API}/events?featured=true&limit=6`),
+          axios.get(`${API}/events?featured=true&limit=12`),
           axios.get(`${API}/events?event_type=concert&limit=4`),
           axios.get(`${API}/events?event_type=match&limit=4`)
         ]);
-        setFeaturedEvents(featuredRes.data.slice(0, 6));
+        // Deduplicate by normalized title (e.g. "El Clasico" and "Real Madrid vs Barcelona" are same)
+        const seen = new Set();
+        const deduped = (featuredRes.data || []).filter(e => {
+          const key = (e.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+          const teams = [e.home_team, e.away_team].filter(Boolean).sort().join('').toLowerCase().replace(/[^a-z0-9]/g, '');
+          const dedupKey = teams || key;
+          if (seen.has(dedupKey)) return false;
+          seen.add(dedupKey);
+          if (teams) seen.add(key); // Also mark the title variant
+          return true;
+        });
+        setFeaturedEvents(deduped.slice(0, 6));
         setConcerts(concertsRes.data.slice(0, 4));
         setMatches(matchesRes.data.slice(0, 4));
       } catch (error) { console.error("Error fetching events:", error); }
