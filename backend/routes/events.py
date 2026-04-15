@@ -118,11 +118,38 @@ async def get_events(
 
 @router.get("/events/{event_id}")
 async def get_event(event_id: str, request: Request):
+    import re
     from fastapi.responses import RedirectResponse
     # Try by event_id first, then by slug
     event = await db.events.find_one({"event_id": event_id}, {"_id": 0})
     if not event:
         event = await db.events.find_one({"slug": event_id}, {"_id": 0})
+    
+    # Fuzzy match: extract keywords from slug and search
+    if not event:
+        # Expand common abbreviations
+        expanded = event_id.replace('hungary', 'hungarian').replace('spain', 'spanish').replace('australia', 'australian').replace('austria', 'austrian').replace('brazil', 'brazilian').replace('belgium', 'belgian').replace('saudi', 'saudi arabian')
+        keywords = [w for w in re.split(r'[-_]', expanded) if len(w) >= 3 and w not in ('tickets', 'ticket', '2026', '2027', '2025', 'the', 'tour', 'grand', 'prix', 'race', 'day')]
+        if keywords:
+            word_conditions = [{"$or": [
+                {"title": {"$regex": kw, "$options": "i"}},
+                {"slug": {"$regex": kw, "$options": "i"}},
+            ]} for kw in keywords[:4]]
+            event = await db.events.find_one({"$and": word_conditions}, {"_id": 0})
+        # If still not found, try with fewer keywords
+        if not event and len(keywords) >= 2:
+            word_conditions = [{"$or": [
+                {"title": {"$regex": kw, "$options": "i"}},
+                {"slug": {"$regex": kw, "$options": "i"}},
+            ]} for kw in keywords[:2]]
+            event = await db.events.find_one({"$and": word_conditions}, {"_id": 0})
+        # Last resort: single keyword match
+        if not event and keywords:
+            event = await db.events.find_one(
+                {"$or": [{"title": {"$regex": keywords[0], "$options": "i"}}, {"slug": {"$regex": keywords[0], "$options": "i"}}]},
+                {"_id": 0}
+            )
+    
     if not event:
         raise HTTPException(status_code=404, detail="Event not found")
 

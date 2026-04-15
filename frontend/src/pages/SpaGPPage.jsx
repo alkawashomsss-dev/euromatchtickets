@@ -338,7 +338,7 @@ const SpaGPPage = () => {
                     <div className="text-[10px] text-slate-600 line-through">&euro;{t.originalPrice}</div>
                     <div className="text-xl md:text-2xl font-black text-white">&euro;{t.price}</div>
                   </div>
-                  <Link to="/checkout?event=spa-grand-prix-2026">
+                  <Link to={`/checkout?event=belgian-grand-prix-2026-tickets&category=${encodeURIComponent(t.name)}&price=${t.price}`}>
                     <Button className="bg-[#e10600] hover:bg-red-700 text-white font-black px-5 rounded-none uppercase tracking-wider text-xs">
                       Buy Now <ArrowRight className="w-3.5 h-3.5 ml-1" />
                     </Button>
@@ -428,7 +428,7 @@ const SpaGPPage = () => {
                     <div key={j} className="flex items-center gap-1.5 text-slate-400 text-xs"><Check className="w-3 h-3 text-[#15803d] flex-shrink-0" /> {item}</div>
                   ))}
                 </div>
-                <Link to="/checkout?event=spa-grand-prix-2026">
+                <Link to={`/checkout?event=belgian-grand-prix-2026-tickets&category=${encodeURIComponent(pkg.name)}&price=${pkg.price}`}>
                   <Button className={`w-full font-black py-5 rounded-none text-base uppercase tracking-wider ${i === 1 ? 'bg-[#e10600] hover:bg-red-700 text-white' : 'bg-white/10 hover:bg-white/15 text-white'}`} data-testid={`spa-vip-buy-${i}`}>
                     {i === 1 ? <><Crown className="w-5 h-5 mr-2" /> Book Paddock Club</> : <><Ticket className="w-5 h-5 mr-2" /> Book VIP Hospitality</>}
                   </Button>
