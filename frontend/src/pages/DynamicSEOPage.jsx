@@ -141,7 +141,7 @@ export default function DynamicSEOPage() {
               const evRes = await axios.get(`${API}/events?search=${encodeURIComponent(searchTerm)}&limit=1`);
               if (evRes.data && evRes.data.length > 0) {
                 const ev = evRes.data[0];
-                setBuyLink(`/event/${ev.slug || ev.event_id}`);
+                setBuyLink(`/checkout?event=${ev.slug || ev.event_id}`);
                 foundEvent = true;
               }
             } catch { /* continue to next attempt */ }

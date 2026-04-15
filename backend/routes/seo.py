@@ -15,6 +15,36 @@ BING_API_KEY = os.environ.get("BING_WEBMASTER_API_KEY", "")
 SITE_URL = "https://euromatchtickets.com"
 
 
+@router.post("/seo/fix-duplicate-products")
+async def fix_duplicate_products():
+    """Set redirect_to on SEO pages that overlap with dedicated landing pages."""
+    redirects = {
+        "spa-francorchamps": "f1-belgian-grand-prix-spa-tickets",
+        "belgian-grand-prix": "f1-belgian-grand-prix-spa-tickets",
+        "spa-f1": "f1-belgian-grand-prix-spa-tickets",
+        "belgian-gp": "f1-belgian-grand-prix-spa-tickets",
+        "monaco-grand-prix": "f1-monaco-grand-prix-tickets",
+        "monaco-gp": "f1-monaco-grand-prix-tickets",
+        "justin-bieber-amsterdam": "justin-bieber-amsterdam-2026-tickets",
+        "bieber-amsterdam": "justin-bieber-amsterdam-2026-tickets",
+        "el-clasico": "el-clasico-tickets",
+        "taylor-swift-london": "taylor-swift-london-tickets",
+        "taylor-swift-wembley": "taylor-swift-london-tickets",
+        "champions-league-final": "champions-league-tickets",
+    }
+    pages = await db.seo_pages.find({"active": True}, {"_id": 1, "slug": 1}).to_list(3000)
+    updated = 0
+    for p in pages:
+        slug = p.get("slug", "")
+        for prefix, target in redirects.items():
+            if slug.startswith(prefix) and slug != target:
+                await db.seo_pages.update_one({"_id": p["_id"]}, {"$set": {"redirect_to": target}})
+                updated += 1
+                break
+    return {"updated": updated}
+
+
+
 
 @router.post("/seo/bulk-import")
 async def bulk_import_seo_pages(request: Request):
