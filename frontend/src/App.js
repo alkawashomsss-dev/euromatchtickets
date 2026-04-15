@@ -129,6 +129,7 @@ const SocialHubPage = lazy(() => import("./pages/SocialHubPage"));
 
 // Marketing tools (lazy)
 const AIChatWidget = lazy(() => import("./components/AIChatWidget"));
+const ChatWidget = lazy(() => import("./components/ChatWidget"));
 const ContactFloating = lazy(() => import("./components/ContactFloating"));
 const ExitIntentPopup = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.ExitIntentPopup })));
 const PushNotificationBanner = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.PushNotificationBanner })));
@@ -723,7 +724,7 @@ function App() {
             />
             <AppRouter />
             <Suspense fallback={null}>
-              <AIChatWidget />
+              <ChatWidget />
               <SocialProofNotification />
               {showExitPopup && <ExitIntentPopup onClose={() => setShowExitPopup(false)} />}
               {showPushBanner && <PushNotificationBanner onClose={() => setShowPushBanner(false)} />}
