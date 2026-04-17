@@ -11,7 +11,7 @@ import { Badge } from "../components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table";
 import SEOHead from "../components/SEOHead";
-import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { BreadcrumbStructuredData } from "../components/StructuredData";
 import { InternalLinks } from "../components/InternalLinks";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
@@ -810,13 +810,6 @@ const F1TicketsPage = () => {
       <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
         { name: "F1 Tickets 2026", url: "https://euromatchtickets.com/f1-tickets" }
-      ]} />
-      <FAQStructuredData faqs={[
-        { question: "How much do F1 2026 tickets cost?", answer: "F1 2026 ticket prices start from \u20ac89 for general admission. Grandstand seats range from \u20ac149-\u20ac589, VIP hospitality from \u20ac989, and Paddock Club experiences from \u20ac2,989. Monaco GP tickets start from \u20ac289." },
-        { question: "Where can I buy cheap F1 tickets for 2026?", answer: "EuroMatchTickets offers the cheapest F1 2026 tickets with prices up to 40% lower than official outlets and competitors. All 24 Grand Prix races are available with 0% service fees and instant delivery." },
-        { question: "How many F1 races are there in 2026?", answer: "The 2026 F1 season has 24 Grand Prix races across 21 countries, running from the Australian GP in March to the Abu Dhabi GP in December. There are also 6 Sprint race weekends." },
-        { question: "Which teams are new in F1 2026?", answer: "F1 2026 welcomes two new teams: Audi (formerly Sauber) and Cadillac, making it an 11-team, 22-driver grid for the first time in years. Cadillac uses Ferrari engines while Audi builds their own power unit." },
-        { question: "Who is leading the 2026 F1 Championship?", answer: "After Round 3 (Japanese Grand Prix), Kimi Antonelli (Mercedes) leads the Drivers' Championship with 72 points, followed by George Russell (Mercedes, 63 pts) and Charles Leclerc (Ferrari, 49 pts). Mercedes leads the Constructors' Championship with 135 points." },
       ]} />
 
       {/* ═══════════════ INTERNAL LINKS ═══════════════ */}

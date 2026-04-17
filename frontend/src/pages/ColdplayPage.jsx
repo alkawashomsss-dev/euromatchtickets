@@ -5,7 +5,7 @@ import { API } from "../App";
 import { Calendar, MapPin, Star, Shield, Zap, Ticket, ChevronRight, Check, Music, Heart, Globe, AlertCircle, Users, TrendingUp } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
-import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { BreadcrumbStructuredData } from "../components/StructuredData";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
 
@@ -39,13 +39,6 @@ const ColdplayPage = () => {
     { name: "Category A", price: 149, desc: "Mid Tier - Great View", tag: "BEST VALUE", features: ["Central stage view", "Comfortable seating", "LED wristband included"] },
     { name: "Floor Standing", price: 249, desc: "Closest to Stage", tag: "HOT", features: ["Floor level access", "Near the stage", "LED wristband included"] },
     { name: "Infinity Station", price: 495, desc: "VIP Experience", tag: "VIP", features: ["Premium lounge", "Exclusive merch", "Early venue access"] },
-  ];
-
-  const faqs = [
-    { question: "When is Coldplay touring Europe in 2026?", answer: "Coldplay's Music of the Spheres World Tour returns to Europe in June-July 2026 with confirmed dates in London (Wembley), Paris, Berlin, Barcelona, and Milan. More dates may be added." },
-    { question: "How much are Coldplay tickets?", answer: "Coldplay tickets on EuroMatchTickets start from €69 for general admission. Category A from €149, floor standing from €249, and VIP Infinity Station from €495." },
-    { question: "Are Coldplay tickets still available?", answer: "Yes! While official tickets sold out quickly, we have verified resale tickets for all European dates. New tickets are added daily from our network of verified sellers." },
-    { question: "What makes Coldplay concerts special?", answer: "Coldplay concerts feature LED wristbands for every fan, creating stunning synchronized light shows. The 'Music of the Spheres' production includes giant inflatable planets, confetti cannons, and Chris Martin's incredible audience interaction." },
   ];
 
   const reviewSchema = {
@@ -160,16 +153,6 @@ const ColdplayPage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="max-w-4xl mx-auto px-4 pb-16">
-        <h2 className="text-xl font-bold text-white mb-4">FAQ - Coldplay Tour Tickets</h2>
-        <FAQStructuredData faqs={faqs} />
-        <div className="space-y-2">{faqs.map((f, i) => (
-          <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
-            <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">{f.question}<ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" /></summary>
-            <p className="px-4 pb-4 text-slate-400 text-sm leading-relaxed">{f.answer}</p>
-          </details>
-        ))}</div>
-      </section>
 
       {/* Link Wheel */}
       <section className="max-w-5xl mx-auto px-4 pb-16">

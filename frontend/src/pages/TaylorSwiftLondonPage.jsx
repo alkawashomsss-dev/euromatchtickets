@@ -5,7 +5,7 @@ import { API } from "../App";
 import { Calendar, MapPin, Ticket, Shield, Zap, Star, Music, ChevronRight, Check, TrendingDown, Users, Heart, Flame, Clock, AlertCircle, TrendingUp, Globe } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
-import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { BreadcrumbStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
@@ -109,15 +109,6 @@ const TaylorSwiftLondonPage = () => {
     { name: "Floor Standing", price: 299, desc: "Closest to Stage", tag: "HOT", color: "from-violet-600 to-violet-800", features: ["Floor level access", "Near the stage", "Priority entry"] },
     { name: "VIP Lounge", price: 599, desc: "Exclusive Hospitality", tag: "VIP", color: "from-rose-500 to-rose-700", features: ["Private VIP lounge", "Premium food & drinks", "Best seats"] },
     { name: "Diamond Package", price: 999, desc: "Front Row Experience", tag: "EXCLUSIVE", color: "from-amber-400 to-pink-600", features: ["Front row seats", "Backstage photo area", "Signed merchandise"] },
-  ];
-
-  const faqs = [
-    { question: "When is Taylor Swift playing in London 2026?", answer: "Taylor Swift's Eras Tour returns to London for 6 confirmed nights at Wembley Stadium from June 19-28, 2026. Additional London dates may be announced." },
-    { question: "How much are Taylor Swift London tickets?", answer: "Taylor Swift London tickets start from just €89 for general admission. Category A seats from €179, floor standing from €299, and VIP packages from €599. All prices are final with no hidden fees." },
-    { question: "Where is Taylor Swift playing in London?", answer: "Taylor Swift will perform at Wembley Stadium, London's iconic 90,000-capacity venue. The stadium is easily accessible by Wembley Park tube station (Metropolitan & Jubilee lines)." },
-    { question: "Are Taylor Swift London tickets sold out?", answer: "While official tickets sold out quickly, EuroMatchTickets has verified resale tickets available for all London dates. New tickets are added daily from verified sellers." },
-    { question: "How do I get to Wembley Stadium for Taylor Swift?", answer: "Wembley Stadium is best reached by London Underground (Wembley Park station). Alternatively, Wembley Stadium rail station and multiple bus routes serve the venue. Driving is not recommended due to limited parking." },
-    { question: "Can I buy Taylor Swift tickets for someone else?", answer: "Yes! All our tickets are transferable QR codes. You can forward them to anyone via email or phone. Perfect for gifts!" },
   ];
 
   return (
@@ -279,21 +270,7 @@ const TaylorSwiftLondonPage = () => {
       )}
 
       {/* FAQ */}
-      <section className="max-w-4xl mx-auto px-4 mb-16">
-        <h2 className="text-xl font-bold text-white mb-4">FAQ &ndash; Taylor Swift London Tickets</h2>
-        <FAQStructuredData faqs={faqs} />
-        <div className="space-y-2">
-          {faqs.map((f, i) => (
-            <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
-              <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">
-                {f.question}
-                <ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="px-4 pb-4 text-slate-400 text-sm leading-relaxed">{f.answer}</p>
-            </details>
-          ))}
-        </div>
-      </section>
+      <EventFAQ faqs={TS_FAQS} title="Taylor Swift London 2026 — FAQ" />
 
       <TrustSection />
 

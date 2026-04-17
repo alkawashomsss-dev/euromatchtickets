@@ -6,7 +6,7 @@ import { Calendar, MapPin, Trophy, Star, Shield, Zap, Flag, Ticket, ChevronRight
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+import { BreadcrumbStructuredData } from "../components/StructuredData";
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
@@ -48,15 +48,6 @@ const MonacoGPPage = () => {
     { icon: Anchor, title: "Harbour View", desc: "See multi-million dollar yachts lined up in Port Hercule while F1 cars blast past at 260km/h on the waterfront. It's the most photographed scene in motorsport." },
     { icon: Wine, title: "The Tunnel", desc: "F1 cars enter the tunnel at 260km/h, plunging from bright sunlight into darkness and back again in seconds. The sound inside is thunderous - a Monaco-only experience." },
     { icon: Gem, title: "Riviera Lifestyle", desc: "Combine your GP weekend with Monte Carlo's casinos, Michelin-star restaurants, yacht parties, and the stunning French Riviera coastline. It's F1's most glamorous weekend." },
-  ];
-
-  const faqs = [
-    { question: "How much are Monaco GP tickets?", answer: "Monaco GP tickets on EuroMatchTickets start from €195 for Sector Rocher (standing). Grandstand K (Casino Square) from €389 - that's 55% cheaper than F1.com. VIP Champions Club from €1,295. Private Yacht Hospitality from €2,995." },
-    { question: "Is Monaco GP worth the price?", answer: "Absolutely! The Monaco Grand Prix is a once-in-a-lifetime experience. It's the most prestigious race in F1, set against the backdrop of the Monte Carlo Casino, luxury yachts, and the Mediterranean. Nothing else in motorsport comes close." },
-    { question: "What is the best grandstand at Monaco?", answer: "Grandstand K at Casino Square is the most iconic - you see the famous hairpin from above. Grandstand T at Tabac offers great harbour views and an overtaking zone. For budget options, Sector Rocher gives excellent standing views at €195." },
-    { question: "Where to stay for Monaco GP?", answer: "Monaco hotels sell out months in advance. We recommend staying in Nice (25 min by train), Menton, or Villefranche-sur-Mer for much better value. The Monaco GP special trains run frequently all weekend." },
-    { question: "What is Yacht Hospitality at Monaco GP?", answer: "Our Yacht Hospitality package puts you on a private yacht in Port Hercule harbour - directly overlooking the circuit. Includes unlimited champagne, gourmet catering, and an unrivalled view of the F1 cars racing past the waterfront. The ultimate luxury F1 experience." },
-    { question: "When is the Monaco Grand Prix 2026?", answer: "The 2026 Monaco Grand Prix is scheduled for May 22-24, 2026. Thursday: Free Practice (unique to Monaco). Saturday: Qualifying. Sunday: The Grand Prix race." },
   ];
 
   const reviewSchema = {
@@ -236,21 +227,7 @@ const MonacoGPPage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="max-w-4xl mx-auto px-4 pb-16">
-        <h2 className="text-xl font-bold text-white mb-4">FAQ - Monaco GP Tickets</h2>
-        <FAQStructuredData faqs={faqs} />
-        <div className="space-y-2">
-          {faqs.map((f, i) => (
-            <details key={i} className="group rounded-none border border-white/10 bg-white/5 hover:bg-white/10 transition">
-              <summary className="p-4 font-bold text-sm text-white cursor-pointer list-none flex items-center justify-between">
-                {f.question}
-                <ChevronRight className="w-4 h-4 text-slate-500 group-open:rotate-90 transition-transform" />
-              </summary>
-              <p className="px-4 pb-4 text-slate-400 text-sm leading-relaxed">{f.answer}</p>
-            </details>
-          ))}
-        </div>
-      </section>
+      <EventFAQ faqs={MONACO_FAQS} title="Monaco Grand Prix 2026 — FAQ" />
 
       {/* MONACO GUIDES - Content Cluster */}
       <section className="max-w-5xl mx-auto px-4 pb-16">
