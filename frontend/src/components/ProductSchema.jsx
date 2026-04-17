@@ -39,7 +39,7 @@ const ProductSchema = ({
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": `${name} Tickets`,
+    "name": name.endsWith('Tickets') ? name : `${name} Tickets`,
     "description": description || `Buy ${name} tickets at the cheapest prices in Europe. Verified sellers, instant QR delivery, FanProtect 100% money-back guarantee.`,
     "image": image || "https://euromatchtickets.com/logo-192.png",
     "url": url,

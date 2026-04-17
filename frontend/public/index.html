@@ -611,7 +611,9 @@
 
       /* Per-page rich snippets from S object */
       var pd=S[p];
-      if(pd&&!isNoIndex){
+      /* Pages that have React Event schema - skip pre-hydration Event to avoid duplicates */
+      var skipEvent={'/f1-belgian-grand-prix-spa-tickets':1,'/taylor-swift-london-tickets':1,'/f1-tickets':1,'/f1-tickets-2026':1,'/world-cup-2026':1,'/world-cup-2026-tickets':1,'/justin-bieber-amsterdam-2026-tickets':1,'/the-weeknd-tour-2026':1,'/bruno-mars-tour-2026':1,'/bad-bunny-london-2026':1,'/guns-n-roses-tour-2026':1,'/f1-dutch-grand-prix-zandvoort-tickets':1,'/coldplay-tour-2026':1,'/monaco-grand-prix-tickets':1,'/motogp-tickets':1,'/isle-of-man-tt-tickets':1,'/f1-monaco-grand-prix-tickets':1};
+      if(pd&&!isNoIndex&&!skipEvent[p]){
         var evType=pd.cat==='Concert'?'MusicEvent':'SportsEvent';
         var perfType=pd.cat==='Concert'?'PerformingGroup':'SportsTeam';
         var catPath=pd.cat==='Motorsport'?'f1-tickets':pd.cat==='Football'?'champions-league-tickets':'events?type=concert';
