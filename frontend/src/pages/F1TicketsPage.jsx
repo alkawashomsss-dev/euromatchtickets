@@ -14,6 +14,15 @@ import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { InternalLinks } from "../components/InternalLinks";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
+import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
+
+const F1_FAQS = [
+  { q: "How much are F1 tickets in 2026?", a: "F1 2026 General Admission from €79. Grandstand seats from €149. VIP hospitality from €595. Paddock Club from €2,499. Prices vary by race — Monaco is most expensive (from €249), Monza cheapest (from €89)." },
+  { q: "What is the cheapest F1 race to attend?", a: "Italian GP at Monza (from €89) and Spanish GP Barcelona (from €99) are the most affordable. Belgian GP Spa (from €109) and Hungarian GP Budapest (from €119) also offer great value." },
+  { q: "How many F1 races are there in 2026?", a: "The 2026 F1 season features 24 Grand Prix races across 5 continents. European races run March-September. The season starts in Bahrain (March) and ends in Abu Dhabi (December)." },
+  { q: "Which F1 race has the best atmosphere?", a: "Dutch GP Zandvoort (Orange Army), British GP Silverstone (150,000+ fans), Italian GP Monza (passionate tifosi), and Belgian GP Spa (legendary circuit). Monaco for glamour." },
+  { q: "Are F1 tickets refundable?", a: "Yes! All F1 tickets on EuroMatchTickets include FanProtect 100% money-back guarantee. Full refund if the race is cancelled. Instant QR delivery." },
+];
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import axios from 'axios';
 import { API } from '../App';
@@ -278,6 +287,7 @@ const F1TicketsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="f1-tickets-page">
+      <FAQSchemaScript faqs={F1_FAQS} />
       <SEOHead
         title="Buy Formula 1 Tickets 2026 | All 24 Grand Prix From €79"
         description="Buy F1 2026 tickets at best prices. Full 2026 calendar, driver standings, team info. Monaco GP from \u20ac289, Silverstone from \u20ac149, Monza from \u20ac99. All 24 races."
@@ -827,6 +837,7 @@ const F1TicketsPage = () => {
           <InternalLinks category="concert" showRelated={false} />
         </div>
       </section>
+      <EventFAQ faqs={F1_FAQS} title="F1 Tickets 2026 — FAQ" />
       <RelatedEventsLinks category="f1-tickets" title="Top F1 Races & More Events" />
       {/* Newsletter */}
       <section className="py-12 bg-[#0a0a0f]">

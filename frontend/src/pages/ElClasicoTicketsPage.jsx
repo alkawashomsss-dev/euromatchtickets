@@ -6,6 +6,15 @@ import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
+import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
+
+const CLASICO_FAQS = [
+  { q: "How much are El Clasico tickets?", a: "El Clasico tickets start from €89 for upper tier. Lower tier from €175. Midfield seats from €295. VIP hospitality from €595. Prices depend on whether the match is at Santiago Bernabéu (Real Madrid home) or Camp Nou (Barcelona home)." },
+  { q: "When is El Clasico 2026?", a: "La Liga El Clasico 2025/26 season: first leg October/November 2025 (Camp Nou), second leg March/April 2026 (Santiago Bernabéu). Exact dates confirmed 2 weeks before the match by La Liga." },
+  { q: "Where is El Clasico played?", a: "El Clasico alternates between Santiago Bernabéu (Real Madrid, capacity 81,044) and Camp Nou (Barcelona, capacity 99,354). The Bernabéu recently completed a €1.8 billion renovation with a retractable roof." },
+  { q: "How to get El Clasico tickets?", a: "Select El Clasico on EuroMatchTickets, choose your category, pay via Stripe. Instant QR delivery. All tickets verified with FanProtect 100% money-back guarantee. Cheaper than official channels." },
+  { q: "Are El Clasico tickets refundable?", a: "Yes! FanProtect 100% money-back guarantee. Full refund if cancelled or postponed. If tickets don't work at the gate, 100% refund." },
+];
 import axios from "axios";
 import { API } from "../App";
 
@@ -42,6 +51,7 @@ const ElClasicoTicketsPage = () => {
 
   return (
     <>
+      <FAQSchemaScript faqs={CLASICO_FAQS} />
       <SEOHead
         title="Buy El Clasico Tickets 2026 | Real Madrid vs Barcelona From €89"
         description="Buy El Clasico 2026 tickets from €89. Real Madrid vs Barcelona, Santiago Bernabéu. Only 23 tickets left. 100% Money-Back Guarantee. Instant QR delivery."
@@ -287,6 +297,7 @@ const ElClasicoTicketsPage = () => {
           </div>
         </div>
       </div>
+      <EventFAQ faqs={CLASICO_FAQS} title="El Clasico Tickets — FAQ" />
       <RelatedEventsLinks category="el-clasico" title="More Events You'll Love" />
     </>
   );

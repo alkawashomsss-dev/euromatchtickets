@@ -7,6 +7,15 @@ import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
+import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
+
+const CP_FAQS = [
+  { q: "How much are Coldplay 2026 tour tickets?", a: "Coldplay Music of the Spheres tickets from €69. Floor standing from €119. Golden Circle from €195. Infinity tickets (cheapest) from €25 where available. All include FanProtect 100% money-back guarantee." },
+  { q: "When is Coldplay touring Europe 2026?", a: "Coldplay European stadium tour summer 2026. Cities include Barcelona, Berlin, London, Paris, Milan. Exact dates to be confirmed. Shows typically start at 19:30." },
+  { q: "What is special about Coldplay live?", a: "Every fan receives an LED Xyloband wristband that lights up in sync with the music. Plus giant inflatable planets, lasers, confetti cannons, fireworks, and Chris Martin's legendary crowd interaction. 2+ hour show." },
+  { q: "What songs does Coldplay play live?", a: "Yellow, Fix You, The Scientist, Viva la Vida, Clocks, Paradise, A Sky Full of Stars, Something Just Like This, My Universe (BTS collab), Higher Power, and new Music of the Spheres tracks." },
+  { q: "Are Coldplay tickets refundable?", a: "Yes! FanProtect 100% money-back guarantee. Full refund if cancelled. Instant QR delivery." },
+];
 
 const ColdplayPage = () => {
   const [eventLink, setEventLink] = useState('/checkout?event=coldplay-2026');
@@ -53,6 +62,7 @@ const ColdplayPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050520]" data-testid="coldplay-page">
+      <FAQSchemaScript faqs={CP_FAQS} />
       <SEOHead title="Buy Coldplay Tour Tickets 2026 | Europe Concerts From €69 | Barcelona" description="Buy Coldplay Music of the Spheres 2026 tickets from €69. Barcelona, Berlin, London. Selling Fast. 100% Money-Back Guarantee. Instant QR delivery." canonicalUrl="https://euromatchtickets.com/coldplay-tour-2026"
         image="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&h=630&fit=crop"
       />
@@ -176,9 +186,10 @@ const ColdplayPage = () => {
         <h2 className="text-xl font-bold text-white">Buy Coldplay European Tour 2026 Tickets - All Dates Available</h2>
         <p className="text-slate-400 leading-relaxed">Coldplay's <strong>Music of the Spheres World Tour</strong> returns to Europe in 2026 with spectacular shows in London, Paris, Berlin, Barcelona and Milan. EuroMatchTickets has verified tickets from <strong>&euro;69</strong> with instant QR delivery. The show features LED wristbands for every fan, giant inflatable planets, lasers, and Chris Martin's legendary stage presence. Don't miss the biggest concert tour of 2026!</p>
       </section>
+      <EventFAQ faqs={CP_FAQS} title="Coldplay Tour 2026 — FAQ" />
+      <RelatedEventsLinks category="coldplay" title="More Concerts You'll Love" />
     </div>
   );
 };
 
 export default ColdplayPage;
-ldplayPage;

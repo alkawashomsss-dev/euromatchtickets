@@ -9,6 +9,15 @@ import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
+import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
+
+const MONACO_FAQS = [
+  { q: "How much are Monaco Grand Prix tickets?", a: "Monaco GP tickets: General Admission from €249. K Grandstand from €395. Tribune T from €549. Tabac Grandstand from €695. VIP Hospitality from €1,995. Yacht packages from €3,500. All include FanProtect 100% money-back guarantee." },
+  { q: "When is the Monaco Grand Prix 2026?", a: "May 21-24, 2026. Thursday practice, Friday rest day (unique to Monaco), Saturday qualifying, Sunday race at 15:00 CET." },
+  { q: "What is the best grandstand at Monaco?", a: "Tabac Grandstand for the iconic harbour view and swimming pool chicane. Tribune K for the casino section. Rascasse for atmosphere. Sainte Devote (Turn 1) for overtaking." },
+  { q: "Can you watch Monaco GP from a yacht?", a: "Yes! Yacht packages from €3,500 per person include harbour viewing, champagne, gourmet dining, and a unique perspective of cars racing past the marina." },
+  { q: "Are Monaco GP tickets refundable?", a: "Yes! FanProtect 100% money-back guarantee. Full refund if cancelled. Instant QR delivery." },
+];
 
 const MonacoGPPage = () => {
   const [eventLink, setEventLink] = useState('/checkout?event=monaco-grand-prix');
@@ -66,6 +75,7 @@ const MonacoGPPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0a1a]" data-testid="monaco-gp-page">
+      <FAQSchemaScript faqs={MONACO_FAQS} />
       <SEOHead
         title="Buy Monaco Grand Prix Tickets 2026 | F1 From €249 | Monte Carlo"
         description="Buy Monaco GP 2026 tickets from €249. Circuit de Monaco harbour views & VIP hospitality. Only 89 tickets left. 100% Guarantee. Instant QR delivery."
@@ -292,6 +302,7 @@ const MonacoGPPage = () => {
         </div>
       </section>
       {/* Newsletter */}
+      <EventFAQ faqs={MONACO_FAQS} title="Monaco Grand Prix 2026 — FAQ" />
       <RelatedEventsLinks category="monaco-gp" title="More F1 Races You'll Love" />
       <section className="py-12 bg-[#0a0a0f]">
         <div className="max-w-4xl mx-auto px-4">

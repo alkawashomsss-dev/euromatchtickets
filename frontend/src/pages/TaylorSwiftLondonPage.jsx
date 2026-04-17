@@ -9,6 +9,15 @@ import { BreadcrumbStructuredData, FAQStructuredData } from "../components/Struc
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
+import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
+
+const TS_FAQS = [
+  { q: "How much are Taylor Swift London 2026 tickets?", a: "Taylor Swift Wembley tickets: Upper tier from €79. Lower tier from €149. Floor standing from €189. Front standing (A1) from €295. VIP packages from €450. All include FanProtect 100% money-back guarantee." },
+  { q: "When is Taylor Swift at Wembley 2026?", a: "Taylor Swift plays multiple dates at Wembley Stadium London in summer 2026. Exact dates to be announced. Shows typically start at 18:00 with support acts, Taylor on stage around 19:45." },
+  { q: "How to get Taylor Swift tickets?", a: "Select your date on EuroMatchTickets, choose your section, and pay via Stripe. Instant QR delivery to your email. Our prices are up to 40% cheaper than Ticketmaster resale. FanProtect 100% money-back guarantee." },
+  { q: "What is the Eras Tour setlist?", a: "Taylor performs 44 songs across 10 'eras' spanning her entire career. Surprise songs change nightly! Expect: Cruel Summer, Shake It Off, Love Story, Blank Space, Anti-Hero, Enchanted, All Too Well (10 min version), and much more." },
+  { q: "Are Taylor Swift tickets refundable?", a: "Yes! FanProtect guarantee: full refund if cancelled or postponed. If tickets don't work, 100% refund. Instant QR delivery." },
+];
 import { motion } from "framer-motion";
 
 const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b28-4fd8-8e2c-ef65d5d1312a/images/179fab45cb26f4e79ff09209edf9509006448cd135721a81d016af1fd59c132e.png";
@@ -113,6 +122,7 @@ const TaylorSwiftLondonPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0610]" data-testid="taylorswift-london-page">
+      <FAQSchemaScript faqs={TS_FAQS} />
       <SEOHead
         title="Buy Taylor Swift London Tickets 2026 | Wembley From €79"
         description="Buy Taylor Swift London Wembley tickets 2026 from €89. Eras Tour 6 nights. Floor, VIP, seated. 100% verified, instant QR delivery. Selling fast - book now!"
@@ -306,6 +316,7 @@ const TaylorSwiftLondonPage = () => {
         </div>
       </section>
 
+      <EventFAQ faqs={TS_FAQS} title="Taylor Swift London 2026 — FAQ" />
       <RelatedEventsLinks category="taylor-swift" title="More Concerts You'll Love" />
 
       {/* Newsletter */}

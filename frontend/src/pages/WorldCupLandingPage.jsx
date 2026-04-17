@@ -7,6 +7,7 @@ import SEOHead from "../components/SEOHead";
 import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
+import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
 import axios from "axios";
 import { API } from "../App";
 
@@ -50,6 +51,7 @@ const WorldCupLandingPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
+      <FAQSchemaScript faqs={WC_FAQS} />
       <SEOHead 
         title="Buy FIFA World Cup 2026 Tickets | From €65 | USA, Mexico, Canada"
         description="Buy World Cup 2026 tickets from €65. Group stage to Final across USA, Mexico, Canada. Limited availability. 100% Money-Back Guarantee. Instant QR delivery."
@@ -347,9 +349,10 @@ const WorldCupLandingPage = () => {
           "name": "FIFA World Cup 2026"
         }
       })}} />
+      <EventFAQ faqs={WC_FAQS} title="FIFA World Cup 2026 — FAQ" />
+      <RelatedEventsLinks category="world-cup" title="More Events You'll Love" />
     </div>
   );
 };
 
 export default WorldCupLandingPage;
-ndingPage;
