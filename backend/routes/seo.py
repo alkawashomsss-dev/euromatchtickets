@@ -816,18 +816,14 @@ async def get_robots(request: Request):
     content = f"""User-agent: *
 Allow: /
 
-# Allow sitemaps (critical for indexing)
+# Allow sitemaps
 Allow: /api/sitemap-index.xml
 Allow: /api/sitemap.xml
 Allow: /api/sitemaps/
-
-# Allow Google Merchant Center feed
 Allow: /api/merchant/feed.xml
-
-# Allow images for Google Image Search
 Allow: /images/
 
-# Block private areas only
+# Block private/internal pages
 Disallow: /admin
 Disallow: /seller
 Disallow: /owner
@@ -835,6 +831,21 @@ Disallow: /my-tickets
 Disallow: /auth/
 Disallow: /order/
 Disallow: /alerts
+Disallow: /checkout
+
+# Block query parameter URLs (duplicate content)
+Disallow: /events?city=
+Disallow: /events?search=
+Disallow: /events?type=
+Disallow: /*?city=
+Disallow: /*?search=
+
+# Block API endpoints (except sitemaps & merchant)
+Disallow: /api/
+Allow: /api/sitemap
+Allow: /api/sitemaps/
+Allow: /api/merchant/
+Allow: /api/robots.txt
 
 User-agent: Googlebot
 Allow: /

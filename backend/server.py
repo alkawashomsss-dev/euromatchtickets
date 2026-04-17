@@ -610,11 +610,20 @@ if static_build_dir.exists():
                             url=f"https://euromatchtickets.com/event/{event['slug']}",
                             status_code=301
                         )
-                # If event truly doesn't exist, redirect to events page
-                return RedirectResponse(
-                    url="https://euromatchtickets.com/events",
-                    status_code=301
+                # If event truly doesn't exist, return 410 Gone
+                return Response(
+                    content="<html><head><meta name='robots' content='noindex'></head><body>This event page has been removed.</body></html>",
+                    status_code=410,
+                    media_type="text/html"
                 )
+
+        # ── 410 Gone: checkout/order pages with query params (should never be indexed) ──
+        if full_path == "checkout" or full_path.startswith("order/"):
+            return Response(
+                content="<html><head><meta name='robots' content='noindex'></head><body>Not available</body></html>",
+                status_code=410,
+                media_type="text/html"
+            )
 
         # Try to serve static file (images, manifest, etc.) from build root
         file_path = static_build_dir / full_path

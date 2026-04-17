@@ -101,7 +101,7 @@ const SpaGPPage = () => {
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://euromatchtickets.com" },
       { "@type": "ListItem", "position": 2, "name": "F1 Tickets", "item": "https://euromatchtickets.com/f1-tickets" },
-      { "@type": "ListItem", "position": 3, "name": "Belgian Grand Prix Spa Tickets", "item": CANONICAL }
+      { "@type": "ListItem", "position": 3, "name": "F1 Belgian Grand Prix Spa Tickets", "item": CANONICAL }
     ]
   };
 
@@ -155,7 +155,7 @@ const SpaGPPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <ProductSchema name="Belgian Grand Prix Spa 2026" description="Buy Spa F1 tickets for the 2026 Belgian Grand Prix at Spa-Francorchamps from €109. General Admission, Eau Rouge Gold, Paddock Club VIP. Cheapest verified tickets with instant QR delivery." price={109} highPrice={3489} image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200" url={CANONICAL} category="f1" venue="Circuit de Spa-Francorchamps" city="Stavelot" />
+      <ProductSchema name="F1 Belgian Grand Prix Spa 2026" description="Buy Spa F1 tickets for the 2026 Belgian Grand Prix at Spa-Francorchamps from €109. Eau Rouge Grandstand, Paddock Club VIP. Cheapest verified tickets with instant QR delivery." price={109} highPrice={3489} image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200" url={CANONICAL} category="f1" venue="Circuit de Spa-Francorchamps" city="Stavelot" />
 
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden" data-testid="spa-hero">
