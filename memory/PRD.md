@@ -3,33 +3,25 @@
 ## Architecture
 React + FastAPI + MongoDB. Dark theme (#0e0e14, #e10600).
 
-## Data Accuracy Fix (April 17, 2026) — DONE
+## Content SEO Boost (April 17, 2026) — IN PROGRESS
 
-### Pre-hydration Script Fixes:
-- Spa F1 date: FIXED 2026-07-27 → 2026-08-28 to 2026-08-30
-- Spa F1 price: FIXED €129 → €109
-- Spa F1 venue: FIXED "Spa" → "Stavelot" (correct city)
-- Duplicate Product Schema: REMOVED from pre-hydration (React handles it)
-- Schema name: Unified to "F1 Belgian Grand Prix Spa 2026"
-- Belgian GP redirect pages: dates synced to 2026-08-28
+### Pages Enhanced with Rich Content:
+- TheWeekndPage: FAQ Schema + 5 FAQs + Rich content + Internal Links + Correct dates/venues
+- BrunoMarsPage: FAQ Schema + 5 FAQs + Rich content + Internal Links + Correct dates/venues
+- SpaGPPage: Already strong (729L, FAQ:21, Schema:5, Links:2) — dates fixed
+- JustinBieberAmsterdamPage: Already strong (669L, FAQ:21, Schema:4, Links:2)
+- MonacoGPPage: Already strong (305L, FAQ:6, Links:2)
+- F1TicketsPage: Already strong (841L, FAQ:2, Links:6)
 
-### Checkout Page:
-- Shows: Event name, date, time, venue, city, category, section, row, seat
-- Data from DB (real, not hardcoded)
-- Fallback: "Venue TBC" / "Date TBC" (no fake dates)
-- Pay button shows exact total
+### Still Need Enhancement:
+- BadBunnyPage (123L, FAQ:0, Links:0)
+- GunsNRosesPage (128L, FAQ:0, Links:0)
+- ZandvoortGPPage (158L, FAQ:0, Links:0)
 
-## Technical SEO (April 17, 2026) — DONE
-- SSR Meta injection fixed (</head> strategy)
-- robots.txt blocks query params
-- 410 Gone for ugly event IDs
-- Duplicate Product schemas eliminated
+### Data Accuracy Fixes:
+- Spa F1: date 2026-08-28→30, price €109, venue Stavelot
+- Pre-hydration: removed duplicate Product schemas
+- Checkout: real data from DB (date, time, venue, category)
 
-## CTR Optimization (April 15, 2026) — DONE
-- Title: Buy {Event} | From €{Price} | {City}
-- Internal Linking: 9 groups
-- Sitemaps: 1614 URLs × 1614 images
-
-## Pending
-- P1: Owner Dashboard
-- P2: Email Drip Campaigns
+## Previous Fixes — ALL DONE
+- SSR Meta, robots.txt, 410/301, sitemaps 1614x1614
