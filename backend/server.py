@@ -617,13 +617,8 @@ if static_build_dir.exists():
                     media_type="text/html"
                 )
 
-        # ── 410 Gone: checkout/order pages with query params (should never be indexed) ──
-        if full_path == "checkout" or full_path.startswith("order/"):
-            return Response(
-                content="<html><head><meta name='robots' content='noindex'></head><body>Not available</body></html>",
-                status_code=410,
-                media_type="text/html"
-            )
+        # ── noindex for checkout/order pages (but still serve the React app) ──
+        # These pages should work for users but not be indexed by Google
 
         # Try to serve static file (images, manifest, etc.) from build root
         file_path = static_build_dir / full_path
