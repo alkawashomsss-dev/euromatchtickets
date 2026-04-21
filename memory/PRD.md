@@ -51,9 +51,7 @@ Triple-layered enforcement:
 2. `serve_frontend` SSR injects `<meta name="robots">` before `</head>`
 3. React 19 native metadata + pre-hydration script keep it in sync client-side
 
-## ✅ Implemented — Feb 2026
-
-### Iteration 1 (Previous)
+### Iteration 2 — GROWTH ENGINE
 - HARD HTTP 404 (not Soft 404) for missing `/event/{slug}` and `/event_xxx`
 - Branded 404 HTML + noindex
 - Event Validation Engine + `UNVERIFIED_DEMAND_PAGES` truth-source
@@ -62,7 +60,13 @@ Triple-layered enforcement:
 - Core Web Vitals tracker → GA4 + backend beacon
 - Sitemap filters unverified slugs at source
 
-### Iteration 2 — GROWTH ENGINE (Current)
+### Iteration 3 — INTENT-BASED SCHEMA + HOMEPAGE HONESTY (Current)
+- **Homepage `FeaturedEventsCarousel` rewritten** — removed hardcoded "Justin Bieber 73% SOLD €89" fake data. Now fetches confirmed events from `/api/events` with a tiny verified fallback (FIFA World Cup 2026 Final, UEFA Champions League Final Budapest, Monaco GP 2026) cross-checked against FIFA/UEFA/FIA official calendars.
+- **Taylor Swift London page → Coming Soon** — The Eras Tour ended 8 Dec 2024; no 2026 tour officially announced. Page now uses ComingSoonEvent wrapper (noindex, follow · zero Product/Offer schema · notify list only).
+- **Product schema audit** — enforced rule: Product schema ONLY on pages with confirmed event + real ticket inventory. Coming Soon pages render ONLY Organization/WebSite/FAQ/LocalBusiness schemas.
+- **18 speculative URL variations gated** — 10 Justin Bieber + 8 Taylor Swift URL variations all map to honest Coming Soon meta titles + added to `UNVERIFIED_DEMAND_PAGES` (backend + frontend + sitemap in sync).
+- **RelatedEventsLinks** — Bieber references now say "Coming Soon · Notify list" (was "From €89").
+- **iteration_55.json: 100%/100% — zero critical or minor issues.**
 - **Demand API:** `/api/demand/most-wanted`, `/api/demand/by-city`, `/api/demand/by-artist`
 - **4 new indexable pages** (indexed + in sitemap + ItemList schema + 500+ words):
   - `/concerts-in-amsterdam-2026`

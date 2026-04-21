@@ -131,6 +131,7 @@ export default function ComingSoonEvent({
             {artist}
             {city ? (
               <>
+                {" "}
                 <br />
                 <span className="text-slate-400 font-bold text-3xl md:text-5xl">
                   in {city}
