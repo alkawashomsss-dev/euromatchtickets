@@ -30,6 +30,25 @@ MONGO_URL  = os.environ.get("MONGO_URL", "mongodb://localhost:27017")
 client = pymongo.MongoClient(MONGO_URL)
 db     = client["euromatchtickets"]
 
+# ────────────────────────────────────────────────────────────────────
+# UNVERIFIED DEMAND PAGES — kept in sync with
+# /app/backend/services/event_validator.py :: UNVERIFIED_DEMAND_PAGES
+# These MUST NEVER appear in the sitemap (Google expects sitemap URLs
+# to be indexable — unverified demand pages are noindex).
+# ────────────────────────────────────────────────────────────────────
+UNVERIFIED_DEMAND_SLUGS = {
+    "justin-bieber-amsterdam-2026-tickets",
+}
+
+
+def _is_indexable_slug(slug: str) -> bool:
+    """Return False if this slug is explicitly noindex (unverified)."""
+    if not slug:
+        return False
+    clean = slug.strip("/").lower()
+    return clean not in UNVERIFIED_DEMAND_SLUGS
+
+
 seen_urls: set = set()          # Global dedup
 sitemap_files: list = []        # Track generated files
 total_url_count = 0
@@ -177,6 +196,14 @@ def _url_block(loc: str, lastmod: str = None, changefreq: str = "weekly",
     global seen_urls
     if loc in seen_urls:
         return ""
+
+    # Block noindex / unverified demand URLs at source — they must never
+    # appear in the sitemap (Google strictly expects sitemap URLs to be
+    # indexable).
+    path_only = loc.replace(SITE, "").strip("/")
+    if path_only and not _is_indexable_slug(path_only):
+        return ""
+
     seen_urls.add(loc)
 
     lm = lastmod or TODAY

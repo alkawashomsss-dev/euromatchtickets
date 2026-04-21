@@ -227,15 +227,29 @@ const F1TicketsPage = () => {
         "@type": "ItemList",
         "name": "F1 2026 Race Calendar with Tickets",
         "numberOfItems": 24,
-        "itemListElement": raceCalendar2026.slice(0, 10).map((r, i) => ({
+        "itemListElement": raceCalendar2026.slice(0, 10).map((r, i) => {
+          const monthMap = {'Mar':'03','Apr':'04','May':'05','Jun':'06','Jul':'07','Aug':'08','Sep':'09','Oct':'10','Nov':'11','Dec':'12'};
+          const monthStr = r.dates.split(' ')[0];
+          const dayStr = r.dates.split('-')[0].split(' ').pop().padStart(2, '0');
+          const month = monthMap[monthStr] || '03';
+          const startDate = `2026-${month}-${dayStr}`;
+          const endDay = r.dates.includes('-') ? r.dates.split('-').pop().trim().padStart(2, '0') : dayStr;
+          const endDate = `2026-${month}-${endDay}`;
+          return {
           "@type": "ListItem",
           "position": i + 1,
           "item": {
             "@type": "SportsEvent",
             "name": `${r.gp} 2026`,
-            "startDate": `2026-${String(r.dates.split(' ')[0] === 'Mar' ? '03' : r.dates.split(' ')[0] === 'Apr' ? '04' : r.dates.split(' ')[0] === 'May' ? '05' : r.dates.split(' ')[0] === 'Jun' ? '06' : r.dates.split(' ')[0] === 'Jul' ? '07' : r.dates.split(' ')[0] === 'Aug' ? '08' : r.dates.split(' ')[0] === 'Sep' ? '09' : r.dates.split(' ')[0] === 'Oct' ? '10' : r.dates.split(' ')[0] === 'Nov' ? '11' : '12')}-${r.dates.split('-')[0].split(' ').pop().padStart(2, '0')}`,
-            "location": { "@type": "Place", "name": r.circuit, "address": { "@type": "PostalAddress", "addressCountry": r.flag } },
-            "image": "https://euromatchtickets.com/logo-192.png",
+            "description": `Buy ${r.gp} 2026 tickets from €${r.price}. ${r.circuit}. Verified sellers, instant QR delivery, 100% money-back guarantee.`,
+            "startDate": startDate,
+            "endDate": endDate,
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": { "@type": "Place", "name": r.circuit, "address": { "@type": "PostalAddress", "addressCountry": {"@type": "Country", "name": r.flag} } },
+            "image": "https://euromatchtickets.com/images/heroes/f1-red-lg.webp",
+            "performer": { "@type": "SportsTeam", "name": "Formula 1" },
+            "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
             "offers": {
               "@type": "AggregateOffer",
               "lowPrice": r.price,
@@ -248,7 +262,7 @@ const F1TicketsPage = () => {
               "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
             }
           }
-        }))
+        }})
       }
     ]
   };

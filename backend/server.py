@@ -36,6 +36,15 @@ from routes.seed import router as seed_router
 from routes.sitemap_routes import router as sitemap_router
 from routes.chat import router as chat_router
 from routes.emails import router as emails_router, set_db as emails_set_db
+from routes.leads import router as leads_router
+
+# Event validation engine (confirmed / coming_soon / expired / missing)
+from services.event_validator import (
+    validate_event_slug,
+    is_unverified_demand_page,
+    robots_tag_for_path,
+    UNVERIFIED_DEMAND_PAGES,
+)
 
 app = FastAPI(title="EuroMatchTickets API", version="2.0")
 
@@ -52,20 +61,30 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "SAMEORIGIN"
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        
-        # CRITICAL SEO FIX: Explicitly set X-Robots-Tag to override any proxy-level noindex
-        # This ensures Google indexes all pages correctly
+
+        # CRITICAL SEO FIX: Explicitly set X-Robots-Tag
         path = request.url.path
-        if response.status_code == 410:
-            response.headers["X-Robots-Tag"] = "noindex"
+        raw_slug = path.lstrip("/")
+
+        # 1. 4xx / 5xx pages are never indexable
+        if response.status_code in (404, 410, 451):
+            response.headers["X-Robots-Tag"] = "noindex, nofollow"
+        # 2. 3xx redirects should not be indexed either
+        elif 300 <= response.status_code < 400:
+            response.headers["X-Robots-Tag"] = "noindex, follow"
+        # 3. Known unverified / speculative demand pages
+        elif is_unverified_demand_page(raw_slug):
+            response.headers["X-Robots-Tag"] = "noindex, follow"
+        # 4. Merchant feed / sitemaps / robots are explicitly indexable
         elif path.startswith('/api/merchant/') or path.endswith('sitemap.xml') or path == '/api/robots.txt':
-            # Allow Google to read merchant feed and sitemaps
             response.headers["X-Robots-Tag"] = "index, follow"
+        # 5. All other frontend pages
         elif not path.startswith('/api/'):
             response.headers["X-Robots-Tag"] = "index, follow"
+        # 6. All other API responses are noindex by default
         else:
             response.headers["X-Robots-Tag"] = "noindex"
-        
+
         return response
 
 app.add_middleware(SecurityHeadersMiddleware)
@@ -135,6 +154,7 @@ app.include_router(seed_router)
 app.include_router(sitemap_router)
 app.include_router(chat_router)
 app.include_router(emails_router)
+app.include_router(leads_router)
 
 # Set DB for alerts
 alerts_set_db(db)
@@ -157,6 +177,33 @@ async def newsletter_subscribe(data: dict):
     })
     count = await db.newsletter.count_documents({"active": True})
     return {"success": True, "message": "Subscribed!", "total": count}
+
+
+# ─── Core Web Vitals ingest (beacon from frontend) ───
+@app.post("/api/metrics/vitals")
+async def ingest_vitals(request: Request):
+    try:
+        data = await request.json()
+    except Exception:
+        return {"ok": False}
+    if not isinstance(data, dict):
+        return {"ok": False}
+    name = str(data.get("name", ""))[:10]
+    if name not in {"CLS", "LCP", "INP", "FCP", "TTFB"}:
+        return {"ok": False}
+    try:
+        await db.web_vitals.insert_one({
+            "name": name,
+            "value": float(data.get("value", 0) or 0),
+            "rating": str(data.get("rating", ""))[:20],
+            "path": str(data.get("path", ""))[:200],
+            "nav_type": str(data.get("navigation_type", ""))[:30],
+            "ua": request.headers.get("user-agent", "")[:300],
+            "ts": datetime.now(timezone.utc),
+        })
+    except Exception:
+        pass
+    return {"ok": True}
 
 # Direct download endpoint for media files
 @app.get("/api/download/video")
@@ -530,6 +577,48 @@ async def download_feed_page():
 # This catch-all MUST be after all API routes so they take priority
 static_build_dir = pathlib.Path(__file__).parent / "static"
 
+
+def _render_404_html(path: str) -> str:
+    """Branded 404 page — noindex + links back to healthy hubs.
+
+    Returned with HTTP 404 so Googlebot sees a TRUE 404, not a Soft 404.
+    """
+    safe = (path or "").replace("<", "&lt;").replace(">", "&gt;")[:200]
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Page Not Found | EuroMatchTickets</title>
+<link rel="canonical" href="https://euromatchtickets.com/"/>
+<style>
+  body {{ font-family: -apple-system, Segoe UI, Roboto, sans-serif; background:#0b0b0b; color:#eee; margin:0; padding:48px 20px; }}
+  main {{ max-width: 720px; margin: 0 auto; }}
+  h1 {{ font-size: 2.2rem; margin: 0 0 8px; }}
+  p  {{ color:#aaa; line-height: 1.6; }}
+  code {{ background:#1a1a1a; padding:2px 6px; border-radius:4px; color:#ffb86c; }}
+  .cta {{ display:inline-block; margin-top:18px; padding:12px 22px; background:#9c27b0; color:#fff; text-decoration:none; border-radius:6px; font-weight:600; }}
+  ul {{ margin-top: 28px; padding:0; list-style:none; }}
+  li a {{ color:#8ab4ff; text-decoration:none; }}
+  li {{ margin: 6px 0; }}
+</style>
+</head>
+<body>
+<main>
+  <h1>404 — Event Not Found</h1>
+  <p>The page <code>/{safe}</code> is no longer available. It may have been removed, renamed, or never existed.</p>
+  <a class="cta" href="/">Back to EuroMatchTickets</a>
+  <ul>
+    <li><a href="/f1-tickets">Formula 1 Tickets 2026</a></li>
+    <li><a href="/champions-league-tickets">Champions League Tickets</a></li>
+    <li><a href="/events">Browse All Events</a></li>
+    <li><a href="/world-cup-2026-tickets">FIFA World Cup 2026</a></li>
+  </ul>
+</main>
+</body>
+</html>"""
+
 if static_build_dir.exists():
     # Serve React build static assets (JS, CSS, media)
     static_assets = static_build_dir / "static"
@@ -588,10 +677,11 @@ if static_build_dir.exists():
         if full_path in ts_redirects:
             return RedirectResponse(url="https://euromatchtickets.com/taylor-swift-london-tickets", status_code=301)
 
-        # ── 301 Redirect: ugly event IDs → clean slug URLs ──
+        # ── 301 Redirect: ugly event IDs → clean slug URLs OR HARD 404 ──
         if full_path.startswith("event/") and not full_path.startswith("events"):
             event_id = full_path.replace("event/", "")
-            # Check if it's an ugly ID (contains underscore or hash pattern)
+            # Clean slugs get resolved by the DB path below; here we only
+            # intercept UGLY legacy IDs (underscore pattern or hex-only).
             if "_" in event_id or (len(event_id) > 8 and "-" not in event_id):
                 event = await db.events.find_one({"event_id": event_id}, {"_id": 0, "slug": 1})
                 if event and event.get("slug"):
@@ -599,23 +689,54 @@ if static_build_dir.exists():
                         url=f"https://euromatchtickets.com/event/{event['slug']}",
                         status_code=301
                     )
-                # Also try partial match for old format IDs
-                if not event:
-                    event = await db.events.find_one(
-                        {"event_id": {"$regex": event_id}},
-                        {"_id": 0, "slug": 1}
-                    )
-                    if event and event.get("slug"):
-                        return RedirectResponse(
-                            url=f"https://euromatchtickets.com/event/{event['slug']}",
-                            status_code=301
-                        )
-                # If event truly doesn't exist, return 410 Gone
-                return Response(
-                    content="<html><head><meta name='robots' content='noindex'></head><body>This event page has been removed.</body></html>",
-                    status_code=410,
-                    media_type="text/html"
+                # Partial match fallback
+                event = await db.events.find_one(
+                    {"event_id": {"$regex": event_id}},
+                    {"_id": 0, "slug": 1}
                 )
+                if event and event.get("slug"):
+                    return RedirectResponse(
+                        url=f"https://euromatchtickets.com/event/{event['slug']}",
+                        status_code=301
+                    )
+                # True 404 — old ugly event ID permanently gone
+                return Response(
+                    content=_render_404_html(full_path),
+                    status_code=404,
+                    media_type="text/html",
+                )
+
+            # Clean slug — verify it exists in DB; HARD 404 if not
+            status, event_doc = await validate_event_slug(db, event_id)
+            if status == "missing":
+                return Response(
+                    content=_render_404_html(full_path),
+                    status_code=404,
+                    media_type="text/html",
+                )
+            if status == "expired":
+                # Soft-redirect expired events to the category hub, 301
+                et = (event_doc or {}).get("event_type", "")
+                hub = {
+                    "f1": "/f1-tickets",
+                    "motogp": "/motogp-tickets",
+                    "concert": "/events",
+                    "match": "/champions-league-tickets",
+                    "football": "/champions-league-tickets",
+                }.get(et, "/events")
+                return RedirectResponse(
+                    url=f"https://euromatchtickets.com{hub}",
+                    status_code=301,
+                )
+
+        # ── HARD 404 for stray event_xxx at root level (not under /event/) ──
+        # Example: /event_c773d81aa66a  → 404 (never indexable)
+        if full_path.startswith("event_"):
+            return Response(
+                content=_render_404_html(full_path),
+                status_code=404,
+                media_type="text/html",
+            )
 
         # ── noindex for checkout/order pages (but still serve the React app) ──
         # These pages should work for users but not be indexed by Google
@@ -631,10 +752,24 @@ if static_build_dir.exists():
         index_file = static_build_dir / "index.html"
         if index_file.exists():
             html = index_file.read_text()
-            
+
             # SSR Meta injection - inject real <title>, description, canonical, og tags
             # into raw HTML so Google sees them WITHOUT JavaScript execution
             seo_meta = await _get_page_seo(full_path)
+
+            # Decide robots directive for this URL (overrides React Helmet so
+            # Google never sees an "index" meta for unverified pages).
+            robots_override = None
+            if is_unverified_demand_page(full_path):
+                robots_override = "noindex, follow"
+            elif full_path.startswith("event/"):
+                slug = full_path[len("event/"):]
+                status, _ev = await validate_event_slug(db, slug)
+                if status in ("coming_soon",):
+                    robots_override = "noindex, follow"
+                elif status in ("expired", "missing"):
+                    robots_override = "noindex, nofollow"
+
             if seo_meta:
                 t, d, img = seo_meta["title"], seo_meta["desc"], seo_meta.get("image", "")
                 canon = f"https://euromatchtickets.com/{full_path.lstrip('/')}" if full_path else "https://euromatchtickets.com"
@@ -657,6 +792,8 @@ if static_build_dir.exists():
                 # Build injection block
                 inject = f'<title>{t}</title>'
                 inject += f'<link rel="canonical" href="{canon}"/>'
+                if robots_override:
+                    inject += f'<meta name="robots" content="{robots_override}"/>'
                 inject += f'<meta property="og:title" content="{t_safe}"/>'
                 inject += f'<meta property="og:description" content="{d_safe}"/>'
                 inject += f'<meta property="og:url" content="{canon}"/>'
@@ -674,7 +811,13 @@ if static_build_dir.exists():
                 # Strategy 2: Inject before </head> (production build - comments stripped)
                 elif '</head>' in html:
                     html = html.replace('</head>', inject + '</head>')
-            
+            elif robots_override and '</head>' in html:
+                # No SEO meta but still need to flag this URL as noindex
+                html = html.replace(
+                    '</head>',
+                    f'<meta name="robots" content="{robots_override}"/></head>',
+                )
+
             return Response(content=html, media_type="text/html")
         return Response(content="Not Found", status_code=404)
 
@@ -686,7 +829,7 @@ async def _get_page_seo(path: str):
     # Static page SEO map - most important pages
     STATIC_SEO = {
         # ━━━ TOP 10 PRIORITY PAGES ━━━
-        "justin-bieber-amsterdam-2026-tickets": {"title": "Buy Justin Bieber Amsterdam Tickets 2026 | From \u20ac89 | Johan Cruijff ArenA", "desc": "Buy Justin Bieber Amsterdam 2026 tickets from \u20ac89. Johan Cruijff ArenA, July 18. Standing, Golden Circle & VIP. Selling Fast \u2014 143 tickets left. 100% Money-Back Guarantee. Instant QR delivery.", "image": "https://images.unsplash.com/photo-1770067665792-9975acdec4fb?w=1200"},
+        "justin-bieber-amsterdam-2026-tickets": {"title": "Justin Bieber Amsterdam 2026 \u2014 No Dates Confirmed Yet | Get Notified", "desc": "Justin Bieber has not officially announced a 2026 Amsterdam show. Be the first to know when Johan Cruijff ArenA dates drop \u2014 join the free notify list.", "image": "https://images.unsplash.com/photo-1770067665792-9975acdec4fb?w=1200"},
         "f1-belgian-grand-prix-spa-tickets": {"title": "Buy Spa F1 Tickets 2026 | Belgian Grand Prix From \u20ac109 | Spa-Francorchamps", "desc": "Buy Belgian Grand Prix 2026 tickets from \u20ac109. Eau Rouge Grandstand & Paddock Club VIP. Selling Fast \u2014 limited availability. 100% Money-Back Guarantee. Instant QR delivery.", "image": "https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200"},
         "f1-monaco-grand-prix-tickets": {"title": "Buy Monaco Grand Prix Tickets 2026 | F1 From \u20ac249 | Monte Carlo", "desc": "Buy Monaco GP 2026 tickets from \u20ac249. Circuit de Monaco harbour views & VIP hospitality. Only 89 tickets left. 100% Guarantee. Instant QR delivery.", "image": "https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=1200"},
         "champions-league-tickets": {"title": "Buy Champions League Tickets 2026 | UCL Final From \u20ac85 | Munich", "desc": "Buy UEFA Champions League 2026 tickets from \u20ac85. Semi-finals & Final in Munich. 90% Sold \u2014 limited seats remaining. 100% Money-Back Guarantee. Instant QR delivery.", "image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200"},
