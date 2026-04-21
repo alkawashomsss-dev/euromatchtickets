@@ -319,6 +319,19 @@ def build_core():
         urls.append(_url_block(f"{SITE}{path}", changefreq="weekly", priority=PRIORITY_TIERS["event_static"],
                               image=IMAGE_MAP.get(path, _cat_image(path.lstrip("/"), "concert"))))
 
+    # Growth Engine — demand & authority hubs (P0 traffic magnets)
+    growth_pages = [
+        ("/concerts-in-amsterdam-2026",   "daily",  "main_cat"),
+        ("/concerts-in-london-2026",      "daily",  "main_cat"),
+        ("/europe-tours-2026",            "daily",  "main_cat"),
+        ("/most-wanted-concerts-2026",    "daily",  "main_cat"),
+    ]
+    for path, freq, tier in growth_pages:
+        urls.append(_url_block(
+            f"{SITE}{path}", changefreq=freq, priority=PRIORITY_TIERS[tier],
+            image=IMAGE_MAP.get(path, {"url": f"{SITE}/og-image.jpg", "title": path.strip("/").replace("-", " ").title()}),
+        ))
+
     # Info pages
     info_pages = [
         ("/about",            "0.60"), ("/faq",              "0.65"),

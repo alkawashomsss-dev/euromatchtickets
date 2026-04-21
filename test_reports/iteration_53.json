@@ -1,0 +1,70 @@
+{
+  "summary": "Growth Engine iteration 1: 18/18 backend tests pass (demand/most-wanted, demand/by-city, demand/by-artist, leads/capture, leads/count, metrics/vitals, security headers). All 4 new frontend pages render correctly with proper hero, lists, FAQs, related links. Coming Soon page (justin-bieber-amsterdam) UI is correct and lead capture E2E works (success state shown). HOWEVER: 2 critical SEO regressions on Coming Soon page — meta robots tag leaks 'index, follow' (should be 'noindex, follow') and AggregateOffer JSON-LD schema is present (spec: no schema).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Justin Bieber Coming Soon page meta robots",
+        "issue": "Rendered HTML has <meta name=\"robots\" content=\"index, follow, max-image-preview:large...\"> instead of required 'noindex, follow'. Root cause: /app/frontend/public/index.html line 64 sets default index,follow, and React 19 native <meta> from ComingSoonEvent.jsx line 102 is NOT replacing it (likely hoisting dedup issue). The x-robots-tag HTTP header is correctly set to 'noindex, nofollow' by server middleware, so Google will obey that, but meta tag inconsistency is a SEO smell and violates spec.",
+        "affected_selectors": ["meta[name=\"robots\"]"]
+      },
+      {
+        "flow": "Justin Bieber Coming Soon page schema",
+        "issue": "HTML contains JSON-LD AggregateOffer schema (lowPrice/highPrice/offerCount/availability:InStock) injected by /app/frontend/public/index.html line 622 (inline 'ph-event' builder). Spec explicitly forbids AggregateOffer on unverified demand pages. The injector needs to check UNVERIFIED_DEMAND_PAGES list or be removed for those paths.",
+        "affected_selectors": ["script[type=\"application/ld+json\"]"]
+      }
+    ],
+    "design_issues": [
+      {
+        "screen": "CityDemandPage venue guide section",
+        "issues": ["No data-testid on venue-guide section (only H2 text). Add data-testid=\"venue-guide\" for testability."]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_growth_engine.py",
+    "/app/test_reports/pytest/pytest_growth_engine.xml"
+  ],
+  "action_items": [
+    "FIX: Remove default <meta name=\"robots\" content=\"index, follow ...\"> from /app/frontend/public/index.html (line 64) OR ensure React 19 native metadata in ComingSoonEvent.jsx wins. Preferred: remove from index.html and let each page/component declare its own robots meta.",
+    "FIX: Gate the 'ph-event' AggregateOffer JSON-LD injector in /app/frontend/public/index.html (~line 622) so it skips any path in UNVERIFIED_DEMAND_PAGES (currently: 'justin-bieber-amsterdam-2026-tickets'). Alternative: move schema generation fully into React components and drop the inline pre-hydration script for these paths.",
+    "MINOR: Add data-testid=\"venue-guide\" to venue section heading/container in /app/frontend/src/components/CityDemandPage.jsx for easier testing.",
+    "NICE-TO-HAVE: Normalize H1 in EuropeTours2026Page.jsx — currently 'EUROPE TOURS\\n2026' splits across <br/>; optional. Not breaking."
+  ],
+  "critical_code_review_comments": [
+    "Duplicate meta tag injection: index.html has inline JS (lines 95, 450) AND React 19 components declare <meta>. These compete and cause the robots regression. Pick ONE source of truth.",
+    "demand/by-city route: city input is lowercased before regex but validator SAFE_STR uses IGNORECASE — good. But 'demand_count' returns len(demand) from event_demand collection, while 'total_leads_tracked' in most-wanted sums lead_count — inconsistent metric semantics. Document the difference.",
+    "leads/capture: $inc lead_count on every call including duplicate email+slug. If upsert is truly idempotent per (email,slug), lead_count should only increment on insert (use $inc inside $setOnInsert branch via 2-step: check upsert result and conditionally increment). Current behavior inflates demand metric on re-submission.",
+    "/api/demand/* endpoints lack rate limiting and are public — could be scraped for market intelligence. Consider light rate-limit or caching."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_growth_engine.py (new)"
+  ],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "85%"
+  },
+  "test_credentials": "none required",
+  "seed_data_creation": "Test data created: ~4 TEST_/e2e_/dup_ leads on justin-bieber-amsterdam-2026-tickets slug in event_leads + event_demand collections. Safe to leave or cleanup.",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend Growth Engine fully green (18/18). Next agent should re-verify after main agent fixes: (1) meta robots on justin-bieber-amsterdam page should be 'noindex, follow' (not 'index, follow'), (2) AggregateOffer schema should NOT appear in HTML for that path. Re-run /app/backend/tests/test_growth_engine.py and hit /justin-bieber-amsterdam-2026-tickets via curl + Playwright to verify meta/schema. City pages (Amsterdam/London/Europe) all render fine — don't re-test unless changed.",
+  "rca of the issue": {
+    "robots_meta_regression": {
+      "reproduction": "curl https://euro-indexing.preview.emergentagent.com/justin-bieber-amsterdam-2026-tickets | grep 'meta name=\"robots\"'",
+      "observed": "<meta name=\"robots\" content=\"index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1\" />",
+      "expected": "<meta name=\"robots\" content=\"noindex, follow\" />",
+      "root_cause": "index.html ships a default 'index, follow' meta and runtime JS (lines 95, 450) further manages robots based on legacy URL patterns. React 19's native <meta> hoist in ComingSoonEvent.jsx does NOT replace the existing tag because attributes differ (React adds its own but doesn't remove the static one). HTTP response header x-robots-tag is correct (noindex, nofollow) via server middleware, so Google will obey that — but the meta tag is a spec violation and inconsistent signal.",
+      "mitigation": "Option A: Remove default robots meta from index.html. Option B: Make index.html's inline JS explicitly check UNVERIFIED_DEMAND_PAGES paths and set noindex,follow early. Option C: Use react-helmet-async alternative compatible with React 19 (e.g., @unhead/react) for reliable dedup."
+    },
+    "aggregate_offer_schema_regression": {
+      "reproduction": "curl https://euro-indexing.preview.emergentagent.com/justin-bieber-amsterdam-2026-tickets | grep -c AggregateOffer -> returns 1",
+      "root_cause": "/app/frontend/public/index.html line 622 inline script builds a 'ph-event' (phantom event) JSON-LD with AggregateOffer {lowPrice, highPrice, offerCount:500, availability:InStock} based on URL pattern matching. This fires for ALL speculative event-looking paths, including justin-bieber-amsterdam-2026-tickets. Violates the 'no prices, no Offer schema on Coming Soon' rule.",
+      "mitigation": "Gate 'ph-event' injector with a hardcoded skip-list matching backend UNVERIFIED_DEMAND_PAGES, OR detect coming-soon slug pattern and skip, OR remove inline injector entirely and let React components own schema."
+    }
+  }
+}

@@ -37,6 +37,7 @@ from routes.sitemap_routes import router as sitemap_router
 from routes.chat import router as chat_router
 from routes.emails import router as emails_router, set_db as emails_set_db
 from routes.leads import router as leads_router
+from routes.demand import router as demand_router
 
 # Event validation engine (confirmed / coming_soon / expired / missing)
 from services.event_validator import (
@@ -155,6 +156,7 @@ app.include_router(sitemap_router)
 app.include_router(chat_router)
 app.include_router(emails_router)
 app.include_router(leads_router)
+app.include_router(demand_router)
 
 # Set DB for alerts
 alerts_set_db(db)
@@ -830,6 +832,11 @@ async def _get_page_seo(path: str):
     STATIC_SEO = {
         # ━━━ TOP 10 PRIORITY PAGES ━━━
         "justin-bieber-amsterdam-2026-tickets": {"title": "Justin Bieber Amsterdam 2026 \u2014 No Dates Confirmed Yet | Get Notified", "desc": "Justin Bieber has not officially announced a 2026 Amsterdam show. Be the first to know when Johan Cruijff ArenA dates drop \u2014 join the free notify list.", "image": "https://images.unsplash.com/photo-1770067665792-9975acdec4fb?w=1200"},
+        # Growth Engine — demand & authority hubs
+        "concerts-in-amsterdam-2026": {"title": "Concerts in Amsterdam 2026 \u2014 Full Schedule & Cheap Tickets | EuroMatchTickets", "desc": "Every confirmed Amsterdam concert 2026: Johan Cruijff ArenA, Ziggo Dome, Paradiso. Live prices from \u20ac49, venue guides, notify list for unannounced tours. Updated daily.", "image": "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200"},
+        "concerts-in-london-2026": {"title": "Concerts in London 2026 \u2014 Full Schedule & Cheap Tickets | EuroMatchTickets", "desc": "Every confirmed London concert 2026: Wembley, Tottenham Stadium, The O2, Alexandra Palace. Live prices from \u00a345, venue guides, notify list. Updated daily.", "image": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200"},
+        "europe-tours-2026": {"title": "Europe Tours 2026 \u2014 Master Concert Calendar | EuroMatchTickets", "desc": "Every confirmed 2026 European tour in one calendar: 180+ multi-city runs across 47 cities. Live prices, city-by-city dates, notify list.", "image": "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200"},
+        "most-wanted-concerts-2026": {"title": "Most Wanted Concerts 2026 \u2014 Live Fan Demand Ranking | EuroMatchTickets", "desc": "The top 30 most-wanted concerts of 2026, ranked live by fan demand. Updated every 24h. See which tours are selling out first.", "image": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200"},
         "f1-belgian-grand-prix-spa-tickets": {"title": "Buy Spa F1 Tickets 2026 | Belgian Grand Prix From \u20ac109 | Spa-Francorchamps", "desc": "Buy Belgian Grand Prix 2026 tickets from \u20ac109. Eau Rouge Grandstand & Paddock Club VIP. Selling Fast \u2014 limited availability. 100% Money-Back Guarantee. Instant QR delivery.", "image": "https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200"},
         "f1-monaco-grand-prix-tickets": {"title": "Buy Monaco Grand Prix Tickets 2026 | F1 From \u20ac249 | Monte Carlo", "desc": "Buy Monaco GP 2026 tickets from \u20ac249. Circuit de Monaco harbour views & VIP hospitality. Only 89 tickets left. 100% Guarantee. Instant QR delivery.", "image": "https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=1200"},
         "champions-league-tickets": {"title": "Buy Champions League Tickets 2026 | UCL Final From \u20ac85 | Munich", "desc": "Buy UEFA Champions League 2026 tickets from \u20ac85. Semi-finals & Final in Munich. 90% Sold \u2014 limited seats remaining. 100% Money-Back Guarantee. Instant QR delivery.", "image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200"},

@@ -365,6 +365,46 @@
     </image:image>
   </url>
   <url>
+    <loc>https://euromatchtickets.com/concerts-in-amsterdam-2026</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Concerts In Amsterdam 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/concerts-in-london-2026</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Concerts In London 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/europe-tours-2026</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Europe Tours 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/most-wanted-concerts-2026</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/og-image.jpg</image:loc>
+      <image:title>Most Wanted Concerts 2026</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://euromatchtickets.com/about</loc>
     <lastmod>2026-04-21</lastmod>
     <changefreq>monthly</changefreq>
