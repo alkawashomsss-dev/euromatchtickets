@@ -1677,40 +1677,10 @@ async def force_index_all():
 
 from pydantic import BaseModel, EmailStr
 
-class PriceAlertRequest(BaseModel):
-    email: str
-    event_slug: str
-    event_name: str = ""
-
-@router.post("/alerts/subscribe")
-async def subscribe_price_alert(req: PriceAlertRequest):
-    """Subscribe to price drop alerts for an event."""
-    email = req.email.strip().lower()
-    if not email or "@" not in email or "." not in email:
-        raise HTTPException(status_code=400, detail="Invalid email address")
-
-    existing = await db.price_alerts.find_one({"email": email, "event_slug": req.event_slug})
-    if existing:
-        return {"status": "already_subscribed", "message": "You're already subscribed to alerts for this event."}
-
-    await db.price_alerts.insert_one({
-        "email": email,
-        "event_slug": req.event_slug,
-        "event_name": req.event_name,
-        "subscribed_at": datetime.now(timezone.utc).isoformat(),
-        "active": True,
-    })
-
-    # Send Day 0 welcome email automatically
-    try:
-        from routes.emails import send_single_email
-        import asyncio
-        asyncio.create_task(send_single_email(email, req.event_name or "Event Tickets", req.event_slug, day=0))
-    except Exception:
-        pass  # Don't block subscription if email fails
-
-    total = await db.price_alerts.count_documents({"event_slug": req.event_slug})
-    return {"status": "subscribed", "message": "You'll be notified when prices drop!", "subscribers": total}
+# NOTE: /api/alerts/subscribe is owned by routes/alerts.py (which has full
+# Resend email + drip-campaign support). Do NOT redefine it here — that
+# causes a route-collision 422 "event_slug missing" error when the frontend
+# sends {event_id, event_title, current_price}.
 
 @router.get("/alerts/stats")
 async def get_alert_stats():
