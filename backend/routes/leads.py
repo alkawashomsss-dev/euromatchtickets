@@ -47,8 +47,10 @@ async def capture_lead(payload: LeadCaptureIn, request: Request):
     ip = request.client.host if request.client else ""
     ua = request.headers.get("user-agent", "")[:300]
 
-    # Upsert: one document per (email, slug)
-    await db.event_leads.update_one(
+    # Upsert one document per (email, slug) — on first-ever insert we
+    # bump the aggregate demand counter, on duplicates we just refresh
+    # last_seen_at / touch_count.
+    lead_result = await db.event_leads.update_one(
         {"email": email, "event_slug": slug},
         {
             "$setOnInsert": {
@@ -69,19 +71,25 @@ async def capture_lead(payload: LeadCaptureIn, request: Request):
         upsert=True,
     )
 
-    # Demand signal bucket (aggregated)
+    # Only increment demand lead_count on a TRUE new insert — not on
+    # duplicate re-submissions by the same email.
+    is_new_lead = bool(lead_result.upserted_id)
+
+    demand_update = {
+        "$setOnInsert": {
+            "event_slug": slug,
+            "artist": payload.artist,
+            "city": payload.city,
+            "first_signal_at": now,
+        },
+        "$set": {"last_signal_at": now},
+    }
+    if is_new_lead:
+        demand_update["$inc"] = {"lead_count": 1}
+
     await db.event_demand.update_one(
         {"event_slug": slug},
-        {
-            "$setOnInsert": {
-                "event_slug": slug,
-                "artist": payload.artist,
-                "city": payload.city,
-                "first_signal_at": now,
-            },
-            "$set": {"last_signal_at": now},
-            "$inc": {"lead_count": 1},
-        },
+        demand_update,
         upsert=True,
     )
 

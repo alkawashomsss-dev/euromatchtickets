@@ -1,0 +1,31 @@
+{
+  "summary": "Iteration 54 targeted regression re-test for iteration_53 SEO issues. All 3 critical fixes verified GREEN: (1) meta robots on /justin-bieber-amsterdam-2026-tickets renders as 'noindex, follow' and NO static <meta name=robots> tag exists in raw HTTP body; (2) only 4 real JSON-LD scripts on the Justin Bieber page (Organization, WebSite, LocalBusiness, FAQPage) — zero AggregateOffer; (3) lead capture is idempotent — duplicate (email, slug) does not inflate event_demand.lead_count nor event_leads signup count, while a new email correctly increments by 1. The 4 Growth Engine pages all return 200 and serve 'index, follow' meta robots with visible data-testid selectors. Justin Bieber Coming Soon UI has no prices, no Buy CTA, and the email capture form completes E2E with visible 'you're on the list' success state.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Global", "issues": ["CookieConsentBanner overlay (z-[9998]) intercepts pointer events until user clicks Accept/Reject — this blocked automated click tests until cookies were accepted. Not a bug, but test agents and possibly some users on shared devices may be confused that primary CTAs appear unresponsive while the banner is visible."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration_54.py",
+    "/app/test_reports/pytest/pytest_iter54.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "public/index.html is 753 lines with large inline metadata map + pre-hydration script — consider extracting the metadata dictionary into a separate generated JSON file loaded via <link rel=preload> + fetch for better maintainability (currently acceptable for SEO but hard to review).",
+    "routes/leads.py: the response exposes total_signups (raw count) for every capture call — fine, but if abused, allows anonymous enumeration of lead counts per slug. Non-blocking, just FYI."
+  ],
+  "updated_files": ["/app/backend/tests/test_iteration_54.py"],
+  "success_rate": {"backend": "100% (5/5)", "frontend": "100% (all 3 regression fixes verified + email capture E2E + 4 growth pages)"},
+  "test_credentials": "none required",
+  "seed_data_creation": "Each run of test_new_email_does_increment adds one new lead row using timestamped email like test_iter54_<ts>@example.com — expected by the test and matches pre-existing 5 leads seed.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 3 iteration_53 SEO/data regressions are FIXED and verified. Backend test file /app/backend/tests/test_iteration_54.py is reusable for future regression checks on leads idempotency + growth pages. The static <meta name=robots> on line 64 of public/index.html has been correctly removed — pre-hydration script at line 458 is now the single source of truth and writes 'noindex, follow' for /justin-bieber-amsterdam-2026-tickets (unverifiedDemandPages list, line 372). Justin Bieber slug is in skipEvent map (line 628) and NOT in S schema map → no AggregateOffer is generated. Lead capture idempotency uses upserted_id bool check — only truly-new inserts increment event_demand.lead_count.",
+  "rca of the issue": "Previous iteration_53 flagged two regressions: (a) hardcoded <meta name=robots content='index, follow'> on public/index.html line 64 overrode the pre-hydration JS for the unverified Justin Bieber page; (b) lead_count double-incremented on duplicate POST because $inc fired on every update_one upsert regardless of whether it was a new insert. Iteration 54 confirms: (a) line 64 static tag removed; now only the pre-hydration script (line 458) writes meta robots, correctly resolving to 'noindex, follow' on the unverified page; (b) leads.py now reads pymongo update_one result.upserted_id and only adds $inc:{lead_count:1} to the demand $update when it's a true new insert."
+}
