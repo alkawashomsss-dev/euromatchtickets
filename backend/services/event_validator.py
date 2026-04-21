@@ -31,8 +31,25 @@ from typing import Optional, Literal, Tuple
 UNVERIFIED_DEMAND_PAGES = {
     # Slug (no leading slash)
     "justin-bieber-amsterdam-2026-tickets",
-    # Add more speculative demand pages here as Google flags them:
-    # "example-artist-city-2026-tickets",
+    "justin-bieber-amsterdam-tickets-2026",
+    "justin-bieber-amsterdam-tickets",
+    "justin-bieber-amsterdam-2026",
+    "justin-bieber-amsterdam",
+    "justin-bieber-concert-amsterdam",
+    "justin-bieber-tickets-amsterdam",
+    "bieber-amsterdam-tickets",
+    "justin-bieber-kaartjes-amsterdam",
+    "justin-bieber-nederland-2026",
+    # Taylor Swift — Eras Tour ended Dec 2024; 2026 tour NOT announced
+    "taylor-swift-tickets",
+    "taylor-swift-london-tickets",
+    "taylor-swift-wembley-2026-tickets",
+    "taylor-swift-tickets-london",
+    "taylor-swift-tickets-wembley",
+    "taylor-swift-wembley-tickets",
+    "taylor-swift-concert-london",
+    "taylor-swift-eras-tour-london",
+    # Add more speculative demand pages here as Google flags them
 }
 
 

@@ -1,0 +1,31 @@
+{
+  "summary": "Iteration 55 verifies homepage carousel Bieber removal + Product schema audit on speculative pages. All 19 backend tests pass (100%). Playwright UI validation on the live preview confirms: (a) homepage carousel rotates through confirmed events only (Spanish MotoGP 2026, Champions League Semi-Final, Chinese GP 2026) — zero 'Justin Bieber' text in document body and zero combination of 'Justin Bieber' + '73%' or '€89'; (b) /taylor-swift-london-tickets renders ComingSoonEvent UI with data-testid=coming-soon-title ('TAYLOR SWIFT / IN LONDON'), data-testid=coming-soon-form email input, and 'No Confirmed Dates Yet' badge; (c) meta name=robots on /taylor-swift-london-tickets evaluates to 'noindex, follow'; (d) JSON-LD scan via DOM parser returned ONLY ['Organization','WebSite','LocalBusiness','FAQPage'] — NO Product, Offer, or AggregateOffer; (e) spot-check Bieber variant /justin-bieber-amsterdam-2026-tickets = 'noindex, follow'; (f) spot-check TS variant /taylor-swift-wembley-2026-tickets = 'noindex, follow'; (g) /api/events returns list of confirmed events feeding carousel fetch; (h) duplicate POST /api/leads/capture (same email+event_slug) does not inflate total_signups.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Taylor Swift London Coming Soon", "issues": ["Visible heading renders correctly as 'TAYLOR SWIFT' / 'IN LONDON' on two stacked lines, but concatenated textContent becomes 'Taylor Swiftin London' (missing space between spans). Not a visual bug (CSS adds line break), but accessibility tools / screen readers reading the node text may hear 'Taylor Swiftin London'. Consider adding a whitespace between artist span and 'in <city>' span in ComingSoonEvent.jsx."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration_55.py",
+    "/app/test_reports/pytest/pytest_iter55.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "FeaturedEventsCarousel.jsx fallback has hardcoded price_from (149/85/249) — acceptable since these are verified confirmed events with official ticket inventory, but any future fallback additions must cross-check FIFA/UEFA/FIA pricing to avoid speculative-price regression.",
+    "ComingSoonEvent heading renders artist and 'in <city>' as sibling spans without interleaved whitespace — cosmetic a11y nit (visual UI is correct via CSS block layout)."
+  ],
+  "updated_files": ["/app/backend/tests/test_iteration_55.py"],
+  "success_rate": {"backend": "100% (19/19)", "frontend": "100% (carousel + TS Coming Soon + schema audit + Bieber regression + TS variation spot-check all green)"},
+  "test_credentials": "none required",
+  "seed_data_creation": "One timestamped test lead created per run: test_iter55_<unix_ts>@example.com against event_slug=taylor-swift-london-tickets (used to validate idempotency — duplicate POST returns identical total_signups).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 55 is GREEN. Homepage carousel successfully fetches /api/events and populates 3 real events — Bieber was fully removed from FeaturedEventsCarousel.jsx. TaylorSwiftLondonPage.jsx now uses ComingSoonEvent wrapper (zero Product schema). All 18 Coming Soon slugs (9 Bieber + 8+ TS variations + amsterdam) are honored by pre-hydration JS in public/index.html → meta robots = 'noindex, follow' at runtime. The /api/leads/capture schema expects 'event_slug' (NOT 'slug') — worth noting for future tests. Backend regression file /app/backend/tests/test_iteration_55.py reusable for future SEO/schema sanity checks. No open action items for main agent.",
+  "rca of the issue": "Root cause analysis: (1) Homepage Bieber '73% SOLD €89' bug: old FeaturedEventsCarousel.jsx hardcoded a speculative Bieber tile. Fix rewrote the component to useEffect-fetch /api/events, filter to upcoming+status!=past_event/expired/cancelled, sort by date, and fall back to a 3-event verified list (FIFA WC Final, UCL Final Budapest, Monaco GP) — all cross-referenced to official sources. (2) Taylor Swift London Product schema bug: the old page hardcoded 2026 Wembley Product+AggregateOffer JSON-LD despite Eras Tour ending Dec 2024 and no official announcement. Fix replaced the component with ComingSoonEvent wrapper — emits only FAQPage (+ global Organization/WebSite/LocalBusiness from index.html), zero Product/Offer. (3) All 18 speculative slugs registered in public/index.html unverifiedDemandPages array → pre-hydration script writes meta robots='noindex, follow'. Verified live via DOM scan."
+}

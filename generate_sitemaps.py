@@ -38,6 +38,23 @@ db     = client["euromatchtickets"]
 # ────────────────────────────────────────────────────────────────────
 UNVERIFIED_DEMAND_SLUGS = {
     "justin-bieber-amsterdam-2026-tickets",
+    "justin-bieber-amsterdam-tickets-2026",
+    "justin-bieber-amsterdam-tickets",
+    "justin-bieber-amsterdam-2026",
+    "justin-bieber-amsterdam",
+    "justin-bieber-concert-amsterdam",
+    "justin-bieber-tickets-amsterdam",
+    "bieber-amsterdam-tickets",
+    "justin-bieber-kaartjes-amsterdam",
+    "justin-bieber-nederland-2026",
+    "taylor-swift-tickets",
+    "taylor-swift-london-tickets",
+    "taylor-swift-wembley-2026-tickets",
+    "taylor-swift-tickets-london",
+    "taylor-swift-tickets-wembley",
+    "taylor-swift-wembley-tickets",
+    "taylor-swift-concert-london",
+    "taylor-swift-eras-tour-london",
 }
 
 

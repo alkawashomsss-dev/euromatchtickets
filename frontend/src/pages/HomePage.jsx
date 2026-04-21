@@ -504,7 +504,7 @@ const HomePage = () => {
           <FadeInSection delay={0.2}>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {[
-                { to: "/taylor-swift-london-tickets", label: "ERAS TOUR", title: "Taylor Swift", price: "From \u20ac89", img: "https://images.unsplash.com/photo-1770737639812-bd3c709da73b?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=80&w=400" },
+                { to: "/concerts-in-london-2026", label: "LONDON 2026", title: "London Concerts", price: "From \u20ac45", img: "https://images.unsplash.com/photo-1770737639812-bd3c709da73b?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=80&w=400" },
                 { to: "/bayern-vs-real-madrid-tickets", label: "UCL CLASSIC", title: "Bayern vs Real", price: "From \u20ac199", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/35405278ece6848751ff21246eaaa3ea32e2c93c5a41cda6db0dd5379726831b.png" },
                 { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "World Cup", price: "From \u20ac89", img: "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=400" },
                 { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From \u20ac85", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/35405278ece6848751ff21246eaaa3ea32e2c93c5a41cda6db0dd5379726831b.png" },

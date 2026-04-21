@@ -38,7 +38,7 @@ const LINK_GROUPS = {
     { href: "/taylor-swift-london-tickets", label: "Taylor Swift London", desc: "Wembley from €79" },
   ],
   "taylor-swift": [
-    { href: "/justin-bieber-amsterdam-2026-tickets", label: "Justin Bieber Amsterdam", desc: "Johan Cruijff ArenA from €89" },
+    { href: "/justin-bieber-amsterdam-2026-tickets", label: "Justin Bieber Amsterdam", desc: "Not announced yet · Join notify list" },
     { href: "/coldplay-tour-2026", label: "Coldplay Tour 2026", desc: "Barcelona & Berlin from €69" },
     { href: "/bruno-mars-tour-2026", label: "Bruno Mars Tour 2026", desc: "London from €89" },
     { href: "/the-weeknd-tour-2026", label: "The Weeknd Tour 2026", desc: "From €79" },
@@ -46,7 +46,7 @@ const LINK_GROUPS = {
   ],
   "coldplay": [
     { href: "/taylor-swift-london-tickets", label: "Taylor Swift London Tickets", desc: "Wembley from €79" },
-    { href: "/justin-bieber-amsterdam-2026-tickets", label: "Justin Bieber Amsterdam", desc: "From €89" },
+    { href: "/justin-bieber-amsterdam-2026-tickets", label: "Justin Bieber Amsterdam", desc: "Coming Soon · Notify list" },
     { href: "/bruno-mars-tour-2026", label: "Bruno Mars Tour 2026", desc: "London from €89" },
     { href: "/the-weeknd-tour-2026", label: "The Weeknd Tour 2026", desc: "From €79" },
     { href: "/metallica-sphere-las-vegas-tickets", label: "Metallica at The Sphere", desc: "Las Vegas from €99" },
@@ -55,7 +55,7 @@ const LINK_GROUPS = {
     { href: "/champions-league-tickets", label: "Champions League Tickets", desc: "UCL Final Munich from €85" },
     { href: "/el-clasico-tickets", label: "El Clasico Tickets", desc: "Real Madrid vs Barcelona from €89" },
     { href: "/f1-tickets", label: "Formula 1 Tickets 2026", desc: "All Grand Prix from €79" },
-    { href: "/justin-bieber-amsterdam-2026-tickets", label: "Justin Bieber Amsterdam", desc: "From €89" },
+    { href: "/justin-bieber-amsterdam-2026-tickets", label: "Justin Bieber Amsterdam", desc: "Coming Soon · Notify list" },
     { href: "/taylor-swift-london-tickets", label: "Taylor Swift London", desc: "Wembley from €79" },
   ],
   "f1-tickets": [
