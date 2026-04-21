@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Bell, Mail, Check, ArrowRight, Music, MapPin, AlertTriangle, Shield } from "lucide-react";
 import { Button } from "./ui/button";
@@ -95,25 +94,18 @@ export default function ComingSoonEvent({
   const titleStr = `${artist}${city ? ` ${city}` : ""} — No Dates Confirmed Yet | Get Notified`;
   const descStr = `${artist} has not officially announced a ${city ? `${city} ` : ""}tour date. Join the notify list — be first to know when tickets go on sale.`;
 
-  const helmetChildren = [
-    <title key="t">{titleStr}</title>,
-    <meta key="d" name="description" content={descStr} />,
-    <meta key="r" name="robots" content="noindex, follow" />,
-  ];
-  if (canonical) {
-    helmetChildren.push(<link key="c" rel="canonical" href={canonical} />);
-  }
-  if (faqSchema) {
-    helmetChildren.push(
-      <script key="s" type="application/ld+json">
-        {JSON.stringify(faqSchema)}
-      </script>
-    );
-  }
-
+  // React 19 natively hoists <title>, <meta>, <link> to <head> — no Helmet needed.
   return (
     <div className="min-h-screen bg-[#0b0b0b] text-white">
-      <Helmet>{helmetChildren}</Helmet>
+      <title>{titleStr}</title>
+      <meta name="description" content={descStr} />
+      <meta name="robots" content="noindex, follow" />
+      {canonical ? <link rel="canonical" href={canonical} /> : null}
+      {faqSchema ? (
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      ) : null}
 
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-white/5">
