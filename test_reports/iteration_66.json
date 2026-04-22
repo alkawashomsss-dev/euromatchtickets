@@ -1,0 +1,38 @@
+{
+  "summary": "Iter66 re-verification of iter65 shell-level fixes. The 4 critical SSR-shell failure groups from iter65 (100% Guaranteed, 100% safe, 100% Buyer protection, Buy fallback) are NOW FULLY RESOLVED across all 13 user-listed routes. Curl spot-check returns ONLY CSS '100%; height: auto; }' — zero banned 100%-claim strings. iter64 + honesty_layer regression: 29/29 PASS + 8 SKIP (skips are expected hub-noindex tests). iter65 pytest suite: 16/18 PASS — the 2 remaining failures (test_homepage_price_context_and_cta_labels + test_footer_refund_softened) are TEST DESIGN issues, NOT app regressions: they assert React-rendered-only strings ('based on current listings', 'Refund available according to our refund policy') against the SSR shell fetched via requests.get(). Playwright rendered-DOM verification confirms BOTH strings are present in the live DOM (along with 'VIEW WORLD CUP TICKETS', 'EXPLORE EVENTS') and banned strings ('100% Money Back Guarantee', 'Buy World Cup Tickets') are absent. Hub pages (/real-madrid-tickets, /barcelona-tickets, /liverpool-tickets) all render correctly with proper robots meta + LiveClubHubPage byline.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_honesty_iter65_overclaim_sweep.py",
+    "/app/backend/tests/test_honesty_iter64_html_sweep.py",
+    "/app/backend/tests/test_honesty_layer.py",
+    "/app/test_reports/pytest/honesty_iter65_rerun.xml",
+    "/app/test_reports/pytest/honesty_regression_iter66.xml"
+  ],
+  "action_items": [
+    "OPTIONAL test-design cleanup (no app code change needed): /app/backend/tests/test_honesty_iter65_overclaim_sweep.py::test_homepage_price_context_and_cta_labels (line 99) and ::test_footer_refund_softened (line 125) assert React-rendered strings against the SSR shell fetched via requests.get(). Since the React app is client-rendered SPA, these strings will NEVER appear in the raw HTML shell. Either (a) port these 2 tests to Playwright (preferred — Playwright run already confirms PASS in rendered DOM), or (b) drop the positive-presence assertions and keep only the negative-banned-string assertions ('Buy World Cup Tickets' not in html / '100% Money Back Guarantee' not in html — both already pass). No production app fix required."
+  ],
+  "critical_code_review_comments": [
+    "All 8 shell-level patches in /app/frontend/public/index.html (lines 235/239/240/270/288/293/314 meta-map tuples + 419/430 fallback description builder) verified live: curl across 13 routes returns only CSS '100%; height:auto;}' — zero leakage of banned 100%-claim strings to Googlebot raw fetch.",
+    "Honesty-layer SSR/CSR split is now consistent: shell uses 'View ' + softened claims, React DOM uses identical softened copy + price context + footer refund. SEO crawler and end-user see the same honest messaging.",
+    "Test design opportunity: consolidate Playwright-only assertions (rendered DOM) into a separate test file so requests-based pytest sweep stays purely shell-focused — avoids future false negatives like the 2 remaining failures."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100% (waitlist + featured events regression)",
+    "frontend_shell_sweep": "Iter65 pytest 16/18 (2 are test-design false negatives — rendered DOM PASS via Playwright); Iter64 pytest 29/29 + 8 expected SKIP; Curl banned-string sweep 13/13 routes CLEAN."
+  },
+  "test_credentials": "Not required",
+  "seed_data_creation": "None (read-only verification)",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iter66 confirms iter65 shell fixes complete. The 2 remaining pytest failures in test_honesty_iter65_overclaim_sweep.py (lines 99 + 125) are test-design issues — they assert React-rendered DOM content against SSR shell fetched via requests. App is fine; tests should either move to Playwright or drop positive-presence assertions. Playwright on / confirms 'based on current listings', 'VIEW WORLD CUP TICKETS', 'EXPLORE EVENTS', 'Refund available according to our refund policy' all visible in rendered DOM, and 'Buy World Cup Tickets' / '100% Money Back Guarantee' absent. Hub pages render LiveClubHubPage correctly with robots meta + EditorialByline. No further app changes needed.",
+  "rca of the issue": "The 4 originally-failing iter65 groups were SSR-shell content baked into /app/frontend/public/index.html. Main agent's 8 patches (line 235/239/240/270/288/293/314 + 419/430) replaced 'Buy ' -> 'View ' in the fallback description builder and rewrote 8 banned 100% claims. Verification: curl -sL <BASE>/<13-routes> -A 'Mozilla/5.0' | grep -oE '100%[^\"<>]{0,40}' | sort -u returns ONLY '100%; height: auto; }' (CSS) for every route. grep -c \"d='Buy \" returns 0. Pattern ',\\sBuy [A-Z]' returns 0 matches. Confirmed via test_index_html_no_buy_prefix_in_meta_map PASS. The 2 leftover pytest failures are unrelated to the iter65 shell fix scope — they have always been false negatives because the SPA only emits these strings in the React-rendered DOM."
+}
