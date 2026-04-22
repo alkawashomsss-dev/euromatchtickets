@@ -392,3 +392,31 @@ User demanded a systemic fix over per-page whack-a-mole:
 - 🟡 `events.py` admin endpoints (`mega_fix`, `fix_all_prices`, `seed_all_missing`) still unauthenticated.
 - 🟡 For strict non-JS crawlers: adding hub paths to `unverifiedDemandPages` array in `public/index.html` (so noindex is set pre-React). Current risk low — Googlebot executes JS.
 
+
+---
+
+## 🏆 Session Update — Feb 2026 (Iterations 65–66 — Overclaim Sweep + Hub Revival + E-E-A-T)
+
+### New architecture pieces:
+1. **`<LiveClubHubPage/>` (components/)** — shared data-driven hub component. Fetches matches from `/api/events` by club name; if real verified inventory exists → page is indexable, shows matches + min price + listings count; if no inventory → page is `noIndex` + shows `<WaitlistCTA/>`. One file replaces 8 hardcoded hub pages (Real Madrid, Barcelona, Bayern Munich, PSG, Juventus, Arsenal, Liverpool, Man City).
+2. **`<EditorialByline/>`** — E-E-A-T signal block. "Reviewed by EuroMatchTickets ticketing team" + last-reviewed date + Munich office + support email. Rendered at bottom of every hub page.
+3. **`overclaim_sweep.py`** — 52 jsx files cleaned of "100% Money Back / 100% secure / 100% 5-Star / 12,000+ / 2,940 / 4.9/5 / biggest football event ever" + CTA spam ("Buy" → "View"/"Explore").
+4. **`public/index.html` shell** — patched 8 route-meta tuples + fallback description builder (`d='Buy '` → `d='View '`). Zero banned 100%-claim strings remain in served HTML.
+
+### Homepage specifically fixed (user's 8-point review):
+1. ❌ `100% Money Back / 100% secure / 100% 5-Star / 100% Verified Purchases` → all removed.
+2. ❌ Fake Review summary (`5.0 Average Rating / 2,940 Total Reviews / 100% 5-Star / 100% Verified Purchases`) → replaced with neutral "Published customer reviews from verified buyers..." single line in `ReviewsSystem.jsx` `ReviewsSummary`.
+3. ❌ Scrolling duplicate trust ribbon (BUYER PROTECTION · QR TICKET DELIVERY · ENCRYPTED PAYMENTS · EUROPEAN MARKETPLACE · VERIFIED SELLERS) → DELETED from HomePage.
+4. ❌ "Be part of history. Verified tickets for the biggest football event ever." → softened to plain "FIFA World Cup 2026".
+5. ❌ "From €150" floating without context → "From €150 · based on current listings".
+6. 🟡 Pricing inconsistency → still category-card-level hardcoded (future: wire via `useLiveEventData` hook). Non-blocking.
+7. ❌ CTA spam (BUY NOW / BUY WORLD CUP / Buy Tickets Now) → diversified to "View Availability" / "View World Cup Tickets" / "Explore Events" / "Check Availability".
+8. ❌ Footer "All purchases covered by 100% Money Back Guarantee" → "Refund available according to our refund policy".
+
+### Test verification (iterations 65 + 66):
+- `test_honesty_iter65_overclaim_sweep.py` — 18/18 rendered DOM + 16/18 SSR (2 expected test-design skips because strings are React-mounted).
+- `test_honesty_iter64_html_sweep.py` — 29/29 PASS.
+- `test_honesty_layer.py` — 8/8 PASS.
+- Hub pages (`/real-madrid-tickets`, `/barcelona-tickets`, `/liverpool-tickets`) render `LiveClubHubPage` with dynamic robots meta + EditorialByline.
+- Curl spot-check: `grep -oE '100%[^"<>]{0,40}'` returns only `100%; height: auto;` (CSS).
+
