@@ -14,6 +14,8 @@ import { BreadcrumbStructuredData, FAQStructuredData } from "../components/Struc
 import EventStructuredData from "../components/StructuredData";
 import ProductSchema from "../components/ProductSchema";
 import WaitlistCTA from "../components/WaitlistCTA";
+import RelatedEventsGraph from "../components/RelatedEventsGraph";
+import EditorialByline from "../components/EditorialByline";
 import { RecentlyBoughtPopup } from "../components/SalesAccelerator";
 import VenueInfoSection from "../components/VenueInfoSection";
 import InteractiveVenueMap from "../components/InteractiveVenueMap";
@@ -488,6 +490,46 @@ export default function EventDetailsPage() {
           </div>
         </div>
       )}
+
+      {/* Internal linking graph — same type / same city / intent guides */}
+      <RelatedEventsGraph
+        currentEvent={event}
+        intentLinks={
+          event.event_type === 'f1'
+            ? [
+                { to: '/how-to-buy-f1-tickets', label: 'How to buy F1 tickets' },
+                { to: '/f1-ticket-prices-guide', label: 'F1 ticket prices guide' },
+                { to: '/f1-2026-schedule', label: 'F1 2026 full calendar' },
+              ]
+            : event.event_type === 'motogp'
+            ? [
+                { to: '/motogp-2026-schedule', label: 'MotoGP 2026 calendar' },
+                { to: '/motogp-tickets', label: 'All MotoGP tickets' },
+              ]
+            : event.event_type === 'worldcup'
+            ? [
+                { to: '/world-cup-2026-tickets', label: 'FIFA World Cup 2026 overview' },
+                { to: '/world-cup-2026-schedule', label: 'World Cup full schedule' },
+              ]
+            : event.event_type === 'concert'
+            ? [
+                { to: '/concerts-in-london-2026', label: 'London concerts 2026' },
+                { to: '/concerts-in-paris-2026', label: 'Paris concerts 2026' },
+                { to: '/concerts-in-amsterdam-2026', label: 'Amsterdam concerts 2026' },
+              ]
+            : [
+                { to: '/events', label: 'Browse all events' },
+                { to: '/buyer-protection', label: 'Buyer protection policy' },
+              ]
+        }
+      />
+
+      {/* E-E-A-T byline */}
+      <section className="py-8 bg-[#0e0e14]">
+        <div className="max-w-4xl mx-auto px-4">
+          <EditorialByline topic={event.title} />
+        </div>
+      </section>
 
       <RecentlyBoughtPopup />
     </div>

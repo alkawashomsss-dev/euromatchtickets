@@ -3,6 +3,7 @@ import { Calendar, MapPin, Ticket, Flag, Moon, Trophy, ChevronRight, Shield, Zap
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
+import CategoryIntro from "../components/CategoryIntro";
 
 const F1SchedulePage = () => {
   const schema = {
@@ -257,6 +258,21 @@ const F1SchedulePage = () => {
           </div>
         </div>
       </section>
+
+      <CategoryIntro
+        title="About the F1 2026 season"
+        paragraphs={[
+          "The 2026 Formula 1 World Championship will run across 24 Grands Prix between March and December, featuring returning classics like Monaco, Monza, Spa-Francorchamps and Silverstone alongside the newer Miami, Las Vegas and Saudi Arabia rounds. The calendar is the longest in F1 history and introduces a major technical regulation reset (new 1.6L hybrid power units with 50% electric energy and active aerodynamics).",
+          "Grandstand ticket availability typically opens in stages: Monaco and Silverstone sell out fastest, often within weeks of the F1 general-sale window. Paddock Club and hospitality inventory is handled by F1 Experiences and select partners; our marketplace aggregates verified-seller listings for both grandstand and Paddock Club tiers when available.",
+          "Each circuit page on EuroMatchTickets links through to live inventory, venue-specific travel tips and the fastest transport options. Use the schedule above to pick your race and compare sections.",
+        ]}
+        faqs={[
+          { q: "When do F1 2026 tickets go on sale?", a: "F1 team-member and fan-club pre-sales typically open in September–November 2025. General public on-sale opens through F1.com and official promoters between December 2025 and March 2026, depending on the circuit. Monaco, Silverstone and Zandvoort historically go on sale earliest." },
+          { q: "Which is the cheapest F1 race?", a: "Entry-level general admission tickets are usually most affordable at Hungary, Belgium (Spa), and Italy (Imola / Monza), starting around €89–€130 depending on the weekend. Flagship events (Monaco, Las Vegas, Abu Dhabi) start significantly higher." },
+          { q: "What's the difference between grandstand and general admission?", a: "General admission gives you circuit-wide access to designated non-seated viewing mounds — great for walking around and capturing multiple corners per session. Grandstand tickets are numbered seats at a fixed location, usually with a better view of key overtaking zones (e.g. Stowe at Silverstone, Club Corner at Monaco)." },
+          { q: "Are F1 paddock tickets included?", a: "Paddock access is not included with general admission or grandstand tickets. It's sold separately as part of F1 Experiences Paddock Club packages or via verified hospitality resellers — we list these when available." },
+        ]}
+      />
     </div>
   );
 };

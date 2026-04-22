@@ -698,30 +698,7 @@ const HomePage = () => {
         </FadeInSection>
       </section>
 
-      {/* ═══════ REVIEWS ═══════ */}
-      <section className="py-16 md:py-20 bg-[#0e0e14]">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <FadeInSection className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 bg-[#facc15]/10 border border-[#facc15]/20 px-4 py-1.5 mb-4">
-              <Star className="w-3.5 h-3.5 text-[#facc15] fill-[#facc15]" />
-              <span className="text-[10px] font-black text-[#facc15] uppercase tracking-widest">Customer reviews</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">WHAT FANS SAY</h2>
-            <p className="text-slate-500 text-sm">Real reviews from verified ticket buyers worldwide</p>
-          </FadeInSection>
-          
-          <ReviewsStats />
-          <div className="mt-8"><ReviewsGrid limit={6} /></div>
-          
-          <div className="text-center mt-8">
-            <Link to="/reviews">
-              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-none px-8 font-bold uppercase tracking-wider text-sm">
-                View All Reviews <ChevronRight className="w-4 h-4 ml-1" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Reviews section removed pending real UGC integration (Trustpilot / DB-backed) */}
 
       {/* ═══════ NEWSLETTER ═══════ */}
       <section className="py-16 bg-[#0a0a0f]">

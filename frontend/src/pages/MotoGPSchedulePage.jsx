@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import CategoryIntro from "../components/CategoryIntro";
 
 const MotoGPSchedulePage = () => {
   const schema = {
@@ -217,6 +218,21 @@ const MotoGPSchedulePage = () => {
           </div>
         </div>
       </section>
+
+      <CategoryIntro
+        title="About the MotoGP 2026 season"
+        paragraphs={[
+          "The 2026 MotoGP World Championship features 22 Grand Prix weekends across five continents, running from March to November. The calendar retains all European classics — Mugello, Jerez, Catalunya, Assen, Silverstone, Spielberg, Misano, Aragon, Portimão — alongside flyaway rounds in Qatar, the Americas, Argentina, Japan, Australia, Thailand, Indonesia and Malaysia.",
+          "Grandstand tickets typically open in November–January on the official circuit sites and through authorised resellers. Mugello and Assen traditionally sell fastest; Misano and Catalunya follow. Our marketplace consolidates verified-seller listings where available and opens waitlists for every weekend where inventory hasn't yet gone live.",
+          "Each GP page links through to full weekend schedules, travel options and real seat-map views so you can compare General Admission hills to covered grandstands before committing.",
+        ]}
+        faqs={[
+          { q: "When do MotoGP 2026 tickets go on sale?", a: "Pre-sales for teams and loyalty members open October–November 2025. General public on-sale begins December 2025 and continues rolling through each circuit's promoter. Join the waitlist for any round and we'll email you within 24 hours of the first drop." },
+          { q: "Which MotoGP race is the cheapest?", a: "Portimão, Aragon, and Misano typically have the most accessible entry-level General Admission tickets (€49–€85). Flagship rounds like Mugello, Silverstone and Catalunya start higher for full-weekend GA (€130–€180)." },
+          { q: "Are the 3 days (Friday/Saturday/Sunday) included?", a: "Most GP tickets are sold as full-weekend passes covering Practice, Qualifying and Sunday's race. Some circuits (notably Silverstone and Assen) also sell single-day Friday Only tickets at discounted rates." },
+          { q: "What's the difference between General Admission and Grandstand?", a: "GA grants access to grass mounds and non-seated viewing areas around the circuit — ideal for moving between corners. Grandstands give you a numbered seat with direct view of a specific turn and often a main screen." },
+        ]}
+      />
     </div>
   );
 };
