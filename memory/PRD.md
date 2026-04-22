@@ -330,3 +330,28 @@ Triple-layered enforcement:
 ### Backlog (flagged, non-blocking):
 - 🟡 Admin endpoints (`mega_fix`, `fix_all_prices`, `seed_all_missing`) missing `require_admin` — needs auth gate.
 - 🟡 `StructuredData.getPrices()` fallback 50/500 still exists (dead code under current gating).
+
+---
+
+## 🔥 Session Update — Feb 2026 (Iterations 61–62 — SEO Audit: 7-Point Trust/Duplicate Cleanup)
+
+User SEO audit flagged 7 issues. Fixed end-to-end + verified with testing agent (4/4 page checks + 8/8 backend pytest PASS):
+
+### Fixed (per user's audit):
+1. **Duplicate content on event pages** — removed `/event/:slug` duplicate venue-map block (it was rendered twice). Removed overlapping trust/Why-Choose-Us/Price-Comparison blocks.
+2. **Keyword stuffing** — all "FanProtect · 100% Verified · Instant QR Delivery · 50,000+ Happy Fans" strips removed from `TicketListings.jsx`, `TrustElements.TrustBar`, `Footer.jsx`, `HomePage.jsx`. Trust keywords now appear ≤3× per page (hero + sidebar + footer).
+3. **Fake "Save €X vs official" claims** — deleted from hero, Price-Comparison block, SEO content, sidebar bullets, and FAQ. Replaced with honest **"market pricing may vary"**.
+4. **H1/H2 hierarchy** — event page now: H1=title+Tickets / H2=About / H2=Prices / H2=Location / H2=FAQ. Old "Why 50,000+ Fans Choose Us" + "Your Complete Guide" sections deleted.
+5. **Canonical + noindex**: SEOHead ensures single canonical per page. New thin-page gate: `isUglyUrl || (isComingSoon && !venue && !city)` → noindex. Taylor Swift events given real venues (Wembley / Cruyff Arena / Santiago Bernabéu / San Siro / La Défense / Aviva) so they stay indexable with rich content.
+6. **Thin coming_soon pages** — now render Location H2 + venue/date/city facts + FAQ + WaitlistCTA in both hero AND sidebar. JSON-LD emits Event only (no fake Product/Offer).
+7. **Overclaiming trust signals** — removed "Europe's #1", "500,000+ tickets sold", "2M+ TICKETS SOLD", "OFFICIAL PARTNER", "100% GUARANTEE", "4.9/5 from 12,847 reviews", "4.9/5 FROM 2,940+ REVIEWS". Replaced with neutral "European secondary-market platform · Verified sellers · Escrowed payments · Full refund if event is cancelled".
+
+### End-to-end gating (EventDetailsPage):
+- `isComingSoon` → hides VenueMap, TicketListings, QuickBuyCard, MobileStickyBuy, ScarcityBadge, HighDemandBadge, SocialProofCounter, "X tickets available" chip.
+- `isComingSoon` → shows hero WaitlistCTA + sidebar WaitlistCTA (`data-testid='sidebar-waitlist'`).
+- `isThinPage` → sets `<meta robots="noindex,nofollow">`.
+
+### Still pending (reported, non-blocking):
+- 🟡 `events.py` admin endpoints (`mega_fix`, `fix_all_prices`, `seed_all_missing`) missing `require_admin` auth.
+- 🟡 `StructuredData.getPrices()` dead-code 50/500 fallback.
+
