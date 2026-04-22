@@ -216,7 +216,7 @@ const Footer = () => {
             <strong className="text-slate-600">Legal:</strong> EuroMatchTickets is an independent secondary ticket marketplace. Prices may be above or below face value. Not affiliated with FIFA, UEFA, or any event organizer.
           </p>
           <p className="text-[10px] text-slate-700 text-center mt-1">
-            All purchases covered by <Link to="/refund-policy" className="text-[#e10600] hover:underline">100% Money Back Guarantee</Link>.
+            Refund available according to our <Link to="/refund-policy" className="text-[#e10600] hover:underline">refund policy</Link>.
           </p>
         </div>
       </div>

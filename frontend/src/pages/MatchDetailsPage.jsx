@@ -379,7 +379,7 @@ const MatchDetailsPage = () => {
                   <div className="mt-6 space-y-3 text-sm text-slate-400">
                     <div className="flex items-center gap-2">
                       <Shield className="w-4 h-4 text-green-500" />
-                      <span>100% Secure Payment</span>
+                      <span>Secure checkout Payment</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-green-500" />

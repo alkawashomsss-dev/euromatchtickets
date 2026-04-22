@@ -66,7 +66,7 @@ const BadBunnyPage = () => {
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8 text-sm">
           <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />Verified</span>
-          <span className="flex items-center gap-2 text-emerald-500"><Star className="w-4 h-4" />4.8/5 Reviews</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Star className="w-4 h-4" /> Reviews</span>
           <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />QR ticket delivery</span>
         </div>
       </section>

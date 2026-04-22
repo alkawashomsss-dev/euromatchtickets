@@ -47,7 +47,7 @@ const TheWeekndPage = () => {
     { q: "How much are The Weeknd 2026 tour tickets?", a: "Tickets start from €95 for upper tier. Floor standing from €145. Golden Circle from €195. VIP from €350. All include Buyer protection cancellation refund policy and QR ticket delivery." },
     { q: "When is The Weeknd touring Europe in 2026?", a: "June 11 to July 8, 2026. Six cities: Paris (Jun 11), London Wembley (Jun 15), Berlin (Jun 20), Amsterdam (Jun 25), Milan (Jul 2), Madrid (Jul 8)." },
     { q: "What songs does The Weeknd play live?", a: "25+ songs: Blinding Lights, Save Your Tears, Starboy, The Hills, Can't Feel My Face, Die For You, I Feel It Coming, Earned It, plus new album tracks. 2-hour spectacular show." },
-    { q: "Are The Weeknd tickets refundable?", a: "Yes! Buyer protection cancellation refund policy on every ticket. Full refund if cancelled or postponed. If tickets are invalid, 100% refund." },
+    { q: "Are The Weeknd tickets refundable?", a: "Yes! Buyer protection cancellation refund policy on every ticket. Full refund if cancelled or postponed. If tickets are invalid, refund policy." },
     { q: "Where is the best seat for The Weeknd concert?", a: "Golden Circle for closest to stage. Floor Standing B1-B4 for energy. Lower tier for balanced view. Massive screens visible from all sections." },
     { q: "How are tickets delivered?", a: "Instant QR code delivery to your email within minutes of purchase. Show the QR code on your phone at the venue entrance. No printing needed." }
   ];
@@ -100,7 +100,7 @@ const TheWeekndPage = () => {
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8 text-sm">
           <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />Verified Tickets</span>
-          <span className="flex items-center gap-2 text-emerald-500"><Star className="w-4 h-4" />4.8/5 from 1 Reviews</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Star className="w-4 h-4" /> from 1 Reviews</span>
           <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />QR ticket delivery</span>
         </div>
       </section>
@@ -138,7 +138,7 @@ const TheWeekndPage = () => {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">The Weeknd After Hours Til Dawn Tour 2026 — Everything You Need to Know</h2>
           <div className="prose prose-invert max-w-none text-slate-400 space-y-4">
-            <p><strong className="text-white">The Weeknd</strong> (Abel Tesfaye) brings his record-breaking <strong className="text-white">After Hours Til Dawn Tour</strong> to European stadiums in summer 2026. After selling out arenas worldwide, this stadium tour is the biggest concert production The Weeknd has ever created — featuring a completely reimagined stage design, pyrotechnics, floating platforms, and immersive LED visuals spanning the entire stadium.</p>
+            <p><strong className="text-white">The Weeknd</strong> (Abel Tesfaye) brings his record-breaking <strong className="text-white">After Hours Til Dawn Tour</strong> to European stadiums in summer 2026. After selling out arenas worldwide, this stadium tour is a major concert production The Weeknd has ever created — featuring a completely reimagined stage design, pyrotechnics, floating platforms, and immersive LED visuals spanning the entire stadium.</p>
             <p>The tour kicks off at <strong className="text-white">Stade de France in Paris</strong> on June 11, 2026, followed by <strong className="text-white">Wembley Stadium in London</strong> (June 15), <strong className="text-white">Olympiastadion Berlin</strong> (June 20), <strong className="text-white">Johan Cruijff Arena Amsterdam</strong> (June 25), <strong className="text-white">San Siro Milan</strong> (July 2), and closing at <strong className="text-white">Estadio Metropolitano Madrid</strong> (July 8).</p>
             <h3 className="text-white text-lg">Expected Setlist</h3>
             <p>The 2-hour show features 25+ songs spanning The Weeknd's entire career: <em>Blinding Lights</em>, <em>Save Your Tears</em>, <em>Starboy</em>, <em>The Hills</em>, <em>Can't Feel My Face</em>, <em>Die For You</em>, <em>I Feel It Coming</em>, <em>Earned It</em>, <em>Heartless</em>, <em>In Your Eyes</em>, plus new material from his upcoming album. The After Hours era songs feature a completely dark, cinematic production that transforms the stadium into an immersive experience.</p>

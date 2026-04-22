@@ -328,7 +328,7 @@ const BlogPage = () => {
                 <li>Up to Competitive market pricing than official channels</li>
                 <li>Instant QR code delivery to your phone</li>
                 <li>Verified seller inventory across 25+ countries</li>
-                <li>4.9/5 rating from 1+ verified reviews</li>
+                <li>Highly rated from 1+ verified reviews</li>
               </ul>
             </div>
           </div>

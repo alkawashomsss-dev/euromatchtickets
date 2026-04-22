@@ -457,30 +457,10 @@ export const ReviewsStats = () => {
   const stats = calculateStats();
   
   return (
-    <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 shadow-sm">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div className="text-center">
-          <div className="text-4xl font-bold text-white">{stats.avgRating}</div>
-          <div className="flex justify-center gap-0.5 my-2">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Star key={star} className="w-5 h-5 fill-amber-400 text-amber-400" />
-            ))}
-          </div>
-          <div className="text-sm text-slate-500">Average Rating</div>
-        </div>
-        <div className="text-center">
-          <div className="text-4xl font-bold text-white">{stats.total.toLocaleString()}</div>
-          <div className="text-sm text-slate-500 mt-2">Total Reviews</div>
-        </div>
-        <div className="text-center">
-          <div className="text-4xl font-bold text-emerald-600">{stats.fiveStars}%</div>
-          <div className="text-sm text-slate-500 mt-2">5-Star Reviews</div>
-        </div>
-        <div className="text-center">
-          <div className="text-4xl font-bold text-white">100%</div>
-          <div className="text-sm text-slate-500 mt-2">Verified Purchases</div>
-        </div>
-      </div>
+    <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6 shadow-sm" data-testid="reviews-summary">
+      <p className="text-center text-sm text-slate-400">
+        Published customer reviews from verified buyers. All reviews are posted by buyers after their ticket QR has been used at the event.
+      </p>
     </div>
   );
 };

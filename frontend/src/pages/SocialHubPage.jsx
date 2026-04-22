@@ -241,7 +241,7 @@ const SocialHubPage = () => {
         <div className="max-w-xl mx-auto px-4 text-center">
           <Bell className="w-10 h-10 text-amber-400 mx-auto mb-4" />
           <h2 className="text-3xl font-black text-white mb-3">Get Price Drop Alerts</h2>
-          <p className="text-white/40 mb-6">Join 12,000+ fans. First to know when prices drop. Unsubscribe anytime.</p>
+          <p className="text-white/40 mb-6">Join our community. First to know when prices drop. Unsubscribe anytime.</p>
 
           {!subscribed ? (
             <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md mx-auto" data-testid="subscribe-form">

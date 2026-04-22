@@ -144,7 +144,7 @@ const BahrainWorldCupPage = () => {
           <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/50">
             <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> Buyer protection</span>
             <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> QR ticket delivery</span>
-            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.8/5 Reviews</span>
+            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" />  Reviews</span>
           </div>
         </div>
       </section>

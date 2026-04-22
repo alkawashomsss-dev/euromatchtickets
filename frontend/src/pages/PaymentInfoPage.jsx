@@ -6,7 +6,7 @@ const PaymentInfoPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <Helmet>
         <title>Payment Information | EuroMatchTickets - Secure Payments</title>
-        <meta name="description" content="Learn about secure payment methods at EuroMatchTickets. We accept all major credit cards, Apple Pay, Google Pay. 100% secure with Stripe." />
+        <meta name="description" content="Learn about secure payment methods at EuroMatchTickets. We accept all major credit cards, Apple Pay, Google Pay. Secure checkout with Stripe." />
         <meta name="keywords" content="payment methods, secure payment, credit card, apple pay, google pay, stripe, euromatchtickets" />
       </Helmet>
 

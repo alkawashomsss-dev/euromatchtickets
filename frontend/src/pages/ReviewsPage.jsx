@@ -52,8 +52,8 @@ const ReviewsPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Customer Reviews - 4.9/5 Rating | 2,940+ Verified Reviews"
-        description="Read verified reviews from customers customers who bought tickets on EuroMatchTickets. 4.9/5 average rating. F1, MotoGP, World Cup, Champions League tickets."
+        title="Customer Reviews -  Rating | 2,940+ Verified Reviews"
+        description="Read verified reviews from customers customers who bought tickets on EuroMatchTickets.  average rating. F1, MotoGP, World Cup, Champions League tickets."
       />
       
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }} />
@@ -81,7 +81,7 @@ const ReviewsPage = () => {
           {/* Rating Breakdown */}
           <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-8 max-w-3xl mx-auto mt-8">
             <div className="flex flex-col md:flex-row items-center gap-8">
-              {/* Average Rating */}
+              {/* Customers */}
               <div className="text-center">
                 <div className="text-6xl font-bold text-white mb-2">{avgRating}</div>
                 <div className="flex justify-center mb-2">

@@ -243,7 +243,7 @@ const SpaGPPage = () => {
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-6 text-xs">
           {[
             [Shield, "Cancellation refund policy"],
-            [Star, "4.9/5 from 1 Reviews"],
+            [Star, "Highly rated from 1 Reviews"],
             [Zap, "QR ticket delivery"],
             [Lock, "Secure Stripe Checkout"],
             [Users, "500K+ Tickets Sold"]
@@ -300,7 +300,7 @@ const SpaGPPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-1 block">BUY NOW</span>
+              <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-1 block">VIEW AVAILABILITY</span>
               <h2 className="text-3xl font-black text-white uppercase tracking-tight">Spa F1 2026 Tickets & Prices</h2>
               <p className="text-slate-500 mt-1">687 tickets remaining &bull; Prices updating live</p>
             </div>
@@ -627,7 +627,7 @@ const SpaGPPage = () => {
               <li>Instant QR code delivery - no waiting, no postal delays</li>
               <li>Buyer protection cancellation refund policy if event is cancelled</li>
               <li>Verified seller inventory across 25+ countries</li>
-              <li>4.9/5 from 1 verified customer reviews</li>
+              <li>Highly rated from 1 verified customer reviews</li>
             </ul>
 
             <h3 className="text-lg font-black text-white mt-8">Spa-Francorchamps Circuit Guide</h3>

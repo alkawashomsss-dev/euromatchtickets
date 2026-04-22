@@ -60,7 +60,7 @@ function SellerStats() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
       {[
-        { icon: Users, value: "12,000+", label: "Active Sellers", color: "text-blue-600" },
+        { icon: Users, value: "", label: "Active Sellers", color: "text-blue-600" },
         { icon: Ticket, value: "850K+", label: "Tickets Sold", color: "text-emerald-600" },
         { icon: Globe, value: "45+", label: "Countries", color: "text-violet-600" },
         { icon: CreditCard, value: "48h", label: "Payout Speed", color: "text-amber-600" }
@@ -123,7 +123,7 @@ export default function SellTicketsPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/30 via-slate-900 to-slate-950" />
           <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
             <Badge className="bg-emerald-600/20 text-emerald-600 border-emerald-700/50 mb-6">
-              Trusted by 12,000+ sellers worldwide
+              Trusted by verified sellers worldwide
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight" data-testid="sell-hero-title">
               Sell Your Tickets.<br />
@@ -427,7 +427,7 @@ export default function SellTicketsPage() {
         <div className="flex items-center justify-center gap-6 mt-8 text-sm text-slate-400">
           <div className="flex items-center gap-1"><Shield className="w-4 h-4" /> Seller Protection</div>
           <div className="flex items-center gap-1"><Clock className="w-4 h-4" /> 48h Payouts</div>
-          <div className="flex items-center gap-1"><Star className="w-4 h-4" /> 4.8/5 Rating</div>
+          <div className="flex items-center gap-1"><Star className="w-4 h-4" />  Rating</div>
         </div>
       </div>
     </div>

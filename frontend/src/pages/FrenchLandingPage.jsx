@@ -26,7 +26,7 @@ const FrenchLandingPage = () => {
     { titre: "Prix les Plus Bas", desc: "Nous garantissons les meilleurs prix du marche. Moins cher qu'ailleurs!", icone: Zap },
     { titre: "100% Garanti", desc: "Tous les billets verifies avec notre garantie Buyer protection. Remboursement total.", icone: Shield },
     { titre: "Livraison Instantanee", desc: "Recevez vos billets par email instantanement. QR code pret a scanner.", icone: Ticket },
-    { titre: "4.8/5 Etoiles", desc: "Des milliers de clients satisfaits dans toute l'Europe.", icone: Star }
+    { titre: " Etoiles", desc: "Des milliers de clients satisfaits dans toute l'Europe.", icone: Star }
   ];
 
   const faqs = [

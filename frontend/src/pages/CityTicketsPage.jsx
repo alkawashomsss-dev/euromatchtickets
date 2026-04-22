@@ -133,7 +133,7 @@ const CityTicketsPage = () => {
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />Buyer protection</div>
             <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" />QR delivery</div>
-            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-4 h-4" />4.9/5 Rating</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-4 h-4" /> Rating</div>
           </div>
         </div>
       </section>

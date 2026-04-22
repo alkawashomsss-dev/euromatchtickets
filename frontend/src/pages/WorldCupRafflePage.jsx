@@ -272,7 +272,7 @@ const WorldCupRafflePage = () => {
           <div className="grid md:grid-cols-3 gap-6 text-center">
             <div className="flex flex-col items-center">
               <Shield className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="font-bold mb-2">100% Secure</h3>
+              <h3 className="font-bold mb-2">Secure checkout</h3>
               <p className="text-sm text-slate-500">Stripe secure payments</p>
             </div>
             <div className="flex flex-col items-center">

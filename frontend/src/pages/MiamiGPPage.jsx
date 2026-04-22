@@ -35,7 +35,7 @@ const MiamiGPPage = () => {
   const faqs = [
     { q: "Are Miami GP tickets mobile or PDF?", a: "Miami GP uses mobile tickets exclusively. You'll receive a QR code via email that can be scanned directly from your phone at entry gates." },
     { q: "When will I receive my Miami F1 tickets?", a: "Tickets are delivered instantly after purchase via email. For hospitality packages, additional details are sent 2 weeks before the event." },
-    { q: "What happens if Miami GP is cancelled?", a: "Full refund within 14 days if the race is cancelled and not rescheduled. Our 100% Money Back Guarantee protects your purchase." },
+    { q: "What happens if Miami GP is cancelled?", a: "Full refund within 14 days if the race is cancelled and not rescheduled. Our Refund policy applies protects your purchase." },
     { q: "Can I resell my Miami GP tickets?", a: "Yes, tickets are transferable. You can resell through our platform or transfer to another person." }
   ];
 

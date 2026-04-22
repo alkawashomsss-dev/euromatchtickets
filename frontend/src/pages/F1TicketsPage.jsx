@@ -357,7 +357,7 @@ const F1TicketsPage = () => {
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             {[
               { icon: Shield, label: "500,000+ Tickets Sold" },
-              { icon: Star, label: "4.9/5 from 12,000+ Reviews" },
+              { icon: Star, label: "Highly rated from Customer reviews" },
               { icon: Globe, label: "Trusted in 25+ Countries" },
               { icon: Zap, label: "QR ticket delivery" }
             ].map((item, i) => (

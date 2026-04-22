@@ -142,7 +142,7 @@ const MonzaGPPage = () => {
                   <div className="h-px bg-slate-100" />
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-slate-400">Rating</span>
-                    <span className="font-bold text-amber-500 flex items-center gap-1"><Star className="w-4 h-4 fill-amber-400" /> 4.9/5</span>
+                    <span className="font-bold text-amber-500 flex items-center gap-1"><Star className="w-4 h-4 fill-amber-400" /> </span>
                   </div>
                 </div>
               </div>

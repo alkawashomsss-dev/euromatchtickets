@@ -1,0 +1,46 @@
+{
+  "summary": "Iter65 overclaim-sweep verification: RENDERED DOM is 100% clean (all 8 user-facing overclaims fixed), but the SERVED HTML SHELL (/app/frontend/public/index.html route meta-map) still contains 8 banned 100%-claim strings + a 'Buy <slug>' fallback description. These leak on every public route to non-JS crawlers / Googlebot initial fetch. 14/18 pytest + 18/18 rendered-DOM Playwright assertions pass.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "SEO shell meta-map",
+        "issue": "/app/frontend/public/index.html still contains 8 banned 100%-claim strings that are served in <title>/<meta description>/<h1> for specific routes. Items: line 235 '100% Guaranteed' (/buyer-protection), line 239 '100% safe!' (/refund-policy), line 240 '100% protected by Buyer protection' + '100% Ticket Guarantee' (/fan-protect), line 270 '100% safe checkout with Buyer protection' (/payment-info), line 288 '100% Buyer protection' (/belgian-grand-prix-tickets), line 293 '100% Guaranteed' + 'From €129 – 100% Guaranteed' (/f1-spa-tickets), line 314 '100% buyer protection guaranteed' (/buy-f1-tickets-online). Also line 419 fallback builder `d='Buy '+sn+' tickets... 100% Buyer protection.'` still uses banned 'Buy' prefix + '100% Buyer protection'. overclaim_sweep.py missed these shell-level entries.",
+        "affected_selectors": ["/app/frontend/public/index.html lines 235, 239, 240, 270, 288, 293, 314, 419"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_honesty_iter65_overclaim_sweep.py",
+    "/app/test_reports/pytest/honesty_iter65.xml"
+  ],
+  "action_items": [
+    "Run overclaim_sweep.py (or manual edit) ON /app/frontend/public/index.html to rewrite the 8 flagged tuples: replace '100% Guaranteed' -> 'Refund policy', '100% safe' -> 'Secure checkout', '100% Buyer protection' -> 'Buyer protection', '100% protected by Buyer protection' -> 'protected by Buyer protection', '100% Ticket Guarantee' -> 'Ticket Guarantee', '100% safe checkout with Buyer protection' -> 'Secure checkout with Buyer protection', '100% buyer protection guaranteed' -> 'Buyer protection included'.",
+    "In /app/frontend/public/index.html line 419 fallback: change `d='Buy '+sn+' tickets at Europe\\'s verified listings. Verified sellers, QR ticket delivery, 100% Buyer protection.'` to `d='View '+sn+' tickets at Europe\\'s verified listings. Verified sellers, QR ticket delivery, Buyer protection.'` Also remove 'Buy ' from line 430 utility-page fallback (`d='Europe\\u2019s verified ticket marketplace! Buy verified tickets for...'` -> `'... View verified tickets for...'`).",
+    "After edit: `sudo supervisorctl restart frontend` (webpack-dev-server caches public/index.html in memory) and re-run `pytest /app/backend/tests/test_honesty_iter65_overclaim_sweep.py -v` — all 18 assertions should pass."
+  ],
+  "critical_code_review_comments": [
+    "Shell meta-map and shell JS fallback description builder were NOT covered by overclaim_sweep.py even though iter64 main agent already knew the shell is a separate code path (see iter64 fix: index_html_honesty.py). Recommend consolidating shell sweeps in one script that always runs for ALL banned terms, not just the ones in iter64.",
+    "Fallback description builder at lines 419 + 430 reconstructs copy from slug when no meta tuple exists. Once the 8 tuples are cleaned, any new route will still inherit the softened copy automatically — good. Keep the fallback as the single source of truth for new pages.",
+    "Hub pages (Real Madrid, Liverpool) correctly set `<meta robots>` to 'index, follow' when real inventory exists (10 listings at €79 for Liverpool) and 'noindex, nofollow' when inventory is absent (Barcelona). EditorialByline E-E-A-T block renders correctly with office/support/last-reviewed-date. No action needed.",
+    "Rendered homepage fully compliant: hero = 'FIFA WORLD CUP 2026 TICKETS' + 'Secure checkout with QR ticket delivery', price card = 'FROM €150 / based on current listings', CTA labels = 'VIEW WORLD CUP TICKETS' + 'EXPLORE EVENTS', 5-badge trust strip only (no duplicate ticker), footer shows 'Refund available according to our refund policy', ReviewsSummary shows neutral line."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_honesty_iter65_overclaim_sweep.py (created)"
+  ],
+  "success_rate": {
+    "backend": "100% (waitlist + featured events regression pass)",
+    "frontend": "Rendered DOM: 18/18 PASS (hero softened, CTA labels, price context, footer refund, no duplicate ribbon, no fake review signals, no inflated counts, hub pages LiveClubHubPage render with correct robots meta + EditorialByline). Served HTML shell: 14/18 pytest — 4 failure groups all traceable to the same root cause (public/index.html meta-map + fallback builder)."
+  },
+  "test_credentials": "Not required",
+  "seed_data_creation": "TEST_iter65_<uuid>@example.com waitlist entries on slug 'euro-indexing' (idempotent upsert, will be cleaned by TEST_ prefix policy).",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iter65 scope: 9 overclaim checks. Rendered DOM is clean. ONE remaining issue: /app/frontend/public/index.html shell still has banned 100% terms + 'Buy ' fallback. Regression suite: /app/backend/tests/test_honesty_iter65_overclaim_sweep.py (18 tests). After main-agent fixes shell, restart frontend and re-run — should go 18/18. Also keep iter64 suite running (test_honesty_iter64_html_sweep.py + test_honesty_layer.py) for broader honesty-layer regression.",
+  "rca of the issue": "RCA: overclaim_sweep.py targeted src/*.jsx components successfully (52 files, rendered DOM clean) but did NOT extend to public/index.html route meta-map tuples or the dynamic description builder at lines 419+430. Reproduction: `curl -sL https://euro-indexing.preview.emergentagent.com/ -A 'Mozilla/5.0' | grep -oE '100%[^\"<>]{0,40}' | sort -u` returns 8 banned occurrences. Mitigation: patch /app/frontend/public/index.html directly at the 8 listed lines, restart frontend, re-run pytest. Impact: Googlebot that fetches raw HTML (initial crawl, before JS executes) sees the banned claims as the meta description / title — honesty-layer leak for SEO. Users (rendered DOM) are unaffected."
+}

@@ -262,7 +262,7 @@ const WorldCupPage = () => {
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <Trophy className="w-12 h-12 text-amber-500 mx-auto mb-4" />
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Don't Miss History</h2>
-          <p className="text-slate-400 mb-8 max-w-lg mx-auto">Tickets are selling fast. Secure your seats for the biggest football event ever.</p>
+          <p className="text-slate-400 mb-8 max-w-lg mx-auto">Tickets are selling fast. Secure your seats for the FIFA World Cup 2026.</p>
           <Link to="/checkout?event=world-cup-2026">
             <Button className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold px-10 py-6 text-lg rounded-full shadow-[0_0_40px_rgba(245,158,11,0.3)] hover:shadow-[0_0_60px_rgba(245,158,11,0.5)] transition-all" data-testid="bottom-cta">
               <Ticket className="w-5 h-5 mr-2" /> View All World Cup Tickets

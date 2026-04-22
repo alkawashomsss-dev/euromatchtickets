@@ -105,7 +105,7 @@ const ColdplayPage = () => {
           <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/40">
             <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> 500,000+ Tickets Sold</span>
             <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-cyan-400" /> QR ticket delivery</span>
-            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-yellow-400" /> 4.9/5 from 12,000+ Reviews</span>
+            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-yellow-400" /> Highly rated from Customer reviews</span>
             <span className="flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-blue-400" /> 40% cheaper than Viagogo</span>
           </div>
         </div>

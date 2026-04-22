@@ -162,8 +162,8 @@ const HarryStylesPage = () => {
       <section className="py-4 border-y border-white/5 bg-[#1e1e1e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 text-sm">
-            <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />100% Money-Back</div>
-            <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" />4.9/5 Trustpilot</div>
+            <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />Refund policy</div>
+            <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" /> Trustpilot</div>
             <div className="flex items-center gap-2"><Users className="w-4 h-4 text-violet-600" />Verified sellers</div>
           </div>
         </div>

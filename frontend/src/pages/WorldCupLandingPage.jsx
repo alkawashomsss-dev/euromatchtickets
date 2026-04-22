@@ -93,7 +93,7 @@ const WorldCupLandingPage = () => {
             </Badge>
             <Badge className="bg-amber-500/10 text-amber-600 border-amber-200 px-4 py-2">
               <Star className="w-4 h-4 mr-2" />
-              4.9/5 from 10,000+ Reviews
+              Highly rated from 10,000+ Reviews
             </Badge>
           </div>
 
@@ -320,7 +320,7 @@ const WorldCupLandingPage = () => {
               </Button>
             </Link>
             <p className="text-sm text-slate-400 mt-4">
-              🛡️ Buyer protection™ Guarantee | 🔒 100% Secure Payment
+              🛡️ Buyer protection™ Guarantee | 🔒 Secure checkout Payment
             </p>
           </div>
         </div>

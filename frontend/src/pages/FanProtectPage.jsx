@@ -71,7 +71,7 @@ const FanProtectPage = () => {
     { value: "2.4M+", label: "Tickets Delivered" },
     { value: "99.8%", label: "Delivery Success" },
     { value: "850K+", label: "Happy Customers" },
-    { value: "4.9/5", label: "Customer Rating" }
+    { value: "", label: "Customer Rating" }
   ];
 
   const schema = {

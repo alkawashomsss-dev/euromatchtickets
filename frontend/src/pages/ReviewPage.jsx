@@ -200,7 +200,7 @@ const ReviewPage = () => {
                   <p className="text-xs text-gray-400">{t("Tickets Sold", "Tickets verkauft", "Billets vendus", "Entradas Vendidas", "Biglietti Venduti")}</p>
                 </div>
                 <div className="bg-[#1a2236] rounded-none p-4 text-center border border-gray-700/30">
-                  <p className="text-2xl font-bold text-white">4.8/5</p>
+                  <p className="text-2xl font-bold text-white"></p>
                   <p className="text-xs text-gray-400">{t("Customer Rating", "Kundenbewertung", "Note clients", "Valoracion", "Valutazione")}</p>
                 </div>
                 <div className="bg-[#1a2236] rounded-none p-4 text-center border border-gray-700/30">
@@ -332,7 +332,7 @@ const ReviewPage = () => {
                     [isGerman ? "Durchschn. Preis" : isFrench ? "Prix moyen" : "Avg. Price", isGerman ? "Niedrig" : isFrench ? "Bas" : "Low", isGerman ? "Hoch" : isFrench ? "Eleve" : "High", isGerman ? "Mittel-Hoch" : isFrench ? "Moyen-Eleve" : "Medium-High"],
                     [isGerman ? "Lieferung" : isFrench ? "Livraison" : "Delivery", isGerman ? "Sofort (QR)" : isFrench ? "Instantanee (QR)" : "Instant (QR)", isGerman ? "1-3 Tage" : isFrench ? "1-3 jours" : "1-3 days", isGerman ? "1-5 Tage" : isFrench ? "1-5 jours" : "1-5 days"],
                     [isGerman ? "Servicegebühr" : isFrench ? "Frais de service" : "Service Fee", "~12%", "~25-30%", "~20-25%"],
-                    [isGerman ? "Bewertung" : isFrench ? "Note" : "Rating", "4.8/5", "3.2/5", "3.8/5"],
+                    [isGerman ? "Bewertung" : isFrench ? "Note" : "Rating", "", "3.2/5", "3.8/5"],
                     [isGerman ? "Europäische Events" : isFrench ? "Evenements europeens" : "European Events", "500K+", "300K+", "200K+"],
                     [isGerman ? "Transparenz" : isFrench ? "Transparence" : "Transparency", isGerman ? "Endpreis sichtbar" : isFrench ? "Prix final visible" : "Final price visible", isGerman ? "Versteckte Gebühren" : isFrench ? "Frais caches" : "Hidden fees", isGerman ? "Gebühren im Checkout" : isFrench ? "Frais au checkout" : "Fees at checkout"]
                   ].map((row, i) => (

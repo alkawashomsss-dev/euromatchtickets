@@ -270,28 +270,29 @@ const HomePage = () => {
             {/* Subtitle */}
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="mb-8">
               <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed">
-                Be part of history. Verified tickets for the biggest football event ever. 
-                <span className="text-[#e10600] font-bold"> 100% secure</span> with QR ticket delivery.
+                Be part of history. Verified tickets for the FIFA World Cup 2026. 
+                <span className="text-[#e10600] font-bold"> Secure checkout</span> with QR ticket delivery.
               </p>
             </motion.div>
 
             {/* CTA Row */}
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
               <div className="bg-[#15151e] border border-white/10 px-5 py-3">
-                <span className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Tickets from</span>
+                <span className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">From</span>
                 <div className="text-3xl md:text-4xl font-black text-[#e10600] mt-0.5">&euro;150</div>
+                <span className="text-slate-500 text-[10px]">based on current listings</span>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/world-cup-2026">
                   <Button data-testid="buy-worldcup-btn" className="bg-[#e10600] hover:bg-red-700 text-white text-base h-13 px-8 rounded-none font-black uppercase tracking-wider transition-colors duration-150">
-                    Buy World Cup Tickets
+                    View World Cup Tickets
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link to="/events">
                   <Button data-testid="explore-events-btn" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base h-13 px-8 rounded-none font-bold uppercase tracking-wider transition-colors duration-150">
-                    <Ticket className="w-5 h-5 mr-2" /> All Events
+                    <Ticket className="w-5 h-5 mr-2" /> Explore Events
                   </Button>
                 </Link>
               </div>
@@ -312,28 +313,6 @@ const HomePage = () => {
             </motion.div>
           </div>
         </motion.div>
-      </section>
-
-      {/* ═══════ TRUST TICKER ═══════ */}
-      <section className="py-3 bg-[#15151e] border-y border-white/5 overflow-hidden">
-        <div className="flex animate-ticker whitespace-nowrap">
-          {[...Array(2)].map((_, setIdx) => (
-            <div key={setIdx} className="flex items-center gap-12 px-6">
-              {[
-                { icon: Shield, text: "Buyer Protection" },
-                { icon: Ticket, text: "QR Ticket Delivery" },
-                { icon: Lock, text: "Encrypted Payments" },
-                { icon: Globe, text: "European Marketplace" },
-                { icon: CheckCircle, text: "Verified Sellers" }
-              ].map((item, i) => (
-                <span key={`${setIdx}-${i}`} className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  <item.icon className="w-3.5 h-3.5 text-[#e10600]" />
-                  {item.text}
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* ═══════ HOTTEST EVENTS CAROUSEL ═══════ */}

@@ -75,7 +75,7 @@ export const NewsletterSignup = ({ source = "unknown", variant = "default" }) =>
           Get Ticket Price Alerts
         </h3>
         <p className="text-slate-400 text-sm mb-6">
-          Be the first to know when prices drop. Join 12,000+ fans who never miss a deal.
+          Be the first to know when prices drop. Join our community who never miss a deal.
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
           <input

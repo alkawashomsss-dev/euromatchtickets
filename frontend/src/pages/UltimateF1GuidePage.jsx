@@ -73,7 +73,7 @@ const UltimateF1GuidePage = () => {
       {/* Quick Stats */}
       <section className="max-w-5xl mx-auto px-4 pb-12">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {[{ label: "Verified Race", val: "€59" }, { label: "Total Races", val: "15+" }, { label: "Avg Saving", val: "35%" }, { label: "Rating", val: "4.8/5" }].map((s, i) => (
+          {[{ label: "Verified Race", val: "€59" }, { label: "Total Races", val: "15+" }, { label: "Avg Saving", val: "35%" }, { label: "Rating", val: "" }].map((s, i) => (
             <div key={i} className="bg-white/5 border border-white/10 rounded-none p-4 text-center"><p className="text-2xl font-black text-white">{s.val}</p><p className="text-xs text-slate-500">{s.label}</p></div>
           ))}
         </div>

@@ -26,7 +26,7 @@ const ItalianLandingPage = () => {
     { titolo: "Prezzi Piu Bassi", desc: "Garantiamo i migliori prezzi sul mercato. Se trovi di meno, pareggiamo!", icona: Zap },
     { titolo: "100% Garantiti", desc: "Tutti i biglietti verificati con garanzia Buyer protection. Rimborso totale.", icona: Shield },
     { titolo: "Consegna Istantanea", desc: "Ricevi i biglietti via email istantaneamente. QR code pronto.", icona: Ticket },
-    { titolo: "4.8/5 Stelle", desc: "Migliaia di clienti soddisfatti in tutta Europa.", icona: Star }
+    { titolo: " Stelle", desc: "Migliaia di clienti soddisfatti in tutta Europa.", icona: Star }
   ];
 
   const faqs = [

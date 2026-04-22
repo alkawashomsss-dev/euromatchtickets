@@ -253,7 +253,7 @@ export default function DynamicSEOPage() {
                 <li className="flex items-start gap-2"><Shield className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Verified-seller listings with Buyer protection</li>
                 <li className="flex items-start gap-2"><Clock className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Instant e-ticket delivery via QR code</li>
                 <li className="flex items-start gap-2"><CreditCard className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Secure payment with Stripe encryption</li>
-                <li className="flex items-start gap-2"><Star className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />4.8/5 rating from 12,000+ verified buyers</li>
+                <li className="flex items-start gap-2"><Star className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Highly rated from verified customers</li>
               </ul>
             </div>
             <div className="space-y-6">
@@ -261,10 +261,10 @@ export default function DynamicSEOPage() {
                 <h3 className="font-bold text-white mb-4">Buyer Protection</h3>
                 <div className="space-y-3">
                   {[
-                    { icon: Shield, text: "500,000+ Tickets Sold", sub: "100% Money Back Guarantee" },
+                    { icon: Shield, text: "500,000+ Tickets Sold", sub: "Refund policy applies" },
                     { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
                     { icon: Clock, text: "QR ticket delivery", sub: "E-tickets sent immediately" },
-                    { icon: Star, text: "4.9/5 from 12,000+ Reviews", sub: "Trusted in 25+ countries" }
+                    { icon: Star, text: "Highly rated from Customer reviews", sub: "Trusted in 25+ countries" }
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
@@ -505,7 +505,7 @@ export default function DynamicSEOPage() {
                   <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-              <span className="text-yellow-400 font-semibold text-sm">4.9/5</span>
+              <span className="text-yellow-400 font-semibold text-sm"></span>
               <span className="text-slate-400 text-sm">(customer reviews)</span>
             </div>
 
@@ -538,7 +538,7 @@ export default function DynamicSEOPage() {
                 <div className="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-xs text-slate-400">
                   <span className="flex items-center gap-1"><Shield className="w-3 h-3 text-emerald-500" /> Verified Tickets</span>
                   <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-emerald-500" /> QR ticket delivery</span>
-                  <span className="flex items-center gap-1"><Star className="w-3 h-3 text-emerald-500" /> 4.9/5 from 12,000+ buyers</span>
+                  <span className="flex items-center gap-1"><Star className="w-3 h-3 text-emerald-500" /> Highly rated from  buyers</span>
                   <span className="flex items-center gap-1"><CreditCard className="w-3 h-3 text-emerald-500" /> Secure Stripe Checkout</span>
                 </div>
                 {/* Price Drop Alert - Inline */}
@@ -605,10 +605,10 @@ export default function DynamicSEOPage() {
                 <h3 className="font-bold text-white mb-4">Buyer Protection</h3>
                 <div className="space-y-3">
                   {[
-                    { icon: Shield, text: "500,000+ Tickets Sold", sub: "100% Money Back Guarantee" },
+                    { icon: Shield, text: "500,000+ Tickets Sold", sub: "Refund policy applies" },
                     { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
                     { icon: Clock, text: "QR ticket delivery", sub: "E-tickets sent immediately" },
-                    { icon: Star, text: "4.9/5 from 12,000+ Reviews", sub: "Trusted in 25+ countries" }
+                    { icon: Star, text: "Highly rated from Customer reviews", sub: "Trusted in 25+ countries" }
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />

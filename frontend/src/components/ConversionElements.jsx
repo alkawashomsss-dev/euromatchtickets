@@ -33,9 +33,9 @@ export const TrustBar = () => (
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex flex-wrap justify-center gap-8 text-sm">
         <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" /><span className="font-medium">Verified marketplace</span></div>
-        <div className="flex items-center gap-2 text-amber-600"><Star className="w-4 h-4" /><span className="font-medium">4.9/5 from 12,000+ Reviews</span></div>
+        <div className="flex items-center gap-2 text-amber-600"><Star className="w-4 h-4" /><span className="font-medium">Highly rated from Customer reviews</span></div>
         <div className="flex items-center gap-2 text-blue-600"><Globe className="w-4 h-4" /><span className="font-medium">Trusted in 25+ Countries</span></div>
-        <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" /><span className="font-medium">100% Money Back Guarantee</span></div>
+        <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" /><span className="font-medium">Refund policy applies</span></div>
       </div>
     </div>
   </section>

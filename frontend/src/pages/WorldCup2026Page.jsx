@@ -167,9 +167,9 @@ const WorldCup2026Page = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />500,000+ Tickets Sold</div>
-            <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" />4.9/5 from 12,000+ Reviews</div>
+            <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" />Highly rated from Customer reviews</div>
             <div className="flex items-center gap-2"><Users className="w-4 h-4 text-violet-600" />Trusted in 25+ Countries</div>
-            <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />100% Money Back Guarantee</div>
+            <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />Refund policy applies</div>
           </div>
         </div>
       </section>

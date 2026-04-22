@@ -70,7 +70,7 @@ const HowToBuyF1TicketsPage = () => {
               <Users className="w-5 h-5" /><span>50,000+ Happy Customers</span>
             </div>
             <div className="flex items-center gap-2 text-emerald-600">
-              <Star className="w-5 h-5" /><span>4.9/5 Trustpilot Rating</span>
+              <Star className="w-5 h-5" /><span> Trustpilot Rating</span>
             </div>
           </div>
         </div>
@@ -168,7 +168,7 @@ const HowToBuyF1TicketsPage = () => {
             {[
               { q: "Are F1 tickets refundable?", a: "Yes! If the race is cancelled and not rescheduled, you receive a full refund within 14 days. For voluntary cancellations, refunds are available up to 30 days before the event (minus a small admin fee)." },
               { q: "How do I receive my F1 tickets?", a: "Tickets are delivered instantly via email as mobile QR codes. You can show the QR code directly on your phone at the circuit entrance. PDF download is also available if you prefer to print." },
-              { q: "Are online F1 tickets safe to buy?", a: "Absolutely! EuroMatchTickets is a verified, registered German company. We use 256-bit SSL encryption, and every ticket comes with our 100% Money Back Guarantee." },
+              { q: "Are online F1 tickets safe to buy?", a: "Absolutely! EuroMatchTickets is a verified, registered German company. We use 256-bit SSL encryption, and every ticket comes with our Refund policy applies." },
               { q: "What's the cheapest F1 race to attend?", a: "The Hungarian GP and Italian GP (Monza) offer the best value with General Admission from €99. Spanish GP and Austrian GP are also affordable at €119." },
               { q: "When should I buy F1 tickets?", a: "We recommend booking 3-6 months in advance for the best prices and seat selection. Popular races like Monaco, Silverstone, and Singapore sell out fastest." },
               { q: "Can I resell my F1 tickets?", a: "Yes, tickets purchased from EuroMatchTickets are fully transferable. You can resell through our platform or gift them to someone else." }

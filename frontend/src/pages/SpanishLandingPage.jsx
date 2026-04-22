@@ -27,7 +27,7 @@ const SpanishLandingPage = () => {
     { titulo: "Los Precios Más Bajos", desc: "Garantizamos los mejores precios del mercado. Si encuentras más barato, ¡igualamos el precio!", icono: Zap },
     { titulo: "100% Garantizadas", desc: "Todas las entradas verificadas con nuestra garantía Buyer protection. Tu dinero seguro.", icono: Shield },
     { titulo: "Entrega Inmediata", desc: "Recibe tus entradas al instante por email. QR listo para escanear.", icono: Ticket },
-    { titulo: "4.8/5 Estrellas", desc: "Miles de clientes satisfechos en toda Europa. Lee nuestras reseñas.", icono: Star }
+    { titulo: " Estrellas", desc: "Miles de clientes satisfechos en toda Europa. Lee nuestras reseñas.", icono: Star }
   ];
 
   return (
@@ -69,7 +69,7 @@ const SpanishLandingPage = () => {
           <div className="flex flex-wrap items-center gap-6 mt-8 text-sm text-slate-400 anim-slide-up" style={{animationDelay: '0.45s'}}>
             <span className="flex items-center gap-1"><Shield className="w-4 h-4 text-green-400" /> Garantía Buyer protection</span>
             <span className="flex items-center gap-1"><Zap className="w-4 h-4 text-yellow-400" /> Entrega Instantánea</span>
-            <span className="flex items-center gap-1"><Star className="w-4 h-4 text-yellow-400" /> 4.8/5 ( reseñas)</span>
+            <span className="flex items-center gap-1"><Star className="w-4 h-4 text-yellow-400" />  ( reseñas)</span>
           </div>
         </div>
       </section>

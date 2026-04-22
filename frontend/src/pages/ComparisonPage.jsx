@@ -163,7 +163,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
           <div className="mt-8 text-center">
             <Link to="/events">
               <Button size="lg" className="bg-emerald-500/100 hover:bg-emerald-600 text-white font-bold px-10 py-5 text-lg rounded-full shadow-lg hover:shadow-xl transition-all" data-testid="comparison-buy-cta">
-                Buy Tickets Now <ArrowRight className="w-5 h-5 ml-2" />
+                Check Availability <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
             <p className="text-slate-400 text-sm mt-3">0% fees &middot; Instant QR delivery &middot; Buyer protection</p>
@@ -199,7 +199,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               <div className="w-16 h-16 rounded-none bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold mb-2">100% Money-Back</h3>
+              <h3 className="text-xl font-bold mb-2">Refund policy</h3>
               <p className="text-slate-500 mb-4">Full refund if the event is cancelled. Your purchase is always protected.</p>
               <Link to="/checkout" className="text-blue-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Shop Now <ArrowRight className="w-4 h-4" /></Link>
             </div>
@@ -217,7 +217,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
             </p>
             <Link to="/events">
               <Button size="lg" className="bg-emerald-500/100 hover:bg-emerald-600 text-white font-bold px-10 py-5 text-lg rounded-full shadow-lg">
-                Buy Tickets Now <ArrowRight className="w-5 h-5 ml-2" />
+                Check Availability <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
           </div>

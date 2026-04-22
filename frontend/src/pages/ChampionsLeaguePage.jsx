@@ -122,9 +122,9 @@ const ChampionsLeaguePage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>500,000+ Tickets Sold</span></div>
-            <div className="flex items-center gap-2 text-amber-600"><Star className="w-5 h-5" /><span>4.9/5 from 12,000+ Reviews</span></div>
+            <div className="flex items-center gap-2 text-amber-600"><Star className="w-5 h-5" /><span>Highly rated from Customer reviews</span></div>
             <div className="flex items-center gap-2 text-blue-600"><Globe className="w-5 h-5" /><span>Trusted in 25+ Countries</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>100% Money Back Guarantee</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Refund policy applies</span></div>
           </div>
         </div>
       </section>
@@ -182,7 +182,7 @@ const ChampionsLeaguePage = () => {
       <section className="py-16" data-testid="ucl-reviews">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-2 text-center text-white">What Fans Say</h2>
-          <p className="text-center text-slate-500 mb-8">4.8/5 average rating from 3,247 verified ticket buyers</p>
+          <p className="text-center text-slate-500 mb-8"> average rating from 3,247 verified ticket buyers</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {reviews.map((r, i) => (
               <div key={i} className="bg-[#1e1e1e] border border-white/5 rounded-none p-5" data-testid={`review-${i}`}>

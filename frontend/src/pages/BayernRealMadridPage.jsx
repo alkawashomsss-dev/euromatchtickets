@@ -153,7 +153,7 @@ const BayernRealMadridPage = () => {
             </div>
             <Link to="#tickets">
               <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-full text-lg shadow-lg">
-                <Ticket className="w-5 h-5 mr-2" /> Buy Tickets Now
+                <Ticket className="w-5 h-5 mr-2" /> Check Availability
               </Button>
             </Link>
           </motion.div>
@@ -161,7 +161,7 @@ const BayernRealMadridPage = () => {
           <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/50">
             <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> Buyer protection</span>
             <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> QR ticket delivery</span>
-            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.8/5 (customer reviews)</span>
+            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" />  (customer reviews)</span>
           </div>
         </div>
       </section>

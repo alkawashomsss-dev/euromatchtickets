@@ -40,7 +40,7 @@ const RefundPolicyPage = () => {
             <div className="grid md:grid-cols-3 gap-4">
               <div className="bg-[#1e1e1e] rounded-none p-4 text-center">
                 <CheckCircle className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
-                <p className="font-semibold">100% Money Back</p>
+                <p className="font-semibold">Refund policy</p>
               </div>
               <div className="bg-[#1e1e1e] rounded-none p-4 text-center">
                 <Clock className="w-8 h-8 text-blue-600 mx-auto mb-2" />
