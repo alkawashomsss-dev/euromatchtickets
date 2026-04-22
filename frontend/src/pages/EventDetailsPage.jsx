@@ -244,13 +244,6 @@ export default function EventDetailsPage() {
               </div>
             </FadeIn>
 
-            {/* 🏟 3D Venue Viewer — lazy-loaded stadium / circuit */}
-            <FadeIn delay={0.08}>
-              <div className="bg-[#14141c] border border-white/5 rounded-sm p-5 mb-4">
-                <VenueViewer event={event} />
-              </div>
-            </FadeIn>
-
             {/* Ticket Listings */}
             <FadeIn delay={0.1}>
               <TicketListings

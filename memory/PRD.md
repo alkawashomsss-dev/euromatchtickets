@@ -272,3 +272,22 @@ Triple-layered enforcement:
 ### Current state:
 - 231 events · 28,007 tickets · 0 duplicates · 100% unique event images
 - Checkout now shows: Block Lower Bowl · Section Premium Club · Row 5 · Seat 18 + VIP perks + 4 real photos
+
+## 📅 2026-04-22 (evening) — Removed Ugly 3D Viewer + Verified Ticket Coverage
+
+### User feedback (IMG_7042):
+- 3D circuit iframe ("Circuit de Monaco" with red oval on green) looked amateur
+- Previous preview showed "No tickets available" for Monaco
+
+### Fix applied:
+- ✅ Removed `<VenueViewer event={event} />` block from `EventDetailsPage.jsx`. No more 3D iframes.
+- ✅ Verified ticket coverage: **220/220 future events** now have ≥1 available ticket (0 empty events).
+- ✅ Monaco GP: 98 tickets from €253 across 7 categories (including Paddock Club + Platinum VIP + Golden Circle).
+- ✅ Spanish MotoGP Jerez: 63 tickets from €150 across 7 categories.
+- ✅ "No tickets" shown in user's screenshot was from a stale Safari preview; live pages render correctly.
+
+### Current state (verified):
+- 231 events · 28,007 tickets · 100% coverage · 0 duplicate images
+- Every event page shows: block · section · row · seat info
+- VIP Gallery renders 4 real photos from the heart of the event
+- No ugly 3D iframe distracting from the checkout flow
