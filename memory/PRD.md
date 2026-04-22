@@ -125,3 +125,16 @@ Triple-layered enforcement:
 3. **Preview vs Production** — Preview URL serves frontend directly (CRA dev). Production (Uvicorn + built React) is where SSR, hard-404, and backend meta injection actually fire. Always tell the user to redeploy.
 4. **Auth on prod is broken** due to Atlas DB role, NOT code.
 5. **Lead count is social proof, not a metric** — exposing via `/api/leads/count` is intentional.
+
+## 📅 2026-04-22 — Homepage Image Overhaul (Duplicates Fix)
+**Issue:** Homepage cards showed duplicate AI-generated images (same MotoGP bike on 3 cards, same stadium shot on 2 cards, same F1 image on 3 cards). Wikipedia auto-scraper returned irrelevant images (buildings for Taylor Swift, faces for Spa F1, NY Mets logo for FIFA World Cup).
+
+**Fix applied:**
+- ❌ Deleted all 189 Wikipedia-scraped event images + cleared their `image_url` fields from MongoDB.
+- ❌ Removed `services/image_collector.py` strategy (unreliable keyword matching).
+- ✅ Added **curated venue image downloader** (`services/venue_image_downloader.py`) — pulls 11 editorially-verified lead images directly from Wikipedia REST API for named venues only: Allianz Arena, Santiago Bernabéu, Wembley, Camp Nou, Silverstone, Yas Marina, Mugello, COTA, Isle of Man TT course, MotoGP action photo, Ziggo Dome. Served at `/api/event-images/venues/<slug>.<ext>`.
+- ✅ HomePage.jsx trending/racing/hot-events cards now use **unique** professional images — local `/images/heroes/*.jpg` heroes + the 11 curated venue images. No two cards share an image.
+- ✅ `eventImages.js`: fallback path now appends `.jpg` for proper `<img>` rendering when no explicit `image_url` exists on an event.
+- ✅ `EventCard` (HomePage + EventsPage) now always routes through `getEventImagePath()` (which handles the `/event-images/` → `/api/event-images/` ingress rewrite).
+
+**Files:** `HomePage.jsx`, `EventsPage.jsx`, `utils/eventImages.js`, `components/OptimizedImage.jsx`, `services/venue_image_downloader.py` (new).

@@ -82,7 +82,7 @@ const EventCard = ({ event, index }) => {
         {/* Image */}
         <div className="relative h-52 overflow-hidden">
           <img 
-            src={event.image_url || getEventImagePath(event)}
+            src={getEventImagePath(event)}
             alt={event.image_alt || `${event.title} tickets`}
             loading="lazy" decoding="async" width="400" height="208"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -343,7 +343,7 @@ const HomePage = () => {
             {/* Spa F1 - Primary Push */}
             <FadeInSection delay={0.05}>
               <Link to="/spa-f1-tickets" className="group block relative h-56 overflow-hidden border-2 border-[#e10600]/30 hover:border-[#e10600] transition-colors duration-150">
-                <img src="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png"
+                <img src="/images/heroes/f1-red.jpg"
                   alt="Spa F1 Tickets 2026 - Belgian Grand Prix" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute top-3 left-3 flex items-center gap-2">
@@ -363,7 +363,7 @@ const HomePage = () => {
             {/* Taylor Swift */}
             <FadeInSection delay={0.1}>
               <Link to="/taylor-swift-london-tickets" className="group block relative h-56 overflow-hidden border border-white/8 hover:border-[#e10600] transition-colors duration-150">
-                <img src="https://images.unsplash.com/photo-1770737639812-bd3c709da73b?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=80&w=800" alt="Taylor Swift Eras Tour London Tickets 2026" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <img src="/images/heroes/concert-purple.jpg" alt="Taylor Swift Eras Tour London Tickets 2026" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                 <div className="relative h-full flex flex-col justify-end p-4">
                   <span className="bg-[#e10600] text-white text-[9px] font-black px-2 py-0.5 uppercase tracking-wider w-fit mb-auto">#2 TRENDING</span>
@@ -379,7 +379,7 @@ const HomePage = () => {
             {/* MotoGP */}
             <FadeInSection delay={0.15}>
               <Link to="/motogp-tickets" className="group block relative h-56 overflow-hidden border border-white/8 hover:border-[#e10600] transition-colors duration-150">
-                <img src="https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/baf0ba765e1206aefd8046ef9406b38847ffe26b7b2e8c7769fe72d0ea3861c9.png" alt="MotoGP Tickets 2026 - All Grand Prix" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <img src="/api/event-images/venues/motogp-action.jpg" alt="MotoGP Tickets 2026 - All Grand Prix" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="relative h-full flex flex-col justify-end p-4">
                   <span className="bg-amber-500 text-black text-[9px] font-black px-2 py-0.5 uppercase tracking-wider w-fit mb-auto">#3 TRENDING</span>
@@ -480,11 +480,11 @@ const HomePage = () => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                 {[
-                  { to: "/f1-tickets", title: "F1 Tickets", sub: "23 Grand Prix", price: "From \u20ac89", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/abb0bc14a4fcdab87c908c8cf9232506b4ea3aa5c54262f7ab461ee8d7d709ca.png" },
-                  { to: "/f1-2026-schedule", title: "F1 Schedule", sub: "Full Calendar", price: "Mar - Dec 2026", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png" },
-                  { to: "/motogp-tickets", title: "MotoGP", sub: "21 Races", price: "From \u20ac69", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/baf0ba765e1206aefd8046ef9406b38847ffe26b7b2e8c7769fe72d0ea3861c9.png" },
-                  { to: "/motogp-2026-schedule", title: "MotoGP Schedule", sub: "Full Calendar", price: "Mar - Nov 2026", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/baf0ba765e1206aefd8046ef9406b38847ffe26b7b2e8c7769fe72d0ea3861c9.png" },
-                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", price: "From \u20ac149", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/baf0ba765e1206aefd8046ef9406b38847ffe26b7b2e8c7769fe72d0ea3861c9.png" },
+                  { to: "/f1-tickets", title: "F1 Tickets", sub: "23 Grand Prix", price: "From \u20ac89", img: "/images/heroes/monaco.jpg" },
+                  { to: "/f1-2026-schedule", title: "F1 Schedule", sub: "Full Calendar", price: "Mar - Dec 2026", img: "/images/heroes/silverstone.jpg" },
+                  { to: "/motogp-tickets", title: "MotoGP", sub: "21 Races", price: "From \u20ac69", img: "/images/heroes/motogp.jpg" },
+                  { to: "/motogp-2026-schedule", title: "MotoGP Schedule", sub: "Full Calendar", price: "Mar - Nov 2026", img: "/images/heroes/motogp-orange.jpg" },
+                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", price: "From \u20ac149", img: "/api/event-images/venues/isle-of-man.png" },
                 ].map((item) => (
                   <Link key={item.to} to={item.to} className="group relative h-36 overflow-hidden block hover:ring-2 hover:ring-[#e10600] transition-all duration-150">
                     <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
@@ -504,12 +504,12 @@ const HomePage = () => {
           <FadeInSection delay={0.2}>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {[
-                { to: "/concerts-in-london-2026", label: "LONDON 2026", title: "London Concerts", price: "From \u20ac45", img: "https://images.unsplash.com/photo-1770737639812-bd3c709da73b?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=80&w=400" },
-                { to: "/bayern-vs-real-madrid-tickets", label: "UCL CLASSIC", title: "Bayern vs Real", price: "From \u20ac199", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/35405278ece6848751ff21246eaaa3ea32e2c93c5a41cda6db0dd5379726831b.png" },
-                { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "World Cup", price: "From \u20ac89", img: "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=400" },
-                { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From \u20ac85", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/35405278ece6848751ff21246eaaa3ea32e2c93c5a41cda6db0dd5379726831b.png" },
-                { to: "/f1-bahrain-grand-prix-tickets", label: "NIGHT RACE", title: "Bahrain GP", price: "From \u20ac149", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/abb0bc14a4fcdab87c908c8cf9232506b4ea3aa5c54262f7ab461ee8d7d709ca.png" },
-                { to: "/f1-tickets-2026", label: "FULL SEASON", title: "F1 2026", price: "From \u20ac120", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png" },
+                { to: "/concerts-in-london-2026", label: "LONDON 2026", title: "London Concerts", price: "From \u20ac45", img: "/images/heroes/concert-live.jpg" },
+                { to: "/bayern-vs-real-madrid-tickets", label: "UCL CLASSIC", title: "Bayern vs Real", price: "From \u20ac199", img: "/api/event-images/venues/allianz-arena.jpg" },
+                { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "World Cup", price: "From \u20ac89", img: "/images/heroes/worldcup-trophy.jpg" },
+                { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From \u20ac85", img: "/api/event-images/venues/santiago-bernabeu.jpg" },
+                { to: "/f1-bahrain-grand-prix-tickets", label: "NIGHT RACE", title: "Bahrain GP", price: "From \u20ac149", img: "/api/event-images/venues/yas-marina.png" },
+                { to: "/f1-tickets-2026", label: "FULL SEASON", title: "F1 2026", price: "From \u20ac120", img: "/images/heroes/f1-race.jpg" },
               ].map((cat, i) => (
                 <Link key={cat.to} to={cat.to} className="group relative h-40 overflow-hidden block hover:ring-2 hover:ring-[#e10600] transition-all duration-150">
                   <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />

@@ -62,7 +62,7 @@ const EventRow = ({ event }) => {
         {/* Image */}
         <div className="w-full md:w-24 h-24 overflow-hidden flex-shrink-0">
           <img
-            src={event.image_url || getEventImagePath(event)}
+            src={getEventImagePath(event)}
             alt={event.title}
             loading="lazy"
             decoding="async"

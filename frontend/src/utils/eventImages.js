@@ -58,9 +58,15 @@ export function getEventImagePath(event) {
 
   // 1. REAL unique image collected for this specific event
   // (from Wikipedia via services/image_collector.py)
+  // Backend serves at /api/event-images/ but DB stores /event-images/ — rewrite.
   const real = event.image_url;
-  if (real && (real.startsWith("/event-images/") || real.startsWith("http"))) {
-    return real;
+  if (real) {
+    if (real.startsWith("/event-images/")) {
+      return real.replace("/event-images/", "/api/event-images/");
+    }
+    if (real.startsWith("/api/event-images/") || real.startsWith("http")) {
+      return real;
+    }
   }
 
   // 2. Category-themed fallback
@@ -81,7 +87,11 @@ export function getEventImagePath(event) {
 
   const images = CATEGORY_IMAGES[category];
   const index = hashString(id) % images.length;
-  return images[index];
+  const base = images[index];
+  // Ensure a file extension so <img> tags render directly
+  return base.endsWith(".jpg") || base.endsWith(".webp") || base.endsWith(".png")
+    ? base
+    : `${base}.jpg`;
 }
 
 /**
@@ -110,6 +120,7 @@ export function getResponsiveUrls(basePath) {
   if (!basePath) basePath = "";
   const isRealImage =
     basePath.startsWith("/event-images/") ||
+    basePath.startsWith("/api/event-images/") ||
     basePath.startsWith("http") ||
     basePath.endsWith(".jpg") ||
     basePath.endsWith(".png") ||

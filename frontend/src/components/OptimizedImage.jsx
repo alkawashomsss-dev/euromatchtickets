@@ -18,7 +18,7 @@ const OptimizedImage = ({
   onError,
 }) => {
   // 1. Real URL → single <img>, browser handles scaling
-  if (directSrc || (basePath && /\.(jpg|jpeg|png|webp)$/i.test(basePath)) || basePath?.startsWith("/event-images/") || basePath?.startsWith("http")) {
+  if (directSrc || (basePath && /\.(jpg|jpeg|png|webp)$/i.test(basePath)) || basePath?.startsWith("/event-images/") || basePath?.startsWith("/api/event-images/") || basePath?.startsWith("http")) {
     const realSrc = directSrc || basePath;
     return (
       <img
