@@ -123,17 +123,6 @@ const MotoGPTicketsPage = () => {
           "performer": {
             "@type": "Organization",
             "name": "MotoGP World Championship"
-          },
-          "offers": {
-            "@type": "AggregateOffer",
-            "lowPrice": "45",
-            "highPrice": "1500",
-            "priceCurrency": "EUR",
-            "offerCount": "500",
-            "availability": "https://schema.org/InStock",
-            "url": "https://euromatchtickets.com/motogp-tickets",
-            "validFrom": "2025-01-01",
-            "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
           }
         }
       }
@@ -157,7 +146,9 @@ const MotoGPTicketsPage = () => {
         "name": "How much do MotoGP tickets cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "MotoGP ticket prices start from €69 for general admission. VIP Village passes range from €500-2500 depending on the race and package."
+          "text": minPrice
+            ? `MotoGP 2026 ticket prices on our marketplace start from €${Math.round(minPrice)} for general admission. VIP Village and Paddock packages range higher depending on the race and hospitality tier.`
+            : `The 2026 MotoGP calendar is confirmed but verified tickets are not yet on sale on our marketplace. Join the free waitlist to be alerted the moment real inventory becomes available — no fake prices, no estimates.`
         }
       }
     ]
@@ -176,8 +167,10 @@ const MotoGPTicketsPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="MotoGP Tickets 2026 | Buy Moto GP Race Passes"
-        description="Buy MotoGP tickets 2026 from €69. Moto GP calendar 2026: Mugello, Silverstone, Assen. VIP Village. MotoGP tickets price from €69. Instant QR delivery."
+        title="MotoGP Tickets 2026 — Official Calendar, Prices & Availability | EuroMatchTickets"
+        description={minPrice
+          ? `MotoGP 2026 tickets from €${Math.round(minPrice)}. Full calendar, venue guides, verified sellers. Instant QR delivery and full refund if the race is cancelled.`
+          : `MotoGP 2026 full calendar — Mugello, Silverstone, Assen, Barcelona, Valencia. Join the free waitlist to be alerted the moment verified inventory becomes available.`}
         image="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

@@ -311,3 +311,22 @@ Triple-layered enforcement:
 - `/api/auth/me` returns 401 on anonymous pageview (console noise only, non-blocking).
 - Sitemap hand-maintained — if new SEO landing pages are added, remember to extend `seed_sitemaps.py`.
 
+
+
+---
+
+## 🔥 Session Update — Feb 2026 (Iteration 60 — Honesty Layer + Trust Fix)
+
+### CRITICAL SEO & TRUST overhaul (verified: 8/8 backend + frontend tests pass):
+- ✅ **No fake inventory**: Events without real tickets now show `Coming soon · Join waitlist` badge. DB sweep moved 218 events to `coming_soon`.
+- ✅ **Waitlist API**: `POST /api/marketing/waitlist` + `GET /api/marketing/waitlist/count/{slug}`. Reusable `<WaitlistCTA/>` component.
+- ✅ **Product schema dedup**: `EventStructuredData` gates Product on real inventory; standalone `<ProductSchema/>` removed from `EventDetailsPage` (was duplicating `@graph`). Coming-soon events emit Event-only JSON-LD.
+- ✅ **Taylor Swift × 8 + Justin Bieber × 1**: marked `coming_soon`, `featured=false`, `lowest_price=null`. `featured=true` query filters `$nin: ['coming_soon']`.
+- ✅ **Homepage EventCard + MotoGP page**: dynamic min-price from DB (was hardcoded €69), empty-state waitlist UX, per-card coming_soon badge.
+- ✅ **CTR title rewrites (P1)**: SpaGPPage + MonacoGPPage use new "Prices, Dates & Availability" patterns. MonacoGP duplicate `description=` attr fixed.
+- ✅ **Backend stub honesty**: `GET /api/events/{unknown-slug}` returns `status='coming_soon', lowest_price=null` (was active, €99).
+- ✅ **Cookie banner**: removed full-screen `z-[9998]` overlay that was blocking waitlist CTAs on first visit.
+
+### Backlog (flagged, non-blocking):
+- 🟡 Admin endpoints (`mega_fix`, `fix_all_prices`, `seed_all_missing`) missing `require_admin` — needs auth gate.
+- 🟡 `StructuredData.getPrices()` fallback 50/500 still exists (dead code under current gating).

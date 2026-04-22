@@ -180,15 +180,18 @@ async def get_event(event_id: str, request: Request):
             )
     
     if not event:
-        # Never return 404 - build a minimal event from the slug for checkout
+        # Event not in DB — return a minimal coming_soon stub so the frontend
+        # renders the WaitlistCTA branch instead of a fake price/buy flow.
         prettyName = ' '.join(w.capitalize() for w in re.split(r'[-_]', event_id) if w and w not in ('tickets','ticket','2026','2027','2025'))
         event = {
             "event_id": event_id, "slug": event_id,
             "title": prettyName or "Event Ticket",
-            "event_type": "event", "venue": "", "city": "Europe", "country": "",
+            "event_type": "event", "venue": "", "city": "", "country": "",
             "event_date": "2026-12-31T20:00:00Z", "image_url": "",
-            "price_from": 99, "status": "active",
+            "lowest_price": None, "price_from": None,
+            "status": "coming_soon", "available_tickets": 0,
             "tickets": [], "ticket_count": 0, "categories": {},
+            "grouped_sections": [],
         }
         return event
 

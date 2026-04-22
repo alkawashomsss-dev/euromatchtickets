@@ -59,8 +59,10 @@ const CookieConsentBanner = () => {
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/70 z-[9998]" />
-      <div className="fixed bottom-0 left-0 right-0 z-[9999] p-4" data-testid="cookie-banner">
+      {/* Removed the full-screen black overlay — it was blocking user clicks
+          on above-the-fold CTAs (waitlist, buy buttons) until consent was given.
+          The banner itself remains clearly visible at the bottom. */}
+      <div className="fixed bottom-0 left-0 right-0 z-[60] p-4" data-testid="cookie-banner">
         <div className="max-w-4xl mx-auto bg-[#15151e] border border-white/10 overflow-hidden shadow-2xl">
           {!showSettings ? (
             <div className="p-6">
