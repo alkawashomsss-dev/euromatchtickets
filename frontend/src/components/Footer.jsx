@@ -10,17 +10,15 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#0a0a0f] text-white" data-testid="footer">
-      {/* Trust Badges Bar */}
+      {/* Trust Badges Bar — one concise row, no overclaiming */}
       <div className="border-b border-white/6">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="max-w-7xl mx-auto px-4 py-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: Shield, label: "100% Buyer Protection" },
-              { icon: CheckCircle, label: "Verified Sellers" },
-              { icon: Lock, label: "SSL Encrypted" },
-              { icon: CreditCard, label: "Secure Payments" },
-              { icon: Ticket, label: "Instant QR Delivery" },
-              { icon: Clock, label: "24/7 Support" },
+              { icon: Shield, label: "Buyer protection" },
+              { icon: CheckCircle, label: "Verified sellers" },
+              { icon: Lock, label: "Encrypted payments" },
+              { icon: Clock, label: "Customer support" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-slate-400">
                 <item.icon className="w-4 h-4 text-[#e10600] flex-shrink-0" />
@@ -48,7 +46,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-slate-500 text-xs mb-4 leading-relaxed">
-              Europe's #1 trusted ticket marketplace for FIFA World Cup 2026, Champions League, Premier League, F1 and concerts. 500,000+ tickets sold.
+              European secondary-market platform for football, Formula 1, MotoGP and major concert tickets. Verified-seller inventory, escrowed payments, full refund if an event is cancelled.
             </p>
             <div className="flex gap-1.5 mb-4">
               {[
@@ -62,7 +60,7 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            {/* Trustpilot-style Rating */}
+            {/* Rating — real customer reviews, no inflated star count */}
             <div className="flex items-center gap-2 bg-white/5 px-3 py-2 w-fit">
               <div className="flex gap-0.5">
                 {[1,2,3,4,5].map(i => (
@@ -71,8 +69,7 @@ const Footer = () => {
                   </div>
                 ))}
               </div>
-              <span className="text-xs font-bold">4.9/5</span>
-              <span className="text-[10px] text-slate-600">(12,847)</span>
+              <span className="text-xs font-bold">Customer reviews</span>
             </div>
           </div>
 

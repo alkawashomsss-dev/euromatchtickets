@@ -226,9 +226,9 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
-      <SEOHead 
-        title="EuroMatchTickets | F1, Football & Concert Tickets | 42% Cheaper"
-        description="Europe's #1 official alternative ticket marketplace. Cheapest verified tickets for World Cup 2026, Taylor Swift, Super Bowl, Champions League, F1, MotoGP."
+      <SEOHead
+        title="EuroMatchTickets — Football, F1, MotoGP & Concert Tickets Marketplace"
+        description="EuroMatchTickets is a European secondary-market platform for football, Formula 1, MotoGP and major concert tickets. Verified-seller inventory, escrowed payments, full refund if an event is cancelled."
         image="https://euromatchtickets.com/logo-192.png"
       />
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }]} />
@@ -320,12 +320,11 @@ const HomePage = () => {
           {[...Array(2)].map((_, setIdx) => (
             <div key={setIdx} className="flex items-center gap-12 px-6">
               {[
-                { icon: Shield, text: "100% Buyer Protection" },
-                { icon: Ticket, text: "Instant QR Delivery" },
-                { icon: Star, text: "4.9/5 from 12,847 reviews" },
-                { icon: Lock, text: "SSL Encrypted Payments" },
-                { icon: Globe, text: "Serving 25+ Countries" },
-                { icon: CheckCircle, text: "Verified Sellers Only" },
+                { icon: Shield, text: "Buyer Protection" },
+                { icon: Ticket, text: "QR Ticket Delivery" },
+                { icon: Lock, text: "Encrypted Payments" },
+                { icon: Globe, text: "European Marketplace" },
+                { icon: CheckCircle, text: "Verified Sellers" },
               ].map((item, i) => (
                 <span key={`${setIdx}-${i}`} className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
                   <item.icon className="w-3.5 h-3.5 text-[#e10600]" />
@@ -600,7 +599,7 @@ const HomePage = () => {
               </div>
               <div className="ml-2">
                 <span className="text-white font-black text-lg">Excellent</span>
-                <span className="text-slate-400 text-xs block">4.9/5 from 12,847 reviews</span>
+                <span className="text-slate-400 text-xs block">Customer ratings</span>
               </div>
             </div>
           </FadeInSection>
@@ -726,7 +725,7 @@ const HomePage = () => {
           <FadeInSection className="text-center mb-10">
             <div className="inline-flex items-center gap-2 bg-[#facc15]/10 border border-[#facc15]/20 px-4 py-1.5 mb-4">
               <Star className="w-3.5 h-3.5 text-[#facc15] fill-[#facc15]" />
-              <span className="text-[10px] font-black text-[#facc15] uppercase tracking-widest">4.9/5 FROM 2,940+ REVIEWS</span>
+              <span className="text-[10px] font-black text-[#facc15] uppercase tracking-widest">Customer reviews</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3">WHAT FANS SAY</h2>
             <p className="text-slate-500 text-sm">Real reviews from verified ticket buyers worldwide</p>

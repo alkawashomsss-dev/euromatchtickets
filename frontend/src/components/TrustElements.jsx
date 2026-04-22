@@ -136,10 +136,9 @@ export const TrustBar = () => (
   <div className="mt-[84px] sm:mt-[132px] bg-[#1e1e1e] border-b border-white/5 py-2">
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex justify-center items-center gap-4 sm:gap-6 text-[11px] sm:text-sm overflow-x-auto whitespace-nowrap">
-        <div className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e10600] flex-shrink-0" /><span className="text-slate-400 font-bold uppercase tracking-wider">100% Guarantee</span></div>
-        <div className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400 text-amber-400 flex-shrink-0" /><span className="text-slate-400 font-bold uppercase tracking-wider">4.8/5 Trustpilot</span></div>
-        <div className="hidden sm:flex items-center gap-1.5"><Award className="w-4 h-4 text-[#e10600] flex-shrink-0" /><span className="text-slate-400 font-bold uppercase tracking-wider">Official Partner</span></div>
-        <div className="hidden sm:flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-[#15803d] flex-shrink-0" /><span className="text-slate-400 font-bold uppercase tracking-wider">2M+ Tickets Sold</span></div>
+        <div className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e10600] flex-shrink-0" /><span className="text-slate-400 font-bold uppercase tracking-wider">Buyer protection</span></div>
+        <div className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#15803d] flex-shrink-0" /><span className="text-slate-400 font-bold uppercase tracking-wider">Verified sellers</span></div>
+        <div className="hidden sm:flex items-center gap-1.5"><Award className="w-4 h-4 text-[#e10600] flex-shrink-0" /><span className="text-slate-400 font-bold uppercase tracking-wider">Cancellation refund</span></div>
       </div>
     </div>
   </div>

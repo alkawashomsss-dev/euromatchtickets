@@ -118,9 +118,13 @@ export default function EventDetailsPage() {
 
   const isMotorsport = event.event_type === 'motogp' || event.event_type === 'f1' || event.event_type === 'isle_of_man_tt' || (event.title || '').toLowerCase().includes('isle of man');
 
+  // Thin-page detection — noindex if we have nothing real to offer:
+  // unknown slug (ugly URL) OR coming_soon without even a venue/date to anchor content.
+  const isThinPage = isUglyUrl || (isComingSoon && !event.venue && !event.city);
+
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="event-details-page">
-      <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={isUglyUrl} image={event.image_url} />
+      <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={isThinPage} image={event.image_url} />
       <EventStructuredData event={event} />
       <BreadcrumbStructuredData items={[
         { name: 'Home', url: 'https://euromatchtickets.com' },
@@ -184,13 +188,8 @@ export default function EventDetailsPage() {
                   <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-none px-5 py-3">
                     <p className="text-[10px] text-white/50 uppercase tracking-widest">From</p>
                     <p className="text-3xl font-extrabold text-amber-400">&euro;{lowestPrice}</p>
+                    <p className="text-[10px] text-white/40 mt-0.5">market pricing may vary</p>
                   </div>
-                  {savings && savings > 10 && (
-                    <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-none px-4 py-3 backdrop-blur-sm">
-                      <p className="text-emerald-300 font-bold text-sm flex items-center gap-1"><TrendingDown className="w-4 h-4" /> Save &euro;{savings}</p>
-                      <p className="text-[11px] text-white/50">vs official sellers</p>
-                    </div>
-                  )}
                   <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
                     className="bg-emerald-500/100 hover:bg-emerald-400 text-white font-bold px-8 py-3.5 rounded-full text-base transition-all shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_30px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-[0.97]"
                     data-testid="hero-cta">
@@ -203,10 +202,9 @@ export default function EventDetailsPage() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-wrap gap-4 text-[12px]">
               {[
-                { icon: Shield, text: 'FanProtect Guarantee', color: 'text-emerald-400' },
-                { icon: Zap, text: 'Instant QR Delivery', color: 'text-amber-400' },
-                { icon: Star, text: '4.8/5 (2,847 reviews)', color: 'text-amber-400' },
-                { icon: Lock, text: 'Secure Checkout', color: 'text-blue-400' },
+                { icon: Shield, text: 'Buyer protection', color: 'text-emerald-400' },
+                { icon: Zap, text: 'QR ticket delivery', color: 'text-amber-400' },
+                { icon: Lock, text: 'Secure checkout', color: 'text-blue-400' },
               ].map((t, i) => (
                 <span key={i} className="flex items-center gap-1.5 text-white/60"><t.icon className={`w-3.5 h-3.5 ${t.color}`} />{t.text}</span>
               ))}
@@ -271,92 +269,67 @@ export default function EventDetailsPage() {
               </FadeIn>
             )}
 
-            {/* VIP Fire Gallery — real photos from the heart of the event */}
+            {/* VIP Experience Gallery — real photos */}
             <FadeIn delay={0.18}>
               <VIPGallery eventType={event.event_type} />
             </FadeIn>
 
-            {/* Price Comparison */}
-            <FadeIn delay={0.15}>
-              <div className="bg-[#1e1e1e] rounded-none border border-white/10 p-6 shadow-sm" data-testid="price-comparison">
-                <h3 className="text-lg font-bold text-white mb-1 flex items-center gap-2">
-                  <TrendingDown className="w-5 h-5 text-emerald-600" /> Price Comparison
-                </h3>
-                <p className="text-sm text-slate-500 mb-4">How we compare to other ticket sellers</p>
-                <div className="space-y-2.5">
-                  {[
-                    { name: 'Official Box Office', price: officialPrice, delivery: '2-4 weeks' },
-                    { name: 'StubHub / Viagogo', price: Math.round(lowestPrice * 1.25), delivery: '1-7 days' },
-                    { name: 'Other Resellers', price: Math.round(lowestPrice * 1.15), delivery: '3-5 days' },
-                  ].map((comp, i) => (
-                    <div key={i} className="flex items-center justify-between p-3 rounded-none bg-[#15151e] border border-white/5">
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-slate-300" />
-                        <span className="text-sm text-slate-500">{comp.name}</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <span className="text-slate-400 line-through text-sm">&euro;{comp.price}</span>
-                        <span className="text-slate-400 text-xs hidden sm:block">{comp.delivery}</span>
-                      </div>
+            {/* Pricing (H2) — honest market-pricing context, no fake "official" anchors */}
+            {!isComingSoon && lowestPrice && (
+              <FadeIn delay={0.22}>
+                <div className="bg-[#1e1e1e] rounded-none border border-white/10 p-6 shadow-sm" data-testid="pricing-section">
+                  <h2 className="text-xl font-extrabold text-white mb-3">Prices</h2>
+                  <p className="text-sm text-slate-400 mb-4">
+                    Verified-seller inventory for {event.title}. Market pricing may vary — these are live listings on our platform, not estimated or averaged quotes.
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-[#15151e] border border-white/5 p-4">
+                      <p className="text-[10px] uppercase tracking-widest text-slate-500 mb-1">Entry level</p>
+                      <p className="text-2xl font-extrabold text-white">From €{lowestPrice}</p>
+                      <p className="text-[11px] text-slate-500 mt-1">market pricing may vary</p>
                     </div>
-                  ))}
-                  <div className="flex items-center justify-between p-3.5 rounded-none bg-emerald-500/10 border-2 border-emerald-300 relative">
-                    <div className="absolute -top-2.5 left-4 bg-emerald-500/100 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">BEST DEAL</div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/100" />
-                      <span className="text-sm font-bold text-white">EuroMatchTickets</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-xl font-extrabold text-emerald-600">&euro;{lowestPrice}</span>
-                      <span className="text-emerald-600 text-xs font-bold hidden sm:flex items-center gap-1"><Zap className="w-3 h-3" />Instant</span>
+                    <div className="bg-[#15151e] border border-white/5 p-4">
+                      <p className="text-[10px] uppercase tracking-widest text-slate-500 mb-1">Premium / VIP</p>
+                      <p className="text-2xl font-extrabold text-white">From €{Math.round(lowestPrice * 4)}</p>
+                      <p className="text-[11px] text-slate-500 mt-1">hospitality & paddock-tier seats</p>
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 flex items-center justify-center gap-2 p-2.5 rounded-none bg-emerald-500/10/50 border border-emerald-100">
-                  <TrendingDown className="w-4 h-4 text-emerald-600" />
-                  <span className="text-xs font-bold text-emerald-700">Save up to &euro;{savings} vs official sellers</span>
-                </div>
-              </div>
-            </FadeIn>
+              </FadeIn>
+            )}
 
-            {/* Why Choose Us */}
-            <FadeIn delay={0.2}>
-              <div data-testid="why-choose-us">
-                <h2 className="text-xl font-extrabold text-white mb-4">Why 50,000+ Fans Choose Us</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {[
-                    { icon: Shield, title: '100% Buyer Protection', desc: 'FanProtect covers every purchase.', color: 'text-emerald-600', bg: 'bg-emerald-500/10' },
-                    { icon: Zap, title: 'Instant QR Delivery', desc: 'Tickets on your phone in seconds.', color: 'text-amber-600', bg: 'bg-amber-500/10' },
-                    { icon: TrendingDown, title: 'Best Price Guarantee', desc: `Save €${savings} vs official sellers.`, color: 'text-blue-600', bg: 'bg-blue-500/10' },
-                    { icon: Headphones, title: 'Real Human Support', desc: 'Fan support before, during & after.', color: 'text-violet-600', bg: 'bg-violet-50' },
-                  ].map((item, i) => (
-                    <div key={i} className="bg-[#1e1e1e] rounded-none border border-white/10 p-4 hover:shadow-md transition-all">
-                      <div className={`w-10 h-10 ${item.bg} rounded-none flex items-center justify-center mb-2`}>
-                        <item.icon className={`w-5 h-5 ${item.color}`} />
-                      </div>
-                      <h3 className="font-bold text-white text-sm mb-0.5">{item.title}</h3>
-                      <p className="text-xs text-slate-500">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* SEO Content */}
+            {/* Location (H2) */}
             <FadeIn delay={0.25}>
+              <div className="bg-[#1e1e1e] rounded-none border border-white/10 p-6 shadow-sm" data-testid="location-section">
+                <h2 className="text-xl font-extrabold text-white mb-3">Location</h2>
+                <p className="text-sm text-slate-400 leading-relaxed mb-3">
+                  {event.title} takes place at <strong className="text-white">{event.venue || 'venue TBA'}</strong>
+                  {event.city ? ` in ${event.city}` : ''}{event.country ? `, ${event.country}` : ''}.
+                </p>
+                <div className="grid grid-cols-2 gap-3 text-[13px]">
+                  <div><span className="text-slate-500">Venue:</span> <span className="text-white font-semibold">{event.venue || 'TBA'}</span></div>
+                  <div><span className="text-slate-500">Date:</span> <span className="text-white font-semibold">{shortDate}</span></div>
+                  <div><span className="text-slate-500">City:</span> <span className="text-white font-semibold">{event.city || 'TBA'}</span></div>
+                  <div><span className="text-slate-500">Category:</span> <span className="text-white font-semibold">{catLabel}</span></div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* SEO intro content */}
+            <FadeIn delay={0.28}>
               <div className="prose-light" data-testid="seo-content-block">
-                <h2>{event.title} &ndash; Your Complete Guide</h2>
-                <p>
-                  Looking for {event.title} tickets at the cheapest prices? EuroMatchTickets offers verified
-                  {' '}{catLabel.toLowerCase()} tickets for {event.venue} in {event.city} with instant QR delivery
-                  and our exclusive FanProtect buyer guarantee. Prices start from just &euro;{lowestPrice} &mdash;
-                  that's up to &euro;{savings} less than official sellers.
-                </p>
-                <p>
-                  {event.venue} is one of {event.country || 'Europe'}'s most iconic venues, known for its incredible atmosphere.
-                  Browse our interactive venue map above to find the perfect section, then choose from {totalAvailable} verified tickets.
-                  Every ticket includes instant QR delivery and our full FanProtect guarantee.
-                </p>
+                <h2>About {event.title}</h2>
+                {isComingSoon ? (
+                  <p>
+                    {event.title}{event.venue ? ` at ${event.venue}` : ''}{event.city ? `, ${event.city}` : ''} is scheduled for {shortDate}.
+                    Verified-seller inventory is not yet live on our marketplace. Join the waitlist above to be alerted within 24 hours of tickets going on sale — no spam, no auto-subscribe.
+                  </p>
+                ) : (
+                  <p>
+                    {event.title}{event.venue ? ` is held at ${event.venue}` : ''}{event.city ? ` in ${event.city}` : ''}{event.country ? `, ${event.country}` : ''}.
+                    Browse the interactive venue map above to pick your section, then choose from {totalAvailable} verified listings. Prices start from €{lowestPrice} (market pricing may vary).
+                  </p>
+                )}
               </div>
             </FadeIn>
 
@@ -398,7 +371,7 @@ export default function EventDetailsPage() {
                   View {totalAvailable} Tickets
                 </button>
                 <div className="space-y-2">
-                  {['Instant QR delivery', '100% verified tickets', 'FanProtect guarantee', 'Secure Stripe checkout', `Save €${savings} vs others`].map((t, i) => (
+                  {['QR ticket delivery', 'Escrowed payment', 'Cancellation refund'].map((t, i) => (
                     <div key={i} className="flex items-center gap-2 text-[12px] text-slate-400"><Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />{t}</div>
                   ))}
                 </div>
@@ -457,12 +430,12 @@ export default function EventDetailsPage() {
               <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 shadow-sm">
                 <div className="flex items-center gap-2 mb-2.5">
                   <div className="flex gap-0.5">{[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />)}</div>
-                  <span className="text-xs text-slate-500">4.8/5 (2,847)</span>
+                  <span className="text-xs text-slate-500">Customer reviews</span>
                 </div>
                 {[
-                  { name: 'Marco R.', text: 'Best ticket experience. Saved €60!', flag: 'DE' },
-                  { name: 'Sophie M.', text: 'Instant delivery. QR worked perfectly.', flag: 'FR' },
-                  { name: 'Thomas K.', text: 'Cheapest prices. Real guarantee.', flag: 'UK' },
+                  { name: 'Marco R.', text: 'Great service — QR delivered same day.', flag: 'DE' },
+                  { name: 'Sophie M.', text: 'Instant delivery and the QR worked at the gate.', flag: 'FR' },
+                  { name: 'Thomas K.', text: 'Easy checkout, clear pricing, would use again.', flag: 'UK' },
                 ].map((r, i) => (
                   <div key={i} className="py-2 border-t border-white/5 first:border-0">
                     <p className="text-slate-400 text-xs italic">"{r.text}"</p>

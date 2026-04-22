@@ -23,8 +23,8 @@ const SEOHead = ({
   const location = useLocation();
   const pageCanonicalUrl = canonicalUrl || `${BASE_URL}${location.pathname}`;
   
-  const defaultTitle = 'EuroMatchTickets - Buy Football, F1 & Concert Tickets';
-  const defaultDescription = 'Europe\u2019s cheapest event ticket shop! Buy verified tickets for Champions League, Formula 1, concerts and 500+ events. Instant QR delivery, FanProtect guarantee!';
+  const defaultTitle = 'EuroMatchTickets — Football, F1 & Concert Tickets';
+  const defaultDescription = 'EuroMatchTickets is a European ticket marketplace for football matches, Formula 1, MotoGP, and major concerts. Verified seller inventory, escrowed payments, and full refund if an event is cancelled.';
   const defaultImage = `${BASE_URL}/logo-192.png`;
 
   const fullTitle = title && typeof title === 'string' && title.trim() 

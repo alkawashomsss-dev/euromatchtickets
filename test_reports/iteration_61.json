@@ -1,0 +1,55 @@
+{
+  "summary": "Validated the 9 items from review_request. Backend (test 9): 8/8 pytest PASS in test_honesty_layer.py + unknown-slug returns coming_soon/null. Frontend: Tests 2, 3, 5, 6, 7, 8 PASS cleanly. Tests 1 and 4 FAIL due to two concrete regressions originating in /app/frontend/src/components/TicketListings.jsx: (a) a trust-row at the bottom of the ticket listing still advertises 'FanProtect Guarantee · 100% Verified · Instant QR Delivery · 50,000+ Happy Fans' — this breaks trust-signal dedup (4 visible instances instead of ≤3) AND reintroduces the banned '50,000+ Happy Fans' overclaim. (b) TicketListings fetches /api/tickets?event_slug=... independently and renders the full list of 98 tickets + 'Tickets From €90' on the Taylor Swift coming_soon event, even though the backend correctly reports status=coming_soon, available_tickets=0, lowest_price=null — contradicting the WaitlistCTA shown just above it.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "TicketListings.jsx (bottom trust row, lines 272-277)",
+        "issue": "Still renders the 4-badge strip 'FanProtect Guarantee · 100% Verified · Instant QR Delivery · 50,000+ Happy Fans'. This (a) pushes the 'Instant QR Delivery / FanProtect / Verified Sellers' visible-count on an active event page to 4 (requirement is ≤3: hero + sidebar + footer) and (b) is the specific '50,000+ Happy Fans / Fans' overclaim the review said must NOT be present. Verified on /event/spanish-motogp-2026-jerez-tickets.",
+        "selector": "TicketListings trust-row (no data-testid)",
+        "priority": "HIGH"
+      },
+      {
+        "component": "TicketListings.jsx + EventDetailsPage (coming_soon gating)",
+        "issue": "On /event/taylor-swift-eras-tour-london-2026-tickets the backend correctly returns status='coming_soon', available_tickets=0, lowest_price=null, BUT the page still displays '98 TICKETS AVAILABLE', a full ticket table starting at €90, 'TICKETS FROM €90', and a 'View 98 Tickets' CTA — directly contradicting the WaitlistCTA ('No verified tickets available yet') shown above. Cause: TicketListings calls GET /api/tickets?event_slug=... directly (which does return raw seat rows for this slug) and is not gated by event.status. Same issue affects every other coming_soon event that happens to have seeded ticket rows. This is a CRITICAL honesty-layer regression for indexable coming_soon pages.",
+        "selector": "[data-testid='pricing-section'], '.ticket-listings', 'Tickets From'",
+        "priority": "CRITICAL"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "Coming-soon event → ticket inventory",
+        "issue": "Frontend TicketListings is decoupled from event.status. Either (i) /api/tickets must return [] when the parent event.status=='coming_soon', or (ii) EventDetailsPage must not mount TicketListings / the 'Tickets From €X' sidebar when isComingSoon is true. Today the two data sources disagree on the same page.",
+        "affected_selectors": ["[data-testid='waitlist-cta']", "[data-testid='pricing-section']", ".ticket-listings"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_honesty_layer.py",
+    "/app/test_reports/pytest/honesty_layer.xml"
+  ],
+  "action_items": [
+    "In /app/frontend/src/components/TicketListings.jsx remove (or reduce to ≤1 badge) the trust row at lines 272-277 that contains 'FanProtect Guarantee', '100% Verified', 'Instant QR Delivery', and especially '50,000+ Happy Fans'. That single change fixes Tests 1 and the overclaim requirement simultaneously.",
+    "Gate TicketListings and the 'Tickets From €X' sidebar in EventDetailsPage.jsx behind `!isComingSoon` (or make the backend /api/tickets endpoint return [] for coming_soon events). Currently Taylor Swift / Bieber coming_soon pages show a full ticket table and a real price even though event.status=coming_soon and lowest_price=null — breaks the honesty layer end-to-end.",
+    "Optional: add data-testid='trust-signals-row' to any remaining trust strip so future dedup tests are deterministic."
+  ],
+  "critical_code_review_comments": [
+    "TicketListings.jsx mixes two responsibilities: rendering seat rows AND rendering a global trust/marketing footer. Split those so the footer cannot leak banned copy onto every event page.",
+    "EventDetailsPage computes isComingSoon for hero + WaitlistCTA + JSON-LD gating, but that flag is never propagated to the child ticket list. Pass it down (or lift TicketListings out of the coming_soon branch entirely).",
+    "/api/tickets currently returns live inventory for coming_soon events. This is a server-side honesty bug — consider filtering by parent event.status in the endpoint.",
+    "events.py: get_event() for unknown slug fabricates title='Non Existent Slug Xyz' and renders under /event/<slug> with index,noindex gating working, but this fabrication of pretty names for arbitrary user input is still a content-farm risk even though noindex is applied. Consider returning 404 for slugs that don't match ANY known entity + fuzzy matches.",
+    "Pre-existing: events.py destructive admin endpoints (mega_fix, fix_all_prices, seed_all_missing) still have NO auth — reported in iteration_60, still unpatched."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "~75% (6/8 frontend checks pass; 2 fail on the same root cause — unfiltered TicketListings)"},
+  "test_credentials": "Not required",
+  "seed_data_creation": "One TEST_<uuid>@example.com waitlist entry on slug 'euro-indexing' per backend run (idempotent upsert).",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend honesty layer is solid (8/8 pytest, unknown slug returns coming_soon, Taylor Swift backend returns coming_soon + null price + 0 tickets). The remaining failures are isolated to /app/frontend/src/components/TicketListings.jsx and the isComingSoon gating in EventDetailsPage.jsx. After the main agent removes the '50,000+ Happy Fans / FanProtect Guarantee / 100% Verified / Instant QR Delivery' strip from TicketListings and wraps <TicketListings/> + 'Tickets From' sidebar in a !isComingSoon conditional, re-run: (1) /event/spanish-motogp-2026-jerez-tickets — count of Instant QR Delivery + FanProtect + Verified Sellers should be ≤3 and '50,000+ Happy Fans' should be absent. (2) /event/taylor-swift-eras-tour-london-2026-tickets — page should show NO ticket list, NO 'Tickets From €90', only the WaitlistCTA + LOCATION + ABOUT + FAQ. All other checks (H2s, canonical, robots=noindex for thin page, homepage dedup, footer 4-badge strip, no banned claims) already pass.",
+  "rca of the issue": "Root cause: TicketListings.jsx was not migrated when the rest of EventDetailsPage was refactored for the honesty layer. It still (1) contains a hardcoded 4-icon trust strip with '50,000+ Happy Fans', and (2) fetches /api/tickets regardless of parent event.status. On active events (1) produces duplicate trust signals, and on coming_soon events (1)+(2) together produce a visible ticket table + real price that directly contradicts the WaitlistCTA shown above it. Fix is localized: gate mount with isComingSoon and delete the trust strip block."
+}
