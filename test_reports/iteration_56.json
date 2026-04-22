@@ -1,0 +1,51 @@
+{
+  "summary": "Iteration 56 - Comprehensive SEO indexability audit on 47 key SEO routes + sitemaps + robots.txt + broken-link sweep. Backend: 15/15 pytest pass (sitemap index, robots.txt, 9 sub-sitemaps loaded & well-formed, total <loc> count >=500, all <image:loc> are absolute https://euromatchtickets.com/, broken-link sample of 120 URLs across 6 sitemaps all return 200, all 47 key routes return HTTP 200). Frontend Playwright audit with Googlebot UA found CRITICAL SEO issues on the indexable pages: (a) 3 pages render with EMPTY document.title -> /concerts-in-london-2026, /concerts-in-amsterdam-2026, /taylor-swift-london-tickets — causing duplicate-title penalty across all three; (b) React hydration errors (HTML-invalid '<span>' as direct child of '<tr>' and '<span>' as direct child of '<tbody>') on 3 pages: /f1-ticket-prices-guide, /how-to-buy-f1-tickets, /motogp-2026-schedule — these are the JS errors the user reported; (c) /concerts-in-paris-2026 returns HTTP 200 but no React route is defined (soft 404). Non-blocking: /api/auth/me returns 401 console error on every anonymous pageview (Google ignores resource errors but noisy). Original problem 'Unexpected token )' was NOT reproduced in current build.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/auth/me", "issue": "Returns 401 on every anonymous pageview producing 'Failed to load resource' console error in Playwright/Lighthouse. Consider returning 200 with {user:null} or having client suppress console.error for this endpoint."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "CityDemandPage.jsx (used by ConcertsLondon2026Page + ConcertsAmsterdam2026Page)", "issue": "Uses React 19 native '<title>{metaTitle}</title>' + '<meta>' inside regular JSX <div>, but title does NOT hoist into <head> at runtime — document.title remains empty after hydration. Must use document.title = ... in useEffect (like SEOHead.jsx does) OR add slugs to the pre-hydration metadata map in /app/frontend/public/index.html.", "selector": "head > title", "priority": "CRITICAL"},
+      {"component": "TaylorSwiftLondonPage / ComingSoonEvent", "issue": "/taylor-swift-london-tickets renders document.title='' even though the slug IS in pre-hydration unverifiedDemandPages list. The pre-hydration JS sets noindex correctly but the title is being overwritten by a child component to empty string. Title is critical even on noindex pages for SERP fallback rendering.", "selector": "head > title", "priority": "HIGH"},
+      {"component": "F1TicketPricesGuidePage / HowToBuyF1TicketsPage / MotoGPSchedulePage", "issue": "React 19 dev console reports 'In HTML, <span> cannot be a child of <tr>' and 'In HTML, <span> cannot be a child of <tbody>' — these are real HTML validation errors that will cause hydration mismatches and possibly schema/markup corruption when Google renders the page. Likely caused by a shared component (BreadcrumbSchema or SEOHead with non-empty fragment) being placed between <tbody> and <tr>, OR a stray <span> in the table data. Must locate and wrap in <td> or move outside the table.", "selector": "table tbody > span, table tr > span (direct child)", "priority": "HIGH"}
+    ],
+    "integration_issues": [
+      {"flow": "Concerts city pages title hoisting", "issue": "CityDemandPage relies on React 19 native metadata which is not working in this build. All current and future /concerts-in-<city>-<year> pages will ship with empty titles unless fixed.", "affected_selectors": ["head > title", "head > meta[name='description']", "head > link[rel='canonical']"]}
+    ],
+    "design_issues": [
+      {"screen": "ConcertsLondon2026Page hero", "issues": ["H1 renders as 'Concerts in London2026 — Full Schedule' with NO space between 'London' and '2026' — same a11y/concatenation bug as iter55's TaylorSwift Coming Soon. Visual line-break OK but accessible name is concatenated."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_seo_indexability_iter56.py",
+    "/app/test_reports/pytest/pytest_iter56.xml"
+  ],
+  "action_items": [
+    "FIX (CRITICAL): /app/frontend/src/components/CityDemandPage.jsx — replace React 19 '<title>{metaTitle}</title>' inside JSX with a useEffect that sets document.title = metaTitle and document.querySelector(\"meta[name='description']\").setAttribute('content', metaDesc). Alternatively, register /concerts-in-london-2026 and /concerts-in-amsterdam-2026 (and any future city pages) in the metadataMap inside /app/frontend/public/index.html so the pre-hydration script sets the title BEFORE React mounts.",
+    "FIX (CRITICAL): /app/frontend/src/pages/TaylorSwiftLondonPage.jsx (or ComingSoonEvent component) — ensure document.title is explicitly set (e.g. 'Taylor Swift London — Coming Soon | EuroMatchTickets'). Currently empty.",
+    "FIX (HIGH): /app/frontend/src/pages/F1TicketPricesGuidePage.jsx, HowToBuyF1TicketsPage.jsx, MotoGPSchedulePage.jsx — open in dev mode (REACT_APP_DEBUG_HYDRATION=1 or check React 19 console) and locate the stray <span> rendered as direct child of <tr> or <tbody>. Likely a JSON-LD <script>, BreadcrumbSchema, or a conditional render placed between <tbody> and the {races.map(...)}. Move it outside the <table>.",
+    "OPTIONAL: Add /concerts-in-paris-2026 route + page (currently 200 soft-404) OR remove from any sitemap so it does not appear in Google.",
+    "OPTIONAL: silence /api/auth/me 401 console noise (return 200 with null user for anonymous, or use try/catch in axios interceptor)."
+  ],
+  "critical_code_review_comments": [
+    "Reliance on React 19 native <title>/<meta> hoisting in CityDemandPage.jsx is undocumented in this codebase — every other SEO page uses either pre-hydration map (index.html) or document.title in useEffect (SEOHead.jsx). The mixed approach is fragile; standardize on one (recommend SEOHead pattern + pre-hydration map fallback).",
+    "/app/frontend/public/index.html is now ~750 lines with three growing maps (metadataMap, unverifiedDemandPages, eventSchemaMap, slugRedirects, skipEvent). New SEO landing pages added in /pages/ will silently miss SEO unless the developer remembers to add them to ALL relevant maps. Consider auto-generating index.html maps from a single JSON registry at build time.",
+    "All 47 audited routes return HTTP 200 even when no React route exists (SPA catch-all). Pages with no defined route should return 404 status (or be served with <meta name='robots' content='noindex'>) to avoid soft-404 SEO penalty."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_seo_indexability_iter56.py"
+  ],
+  "success_rate": {
+    "backend": "100% (15/15 pytest)",
+    "frontend": "55% (26/47 routes fully clean — 6 critical SEO bugs + 21 routes affected by /api/auth/me console noise)"
+  },
+  "test_credentials": "none required (audit uses Googlebot UA, no login)",
+  "seed_data_creation": "none",
+  "retest_needed": true,
+  "main_agent_can_self_test": false,
+  "context_for_next_testing_agent": "Backend SEO infrastructure (sitemaps, robots, sitemap-index, image:loc absolute URLs, total >=500 URLs, all routes 200) is GREEN and re-verifiable via /app/backend/tests/test_seo_indexability_iter56.py. Frontend has 3 critical title-empty pages (London/Amsterdam concerts + Taylor Swift London) caused by React 19 native <title> hoisting failing inside CityDemandPage.jsx — must fix at component level OR add slugs to /app/frontend/public/index.html metadataMap. Also 3 hydration errors (span inside tr/tbody) on F1TicketPricesGuide/HowToBuyF1Tickets/MotoGPSchedule. Re-run iter56 backend test + a Playwright DOM-title check on the 3 problem URLs after main agent fix. The 'Unexpected token )' JS error reported by user was NOT reproduced in this iteration — current JS errors are 'In HTML, <span> cannot be a child of <tr>' (hydration warnings).",
+  "rca of the issue": "Root cause for empty <title> on /concerts-in-london-2026, /concerts-in-amsterdam-2026, /taylor-swift-london-tickets: CityDemandPage.jsx uses React 19's native '<title>{metaTitle}</title>' JSX placed inside a regular <div>. React 19 only hoists native metadata when the build/runtime is properly configured for it AND when no other library (react-helmet, etc.) intercepts head. In this codebase, document.title is empty after hydration because the hoisting silently fails. The two slugs are NOT in the pre-hydration metadataMap inside public/index.html (verified by grep — only /taylor-swift-london-tickets is present, and even that one ends up empty because the page subsequently overwrites or fails to set it). Fix is to either (a) replace native <title> with useEffect(() => {document.title = metaTitle}) or (b) add ConcertsLondon/ConcertsAmsterdam slugs to the pre-hydration metadataMap. For the hydration errors on F1 price/how-to/MotoGP pages, root cause is unidentified visible <span> placed as a direct child of <tr> or <tbody> (likely a shared component such as a structured-data script wrapper or breadcrumb placed inside the table region) — needs source-level grep for 'tbody>{' or '<tr>{' followed by a span-emitting component."
+}

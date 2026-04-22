@@ -4,6 +4,7 @@ import { Calendar, MapPin, Clock, Ticket, Loader2, ArrowRight, Star, Shield, Zap
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import SEOHead from '../components/SEOHead';
+import BreadcrumbSchema from '../components/BreadcrumbSchema';
 import axios from 'axios';
 import { API } from '../App';
 

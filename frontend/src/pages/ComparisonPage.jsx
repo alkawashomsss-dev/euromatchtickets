@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Shield, Zap, Star, Check, X, ArrowRight, Trophy, DollarSign, Clock, HeadphonesIcon } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import SEOHead from '../components/SEOHead';
+import BreadcrumbSchema from '../components/BreadcrumbSchema';
 import axios from 'axios';
 import { API } from '../App';
 
