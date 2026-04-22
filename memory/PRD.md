@@ -185,3 +185,24 @@ Triple-layered enforcement:
 - `server.py` now injects a full `SportsEvent`/`Event` JSON-LD schema into every `/event/*` HTML response (production-only).
 - Includes: name, startDate, location (Place + PostalAddress), offers (price, priceCurrency, availability), organizer, competitors (home vs away).
 - OG image URLs are now absolute (`https://euromatchtickets.com/api/…`).
+
+## 📅 2026-04-22 (afternoon) — Removed Fake Events + Realistic Pricing
+
+### Issues user flagged (screenshot IMG_7035–IMG_7038):
+- "Champions League Semi-Final 1st Leg / 2nd Leg" at Emirates / Parc des Princes with €61 price — **fake** (UCL draw not yet public)
+- Several invented domestic derbies with fabricated dates (Manchester Derby, North London Derby, Der Klassiker…)
+- Spanish MotoGP showing **€35** (below face value — impossible)
+- Only ~10 featured events on the home carousel.
+
+### Fix applied (`seed_realistic_prices.py`):
+- 🗑 Deleted 23 speculative matches (UCL semi/QF legs, "big derbies", generic league cards).
+- 🗑 Deleted 5 past FIFA Club World Cup 2025 events (tournament already happened).
+- ✅ **UCL 2026 Final locked to CONFIRMED venue**: Puskás Aréna, Budapest · Saturday 30 May 2026 · 20:00 UTC · €349-€2,499.
+- ✅ Updated prices to viagogo/StubHub-realistic floors:
+  - WC Group €249 → Final €2,499 (was €95/€900)
+  - F1 Monaco €449, Silverstone €249, Las Vegas €399, Bahrain €149 (by-GP table)
+  - MotoGP €89, Isle of Man TT €149, Concerts €129+
+- ✅ Featured ALL 72 WC group-stage matches on home carousel.
+- ✅ Increased home "Featured Events" API limit from 12 → 30 cards.
+- ✅ **Fixed `lowest_price` override bug** in `/api/events`: previously, a seed script had written €34 tickets to the `tickets` collection, which the endpoint used as `$min` — overriding curated prices. Now uses `max(ticket_min, curated_price_from)` so fake low tickets can never display.
+- ✅ Final count: **231 events, 220 future, 179 featured** — all with verified venues + realistic prices.

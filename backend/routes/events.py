@@ -116,8 +116,17 @@ async def get_events(
         stats_map = {s["_id"]: s for s in ticket_stats}
         for event in events:
             stats = stats_map.get(event["event_id"], {})
-            event["available_tickets"] = stats.get("ticket_count", 0)
-            event["lowest_price"] = stats.get("lowest_price")
+            ticket_count = stats.get("ticket_count", 0)
+            event["available_tickets"] = ticket_count if ticket_count else event.get("available_tickets", 0)
+            # Prefer real ticket minimum, fall back to the curated price_from
+            ticket_low = stats.get("lowest_price")
+            curated = event.get("price_from") or event.get("lowest_price")
+            if ticket_low is not None and curated:
+                event["lowest_price"] = max(int(ticket_low), int(curated))
+            elif ticket_low is not None:
+                event["lowest_price"] = int(ticket_low)
+            else:
+                event["lowest_price"] = int(curated) if curated else None
 
     return events
 

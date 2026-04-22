@@ -185,7 +185,7 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const [featuredRes, concertsRes, matchesRes] = await Promise.all([
-          axios.get(`${API}/events?featured=true&limit=12`),
+          axios.get(`${API}/events?featured=true&limit=30`),
           axios.get(`${API}/events?event_type=concert&limit=4`),
           axios.get(`${API}/events?event_type=match&limit=4`)
         ]);

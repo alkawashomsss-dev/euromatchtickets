@@ -673,36 +673,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://euromatchtickets.com/event/manchester-derby-man-united-vs-man-city-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/match_manchester-derby-man-united-vs-man-city-2026-tickets.jpg</image:loc>
-      <image:title>Manchester Derby: Man United vs Man City</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/north-london-derby-arsenal-vs-tottenham-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/match_north-london-derby-arsenal-vs-tottenham-2026-tickets.jpg</image:loc>
-      <image:title>North London Derby: Arsenal vs Tottenham</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/manchester-united-vs-liverpool-premier-league-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_manchester-united-vs-liverpool-premier-league-2026-tickets.jpg</image:loc>
-      <image:title>Manchester United vs Liverpool - Premier League</image:title>
-    </image:image>
-  </url>
-  <url>
     <loc>https://euromatchtickets.com/event/taylor-swift-eras-tour-2026-london-tickets</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>daily</changefreq>
@@ -850,26 +820,6 @@
     <image:image>
       <image:loc>/api/event-images/matches/athletics_world-athletics-championships-2026-final-day-tickets.jpg</image:loc>
       <image:title>World Athletics Championships 2026 - Final Day</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/champions-league-semi-final-1st-leg-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/match_champions-league-semi-final-1st-leg-tickets.jpg</image:loc>
-      <image:title>Champions League Semi-Final 1st Leg</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/champions-league-semi-final-2nd-leg-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/match_champions-league-semi-final-2nd-leg-tickets.jpg</image:loc>
-      <image:title>Champions League Semi-Final 2nd Leg</image:title>
     </image:image>
   </url>
   <url>
@@ -1030,26 +980,6 @@
     <image:image>
       <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2026-semi-final-1-dallas-tickets.jpg</image:loc>
       <image:title>FIFA Club World Cup 2026 Semi-Final 1</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/bayern-munich-vs-real-madrid-ucl-quarter-final-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_bayern-munich-vs-real-madrid-ucl-quarter-final-2026-tickets.jpg</image:loc>
-      <image:title>Bayern Munich vs Real Madrid - UCL Quarter-Final</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/real-madrid-vs-bayern-munich-ucl-quarter-final-2nd-leg-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_real-madrid-vs-bayern-munich-ucl-quarter-final-2nd-leg-2026-tickets.jpg</image:loc>
-      <image:title>Real Madrid vs Bayern Munich - UCL Quarter-Final 2nd Leg</image:title>
     </image:image>
   </url>
   <url>
@@ -1303,166 +1233,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://euromatchtickets.com/event/champions-league-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_champions-league-2026-tickets.jpg</image:loc>
-      <image:title>UEFA Champions League 2026</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/bayern-munich-vs-real-madrid-ucl-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_bayern-munich-vs-real-madrid-ucl-2026-tickets.jpg</image:loc>
-      <image:title>Bayern Munich vs Real Madrid - UCL 2026</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/bayern-vs-dortmund-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_bayern-vs-dortmund-2026-tickets.jpg</image:loc>
-      <image:title>Bayern Munich vs Borussia Dortmund - Der Klassiker</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/bayern-vs-barcelona-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_bayern-vs-barcelona-2026-tickets.jpg</image:loc>
-      <image:title>Bayern Munich vs FC Barcelona - UCL</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/bayern-vs-leipzig-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_bayern-vs-leipzig-2026-tickets.jpg</image:loc>
-      <image:title>Bayern Munich vs RB Leipzig - Bundesliga</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/bayern-vs-leverkusen-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_bayern-vs-leverkusen-2026-tickets.jpg</image:loc>
-      <image:title>Bayern Munich vs Bayer Leverkusen - Bundesliga</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/juventus-tickets-2026</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_juventus-tickets-2026.jpg</image:loc>
-      <image:title>Juventus FC - Serie A 2026</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/juventus-vs-inter-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_juventus-vs-inter-2026-tickets.jpg</image:loc>
-      <image:title>Juventus vs Inter Milan - Derby d'Italia</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/juventus-vs-milan-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_juventus-vs-milan-2026-tickets.jpg</image:loc>
-      <image:title>Juventus vs AC Milan - Serie A</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/juventus-vs-napoli-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_juventus-vs-napoli-2026-tickets.jpg</image:loc>
-      <image:title>Juventus vs Napoli - Serie A</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/juventus-vs-roma-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_juventus-vs-roma-2026-tickets.jpg</image:loc>
-      <image:title>Juventus vs AS Roma - Serie A</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/psg-tickets-2026</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_psg-tickets-2026.jpg</image:loc>
-      <image:title>Paris Saint-Germain - Ligue 1 2026</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/psg-vs-marseille-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_psg-vs-marseille-2026-tickets.jpg</image:loc>
-      <image:title>PSG vs Olympique Marseille - Le Classique</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/psg-vs-lyon-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_psg-vs-lyon-2026-tickets.jpg</image:loc>
-      <image:title>PSG vs Olympique Lyon - Ligue 1</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/psg-vs-monaco-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_psg-vs-monaco-2026-tickets.jpg</image:loc>
-      <image:title>PSG vs AS Monaco - Ligue 1</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/psg-vs-real-madrid-2026-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_psg-vs-real-madrid-2026-tickets.jpg</image:loc>
-      <image:title>PSG vs Real Madrid - UCL</image:title>
-    </image:image>
-  </url>
-  <url>
     <loc>https://euromatchtickets.com/event/motogp-mugello-2026-tickets</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>daily</changefreq>
@@ -1470,56 +1240,6 @@
     <image:image>
       <image:loc>/api/event-images/matches/motogp_motogp-mugello-2026-tickets.jpg</image:loc>
       <image:title>Italian MotoGP Mugello 2026</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/fifa-club-world-cup-2025-final-new-york-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2025-final-new-york-tickets.jpg</image:loc>
-      <image:title>FIFA Club World Cup 2025 Final</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/fifa-club-world-cup-2025-real-madrid-vs-flamengo-miami-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2025-real-madrid-vs-flamengo-miami-tickets.jpg</image:loc>
-      <image:title>FIFA Club World Cup 2025 - Real Madrid vs Flamengo</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/fifa-club-world-cup-2025-manchester-city-vs-al-ahly-orlando-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2025-manchester-city-vs-al-ahly-orlando-tickets.jpg</image:loc>
-      <image:title>FIFA Club World Cup 2025 - Manchester City vs Al Ahly</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/fifa-club-world-cup-2025-bayern-munich-vs-boca-juniors-philadelphia-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2025-bayern-munich-vs-boca-juniors-philadelphia-tickets.jpg</image:loc>
-      <image:title>FIFA Club World Cup 2025 - Bayern Munich vs Boca Juniors</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/event/fifa-club-world-cup-2025-semi-final-1-dallas-tickets</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2025-semi-final-1-dallas-tickets.jpg</image:loc>
-      <image:title>FIFA Club World Cup 2025 Semi-Final 1</image:title>
     </image:image>
   </url>
   <url>
