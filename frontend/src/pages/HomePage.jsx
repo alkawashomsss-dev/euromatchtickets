@@ -184,10 +184,11 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [featuredRes, concertsRes, matchesRes] = await Promise.all([
+        const [featuredRes, concertsRes, worldCupRes, footballRes] = await Promise.all([
           axios.get(`${API}/events?featured=true&limit=30`),
-          axios.get(`${API}/events?event_type=concert&limit=4`),
-          axios.get(`${API}/events?event_type=match&limit=4`)
+          axios.get(`${API}/events?event_type=concert&limit=8`),
+          axios.get(`${API}/events?event_type=worldcup&limit=12`),
+          axios.get(`${API}/events?event_type=football&limit=8`)
         ]);
         // Deduplicate by normalized title (e.g. "El Clasico" and "Real Madrid vs Barcelona" are same)
         const seen = new Set();
@@ -201,8 +202,17 @@ const HomePage = () => {
           return true;
         });
         setFeaturedEvents(deduped.slice(0, 6));
-        setConcerts(concertsRes.data.slice(0, 4));
-        setMatches(matchesRes.data.slice(0, 4));
+        setConcerts((concertsRes.data || []).slice(0, 8));
+        // Merge World Cup + club football so the Matches section shows a real variety
+        const allMatches = [
+          ...(worldCupRes.data || []),
+          ...(footballRes.data || []),
+        ].sort((a, b) => {
+          const da = new Date(a.event_date || 0).getTime();
+          const db = new Date(b.event_date || 0).getTime();
+          return da - db;
+        });
+        setMatches(allMatches.slice(0, 12));
       } catch (error) { console.error("Error fetching events:", error); }
       finally { setLoading(false); }
     };

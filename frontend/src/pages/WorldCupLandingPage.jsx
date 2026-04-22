@@ -34,12 +34,14 @@ const WorldCupLandingPage = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get(`${API}/events?event_type=match&limit=12`);
-      const wcEvents = response.data.filter(e => 
-        e.title?.toLowerCase().includes('world cup') || 
-        e.league?.toLowerCase().includes('world cup')
-      );
-      setEvents(wcEvents.length > 0 ? wcEvents : response.data.slice(0, 6));
+      // Pull all 104 World Cup matches — sort chronologically on the page itself
+      const response = await axios.get(`${API}/events?event_type=worldcup&limit=200`);
+      const sorted = [...response.data].sort((a, b) => {
+        const da = new Date(a.event_date || 0).getTime();
+        const db = new Date(b.event_date || 0).getTime();
+        return da - db;
+      });
+      setEvents(sorted);
     } catch (error) {
       console.error("Error:", error);
     } finally {

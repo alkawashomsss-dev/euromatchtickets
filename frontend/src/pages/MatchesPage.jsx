@@ -145,25 +145,49 @@ const MatchesPage = () => {
     const fetchMatches = async () => {
       setLoading(true);
       try {
-        const params = new URLSearchParams();
-        if (filters.league) params.append('league', filters.league);
-        if (filters.city) params.append('city', filters.city);
-        
-        const response = await axios.get(`${API}/matches?${params.toString()}`);
-        let filteredMatches = response.data;
-        
-        // Client-side search filter
+        // Pull both World Cup + club football events from the events endpoint
+        const [wc, club] = await Promise.all([
+          axios.get(`${API}/events?event_type=worldcup&limit=200`),
+          axios.get(`${API}/events?event_type=football&limit=100`),
+        ]);
+        const rows = [...(wc.data || []), ...(club.data || [])].map(e => ({
+          match_id: e.slug || e.id,
+          match_date: e.event_date,
+          league: (e.league || '').toLowerCase().replace(/\s+/g, '_'),
+          league_label: e.league || (e.event_type === 'worldcup' ? 'FIFA World Cup 2026' : 'Football'),
+          home_team: e.home_team || '',
+          away_team: e.away_team || '',
+          home_logo: e.home_flag || e.home_logo || '',
+          away_logo: e.away_flag || e.away_logo || '',
+          stadium: e.venue || '',
+          city: e.city || '',
+          lowest_price: e.lowest_price,
+          available_tickets: e.available_tickets,
+          title: e.title,
+        })).filter(m => m.home_team && m.away_team); // drop Finalist placeholders
+
+        // Apply server-side-ish filters (client-side since /api/matches endpoint was removed)
+        let filtered = rows;
+        if (filters.league) {
+          filtered = filtered.filter(m => m.league === filters.league);
+        }
+        if (filters.city) {
+          filtered = filtered.filter(m => m.city === filters.city);
+        }
         if (filters.search) {
           const search = filters.search.toLowerCase();
-          filteredMatches = filteredMatches.filter(m => 
+          filtered = filtered.filter(m =>
             m.home_team.toLowerCase().includes(search) ||
             m.away_team.toLowerCase().includes(search) ||
-            m.stadium.toLowerCase().includes(search) ||
-            m.city.toLowerCase().includes(search)
+            (m.stadium || '').toLowerCase().includes(search) ||
+            (m.city || '').toLowerCase().includes(search)
           );
         }
-        
-        setMatches(filteredMatches);
+
+        // Chronological order
+        filtered.sort((a, b) => new Date(a.match_date || 0) - new Date(b.match_date || 0));
+
+        setMatches(filtered);
       } catch (error) {
         console.error("Error fetching matches:", error);
       } finally {
