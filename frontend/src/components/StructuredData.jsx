@@ -81,7 +81,11 @@ const EventStructuredData = ({ event }) => {
       "description": event.description || `Buy tickets for ${event.title}. Secure booking with FanProtect guarantee and instant QR delivery.`,
       "startDate": event.event_date || event.date,
       "endDate": getEndDate(event.event_date || event.date, event.event_type),
-      "eventStatus": "https://schema.org/EventScheduled",
+      "eventStatus": event.status === 'postponed'
+        ? "https://schema.org/EventPostponed"
+        : event.status === 'cancelled'
+          ? "https://schema.org/EventCancelled"
+          : "https://schema.org/EventScheduled",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "location": {
         "@type": "Place",
@@ -97,21 +101,23 @@ const EventStructuredData = ({ event }) => {
       "organizer": getOrganizer(event.event_type, event.title),
       "performer": getPerformer(),
       "image": [eventImage],
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "EUR",
-        "lowPrice": lowPrice.toString(),
-        "highPrice": highPrice.toString(),
-        "offerCount": availableTickets.toString(),
-        "availability": availableTickets > 0 ? "https://schema.org/InStock" : "https://schema.org/SoldOut",
-        "url": pageUrl,
-        "validFrom": new Date().toISOString().split('T')[0],
-        "seller": {
-          "@type": "Organization",
-          "name": "EuroMatchTickets",
-          "url": "https://euromatchtickets.com"
-        }
-      },
+      "offers": (availableTickets > 0 && event.status !== 'coming_soon' && event.status !== 'sold_out')
+        ? {
+            "@type": "AggregateOffer",
+            "priceCurrency": "EUR",
+            "lowPrice": lowPrice.toString(),
+            "highPrice": highPrice.toString(),
+            "offerCount": availableTickets.toString(),
+            "availability": "https://schema.org/InStock",
+            "url": pageUrl,
+            "validFrom": new Date().toISOString().split('T')[0],
+            "seller": {
+              "@type": "Organization",
+              "name": "EuroMatchTickets",
+              "url": "https://euromatchtickets.com"
+            }
+          }
+        : undefined,
       "url": pageUrl
     };
 
@@ -171,10 +177,20 @@ const EventStructuredData = ({ event }) => {
       ]
     };
 
-    // Combine into @graph for single script tag
+    // Combine into @graph for single script tag.
+    // Gate Product schema: ONLY include when event has confirmed inventory
+    // and status is not "coming_soon" / "sold_out" — this is the honesty layer.
+    const hasRealInventory =
+      availableTickets > 0 &&
+      event.status !== 'coming_soon' &&
+      event.status !== 'sold_out' &&
+      (event.lowest_price == null || event.lowest_price > 0);
+
+    const graph = hasRealInventory ? [eventSchema, productSchema] : [eventSchema];
+
     const combinedSchema = {
       "@context": "https://schema.org",
-      "@graph": [eventSchema, productSchema]
+      "@graph": graph
     };
     // Remove @context from individual items in graph
     delete eventSchema["@context"];

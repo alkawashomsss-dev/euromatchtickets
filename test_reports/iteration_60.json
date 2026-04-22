@@ -1,0 +1,49 @@
+{
+  "summary": "Validated honesty-layer fixes for euromatchtickets.com: waitlist endpoints, featured-events filter, Taylor Swift/Bieber coming_soon state, gated Product schema, P1 SEO titles, and MotoGP page price honesty. 8/8 backend tests PASS. Frontend behavior matches all key requirements. Two minor copy issues to flag.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "WaitlistCTA submit on /event/<coming_soon-slug>",
+        "issue": "Cookie consent banner (z-[9999] full-screen overlay) intercepts pointer events and blocks the user from clicking [data-testid='waitlist-submit-btn'] until they accept/dismiss cookies. Element exists & API works (verified via backend test), but UX is blocked on first visit.",
+        "affected_selectors": ["[data-testid='waitlist-submit-btn']", "[data-testid='cookie-banner']"]
+      }
+    ],
+    "design_issues": [
+      {
+        "screen": "/motogp-tickets",
+        "issues": [
+          "FAQ JSON-LD answer text and <meta name='description'> still hard-code 'from €69' (lines 160, 180 of MotoGPTicketsPage.jsx) while the actual visible hero / cards now correctly show 'from €109' / '€149' from real DB. This is a SEO honesty inconsistency — Google may surface €69 in rich results that the user can never see."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_honesty_layer.py",
+    "/app/test_reports/pytest/honesty_layer.xml"
+  ],
+  "action_items": [
+    "Update MotoGPTicketsPage.jsx FAQ schema (line ~160) and meta description (line ~180) to either drop the explicit '€69' figure or compute from real `minPrice` so SEO copy matches displayed price.",
+    "Optional: defer cookie banner mount or lower its z-index until after first interaction so waitlist CTA on /event/<coming_soon> pages is immediately clickable for first-time visitors."
+  ],
+  "critical_code_review_comments": [
+    "events.py — get_event() returns a fabricated 'pretty name' event with hardcoded price_from=99 and status='active' when slug not found (lines 182-193). This violates the new honesty layer for ANY mistyped/old slug. Recommend returning status='coming_soon', price_from=null and rendering the WaitlistCTA branch instead.",
+    "StructuredData.jsx — getPrices() falls back to lowPrice=50, highPrice=500 when no tickets/categories exist (line 42). Combined with the gating logic this is fine today, but if the gating ever drops these defaults will leak into Product schema as fake prices.",
+    "MotoGPTicketsPage.jsx — copy in FAQ + meta description remains hardcoded to €69; should be dynamic via minPrice prop now that the page already computes it.",
+    "events.py mega_fix / fix_all_prices / seed_all_missing — multiple destructive admin endpoints have NO auth (no require_admin); anyone with the URL can mutate the DB. Critical security issue."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_honesty_layer.py"
+  ],
+  "success_rate": {"backend": "100%", "frontend": "90%"},
+  "test_credentials": "Not required for these tests",
+  "seed_data_creation": "Created 1 waitlist record per test run (TEST_<uuid>@example.com on slug 'euro-indexing'). Idempotent upsert, safe to leave.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Honesty-layer fixes verified end-to-end. Backend tests live at /app/backend/tests/test_honesty_layer.py. Confirmed: (a) /api/marketing/waitlist POST validates email + returns ok+count; GET count works. (b) /api/events?featured=true excludes coming_soon and contains zero Taylor Swift/Bieber. (c) Taylor Swift event detail returns coming_soon, lowest_price=null, available_tickets=0. (d) Frontend coming_soon detail: SEO title doesn't start with 'Buy', WaitlistCTA renders, JSON-LD @graph contains only Event (no Product), eventStatus=EventScheduled, no offers. (e) Active F1 event detail: @graph contains BOTH Event + Product. (f) /f1-belgian-grand-prix-spa-tickets and /f1-monaco-grand-prix-tickets both return correct new titles with single meta description. NOTE: Original review_request listed /f1-belgian-gp-tickets as the Spa URL — that path is not registered (404→fallback). Real route is /f1-belgian-grand-prix-spa-tickets. Homepage shows 6 EventCards: Spanish MotoGP, Chinese GP, Madrid Open, French MotoGP, Italian Open Rome, Catalan MotoGP — no Taylor/Bieber.",
+  "rca of the issue": "N/A — this iteration is a validation pass, not a bug-fix pass. The two flagged items above are minor honesty/SEO copy leftovers and a pre-existing cookie-banner overlay issue."
+}

@@ -13,10 +13,10 @@ import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import EventStructuredData from "../components/StructuredData";
 import ProductSchema from "../components/ProductSchema";
+import WaitlistCTA from "../components/WaitlistCTA";
 import { RecentlyBoughtPopup } from "../components/SalesAccelerator";
 import VenueInfoSection from "../components/VenueInfoSection";
 import InteractiveVenueMap from "../components/InteractiveVenueMap";
-import VenueViewer from "../components/VenueViewer";
 import TicketListings from "../components/TicketListings";
 import { PriceAlertButton, ScarcityBadge, HighDemandBadge, SocialProofCounter, UrgencyCountdown, AlertWatchersCount } from "../components/ConversionWidgets";
 import { VIPExperienceSection } from "../components/VIPExperience";
@@ -83,9 +83,11 @@ export default function EventDetailsPage() {
 
   const groupedSections = event.grouped_sections || [];
   const totalAvailable = groupedSections.reduce((s, g) => s + g.count, 0);
-  const lowestPrice = groupedSections.length > 0
-    ? Math.round(Math.min(...groupedSections.map(g => g.lowest_price)))
-    : (event.lowest_price ? Math.round(event.lowest_price) : 99);
+  const rawLowest = groupedSections.length > 0
+    ? Math.min(...groupedSections.map(g => g.lowest_price))
+    : (event.lowest_price || null);
+  const lowestPrice = rawLowest ? Math.round(rawLowest) : null;
+  const isComingSoon = event.status === 'coming_soon' || !lowestPrice || totalAvailable === 0;
   const d = new Date(event.event_date);
   const dateStr = d.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   const shortDate = d.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -95,16 +97,22 @@ export default function EventDetailsPage() {
   const canonicalSlug = event.slug || eventId;
   const pageUrl = `https://euromatchtickets.com/event/${canonicalSlug}`;
   const isUglyUrl = eventId !== canonicalSlug;
-  const seoTitle = `Buy ${event.title} Tickets | ${event.venue ? event.venue + ' | ' : ''}From €${lowestPrice}`;
-  const seoDesc = `${event.title} tickets from €${lowestPrice}. ${event.venue}${event.venue && event.city ? ', ' : ''}${event.city}. 42% cheaper than official sellers. Instant QR delivery. FanProtect 100% guarantee.`;
-  const officialPrice = Math.round(lowestPrice * 1.35);
-  const savings = Math.round(officialPrice - lowestPrice);
+  const seoTitle = isComingSoon
+    ? `${event.title} Tickets — Dates, Venue & Waitlist | EuroMatchTickets`
+    : `Buy ${event.title} Tickets | ${event.venue ? event.venue + ' | ' : ''}From €${lowestPrice}`;
+  const seoDesc = isComingSoon
+    ? `${event.title} — ${event.venue || 'venue TBA'}${event.city ? ', ' + event.city : ''}. Tickets not yet on sale. Join the free waitlist and get alerted the moment verified inventory becomes available.`
+    : `${event.title} tickets from €${lowestPrice}. ${event.venue}${event.venue && event.city ? ', ' : ''}${event.city}. Verified sellers. Instant QR delivery. FanProtect 100% guarantee.`;
+  const officialPrice = lowestPrice ? Math.round(lowestPrice * 1.35) : null;
+  const savings = officialPrice && lowestPrice ? Math.round(officialPrice - lowestPrice) : null;
 
   const eventFAQs = [
     { question: `When is ${event.title}?`, answer: `${event.title} takes place on ${dateStr} at ${event.venue} in ${event.city}${event.country ? `, ${event.country}` : ''}.` },
-    { question: `How much are ${event.title} tickets?`, answer: `Tickets start from just €${lowestPrice}. We offer the cheapest prices with instant delivery.` },
-    { question: `How will I receive my tickets?`, answer: `All tickets are delivered instantly as secure QR codes to your email and phone. No printing needed.` },
-    { question: `Is it safe to buy from EuroMatchTickets?`, answer: `Absolutely. Every purchase is protected by our FanProtect guarantee: 100% verified tickets, instant delivery, and a full refund if the event is cancelled.` },
+    ...(isComingSoon
+      ? [{ question: `Are ${event.title} tickets on sale yet?`, answer: `Tickets are not currently on sale on our marketplace. Join the free waitlist above and we'll email you within 24 hours of verified inventory going live — no spam, no auto-subscribe.` }]
+      : [{ question: `How much are ${event.title} tickets?`, answer: `Tickets start from €${lowestPrice}. All prices are verified-seller prices — we don't publish fake "from" anchors.` }]),
+    { question: `How will I receive my tickets?`, answer: `All tickets are delivered as secure QR codes to your email and phone. No printing needed.` },
+    { question: `Is it safe to buy from EuroMatchTickets?`, answer: `Every purchase is protected by our FanProtect guarantee: verified sellers, escrowed payment until the event, and a full refund if the event is cancelled.` },
     { question: `Can I get a refund?`, answer: `If the event is cancelled or significantly rescheduled, you receive a full refund automatically.` },
   ];
 
@@ -114,18 +122,6 @@ export default function EventDetailsPage() {
     <div className="min-h-screen bg-[#0e0e14]" data-testid="event-details-page">
       <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={isUglyUrl} image={event.image_url} />
       <EventStructuredData event={event} />
-      <ProductSchema
-        name={event.title}
-        description={seoDesc}
-        price={lowestPrice}
-        highPrice={lowestPrice * 8}
-        image={event.image_url}
-        url={pageUrl}
-        category={event.event_type}
-        venue={event.venue}
-        city={event.city}
-        date={event.event_date}
-      />
       <BreadcrumbStructuredData items={[
         { name: 'Home', url: 'https://euromatchtickets.com' },
         { name: catLabel, url: `https://euromatchtickets.com/${isF1 ? 'f1-tickets' : isConcert ? 'concerts' : 'events'}` },
@@ -177,21 +173,31 @@ export default function EventDetailsPage() {
 
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-wrap items-center gap-4 mb-6">
-              <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-none px-5 py-3">
-                <p className="text-[10px] text-white/50 uppercase tracking-widest">From</p>
-                <p className="text-3xl font-extrabold text-amber-400">&euro;{lowestPrice}</p>
-              </div>
-              {savings > 10 && (
-                <div className="bg-emerald-500/100/10 border border-emerald-400/30 rounded-none px-4 py-3 backdrop-blur-sm">
-                  <p className="text-emerald-300 font-bold text-sm flex items-center gap-1"><TrendingDown className="w-4 h-4" /> Save &euro;{savings}</p>
-                  <p className="text-[11px] text-white/50">vs official sellers</p>
+              {isComingSoon ? (
+                <div className="backdrop-blur-xl bg-amber-500/10 border border-amber-400/40 rounded-none px-5 py-4 max-w-md" data-testid="coming-soon-block">
+                  <p className="text-[10px] text-amber-300 uppercase tracking-widest font-bold mb-1">Coming soon</p>
+                  <p className="text-sm text-white/80 mb-3">No verified tickets available yet. Join the free waitlist — we'll email you the moment inventory drops.</p>
+                  <WaitlistCTA slug={canonicalSlug} eventTitle={event.title} compact />
                 </div>
+              ) : (
+                <>
+                  <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-none px-5 py-3">
+                    <p className="text-[10px] text-white/50 uppercase tracking-widest">From</p>
+                    <p className="text-3xl font-extrabold text-amber-400">&euro;{lowestPrice}</p>
+                  </div>
+                  {savings && savings > 10 && (
+                    <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-none px-4 py-3 backdrop-blur-sm">
+                      <p className="text-emerald-300 font-bold text-sm flex items-center gap-1"><TrendingDown className="w-4 h-4" /> Save &euro;{savings}</p>
+                      <p className="text-[11px] text-white/50">vs official sellers</p>
+                    </div>
+                  )}
+                  <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="bg-emerald-500/100 hover:bg-emerald-400 text-white font-bold px-8 py-3.5 rounded-full text-base transition-all shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_30px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-[0.97]"
+                    data-testid="hero-cta">
+                    View All Tickets
+                  </button>
+                </>
               )}
-              <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-emerald-500/100 hover:bg-emerald-400 text-white font-bold px-8 py-3.5 rounded-full text-base transition-all shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_30px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-[0.97]"
-                data-testid="hero-cta">
-                View All Tickets
-              </button>
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}

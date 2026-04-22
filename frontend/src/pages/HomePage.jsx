@@ -7,7 +7,7 @@ import {
   Calendar, MapPin, Ticket, TrendingUp, Shield, Star, 
   ChevronRight, Users, Music, Trophy, ArrowRight, Sparkles,
   CheckCircle, Lock, CreditCard, Headphones, Award, Globe,
-  Clock, AlertCircle, Timer, Flag, Bike, Zap
+  Clock, AlertCircle, Timer, Flag, Bike, Zap, Bell
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -63,8 +63,9 @@ const EventCard = ({ event, index }) => {
   const dateInfo = formatDate(event.event_date);
   const cfg = eventTypeConfig[event.event_type] || { label: event.event_type?.toUpperCase() || "EVENT", icon: "trophy", bg: "bg-slate-600" };
   const ticketsLeft = event.available_tickets || 0;
-  const isLimited = ticketsLeft > 0 && ticketsLeft <= 10;
-  const isFast = ticketsLeft > 10 && ticketsLeft <= 25;
+  const isComingSoon = event.status === 'coming_soon' || !event.lowest_price || ticketsLeft === 0;
+  const isLimited = !isComingSoon && ticketsLeft > 0 && ticketsLeft <= 10;
+  const isFast = !isComingSoon && ticketsLeft > 10 && ticketsLeft <= 25;
   const IconComp = cfg.icon === "music" ? Music : cfg.icon === "flag" ? Flag : Trophy;
 
   return (
@@ -152,7 +153,11 @@ const EventCard = ({ event, index }) => {
           )}
 
           <div className="flex items-center justify-between pt-3 border-t border-white/8">
-            {event.lowest_price ? (
+            {isComingSoon ? (
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-amber-300 bg-amber-400/10 border border-amber-400/30 px-2 py-1 uppercase tracking-wider">
+                <Bell className="w-3 h-3" /> Coming soon · Join waitlist
+              </span>
+            ) : event.lowest_price ? (
               <div className="flex items-baseline gap-1">
                 <span className="text-xs text-slate-500 font-medium uppercase">From</span>
                 <span className="text-xl font-black text-white">&euro;{event.lowest_price.toFixed(0)}</span>

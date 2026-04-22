@@ -74,6 +74,9 @@ async def get_events(
         query["country"] = {"$regex": country, "$options": "i"}
     if featured is not None:
         query["featured"] = featured
+        if featured:
+            # Featured events must always have confirmed inventory — no fakes allowed
+            query["status"] = {"$nin": ["cancelled", "past_event", "expired", "coming_soon"]}
     if date_from:
         try:
             query["event_date"]["$gte"] = datetime.fromisoformat(date_from.replace("Z", "+00:00"))

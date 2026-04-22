@@ -68,9 +68,8 @@ const MonacoGPPage = () => {
     <div className="min-h-screen bg-[#0a0a1a]" data-testid="monaco-gp-page">
       <FAQSchemaScript faqs={MONACO_FAQS} />
       <SEOHead
-        title="Buy Monaco Grand Prix Tickets 2026 | F1 From €249 | Monte Carlo"
-        description="Buy Monaco GP 2026 tickets from €249. Circuit de Monaco harbour views & VIP hospitality. Only 89 tickets left. 100% Guarantee. Instant QR delivery."
-        description="Buy Monaco Grand Prix 2026 tickets from €195. Casino Square, harbour views, yacht hospitality. 55% cheaper than F1.com! FanProtect guarantee + instant QR delivery."
+        title="Monaco Grand Prix 2026 Tickets — Prices, Dates & Availability | EuroMatchTickets"
+        description="Monaco F1 2026 — official race weekend dates, grandstand & yacht hospitality prices, verified-seller availability. Instant QR, full refund if the race is cancelled."
         canonicalUrl="https://euromatchtickets.com/f1-monaco-grand-prix-tickets"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />

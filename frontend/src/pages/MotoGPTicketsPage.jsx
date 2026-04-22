@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Calendar, MapPin, Ticket, Flag, ChevronRight, Shield, Zap, Star, Bike, Loader2 } from "lucide-react";
+import { Calendar, MapPin, Ticket, Flag, ChevronRight, Shield, Zap, Star, Bike, Loader2, Bell } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import WaitlistCTA from "../components/WaitlistCTA";
 import axios from "axios";
 import { API } from "../App";
 
@@ -33,6 +33,19 @@ const MotoGPTicketsPage = () => {
     };
     fetchEvents();
   }, []);
+
+  // Real minimum price from confirmed events only
+  const minPrice = useMemo(() => {
+    const prices = (events || [])
+      .filter(e => e.status !== 'coming_soon' && e.lowest_price)
+      .map(e => e.lowest_price);
+    return prices.length ? Math.min(...prices) : null;
+  }, [events]);
+
+  const confirmedCount = useMemo(
+    () => (events || []).filter(e => e.status !== 'coming_soon' && e.lowest_price && e.available_tickets > 0).length,
+    [events]
+  );
 
   const schema = {
     "@context": "https://schema.org",
@@ -169,7 +182,6 @@ const MotoGPTicketsPage = () => {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ProductSchema name="MotoGP Tickets 2026" price={49} highPrice={1999} url="https://euromatchtickets.com/motogp-tickets" category="motogp" venue="Various Circuits" city="Europe" />
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "MotoGP Tickets 2026", url: "https://euromatchtickets.com/motogp-tickets" }]} />
 
       {/* Hero */}
@@ -182,12 +194,12 @@ const MotoGPTicketsPage = () => {
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             MotoGP Tickets 2026
-            <span className="block text-2xl md:text-3xl mt-2 text-slate-500">{events.length} Races • World's Best Motorcycle Racing</span>
+            <span className="block text-2xl md:text-3xl mt-2 text-slate-500">{confirmedCount || events.length} Races · World's Best Motorcycle Racing</span>
           </h1>
-          
+
           <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
-            Experience the thrill of MotoGP! Watch Marquez, Bagnaia, and Martin battle at 350 km/h. 
-            <strong className="text-emerald-600"> Tickets from €69 - Best prices guaranteed!</strong>
+            Experience the thrill of MotoGP. Watch Marquez, Bagnaia, and Martin battle at 350 km/h.
+            {minPrice && <strong className="text-emerald-600"> Tickets from €{Math.round(minPrice)} — verified sellers only.</strong>}
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -197,16 +209,26 @@ const MotoGPTicketsPage = () => {
             <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full">
               <Calendar className="w-5 h-5 text-orange-600" /><span>March - November 2026</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-200">
-              <Ticket className="w-5 h-5 text-emerald-600" /><span className="text-emerald-600">From €69</span>
-            </div>
+            {minPrice && (
+              <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-200">
+                <Ticket className="w-5 h-5 text-emerald-600" /><span className="text-emerald-600">From €{Math.round(minPrice)}</span>
+              </div>
+            )}
           </div>
 
-          <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
-            <div className="text-slate-500 text-sm">General Admission from</div>
-            <div className="text-5xl font-bold text-emerald-600">€69</div>
-            <div className="text-emerald-600 text-sm mt-1">Save 30% vs official MotoGP.com</div>
-          </div>
+          {minPrice ? (
+            <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
+              <div className="text-slate-500 text-sm">General Admission from</div>
+              <div className="text-5xl font-bold text-emerald-600">€{Math.round(minPrice)}</div>
+              <div className="text-emerald-600 text-sm mt-1">Verified sellers · Instant QR delivery</div>
+            </div>
+          ) : (
+            <div className="inline-block bg-white/90 border border-amber-300 rounded-none p-6 max-w-md">
+              <div className="text-slate-600 text-sm font-bold uppercase tracking-wide mb-1">Coming soon</div>
+              <p className="text-slate-500 text-sm mb-3">The 2026 calendar is confirmed but inventory is still being verified. Join the waitlist and we'll email you the moment tickets drop.</p>
+              <WaitlistCTA slug="motogp-tickets-2026" eventTitle="MotoGP 2026 Season" compact />
+            </div>
+          )}
         </div>
       </section>
 
@@ -231,14 +253,21 @@ const MotoGPTicketsPage = () => {
               <Loader2 className="w-10 h-10 animate-spin text-orange-500" />
             </div>
           ) : events.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-slate-500 text-xl">No MotoGP events available at the moment.</p>
-              <Button 
-                onClick={() => navigate('/checkout?event=motogp-2026')} 
-                className="mt-4 bg-orange-600 hover:bg-orange-700"
-              >
-                View All Events
-              </Button>
+            <div className="max-w-xl mx-auto py-10 bg-[#15151e] border border-amber-500/30 p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <Bell className="w-5 h-5 text-amber-400" />
+                <h3 className="text-xl font-bold text-white">2026 MotoGP tickets — not released yet</h3>
+              </div>
+              <p className="text-slate-400 text-sm mb-4">The 2026 calendar isn't officially on sale yet. Join the waitlist and we'll email you within 24h of the first drop — zero spam, zero fake scarcity.</p>
+              <WaitlistCTA slug="motogp-tickets-2026" eventTitle="MotoGP 2026 Season" />
+              <div className="mt-6 pt-4 border-t border-white/10">
+                <p className="text-xs text-slate-500 mb-2">While you wait, explore confirmed events:</p>
+                <div className="flex flex-wrap gap-2">
+                  <Link to="/f1-tickets" className="text-xs bg-white/5 hover:bg-white/10 px-3 py-1.5 border border-white/10">F1 2026</Link>
+                  <Link to="/world-cup-2026-tickets" className="text-xs bg-white/5 hover:bg-white/10 px-3 py-1.5 border border-white/10">FIFA World Cup 2026</Link>
+                  <Link to="/events" className="text-xs bg-white/5 hover:bg-white/10 px-3 py-1.5 border border-white/10">All events</Link>
+                </div>
+              </div>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -279,13 +308,23 @@ const MotoGPTicketsPage = () => {
                     </div>
                     
                     <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-slate-400 text-sm">From</span>
-                        <span className="text-2xl font-bold text-emerald-600 ml-2">€69</span>
-                      </div>
-                      <Button size="sm" className="bg-orange-600 hover:bg-orange-700">
-                        Buy Tickets <ChevronRight className="w-4 h-4 ml-1" />
-                      </Button>
+                      {event.status !== 'coming_soon' && event.lowest_price ? (
+                        <>
+                          <div>
+                            <span className="text-slate-400 text-sm">From</span>
+                            <span className="text-2xl font-bold text-emerald-600 ml-2">€{Math.round(event.lowest_price)}</span>
+                          </div>
+                          <Button size="sm" className="bg-orange-600 hover:bg-orange-700">
+                            Buy Tickets <ChevronRight className="w-4 h-4 ml-1" />
+                          </Button>
+                        </>
+                      ) : (
+                        <div className="w-full">
+                          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-amber-300 bg-amber-400/10 border border-amber-400/30 px-2 py-1 uppercase tracking-wider">
+                            <Bell className="w-3 h-3" /> Coming soon · Join waitlist
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </Link>

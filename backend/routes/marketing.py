@@ -127,3 +127,39 @@ async def generate_social_media_posts():
 @router.get("/marketing/growth-plan")
 async def get_growth_plan():
     return {"phases": [{"phase": 1, "name": "Launch", "duration": "Month 1", "goals": ["100 social followers", "50 email subscribers"]}, {"phase": 2, "name": "Growth", "duration": "Month 2-3", "goals": ["1000 followers", "500 subscribers"]}, {"phase": 3, "name": "Scale", "duration": "Month 4-6", "goals": ["10k followers", "5k subscribers"]}]}
+
+
+
+@router.post("/marketing/waitlist")
+async def join_waitlist(payload: dict, request: Request):
+    """Lead capture for coming_soon / empty-inventory events.
+
+    Stores email + slug. Idempotent upsert per (email, slug) pair.
+    """
+    email = (payload.get("email") or "").strip().lower()
+    slug = (payload.get("event_slug") or "").strip()
+    title = (payload.get("event_title") or "").strip()
+    if not email or "@" not in email:
+        raise HTTPException(status_code=400, detail="Valid email required")
+
+    entry = {
+        "email": email,
+        "event_slug": slug,
+        "event_title": title,
+        "source_ip": request.client.host if request.client else None,
+        "user_agent": request.headers.get("user-agent", "")[:200],
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
+    await db.waitlist.update_one(
+        {"email": email, "event_slug": slug},
+        {"$setOnInsert": entry, "$set": {"last_seen_at": entry["created_at"]}},
+        upsert=True,
+    )
+    count = await db.waitlist.count_documents({"event_slug": slug}) if slug else 0
+    return {"ok": True, "waitlist_count": count}
+
+
+@router.get("/marketing/waitlist/count/{slug}")
+async def waitlist_count(slug: str):
+    count = await db.waitlist.count_documents({"event_slug": slug})
+    return {"slug": slug, "count": count}
