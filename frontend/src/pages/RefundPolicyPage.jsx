@@ -91,7 +91,7 @@ const RefundPolicyPage = () => {
         <section className="mb-12">
           <div className="bg-blue-500/10 border border-blue-200 rounded-none p-6">
             <h3 className="font-semibold mb-2">Independent Resale Marketplace</h3>
-            <p className="text-slate-400">EuroMatchTickets is an independent ticket resale marketplace. We are not affiliated with any event organizer, venue, or box office. Prices may be above or below face value. All tickets are verified and guaranteed authentic by our FanProtect Guarantee.</p>
+            <p className="text-slate-400">EuroMatchTickets is an independent ticket resale marketplace. We are not affiliated with any event organizer, venue, or box office. Prices may be above or below face value. All tickets are verified and guaranteed authentic by our Buyer protection.</p>
           </div>
         </section>
 

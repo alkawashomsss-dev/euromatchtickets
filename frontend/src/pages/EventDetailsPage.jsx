@@ -102,7 +102,7 @@ export default function EventDetailsPage() {
     : `Buy ${event.title} Tickets | ${event.venue ? event.venue + ' | ' : ''}From €${lowestPrice}`;
   const seoDesc = isComingSoon
     ? `${event.title} — ${event.venue || 'venue TBA'}${event.city ? ', ' + event.city : ''}. Tickets not yet on sale. Join the free waitlist and get alerted the moment verified inventory becomes available.`
-    : `${event.title} tickets from €${lowestPrice}. ${event.venue}${event.venue && event.city ? ', ' : ''}${event.city}. Verified sellers. Instant QR delivery. FanProtect 100% guarantee.`;
+    : `${event.title} tickets from €${lowestPrice}. ${event.venue}${event.venue && event.city ? ', ' : ''}${event.city}. Verified sellers. Instant QR delivery. Buyer protection 100% guarantee.`;
   const officialPrice = lowestPrice ? Math.round(lowestPrice * 1.35) : null;
   const savings = officialPrice && lowestPrice ? Math.round(officialPrice - lowestPrice) : null;
 
@@ -112,7 +112,7 @@ export default function EventDetailsPage() {
       ? [{ question: `Are ${event.title} tickets on sale yet?`, answer: `Tickets are not currently on sale on our marketplace. Join the free waitlist above and we'll email you within 24 hours of verified inventory going live — no spam, no auto-subscribe.` }]
       : [{ question: `How much are ${event.title} tickets?`, answer: `Tickets start from €${lowestPrice}. All prices are verified-seller prices — we don't publish fake "from" anchors.` }]),
     { question: `How will I receive my tickets?`, answer: `All tickets are delivered as secure QR codes to your email and phone. No printing needed.` },
-    { question: `Is it safe to buy from EuroMatchTickets?`, answer: `Every purchase is protected by our FanProtect guarantee: verified sellers, escrowed payment until the event, and a full refund if the event is cancelled.` },
+    { question: `Is it safe to buy from EuroMatchTickets?`, answer: `Every purchase is protected by our Buyer protection: verified sellers, escrowed payment until the event, and a full refund if the event is cancelled.` },
     { question: `Can I get a refund?`, answer: `If the event is cancelled or significantly rescheduled, you receive a full refund automatically.` },
   ];
 

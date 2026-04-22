@@ -32,7 +32,7 @@ export default function ChatWidget() {
       setSessionId(res.data.session_id);
       setMessages((prev) => [...prev, { role: "assistant", content: res.data.response }]);
     } catch {
-      setMessages((prev) => [...prev, { role: "assistant", content: "We have the cheapest verified tickets in Europe for F1, football, concerts & World Cup 2026. Browse our events or ask me anything!" }]);
+      setMessages((prev) => [...prev, { role: "assistant", content: "We have the verified-seller listings in Europe for F1, football, concerts & World Cup 2026. Browse our events or ask me anything!" }]);
     }
     setLoading(false);
   };
@@ -106,7 +106,7 @@ export default function ChatWidget() {
                   Welcome to EuroMatchTickets!
                 </p>
                 <p className="text-white/50 text-[12px] leading-relaxed mt-1">
-                  Find the cheapest verified tickets for F1, football, concerts & World Cup 2026.
+                  Find the verified-seller listings for F1, football, concerts & World Cup 2026.
                 </p>
               </div>
             </div>
@@ -187,7 +187,7 @@ export default function ChatWidget() {
         <div className="flex items-center justify-between mt-2 px-1">
           <span className="text-[10px] text-white/20 font-medium">Powered by EuroMatchTickets</span>
           <span className="text-[10px] text-white/20 flex items-center gap-1">
-            <span className="w-1 h-1 bg-[#15803d] rounded-full" /> 24/7 Support
+            <span className="w-1 h-1 bg-[#15803d] rounded-full" /> Customer support
           </span>
         </div>
       </div>

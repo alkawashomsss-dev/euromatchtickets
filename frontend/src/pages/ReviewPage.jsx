@@ -18,14 +18,14 @@ const REVIEW_VARIANTS = {
     title: "Is EuroMatchTickets Legit? Honest Review 2026",
     h1: "Is EuroMatchTickets Legit? Full Analysis",
     subtitle: "We tested it ourselves — here's what we found",
-    metaDesc: "Is EuroMatchTickets legit? Comprehensive analysis of safety, pricing, delivery. 500,000+ tickets sold. Read our unbiased 2026 review.",
+    metaDesc: "Is EuroMatchTickets legit? Comprehensive analysis of safety, pricing, delivery. Verified seller inventory. Read our unbiased 2026 review.",
   },
   "is-euromatchtickets-safe": {
     lang: "en",
     title: "Is EuroMatchTickets Safe? Security Review 2026",
     h1: "Is EuroMatchTickets Safe to Buy From?",
     subtitle: "Security, payment protection & buyer guarantees explained",
-    metaDesc: "Is EuroMatchTickets safe? Full security review 2026. SSL, Stripe payments, FanProtect guarantee. Everything you need to know before buying.",
+    metaDesc: "Is EuroMatchTickets safe? Full security review 2026. SSL, Stripe payments, Buyer protection. Everything you need to know before buying.",
   },
   "euromatchtickets-erfahrung": {
     lang: "de",
@@ -61,7 +61,7 @@ const REVIEWS = [
   { name: "Marco R.", country: "Italy", date: "March 2026", rating: 5, event: "AC Milan vs Inter", text: "Ordered tickets for the Derby della Madonnina. QR codes arrived within 2 hours. Seats were exactly as described. Would use again.", verified: true },
   { name: "Sarah L.", country: "UK", date: "February 2026", rating: 5, event: "Arsenal vs Liverpool", text: "First time using EuroMatchTickets. Was nervous but everything went smoothly. Prices were slightly above face value but still cheaper than StubHub.", verified: true },
   { name: "Thomas K.", country: "Germany", date: "January 2026", rating: 4, event: "Bayern Munich vs Dortmund", text: "Good experience overall. Tickets were legit and delivery was fast. Only complaint: no phone support, only email. But they replied within 4 hours.", verified: true },
-  { name: "Ana P.", country: "Spain", date: "March 2026", rating: 5, event: "El Clasico", text: "Bought El Clasico tickets. Price was high but that's expected for such a match. FanProtect guarantee gave me peace of mind. Seats were perfect.", verified: true },
+  { name: "Ana P.", country: "Spain", date: "March 2026", rating: 5, event: "El Clasico", text: "Bought El Clasico tickets. Price was high but that's expected for such a match. Buyer protection gave me peace of mind. Seats were perfect.", verified: true },
   { name: "Julie M.", country: "France", date: "December 2025", rating: 4, event: "PSG vs Marseille", text: "Tres bon service. Les billets sont arrives rapidement par email. Le prix etait un peu plus eleve que prevu, mais c'est normal pour Le Classique.", verified: true },
   { name: "Erik V.", country: "Netherlands", date: "February 2026", rating: 5, event: "Ajax Champions League", text: "Excellent! Bought CL group stage tickets. Price was fair, delivery instant. The comparison tool helped me find the cheapest option.", verified: true },
   { name: "Laura B.", country: "UK", date: "January 2026", rating: 3, event: "Taylor Swift Wembley", text: "Tickets were real and worked fine, but the price was quite a bit above face value. I understand it's a resale marketplace, but it still stings. Service itself was professional.", verified: true },
@@ -249,11 +249,11 @@ const ReviewPage = () => {
                 </h3>
                 <ul className="space-y-2">
                   {[
-                    isGerman ? "FanProtect Geld-zurück-Garantie" : isFrench ? "Garantie FanProtect remboursement" : "FanProtect money-back guarantee",
+                    isGerman ? "Buyer protection Geld-zurück-Garantie" : isFrench ? "Garantie Buyer protection remboursement" : "Buyer protection money-back guarantee",
                     isGerman ? "Sofortige QR-Code-Lieferung" : isFrench ? "Livraison instantanee par QR code" : "Instant QR code delivery",
                     isGerman ? "Große Auswahl an Events" : isFrench ? "Large selection d'evenements" : "Huge selection of events across Europe",
                     isGerman ? "Oft günstiger als Viagogo" : isFrench ? "Souvent moins cher que Viagogo" : "Often cheaper than Viagogo & StubHub",
-                    isGerman ? "SSL & Stripe sichere Zahlung" : isFrench ? "Paiement securise SSL & Stripe" : "SSL encrypted + Stripe secure payments",
+                    isGerman ? "SSL & Stripe sichere Zahlung" : isFrench ? "Paiement securise SSL & Stripe" : "encrypted + Stripe secure payments",
                     isGerman ? "Preisvergleich-Tool" : isFrench ? "Outil de comparaison des prix" : "Built-in price comparison tool",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
@@ -293,10 +293,10 @@ const ReviewPage = () => {
             </h2>
             <div className="bg-[#1a2236] rounded-none p-6 border border-gray-700/30 space-y-4">
               {[
-                { icon: Shield, title: isGerman ? "FanProtect Garantie" : isFrench ? "Garantie FanProtect" : "FanProtect Guarantee", desc: isGerman ? "100% Geld-zurück-Garantie bei ungültigen Tickets oder Eventabsage." : isFrench ? "Remboursement 100% si les billets sont invalides ou l'evenement est annule." : "100% money-back guarantee if tickets are invalid or event is cancelled. This is their strongest selling point." },
+                { icon: Shield, title: isGerman ? "Buyer protection Garantie" : isFrench ? "Garantie Buyer protection" : "Buyer protection", desc: isGerman ? "100% Geld-zurück-Garantie bei ungültigen Tickets oder Eventabsage." : isFrench ? "Remboursement 100% si les billets sont invalides ou l'evenement est annule." : "cancellation refund policy if tickets are invalid or event is cancelled. This is their strongest selling point." },
                 { icon: CreditCard, title: isGerman ? "Stripe-Zahlung" : isFrench ? "Paiement Stripe" : "Stripe Payment Processing", desc: isGerman ? "Zahlungen werden über Stripe abgewickelt — den gleichen Anbieter wie Shopify und Amazon." : isFrench ? "Les paiements sont traites par Stripe — le meme fournisseur que Shopify et Amazon." : "Payments processed through Stripe — the same provider used by Shopify, Amazon, and Google. Your card details never touch their servers." },
                 { icon: Lock, title: "SSL / HTTPS", desc: isGerman ? "256-bit SSL-Verschlüsselung auf der gesamten Website." : isFrench ? "Chiffrement SSL 256 bits sur l'ensemble du site." : "256-bit SSL encryption across the entire site. Standard but important." },
-                { icon: Clock, title: isGerman ? "Sofortlieferung" : isFrench ? "Livraison instantanee" : "Instant Delivery", desc: isGerman ? "Tickets werden als QR-Codes per E-Mail geliefert — in der Regel innerhalb von Minuten." : isFrench ? "Les billets sont livres par QR code par email — generalement en quelques minutes." : "Tickets delivered as QR codes via email — usually within minutes, not days." },
+                { icon: Clock, title: isGerman ? "Sofortlieferung" : isFrench ? "Livraison instantanee" : "QR delivery", desc: isGerman ? "Tickets werden als QR-Codes per E-Mail geliefert — in der Regel innerhalb von Minuten." : isFrench ? "Les billets sont livres par QR code par email — generalement en quelques minutes." : "Tickets delivered as QR codes via email — usually within minutes, not days." },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="bg-blue-500/100/10 p-2 rounded-none">
@@ -328,7 +328,7 @@ const ReviewPage = () => {
                 </thead>
                 <tbody className="text-sm">
                   {[
-                    [isGerman ? "Käuferschutz" : isFrench ? "Protection acheteur" : "Buyer Protection", "FanProtect", "Viagogo Guarantee", "FanProtect"],
+                    [isGerman ? "Käuferschutz" : isFrench ? "Protection acheteur" : "Buyer Protection", "Buyer protection", "Viagogo Guarantee", "Buyer protection"],
                     [isGerman ? "Durchschn. Preis" : isFrench ? "Prix moyen" : "Avg. Price", isGerman ? "Niedrig" : isFrench ? "Bas" : "Low", isGerman ? "Hoch" : isFrench ? "Eleve" : "High", isGerman ? "Mittel-Hoch" : isFrench ? "Moyen-Eleve" : "Medium-High"],
                     [isGerman ? "Lieferung" : isFrench ? "Livraison" : "Delivery", isGerman ? "Sofort (QR)" : isFrench ? "Instantanee (QR)" : "Instant (QR)", isGerman ? "1-3 Tage" : isFrench ? "1-3 jours" : "1-3 days", isGerman ? "1-5 Tage" : isFrench ? "1-5 jours" : "1-5 days"],
                     [isGerman ? "Servicegebühr" : isFrench ? "Frais de service" : "Service Fee", "~12%", "~25-30%", "~20-25%"],
@@ -387,10 +387,10 @@ const ReviewPage = () => {
             <div className="bg-[#1a2236] rounded-none p-6 border border-gray-700/30">
               <p className="text-gray-300 leading-relaxed mb-4">
                 {isGerman
-                  ? "EuroMatchTickets ist eine seriöse und zuverlässige Plattform für den Kauf von Event-Tickets in Europa. Die FanProtect-Garantie, die schnelle Lieferung und die im Vergleich niedrigeren Preise machen es zu einer guten Wahl. Wie bei jedem Marktplatz liegen die Preise über dem Nennwert, aber das ist der Kompromiss für den Zugang zu ausverkauften Events."
+                  ? "EuroMatchTickets ist eine seriöse und zuverlässige Plattform für den Kauf von Event-Tickets in Europa. Die Buyer protection-Garantie, die schnelle Lieferung und die im Vergleich niedrigeren Preise machen es zu einer guten Wahl. Wie bei jedem Marktplatz liegen die Preise über dem Nennwert, aber das ist der Kompromiss für den Zugang zu ausverkauften Events."
                   : isFrench
-                  ? "EuroMatchTickets est une plateforme fiable et serieuse pour l'achat de billets d'evenements en Europe. La garantie FanProtect, la livraison rapide et les prix comparativement plus bas en font un bon choix. Comme toute marketplace, les prix sont au-dessus de la valeur nominale, mais c'est le compromis pour acceder a des evenements complets."
-                  : "EuroMatchTickets is a legitimate and reliable platform for buying event tickets in Europe. The FanProtect guarantee, fast delivery, and comparatively lower prices make it a solid choice. Like any marketplace, prices are above face value, but that's the trade-off for access to sold-out events."
+                  ? "EuroMatchTickets est une plateforme fiable et serieuse pour l'achat de billets d'evenements en Europe. La garantie Buyer protection, la livraison rapide et les prix comparativement plus bas en font un bon choix. Comme toute marketplace, les prix sont au-dessus de la valeur nominale, mais c'est le compromis pour acceder a des evenements complets."
+                  : "EuroMatchTickets is a legitimate and reliable platform for buying event tickets in Europe. The Buyer protection, fast delivery, and comparatively lower prices make it a solid choice. Like any marketplace, prices are above face value, but that's the trade-off for access to sold-out events."
                 }
               </p>
               <div className="flex items-center gap-3 bg-emerald-500/100/10 p-4 rounded-none border border-emerald-500/20">

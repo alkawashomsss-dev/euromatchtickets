@@ -31,20 +31,20 @@ const BrunoMarsPage = () => {
   const faqSchema = {
     "@context": "https://schema.org", "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "How much are Bruno Mars 2026 tour tickets?", "acceptedAnswer": { "@type": "Answer", "text": "Bruno Mars The Romantic Tour 2026 tickets start from €125. Floor standing from €185. Golden Circle from €295. VIP packages from €450. Wembley London dates are the most popular. All tickets include FanProtect 100% money-back guarantee." }},
+      { "@type": "Question", "name": "How much are Bruno Mars 2026 tour tickets?", "acceptedAnswer": { "@type": "Answer", "text": "Bruno Mars The Romantic Tour 2026 tickets start from €125. Floor standing from €185. Golden Circle from €295. VIP packages from €450. Wembley London dates are the most popular. All tickets include Buyer protection cancellation refund policy." }},
       { "@type": "Question", "name": "When is Bruno Mars touring Europe in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Bruno Mars tours Europe June 21 to July 28, 2026. Paris Stade de France (Jun 21), Berlin Olympiastadion (Jun 26-29, 3 nights), Amsterdam Johan Cruijff Arena (Jul 2-7, 4 nights), Madrid Metropolitano (Jul 10-11), Milan San Siro (Jul 14-15), London Wembley (Jul 18-28, 6 nights)." }},
       { "@type": "Question", "name": "How many nights is Bruno Mars at Wembley?", "acceptedAnswer": { "@type": "Answer", "text": "Bruno Mars plays 6 nights at Wembley Stadium London from July 18-28, 2026. This makes it the biggest London residency of the tour. Each night features a slightly different setlist with surprise songs." }},
       { "@type": "Question", "name": "What songs does Bruno Mars play on The Romantic Tour?", "acceptedAnswer": { "@type": "Answer", "text": "The setlist includes Uptown Funk, 24K Magic, That's What I Like, Locked Out of Heaven, Just The Way You Are, Grenade, When I Was Your Man, Treasure, Leave The Door Open (Silk Sonic), plus new songs from The Romantic album. 2+ hour show." }},
-      { "@type": "Question", "name": "Are Bruno Mars tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All tickets include FanProtect 100% money-back guarantee. Full refund if cancelled, postponed, or invalid tickets. Instant QR delivery." }},
+      { "@type": "Question", "name": "Are Bruno Mars tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All tickets include Buyer protection cancellation refund policy. Full refund if cancelled, postponed, or invalid tickets. Instant QR delivery." }},
     ]
   };
 
   const faqs = [
-    { q: "How much are Bruno Mars 2026 tour tickets?", a: "Tickets from €125. Floor standing from €185. Golden Circle from €295. VIP from €450. Wembley dates are most popular. All include FanProtect 100% money-back guarantee." },
+    { q: "How much are Bruno Mars 2026 tour tickets?", a: "Tickets from €125. Floor standing from €185. Golden Circle from €295. VIP from €450. Wembley dates are most popular. All include Buyer protection cancellation refund policy." },
     { q: "When is Bruno Mars touring Europe in 2026?", a: "June 21 to July 28. Paris (Jun 21), Berlin (Jun 26-29), Amsterdam (Jul 2-7), Madrid (Jul 10-11), Milan (Jul 14-15), London Wembley (Jul 18-28, 6 nights)." },
     { q: "How many nights at Wembley?", a: "6 nights, July 18-28 — the biggest London residency of the tour. Each night has a different setlist with surprise songs." },
     { q: "What songs does Bruno Mars play?", a: "Uptown Funk, 24K Magic, That's What I Like, Locked Out of Heaven, Just The Way You Are, Grenade, Leave The Door Open (Silk Sonic), plus new album tracks. 2+ hours." },
-    { q: "Are tickets refundable?", a: "Yes! FanProtect 100% money-back guarantee. Full refund if cancelled, postponed, or invalid. Instant QR delivery." },
+    { q: "Are tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled, postponed, or invalid. Instant QR delivery." },
   ];
 
   const shows = [
@@ -60,7 +60,7 @@ const BrunoMarsPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Buy Bruno Mars Tour Tickets 2026 | London & Europe From €125"
-        description="Buy Bruno Mars The Romantic Tour 2026 tickets from €125. 6 nights Wembley London, Berlin, Amsterdam, Madrid, Milan. Selling Fast. 100% Money-Back Guarantee. Instant QR."
+        description="Buy Bruno Mars The Romantic Tour 2026 tickets from €125. 6 nights Wembley London, Berlin, Amsterdam, Madrid, Milan. Selling Fast. Cancellation refund policy. Instant QR."
         canonicalUrl={CANONICAL}
         image="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200&h=630&fit=crop"
       />
@@ -86,7 +86,7 @@ const BrunoMarsPage = () => {
           <div className="inline-block bg-[#161620] border border-white/10 p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">€125</div>
-            <div className="text-emerald-500 text-sm mt-1">100% Money-Back Guarantee</div>
+            <div className="text-emerald-500 text-sm mt-1">Cancellation refund policy</div>
           </div>
         </div>
       </section>
@@ -94,9 +94,9 @@ const BrunoMarsPage = () => {
       {/* TRUST */}
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8 text-sm">
-          <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />100% Verified</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />Verified</span>
           <span className="flex items-center gap-2 text-emerald-500"><Star className="w-4 h-4" />4.8/5 Reviews</span>
-          <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />Instant QR Delivery</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />QR ticket delivery</span>
         </div>
       </section>
 
@@ -139,7 +139,7 @@ const BrunoMarsPage = () => {
             <p>Bruno Mars is widely considered the greatest live performer of his generation. The Romantic Tour features a full live band with <strong className="text-white">The Hooligans</strong>, world-class choreography, and a setlist spanning his entire career. Expect 25+ songs including all the hits: <em>Uptown Funk</em>, <em>24K Magic</em>, <em>That's What I Like</em>, <em>Locked Out of Heaven</em>, <em>Just The Way You Are</em>, <em>Grenade</em>, <em>When I Was Your Man</em>, <em>Treasure</em>, <em>Leave The Door Open</em> (Silk Sonic), plus new material from The Romantic album.</p>
             <h3 className="text-white text-lg">Ticket Categories & Prices</h3>
             <p><strong className="text-white">Upper Tier</strong> (from €125) — Full stadium view with giant screens. <strong className="text-white">Lower Tier</strong> (from €165) — Closer to the stage. <strong className="text-white">Floor Standing</strong> (from €185) — In the pit. <strong className="text-white">Golden Circle</strong> (from €295) — Front of stage. <strong className="text-white">VIP</strong> (from €450) — Early entry, exclusive merch, premium bar.</p>
-            <p>All tickets include <Link to="/buyer-protection" className="text-[#e10600] hover:underline">FanProtect 100% money-back guarantee</Link> and instant QR delivery.</p>
+            <p>All tickets include <Link to="/buyer-protection" className="text-[#e10600] hover:underline">Buyer protection cancellation refund policy</Link> and QR ticket delivery.</p>
           </div>
         </div>
       </section>

@@ -77,9 +77,9 @@ const TermsPage = () => {
 
           {/* Buyer Protection */}
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">FanProtect Guarantee</h2>
+            <h2 className="text-2xl font-bold text-white mb-4">Buyer protection</h2>
             <p className="leading-relaxed mb-4">
-              Every purchase on EuroMatchTickets is protected by our FanProtect Guarantee:
+              Every purchase on EuroMatchTickets is protected by our Buyer protection:
             </p>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">

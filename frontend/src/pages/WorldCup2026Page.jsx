@@ -10,7 +10,7 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import SEOHead from "../components/SEOHead";
 
 const TRANSLATIONS = {
-  en: { title: "FIFA World Cup 2026 Tickets", subtitle: "USA • Canada • Mexico", buyNow: "Secure Your Seat Now", from: "From", final: "World Cup Final", guarantee: "100% Guarantee" },
+  en: { title: "FIFA World Cup 2026 Tickets", subtitle: "USA • Canada • Mexico", buyNow: "Secure Your Seat Now", from: "From", final: "World Cup Final", guarantee: "Buyer protection" },
   de: { title: "FIFA WM 2026 Tickets", subtitle: "USA • Kanada • Mexiko", buyNow: "Jetzt Kaufen", from: "Ab", final: "WM-Finale", guarantee: "100% Garantie" },
   es: { title: "Entradas Copa Mundial FIFA 2026", subtitle: "USA • Canadá • México", buyNow: "Comprar", from: "Desde", final: "Final del Mundial", guarantee: "100% Garantía" },
   fr: { title: "Billets Coupe du Monde FIFA 2026", subtitle: "USA • Canada • Mexique", buyNow: "Acheter", from: "À partir de", final: "Finale de la Coupe", guarantee: "Garantie 100%" },
@@ -79,7 +79,7 @@ const WorldCup2026Page = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead
         title="FIFA World Cup 2026 Tickets | USA Mexico Canada"
-        description="Buy FIFA World Cup 2026 tickets from €99. Group stages, knockout rounds, and final. Cheapest verified tickets in Europe."
+        description="Buy FIFA World Cup 2026 tickets from €99. Group stages, knockout rounds, and final. Verified verified tickets in Europe."
         image="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=630&fit=crop"
         canonicalUrl="https://euromatchtickets.com/world-cup-2026"
       />

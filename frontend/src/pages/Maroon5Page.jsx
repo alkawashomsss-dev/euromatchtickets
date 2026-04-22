@@ -14,12 +14,12 @@ const TRANSLATIONS = {
   en: {
     title: "Maroon 5 Concert Tickets 2026",
     subtitle: "Official Tickets - 5% Cheaper Than Market Price",
-    description: "Buy Maroon 5 concert tickets for the 2026 World Tour. Best prices guaranteed, instant QR delivery, 100% money-back guarantee.",
+    description: "Buy Maroon 5 concert tickets for the 2026 World Tour. Market pricing may vary, QR ticket delivery, cancellation refund policy.",
     buyNow: "Buy Tickets Now",
     from: "From",
-    guarantee: "100% Guarantee",
-    instant: "Instant Delivery",
-    cheapest: "Cheapest Prices",
+    guarantee: "Buyer protection",
+    instant: "QR delivery",
+    cheapest: "Verified Listings",
     tourDates: "Tour Dates",
     whyBuy: "Why Buy From Us?",
     soldOut: "Sold Out Elsewhere? We Have Tickets!"
@@ -138,7 +138,7 @@ const Maroon5Page = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead
         title="Maroon 5 World Tour 2026 | Munich Tickets"
-        description="Buy Maroon 5 World Tour 2026 tickets from €79. Olympiastadion Munich. Verified sellers, instant QR delivery."
+        description="Buy Maroon 5 World Tour 2026 tickets from €79. Olympiastadion Munich. Verified sellers, QR ticket delivery."
         image="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&h=630&fit=crop"
         canonicalUrl="https://euromatchtickets.com/maroon-5-tour-2026"
       />
@@ -222,8 +222,8 @@ const Maroon5Page = () => {
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />100% Money-Back</div>
             <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" />4.9/5 Trustpilot</div>
-            <div className="flex items-center gap-2"><Users className="w-4 h-4 text-violet-600" />2M+ Tickets Sold</div>
-            <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />Official Partner</div>
+            <div className="flex items-center gap-2"><Users className="w-4 h-4 text-violet-600" />Verified sellers</div>
+            <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />Marketplace</div>
           </div>
         </div>
       </section>
@@ -279,10 +279,10 @@ const Maroon5Page = () => {
           <h2 className="text-3xl font-bold mb-8 text-center">{t.whyBuy}</h2>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { icon: <Shield className="w-8 h-8" />, title: "100% Guarantee", desc: "Full refund if cancelled" },
+              { icon: <Shield className="w-8 h-8" />, title: "Buyer protection", desc: "Full refund if cancelled" },
               { icon: <Zap className="w-8 h-8" />, title: "Instant QR", desc: "Tickets in seconds" },
               { icon: <Star className="w-8 h-8" />, title: "5% Cheaper", desc: "Best market prices" },
-              { icon: <Clock className="w-8 h-8" />, title: "24/7 Support", desc: "Always here to help" },
+              { icon: <Clock className="w-8 h-8" />, title: "Customer support", desc: "Always here to help" },
             ].map((item, idx) => (
               <div key={idx} className="text-center p-6 bg-[#1e1e1e] rounded-none border border-white/10">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-none bg-gradient-to-br from-red-600/20 to-pink-600/20 flex items-center justify-center text-red-600">

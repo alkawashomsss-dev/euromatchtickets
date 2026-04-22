@@ -44,7 +44,7 @@ const HungaryGPPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Hungarian GP Tickets 2026 | Budapest F1 Prices"
-        description="Buy Hungarian Grand Prix 2026 Budapest tickets from €99. Cheapest F1 race! Hungaroring circuit. VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
+        description="Buy Hungarian Grand Prix 2026 Budapest tickets from €99. Verified F1 race! Hungaroring circuit. VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
         image="https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -65,7 +65,7 @@ const HungaryGPPage = () => {
           
           <p className="text-xl text-slate-500 max-w-3xl mx-auto mb-8">
             The most affordable F1 race! Enjoy Budapest and world-class racing at the twisty Hungaroring.
-            <strong className="text-emerald-600"> From just €99 - Cheapest F1 tickets!</strong>
+            <strong className="text-emerald-600"> From just €99 - Verified F1 tickets!</strong>
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -80,7 +80,7 @@ const HungaryGPPage = () => {
           <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€99</div>
-            <div className="text-emerald-600 text-sm mt-1">Cheapest F1 race 2026!</div>
+            <div className="text-emerald-600 text-sm mt-1">Verified F1 race 2026!</div>
           </div>
         </div>
       </section>
@@ -90,8 +90,8 @@ const HungaryGPPage = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex items-center gap-2 justify-center text-emerald-600"><Shield className="w-5 h-5" /><span className="text-sm">100% Ticket Guarantee</span></div>
             <div className="flex items-center gap-2 justify-center text-emerald-600"><CreditCard className="w-5 h-5" /><span className="text-sm">Secure Checkout</span></div>
-            <div className="flex items-center gap-2 justify-center text-emerald-600"><Zap className="w-5 h-5" /><span className="text-sm">Instant Delivery</span></div>
-            <div className="flex items-center gap-2 justify-center text-emerald-600"><Headphones className="w-5 h-5" /><span className="text-sm">24/7 Support</span></div>
+            <div className="flex items-center gap-2 justify-center text-emerald-600"><Zap className="w-5 h-5" /><span className="text-sm">QR delivery</span></div>
+            <div className="flex items-center gap-2 justify-center text-emerald-600"><Headphones className="w-5 h-5" /><span className="text-sm">Customer support</span></div>
           </div>
         </div>
       </section>

@@ -11,7 +11,7 @@ const RealMadridHubPage = () => {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     "name": "Real Madrid CF 2025-26 Season",
-    "description": "Buy Real Madrid tickets for La Liga, Champions League, and all matches at Santiago Bernabeu. Cheapest prices guaranteed.",
+    "description": "Buy Real Madrid tickets for La Liga, Champions League, and all matches at Santiago Bernabeu. Verified prices guaranteed.",
     "image": "https://euromatchtickets.com/logo-192.png",
     "startDate": "2025-08-15",
     "endDate": "2026-06-01",
@@ -29,7 +29,7 @@ const RealMadridHubPage = () => {
     "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Real Madrid Tickets 2025-26",
-    "description": "Verified Real Madrid match tickets with instant QR delivery",
+    "description": "Verified Real Madrid match tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "2841", "bestRating": "5", "worstRating": "1" },
     "review": [
@@ -56,19 +56,19 @@ const RealMadridHubPage = () => {
   ];
 
   const faqs = [
-    { question: "How much are Real Madrid tickets?", answer: "Real Madrid tickets on EuroMatchTickets start from \u20AC75 for La Liga matches. Champions League matches start at \u20AC150, and El Clasico tickets start at \u20AC195. We guarantee the cheapest prices in Europe." },
+    { question: "How much are Real Madrid tickets?", answer: "Real Madrid tickets on EuroMatchTickets start from \u20AC75 for La Liga matches. Champions League matches start at \u20AC150, and El Clasico tickets start at \u20AC195. We guarantee the listings on EuroMatchTickets." },
     { question: "How to buy Real Madrid tickets online?", answer: "Simply browse our Real Madrid ticket listings, select your preferred match and seats, and checkout securely. Tickets are delivered instantly as QR codes to your email." },
     { question: "Where does Real Madrid play?", answer: "Real Madrid plays home matches at the Santiago Bernab\u00E9u Stadium in Madrid, Spain. The stadium was recently renovated with a retractable roof and holds 81,044 spectators." },
     { question: "Can I buy El Clasico tickets?", answer: "Yes! We have El Clasico tickets (Real Madrid vs Barcelona) starting from \u20AC195. These are among our most popular tickets - book early as they sell out fast." },
-    { question: "Are EuroMatchTickets Real Madrid tickets genuine?", answer: "Absolutely. All tickets are 100% verified and backed by our FanProtect guarantee. If there's any issue, you receive a full refund." },
+    { question: "Are EuroMatchTickets Real Madrid tickets genuine?", answer: "Absolutely. All tickets are verified and backed by our Buyer protection. If there's any issue, you receive a full refund." },
     { question: "When is the next Real Madrid Champions League match?", answer: "Real Madrid's next Champions League match is in the knockout rounds, starting February 2026. Check our listings for the latest schedule and available tickets." },
   ];
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="real-madrid-hub-page">
-      <SEOHead
+      <SEOHead noIndex={true}
         title="Real Madrid Tickets 2026 | Bernabeu, UCL, El Clasico"
-        description="Buy Real Madrid tickets from \u20AC75. La Liga, Champions League, El Clasico at Santiago Bernabeu. 100% verified. Instant QR delivery. Cheapest prices guaranteed."
+        description="Buy Real Madrid tickets from \u20AC75. La Liga, Champions League, El Clasico at Santiago Bernabeu. verified. Instant QR delivery. Verified prices guaranteed."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
@@ -82,7 +82,7 @@ const RealMadridHubPage = () => {
             Real Madrid Tickets 2025-26
             <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-purple-400 to-amber-400 bg-clip-text text-transparent">Santiago Bernabeu &middot; La Liga &middot; Champions League</span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with QR ticket delivery. Buyer protection.</p>
           <ScarcityBadges ticketsLeft={512} viewers={378} priceIncrease="22%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Calendar className="w-5 h-5 text-purple-600" /><span>2025-26 Season</span></div>
@@ -139,7 +139,7 @@ const RealMadridHubPage = () => {
             <h3 className="text-lg font-semibold text-white">Santiago Bernabeu Stadium</h3>
             <p>The newly renovated Santiago Bernab&eacute;u is one of the world's greatest football stadiums. With a <strong>retractable roof, 360-degree screen</strong>, and capacity of 81,044, it offers an unforgettable matchday experience. EuroMatchTickets has tickets for every section - from <strong>Fondo Sur</strong> ultras area to <strong>VIP hospitality boxes</strong>.</p>
             <h3 className="text-lg font-semibold text-white">Why Buy From EuroMatchTickets?</h3>
-            <p>We offer the <strong>cheapest Real Madrid tickets</strong> in Europe. All tickets are <strong>100% verified</strong>, delivered instantly as QR codes, and backed by our <Link to="/buyer-protection" className="text-purple-600 hover:underline">FanProtect guarantee</Link>.</p>
+            <p>We offer the <strong>cheapest Real Madrid tickets</strong> in Europe. All tickets are <strong>verified</strong>, delivered instantly as QR codes, and backed by our <Link to="/buyer-protection" className="text-purple-600 hover:underline">Buyer protection</Link>.</p>
           </div>
         </div>
       </section>
@@ -232,7 +232,7 @@ const RealMadridHubPage = () => {
           <p className="text-purple-100 mb-8 text-lg">El Clasico, Champions League, La Liga - all at the legendary Bernabeu.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/events?type=match"><Button className="bg-[#1e1e1e] text-purple-700 hover:bg-purple-500/10 text-lg px-8 py-3">Browse All Matches</Button></Link>
-            <Link to="/buyer-protection"><Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">FanProtect Guarantee</Button></Link>
+            <Link to="/buyer-protection"><Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">Buyer protection</Button></Link>
           </div>
         </div>
       </section>

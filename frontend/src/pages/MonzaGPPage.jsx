@@ -47,7 +47,7 @@ const MonzaGPPage = () => {
     "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Italian Grand Prix Monza 2026 Tickets",
-    "description": "Verified Monza F1 tickets with instant QR delivery",
+    "description": "Verified Monza F1 tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "4127", "bestRating": "5", "worstRating": "1" },
     "review": [
@@ -61,7 +61,7 @@ const MonzaGPPage = () => {
     <div className="min-h-screen bg-[#0e0e14]" data-testid="monza-gp-page">
       <SEOHead
         title="Monza F1 Tickets 2026 | Italian GP from €69"
-        description="Buy Italian Grand Prix 2026 tickets at Monza from €69. The Temple of Speed! Parabolica, Ascari grandstands. Tifosi atmosphere. 40% cheaper! FanProtect guarantee."
+        description="Buy Italian Grand Prix 2026 tickets at Monza from €69. The Temple of Speed! Parabolica, Ascari grandstands. Tifosi atmosphere. 40% cheaper! Buyer protection."
         canonicalUrl="https://euromatchtickets.com/f1-italian-grand-prix-monza-tickets"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
@@ -95,7 +95,7 @@ const MonzaGPPage = () => {
                 <span className="block text-green-600">Monza 2026</span>
               </h1>
               <p className="text-lg text-slate-500 mb-4 max-w-xl">
-                Secure your seat now with instant QR delivery. 100% Buyer Protection.
+                Secure your seat now with QR ticket delivery. Buyer protection.
               </p>
               <ScarcityBadgesLight ticketsLeft={456} viewers={278} priceIncrease="15%" />
 
@@ -158,8 +158,8 @@ const MonzaGPPage = () => {
       <section className="py-4 bg-gradient-to-r from-green-600 via-white to-red-600">
         <div className="max-w-6xl mx-auto px-4">
           <div className="bg-[#1e1e1e] rounded-full px-6 py-3 flex flex-wrap justify-center gap-6 shadow-sm">
-            <span className="flex items-center gap-2 text-sm text-slate-300"><Shield className="w-4 h-4 text-green-600" /> 100% Verified</span>
-            <span className="flex items-center gap-2 text-sm text-slate-300"><Zap className="w-4 h-4 text-amber-500" /> Instant Delivery</span>
+            <span className="flex items-center gap-2 text-sm text-slate-300"><Shield className="w-4 h-4 text-green-600" /> Verified</span>
+            <span className="flex items-center gap-2 text-sm text-slate-300"><Zap className="w-4 h-4 text-amber-500" /> QR delivery</span>
             <span className="flex items-center gap-2 text-sm text-slate-300"><TrendingUp className="w-4 h-4 text-red-600" /> 40% Cheaper</span>
             <span className="flex items-center gap-2 text-sm text-slate-300"><Star className="w-4 h-4 text-amber-500 fill-amber-400" /> 4,127 Reviews</span>
           </div>
@@ -258,8 +258,8 @@ const MonzaGPPage = () => {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 space-y-8">
           <div>
-            <h2 className="text-xl font-bold text-white mb-3">Buy Italian Grand Prix Monza Tickets 2026 - Cheapest Online</h2>
-            <p className="text-slate-400 leading-relaxed">The <strong>Italian Grand Prix at Monza</strong> is known as the "Temple of Speed" - the fastest circuit on the F1 calendar with average speeds over 264 km/h and top speeds reaching 365 km/h on the main straight. EuroMatchTickets offers Monza tickets from just <strong>&euro;69</strong> - that's 40% cheaper than the official F1.com price. Every ticket includes 3-day access, instant QR delivery, and our FanProtect money-back guarantee.</p>
+            <h2 className="text-xl font-bold text-white mb-3">Buy Italian Grand Prix Monza Tickets 2026 - Verified Online</h2>
+            <p className="text-slate-400 leading-relaxed">The <strong>Italian Grand Prix at Monza</strong> is known as the "Temple of Speed" - the fastest circuit on the F1 calendar with average speeds over 264 km/h and top speeds reaching 365 km/h on the main straight. EuroMatchTickets offers Monza tickets from just <strong>&euro;69</strong> - that's 40% cheaper than the official F1.com price. Every ticket includes 3-day access, QR ticket delivery, and our Buyer protection money-back guarantee.</p>
           </div>
           <div>
             <h2 className="text-xl font-bold text-white mb-3">Best Grandstands at Monza</h2>

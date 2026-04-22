@@ -19,7 +19,7 @@ const faqData = {
     },
     {
       question: "Are the tickets on EuroMatchTickets legitimate?",
-      answer: "Yes, absolutely. All tickets on EuroMatchTickets are 100% verified and guaranteed authentic. We verify every seller through a rigorous process including ID verification, transaction history checks, and ongoing monitoring. If any ticket is found to be invalid, you receive a full refund under our Buyer Guarantee."
+      answer: "Yes, absolutely. All tickets on EuroMatchTickets are verified and guaranteed authentic. We verify every seller through a rigorous process including ID verification, transaction history checks, and ongoing monitoring. If any ticket is found to be invalid, you receive a full refund under our Buyer Guarantee."
     },
     {
       question: "Can I choose my specific seats?",

@@ -271,7 +271,7 @@ const HomePage = () => {
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="mb-8">
               <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed">
                 Be part of history. Verified tickets for the biggest football event ever. 
-                <span className="text-[#e10600] font-bold"> 100% secure</span> with instant QR delivery.
+                <span className="text-[#e10600] font-bold"> 100% secure</span> with QR ticket delivery.
               </p>
             </motion.div>
 
@@ -302,8 +302,8 @@ const HomePage = () => {
               {[
                 { icon: CheckCircle, text: "Verified Tickets" },
                 { icon: Lock, text: "Secure Payment" },
-                { icon: Zap, text: "Instant Delivery" },
-                { icon: Headphones, text: "24/7 Support" },
+                { icon: Zap, text: "QR delivery" },
+                { icon: Headphones, text: "Customer support" },
               ].map((t, i) => (
                 <span key={i} className="flex items-center gap-2 text-sm text-white/60">
                   <t.icon className="w-4 h-4 text-[#e10600]" />{t.text}
@@ -610,7 +610,7 @@ const HomePage = () => {
               { label: "Live Events", icon: Ticket },
               { label: "Buyer Protected", icon: Shield },
               { label: "Europe-Wide", icon: Globe },
-              { label: "24/7 Support", icon: Headphones },
+              { label: "Customer support", icon: Headphones },
             ].map((stat, idx) => (
               <FadeInSection key={idx} delay={idx * 0.06}>
                 <div className="bg-[#1e1e1e] border border-white/6 p-5 text-center hover:border-[#e10600] transition-colors duration-150">
@@ -626,7 +626,7 @@ const HomePage = () => {
           {/* Trust Feature Cards */}
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { icon: Shield, title: "100% BUYER PROTECTION", desc: "Full refund if tickets are invalid or not delivered. Every ticket verified.", to: "/buyer-protection" },
+              { icon: Shield, title: "BUYER PROTECTION", desc: "Full refund if tickets are invalid or not delivered. Every ticket verified.", to: "/buyer-protection" },
               { icon: Lock, title: "SECURE PAYMENTS", desc: "Bank-level 256-bit SSL encryption via Stripe. Your details are always safe.", to: "/payment-info" },
               { icon: CheckCircle, title: "VERIFIED SELLERS", desc: "Every seller undergoes ID verification. Every ticket authenticated.", to: null },
             ].map((item, i) => (
@@ -658,7 +658,7 @@ const HomePage = () => {
           <div className="flex flex-wrap items-center justify-center gap-8 mt-10 pt-6 border-t border-white/6">
             {[
               { icon: CreditCard, text: "Powered by Stripe" },
-              { icon: Lock, text: "SSL Encrypted" },
+              { icon: Lock, text: "Encrypted" },
               { icon: Award, text: "GDPR Compliant" },
             ].map((item, i) => (
               <span key={i} className="flex items-center gap-2 text-slate-600 text-xs uppercase tracking-wider"><item.icon className="w-3.5 h-3.5" />{item.text}</span>

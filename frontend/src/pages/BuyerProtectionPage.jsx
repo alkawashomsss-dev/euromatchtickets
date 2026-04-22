@@ -10,7 +10,7 @@ const BuyerProtectionPage = () => {
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Buyer Protection", url: "https://euromatchtickets.com/buyer-protection" }]} />
       <Helmet>
         <title>Buyer Protection & Ticket Guarantee | EuroMatchTickets</title>
-        <meta name="description" content="Learn about EuroMatchTickets buyer protection policy. 100% money-back guarantee if tickets are invalid or not delivered. Secure verified ticket marketplace." />
+        <meta name="description" content="Learn about EuroMatchTickets buyer protection policy. cancellation refund policy if tickets are invalid or not delivered. Secure verified ticket marketplace." />
         <meta name="keywords" content="ticket guarantee, buyer protection, money back guarantee, verified tickets, secure ticket purchase" />
       </Helmet>
 
@@ -21,7 +21,7 @@ const BuyerProtectionPage = () => {
             <Shield className="w-10 h-10 text-emerald-600" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            100% Buyer Protection
+            Buyer protection
           </h1>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
             Your purchase is protected. If something goes wrong, we've got you covered with our comprehensive guarantee.

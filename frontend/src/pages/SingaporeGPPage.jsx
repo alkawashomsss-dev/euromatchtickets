@@ -41,7 +41,7 @@ const SingaporeGPPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Singapore GP Tickets 2026 | F1 Marina Bay Prices"
-        description="Buy Singapore Grand Prix 2026 tickets from €189. Spectacular F1 Night Race at Marina Bay. Turn 1, Pit Grandstand, VIP available. 100% Buyer Protection."
+        description="Buy Singapore Grand Prix 2026 tickets from €189. Spectacular F1 Night Race at Marina Bay. Turn 1, Pit Grandstand, VIP available. Buyer protection."
         image="https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -91,7 +91,7 @@ const SingaporeGPPage = () => {
           <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€189</div>
-            <div className="text-emerald-600 text-sm mt-1">Save €10 vs F1.com & StubHub</div>
+            <div className="text-emerald-600 text-sm mt-1">Save €10 (market pricing may vary) & StubHub</div>
           </div>
         </div>
       </section>
@@ -100,10 +100,10 @@ const SingaporeGPPage = () => {
       <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>Buyer protection</span></div>
             <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>Verified Tickets</span></div>
             <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>€10 Cheaper</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant Delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>QR delivery</span></div>
           </div>
         </div>
       </section>

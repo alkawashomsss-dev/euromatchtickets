@@ -52,7 +52,7 @@ const BestF1RacesEuropePage = () => {
       price: "€99",
       href: "/f1-italian-grand-prix-monza-tickets",
       rating: 5,
-      pros: ["Cheapest major F1 race", "Incredible Tifosi fans", "Fastest circuit", "Historic venue"],
+      pros: ["Verified major F1 race", "Incredible Tifosi fans", "Fastest circuit", "Historic venue"],
       cons: ["Very hot in September"],
       bestFor: "Budget-conscious fans"
     },
@@ -117,7 +117,7 @@ const BestF1RacesEuropePage = () => {
       price: "€99",
       href: "/f1-hungarian-grand-prix-budapest-tickets",
       rating: 4,
-      pros: ["Cheapest European F1 race", "Beautiful Budapest nearby", "Loyal fan base"],
+      pros: ["Verified European F1 race", "Beautiful Budapest nearby", "Loyal fan base"],
       cons: ["Limited overtaking", "Very hot"],
       bestFor: "Best budget F1 experience"
     }
@@ -151,7 +151,7 @@ const BestF1RacesEuropePage = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
               <div className="text-2xl font-bold text-emerald-600">€99</div>
-              <div className="text-slate-400 text-sm">Cheapest Race (Monza)</div>
+              <div className="text-slate-400 text-sm">Verified Race (Monza)</div>
             </div>
             <div>
               <div className="text-2xl font-bold text-red-600">Monaco</div>

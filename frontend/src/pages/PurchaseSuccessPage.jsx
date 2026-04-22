@@ -50,7 +50,7 @@ const PurchaseSuccessPage = () => {
             </li>
             <li className="flex items-start gap-3">
               <Shield className="w-5 h-5 text-emerald-600 mt-0.5" />
-              <span>Your purchase is protected by our FanProtect™ Guarantee.</span>
+              <span>Your purchase is protected by our Buyer protection™ Guarantee.</span>
             </li>
           </ul>
         </div>
@@ -72,7 +72,7 @@ const PurchaseSuccessPage = () => {
 
         {/* Trust Badge */}
         <p className="text-sm text-slate-400 mt-8">
-          🛡️ Protected by FanProtect™ | 📧 Check your email for tickets
+          🛡️ Protected by Buyer protection™ | 📧 Check your email for tickets
         </p>
       </div>
     </div>

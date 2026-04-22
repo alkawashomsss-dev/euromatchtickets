@@ -101,7 +101,7 @@ const IsleOfManTTPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Isle of Man TT Tickets 2025-2026 | Race Passes"
-        description="Buy Isle of Man TT tickets 2025 & 2026 from €149. World's most thrilling motorcycle race. Grandstand passes, VIP. Instant QR delivery + FanProtect."
+        description="Buy Isle of Man TT tickets 2025 & 2026 from €149. World's most thrilling motorcycle race. Grandstand passes, VIP. Instant QR delivery + Buyer protection."
         image="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -159,8 +159,8 @@ const IsleOfManTTPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant QR Delivery</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>Official Partner</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>QR ticket delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>Marketplace</span></div>
           </div>
         </div>
       </section>

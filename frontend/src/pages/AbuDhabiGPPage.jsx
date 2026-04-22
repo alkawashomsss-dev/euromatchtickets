@@ -41,7 +41,7 @@ const AbuDhabiGPPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Abu Dhabi GP Tickets 2026 | F1 Yas Marina Prices"
-        description="Buy Abu Dhabi Grand Prix 2026 tickets from €169. F1 Season Finale at Yas Marina! Twilight race, Yas Hotel views. VIP Hospitality. 100% Buyer Protection."
+        description="Buy Abu Dhabi Grand Prix 2026 tickets from €169. F1 Season Finale at Yas Marina! Twilight race, Yas Hotel views. VIP Hospitality. Buyer protection."
         image="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -100,10 +100,10 @@ const AbuDhabiGPPage = () => {
       <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>Buyer protection</span></div>
             <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>Verified Tickets</span></div>
             <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>€10 Cheaper</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant Delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>QR delivery</span></div>
           </div>
         </div>
       </section>

@@ -24,14 +24,14 @@ const ItalianLandingPage = () => {
 
   const vantaggi = [
     { titolo: "Prezzi Piu Bassi", desc: "Garantiamo i migliori prezzi sul mercato. Se trovi di meno, pareggiamo!", icona: Zap },
-    { titolo: "100% Garantiti", desc: "Tutti i biglietti verificati con garanzia FanProtect. Rimborso totale.", icona: Shield },
+    { titolo: "100% Garantiti", desc: "Tutti i biglietti verificati con garanzia Buyer protection. Rimborso totale.", icona: Shield },
     { titolo: "Consegna Istantanea", desc: "Ricevi i biglietti via email istantaneamente. QR code pronto.", icona: Ticket },
     { titolo: "4.8/5 Stelle", desc: "Migliaia di clienti soddisfatti in tutta Europa.", icona: Star },
   ];
 
   const faqs = [
     { question: "Come acquistare biglietti su EuroMatchTickets?", answer: "Scegli il tuo evento, seleziona i posti e paga in sicurezza. I biglietti arrivano istantaneamente via email come QR code." },
-    { question: "I biglietti sono garantiti?", answer: "Si! Tutti i nostri biglietti sono verificati al 100% e protetti dalla garanzia FanProtect. Rimborso completo se l'evento viene cancellato." },
+    { question: "I biglietti sono garantiti?", answer: "Si! Tutti i nostri biglietti sono verificati al 100% e protetti dalla garanzia Buyer protection. Rimborso completo se l'evento viene cancellato." },
     { question: "Quanto costano i biglietti Champions League?", answer: "I biglietti Champions League partono da 85EUR per le partite della fase a gironi. Semifinali e finale da 195EUR." },
     { question: "Consegnate in Italia?", answer: "Si! Consegna istantanea via email in tutto il mondo. Il tuo QR code e pronto immediatamente." },
     { question: "Quali metodi di pagamento accettate?", answer: "Accettiamo Visa, Mastercard, American Express, PayPal e Apple Pay. Pagamenti sicuri con crittografia SSL." },
@@ -51,7 +51,7 @@ const ItalianLandingPage = () => {
     <div className="min-h-screen bg-[#1e1e1e]" data-testid="italian-landing-page">
       <SEOHead
         title="Comprare Biglietti - Champions League, F1, Concerti"
-        description="Compra biglietti per Champions League, Serie A, F1 Monza, concerti e altro. Prezzi piu bassi garantiti. Consegna istantanea QR. Garanzia FanProtect."
+        description="Compra biglietti per Champions League, Serie A, F1 Monza, concerti e altro. Prezzi piu bassi garantiti. Consegna istantanea QR. Garanzia Buyer protection."
         keywords="comprare biglietti, biglietti champions league, biglietti f1, biglietti concerti, biglietti economici, biglietti milan, biglietti juventus, biglietti inter"
         canonical="https://euromatchtickets.com/it/biglietti"
       />

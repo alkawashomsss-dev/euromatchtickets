@@ -15,7 +15,7 @@ const MonzaTicketPricesPage = () => {
   ];
 
   const monthlyPrices = [
-    { month: "December 2025", ga: 59, parabolica: 129, tip: "Cheapest time to buy!" },
+    { month: "December 2025", ga: 59, parabolica: 129, tip: "Verified time to buy!" },
     { month: "January 2026", ga: 62, parabolica: 135, tip: "Still excellent prices" },
     { month: "March 2026", ga: 65, parabolica: 142, tip: "Good early-bird prices" },
     { month: "June 2026", ga: 69, parabolica: 149, tip: "Standard pricing" },
@@ -70,7 +70,7 @@ const MonzaTicketPricesPage = () => {
               </table>
             </div>
             <div className="p-4 bg-emerald-500/10 border-t border-emerald-200 text-center">
-              <p className="text-sm text-emerald-800 font-medium flex items-center justify-center gap-2"><Shield className="w-4 h-4" /> All EuroMatchTickets prices include FanProtect guarantee + instant QR delivery</p>
+              <p className="text-sm text-emerald-800 font-medium flex items-center justify-center gap-2"><Shield className="w-4 h-4" /> All EuroMatchTickets prices include Buyer protection + QR ticket delivery</p>
             </div>
           </div>
 

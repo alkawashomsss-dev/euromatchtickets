@@ -66,7 +66,7 @@ const BahrainGPPage = () => {
     "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Bahrain Grand Prix 2026 Tickets",
-    "description": "Verified Bahrain F1 tickets with instant QR delivery",
+    "description": "Verified Bahrain F1 tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "3241", "bestRating": "5", "worstRating": "1" },
     "review": [
@@ -80,7 +80,7 @@ const BahrainGPPage = () => {
     <div className="min-h-screen bg-[#0b0d17]" data-testid="bahrain-gp-page">
       <SEOHead
         title="Bahrain GP Tickets 2026 | Night Race from €59"
-        description="Buy Bahrain Grand Prix 2026 tickets from €59. F1 night race at Sakhir. Grandstand, VIP & Paddock Club. 30% cheaper! Instant QR delivery + FanProtect guarantee."
+        description="Buy Bahrain Grand Prix 2026 tickets from €59. F1 night race at Sakhir. Grandstand, VIP & Paddock Club. 30% cheaper! Instant QR delivery + Buyer protection."
         canonicalUrl="https://euromatchtickets.com/f1-bahrain-grand-prix-tickets"
         image="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&h=630&fit=crop"
       />
@@ -112,7 +112,7 @@ const BahrainGPPage = () => {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-400 mb-4 max-w-2xl mx-auto">
-            Secure your seat now with instant QR delivery. 100% Buyer Protection.
+            Secure your seat now with QR ticket delivery. Buyer protection.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-4">
             <span className="inline-flex items-center gap-1.5 bg-[#e10600]/100/20 border border-red-500/30 rounded-full px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
@@ -155,8 +155,8 @@ const BahrainGPPage = () => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/40">
-            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> FanProtect Guarantee</span>
-            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> Instant QR Delivery</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> Buyer protection</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> QR ticket delivery</span>
             <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.8/5 (3,241 Reviews)</span>
           </div>
         </div>
@@ -238,8 +238,8 @@ const BahrainGPPage = () => {
       {/* SEO CONTENT */}
       <section className="max-w-4xl mx-auto px-4 pb-16 space-y-8">
         <div>
-          <h2 className="text-xl font-bold text-white mb-3">Buy Bahrain Grand Prix 2026 Tickets - Cheapest Prices</h2>
-          <p className="text-slate-400 leading-relaxed">EuroMatchTickets offers the <strong>cheapest Bahrain Grand Prix tickets</strong> available online. Our prices start from just <strong>&euro;59</strong> for general admission - that's 30% below the official F1 price. The <strong>Bahrain International Circuit</strong> in Sakhir hosts F1's most spectacular night race, with cars racing under floodlights from twilight until the stars come out. Every ticket includes our FanProtect guarantee and instant QR delivery.</p>
+          <h2 className="text-xl font-bold text-white mb-3">Buy Bahrain Grand Prix 2026 Tickets - Verified Listings</h2>
+          <p className="text-slate-400 leading-relaxed">EuroMatchTickets offers the <strong>cheapest Bahrain Grand Prix tickets</strong> available online. Our prices start from just <strong>&euro;59</strong> for general admission - that's 30% below the official F1 price. The <strong>Bahrain International Circuit</strong> in Sakhir hosts F1's most spectacular night race, with cars racing under floodlights from twilight until the stars come out. Every ticket includes our Buyer protection and QR ticket delivery.</p>
         </div>
         <div>
           <h2 className="text-xl font-bold text-white mb-3">Bahrain GP Grandstand Guide</h2>

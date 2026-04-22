@@ -154,7 +154,7 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />100% Guarantee</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />Buyer protection</div>
             <div className="flex items-center gap-2 text-emerald-600"><Star className="w-4 h-4" />Best Prices</div>
             <div className="flex items-center gap-2 text-emerald-600"><DollarSign className="w-4 h-4" />0% Buyer Fees</div>
           </div>
@@ -182,11 +182,11 @@ const PriceGuidePage = ({ eventType = 'f1' }) => {
         </div>
       </section>
 
-      {/* Cheapest vs Most Expensive */}
+      {/* Verified vs Most Expensive */}
       <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Cheapest */}
+            {/* Verified */}
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-none bg-emerald-500/10 flex items-center justify-center">

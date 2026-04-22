@@ -286,7 +286,7 @@ const AboutPage = () => {
                   ))}
                 </div>
               </div>
-              <div className="text-sm text-slate-500">Based on 2,847 reviews</div>
+              <div className="text-sm text-slate-500">Based on customer reviews</div>
               <div className="text-xs text-violet-600 mt-2 flex items-center gap-1">
                 View all reviews <ExternalLink className="w-3 h-3" />
               </div>

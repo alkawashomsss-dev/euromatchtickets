@@ -25,8 +25,8 @@ export const VenueTickets = ({ tickets, eventName, searchQuery, accentColor = "e
             <p className="text-slate-500 text-sm mt-1">{tickets.length} ticket categories available</p>
           </div>
           <div className="hidden sm:flex items-center gap-4 text-xs text-slate-500">
-            <span className="flex items-center gap-1"><Shield className="w-3.5 h-3.5 text-emerald-500" /> 100% Guaranteed</span>
-            <span className="flex items-center gap-1"><Zap className="w-3.5 h-3.5 text-amber-500" /> Instant Delivery</span>
+            <span className="flex items-center gap-1"><Shield className="w-3.5 h-3.5 text-emerald-500" /> Buyer protectiond</span>
+            <span className="flex items-center gap-1"><Zap className="w-3.5 h-3.5 text-amber-500" /> QR delivery</span>
           </div>
         </div>
 
@@ -70,9 +70,9 @@ export const VenueTickets = ({ tickets, eventName, searchQuery, accentColor = "e
         </div>
 
         <div className="mt-6 p-4 bg-[#15151e] rounded-xl border border-slate-100 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500">
-          <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-emerald-500" /> FanProtect Guarantee</span>
-          <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> 100% Verified Tickets</span>
-          <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-amber-500" /> Instant QR Delivery</span>
+          <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-emerald-500" /> Buyer protection</span>
+          <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Verified Tickets</span>
+          <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-amber-500" /> QR ticket delivery</span>
           <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-blue-500" /> Full Refund if Cancelled</span>
         </div>
       </div>
@@ -92,7 +92,7 @@ export const TrustSection = ({ reviewCount = 4850, rating = 4.8 }) => (
         <div>
           <div className="text-3xl font-black text-white">100%</div>
           <div className="text-xs text-slate-500 mt-1">Verified Tickets</div>
-          <div className="text-[10px] text-emerald-600 font-medium mt-0.5">FanProtect Guarantee</div>
+          <div className="text-[10px] text-emerald-600 font-medium mt-0.5">Buyer protection</div>
         </div>
         <div>
           <div className="text-3xl font-black text-white">500K+</div>

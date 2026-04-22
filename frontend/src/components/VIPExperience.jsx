@@ -228,8 +228,8 @@ const VIPExperienceSection = ({ event, vipTickets, onBuy }) => {
 
         {/* Trust */}
         <div className="flex flex-wrap items-center justify-center gap-5 pt-4 border-t border-white/5 text-[11px] text-white/30">
-          <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-500" /> FanProtect Guarantee</span>
-          <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-500" /> Instant QR Delivery</span>
+          <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-500" /> Buyer protection</span>
+          <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-500" /> QR ticket delivery</span>
           <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.8/5 from VIP guests</span>
           <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-blue-400" /> Secure Checkout</span>
         </div>

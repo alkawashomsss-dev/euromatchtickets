@@ -55,7 +55,7 @@ const MetallicaPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead
         title="Metallica M72 Tour 2026 | Sphere Las Vegas Tickets"
-        description="Buy Metallica tickets for the M72 World Tour 2026 at the Sphere Las Vegas. From €99. Verified tickets, instant QR delivery."
+        description="Buy Metallica tickets for the M72 World Tour 2026 at the Sphere Las Vegas. From €99. Verified tickets, QR ticket delivery."
         image="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=1200&h=630&fit=crop"
         canonicalUrl="https://euromatchtickets.com/metallica-sphere-las-vegas-tickets"
       />
@@ -64,7 +64,7 @@ const MetallicaPage = () => {
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Metallica Sphere Las Vegas", url: "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets" }]} />
       
       <title>Metallica Sphere Las Vegas Tickets 2026 | Snake Pit VIP $2,755 | EuroMatchTickets</title>
-      <meta name="description" content="Buy Metallica tickets for The Sphere Las Vegas 2026. M72 World Tour. Snake Pit VIP from $2,755. Best prices guaranteed, instant QR delivery." />
+      <meta name="description" content="Buy Metallica tickets for The Sphere Las Vegas 2026. M72 World Tour. Snake Pit VIP from $2,755. Market pricing may vary, QR ticket delivery." />
       <meta name="keywords" content="Metallica tickets, Metallica Sphere, Metallica Las Vegas, Metallica concert 2026, Metallica VIP, Snake Pit tickets, buy Metallica tickets" />
 
       {/* Language Selector */}
@@ -99,7 +99,7 @@ const MetallicaPage = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full"><Shield className="w-5 h-5" />100% Guarantee</div>
+            <div className="flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full"><Shield className="w-5 h-5" />Buyer protection</div>
             <div className="flex items-center gap-2 bg-violet-50 text-violet-600 px-4 py-2 rounded-full"><Zap className="w-5 h-5" />Instant QR</div>
             <div className="flex items-center gap-2 bg-amber-500/10 text-amber-600 px-4 py-2 rounded-full"><Star className="w-5 h-5" />5% Cheaper</div>
           </div>
@@ -154,7 +154,7 @@ const MetallicaPage = () => {
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />100% Money-Back</div>
             <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" />4.9/5 Trustpilot</div>
-            <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />Official Partner</div>
+            <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />Marketplace</div>
           </div>
         </div>
       </section>

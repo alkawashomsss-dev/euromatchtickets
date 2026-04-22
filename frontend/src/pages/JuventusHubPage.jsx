@@ -16,7 +16,7 @@ const JuventusHubPage = () => {
     { question: "How much are Juventus tickets?", answer: "Juventus tickets on EuroMatchTickets start from €45 for Serie A matches at Allianz Stadium, Turin. Derby d'Italia (vs Inter) from €115. Champions League from €95. We guarantee the cheapest prices." },
     { question: "Where does Juventus play?", answer: "Juventus plays at Allianz Stadium in Turin, Italy. The 41,507-capacity stadium is one of the most modern in Europe, purpose-built in 2011." },
     { question: "What is the Derby d'Italia?", answer: "Derby d'Italia is Juventus vs Inter Milan - Italy's biggest football rivalry. The atmosphere in Turin for this match is absolutely electrifying." },
-    { question: "Can tourists buy Juventus tickets?", answer: "Yes! No Juventus membership needed. Buy verified tickets directly on our platform with instant QR delivery and FanProtect guarantee." },
+    { question: "Can tourists buy Juventus tickets?", answer: "Yes! No Juventus membership needed. Buy verified tickets directly on our platform with QR ticket delivery and Buyer protection." },
   ];
 
   const reviewSchema = {
@@ -30,7 +30,7 @@ const JuventusHubPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="juventus-hub-page">
-      <SEOHead title="Juventus Tickets 2026 | Allianz Stadium from €45" description="Buy Juventus tickets from €45. Serie A, Champions League, Derby d'Italia. Allianz Stadium Turin. Cheapest prices, instant QR delivery. FanProtect guarantee!" canonicalUrl="https://euromatchtickets.com/juventus-tickets" />
+      <SEOHead noIndex={true} title="Juventus Tickets 2026 | Allianz Stadium from €45" description="Buy Juventus tickets from €45. Serie A, Champions League, Derby d'Italia. Allianz Stadium Turin. Verified prices, QR ticket delivery. Buyer protection!" canonicalUrl="https://euromatchtickets.com/juventus-tickets" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }, { name: "Football", url: "https://euromatchtickets.com/events?type=match" }, { name: "Juventus Tickets", url: "https://euromatchtickets.com/juventus-tickets" }]} />
 
@@ -43,7 +43,7 @@ const JuventusHubPage = () => {
             <div className="flex-1 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 bg-[#1e1e1e] text-black text-xs font-bold px-4 py-2 rounded-full mb-6"><Trophy className="w-3 h-3" /> JUVENTUS FC</div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">Juventus<br /><span className="text-slate-400">Tickets 2026</span></h1>
-              <p className="text-lg text-slate-400 max-w-xl mb-8">La Vecchia Signora - Italy's most successful club. 36 Serie A titles. Allianz Stadium, Turin. Every match available at the cheapest prices in Europe.</p>
+              <p className="text-lg text-slate-400 max-w-xl mb-8">La Vecchia Signora - Italy's most successful club. 36 Serie A titles. Allianz Stadium, Turin. Every match available at the listings on EuroMatchTickets.</p>
               <Link to="/checkout?event=juventus-tickets"><Button size="lg" className="bg-[#1e1e1e] hover:bg-white/10 text-black font-bold px-8 rounded-full" data-testid="juventus-cta"><Ticket className="w-5 h-5 mr-2" /> Browse Juventus Matches from &euro;45</Button></Link>
             </div>
             <div className="bg-[#1e1e1e] rounded-none shadow-xl p-6 min-w-[280px]">
@@ -91,8 +91,8 @@ const JuventusHubPage = () => {
 
       {/* SEO */}
       <section className="py-12"><div className="max-w-4xl mx-auto px-4 space-y-6">
-        <h2 className="text-xl font-bold text-white">Buy Juventus Tickets 2026 - Cheapest Prices Online</h2>
-        <p className="text-slate-400 leading-relaxed">EuroMatchTickets is the cheapest place to buy <strong>Juventus tickets</strong> online. Serie A, Champions League, Coppa Italia - every match at <strong>Allianz Stadium</strong> in Turin from just <strong>&euro;45</strong>. Instant QR delivery and FanProtect money-back guarantee on every purchase.</p>
+        <h2 className="text-xl font-bold text-white">Buy Juventus Tickets 2026 - Tickets on EuroMatchTickets</h2>
+        <p className="text-slate-400 leading-relaxed">EuroMatchTickets is the European marketplace for <strong>Juventus tickets</strong> online. Serie A, Champions League, Coppa Italia - every match at <strong>Allianz Stadium</strong> in Turin from just <strong>&euro;45</strong>. Instant QR delivery and Buyer protection money-back guarantee on every purchase.</p>
       </div></section>
     </div>
   );

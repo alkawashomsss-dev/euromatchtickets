@@ -11,7 +11,7 @@ const BarcelonaHubPage = () => {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     "name": "FC Barcelona 2025-26 Season",
-    "description": "Buy FC Barcelona tickets for La Liga, Champions League, and concerts at Spotify Camp Nou. Cheapest prices guaranteed.",
+    "description": "Buy FC Barcelona tickets for La Liga, Champions League, and concerts at Spotify Camp Nou. Verified prices guaranteed.",
     "image": "https://euromatchtickets.com/logo-192.png",
     "startDate": "2025-08-15",
     "endDate": "2026-06-01",
@@ -29,7 +29,7 @@ const BarcelonaHubPage = () => {
     "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "FC Barcelona Tickets 2025-26",
-    "description": "Verified FC Barcelona match and concert tickets at Camp Nou with instant QR delivery",
+    "description": "Verified FC Barcelona match and concert tickets at Camp Nou with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "4156", "bestRating": "5", "worstRating": "1" },
     "review": [
@@ -67,15 +67,15 @@ const BarcelonaHubPage = () => {
     { question: "Where does Barcelona play?", answer: "FC Barcelona plays at Spotify Camp Nou in Barcelona, Spain. The stadium is being renovated to hold 105,000 spectators, making it the largest in Europe." },
     { question: "Can I buy El Clasico tickets?", answer: "Yes! El Clasico (Barcelona vs Real Madrid) tickets are available starting from \u20AC185. These are our most popular football tickets - book early!" },
     { question: "Are there concerts at Camp Nou?", answer: "Yes! Camp Nou hosts major concerts including Coldplay, Ed Sheeran, Bruno Mars, Beyonce, and more. Concert tickets start from \u20AC75." },
-    { question: "Are Barcelona tickets on EuroMatchTickets genuine?", answer: "100% verified. Every ticket comes with our FanProtect guarantee - full refund if cancelled or if there's any issue with your tickets." },
+    { question: "Are Barcelona tickets on EuroMatchTickets genuine?", answer: "verified. Every ticket comes with our Buyer protection - full refund if cancelled or if there's any issue with your tickets." },
     { question: "How do I get to Camp Nou?", answer: "Camp Nou is easily accessible by Barcelona Metro (Line 3 - Les Corts or Line 5 - Collblanc). It's located in the Les Corts district." },
   ];
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="barcelona-hub-page">
-      <SEOHead
+      <SEOHead noIndex={true}
         title="Barcelona Tickets 2026 | Camp Nou, UCL, El Clasico"
-        description="Buy FC Barcelona tickets from \u20AC65. La Liga, Champions League, El Clasico, concerts at Camp Nou. Coldplay, Ed Sheeran. Verified. Instant QR. Cheapest prices."
+        description="Buy FC Barcelona tickets from \u20AC65. La Liga, Champions League, El Clasico, concerts at Camp Nou. Coldplay, Ed Sheeran. Verified. Instant QR. Verified prices."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
@@ -89,7 +89,7 @@ const BarcelonaHubPage = () => {
             Barcelona Tickets 2025-26
             <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Camp Nou &middot; Football &middot; Concerts</span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with QR ticket delivery. Buyer protection.</p>
           <ScarcityBadges ticketsLeft={634} viewers={445} priceIncrease="19%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Calendar className="w-5 h-5 text-red-600" /><span>2025-26 Season</span></div>

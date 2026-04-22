@@ -325,7 +325,7 @@ export const OneClickBuyButton = ({ ticketId, price, onBuy, loading }) => {
         <span className="flex items-center gap-2">
           <Zap className="w-6 h-6" />
           Buy Now - €{price}
-          <Badge className="bg-white/20 ml-2">Instant Delivery</Badge>
+          <Badge className="bg-white/20 ml-2">QR delivery</Badge>
         </span>
       )}
     </Button>
@@ -336,8 +336,8 @@ export const OneClickBuyButton = ({ ticketId, price, onBuy, loading }) => {
 export const TrustBadges = () => {
   const badges = [
     { icon: '🔒', text: 'Secure Payment' },
-    { icon: '✅', text: '100% Guarantee' },
-    { icon: '⚡', text: 'Instant Delivery' },
+    { icon: '✅', text: 'Buyer protection' },
+    { icon: '⚡', text: 'QR delivery' },
     { icon: '💳', text: 'Stripe Protected' },
   ];
 

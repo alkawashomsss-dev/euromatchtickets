@@ -36,19 +36,19 @@ const TheWeekndPage = () => {
   const faqSchema = {
     "@context": "https://schema.org", "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "How much are The Weeknd 2026 tour tickets?", "acceptedAnswer": { "@type": "Answer", "text": "The Weeknd After Hours Til Dawn Tour 2026 tickets start from €95 for upper tier seats. Floor standing from €145. Golden Circle from €195. VIP packages from €350. All prices include 100% FanProtect money-back guarantee and instant QR delivery." }},
+      { "@type": "Question", "name": "How much are The Weeknd 2026 tour tickets?", "acceptedAnswer": { "@type": "Answer", "text": "The Weeknd After Hours Til Dawn Tour 2026 tickets start from €95 for upper tier seats. Floor standing from €145. Golden Circle from €195. VIP packages from €350. All prices include 100% Buyer protection money-back guarantee and QR ticket delivery." }},
       { "@type": "Question", "name": "When is The Weeknd touring Europe in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "The Weeknd's European stadium tour runs June 11 to July 8, 2026. Dates include Paris Stade de France (Jun 11), London Wembley (Jun 15), Berlin Olympiastadion (Jun 20), Amsterdam Johan Cruijff Arena (Jun 25), Milan San Siro (Jul 2), and Madrid Metropolitano (Jul 8)." }},
       { "@type": "Question", "name": "What songs does The Weeknd play live?", "acceptedAnswer": { "@type": "Answer", "text": "The Weeknd's setlist features 25+ songs including Blinding Lights, Save Your Tears, Starboy, The Hills, Can't Feel My Face, Die For You, I Feel It Coming, Earned It, and tracks from his latest album. The show runs approximately 2 hours with a spectacular visual production." }},
-      { "@type": "Question", "name": "Are The Weeknd tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every ticket purchased through EuroMatchTickets includes FanProtect 100% money-back guarantee. If the concert is cancelled or postponed, you receive a full refund. If tickets are invalid, you get 100% of your money back." }},
+      { "@type": "Question", "name": "Are The Weeknd tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every ticket purchased through EuroMatchTickets includes Buyer protection cancellation refund policy. If the concert is cancelled or postponed, you receive a full refund. If tickets are invalid, you get 100% of your money back." }},
       { "@type": "Question", "name": "Where is the best seat for The Weeknd concert?", "acceptedAnswer": { "@type": "Answer", "text": "For the best experience: Golden Circle offers closest proximity to the stage. Floor Standing B1-B4 provides great energy. Lower tier seats offer the best balance of view and comfort. The Weeknd's production has massive screens visible from all sections." }},
     ]
   };
 
   const faqs = [
-    { q: "How much are The Weeknd 2026 tour tickets?", a: "Tickets start from €95 for upper tier. Floor standing from €145. Golden Circle from €195. VIP from €350. All include FanProtect 100% money-back guarantee and instant QR delivery." },
+    { q: "How much are The Weeknd 2026 tour tickets?", a: "Tickets start from €95 for upper tier. Floor standing from €145. Golden Circle from €195. VIP from €350. All include Buyer protection cancellation refund policy and QR ticket delivery." },
     { q: "When is The Weeknd touring Europe in 2026?", a: "June 11 to July 8, 2026. Six cities: Paris (Jun 11), London Wembley (Jun 15), Berlin (Jun 20), Amsterdam (Jun 25), Milan (Jul 2), Madrid (Jul 8)." },
     { q: "What songs does The Weeknd play live?", a: "25+ songs: Blinding Lights, Save Your Tears, Starboy, The Hills, Can't Feel My Face, Die For You, I Feel It Coming, Earned It, plus new album tracks. 2-hour spectacular show." },
-    { q: "Are The Weeknd tickets refundable?", a: "Yes! FanProtect 100% money-back guarantee on every ticket. Full refund if cancelled or postponed. If tickets are invalid, 100% refund." },
+    { q: "Are The Weeknd tickets refundable?", a: "Yes! Buyer protection cancellation refund policy on every ticket. Full refund if cancelled or postponed. If tickets are invalid, 100% refund." },
     { q: "Where is the best seat for The Weeknd concert?", a: "Golden Circle for closest to stage. Floor Standing B1-B4 for energy. Lower tier for balanced view. Massive screens visible from all sections." },
     { q: "How are tickets delivered?", a: "Instant QR code delivery to your email within minutes of purchase. Show the QR code on your phone at the venue entrance. No printing needed." },
   ];
@@ -66,7 +66,7 @@ const TheWeekndPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Buy The Weeknd Tour Tickets 2026 | Europe From €95"
-        description="Buy The Weeknd After Hours Til Dawn 2026 tickets from €95. Paris, London, Berlin, Amsterdam, Milan, Madrid. Selling Fast. 100% Money-Back Guarantee. Instant QR delivery."
+        description="Buy The Weeknd After Hours Til Dawn 2026 tickets from €95. Paris, London, Berlin, Amsterdam, Milan, Madrid. Selling Fast. Cancellation refund policy. Instant QR delivery."
         canonicalUrl={CANONICAL}
         image="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=630&fit=crop"
       />
@@ -92,7 +92,7 @@ const TheWeekndPage = () => {
           <div className="inline-block bg-[#161620] border border-white/10 p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">€95</div>
-            <div className="text-emerald-500 text-sm mt-1">100% Money-Back Guarantee</div>
+            <div className="text-emerald-500 text-sm mt-1">Cancellation refund policy</div>
           </div>
         </div>
       </section>
@@ -100,9 +100,9 @@ const TheWeekndPage = () => {
       {/* TRUST BAR */}
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8 text-sm">
-          <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />100% Verified Tickets</span>
-          <span className="flex items-center gap-2 text-emerald-500"><Star className="w-4 h-4" />4.8/5 from 12,847 Reviews</span>
-          <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />Instant QR Delivery</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />Verified Tickets</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Star className="w-4 h-4" />4.8/5 from 1 Reviews</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />QR ticket delivery</span>
         </div>
       </section>
 
@@ -145,7 +145,7 @@ const TheWeekndPage = () => {
             <p>The 2-hour show features 25+ songs spanning The Weeknd's entire career: <em>Blinding Lights</em>, <em>Save Your Tears</em>, <em>Starboy</em>, <em>The Hills</em>, <em>Can't Feel My Face</em>, <em>Die For You</em>, <em>I Feel It Coming</em>, <em>Earned It</em>, <em>Heartless</em>, <em>In Your Eyes</em>, plus new material from his upcoming album. The After Hours era songs feature a completely dark, cinematic production that transforms the stadium into an immersive experience.</p>
             <h3 className="text-white text-lg">Ticket Categories</h3>
             <p><strong className="text-white">Upper Tier</strong> (from €95) — Great sightlines with full view of the spectacular production. <strong className="text-white">Floor Standing</strong> (from €145) — Close to the stage with incredible energy. <strong className="text-white">Golden Circle</strong> (from €195) — Closest to the main stage. <strong className="text-white">VIP Packages</strong> (from €350) — Includes early entry, exclusive merchandise, and premium viewing.</p>
-            <p>All tickets on EuroMatchTickets are <strong className="text-white">100% verified</strong> by our team and come with <Link to="/buyer-protection" className="text-[#e10600] hover:underline">FanProtect money-back guarantee</Link>. Tickets are delivered instantly as QR codes to your email — no waiting, no printing needed.</p>
+            <p>All tickets on EuroMatchTickets are <strong className="text-white">verified</strong> by our team and come with <Link to="/buyer-protection" className="text-[#e10600] hover:underline">Buyer protection money-back guarantee</Link>. Tickets are delivered instantly as QR codes to your email — no waiting, no printing needed.</p>
           </div>
         </div>
       </section>

@@ -60,7 +60,7 @@ const BahrainWorldCupPage = () => {
   const schema = {
     "@context": "https://schema.org", "@type": "SportsEvent",
     "name": "FIFA World Cup 2026 - Bahrain Qualifier & Matches",
-    "description": "Buy Bahrain World Cup 2026 tickets. FIFA World Cup qualifier matches and fan zone events. Cheapest prices with instant QR delivery.",
+    "description": "Buy Bahrain World Cup 2026 tickets. FIFA World Cup qualifier matches and fan zone events. Verified prices with QR ticket delivery.",
     "startDate": "2026-06-11", "endDate": "2026-07-19",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -73,9 +73,9 @@ const BahrainWorldCupPage = () => {
   };
 
   const tickets = [
-    { section: "Category 3 (Upper Tier)", price: 89, features: ["Upper tier seating", "Full pitch view", "Instant QR delivery", "FanProtect guarantee"] },
-    { section: "Category 2 (Mid Tier)", price: 199, tag: "POPULAR", features: ["Mid-level seating", "Great sightlines", "Instant QR delivery", "FanProtect guarantee"] },
-    { section: "Category 1 (Lower Tier)", price: 399, tag: "BEST VIEW", features: ["Lower tier close to pitch", "Premium atmosphere", "Priority entry", "FanProtect guarantee"] },
+    { section: "Category 3 (Upper Tier)", price: 89, features: ["Upper tier seating", "Full pitch view", "Instant QR delivery", "Buyer protection"] },
+    { section: "Category 2 (Mid Tier)", price: 199, tag: "POPULAR", features: ["Mid-level seating", "Great sightlines", "Instant QR delivery", "Buyer protection"] },
+    { section: "Category 1 (Lower Tier)", price: 399, tag: "BEST VIEW", features: ["Lower tier close to pitch", "Premium atmosphere", "Priority entry", "Buyer protection"] },
     { section: "VIP Hospitality", price: 999, tag: "VIP", features: ["Hospitality lounge", "Gourmet catering", "Best seats", "Exclusive access"] },
     { section: "Fan Village Pass + Match", price: 149, features: ["Fan zone access", "Big screen viewing", "Live entertainment", "Food & drinks area"] },
   ];
@@ -83,7 +83,7 @@ const BahrainWorldCupPage = () => {
   const faqs = [
     { question: "Is Bahrain in the World Cup 2026?", answer: "Bahrain is competing in the AFC qualifiers for the FIFA World Cup 2026. The tournament is hosted across the USA, Canada, and Mexico from June 11 to July 19, 2026. We offer tickets for all World Cup 2026 matches." },
     { question: "How much are Bahrain World Cup 2026 tickets?", answer: "World Cup 2026 tickets start from just €89 for Category 3 seats. Category 1 (closest to pitch) starts at €399. VIP hospitality packages are available from €999." },
-    { question: "Where can I buy Bahrain World Cup tickets?", answer: "You can buy Bahrain World Cup 2026 tickets right here on EuroMatchTickets. We offer verified tickets with instant QR delivery and our FanProtect buyer guarantee." },
+    { question: "Where can I buy Bahrain World Cup tickets?", answer: "You can buy Bahrain World Cup 2026 tickets right here on EuroMatchTickets. We offer verified tickets with QR ticket delivery and our Buyer protection buyer guarantee." },
     { question: "When do World Cup 2026 tickets go on sale?", answer: "Tickets are already available for pre-order on EuroMatchTickets! We offer early access to World Cup 2026 tickets before official sales open. All tickets are backed by our guarantee." },
     { question: "Can I buy World Cup tickets from Bahrain?", answer: "Yes! EuroMatchTickets serves fans worldwide, including Bahrain. All tickets are delivered digitally as QR codes, so you can buy from anywhere and receive them instantly." },
     { question: "What stadiums will host World Cup 2026?", answer: "The FIFA World Cup 2026 will be hosted across 16 stadiums in the USA, Canada, and Mexico, including MetLife Stadium (New York), SoFi Stadium (Los Angeles), AT&T Stadium (Dallas), and more." },
@@ -93,7 +93,7 @@ const BahrainWorldCupPage = () => {
     <div className="min-h-screen bg-[#0e0e14]" data-testid="bahrain-worldcup-page">
       <SEOHead
         title="Bahrain World Cup Tickets 2026 | Buy FIFA WC Passes"
-        description="Buy Bahrain World Cup 2026 tickets from €89. FIFA World Cup matches, fan zone passes. Verified tickets, instant QR delivery, FanProtect guarantee."
+        description="Buy Bahrain World Cup 2026 tickets from €89. FIFA World Cup matches, fan zone passes. Verified tickets, QR ticket delivery, Buyer protection."
         canonicalUrl="https://euromatchtickets.com/bahrain-world-cup-tickets-2026"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -143,8 +143,8 @@ const BahrainWorldCupPage = () => {
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/50">
-            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> FanProtect Guarantee</span>
-            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> Instant QR Delivery</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> Buyer protection</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> QR ticket delivery</span>
             <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.8/5 Reviews</span>
           </div>
         </div>
@@ -188,7 +188,7 @@ const BahrainWorldCupPage = () => {
         </div>
         <div>
           <h2 className="text-xl font-bold text-white mb-3">Buy Bahrain World Cup Tickets Online</h2>
-          <p className="text-slate-400 leading-relaxed">Purchasing World Cup 2026 tickets from Bahrain has never been easier. Our platform offers instant QR delivery, so you receive your tickets within minutes of purchase. No waiting, no uncertainty. Every ticket is verified and backed by our FanProtect guarantee &mdash; if your tickets aren't valid, you get a full refund.</p>
+          <p className="text-slate-400 leading-relaxed">Purchasing World Cup 2026 tickets from Bahrain has never been easier. Our platform offers QR ticket delivery, so you receive your tickets within minutes of purchase. No waiting, no uncertainty. Every ticket is verified and backed by our Buyer protection &mdash; if your tickets aren't valid, you get a full refund.</p>
         </div>
         <div>
           <h2 className="text-xl font-bold text-white mb-3">World Cup 2026 Venues and Schedule</h2>

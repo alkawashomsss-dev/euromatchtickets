@@ -230,7 +230,7 @@ const MotoGPTicketsPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant QR Delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>QR ticket delivery</span></div>
             <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>30% Cheaper</span></div>
           </div>
         </div>

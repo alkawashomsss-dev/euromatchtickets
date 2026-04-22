@@ -22,9 +22,9 @@ const shows = [
 ];
 
 const packages = [
-  { name: "General Admission", price: 89, tier: "Standing / Upper Tier", color: "from-pink-600 to-pink-800", text: "text-pink-300", features: ["Verified e-ticket", "Stadium atmosphere", "Instant QR delivery", "FanProtect guarantee"] },
-  { name: "Category A", price: 179, tier: "Mid Tier – Great View", color: "from-purple-600 to-purple-800", text: "text-purple-300", tag: "BEST VALUE", features: ["Premium mid-tier seat", "Central stage view", "Instant QR delivery", "FanProtect guarantee"] },
-  { name: "Floor Standing", price: 299, tier: "Closest to Stage", color: "from-violet-600 to-violet-800", text: "text-violet-300", tag: "HOT", features: ["Floor level access", "Near the stage", "Priority entry", "FanProtect guarantee"] },
+  { name: "General Admission", price: 89, tier: "Standing / Upper Tier", color: "from-pink-600 to-pink-800", text: "text-pink-300", features: ["Verified e-ticket", "Stadium atmosphere", "Instant QR delivery", "Buyer protection"] },
+  { name: "Category A", price: 179, tier: "Mid Tier – Great View", color: "from-purple-600 to-purple-800", text: "text-purple-300", tag: "BEST VALUE", features: ["Premium mid-tier seat", "Central stage view", "Instant QR delivery", "Buyer protection"] },
+  { name: "Floor Standing", price: 299, tier: "Closest to Stage", color: "from-violet-600 to-violet-800", text: "text-violet-300", tag: "HOT", features: ["Floor level access", "Near the stage", "Priority entry", "Buyer protection"] },
   { name: "VIP Lounge", price: 599, tier: "Exclusive Hospitality", color: "from-rose-500 to-rose-700", text: "text-rose-200", tag: "VIP", vip: true, features: ["Private VIP lounge", "Premium food & drinks", "Best seats in house", "Exclusive merch gift"] },
   { name: "Diamond Package", price: 999, tier: "Front Row Experience", color: "from-amber-400 via-pink-500 to-purple-600", text: "text-amber-200", tag: "EXCLUSIVE", vip: true, features: ["Front row seats", "Backstage photo area", "Signed merchandise", "Luxury pre-show party"] },
 ];
@@ -69,7 +69,7 @@ const TaylorSwiftPage = () => {
   const schema = {
     "@context": "https://schema.org", "@type": "MusicEvent",
     "name": "Taylor Swift | The Eras Tour 2026 – Wembley Stadium London",
-    "description": "Buy Taylor Swift Eras Tour 2026 Wembley Stadium tickets from €89. Best seats, VIP packages, floor standing. 6 nights at Wembley. Cheapest verified tickets with instant QR delivery.",
+    "description": "Buy Taylor Swift Eras Tour 2026 Wembley Stadium tickets from €89. Best seats, VIP packages, floor standing. 6 nights at Wembley. Verified verified tickets with QR ticket delivery.",
     "image": HERO_IMG, "startDate": "2026-06-19", "endDate": "2026-06-28",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": { "@type": "Place", "name": "Wembley Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
@@ -82,7 +82,7 @@ const TaylorSwiftPage = () => {
     <div className="min-h-screen bg-[#0a0610]" data-testid="taylorswift-page">
       <SEOHead
         title="Taylor Swift Tickets 2026 | Wembley London from €89"
-        description="Buy Taylor Swift tickets 2026 from €89. Eras Tour Wembley Stadium London, 6 nights. Verified tickets, instant QR delivery. Cheapest prices - selling fast!"
+        description="Buy Taylor Swift tickets 2026 from €89. Eras Tour Wembley Stadium London, 6 nights. Verified tickets, QR ticket delivery. Verified prices - selling fast!"
         canonicalUrl="https://euromatchtickets.com/taylor-swift-wembley-2026-tickets"
         image="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200&h=630&fit=crop"
       />
@@ -128,7 +128,7 @@ const TaylorSwiftPage = () => {
 
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-pink-500/10 via-purple-500/5 to-pink-500/10 border-t border-pink-500/20 backdrop-blur-md">
           <div className="max-w-5xl mx-auto px-4 py-3 flex flex-wrap justify-center gap-6 sm:gap-10 text-sm">
-            {[{ icon: Shield, t: "100% Verified" }, { icon: Star, t: "Cheapest Prices" }, { icon: Zap, t: "Instant QR Delivery" }].map((b, i) => (
+            {[{ icon: Shield, t: "Verified" }, { icon: Star, t: "Verified Listings" }, { icon: Zap, t: "QR ticket delivery" }].map((b, i) => (
               <div key={i} className="flex items-center gap-2 text-pink-200/80 font-medium"><b.icon className="w-4 h-4" /> {b.t}</div>
             ))}
           </div>
@@ -166,7 +166,7 @@ const TaylorSwiftPage = () => {
         <div className="relative max-w-6xl mx-auto px-4">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-bold uppercase tracking-widest mb-4">
-              <Sparkles className="w-3.5 h-3.5" /> Cheapest Verified Tickets
+              <Sparkles className="w-3.5 h-3.5" /> Verified Verified Tickets
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">Choose Your Experience</h2>
             <p className="text-slate-400">Official alternative marketplace — cheapest prices guaranteed</p>
@@ -219,14 +219,14 @@ const TaylorSwiftPage = () => {
       {/* SEO CONTENT */}
       <section className="py-20 bg-[#0d0818]">
         <div className="max-w-4xl mx-auto px-4 space-y-6 text-slate-400">
-          <h2 className="text-2xl font-bold text-white">Taylor Swift Wembley 2026 Tickets — Cheapest Prices & Best Seats</h2>
+          <h2 className="text-2xl font-bold text-white">Taylor Swift Wembley 2026 Tickets — Verified Listings & Best Seats</h2>
           <p><strong className="text-white">Taylor Swift's Eras Tour</strong> returns to <strong className="text-white">Wembley Stadium, London</strong> for an unprecedented 6 nights in June 2026. After breaking every record in music history, Taylor Swift brings her iconic setlist spanning all her eras — from Fearless to Midnights and beyond.</p>
           <h3 className="text-xl font-bold text-white mt-8">Why Buy Taylor Swift Tickets from EuroMatchTickets?</h3>
           <ul className="space-y-1">
-            <li><strong className="text-white">Cheapest prices</strong> — our official alternative marketplace offers the best deals</li>
+            <li><strong className="text-white">Verified prices</strong> — our official alternative marketplace offers the best deals</li>
             <li><strong className="text-white">Instant QR delivery</strong> — no waiting, tickets straight to your phone</li>
-            <li><strong className="text-white">100% verified</strong> — every ticket authenticated before sale</li>
-            <li><strong className="text-white">FanProtect guarantee</strong> — full refund if event is cancelled</li>
+            <li><strong className="text-white">verified</strong> — every ticket authenticated before sale</li>
+            <li><strong className="text-white">Buyer protection</strong> — full refund if event is cancelled</li>
           </ul>
           <h3 className="text-xl font-bold text-white mt-8">Taylor Swift Wembley 2026 Setlist</h3>
           <p>Expect <strong className="text-white">3+ hours of hits</strong> including Shake It Off, Anti-Hero, Cruel Summer, Love Story, Blank Space, Cardigan, All Too Well (10 Minute Version), and surprise songs unique to each night. Every show at Wembley features exclusive production elements you won't see anywhere else.</p>
@@ -293,7 +293,7 @@ const TaylorSwiftPage = () => {
       <FAQStructuredData faqs={[
         { question: "How much are Taylor Swift Wembley 2026 tickets?", answer: "Taylor Swift Eras Tour 2026 Wembley tickets start from €89 for general admission, with VIP packages from €599 and Diamond front-row packages from €999." },
         { question: "How many Taylor Swift shows at Wembley 2026?", answer: "Taylor Swift will perform 6 nights at Wembley Stadium: June 19, 20, 21, 26, 27, and 28, 2026." },
-        { question: "Is EuroMatchTickets a legitimate Taylor Swift ticket seller?", answer: "Yes, EuroMatchTickets is a verified independent marketplace. All Taylor Swift tickets are 100% authenticated with our FanProtect guarantee — full refund if the event is cancelled." },
+        { question: "Is EuroMatchTickets a legitimate Taylor Swift ticket seller?", answer: "Yes, EuroMatchTickets is a verified independent marketplace. All Taylor Swift tickets are 100% authenticated with our Buyer protection — full refund if the event is cancelled." },
         { question: "How will I receive my Taylor Swift tickets?", answer: "All tickets are delivered instantly as QR codes to your email. No physical shipping needed — show the QR code on your phone at the gate." }
       ]} />
     </div>

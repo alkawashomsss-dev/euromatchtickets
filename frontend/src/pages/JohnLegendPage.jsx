@@ -10,7 +10,7 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import SEOHead from "../components/SEOHead";
 
 const TRANSLATIONS = {
-  en: { title: "John Legend Abu Dhabi Concert 2026", subtitle: "Official Tickets - 5% Cheaper", buyNow: "Secure Your Seat Now", from: "From", guarantee: "100% Guarantee" },
+  en: { title: "John Legend Abu Dhabi Concert 2026", subtitle: "Official Tickets - 5% Cheaper", buyNow: "Secure Your Seat Now", from: "From", guarantee: "Buyer protection" },
   ar: { title: "حفلة جون ليجند أبوظبي 2026", subtitle: "تذاكر رسمية - أرخص بـ 5%", buyNow: "اشترِ الآن", from: "من", guarantee: "ضمان 100%" },
   de: { title: "John Legend Abu Dhabi Konzert 2026", subtitle: "Offizielle Tickets - 5% Günstiger", buyNow: "Jetzt Kaufen", from: "Ab", guarantee: "100% Garantie" },
   fr: { title: "Concert John Legend Abu Dhabi 2026", subtitle: "Billets Officiels - 5% Moins Cher", buyNow: "Acheter", from: "À partir de", guarantee: "Garantie 100%" },
@@ -59,7 +59,7 @@ const JohnLegendPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead
         title="John Legend Live 2026 | Abu Dhabi Tickets"
-        description="Buy John Legend Live 2026 tickets from €89. Etihad Arena Abu Dhabi. Cheapest verified tickets with instant delivery."
+        description="Buy John Legend Live 2026 tickets from €89. Etihad Arena Abu Dhabi. Verified verified tickets with instant delivery."
         image="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=1200&h=630&fit=crop"
         canonicalUrl="https://euromatchtickets.com/john-legend-tour-2026"
       />
@@ -117,7 +117,7 @@ const JohnLegendPage = () => {
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />100% Money-Back</div>
             <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" />4.9/5 Rating</div>
-            <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />Official Partner</div>
+            <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />Marketplace</div>
           </div>
         </div>
       </section>
@@ -174,7 +174,7 @@ const JohnLegendPage = () => {
             </p>
             <p className="text-slate-400 mb-4">
               EuroMatchTickets offers the best prices for John Legend Abu Dhabi tickets - guaranteed 5% cheaper than other platforms. 
-              With instant QR code delivery and 100% money-back guarantee, booking has never been easier.
+              With instant QR code delivery and cancellation refund policy, booking has never been easier.
             </p>
             <h3 className="text-xl font-bold mt-6 mb-3">Ticket Categories</h3>
             <ul className="text-slate-400 space-y-2">

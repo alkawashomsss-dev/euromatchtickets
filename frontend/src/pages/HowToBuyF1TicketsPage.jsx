@@ -61,7 +61,7 @@ const HowToBuyF1TicketsPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6">
             <div className="flex items-center gap-2 text-emerald-600">
-              <Shield className="w-5 h-5" /><span>100% Buyer Protection</span>
+              <Shield className="w-5 h-5" /><span>Buyer protection</span>
             </div>
             <div className="flex items-center gap-2 text-emerald-600">
               <Lock className="w-5 h-5" /><span>SSL Secure Payment</span>
@@ -145,7 +145,7 @@ const HowToBuyF1TicketsPage = () => {
             {[
               { icon: Shield, title: "100% Ticket Guarantee", desc: "Every ticket is verified and guaranteed valid. Full refund if any issue." },
               { icon: Award, title: "Best Price Promise", desc: "We're €10+ cheaper than F1.com, StubHub, and Viagogo on average." },
-              { icon: Clock, title: "Instant Delivery", desc: "Receive your mobile QR tickets within seconds of purchase." },
+              { icon: Clock, title: "QR delivery", desc: "Receive your mobile QR tickets within seconds of purchase." },
               { icon: Lock, title: "Secure Payment", desc: "256-bit SSL encryption. Accept Visa, Mastercard, PayPal, Apple Pay." },
               { icon: Headphones, title: "24/7 Customer Support", desc: "Our team is available around the clock via chat, email, or phone." },
               { icon: FileCheck, title: "German Company", desc: "Registered in Germany with full legal compliance. Invoice included." }

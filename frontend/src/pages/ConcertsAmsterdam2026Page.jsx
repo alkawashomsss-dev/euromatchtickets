@@ -66,7 +66,7 @@ const FAQS = [
   },
   {
     q: "How do I know a ticket from your site is real?",
-    a: "Every ticket we list is backed by our 100% Money-Back Guarantee. Sellers are verified, payments are escrowed, and tickets are re-issued in your name when possible. If anything goes wrong at the venue door — you're refunded within 72 hours, no questions.",
+    a: "Every ticket we list is backed by our Cancellation refund policy. Sellers are verified, payments are escrowed, and tickets are re-issued in your name when possible. If anything goes wrong at the venue door — you're refunded within 72 hours, no questions.",
   },
   {
     q: "Can I get accommodation + tickets as a package?",

@@ -15,7 +15,7 @@ const WC_FAQS = [
   { q: "When is the 2026 FIFA World Cup?", a: "The FIFA World Cup 2026 runs from June 11 to July 19, 2026, co-hosted across the USA, Mexico, and Canada with 48 national teams." },
   { q: "How much do World Cup 2026 tickets cost?", a: "Prices start from €65 for Group Stage matches, with premium Final seats at MetLife Stadium going up to €4,500+. VIP hospitality packages begin at €999." },
   { q: "Where is the 2026 World Cup Final?", a: "The Final is on Sunday July 19, 2026 at MetLife Stadium in East Rutherford, New Jersey — the 82,500-capacity home of the New York Giants and Jets." },
-  { q: "Are World Cup 2026 tickets refundable?", a: "Yes. Every ticket on EuroMatchTickets is backed by our 100% Money-Back Guarantee: full refund if the match is cancelled, postponed without a replacement date, or if the ticket fails at the stadium gate." },
+  { q: "Are World Cup 2026 tickets refundable?", a: "Yes. Every ticket on EuroMatchTickets is backed by our Cancellation refund policy: full refund if the match is cancelled, postponed without a replacement date, or if the ticket fails at the stadium gate." },
   { q: "How are World Cup 2026 tickets delivered?", a: "Tickets are delivered instantly as mobile QR codes after purchase. For matches in the USA/Canada, they are typically transferred via Ticketmaster/FIFA Ticket Account closer to the match date." },
   { q: "Which cities host the 2026 World Cup?", a: "16 host cities: Atlanta, Boston, Dallas, Guadalajara, Houston, Kansas City, Los Angeles, Mexico City, Miami, Monterrey, New York/New Jersey, Philadelphia, San Francisco Bay Area, Seattle, Toronto, and Vancouver." },
 ];
@@ -65,7 +65,7 @@ const WorldCupLandingPage = () => {
       <FAQSchemaScript faqs={WC_FAQS} />
       <SEOHead 
         title="Buy FIFA World Cup 2026 Tickets | From €65 | USA, Mexico, Canada"
-        description="Buy World Cup 2026 tickets from €65. Group stage to Final across USA, Mexico, Canada. Limited availability. 100% Money-Back Guarantee. Instant QR delivery."
+        description="Buy World Cup 2026 tickets from €65. Group stage to Final across USA, Mexico, Canada. Limited availability. Cancellation refund policy. Instant QR delivery."
         image="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=630&fit=crop"
       />
       <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026-tickets" category="worldcup" venue="MetLife Stadium" city="New York" />
@@ -89,7 +89,7 @@ const WorldCupLandingPage = () => {
           <div className="flex justify-center gap-3 mb-6">
             <Badge className="bg-emerald-500/10 text-emerald-600 border-emerald-200 px-4 py-2">
               <Shield className="w-4 h-4 mr-2" />
-              FanProtect™ 100% Guarantee
+              Buyer protection™ Buyer protection
             </Badge>
             <Badge className="bg-amber-500/10 text-amber-600 border-amber-200 px-4 py-2">
               <Star className="w-4 h-4 mr-2" />
@@ -147,7 +147,7 @@ const WorldCupLandingPage = () => {
           <div className="flex justify-center gap-6 mt-8 text-sm text-slate-500">
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-emerald-600" />
-              Instant Delivery
+              QR delivery
             </span>
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-emerald-600" />
@@ -155,7 +155,7 @@ const WorldCupLandingPage = () => {
             </span>
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-emerald-600" />
-              100% Guarantee
+              Buyer protection
             </span>
           </div>
         </div>
@@ -173,7 +173,7 @@ const WorldCupLandingPage = () => {
               <div className="w-14 h-14 bg-emerald-500/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-7 h-7 text-emerald-600" />
               </div>
-              <h3 className="font-bold mb-2">100% Guarantee</h3>
+              <h3 className="font-bold mb-2">Buyer protection</h3>
               <p className="text-sm text-slate-500">Every ticket verified. Full refund if match cancelled.</p>
             </div>
 
@@ -181,7 +181,7 @@ const WorldCupLandingPage = () => {
               <div className="w-14 h-14 bg-cyan-500/20 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-7 h-7 text-cyan-600" />
               </div>
-              <h3 className="font-bold mb-2">Instant Delivery</h3>
+              <h3 className="font-bold mb-2">QR delivery</h3>
               <p className="text-sm text-slate-500">QR Code to your email within minutes of purchase.</p>
             </div>
 
@@ -197,7 +197,7 @@ const WorldCupLandingPage = () => {
               <div className="w-14 h-14 bg-violet-50 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Users className="w-7 h-7 text-violet-600" />
               </div>
-              <h3 className="font-bold mb-2">24/7 Support</h3>
+              <h3 className="font-bold mb-2">Customer support</h3>
               <p className="text-sm text-slate-500">Expert team available around the clock to help you.</p>
             </div>
           </div>
@@ -320,7 +320,7 @@ const WorldCupLandingPage = () => {
               </Button>
             </Link>
             <p className="text-sm text-slate-400 mt-4">
-              🛡️ FanProtect™ Guarantee | 🔒 100% Secure Payment
+              🛡️ Buyer protection™ Guarantee | 🔒 100% Secure Payment
             </p>
           </div>
         </div>

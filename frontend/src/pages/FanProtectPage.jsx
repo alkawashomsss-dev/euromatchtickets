@@ -38,7 +38,7 @@ const FanProtectPage = () => {
     },
     {
       icon: Award,
-      title: "Best Price Guarantee",
+      title: "Market-based pricing",
       description: "Found a lower price elsewhere? We'll match it and give you an extra 5% off.",
       color: "pink"
     }
@@ -77,7 +77,7 @@ const FanProtectPage = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "FanProtect Guarantee",
+    "name": "Buyer protection",
     "provider": {
       "@type": "Organization",
       "name": "EuroMatchTickets"
@@ -101,8 +101,8 @@ const FanProtectPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="FanProtect Guarantee | 100% Ticket Protection"
-        description="Our FanProtect Guarantee ensures 100% authentic tickets, full refunds for cancelled events, on-time delivery, and 24/7 support. Buy with confidence."
+        title="Buyer protection | 100% Ticket Protection"
+        description="Our Buyer protection ensures 100% authentic tickets, full refunds for cancelled events, on-time delivery, and 24/7 support. Buy with confidence."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
@@ -122,11 +122,11 @@ const FanProtectPage = () => {
             </Badge>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              FanProtect<span className="text-emerald-600">™</span> Guarantee
+              Buyer protection<span className="text-emerald-600">™</span> Guarantee
             </h1>
             
             <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-8">
-              Every ticket purchase is protected by our comprehensive FanProtect Guarantee. 
+              Every ticket purchase is protected by our comprehensive Buyer protection. 
               Buy with complete confidence - if anything goes wrong, we've got you covered.
             </p>
 
@@ -164,7 +164,7 @@ const FanProtectPage = () => {
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-3xl font-bold text-center mb-4">What's Protected</h2>
           <p className="text-slate-500 text-center mb-12 max-w-2xl mx-auto">
-            Our FanProtect Guarantee covers you from purchase to event day
+            Our Buyer protection covers you from purchase to event day
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -249,7 +249,7 @@ const FanProtectPage = () => {
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Book with Confidence?</h2>
           <p className="text-emerald-100 mb-8 text-lg">
-            Every ticket is backed by our FanProtect Guarantee. Shop worry-free today.
+            Every ticket is backed by our Buyer protection. Shop worry-free today.
           </p>
           <Link to="/events">
             <Button className="bg-[#1e1e1e] text-emerald-700 hover:bg-zinc-100 px-10 py-6 text-lg font-semibold">

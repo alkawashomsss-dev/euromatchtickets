@@ -9,10 +9,10 @@ import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
 
 const UCL_FAQS = [
-  { q: "How much are Champions League tickets?", a: "Champions League group stage from €85. Quarter-finals from €149. Semi-finals from €249. UCL Final 2026 in Munich from €495. VIP hospitality from €1,200. All include FanProtect 100% money-back guarantee." },
+  { q: "How much are Champions League tickets?", a: "Champions League group stage from €85. Quarter-finals from €149. Semi-finals from €249. UCL Final 2026 in Munich from €495. VIP hospitality from €1,200. All include Buyer protection cancellation refund policy." },
   { q: "Where is the Champions League Final 2026?", a: "The 2025/26 UEFA Champions League Final takes place at the Allianz Arena in Munich, Germany on Saturday May 30, 2026. Kick-off at 21:00 CET." },
-  { q: "How to buy Champions League tickets?", a: "Select your match on EuroMatchTickets, choose your category, and pay securely via Stripe. Tickets are delivered instantly as QR codes to your email. All tickets are 100% verified with FanProtect money-back guarantee." },
-  { q: "Are Champions League tickets refundable?", a: "Yes! FanProtect 100% money-back guarantee. Full refund if the match is cancelled or postponed. If tickets are invalid at the gate, you receive 100% refund." },
+  { q: "How to buy Champions League tickets?", a: "Select your match on EuroMatchTickets, choose your category, and pay securely via Stripe. Tickets are delivered instantly as QR codes to your email. All tickets are verified with Buyer protection money-back guarantee." },
+  { q: "Are Champions League tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if the match is cancelled or postponed. If tickets are invalid at the gate, you receive 100% refund." },
   { q: "Can I buy Champions League Final tickets?", a: "Yes! UCL Final 2026 Munich tickets are available from €495. Category 1, 2, 3, and VIP hospitality. Limited availability — the Final always sells out months in advance." },
 ];
 
@@ -80,7 +80,7 @@ const ChampionsLeagueTicketsPage = () => {
       <FAQSchemaScript faqs={UCL_FAQS} />
       <SEOHead
         title="Buy Champions League Tickets 2026 | UCL Final From €85 | Munich"
-        description="Buy UEFA Champions League 2026 tickets from €85. Semi-finals & Final in Munich. 90% Sold — limited seats remaining. 100% Money-Back Guarantee. Instant QR delivery."
+        description="Buy UEFA Champions League 2026 tickets from €85. Semi-finals & Final in Munich. 90% Sold — limited seats remaining. Cancellation refund policy. Instant QR delivery."
         keywords="champions league tickets, ucl 2025 tickets, ticket champions league 2025, champions league semi final 2025 tickets, buy ticket final champions league 2025, champions league munich tickets"
         canonicalUrl="https://euromatchtickets.com/champions-league-tickets"
         image="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200&h=630&fit=crop"

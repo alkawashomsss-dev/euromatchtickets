@@ -125,7 +125,7 @@ const OrderSuccessPage = () => {
         {/* Trust Info */}
         <div className="flex items-center justify-center gap-2 mt-6 text-slate-400 text-sm">
           <Shield className="w-4 h-4 text-emerald-600" />
-          <span>Protected by FanProtect Guarantee</span>
+          <span>Protected by Buyer protection</span>
         </div>
 
         {/* Actions */}

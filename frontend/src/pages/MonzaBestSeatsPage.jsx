@@ -9,7 +9,7 @@ const MonzaBestSeatsPage = () => {
     { name: "Parabolica Grandstand", rating: 9.5, price: "€149", view: "Final high-speed corner + podium ceremony", pros: ["See cars at 300km/h exit", "Podium celebration visible", "Covered seating available"], cons: ["Limited pit straight view"], best: "Best for: Photography enthusiasts & Ferrari fans", color: "border-red-500" },
     { name: "Prima Variante (Turn 1)", rating: 9.2, price: "€169", view: "Braking zone + start/finish straight", pros: ["Most overtaking action", "See race start & finish", "Close to pit entry"], cons: ["Slightly more expensive"], best: "Best for: Overtaking action lovers", color: "border-green-600" },
     { name: "Ascari Chicane", rating: 8.5, price: "€139", view: "Technical chicane section", pros: ["Close to the track", "Great for photos", "Less crowded"], cons: ["No straight-line speed view"], best: "Best for: Photographers & quiet atmosphere", color: "border-blue-500" },
-    { name: "General Admission (Prato)", rating: 8.8, price: "€69", view: "Multiple spots around the circuit", pros: ["Freedom to roam", "Cheapest option", "Multiple viewpoints"], cons: ["No guaranteed seat", "Can get crowded"], best: "Best for: Budget-conscious fans & first-timers", color: "border-emerald-500" },
+    { name: "General Admission (Prato)", rating: 8.8, price: "€69", view: "Multiple spots around the circuit", pros: ["Freedom to roam", "Verified option", "Multiple viewpoints"], cons: ["No guaranteed seat", "Can get crowded"], best: "Best for: Budget-conscious fans & first-timers", color: "border-emerald-500" },
     { name: "VIP Village", rating: 9.8, price: "€595", view: "Track-side terrace", pros: ["Open bar all day", "Italian gourmet cuisine", "Private terrace"], cons: ["Premium price"], best: "Best for: Corporate events & luxury seekers", color: "border-purple-500" },
     { name: "Paddock Club", rating: 10, price: "€1,995", view: "Pit lane & paddock access", pros: ["Pit lane walks", "Driver meet & greet", "5-star hospitality"], cons: ["Very limited availability"], best: "Best for: Ultimate F1 experience", color: "border-amber-500" },
   ];
@@ -79,7 +79,7 @@ const MonzaBestSeatsPage = () => {
           {/* CTA */}
           <div className="mt-10 bg-red-600 rounded-none p-8 text-center text-white">
             <h2 className="text-2xl font-bold mb-2">Ready to Book Your Monza Seats?</h2>
-            <p className="text-red-100 mb-4">Tickets from €69 &bull; Instant QR Delivery &bull; FanProtect Guarantee</p>
+            <p className="text-red-100 mb-4">Tickets from €69 &bull; QR ticket delivery &bull; Buyer protection</p>
             <Link to="/f1-italian-grand-prix-monza-tickets"><Button size="lg" className="bg-[#1e1e1e] text-red-600 hover:bg-[#e10600]/10 font-bold px-8 rounded-full">Buy Monza GP Tickets</Button></Link>
           </div>
         </div>

@@ -87,7 +87,7 @@ const BahrainNightRaceGuidePage = () => {
       <section className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-none p-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-2">Experience the Night Race</h2>
-          <p className="text-amber-100 mb-4">Bahrain GP tickets from €59 &bull; Cheapest F1 race in the world</p>
+          <p className="text-amber-100 mb-4">Bahrain GP tickets from €59 &bull; Verified F1 race in the world</p>
           <Link to="/f1-bahrain-grand-prix-tickets"><Button size="lg" className="bg-[#1e1e1e] text-amber-700 hover:bg-amber-500/10 font-bold px-8 rounded-full">Buy Bahrain GP Tickets</Button></Link>
         </div>
       </section>

@@ -48,7 +48,7 @@ const SpaGPPage = () => {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     "name": "Belgian Grand Prix 2026 - Spa-Francorchamps F1",
-    "description": "Buy Spa F1 tickets 2026 at Circuit de Spa-Francorchamps. Belgian Grand Prix tickets from €109. General Admission, Eau Rouge Grandstand, Raidillon, Paddock Club VIP. Cheapest Spa F1 tickets in Europe with instant QR delivery.",
+    "description": "Buy Spa F1 tickets 2026 at Circuit de Spa-Francorchamps. Belgian Grand Prix tickets from €109. General Admission, Eau Rouge Grandstand, Raidillon, Paddock Club VIP. Verified Spa F1 tickets in Europe with QR ticket delivery.",
     "startDate": "2026-08-28T09:00:00+02:00",
     "endDate": "2026-08-30T18:00:00+02:00",
     "eventStatus": "https://schema.org/EventScheduled",
@@ -85,11 +85,11 @@ const SpaGPPage = () => {
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "How much do Spa F1 tickets cost in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Spa F1 tickets 2026 start from €109 for General Admission. Grandstand tickets at Eau Rouge start from €259, Raidillon from €289, and VIP Paddock Club tickets from €3,489. EuroMatchTickets offers the cheapest Spa F1 tickets in Europe." }},
-      { "@type": "Question", "name": "Where can I buy Belgian Grand Prix 2026 tickets?", "acceptedAnswer": { "@type": "Answer", "text": "You can buy Belgian Grand Prix 2026 tickets at EuroMatchTickets.com. We offer verified Spa-Francorchamps tickets with instant QR delivery, 100% buyer protection, and the cheapest prices compared to F1.com, StubHub, and Viagogo." }},
+      { "@type": "Question", "name": "Where can I buy Belgian Grand Prix 2026 tickets?", "acceptedAnswer": { "@type": "Answer", "text": "You can buy Belgian Grand Prix 2026 tickets at EuroMatchTickets.com. We offer verified Spa-Francorchamps tickets with QR ticket delivery, 100% buyer protection, and the cheapest prices compared to F1.com, StubHub, and Viagogo." }},
       { "@type": "Question", "name": "When is the Belgian Grand Prix 2026 at Spa-Francorchamps?", "acceptedAnswer": { "@type": "Answer", "text": "The Belgian Grand Prix 2026 at Circuit de Spa-Francorchamps takes place on August 28-30, 2026. Friday is practice day, Saturday is qualifying, and Sunday August 30 is race day with lights out at 2:00 PM CET." }},
       { "@type": "Question", "name": "What is the best grandstand at Spa-Francorchamps for F1?", "acceptedAnswer": { "@type": "Answer", "text": "The best grandstands at Spa-Francorchamps are Gold 3 (Eau Rouge) for the most iconic view, Gold 4 (Raidillon) for seeing cars at 300km/h, and Silver (La Source Turn 1) for dramatic overtaking. The Paddock Club offers the ultimate VIP experience above the pit lane." }},
       { "@type": "Question", "name": "How do I get to Spa-Francorchamps circuit?", "acceptedAnswer": { "@type": "Answer", "text": "Spa-Francorchamps is located near Stavelot in the Belgian Ardennes. The nearest airports are Brussels (140km), Liège (80km), and Cologne (130km). Shuttle buses run from Spa town and Liège. By car, take the E42 motorway to exit 10 (Francorchamps). Free parking is available at the circuit." }},
-      { "@type": "Question", "name": "Are Spa F1 tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! All Spa F1 tickets purchased through EuroMatchTickets come with our FanProtect 100% Money-Back Guarantee. If the Belgian Grand Prix is cancelled or postponed, you receive a full refund. If your tickets are invalid, you get 100% of your money back." }},
+      { "@type": "Question", "name": "Are Spa F1 tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! All Spa F1 tickets purchased through EuroMatchTickets come with our Buyer protection Cancellation refund policy. If the Belgian Grand Prix is cancelled or postponed, you receive a full refund. If your tickets are invalid, you get 100% of your money back." }},
       { "@type": "Question", "name": "Can I camp at Spa-Francorchamps during the F1 weekend?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, camping is available at Spa-Francorchamps during the Belgian Grand Prix weekend. There are several camping zones around the circuit including Camping Eau Rouge and the official campsite near the paddock area. Camping passes are sold separately." }},
       { "@type": "Question", "name": "What is Eau Rouge at Spa-Francorchamps?", "acceptedAnswer": { "@type": "Answer", "text": "Eau Rouge is the most famous corner in Formula 1, located at Circuit de Spa-Francorchamps. It's a fast, uphill left-right-left sequence where F1 cars reach speeds over 300km/h. Combined with the Raidillon hill, it's the most iconic and challenging section of any F1 circuit in the world." }},
     ]
@@ -121,11 +121,11 @@ const SpaGPPage = () => {
   ];
 
   const faqs = [
-    { q: "How much do Spa F1 tickets cost in 2026?", a: "Spa F1 tickets for 2026 start from just €109 for General Admission, making EuroMatchTickets the cheapest option in Europe. Grandstand tickets range from €149 (Bronze) to €319 (Platinum Pouhon). The legendary Eau Rouge grandstand (Gold 3) costs €259, and VIP Paddock Club packages start from €3,489. All prices include our FanProtect guarantee and instant QR delivery." },
+    { q: "How much do Spa F1 tickets cost in 2026?", a: "Spa F1 tickets for 2026 start from just €109 for General Admission, making EuroMatchTickets the cheapest option in Europe. Grandstand tickets range from €149 (Bronze) to €319 (Platinum Pouhon). The legendary Eau Rouge grandstand (Gold 3) costs €259, and VIP Paddock Club packages start from €3,489. All prices include our Buyer protection and QR ticket delivery." },
     { q: "Where is the best place to watch F1 at Spa-Francorchamps?", a: "The best viewing spots at Spa-Francorchamps depend on what you want to see. Gold 3 (Eau Rouge) offers the most iconic view in all of motorsport. Gold 4 (Raidillon) lets you feel the raw speed as cars blast uphill at 300km/h. Silver (La Source) is perfect for overtaking action. For the ultimate experience, the Paddock Club terrace above the pit lane offers 360-degree views with driver access." },
     { q: "When is the Belgian Grand Prix 2026?", a: "The Belgian Grand Prix 2026 at Spa-Francorchamps takes place August 28-30, 2026. Friday August 28 features two practice sessions (FP1 at 1:30 PM, FP2 at 5:00 PM). Saturday August 29 has FP3 at 12:30 PM and Qualifying at 4:00 PM. Sunday August 30 is Race Day with lights out at 2:00 PM CET." },
     { q: "How do I get to Spa-Francorchamps?", a: "Spa-Francorchamps is located near Stavelot in the Belgian Ardennes. By plane: Brussels Airport (140km, 1.5h drive), Liège Airport (80km, 1h), or Cologne Bonn (130km, 1.5h). By train: Verviers-Central station is nearest, then shuttle bus. By car: E42 motorway exit 10 (Francorchamps). Dedicated F1 shuttle buses operate from Spa town, Liège, and Brussels during the Grand Prix weekend." },
-    { q: "Are Belgian Grand Prix tickets refundable?", a: "Yes! All Spa F1 tickets from EuroMatchTickets include our FanProtect 100% Money-Back Guarantee. If the Belgian Grand Prix is cancelled, postponed, or if your tickets are invalid or not delivered, you receive a full refund. No questions asked. This is our promise to every customer." },
+    { q: "Are Belgian Grand Prix tickets refundable?", a: "Yes! All Spa F1 tickets from EuroMatchTickets include our Buyer protection Cancellation refund policy. If the Belgian Grand Prix is cancelled, postponed, or if your tickets are invalid or not delivered, you receive a full refund. No questions asked. This is our promise to every customer." },
     { q: "Can I camp at Spa-Francorchamps during the F1?", a: "Yes, camping is hugely popular at the Belgian Grand Prix! Official camping zones include Camping Eau Rouge (closest to the action), Les Combes camping area, and several private campsites around the circuit. A 3-day camping pass typically costs €50-100. Many fans camp from Thursday through Monday for the full Spa experience." },
     { q: "What is Eau Rouge at Spa?", a: "Eau Rouge is the most famous and legendary corner complex in Formula 1 history. Located at Circuit de Spa-Francorchamps in Belgium, it's a terrifyingly fast left-right-left uphill sequence where F1 cars reach 310+ km/h. Combined with the Raidillon hill that follows, it's the ultimate test of driver courage and car setup. The Eau Rouge grandstand (Gold 3) is the most sought-after viewing point at the Belgian Grand Prix." },
     { q: "What should I bring to Spa F1?", a: "Essential items for the Belgian Grand Prix: waterproof jacket (Spa weather is famously unpredictable), sunscreen, comfortable walking shoes (the circuit is 7km long), ear protection, portable phone charger, picnic blanket for GA areas, cash for food/drink stalls, binoculars, and a clear bag (security requirement). The Ardennes forest location means temperatures can change rapidly." },
@@ -155,7 +155,7 @@ const SpaGPPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <ProductSchema name="F1 Belgian Grand Prix Spa 2026" description="Buy Spa F1 tickets for the 2026 Belgian Grand Prix at Spa-Francorchamps from €109. Eau Rouge Grandstand, Paddock Club VIP. Cheapest verified tickets with instant QR delivery." price={109} highPrice={3489} image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200" url={CANONICAL} category="f1" venue="Circuit de Spa-Francorchamps" city="Stavelot" />
+      <ProductSchema name="F1 Belgian Grand Prix Spa 2026" description="Buy Spa F1 tickets for the 2026 Belgian Grand Prix at Spa-Francorchamps from €109. Eau Rouge Grandstand, Paddock Club VIP. Verified verified tickets with QR ticket delivery." price={109} highPrice={3489} image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200" url={CANONICAL} category="f1" venue="Circuit de Spa-Francorchamps" city="Stavelot" />
 
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden" data-testid="spa-hero">
@@ -184,7 +184,7 @@ const SpaGPPage = () => {
               <AlertTriangle className="w-3 h-3" /> SELLING FAST
             </span>
             <span className="flex items-center gap-1.5 bg-[#15803d]/20 border border-[#15803d]/40 text-green-400 text-xs font-black px-3 py-1.5 uppercase tracking-wider">
-              <Shield className="w-3 h-3" /> 100% GUARANTEE
+              <Shield className="w-3 h-3" /> BUYER PROTECTION
             </span>
           </motion.div>
 
@@ -244,9 +244,9 @@ const SpaGPPage = () => {
       <section className="py-3 border-b border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-6 text-xs">
           {[
-            [Shield, "100% Money-Back Guarantee"],
-            [Star, "4.9/5 from 12,847 Reviews"],
-            [Zap, "Instant QR Delivery"],
+            [Shield, "Cancellation refund policy"],
+            [Star, "4.9/5 from 1 Reviews"],
+            [Zap, "QR ticket delivery"],
             [Lock, "Secure Stripe Checkout"],
             [Users, "500K+ Tickets Sold"],
           ].map(([Icon, text], i) => (
@@ -258,7 +258,7 @@ const SpaGPPage = () => {
       {/* ═══ PRICE COMPARISON ═══ */}
       <section className="py-10 bg-[#0e0e14]">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-xl font-black text-center text-white mb-6 uppercase tracking-tight">Cheapest Spa F1 Tickets - Price Comparison</h2>
+          <h2 className="text-xl font-black text-center text-white mb-6 uppercase tracking-tight">Verified Spa F1 Tickets - Price Comparison</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { name: "F1.com Official", price: "399", strike: true },
@@ -307,7 +307,7 @@ const SpaGPPage = () => {
               <p className="text-slate-500 mt-1">687 tickets remaining &bull; Prices updating live</p>
             </div>
             <div className="hidden md:flex items-center gap-2 bg-[#15803d]/10 border border-[#15803d]/30 text-[#15803d] px-4 py-2 text-sm font-black uppercase tracking-wider">
-              <TrendingUp className="w-4 h-4" /> 42% cheaper
+              <TrendingUp className="w-4 h-4" /> Competitive market pricing
             </div>
           </div>
 
@@ -500,7 +500,7 @@ const SpaGPPage = () => {
             {[
               { name: "Marco V.", loc: "Milan, Italy", text: "Eau Rouge in person is INSANE. The speed, the sound, the atmosphere. Best F1 race I've ever attended. EuroMatchTickets had the cheapest Spa F1 tickets I could find anywhere.", stars: 5 },
               { name: "Sophie L.", loc: "London, UK", text: "Paddock Club at Spa was worth every penny. Met Leclerc, amazing food, and the view from above the pits is unreal. Belgian Grand Prix VIP is a must-do experience!", stars: 5 },
-              { name: "Thomas K.", loc: "Munich, Germany", text: "Cheapest Spa-Francorchamps tickets I found. QR code arrived instantly. Gold 4 Raidillon seats were PERFECT. Could feel the cars fly past at 300km/h. Already booked for 2027!", stars: 5 },
+              { name: "Thomas K.", loc: "Munich, Germany", text: "Verified Spa-Francorchamps tickets I found. QR code arrived instantly. Gold 4 Raidillon seats were PERFECT. Could feel the cars fly past at 300km/h. Already booked for 2027!", stars: 5 },
               { name: "Anna B.", loc: "Amsterdam, NL", text: "Third year buying Belgian GP tickets from EuroMatchTickets. Always the best prices and instant delivery. Spa is magic - the Ardennes forest, the rain, the atmosphere. Unbeatable.", stars: 5 },
               { name: "Pierre D.", loc: "Brussels, BE", text: "As a local, I've been to Spa-Francorchamps F1 many times. EuroMatchTickets offers genuine tickets at the best prices. Gold 3 Eau Rouge view is absolutely iconic. Highly recommend!", stars: 5 },
               { name: "Lisa M.", loc: "Berlin, DE", text: "Bought Belgium F1 tickets for my husband's birthday. He was over the moon! General Admission was great value - you can walk around the entire 7km circuit. Incredible experience.", stars: 5 },
@@ -613,7 +613,7 @@ const SpaGPPage = () => {
             <p>Looking for <strong className="text-white">Spa F1 tickets</strong>? The Belgian Grand Prix at <strong className="text-white">Circuit de Spa-Francorchamps</strong> is the most anticipated race on the 2026 F1 calendar. With the legendary <em>Eau Rouge-Raidillon</em> corner complex, 7.004 kilometres of pure racing adrenaline, and a capacity of 100,000+ fans, <strong className="text-white">Spa-Francorchamps tickets</strong> sell out months in advance.</p>
             
             <h3 className="text-lg font-black text-white mt-8">Spa F1 Ticket Prices 2026</h3>
-            <p>EuroMatchTickets offers the cheapest <strong className="text-white">F1 Spa tickets</strong> in Europe, up to <strong className="text-[#e10600]">42% cheaper</strong> than buying from F1.com directly. Here's what you can expect to pay for <strong className="text-white">Belgian Grand Prix tickets</strong>:</p>
+            <p>EuroMatchTickets offers the cheapest <strong className="text-white">F1 Spa tickets</strong> in Europe, up to <strong className="text-[#e10600]">Competitive market pricing</strong> than buying from F1.com directly. Here's what you can expect to pay for <strong className="text-white">Belgian Grand Prix tickets</strong>:</p>
             <ul className="list-disc pl-5 space-y-1">
               <li><strong className="text-white">General Admission</strong>: from &euro;109 (was &euro;189 on F1.com)</li>
               <li><strong className="text-white">Eau Rouge Grandstand</strong>: from &euro;229 - the most iconic F1 grandstand in the world</li>
@@ -623,13 +623,13 @@ const SpaGPPage = () => {
             </ul>
 
             <h3 className="text-lg font-black text-white mt-8">Why Buy Belgian GP Tickets from EuroMatchTickets?</h3>
-            <p>Whether you search for <strong className="text-white">ticket F1 Spa</strong>, <strong className="text-white">Spa Grand Prix tickets</strong>, <strong className="text-white">Belgium F1 tickets</strong>, or <strong className="text-white">Belgian GP tickets</strong> - EuroMatchTickets guarantees the lowest prices with instant QR delivery. Every <strong className="text-white">Spa-Francorchamps F1 ticket</strong> is 100% verified and backed by our FanProtect money-back guarantee.</p>
+            <p>Whether you search for <strong className="text-white">ticket F1 Spa</strong>, <strong className="text-white">Spa Grand Prix tickets</strong>, <strong className="text-white">Belgium F1 tickets</strong>, or <strong className="text-white">Belgian GP tickets</strong> - EuroMatchTickets guarantees the lowest prices with QR ticket delivery. Every <strong className="text-white">Spa-Francorchamps F1 ticket</strong> is verified and backed by our Buyer protection money-back guarantee.</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>42% cheaper than official F1 ticket prices</li>
+              <li>Competitive market pricing than official F1 ticket prices</li>
               <li>Instant QR code delivery - no waiting, no postal delays</li>
-              <li>FanProtect 100% money-back guarantee if event is cancelled</li>
-              <li>500,000+ tickets sold across 25+ countries</li>
-              <li>4.9/5 from 12,847 verified customer reviews</li>
+              <li>Buyer protection cancellation refund policy if event is cancelled</li>
+              <li>Verified seller inventory across 25+ countries</li>
+              <li>4.9/5 from 1 verified customer reviews</li>
             </ul>
 
             <h3 className="text-lg font-black text-white mt-8">Spa-Francorchamps Circuit Guide</h3>
@@ -645,10 +645,10 @@ const SpaGPPage = () => {
             </ul>
 
             <h3 className="text-lg font-black text-white mt-8">Frequently Searched: Spa F1 Tickets in Other Languages</h3>
-            <p>Our customers search for Spa F1 tickets in many languages: <strong className="text-white">Formel 1 Spa Tickets</strong> (German), <strong className="text-white">Formule 1 Spa Tickets</strong> (French/Dutch), <strong className="text-white">F1 Belgien Tickets</strong>, <strong className="text-white">F1 Belgi&euml; Tickets</strong>, <strong className="text-white">GP Spa Tickets</strong>, <strong className="text-white">F1 Kaarten Spa</strong>, <strong className="text-white">Grand Prix Belgie Tickets</strong>, and <strong className="text-white">GP Belgi&euml; Tickets</strong>. Regardless of language, all customers enjoy the same low prices, instant QR delivery, and FanProtect guarantee.</p>
+            <p>Our customers search for Spa F1 tickets in many languages: <strong className="text-white">Formel 1 Spa Tickets</strong> (German), <strong className="text-white">Formule 1 Spa Tickets</strong> (French/Dutch), <strong className="text-white">F1 Belgien Tickets</strong>, <strong className="text-white">F1 Belgi&euml; Tickets</strong>, <strong className="text-white">GP Spa Tickets</strong>, <strong className="text-white">F1 Kaarten Spa</strong>, <strong className="text-white">Grand Prix Belgie Tickets</strong>, and <strong className="text-white">GP Belgi&euml; Tickets</strong>. Regardless of language, all customers enjoy the same low prices, QR ticket delivery, and Buyer protection.</p>
 
             <h3 className="text-lg font-black text-white mt-8">Best Time to Buy Spa F1 Tickets</h3>
-            <p>For the best <strong className="text-white">Spa F1 ticket prices</strong>, buy 3-6 months before race day. Early bird discounts can save you up to 30%. However, even last-minute <strong className="text-white">Belgian Grand Prix 2026 tickets</strong> on EuroMatchTickets are typically 25-42% cheaper than official channels. The race weekend is July 24-26, 2026.</p>
+            <p>For the best <strong className="text-white">Spa F1 ticket prices</strong>, buy 3-6 months before race day. Early bird discounts can save you up to 30%. However, even last-minute <strong className="text-white">Belgian Grand Prix 2026 tickets</strong> on EuroMatchTickets are typically 25-Competitive market pricing than official channels. The race weekend is July 24-26, 2026.</p>
           </article>
         </div>
       </section>
@@ -681,7 +681,7 @@ const SpaGPPage = () => {
             <ul className="list-disc pl-5 space-y-1">
               <li><strong className="text-white">Price</strong>: General Admission from &euro;109 vs &euro;189+ on F1.com and &euro;365+ on Viagogo. That's 42% savings.</li>
               <li><strong className="text-white">Delivery</strong>: Instant QR code to your phone. No waiting for postal delivery, no risk of lost tickets.</li>
-              <li><strong className="text-white">Guarantee</strong>: FanProtect 100% money-back if the Belgian Grand Prix is cancelled or your tickets don't work.</li>
+              <li><strong className="text-white">Guarantee</strong>: Buyer protection cancellation refund if the Belgian Grand Prix is cancelled or your tickets don't work.</li>
               <li><strong className="text-white">Selection</strong>: Every grandstand available - from GA to Paddock Club. 687 tickets currently listed.</li>
             </ul>
           </article>
@@ -703,7 +703,7 @@ const SpaGPPage = () => {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter uppercase">Don't Just Watch.<br />Experience Spa.</h2>
           <p className="text-white/70 text-base mb-8 max-w-xl mx-auto">
-            From &euro;109 general admission to &euro;3,489 Paddock Club. Every Spa F1 ticket includes FanProtect guarantee and instant QR delivery.
+            From &euro;109 general admission to &euro;3,489 Paddock Club. Every Spa F1 ticket includes Buyer protection and QR ticket delivery.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#tickets">
@@ -718,7 +718,7 @@ const SpaGPPage = () => {
             </a>
           </div>
           <p className="text-white/50 text-sm mt-6 flex items-center justify-center gap-2">
-            <Shield className="w-4 h-4" /> 100% money-back guarantee if the event is cancelled
+            <Shield className="w-4 h-4" /> cancellation refund policy if the event is cancelled
           </p>
         </div>
       </section>

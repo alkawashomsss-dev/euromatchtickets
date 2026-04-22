@@ -11,11 +11,11 @@ const ArsenalHubPage = () => {
     "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Arsenal FC Tickets 2025-26",
-    "description": "Verified Arsenal FC match tickets with instant QR delivery",
+    "description": "Verified Arsenal FC match tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2187", "bestRating": "5" },
     "review": [
-      { "@type": "Review", "name": "Emirates European night was unreal", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Jack W." }, "reviewBody": "Emirates on a European night is unreal! Saka was incredible. Cheapest tickets I found.", "datePublished": "2026-02-18" },
+      { "@type": "Review", "name": "Emirates European night was unreal", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Jack W." }, "reviewBody": "Emirates on a European night is unreal! Saka was incredible. Verified tickets I found.", "datePublished": "2026-02-18" },
       { "@type": "Review", "name": "Best North London Derby experience", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Amira F." }, "reviewBody": "North London Derby was the best football experience of my life! Great prices.", "datePublished": "2026-01-10" }
     ],
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1500", "offerCount": "245" , "validFrom": "2025-01-01" }
@@ -30,7 +30,7 @@ const ArsenalHubPage = () => {
   ];
 
   const reviews = [
-    { name: "Jack W.", country: "UK", rating: 5, text: "Emirates on a European night is unreal! Saka was incredible. Cheapest tickets!", date: "Feb 2026" },
+    { name: "Jack W.", country: "UK", rating: 5, text: "Emirates on a European night is unreal! Saka was incredible. Verified tickets!", date: "Feb 2026" },
     { name: "Amira F.", country: "Egypt", rating: 5, text: "North London Derby was the best football experience of my life!", date: "Jan 2026" },
     { name: "Thomas B.", country: "Germany", rating: 5, text: "Arsenal vs Bayern was electric. Tickets arrived in seconds.", date: "Dec 2025" },
     { name: "Chloe P.", country: "France", rating: 4, text: "Great atmosphere at Emirates. Easy booking, instant delivery.", date: "Nov 2025" },
@@ -40,13 +40,13 @@ const ArsenalHubPage = () => {
     { question: "How much are Arsenal tickets?", answer: "Arsenal tickets start from \u20AC65 for Premier League. Champions League from \u20AC110. North London Derby from \u20AC175." },
     { question: "Where does Arsenal play?", answer: "Arsenal plays at the Emirates Stadium in Holloway, North London. Capacity 60,704. Nearest tube: Arsenal (Piccadilly line)." },
     { question: "Can I buy North London Derby tickets?", answer: "Yes! Arsenal vs Tottenham tickets start from \u20AC175. The most intense rivalry in London football!" },
-    { question: "Are Arsenal tickets genuine?", answer: "100% verified with FanProtect guarantee. Full refund if cancelled or any issue." },
+    { question: "Are Arsenal tickets genuine?", answer: "verified with Buyer protection. Full refund if cancelled or any issue." },
     { question: "Who are Arsenal's best players?", answer: "Bukayo Saka, Martin Odegaard, Declan Rice, William Saliba, and Kai Havertz lead Mikel Arteta's title-challenging squad." },
   ];
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="arsenal-hub-page">
-      <SEOHead title="Arsenal Tickets 2026 | Emirates, UCL, Premier League €65" description="Buy Arsenal FC tickets from \u20AC65. Premier League, Champions League, North London Derby at Emirates. Saka, Odegaard. Verified. Instant QR. Cheapest!" />
+      <SEOHead noIndex={true} title="Arsenal Tickets 2026 | Emirates, UCL, Premier League €65" description="Buy Arsenal FC tickets from \u20AC65. Premier League, Champions League, North London Derby at Emirates. Saka, Odegaard. Verified. Instant QR. Verified!" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
 
       <section className="relative py-20 overflow-hidden">
@@ -54,7 +54,7 @@ const ArsenalHubPage = () => {
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-[#e10600]/10 text-red-700 border-red-200 mb-6"><Trophy className="w-4 h-4 mr-2" />Arsenal FC</Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Arsenal Tickets 2025-26<span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-red-400 to-amber-400 bg-clip-text text-transparent">Emirates Stadium &middot; Premier League &middot; Champions League</span></h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with QR ticket delivery. Buyer protection.</p>
           <ScarcityBadges ticketsLeft={356} viewers={241} priceIncrease="10%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Calendar className="w-5 h-5 text-red-600" /><span>2025-26 Season</span></div>
@@ -99,7 +99,7 @@ const ArsenalHubPage = () => {
           <h2 className="text-2xl font-bold mb-6 text-white">Buy Arsenal Tickets 2025-26</h2>
           <div className="prose max-w-none text-slate-400 space-y-4">
             <p><strong>Arsenal FC</strong> under Mikel Arteta has become one of the most exciting teams in Europe. The Gunners are serious contenders for the <strong>Premier League title and Champions League</strong>, with a squad featuring <strong>Bukayo Saka, Martin Odegaard, Declan Rice, and William Saliba</strong>.</p>
-            <p>The <strong>Emirates Stadium</strong> in North London holds 60,704 fans and has become a fortress under Arteta. EuroMatchTickets offers the <strong>cheapest Arsenal tickets</strong> with instant QR delivery and <Link to="/buyer-protection" className="text-red-600 hover:underline">FanProtect guarantee</Link>.</p>
+            <p>The <strong>Emirates Stadium</strong> in North London holds 60,704 fans and has become a fortress under Arteta. EuroMatchTickets offers the <strong>cheapest Arsenal tickets</strong> with QR ticket delivery and <Link to="/buyer-protection" className="text-red-600 hover:underline">Buyer protection</Link>.</p>
           </div>
         </div>
       </section>

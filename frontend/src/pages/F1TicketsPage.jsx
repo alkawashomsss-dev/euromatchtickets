@@ -21,7 +21,7 @@ const F1_FAQS = [
   { q: "What is the cheapest F1 race to attend?", a: "Italian GP at Monza (from €89) and Spanish GP Barcelona (from €99) are the most affordable. Belgian GP Spa (from €109) and Hungarian GP Budapest (from €119) also offer great value." },
   { q: "How many F1 races are there in 2026?", a: "The 2026 F1 season features 24 Grand Prix races across 5 continents. European races run March-September. The season starts in Bahrain (March) and ends in Abu Dhabi (December)." },
   { q: "Which F1 race has the best atmosphere?", a: "Dutch GP Zandvoort (Orange Army), British GP Silverstone (150,000+ fans), Italian GP Monza (passionate tifosi), and Belgian GP Spa (legendary circuit). Monaco for glamour." },
-  { q: "Are F1 tickets refundable?", a: "Yes! All F1 tickets on EuroMatchTickets include FanProtect 100% money-back guarantee. Full refund if the race is cancelled. Instant QR delivery." },
+  { q: "Are F1 tickets refundable?", a: "Yes! All F1 tickets on EuroMatchTickets include Buyer protection cancellation refund policy. Full refund if the race is cancelled. Instant QR delivery." },
 ];
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import axios from 'axios';
@@ -179,7 +179,7 @@ const F1TicketsPage = () => {
       {
         "@type": "SportsEvent",
         "name": "Formula 1 World Championship 2026",
-        "description": "Buy official F1 2026 tickets for all 24 Grand Prix races. Monaco GP from \u20ac289, Silverstone from \u20ac149. Best prices guaranteed.",
+        "description": "Buy official F1 2026 tickets for all 24 Grand Prix races. Monaco GP from \u20ac289, Silverstone from \u20ac149. Market pricing may vary.",
         "startDate": "2026-03-06",
         "endDate": "2026-12-06",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -204,7 +204,7 @@ const F1TicketsPage = () => {
       {
         "@type": "Product",
         "name": "F1 2026 Grand Prix Tickets",
-        "description": "Buy Formula 1 2026 tickets for all 24 Grand Prix races. Cheapest prices with 0% fees.",
+        "description": "Buy Formula 1 2026 tickets for all 24 Grand Prix races. Verified prices with 0% fees.",
         "image": "https://euromatchtickets.com/logo-192.png",
         "url": "https://euromatchtickets.com/f1-tickets",
         "brand": { "@type": "Organization", "name": "EuroMatchTickets" },
@@ -220,7 +220,7 @@ const F1TicketsPage = () => {
         "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2847", "bestRating": "5", "worstRating": "1" },
         "review": [
           { "@type": "Review", "name": "Instant F1 QR ticket delivery", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "Excellent service! F1 tickets arrived instantly via QR code.", "datePublished": "2026-01-15" },
-          { "@type": "Review", "name": "Best F1 prices with FanProtect", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Best F1 prices I found. FanProtect guarantee is reassuring.", "datePublished": "2026-02-08" }
+          { "@type": "Review", "name": "Best F1 prices with Buyer protection", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Best F1 prices I found. Buyer protection is reassuring.", "datePublished": "2026-02-08" }
         ]
       },
       {
@@ -241,7 +241,7 @@ const F1TicketsPage = () => {
           "item": {
             "@type": "SportsEvent",
             "name": `${r.gp} 2026`,
-            "description": `Buy ${r.gp} 2026 tickets from €${r.price}. ${r.circuit}. Verified sellers, instant QR delivery, 100% money-back guarantee.`,
+            "description": `Buy ${r.gp} 2026 tickets from €${r.price}. ${r.circuit}. Verified sellers, QR ticket delivery, cancellation refund policy.`,
             "startDate": startDate,
             "endDate": endDate,
             "eventStatus": "https://schema.org/EventScheduled",
@@ -327,8 +327,8 @@ const F1TicketsPage = () => {
             </span>
           </h1>
           <p className="text-lg text-slate-400 max-w-3xl mx-auto mb-4">
-            Secure your seat now with instant QR delivery. 100% Buyer Protection.
-            <strong className="text-white"> Best prices guaranteed - No service fees!</strong>
+            Secure your seat now with QR ticket delivery. Buyer protection.
+            <strong className="text-white"> Market pricing may vary - No service fees!</strong>
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-4">
             <span className="inline-flex items-center gap-1.5 bg-[#e10600]/100/20 border border-red-500/30 rounded-none px-3 py-1.5 text-red-300 text-sm font-medium animate-pulse">
@@ -370,7 +370,7 @@ const F1TicketsPage = () => {
               { icon: Shield, label: "500,000+ Tickets Sold" },
               { icon: Star, label: "4.9/5 from 12,000+ Reviews" },
               { icon: Globe, label: "Trusted in 25+ Countries" },
-              { icon: Zap, label: "Instant QR Delivery" },
+              { icon: Zap, label: "QR ticket delivery" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-slate-400">
                 <item.icon className="w-3.5 h-3.5 text-[#e10600]" />
@@ -707,18 +707,18 @@ const F1TicketsPage = () => {
       <section className="py-14 bg-[#15151e]" data-testid="f1-all-race-links">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-black text-center text-white mb-2 uppercase tracking-tight">Buy F1 2026 Grand Prix Tickets - All Races</h2>
-          <p className="text-slate-500 text-sm text-center mb-8">Cheapest Formula 1 tickets for every Grand Prix - 0% fees, instant delivery</p>
+          <p className="text-slate-500 text-sm text-center mb-8">Verified Formula 1 tickets for every Grand Prix - 0% fees, instant delivery</p>
           {races.filter(r => r.title?.includes('2026')).length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
               {races.filter(r => r.title?.includes('2026')).map((race, i) => {
                 const seoMap = {
-                  "Monaco": { kw: "Buy Monaco GP Tickets 2026", sub: "Circuit de Monaco - Cheapest Prices", hot: true },
+                  "Monaco": { kw: "Buy Monaco GP Tickets 2026", sub: "Circuit de Monaco - Verified Listings", hot: true },
                   "British": { kw: "Buy Silverstone F1 Tickets 2026", sub: "British Grand Prix - Best Grandstand Seats", hot: true },
                   "Italian Grand Prix": { kw: "Buy Monza F1 Tickets 2026", sub: "Italian GP - Autodromo Nazionale Monza" },
                   "Singapore": { kw: "Buy Singapore GP Night Race Tickets", sub: "Marina Bay F1 Street Circuit 2026", hot: true },
                   "Las Vegas": { kw: "Buy Las Vegas Grand Prix Tickets 2026", sub: "F1 Las Vegas Strip Night Race - VIP Available", hot: true },
                   "Abu Dhabi": { kw: "Buy Abu Dhabi GP Tickets 2026", sub: "Yas Marina Circuit - Season Finale" },
-                  "Miami": { kw: "Buy Miami Grand Prix Tickets 2026", sub: "Miami F1 Sprint Race - Cheapest Prices", hot: true },
+                  "Miami": { kw: "Buy Miami Grand Prix Tickets 2026", sub: "Miami F1 Sprint Race - Verified Listings", hot: true },
                   "Australian": { kw: "Buy Australian GP Tickets 2026", sub: "Albert Park Melbourne - Season Opener" },
                   "Japanese": { kw: "Buy Suzuka F1 Tickets 2026", sub: "Japanese Grand Prix - Suzuka Circuit" },
                   "Chinese": { kw: "Buy Chinese GP Tickets 2026", sub: "Shanghai F1 Sprint Race Weekend" },
@@ -780,8 +780,8 @@ const F1TicketsPage = () => {
           <div className="grid md:grid-cols-2 gap-4">
             {[
               { title: "Best Prices Guaranteed", desc: "Up to 40% cheaper than official F1 and major competitors" },
-              { title: "100% Buyer Protection", desc: "Full refund if tickets are invalid or the event is cancelled" },
-              { title: "Instant QR Delivery", desc: "Receive your tickets immediately via email after purchase" },
+              { title: "Buyer protection", desc: "Full refund if tickets are invalid or the event is cancelled" },
+              { title: "QR ticket delivery", desc: "Receive your tickets immediately via email after purchase" },
               { title: "0% Service Fees", desc: "The price you see is the final price you pay - no hidden charges" }
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3 p-4 bg-[#1e1e1e] border border-white/8">

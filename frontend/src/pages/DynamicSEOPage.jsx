@@ -232,7 +232,7 @@ export default function DynamicSEOPage() {
             </nav>
             <Badge className={fallbackStyle.badge}>{cat.toUpperCase()}</Badge>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 mt-4">{prettyName}</h1>
-            <p className="text-lg text-slate-400 max-w-3xl mb-6">Buy verified {prettyName.toLowerCase()} at Europe's cheapest prices. 100% guaranteed with instant QR delivery and FanProtect buyer protection.</p>
+            <p className="text-lg text-slate-400 max-w-3xl mb-6">Buy verified {prettyName.toLowerCase()} at Europe's cheapest prices. secured by our refund policy with QR ticket delivery and Buyer protection buyer protection.</p>
             <div className="flex flex-wrap items-center gap-4">
               <Link to={buyLink}>
                 <Button className="bg-emerald-600 hover:bg-emerald-500/100 text-white px-8 py-6 text-lg rounded-none">
@@ -247,10 +247,10 @@ export default function DynamicSEOPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <h2 className="text-xl font-bold text-white mb-4">About {prettyName}</h2>
-              <p className="text-slate-400 mb-4 leading-relaxed">Looking for {prettyName.toLowerCase()}? EuroMatchTickets offers the cheapest verified tickets in Europe with instant e-ticket delivery. Every purchase is protected by our FanProtect money-back guarantee.</p>
+              <p className="text-slate-400 mb-4 leading-relaxed">Looking for {prettyName.toLowerCase()}? EuroMatchTickets offers the verified-seller listings in Europe with instant e-ticket delivery. Every purchase is protected by our Buyer protection money-back guarantee.</p>
               <h3 className="text-lg font-bold text-white mt-6 mb-2">Why Buy From EuroMatchTickets?</h3>
               <ul className="space-y-2 text-slate-400">
-                <li className="flex items-start gap-2"><Shield className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />100% verified tickets with FanProtect guarantee</li>
+                <li className="flex items-start gap-2"><Shield className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Verified-seller listings with Buyer protection</li>
                 <li className="flex items-start gap-2"><Clock className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Instant e-ticket delivery via QR code</li>
                 <li className="flex items-start gap-2"><CreditCard className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />Secure payment with Stripe encryption</li>
                 <li className="flex items-start gap-2"><Star className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />4.8/5 rating from 12,000+ verified buyers</li>
@@ -263,7 +263,7 @@ export default function DynamicSEOPage() {
                   {[
                     { icon: Shield, text: "500,000+ Tickets Sold", sub: "100% Money Back Guarantee" },
                     { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
-                    { icon: Clock, text: "Instant QR Delivery", sub: "E-tickets sent immediately" },
+                    { icon: Clock, text: "QR ticket delivery", sub: "E-tickets sent immediately" },
                     { icon: Star, text: "4.9/5 from 12,000+ Reviews", sub: "Trusted in 25+ countries" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
@@ -316,8 +316,8 @@ export default function DynamicSEOPage() {
         };
         const eventImage = `/product-images/${page.slug}.jpg`;
         const eventName = page.event_name || page.artist || page.title?.split("|")[0]?.split("–")[0]?.trim();
-        const eventDesc = page.meta_description || `${eventName} tickets available now. Verified sellers, instant QR delivery.`;
-        const productDesc = page.meta_description || `${eventName} tickets. From EUR ${page.price_low || 49}. Verified sellers, instant QR delivery.`;
+        const eventDesc = page.meta_description || `${eventName} tickets available now. Verified sellers, QR ticket delivery.`;
+        const productDesc = page.meta_description || `${eventName} tickets. From EUR ${page.price_low || 49}. Verified sellers, QR ticket delivery.`;
         
         // Category-specific organizer and brand
         const orgMap = { 
@@ -352,7 +352,7 @@ export default function DynamicSEOPage() {
         "@context": "https://schema.org",
         "@type": page.category === "concert" ? "MusicEvent" : "SportsEvent",
         "name": eventName,
-        "description": eventDesc || `Buy ${eventName} tickets at the lowest prices. Verified sellers, instant QR delivery, FanProtect guarantee.`,
+        "description": eventDesc || `Buy ${eventName} tickets at the lowest prices. Verified sellers, QR ticket delivery, Buyer protection.`,
         "image": page.image_url || `${BASE}/logo-192.png`,
         "url": `${BASE}/${page.slug}`,
         "startDate": smartStartDate,
@@ -408,7 +408,7 @@ export default function DynamicSEOPage() {
         "aggregateRating": { "@type": "AggregateRating", "ratingValue": ratingValue, "reviewCount": reviewCount, "bestRating": "5", "worstRating": "1" },
         "review": [
           { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "Tickets arrived instantly via QR code. Smooth process.", "datePublished": "2026-01-15" },
-          { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Great prices and the FanProtect guarantee gave me confidence.", "datePublished": "2026-02-08" }
+          { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Great prices and the Buyer protection gave me confidence.", "datePublished": "2026-02-08" }
         ]
       })}} />
 
@@ -479,7 +479,7 @@ export default function DynamicSEOPage() {
             {/* Google Merchant Center Required: Resale Marketplace Disclosure */}
             <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-200 text-amber-800 text-xs px-3 py-1.5 rounded-md mb-4" data-testid="resale-disclosure">
               <Shield className="w-3 h-3 flex-shrink-0" />
-              <span>Independent resale marketplace. Prices may be above or below face value. All sales are final. <Link to="/buyer-protection" className="underline font-medium">FanProtect Guarantee</Link></span>
+              <span>Independent resale marketplace. Prices may be above or below face value. All sales are final. <Link to="/buyer-protection" className="underline font-medium">Buyer protection</Link></span>
             </div>
 
             <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -504,7 +504,7 @@ export default function DynamicSEOPage() {
 
             {/* Subheadline - Trust + Delivery */}
             <p className="text-base text-slate-300 mb-3 max-w-2xl">
-              {page.venue ? `Official resale tickets for ${page.venue}. ` : ''}Instant delivery. 100% money-back guarantee.
+              {page.venue ? `Official resale tickets for ${page.venue}. ` : ''}Instant delivery. cancellation refund policy.
             </p>
 
             {/* Reviews Badge */}
@@ -515,7 +515,7 @@ export default function DynamicSEOPage() {
                 ))}
               </div>
               <span className="text-yellow-400 font-semibold text-sm">4.9/5</span>
-              <span className="text-slate-400 text-sm">(12,847 reviews)</span>
+              <span className="text-slate-400 text-sm">(customer reviews)</span>
             </div>
 
             <p className="text-lg text-slate-400 max-w-3xl mb-4">{page.description}</p>
@@ -545,8 +545,8 @@ export default function DynamicSEOPage() {
                 </div>
                 {/* Trust Row */}
                 <div className="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-xs text-slate-400">
-                  <span className="flex items-center gap-1"><Shield className="w-3 h-3 text-emerald-500" /> 100% Verified Tickets</span>
-                  <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-emerald-500" /> Instant QR Delivery</span>
+                  <span className="flex items-center gap-1"><Shield className="w-3 h-3 text-emerald-500" /> Verified Tickets</span>
+                  <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-emerald-500" /> QR ticket delivery</span>
                   <span className="flex items-center gap-1"><Star className="w-3 h-3 text-emerald-500" /> 4.9/5 from 12,000+ buyers</span>
                   <span className="flex items-center gap-1"><CreditCard className="w-3 h-3 text-emerald-500" /> Secure Stripe Checkout</span>
                 </div>
@@ -616,7 +616,7 @@ export default function DynamicSEOPage() {
                   {[
                     { icon: Shield, text: "500,000+ Tickets Sold", sub: "100% Money Back Guarantee" },
                     { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
-                    { icon: Clock, text: "Instant QR Delivery", sub: "E-tickets sent immediately" },
+                    { icon: Clock, text: "QR ticket delivery", sub: "E-tickets sent immediately" },
                     { icon: Star, text: "4.9/5 from 12,000+ Reviews", sub: "Trusted in 25+ countries" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">

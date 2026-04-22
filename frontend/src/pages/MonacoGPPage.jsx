@@ -12,11 +12,11 @@ import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
 
 const MONACO_FAQS = [
-  { q: "How much are Monaco Grand Prix tickets?", a: "Monaco GP tickets: General Admission from €249. K Grandstand from €395. Tribune T from €549. Tabac Grandstand from €695. VIP Hospitality from €1,995. Yacht packages from €3,500. All include FanProtect 100% money-back guarantee." },
+  { q: "How much are Monaco Grand Prix tickets?", a: "Monaco GP tickets: General Admission from €249. K Grandstand from €395. Tribune T from €549. Tabac Grandstand from €695. VIP Hospitality from €1,995. Yacht packages from €3,500. All include Buyer protection cancellation refund policy." },
   { q: "When is the Monaco Grand Prix 2026?", a: "May 21-24, 2026. Thursday practice, Friday rest day (unique to Monaco), Saturday qualifying, Sunday race at 15:00 CET." },
   { q: "What is the best grandstand at Monaco?", a: "Tabac Grandstand for the iconic harbour view and swimming pool chicane. Tribune K for the casino section. Rascasse for atmosphere. Sainte Devote (Turn 1) for overtaking." },
   { q: "Can you watch Monaco GP from a yacht?", a: "Yes! Yacht packages from €3,500 per person include harbour viewing, champagne, gourmet dining, and a unique perspective of cars racing past the marina." },
-  { q: "Are Monaco GP tickets refundable?", a: "Yes! FanProtect 100% money-back guarantee. Full refund if cancelled. Instant QR delivery." },
+  { q: "Are Monaco GP tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled. Instant QR delivery." },
 ];
 
 const MonacoGPPage = () => {
@@ -54,7 +54,7 @@ const MonacoGPPage = () => {
     "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Monaco Grand Prix 2026 Tickets",
-    "description": "Verified Monaco GP tickets with instant QR delivery - cheapest prices guaranteed",
+    "description": "Verified Monaco GP tickets with QR ticket delivery - cheapest prices guaranteed",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "2847", "bestRating": "5", "worstRating": "1" },
     "review": [
@@ -114,7 +114,7 @@ const MonacoGPPage = () => {
             <div className="bg-white/5 backdrop-blur-md border border-amber-400/20 rounded-none px-6 py-4 text-center">
               <p className="text-[10px] text-amber-300/50 uppercase tracking-widest">From</p>
               <p className="text-4xl font-extrabold bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">&euro;195</p>
-              <p className="text-[10px] text-emerald-400 font-bold">55% OFF vs F1.com</p>
+              <p className="text-[10px] text-emerald-400 font-bold">55% OFF (market pricing may vary)</p>
             </div>
             <Link to="#tickets">
               <Button size="lg" className="bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-black font-bold px-8 py-4 rounded-full text-lg shadow-lg shadow-amber-500/20" data-testid="monaco-hero-cta">
@@ -124,9 +124,9 @@ const MonacoGPPage = () => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/40">
-            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> FanProtect Guarantee</span>
-            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> Instant QR Delivery</span>
-            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.9/5 (2,847 Reviews)</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> Buyer protection</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> QR ticket delivery</span>
+            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.9/5 ( Reviews)</span>
           </div>
         </div>
       </section>
@@ -173,7 +173,7 @@ const MonacoGPPage = () => {
             </tbody>
           </table>
         </div>
-        <p className="text-center text-xs text-slate-500 mt-4">Prices compared as of February 2026. EuroMatchTickets offers the lowest prices with FanProtect guarantee.</p>
+        <p className="text-center text-xs text-slate-500 mt-4">Prices compared as of February 2026. EuroMatchTickets offers the lowest prices with Buyer protection.</p>
       </section>
 
       {/* TICKETS */}
@@ -217,7 +217,7 @@ const MonacoGPPage = () => {
       <section className="max-w-4xl mx-auto px-4 pb-16 space-y-8">
         <div>
           <h2 className="text-xl font-bold text-white mb-3">Buy Monaco Grand Prix 2026 Tickets - Best Prices Online</h2>
-          <p className="text-slate-400 leading-relaxed">The <strong>Monaco Grand Prix</strong> is the most prestigious race in Formula 1 history. Held annually on the streets of Monte Carlo since 1929, it's the crown jewel of the "Triple Crown" of motorsport. EuroMatchTickets offers <strong>Monaco GP tickets from just &euro;195</strong> - that's up to 55% cheaper than official F1 channels. Our Casino Square grandstand tickets at &euro;389 save you over &euro;500 compared to F1.com. Every ticket includes instant QR delivery and our FanProtect guarantee.</p>
+          <p className="text-slate-400 leading-relaxed">The <strong>Monaco Grand Prix</strong> is the most prestigious race in Formula 1 history. Held annually on the streets of Monte Carlo since 1929, it's the crown jewel of the "Triple Crown" of motorsport. EuroMatchTickets offers <strong>Monaco GP tickets from just &euro;195</strong> - that's up to Competitive market pricing than official F1 channels. Our Casino Square grandstand tickets at &euro;389 save you over &euro;500 compared to F1.com. Every ticket includes QR ticket delivery and our Buyer protection.</p>
         </div>
         <div>
           <h2 className="text-xl font-bold text-white mb-3">Monaco Circuit Guide - Where to Sit</h2>

@@ -33,7 +33,7 @@ const ChampionsLeaguePage = () => {
     "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "UEFA Champions League 2025-26 Tickets",
-    "description": "Verified UEFA Champions League match tickets with instant QR delivery",
+    "description": "Verified UEFA Champions League match tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -89,9 +89,9 @@ const ChampionsLeaguePage = () => {
 
   const faqs = [
     { question: "Where is the Champions League Final 2026?", answer: "The UEFA Champions League 2025-26 Final will be held at the Allianz Arena in Munich, Germany on May 30, 2026." },
-    { question: "How can I buy Champions League tickets?", answer: "You can buy verified Champions League tickets from EuroMatchTickets starting at \u20AC85. All tickets are guaranteed authentic with instant QR delivery." },
+    { question: "How can I buy Champions League tickets?", answer: "You can buy verified Champions League tickets from EuroMatchTickets starting at \u20AC85. All tickets are guaranteed authentic with QR ticket delivery." },
     { question: "When does the Champions League 2025-26 start?", answer: "The Champions League 2025-26 league phase starts in September 2025, with the knockout rounds beginning in February 2026 and the final on May 30, 2026." },
-    { question: "Are Champions League tickets on EuroMatchTickets verified?", answer: "Yes! All tickets sold on EuroMatchTickets are 100% verified and come with our FanProtect guarantee. You receive instant QR code delivery." },
+    { question: "Are Champions League tickets on EuroMatchTickets verified?", answer: "Yes! All tickets sold on EuroMatchTickets are verified and come with our Buyer protection. You receive instant QR code delivery." },
     { question: "What is the cheapest way to watch Champions League live?", answer: "EuroMatchTickets offers the cheapest Champions League tickets in Europe, starting from \u20AC85. Group stage matches are the most affordable, while knockout rounds start at \u20AC120." },
     { question: "Can I get a refund on Champions League tickets?", answer: "Yes, all tickets come with our buyer protection guarantee. If the event is cancelled, you receive a full refund. Visit our refund policy page for details." },
     { question: "How do I receive my Champions League tickets?", answer: "Tickets are delivered instantly via email as QR codes or mobile tickets. No physical shipping needed - just show your phone at the venue gate." },
@@ -102,7 +102,7 @@ const ChampionsLeaguePage = () => {
     <div className="min-h-screen bg-[#0e0e14]" data-testid="champions-league-page">
       <SEOHead 
         title="Champions League Tickets 2026 | UCL Final from €85 | Guaranteed"
-        description="Buy UEFA Champions League tickets from €85. UCL Final 2026 Munich, Semi-finals, Quarter-finals. Real Madrid, Man City, Barcelona. Verified. Instant QR. Cheapest in Europe!"
+        description="Buy UEFA Champions League tickets from €85. UCL Final 2026 Munich, Semi-finals, Quarter-finals. Real Madrid, Man City, Barcelona. Verified. Instant QR. Verified in Europe!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
@@ -123,7 +123,7 @@ const ChampionsLeaguePage = () => {
             <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">UCL Final Munich - Limited Availability</span>
           </h1>
           <p className="text-lg text-slate-500 max-w-3xl mx-auto mb-4">
-            Secure your seat now with instant QR delivery. 100% Buyer Protection.
+            Secure your seat now with QR ticket delivery. Buyer protection.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-6">
             <span className="inline-flex items-center gap-1.5 bg-[#e10600]/100/10 border border-red-500/20 rounded-full px-3 py-1.5 text-red-500 text-sm font-medium animate-pulse">
@@ -194,7 +194,7 @@ const ChampionsLeaguePage = () => {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6 text-white">Buy Champions League Tickets 2025-26</h2>
           <div className="prose max-w-none text-slate-400 space-y-4">
-            <p>The <strong>UEFA Champions League 2025-26</strong> features the new expanded format with 36 teams in a league phase. The <strong>Final will be held in Munich</strong> at the Allianz Arena on May 30, 2026. EuroMatchTickets offers the <strong>cheapest Champions League tickets</strong> in Europe with instant QR delivery and a money-back guarantee.</p>
+            <p>The <strong>UEFA Champions League 2025-26</strong> features the new expanded format with 36 teams in a league phase. The <strong>Final will be held in Munich</strong> at the Allianz Arena on May 30, 2026. EuroMatchTickets offers the <strong>cheapest Champions League tickets</strong> in Europe with QR ticket delivery and a money-back guarantee.</p>
             <h3 className="text-lg font-semibold text-white">Key Dates</h3>
             <ul>
               <li><strong>League Phase:</strong> September 2025 - January 2026</li>
@@ -205,7 +205,7 @@ const ChampionsLeaguePage = () => {
               <li><strong>Final:</strong> May 30, 2026 - Allianz Arena, Munich</li>
             </ul>
             <h3 className="text-lg font-semibold text-white">Why Buy From EuroMatchTickets?</h3>
-            <p>We are Europe's <strong>#1 ticket marketplace</strong> for Champions League matches. Every ticket is <strong>100% verified</strong>, delivered instantly as a QR code, and backed by our <Link to="/buyer-protection" className="text-blue-600 hover:underline">FanProtect guarantee</Link>. Our prices are the cheapest you'll find - guaranteed.</p>
+            <p>We are Europe's <strong>#1 ticket marketplace</strong> for Champions League matches. Every ticket is <strong>verified</strong>, delivered instantly as a QR code, and backed by our <Link to="/buyer-protection" className="text-blue-600 hover:underline">Buyer protection</Link>. Our prices are the cheapest you'll find - guaranteed.</p>
           </div>
         </div>
       </section>
@@ -315,7 +315,7 @@ const ChampionsLeaguePage = () => {
               <Button className="bg-[#1e1e1e] text-blue-600 hover:bg-blue-500/10 text-lg px-8 py-3" data-testid="cta-browse-matches">Browse All Matches</Button>
             </Link>
             <Link to="/buyer-protection">
-              <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">FanProtect Guarantee</Button>
+              <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">Buyer protection</Button>
             </Link>
           </div>
         </div>

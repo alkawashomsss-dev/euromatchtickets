@@ -104,7 +104,7 @@ const CityTicketsPage = () => {
           
           <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-8">
             Find tickets for football matches, concerts, and motorsport events in {city}. 
-            Best prices guaranteed with instant delivery!
+            Market pricing may vary with instant delivery!
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -131,8 +131,8 @@ const CityTicketsPage = () => {
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />100% Guarantee</div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" />Instant Delivery</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />Buyer protection</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" />QR delivery</div>
             <div className="flex items-center gap-2 text-emerald-600"><Star className="w-4 h-4" />4.9/5 Rating</div>
           </div>
         </div>
@@ -206,7 +206,7 @@ const CityTicketsPage = () => {
             </p>
             <ul className="space-y-2 text-slate-500">
               <li>✅ Best prices - typically 20-30% cheaper than other sites</li>
-              <li>✅ 100% money-back guarantee if event is cancelled</li>
+              <li>✅ cancellation refund policy if event is cancelled</li>
               <li>✅ Instant delivery via email QR code</li>
               <li>✅ Secure payment with Stripe</li>
               <li>✅ 24/7 customer support</li>

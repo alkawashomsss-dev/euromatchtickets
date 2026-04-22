@@ -78,7 +78,7 @@ const EventStructuredData = ({ event }) => {
       "@context": "https://schema.org",
       "@type": getEventType(event.event_type),
       "name": event.title || event.name,
-      "description": event.description || `Buy tickets for ${event.title}. Secure booking with FanProtect guarantee and instant QR delivery.`,
+      "description": event.description || `Buy tickets for ${event.title}. Secure booking with Buyer protection and QR ticket delivery.`,
       "startDate": event.event_date || event.date,
       "endDate": getEndDate(event.event_date || event.date, event.event_type),
       "eventStatus": event.status === 'postponed'
@@ -126,7 +126,7 @@ const EventStructuredData = ({ event }) => {
       "@context": "https://schema.org",
       "@type": "Product",
       "name": `${event.title} Tickets`,
-      "description": `Tickets for ${event.title}${event.venue ? ` at ${event.venue}` : ''}${event.city ? `, ${event.city}` : ''}. Instant QR delivery. FanProtect guarantee.`,
+      "description": `Tickets for ${event.title}${event.venue ? ` at ${event.venue}` : ''}${event.city ? `, ${event.city}` : ''}. Instant QR delivery. Buyer protection.`,
       "image": eventImage,
       "url": pageUrl,
       "brand": {
@@ -160,10 +160,10 @@ const EventStructuredData = ({ event }) => {
         },
         {
           "@type": "Review",
-          "name": "Smooth booking with FanProtect",
+          "name": "Smooth booking with Buyer protection",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
           "author": { "@type": "Person", "name": "Sophie M." },
-          "reviewBody": "Very smooth booking process. FanProtect guarantee gave me confidence. Will use again!",
+          "reviewBody": "Very smooth booking process. Buyer protection gave me confidence. Will use again!",
           "datePublished": "2026-02-08"
         },
         {
@@ -413,7 +413,7 @@ const LocalBusinessStructuredData = () => {
       "url": "https://euromatchtickets.com",
       "logo": "https://euromatchtickets.com/logo512.png",
       "image": "https://euromatchtickets.com/logo-192.png",
-      "description": "Europe's #1 trusted ticket marketplace for FIFA World Cup 2026, Champions League, Premier League, F1, MotoGP, concerts and more. 100% verified tickets with instant QR delivery.",
+      "description": "European ticket marketplace for FIFA World Cup 2026, Champions League, Premier League, F1, MotoGP, concerts and more. Verified-seller listings with QR ticket delivery.",
       "priceRange": "€€",
       "telephone": "+49-89-20174141",
       "email": "support@euromatchtickets.com",
@@ -483,7 +483,7 @@ const LocalBusinessStructuredData = () => {
 const commonTicketFAQs = [
   {
     question: "Is it safe to buy tickets from EuroMatchTickets?",
-    answer: "Yes, all tickets sold on EuroMatchTickets are 100% verified. We offer FanProtect guarantee which ensures valid tickets, on-time delivery, and full refund if the event is cancelled."
+    answer: "Yes, all tickets sold on EuroMatchTickets are verified. We offer Buyer protection which ensures valid tickets, on-time delivery, and full refund if the event is cancelled."
   },
   {
     question: "When will I receive my tickets?",

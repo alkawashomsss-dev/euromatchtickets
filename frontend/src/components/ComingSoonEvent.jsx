@@ -257,7 +257,7 @@ export default function ComingSoonEvent({
           <li className="flex gap-3">
             <Check className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
             <span>
-              100% Money-Back Guarantee applies to every ticket we eventually
+              Cancellation refund policy applies to every ticket we eventually
               list.
             </span>
           </li>

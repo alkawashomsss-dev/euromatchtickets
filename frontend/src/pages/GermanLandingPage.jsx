@@ -25,7 +25,7 @@ const GermanLandingPage = () => {
 
   const vorteile = [
     { titel: "Günstigste Preise", desc: "Wir garantieren die besten Preise auf dem Markt. Günstiger als StubHub & Viagogo!", icon: Zap },
-    { titel: "100% Garantiert", desc: "Alle Tickets verifiziert mit unserer FanProtect-Garantie. Ihr Geld ist sicher.", icon: Shield },
+    { titel: "100% Garantiert", desc: "Alle Tickets verifiziert mit unserer Buyer protection-Garantie. Ihr Geld ist sicher.", icon: Shield },
     { titel: "Sofortige Lieferung", desc: "Erhalten Sie Ihre Tickets sofort per E-Mail. QR-Code bereit zum Scannen.", icon: Ticket },
     { titel: "4,8/5 Sterne", desc: "Tausende zufriedene Kunden in ganz Europa. Lesen Sie unsere Bewertungen.", icon: Star },
   ];
@@ -35,7 +35,7 @@ const GermanLandingPage = () => {
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Tickets Deutschland", url: "https://euromatchtickets.com/de" }]} />
       <SEOHead
         title="Tickets Kaufen - Champions League, F1, Bundesliga"
-        description="Kaufen Sie Tickets für Champions League, F1, Bundesliga, Konzerte und mehr. Günstigste Preise garantiert. Sofortige Lieferung per QR. FanProtect Garantie."
+        description="Kaufen Sie Tickets für Champions League, F1, Bundesliga, Konzerte und mehr. Günstigste Preise garantiert. Sofortige Lieferung per QR. Buyer protection Garantie."
         keywords="tickets kaufen, champions league tickets, f1 tickets kaufen, bundesliga tickets, konzert tickets, tickets online kaufen, günstige tickets europa, rammstein tickets, bayern münchen tickets"
         canonical="https://euromatchtickets.com/de/tickets-kaufen"
       />
@@ -67,7 +67,7 @@ const GermanLandingPage = () => {
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-6 mt-8 text-sm text-slate-400 anim-slide-up" style={{animationDelay: '0.45s'}}>
-            <span className="flex items-center gap-1"><Shield className="w-4 h-4 text-green-400" /> FanProtect Garantie</span>
+            <span className="flex items-center gap-1"><Shield className="w-4 h-4 text-green-400" /> Buyer protection Garantie</span>
             <span className="flex items-center gap-1"><Zap className="w-4 h-4 text-yellow-400" /> Sofortige Lieferung</span>
             <span className="flex items-center gap-1"><Star className="w-4 h-4 text-yellow-400" /> 4,8/5 (2.847 Bewertungen)</span>
           </div>
@@ -131,12 +131,12 @@ const GermanLandingPage = () => {
           <p>
             Suchen Sie <strong>Tickets für Bayern München</strong>? <strong>Champions League Finale 2026 Tickets</strong>? 
             <strong>Formel 1 Tickets</strong>? Bei EuroMatchTickets finden Sie alle Tickets, die Sie brauchen, 
-            mit sofortiger QR-Lieferung und unserer vollständigen FanProtect-Garantie.
+            mit sofortiger QR-Lieferung und unserer vollständigen Buyer protection-Garantie.
           </p>
           <h3 className="text-xl font-bold text-white">Warum bei EuroMatchTickets kaufen?</h3>
           <ul>
             <li><strong>Unschlagbare Preise</strong> - Bis zu 40% günstiger als StubHub und Viagogo</li>
-            <li><strong>FanProtect Garantie</strong> - 100% Rückerstattung bei Absage</li>
+            <li><strong>Buyer protection Garantie</strong> - 100% Rückerstattung bei Absage</li>
             <li><strong>Sofortige Lieferung</strong> - Erhalten Sie Ihre Tickets in Sekunden per E-Mail</li>
             <li><strong>+50.000 Tickets</strong> - Die größte Auswahl an Tickets in Europa</li>
             <li><strong>Sichere Zahlung</strong> - Visa, Mastercard, AMEX, Apple Pay, Google Pay</li>

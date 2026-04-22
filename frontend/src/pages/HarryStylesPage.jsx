@@ -61,7 +61,7 @@ const HarryStylesPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead
         title="Harry Styles Love On Tour 2026 | London Tickets"
-        description="Buy Harry Styles Love On Tour 2026 tickets from €79. Wembley Stadium London. Cheapest verified tickets with instant QR delivery."
+        description="Buy Harry Styles Love On Tour 2026 tickets from €79. Wembley Stadium London. Verified verified tickets with QR ticket delivery."
         image="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1200&h=630&fit=crop"
         canonicalUrl="https://euromatchtickets.com/harry-styles-tickets"
       />
@@ -113,7 +113,7 @@ const HarryStylesPage = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full"><Shield className="w-5 h-5" />100% Guarantee</div>
+            <div className="flex items-center gap-2 bg-emerald-500/10 text-emerald-600 px-4 py-2 rounded-full"><Shield className="w-5 h-5" />Buyer protection</div>
             <div className="flex items-center gap-2 bg-violet-50 text-violet-600 px-4 py-2 rounded-full"><Zap className="w-5 h-5" />Instant QR</div>
             <div className="flex items-center gap-2 bg-amber-500/10 text-amber-600 px-4 py-2 rounded-full"><Star className="w-5 h-5" />5% Cheaper</div>
           </div>
@@ -165,7 +165,7 @@ const HarryStylesPage = () => {
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />100% Money-Back</div>
             <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" />4.9/5 Trustpilot</div>
-            <div className="flex items-center gap-2"><Users className="w-4 h-4 text-violet-600" />2M+ Tickets Sold</div>
+            <div className="flex items-center gap-2"><Users className="w-4 h-4 text-violet-600" />Verified sellers</div>
           </div>
         </div>
       </section>

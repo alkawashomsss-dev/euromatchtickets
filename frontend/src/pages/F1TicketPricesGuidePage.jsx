@@ -57,7 +57,7 @@ const F1TicketPricesGuidePage = () => {
             <span className="block text-2xl mt-2 text-slate-500">Complete Price Guide for All Races</span>
           </h1>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
-            Compare ticket prices across all 23 Formula 1 races. Find the best deals and save up to 50% vs official prices.
+            Compare ticket prices across all 23 Formula 1 races. Find the best deals and save up to 50% (market pricing may vary) prices.
           </p>
         </div>
       </section>
@@ -118,14 +118,14 @@ const F1TicketPricesGuidePage = () => {
         </div>
       </section>
 
-      {/* Cheapest vs Most Expensive */}
+      {/* Verified vs Most Expensive */}
       <section className="py-16 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <TrendingUp className="w-6 h-6 text-emerald-600" />
-                5 Cheapest F1 Races 2026
+                5 Verified F1 Races 2026
               </h2>
               <div className="space-y-3">
                 {cheapestRaces.map((race, i) => (

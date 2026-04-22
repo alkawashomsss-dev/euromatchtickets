@@ -50,7 +50,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
     
     // Twitter posts
     const twitterPosts = [
-      `🎫 ${event.title} tickets now available! Get yours before they sell out 🔥\n\n✅ Best prices guaranteed\n✅ Instant delivery\n✅ 100% secure\n\n👉 euromatchtickets.com\n\n#${eventType.toUpperCase()} #Tickets #Europe`,
+      `🎫 ${event.title} tickets now available! Get yours before they sell out 🔥\n\n✅ Market pricing may vary\n✅ Instant delivery\n✅ 100% secure\n\n👉 euromatchtickets.com\n\n#${eventType.toUpperCase()} #Tickets #Europe`,
       `🚀 Don't miss ${event.title}!\n\nTickets from €${Math.floor(Math.random() * 50) + 49} 💰\n\n⚡ Limited availability\n📍 ${event.city || 'Europe'}\n\nBook now: euromatchtickets.com\n\n#LiveEvents #${eventType}`,
       `⏰ LAST CHANCE! ${event.title} tickets selling fast!\n\n🎟️ Secure your spot now\n💳 Safe payment\n📧 Instant confirmation\n\neuromatchtickets.com\n\n#Tickets #MustSee`,
     ];

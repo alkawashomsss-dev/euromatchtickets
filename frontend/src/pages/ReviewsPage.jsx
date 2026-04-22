@@ -60,7 +60,7 @@ const ReviewsPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Customer Reviews - 4.9/5 Rating | 2,940+ Verified Reviews"
-        description="Read verified reviews from 2,940+ customers who bought tickets on EuroMatchTickets. 4.9/5 average rating. F1, MotoGP, World Cup, Champions League tickets."
+        description="Read verified reviews from customers customers who bought tickets on EuroMatchTickets. 4.9/5 average rating. F1, MotoGP, World Cup, Champions League tickets."
       />
       
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }} />
@@ -213,7 +213,7 @@ const ReviewsPage = () => {
               <div className="w-14 h-14 bg-emerald-500/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-7 h-7 text-emerald-600" />
               </div>
-              <h3 className="font-semibold mb-2">100% Verified</h3>
+              <h3 className="font-semibold mb-2">Verified</h3>
               <p className="text-sm text-slate-500">Every ticket checked before sale</p>
             </div>
             

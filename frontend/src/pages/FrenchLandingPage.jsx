@@ -24,14 +24,14 @@ const FrenchLandingPage = () => {
 
   const avantages = [
     { titre: "Prix les Plus Bas", desc: "Nous garantissons les meilleurs prix du marche. Moins cher qu'ailleurs!", icone: Zap },
-    { titre: "100% Garanti", desc: "Tous les billets verifies avec notre garantie FanProtect. Remboursement total.", icone: Shield },
+    { titre: "100% Garanti", desc: "Tous les billets verifies avec notre garantie Buyer protection. Remboursement total.", icone: Shield },
     { titre: "Livraison Instantanee", desc: "Recevez vos billets par email instantanement. QR code pret a scanner.", icone: Ticket },
     { titre: "4.8/5 Etoiles", desc: "Des milliers de clients satisfaits dans toute l'Europe.", icone: Star },
   ];
 
   const faqs = [
     { question: "Comment acheter des billets sur EuroMatchTickets?", answer: "Choisissez votre evenement, selectionnez vos places et payez en toute securite. Vos billets arrivent instantanement par email sous forme de QR code." },
-    { question: "Les billets sont-ils garantis?", answer: "Oui! Tous nos billets sont 100% verifies et proteges par notre garantie FanProtect. Si l'evenement est annule, vous etes integralement rembourse." },
+    { question: "Les billets sont-ils garantis?", answer: "Oui! Tous nos billets sont 100% verifies et proteges par notre garantie Buyer protection. Si l'evenement est annule, vous etes integralement rembourse." },
     { question: "Quels sont les modes de paiement acceptes?", answer: "Nous acceptons Visa, Mastercard, American Express, PayPal et Apple Pay. Tous les paiements sont securises par cryptage SSL." },
     { question: "Combien coutent les billets Champions League?", answer: "Les billets Champions League commencent a partir de 85EUR pour les matchs de phase de groupes. Les demi-finales et la finale sont a partir de 195EUR." },
     { question: "Livrez-vous en France?", answer: "Oui! Livraison instantanee par email dans le monde entier. Pas besoin d'attendre - votre QR code est pret immediatement." },
@@ -51,7 +51,7 @@ const FrenchLandingPage = () => {
     <div className="min-h-screen bg-[#1e1e1e]" data-testid="french-landing-page">
       <SEOHead
         title="Acheter Billets - Champions League, F1, Concerts | EuroMatchTickets"
-        description="Achetez des billets pour Champions League, F1 Monaco, PSG, concerts et plus. Prix les plus bas garantis. Livraison instantanee par QR. Garantie FanProtect."
+        description="Achetez des billets pour Champions League, F1 Monaco, PSG, concerts et plus. Prix les plus bas garantis. Livraison instantanee par QR. Garantie Buyer protection."
         keywords="acheter billets, billets champions league, billets f1, billets concerts, billets pas cher, billets psg, billets monaco gp, billets taylor swift"
         canonical="https://euromatchtickets.com/fr/acheter-billets"
       />

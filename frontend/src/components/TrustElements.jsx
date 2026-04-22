@@ -125,7 +125,7 @@ export const TrustSection = () => (
       </div>
       <div className="flex flex-wrap justify-center items-center gap-8 mt-12 pt-8 border-t border-white/10">
         <span className="flex items-center gap-2 text-slate-500 text-sm"><Shield className="w-5 h-5 text-emerald-600" /> SSL Secured</span>
-        <span className="flex items-center gap-2 text-slate-500 text-sm"><Award className="w-5 h-5 text-slate-300" /> 100% Money-Back Guarantee</span>
+        <span className="flex items-center gap-2 text-slate-500 text-sm"><Award className="w-5 h-5 text-slate-300" /> Cancellation refund policy</span>
         <span className="flex items-center gap-2 text-slate-500 text-sm"><CheckCircle className="w-5 h-5 text-blue-600" /> GDPR Compliant</span>
       </div>
     </div>

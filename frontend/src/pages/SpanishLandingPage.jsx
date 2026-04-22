@@ -25,7 +25,7 @@ const SpanishLandingPage = () => {
 
   const ventajas = [
     { titulo: "Los Precios Más Bajos", desc: "Garantizamos los mejores precios del mercado. Si encuentras más barato, ¡igualamos el precio!", icono: Zap },
-    { titulo: "100% Garantizadas", desc: "Todas las entradas verificadas con nuestra garantía FanProtect. Tu dinero seguro.", icono: Shield },
+    { titulo: "100% Garantizadas", desc: "Todas las entradas verificadas con nuestra garantía Buyer protection. Tu dinero seguro.", icono: Shield },
     { titulo: "Entrega Inmediata", desc: "Recibe tus entradas al instante por email. QR listo para escanear.", icono: Ticket },
     { titulo: "4.8/5 Estrellas", desc: "Miles de clientes satisfechos en toda Europa. Lee nuestras reseñas.", icono: Star },
   ];
@@ -35,7 +35,7 @@ const SpanishLandingPage = () => {
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Entradas", url: "https://euromatchtickets.com/es" }]} />
       <SEOHead
         title="Comprar Entradas - Champions League, F1, Conciertos"
-        description="Compra entradas para Champions League, F1, La Liga, conciertos y más. Los precios más bajos garantizados. Entrega inmediata por QR. Garantía FanProtect."
+        description="Compra entradas para Champions League, F1, La Liga, conciertos y más. Los precios más bajos garantizados. Entrega inmediata por QR. Garantía Buyer protection."
         keywords="comprar entradas, entradas champions league, entradas f1, entradas conciertos, comprar entradas online, entradas baratas europa, entradas real madrid, entradas barcelona"
         canonical="https://euromatchtickets.com/es/comprar-entradas"
       />
@@ -67,9 +67,9 @@ const SpanishLandingPage = () => {
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-6 mt-8 text-sm text-slate-400 anim-slide-up" style={{animationDelay: '0.45s'}}>
-            <span className="flex items-center gap-1"><Shield className="w-4 h-4 text-green-400" /> Garantía FanProtect</span>
+            <span className="flex items-center gap-1"><Shield className="w-4 h-4 text-green-400" /> Garantía Buyer protection</span>
             <span className="flex items-center gap-1"><Zap className="w-4 h-4 text-yellow-400" /> Entrega Instantánea</span>
-            <span className="flex items-center gap-1"><Star className="w-4 h-4 text-yellow-400" /> 4.8/5 (2,847 reseñas)</span>
+            <span className="flex items-center gap-1"><Star className="w-4 h-4 text-yellow-400" /> 4.8/5 ( reseñas)</span>
           </div>
         </div>
       </section>
@@ -131,12 +131,12 @@ const SpanishLandingPage = () => {
           <p>
             ¿Buscas <strong>entradas para el El Clásico</strong>? ¿<strong>Entradas Champions League Final 2026</strong>? 
             ¿<strong>Entradas F1 Gran Premio de España</strong>? En EuroMatchTickets encontrarás todas las entradas que necesitas 
-            con entrega inmediata por QR y nuestra garantía de protección total FanProtect.
+            con entrega inmediata por QR y nuestra garantía de protección total Buyer protection.
           </p>
           <h3 className="text-xl font-bold text-white">¿Por qué comprar entradas en EuroMatchTickets?</h3>
           <ul>
             <li><strong>Precios imbatibles</strong> - Somos hasta un 40% más baratos que StubHub y Viagogo</li>
-            <li><strong>Garantía FanProtect</strong> - 100% de reembolso si el evento se cancela</li>
+            <li><strong>Garantía Buyer protection</strong> - 100% de reembolso si el evento se cancela</li>
             <li><strong>Entrega instantánea</strong> - Recibe tus entradas en segundos por email</li>
             <li><strong>+50,000 entradas</strong> - La mayor selección de entradas en Europa</li>
             <li><strong>Pago seguro</strong> - Visa, Mastercard, AMEX, Apple Pay, Google Pay</li>

@@ -15,8 +15,8 @@ const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b2
 
 const categories = [
   { name: "Category C", price: 79, tier: "Upper Tier – Full Stadium View", color: "from-sky-600 to-sky-800", text: "text-sky-300", tag: null, features: ["Verified authentic ticket", "Upper tier seating", "Instant QR delivery", "Full refund if cancelled"] },
-  { name: "Category B", price: 149, tier: "Mid Tier – Great Atmosphere", color: "from-blue-600 to-blue-800", text: "text-blue-300", tag: "BEST VALUE", features: ["Mid-level premium seats", "Optimal viewing angles", "Instant QR delivery", "FanProtect guarantee"] },
-  { name: "Category A", price: 279, tier: "Lower Tier – Track-Side", color: "from-indigo-600 to-indigo-800", text: "text-indigo-300", tag: null, features: ["Close to the track", "See athletes up close", "Priority entry", "FanProtect guarantee"] },
+  { name: "Category B", price: 149, tier: "Mid Tier – Great Atmosphere", color: "from-blue-600 to-blue-800", text: "text-blue-300", tag: "BEST VALUE", features: ["Mid-level premium seats", "Optimal viewing angles", "Instant QR delivery", "Buyer protection"] },
+  { name: "Category A", price: 279, tier: "Lower Tier – Track-Side", color: "from-indigo-600 to-indigo-800", text: "text-indigo-300", tag: null, features: ["Close to the track", "See athletes up close", "Priority entry", "Buyer protection"] },
   { name: "VIP Silver", price: 599, tier: "Hospitality Lounge", color: "from-gray-400 to-gray-600", text: "text-gray-200", tag: null, vip: true, features: ["Premium hospitality lounge", "Complimentary refreshments", "Cushioned seating", "Dedicated entrance"] },
   { name: "VIP Gold", price: 999, tier: "All-Inclusive Premium", color: "from-amber-500 to-amber-700", text: "text-amber-200", tag: "POPULAR", vip: true, features: ["All-inclusive food & drinks", "Best seats in the house", "Athlete meet & greet chance", "Exclusive merchandise"] },
   { name: "VIP Platinum", price: 1899, tier: "Ultimate Athletics Experience", color: "from-violet-500 to-purple-700", text: "text-violet-200", tag: "EXCLUSIVE", vip: true, features: ["Front row track-side seats", "Private hospitality suite", "Backstage access", "Personal concierge service"] },
@@ -46,7 +46,7 @@ const WorldAthleticsPage = () => {
     <div className="min-h-screen bg-[#070b14]" data-testid="athletics-page">
       <SEOHead
         title="World Athletics 2026 Tickets | Best Prices & VIP"
-        description="Buy World Athletics Ultimate Championship 2026 tickets from €79. VIP track-side packages, hospitality access. Watch Olympic champions live. 100% verified."
+        description="Buy World Athletics Ultimate Championship 2026 tickets from €79. VIP track-side packages, hospitality access. Watch Olympic champions live. verified."
         image="https://images.unsplash.com/photo-1532444458054-01a7dd3e9fca?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -100,7 +100,7 @@ const WorldAthleticsPage = () => {
 
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-blue-500/10 via-blue-500/5 to-blue-500/10 border-t border-blue-500/20 backdrop-blur-md">
           <div className="max-w-5xl mx-auto px-4 py-3 flex flex-wrap justify-center gap-6 sm:gap-10 text-sm">
-            {[{ icon: Shield, t: "100% Verified" }, { icon: Star, t: "FanProtect Guarantee" }, { icon: Zap, t: "Instant QR Delivery" }].map((b, i) => (
+            {[{ icon: Shield, t: "Verified" }, { icon: Star, t: "Buyer protection" }, { icon: Zap, t: "QR ticket delivery" }].map((b, i) => (
               <div key={i} className="flex items-center gap-2 text-blue-200/80 font-medium"><b.icon className="w-4 h-4" /> {b.t}</div>
             ))}
           </div>

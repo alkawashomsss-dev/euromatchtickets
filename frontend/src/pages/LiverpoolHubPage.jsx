@@ -11,7 +11,7 @@ const LiverpoolHubPage = () => {
     "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Liverpool FC Tickets 2025-26",
-    "description": "Verified Liverpool FC match tickets with instant QR delivery",
+    "description": "Verified Liverpool FC match tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "3412", "bestRating": "5" },
     "review": [
@@ -30,7 +30,7 @@ const LiverpoolHubPage = () => {
   ];
 
   const reviews = [
-    { name: "Steven G.", country: "UK", rating: 5, text: "Anfield on a Champions League night is something else! Cheapest tickets I found.", date: "Feb 2026" },
+    { name: "Steven G.", country: "UK", rating: 5, text: "Anfield on a Champions League night is something else! Verified tickets I found.", date: "Feb 2026" },
     { name: "Lisa M.", country: "USA", rating: 5, text: "You'll Never Walk Alone live gave me goosebumps. Amazing prices!", date: "Jan 2026" },
     { name: "Kenji O.", country: "Japan", rating: 5, text: "Travelled from Tokyo for Liverpool vs Real Madrid. Unforgettable!", date: "Dec 2025" },
     { name: "Mia K.", country: "Germany", rating: 4, text: "Great service, tickets arrived instantly. Anfield atmosphere is unreal.", date: "Nov 2025" },
@@ -40,13 +40,13 @@ const LiverpoolHubPage = () => {
     { question: "How much are Liverpool tickets?", answer: "Liverpool tickets start from \u20AC65 for Premier League matches. Champions League tickets from \u20AC120. Derby matches from \u20AC135." },
     { question: "Where does Liverpool play?", answer: "Liverpool plays at Anfield in Liverpool, England. The stadium holds 61,276 fans and is famous for the Kop end and 'You'll Never Walk Alone' anthem." },
     { question: "Can I buy Merseyside Derby tickets?", answer: "Yes! Liverpool vs Everton tickets start from \u20AC135. One of the most passionate derbies in English football." },
-    { question: "Are Liverpool tickets genuine?", answer: "100% verified and backed by our FanProtect guarantee. Full refund if there's any issue." },
+    { question: "Are Liverpool tickets genuine?", answer: "verified and backed by our Buyer protection. Full refund if there's any issue." },
     { question: "How to get to Anfield?", answer: "Anfield is accessible via bus from Liverpool city centre (routes 26 and 27). Liverpool Lime Street is the nearest main station." },
   ];
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="liverpool-hub-page">
-      <SEOHead title="Liverpool Tickets 2026 | Anfield, UCL, Premier League €65" description="Buy Liverpool FC tickets from \u20AC65. Premier League, Champions League, Merseyside Derby at Anfield. You'll Never Walk Alone. Verified. Instant QR. Cheapest!" />
+      <SEOHead noIndex={true} title="Liverpool Tickets 2026 | Anfield, UCL, Premier League €65" description="Buy Liverpool FC tickets from \u20AC65. Premier League, Champions League, Merseyside Derby at Anfield. You'll Never Walk Alone. Verified. Instant QR. Verified!" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
 
       <section className="relative py-20 overflow-hidden">
@@ -54,7 +54,7 @@ const LiverpoolHubPage = () => {
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <Badge className="bg-[#e10600]/10 text-red-700 border-red-200 mb-6"><Trophy className="w-4 h-4 mr-2" />Liverpool FC</Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Liverpool Tickets 2025-26<span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-red-400 to-red-200 bg-clip-text text-transparent">Anfield &middot; Premier League &middot; Champions League</span></h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with QR ticket delivery. Buyer protection.</p>
           <ScarcityBadges ticketsLeft={423} viewers={187} priceIncrease="15%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Calendar className="w-5 h-5 text-red-600" /><span>2025-26 Season</span></div>
@@ -99,7 +99,7 @@ const LiverpoolHubPage = () => {
           <h2 className="text-2xl font-bold mb-6 text-white">Buy Liverpool Tickets 2025-26</h2>
           <div className="prose max-w-none text-slate-400 space-y-4">
             <p><strong>Liverpool FC</strong> is one of the most successful clubs in English football with <strong>6 Champions League titles</strong> and 19 League titles. Under Arne Slot, the Reds continue to compete at the highest level with stars like <strong>Mohamed Salah, Virgil van Dijk, and Darwin Nunez</strong>.</p>
-            <p><strong>Anfield</strong> is legendary for its atmosphere, especially the famous <strong>Kop end</strong> and the spine-tingling <strong>You'll Never Walk Alone</strong> anthem before kickoff. EuroMatchTickets offers the <strong>cheapest Liverpool tickets</strong> with instant QR delivery and <Link to="/buyer-protection" className="text-red-600 hover:underline">FanProtect guarantee</Link>.</p>
+            <p><strong>Anfield</strong> is legendary for its atmosphere, especially the famous <strong>Kop end</strong> and the spine-tingling <strong>You'll Never Walk Alone</strong> anthem before kickoff. EuroMatchTickets offers the <strong>cheapest Liverpool tickets</strong> with QR ticket delivery and <Link to="/buyer-protection" className="text-red-600 hover:underline">Buyer protection</Link>.</p>
           </div>
         </div>
       </section>

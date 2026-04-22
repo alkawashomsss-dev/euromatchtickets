@@ -14,7 +14,7 @@ const BadBunnyPage = () => {
   const schema = {
     "@context": "https://schema.org", "@type": "MusicEvent",
     "name": "Bad Bunny DeBi TiRAR MaS FOToS Tour London 2026",
-    "description": "Buy Bad Bunny London 2026 tickets from €145. Tottenham Hotspur Stadium, June 27-28. 100% verified, instant QR delivery.",
+    "description": "Buy Bad Bunny London 2026 tickets from €145. Tottenham Hotspur Stadium, June 27-28. verified, QR ticket delivery.",
     "startDate": "2026-06-27T19:30:00+01:00", "endDate": "2026-06-28T23:00:00+01:00",
     "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "image": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1200",
@@ -25,11 +25,11 @@ const BadBunnyPage = () => {
   };
 
   const faqs = [
-    { q: "How much are Bad Bunny London 2026 tickets?", a: "Bad Bunny London tickets start from €145 for upper tier. Lower tier from €225. Floor standing from €295. Golden Circle from €395. VIP packages from €550. All include FanProtect 100% money-back guarantee." },
+    { q: "How much are Bad Bunny London 2026 tickets?", a: "Bad Bunny London tickets start from €145 for upper tier. Lower tier from €225. Floor standing from €295. Golden Circle from €395. VIP packages from €550. All include Buyer protection cancellation refund policy." },
     { q: "When is Bad Bunny playing in London?", a: "Bad Bunny performs 2 nights at Tottenham Hotspur Stadium: Saturday June 27 and Sunday June 28, 2026. Doors open at 17:30, show starts at 19:30." },
     { q: "Where is the Bad Bunny concert in London?", a: "Tottenham Hotspur Stadium, 782 High Road, London N17. Nearest stations: White Hart Lane (rail) or Tottenham Hale (Victoria line). 62,850 capacity." },
     { q: "What songs will Bad Bunny play?", a: "Expected setlist: Titi Me Pregunto, Me Porto Bonito, Moscow Mule, Ojitos Lindos, Dakiti, Callaita, Yonaguni, Efecto, Neverita, plus new album tracks. 2-hour spectacular show with pyrotechnics." },
-    { q: "Are Bad Bunny tickets refundable?", a: "Yes! All tickets include FanProtect 100% money-back guarantee. Full refund if cancelled or postponed. Instant QR delivery to your email." },
+    { q: "Are Bad Bunny tickets refundable?", a: "Yes! All tickets include Buyer protection cancellation refund policy. Full refund if cancelled or postponed. Instant QR delivery to your email." },
   ];
 
   const shows = [
@@ -39,7 +39,7 @@ const BadBunnyPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
-      <SEOHead title="Buy Bad Bunny London Tickets 2026 | Tottenham Stadium From €145" description="Buy Bad Bunny London 2026 tickets from €145. Tottenham Hotspur Stadium, June 27-28. DeBi TiRAR MaS FOToS Tour. Selling Fast. 100% Money-Back Guarantee. Instant QR." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1200" />
+      <SEOHead title="Buy Bad Bunny London Tickets 2026 | Tottenham Stadium From €145" description="Buy Bad Bunny London 2026 tickets from €145. Tottenham Hotspur Stadium, June 27-28. DeBi TiRAR MaS FOToS Tour. Selling Fast. Cancellation refund policy. Instant QR." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1200" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <FAQSchemaScript faqs={faqs} />
       <ProductSchema name="Bad Bunny London 2026 Tickets" price={145} highPrice={600} url={CANONICAL} category="concert" venue="Tottenham Hotspur Stadium" city="London" />
@@ -58,16 +58,16 @@ const BadBunnyPage = () => {
           <div className="inline-block bg-[#161620] border border-white/10 p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">€145</div>
-            <div className="text-emerald-500 text-sm mt-1">100% Money-Back Guarantee</div>
+            <div className="text-emerald-500 text-sm mt-1">Cancellation refund policy</div>
           </div>
         </div>
       </section>
 
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8 text-sm">
-          <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />100% Verified</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />Verified</span>
           <span className="flex items-center gap-2 text-emerald-500"><Star className="w-4 h-4" />4.8/5 Reviews</span>
-          <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />Instant QR Delivery</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />QR ticket delivery</span>
         </div>
       </section>
 
@@ -105,7 +105,7 @@ const BadBunnyPage = () => {
             <p><em>Titi Me Pregunto</em>, <em>Me Porto Bonito</em>, <em>Moscow Mule</em>, <em>Ojitos Lindos</em>, <em>Dakiti</em>, <em>Callaita</em>, <em>Yonaguni</em>, <em>Efecto</em>, <em>Neverita</em>, <em>Vete</em>, <em>Yo Perreo Sola</em>, <em>La Noche de Anoche</em>, plus tracks from DeBi TiRAR MaS FOToS and unreleased material.</p>
             <h3 className="text-white text-lg">Getting to Tottenham Stadium</h3>
             <p><strong className="text-white">By train:</strong> White Hart Lane station (direct from Liverpool Street, 25 min). <strong className="text-white">By tube:</strong> Tottenham Hale (Victoria line) + 15 min walk. <strong className="text-white">By bus:</strong> Routes 149, 259, 279. Parking is extremely limited — public transport strongly recommended.</p>
-            <p>All tickets include <Link to="/buyer-protection" className="text-[#e10600] hover:underline">FanProtect 100% money-back guarantee</Link> and instant QR delivery.</p>
+            <p>All tickets include <Link to="/buyer-protection" className="text-[#e10600] hover:underline">Buyer protection cancellation refund policy</Link> and QR ticket delivery.</p>
           </div>
         </div>
       </section>

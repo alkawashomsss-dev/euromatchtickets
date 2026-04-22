@@ -62,7 +62,7 @@ const BayernRealMadridPage = () => {
   const schema = {
     "@context": "https://schema.org", "@type": "SportsEvent",
     "name": "Bayern Munich vs Real Madrid - Champions League 2026",
-    "description": "Buy Bayern Munich vs Real Madrid tickets. Champions League knockout stage. Allianz Arena, Munich. Best prices with instant QR delivery and FanProtect guarantee.",
+    "description": "Buy Bayern Munich vs Real Madrid tickets. Champions League knockout stage. Allianz Arena, Munich. Best prices with QR ticket delivery and Buyer protection.",
     "startDate": "2026-04-08", "endDate": "2026-04-08",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -78,10 +78,10 @@ const BayernRealMadridPage = () => {
   };
 
   const tickets = [
-    { section: "Category 4 (Upper Tier)", price: 199, features: ["Upper level seating", "Full pitch view", "Instant QR delivery", "FanProtect guarantee"] },
-    { section: "Category 3 (Side Upper)", price: 349, tag: "POPULAR", features: ["Side view upper tier", "Central position", "Instant QR delivery", "FanProtect guarantee"] },
-    { section: "Category 2 (Lower Tier)", price: 549, tag: "BEST VIEW", features: ["Lower tier seating", "Close to the pitch", "Premium atmosphere", "FanProtect guarantee"] },
-    { section: "Category 1 (VIP)", price: 899, tag: "VIP", features: ["Best seats in house", "Hospitality lounge access", "Complimentary food & drinks", "FanProtect guarantee"] },
+    { section: "Category 4 (Upper Tier)", price: 199, features: ["Upper level seating", "Full pitch view", "Instant QR delivery", "Buyer protection"] },
+    { section: "Category 3 (Side Upper)", price: 349, tag: "POPULAR", features: ["Side view upper tier", "Central position", "Instant QR delivery", "Buyer protection"] },
+    { section: "Category 2 (Lower Tier)", price: 549, tag: "BEST VIEW", features: ["Lower tier seating", "Close to the pitch", "Premium atmosphere", "Buyer protection"] },
+    { section: "Category 1 (VIP)", price: 899, tag: "VIP", features: ["Best seats in house", "Hospitality lounge access", "Complimentary food & drinks", "Buyer protection"] },
     { section: "Hospitality Package", price: 1999, tag: "EXCLUSIVE", features: ["Premium hospitality suite", "5-star dining experience", "Private balcony view", "Player tunnel access area"] },
   ];
 
@@ -89,7 +89,7 @@ const BayernRealMadridPage = () => {
     { question: "When is Bayern Munich vs Real Madrid?", answer: "The Champions League match between Bayern Munich and Real Madrid is scheduled for April 2026 at the Allianz Arena in Munich, Germany. Exact dates depend on the UCL draw." },
     { question: "How much are Bayern vs Real Madrid tickets?", answer: "Tickets start from just €199 for upper tier seats. Category 2 (lower tier) tickets start at €549, and VIP hospitality packages from €1,999. All prices include fees." },
     { question: "How do I get to the Allianz Arena?", answer: "The Allianz Arena is easily accessible by Munich U-Bahn (Line U6 to Fröttmaning station). From Munich city center, it takes about 20 minutes. Parking is also available." },
-    { question: "Are the tickets genuine and guaranteed?", answer: "Every ticket sold on EuroMatchTickets is 100% verified and backed by our FanProtect guarantee. If there's any issue, you receive a full refund." },
+    { question: "Are the tickets genuine and guaranteed?", answer: "Every ticket sold on EuroMatchTickets is verified and backed by our Buyer protection. If there's any issue, you receive a full refund." },
     { question: "Can I buy Bayern vs Real Madrid tickets as a neutral fan?", answer: "Yes! Our tickets are available to all fans regardless of club membership. We sell neutral, home, and away section tickets." },
     { question: "What is the atmosphere like at the Allianz Arena?", answer: "The Allianz Arena is one of Europe's most iconic stadiums, holding 75,000 fans. The atmosphere for Champions League nights is electric, especially against top opponents like Real Madrid." },
   ];
@@ -97,14 +97,14 @@ const BayernRealMadridPage = () => {
   const h2content = [
     { title: "Bayern Munich vs Real Madrid - A Champions League Classic", text: "When two of European football's greatest clubs meet, the world watches. Bayern Munich vs Real Madrid is one of the most historic rivalries in Champions League history, with legendary encounters that have defined the tournament. From the dramatic semi-finals to unforgettable comebacks, every meeting between these two giants delivers pure football magic." },
     { title: "Allianz Arena - The Fortress of Football", text: "The Allianz Arena in Munich is one of the most impressive stadiums in the world. With a capacity of 75,000 for Champions League matches, the stadium's iconic illuminated exterior and incredible atmosphere make it a bucket-list destination for every football fan. The Südkurve (South Stand) is famous for its passionate Bayern supporters." },
-    { title: "Why Buy Bayern vs Real Madrid Tickets from EuroMatchTickets?", text: "We offer the cheapest verified tickets for Bayern Munich vs Real Madrid with instant QR delivery. Every purchase is protected by our FanProtect guarantee, meaning your tickets are 100% authentic or you get a full refund. We've helped over 50,000 fans attend their dream matches across Europe." },
+    { title: "Why Buy Bayern vs Real Madrid Tickets from EuroMatchTickets?", text: "We offer the verified-seller listings for Bayern Munich vs Real Madrid with QR ticket delivery. Every purchase is protected by our Buyer protection, meaning your tickets are 100% authentic or you get a full refund. We've helped over 50,000 fans attend their dream matches across Europe." },
   ];
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="bayern-real-madrid-page">
       <SEOHead
         title="Bayern vs Real Madrid Tickets 2026 | UCL Best Prices"
-        description="Buy Bayern Munich vs Real Madrid Champions League tickets from €199. Allianz Arena, Munich. Verified tickets, instant QR delivery, FanProtect guarantee."
+        description="Buy Bayern Munich vs Real Madrid Champions League tickets from €199. Allianz Arena, Munich. Verified tickets, QR ticket delivery, Buyer protection."
         canonicalUrl="https://euromatchtickets.com/bayern-vs-real-madrid-tickets"
         image="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200&h=630&fit=crop"
       />
@@ -150,7 +150,7 @@ const BayernRealMadridPage = () => {
             </div>
             <div className="bg-emerald-500/100/10 border border-emerald-400/30 rounded-none px-4 py-3 backdrop-blur-sm">
               <p className="text-emerald-300 font-bold text-sm flex items-center gap-1"><TrendingDown className="w-4 h-4" /> Save &euro;{Math.round(stats.lowest * 0.35)}</p>
-              <p className="text-[11px] text-white/50">vs official sellers</p>
+              <p className="text-[11px] text-white/50">(market pricing may vary)</p>
             </div>
             <Link to="#tickets">
               <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-full text-lg shadow-lg">
@@ -160,9 +160,9 @@ const BayernRealMadridPage = () => {
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/50">
-            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> FanProtect Guarantee</span>
-            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> Instant QR Delivery</span>
-            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.8/5 (2,847 reviews)</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> Buyer protection</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> QR ticket delivery</span>
+            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.8/5 (customer reviews)</span>
           </div>
         </div>
       </section>

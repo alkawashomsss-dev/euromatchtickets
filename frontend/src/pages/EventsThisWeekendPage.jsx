@@ -99,7 +99,7 @@ const EventsThisWeekendPage = () => {
           </h1>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-8">
             Don't miss out! Book last-minute tickets for this weekend's hottest events.
-            Football, concerts, motorsport - instant QR delivery.
+            Football, concerts, motorsport - QR ticket delivery.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -126,8 +126,8 @@ const EventsThisWeekendPage = () => {
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />100% Guarantee</div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" />Instant Delivery</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />Buyer protection</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" />QR delivery</div>
             <div className="flex items-center gap-2 text-emerald-600"><Star className="w-4 h-4" />Last-Minute OK</div>
           </div>
         </div>
@@ -200,13 +200,13 @@ const EventsThisWeekendPage = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-[#1e1e1e] p-6 rounded-none border border-white/10">
               <h3 className="font-bold mb-2 flex items-center gap-2">
-                <Zap className="w-5 h-5 text-orange-600" />Instant QR Delivery
+                <Zap className="w-5 h-5 text-orange-600" />QR ticket delivery
               </h3>
               <p className="text-slate-500">No waiting for physical tickets. Get your QR code instantly after purchase and head straight to the venue.</p>
             </div>
             <div className="bg-[#1e1e1e] p-6 rounded-none border border-white/10">
               <h3 className="font-bold mb-2 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-emerald-600" />100% Guarantee
+                <Shield className="w-5 h-5 text-emerald-600" />Buyer protection
               </h3>
               <p className="text-slate-500">All tickets are verified and guaranteed. If there's any issue, you get a full refund.</p>
             </div>

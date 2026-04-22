@@ -121,7 +121,7 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
           </div>
         </div>
         <div class="ticket-footer">
-          <div>EuroMatchTickets.com | FanProtect Guarantee</div>
+          <div>EuroMatchTickets.com | Buyer protection</div>
           <div class="barcode">${orderId.replace(/-/g, " ").toUpperCase()}</div>
         </div>
       </div>
@@ -221,7 +221,7 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
         <div className="bg-zinc-50 border-t border-zinc-200 px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2 text-[11px] text-slate-500">
             <Shield className="w-3 h-3" />
-            <span>FanProtect Guarantee | euromatchtickets.com</span>
+            <span>Buyer protection | euromatchtickets.com</span>
           </div>
           <span className="font-mono text-[10px] text-slate-500 tracking-wider">
             {orderId.replace(/-/g, " ").toUpperCase().slice(0, 24)}

@@ -30,7 +30,7 @@ const PSGHubPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0c1029]" data-testid="psg-hub-page">
-      <SEOHead title="PSG Tickets 2026 | Paris Saint-Germain from €55" description="Buy PSG tickets from €55. Ligue 1, Champions League, Le Classique. Parc des Princes. Cheapest prices, instant QR delivery. FanProtect guarantee!" canonicalUrl="https://euromatchtickets.com/psg-tickets" />
+      <SEOHead noIndex={true} title="PSG Tickets 2026 | Paris Saint-Germain from €55" description="Buy PSG tickets from €55. Ligue 1, Champions League, Le Classique. Parc des Princes. Verified prices, QR ticket delivery. Buyer protection!" canonicalUrl="https://euromatchtickets.com/psg-tickets" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }, { name: "Football Tickets", url: "https://euromatchtickets.com/events?type=match" }, { name: "PSG Tickets", url: "https://euromatchtickets.com/psg-tickets" }]} />
 
@@ -50,8 +50,8 @@ const PSGHubPage = () => {
           </div>
           <Link to="/checkout?event=psg-tickets"><Button size="lg" className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white font-bold px-8 rounded-full" data-testid="psg-cta"><Ticket className="w-5 h-5 mr-2" /> Get PSG Tickets from &euro;55</Button></Link>
           <div className="flex flex-wrap justify-center gap-4 mt-6 text-[11px] text-white/40">
-            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> FanProtect Guarantee</span>
-            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> Instant QR Delivery</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> Buyer protection</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-400" /> QR ticket delivery</span>
             <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.8/5 Reviews</span>
           </div>
         </div>
@@ -92,8 +92,8 @@ const PSGHubPage = () => {
 
       {/* SEO Content */}
       <section className="py-12"><div className="max-w-4xl mx-auto px-4 space-y-6">
-        <h2 className="text-xl font-bold text-white">Buy PSG Tickets 2026 - Cheapest Prices Online</h2>
-        <p className="text-slate-400 leading-relaxed">EuroMatchTickets offers the <strong>cheapest PSG tickets</strong> for every match at Parc des Princes. Whether it's Ligue 1, Champions League, or Le Classique against Marseille - all verified with instant QR delivery and FanProtect guarantee. Prices from just <strong>&euro;55</strong>.</p>
+        <h2 className="text-xl font-bold text-white">Buy PSG Tickets 2026 - Tickets on EuroMatchTickets</h2>
+        <p className="text-slate-400 leading-relaxed">EuroMatchTickets offers the <strong>cheapest PSG tickets</strong> for every match at Parc des Princes. Whether it's Ligue 1, Champions League, or Le Classique against Marseille - all verified with QR ticket delivery and Buyer protection. Prices from just <strong>&euro;55</strong>.</p>
       </div></section>
     </div>
   );

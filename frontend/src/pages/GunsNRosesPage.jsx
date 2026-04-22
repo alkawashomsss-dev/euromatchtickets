@@ -25,11 +25,11 @@ const GunsNRosesPage = () => {
   };
 
   const faqs = [
-    { q: "How much are Guns N' Roses 2026 tour tickets?", a: "Tickets start from €95 for upper tier. Lower tier from €145. Floor standing from €175. Golden Circle from €295. VIP packages from €395. All include FanProtect 100% money-back guarantee and instant QR delivery." },
+    { q: "How much are Guns N' Roses 2026 tour tickets?", a: "Tickets start from €95 for upper tier. Lower tier from €145. Floor standing from €175. Golden Circle from €295. VIP packages from €395. All include Buyer protection cancellation refund policy and QR ticket delivery." },
     { q: "When are Guns N' Roses playing in Europe 2026?", a: "June 13 to July 17, 2026. Berlin (Jun 13), Arnhem (Jun 23), Cologne (Jun 26), London Tottenham (Jun 27), Marseille (Jul 1), Hamburg (Jul 3-4), Munich (Jul 17)." },
     { q: "How long is a Guns N' Roses concert?", a: "Guns N' Roses are legendary for their marathon sets — typically 3 to 3.5 hours! One of the longest rock performances you'll ever see. Doors open 2 hours before showtime." },
     { q: "What songs do Guns N' Roses play live?", a: "Sweet Child O' Mine, Paradise City, Welcome to the Jungle, November Rain, Patience, Knockin' on Heaven's Door, Nightrain, Mr. Brownstone, Rocket Queen, Civil War, Estranged, and 20+ more classics. 35-40 songs per show." },
-    { q: "Are Guns N' Roses tickets refundable?", a: "Yes! FanProtect 100% money-back guarantee on every ticket. Full refund if cancelled or postponed. Instant QR delivery." },
+    { q: "Are Guns N' Roses tickets refundable?", a: "Yes! Buyer protection cancellation refund policy on every ticket. Full refund if cancelled or postponed. Instant QR delivery." },
   ];
 
   const shows = [
@@ -44,7 +44,7 @@ const GunsNRosesPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
-      <SEOHead title="Buy Guns N' Roses Tour Tickets 2026 | Europe From €95" description="Buy Guns N' Roses 2026 European stadium tour tickets from €95. Berlin, London, Hamburg, Cologne, Munich. 3+ hour shows. 100% Money-Back Guarantee. Instant QR." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200" />
+      <SEOHead title="Buy Guns N' Roses Tour Tickets 2026 | Europe From €95" description="Buy Guns N' Roses 2026 European stadium tour tickets from €95. Berlin, London, Hamburg, Cologne, Munich. 3+ hour shows. Cancellation refund policy. Instant QR." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <FAQSchemaScript faqs={faqs} />
       <ProductSchema name="Guns N' Roses European Stadium Tour 2026" price={95} highPrice={450} url={CANONICAL} category="concert" venue="Multiple Stadiums" city="Europe" />
@@ -63,16 +63,16 @@ const GunsNRosesPage = () => {
           <div className="inline-block bg-[#161620] border border-white/10 p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">€95</div>
-            <div className="text-emerald-500 text-sm mt-1">100% Money-Back Guarantee</div>
+            <div className="text-emerald-500 text-sm mt-1">Cancellation refund policy</div>
           </div>
         </div>
       </section>
 
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8 text-sm">
-          <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />100% Verified</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />Verified</span>
           <span className="flex items-center gap-2 text-emerald-500"><Star className="w-4 h-4" />4.8/5 Reviews</span>
-          <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />Instant QR Delivery</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />QR ticket delivery</span>
         </div>
       </section>
 
@@ -113,7 +113,7 @@ const GunsNRosesPage = () => {
             <p>The marathon setlist spans the entire GN'R catalogue: <em>Sweet Child O' Mine</em>, <em>Paradise City</em>, <em>Welcome to the Jungle</em>, <em>November Rain</em> (with full orchestral intro), <em>Patience</em>, <em>Knockin' on Heaven's Door</em>, <em>Nightrain</em>, <em>Mr. Brownstone</em>, <em>Rocket Queen</em>, <em>Civil War</em>, <em>Estranged</em>, <em>Don't Cry</em>, <em>You Could Be Mine</em>, <em>Live and Let Die</em>, plus Slash's iconic guitar solos.</p>
             <h3 className="text-white text-lg">Ticket Categories</h3>
             <p><strong className="text-white">Upper Tier</strong> (from €95). <strong className="text-white">Lower Tier</strong> (from €145). <strong className="text-white">Floor Standing</strong> (from €175). <strong className="text-white">Golden Circle</strong> (from €295). <strong className="text-white">VIP</strong> (from €395).</p>
-            <p>All tickets include <Link to="/buyer-protection" className="text-[#e10600] hover:underline">FanProtect 100% money-back guarantee</Link> and instant QR delivery to your email.</p>
+            <p>All tickets include <Link to="/buyer-protection" className="text-[#e10600] hover:underline">Buyer protection cancellation refund policy</Link> and QR ticket delivery to your email.</p>
           </div>
         </div>
       </section>

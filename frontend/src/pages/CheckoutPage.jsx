@@ -222,8 +222,8 @@ export default function CheckoutPage() {
             {/* Trust Signals */}
             <div className="grid grid-cols-2 gap-3">
               {[
-                { icon: Shield, label: "FanProtect Guarantee", sub: "Full refund if cancelled" },
-                { icon: Zap, label: "Instant QR Delivery", sub: "Tickets to your email" },
+                { icon: Shield, label: "Buyer protection", sub: "Full refund if cancelled" },
+                { icon: Zap, label: "QR ticket delivery", sub: "Tickets to your email" },
                 { icon: Lock, label: "Secure Payment", sub: "256-bit SSL encryption" },
                 { icon: CreditCard, label: "Stripe Powered", sub: "PCI DSS Level 1" },
               ].map((t, i) => (
@@ -268,7 +268,7 @@ export default function CheckoutPage() {
               </button>
 
               <div className="mt-4 space-y-2">
-                {["100% verified tickets", "Instant QR code delivery", "Full refund if event cancelled", "24/7 customer support"].map((t, i) => (
+                {["Verified-seller listings", "Instant QR code delivery", "Full refund if event cancelled", "24/7 customer support"].map((t, i) => (
                   <div key={i} className="flex items-center gap-2 text-xs text-slate-500">
                     <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
                     {t}

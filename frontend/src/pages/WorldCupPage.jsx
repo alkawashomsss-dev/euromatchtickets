@@ -50,7 +50,7 @@ const WorldCupPage = () => {
   return (
     <div className="min-h-screen bg-[#0a0e1a]" data-testid="worldcup-page">
       <SEOHead 
-        title="FIFA World Cup 2026 Tickets | Cheapest Prices"
+        title="FIFA World Cup 2026 Tickets | Verified Listings"
         description="Buy FIFA World Cup 2026 tickets for all matches. Opening ceremony Mexico, group stage, quarter finals, semi finals and World Cup Final in New York."
         image="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=630&fit=crop"
       />
@@ -105,9 +105,9 @@ const WorldCupPage = () => {
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-amber-500/10 border-t border-amber-500/20 backdrop-blur-md">
           <div className="max-w-5xl mx-auto px-4 py-3 flex flex-wrap justify-center gap-6 sm:gap-10 text-sm">
             {[
-              { icon: Shield, t: "100% Verified" },
-              { icon: Star, t: "FanProtect Guarantee" },
-              { icon: Zap, t: "Instant QR Delivery" },
+              { icon: Shield, t: "Verified" },
+              { icon: Star, t: "Buyer protection" },
+              { icon: Zap, t: "QR ticket delivery" },
             ].map((b, i) => (
               <div key={i} className="flex items-center gap-2 text-amber-300/90 font-medium">
                 <b.icon className="w-4 h-4" /> {b.t}
@@ -246,7 +246,7 @@ const WorldCupPage = () => {
             </ul>
             <h3 className="text-white text-xl font-bold mt-8">Why EuroMatchTickets?</h3>
             <ul className="space-y-1">
-              <li>100% verified and guaranteed authentic tickets</li>
+              <li>verified and guaranteed authentic tickets</li>
               <li>Instant QR code delivery — no waiting</li>
               <li>Full refund if event is cancelled</li>
               <li>24/7 customer support</li>
@@ -290,7 +290,7 @@ const WorldCupPage = () => {
       ]} />
       <FAQStructuredData faqs={[
         { question: "When is the FIFA World Cup 2026?", answer: "The FIFA World Cup 2026 will be held from June 11 to July 19, 2026 across the United States, Mexico, and Canada. It will be the first World Cup with 48 teams." },
-        { question: "How can I buy World Cup 2026 tickets?", answer: "You can buy verified World Cup 2026 tickets on EuroMatchTickets starting from €149. All tickets include our FanProtect guarantee with instant QR delivery." },
+        { question: "How can I buy World Cup 2026 tickets?", answer: "You can buy verified World Cup 2026 tickets on EuroMatchTickets starting from €149. All tickets include our Buyer protection with QR ticket delivery." },
         { question: "Which cities are hosting the World Cup 2026?", answer: "The World Cup 2026 will be hosted in 16 cities: 11 in the USA, 3 in Mexico, and 2 in Canada." }
       ]} />
     </div>

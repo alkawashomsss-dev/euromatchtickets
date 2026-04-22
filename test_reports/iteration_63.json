@@ -1,0 +1,65 @@
+{
+  "summary": "Honesty-sweep verification (iter63). Backend pytest test_honesty_layer.py 8/8 PASS. Hub noindex 8/8 PASS. ProductSchema.jsx safe-by-default verified. FanProtectPage renders without compile errors. CRITICAL FAILURE: the global text/schema honesty sweep was incomplete — every public-facing page still ships banned trust-claims and inflated JSON-LD because the sweep skipped /app/frontend/public/index.html (which injects per-route meta + global Organization/Product schemas with aggregateRating reviewCount=12847 and AggregateOffer offerCount=500), AND because 53 page files still contain hardcoded '@type\":\"AggregateOffer' and 18 page files still contain 'aggregateRating' in their own JSON-LD literals.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Honesty sweep / global SEO injection",
+        "issue": "/app/frontend/public/index.html (772 lines) contains an inline <script> with `var M={...}` route->meta map AND addLD() calls that inject banned claims + AggregateOffer + aggregateRating into the rendered HTML of every route. Confirmed strings present on / , /spa-gp-tickets, /monaco-gp-tickets, /taylor-swift-tickets, /super-bowl-tickets, /f1-tickets, /abu-dhabi-gp-tickets, /f1: 'Cheapest prices', '42% cheaper', '55% cheaper', 'FanProtect', '\"@type\":\"AggregateOffer\"', 'aggregateRating', '500,000+ tickets sold' (subset). Also 'Save €' present on /spa-gp-tickets.",
+        "affected_selectors": ["public/index.html line 66 meta description", "public/index.html lines 115-300 var M={} per-route meta", "public/index.html ~line 105470 addLD aggregateRating block", "public/index.html ~line 107706 AggregateOffer block"]
+      },
+      {
+        "flow": "Per-page hardcoded JSON-LD",
+        "issue": "53 files in /app/frontend/src/pages/*.jsx still hardcode '@type\":\"AggregateOffer\"' (ColdplayPage, MotoGPTicketsPage, ACLFestivalPage, LiverpoolHubPage, TheWeekndPage, F1TicketsPage, AbuDhabiGPPage, JuventusHubPage, etc.). 18 files still hardcode 'aggregateRating'. ProductSchema component is now safe (renders null without verified={true}+price), but those pages bypass it and write JSON-LD directly. Goal of 'route prices through /api/events only' not achieved for these files.",
+        "affected_selectors": ["pages/ColdplayPage.jsx", "pages/F1TicketsPage.jsx", "pages/MonacoGPPage.jsx", "pages/JuventusHubPage.jsx", "pages/RealMadridHubPage.jsx", "pages/PSGHubPage.jsx", "pages/ManCityHubPage.jsx", "pages/DynamicSEOPage.jsx", "components/StructuredData.jsx", "+ ~45 more page files"]
+      },
+      {
+        "flow": "Conversion / newsletter components",
+        "issue": "components/ConversionElements.jsx line 35 hardcodes '500,000+ Tickets Sold'. components/NewsletterSignup.jsx line 104 hardcodes 'Trusted by 500,000+ fans.' These render globally on the homepage and other pages.",
+        "affected_selectors": ["components/ConversionElements.jsx:35", "components/NewsletterSignup.jsx:104"]
+      },
+      {
+        "flow": "Save € / vs official claims on F1 GP pages",
+        "issue": "5 pages still contain 'Save €' marketing copy: AbuDhabiGPPage.jsx, SingaporeGPPage.jsx, LasVegasGPPage.jsx, MiamiGPPage.jsx, SilverstoneGPPage.jsx.",
+        "affected_selectors": ["pages/AbuDhabiGPPage.jsx", "pages/SingaporeGPPage.jsx", "pages/LasVegasGPPage.jsx", "pages/MiamiGPPage.jsx", "pages/SilverstoneGPPage.jsx"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_honesty_layer.py",
+    "/app/test_reports/pytest/honesty_iter63.xml"
+  ],
+  "action_items": [
+    "Run honesty_sweep.py over /app/frontend/public/index.html — strip the 'var M={...}' route-meta object of '42% cheaper', '55% cheaper', 'Cheapest prices', 'FanProtect', '500,000+ fans', '50,000+', \"Europe's #1\" tokens. Either delete the M map entirely (let React-side SEOHead drive titles/descriptions) or rewrite each row to neutral copy.",
+    "Remove the global aggregateRating block (reviewCount: 12847, ratingValue: 4.8) from public/index.html addLD('ph-org', ...).",
+    "Remove or gate the global AggregateOffer block (offerCount: 500) from public/index.html — should not be emitted unless we have real verified inventory per page.",
+    "Sweep all 53 src/pages/*.jsx files containing '@type\":\"AggregateOffer' and refactor them to use <ProductSchema verified .../> with live data from useLiveEventData (this was the original architectural goal). Quickest interim fix: comment out the inline schema literals.",
+    "Sweep all 18 src/pages/*.jsx files containing 'aggregateRating' and remove the hardcoded ratingValue/reviewCount blocks.",
+    "Replace the 5 'Save €' occurrences in F1 GP pages (AbuDhabi, Singapore, LasVegas, Miami, Silverstone) with neutral copy.",
+    "Update components/ConversionElements.jsx and components/NewsletterSignup.jsx to drop '500,000+' counters.",
+    "After fixes, re-run this iteration's checks against /, /spa-gp-tickets, /monaco-gp-tickets, /taylor-swift-tickets, /super-bowl-tickets, /f1-tickets, /abu-dhabi-gp-tickets, /f1 — none should contain the banned strings or inflated JSON-LD."
+  ],
+  "critical_code_review_comments": [
+    "honesty_sweep.py operated only on src/ — public/index.html was not in scope, yet it is the dominant source of ALL banned text and inflated schema visible on the homepage and most landing pages.",
+    "ProductSchema.jsx is well-designed (safe-by-default, single Offer, no aggregate). But it is unused by 53+ pages that still hand-roll their own schemas with AggregateOffer/aggregateRating — defeating the purpose of the new component.",
+    "useLiveEventData.js looks correct; ensure pages migrate to it instead of hardcoded 'from €X' arrays.",
+    "FanProtectPage.jsx (line 87) STILL emits AggregateOffer { lowPrice:0, highPrice:0, offerCount:1 } in its JSON-LD — even though it's a service page. Consider removing the offers block since price is 0/0.",
+    "Pre-existing (carried from prior iters): events.py admin endpoints (mega_fix, fix_all_prices, seed_all_missing) still unauthenticated."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100% (8/8 honesty_layer pytest)",
+    "frontend": "Hub noindex 8/8 PASS, ProductSchema safety PASS, FanProtect compile PASS, Regression flows PASS. Banned-string sweep 0/9 pages PASS — every tested page still ships banned strings/inflated JSON-LD."
+  },
+  "test_credentials": "Not required",
+  "seed_data_creation": "One TEST_<uuid>@example.com waitlist entry on slug 'euro-indexing' per backend run (idempotent upsert).",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iter63 verified the global honesty sweep. Hub noindex (8 hubs) ✅, ProductSchema component-level safety ✅, FanProtectPage compiles ✅, regression flows (active F1/MotoGP event with Prices+Location H2, coming_soon Taylor Swift waitlist, unknown slug noindex,nofollow) ✅. Backend test_honesty_layer.py 8/8 PASS. CRITICAL MISS: banned strings + AggregateOffer + aggregateRating still ship on 9/9 sampled pages because (a) /app/frontend/public/index.html line 66 description, lines 115-300 'var M={}' route-meta map, and addLD('ph-org')/addLD product blocks were never touched by honesty_sweep.py, and (b) 53 page files + 18 page files still hand-roll AggregateOffer / aggregateRating in their own JSON-LD literals. After fixes, re-run banned-string check on /, /spa-gp-tickets, /monaco-gp-tickets, /taylor-swift-tickets, /super-bowl-tickets, /f1-tickets, /abu-dhabi-gp-tickets, /f1 plus ProductSchema-pages AbuDhabiGPPage/MonacoGPTicketsPage/SuperBowlPage/F1LandingPage and confirm ZERO occurrences of the 11-string blocklist + ZERO '@type\":\"AggregateOffer' + ZERO 'aggregateRating'.",
+  "rca of the issue": "Root cause: the honesty_sweep.py script operated only over /app/frontend/src/**/*.{js,jsx}. It did not include /app/frontend/public/index.html — but that file contains an inline <script> that builds a per-route META map and invokes addLD() to inject Organization+Product JSON-LD with aggregateRating(reviewCount=12847,ratingValue=4.8) and AggregateOffer(offerCount=500) into the static HTML shell of EVERY route. As a result, even routes whose React pages are 'clean' still emit the banned strings and inflated schema. Secondary cause: 70+ page-level JSON-LD literals were also missed because they aren't ProductSchema callsites — they hand-roll dangerouslySetInnerHTML themselves. Mitigation: (1) extend the sweep to public/index.html (or simply delete the M map and addLD blocks from index.html and let SEOHead drive everything from React), (2) bulk-remove AggregateOffer / aggregateRating literals from src/pages/*.jsx, ideally migrating callers to <ProductSchema verified .../>, (3) drop '500,000+' counters from ConversionElements/NewsletterSignup, (4) drop 'Save €' copy from the 5 F1 GP pages."
+}

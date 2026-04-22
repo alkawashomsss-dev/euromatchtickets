@@ -14,7 +14,7 @@ const ZandvoortGPPage = () => {
   const schema = {
     "@context": "https://schema.org", "@type": "SportsEvent",
     "name": "F1 Dutch Grand Prix Zandvoort 2026",
-    "description": "Buy Dutch Grand Prix 2026 tickets from €189. Circuit Zandvoort, August 29-31. Max Verstappen home race. 100% verified, instant QR delivery.",
+    "description": "Buy Dutch Grand Prix 2026 tickets from €189. Circuit Zandvoort, August 29-31. Max Verstappen home race. verified, QR ticket delivery.",
     "startDate": "2026-08-29T10:00:00+02:00", "endDate": "2026-08-31T16:00:00+02:00",
     "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "image": "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?w=1200",
@@ -25,12 +25,12 @@ const ZandvoortGPPage = () => {
   };
 
   const faqs = [
-    { q: "How much are Dutch GP Zandvoort 2026 tickets?", a: "General Admission from €189. Eastside Grandstand from €389. Main Grandstand from €489. Arie Luyendyk Grandstand from €349. VIP Hospitality from €1,489. Paddock Club from €4,489. All include 100% FanProtect money-back guarantee." },
+    { q: "How much are Dutch GP Zandvoort 2026 tickets?", a: "General Admission from €189. Eastside Grandstand from €389. Main Grandstand from €489. Arie Luyendyk Grandstand from €349. VIP Hospitality from €1,489. Paddock Club from €4,489. All include 100% Buyer protection money-back guarantee." },
     { q: "When is the Dutch Grand Prix 2026?", a: "August 29-31, 2026 at Circuit Zandvoort. Practice on Friday, Qualifying on Saturday, Race on Sunday at 15:00 CET." },
     { q: "Is Max Verstappen racing at Zandvoort 2026?", a: "Yes! The Dutch Grand Prix is Max Verstappen's home race. The atmosphere is legendary — 100,000+ fans dressed in orange creating one of F1's most electric environments." },
     { q: "How to get to Circuit Zandvoort?", a: "By train: Direct service from Amsterdam Centraal to Zandvoort aan Zee (30 min). The circuit is a 10-minute walk from the station. By car: A4 from Amsterdam, but parking is very limited — train strongly recommended." },
     { q: "What is the best grandstand at Zandvoort?", a: "Main Grandstand for start/finish line. Eastside Grandstand for the banked Turn 3 — unique to Zandvoort. Arie Luyendyk Grandstand for great views of the Tarzan corner overtaking zone." },
-    { q: "Are Zandvoort F1 tickets refundable?", a: "Yes! FanProtect 100% money-back guarantee. Full refund if the race is cancelled. Instant QR delivery to your email." },
+    { q: "Are Zandvoort F1 tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if the race is cancelled. Instant QR delivery to your email." },
   ];
 
   const tickets = [
@@ -44,7 +44,7 @@ const ZandvoortGPPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
-      <SEOHead title="Buy Dutch GP Tickets 2026 | Zandvoort F1 From €189" description="Buy Dutch Grand Prix 2026 tickets from €189. Circuit Zandvoort, Aug 29-31. Max Verstappen home race. Selling Fast. 100% Money-Back Guarantee. Instant QR." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1541447271487-09612b3f49f7?w=1200" />
+      <SEOHead title="Buy Dutch GP Tickets 2026 | Zandvoort F1 From €189" description="Buy Dutch Grand Prix 2026 tickets from €189. Circuit Zandvoort, Aug 29-31. Max Verstappen home race. Selling Fast. Cancellation refund policy. Instant QR." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1541447271487-09612b3f49f7?w=1200" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <FAQSchemaScript faqs={faqs} />
       <ProductSchema name="F1 Dutch Grand Prix Zandvoort 2026" price={189} highPrice={4489} url={CANONICAL} category="f1" venue="Circuit Zandvoort" city="Zandvoort" />
@@ -63,16 +63,16 @@ const ZandvoortGPPage = () => {
           <div className="inline-block bg-[#161620] border border-white/10 p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">€189</div>
-            <div className="text-emerald-500 text-sm mt-1">100% Money-Back Guarantee</div>
+            <div className="text-emerald-500 text-sm mt-1">Cancellation refund policy</div>
           </div>
         </div>
       </section>
 
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-8 text-sm">
-          <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />100% Verified</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Shield className="w-4 h-4" />Verified</span>
           <span className="flex items-center gap-2 text-emerald-500"><Star className="w-4 h-4" />4.8/5 Reviews</span>
-          <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />Instant QR Delivery</span>
+          <span className="flex items-center gap-2 text-emerald-500"><Zap className="w-4 h-4" />QR ticket delivery</span>
         </div>
       </section>
 
@@ -113,7 +113,7 @@ const ZandvoortGPPage = () => {
             <p><strong className="text-white">Main Grandstand</strong> — Start/finish straight with pit lane view. See all the action including pit stops. <strong className="text-white">Eastside Grandstand (Turn 3)</strong> — The famous banked corner. Cars approach at 250km/h on a wall of death. Unique to Zandvoort. <strong className="text-white">Arie Luyendyk Grandstand (Tarzan Corner)</strong> — The heavy braking zone into Turn 1. Best overtaking spot on the circuit.</p>
             <h3 className="text-white text-lg">Getting to Zandvoort</h3>
             <p><strong className="text-white">By train (recommended):</strong> Direct NS Sprinter from Amsterdam Centraal to Zandvoort aan Zee, every 15 minutes, journey time 30 minutes. The station is a 10-minute walk from the circuit gates. <strong className="text-white">By car:</strong> A4/A44 motorways from Amsterdam/The Hague. Parking is extremely limited and expensive — train is strongly recommended. <strong className="text-white">By bicycle:</strong> Many Dutch fans cycle! Dedicated bike parking at the circuit.</p>
-            <p>All tickets include <Link to="/buyer-protection" className="text-[#e10600] hover:underline">FanProtect 100% money-back guarantee</Link> and instant QR delivery.</p>
+            <p>All tickets include <Link to="/buyer-protection" className="text-[#e10600] hover:underline">Buyer protection cancellation refund policy</Link> and QR ticket delivery.</p>
           </div>
         </div>
       </section>

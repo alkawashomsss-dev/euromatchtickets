@@ -193,12 +193,12 @@ const MonacoGPTicketsPage = () => {
               <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-6">
                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                   <Shield className="w-5 h-5 text-emerald-600" />
-                  FanProtect Guarantee
+                  Buyer protection
                 </h3>
                 <ul className="space-y-3 text-sm text-slate-400">
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-600">✓</span>
-                    100% Verified Tickets
+                    Verified Tickets
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-600">✓</span>
@@ -280,7 +280,7 @@ const MonacoGPTicketsPage = () => {
             </p>
             <h3 className="text-2xl font-bold mb-4">Why Buy Monaco F1 Tickets from EuroMatchTickets?</h3>
             <ul className="text-slate-400 space-y-2 mb-6">
-              <li>✓ 100% verified tickets with FanProtect guarantee</li>
+              <li>✓ Verified-seller listings with Buyer protection</li>
               <li>✓ Best prices for Grandstand, VIP & Paddock Club</li>
               <li>✓ Instant digital delivery to your email</li>
               <li>✓ Secure payment with full buyer protection</li>

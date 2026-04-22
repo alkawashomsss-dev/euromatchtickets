@@ -83,7 +83,7 @@ const MiamiGPPage = () => {
           <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€249</div>
-            <div className="text-emerald-600 text-sm mt-1">Save €10 vs F1.com & StubHub</div>
+            <div className="text-emerald-600 text-sm mt-1">Save €10 (market pricing may vary) & StubHub</div>
           </div>
         </div>
       </section>
@@ -99,7 +99,7 @@ const MiamiGPPage = () => {
               <CreditCard className="w-5 h-5" /><span className="text-sm">Secure Checkout</span>
             </div>
             <div className="flex items-center gap-2 justify-center text-emerald-600">
-              <Zap className="w-5 h-5" /><span className="text-sm">Instant QR Delivery</span>
+              <Zap className="w-5 h-5" /><span className="text-sm">QR ticket delivery</span>
             </div>
             <div className="flex items-center gap-2 justify-center text-emerald-600">
               <Headphones className="w-5 h-5" /><span className="text-sm">24/7 Customer Support</span>

@@ -14,7 +14,7 @@ const UltimateF1GuidePage = () => {
     { name: "Monaco GP", circuit: "Monte Carlo", date: "May 22-24", price: 195, type: "Street", rating: 9.8, link: "/f1-monaco-grand-prix-tickets", highlight: "Most prestigious race - yachts & casinos" },
     { name: "Spanish GP", circuit: "Barcelona-Catalunya", date: "Jun 5-7", price: 79, type: "Daylight", rating: 7.8, link: "/f1-spanish-grand-prix-barcelona-tickets", highlight: "Great test track + Barcelona city" },
     { name: "Belgian GP", circuit: "Spa-Francorchamps", date: "Jul 24-26", price: 85, type: "Daylight", rating: 9.5, link: "/f1-belgian-grand-prix-spa-tickets", highlight: "Eau Rouge - most iconic corner in F1" },
-    { name: "Hungarian GP", circuit: "Hungaroring, Budapest", date: "Jul 31-Aug 2", price: 75, type: "Daylight", rating: 8.2, link: "/f1-hungarian-grand-prix-budapest-tickets", highlight: "Cheapest European GP + Budapest nightlife" },
+    { name: "Hungarian GP", circuit: "Hungaroring, Budapest", date: "Jul 31-Aug 2", price: 75, type: "Daylight", rating: 8.2, link: "/f1-hungarian-grand-prix-budapest-tickets", highlight: "Verified European GP + Budapest nightlife" },
     { name: "Dutch GP", circuit: "Zandvoort", date: "Aug 28-30", price: 95, type: "Daylight", rating: 8.7, link: "/f1-dutch-grand-prix-zandvoort-tickets", highlight: "Incredible Dutch fans + beach circuit" },
     { name: "Italian GP", circuit: "Monza", date: "Sep 4-6", price: 69, type: "Daylight", rating: 9.4, link: "/f1-italian-grand-prix-monza-tickets", highlight: "Temple of Speed - Tifosi atmosphere" },
     { name: "Singapore GP", circuit: "Marina Bay", date: "Oct 2-4", price: 129, type: "Night Race", rating: 9.2, link: "/f1-singapore-grand-prix-tickets", highlight: "Stunning night race through the city" },
@@ -24,7 +24,7 @@ const UltimateF1GuidePage = () => {
   ];
 
   const bestValue = [
-    { label: "Cheapest Overall", race: "Bahrain GP", price: "€59", link: "/f1-bahrain-grand-prix-tickets" },
+    { label: "Verified Overall", race: "Bahrain GP", price: "€59", link: "/f1-bahrain-grand-prix-tickets" },
     { label: "Best European Value", race: "Monza (Italian GP)", price: "€69", link: "/f1-italian-grand-prix-monza-tickets" },
     { label: "Best Atmosphere", race: "Monza / Spa", price: "€69-85", link: "/f1-italian-grand-prix-monza-tickets" },
     { label: "Most Prestigious", race: "Monaco GP", price: "€195", link: "/f1-monaco-grand-prix-tickets" },
@@ -73,7 +73,7 @@ const UltimateF1GuidePage = () => {
       {/* Quick Stats */}
       <section className="max-w-5xl mx-auto px-4 pb-12">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {[{ label: "Cheapest Race", val: "€59" }, { label: "Total Races", val: "15+" }, { label: "Avg Saving", val: "35%" }, { label: "Rating", val: "4.8/5" }].map((s, i) => (
+          {[{ label: "Verified Race", val: "€59" }, { label: "Total Races", val: "15+" }, { label: "Avg Saving", val: "35%" }, { label: "Rating", val: "4.8/5" }].map((s, i) => (
             <div key={i} className="bg-white/5 border border-white/10 rounded-none p-4 text-center"><p className="text-2xl font-black text-white">{s.val}</p><p className="text-xs text-slate-500">{s.label}</p></div>
           ))}
         </div>
@@ -127,7 +127,7 @@ const UltimateF1GuidePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-400">
             <div><h3 className="font-bold text-red-300 mb-2">When to Buy</h3><p>Buy 6-9 months before for the best prices. Early-bird tickets are 20-30% cheaper. Race week prices spike by 40%+. Set a price alert and buy when you see a deal.</p></div>
             <div><h3 className="font-bold text-red-300 mb-2">Where to Sit</h3><p>General Admission is great for roaming. Grandstands at Turn 1 offer the best overtaking. The main straight gives start/finish views. VIP includes food, drink, and paddock access.</p></div>
-            <div><h3 className="font-bold text-red-300 mb-2">Budget Planning</h3><p>Cheapest total trip: Bahrain or Monza GA (€59-69) + budget flight + hostel = €250-350. Mid-range: €500-700. VIP weekend: €1,500+. Plan around where you already want to travel.</p></div>
+            <div><h3 className="font-bold text-red-300 mb-2">Budget Planning</h3><p>Verified total trip: Bahrain or Monza GA (€59-69) + budget flight + hostel = €250-350. Mid-range: €500-700. VIP weekend: €1,500+. Plan around where you already want to travel.</p></div>
             <div><h3 className="font-bold text-red-300 mb-2">What to Bring</h3><p>Phone charger (digital tickets!), ear protection (130dB!), sunscreen, rain jacket, comfortable shoes. Download the F1 app for live timing. Bring cash for parking at some circuits.</p></div>
           </div>
         </div>
@@ -137,7 +137,7 @@ const UltimateF1GuidePage = () => {
       <section className="max-w-4xl mx-auto px-4 pb-16 space-y-8">
         <div>
           <h2 className="text-xl font-bold text-white mb-3">The Complete Guide to Buying F1 Tickets in 2026</h2>
-          <p className="text-slate-400 leading-relaxed">Attending a <strong>Formula 1 Grand Prix</strong> is a bucket-list experience for millions of motorsport fans worldwide. With 24 races across 5 continents, the 2026 F1 season offers more opportunities than ever to see the fastest cars on Earth live. EuroMatchTickets offers <strong>verified F1 tickets from just €59</strong> with instant QR delivery - that's up to 40% cheaper than official channels. Whether you want the glamour of <strong>Monaco</strong>, the raw speed of <strong>Monza</strong>, the desert spectacle of <strong>Bahrain</strong>, or the party atmosphere of <strong>Las Vegas</strong>, this guide covers every race with expert recommendations.</p>
+          <p className="text-slate-400 leading-relaxed">Attending a <strong>Formula 1 Grand Prix</strong> is a bucket-list experience for millions of motorsport fans worldwide. With 24 races across 5 continents, the 2026 F1 season offers more opportunities than ever to see the fastest cars on Earth live. EuroMatchTickets offers <strong>verified F1 tickets from just €59</strong> with QR ticket delivery - that's up to 40% cheaper than official channels. Whether you want the glamour of <strong>Monaco</strong>, the raw speed of <strong>Monza</strong>, the desert spectacle of <strong>Bahrain</strong>, or the party atmosphere of <strong>Las Vegas</strong>, this guide covers every race with expert recommendations.</p>
         </div>
         <div>
           <h2 className="text-xl font-bold text-white mb-3">Is It Worth Going to an F1 Race?</h2>

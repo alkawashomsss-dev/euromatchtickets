@@ -168,8 +168,8 @@ const MonthlyEventsPage = ({ month = 'January' }) => {
       <section className="py-4 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />100% Guarantee</div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" />Instant Delivery</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" />Buyer protection</div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" />QR delivery</div>
             <div className="flex items-center gap-2 text-emerald-600"><Star className="w-4 h-4" />Best Prices</div>
           </div>
         </div>

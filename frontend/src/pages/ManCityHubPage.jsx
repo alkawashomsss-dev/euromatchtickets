@@ -11,7 +11,7 @@ const ManCityHubPage = () => {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     "name": "Manchester City FC 2025-26 Season",
-    "description": "Buy Manchester City tickets for Premier League, Champions League at Etihad Stadium. Cheapest prices guaranteed.",
+    "description": "Buy Manchester City tickets for Premier League, Champions League at Etihad Stadium. Verified prices guaranteed.",
     "image": "https://euromatchtickets.com/logo-192.png",
     "startDate": "2025-08-15",
     "endDate": "2026-06-01",
@@ -29,11 +29,11 @@ const ManCityHubPage = () => {
     "image": "https://euromatchtickets.com/logo-192.png",
     "@type": "Product",
     "name": "Manchester City Tickets 2025-26",
-    "description": "Verified Manchester City match tickets with instant QR delivery",
+    "description": "Verified Manchester City match tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1923", "bestRating": "5", "worstRating": "1" },
     "review": [
-      { "@type": "Review", "name": "Haaland hat-trick at electric Etihad", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "David L." }, "reviewBody": "Watched Haaland score a hat-trick! Etihad was electric. Cheapest tickets I found online.", "datePublished": "2026-02-10" },
+      { "@type": "Review", "name": "Haaland hat-trick at electric Etihad", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "David L." }, "reviewBody": "Watched Haaland score a hat-trick! Etihad was electric. Verified tickets I found online.", "datePublished": "2026-02-10" },
       { "@type": "Review", "name": "Man City vs Real Madrid was incredible", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sarah M." }, "reviewBody": "Man City vs Real Madrid in the Champions League was incredible. Tickets arrived instantly.", "datePublished": "2026-01-18" }
     ],
     "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800", "offerCount": "234" , "validFrom": "2025-01-01" }
@@ -48,7 +48,7 @@ const ManCityHubPage = () => {
   ];
 
   const reviews = [
-    { name: "David L.", country: "UK", rating: 5, text: "Watched Haaland score a hat-trick! Etihad was electric. Cheapest tickets I found.", date: "Feb 2026" },
+    { name: "David L.", country: "UK", rating: 5, text: "Watched Haaland score a hat-trick! Etihad was electric. Verified tickets I found.", date: "Feb 2026" },
     { name: "Sarah M.", country: "Ireland", rating: 5, text: "Man City vs Real Madrid was incredible. Tickets arrived instantly.", date: "Jan 2026" },
     { name: "Kenji T.", country: "Japan", rating: 5, text: "Flew from Tokyo for the Manchester Derby. Worth every penny!", date: "Dec 2025" },
     { name: "Alex V.", country: "USA", rating: 4, text: "Great prices for Premier League tickets. Easy checkout process.", date: "Nov 2025" },
@@ -58,16 +58,16 @@ const ManCityHubPage = () => {
     { question: "How much are Manchester City tickets?", answer: "Manchester City tickets start from \u20AC65 for Premier League matches. Champions League tickets start at \u20AC120, and Manchester Derby tickets from \u20AC165." },
     { question: "Where does Manchester City play?", answer: "Manchester City plays at the Etihad Stadium in Manchester, England. The stadium holds 53,400 spectators and is known for its electric atmosphere." },
     { question: "Can I buy Manchester Derby tickets?", answer: "Yes! Manchester Derby (Man City vs Man United) tickets are available starting from \u20AC165. These are among our most popular Premier League tickets." },
-    { question: "Are Manchester City tickets genuine?", answer: "All tickets on EuroMatchTickets are 100% verified and backed by our FanProtect guarantee with full refund protection." },
+    { question: "Are Manchester City tickets genuine?", answer: "All tickets on EuroMatchTickets are verified and backed by our Buyer protection with full refund protection." },
     { question: "How to get to Etihad Stadium?", answer: "Etihad Stadium is a 15-minute walk from Manchester Piccadilly station. The Metrolink tram stops at Etihad Campus, right next to the stadium." },
     { question: "Who plays for Manchester City?", answer: "Manchester City's star players include Erling Haaland, Kevin De Bruyne, Phil Foden, Bernardo Silva, and Rodri - managed by Pep Guardiola." },
   ];
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="man-city-hub-page">
-      <SEOHead
+      <SEOHead noIndex={true}
         title="Manchester City Tickets 2026 | Etihad, UCL, Premier League"
-        description="Buy Manchester City tickets from \u20AC65. Premier League, Champions League, Manchester Derby at Etihad. Haaland, De Bruyne. Verified. Instant QR. Cheapest prices."
+        description="Buy Manchester City tickets from \u20AC65. Premier League, Champions League, Manchester Derby at Etihad. Haaland, De Bruyne. Verified. Instant QR. Verified prices."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
@@ -81,7 +81,7 @@ const ManCityHubPage = () => {
             Manchester City Tickets 2025-26
             <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-sky-400 to-blue-400 bg-clip-text text-transparent">Etihad Stadium &middot; Premier League &middot; Champions League</span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with instant QR delivery. 100% Buyer Protection.</p>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-4">Secure your seat now with QR ticket delivery. Buyer protection.</p>
           <ScarcityBadges ticketsLeft={289} viewers={156} priceIncrease="14%" />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-[#15151e] rounded-full"><Calendar className="w-5 h-5 text-sky-600" /><span>2025-26 Season</span></div>
@@ -132,7 +132,7 @@ const ManCityHubPage = () => {
           <h2 className="text-2xl font-bold mb-6 text-white">Buy Manchester City Tickets 2025-26</h2>
           <div className="prose max-w-none text-slate-400 space-y-4">
             <p><strong>Manchester City</strong> under Pep Guardiola has become the dominant force in English and European football. With <strong>Erling Haaland</strong> breaking records every season and <strong>Kevin De Bruyne</strong> pulling the strings, City are favourites for the Premier League, Champions League, and FA Cup in 2025-26.</p>
-            <p>The <strong>Etihad Stadium</strong> holds 53,400 fans and delivers an incredible matchday atmosphere, especially for the <strong>Manchester Derby</strong> and Champions League nights. EuroMatchTickets offers the <strong>cheapest Man City tickets</strong> with instant QR delivery and <Link to="/buyer-protection" className="text-sky-600 hover:underline">FanProtect guarantee</Link>.</p>
+            <p>The <strong>Etihad Stadium</strong> holds 53,400 fans and delivers an incredible matchday atmosphere, especially for the <strong>Manchester Derby</strong> and Champions League nights. EuroMatchTickets offers the <strong>cheapest Man City tickets</strong> with QR ticket delivery and <Link to="/buyer-protection" className="text-sky-600 hover:underline">Buyer protection</Link>.</p>
           </div>
         </div>
       </section>
@@ -223,7 +223,7 @@ const ManCityHubPage = () => {
           <p className="text-sky-100 mb-8 text-lg">Premier League, Champions League, Manchester Derby - all at the Etihad.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/events?type=match"><Button className="bg-[#1e1e1e] text-sky-700 hover:bg-sky-50 text-lg px-8 py-3">Browse Matches</Button></Link>
-            <Link to="/buyer-protection"><Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">FanProtect Guarantee</Button></Link>
+            <Link to="/buyer-protection"><Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-3">Buyer protection</Button></Link>
           </div>
         </div>
       </section>

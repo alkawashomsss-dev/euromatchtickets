@@ -166,7 +166,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
                 Buy Tickets Now <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
-            <p className="text-slate-400 text-sm mt-3">0% fees &middot; Instant QR delivery &middot; FanProtect guarantee</p>
+            <p className="text-slate-400 text-sm mt-3">0% fees &middot; Instant QR delivery &middot; Buyer protection</p>
           </div>
         </div>
       </section>
@@ -190,7 +190,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
               <div className="w-16 h-16 rounded-none bg-violet-50 flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-8 h-8 text-violet-600" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Instant QR Delivery</h3>
+              <h3 className="text-xl font-bold mb-2">QR ticket delivery</h3>
               <p className="text-slate-500 mb-4">Get your tickets immediately as a QR code. No waiting, no shipping, no stress.</p>
               <Link to="/checkout" className="text-violet-600 font-bold text-sm hover:underline flex items-center justify-center gap-1">Get Tickets <ArrowRight className="w-4 h-4" /></Link>
             </div>

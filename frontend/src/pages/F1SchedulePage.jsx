@@ -96,7 +96,7 @@ const F1SchedulePage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Ticket Guarantee</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant QR Delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>QR ticket delivery</span></div>
             <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>€10 Cheaper Than Competitors</span></div>
           </div>
         </div>
@@ -235,7 +235,7 @@ const F1SchedulePage = () => {
       <section className="py-20 bg-gradient-to-r from-red-900/30 to-orange-900/30">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready for F1 2026?</h2>
-          <p className="text-slate-500 mb-8">Book your tickets now and save up to 50% vs official prices</p>
+          <p className="text-slate-500 mb-8">Book your tickets now and save up to 50% (market pricing may vary) prices</p>
           <Link to="/f1-tickets">
             <Button size="lg" className="bg-[#e10600]/100 hover:bg-red-600 px-8">
               <Ticket className="w-5 h-5 mr-2" />Browse All F1 Tickets

@@ -15,8 +15,8 @@ const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b2
 
 const packages = [
   { name: "Upper Level", price: 899, orig: 1200, tier: "Nosebleed Seats", color: "from-slate-600 to-slate-800", text: "text-slate-300", tag: null, features: ["Verified e-ticket", "Stadium atmosphere", "Instant QR delivery", "Full refund if cancelled"] },
-  { name: "Mid Level", price: 1899, orig: 2400, tier: "Great Sightlines", color: "from-blue-600 to-blue-800", text: "text-blue-300", tag: null, features: ["Premium mid-tier seat", "Central section access", "Instant QR delivery", "FanProtect guarantee"] },
-  { name: "Lower Level", price: 3499, orig: 4500, tier: "Close to the Action", color: "from-emerald-600 to-emerald-800", text: "text-emerald-300", tag: "BEST VALUE", features: ["Lower bowl seating", "Near the field", "Priority entry", "FanProtect guarantee"] },
+  { name: "Mid Level", price: 1899, orig: 2400, tier: "Great Sightlines", color: "from-blue-600 to-blue-800", text: "text-blue-300", tag: null, features: ["Premium mid-tier seat", "Central section access", "Instant QR delivery", "Buyer protection"] },
+  { name: "Lower Level", price: 3499, orig: 4500, tier: "Close to the Action", color: "from-emerald-600 to-emerald-800", text: "text-emerald-300", tag: "BEST VALUE", features: ["Lower bowl seating", "Near the field", "Priority entry", "Buyer protection"] },
   { name: "Club Level", price: 5999, orig: 7500, tier: "Premium Club Access", color: "from-amber-600 to-amber-800", text: "text-amber-200", tag: "POPULAR", vip: true, features: ["Climate-controlled lounge", "Premium food & drinks", "Padded luxury seats", "Exclusive club access"] },
   { name: "VIP Suite", price: 8999, orig: 12000, tier: "Private Luxury Suite", color: "from-violet-500 to-purple-700", text: "text-violet-200", tag: "VIP", vip: true, features: ["Private suite (12-16 guests)", "All-inclusive F&B", "Personal concierge", "Pre-game field access"] },
   { name: "Platinum Experience", price: 14999, orig: 20000, tier: "Ultimate Super Bowl", color: "from-yellow-500 via-amber-500 to-orange-600", text: "text-yellow-200", tag: "EXCLUSIVE", vip: true, features: ["Front row seats", "Backstage halftime access", "Celebrity after-party", "Luxury hotel included"] },
@@ -62,7 +62,7 @@ const SuperBowlPage = () => {
   const schema = {
     "@context": "https://schema.org", "@type": "SportsEvent",
     "name": "Super Bowl LXII 2027 Tickets – VIP & Best Seats",
-    "description": "Buy Super Bowl 2026 tickets from €899. VIP suites from €8,999. The ultimate American football experience at Levi's Stadium, Santa Clara. Instant QR delivery with FanProtect guarantee.",
+    "description": "Buy Super Bowl 2026 tickets from €899. VIP suites from €8,999. The ultimate American football experience at Levi's Stadium, Santa Clara. Instant QR delivery with Buyer protection.",
     "image": HERO_IMG, "startDate": "2027-02-07", "endDate": "2027-02-07",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": { "@type": "Place", "name": "Levi's Stadium", "address": { "@type": "PostalAddress", "addressLocality": "Santa Clara", "addressRegion": "CA", "addressCountry": "US" } },
@@ -75,7 +75,7 @@ const SuperBowlPage = () => {
     <div className="min-h-screen bg-[#0a0a12]" data-testid="superbowl-page">
       <SEOHead
         title="Super Bowl 2026 Tickets | VIP & Best Seats"
-        description="Buy Super Bowl LXII 2027 tickets from €899. VIP suites, hospitality packages & premium seats at Levi's Stadium, Santa Clara. 100% verified with instant QR."
+        description="Buy Super Bowl LXII 2027 tickets from €899. VIP suites, hospitality packages & premium seats at Levi's Stadium, Santa Clara. verified with instant QR."
         image="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -121,7 +121,7 @@ const SuperBowlPage = () => {
 
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-red-500/10 via-red-500/5 to-red-500/10 border-t border-red-500/20 backdrop-blur-md">
           <div className="max-w-5xl mx-auto px-4 py-3 flex flex-wrap justify-center gap-6 sm:gap-10 text-sm">
-            {[{ icon: Shield, t: "100% Verified" }, { icon: Star, t: "FanProtect Guarantee" }, { icon: Zap, t: "Instant QR Delivery" }].map((b, i) => (
+            {[{ icon: Shield, t: "Verified" }, { icon: Star, t: "Buyer protection" }, { icon: Zap, t: "QR ticket delivery" }].map((b, i) => (
               <div key={i} className="flex items-center gap-2 text-red-200/80 font-medium"><b.icon className="w-4 h-4" /> {b.t}</div>
             ))}
           </div>
@@ -322,7 +322,7 @@ const SuperBowlPage = () => {
       <FAQStructuredData faqs={[
         { question: "When is the Super Bowl 2026?", answer: "Super Bowl LXI is on February 7, 2027 at Levi's Stadium in Santa Clara, California." },
         { question: "How much are Super Bowl 2026 tickets?", answer: "Super Bowl 2026 tickets start from €899 for upper level, with VIP packages starting at €5,999 and Platinum experiences from €14,999." },
-        { question: "Can I get a refund on Super Bowl tickets?", answer: "Yes, all tickets purchased through EuroMatchTickets include our FanProtect guarantee with full refund if the event is cancelled." },
+        { question: "Can I get a refund on Super Bowl tickets?", answer: "Yes, all tickets purchased through EuroMatchTickets include our Buyer protection with full refund if the event is cancelled." },
         { question: "How will I receive my Super Bowl tickets?", answer: "All tickets are delivered instantly as QR codes to your email. No shipping, no waiting." }
       ]} />
     </div>

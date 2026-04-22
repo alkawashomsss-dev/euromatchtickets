@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: "Why don't you just list 2026 tickets like other resale sites?",
-    a: "Because listing tickets for a show that hasn't been officially announced is either (a) fraud or (b) a Google trust killer. We don't do either. Every ticket we eventually list is backed by our 100% Money-Back Guarantee and verified seller checks. The wait is worth it.",
+    a: "Because listing tickets for a show that hasn't been officially announced is either (a) fraud or (b) a Google trust killer. We don't do either. Every ticket we eventually list is backed by our Cancellation refund policy and verified seller checks. The wait is worth it.",
   },
 ];
 

@@ -12,8 +12,8 @@ const CLASICO_FAQS = [
   { q: "How much are El Clasico tickets?", a: "El Clasico tickets start from €89 for upper tier. Lower tier from €175. Midfield seats from €295. VIP hospitality from €595. Prices depend on whether the match is at Santiago Bernabéu (Real Madrid home) or Camp Nou (Barcelona home)." },
   { q: "When is El Clasico 2026?", a: "La Liga El Clasico 2025/26 season: first leg October/November 2025 (Camp Nou), second leg March/April 2026 (Santiago Bernabéu). Exact dates confirmed 2 weeks before the match by La Liga." },
   { q: "Where is El Clasico played?", a: "El Clasico alternates between Santiago Bernabéu (Real Madrid, capacity 81,044) and Camp Nou (Barcelona, capacity 99,354). The Bernabéu recently completed a €1.8 billion renovation with a retractable roof." },
-  { q: "How to get El Clasico tickets?", a: "Select El Clasico on EuroMatchTickets, choose your category, pay via Stripe. Instant QR delivery. All tickets verified with FanProtect 100% money-back guarantee. Cheaper than official channels." },
-  { q: "Are El Clasico tickets refundable?", a: "Yes! FanProtect 100% money-back guarantee. Full refund if cancelled or postponed. If tickets don't work at the gate, 100% refund." },
+  { q: "How to get El Clasico tickets?", a: "Select El Clasico on EuroMatchTickets, choose your category, pay via Stripe. Instant QR delivery. All tickets verified with Buyer protection cancellation refund policy. Cheaper than official channels." },
+  { q: "Are El Clasico tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled or postponed. If tickets don't work at the gate, 100% refund." },
 ];
 import axios from "axios";
 import { API } from "../App";
@@ -54,7 +54,7 @@ const ElClasicoTicketsPage = () => {
       <FAQSchemaScript faqs={CLASICO_FAQS} />
       <SEOHead
         title="Buy El Clasico Tickets 2026 | Real Madrid vs Barcelona From €89"
-        description="Buy El Clasico 2026 tickets from €89. Real Madrid vs Barcelona, Santiago Bernabéu. Only 23 tickets left. 100% Money-Back Guarantee. Instant QR delivery."
+        description="Buy El Clasico 2026 tickets from €89. Real Madrid vs Barcelona, Santiago Bernabéu. Only 23 tickets left. Cancellation refund policy. Instant QR delivery."
         keywords="El Clasico tickets, Real Madrid vs Barcelona tickets, buy El Clasico, La Liga tickets, Bernabeu tickets, Camp Nou tickets, El Clasico 2026"
         canonicalUrl="https://euromatchtickets.com/el-clasico-tickets"
         image="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=1200&h=630&fit=crop"
@@ -209,12 +209,12 @@ const ElClasicoTicketsPage = () => {
               <div className="bg-[#1e1e1e] border border-white/5 rounded-none p-6">
                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                   <Shield className="w-5 h-5 text-emerald-600" />
-                  FanProtect Guarantee
+                  Buyer protection
                 </h3>
                 <ul className="space-y-3 text-sm text-slate-400">
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-600">✓</span>
-                    100% Verified Tickets
+                    Verified Tickets
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-600">✓</span>

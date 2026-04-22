@@ -91,7 +91,7 @@ const LasVegasGPPage = () => {
           <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€249</div>
-            <div className="text-emerald-600 text-sm mt-1">Save €10 vs F1.com & StubHub</div>
+            <div className="text-emerald-600 text-sm mt-1">Save €10 (market pricing may vary) & StubHub</div>
           </div>
         </div>
       </section>
@@ -100,10 +100,10 @@ const LasVegasGPPage = () => {
       <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>100% Buyer Protection</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>Buyer protection</span></div>
             <div className="flex items-center gap-2 text-emerald-600"><Star className="w-5 h-5" /><span>Verified Tickets</span></div>
             <div className="flex items-center gap-2 text-emerald-600"><TrendingUp className="w-5 h-5" /><span>€10 Cheaper</span></div>
-            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Instant Delivery</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>QR delivery</span></div>
           </div>
         </div>
       </section>

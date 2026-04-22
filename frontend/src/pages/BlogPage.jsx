@@ -106,7 +106,7 @@ const BlogPage = () => {
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Blog", url: "https://euromatchtickets.com/blog" }]} />
       <SEOHead 
         title="F1 & Concert Ticket Guides 2026 | Expert Tips | EuroMatchTickets Blog"
-        description="Expert guides on buying F1, Champions League, World Cup and concert tickets. Spa-Francorchamps travel guide, best F1 circuits 2026, Taylor Swift London tips. Best prices guaranteed."
+        description="Expert guides on buying F1, Champions League, World Cup and concert tickets. Spa-Francorchamps travel guide, best F1 circuits 2026, Taylor Swift London tips. Market pricing may vary."
       />
 
       {/* Hero */}
@@ -117,7 +117,7 @@ const BlogPage = () => {
             EuroMatchTickets Blog
           </h1>
           <p className="text-lg text-slate-400 max-w-2xl mb-8">
-            In-depth guides on buying tickets for Formula 1, World Cup, Champions League and major concerts. Expert tips, travel advice, and the cheapest prices in Europe.
+            In-depth guides on buying tickets for Formula 1, World Cup, Champions League and major concerts. Expert tips, travel advice, and the listings on EuroMatchTickets.
           </p>
           
           {/* Search */}
@@ -324,11 +324,11 @@ const BlogPage = () => {
             <div>
               <h3 className="font-bold text-white text-xs uppercase tracking-wider mb-2">Why Trust EuroMatchTickets</h3>
               <ul className="space-y-1.5">
-                <li>FanProtect 100% money-back guarantee on every ticket</li>
-                <li>Up to 42% cheaper than official channels</li>
+                <li>Buyer protection cancellation refund policy on every ticket</li>
+                <li>Up to Competitive market pricing than official channels</li>
                 <li>Instant QR code delivery to your phone</li>
-                <li>500,000+ tickets sold across 25+ countries</li>
-                <li>4.9/5 rating from 12,847+ verified reviews</li>
+                <li>Verified seller inventory across 25+ countries</li>
+                <li>4.9/5 rating from 1+ verified reviews</li>
               </ul>
             </div>
           </div>

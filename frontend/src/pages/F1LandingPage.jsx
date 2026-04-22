@@ -77,7 +77,7 @@ const F1LandingPage = () => {
           <div className="flex justify-center gap-6 mt-8 text-sm text-slate-500">
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-red-600" />
-              Instant Delivery
+              QR delivery
             </span>
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-red-600" />
@@ -85,7 +85,7 @@ const F1LandingPage = () => {
             </span>
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-red-600" />
-              100% Guarantee
+              Buyer protection
             </span>
           </div>
         </div>
@@ -194,7 +194,7 @@ const F1LandingPage = () => {
               <div className="w-16 h-16 bg-[#e10600]/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="font-bold mb-2">100% Verified</h3>
+              <h3 className="font-bold mb-2">Verified</h3>
               <p className="text-sm text-slate-500">Every ticket authenticated and guaranteed</p>
             </div>
 
@@ -202,7 +202,7 @@ const F1LandingPage = () => {
               <div className="w-16 h-16 bg-amber-500/10 rounded-none flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-8 h-8 text-amber-600" />
               </div>
-              <h3 className="font-bold mb-2">Instant Delivery</h3>
+              <h3 className="font-bold mb-2">QR delivery</h3>
               <p className="text-sm text-slate-500">QR code to your email in minutes</p>
             </div>
 
@@ -243,7 +243,7 @@ const F1LandingPage = () => {
               </Button>
             </Link>
             <p className="text-sm text-slate-400 mt-4">
-              🛡️ FanProtect™ Guarantee | 🔒 Secure Payment | ⚡ Instant Delivery
+              🛡️ Buyer protection™ Guarantee | 🔒 Secure Payment | ⚡ QR delivery
             </p>
           </div>
         </div>

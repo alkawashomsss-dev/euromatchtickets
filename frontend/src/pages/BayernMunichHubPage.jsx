@@ -14,7 +14,7 @@ const BayernMunichHubPage = () => {
   ];
 
   const faqs = [
-    { question: "How much are Bayern Munich tickets?", answer: "Bayern Munich tickets on EuroMatchTickets start from €65 for Bundesliga matches. Champions League matches from €125. Der Klassiker (vs Dortmund) from €125. We guarantee the cheapest prices in Europe." },
+    { question: "How much are Bayern Munich tickets?", answer: "Bayern Munich tickets on EuroMatchTickets start from €65 for Bundesliga matches. Champions League matches from €125. Der Klassiker (vs Dortmund) from €125. We guarantee the listings on EuroMatchTickets." },
     { question: "How to buy Bayern Munich tickets as a tourist?", answer: "Simply browse our listings, select your match, and checkout. No FC Bayern membership needed! Tickets are delivered instantly as QR codes. We accept all major cards and PayPal." },
     { question: "Where does Bayern Munich play?", answer: "Bayern Munich plays at the Allianz Arena in Munich, Germany. The iconic stadium holds 75,000 fans and features a stunning illuminated exterior that glows red on matchdays." },
     { question: "What is Der Klassiker?", answer: "Der Klassiker is Bayern Munich vs Borussia Dortmund - Germany's biggest football rivalry. It's one of the most attended and watched club matches in world football." },
@@ -31,7 +31,7 @@ const BayernMunichHubPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="bayern-hub-page">
-      <SEOHead title="Bayern Munich Tickets 2026 | Allianz Arena from €65" description="Buy Bayern Munich tickets from €65. Bundesliga, Champions League, Der Klassiker. Allianz Arena. Cheapest prices, instant QR delivery. FanProtect guarantee!" canonicalUrl="https://euromatchtickets.com/bayern-munich-tickets" />
+      <SEOHead noIndex={true} title="Bayern Munich Tickets 2026 | Allianz Arena from €65" description="Buy Bayern Munich tickets from €65. Bundesliga, Champions League, Der Klassiker. Allianz Arena. Verified prices, QR ticket delivery. Buyer protection!" canonicalUrl="https://euromatchtickets.com/bayern-munich-tickets" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }, { name: "Football Tickets", url: "https://euromatchtickets.com/events?type=match" }, { name: "Bayern Munich Tickets", url: "https://euromatchtickets.com/bayern-munich-tickets" }]} />
 
@@ -91,8 +91,8 @@ const BayernMunichHubPage = () => {
 
       {/* SEO Content */}
       <section className="py-12"><div className="max-w-4xl mx-auto px-4 space-y-6">
-        <h2 className="text-xl font-bold text-white">Buy Bayern Munich Tickets 2026 - Cheapest Prices Online</h2>
-        <p className="text-slate-400 leading-relaxed">EuroMatchTickets offers the <strong>cheapest Bayern Munich tickets</strong> available online. Whether it's Bundesliga, Champions League, or Der Klassiker against Dortmund - we have verified tickets for every match at the <strong>Allianz Arena</strong> in Munich. Prices start from just <strong>&euro;65</strong> with instant QR delivery and our FanProtect money-back guarantee.</p>
+        <h2 className="text-xl font-bold text-white">Buy Bayern Munich Tickets 2026 - Tickets on EuroMatchTickets</h2>
+        <p className="text-slate-400 leading-relaxed">EuroMatchTickets offers the <strong>cheapest Bayern Munich tickets</strong> available online. Whether it's Bundesliga, Champions League, or Der Klassiker against Dortmund - we have verified tickets for every match at the <strong>Allianz Arena</strong> in Munich. Prices start from just <strong>&euro;65</strong> with QR ticket delivery and our Buyer protection money-back guarantee.</p>
       </div></section>
     </div>
   );

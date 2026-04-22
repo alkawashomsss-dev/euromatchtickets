@@ -18,7 +18,7 @@ const linkGroups = {
       { to: "/f1-tickets-barcelona-2026", label: "F1 Barcelona" },
       { to: "/f1-2026-tickets", label: "All F1 2026 Tickets" },
       { to: "/cheap-f1-tickets-2026", label: "Cheap F1 Tickets" },
-      { to: "/cheapest-f1-races-2026", label: "Cheapest F1 Races Ranked" },
+      { to: "/cheapest-f1-races-2026", label: "Verified F1 Races Ranked" },
       { to: "/f1-hospitality-packages-2026", label: "F1 VIP Hospitality" },
       { to: "/spa-paddock-club-tickets", label: "Spa Paddock Club" },
     ],

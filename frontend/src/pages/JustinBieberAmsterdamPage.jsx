@@ -32,7 +32,7 @@ const FAQS = [
   },
   {
     q: "Why don't you just sell tickets like other sites?",
-    a: "Because Google and our customers both penalise marketplaces that hype non-existent events. We'd rather wait for real dates than burn trust. Every ticket we eventually list is backed by our 100% Money-Back Guarantee and verified seller checks.",
+    a: "Because Google and our customers both penalise marketplaces that hype non-existent events. We'd rather wait for real dates than burn trust. Every ticket we eventually list is backed by our Cancellation refund policy and verified seller checks.",
   },
   {
     q: "What venue will Justin Bieber most likely play in Amsterdam?",
