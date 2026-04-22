@@ -16,6 +16,7 @@ import ProductSchema from "../components/ProductSchema";
 import { RecentlyBoughtPopup } from "../components/SalesAccelerator";
 import VenueInfoSection from "../components/VenueInfoSection";
 import InteractiveVenueMap from "../components/InteractiveVenueMap";
+import VenueViewer from "../components/VenueViewer";
 import TicketListings from "../components/TicketListings";
 import { PriceAlertButton, ScarcityBadge, HighDemandBadge, SocialProofCounter, UrgencyCountdown, AlertWatchersCount } from "../components/ConversionWidgets";
 import { VIPExperienceSection } from "../components/VIPExperience";
@@ -239,6 +240,13 @@ export default function EventDetailsPage() {
                     <p className="text-[11px] text-slate-400 mt-3 text-center">Click a section on the map to filter tickets</p>
                   </div>
                 )}
+              </div>
+            </FadeIn>
+
+            {/* 🏟 3D Venue Viewer — lazy-loaded stadium / circuit */}
+            <FadeIn delay={0.08}>
+              <div className="bg-[#14141c] border border-white/5 rounded-sm p-5 mb-4">
+                <VenueViewer event={event} />
               </div>
             </FadeIn>
 

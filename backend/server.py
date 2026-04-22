@@ -223,6 +223,11 @@ uploads_dir = pathlib.Path(__file__).parent / "uploads"
 uploads_dir.mkdir(exist_ok=True)
 app.mount("/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
 
+# Generated event images (Gemini Nano Banana outputs)
+event_images_dir = pathlib.Path(__file__).parent / "static" / "event_images"
+event_images_dir.mkdir(parents=True, exist_ok=True)
+app.mount("/event-images", StaticFiles(directory=str(event_images_dir)), name="event-images")
+
 # Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
