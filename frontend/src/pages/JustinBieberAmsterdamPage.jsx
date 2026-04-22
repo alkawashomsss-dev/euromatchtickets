@@ -20,31 +20,31 @@ const EVENT_SLUG = "justin-bieber-amsterdam-2026-tickets";
 const FAQS = [
   {
     q: "Is Justin Bieber confirmed to play Amsterdam in 2026?",
-    a: "No. As of February 2026, Justin Bieber has not officially announced a 2026 Amsterdam concert at Johan Cruijff ArenA or any other Dutch venue. Any site claiming to sell confirmed 2026 Amsterdam tickets right now is doing so without official backing. We refuse to list speculative tickets — the moment Bieber's team drops a date, you'll hear from us first.",
+    a: "No. As of February 2026, Justin Bieber has not officially announced a 2026 Amsterdam concert at Johan Cruijff ArenA or any other Dutch venue. Any site claiming to sell confirmed 2026 Amsterdam tickets right now is doing so without official backing. We refuse to list speculative tickets — the moment Bieber's team drops a date, you'll hear from us first."
   },
   {
     q: "When will Justin Bieber next tour Europe?",
-    a: "Bieber's last European run was his 'Justice World Tour' (2022–2023), which was cut short. His team has hinted at a return tour tied to a new studio album, with Amsterdam's Johan Cruijff ArenA traditionally featuring in his European legs. We'll update this page within minutes of an official announcement.",
+    a: "Bieber's last European run was his 'Justice World Tour' (2022–2023), which was cut short. His team has hinted at a return tour tied to a new studio album, with Amsterdam's Johan Cruijff ArenA traditionally featuring in his European legs. We'll update this page within minutes of an official announcement."
   },
   {
     q: "How do I get tickets before the general public?",
-    a: "Join the notify list above. Subscribers receive the on-sale link roughly 24 hours before the general release. No spam — one single email when tickets drop, plus you'll know the exact presale code and venue layout.",
+    a: "Join the notify list above. Subscribers receive the on-sale link roughly 24 hours before the general release. No spam — one single email when tickets drop, plus you'll know the exact presale code and venue layout."
   },
   {
     q: "Why don't you just sell tickets like other sites?",
-    a: "Because Google and our customers both penalise marketplaces that hype non-existent events. We'd rather wait for real dates than burn trust. Every ticket we eventually list is backed by our Cancellation refund policy and verified seller checks.",
+    a: "Because Google and our customers both penalise marketplaces that hype non-existent events. We'd rather wait for real dates than burn trust. Every ticket we eventually list is backed by our Cancellation refund policy and verified seller checks."
   },
   {
     q: "What venue will Justin Bieber most likely play in Amsterdam?",
-    a: "Based on past tours and current European stadium scheduling, the Johan Cruijff ArenA (capacity ~55,000) is the most likely venue for a Bieber Amsterdam date. The Ziggo Dome (~17,000) is also possible for a more intimate arena leg. We'll confirm as soon as the official tour routing drops.",
-  },
+    a: "Based on past tours and current European stadium scheduling, the Johan Cruijff ArenA (capacity ~55,000) is the most likely venue for a Bieber Amsterdam date. The Ziggo Dome (~17,000) is also possible for a more intimate arena leg. We'll confirm as soon as the official tour routing drops."
+  }
 ];
 
 const RELATED = [
   { title: "Coldplay Music of the Spheres — Barcelona 2026", href: "/coldplay-tour-2026", city: "Barcelona" },
   { title: "Taylor Swift — Wembley London 2026", href: "/taylor-swift-london-tickets", city: "London" },
   { title: "Bruno Mars European Tour 2026", href: "/bruno-mars-tour-2026", city: "Europe" },
-  { title: "Bad Bunny — Tottenham London 2026", href: "/bad-bunny-london-2026", city: "London" },
+  { title: "Bad Bunny — Tottenham London 2026", href: "/bad-bunny-london-2026", city: "London" }
 ];
 
 const PAST_TOURS = (

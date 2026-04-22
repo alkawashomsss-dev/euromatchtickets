@@ -60,7 +60,7 @@ const categoryStyles = {
   football: { accent: "#1e88e5", bg: "from-blue-900/40 to-slate-900", badge: "bg-blue-600 text-white" },
   concert: { accent: "#9c27b0", bg: "from-purple-900/40 to-slate-900", badge: "bg-purple-600 text-white" },
   worldcup: { accent: "#2e7d32", bg: "from-green-900/40 to-slate-900", badge: "bg-green-600 text-white" },
-  motogp: { accent: "#ff6d00", bg: "from-orange-900/40 to-slate-900", badge: "bg-orange-600 text-white" },
+  motogp: { accent: "#ff6d00", bg: "from-orange-900/40 to-slate-900", badge: "bg-orange-600 text-white" }
 };
 
 const renderMarkdown = (md) => {
@@ -90,7 +90,7 @@ const LANG_REDIRECTS = {
   de: '/de/tickets-kaufen',
   es: '/es/comprar-entradas',
   fr: '/fr/acheter-billets',
-  it: '/it/biglietti',
+  it: '/it/biglietti'
 };
 
 export default function DynamicSEOPage() {
@@ -264,7 +264,7 @@ export default function DynamicSEOPage() {
                     { icon: Shield, text: "500,000+ Tickets Sold", sub: "100% Money Back Guarantee" },
                     { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
                     { icon: Clock, text: "QR ticket delivery", sub: "E-tickets sent immediately" },
-                    { icon: Star, text: "4.9/5 from 12,000+ Reviews", sub: "Trusted in 25+ countries" },
+                    { icon: Star, text: "4.9/5 from 12,000+ Reviews", sub: "Trusted in 25+ countries" }
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
@@ -312,7 +312,7 @@ export default function DynamicSEOPage() {
           motogp: `${BASE}/images/heroes/motogp-lg.webp`,
           football: `${BASE}/images/heroes/football-stadium-lg.webp`,
           concert: `${BASE}/images/heroes/concert-purple-lg.webp`,
-          worldcup: `${BASE}/images/heroes/football-stadium-lg.webp`,
+          worldcup: `${BASE}/images/heroes/football-stadium-lg.webp`
         };
         const eventImage = `/product-images/${page.slug}.jpg`;
         const eventName = page.event_name || page.artist || page.title?.split("|")[0]?.split("–")[0]?.trim();
@@ -373,12 +373,10 @@ export default function DynamicSEOPage() {
           "name": page.artist || organizer.name
         },
         "offers": {
-          "@type": "AggregateOffer",
+          "@type": "Offer",
           "lowPrice": String(page.price_low || 49),
           "highPrice": String(page.price_high || (page.price_low ? page.price_low * 8 : 1500)),
-          "priceCurrency": "EUR",
-          "offerCount": "100",
-          "availability": "https://schema.org/InStock",
+          "priceCurrency": "EUR","availability": "https://schema.org/InStock",
           "url": `${BASE}/${page.slug}`,
           "validFrom": "2025-01-01",
           "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": BASE }
@@ -396,20 +394,13 @@ export default function DynamicSEOPage() {
         "url": `${BASE}/${page.slug}`,
         "brand": { "@type": "Organization", "name": brand },
         "offers": {
-          "@type": "AggregateOffer",
+          "@type": "Offer",
           "lowPrice": String(page.price_low || 49),
           "highPrice": String(page.price_high || (page.price_low ? page.price_low * 8 : 1500)),
-          "priceCurrency": "EUR",
-          "offerCount": "100",
-          "availability": "https://schema.org/InStock",
+          "priceCurrency": "EUR","availability": "https://schema.org/InStock",
           "url": `${BASE}/${page.slug}`,
           "validFrom": "2025-01-01"
-        },
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": ratingValue, "reviewCount": reviewCount, "bestRating": "5", "worstRating": "1" },
-        "review": [
-          { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "Tickets arrived instantly via QR code. Smooth process.", "datePublished": "2026-01-15" },
-          { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Great prices and the Buyer protection gave me confidence.", "datePublished": "2026-02-08" }
-        ]
+        }
       })}} />
 
       {/* Breadcrumb Schema */}
@@ -617,7 +608,7 @@ export default function DynamicSEOPage() {
                     { icon: Shield, text: "500,000+ Tickets Sold", sub: "100% Money Back Guarantee" },
                     { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
                     { icon: Clock, text: "QR ticket delivery", sub: "E-tickets sent immediately" },
-                    { icon: Star, text: "4.9/5 from 12,000+ Reviews", sub: "Trusted in 25+ countries" },
+                    { icon: Star, text: "4.9/5 from 12,000+ Reviews", sub: "Trusted in 25+ countries" }
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />

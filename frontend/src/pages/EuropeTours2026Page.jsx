@@ -8,7 +8,7 @@ import {
   Globe,
   ArrowRight,
   Sparkles,
-  Bell,
+  Bell
 } from "lucide-react";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
@@ -21,7 +21,7 @@ const CANONICAL = `${SITE}/europe-tours-2026`;
 const INTRO = [
   "Europe is hosting more stadium tours in 2026 than any year on record — over 180 confirmed multi-city runs spanning 47 cities from Lisbon to Helsinki. This page is the master calendar: every confirmed European leg, every country stop, and an honest notify list of the tours that haven't been officially announced yet.",
   "We built this calendar because the ticketing market lies by default. Official promoter sites only show their own cities. Resale marketplaces bury leg-by-leg data under ad spend. We pull directly from every major European promoter — Live Nation, AEG, MOJO, CTS Eventim, Barracuda Music, Doctor Music, Trinity Music — plus verified artist announcements, and deduplicate by tour to give you a single row per European run with city-by-city dates.",
-  "Use this page as your season planner. Each tour has a compact city list, its cheapest confirmed price (across all cities), and a direct link to our per-city pages for buying. If a rumoured tour interests you, join its notify list below — you'll get the on-sale link roughly 24 hours before the general public, across every European city on the run.",
+  "Use this page as your season planner. Each tour has a compact city list, its cheapest confirmed price (across all cities), and a direct link to our per-city pages for buying. If a rumoured tour interests you, join its notify list below — you'll get the on-sale link roughly 24 hours before the general public, across every European city on the run."
 ];
 
 const HIGHLIGHTED_TOURS = [
@@ -32,7 +32,7 @@ const HIGHLIGHTED_TOURS = [
   { artist: "The Weeknd — After Hours Til Dawn EU", cities: "Berlin · Stockholm · Warsaw · Prague", href: "/the-weeknd-tour-2026", priceFrom: 79, dates: "Aug–Sep" },
   { artist: "Guns N' Roses — European Stadium Tour", cities: "Hanover · Prague · Athens · Milan", href: "/guns-n-roses-tour-2026", priceFrom: 89, dates: "Jun–Jul" },
   { artist: "Harry Styles — European Arenas", cities: "Milan · London · Berlin · Paris", href: "/harry-styles-tickets", priceFrom: 79, dates: "Jul–Aug" },
-  { artist: "UEFA Champions League Final 2026", cities: "Munich (Allianz Arena)", href: "/champions-league-tickets", priceFrom: 85, dates: "May 30" },
+  { artist: "UEFA Champions League Final 2026", cities: "Munich (Allianz Arena)", href: "/champions-league-tickets", priceFrom: 85, dates: "May 30" }
 ];
 
 const COUNTRY_HUBS = [
@@ -41,30 +41,30 @@ const COUNTRY_HUBS = [
   { country: "Spain", city: "Barcelona", href: "/coldplay-tour-2026", flag: "🇪🇸" },
   { country: "Germany", city: "Berlin", href: "/champions-league-tickets", flag: "🇩🇪" },
   { country: "Italy", city: "Milan", href: "/f1-italian-grand-prix-monza-tickets", flag: "🇮🇹" },
-  { country: "France", city: "Paris", href: "/f1-monaco-grand-prix-tickets", flag: "🇫🇷" },
+  { country: "France", city: "Paris", href: "/f1-monaco-grand-prix-tickets", flag: "🇫🇷" }
 ];
 
 const FAQS = [
   {
     q: "Which European city has the most 2026 concerts?",
-    a: "London by a wide margin (~240 major ticketed shows), followed by Amsterdam (~120), Berlin (~110), and Paris (~100). For stadium-tier tours specifically, Wembley is the single busiest venue in Europe — hosting Taylor Swift, Coldplay and Oasis in the same calendar year.",
+    a: "London by a wide margin (~240 major ticketed shows), followed by Amsterdam (~120), Berlin (~110), and Paris (~100). For stadium-tier tours specifically, Wembley is the single busiest venue in Europe — hosting Taylor Swift, Coldplay and Oasis in the same calendar year."
   },
   {
     q: "Do European concert tickets transfer between EU countries?",
-    a: "Yes — all of our listed tickets are mobile-delivered (QR or Apple Wallet) and cross any EU border without issue. For UK events, EU citizens don't need anything additional except a valid passport. We never ship physical tickets internationally.",
+    a: "Yes — all of our listed tickets are mobile-delivered (QR or Apple Wallet) and cross any EU border without issue. For UK events, EU citizens don't need anything additional except a valid passport. We never ship physical tickets internationally."
   },
   {
     q: "How do I compare prices across multiple European cities for the same tour?",
-    a: "Click into each tour's dedicated page — we show the city-by-city price matrix at the bottom. For most mid-scale tours, Prague and Warsaw sell at 30–40% lower than London or Paris for identical production — worth planning a trip around if you're flexible.",
+    a: "Click into each tour's dedicated page — we show the city-by-city price matrix at the bottom. For most mid-scale tours, Prague and Warsaw sell at 30–40% lower than London or Paris for identical production — worth planning a trip around if you're flexible."
   },
   {
     q: "Are European festival tickets on this page?",
-    a: "This page focuses on single-night and multi-night tours. For festivals (Glastonbury, Primavera, Rock am Ring, Tomorrowland) see our dedicated festival hub — we track those separately because on-sale dates and refund policies differ significantly.",
+    a: "This page focuses on single-night and multi-night tours. For festivals (Glastonbury, Primavera, Rock am Ring, Tomorrowland) see our dedicated festival hub — we track those separately because on-sale dates and refund policies differ significantly."
   },
   {
     q: "What's the latest I can book a European concert ticket and still travel?",
-    a: "Mobile-delivered tickets are issued up to the door opening. We've had buyers book Wembley tickets 35 minutes before showtime. For cross-border travel, book flights with hand-luggage only — Europe's rail network connects every major concert city within 8 hours of London or Paris.",
-  },
+    a: "Mobile-delivered tickets are issued up to the door opening. We've had buyers book Wembley tickets 35 minutes before showtime. For cross-border travel, book flights with hand-luggage only — Europe's rail network connects every major concert city within 8 hours of London or Paris."
+  }
 ];
 
 export default function EuropeTours2026Page() {
@@ -88,8 +88,8 @@ export default function EuropeTours2026Page() {
       "@type": "ListItem",
       position: i + 1,
       url: `${SITE}${t.href}`,
-      name: t.artist,
-    })),
+      name: t.artist
+    }))
   };
 
   const faqSchema = {
@@ -98,14 +98,14 @@ export default function EuropeTours2026Page() {
     mainEntity: FAQS.map((f) => ({
       "@type": "Question",
       name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
+      acceptedAnswer: { "@type": "Answer", text: f.a }
+    }))
   };
 
   const related = getRelatedLinks({
     category: "city_demand",
     excludeHrefs: ["/europe-tours-2026"],
-    limit: 8,
+    limit: 8
   });
 
   return (

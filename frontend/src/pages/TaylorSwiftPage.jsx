@@ -18,7 +18,7 @@ const shows = [
   { date: "Jun 21, 2026", day: "Sunday", time: "18:00", status: "Available", badge: "bg-emerald-500/100" },
   { date: "Jun 26, 2026", day: "Friday", time: "18:00", status: "Available", badge: "bg-emerald-500/100" },
   { date: "Jun 27, 2026", day: "Saturday", time: "18:00", status: "Selling Fast", badge: "bg-amber-500/100" },
-  { date: "Jun 28, 2026", day: "Sunday", time: "18:00", status: "New!", badge: "bg-blue-500/100" },
+  { date: "Jun 28, 2026", day: "Sunday", time: "18:00", status: "New!", badge: "bg-blue-500/100" }
 ];
 
 const packages = [
@@ -26,7 +26,7 @@ const packages = [
   { name: "Category A", price: 179, tier: "Mid Tier – Great View", color: "from-purple-600 to-purple-800", text: "text-purple-300", tag: "BEST VALUE", features: ["Premium mid-tier seat", "Central stage view", "Instant QR delivery", "Buyer protection"] },
   { name: "Floor Standing", price: 299, tier: "Closest to Stage", color: "from-violet-600 to-violet-800", text: "text-violet-300", tag: "HOT", features: ["Floor level access", "Near the stage", "Priority entry", "Buyer protection"] },
   { name: "VIP Lounge", price: 599, tier: "Exclusive Hospitality", color: "from-rose-500 to-rose-700", text: "text-rose-200", tag: "VIP", vip: true, features: ["Private VIP lounge", "Premium food & drinks", "Best seats in house", "Exclusive merch gift"] },
-  { name: "Diamond Package", price: 999, tier: "Front Row Experience", color: "from-amber-400 via-pink-500 to-purple-600", text: "text-amber-200", tag: "EXCLUSIVE", vip: true, features: ["Front row seats", "Backstage photo area", "Signed merchandise", "Luxury pre-show party"] },
+  { name: "Diamond Package", price: 999, tier: "Front Row Experience", color: "from-amber-400 via-pink-500 to-purple-600", text: "text-amber-200", tag: "EXCLUSIVE", vip: true, features: ["Front row seats", "Backstage photo area", "Signed merchandise", "Luxury pre-show party"] }
 ];
 
 const Countdown = ({ target }) => {
@@ -75,7 +75,7 @@ const TaylorSwiftPage = () => {
     "location": { "@type": "Place", "name": "Wembley Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "Person", "name": "Taylor Swift" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "lowPrice": "79", "highPrice": "1500", "priceCurrency": "EUR", "offerCount": "500", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/taylor-swift-wembley-2026-tickets", "validFrom": "2025-01-01", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
+    "offers": { "@type": "Offer", "lowPrice": "79", "highPrice": "1500", "priceCurrency": "EUR","availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/taylor-swift-wembley-2026-tickets", "validFrom": "2025-01-01", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
   };
 
   return (
@@ -254,7 +254,7 @@ const TaylorSwiftPage = () => {
               { name: "Bruno Mars", link: "/bruno-mars-tickets", emoji: "🎤" },
               { name: "The Weeknd", link: "/the-weeknd-tickets", emoji: "🎵" },
               { name: "Athletics 2026", link: "/world-athletics-2026-tickets", emoji: "🏃" },
-              { name: "All Events", link: "/checkout", emoji: "🎟️" },
+              { name: "All Events", link: "/checkout", emoji: "🎟️" }
             ].map((e, i) => (
               <Link key={i} to={e.link} className="flex items-center gap-2 bg-white/[0.03] border border-white/5 hover:border-pink-500/30 rounded-none p-3 text-sm text-slate-400 hover:text-white transition">
                 <span>{e.emoji}</span> {e.name} <ChevronRight className="w-3.5 h-3.5 ml-auto" />

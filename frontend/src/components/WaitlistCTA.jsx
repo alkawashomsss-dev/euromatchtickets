@@ -27,7 +27,7 @@ export default function WaitlistCTA({ slug, eventTitle, compact = false }) {
       await axios.post(`${API}/marketing/waitlist`, {
         email,
         event_slug: slug,
-        event_title: eventTitle,
+        event_title: eventTitle
       });
       setSubmitted(true);
     } catch {

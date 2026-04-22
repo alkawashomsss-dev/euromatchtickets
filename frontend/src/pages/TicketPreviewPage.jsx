@@ -15,14 +15,14 @@ const demoOrder = {
     venue: "Santiago Bernabeu Stadium",
     city: "Madrid",
     country: "Spain",
-    event_image: "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg",
+    event_image: "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg"
   },
   ticket: {
     category: "cat1",
     section: "North Stand",
     row: "F",
-    seat: "24",
-  },
+    seat: "24"
+  }
 };
 
 const demoOrderF1 = {
@@ -39,14 +39,14 @@ const demoOrderF1 = {
     event_date: "2026-05-24T14:00:00Z",
     venue: "Circuit de Monaco",
     city: "Monte Carlo",
-    country: "Monaco",
+    country: "Monaco"
   },
   ticket: {
     category: "grandstand",
     section: "K",
     row: "12",
-    seat: "8",
-  },
+    seat: "8"
+  }
 };
 
 const demoOrderConcert = {
@@ -63,14 +63,14 @@ const demoOrderConcert = {
     event_date: "2026-07-12T20:00:00Z",
     venue: "Wembley Stadium",
     city: "London",
-    country: "United Kingdom",
+    country: "United Kingdom"
   },
   ticket: {
     category: "floor",
     section: "A",
     row: "3",
-    seat: "15",
-  },
+    seat: "15"
+  }
 };
 
 const TicketPreviewPage = () => {

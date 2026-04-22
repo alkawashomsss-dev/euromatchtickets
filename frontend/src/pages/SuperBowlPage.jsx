@@ -19,7 +19,7 @@ const packages = [
   { name: "Lower Level", price: 3499, orig: 4500, tier: "Close to the Action", color: "from-emerald-600 to-emerald-800", text: "text-emerald-300", tag: "BEST VALUE", features: ["Lower bowl seating", "Near the field", "Priority entry", "Buyer protection"] },
   { name: "Club Level", price: 5999, orig: 7500, tier: "Premium Club Access", color: "from-amber-600 to-amber-800", text: "text-amber-200", tag: "POPULAR", vip: true, features: ["Climate-controlled lounge", "Premium food & drinks", "Padded luxury seats", "Exclusive club access"] },
   { name: "VIP Suite", price: 8999, orig: 12000, tier: "Private Luxury Suite", color: "from-violet-500 to-purple-700", text: "text-violet-200", tag: "VIP", vip: true, features: ["Private suite (12-16 guests)", "All-inclusive F&B", "Personal concierge", "Pre-game field access"] },
-  { name: "Platinum Experience", price: 14999, orig: 20000, tier: "Ultimate Super Bowl", color: "from-yellow-500 via-amber-500 to-orange-600", text: "text-yellow-200", tag: "EXCLUSIVE", vip: true, features: ["Front row seats", "Backstage halftime access", "Celebrity after-party", "Luxury hotel included"] },
+  { name: "Platinum Experience", price: 14999, orig: 20000, tier: "Ultimate Super Bowl", color: "from-yellow-500 via-amber-500 to-orange-600", text: "text-yellow-200", tag: "EXCLUSIVE", vip: true, features: ["Front row seats", "Backstage halftime access", "Celebrity after-party", "Luxury hotel included"] }
 ];
 
 const Countdown = () => {
@@ -68,7 +68,7 @@ const SuperBowlPage = () => {
     "location": { "@type": "Place", "name": "Levi's Stadium", "address": { "@type": "PostalAddress", "addressLocality": "Santa Clara", "addressRegion": "CA", "addressCountry": "US" } },
     "performer": {"@type": "SportsTeam", "name": "NFL"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "lowPrice": "495", "highPrice": "25000", "priceCurrency": "EUR", "offerCount": "500", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/super-bowl-2027-tickets", "validFrom": "2025-01-01", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
+    "offers": { "@type": "Offer", "lowPrice": "495", "highPrice": "25000", "priceCurrency": "EUR","availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/super-bowl-2027-tickets", "validFrom": "2025-01-01", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
   };
 
   return (
@@ -135,7 +135,7 @@ const SuperBowlPage = () => {
             {[
               { icon: "🏟️", title: "70,000+ Fans", desc: "Experience the roar of the crowd at the most electrifying stadium in the world" },
               { icon: "🎤", title: "Epic Halftime Show", desc: "World-class artists perform the most-watched musical event on the planet" },
-              { icon: "🏆", title: "Once in a Lifetime", desc: "Be part of history — the Super Bowl is the most coveted ticket in all of sports" },
+              { icon: "🏆", title: "Once in a Lifetime", desc: "Be part of history — the Super Bowl is the most coveted ticket in all of sports" }
             ].map((item, i) => (
               <div key={i} className="bg-white/[0.03] border border-white/5 rounded-none p-8 hover:border-red-500/20 transition-all">
                 <div className="text-4xl mb-4">{item.icon}</div>
@@ -229,7 +229,7 @@ const SuperBowlPage = () => {
                 {[
                   { name: "StubHub", price: "$1,200+", fees: "25-30%", del: "2-5 days" },
                   { name: "Viagogo", price: "$1,400+", fees: "20-28%", del: "3-7 days" },
-                  { name: "SeatGeek", price: "$1,100+", fees: "15-22%", del: "1-3 days" },
+                  { name: "SeatGeek", price: "$1,100+", fees: "15-22%", del: "1-3 days" }
                 ].map((c, i) => (
                   <tr key={i} className="border-b border-white/5">
                     <td className="p-4 text-slate-400">{c.name}</td>
@@ -278,7 +278,7 @@ const SuperBowlPage = () => {
               { name: "MotoGP", link: "/motogp-tickets", emoji: "🏍️" },
               { name: "El Clasico", link: "/el-clasico-tickets", emoji: "⚽" },
               { name: "Monaco GP", link: "/monaco-grand-prix-tickets", emoji: "🏎️" },
-              { name: "Taylor Swift", link: "/checkout?event=taylor-swift-2026", emoji: "🎤" },
+              { name: "Taylor Swift", link: "/checkout?event=taylor-swift-2026", emoji: "🎤" }
             ].map((e, i) => (
               <Link key={i} to={e.link} className="flex items-center gap-2 bg-white/[0.03] border border-white/5 hover:border-red-500/30 rounded-none p-3 text-sm text-slate-400 hover:text-white transition">
                 <span>{e.emoji}</span> {e.name} <ChevronRight className="w-3.5 h-3.5 ml-auto" />

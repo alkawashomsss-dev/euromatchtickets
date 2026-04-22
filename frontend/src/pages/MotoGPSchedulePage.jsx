@@ -33,7 +33,7 @@ const MotoGPSchedulePage = () => {
     { round: 16, name: "Australian GP", location: "Phillip Island, Australia", circuit: "Phillip Island Circuit", date: "Oct 23-25", price: 99, featured: true },
     { round: 17, name: "Thai GP", location: "Buriram, Thailand", circuit: "Chang International Circuit", date: "Oct 30-Nov 1", price: 69, featured: false },
     { round: 18, name: "Malaysian GP", location: "Sepang, Malaysia", circuit: "Sepang International Circuit", date: "Nov 6-8", price: 79, featured: false },
-    { round: 19, name: "Valencia GP", location: "Valencia, Spain", circuit: "Circuit Ricardo Tormo", date: "Nov 13-15", price: 79, featured: true },
+    { round: 19, name: "Valencia GP", location: "Valencia, Spain", circuit: "Circuit Ricardo Tormo", date: "Nov 13-15", price: 79, featured: true }
   ];
 
   return (
@@ -178,7 +178,7 @@ const MotoGPSchedulePage = () => {
               { q: "How many MotoGP races are there in 2026?", a: "The 2026 MotoGP season features 21 Grand Prix races across 19 countries, running from March to November." },
               { q: "When does the 2026 MotoGP season start?", a: "The 2026 MotoGP season begins with the Qatar GP on March 6-8, 2026 at Lusail International Circuit." },
               { q: "What is the best MotoGP race to attend?", a: "Mugello (Italian GP) and Assen (Dutch GP) are legendary for their atmosphere. They're considered the 'must-see' MotoGP events." },
-              { q: "What is the cheapest MotoGP race?", a: "Spanish GP at Jerez and Catalunya GP at Barcelona offer tickets from €69 - best value in MotoGP!" },
+              { q: "What is the cheapest MotoGP race?", a: "Spanish GP at Jerez and Catalunya GP at Barcelona offer tickets from €69 - best value in MotoGP!" }
             ].map((faq, i) => (
               <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <h3 className="font-bold text-lg mb-2">{faq.q}</h3>

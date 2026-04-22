@@ -20,8 +20,7 @@ const MiamiGPPage = () => {
     "location": { "@type": "Place", "name": "Miami International Autodrome", "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressCountry": "US" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "249", "highPrice": "3999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-miami-grand-prix-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "249", "highPrice": "3999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-miami-grand-prix-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -30,14 +29,14 @@ const MiamiGPPage = () => {
     { section: "Beach Grandstand", price: 549, originalPrice: 559, available: 67, popular: true },
     { section: "Marina Grandstand", price: 489, originalPrice: 499, available: 78, popular: false },
     { section: "Campus Hospitality", price: 1489, originalPrice: 1499, available: 34, popular: true },
-    { section: "Paddock Club", price: 4989, originalPrice: 4999, available: 12, popular: false },
+    { section: "Paddock Club", price: 4989, originalPrice: 4999, available: 12, popular: false }
   ];
 
   const faqs = [
     { q: "Are Miami GP tickets mobile or PDF?", a: "Miami GP uses mobile tickets exclusively. You'll receive a QR code via email that can be scanned directly from your phone at entry gates." },
     { q: "When will I receive my Miami F1 tickets?", a: "Tickets are delivered instantly after purchase via email. For hospitality packages, additional details are sent 2 weeks before the event." },
     { q: "What happens if Miami GP is cancelled?", a: "Full refund within 14 days if the race is cancelled and not rescheduled. Our 100% Money Back Guarantee protects your purchase." },
-    { q: "Can I resell my Miami GP tickets?", a: "Yes, tickets are transferable. You can resell through our platform or transfer to another person." },
+    { q: "Can I resell my Miami GP tickets?", a: "Yes, tickets are transferable. You can resell through our platform or transfer to another person." }
   ];
 
   return (
@@ -83,7 +82,7 @@ const MiamiGPPage = () => {
           <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€249</div>
-            <div className="text-emerald-600 text-sm mt-1">Save €10 (market pricing may vary) & StubHub</div>
+            <div className="text-emerald-600 text-sm mt-1">Market pricing may vary</div>
           </div>
         </div>
       </section>

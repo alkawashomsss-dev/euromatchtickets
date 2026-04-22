@@ -11,21 +11,21 @@ const MonzaTravelTipsPage = () => {
     { icon: Camera, title: "Photography", items: ["Best photos: Parabolica exit, Prima Variante braking", "Bring a 200-300mm lens for great car shots", "Golden hour (~18:00) gives magical lighting in September", "Selfie spots: podium area, Monza banking ruins, Turn 11"] },
     { icon: Sun, title: "Weather & Clothing", items: ["September avg: 22-28°C daytime, can drop to 16°C evening", "Pack sunscreen + sunglasses for daytime sessions", "Bring a light rain jacket - afternoon showers are possible", "Comfortable walking shoes are essential (5-10km walking/day)"] },
     { icon: Shirt, title: "What to Bring", items: ["Portable phone charger (your ticket is on your phone!)", "Ear plugs or ear defenders (F1 cars are 130dB!)", "Small backpack with water, snacks, rain jacket", "Cash for parking (€5) and some food vendors"] },
-    { icon: Wifi, title: "Connectivity & Apps", items: ["Download the F1 app for live timing (essential!)", "Circuit WiFi is limited - rely on 4G/5G", "Screenshot your QR ticket before arriving (no signal dead zones)", "Share your location with friends - easy to get separated"] },
+    { icon: Wifi, title: "Connectivity & Apps", items: ["Download the F1 app for live timing (essential!)", "Circuit WiFi is limited - rely on 4G/5G", "Screenshot your QR ticket before arriving (no signal dead zones)", "Share your location with friends - easy to get separated"] }
   ];
 
   const weekendSchedule = [
     { day: "Thursday", events: "Pit lane walk (special ticket), Merchandise & fan zone opens", tip: "Great for photos with empty grandstands" },
     { day: "Friday", events: "FP1 (13:30), FP2 (17:00), Support race practices", tip: "Quietest day - best for exploring the full circuit" },
     { day: "Saturday", events: "FP3 (12:30), Qualifying (16:00), Support races", tip: "Qualifying atmosphere is incredible - don't miss it!" },
-    { day: "Sunday", events: "Race day! Warm-up, Support races, F1 Race (15:00)", tip: "THE day. Arrive by 09:00. Atmosphere peaks at 14:45." },
+    { day: "Sunday", events: "Race day! Warm-up, Support races, F1 Race (15:00)", tip: "THE day. Arrive by 09:00. Atmosphere peaks at 14:45." }
   ];
 
   const faqs = [
     { question: "What should I bring to Monza F1?", answer: "Essential items: phone charger (your ticket is digital!), ear protection, comfortable shoes, sunscreen, light rain jacket, water bottle, and cash for parking. Monza allows you to bring your own food and non-alcoholic drinks." },
     { question: "What time does the F1 race start at Monza?", answer: "The 2026 Italian Grand Prix race starts at 15:00 local time on Sunday. Gates open at 08:00. Support races begin at 10:30. We recommend arriving by 09:00." },
     { question: "Is Monza suitable for first-time F1 fans?", answer: "Absolutely! Monza is one of the best circuits for first-timers. It's affordable (from €69), easy to reach from Milan, the atmosphere is incredible, and the Tifosi fans are welcoming. General Admission lets you explore freely." },
-    { question: "Can I do a track invasion at Monza?", answer: "Yes! After the race, General Admission fans can rush onto the main straight for the podium ceremony - a legendary Monza tradition. It happens organically when marshals open the gates. An unforgettable experience!" },
+    { question: "Can I do a track invasion at Monza?", answer: "Yes! After the race, General Admission fans can rush onto the main straight for the podium ceremony - a legendary Monza tradition. It happens organically when marshals open the gates. An unforgettable experience!" }
   ];
 
   return (

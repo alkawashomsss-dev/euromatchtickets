@@ -46,14 +46,7 @@ const ReviewsPage = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "EuroMatchTickets",
-    "url": "https://euromatchtickets.com",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": avgRating,
-      "reviewCount": totalReviews,
-      "bestRating": 5,
-      "worstRating": 1
-    }
+    "url": "https://euromatchtickets.com"
   };
 
   return (

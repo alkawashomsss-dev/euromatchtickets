@@ -20,7 +20,7 @@ const UltimateF1GuidePage = () => {
     { name: "Singapore GP", circuit: "Marina Bay", date: "Oct 2-4", price: 129, type: "Night Race", rating: 9.2, link: "/f1-singapore-grand-prix-tickets", highlight: "Stunning night race through the city" },
     { name: "Austrian GP", circuit: "Red Bull Ring", date: "Oct 16-18", price: 85, type: "Daylight", rating: 8.3, link: "/f1-austrian-grand-prix-red-bull-ring-tickets", highlight: "Alpine scenery + compact circuit" },
     { name: "Las Vegas GP", circuit: "The Strip", date: "Nov 20-22", price: 195, type: "Night Race", rating: 8.9, link: "/f1-las-vegas-grand-prix-tickets", highlight: "F1 on the Las Vegas Strip" },
-    { name: "Abu Dhabi GP", circuit: "Yas Marina", date: "Dec 4-6", price: 119, type: "Twilight", rating: 9.1, link: "/f1-abu-dhabi-grand-prix-tickets", highlight: "Season finale - sunset to night" },
+    { name: "Abu Dhabi GP", circuit: "Yas Marina", date: "Dec 4-6", price: 119, type: "Twilight", rating: 9.1, link: "/f1-abu-dhabi-grand-prix-tickets", highlight: "Season finale - sunset to night" }
   ];
 
   const bestValue = [
@@ -29,7 +29,7 @@ const UltimateF1GuidePage = () => {
     { label: "Best Atmosphere", race: "Monza / Spa", price: "€69-85", link: "/f1-italian-grand-prix-monza-tickets" },
     { label: "Most Prestigious", race: "Monaco GP", price: "€195", link: "/f1-monaco-grand-prix-tickets" },
     { label: "Best Night Race", race: "Singapore GP", price: "€129", link: "/f1-singapore-grand-prix-tickets" },
-    { label: "Best for First-Timers", race: "Monza or Bahrain", price: "€59-69", link: "/f1-italian-grand-prix-monza-tickets" },
+    { label: "Best for First-Timers", race: "Monza or Bahrain", price: "€59-69", link: "/f1-italian-grand-prix-monza-tickets" }
   ];
 
   const faqs = [
@@ -38,7 +38,7 @@ const UltimateF1GuidePage = () => {
     { question: "Is it worth going to an F1 race?", answer: "Absolutely! Nothing compares to the sound, speed, and atmosphere of live F1. The TV experience captures maybe 10% of the real thing. With tickets from €59, it's more affordable than most people think." },
     { question: "When should I buy F1 tickets?", answer: "Buy 6-9 months before the race for the best prices. Early-bird tickets are 20-30% cheaper than race-week prices. Popular races like Monaco and Singapore sell out months in advance." },
     { question: "What do I need to bring to an F1 race?", answer: "Essential items: phone charger (digital tickets!), ear protection, comfortable shoes, sunscreen, rain jacket, and water. Download the F1 app for live timing. Bring cash for some circuits' parking." },
-    { question: "How much does an F1 weekend cost in total?", answer: "Budget option: Bahrain/Monza GA ticket (€59-69) + budget flight (€50-100) + hostel (€30-60/night) = total ~€250-350. Mid-range with grandstand: €400-700. VIP experience: €1,500+." },
+    { question: "How much does an F1 weekend cost in total?", answer: "Budget option: Bahrain/Monza GA ticket (€59-69) + budget flight (€50-100) + hostel (€30-60/night) = total ~€250-350. Mid-range with grandstand: €400-700. VIP experience: €1,500+." }
   ];
 
   const articleSchema = {
@@ -169,7 +169,7 @@ const UltimateF1GuidePage = () => {
             { to: "/monaco-gp-vip-experience", label: "Monaco VIP", tag: "VIP" },
             { to: "/bahrain-f1-night-race-guide", label: "Bahrain Night Race", tag: "NIGHT" },
             { to: "/f1-ticket-prices-guide", label: "F1 Price Guide", tag: "PRICES" },
-            { to: "/best-f1-races-europe", label: "Best European Races", tag: "TOP 10" },
+            { to: "/best-f1-races-europe", label: "Best European Races", tag: "TOP 10" }
           ].map((l, i) => (
             <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-red-500/30 transition-all">
               <p className="font-bold text-white text-sm">{l.label}</p>

@@ -20,8 +20,7 @@ const SpainGPPage = () => {
     "location": { "@type": "Place", "name": "Circuit de Barcelona-Catalunya", "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "119", "highPrice": "1999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-spanish-grand-prix-barcelona-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "119", "highPrice": "1999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-spanish-grand-prix-barcelona-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -30,14 +29,14 @@ const SpainGPPage = () => {
     { section: "Grandstand C (Turn 5)", price: 289, originalPrice: 299, available: 98, popular: true },
     { section: "Grandstand H", price: 229, originalPrice: 239, available: 167, popular: false },
     { section: "VIP Hospitality", price: 989, originalPrice: 999, available: 45, popular: true },
-    { section: "Paddock Club", price: 2989, originalPrice: 2999, available: 18, popular: false },
+    { section: "Paddock Club", price: 2989, originalPrice: 2999, available: 18, popular: false }
   ];
 
   const faqs = [
     { q: "What's the best grandstand at Barcelona?", a: "Grandstand G offers excellent main straight views. Grandstand C at Turn 5 is great for overtaking action." },
     { q: "Are Barcelona F1 tickets mobile?", a: "Yes, instant mobile QR delivery. You can also print PDF tickets if preferred." },
     { q: "How hot is it for Spanish GP?", a: "June temperatures average 25-30°C. Bring sunscreen and plenty of water!" },
-    { q: "Is there camping at Circuit de Barcelona?", a: "Yes, official campsite available near the circuit. Book early as it sells out!" },
+    { q: "Is there camping at Circuit de Barcelona?", a: "Yes, official campsite available near the circuit. Book early as it sells out!" }
   ];
 
   return (

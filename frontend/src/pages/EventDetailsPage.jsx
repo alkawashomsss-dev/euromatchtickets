@@ -113,7 +113,7 @@ export default function EventDetailsPage() {
       : [{ question: `How much are ${event.title} tickets?`, answer: `Tickets start from €${lowestPrice}. All prices are verified-seller prices — we don't publish fake "from" anchors.` }]),
     { question: `How will I receive my tickets?`, answer: `All tickets are delivered as secure QR codes to your email and phone. No printing needed.` },
     { question: `Is it safe to buy from EuroMatchTickets?`, answer: `Every purchase is protected by our Buyer protection: verified sellers, escrowed payment until the event, and a full refund if the event is cancelled.` },
-    { question: `Can I get a refund?`, answer: `If the event is cancelled or significantly rescheduled, you receive a full refund automatically.` },
+    { question: `Can I get a refund?`, answer: `If the event is cancelled or significantly rescheduled, you receive a full refund automatically.` }
   ];
 
   const isMotorsport = event.event_type === 'motogp' || event.event_type === 'f1' || event.event_type === 'isle_of_man_tt' || (event.title || '').toLowerCase().includes('isle of man');
@@ -206,7 +206,7 @@ export default function EventDetailsPage() {
               {[
                 { icon: Shield, text: 'Buyer protection', color: 'text-emerald-400' },
                 { icon: Zap, text: 'QR ticket delivery', color: 'text-amber-400' },
-                { icon: Lock, text: 'Secure checkout', color: 'text-blue-400' },
+                { icon: Lock, text: 'Secure checkout', color: 'text-blue-400' }
               ].map((t, i) => (
                 <span key={i} className="flex items-center gap-1.5 text-white/60"><t.icon className={`w-3.5 h-3.5 ${t.color}`} />{t.text}</span>
               ))}
@@ -387,7 +387,7 @@ export default function EventDetailsPage() {
                       { name: 'VISA', bg: 'bg-blue-600 text-white' },
                       { name: 'MC', bg: 'bg-red-600 text-white' },
                       { name: 'AMEX', bg: 'bg-blue-800 text-white' },
-                      { name: 'PAY', bg: 'bg-slate-900 text-white' },
+                      { name: 'PAY', bg: 'bg-slate-900 text-white' }
                     ].map(p => (
                       <div key={p.name} className={`text-[10px] ${p.bg} py-1.5 rounded text-center font-bold`}>{p.name}</div>
                     ))}
@@ -433,7 +433,7 @@ export default function EventDetailsPage() {
                     { label: 'Venue', value: event.venue },
                     { label: 'City', value: `${event.city}${event.country ? `, ${event.country}` : ''}` },
                     { label: 'Category', value: catLabel },
-                    { label: 'Tickets', value: `${totalAvailable} available`, green: true },
+                    { label: 'Tickets', value: `${totalAvailable} available`, green: true }
                   ].map((r, i) => (
                     <div key={i} className="flex justify-between">
                       <span className="text-slate-400">{r.label}</span>
@@ -455,7 +455,7 @@ export default function EventDetailsPage() {
                 {[
                   { name: 'Marco R.', text: 'Great service — QR delivered same day.', flag: 'DE' },
                   { name: 'Sophie M.', text: 'Instant delivery and the QR worked at the gate.', flag: 'FR' },
-                  { name: 'Thomas K.', text: 'Easy checkout, clear pricing, would use again.', flag: 'UK' },
+                  { name: 'Thomas K.', text: 'Easy checkout, clear pricing, would use again.', flag: 'UK' }
                 ].map((r, i) => (
                   <div key={i} className="py-2 border-t border-white/5 first:border-0">
                     <p className="text-slate-400 text-xs italic">"{r.text}"</p>

@@ -28,12 +28,10 @@ const WorldCupRafflePage = () => {
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "performer": { "@type": "Organization", "name": "FIFA World Cup 2026" },
     "offers": {
-      "@type": "AggregateOffer",
+      "@type": "Offer",
       "lowPrice": "65",
       "highPrice": "5000",
-      "priceCurrency": "EUR",
-      "offerCount": "500",
-      "availability": "https://schema.org/InStock",
+      "priceCurrency": "EUR","availability": "https://schema.org/InStock",
       "validFrom": "2025-01-01",
       "url": "https://euromatchtickets.com/world-cup-2026-raffle",
       "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
@@ -73,14 +71,14 @@ const WorldCupRafflePage = () => {
     { icon: Plane, title: "Round-trip Flights", desc: "From any European city to USA/Mexico/Canada" },
     { icon: Hotel, title: "7 Nights Hotel", desc: "4-star hotel near the stadium" },
     { icon: Ticket, title: "2 Match Tickets", desc: "Category 1 seats for 2 people" },
-    { icon: Users, title: "For 2 People", desc: "Bring your friend or partner" },
+    { icon: Users, title: "For 2 People", desc: "Bring your friend or partner" }
   ];
 
   const howItWorks = [
     { step: 1, title: "Buy Entry", desc: "Purchase your raffle entry for €100" },
     { step: 2, title: "Get Confirmation", desc: "Receive your unique entry number" },
     { step: 3, title: "Wait for Draw", desc: "Live draw on May 1st, 2026" },
-    { step: 4, title: "Win & Travel", desc: "Winner gets the complete package!" },
+    { step: 4, title: "Win & Travel", desc: "Winner gets the complete package!" }
   ];
 
   return (

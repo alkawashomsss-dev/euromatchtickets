@@ -34,7 +34,7 @@ function StadiumBowl({ venue }) {
   const rings = [
     { rx: 140, ry: 100, color: "#c54060", label: "Upper Tier" },
     { rx: 115, ry: 82, color: "#a02030", label: "Middle Tier" },
-    { rx: 90, ry: 65, color: "#7f1d1d", label: "Lower Tier" },
+    { rx: 90, ry: 65, color: "#7f1d1d", label: "Lower Tier" }
   ];
   const pitch = { rx: 70, ry: 45 };
 
@@ -204,7 +204,7 @@ function ArenaLayout({ venue }) {
         { d: "M 140 70 L 260 70 L 300 200 L 100 200 Z", c: "#7b1fa2", label: "Floor" },
         { d: "M 100 70 L 140 70 L 100 200 L 40 200 Z", c: "#a04fc0", label: "Left" },
         { d: "M 260 70 L 300 70 L 360 200 L 300 200 Z", c: "#a04fc0", label: "Right" },
-        { d: "M 40 210 L 360 210 L 380 230 L 20 230 Z", c: "#c070e0", label: "Back" },
+        { d: "M 40 210 L 360 210 L 380 230 L 20 230 Z", c: "#c070e0", label: "Back" }
       ].map((s, i) => (
         <g key={i}>
           <path d={s.d} fill={s.c} fillOpacity="0.85" stroke="#0b0b0b" strokeWidth="1" />

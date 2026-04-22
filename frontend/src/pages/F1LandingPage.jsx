@@ -15,7 +15,7 @@ const F1LandingPage = () => {
     { name: "British GP", city: "Silverstone", date: "July 5", price: 180, image: "https://images.pexels.com/photos/3800517/pexels-photo-3800517.jpeg?auto=compress&w=400" },
     { name: "Singapore GP", city: "Marina Bay", date: "Sept 20", price: 250, image: "https://images.pexels.com/photos/3052361/pexels-photo-3052361.jpeg?auto=compress&w=400", hot: true },
     { name: "Las Vegas GP", city: "Las Vegas", date: "Nov 21", price: 300, image: "https://images.pexels.com/photos/415999/pexels-photo-415999.jpeg?auto=compress&w=400", hot: true },
-    { name: "Abu Dhabi GP", city: "Yas Marina", date: "Dec 6", price: 220, image: "https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg?auto=compress&w=400" },
+    { name: "Abu Dhabi GP", city: "Yas Marina", date: "Dec 6", price: 220, image: "https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg?auto=compress&w=400" }
   ];
 
   return (

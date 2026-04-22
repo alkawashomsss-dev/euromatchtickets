@@ -338,7 +338,7 @@ export const TrustBadges = () => {
     { icon: '🔒', text: 'Secure Payment' },
     { icon: '✅', text: 'Buyer protection' },
     { icon: '⚡', text: 'QR delivery' },
-    { icon: '💳', text: 'Stripe Protected' },
+    { icon: '💳', text: 'Stripe Protected' }
   ];
 
   return (

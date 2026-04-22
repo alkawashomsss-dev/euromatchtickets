@@ -16,7 +16,7 @@ const MONACO_FAQS = [
   { q: "When is the Monaco Grand Prix 2026?", a: "May 21-24, 2026. Thursday practice, Friday rest day (unique to Monaco), Saturday qualifying, Sunday race at 15:00 CET." },
   { q: "What is the best grandstand at Monaco?", a: "Tabac Grandstand for the iconic harbour view and swimming pool chicane. Tribune K for the casino section. Rascasse for atmosphere. Sainte Devote (Turn 1) for overtaking." },
   { q: "Can you watch Monaco GP from a yacht?", a: "Yes! Yacht packages from €3,500 per person include harbour viewing, champagne, gourmet dining, and a unique perspective of cars racing past the marina." },
-  { q: "Are Monaco GP tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled. Instant QR delivery." },
+  { q: "Are Monaco GP tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled. Instant QR delivery." }
 ];
 
 const MonacoGPPage = () => {
@@ -33,21 +33,21 @@ const MonacoGPPage = () => {
     { section: "Grandstand T (Tabac)", price: 329, originalPrice: 499, available: 89, badge: "POPULAR", features: ["Swimming pool chicane view", "Harbour views", "Great overtaking zone"] },
     { section: "Grandstand B (Piscine)", price: 359, originalPrice: 559, available: 52, features: ["Swimming Pool complex", "Technical section", "Close-up views"] },
     { section: "Champions Club", price: 1295, originalPrice: 1999, available: 23, badge: "VIP", features: ["5-star hospitality", "Champagne & gourmet dining", "Track-side terrace"] },
-    { section: "Yacht Hospitality", price: 2995, originalPrice: 4999, available: 8, badge: "ULTRA VIP", features: ["Private yacht in harbour", "All-inclusive luxury", "Helicopter transfers available"] },
+    { section: "Yacht Hospitality", price: 2995, originalPrice: 4999, available: 8, badge: "ULTRA VIP", features: ["Private yacht in harbour", "All-inclusive luxury", "Helicopter transfers available"] }
   ];
 
   const competitors = [
     { name: "F1.com Official", casino: "€899", vip: "€5,999", yacht: "€8,000+" },
     { name: "StubHub", casino: "€799", vip: "€4,500", yacht: "N/A" },
     { name: "Viagogo", casino: "€850", vip: "€5,200", yacht: "N/A" },
-    { name: "EuroMatchTickets", casino: "€389", vip: "€1,295", yacht: "€2,995", highlight: true },
+    { name: "EuroMatchTickets", casino: "€389", vip: "€1,295", yacht: "€2,995", highlight: true }
   ];
 
   const experiences = [
     { icon: Crown, title: "Casino Square", desc: "Watch F1 cars navigate the tightest hairpin in motorsport right below the legendary Monte Carlo Casino. The sound reverberates off the historic buildings - pure goosebumps." },
     { icon: Anchor, title: "Harbour View", desc: "See multi-million dollar yachts lined up in Port Hercule while F1 cars blast past at 260km/h on the waterfront. It's the most photographed scene in motorsport." },
     { icon: Wine, title: "The Tunnel", desc: "F1 cars enter the tunnel at 260km/h, plunging from bright sunlight into darkness and back again in seconds. The sound inside is thunderous - a Monaco-only experience." },
-    { icon: Gem, title: "Riviera Lifestyle", desc: "Combine your GP weekend with Monte Carlo's casinos, Michelin-star restaurants, yacht parties, and the stunning French Riviera coastline. It's F1's most glamorous weekend." },
+    { icon: Gem, title: "Riviera Lifestyle", desc: "Combine your GP weekend with Monte Carlo's casinos, Michelin-star restaurants, yacht parties, and the stunning French Riviera coastline. It's F1's most glamorous weekend." }
   ];
 
   const reviewSchema = {
@@ -56,12 +56,9 @@ const MonacoGPPage = () => {
     "name": "Monaco Grand Prix 2026 Tickets",
     "description": "Verified Monaco GP tickets with QR ticket delivery - cheapest prices guaranteed",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "2847", "bestRating": "5", "worstRating": "1" },
-    "review": [
-      { "@type": "Review", "name": "Casino Square grandstand dream come true", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Philippe D." }, "reviewBody": "The Casino Square grandstand was a dream come true. Saved over €400 compared to the official F1 site!", "datePublished": "2026-02-10" },
-      { "@type": "Review", "name": "Incredible yacht hospitality", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Victoria S." }, "reviewBody": "Yacht hospitality was absolutely incredible. Best day of my life. Worth every euro.", "datePublished": "2025-12-18" }
-    ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "195", "highPrice": "2995", "offerCount": "384" , "validFrom": "2025-01-01" }
+    
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "195", "highPrice": "2995","validFrom": "2025-01-01" }
   };
 
   return (
@@ -255,7 +252,7 @@ const MonacoGPPage = () => {
             { to: "/el-clasico-tickets", label: "El Clasico", price: "195", tag: "FOOTBALL" },
             { to: "/taylor-swift-london-tickets", label: "Taylor Swift", price: "89", tag: "CONCERT" },
             { to: "/champions-league-tickets", label: "Champions League", price: "49", tag: "UCL" },
-            { to: "/super-bowl-2026-tickets", label: "Super Bowl", price: "495", tag: "NFL" },
+            { to: "/super-bowl-2026-tickets", label: "Super Bowl", price: "495", tag: "NFL" }
           ].map((l, i) => (
             <Link key={i} to={l.to} className="bg-white/5 border border-white/10 rounded-none p-4 hover:border-amber-400/30 transition-all">
               <p className="font-bold text-white text-sm">{l.label}</p>

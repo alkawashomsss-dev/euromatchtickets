@@ -13,12 +13,9 @@ const LiverpoolHubPage = () => {
     "name": "Liverpool FC Tickets 2025-26",
     "description": "Verified Liverpool FC match tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "3412", "bestRating": "5" },
-    "review": [
-      { "@type": "Review", "name": "Anfield Champions League night was incredible", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Steven G." }, "reviewBody": "Anfield on a Champions League night is something else! Tickets were cheapest I found.", "datePublished": "2026-02-12" },
-      { "@type": "Review", "name": "YNWA live gave me goosebumps", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Lisa M." }, "reviewBody": "You'll Never Walk Alone live gave me goosebumps. Amazing prices on EuroMatchTickets!", "datePublished": "2026-01-25" }
-    ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800", "offerCount": "278" , "validFrom": "2025-01-01" }
+    
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800","validFrom": "2025-01-01" }
   };
 
   const matches = [
@@ -26,14 +23,14 @@ const LiverpoolHubPage = () => {
     { home: "Liverpool", away: "Man City", label: "Premier League", venue: "Anfield", date: "Mar 2026", price: 165, tickets: 31, hot: true, link: "/checkout?event=match" },
     { home: "Liverpool", away: "Man United", label: "Northwest Derby", venue: "Anfield", date: "Apr 2026", price: 155, tickets: 28, hot: true, link: "/checkout?event=match" },
     { home: "Liverpool", away: "Everton", label: "Merseyside Derby", venue: "Anfield", date: "Mar 2026", price: 135, tickets: 35, hot: true, link: "/checkout?event=match" },
-    { home: "Liverpool", away: "Arsenal", label: "Premier League", venue: "Anfield", date: "Apr 2026", price: 145, tickets: 42, link: "/checkout?event=match" },
+    { home: "Liverpool", away: "Arsenal", label: "Premier League", venue: "Anfield", date: "Apr 2026", price: 145, tickets: 42, link: "/checkout?event=match" }
   ];
 
   const reviews = [
     { name: "Steven G.", country: "UK", rating: 5, text: "Anfield on a Champions League night is something else! Verified tickets I found.", date: "Feb 2026" },
     { name: "Lisa M.", country: "USA", rating: 5, text: "You'll Never Walk Alone live gave me goosebumps. Amazing prices!", date: "Jan 2026" },
     { name: "Kenji O.", country: "Japan", rating: 5, text: "Travelled from Tokyo for Liverpool vs Real Madrid. Unforgettable!", date: "Dec 2025" },
-    { name: "Mia K.", country: "Germany", rating: 4, text: "Great service, tickets arrived instantly. Anfield atmosphere is unreal.", date: "Nov 2025" },
+    { name: "Mia K.", country: "Germany", rating: 4, text: "Great service, tickets arrived instantly. Anfield atmosphere is unreal.", date: "Nov 2025" }
   ];
 
   const faqs = [
@@ -41,7 +38,7 @@ const LiverpoolHubPage = () => {
     { question: "Where does Liverpool play?", answer: "Liverpool plays at Anfield in Liverpool, England. The stadium holds 61,276 fans and is famous for the Kop end and 'You'll Never Walk Alone' anthem." },
     { question: "Can I buy Merseyside Derby tickets?", answer: "Yes! Liverpool vs Everton tickets start from \u20AC135. One of the most passionate derbies in English football." },
     { question: "Are Liverpool tickets genuine?", answer: "verified and backed by our Buyer protection. Full refund if there's any issue." },
-    { question: "How to get to Anfield?", answer: "Anfield is accessible via bus from Liverpool city centre (routes 26 and 27). Liverpool Lime Street is the nearest main station." },
+    { question: "How to get to Anfield?", answer: "Anfield is accessible via bus from Liverpool city centre (routes 26 and 27). Liverpool Lime Street is the nearest main station." }
   ];
 
   return (

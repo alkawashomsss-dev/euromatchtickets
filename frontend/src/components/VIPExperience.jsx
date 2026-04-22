@@ -9,7 +9,7 @@ const VIP_CONFIGS = {
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/5cb20c6492be13cb69ae5c45587d61ce3e5a05bfee99232053c912c06464c07b.png", label: "F1 Paddock Club Hospitality" },
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/d84430a95323b820d9a6d93e1758ca35eab8a9f595c089743ffc70391dc84381.png", label: "Pit Lane Walk Access" },
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/a59e7d844022a7c2f36d5d7816e3c37b98b18ec416efeea3c2e85ab084323068.png", label: "Michelin-Star Dining" },
-      { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/ab1e7b7e008b41b5dbc14a24bb83e208c440cb11a06103486f0c7e2e7936e0d3.png", label: "Trackside VIP Terrace" },
+      { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/ab1e7b7e008b41b5dbc14a24bb83e208c440cb11a06103486f0c7e2e7936e0d3.png", label: "Trackside VIP Terrace" }
     ],
     perks: [
       { icon: Eye, title: "Paddock Club Views", desc: "Panoramic glass-front lounge directly above the pit lane", color: "from-red-500/20 to-red-600/10", iconColor: "text-red-500" },
@@ -17,17 +17,17 @@ const VIP_CONFIGS = {
       { icon: Wine, title: "Premium Champagne Bar", desc: "Dom Perignon, Veuve Clicquot & finest spirits all day", color: "from-purple-500/20 to-purple-600/10", iconColor: "text-purple-500" },
       { icon: Flag, title: "Pit Lane Walk", desc: "Exclusive access to the pit lane before the race start", color: "from-blue-500/20 to-blue-600/10", iconColor: "text-blue-500" },
       { icon: Users, title: "Driver Meet & Greet", desc: "Chance to meet F1 drivers and team principals", color: "from-emerald-500/20 to-emerald-600/10", iconColor: "text-emerald-500" },
-      { icon: Lock, title: "VIP Priority Access", desc: "Dedicated entrance, private parking & fast-track security", color: "from-slate-500/20 to-slate-600/10", iconColor: "text-slate-400" },
+      { icon: Lock, title: "VIP Priority Access", desc: "Dedicated entrance, private parking & fast-track security", color: "from-slate-500/20 to-slate-600/10", iconColor: "text-slate-400" }
     ],
     tierFeatures: ["Paddock Club access", "Pit lane walk", "Open champagne bar", "Driver appearances"],
-    badge: "PADDOCK CLUB",
+    badge: "PADDOCK CLUB"
   },
   football: {
     images: [
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/a9213bf9268b0e195b3302f71b60a3ec3f536b94bd8124efec72d009718801dd.png", label: "Executive Skybox Suite" },
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/4a453129694d72099f25b2e2e796109efd57a38904bdceb1ae161b37cc6be6c5.png", label: "VIP Red Carpet Entrance" },
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/a59e7d844022a7c2f36d5d7816e3c37b98b18ec416efeea3c2e85ab084323068.png", label: "Gourmet Match Day Dining" },
-      { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/5cb20c6492be13cb69ae5c45587d61ce3e5a05bfee99232053c912c06464c07b.png", label: "Pitch-View Hospitality" },
+      { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/5cb20c6492be13cb69ae5c45587d61ce3e5a05bfee99232053c912c06464c07b.png", label: "Pitch-View Hospitality" }
     ],
     perks: [
       { icon: Eye, title: "Pitch-Side Views", desc: "Floor-to-ceiling glass overlooking the entire pitch", color: "from-blue-500/20 to-blue-600/10", iconColor: "text-blue-500" },
@@ -35,17 +35,17 @@ const VIP_CONFIGS = {
       { icon: Wine, title: "All-Inclusive Open Bar", desc: "Premium wines, beers, cocktails & soft drinks all match", color: "from-purple-500/20 to-purple-600/10", iconColor: "text-purple-500" },
       { icon: Users, title: "Private Executive Box", desc: "10-20 person suite with personal host and TV screens", color: "from-emerald-500/20 to-emerald-600/10", iconColor: "text-emerald-500" },
       { icon: Gift, title: "Match Day Programme", desc: "Exclusive merchandise, signed memorabilia opportunities", color: "from-rose-500/20 to-rose-600/10", iconColor: "text-rose-500" },
-      { icon: Lock, title: "VIP Entrance & Parking", desc: "Dedicated entrance, reserved parking, no queues", color: "from-slate-500/20 to-slate-600/10", iconColor: "text-slate-400" },
+      { icon: Lock, title: "VIP Entrance & Parking", desc: "Dedicated entrance, reserved parking, no queues", color: "from-slate-500/20 to-slate-600/10", iconColor: "text-slate-400" }
     ],
     tierFeatures: ["Private executive box", "3-course dining", "Open bar included", "VIP entrance"],
-    badge: "VIP HOSPITALITY",
+    badge: "VIP HOSPITALITY"
   },
   concert: {
     images: [
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/0e3e0b3530249bb352a6d918a417a2113c577df5ab54410053419408e992e8e2.png", label: "VIP Backstage Lounge" },
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/cfabbea7c8e59c5122ea5e3cdc9c8d9733c939c93919cb1120c3efa8621770b0.png", label: "Elevated VIP Platform" },
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/a59e7d844022a7c2f36d5d7816e3c37b98b18ec416efeea3c2e85ab084323068.png", label: "Premium Dining Experience" },
-      { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/4a453129694d72099f25b2e2e796109efd57a38904bdceb1ae161b37cc6be6c5.png", label: "VIP Red Carpet Entry" },
+      { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/4a453129694d72099f25b2e2e796109efd57a38904bdceb1ae161b37cc6be6c5.png", label: "VIP Red Carpet Entry" }
     ],
     perks: [
       { icon: Music, title: "Front Stage Access", desc: "Dedicated viewing area closest to the stage", color: "from-purple-500/20 to-purple-600/10", iconColor: "text-purple-500" },
@@ -53,17 +53,17 @@ const VIP_CONFIGS = {
       { icon: Eye, title: "Elevated Platform", desc: "Raised VIP viewing deck with unobstructed sight lines", color: "from-amber-500/20 to-amber-600/10", iconColor: "text-amber-500" },
       { icon: Users, title: "Backstage Lounge", desc: "Exclusive backstage area with artist memorabilia", color: "from-blue-500/20 to-blue-600/10", iconColor: "text-blue-500" },
       { icon: Gift, title: "VIP Welcome Pack", desc: "Exclusive merch, lanyard, commemorative programme", color: "from-emerald-500/20 to-emerald-600/10", iconColor: "text-emerald-500" },
-      { icon: Lock, title: "Fast-Track Entry", desc: "Skip the queue with dedicated VIP entrance lane", color: "from-slate-500/20 to-slate-600/10", iconColor: "text-slate-400" },
+      { icon: Lock, title: "Fast-Track Entry", desc: "Skip the queue with dedicated VIP entrance lane", color: "from-slate-500/20 to-slate-600/10", iconColor: "text-slate-400" }
     ],
     tierFeatures: ["Front stage access", "Backstage lounge", "Open bar all night", "Fast-track entry"],
-    badge: "VIP ACCESS",
+    badge: "VIP ACCESS"
   },
   motogp: {
     images: [
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/ab1e7b7e008b41b5dbc14a24bb83e208c440cb11a06103486f0c7e2e7936e0d3.png", label: "MotoGP VIP Village" },
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/d84430a95323b820d9a6d93e1758ca35eab8a9f595c089743ffc70391dc84381.png", label: "Garage & Pit Access" },
       { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/a59e7d844022a7c2f36d5d7816e3c37b98b18ec416efeea3c2e85ab084323068.png", label: "Premium Trackside Dining" },
-      { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/5cb20c6492be13cb69ae5c45587d61ce3e5a05bfee99232053c912c06464c07b.png", label: "Hospitality Lounge" },
+      { src: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/5cb20c6492be13cb69ae5c45587d61ce3e5a05bfee99232053c912c06464c07b.png", label: "Hospitality Lounge" }
     ],
     perks: [
       { icon: Bike, title: "VIP Village Access", desc: "Trackside hospitality with panoramic race views", color: "from-orange-500/20 to-orange-600/10", iconColor: "text-orange-500" },
@@ -71,11 +71,11 @@ const VIP_CONFIGS = {
       { icon: Wine, title: "Open Bar All Day", desc: "Premium wines, beer, cocktails from race start to finish", color: "from-purple-500/20 to-purple-600/10", iconColor: "text-purple-500" },
       { icon: Flag, title: "Pit Lane Tour", desc: "Guided walk through the MotoGP pit lane & garages", color: "from-red-500/20 to-red-600/10", iconColor: "text-red-500" },
       { icon: Users, title: "Rider Appearances", desc: "Meet MotoGP riders and collect autographs in VIP Village", color: "from-emerald-500/20 to-emerald-600/10", iconColor: "text-emerald-500" },
-      { icon: Lock, title: "Priority Entrance", desc: "VIP-only entrance, reserved seating, private facilities", color: "from-slate-500/20 to-slate-600/10", iconColor: "text-slate-400" },
+      { icon: Lock, title: "Priority Entrance", desc: "VIP-only entrance, reserved seating, private facilities", color: "from-slate-500/20 to-slate-600/10", iconColor: "text-slate-400" }
     ],
     tierFeatures: ["VIP Village access", "Pit lane tour", "Open bar all day", "Rider meet & greet"],
-    badge: "VIP VILLAGE",
-  },
+    badge: "VIP VILLAGE"
+  }
 };
 
 /* Detect event category from event object or slug */

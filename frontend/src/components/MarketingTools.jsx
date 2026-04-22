@@ -241,7 +241,7 @@ export const SocialProofNotification = () => {
     { name: 'Lucas', city: 'Madrid', event: 'El Clasico', time: '15 minutes ago' },
     { name: 'Sophie', city: 'Munich', event: 'Isle of Man TT', time: '18 minutes ago' },
     { name: 'James', city: 'Amsterdam', event: 'Silverstone GP', time: '22 minutes ago' },
-    { name: 'Maria', city: 'Milan', event: 'Monza GP', time: '25 minutes ago' },
+    { name: 'Maria', city: 'Milan', event: 'Monza GP', time: '25 minutes ago' }
   ];
 
   useEffect(() => {

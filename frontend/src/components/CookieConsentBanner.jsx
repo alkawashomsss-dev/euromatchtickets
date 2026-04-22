@@ -135,7 +135,7 @@ const CookieConsentBanner = () => {
                   { key: 'necessary', title: 'Notwendige Cookies', sub: 'Necessary Cookies', desc: 'Diese Cookies sind fur die Grundfunktionen der Website erforderlich.', icon: Shield, color: '#15803d', always: true },
                   { key: 'analytics', title: 'Analyse-Cookies', sub: 'Analytics Cookies (Google Analytics)', desc: 'Helfen uns zu verstehen, wie Besucher unsere Website nutzen.', icon: null, color: '#3b82f6', always: false },
                   { key: 'marketing', title: 'Marketing-Cookies', sub: 'Marketing Cookies (Facebook Pixel)', desc: 'Werden verwendet, um Werbung relevanter fur Sie zu gestalten.', icon: null, color: '#e10600', always: false },
-                  { key: 'preferences', title: 'Praeferenz-Cookies', sub: 'Preference Cookies', desc: 'Ermoglichen es der Website, sich an Ihre Einstellungen zu erinnern.', icon: null, color: '#f59e0b', always: false },
+                  { key: 'preferences', title: 'Praeferenz-Cookies', sub: 'Preference Cookies', desc: 'Ermoglichen es der Website, sich an Ihre Einstellungen zu erinnern.', icon: null, color: '#f59e0b', always: false }
                 ].map((item) => (
                   <div key={item.key} className="bg-white/5 border border-white/8 p-4">
                     <div className="flex items-center justify-between mb-2">

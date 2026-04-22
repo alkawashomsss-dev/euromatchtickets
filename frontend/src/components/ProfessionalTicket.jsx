@@ -18,7 +18,7 @@ const categoryColors = {
   grandstand: { bg: "bg-cyan-500", text: "text-cyan-500", accent: "#06b6d4" },
   general_admission: { bg: "bg-zinc-400", text: "text-slate-500", accent: "#a1a1aa" },
   hospitality: { bg: "bg-amber-500", text: "text-amber-500", accent: "#f59e0b" },
-  paddock_club: { bg: "bg-amber-600", text: "text-amber-600", accent: "#d97706" },
+  paddock_club: { bg: "bg-amber-600", text: "text-amber-600", accent: "#d97706" }
 };
 
 const eventTypeIcons = {
@@ -26,7 +26,7 @@ const eventTypeIcons = {
   concert: { emoji: "🎵", label: "CONCERT" },
   f1: { emoji: "🏎️", label: "FORMULA 1" },
   motogp: { emoji: "🏍️", label: "MOTOGP" },
-  worldcup: { emoji: "🏆", label: "WORLD CUP" },
+  worldcup: { emoji: "🏆", label: "WORLD CUP" }
 };
 
 const formatTicketDate = (dateStr) => {
@@ -38,7 +38,7 @@ const formatTicketDate = (dateStr) => {
     month: d.toLocaleDateString("en-US", { month: "short" }).toUpperCase(),
     year: d.getFullYear(),
     time: d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }),
-    full: d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" }),
+    full: d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })
   };
 };
 
@@ -184,7 +184,7 @@ export const ProfessionalTicket = ({ order, compact = false }) => {
                 { label: "Section", value: ticket?.section || "GA" },
                 { label: "Row", value: ticket?.row || "-" },
                 { label: "Seat", value: ticket?.seat || "-" },
-                { label: "Category", value: (category || "STD").toUpperCase() },
+                { label: "Category", value: (category || "STD").toUpperCase() }
               ].map((item) => (
                 <div key={item.label} className="bg-zinc-100 rounded-lg px-4 py-2 text-center min-w-[70px]">
                   <p className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">{item.label}</p>

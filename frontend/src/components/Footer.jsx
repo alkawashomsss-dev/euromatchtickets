@@ -18,7 +18,7 @@ const Footer = () => {
               { icon: Shield, label: "Buyer protection" },
               { icon: CheckCircle, label: "Verified sellers" },
               { icon: Lock, label: "Encrypted payments" },
-              { icon: Clock, label: "Customer support" },
+              { icon: Clock, label: "Customer support" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-slate-400">
                 <item.icon className="w-4 h-4 text-[#e10600] flex-shrink-0" />
@@ -53,7 +53,7 @@ const Footer = () => {
                 { icon: Facebook, href: "https://facebook.com/euromatchtickets" },
                 { icon: Twitter, href: "https://twitter.com/euromatchtickets" },
                 { icon: Instagram, href: "https://instagram.com/euromatchtickets" },
-                { icon: Linkedin, href: "https://linkedin.com/company/euromatchtickets" },
+                { icon: Linkedin, href: "https://linkedin.com/company/euromatchtickets" }
               ].map(({ icon: Icon, href }) => (
                 <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/5 flex items-center justify-center text-slate-500 hover:text-white hover:bg-[#e10600] transition-colors duration-150">
                   <Icon className="w-3.5 h-3.5" />
@@ -84,7 +84,7 @@ const Footer = () => {
                 { label: "Man City", to: "/manchester-city-tickets" },
                 { label: "World Cup 2026", to: "/world-cup-2026" },
                 { label: "El Clasico", to: "/el-clasico-tickets" },
-                { label: "All Matches", to: "/events?type=match" },
+                { label: "All Matches", to: "/events?type=match" }
               ].map(link => (
                 <li key={link.label}><Link to={link.to} className="text-slate-500 hover:text-white text-xs transition-colors duration-150">{link.label}</Link></li>
               ))}
@@ -101,7 +101,7 @@ const Footer = () => {
                 { label: "The Weeknd", to: "/the-weeknd-tour-2026" },
                 { label: "Bruno Mars", to: "/bruno-mars-tour-2026" },
                 { label: "Metallica", to: "/metallica-sphere-las-vegas-tickets" },
-                { label: "Bad Bunny", to: "/bad-bunny-london-2026" },
+                { label: "Bad Bunny", to: "/bad-bunny-london-2026" }
               ].map(link => (
                 <li key={link.label}><Link to={link.to} className="text-slate-500 hover:text-white text-xs transition-colors duration-150">{link.label}</Link></li>
               ))}
@@ -119,7 +119,7 @@ const Footer = () => {
                 { label: "MotoGP", to: "/motogp-tickets" },
                 { label: "World Athletics", to: "/world-athletics-2026-tickets" },
                 { label: "Monaco GP", to: "/monaco-grand-prix-tickets" },
-                { label: "This Weekend", to: "/events-this-weekend" },
+                { label: "This Weekend", to: "/events-this-weekend" }
               ].map(link => (
                 <li key={link.label}><Link to={link.to} className="text-slate-500 hover:text-white text-xs transition-colors duration-150">{link.label}</Link></li>
               ))}
@@ -137,7 +137,7 @@ const Footer = () => {
                 { label: "How to Buy F1 Tickets", to: "/blog/how-to-buy-f1-tickets-2026" },
                 { label: "Taylor Swift London", to: "/blog/taylor-swift-eras-tour-london-guide-2026" },
                 { label: "Best Seats Bernabeu", to: "/blog/best-seats-santiago-bernabeu" },
-                { label: "Buy UCL Tickets Safely", to: "/blog/how-to-buy-champions-league-tickets-safely" },
+                { label: "Buy UCL Tickets Safely", to: "/blog/how-to-buy-champions-league-tickets-safely" }
               ].map(link => (
                 <li key={link.label}><Link to={link.to} className="text-slate-500 hover:text-white text-xs transition-colors duration-150">{link.label}</Link></li>
               ))}
@@ -157,7 +157,7 @@ const Footer = () => {
                 { label: "Impressum", to: "/impressum" },
                 { label: "Terms", to: "/terms" },
                 { label: "Privacy", to: "/privacy-policy" },
-                { label: "Refunds", to: "/refund-policy" },
+                { label: "Refunds", to: "/refund-policy" }
               ].map(link => (
                 <li key={link.label}><Link to={link.to} className="text-slate-500 hover:text-white text-xs transition-colors duration-150">{link.label}</Link></li>
               ))}
@@ -178,7 +178,7 @@ const Footer = () => {
                   { name: "VISA", bg: "bg-white text-blue-700" },
                   { name: "MC", bg: "bg-white text-red-600" },
                   { name: "AMEX", bg: "bg-white text-blue-900" },
-                  { name: "Stripe", bg: "bg-violet-600 text-white" },
+                  { name: "Stripe", bg: "bg-violet-600 text-white" }
                 ].map(p => (
                   <div key={p.name} className={`px-2 py-0.5 text-[9px] font-black ${p.bg}`}>{p.name}</div>
                 ))}

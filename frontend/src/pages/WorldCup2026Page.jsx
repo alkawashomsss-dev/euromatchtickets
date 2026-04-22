@@ -15,7 +15,7 @@ const TRANSLATIONS = {
   es: { title: "Entradas Copa Mundial FIFA 2026", subtitle: "USA • Canadá • México", buyNow: "Comprar", from: "Desde", final: "Final del Mundial", guarantee: "100% Garantía" },
   fr: { title: "Billets Coupe du Monde FIFA 2026", subtitle: "USA • Canada • Mexique", buyNow: "Acheter", from: "À partir de", final: "Finale de la Coupe", guarantee: "Garantie 100%" },
   ar: { title: "تذاكر كأس العالم 2026", subtitle: "أمريكا • كندا • المكسيك", buyNow: "اشترِ الآن", from: "من", final: "نهائي كأس العالم", guarantee: "ضمان 100%" },
-  pt: { title: "Ingressos Copa do Mundo FIFA 2026", subtitle: "EUA • Canadá • México", buyNow: "Comprar", from: "A partir de", final: "Final da Copa", guarantee: "100% Garantia" },
+  pt: { title: "Ingressos Copa do Mundo FIFA 2026", subtitle: "EUA • Canadá • México", buyNow: "Comprar", from: "A partir de", final: "Final da Copa", guarantee: "100% Garantia" }
 };
 
 const WorldCup2026Page = () => {
@@ -64,12 +64,10 @@ const WorldCup2026Page = () => {
     "performer": {"@type": "SportsTeam", "name": "FIFA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": {
-      "@type": "AggregateOffer",
+      "@type": "Offer",
       "lowPrice": events[0]?.lowest_price || 285,
       "highPrice": 35000,
-      "priceCurrency": "USD",
-      "offerCount": "100",
-      "availability": "https://schema.org/LimitedAvailability",
+      "priceCurrency": "USD","availability": "https://schema.org/LimitedAvailability",
       "url": "https://euromatchtickets.com/world-cup-2026",
       "validFrom": "2025-01-01"
     }

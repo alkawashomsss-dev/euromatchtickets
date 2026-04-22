@@ -20,8 +20,7 @@ const JapanGPPage = () => {
     "location": { "@type": "Place", "name": "Suzuka International Racing Course", "address": { "@type": "PostalAddress", "addressLocality": "Suzuka", "addressCountry": "JP" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "189", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-japanese-grand-prix-suzuka-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "189", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-japanese-grand-prix-suzuka-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -30,14 +29,14 @@ const JapanGPPage = () => {
     { section: "B2 Grandstand (S-Curves)", price: 449, originalPrice: 459, available: 67, popular: true },
     { section: "D Grandstand (Hairpin)", price: 349, originalPrice: 359, available: 98, popular: false },
     { section: "VIP Hospitality", price: 1389, originalPrice: 1399, available: 28, popular: true },
-    { section: "Paddock Club", price: 4289, originalPrice: 4299, available: 11, popular: false },
+    { section: "Paddock Club", price: 4289, originalPrice: 4299, available: 11, popular: false }
   ];
 
   const faqs = [
     { q: "Are Suzuka F1 tickets mobile or paper?", a: "Suzuka offers both mobile QR tickets and printable PDF tickets. You'll receive both options via email after purchase." },
     { q: "When will Japanese GP tickets be delivered?", a: "Tickets are delivered instantly via email after successful payment. Check your spam folder if not received within 10 minutes." },
     { q: "What if Japanese GP is cancelled due to weather?", a: "If cancelled without rescheduling, full refund within 14 days. If rescheduled, tickets remain valid for new date." },
-    { q: "Is Suzuka accessible by public transport?", a: "Yes! Suzuka Circuit is accessible via Shiroko Station. Special shuttle buses run during the F1 weekend." },
+    { q: "Is Suzuka accessible by public transport?", a: "Yes! Suzuka Circuit is accessible via Shiroko Station. Special shuttle buses run during the F1 weekend." }
   ];
 
   return (

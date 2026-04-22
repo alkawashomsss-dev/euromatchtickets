@@ -63,13 +63,11 @@ const IsleOfManTTPage = () => {
       "name": "Isle of Man TT Races"
     },
     "offers": { 
-      "@type": "AggregateOffer", 
+      "@type": "Offer", 
       "lowPrice": "45",
       "highPrice": "500",
       "url": "https://euromatchtickets.com/isle-of-man-tt-tickets",
-      "priceCurrency": "EUR",
-      "offerCount": "500",
-      "availability": "https://schema.org/InStock",
+      "priceCurrency": "EUR","availability": "https://schema.org/InStock",
       "validFrom": "2025-01-01",
       "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
     },

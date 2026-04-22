@@ -11,7 +11,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "../components/ui/select";
 
 const leagueConfig = {
@@ -148,7 +148,7 @@ const MatchesPage = () => {
         // Pull both World Cup + club football events from the events endpoint
         const [wc, club] = await Promise.all([
           axios.get(`${API}/events?event_type=worldcup&limit=200`),
-          axios.get(`${API}/events?event_type=football&limit=100`),
+          axios.get(`${API}/events?event_type=football&limit=100`)
         ]);
         const rows = [...(wc.data || []), ...(club.data || [])].map(e => ({
           match_id: e.slug || e.id,
@@ -163,7 +163,7 @@ const MatchesPage = () => {
           city: e.city || '',
           lowest_price: e.lowest_price,
           available_tickets: e.available_tickets,
-          title: e.title,
+          title: e.title
         })).filter(m => m.home_team && m.away_team); // drop Finalist placeholders
 
         // Apply server-side-ish filters (client-side since /api/matches endpoint was removed)

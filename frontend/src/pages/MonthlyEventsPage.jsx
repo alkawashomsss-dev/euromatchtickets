@@ -22,7 +22,7 @@ const MONTH_HIGHLIGHTS = {
   'September': { events: ['Singapore GP Night Race', 'Football Season'], color: 'from-indigo-600 to-purple-600' },
   'October': { events: ['Japan GP', 'Halloween Events'], color: 'from-orange-600 to-amber-600' },
   'November': { events: ['Las Vegas GP', 'End of Season'], color: 'from-purple-600 to-pink-600' },
-  'December': { events: ['Abu Dhabi GP Final', 'Christmas Concerts'], color: 'from-red-600 to-green-600' },
+  'December': { events: ['Abu Dhabi GP Final', 'Christmas Concerts'], color: 'from-red-600 to-green-600' }
 };
 
 const MonthlyEventsPage = ({ month = 'January' }) => {

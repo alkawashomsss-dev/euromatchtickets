@@ -17,17 +17,17 @@ const PRICE_DATA = {
     categories: [
       { name: 'General Admission', price: '€89 - €199', description: 'Standing areas with big screens and atmosphere', icon: '🎫' },
       { name: 'Grandstand', price: '€199 - €599', description: 'Reserved seating with excellent track views', icon: '🏟️' },
-      { name: 'VIP Hospitality', price: '€899 - €2,999', description: 'Premium hospitality, paddock access, driver meet', icon: '👑' },
+      { name: 'VIP Hospitality', price: '€899 - €2,999', description: 'Premium hospitality, paddock access, driver meet', icon: '👑' }
     ],
     cheapestRaces: [
       { name: 'Chinese GP', city: 'Shanghai', price: '€89' },
       { name: 'Bahrain GP', city: 'Sakhir', price: '€99' },
-      { name: 'Hungarian GP', city: 'Budapest', price: '€109' },
+      { name: 'Hungarian GP', city: 'Budapest', price: '€109' }
     ],
     expensiveRaces: [
       { name: 'Monaco GP', city: 'Monte Carlo', price: '€399+' },
       { name: 'Las Vegas GP', city: 'Las Vegas', price: '€349+' },
-      { name: 'Singapore GP', city: 'Marina Bay', price: '€299+' },
+      { name: 'Singapore GP', city: 'Marina Bay', price: '€299+' }
     ],
     link: '/f1-tickets'
   },
@@ -39,17 +39,17 @@ const PRICE_DATA = {
     categories: [
       { name: 'General Admission', price: '€69 - €129', description: 'Access to general viewing areas around the circuit', icon: '🎫' },
       { name: 'Grandstand', price: '€149 - €349', description: 'Reserved seating at key corners and straights', icon: '🏟️' },
-      { name: 'VIP Village', price: '€499 - €1,499', description: 'Hospitality, paddock tours, rider access', icon: '👑' },
+      { name: 'VIP Village', price: '€499 - €1,499', description: 'Hospitality, paddock tours, rider access', icon: '👑' }
     ],
     cheapestRaces: [
       { name: 'Thai GP', city: 'Buriram', price: '€69' },
       { name: 'Indonesian GP', city: 'Mandalika', price: '€79' },
-      { name: 'Malaysian GP', city: 'Sepang', price: '€89' },
+      { name: 'Malaysian GP', city: 'Sepang', price: '€89' }
     ],
     expensiveRaces: [
       { name: 'Italian GP', city: 'Mugello', price: '€199+' },
       { name: 'Spanish GP', city: 'Jerez', price: '€179+' },
-      { name: 'British GP', city: 'Silverstone', price: '€169+' },
+      { name: 'British GP', city: 'Silverstone', price: '€169+' }
     ],
     link: '/motogp-tickets'
   },
@@ -61,17 +61,17 @@ const PRICE_DATA = {
     categories: [
       { name: 'Standing/GA', price: '€49 - €149', description: 'General admission floor or standing areas', icon: '🎫' },
       { name: 'Seated', price: '€89 - €249', description: 'Reserved seats in stadium or arena sections', icon: '💺' },
-      { name: 'VIP Package', price: '€299 - €999', description: 'Meet & greet, early entry, exclusive merchandise', icon: '👑' },
+      { name: 'VIP Package', price: '€299 - €999', description: 'Meet & greet, early entry, exclusive merchandise', icon: '👑' }
     ],
     cheapestRaces: [
       { name: 'Club Shows', city: 'Various', price: '€29+' },
       { name: 'Festival Day Pass', city: 'Europe', price: '€79+' },
-      { name: 'Arena Upper Tier', city: 'Various', price: '€59+' },
+      { name: 'Arena Upper Tier', city: 'Various', price: '€59+' }
     ],
     expensiveRaces: [
       { name: 'Taylor Swift', city: 'Stadium Tours', price: '€199+' },
       { name: 'Coldplay', city: 'Stadium Tours', price: '€149+' },
-      { name: 'Ed Sheeran', city: 'Stadium Tours', price: '€129+' },
+      { name: 'Ed Sheeran', city: 'Stadium Tours', price: '€129+' }
     ],
     link: '/events?type=concert'
   },
@@ -83,17 +83,17 @@ const PRICE_DATA = {
     categories: [
       { name: 'League Match', price: '€29 - €149', description: 'Regular season domestic league games', icon: '⚽' },
       { name: 'Champions League', price: '€99 - €399', description: 'UCL group stage and knockout rounds', icon: '🏆' },
-      { name: 'Cup Finals', price: '€499 - €1,999', description: 'FA Cup, Champions League Final, World Cup', icon: '👑' },
+      { name: 'Cup Finals', price: '€499 - €1,999', description: 'FA Cup, Champions League Final, World Cup', icon: '👑' }
     ],
     cheapestRaces: [
       { name: 'Bundesliga', city: 'Germany', price: '€29+' },
       { name: 'Ligue 1', city: 'France', price: '€39+' },
-      { name: 'La Liga', city: 'Spain', price: '€49+' },
+      { name: 'La Liga', city: 'Spain', price: '€49+' }
     ],
     expensiveRaces: [
       { name: 'UCL Final', city: 'Munich', price: '€999+' },
       { name: 'El Clasico', city: 'Madrid/Barcelona', price: '€299+' },
-      { name: 'North London Derby', city: 'London', price: '€199+' },
+      { name: 'North London Derby', city: 'London', price: '€199+' }
     ],
     link: '/events?type=match'
   }

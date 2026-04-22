@@ -13,7 +13,7 @@ const TRANSLATIONS = {
   en: { title: "John Legend Abu Dhabi Concert 2026", subtitle: "Official Tickets - 5% Cheaper", buyNow: "Secure Your Seat Now", from: "From", guarantee: "Buyer protection" },
   ar: { title: "حفلة جون ليجند أبوظبي 2026", subtitle: "تذاكر رسمية - أرخص بـ 5%", buyNow: "اشترِ الآن", from: "من", guarantee: "ضمان 100%" },
   de: { title: "John Legend Abu Dhabi Konzert 2026", subtitle: "Offizielle Tickets - 5% Günstiger", buyNow: "Jetzt Kaufen", from: "Ab", guarantee: "100% Garantie" },
-  fr: { title: "Concert John Legend Abu Dhabi 2026", subtitle: "Billets Officiels - 5% Moins Cher", buyNow: "Acheter", from: "À partir de", guarantee: "Garantie 100%" },
+  fr: { title: "Concert John Legend Abu Dhabi 2026", subtitle: "Billets Officiels - 5% Moins Cher", buyNow: "Acheter", from: "À partir de", guarantee: "Garantie 100%" }
 };
 
 const JohnLegendPage = () => {
@@ -51,8 +51,7 @@ const JohnLegendPage = () => {
     "performer": {"@type": "Person", "name": "John Legend"},
     "location": {"@type": "Place", "name": "Etihad Arena", "address": {"@type": "PostalAddress", "addressLocality": "Abu Dhabi", "addressCountry": "AE"}},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "AggregateOffer", "lowPrice": 90, "highPrice": 500, "priceCurrency": "EUR",
-              "offerCount": "100", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/john-legend-abu-dhabi-tickets", "validFrom": "2025-01-01"}
+    "offers": {"@type": "Offer", "lowPrice": 90, "highPrice": 500, "priceCurrency": "EUR","availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/john-legend-abu-dhabi-tickets", "validFrom": "2025-01-01"}
   };
 
   return (

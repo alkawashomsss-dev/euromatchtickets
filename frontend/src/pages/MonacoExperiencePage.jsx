@@ -19,7 +19,7 @@ const MonacoExperiencePage = () => {
     { title: "Yacht Hospitality", price: "€2,995", desc: "Watch F1 cars race past from your private yacht in Port Hercule harbour. Unlimited champagne, gourmet catering, helicopter transfers available. The ultimate Monaco experience.", features: ["Private yacht with 360° views", "All-inclusive champagne & gourmet food", "Helicopter transfer option", "Celebrity sighting guaranteed"], tier: "ULTRA VIP" },
     { title: "Champions Club", price: "€1,295", desc: "5-star hospitality suite overlooking the circuit. Meet-and-greet with F1 personalities, Michelin-star dining, exclusive pit lane walks.", features: ["Track-side luxury terrace", "Michelin-star dining experience", "Pit lane walk before the race", "Exclusive F1 driver appearances"], tier: "VIP" },
     { title: "Casino Square Grandstand", price: "€389", desc: "The most iconic viewing spot in all of motorsport. Watch cars navigate the legendary Casino hairpin from above, with Monte Carlo Casino as your backdrop.", features: ["Iconic Casino hairpin view", "Monte Carlo Casino backdrop", "Best photo opportunity in F1", "Covered premium seating"], tier: "PREMIUM" },
-    { title: "Tabac Grandstand", price: "€329", desc: "Harbour views + Swimming Pool chicane action. See cars at speed through the technical section with superyachts in the background.", features: ["Harbour and yacht views", "Swimming Pool section action", "Good overtaking zone", "Partially covered"], tier: "POPULAR" },
+    { title: "Tabac Grandstand", price: "€329", desc: "Harbour views + Swimming Pool chicane action. See cars at speed through the technical section with superyachts in the background.", features: ["Harbour and yacht views", "Swimming Pool section action", "Good overtaking zone", "Partially covered"], tier: "POPULAR" }
   ];
 
   const dayPlan = [
@@ -31,14 +31,14 @@ const MonacoExperiencePage = () => {
     { time: "15:00", activity: "LIGHTS OUT - the Monaco Grand Prix begins!" },
     { time: "17:00", activity: "Podium ceremony + champagne celebration" },
     { time: "19:00", activity: "Dinner at a Michelin-star restaurant in Monte Carlo" },
-    { time: "22:00", activity: "Casino Royale experience at Monte Carlo Casino" },
+    { time: "22:00", activity: "Casino Royale experience at Monte Carlo Casino" }
   ];
 
   const faqs = [
     { question: "What is Monaco GP yacht hospitality?", answer: "Yacht hospitality places you on a private superyacht in Port Hercule harbour, directly overlooking the Monaco GP circuit. You watch F1 cars race past metres away while enjoying unlimited champagne and gourmet food. Packages start from €2,995." },
     { question: "Is Monaco GP VIP worth it?", answer: "If you can afford it, absolutely! The Champions Club (€1,295) includes Michelin-star dining, pit lane walks, and an atmosphere you can't get anywhere else. It's a once-in-a-lifetime experience. Many guests book again every year." },
     { question: "What should I wear to Monaco GP?", answer: "Monaco is the most glamorous event on the F1 calendar. Smart casual is minimum for grandstands. For VIP/yacht hospitality, think designer resort wear - linen, cocktail attire, sunglasses. Leave the cargo shorts at home!" },
-    { question: "Can I visit the Monaco Casino during GP weekend?", answer: "Yes! The Monte Carlo Casino is open during GP weekend. Dress code applies (jacket required for main rooms). Many fans visit Friday or Saturday evening, saving Sunday for the race and celebrations." },
+    { question: "Can I visit the Monaco Casino during GP weekend?", answer: "Yes! The Monte Carlo Casino is open during GP weekend. Dress code applies (jacket required for main rooms). Many fans visit Friday or Saturday evening, saving Sunday for the race and celebrations." }
   ];
 
   return (

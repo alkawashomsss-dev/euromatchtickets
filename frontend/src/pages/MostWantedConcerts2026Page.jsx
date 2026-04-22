@@ -8,7 +8,7 @@ import {
   MapPin,
   Ticket,
   ArrowRight,
-  Bell,
+  Bell
 } from "lucide-react";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
@@ -36,7 +36,7 @@ export default function MostWantedConcerts2026Page() {
         if (!alive || !d) return;
         setData({
           coming_soon: d.coming_soon || [],
-          confirmed: d.confirmed || [],
+          confirmed: d.confirmed || []
         });
       })
       .catch(() => {})
@@ -55,7 +55,7 @@ export default function MostWantedConcerts2026Page() {
       price_from: e.price_from,
       image: e.image_url,
       date: e.event_date,
-      rank_key: e.price_from || 999,
+      rank_key: e.price_from || 999
     })),
     ...(data.coming_soon || []).map((d) => ({
       type: "coming_soon",
@@ -63,8 +63,8 @@ export default function MostWantedConcerts2026Page() {
       subtitle: d.city ? `Rumoured — ${d.city}` : "Rumoured tour",
       href: `/${d.event_slug}`,
       lead_count: d.lead_count,
-      rank_key: -(d.lead_count || 0),
-    })),
+      rank_key: -(d.lead_count || 0)
+    }))
   ].sort((a, b) => (a.rank_key || 0) - (b.rank_key || 0));
 
   const itemListSchema = {
@@ -79,14 +79,14 @@ export default function MostWantedConcerts2026Page() {
       "@type": "ListItem",
       position: i + 1,
       url: `${SITE}${item.href}`,
-      name: item.title,
-    })),
+      name: item.title
+    }))
   };
 
   const related = getRelatedLinks({
     category: "city_demand",
     excludeHrefs: ["/most-wanted-concerts-2026"],
-    limit: 8,
+    limit: 8
   });
 
   return (
@@ -222,7 +222,7 @@ export default function MostWantedConcerts2026Page() {
                         <Calendar className="w-3 h-3" />
                         {new Date(item.date).toLocaleDateString("en-GB", {
                           day: "numeric",
-                          month: "short",
+                          month: "short"
                         })}
                       </span>
                     ) : null}

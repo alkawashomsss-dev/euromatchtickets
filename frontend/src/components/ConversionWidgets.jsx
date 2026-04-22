@@ -27,7 +27,7 @@ export const PriceAlertButton = ({ event }) => {
         email,
         event_id: event.event_id,
         event_title: event.title,
-        current_price: price,
+        current_price: price
       });
       setSubscribed(true);
       setShowForm(false);
@@ -173,7 +173,7 @@ export const UrgencyCountdown = ({ eventDate, compact = false }) => {
         setTimeLeft({
           days: Math.floor(diff / 864e5),
           hours: Math.floor((diff / 36e5) % 24),
-          mins: Math.floor((diff / 6e4) % 60),
+          mins: Math.floor((diff / 6e4) % 60)
         });
       }
     };
@@ -211,7 +211,7 @@ export const UrgencyCountdown = ({ eventDate, compact = false }) => {
         {[
           { val: timeLeft.days, label: 'Days' },
           { val: timeLeft.hours, label: 'Hours' },
-          { val: timeLeft.mins, label: 'Mins' },
+          { val: timeLeft.mins, label: 'Mins' }
         ].map((t) => (
           <div key={t.label} className="text-center flex-1">
             <div className={`text-2xl font-extrabold ${isUrgent ? 'text-red-700' : isSoon ? 'text-amber-700' : 'text-white'}`}>

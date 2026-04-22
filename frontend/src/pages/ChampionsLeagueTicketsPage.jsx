@@ -13,7 +13,7 @@ const UCL_FAQS = [
   { q: "Where is the Champions League Final 2026?", a: "The 2025/26 UEFA Champions League Final takes place at the Allianz Arena in Munich, Germany on Saturday May 30, 2026. Kick-off at 21:00 CET." },
   { q: "How to buy Champions League tickets?", a: "Select your match on EuroMatchTickets, choose your category, and pay securely via Stripe. Tickets are delivered instantly as QR codes to your email. All tickets are verified with Buyer protection money-back guarantee." },
   { q: "Are Champions League tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if the match is cancelled or postponed. If tickets are invalid at the gate, you receive 100% refund." },
-  { q: "Can I buy Champions League Final tickets?", a: "Yes! UCL Final 2026 Munich tickets are available from €495. Category 1, 2, 3, and VIP hospitality. Limited availability — the Final always sells out months in advance." },
+  { q: "Can I buy Champions League Final tickets?", a: "Yes! UCL Final 2026 Munich tickets are available from €495. Category 1, 2, 3, and VIP hospitality. Limited availability — the Final always sells out months in advance." }
 ];
 
 const ChampionsLeagueTicketsPage = () => {
@@ -72,7 +72,7 @@ const ChampionsLeagueTicketsPage = () => {
       price: 890,
       seatsLeft: 8,
       hot: true
-    },
+    }
   ];
 
   return (

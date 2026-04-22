@@ -25,7 +25,7 @@ const CITIES_DATA = {
   'lisbon': { country: 'Portugal', image: 'https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=1200', emoji: '🇵🇹' },
   'manchester': { country: 'UK', image: 'https://images.unsplash.com/photo-1515586838455-8f8f940d6853?w=1200', emoji: '🇬🇧' },
   'dubai': { country: 'UAE', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200', emoji: '🇦🇪' },
-  'singapore': { country: 'Singapore', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1200', emoji: '🇸🇬' },
+  'singapore': { country: 'Singapore', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1200', emoji: '🇸🇬' }
 };
 
 const CityTicketsPage = () => {

@@ -20,14 +20,14 @@ const GermanLandingPage = () => {
     { titel: "Formel 1 - Großer Preis von Monaco", datum: "Mai 2026", ort: "Circuit de Monaco", preis: 99, icon: Flag, link: "/f1-monaco-grand-prix-tickets", tag: "PREMIUM" },
     { titel: "FIFA Weltmeisterschaft 2026", datum: "Jun-Jul 2026", ort: "USA, Mexiko, Kanada", preis: 89, icon: Trophy, link: "/world-cup-2026", tag: "EVENT DES JAHRES" },
     { titel: "Rammstein Europa Tour 2026", datum: "Sommer 2026", ort: "Verschiedene Städte", preis: 79, icon: Music, link: "/checkout", tag: "AUSVERKAUFT" },
-    { titel: "Bundesliga - BVB vs Bayern", datum: "Saison 2026", ort: "Signal Iduna Park", preis: 49, icon: Trophy, link: "/checkout", tag: "DER KLASSIKER" },
+    { titel: "Bundesliga - BVB vs Bayern", datum: "Saison 2026", ort: "Signal Iduna Park", preis: 49, icon: Trophy, link: "/checkout", tag: "DER KLASSIKER" }
   ];
 
   const vorteile = [
     { titel: "Günstigste Preise", desc: "Wir garantieren die besten Preise auf dem Markt. Günstiger als StubHub & Viagogo!", icon: Zap },
     { titel: "100% Garantiert", desc: "Alle Tickets verifiziert mit unserer Buyer protection-Garantie. Ihr Geld ist sicher.", icon: Shield },
     { titel: "Sofortige Lieferung", desc: "Erhalten Sie Ihre Tickets sofort per E-Mail. QR-Code bereit zum Scannen.", icon: Ticket },
-    { titel: "4,8/5 Sterne", desc: "Tausende zufriedene Kunden in ganz Europa. Lesen Sie unsere Bewertungen.", icon: Star },
+    { titel: "4,8/5 Sterne", desc: "Tausende zufriedene Kunden in ganz Europa. Lesen Sie unsere Bewertungen.", icon: Star }
   ];
 
   return (

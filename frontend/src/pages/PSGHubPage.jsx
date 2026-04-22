@@ -9,14 +9,14 @@ const PSGHubPage = () => {
     { home: "PSG", away: "Real Madrid", label: "UCL Round of 16", venue: "Parc des Princes", date: "Feb 2026", price: 145, tickets: 56, hot: true, link: "/checkout?event=psg-vs-real-madrid" },
     { home: "PSG", away: "Marseille", label: "Le Classique", venue: "Parc des Princes", date: "Mar 2026", price: 125, tickets: 78, hot: true, link: "/checkout?event=psg-vs-marseille" },
     { home: "PSG", away: "Lyon", label: "Ligue 1", venue: "Parc des Princes", date: "Apr 2026", price: 75, tickets: 134, link: "/checkout?event=psg-vs-lyon" },
-    { home: "PSG", away: "Monaco", label: "Ligue 1", venue: "Parc des Princes", date: "May 2026", price: 85, tickets: 98, link: "/checkout?event=psg-vs-monaco" },
+    { home: "PSG", away: "Monaco", label: "Ligue 1", venue: "Parc des Princes", date: "May 2026", price: 85, tickets: 98, link: "/checkout?event=psg-vs-monaco" }
   ];
 
   const faqs = [
     { question: "How much are PSG tickets?", answer: "PSG tickets start from €55 for Ligue 1 matches at Parc des Princes. Champions League from €125. Le Classique (vs Marseille) from €125. All prices on EuroMatchTickets are the cheapest in Europe." },
     { question: "Where does PSG play?", answer: "PSG plays at Parc des Princes in Paris, France. The 47,929-capacity stadium is located in the 16th arrondissement, easily accessible by Metro Line 9 (Porte de Saint-Cloud)." },
     { question: "Can tourists buy PSG tickets?", answer: "Yes! No membership required. Buy verified PSG tickets directly on EuroMatchTickets. Instant QR delivery to your email." },
-    { question: "What is Le Classique?", answer: "Le Classique is PSG vs Olympique de Marseille - France's biggest and most heated football rivalry. The atmosphere at Parc des Princes is absolutely electric." },
+    { question: "What is Le Classique?", answer: "Le Classique is PSG vs Olympique de Marseille - France's biggest and most heated football rivalry. The atmosphere at Parc des Princes is absolutely electric." }
   ];
 
   const reviewSchema = {
@@ -24,8 +24,8 @@ const PSGHubPage = () => {
     "@type": "Product",
     "name": "PSG Paris Saint-Germain Tickets 2025-26",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1847", "bestRating": "5", "worstRating": "1" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "55", "highPrice": "1500", "offerCount": "366" , "validFrom": "2025-01-01" }
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "55", "highPrice": "1500","validFrom": "2025-01-01" }
   };
 
   return (

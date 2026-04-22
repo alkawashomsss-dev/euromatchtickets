@@ -24,8 +24,7 @@ const AbuDhabiGPPage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "169", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-abu-dhabi-grand-prix-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "169", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-abu-dhabi-grand-prix-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -34,7 +33,7 @@ const AbuDhabiGPPage = () => {
     { section: "West Grandstand", price: 249, originalPrice: 259, available: 112, popular: false },
     { section: "Marina Grandstand", price: 389, originalPrice: 399, available: 45, popular: true },
     { section: "VIP Hospitality", price: 1489, originalPrice: 1499, available: 28, popular: true },
-    { section: "Paddock Club", price: 4489, originalPrice: 4499, available: 9, popular: false },
+    { section: "Paddock Club", price: 4489, originalPrice: 4499, available: 9, popular: false }
   ];
 
   return (
@@ -91,7 +90,7 @@ const AbuDhabiGPPage = () => {
           <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€169</div>
-            <div className="text-emerald-600 text-sm mt-1">Save €10 - Season Finale!</div>
+            <div className="text-emerald-600 text-sm mt-1">Season finale</div>
           </div>
         </div>
       </section>

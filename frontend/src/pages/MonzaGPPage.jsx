@@ -23,7 +23,7 @@ const MonzaGPPage = () => {
     { section: "Prima Variante Grandstand", price: 169, originalPrice: 229, available: 89, badge: "BEST OVERTAKING", features: ["Turn 1 braking zone", "Most overtakes here", "Start/finish view"], color: "border-green-500/30" },
     { section: "Ascari Chicane Grandstand", price: 139, originalPrice: 189, available: 145, badge: null, features: ["Technical chicane", "Close to track", "Great photo spot"] },
     { section: "Monza VIP Village", price: 595, originalPrice: 999, available: 45, badge: "VIP", features: ["Open bar all day", "Italian gourmet cuisine", "Track-side terrace"], color: "border-purple-500/30" },
-    { section: "Formula 1 Paddock Club", price: 1995, originalPrice: 2999, available: 18, badge: "EXCLUSIVE", features: ["Pit lane walks", "Driver appearances", "5-star hospitality"], color: "border-amber-500/30" },
+    { section: "Formula 1 Paddock Club", price: 1995, originalPrice: 2999, available: 18, badge: "EXCLUSIVE", features: ["Pit lane walks", "Driver appearances", "5-star hospitality"], color: "border-amber-500/30" }
   ];
 
   const monzaHistory = [
@@ -31,7 +31,7 @@ const MonzaGPPage = () => {
     { year: "1971", event: "Closest F1 finish ever - top 5 separated by 0.61 seconds" },
     { year: "2008", event: "Vettel wins first GP here at age 21 in the rain" },
     { year: "2019", event: "Leclerc gives Ferrari a dream home win - Tifosi invasion" },
-    { year: "2024", event: "Record attendance - 350,000 fans across the weekend" },
+    { year: "2024", event: "Record attendance - 350,000 fans across the weekend" }
   ];
 
   const faqs = [
@@ -40,7 +40,7 @@ const MonzaGPPage = () => {
     { question: "When is the Italian Grand Prix 2026?", answer: "The 2026 Italian Grand Prix at Monza is scheduled for September 4-6, 2026. Friday: Free Practice, Saturday: Qualifying, Sunday: Race. Gates typically open at 08:00." },
     { question: "How do I get to Monza from Milan?", answer: "Monza is just 15km from Milan city center. Take the metro Line 1 (Red) to Sesto FS, then a shuttle bus to the circuit. Journey time is about 45 minutes. You can also take the train from Milano Centrale to Monza station." },
     { question: "What makes Monza special?", answer: "Monza is the fastest circuit on the F1 calendar (average speed 260km/h), the spiritual home of Ferrari racing, and features the most passionate fans in F1 - the Tifosi. When a Ferrari wins, 100,000+ fans storm the track. Nothing compares." },
-    { question: "Can I bring food and drinks to Monza?", answer: "Yes! Unlike many circuits, Monza allows you to bring your own food and non-alcoholic drinks. There are also excellent Italian food vendors throughout the Parco di Monza." },
+    { question: "Can I bring food and drinks to Monza?", answer: "Yes! Unlike many circuits, Monza allows you to bring your own food and non-alcoholic drinks. There are also excellent Italian food vendors throughout the Parco di Monza." }
   ];
 
   const reviewSchema = {
@@ -49,12 +49,9 @@ const MonzaGPPage = () => {
     "name": "Italian Grand Prix Monza 2026 Tickets",
     "description": "Verified Monza F1 tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "4127", "bestRating": "5", "worstRating": "1" },
-    "review": [
-      { "@type": "Review", "name": "Unreal Tifosi atmosphere at Monza", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "The Tifosi atmosphere is unreal! Monza was my first F1 race and I'm hooked. Got general admission for just €69.", "datePublished": "2026-01-18" },
-      { "@type": "Review", "name": "Incredible Parabolica grandstand F1 sound", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Julia S." }, "reviewBody": "Parabolica grandstand is incredible. The sound of F1 cars at 340km/h is something you never forget!", "datePublished": "2025-12-22" }
-    ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "1995", "offerCount": "876" , "validFrom": "2025-01-01" }
+    
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "1995","validFrom": "2025-01-01" }
   };
 
   return (
@@ -325,7 +322,7 @@ const MonzaGPPage = () => {
               { to: "/champions-league-tickets", label: "Champions League", price: "49", tag: "FOOTBALL" },
               { to: "/real-madrid-tickets", label: "Real Madrid", price: "49", tag: "BERNABEU" },
               { to: "/taylor-swift-london-tickets", label: "Taylor Swift", price: "89", tag: "CONCERT" },
-              { to: "/world-cup-2026", label: "World Cup 2026", price: "65", tag: "FIFA" },
+              { to: "/world-cup-2026", label: "World Cup 2026", price: "65", tag: "FIFA" }
             ].map((l, i) => (
               <Link key={i} to={l.to} className="bg-[#1e1e1e] border border-white/10 rounded-none p-4 hover:border-red-300 hover:shadow-md transition-all group">
                 <p className="font-bold text-white text-sm group-hover:text-red-600 transition-colors">{l.label}</p>

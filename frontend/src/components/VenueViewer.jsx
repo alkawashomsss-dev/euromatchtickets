@@ -31,7 +31,7 @@ const VENUE_TO_STADIUM = {
   "santiago bernabéu": "santiago_bernabeu",
   "santiago bernabeu": "santiago_bernabeu",
   "camp nou": "camp_nou",
-  "spotify camp nou": "camp_nou",
+  "spotify camp nou": "camp_nou"
 };
 
 const TRACK_TO_CIRCUIT = {
@@ -46,7 +46,7 @@ const TRACK_TO_CIRCUIT = {
   "spa": "spa",
   "circuit zandvoort": "zandvoort",
   "cm.com circuit zandvoort": "zandvoort",
-  "zandvoort": "zandvoort",
+  "zandvoort": "zandvoort"
 };
 
 function resolvePreset(event) {

@@ -21,7 +21,7 @@ const F1_FAQS = [
   { q: "What is the cheapest F1 race to attend?", a: "Italian GP at Monza (from €89) and Spanish GP Barcelona (from €99) are the most affordable. Belgian GP Spa (from €109) and Hungarian GP Budapest (from €119) also offer great value." },
   { q: "How many F1 races are there in 2026?", a: "The 2026 F1 season features 24 Grand Prix races across 5 continents. European races run March-September. The season starts in Bahrain (March) and ends in Abu Dhabi (December)." },
   { q: "Which F1 race has the best atmosphere?", a: "Dutch GP Zandvoort (Orange Army), British GP Silverstone (150,000+ fans), Italian GP Monza (passionate tifosi), and Belgian GP Spa (legendary circuit). Monaco for glamour." },
-  { q: "Are F1 tickets refundable?", a: "Yes! All F1 tickets on EuroMatchTickets include Buyer protection cancellation refund policy. Full refund if the race is cancelled. Instant QR delivery." },
+  { q: "Are F1 tickets refundable?", a: "Yes! All F1 tickets on EuroMatchTickets include Buyer protection cancellation refund policy. Full refund if the race is cancelled. Instant QR delivery." }
 ];
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import axios from 'axios';
@@ -50,7 +50,7 @@ const driverStandings2026 = [
   { pos: 19, driver: "Fernando Alonso", team: "Aston Martin", nat: "ESP", pts: 0, color: "#006F62" },
   { pos: 20, driver: "Lance Stroll", team: "Aston Martin", nat: "CAN", pts: 0, color: "#006F62" },
   { pos: 21, driver: "Sergio Perez", team: "Cadillac", nat: "MEX", pts: 0, color: "#1E1E1E" },
-  { pos: 22, driver: "Valtteri Bottas", team: "Cadillac", nat: "FIN", pts: 0, color: "#1E1E1E" },
+  { pos: 22, driver: "Valtteri Bottas", team: "Cadillac", nat: "FIN", pts: 0, color: "#1E1E1E" }
 ];
 
 // ── Real 2026 Constructor Standings (After Round 3) ──
@@ -65,7 +65,7 @@ const constructorStandings2026 = [
   { pos: 8, team: "Audi", pts: 2, color: "#25A617", drivers: "Hulkenberg / Bortoleto" },
   { pos: 9, team: "Williams", pts: 2, color: "#005AFF", drivers: "Albon / Sainz Jr." },
   { pos: 10, team: "Cadillac", pts: 0, color: "#1E1E1E", drivers: "Perez / Bottas" },
-  { pos: 11, team: "Aston Martin", pts: 0, color: "#006F62", drivers: "Alonso / Stroll" },
+  { pos: 11, team: "Aston Martin", pts: 0, color: "#006F62", drivers: "Alonso / Stroll" }
 ];
 
 // ── Real 2025 Final Driver Standings (World Champion: Lando Norris) ──
@@ -79,7 +79,7 @@ const driverStandings2025 = [
   { pos: 7, driver: "Kimi Antonelli", team: "Mercedes", pts: 150 },
   { pos: 8, driver: "Alexander Albon", team: "Williams", pts: 73 },
   { pos: 9, driver: "Carlos Sainz", team: "Williams", pts: 64 },
-  { pos: 10, driver: "Fernando Alonso", team: "Aston Martin", pts: 56 },
+  { pos: 10, driver: "Fernando Alonso", team: "Aston Martin", pts: 56 }
 ];
 
 // ── 2026 Teams & Drivers ──
@@ -94,7 +94,7 @@ const teamsDrivers2026 = [
   { team: "Racing Bulls", engine: "Honda RBPT", d1: "Liam Lawson", d2: "Arvid Lindblad", color: "#6692FF" },
   { team: "Haas", engine: "Ferrari", d1: "Esteban Ocon", d2: "Oliver Bearman", color: "#B6BABD" },
   { team: "Audi", engine: "Audi", d1: "Nico Hulkenberg", d2: "Gabriel Bortoleto", color: "#25A617" },
-  { team: "Cadillac", engine: "Ferrari", d1: "Sergio Perez", d2: "Valtteri Bottas", color: "#1E1E1E" },
+  { team: "Cadillac", engine: "Ferrari", d1: "Sergio Perez", d2: "Valtteri Bottas", color: "#1E1E1E" }
 ];
 
 // ── Official 2026 F1 Race Calendar (24 Races) ──
@@ -122,7 +122,7 @@ const raceCalendar2026 = [
   { round: 21, gp: "Sao Paulo Grand Prix", circuit: "Interlagos", country: "Brazil", flag: "BR", dates: "Nov 6-8", sprint: false, price: "129" },
   { round: 22, gp: "Las Vegas Grand Prix", circuit: "Las Vegas Strip", country: "USA", flag: "US", dates: "Nov 19-21", sprint: false, price: "249" },
   { round: 23, gp: "Qatar Grand Prix", circuit: "Lusail International", country: "Qatar", flag: "QA", dates: "Nov 27-29", sprint: false, price: "179" },
-  { round: 24, gp: "Abu Dhabi Grand Prix", circuit: "Yas Marina Circuit", country: "UAE", flag: "AE", dates: "Dec 4-6", sprint: false, price: "169" },
+  { round: 24, gp: "Abu Dhabi Grand Prix", circuit: "Yas Marina Circuit", country: "UAE", flag: "AE", dates: "Dec 4-6", sprint: false, price: "169" }
 ];
 
 // ── Clean URL mapping for each GP - SEO critical! Never link to ugly event IDs ──
@@ -150,7 +150,7 @@ const gpCleanLinks = {
   "Sao Paulo Grand Prix": "/checkout?event=f1-brazil-grand-prix-2026",
   "Las Vegas Grand Prix": "/f1-las-vegas-grand-prix-tickets",
   "Qatar Grand Prix": "/checkout?event=f1-qatar-grand-prix-2026",
-  "Abu Dhabi Grand Prix": "/f1-abu-dhabi-grand-prix-tickets",
+  "Abu Dhabi Grand Prix": "/f1-abu-dhabi-grand-prix-tickets"
 };
 
 const F1TicketsPage = () => {
@@ -190,12 +190,10 @@ const F1TicketsPage = () => {
         "organizer": { "@type": "Organization", "name": "Formula 1", "url": "https://www.formula1.com" },
         "performer": { "@type": "SportsTeam", "name": "Formula 1 World Championship" },
         "offers": {
-          "@type": "AggregateOffer",
+          "@type": "Offer",
           "lowPrice": "61",
           "highPrice": "5989",
-          "priceCurrency": "EUR",
-          "offerCount": "24",
-          "availability": "https://schema.org/InStock",
+          "priceCurrency": "EUR","availability": "https://schema.org/InStock",
           "url": "https://euromatchtickets.com/f1-tickets",
           "validFrom": "2025-01-01",
           "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
@@ -209,19 +207,12 @@ const F1TicketsPage = () => {
         "url": "https://euromatchtickets.com/f1-tickets",
         "brand": { "@type": "Organization", "name": "EuroMatchTickets" },
         "offers": {
-          "@type": "AggregateOffer",
+          "@type": "Offer",
           "lowPrice": "61",
           "highPrice": "5989",
-          "priceCurrency": "EUR",
-          "offerCount": "24",
-          "availability": "https://schema.org/InStock",
+          "priceCurrency": "EUR","availability": "https://schema.org/InStock",
           "url": "https://euromatchtickets.com/f1-tickets"
-        },
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2847", "bestRating": "5", "worstRating": "1" },
-        "review": [
-          { "@type": "Review", "name": "Instant F1 QR ticket delivery", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Marco R." }, "reviewBody": "Excellent service! F1 tickets arrived instantly via QR code.", "datePublished": "2026-01-15" },
-          { "@type": "Review", "name": "Best F1 prices with Buyer protection", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sophie M." }, "reviewBody": "Best F1 prices I found. Buyer protection is reassuring.", "datePublished": "2026-02-08" }
-        ]
+        }
       },
       {
         "@type": "ItemList",
@@ -251,12 +242,10 @@ const F1TicketsPage = () => {
             "performer": { "@type": "SportsTeam", "name": "Formula 1" },
             "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
             "offers": {
-              "@type": "AggregateOffer",
+              "@type": "Offer",
               "lowPrice": r.price,
               "highPrice": String(parseInt(r.price) * 10),
-              "priceCurrency": "EUR",
-              "offerCount": "500",
-              "availability": "https://schema.org/InStock",
+              "priceCurrency": "EUR","availability": "https://schema.org/InStock",
               "url": "https://euromatchtickets.com/f1-tickets",
               "validFrom": "2025-01-01",
               "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
@@ -274,7 +263,7 @@ const F1TicketsPage = () => {
     "ES": "\ud83c\uddea\ud83c\uddf8", "AT": "\ud83c\udde6\ud83c\uddf9", "GB": "\ud83c\uddec\ud83c\udde7", "BE": "\ud83c\udde7\ud83c\uddea",
     "HU": "\ud83c\udded\ud83c\uddfa", "NL": "\ud83c\uddf3\ud83c\uddf1", "IT": "\ud83c\uddee\ud83c\uddf9", "AZ": "\ud83c\udde6\ud83c\uddff",
     "SG": "\ud83c\uddf8\ud83c\uddec", "MX": "\ud83c\uddf2\ud83c\uddfd", "BR": "\ud83c\udde7\ud83c\uddf7", "QA": "\ud83c\uddf6\ud83c\udde6",
-    "AE": "\ud83c\udde6\ud83c\uddea",
+    "AE": "\ud83c\udde6\ud83c\uddea"
   };
   // Country name flags for API events
   const countryFlags = {
@@ -285,7 +274,7 @@ const F1TicketsPage = () => {
     "Great Britain": "\ud83c\uddec\ud83c\udde7", "Belgium": "\ud83c\udde7\ud83c\uddea", "Hungary": "\ud83c\udded\ud83c\uddfa",
     "Netherlands": "\ud83c\uddf3\ud83c\uddf1", "Italy": "\ud83c\uddee\ud83c\uddf9", "Azerbaijan": "\ud83c\udde6\ud83c\uddff",
     "Singapore": "\ud83c\uddf8\ud83c\uddec", "Mexico": "\ud83c\uddf2\ud83c\uddfd", "Brazil": "\ud83c\udde7\ud83c\uddf7",
-    "Qatar": "\ud83c\uddf6\ud83c\udde6", "UAE": "\ud83c\udde6\ud83c\uddea",
+    "Qatar": "\ud83c\uddf6\ud83c\udde6", "UAE": "\ud83c\udde6\ud83c\uddea"
   };
 
   const formatDate = (dateStr) => new Date(dateStr).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -346,7 +335,7 @@ const F1TicketsPage = () => {
               { icon: Flag, label: "24 Races" },
               { icon: Users, label: "11 Teams" },
               { icon: Calendar, label: "Mar - Dec 2026" },
-              { icon: MapPin, label: "21 Countries" },
+              { icon: MapPin, label: "21 Countries" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-none text-slate-200 text-sm">
                 <item.icon className="w-4 h-4 text-red-400" />
@@ -370,7 +359,7 @@ const F1TicketsPage = () => {
               { icon: Shield, label: "500,000+ Tickets Sold" },
               { icon: Star, label: "4.9/5 from 12,000+ Reviews" },
               { icon: Globe, label: "Trusted in 25+ Countries" },
-              { icon: Zap, label: "QR ticket delivery" },
+              { icon: Zap, label: "QR ticket delivery" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-slate-400">
                 <item.icon className="w-3.5 h-3.5 text-[#e10600]" />
@@ -390,7 +379,7 @@ const F1TicketsPage = () => {
               { name: "F1.com Official", price: "399", strike: true },
               { name: "StubHub", price: "379", strike: true },
               { name: "Viagogo", price: "365", strike: true },
-              { name: "EuroMatchTickets", price: "189", strike: false, best: true },
+              { name: "EuroMatchTickets", price: "189", strike: false, best: true }
             ].map((s, i) => (
               <div key={i} className={`text-center p-4 ${s.best ? 'bg-[#15803d]/10 border-2 border-[#15803d]' : 'bg-[#1e1e1e] border border-white/8'}`}>
                 <div className={`text-xs mb-1 font-bold uppercase tracking-wider ${s.best ? 'text-[#15803d]' : 'text-slate-500'}`}>{s.name}</div>
@@ -736,7 +725,7 @@ const F1TicketsPage = () => {
                   "Mexico": { kw: "Buy Mexico City GP Tickets 2026", sub: "Mexican F1 Grand Prix - Best Atmosphere" },
                   "Brazil": { kw: "Buy Interlagos F1 Tickets 2026", sub: "Sao Paulo GP - Autodromo Interlagos" },
                   "Qatar": { kw: "Buy Qatar GP Tickets 2026", sub: "Lusail International Circuit F1" },
-                  "Emilia": { kw: "Buy Imola F1 Tickets 2026", sub: "Emilia Romagna GP - Autodromo Enzo Ferrari" },
+                  "Emilia": { kw: "Buy Imola F1 Tickets 2026", sub: "Emilia Romagna GP - Autodromo Enzo Ferrari" }
                 };
                 const match = Object.keys(seoMap).find(k => race.title?.includes(k));
                 const seo = match ? seoMap[match] : { kw: `Buy ${race.title} Tickets`, sub: race.venue };

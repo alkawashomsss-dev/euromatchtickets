@@ -19,14 +19,14 @@ const ItalianLandingPage = () => {
     { titolo: "Juventus vs Inter - Derby d'Italia", data: "Aprile 2026", luogo: "Allianz Stadium, Torino", prezzo: 85, icona: Trophy, link: "/checkout?event=football-tickets", tag: "DERBY" },
     { titolo: "Gran Premio d'Italia F1 2026", data: "Settembre 2026", luogo: "Monza, Milano", prezzo: 89, icona: Flag, link: "/f1-tickets", tag: "CLASSICO" },
     { titolo: "Taylor Swift - Eras Tour Milano", data: "2026", luogo: "San Siro, Milano", prezzo: 89, icona: Music, link: "/taylor-swift-tickets", tag: "ESAURITO PRESTO" },
-    { titolo: "Coppa del Mondo FIFA 2026", data: "Giu-Lug 2026", luogo: "USA, Messico, Canada", prezzo: 89, icona: Trophy, link: "/world-cup-2026", tag: "EVENTO DELL'ANNO" },
+    { titolo: "Coppa del Mondo FIFA 2026", data: "Giu-Lug 2026", luogo: "USA, Messico, Canada", prezzo: 89, icona: Trophy, link: "/world-cup-2026", tag: "EVENTO DELL'ANNO" }
   ];
 
   const vantaggi = [
     { titolo: "Prezzi Piu Bassi", desc: "Garantiamo i migliori prezzi sul mercato. Se trovi di meno, pareggiamo!", icona: Zap },
     { titolo: "100% Garantiti", desc: "Tutti i biglietti verificati con garanzia Buyer protection. Rimborso totale.", icona: Shield },
     { titolo: "Consegna Istantanea", desc: "Ricevi i biglietti via email istantaneamente. QR code pronto.", icona: Ticket },
-    { titolo: "4.8/5 Stelle", desc: "Migliaia di clienti soddisfatti in tutta Europa.", icona: Star },
+    { titolo: "4.8/5 Stelle", desc: "Migliaia di clienti soddisfatti in tutta Europa.", icona: Star }
   ];
 
   const faqs = [
@@ -34,7 +34,7 @@ const ItalianLandingPage = () => {
     { question: "I biglietti sono garantiti?", answer: "Si! Tutti i nostri biglietti sono verificati al 100% e protetti dalla garanzia Buyer protection. Rimborso completo se l'evento viene cancellato." },
     { question: "Quanto costano i biglietti Champions League?", answer: "I biglietti Champions League partono da 85EUR per le partite della fase a gironi. Semifinali e finale da 195EUR." },
     { question: "Consegnate in Italia?", answer: "Si! Consegna istantanea via email in tutto il mondo. Il tuo QR code e pronto immediatamente." },
-    { question: "Quali metodi di pagamento accettate?", answer: "Accettiamo Visa, Mastercard, American Express, PayPal e Apple Pay. Pagamenti sicuri con crittografia SSL." },
+    { question: "Quali metodi di pagamento accettate?", answer: "Accettiamo Visa, Mastercard, American Express, PayPal e Apple Pay. Pagamenti sicuri con crittografia SSL." }
   ];
 
   const reviewSchema = {
@@ -42,9 +42,8 @@ const ItalianLandingPage = () => {
     "@type": "Product",
     "name": "Biglietti EuroMatchTickets - Italia",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1834", "bestRating": "5" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "39", "highPrice": "2500" }
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "39", "highPrice": "2500" }
   };
 
   return (

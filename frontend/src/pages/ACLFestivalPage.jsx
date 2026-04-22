@@ -12,7 +12,7 @@ import SEOHead from "../components/SEOHead";
 const TRANSLATIONS = {
   en: { title: "ACL Festival 2026 Tickets", subtitle: "Austin City Limits - The Ultimate Festival", buyNow: "Buy Pass", from: "From", ultimate: "Ultimate Experience" },
   es: { title: "Entradas ACL Festival 2026", subtitle: "Austin City Limits - El Festival Definitivo", buyNow: "Comprar Pase", from: "Desde", ultimate: "Experiencia Definitiva" },
-  de: { title: "ACL Festival 2026 Tickets", subtitle: "Austin City Limits - Das Ultimative Festival", buyNow: "Pass Kaufen", from: "Ab", ultimate: "Ultimative Erfahrung" },
+  de: { title: "ACL Festival 2026 Tickets", subtitle: "Austin City Limits - Das Ultimative Festival", buyNow: "Pass Kaufen", from: "Ab", ultimate: "Ultimative Erfahrung" }
 };
 
 const ACLFestivalPage = () => {
@@ -47,7 +47,7 @@ const ACLFestivalPage = () => {
     "startDate": "2026-10-02",
     "endDate": "2026-10-10",
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "AggregateOffer", "lowPrice": 332, "highPrice": 25650, "priceCurrency": "USD", "offerCount": "100", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/acl-festival-2026-tickets", "validFrom": "2025-01-01"}
+    "offers": {"@type": "Offer", "lowPrice": 332, "highPrice": 25650, "priceCurrency": "USD","availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/acl-festival-2026-tickets", "validFrom": "2025-01-01"}
   };
 
   return (

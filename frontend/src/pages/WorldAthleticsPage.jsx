@@ -19,7 +19,7 @@ const categories = [
   { name: "Category A", price: 279, tier: "Lower Tier – Track-Side", color: "from-indigo-600 to-indigo-800", text: "text-indigo-300", tag: null, features: ["Close to the track", "See athletes up close", "Priority entry", "Buyer protection"] },
   { name: "VIP Silver", price: 599, tier: "Hospitality Lounge", color: "from-gray-400 to-gray-600", text: "text-gray-200", tag: null, vip: true, features: ["Premium hospitality lounge", "Complimentary refreshments", "Cushioned seating", "Dedicated entrance"] },
   { name: "VIP Gold", price: 999, tier: "All-Inclusive Premium", color: "from-amber-500 to-amber-700", text: "text-amber-200", tag: "POPULAR", vip: true, features: ["All-inclusive food & drinks", "Best seats in the house", "Athlete meet & greet chance", "Exclusive merchandise"] },
-  { name: "VIP Platinum", price: 1899, tier: "Ultimate Athletics Experience", color: "from-violet-500 to-purple-700", text: "text-violet-200", tag: "EXCLUSIVE", vip: true, features: ["Front row track-side seats", "Private hospitality suite", "Backstage access", "Personal concierge service"] },
+  { name: "VIP Platinum", price: 1899, tier: "Ultimate Athletics Experience", color: "from-violet-500 to-purple-700", text: "text-violet-200", tag: "EXCLUSIVE", vip: true, features: ["Front row track-side seats", "Private hospitality suite", "Backstage access", "Personal concierge service"] }
 ];
 
 const WorldAthleticsPage = () => {
@@ -39,7 +39,7 @@ const WorldAthleticsPage = () => {
     "location": { "@type": "Place", "name": "Budapest National Athletics Centre", "address": { "@type": "PostalAddress", "addressLocality": "Budapest", "addressCountry": "HU" } },
     "performer": {"@type": "Organization", "name": "World Athletics"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "lowPrice": "35", "highPrice": "500", "priceCurrency": "EUR", "offerCount": "500", "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/world-athletics-2026-tickets", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
+    "offers": { "@type": "Offer", "lowPrice": "35", "highPrice": "500", "priceCurrency": "EUR","availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/world-athletics-2026-tickets", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
   };
 
   return (
@@ -81,7 +81,7 @@ const WorldAthleticsPage = () => {
             {[
               { icon: Calendar, label: "Sep 11–17", sub: "2026" },
               { icon: MapPin, label: "Budapest", sub: "Hungary" },
-              { icon: Users, label: "200+ Nations", sub: "2000+ Athletes" },
+              { icon: Users, label: "200+ Nations", sub: "2000+ Athletes" }
             ].map((s, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }} className="flex items-center gap-3 px-4 py-2.5 rounded-none bg-white/5 backdrop-blur-md border border-white/10">
                 <s.icon className="w-5 h-5 text-blue-400 flex-shrink-0" />
@@ -114,7 +114,7 @@ const WorldAthleticsPage = () => {
             {[
               { icon: "🏅", title: "Watch World Champions", desc: "See Olympic gold medalists and world record holders compete at the highest level" },
               { icon: "⚡", title: "World Records Live", desc: "Be there when history is made — the World Athletics Championship is where legends are born" },
-              { icon: "🌍", title: "200+ Nations Compete", desc: "Athletes from every corner of the globe in the most diverse sporting event on Earth" },
+              { icon: "🌍", title: "200+ Nations Compete", desc: "Athletes from every corner of the globe in the most diverse sporting event on Earth" }
             ].map((item, i) => (
               <div key={i} className="bg-white/[0.03] border border-white/5 rounded-none p-8 hover:border-blue-500/20 transition-all">
                 <div className="text-4xl mb-4">{item.icon}</div>
@@ -218,7 +218,7 @@ const WorldAthleticsPage = () => {
               { name: "MotoGP", link: "/motogp-tickets", emoji: "🏍️" },
               { name: "Monaco GP", link: "/monaco-grand-prix-tickets", emoji: "🏎️" },
               { name: "El Clasico", link: "/el-clasico-tickets", emoji: "⚽" },
-              { name: "Taylor Swift", link: "/checkout?event=taylor-swift-2026", emoji: "🎤" },
+              { name: "Taylor Swift", link: "/checkout?event=taylor-swift-2026", emoji: "🎤" }
             ].map((e, i) => (
               <Link key={i} to={e.link} className="flex items-center gap-2 bg-white/[0.03] border border-white/5 hover:border-blue-500/30 rounded-none p-3 text-sm text-slate-400 hover:text-white transition">
                 <span>{e.emoji}</span> {e.name} <ChevronRight className="w-3.5 h-3.5 ml-auto" />

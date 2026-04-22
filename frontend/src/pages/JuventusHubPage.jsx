@@ -9,14 +9,14 @@ const JuventusHubPage = () => {
     { home: "Juventus", away: "AC Milan", label: "Serie A Derby", venue: "Allianz Stadium", date: "Mar 2026", price: 95, tickets: 78, hot: true, link: "/checkout?event=juventus-vs-milan" },
     { home: "Juventus", away: "Inter Milan", label: "Derby d'Italia", venue: "Allianz Stadium", date: "Apr 2026", price: 115, tickets: 56, hot: true, link: "/checkout?event=juventus-vs-inter" },
     { home: "Juventus", away: "Napoli", label: "Serie A", venue: "Allianz Stadium", date: "May 2026", price: 85, tickets: 89, hot: true, link: "/checkout?event=juventus-vs-napoli" },
-    { home: "Juventus", away: "Roma", label: "Serie A", venue: "Allianz Stadium", date: "Mar 2026", price: 75, tickets: 123, link: "/checkout?event=juventus-vs-roma" },
+    { home: "Juventus", away: "Roma", label: "Serie A", venue: "Allianz Stadium", date: "Mar 2026", price: 75, tickets: 123, link: "/checkout?event=juventus-vs-roma" }
   ];
 
   const faqs = [
     { question: "How much are Juventus tickets?", answer: "Juventus tickets on EuroMatchTickets start from €45 for Serie A matches at Allianz Stadium, Turin. Derby d'Italia (vs Inter) from €115. Champions League from €95. We guarantee the cheapest prices." },
     { question: "Where does Juventus play?", answer: "Juventus plays at Allianz Stadium in Turin, Italy. The 41,507-capacity stadium is one of the most modern in Europe, purpose-built in 2011." },
     { question: "What is the Derby d'Italia?", answer: "Derby d'Italia is Juventus vs Inter Milan - Italy's biggest football rivalry. The atmosphere in Turin for this match is absolutely electrifying." },
-    { question: "Can tourists buy Juventus tickets?", answer: "Yes! No Juventus membership needed. Buy verified tickets directly on our platform with QR ticket delivery and Buyer protection." },
+    { question: "Can tourists buy Juventus tickets?", answer: "Yes! No Juventus membership needed. Buy verified tickets directly on our platform with QR ticket delivery and Buyer protection." }
   ];
 
   const reviewSchema = {
@@ -24,8 +24,8 @@ const JuventusHubPage = () => {
     "@type": "Product",
     "name": "Juventus FC Tickets 2025-26",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1623", "bestRating": "5", "worstRating": "1" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "45", "highPrice": "1200", "offerCount": "346" , "validFrom": "2025-01-01" }
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "45", "highPrice": "1200","validFrom": "2025-01-01" }
   };
 
   return (

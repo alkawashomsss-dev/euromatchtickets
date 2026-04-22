@@ -20,8 +20,7 @@ const ManCityHubPage = () => {
     "location": { "@type": "Place", "name": "Etihad Stadium", "address": { "@type": "PostalAddress", "addressLocality": "Manchester", "addressCountry": "GB" } },
     "performer": { "@type": "SportsTeam", "name": "Manchester City FC" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "65", "highPrice": "1800", "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/manchester-city-tickets" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "65", "highPrice": "1800", "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/manchester-city-tickets" }
   };
 
   const reviewSchema = {
@@ -31,12 +30,9 @@ const ManCityHubPage = () => {
     "name": "Manchester City Tickets 2025-26",
     "description": "Verified Manchester City match tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1923", "bestRating": "5", "worstRating": "1" },
-    "review": [
-      { "@type": "Review", "name": "Haaland hat-trick at electric Etihad", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "David L." }, "reviewBody": "Watched Haaland score a hat-trick! Etihad was electric. Verified tickets I found online.", "datePublished": "2026-02-10" },
-      { "@type": "Review", "name": "Man City vs Real Madrid was incredible", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sarah M." }, "reviewBody": "Man City vs Real Madrid in the Champions League was incredible. Tickets arrived instantly.", "datePublished": "2026-01-18" }
-    ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800", "offerCount": "234" , "validFrom": "2025-01-01" }
+    
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1800","validFrom": "2025-01-01" }
   };
 
   const matches = [
@@ -44,14 +40,14 @@ const ManCityHubPage = () => {
     { home: "Man City", away: "Liverpool", label: "Premier League", venue: "Etihad Stadium", date: "Mar 2026", price: 155, tickets: 41, hot: true, link: "/manchester-city-premier-league-tickets-2026" },
     { home: "Man City", away: "Arsenal", label: "Premier League", venue: "Etihad Stadium", date: "Apr 2026", price: 145, tickets: 38, hot: true, link: "/manchester-city-premier-league-tickets-2026" },
     { home: "Man City", away: "Man United", label: "Manchester Derby", venue: "Etihad Stadium", date: "May 2026", price: 165, tickets: 25, hot: true, link: "/manchester-city-premier-league-tickets-2026" },
-    { home: "Man City", away: "Chelsea", label: "Premier League", venue: "Etihad Stadium", date: "Mar 2026", price: 115, tickets: 62, link: "/manchester-city-premier-league-tickets-2026" },
+    { home: "Man City", away: "Chelsea", label: "Premier League", venue: "Etihad Stadium", date: "Mar 2026", price: 115, tickets: 62, link: "/manchester-city-premier-league-tickets-2026" }
   ];
 
   const reviews = [
     { name: "David L.", country: "UK", rating: 5, text: "Watched Haaland score a hat-trick! Etihad was electric. Verified tickets I found.", date: "Feb 2026" },
     { name: "Sarah M.", country: "Ireland", rating: 5, text: "Man City vs Real Madrid was incredible. Tickets arrived instantly.", date: "Jan 2026" },
     { name: "Kenji T.", country: "Japan", rating: 5, text: "Flew from Tokyo for the Manchester Derby. Worth every penny!", date: "Dec 2025" },
-    { name: "Alex V.", country: "USA", rating: 4, text: "Great prices for Premier League tickets. Easy checkout process.", date: "Nov 2025" },
+    { name: "Alex V.", country: "USA", rating: 4, text: "Great prices for Premier League tickets. Easy checkout process.", date: "Nov 2025" }
   ];
 
   const faqs = [
@@ -60,7 +56,7 @@ const ManCityHubPage = () => {
     { question: "Can I buy Manchester Derby tickets?", answer: "Yes! Manchester Derby (Man City vs Man United) tickets are available starting from \u20AC165. These are among our most popular Premier League tickets." },
     { question: "Are Manchester City tickets genuine?", answer: "All tickets on EuroMatchTickets are verified and backed by our Buyer protection with full refund protection." },
     { question: "How to get to Etihad Stadium?", answer: "Etihad Stadium is a 15-minute walk from Manchester Piccadilly station. The Metrolink tram stops at Etihad Campus, right next to the stadium." },
-    { question: "Who plays for Manchester City?", answer: "Manchester City's star players include Erling Haaland, Kevin De Bruyne, Phil Foden, Bernardo Silva, and Rodri - managed by Pep Guardiola." },
+    { question: "Who plays for Manchester City?", answer: "Manchester City's star players include Erling Haaland, Kevin De Bruyne, Phil Foden, Bernardo Silva, and Rodri - managed by Pep Guardiola." }
   ];
 
   return (

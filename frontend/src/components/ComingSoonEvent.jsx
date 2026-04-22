@@ -30,7 +30,7 @@ export default function ComingSoonEvent({
   heroImage,
   pastToursSummary,
   faqs = [],
-  relatedLinks = [],
+  relatedLinks = []
 }) {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -64,8 +64,8 @@ export default function ComingSoonEvent({
           event_name: `${artist}${city ? ` — ${city}` : ""}`,
           artist,
           city,
-          source: "coming_soon",
-        }),
+          source: "coming_soon"
+        })
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
@@ -86,8 +86,8 @@ export default function ComingSoonEvent({
           mainEntity: faqs.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
+            acceptedAnswer: { "@type": "Answer", text: f.a }
+          }))
         }
       : null;
 

@@ -24,8 +24,7 @@ const LasVegasGPPage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "249", "highPrice": "3999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-las-vegas-grand-prix-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "249", "highPrice": "3999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-las-vegas-grand-prix-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -34,7 +33,7 @@ const LasVegasGPPage = () => {
     { section: "Strip View Grandstand", price: 489, originalPrice: 499, available: 89, popular: true },
     { section: "Turn 1 Grandstand", price: 389, originalPrice: 399, available: 112, popular: false },
     { section: "VIP Hospitality", price: 1989, originalPrice: 1999, available: 23, popular: true },
-    { section: "Wynn Paddock Club", price: 5989, originalPrice: 5999, available: 8, popular: false },
+    { section: "Wynn Paddock Club", price: 5989, originalPrice: 5999, available: 8, popular: false }
   ];
 
   return (
@@ -91,7 +90,7 @@ const LasVegasGPPage = () => {
           <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€249</div>
-            <div className="text-emerald-600 text-sm mt-1">Save €10 (market pricing may vary) & StubHub</div>
+            <div className="text-emerald-600 text-sm mt-1">Market pricing may vary</div>
           </div>
         </div>
       </section>

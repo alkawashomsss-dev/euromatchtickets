@@ -29,8 +29,7 @@ const TheWeekndPage = () => {
     },
     "performer": { "@type": "MusicGroup", "name": "The Weeknd" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "436", "lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
   };
 
   const faqSchema = {
@@ -40,7 +39,7 @@ const TheWeekndPage = () => {
       { "@type": "Question", "name": "When is The Weeknd touring Europe in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "The Weeknd's European stadium tour runs June 11 to July 8, 2026. Dates include Paris Stade de France (Jun 11), London Wembley (Jun 15), Berlin Olympiastadion (Jun 20), Amsterdam Johan Cruijff Arena (Jun 25), Milan San Siro (Jul 2), and Madrid Metropolitano (Jul 8)." }},
       { "@type": "Question", "name": "What songs does The Weeknd play live?", "acceptedAnswer": { "@type": "Answer", "text": "The Weeknd's setlist features 25+ songs including Blinding Lights, Save Your Tears, Starboy, The Hills, Can't Feel My Face, Die For You, I Feel It Coming, Earned It, and tracks from his latest album. The show runs approximately 2 hours with a spectacular visual production." }},
       { "@type": "Question", "name": "Are The Weeknd tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every ticket purchased through EuroMatchTickets includes Buyer protection cancellation refund policy. If the concert is cancelled or postponed, you receive a full refund. If tickets are invalid, you get 100% of your money back." }},
-      { "@type": "Question", "name": "Where is the best seat for The Weeknd concert?", "acceptedAnswer": { "@type": "Answer", "text": "For the best experience: Golden Circle offers closest proximity to the stage. Floor Standing B1-B4 provides great energy. Lower tier seats offer the best balance of view and comfort. The Weeknd's production has massive screens visible from all sections." }},
+      { "@type": "Question", "name": "Where is the best seat for The Weeknd concert?", "acceptedAnswer": { "@type": "Answer", "text": "For the best experience: Golden Circle offers closest proximity to the stage. Floor Standing B1-B4 provides great energy. Lower tier seats offer the best balance of view and comfort. The Weeknd's production has massive screens visible from all sections." }}
     ]
   };
 
@@ -50,7 +49,7 @@ const TheWeekndPage = () => {
     { q: "What songs does The Weeknd play live?", a: "25+ songs: Blinding Lights, Save Your Tears, Starboy, The Hills, Can't Feel My Face, Die For You, I Feel It Coming, Earned It, plus new album tracks. 2-hour spectacular show." },
     { q: "Are The Weeknd tickets refundable?", a: "Yes! Buyer protection cancellation refund policy on every ticket. Full refund if cancelled or postponed. If tickets are invalid, 100% refund." },
     { q: "Where is the best seat for The Weeknd concert?", a: "Golden Circle for closest to stage. Floor Standing B1-B4 for energy. Lower tier for balanced view. Massive screens visible from all sections." },
-    { q: "How are tickets delivered?", a: "Instant QR code delivery to your email within minutes of purchase. Show the QR code on your phone at the venue entrance. No printing needed." },
+    { q: "How are tickets delivered?", a: "Instant QR code delivery to your email within minutes of purchase. Show the QR code on your phone at the venue entrance. No printing needed." }
   ];
 
   const shows = [
@@ -59,7 +58,7 @@ const TheWeekndPage = () => {
     { date: "Jun 20, 2026", time: "20:00", venue: "Olympiastadion", city: "Berlin", price: 115, tickets: 72 },
     { date: "Jun 25, 2026", time: "20:00", venue: "Johan Cruijff Arena", city: "Amsterdam", price: 135, tickets: 41, hot: true },
     { date: "Jul 2, 2026", time: "20:30", venue: "San Siro", city: "Milan", price: 110, tickets: 95 },
-    { date: "Jul 8, 2026", time: "21:00", venue: "Estadio Metropolitano", city: "Madrid", price: 105, tickets: 83 },
+    { date: "Jul 8, 2026", time: "21:00", venue: "Estadio Metropolitano", city: "Madrid", price: 105, tickets: 83 }
   ];
 
   return (

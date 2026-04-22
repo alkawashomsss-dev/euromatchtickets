@@ -73,8 +73,7 @@ const BayernRealMadridPage = () => {
       { "@type": "SportsTeam", "name": "Real Madrid CF" }
     ],
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "199", "highPrice": "2999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/bayern-vs-real-madrid-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "199", "highPrice": "2999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/bayern-vs-real-madrid-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -82,7 +81,7 @@ const BayernRealMadridPage = () => {
     { section: "Category 3 (Side Upper)", price: 349, tag: "POPULAR", features: ["Side view upper tier", "Central position", "Instant QR delivery", "Buyer protection"] },
     { section: "Category 2 (Lower Tier)", price: 549, tag: "BEST VIEW", features: ["Lower tier seating", "Close to the pitch", "Premium atmosphere", "Buyer protection"] },
     { section: "Category 1 (VIP)", price: 899, tag: "VIP", features: ["Best seats in house", "Hospitality lounge access", "Complimentary food & drinks", "Buyer protection"] },
-    { section: "Hospitality Package", price: 1999, tag: "EXCLUSIVE", features: ["Premium hospitality suite", "5-star dining experience", "Private balcony view", "Player tunnel access area"] },
+    { section: "Hospitality Package", price: 1999, tag: "EXCLUSIVE", features: ["Premium hospitality suite", "5-star dining experience", "Private balcony view", "Player tunnel access area"] }
   ];
 
   const faqs = [
@@ -91,13 +90,13 @@ const BayernRealMadridPage = () => {
     { question: "How do I get to the Allianz Arena?", answer: "The Allianz Arena is easily accessible by Munich U-Bahn (Line U6 to Fröttmaning station). From Munich city center, it takes about 20 minutes. Parking is also available." },
     { question: "Are the tickets genuine and guaranteed?", answer: "Every ticket sold on EuroMatchTickets is verified and backed by our Buyer protection. If there's any issue, you receive a full refund." },
     { question: "Can I buy Bayern vs Real Madrid tickets as a neutral fan?", answer: "Yes! Our tickets are available to all fans regardless of club membership. We sell neutral, home, and away section tickets." },
-    { question: "What is the atmosphere like at the Allianz Arena?", answer: "The Allianz Arena is one of Europe's most iconic stadiums, holding 75,000 fans. The atmosphere for Champions League nights is electric, especially against top opponents like Real Madrid." },
+    { question: "What is the atmosphere like at the Allianz Arena?", answer: "The Allianz Arena is one of Europe's most iconic stadiums, holding 75,000 fans. The atmosphere for Champions League nights is electric, especially against top opponents like Real Madrid." }
   ];
 
   const h2content = [
     { title: "Bayern Munich vs Real Madrid - A Champions League Classic", text: "When two of European football's greatest clubs meet, the world watches. Bayern Munich vs Real Madrid is one of the most historic rivalries in Champions League history, with legendary encounters that have defined the tournament. From the dramatic semi-finals to unforgettable comebacks, every meeting between these two giants delivers pure football magic." },
     { title: "Allianz Arena - The Fortress of Football", text: "The Allianz Arena in Munich is one of the most impressive stadiums in the world. With a capacity of 75,000 for Champions League matches, the stadium's iconic illuminated exterior and incredible atmosphere make it a bucket-list destination for every football fan. The Südkurve (South Stand) is famous for its passionate Bayern supporters." },
-    { title: "Why Buy Bayern vs Real Madrid Tickets from EuroMatchTickets?", text: "We offer the verified-seller listings for Bayern Munich vs Real Madrid with QR ticket delivery. Every purchase is protected by our Buyer protection, meaning your tickets are 100% authentic or you get a full refund. We've helped over 50,000 fans attend their dream matches across Europe." },
+    { title: "Why Buy Bayern vs Real Madrid Tickets from EuroMatchTickets?", text: "We offer the verified-seller listings for Bayern Munich vs Real Madrid with QR ticket delivery. Every purchase is protected by our Buyer protection, meaning your tickets are 100% authentic or you get a full refund. We've helped over 50,000 fans attend their dream matches across Europe." }
   ];
 
   return (

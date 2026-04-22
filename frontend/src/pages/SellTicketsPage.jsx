@@ -16,7 +16,7 @@ const CATEGORIES = [
   { value: "general", label: "General Admission" },
   { value: "grandstand", label: "Grandstand" },
   { value: "floor", label: "Floor / Standing" },
-  { value: "box", label: "Executive Box" },
+  { value: "box", label: "Executive Box" }
 ];
 
 const EVENT_TYPES = [
@@ -25,7 +25,7 @@ const EVENT_TYPES = [
   { value: "concert", label: "Concert" },
   { value: "motogp", label: "MotoGP" },
   { value: "worldcup", label: "World Cup" },
-  { value: "other", label: "Other" },
+  { value: "other", label: "Other" }
 ];
 
 function EarningsCalc({ price, qty }) {
@@ -63,7 +63,7 @@ function SellerStats() {
         { icon: Users, value: "12,000+", label: "Active Sellers", color: "text-blue-600" },
         { icon: Ticket, value: "850K+", label: "Tickets Sold", color: "text-emerald-600" },
         { icon: Globe, value: "45+", label: "Countries", color: "text-violet-600" },
-        { icon: CreditCard, value: "48h", label: "Payout Speed", color: "text-amber-600" },
+        { icon: CreditCard, value: "48h", label: "Payout Speed", color: "text-amber-600" }
       ].map((s, i) => (
         <div key={i} className="bg-white/90 border border-white/10 rounded-none p-4 text-center">
           <s.icon className={`w-6 h-6 ${s.color} mx-auto mb-2`} />
@@ -88,7 +88,7 @@ export default function SellTicketsPage() {
     event_name: "", event_date: "", event_type: "concert",
     venue: "", city: "", country: "",
     category: "standard", section: "", num_tickets: 1,
-    price_per_ticket: "", original_price: "", description: "",
+    price_per_ticket: "", original_price: "", description: ""
   });
   const [file, setFile] = useState(null);
 
@@ -104,7 +104,7 @@ export default function SellTicketsPage() {
       const token = localStorage.getItem("session_token");
       const res = await axios.post(`${API}/seller/list-tickets`, fd, {
         headers: { "Content-Type": "multipart/form-data", ...(token ? { Authorization: `Bearer ${token}` } : {}) },
-        withCredentials: true,
+        withCredentials: true
       });
       setSuccess(res.data);
     } catch (e) {
@@ -154,7 +154,7 @@ export default function SellTicketsPage() {
               {[
                 { icon: Upload, title: "1. List Your Tickets", desc: "Upload your tickets in under 2 minutes. Add event details, set your price, and attach the PDF or QR code." },
                 { icon: Users, title: "2. We Find Buyers", desc: "Your tickets are shown to millions of verified buyers actively searching for events. Our SEO reaches 1,700+ pages." },
-                { icon: DollarSign, title: "3. Get Paid", desc: "When your tickets sell, you receive payment within 48 hours via bank transfer. Simple, fast, secure." },
+                { icon: DollarSign, title: "3. Get Paid", desc: "When your tickets sell, you receive payment within 48 hours via bank transfer. Simple, fast, secure." }
               ].map((s, i) => (
                 <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-8 text-center hover:border-emerald-700/50 transition-all">
                   <div className="w-14 h-14 rounded-full bg-emerald-900/30 flex items-center justify-center mx-auto mb-4">
@@ -175,7 +175,7 @@ export default function SellTicketsPage() {
                 { icon: Shield, title: "Seller Protection", desc: "Your tickets and earnings are fully protected. We handle disputes and guarantee payment." },
                 { icon: Zap, title: "Instant Listing", desc: "List tickets in under 2 minutes. No complicated forms. Just upload and sell." },
                 { icon: CreditCard, title: "Fast Payouts", desc: "Get paid within 48 hours of the event. Direct bank transfer to your account." },
-                { icon: Star, title: "Fair Fees", desc: "Only 8% platform fee. Lower than StubHub (15%) and Viagogo (20%). You keep more." },
+                { icon: Star, title: "Fair Fees", desc: "Only 8% platform fee. Lower than StubHub (15%) and Viagogo (20%). You keep more." }
               ].map((t, i) => (
                 <div key={i} className="text-center">
                   <t.icon className="w-8 h-8 text-emerald-600 mx-auto mb-3" />

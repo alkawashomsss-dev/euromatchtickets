@@ -116,7 +116,7 @@ const SEOHead = ({
       '/fr/billets-f1': { en: '/f1-tickets', es: '/es/entradas-f1', de: '/de/formel-1-tickets', it: '/it/biglietti-f1' },
       '/it/biglietti': { en: '/', es: '/es/comprar-entradas', de: '/de/tickets-kaufen', fr: '/fr/acheter-billets' },
       '/it/biglietti-champions-league': { en: '/champions-league-tickets', es: '/es/entradas-champions-league', de: '/de/champions-league-tickets', fr: '/fr/billets-champions-league' },
-      '/it/biglietti-f1': { en: '/f1-tickets', es: '/es/entradas-f1', de: '/de/formel-1-tickets', fr: '/fr/billets-f1' },
+      '/it/biglietti-f1': { en: '/f1-tickets', es: '/es/entradas-f1', de: '/de/formel-1-tickets', fr: '/fr/billets-f1' }
     };
 
     const addHreflang = (lang, path) => {

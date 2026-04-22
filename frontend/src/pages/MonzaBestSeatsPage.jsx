@@ -11,14 +11,14 @@ const MonzaBestSeatsPage = () => {
     { name: "Ascari Chicane", rating: 8.5, price: "€139", view: "Technical chicane section", pros: ["Close to the track", "Great for photos", "Less crowded"], cons: ["No straight-line speed view"], best: "Best for: Photographers & quiet atmosphere", color: "border-blue-500" },
     { name: "General Admission (Prato)", rating: 8.8, price: "€69", view: "Multiple spots around the circuit", pros: ["Freedom to roam", "Verified option", "Multiple viewpoints"], cons: ["No guaranteed seat", "Can get crowded"], best: "Best for: Budget-conscious fans & first-timers", color: "border-emerald-500" },
     { name: "VIP Village", rating: 9.8, price: "€595", view: "Track-side terrace", pros: ["Open bar all day", "Italian gourmet cuisine", "Private terrace"], cons: ["Premium price"], best: "Best for: Corporate events & luxury seekers", color: "border-purple-500" },
-    { name: "Paddock Club", rating: 10, price: "€1,995", view: "Pit lane & paddock access", pros: ["Pit lane walks", "Driver meet & greet", "5-star hospitality"], cons: ["Very limited availability"], best: "Best for: Ultimate F1 experience", color: "border-amber-500" },
+    { name: "Paddock Club", rating: 10, price: "€1,995", view: "Pit lane & paddock access", pros: ["Pit lane walks", "Driver meet & greet", "5-star hospitality"], cons: ["Very limited availability"], best: "Best for: Ultimate F1 experience", color: "border-amber-500" }
   ];
 
   const faqs = [
     { question: "What is the best grandstand at Monza for overtaking?", answer: "Prima Variante (Turn 1) is the best spot for overtaking. Cars brake from 340km/h to 80km/h here, making it the heaviest braking zone. Most position changes happen at this corner." },
     { question: "Which Monza grandstand has the best view?", answer: "The Parabolica Grandstand offers the most dramatic view - seeing cars exit at 300km/h plus the podium celebration. However, Prima Variante gives you the start/finish and overtaking action." },
     { question: "Is General Admission worth it at Monza?", answer: "Absolutely! At just €69, Monza's Prato (GA) is the best value in F1. You can roam the entire Parco di Monza, find multiple vantage points, and experience the legendary Tifosi atmosphere." },
-    { question: "Are Monza grandstand seats covered?", answer: "Most grandstands at Monza have partial cover. The Parabolica and Prima Variante main sections have roofing. September weather in Monza is usually warm (22-28°C) with occasional rain." },
+    { question: "Are Monza grandstand seats covered?", answer: "Most grandstands at Monza have partial cover. The Parabolica and Prima Variante main sections have roofing. September weather in Monza is usually warm (22-28°C) with occasional rain." }
   ];
 
   const reviewSchema = {

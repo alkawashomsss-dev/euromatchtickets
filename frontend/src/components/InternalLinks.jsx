@@ -20,8 +20,8 @@ const linkGroups = {
       { to: "/cheap-f1-tickets-2026", label: "Cheap F1 Tickets" },
       { to: "/cheapest-f1-races-2026", label: "Verified F1 Races Ranked" },
       { to: "/f1-hospitality-packages-2026", label: "F1 VIP Hospitality" },
-      { to: "/spa-paddock-club-tickets", label: "Spa Paddock Club" },
-    ],
+      { to: "/spa-paddock-club-tickets", label: "Spa Paddock Club" }
+    ]
   },
   football: {
     title: "Top Football Events",
@@ -36,8 +36,8 @@ const linkGroups = {
       { to: "/premier-league-tickets-2026", label: "Premier League" },
       { to: "/la-liga-tickets-2026", label: "La Liga" },
       { to: "/bundesliga-tickets-2026", label: "Bundesliga" },
-      { to: "/world-cup-2026", label: "World Cup 2026" },
-    ],
+      { to: "/world-cup-2026", label: "World Cup 2026" }
+    ]
   },
   concert: {
     title: "Hot Concert Tickets",
@@ -49,8 +49,8 @@ const linkGroups = {
       { to: "/concert-tickets-paris-2026", label: "Concerts in Paris" },
       { to: "/concert-tickets-berlin-2026", label: "Concerts in Berlin" },
       { to: "/concert-tickets-barcelona-2026", label: "Concerts in Barcelona" },
-      { to: "/events?type=concert", label: "All Concerts" },
-    ],
+      { to: "/events?type=concert", label: "All Concerts" }
+    ]
   },
   worldcup: {
     title: "World Cup 2026",
@@ -63,16 +63,16 @@ const linkGroups = {
       { to: "/world-cup-2026-tickets-dallas", label: "WC Dallas" },
       { to: "/world-cup-2026-tickets-toronto", label: "WC Toronto" },
       { to: "/world-cup-2026-tickets-mexico-city", label: "WC Mexico City" },
-      { to: "/champions-league-tickets", label: "Champions League" },
-    ],
-  },
+      { to: "/champions-league-tickets", label: "Champions League" }
+    ]
+  }
 };
 
 const relatedMap = {
   f1: ["football", "concert"],
   football: ["f1", "concert"],
   concert: ["football", "f1"],
-  worldcup: ["f1", "concert"],
+  worldcup: ["f1", "concert"]
 };
 
 const catIcons = { f1: Flag, football: Trophy, concert: Music, worldcup: Globe };

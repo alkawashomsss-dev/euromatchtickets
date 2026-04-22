@@ -11,7 +11,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "../components/ui/dropdown-menu";
 
 const Header = () => {
@@ -32,7 +32,7 @@ const Header = () => {
     { name: "Concerts", icon: Music, href: "/events?type=concert" },
     { name: "Formula 1", icon: Flag, href: "/f1-tickets" },
     { name: "MotoGP", icon: Bike, href: "/motogp-tickets" },
-    { name: "Isle of Man TT", icon: Bike, href: "/isle-of-man-tt-tickets" },
+    { name: "Isle of Man TT", icon: Bike, href: "/isle-of-man-tt-tickets" }
   ];
 
   return (
@@ -252,7 +252,7 @@ const Header = () => {
                 { label: "Champions League", to: "/champions-league-tickets" },
                 { label: "World Cup 2026", to: "/world-cup-2026" },
                 { label: "Taylor Swift", to: "/taylor-swift-london-tickets" },
-                { label: "MotoGP", to: "/motogp-tickets" },
+                { label: "MotoGP", to: "/motogp-tickets" }
               ].map((item) => (
                 <Link
                   key={item.to}

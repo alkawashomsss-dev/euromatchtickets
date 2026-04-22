@@ -43,14 +43,14 @@ const BahrainGPPage = () => {
     { section: "Turn 1 Grandstand", price: 159, originalPrice: 199, available: 78, badge: "HOT", features: ["Braking zone action", "Overtaking spot", "Shaded area"] },
     { section: "Batelco Grandstand", price: 139, originalPrice: 179, available: 98, badge: null, features: ["S-curves view", "Multiple angle views", "Close to track"] },
     { section: "VIP Hospitality", price: 495, originalPrice: 699, available: 34, badge: "VIP", features: ["Open bar & gourmet dining", "Pit lane walk", "Paddock access"] },
-    { section: "Paddock Club", price: 1495, originalPrice: 1999, available: 12, badge: "EXCLUSIVE", features: ["Behind-the-scenes access", "Meet drivers", "Premium hospitality"] },
+    { section: "Paddock Club", price: 1495, originalPrice: 1999, available: 12, badge: "EXCLUSIVE", features: ["Behind-the-scenes access", "Meet drivers", "Premium hospitality"] }
   ];
 
   const circuitSections = [
     { name: "Turn 1", desc: "The heaviest braking zone - cars drop from 320km/h to 80km/h", highlight: true },
     { name: "Turn 4", desc: "Tight hairpin, great for photos and close overtaking action" },
     { name: "Turn 10", desc: "Fast right-hander leading into the spectacular inner section" },
-    { name: "Main Straight", desc: "Top speed zone - DRS enabled, watch cars hit 340km/h" },
+    { name: "Main Straight", desc: "Top speed zone - DRS enabled, watch cars hit 340km/h" }
   ];
 
   const faqs = [
@@ -59,7 +59,7 @@ const BahrainGPPage = () => {
     { question: "How do I get to Bahrain International Circuit?", answer: "The circuit is 30km south of Manama. Free shuttle buses operate from major hotels. Taxis cost ~€15 from the city center. Parking is available at the circuit for €5/day." },
     { question: "What's the weather like for Bahrain GP?", answer: "March temperatures average 22-27°C during the day, cooling to 18-22°C at night. It's perfect racing weather with almost zero chance of rain. Bring sunscreen for daytime sessions." },
     { question: "Are Bahrain F1 tickets mobile?", answer: "Yes! All tickets are delivered instantly as secure QR codes to your email. Simply show your phone at the gate. You can also print a backup copy." },
-    { question: "When does the Bahrain GP weekend start?", answer: "Friday: Free Practice 1 & 2. Saturday: Free Practice 3 & Qualifying. Sunday: The Grand Prix race. Your 3-day ticket covers all sessions." },
+    { question: "When does the Bahrain GP weekend start?", answer: "Friday: Free Practice 1 & 2. Saturday: Free Practice 3 & Qualifying. Sunday: The Grand Prix race. Your 3-day ticket covers all sessions." }
   ];
 
   const reviewSchema = {
@@ -68,12 +68,9 @@ const BahrainGPPage = () => {
     "name": "Bahrain Grand Prix 2026 Tickets",
     "description": "Verified Bahrain F1 tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "3241", "bestRating": "5", "worstRating": "1" },
-    "review": [
-      { "@type": "Review", "name": "Magical Bahrain night race atmosphere", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Ahmed K." }, "reviewBody": "The night race atmosphere was magical! Tickets were €30 cheaper than the official site. QR code worked perfectly.", "datePublished": "2026-01-20" },
-      { "@type": "Review", "name": "Turn 1 grandstand braking heat experience", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Sarah L." }, "reviewBody": "Turn 1 grandstand was incredible! Could feel the braking heat. Best F1 experience ever.", "datePublished": "2025-12-15" }
-    ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "59", "highPrice": "1495", "offerCount": "723" , "validFrom": "2025-01-01" }
+    
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "59", "highPrice": "1495","validFrom": "2025-01-01" }
   };
 
   return (
@@ -291,7 +288,7 @@ const BahrainGPPage = () => {
             { to: "/f1-las-vegas-grand-prix-tickets", label: "Las Vegas GP", price: "195", color: "from-yellow-500/20 to-red-500/20" },
             { to: "/f1-abu-dhabi-grand-prix-tickets", label: "Abu Dhabi GP", price: "119", color: "from-cyan-500/20 to-blue-500/20" },
             { to: "/champions-league-tickets", label: "Champions League", price: "49", color: "from-blue-500/20 to-indigo-500/20" },
-            { to: "/taylor-swift-london-tickets", label: "Taylor Swift", price: "89", color: "from-pink-500/20 to-purple-500/20" },
+            { to: "/taylor-swift-london-tickets", label: "Taylor Swift", price: "89", color: "from-pink-500/20 to-purple-500/20" }
           ].map((l, i) => (
             <Link key={i} to={l.to} className={`bg-gradient-to-br ${l.color} border border-white/10 rounded-none p-4 hover:border-white/30 transition-all`}>
               <p className="font-bold text-white text-sm">{l.label}</p>

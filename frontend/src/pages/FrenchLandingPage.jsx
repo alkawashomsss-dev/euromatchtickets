@@ -19,14 +19,14 @@ const FrenchLandingPage = () => {
     { titre: "Grand Prix de Monaco F1 2026", date: "Mai 2026", lieu: "Circuit de Monaco", prix: 195, icone: Flag, lien: "/monaco-grand-prix-2026-tickets", tag: "PREMIUM" },
     { titre: "Grand Prix de France F1 2026", date: "Juillet 2026", lieu: "Le Castellet", prix: 89, icone: Flag, lien: "/f1-tickets", tag: "NOUVEAU" },
     { titre: "Taylor Swift - Eras Tour Paris", date: "2026", lieu: "Stade de France, Paris", prix: 89, icone: Music, lien: "/taylor-swift-tickets", tag: "COMPLET BIENTOT" },
-    { titre: "Coupe du Monde FIFA 2026", date: "Juin-Juil 2026", lieu: "USA, Mexique, Canada", prix: 89, icone: Trophy, lien: "/world-cup-2026", tag: "EVENEMENT" },
+    { titre: "Coupe du Monde FIFA 2026", date: "Juin-Juil 2026", lieu: "USA, Mexique, Canada", prix: 89, icone: Trophy, lien: "/world-cup-2026", tag: "EVENEMENT" }
   ];
 
   const avantages = [
     { titre: "Prix les Plus Bas", desc: "Nous garantissons les meilleurs prix du marche. Moins cher qu'ailleurs!", icone: Zap },
     { titre: "100% Garanti", desc: "Tous les billets verifies avec notre garantie Buyer protection. Remboursement total.", icone: Shield },
     { titre: "Livraison Instantanee", desc: "Recevez vos billets par email instantanement. QR code pret a scanner.", icone: Ticket },
-    { titre: "4.8/5 Etoiles", desc: "Des milliers de clients satisfaits dans toute l'Europe.", icone: Star },
+    { titre: "4.8/5 Etoiles", desc: "Des milliers de clients satisfaits dans toute l'Europe.", icone: Star }
   ];
 
   const faqs = [
@@ -34,7 +34,7 @@ const FrenchLandingPage = () => {
     { question: "Les billets sont-ils garantis?", answer: "Oui! Tous nos billets sont 100% verifies et proteges par notre garantie Buyer protection. Si l'evenement est annule, vous etes integralement rembourse." },
     { question: "Quels sont les modes de paiement acceptes?", answer: "Nous acceptons Visa, Mastercard, American Express, PayPal et Apple Pay. Tous les paiements sont securises par cryptage SSL." },
     { question: "Combien coutent les billets Champions League?", answer: "Les billets Champions League commencent a partir de 85EUR pour les matchs de phase de groupes. Les demi-finales et la finale sont a partir de 195EUR." },
-    { question: "Livrez-vous en France?", answer: "Oui! Livraison instantanee par email dans le monde entier. Pas besoin d'attendre - votre QR code est pret immediatement." },
+    { question: "Livrez-vous en France?", answer: "Oui! Livraison instantanee par email dans le monde entier. Pas besoin d'attendre - votre QR code est pret immediatement." }
   ];
 
   const reviewSchema = {
@@ -42,9 +42,8 @@ const FrenchLandingPage = () => {
     "@type": "Product",
     "name": "Billets EuroMatchTickets - France",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2456", "bestRating": "5" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "39", "highPrice": "2500" }
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "39", "highPrice": "2500" }
   };
 
   return (

@@ -9,14 +9,14 @@ const HowToGetToMonzaPage = () => {
     { icon: Train, title: "From Milan by Train + Shuttle", time: "45 min", cost: "€5-8", steps: ["Take Metro Line 1 (Red) to Sesto FS Rondò", "Free shuttle bus from Sesto to the circuit (every 10 min)", "Walk from Monza train station (20 min) if you prefer"], recommended: true },
     { icon: Train, title: "From Milan Centrale by Train", time: "25 min", cost: "€3.50", steps: ["Take Trenord train from Milano Centrale to Monza station", "Walk to circuit through Parco di Monza (20 min)", "Trains run every 15-20 minutes on race weekend"] },
     { icon: Car, title: "By Car", time: "30-60 min", cost: "€5 parking", steps: ["Take the A4 motorway towards Monza (exit Monza)", "Circuit parking available (€5/day, cash)", "Expect heavy traffic - arrive before 8am on race day"], warning: "Heavy traffic on race day. Allow 2x normal travel time." },
-    { icon: Plane, title: "Flying to Milan", time: "Varies", cost: "From €30", steps: ["Milan Malpensa (MXP) - 60km from Monza. Malpensa Express to Centrale, then train to Monza", "Milan Linate (LIN) - 25km from Monza. Bus 73 to Metro, then train", "Bergamo Orio al Serio (BGY) - Budget airlines. Airport bus to Milano Centrale"] },
+    { icon: Plane, title: "Flying to Milan", time: "Varies", cost: "From €30", steps: ["Milan Malpensa (MXP) - 60km from Monza. Malpensa Express to Centrale, then train to Monza", "Milan Linate (LIN) - 25km from Monza. Bus 73 to Metro, then train", "Bergamo Orio al Serio (BGY) - Budget airlines. Airport bus to Milano Centrale"] }
   ];
 
   const faqs = [
     { question: "How do I get to Monza from Milan?", answer: "The easiest way is Metro Line 1 (Red) to Sesto FS, then the free race shuttle (runs every 10 min). Total journey ~45 min from central Milan. Alternatively, take a Trenord train from Milano Centrale to Monza station (25 min, €3.50) and walk 20 min through the park." },
     { question: "Is there parking at Monza F1?", answer: "Yes, parking is available around the circuit for €5/day (cash only). However, we strongly recommend public transport. Traffic is extremely heavy on race day - you could be stuck for 2+ hours." },
     { question: "How early should I arrive at Monza?", answer: "Gates open at 08:00. On race day (Sunday), arrive by 09:00 for a good spot in General Admission, or by 10:00 for grandstand seats. The support races start at 10:30." },
-    { question: "Can I walk to Monza circuit from the city?", answer: "From Monza train station, it's a pleasant 20-minute walk through the beautiful Parco di Monza. Follow the crowds! From Milan city center, it's too far to walk (15km)." },
+    { question: "Can I walk to Monza circuit from the city?", answer: "From Monza train station, it's a pleasant 20-minute walk through the beautiful Parco di Monza. Follow the crowds! From Milan city center, it's too far to walk (15km)." }
   ];
 
   return (

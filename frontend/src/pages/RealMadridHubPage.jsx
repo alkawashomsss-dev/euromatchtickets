@@ -20,8 +20,7 @@ const RealMadridHubPage = () => {
     "location": { "@type": "Place", "name": "Santiago Bernabeu", "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES" } },
     "performer": { "@type": "SportsTeam", "name": "Real Madrid CF" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "75", "highPrice": "2500", "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/real-madrid-tickets" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "75", "highPrice": "2500", "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/real-madrid-tickets" }
   };
 
   const reviewSchema = {
@@ -31,13 +30,9 @@ const RealMadridHubPage = () => {
     "name": "Real Madrid Tickets 2025-26",
     "description": "Verified Real Madrid match tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "2841", "bestRating": "5", "worstRating": "1" },
-    "review": [
-      { "@type": "Review", "name": "Incredible Bernabeu experience", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Carlos M." }, "reviewBody": "Incredible experience at the Bernabeu! Tickets arrived instantly. Best prices I found anywhere.", "datePublished": "2026-02-20" },
-      { "@type": "Review", "name": "El Clasico tickets at great prices", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "James T." }, "reviewBody": "Got El Clasico tickets at amazing prices. QR code worked perfectly at the gate.", "datePublished": "2026-01-15" },
-      { "@type": "Review", "name": "Easy booking from Tokyo", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Yuki H." }, "reviewBody": "Flew from Tokyo for Real Madrid vs Man City. EuroMatchTickets made it so easy!", "datePublished": "2025-12-08" }
-    ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "75", "highPrice": "2500", "offerCount": "412" , "validFrom": "2025-01-01" }
+    
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "75", "highPrice": "2500","validFrom": "2025-01-01" }
   };
 
   const matches = [
@@ -45,14 +40,14 @@ const RealMadridHubPage = () => {
     { home: "Real Madrid", away: "Man City", label: "UCL Quarter-Final", venue: "Santiago Bernabeu", date: "Apr 2026", price: 185, tickets: 34, hot: true, link: "/real-madrid-champions-league-tickets-2026" },
     { home: "Real Madrid", away: "Bayern Munich", label: "UCL Semi-Final", venue: "Santiago Bernabeu", date: "May 2026", price: 210, tickets: 19, hot: true, link: "/bayern-vs-real-madrid-tickets" },
     { home: "Real Madrid", away: "Atletico Madrid", label: "La Liga Derby", venue: "Santiago Bernabeu", date: "Mar 2026", price: 145, tickets: 56, link: "/real-madrid-la-liga-tickets-2026" },
-    { home: "Real Madrid", away: "Sevilla", label: "La Liga", venue: "Santiago Bernabeu", date: "Mar 2026", price: 95, tickets: 89, link: "/real-madrid-la-liga-tickets-2026" },
+    { home: "Real Madrid", away: "Sevilla", label: "La Liga", venue: "Santiago Bernabeu", date: "Mar 2026", price: 95, tickets: 89, link: "/real-madrid-la-liga-tickets-2026" }
   ];
 
   const reviews = [
     { name: "Carlos M.", country: "Spain", rating: 5, text: "Incredible experience at the Bernabeu! Tickets arrived instantly. Best prices I found.", date: "Feb 2026" },
     { name: "James T.", country: "UK", rating: 5, text: "Got El Clasico tickets at amazing prices. QR code worked perfectly at the gate.", date: "Jan 2026" },
     { name: "Yuki H.", country: "Japan", rating: 5, text: "Flew from Tokyo for Real Madrid vs Man City. EuroMatchTickets made it so easy!", date: "Dec 2025" },
-    { name: "Fatima A.", country: "UAE", rating: 5, text: "Best service for Real Madrid tickets. Cheaper than the official site!", date: "Nov 2025" },
+    { name: "Fatima A.", country: "UAE", rating: 5, text: "Best service for Real Madrid tickets. Cheaper than the official site!", date: "Nov 2025" }
   ];
 
   const faqs = [
@@ -61,7 +56,7 @@ const RealMadridHubPage = () => {
     { question: "Where does Real Madrid play?", answer: "Real Madrid plays home matches at the Santiago Bernab\u00E9u Stadium in Madrid, Spain. The stadium was recently renovated with a retractable roof and holds 81,044 spectators." },
     { question: "Can I buy El Clasico tickets?", answer: "Yes! We have El Clasico tickets (Real Madrid vs Barcelona) starting from \u20AC195. These are among our most popular tickets - book early as they sell out fast." },
     { question: "Are EuroMatchTickets Real Madrid tickets genuine?", answer: "Absolutely. All tickets are verified and backed by our Buyer protection. If there's any issue, you receive a full refund." },
-    { question: "When is the next Real Madrid Champions League match?", answer: "Real Madrid's next Champions League match is in the knockout rounds, starting February 2026. Check our listings for the latest schedule and available tickets." },
+    { question: "When is the next Real Madrid Champions League match?", answer: "Real Madrid's next Champions League match is in the knockout rounds, starting February 2026. Check our listings for the latest schedule and available tickets." }
   ];
 
   return (

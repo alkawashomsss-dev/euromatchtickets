@@ -18,7 +18,7 @@ const ticketCategories = [
   { name: "Category 1", price: 449, tier: "Lower Tier – Best View", color: "from-emerald-600 to-emerald-800", text: "text-emerald-300", border: "border-emerald-600", tag: "BEST VALUE" },
   { name: "VIP Silver", price: 999, tier: "Club Lounge Access", color: "from-gray-400 to-gray-600", text: "text-gray-200", border: "border-gray-400", tag: null, vip: true },
   { name: "VIP Gold", price: 1499, tier: "Private Suite", color: "from-amber-500 to-amber-700", text: "text-amber-200", border: "border-amber-500", tag: "POPULAR", vip: true },
-  { name: "VIP Platinum", price: 1899, tier: "All-Inclusive Experience", color: "from-violet-500 via-purple-600 to-indigo-700", text: "text-violet-200", border: "border-violet-400", tag: "EXCLUSIVE", vip: true },
+  { name: "VIP Platinum", price: 1899, tier: "All-Inclusive Experience", color: "from-violet-500 via-purple-600 to-indigo-700", text: "text-violet-200", border: "border-violet-400", tag: "EXCLUSIVE", vip: true }
 ];
 
 const WorldCupPage = () => {
@@ -42,7 +42,7 @@ const WorldCupPage = () => {
     "location": { "@type": "Place", "name": "Multiple Venues - USA, Canada, Mexico", "address": { "@type": "PostalAddress", "addressCountry": "US" } },
     "performer": {"@type": "SportsTeam", "name": "FIFA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "lowPrice": "65", "highPrice": "5000", "priceCurrency": "EUR", "offerCount": "104", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/world-cup-2026", "validFrom": "2025-01-01", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
+    "offers": { "@type": "Offer", "lowPrice": "65", "highPrice": "5000", "priceCurrency": "EUR","availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/world-cup-2026", "validFrom": "2025-01-01", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
   };
 
   const formatDate = (d) => new Date(d).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
@@ -84,7 +84,7 @@ const WorldCupPage = () => {
             {[
               { icon: Calendar, label: "Jun 11 – Jul 19", sub: "2026" },
               { icon: MapPin, label: "16 Cities", sub: "3 Countries" },
-              { icon: Users, label: "48 Teams", sub: "104 Matches" },
+              { icon: Users, label: "48 Teams", sub: "104 Matches" }
             ].map((s, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }} className="flex items-center gap-3 px-4 py-2.5 rounded-none bg-white/5 backdrop-blur-md border border-white/10">
                 <s.icon className="w-5 h-5 text-amber-400 flex-shrink-0" />
@@ -107,7 +107,7 @@ const WorldCupPage = () => {
             {[
               { icon: Shield, t: "Verified" },
               { icon: Star, t: "Buyer protection" },
-              { icon: Zap, t: "QR ticket delivery" },
+              { icon: Zap, t: "QR ticket delivery" }
             ].map((b, i) => (
               <div key={i} className="flex items-center gap-2 text-amber-300/90 font-medium">
                 <b.icon className="w-4 h-4" /> {b.t}

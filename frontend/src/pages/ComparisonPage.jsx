@@ -72,7 +72,7 @@ const ComparisonPage = ({ competitor = 'StubHub' }) => {
     { feature: 'European Events', euro: '50,000+', competitor: 'Large', winner: 'euro' },
     { feature: 'Price Transparency', euro: 'Final price shown', competitor: 'Fees at checkout', winner: 'euro' },
     { feature: 'Mobile Tickets', euro: 'Yes', competitor: 'Yes', winner: 'tie' },
-    { feature: 'Seller Verification', euro: 'Required', competitor: 'Varies', winner: 'euro' },
+    { feature: 'Seller Verification', euro: 'Required', competitor: 'Varies', winner: 'euro' }
   ];
 
   const schema = {

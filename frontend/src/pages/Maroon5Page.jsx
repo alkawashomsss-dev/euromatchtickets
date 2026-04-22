@@ -123,12 +123,10 @@ const Maroon5Page = () => {
     "description": t.description,
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
     "offers": {
-      "@type": "AggregateOffer",
+      "@type": "Offer",
       "lowPrice": events[0]?.lowest_price || 71,
       "highPrice": 500,
-      "priceCurrency": "EUR",
-      "offerCount": "100",
-      "availability": "https://schema.org/InStock",
+      "priceCurrency": "EUR","availability": "https://schema.org/InStock",
       "url": "https://euromatchtickets.com/maroon-5-tickets",
       "validFrom": "2025-01-01"
     }
@@ -282,7 +280,7 @@ const Maroon5Page = () => {
               { icon: <Shield className="w-8 h-8" />, title: "Buyer protection", desc: "Full refund if cancelled" },
               { icon: <Zap className="w-8 h-8" />, title: "Instant QR", desc: "Tickets in seconds" },
               { icon: <Star className="w-8 h-8" />, title: "5% Cheaper", desc: "Best market prices" },
-              { icon: <Clock className="w-8 h-8" />, title: "Customer support", desc: "Always here to help" },
+              { icon: <Clock className="w-8 h-8" />, title: "Customer support", desc: "Always here to help" }
             ].map((item, idx) => (
               <div key={idx} className="text-center p-6 bg-[#1e1e1e] rounded-none border border-white/10">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-none bg-gradient-to-br from-red-600/20 to-pink-600/20 flex items-center justify-center text-red-600">

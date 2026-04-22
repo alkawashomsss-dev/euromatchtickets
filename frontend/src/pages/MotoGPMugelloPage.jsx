@@ -19,8 +19,7 @@ const MotoGPMugelloPage = () => {
     "location": { "@type": "Place", "name": "Mugello Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Scarperia e San Piero", "addressCountry": "IT" } },
     "performer": {"@type": "SportsTeam", "name": "MotoGP - FIM"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "79", "highPrice": "849", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/motogp-mugello-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "79", "highPrice": "849", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/motogp-mugello-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -29,14 +28,14 @@ const MotoGPMugelloPage = () => {
     { section: "Tribuna Poggio Secco", price: 129, originalPrice: 139, available: 234, popular: true },
     { section: "Tribuna Materassi", price: 139, originalPrice: 149, available: 156, popular: false },
     { section: "VIP Village", price: 489, originalPrice: 499, available: 45, popular: true },
-    { section: "Paddock Experience", price: 799, originalPrice: 849, available: 18, popular: false },
+    { section: "Paddock Experience", price: 799, originalPrice: 849, available: 18, popular: false }
   ];
 
   const faqs = [
     { q: "Why is Mugello special for MotoGP?", a: "Mugello is called 'The Cathedral' of motorcycling. The passionate Italian fans (Tifosi), stunning Tuscan scenery, and challenging circuit make it the best MotoGP atmosphere." },
     { q: "Are Mugello tickets mobile?", a: "Yes, instant mobile QR delivery via email. Print option also available." },
     { q: "What's the best grandstand at Mugello?", a: "Tribuna Centrale offers the best overall views. Poggio Secco is great for the famous uphill section." },
-    { q: "Can I camp at Mugello?", a: "Yes! Free camping areas are available for ticket holders. Book early as they fill up fast!" },
+    { q: "Can I camp at Mugello?", a: "Yes! Free camping areas are available for ticket holders. Book early as they fill up fast!" }
   ];
 
   return (

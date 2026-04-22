@@ -10,7 +10,7 @@ const categoryColors = {
   "F1": "bg-[#e10600]/20 text-[#ff4d4d] border-[#e10600]/30",
   "Concerts": "bg-amber-500/15 text-amber-400 border-amber-500/30",
   "Buying Tips": "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
-  "Stadium Guides": "bg-blue-500/15 text-blue-400 border-blue-500/30",
+  "Stadium Guides": "bg-blue-500/15 text-blue-400 border-blue-500/30"
 };
 
 const categoryIcons = { "F1": Flag, "Concerts": Music, "Buying Tips": Trophy, "Stadium Guides": BookOpen };
@@ -25,7 +25,7 @@ const allArticles = [
     category: "F1",
     readTime: "15 min read",
     date: "2026-04-11",
-    featured: true,
+    featured: true
   },
   {
     slug: "spa-francorchamps-travel-guide-2026",
@@ -35,7 +35,7 @@ const allArticles = [
     category: "F1",
     readTime: "12 min read",
     date: "2026-04-11",
-    featured: true,
+    featured: true
   },
   {
     slug: "how-to-buy-f1-tickets-2026",
@@ -45,7 +45,7 @@ const allArticles = [
     category: "F1",
     readTime: "11 min read",
     date: "2026-04-11",
-    featured: true,
+    featured: true
   },
   {
     slug: "taylor-swift-eras-tour-london-guide-2026",
@@ -55,7 +55,7 @@ const allArticles = [
     category: "Concerts",
     readTime: "10 min read",
     date: "2026-04-11",
-    featured: true,
+    featured: true
   },
   {
     slug: "best-seats-santiago-bernabeu",
@@ -64,7 +64,7 @@ const allArticles = [
     image: "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg",
     category: "Stadium Guides",
     readTime: "8 min read",
-    date: "2025-02-15",
+    date: "2025-02-15"
   },
   {
     slug: "how-to-buy-champions-league-tickets-safely",
@@ -73,7 +73,7 @@ const allArticles = [
     image: "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg",
     category: "Buying Tips",
     readTime: "6 min read",
-    date: "2025-02-10",
+    date: "2025-02-10"
   },
   {
     slug: "is-it-safe-to-buy-resale-concert-tickets",
@@ -82,8 +82,8 @@ const allArticles = [
     image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg",
     category: "Buying Tips",
     readTime: "5 min read",
-    date: "2025-02-05",
-  },
+    date: "2025-02-05"
+  }
 ];
 
 const BlogPage = () => {
@@ -267,7 +267,7 @@ const BlogPage = () => {
                 { to: "/monaco-grand-prix-tickets", label: "Monaco GP Tickets" },
                 { to: "/f1-italian-grand-prix-monza-tickets", label: "Monza GP Tickets" },
                 { to: "/f1-british-grand-prix-silverstone-tickets", label: "Silverstone GP" },
-                { to: "/f1-tickets", label: "All F1 Tickets" },
+                { to: "/f1-tickets", label: "All F1 Tickets" }
               ].map(l => (
                 <li key={l.to}><Link to={l.to} className="text-xs text-slate-500 hover:text-[#e10600] transition-colors">{l.label}</Link></li>
               ))}
@@ -283,7 +283,7 @@ const BlogPage = () => {
                 { to: "/real-madrid-tickets", label: "Real Madrid Tickets" },
                 { to: "/barcelona-tickets", label: "Barcelona Tickets" },
                 { to: "/world-cup-2026", label: "World Cup 2026" },
-                { to: "/el-clasico-tickets", label: "El Clasico Tickets" },
+                { to: "/el-clasico-tickets", label: "El Clasico Tickets" }
               ].map(l => (
                 <li key={l.to}><Link to={l.to} className="text-xs text-slate-500 hover:text-[#e10600] transition-colors">{l.label}</Link></li>
               ))}
@@ -299,7 +299,7 @@ const BlogPage = () => {
                 { to: "/coldplay-tour-2026", label: "Coldplay Tour 2026" },
                 { to: "/bruno-mars-tour-2026", label: "Bruno Mars Tour" },
                 { to: "/the-weeknd-tour-2026", label: "The Weeknd Tour" },
-                { to: "/metallica-sphere-las-vegas-tickets", label: "Metallica Sphere" },
+                { to: "/metallica-sphere-las-vegas-tickets", label: "Metallica Sphere" }
               ].map(l => (
                 <li key={l.to}><Link to={l.to} className="text-xs text-slate-500 hover:text-[#e10600] transition-colors">{l.label}</Link></li>
               ))}

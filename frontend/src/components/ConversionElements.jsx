@@ -32,7 +32,7 @@ export const TrustBar = () => (
   <section className="py-5 border-y border-white/10 bg-[#1e1e1e]" data-testid="trust-bar">
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex flex-wrap justify-center gap-8 text-sm">
-        <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" /><span className="font-medium">500,000+ Tickets Sold</span></div>
+        <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" /><span className="font-medium">Verified marketplace</span></div>
         <div className="flex items-center gap-2 text-amber-600"><Star className="w-4 h-4" /><span className="font-medium">4.9/5 from 12,000+ Reviews</span></div>
         <div className="flex items-center gap-2 text-blue-600"><Globe className="w-4 h-4" /><span className="font-medium">Trusted in 25+ Countries</span></div>
         <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" /><span className="font-medium">100% Money Back Guarantee</span></div>

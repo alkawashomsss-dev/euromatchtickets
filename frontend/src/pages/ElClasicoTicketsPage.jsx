@@ -13,7 +13,7 @@ const CLASICO_FAQS = [
   { q: "When is El Clasico 2026?", a: "La Liga El Clasico 2025/26 season: first leg October/November 2025 (Camp Nou), second leg March/April 2026 (Santiago Bernabéu). Exact dates confirmed 2 weeks before the match by La Liga." },
   { q: "Where is El Clasico played?", a: "El Clasico alternates between Santiago Bernabéu (Real Madrid, capacity 81,044) and Camp Nou (Barcelona, capacity 99,354). The Bernabéu recently completed a €1.8 billion renovation with a retractable roof." },
   { q: "How to get El Clasico tickets?", a: "Select El Clasico on EuroMatchTickets, choose your category, pay via Stripe. Instant QR delivery. All tickets verified with Buyer protection cancellation refund policy. Cheaper than official channels." },
-  { q: "Are El Clasico tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled or postponed. If tickets don't work at the gate, 100% refund." },
+  { q: "Are El Clasico tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled or postponed. If tickets don't work at the gate, 100% refund." }
 ];
 import axios from "axios";
 import { API } from "../App";
@@ -46,7 +46,7 @@ const ElClasicoTicketsPage = () => {
     { name: "Category 3 (Mid Upper)", price: 450, originalPrice: 550, seats: 8, popular: false },
     { name: "Category 2 (Lower Tier)", price: 750, originalPrice: 890, seats: 6, popular: true },
     { name: "Category 1 (Pitch Level)", price: 1200, originalPrice: 1400, seats: 4, popular: true },
-    { name: "VIP Hospitality", price: 2500, originalPrice: 3000, seats: 2, popular: false },
+    { name: "VIP Hospitality", price: 2500, originalPrice: 3000, seats: 2, popular: false }
   ];
 
   return (

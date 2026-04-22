@@ -9,7 +9,7 @@ const catConfig = {
   football: { icon: Trophy, color: "text-blue-700", border: "border-blue-200", bg: "bg-blue-50" },
   concert: { icon: Music, color: "text-violet-700", border: "border-violet-200", bg: "bg-violet-50" },
   worldcup: { icon: Globe, color: "text-emerald-700", border: "border-emerald-200", bg: "bg-emerald-500/10" },
-  match: { icon: Trophy, color: "text-blue-700", border: "border-blue-200", bg: "bg-blue-50" },
+  match: { icon: Trophy, color: "text-blue-700", border: "border-blue-200", bg: "bg-blue-50" }
 };
 
 const LinkCard = ({ item }) => {
@@ -81,7 +81,7 @@ export const RelatedEventsSection = ({ slug, category, city }) => {
           { to: "/events?type=match", label: "Football Tickets", cat: "football" },
           { to: "/events?type=concert", label: "Concert Tickets", cat: "concert" },
           { to: "/world-cup-2026", label: "World Cup 2026", cat: "worldcup" },
-          { to: "/events", label: "All Events", cat: "all" },
+          { to: "/events", label: "All Events", cat: "all" }
         ].map(link => {
           const cfg = catConfig[link.cat] || catConfig.football;
           return (

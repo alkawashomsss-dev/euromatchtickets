@@ -7,7 +7,7 @@ const QUICK_QUESTIONS = [
   { text: "F1 Tickets 2026", icon: "🏎️" },
   { text: "Champions League", icon: "⚽" },
   { text: "Taylor Swift London", icon: "🎤" },
-  { text: "World Cup 2026", icon: "🏆" },
+  { text: "World Cup 2026", icon: "🏆" }
 ];
 
 export default function ChatWidget() {

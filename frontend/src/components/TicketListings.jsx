@@ -8,7 +8,7 @@ const CATEGORY_LABELS = {
   vip: "VIP",
   seated: "Seated",
   general_admission: "General Admission",
-  standard: "Standard",
+  standard: "Standard"
 };
 
 const CATEGORY_ORDER = { platinum: 0, vip: 1, seated: 2, general_admission: 3, standard: 4 };
@@ -189,7 +189,7 @@ const TicketListings = ({ groupedSections, eventId, selectedSection, onClearFilt
       section: ticket.section || "",
       row: ticket.row || "",
       seat: ticket.seat || "",
-      block: ticket.block || "",
+      block: ticket.block || ""
     });
     navigate(`/checkout?${params.toString()}`);
   };

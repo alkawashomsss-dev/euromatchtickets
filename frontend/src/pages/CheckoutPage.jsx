@@ -40,7 +40,7 @@ export default function CheckoutPage() {
           slug: eventId,
           event_id: eventId,
           tickets: [],
-          categories: {},
+          categories: {}
         });
         setLoading(false);
       });
@@ -225,7 +225,7 @@ export default function CheckoutPage() {
                 { icon: Shield, label: "Buyer protection", sub: "Full refund if cancelled" },
                 { icon: Zap, label: "QR ticket delivery", sub: "Tickets to your email" },
                 { icon: Lock, label: "Secure Payment", sub: "256-bit SSL encryption" },
-                { icon: CreditCard, label: "Stripe Powered", sub: "PCI DSS Level 1" },
+                { icon: CreditCard, label: "Stripe Powered", sub: "PCI DSS Level 1" }
               ].map((t, i) => (
                 <div key={i} className="bg-[#1e1e1e] rounded-none border border-white/10 p-3 flex items-start gap-2.5">
                   <t.icon className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />

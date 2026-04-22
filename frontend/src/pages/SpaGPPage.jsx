@@ -68,12 +68,10 @@ const SpaGPPage = () => {
     ],
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com", "logo": "https://euromatchtickets.com/logo-192.png" },
     "offers": {
-      "@type": "AggregateOffer",
+      "@type": "Offer",
       "priceCurrency": "EUR",
       "lowPrice": "109",
-      "highPrice": "3489",
-      "offerCount": "687",
-      "availability": "https://schema.org/InStock",
+      "highPrice": "3489","availability": "https://schema.org/InStock",
       "url": CANONICAL,
       "validFrom": "2025-11-01",
       "seller": { "@type": "Organization", "name": "EuroMatchTickets" }
@@ -91,7 +89,7 @@ const SpaGPPage = () => {
       { "@type": "Question", "name": "How do I get to Spa-Francorchamps circuit?", "acceptedAnswer": { "@type": "Answer", "text": "Spa-Francorchamps is located near Stavelot in the Belgian Ardennes. The nearest airports are Brussels (140km), Liège (80km), and Cologne (130km). Shuttle buses run from Spa town and Liège. By car, take the E42 motorway to exit 10 (Francorchamps). Free parking is available at the circuit." }},
       { "@type": "Question", "name": "Are Spa F1 tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! All Spa F1 tickets purchased through EuroMatchTickets come with our Buyer protection Cancellation refund policy. If the Belgian Grand Prix is cancelled or postponed, you receive a full refund. If your tickets are invalid, you get 100% of your money back." }},
       { "@type": "Question", "name": "Can I camp at Spa-Francorchamps during the F1 weekend?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, camping is available at Spa-Francorchamps during the Belgian Grand Prix weekend. There are several camping zones around the circuit including Camping Eau Rouge and the official campsite near the paddock area. Camping passes are sold separately." }},
-      { "@type": "Question", "name": "What is Eau Rouge at Spa-Francorchamps?", "acceptedAnswer": { "@type": "Answer", "text": "Eau Rouge is the most famous corner in Formula 1, located at Circuit de Spa-Francorchamps. It's a fast, uphill left-right-left sequence where F1 cars reach speeds over 300km/h. Combined with the Raidillon hill, it's the most iconic and challenging section of any F1 circuit in the world." }},
+      { "@type": "Question", "name": "What is Eau Rouge at Spa-Francorchamps?", "acceptedAnswer": { "@type": "Answer", "text": "Eau Rouge is the most famous corner in Formula 1, located at Circuit de Spa-Francorchamps. It's a fast, uphill left-right-left sequence where F1 cars reach speeds over 300km/h. Combined with the Raidillon hill, it's the most iconic and challenging section of any F1 circuit in the world." }}
     ]
   };
 
@@ -112,12 +110,12 @@ const SpaGPPage = () => {
     { section: "Gold 3 (Eau Rouge)", desc: "THE most legendary corner in motorsport - iconic view", price: 259, originalPrice: 399, available: 89, badge: "ICONIC", hot: true },
     { section: "Gold 4 (Raidillon)", desc: "See cars fly uphill at 300km/h - feel the G-force", price: 289, originalPrice: 429, available: 67, badge: "BEST VALUE", hot: true },
     { section: "Gold 1 (Bus Stop Chicane)", desc: "Overtaking hotspot, closest to the podium celebration", price: 249, originalPrice: 369, available: 112, badge: null, hot: false },
-    { section: "Platinum (Pouhon)", desc: "High-speed double apex left - pure driver skill", price: 319, originalPrice: 479, available: 45, badge: "PREMIUM", hot: true },
+    { section: "Platinum (Pouhon)", desc: "High-speed double apex left - pure driver skill", price: 319, originalPrice: 479, available: 45, badge: "PREMIUM", hot: true }
   ];
 
   const vipPackages = [
     { name: "VIP Hospitality Lounge", price: 1189, originalPrice: 1899, spots: 38, includes: ["Covered grandstand seat", "Champagne reception", "3-course Belgian lunch", "Open bar all day", "Big screen in lounge", "Full circuit access", "Official programme"] },
-    { name: "Paddock Club Experience", price: 3489, originalPrice: 5499, spots: 14, includes: ["Pit lane walk", "Paddock access pass", "Meet F1 drivers chance", "Michelin-star dining", "Premium open bar", "Exclusive terrace above pits", "Guided garage tour", "Commemorative gift box"] },
+    { name: "Paddock Club Experience", price: 3489, originalPrice: 5499, spots: 14, includes: ["Pit lane walk", "Paddock access pass", "Meet F1 drivers chance", "Michelin-star dining", "Premium open bar", "Exclusive terrace above pits", "Guided garage tour", "Commemorative gift box"] }
   ];
 
   const faqs = [
@@ -130,7 +128,7 @@ const SpaGPPage = () => {
     { q: "What is Eau Rouge at Spa?", a: "Eau Rouge is the most famous and legendary corner complex in Formula 1 history. Located at Circuit de Spa-Francorchamps in Belgium, it's a terrifyingly fast left-right-left uphill sequence where F1 cars reach 310+ km/h. Combined with the Raidillon hill that follows, it's the ultimate test of driver courage and car setup. The Eau Rouge grandstand (Gold 3) is the most sought-after viewing point at the Belgian Grand Prix." },
     { q: "What should I bring to Spa F1?", a: "Essential items for the Belgian Grand Prix: waterproof jacket (Spa weather is famously unpredictable), sunscreen, comfortable walking shoes (the circuit is 7km long), ear protection, portable phone charger, picnic blanket for GA areas, cash for food/drink stalls, binoculars, and a clear bag (security requirement). The Ardennes forest location means temperatures can change rapidly." },
     { q: "Is Spa-Francorchamps the longest F1 circuit?", a: "Yes! At 7.004 km (4.352 miles), Circuit de Spa-Francorchamps is the longest circuit on the current F1 calendar. Its 19 corners wind through the stunning Belgian Ardennes forest, creating one of the most dramatic and challenging tracks in motorsport. A single lap takes approximately 1:44 at race pace." },
-    { q: "How many people attend the Belgian Grand Prix?", a: "The Belgian Grand Prix at Spa-Francorchamps attracts approximately 100,000+ spectators on race day, with over 300,000 across the entire weekend. It's one of the best-attended F1 races in Europe, drawing passionate motorsport fans from Belgium, Netherlands, Germany, France, UK, and beyond." },
+    { q: "How many people attend the Belgian Grand Prix?", a: "The Belgian Grand Prix at Spa-Francorchamps attracts approximately 100,000+ spectators on race day, with over 300,000 across the entire weekend. It's one of the best-attended F1 races in Europe, drawing passionate motorsport fans from Belgium, Netherlands, Germany, France, UK, and beyond." }
   ];
 
   const circuitCorners = [
@@ -141,7 +139,7 @@ const SpaGPPage = () => {
     { name: "Bruxelles (Turn 9-10)", speed: "120 km/h", type: "Double Apex", desc: "Tight downhill hairpin complex. Technical and tricky in the wet." },
     { name: "Pouhon (Turn 11)", speed: "280 km/h", type: "Double Left", desc: "High-speed double-apex left-hander. Incredible G-forces on the drivers." },
     { name: "Blanchimont (Turn 17)", speed: "315 km/h", type: "Fast Left", desc: "Taken flat out in modern F1. Requires total commitment and trust in the car." },
-    { name: "Bus Stop (Turn 18-19)", speed: "75 km/h", type: "Chicane", desc: "Final complex before the start/finish. DRS detection zone, prime overtaking." },
+    { name: "Bus Stop (Turn 18-19)", speed: "75 km/h", type: "Chicane", desc: "Final complex before the start/finish. DRS detection zone, prime overtaking." }
   ];
 
   return (
@@ -248,7 +246,7 @@ const SpaGPPage = () => {
             [Star, "4.9/5 from 1 Reviews"],
             [Zap, "QR ticket delivery"],
             [Lock, "Secure Stripe Checkout"],
-            [Users, "500K+ Tickets Sold"],
+            [Users, "500K+ Tickets Sold"]
           ].map(([Icon, text], i) => (
             <div key={i} className="flex items-center gap-2 text-slate-400 font-bold uppercase tracking-wider"><Icon className="w-3.5 h-3.5 text-[#e10600]" />{text}</div>
           ))}
@@ -264,7 +262,7 @@ const SpaGPPage = () => {
               { name: "F1.com Official", price: "399", strike: true },
               { name: "StubHub", price: "379", strike: true },
               { name: "Viagogo", price: "365", strike: true },
-              { name: "EuroMatchTickets", price: "109", strike: false, best: true },
+              { name: "EuroMatchTickets", price: "109", strike: false, best: true }
             ].map((s, i) => (
               <div key={i} className={`text-center p-4 ${s.best ? 'bg-[#15803d]/10 border-2 border-[#15803d]' : 'bg-[#1e1e1e] border border-white/8'}`}>
                 <div className={`text-xs mb-1 font-bold uppercase tracking-wider ${s.best ? 'text-[#15803d]' : 'text-slate-500'}`}>{s.name}</div>
@@ -392,7 +390,7 @@ const SpaGPPage = () => {
                 { img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/5cb20c6492be13cb69ae5c45587d61ce3e5a05bfee99232053c912c06464c07b.png", label: "Paddock Club Lounge" },
                 { img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/d84430a95323b820d9a6d93e1758ca35eab8a9f595c089743ffc70391dc84381.png", label: "Pit Lane Walk" },
                 { img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/a59e7d844022a7c2f36d5d7816e3c37b98b18ec416efeea3c2e85ab084323068.png", label: "Michelin Dining" },
-                { img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/ab1e7b7e008b41b5dbc14a24bb83e208c440cb11a06103486f0c7e2e7936e0d3.png", label: "Trackside Terrace" },
+                { img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/ab1e7b7e008b41b5dbc14a24bb83e208c440cb11a06103486f0c7e2e7936e0d3.png", label: "Trackside Terrace" }
               ].map((item, i) => (
                 <div key={i} className="relative overflow-hidden aspect-[4/3]">
                   <img src={item.img} alt={`Spa F1 ${item.label}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
@@ -451,7 +449,7 @@ const SpaGPPage = () => {
               { icon: Plane, title: "By Air", desc: "Brussels Airport (140km, 1.5h), Liege Airport (80km, 1h), Cologne Bonn (130km, 1.5h). All airports have direct motorway access to the circuit.", color: "text-blue-400" },
               { icon: Train, title: "By Train", desc: "Thalys to Liege-Guillemins, then shuttle bus to circuit. Verviers-Central is the nearest station. Special F1 shuttle services run all weekend.", color: "text-green-400" },
               { icon: Car, title: "By Car", desc: "E42 motorway exit 10 (Francorchamps). Follow signs to Circuit de Spa-Francorchamps. Free parking available at the circuit, arrive early on race day.", color: "text-amber-400" },
-              { icon: Hotel, title: "Hotels & Camping", desc: "Book hotels in Spa town, Stavelot, or Malmedy (10-20 min drive). Camping available at the circuit. We recommend booking 3+ months in advance.", color: "text-purple-400" },
+              { icon: Hotel, title: "Hotels & Camping", desc: "Book hotels in Spa town, Stavelot, or Malmedy (10-20 min drive). Camping available at the circuit. We recommend booking 3+ months in advance.", color: "text-purple-400" }
             ].map((item, i) => (
               <div key={i} className="bg-[#1e1e1e] border border-white/6 p-5 hover:border-[#e10600] transition-colors duration-150">
                 <item.icon className={`w-8 h-8 ${item.color} mb-3`} />
@@ -480,7 +478,7 @@ const SpaGPPage = () => {
             {[
               { title: "Eau Rouge & Raidillon", desc: "The most legendary corner combination in motorsport. Cars hit 310km/h as they crest the blind rise at Raidillon. Heart-stopping every single lap. Spa F1 tickets at Eau Rouge are the most sought-after in all of Formula 1.", icon: Flag },
               { title: "7.004km of Drama", desc: "The longest circuit on the current F1 calendar. 19 corners through the Belgian Ardennes forest. Spa-Francorchamps' unpredictable weather creates chaos and epic racing. No two Belgian Grand Prix races are ever the same.", icon: Trophy },
-              { title: "100 Years of History", desc: "Racing since 1921, Spa-Francorchamps has hosted over 60 Formula 1 Grand Prix races. 100,000+ passionate fans from across Europe create an electric atmosphere. Belgium F1 tickets are among the fastest-selling on the calendar.", icon: Star },
+              { title: "100 Years of History", desc: "Racing since 1921, Spa-Francorchamps has hosted over 60 Formula 1 Grand Prix races. 100,000+ passionate fans from across Europe create an electric atmosphere. Belgium F1 tickets are among the fastest-selling on the calendar.", icon: Star }
             ].map((item, i) => (
               <div key={i} className="bg-[#1e1e1e] border border-white/6 p-6 hover:border-[#e10600] transition-colors duration-150">
                 <item.icon className="w-8 h-8 text-[#e10600] mb-3" />
@@ -503,7 +501,7 @@ const SpaGPPage = () => {
               { name: "Thomas K.", loc: "Munich, Germany", text: "Verified Spa-Francorchamps tickets I found. QR code arrived instantly. Gold 4 Raidillon seats were PERFECT. Could feel the cars fly past at 300km/h. Already booked for 2027!", stars: 5 },
               { name: "Anna B.", loc: "Amsterdam, NL", text: "Third year buying Belgian GP tickets from EuroMatchTickets. Always the best prices and instant delivery. Spa is magic - the Ardennes forest, the rain, the atmosphere. Unbeatable.", stars: 5 },
               { name: "Pierre D.", loc: "Brussels, BE", text: "As a local, I've been to Spa-Francorchamps F1 many times. EuroMatchTickets offers genuine tickets at the best prices. Gold 3 Eau Rouge view is absolutely iconic. Highly recommend!", stars: 5 },
-              { name: "Lisa M.", loc: "Berlin, DE", text: "Bought Belgium F1 tickets for my husband's birthday. He was over the moon! General Admission was great value - you can walk around the entire 7km circuit. Incredible experience.", stars: 5 },
+              { name: "Lisa M.", loc: "Berlin, DE", text: "Bought Belgium F1 tickets for my husband's birthday. He was over the moon! General Admission was great value - you can walk around the entire 7km circuit. Incredible experience.", stars: 5 }
             ].map((r, i) => (
               <div key={i} className="bg-[#1e1e1e] border border-white/6 p-5">
                 <div className="flex gap-0.5 mb-2">{[...Array(r.stars)].map((_, j) => <Star key={j} className="w-4 h-4 text-amber-400" fill="currentColor" />)}</div>
@@ -548,7 +546,7 @@ const SpaGPPage = () => {
               { to: "/motogp-tickets", title: "MotoGP Tickets" },
               { to: "/champions-league-tickets", title: "Champions League" },
               { to: "/taylor-swift-london-tickets", title: "Taylor Swift Tickets" },
-              { to: "/world-cup-2026", title: "World Cup 2026" },
+              { to: "/world-cup-2026", title: "World Cup 2026" }
             ].map((link) => (
               <Link key={link.to} to={link.to} className="bg-[#1e1e1e] border border-white/6 p-3 hover:border-[#e10600] transition-colors duration-150 flex items-center justify-between group">
                 <span className="text-white font-bold text-xs uppercase tracking-tight group-hover:text-[#e10600] transition-colors">{link.title}</span>
@@ -573,7 +571,7 @@ const SpaGPPage = () => {
               "Belgium GP tickets 2026", "Formula 1 Spa 2026", "buy Spa F1 tickets online",
               "Spa F1 weekend pass", "Belgian Grand Prix 2026 tickets", "F1 Belgien tickets",
               "Formel 1 Spa tickets", "Formule 1 Spa tickets", "GP Spa tickets",
-              "Spa F1 camping", "Spa-Francorchamps grand prix", "ticket F1 Spa",
+              "Spa F1 camping", "Spa-Francorchamps grand prix", "ticket F1 Spa"
             ].map((term, i) => (
               <span key={i} className="px-3 py-1.5 bg-[#15151e] text-slate-500 text-xs border border-white/6 hover:border-[#e10600] hover:text-white transition-colors duration-150 cursor-default">{term}</span>
             ))}

@@ -34,7 +34,7 @@ const F1TicketPricesGuidePage = () => {
     { race: "Mexico GP", ga: 149, grandstand: 299, vip: 1189, paddock: 3789 },
     { race: "Brazil GP", ga: 159, grandstand: 319, vip: 1289, paddock: 3989 },
     { race: "Las Vegas GP", ga: 249, grandstand: 489, vip: 1989, paddock: 5989 },
-    { race: "Abu Dhabi GP", ga: 169, grandstand: 289, vip: 1489, paddock: 4489 },
+    { race: "Abu Dhabi GP", ga: 169, grandstand: 289, vip: 1489, paddock: 4489 }
   ];
 
   const cheapestRaces = priceData.sort((a, b) => a.ga - b.ga).slice(0, 5);

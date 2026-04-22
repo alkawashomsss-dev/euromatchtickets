@@ -337,7 +337,7 @@ const REVIEWS_DATABASE = [
     verified: true,
     helpful: 48,
     lang: "it"
-  },
+  }
 ];
 
 // Stats calculation
@@ -509,7 +509,7 @@ export const ReviewsGrid = ({ limit = 6, eventType = null, lang = null }) => {
           verified: r.verified_purchase || false,
           helpful: 0,
           lang: 'en',
-          isFromApi: true,
+          isFromApi: true
         }));
         setApiReviews(backendReviews);
       } catch {
@@ -628,7 +628,7 @@ export const SubmitReviewForm = ({ eventName = '' }) => {
         rating: formData.rating,
         title: formData.title,
         content: formData.text,
-        verified_purchase: false,
+        verified_purchase: false
       });
 
       const review = {
@@ -733,7 +733,7 @@ export const ReviewsLanguageFilter = ({ selected, onChange }) => {
     { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
     { code: 'ar', label: 'العربية', flag: '🇸🇦' },
     { code: 'fr', label: 'Français', flag: '🇫🇷' },
-    { code: 'es', label: 'Español', flag: '🇪🇸' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' }
   ];
 
   return (

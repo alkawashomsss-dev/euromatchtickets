@@ -203,7 +203,7 @@ const HowToBuyF1TicketsPage = () => {
                   { race: "British GP", f1: "€299", stub: "€289", ours: "€149", save: "€140" },
                   { race: "Italian GP", f1: "€199", stub: "€189", ours: "€99", save: "€90" },
                   { race: "Singapore GP", f1: "€399", stub: "€379", ours: "€189", save: "€190" },
-                  { race: "Abu Dhabi GP", f1: "€349", stub: "€329", ours: "€169", save: "€160" },
+                  { race: "Abu Dhabi GP", f1: "€349", stub: "€329", ours: "€169", save: "€160" }
                 ].map((row, i) => (
                   <tr key={i} className="border-b border-white/10">
                     <td className="py-3 px-4 font-medium">{row.race}</td>

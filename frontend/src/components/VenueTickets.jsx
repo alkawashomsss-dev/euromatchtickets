@@ -12,7 +12,7 @@ export const VenueTickets = ({ tickets, eventName, searchQuery, accentColor = "e
     red: { bg: "bg-red-500", text: "text-red-600", border: "border-red-200", light: "bg-red-50", hover: "hover:border-red-300" },
     pink: { bg: "bg-pink-500", text: "text-pink-600", border: "border-pink-200", light: "bg-pink-50", hover: "hover:border-pink-300" },
     blue: { bg: "bg-blue-500", text: "text-blue-600", border: "border-blue-200", light: "bg-blue-50", hover: "hover:border-blue-300" },
-    amber: { bg: "bg-amber-500", text: "text-amber-600", border: "border-amber-200", light: "bg-amber-50", hover: "hover:border-amber-300" },
+    amber: { bg: "bg-amber-500", text: "text-amber-600", border: "border-amber-200", light: "bg-amber-50", hover: "hover:border-amber-300" }
   };
   const c = colors[accentColor] || colors.emerald;
 

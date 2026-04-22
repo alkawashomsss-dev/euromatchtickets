@@ -11,14 +11,14 @@ const BahrainNightRaceGuidePage = () => {
     { title: "Season Opener Drama", desc: "Bahrain is the first race of 2026. Every team unveils their new car speed here. Nobody knows who's fast. The tension, surprises, and drama are unmatched." },
     { title: "Affordable Luxury", desc: "Despite its Middle East location, Bahrain offers the cheapest F1 tickets globally - from just €59 GA. Combine with excellent local hospitality, and it's incredible value." },
     { title: "Desert Atmosphere", desc: "The contrast of modern F1 technology against ancient desert landscapes is mesmerizing. The circuit sits in the Sakhir desert - barren beauty meets cutting-edge speed." },
-    { title: "World-Class Facilities", desc: "The Bahrain International Circuit is one of the most modern in F1. Clean facilities, great food vendors, easy access, and friendly staff make for a stress-free experience." },
+    { title: "World-Class Facilities", desc: "The Bahrain International Circuit is one of the most modern in F1. Clean facilities, great food vendors, easy access, and friendly staff make for a stress-free experience." }
   ];
 
   const schedule = [
     { day: "Thursday", events: "Pit lane walk (special ticket), Fan Zone opens, driver signings", tip: "Best day for selfies with empty track behind you" },
     { day: "Friday", events: "FP1 (14:30 twilight), FP2 (18:00 night), support races", tip: "First glimpse of cars under lights - magical!" },
     { day: "Saturday", events: "FP3 (14:30), Qualifying (18:00 night), desert sunset", tip: "Qualifying under lights is almost as exciting as the race" },
-    { day: "Sunday", events: "Race day! Warm-up, support races, F1 Race (18:00)", tip: "LIGHTS OUT at sunset. Arrive by 15:00 minimum." },
+    { day: "Sunday", events: "Race day! Warm-up, support races, F1 Race (18:00)", tip: "LIGHTS OUT at sunset. Arrive by 15:00 minimum." }
   ];
 
   const faqs = [
@@ -26,7 +26,7 @@ const BahrainNightRaceGuidePage = () => {
     { question: "What's the weather like at Bahrain GP?", answer: "March: 22-27°C day, 18-22°C night. Almost zero chance of rain. Very comfortable for spectating. Bring sunscreen for daytime sessions and a light layer for after dark." },
     { question: "How much are Bahrain F1 tickets?", answer: "Bahrain GP tickets start from just €59 for General Admission on EuroMatchTickets - the cheapest F1 race globally. Main Grandstand from €119. VIP from €495." },
     { question: "Is Bahrain GP good for first-timers?", answer: "Perfect! The low prices (€59), amazing facilities, friendly atmosphere, comfortable weather, and spectacular night visuals make it ideal for F1 newcomers. Many fans say it's their favourite race." },
-    { question: "How do I get to Bahrain International Circuit?", answer: "The circuit is 30km south of Manama. Free shuttle buses operate from major hotels. Taxis are cheap (~€15 from city). Parking at the circuit is available for ~€5." },
+    { question: "How do I get to Bahrain International Circuit?", answer: "The circuit is 30km south of Manama. Free shuttle buses operate from major hotels. Taxis are cheap (~€15 from city). Parking at the circuit is available for ~€5." }
   ];
 
   return (

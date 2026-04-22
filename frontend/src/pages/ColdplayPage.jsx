@@ -14,7 +14,7 @@ const CP_FAQS = [
   { q: "When is Coldplay touring Europe 2026?", a: "Coldplay European stadium tour summer 2026. Cities include Barcelona, Berlin, London, Paris, Milan. Exact dates to be confirmed. Shows typically start at 19:30." },
   { q: "What is special about Coldplay live?", a: "Every fan receives an LED Xyloband wristband that lights up in sync with the music. Plus giant inflatable planets, lasers, confetti cannons, fireworks, and Chris Martin's legendary crowd interaction. 2+ hour show." },
   { q: "What songs does Coldplay play live?", a: "Yellow, Fix You, The Scientist, Viva la Vida, Clocks, Paradise, A Sky Full of Stars, Something Just Like This, My Universe (BTS collab), Higher Power, and new Music of the Spheres tracks." },
-  { q: "Are Coldplay tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled. Instant QR delivery." },
+  { q: "Are Coldplay tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled. Instant QR delivery." }
 ];
 
 const ColdplayPage = () => {
@@ -31,14 +31,14 @@ const ColdplayPage = () => {
     { date: "Jun 20, 2026", venue: "Stade de France", city: "Paris", time: "20:00", status: "Available", badge: "bg-emerald-500/100" },
     { date: "Jun 27, 2026", venue: "Olympiastadion", city: "Berlin", time: "19:30", status: "Available", badge: "bg-emerald-500/100" },
     { date: "Jul 04, 2026", venue: "Camp Nou", city: "Barcelona", time: "20:30", status: "New!", badge: "bg-blue-500/100" },
-    { date: "Jul 11, 2026", venue: "San Siro", city: "Milan", time: "20:00", status: "Selling Fast", badge: "bg-amber-500/100" },
+    { date: "Jul 11, 2026", venue: "San Siro", city: "Milan", time: "20:00", status: "Selling Fast", badge: "bg-amber-500/100" }
   ];
 
   const packages = [
     { name: "General Admission", price: 69, desc: "Standing / Upper Tier", features: ["Stadium entry", "Instant QR delivery", "Buyer protection"] },
     { name: "Category A", price: 149, desc: "Mid Tier - Great View", tag: "BEST VALUE", features: ["Central stage view", "Comfortable seating", "LED wristband included"] },
     { name: "Floor Standing", price: 249, desc: "Closest to Stage", tag: "HOT", features: ["Floor level access", "Near the stage", "LED wristband included"] },
-    { name: "Infinity Station", price: 495, desc: "VIP Experience", tag: "VIP", features: ["Premium lounge", "Exclusive merch", "Early venue access"] },
+    { name: "Infinity Station", price: 495, desc: "VIP Experience", tag: "VIP", features: ["Premium lounge", "Exclusive merch", "Early venue access"] }
   ];
 
   const reviewSchema = {
@@ -46,11 +46,9 @@ const ColdplayPage = () => {
     "@type": "Product",
     "name": "Coldplay European Tour 2026 Tickets",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "3456", "bestRating": "5", "worstRating": "1" },
-    "review": [
-      { "@type": "Review", "name": "Best concert experience with LED wristbands", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Laura B." }, "reviewBody": "Best concert I've ever been to! The LED wristbands were magical. Got my tickets cheaper than anywhere else!", "datePublished": "2026-01-25" }
-    ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "495", "offerCount": "2400" , "validFrom": "2025-01-01" }
+    
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "495","validFrom": "2025-01-01" }
   };
 
   return (

@@ -20,8 +20,7 @@ const AustriaGPPage = () => {
     "location": { "@type": "Place", "name": "Red Bull Ring", "address": { "@type": "PostalAddress", "addressLocality": "Spielberg", "addressCountry": "AT" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "119", "highPrice": "1999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-austrian-grand-prix-red-bull-ring-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "119", "highPrice": "1999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-austrian-grand-prix-red-bull-ring-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -30,14 +29,14 @@ const AustriaGPPage = () => {
     { section: "Red Bull Grandstand", price: 349, originalPrice: 359, available: 89, popular: true },
     { section: "Start/Finish Grandstand", price: 299, originalPrice: 309, available: 112, popular: false },
     { section: "VIP Hospitality", price: 1089, originalPrice: 1099, available: 38, popular: true },
-    { section: "Paddock Club", price: 3289, originalPrice: 3299, available: 15, popular: false },
+    { section: "Paddock Club", price: 3289, originalPrice: 3299, available: 15, popular: false }
   ];
 
   const faqs = [
     { q: "What's special about Red Bull Ring?", a: "Short, fast circuit in the Styrian mountains. Amazing atmosphere with the 'Orange Army' of Dutch fans!" },
     { q: "Are Austrian GP tickets mobile?", a: "Yes, instant mobile QR delivery. Print option also available." },
     { q: "Is there camping at Red Bull Ring?", a: "Yes! Multiple camping areas available. Book early - very popular with Dutch and Austrian fans." },
-    { q: "How to get to Spielberg?", a: "Nearest airports are Graz (80km) and Vienna (200km). Shuttle buses available from both." },
+    { q: "How to get to Spielberg?", a: "Nearest airports are Graz (80km) and Vienna (200km). Shuttle buses available from both." }
   ];
 
   return (

@@ -13,14 +13,11 @@ const F1SchedulePage = () => {
     "numberOfItems": 24,
     "itemListElement": [
       { "@type": "SportsEvent", "position": 1, "name": "Bahrain Grand Prix", "description": "Formula 1 Bahrain Grand Prix 2026 at Bahrain International Circuit. Buy tickets now.", "startDate": "2026-03-08", "endDate": "2026-03-09", "eventStatus": "https://schema.org/EventScheduled", "image": "https://euromatchtickets.com/logo-192.png", "location": {"@type": "Place", "name": "Bahrain International Circuit", "address": {"@type": "PostalAddress", "addressLocality": "Sakhir", "addressCountry": "BH"}}, "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
-    "organizer": {"@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com"}, "offers": {"@type": "AggregateOffer", "lowPrice": "149", "highPrice": "2499", "priceCurrency": "EUR",
-              "offerCount": "100", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-bahrain-grand-prix-tickets", "validFrom": "2025-01-01"} },
+    "organizer": {"@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com"}, "offers": {"@type": "Offer", "lowPrice": "149", "highPrice": "2499", "priceCurrency": "EUR","availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-bahrain-grand-prix-tickets", "validFrom": "2025-01-01"} },
       { "@type": "SportsEvent", "position": 2, "name": "Saudi Arabian Grand Prix", "description": "Formula 1 Saudi Arabian Grand Prix 2026 at Jeddah Corniche Circuit. Buy tickets now.", "startDate": "2026-03-22", "endDate": "2026-03-23", "eventStatus": "https://schema.org/EventScheduled", "image": "https://euromatchtickets.com/logo-192.png", "location": {"@type": "Place", "name": "Jeddah Corniche Circuit", "address": {"@type": "PostalAddress", "addressLocality": "Jeddah", "addressCountry": "SA"}}, "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
-    "organizer": {"@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com"}, "offers": {"@type": "AggregateOffer", "lowPrice": "169", "highPrice": "2999", "priceCurrency": "EUR",
-              "offerCount": "100", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets", "validFrom": "2025-01-01"} },
+    "organizer": {"@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com"}, "offers": {"@type": "Offer", "lowPrice": "169", "highPrice": "2999", "priceCurrency": "EUR","availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets", "validFrom": "2025-01-01"} },
       { "@type": "SportsEvent", "position": 3, "name": "Australian Grand Prix", "description": "Formula 1 Australian Grand Prix 2026 at Albert Park Circuit, Melbourne. Buy tickets now.", "startDate": "2026-03-15", "endDate": "2026-03-16", "eventStatus": "https://schema.org/EventScheduled", "image": "https://euromatchtickets.com/logo-192.png", "location": {"@type": "Place", "name": "Albert Park Circuit", "address": {"@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU"}}, "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
-    "organizer": {"@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com"}, "offers": {"@type": "AggregateOffer", "lowPrice": "159", "highPrice": "2499", "priceCurrency": "EUR",
-              "offerCount": "100", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets", "validFrom": "2025-01-01"} },
+    "organizer": {"@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com"}, "offers": {"@type": "Offer", "lowPrice": "159", "highPrice": "2499", "priceCurrency": "EUR","availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets", "validFrom": "2025-01-01"} }
     ]
   };
 
@@ -48,7 +45,7 @@ const F1SchedulePage = () => {
     { round: 21, name: "São Paulo Grand Prix", location: "São Paulo, Brazil", circuit: "Interlagos", date: "Nov 13-15", price: 159, href: "/checkout?event=f1-2026", night: false, featured: true },
     { round: 22, name: "Las Vegas Grand Prix", location: "Las Vegas, USA", circuit: "Las Vegas Street Circuit", date: "Nov 20-22", price: 249, href: "/f1-las-vegas-grand-prix-tickets", night: true, featured: true },
     { round: 23, name: "Qatar Grand Prix", location: "Lusail, Qatar", circuit: "Lusail International Circuit", date: "Nov 27-29", price: 169, href: "/checkout?event=f1-2026", night: true, featured: false },
-    { round: 24, name: "Abu Dhabi Grand Prix", location: "Abu Dhabi, UAE", circuit: "Yas Marina Circuit", date: "Dec 4-6", price: 169, href: "/f1-abu-dhabi-grand-prix-tickets", night: true, featured: true },
+    { round: 24, name: "Abu Dhabi Grand Prix", location: "Abu Dhabi, UAE", circuit: "Yas Marina Circuit", date: "Dec 4-6", price: 169, href: "/f1-abu-dhabi-grand-prix-tickets", night: true, featured: true }
   ];
 
   return (
@@ -220,7 +217,7 @@ const F1SchedulePage = () => {
               { q: "When does the 2026 F1 season start?", a: "The 2026 Formula 1 season begins with the Bahrain Grand Prix on March 6-8, 2026." },
               { q: "When is the last F1 race of 2026?", a: "The 2026 F1 season finale is the Abu Dhabi Grand Prix on December 4-6, 2026 at Yas Marina Circuit." },
               { q: "Which F1 races are night races in 2026?", a: "The 2026 night races are: Bahrain GP, Saudi Arabian GP, Singapore GP, Las Vegas GP, Qatar GP, and Abu Dhabi GP (twilight)." },
-              { q: "What is the cheapest F1 race to attend in 2026?", a: "The Hungarian GP and Italian GP (Monza) offer the best value with General Admission from €99." },
+              { q: "What is the cheapest F1 race to attend in 2026?", a: "The Hungarian GP and Italian GP (Monza) offer the best value with General Admission from €99." }
             ].map((faq, i) => (
               <div key={i} className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
                 <h3 className="font-bold text-lg mb-2">{faq.q}</h3>

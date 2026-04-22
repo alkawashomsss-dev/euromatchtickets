@@ -20,8 +20,7 @@ const AustraliaGPPage = () => {
     "location": { "@type": "Place", "name": "Albert Park Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "159", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "159", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -30,14 +29,14 @@ const AustraliaGPPage = () => {
     { section: "Brabham Grandstand", price: 389, originalPrice: 399, available: 89, popular: true },
     { section: "Prost Grandstand", price: 329, originalPrice: 339, available: 134, popular: false },
     { section: "VIP Hospitality", price: 1289, originalPrice: 1299, available: 45, popular: true },
-    { section: "Paddock Club", price: 3989, originalPrice: 3999, available: 15, popular: false },
+    { section: "Paddock Club", price: 3989, originalPrice: 3999, available: 15, popular: false }
   ];
 
   const faqs = [
     { q: "Are Melbourne F1 tickets digital?", a: "Yes, all Albert Park tickets are mobile QR codes. Download to your phone or print the PDF - both work at entry." },
     { q: "When do Australian GP tickets get delivered?", a: "Instant delivery via email after purchase. You'll receive your tickets within minutes." },
     { q: "What's the best grandstand at Albert Park?", a: "Jones Grandstand offers the best start/finish views. Brabham is great for Turn 1 action." },
-    { q: "Can I walk around Albert Park with GA tickets?", a: "Yes! General Admission gives access to multiple viewing areas around the circuit." },
+    { q: "Can I walk around Albert Park with GA tickets?", a: "Yes! General Admission gives access to multiple viewing areas around the circuit." }
   ];
 
   return (

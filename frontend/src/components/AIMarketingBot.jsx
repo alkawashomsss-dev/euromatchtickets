@@ -52,19 +52,19 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
     const twitterPosts = [
       `🎫 ${event.title} tickets now available! Get yours before they sell out 🔥\n\n✅ Market pricing may vary\n✅ Instant delivery\n✅ 100% secure\n\n👉 euromatchtickets.com\n\n#${eventType.toUpperCase()} #Tickets #Europe`,
       `🚀 Don't miss ${event.title}!\n\nTickets from €${Math.floor(Math.random() * 50) + 49} 💰\n\n⚡ Limited availability\n📍 ${event.city || 'Europe'}\n\nBook now: euromatchtickets.com\n\n#LiveEvents #${eventType}`,
-      `⏰ LAST CHANCE! ${event.title} tickets selling fast!\n\n🎟️ Secure your spot now\n💳 Safe payment\n📧 Instant confirmation\n\neuromatchtickets.com\n\n#Tickets #MustSee`,
+      `⏰ LAST CHANCE! ${event.title} tickets selling fast!\n\n🎟️ Secure your spot now\n💳 Safe payment\n📧 Instant confirmation\n\neuromatchtickets.com\n\n#Tickets #MustSee`
     ];
     
     // Facebook posts
     const facebookPosts = [
       `🎉 Exciting news! Tickets for ${event.title} are now available on EuroMatchTickets!\n\n🌟 Why book with us?\n✅ Best prices in Europe\n✅ 100% ticket guarantee\n✅ Instant QR code delivery\n✅ Secure payment with Stripe\n\nDon't wait - these tickets won't last!\n\n👉 www.euromatchtickets.com`,
-      `📣 Attention ${eventType === 'f1' ? 'F1' : eventType === 'motogp' ? 'MotoGP' : eventType === 'concert' ? 'music' : 'sports'} fans!\n\n${event.title} is coming and we have tickets!\n\n💰 Prices starting from €${Math.floor(Math.random() * 50) + 49}\n🎫 All categories available\n🔒 Safe & secure booking\n\nTag someone who needs to see this! 👇\n\nBook now at euromatchtickets.com`,
+      `📣 Attention ${eventType === 'f1' ? 'F1' : eventType === 'motogp' ? 'MotoGP' : eventType === 'concert' ? 'music' : 'sports'} fans!\n\n${event.title} is coming and we have tickets!\n\n💰 Prices starting from €${Math.floor(Math.random() * 50) + 49}\n🎫 All categories available\n🔒 Safe & secure booking\n\nTag someone who needs to see this! 👇\n\nBook now at euromatchtickets.com`
     ];
     
     // Instagram captions
     const instagramPosts = [
       `${event.title} 🔥\n\nTickets available NOW! Link in bio 👆\n\n#${eventType} #tickets #europe #liveevents #${event.city?.toLowerCase() || 'travel'} #bucketlist #experiences`,
-      `Who's ready for ${event.title}? 🙋‍♂️\n\nGet your tickets at euromatchtickets.com\n\n💫 Best prices\n⚡ Instant delivery\n🎫 100% guarantee\n\n#eurotrip #${eventType}life #ticketmaster #events`,
+      `Who's ready for ${event.title}? 🙋‍♂️\n\nGet your tickets at euromatchtickets.com\n\n💫 Best prices\n⚡ Instant delivery\n🎫 100% guarantee\n\n#eurotrip #${eventType}life #ticketmaster #events`
     ];
     
     // Trending hashtags
@@ -84,7 +84,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
       `${event.title} tickets online`,
       `${eventType} tickets ${event.city || 'europe'}`,
       `best ${eventType} tickets`,
-      `${eventType} tickets 2026 prices`,
+      `${eventType} tickets 2026 prices`
     ];
     
     // Email subject lines
@@ -93,7 +93,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
       `Don't Miss Out: ${event.title} Tickets Now On Sale`,
       `⚡ Flash Sale: ${event.title} Tickets from €${Math.floor(Math.random() * 50) + 49}`,
       `Your ${event.title} tickets are waiting...`,
-      `🔥 Hot Deal: Save 30% on ${event.title} Tickets`,
+      `🔥 Hot Deal: Save 30% on ${event.title} Tickets`
     ];
     
     setGeneratedContent({
@@ -120,7 +120,7 @@ const AIMarketingBot = ({ isOpen, onClose }) => {
     { id: 'social', label: 'Social Posts', icon: MessageSquare },
     { id: 'hashtags', label: 'Hashtags', icon: Hash },
     { id: 'seo', label: 'SEO Keywords', icon: TrendingUp },
-    { id: 'email', label: 'Email Subjects', icon: Send },
+    { id: 'email', label: 'Email Subjects', icon: Send }
   ];
 
   return (

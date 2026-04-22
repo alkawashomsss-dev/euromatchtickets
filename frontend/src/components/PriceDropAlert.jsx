@@ -18,7 +18,7 @@ export const PriceDropAlert = ({ eventSlug, eventName, currency = "€" }) => {
       const res = await axios.post(`${API}/alerts/subscribe`, {
         email,
         event_slug: eventSlug,
-        event_name: eventName,
+        event_name: eventName
       });
       if (res.data.status === "already_subscribed") {
         setStatus("exists");
@@ -116,7 +116,7 @@ export const ExitIntentPopup = ({ eventName, eventSlug, currency = "€", priceL
       await axios.post(`${API}/alerts/subscribe`, {
         email,
         event_slug: eventSlug,
-        event_name: eventName,
+        event_name: eventName
       });
       setStatus("success");
     } catch {

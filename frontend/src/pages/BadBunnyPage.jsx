@@ -21,7 +21,7 @@ const BadBunnyPage = () => {
     "location": { "@type": "Place", "name": "Tottenham Hotspur Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "MusicGroup", "name": "Bad Bunny" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "offerCount": "145", "lowPrice": "145", "highPrice": "600", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "145", "highPrice": "600", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
   };
 
   const faqs = [
@@ -29,12 +29,12 @@ const BadBunnyPage = () => {
     { q: "When is Bad Bunny playing in London?", a: "Bad Bunny performs 2 nights at Tottenham Hotspur Stadium: Saturday June 27 and Sunday June 28, 2026. Doors open at 17:30, show starts at 19:30." },
     { q: "Where is the Bad Bunny concert in London?", a: "Tottenham Hotspur Stadium, 782 High Road, London N17. Nearest stations: White Hart Lane (rail) or Tottenham Hale (Victoria line). 62,850 capacity." },
     { q: "What songs will Bad Bunny play?", a: "Expected setlist: Titi Me Pregunto, Me Porto Bonito, Moscow Mule, Ojitos Lindos, Dakiti, Callaita, Yonaguni, Efecto, Neverita, plus new album tracks. 2-hour spectacular show with pyrotechnics." },
-    { q: "Are Bad Bunny tickets refundable?", a: "Yes! All tickets include Buyer protection cancellation refund policy. Full refund if cancelled or postponed. Instant QR delivery to your email." },
+    { q: "Are Bad Bunny tickets refundable?", a: "Yes! All tickets include Buyer protection cancellation refund policy. Full refund if cancelled or postponed. Instant QR delivery to your email." }
   ];
 
   const shows = [
     { date: "Sat, Jun 27, 2026", time: "19:30", venue: "Tottenham Hotspur Stadium", city: "London", price: 175, tickets: 89, hot: true },
-    { date: "Sun, Jun 28, 2026", time: "19:30", venue: "Tottenham Hotspur Stadium", city: "London", price: 185, tickets: 56, hot: true },
+    { date: "Sun, Jun 28, 2026", time: "19:30", venue: "Tottenham Hotspur Stadium", city: "London", price: 185, tickets: 56, hot: true }
   ];
 
   return (

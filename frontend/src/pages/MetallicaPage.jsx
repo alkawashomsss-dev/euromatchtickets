@@ -12,7 +12,7 @@ import SEOHead from "../components/SEOHead";
 const TRANSLATIONS = {
   en: { title: "Metallica Sphere Las Vegas 2026", subtitle: "M72 World Tour - The Sphere Experience", buyNow: "Secure Your Seat Now", from: "From", snakePit: "Snake Pit VIP" },
   de: { title: "Metallica Sphere Las Vegas 2026", subtitle: "M72 Welttournee - Das Sphere Erlebnis", buyNow: "Jetzt Kaufen", from: "Ab", snakePit: "Snake Pit VIP" },
-  es: { title: "Metallica Sphere Las Vegas 2026", subtitle: "M72 Gira Mundial - La Experiencia Sphere", buyNow: "Comprar", from: "Desde", snakePit: "Snake Pit VIP" },
+  es: { title: "Metallica Sphere Las Vegas 2026", subtitle: "M72 Gira Mundial - La Experiencia Sphere", buyNow: "Comprar", from: "Desde", snakePit: "Snake Pit VIP" }
 };
 
 const MetallicaPage = () => {
@@ -48,7 +48,7 @@ const MetallicaPage = () => {
     "performer": {"@type": "MusicGroup", "name": "Metallica"},
     "location": {"@type": "Place", "name": "The Sphere", "address": {"@type": "PostalAddress", "addressLocality": "Las Vegas", "addressCountry": "US"}},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "AggregateOffer", "lowPrice": 617, "highPrice": 2755, "priceCurrency": "USD", "offerCount": "100", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets", "validFrom": "2025-01-01"}
+    "offers": {"@type": "Offer", "lowPrice": 617, "highPrice": 2755, "priceCurrency": "USD","availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets", "validFrom": "2025-01-01"}
   };
 
   return (

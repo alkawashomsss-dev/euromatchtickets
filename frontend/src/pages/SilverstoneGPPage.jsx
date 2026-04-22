@@ -24,8 +24,7 @@ const SilverstoneGPPage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "149", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-british-grand-prix-silverstone-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "149", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-british-grand-prix-silverstone-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -34,7 +33,7 @@ const SilverstoneGPPage = () => {
     { section: "Grandstand (Club)", price: 349, originalPrice: 359, available: 67, popular: true },
     { section: "Grandstand (Maggotts)", price: 269, originalPrice: 279, available: 112, popular: false },
     { section: "VIP Hospitality", price: 1289, originalPrice: 1299, available: 34, popular: true },
-    { section: "Paddock Club", price: 3989, originalPrice: 3999, available: 12, popular: false },
+    { section: "Paddock Club", price: 3989, originalPrice: 3999, available: 12, popular: false }
   ];
 
   return (
@@ -91,7 +90,7 @@ const SilverstoneGPPage = () => {
           <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€149</div>
-            <div className="text-emerald-600 text-sm mt-1">Save €10 (market pricing may vary) & StubHub</div>
+            <div className="text-emerald-600 text-sm mt-1">Market pricing may vary</div>
           </div>
         </div>
       </section>

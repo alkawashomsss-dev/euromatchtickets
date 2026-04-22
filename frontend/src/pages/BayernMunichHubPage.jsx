@@ -10,14 +10,14 @@ const BayernMunichHubPage = () => {
     { home: "Bayern Munich", away: "Borussia Dortmund", label: "Der Klassiker", venue: "Allianz Arena", date: "Mar 2026", price: 125, tickets: 67, hot: true, link: "/checkout?event=bayern-vs-dortmund" },
     { home: "Bayern Munich", away: "Barcelona", label: "UCL Quarter-Final", venue: "Allianz Arena", date: "Apr 2026", price: 165, tickets: 45, hot: true, link: "/checkout?event=bayern-vs-barcelona" },
     { home: "Bayern Munich", away: "RB Leipzig", label: "Bundesliga", venue: "Allianz Arena", date: "Mar 2026", price: 85, tickets: 112, link: "/checkout?event=bayern-vs-leipzig" },
-    { home: "Bayern Munich", away: "Bayer Leverkusen", label: "Bundesliga Top", venue: "Allianz Arena", date: "May 2026", price: 95, tickets: 89, link: "/checkout?event=bayern-vs-leverkusen" },
+    { home: "Bayern Munich", away: "Bayer Leverkusen", label: "Bundesliga Top", venue: "Allianz Arena", date: "May 2026", price: 95, tickets: 89, link: "/checkout?event=bayern-vs-leverkusen" }
   ];
 
   const faqs = [
     { question: "How much are Bayern Munich tickets?", answer: "Bayern Munich tickets on EuroMatchTickets start from €65 for Bundesliga matches. Champions League matches from €125. Der Klassiker (vs Dortmund) from €125. We guarantee the listings on EuroMatchTickets." },
     { question: "How to buy Bayern Munich tickets as a tourist?", answer: "Simply browse our listings, select your match, and checkout. No FC Bayern membership needed! Tickets are delivered instantly as QR codes. We accept all major cards and PayPal." },
     { question: "Where does Bayern Munich play?", answer: "Bayern Munich plays at the Allianz Arena in Munich, Germany. The iconic stadium holds 75,000 fans and features a stunning illuminated exterior that glows red on matchdays." },
-    { question: "What is Der Klassiker?", answer: "Der Klassiker is Bayern Munich vs Borussia Dortmund - Germany's biggest football rivalry. It's one of the most attended and watched club matches in world football." },
+    { question: "What is Der Klassiker?", answer: "Der Klassiker is Bayern Munich vs Borussia Dortmund - Germany's biggest football rivalry. It's one of the most attended and watched club matches in world football." }
   ];
 
   const reviewSchema = {
@@ -25,8 +25,8 @@ const BayernMunichHubPage = () => {
     "@type": "Product",
     "name": "Bayern Munich Tickets 2025-26",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2156", "bestRating": "5", "worstRating": "1" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "2000", "offerCount": "347" , "validFrom": "2025-01-01" }
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "2000","validFrom": "2025-01-01" }
   };
 
   return (

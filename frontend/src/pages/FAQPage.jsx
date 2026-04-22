@@ -8,7 +8,7 @@ const faqCategories = [
   { id: "buying", name: "Buying Tickets", icon: <Ticket className="w-5 h-5" /> },
   { id: "payment", name: "Payment & Pricing", icon: <CreditCard className="w-5 h-5" /> },
   { id: "delivery", name: "Ticket Delivery", icon: <Mail className="w-5 h-5" /> },
-  { id: "security", name: "Security & Trust", icon: <Shield className="w-5 h-5" /> },
+  { id: "security", name: "Security & Trust", icon: <Shield className="w-5 h-5" /> }
 ];
 
 const faqData = {

@@ -24,8 +24,7 @@ const SingaporeGPPage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "189", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-singapore-grand-prix-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "189", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-singapore-grand-prix-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -34,7 +33,7 @@ const SingaporeGPPage = () => {
     { section: "Pit Grandstand", price: 489, originalPrice: 499, available: 56, popular: true },
     { section: "Bay Grandstand", price: 349, originalPrice: 359, available: 123, popular: false },
     { section: "VIP Hospitality", price: 1489, originalPrice: 1499, available: 34, popular: true },
-    { section: "Paddock Club", price: 4489, originalPrice: 4499, available: 11, popular: false },
+    { section: "Paddock Club", price: 4489, originalPrice: 4499, available: 11, popular: false }
   ];
 
   return (
@@ -91,7 +90,7 @@ const SingaporeGPPage = () => {
           <div className="inline-block bg-white/90 border border-emerald-200 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-emerald-600">€189</div>
-            <div className="text-emerald-600 text-sm mt-1">Save €10 (market pricing may vary) & StubHub</div>
+            <div className="text-emerald-600 text-sm mt-1">Market pricing may vary</div>
           </div>
         </div>
       </section>

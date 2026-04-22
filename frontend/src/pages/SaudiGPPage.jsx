@@ -20,8 +20,7 @@ const SaudiGPPage = () => {
     "location": { "@type": "Place", "name": "Jeddah Corniche Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Jeddah", "addressCountry": "SA" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "169", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "169", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -30,14 +29,14 @@ const SaudiGPPage = () => {
     { section: "Turn 1 Grandstand", price: 429, originalPrice: 439, available: 67, popular: true },
     { section: "Beach Grandstand", price: 389, originalPrice: 399, available: 78, popular: false },
     { section: "VIP Hospitality", price: 1389, originalPrice: 1399, available: 28, popular: true },
-    { section: "Paddock Club", price: 4289, originalPrice: 4299, available: 10, popular: false },
+    { section: "Paddock Club", price: 4289, originalPrice: 4299, available: 10, popular: false }
   ];
 
   const faqs = [
     { q: "Is Saudi GP a night race?", a: "Yes! The Saudi Arabian GP is run under floodlights at the spectacular Jeddah Corniche Circuit along the Red Sea coast." },
     { q: "How fast is Jeddah circuit?", a: "Jeddah is the fastest street circuit in F1, with average speeds over 250 km/h. Expect thrilling high-speed action!" },
     { q: "Are Saudi GP tickets mobile?", a: "Yes, all tickets are delivered as mobile QR codes via email. Print option also available." },
-    { q: "Is it safe to attend Saudi GP?", a: "Yes, the event has extensive security measures and is safe for international visitors. Thousands of fans attend annually." },
+    { q: "Is it safe to attend Saudi GP?", a: "Yes, the event has extensive security measures and is safe for international visitors. Thousands of fans attend annually." }
   ];
 
   return (

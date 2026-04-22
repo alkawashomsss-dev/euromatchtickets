@@ -20,14 +20,14 @@ const SpanishLandingPage = () => {
     { titulo: "Gran Premio de F1 España 2026", fecha: "Junio 2026", lugar: "Circuit de Barcelona", precio: 49, icono: Flag, enlace: "/f1-spanish-grand-prix-barcelona-tickets", tag: "POPULAR" },
     { titulo: "Copa del Mundo FIFA 2026", fecha: "Jun-Jul 2026", lugar: "USA, México, Canadá", precio: 89, icono: Trophy, enlace: "/world-cup-2026", tag: "EVENTO DEL AÑO" },
     { titulo: "Taylor Swift - Eras Tour Europa", fecha: "2026", lugar: "Wembley, Londres", precio: 38, icono: Music, enlace: "/taylor-swift-wembley-2026-tickets", tag: "AGOTÁNDOSE" },
-    { titulo: "Gran Premio de Mónaco F1", fecha: "Mayo 2026", lugar: "Circuit de Monaco", precio: 99, icono: Flag, enlace: "/f1-monaco-grand-prix-tickets", tag: "PREMIUM" },
+    { titulo: "Gran Premio de Mónaco F1", fecha: "Mayo 2026", lugar: "Circuit de Monaco", precio: 99, icono: Flag, enlace: "/f1-monaco-grand-prix-tickets", tag: "PREMIUM" }
   ];
 
   const ventajas = [
     { titulo: "Los Precios Más Bajos", desc: "Garantizamos los mejores precios del mercado. Si encuentras más barato, ¡igualamos el precio!", icono: Zap },
     { titulo: "100% Garantizadas", desc: "Todas las entradas verificadas con nuestra garantía Buyer protection. Tu dinero seguro.", icono: Shield },
     { titulo: "Entrega Inmediata", desc: "Recibe tus entradas al instante por email. QR listo para escanear.", icono: Ticket },
-    { titulo: "4.8/5 Estrellas", desc: "Miles de clientes satisfechos en toda Europa. Lee nuestras reseñas.", icono: Star },
+    { titulo: "4.8/5 Estrellas", desc: "Miles de clientes satisfechos en toda Europa. Lee nuestras reseñas.", icono: Star }
   ];
 
   return (

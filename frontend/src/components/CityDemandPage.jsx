@@ -10,7 +10,7 @@ import {
   ArrowRight,
   Shield,
   TrendingUp,
-  Sparkles,
+  Sparkles
 } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -40,7 +40,7 @@ export default function CityDemandPage({
   faqs = [],
   heroImage,
   canonical,
-  year = 2026,
+  year = 2026
 }) {
   const [data, setData] = useState({ confirmed: [], coming_soon: [] });
   const [loading, setLoading] = useState(true);
@@ -53,7 +53,7 @@ export default function CityDemandPage({
         if (!alive || !d) return;
         setData({
           confirmed: d.confirmed || [],
-          coming_soon: d.coming_soon || [],
+          coming_soon: d.coming_soon || []
         });
       })
       .catch(() => {})
@@ -77,8 +77,8 @@ export default function CityDemandPage({
       "@type": "ListItem",
       position: i + 1,
       url: `${SITE}${e.href}`,
-      name: e.title,
-    })),
+      name: e.title
+    }))
   };
 
   const faqSchema =
@@ -89,8 +89,8 @@ export default function CityDemandPage({
           mainEntity: faqs.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
+            acceptedAnswer: { "@type": "Answer", text: f.a }
+          }))
         }
       : null;
 
@@ -98,7 +98,7 @@ export default function CityDemandPage({
     category: "city_demand",
     city,
     excludeHrefs: [canonical ? canonical.replace(SITE, "") : ""],
-    limit: 8,
+    limit: 8
   });
 
   const metaTitle = `Concerts in ${city} ${year} — Full Schedule & Cheap Tickets | EuroMatchTickets`;
@@ -271,7 +271,7 @@ export default function CityDemandPage({
                         {new Date(e.event_date).toLocaleDateString("en-GB", {
                           day: "numeric",
                           month: "short",
-                          year: "numeric",
+                          year: "numeric"
                         })}
                       </span>
                     ) : null}

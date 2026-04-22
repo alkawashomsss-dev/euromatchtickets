@@ -6,7 +6,7 @@ const CATEGORY_CONFIG = {
   vip: { label: "VIP", color: "#F59E0B", order: 1 },
   seated: { label: "Seated", color: "#3B82F6", order: 2 },
   general_admission: { label: "General Admission", color: "#22C55E", order: 3 },
-  standard: { label: "Standard", color: "#64748B", order: 4 },
+  standard: { label: "Standard", color: "#64748B", order: 4 }
 };
 
 const SECTION_COLORS = {
@@ -33,7 +33,7 @@ const SECTION_COLORS = {
   "Ramsey Hairpin": "#06B6D4",
   "The Mountain": "#22C55E",
   "VIP Enclosure": "#F59E0B",
-  "Hospitality Suite": "#7C3AED",
+  "Hospitality Suite": "#7C3AED"
 };
 
 function getSectionColor(section, category) {
@@ -159,7 +159,7 @@ const InteractiveVenueMap = ({ groupedSections, selectedSection, onSectionSelect
             { x: 70, y: 50, w: 110, h: 70 },
             { x: 620, y: 50, w: 110, h: 70 },
             { x: 70, y: 400, w: 110, h: 70 },
-            { x: 620, y: 400, w: 110, h: 70 },
+            { x: 620, y: 400, w: 110, h: 70 }
           ].map((pos, i) => (
             <g key={i} className="cursor-pointer" onClick={() => handleClick("Section C")}
               onMouseEnter={() => setHoveredSection("Section C")} onMouseLeave={() => setHoveredSection(null)}>

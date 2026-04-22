@@ -20,8 +20,7 @@ const BarcelonaHubPage = () => {
     "location": { "@type": "Place", "name": "Spotify Camp Nou", "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" } },
     "performer": { "@type": "SportsTeam", "name": "FC Barcelona" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "65", "highPrice": "2200", "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/barcelona-tickets" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "65", "highPrice": "2200", "availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/barcelona-tickets" }
   };
 
   const reviewSchema = {
@@ -31,13 +30,9 @@ const BarcelonaHubPage = () => {
     "name": "FC Barcelona Tickets 2025-26",
     "description": "Verified FC Barcelona match and concert tickets at Camp Nou with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "4156", "bestRating": "5", "worstRating": "1" },
-    "review": [
-      { "@type": "Review", "name": "Magical Camp Nou at half the price", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Maria G." }, "reviewBody": "Camp Nou was magical! Got La Liga tickets for half the price of other sites. Amazing!", "datePublished": "2026-02-18" },
-      { "@type": "Review", "name": "Best El Clasico night of my life", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Tom B." }, "reviewBody": "Barcelona vs Real Madrid - El Clasico - best night of my life. Tickets were legit and cheap.", "datePublished": "2026-01-22" },
-      { "@type": "Review", "name": "Smooth Coldplay Camp Nou booking", "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" }, "author": { "@type": "Person", "name": "Priya S." }, "reviewBody": "Booked Coldplay at Camp Nou through EuroMatchTickets. Smooth process, instant delivery.", "datePublished": "2025-11-30" }
-    ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "2200", "offerCount": "587" , "validFrom": "2025-01-01" }
+    
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "2200","validFrom": "2025-01-01" }
   };
 
   const matches = [
@@ -45,21 +40,21 @@ const BarcelonaHubPage = () => {
     { home: "Barcelona", away: "Bayern Munich", label: "UCL Group Stage", venue: "Camp Nou", date: "Nov 2025", price: 155, tickets: 42, hot: true, link: "/barcelona-champions-league-tickets-2026" },
     { home: "Barcelona", away: "PSG", label: "UCL Knockout", venue: "Camp Nou", date: "Mar 2026", price: 175, tickets: 27, hot: true, link: "/barcelona-champions-league-tickets-2026" },
     { home: "Barcelona", away: "Atletico Madrid", label: "La Liga", venue: "Camp Nou", date: "Apr 2026", price: 95, tickets: 68, link: "/barcelona-la-liga-tickets-2026" },
-    { home: "Barcelona", away: "Sevilla", label: "La Liga", venue: "Camp Nou", date: "Mar 2026", price: 75, tickets: 92, link: "/barcelona-la-liga-tickets-2026" },
+    { home: "Barcelona", away: "Sevilla", label: "La Liga", venue: "Camp Nou", date: "Mar 2026", price: 75, tickets: 92, link: "/barcelona-la-liga-tickets-2026" }
   ];
 
   const concerts = [
     { artist: "Coldplay", tour: "Music of the Spheres", date: "Jun 2026", price: 85, link: "/coldplay-barcelona-tickets-2026" },
     { artist: "Ed Sheeran", tour: "Mathematics Tour", date: "Jul 2026", price: 75, link: "/ed-sheeran-barcelona-tickets-2026" },
     { artist: "Bruno Mars", tour: "24K World Tour", date: "Aug 2026", price: 95, link: "/bruno-mars-barcelona-tickets-2026" },
-    { artist: "Beyonce", tour: "Renaissance Tour", date: "Sep 2026", price: 110, link: "/beyonce-barcelona-tickets-2026" },
+    { artist: "Beyonce", tour: "Renaissance Tour", date: "Sep 2026", price: 110, link: "/beyonce-barcelona-tickets-2026" }
   ];
 
   const reviews = [
     { name: "Maria G.", country: "Spain", rating: 5, text: "Camp Nou was magical! Got La Liga tickets for half the price. Amazing!", date: "Feb 2026" },
     { name: "Tom B.", country: "UK", rating: 5, text: "El Clasico - best night of my life. Tickets were legit and cheap.", date: "Jan 2026" },
     { name: "Priya S.", country: "India", rating: 5, text: "Booked Coldplay at Camp Nou. Smooth process, instant delivery.", date: "Nov 2025" },
-    { name: "Lars K.", country: "Germany", rating: 4, text: "Great prices for Barcelona vs Bayern. The new Camp Nou is incredible!", date: "Oct 2025" },
+    { name: "Lars K.", country: "Germany", rating: 4, text: "Great prices for Barcelona vs Bayern. The new Camp Nou is incredible!", date: "Oct 2025" }
   ];
 
   const faqs = [
@@ -68,7 +63,7 @@ const BarcelonaHubPage = () => {
     { question: "Can I buy El Clasico tickets?", answer: "Yes! El Clasico (Barcelona vs Real Madrid) tickets are available starting from \u20AC185. These are our most popular football tickets - book early!" },
     { question: "Are there concerts at Camp Nou?", answer: "Yes! Camp Nou hosts major concerts including Coldplay, Ed Sheeran, Bruno Mars, Beyonce, and more. Concert tickets start from \u20AC75." },
     { question: "Are Barcelona tickets on EuroMatchTickets genuine?", answer: "verified. Every ticket comes with our Buyer protection - full refund if cancelled or if there's any issue with your tickets." },
-    { question: "How do I get to Camp Nou?", answer: "Camp Nou is easily accessible by Barcelona Metro (Line 3 - Les Corts or Line 5 - Collblanc). It's located in the Les Corts district." },
+    { question: "How do I get to Camp Nou?", answer: "Camp Nou is easily accessible by Barcelona Metro (Line 3 - Les Corts or Line 5 - Collblanc). It's located in the Les Corts district." }
   ];
 
   return (

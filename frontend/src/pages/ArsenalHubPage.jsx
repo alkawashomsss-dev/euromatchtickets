@@ -13,12 +13,9 @@ const ArsenalHubPage = () => {
     "name": "Arsenal FC Tickets 2025-26",
     "description": "Verified Arsenal FC match tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2187", "bestRating": "5" },
-    "review": [
-      { "@type": "Review", "name": "Emirates European night was unreal", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Jack W." }, "reviewBody": "Emirates on a European night is unreal! Saka was incredible. Verified tickets I found.", "datePublished": "2026-02-18" },
-      { "@type": "Review", "name": "Best North London Derby experience", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "author": { "@type": "Person", "name": "Amira F." }, "reviewBody": "North London Derby was the best football experience of my life! Great prices.", "datePublished": "2026-01-10" }
-    ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1500", "offerCount": "245" , "validFrom": "2025-01-01" }
+    
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "65", "highPrice": "1500","validFrom": "2025-01-01" }
   };
 
   const matches = [
@@ -26,14 +23,14 @@ const ArsenalHubPage = () => {
     { home: "Arsenal", away: "Tottenham", label: "North London Derby", venue: "Emirates Stadium", date: "Mar 2026", price: 175, tickets: 18, hot: true, link: "/checkout?event=match" },
     { home: "Arsenal", away: "Man City", label: "Premier League", venue: "Emirates Stadium", date: "Apr 2026", price: 155, tickets: 33, hot: true, link: "/checkout?event=match" },
     { home: "Arsenal", away: "Liverpool", label: "Premier League", venue: "Emirates Stadium", date: "May 2026", price: 145, tickets: 29, hot: true, link: "/checkout?event=match" },
-    { home: "Arsenal", away: "Chelsea", label: "London Derby", venue: "Emirates Stadium", date: "Mar 2026", price: 135, tickets: 45, link: "/checkout?event=match" },
+    { home: "Arsenal", away: "Chelsea", label: "London Derby", venue: "Emirates Stadium", date: "Mar 2026", price: 135, tickets: 45, link: "/checkout?event=match" }
   ];
 
   const reviews = [
     { name: "Jack W.", country: "UK", rating: 5, text: "Emirates on a European night is unreal! Saka was incredible. Verified tickets!", date: "Feb 2026" },
     { name: "Amira F.", country: "Egypt", rating: 5, text: "North London Derby was the best football experience of my life!", date: "Jan 2026" },
     { name: "Thomas B.", country: "Germany", rating: 5, text: "Arsenal vs Bayern was electric. Tickets arrived in seconds.", date: "Dec 2025" },
-    { name: "Chloe P.", country: "France", rating: 4, text: "Great atmosphere at Emirates. Easy booking, instant delivery.", date: "Nov 2025" },
+    { name: "Chloe P.", country: "France", rating: 4, text: "Great atmosphere at Emirates. Easy booking, instant delivery.", date: "Nov 2025" }
   ];
 
   const faqs = [
@@ -41,7 +38,7 @@ const ArsenalHubPage = () => {
     { question: "Where does Arsenal play?", answer: "Arsenal plays at the Emirates Stadium in Holloway, North London. Capacity 60,704. Nearest tube: Arsenal (Piccadilly line)." },
     { question: "Can I buy North London Derby tickets?", answer: "Yes! Arsenal vs Tottenham tickets start from \u20AC175. The most intense rivalry in London football!" },
     { question: "Are Arsenal tickets genuine?", answer: "verified with Buyer protection. Full refund if cancelled or any issue." },
-    { question: "Who are Arsenal's best players?", answer: "Bukayo Saka, Martin Odegaard, Declan Rice, William Saliba, and Kai Havertz lead Mikel Arteta's title-challenging squad." },
+    { question: "Who are Arsenal's best players?", answer: "Bukayo Saka, Martin Odegaard, Declan Rice, William Saliba, and Kai Havertz lead Mikel Arteta's title-challenging squad." }
   ];
 
   return (

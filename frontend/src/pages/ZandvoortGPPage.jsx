@@ -21,7 +21,7 @@ const ZandvoortGPPage = () => {
     "location": { "@type": "Place", "name": "Circuit Zandvoort", "address": { "@type": "PostalAddress", "addressLocality": "Zandvoort", "addressCountry": "NL" } },
     "performer": { "@type": "SportsTeam", "name": "Formula 1" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "offerCount": "388", "lowPrice": "189", "highPrice": "4489", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "189", "highPrice": "4489", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
   };
 
   const faqs = [
@@ -30,7 +30,7 @@ const ZandvoortGPPage = () => {
     { q: "Is Max Verstappen racing at Zandvoort 2026?", a: "Yes! The Dutch Grand Prix is Max Verstappen's home race. The atmosphere is legendary — 100,000+ fans dressed in orange creating one of F1's most electric environments." },
     { q: "How to get to Circuit Zandvoort?", a: "By train: Direct service from Amsterdam Centraal to Zandvoort aan Zee (30 min). The circuit is a 10-minute walk from the station. By car: A4 from Amsterdam, but parking is very limited — train strongly recommended." },
     { q: "What is the best grandstand at Zandvoort?", a: "Main Grandstand for start/finish line. Eastside Grandstand for the banked Turn 3 — unique to Zandvoort. Arie Luyendyk Grandstand for great views of the Tarzan corner overtaking zone." },
-    { q: "Are Zandvoort F1 tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if the race is cancelled. Instant QR delivery to your email." },
+    { q: "Are Zandvoort F1 tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if the race is cancelled. Instant QR delivery to your email." }
   ];
 
   const tickets = [
@@ -39,7 +39,7 @@ const ZandvoortGPPage = () => {
     { section: "Eastside Grandstand", price: 389, desc: "Banked Turn 3, unique Zandvoort view", available: 67, popular: true },
     { section: "Main Grandstand", price: 489, desc: "Start/finish straight, pit lane view", available: 45, popular: true },
     { section: "VIP Hospitality", price: 1489, desc: "Open bar, gourmet dining, paddock access", available: 23, popular: true },
-    { section: "Paddock Club", price: 4489, desc: "Ultimate VIP, pit lane walk, driver meet", available: 8 },
+    { section: "Paddock Club", price: 4489, desc: "Ultimate VIP, pit lane walk, driver meet", available: 8 }
   ];
 
   return (

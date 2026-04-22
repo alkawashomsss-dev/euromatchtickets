@@ -101,7 +101,7 @@ export const NewsletterSignup = ({ source = "unknown", variant = "default" }) =>
         {status === "error" && (
           <p className="text-red-400 text-xs mt-2">Something went wrong. Try again.</p>
         )}
-        <p className="text-slate-600 text-[10px] mt-3 uppercase tracking-wider">No spam. Unsubscribe anytime. Trusted by 500,000+ fans.</p>
+        <p className="text-slate-600 text-[10px] mt-3 uppercase tracking-wider">No spam. Unsubscribe anytime.</p>
       </div>
     </div>
   );

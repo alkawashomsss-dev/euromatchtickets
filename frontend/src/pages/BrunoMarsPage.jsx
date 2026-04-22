@@ -25,7 +25,7 @@ const BrunoMarsPage = () => {
     "location": { "@type": "Place", "name": "Wembley Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "MusicGroup", "name": "Bruno Mars" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "offerCount": "747", "lowPrice": "125", "highPrice": "650", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "125", "highPrice": "650", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
   };
 
   const faqSchema = {
@@ -35,7 +35,7 @@ const BrunoMarsPage = () => {
       { "@type": "Question", "name": "When is Bruno Mars touring Europe in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Bruno Mars tours Europe June 21 to July 28, 2026. Paris Stade de France (Jun 21), Berlin Olympiastadion (Jun 26-29, 3 nights), Amsterdam Johan Cruijff Arena (Jul 2-7, 4 nights), Madrid Metropolitano (Jul 10-11), Milan San Siro (Jul 14-15), London Wembley (Jul 18-28, 6 nights)." }},
       { "@type": "Question", "name": "How many nights is Bruno Mars at Wembley?", "acceptedAnswer": { "@type": "Answer", "text": "Bruno Mars plays 6 nights at Wembley Stadium London from July 18-28, 2026. This makes it the biggest London residency of the tour. Each night features a slightly different setlist with surprise songs." }},
       { "@type": "Question", "name": "What songs does Bruno Mars play on The Romantic Tour?", "acceptedAnswer": { "@type": "Answer", "text": "The setlist includes Uptown Funk, 24K Magic, That's What I Like, Locked Out of Heaven, Just The Way You Are, Grenade, When I Was Your Man, Treasure, Leave The Door Open (Silk Sonic), plus new songs from The Romantic album. 2+ hour show." }},
-      { "@type": "Question", "name": "Are Bruno Mars tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All tickets include Buyer protection cancellation refund policy. Full refund if cancelled, postponed, or invalid tickets. Instant QR delivery." }},
+      { "@type": "Question", "name": "Are Bruno Mars tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All tickets include Buyer protection cancellation refund policy. Full refund if cancelled, postponed, or invalid tickets. Instant QR delivery." }}
     ]
   };
 
@@ -44,7 +44,7 @@ const BrunoMarsPage = () => {
     { q: "When is Bruno Mars touring Europe in 2026?", a: "June 21 to July 28. Paris (Jun 21), Berlin (Jun 26-29), Amsterdam (Jul 2-7), Madrid (Jul 10-11), Milan (Jul 14-15), London Wembley (Jul 18-28, 6 nights)." },
     { q: "How many nights at Wembley?", a: "6 nights, July 18-28 — the biggest London residency of the tour. Each night has a different setlist with surprise songs." },
     { q: "What songs does Bruno Mars play?", a: "Uptown Funk, 24K Magic, That's What I Like, Locked Out of Heaven, Just The Way You Are, Grenade, Leave The Door Open (Silk Sonic), plus new album tracks. 2+ hours." },
-    { q: "Are tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled, postponed, or invalid. Instant QR delivery." },
+    { q: "Are tickets refundable?", a: "Yes! Buyer protection cancellation refund policy. Full refund if cancelled, postponed, or invalid. Instant QR delivery." }
   ];
 
   const shows = [
@@ -53,7 +53,7 @@ const BrunoMarsPage = () => {
     { date: "Jul 2-7, 2026", venue: "Johan Cruijff Arena", city: "Amsterdam", country: "Netherlands", nights: 4, price: 155, tickets: 203, hot: true },
     { date: "Jul 10-11, 2026", venue: "Riyadh Air Metropolitano", city: "Madrid", country: "Spain", nights: 2, price: 135, tickets: 134 },
     { date: "Jul 14-15, 2026", venue: "Stadio San Siro", city: "Milan", country: "Italy", nights: 2, price: 145, tickets: 98 },
-    { date: "Jul 18-28, 2026", venue: "Wembley Stadium", city: "London", country: "UK", nights: 6, price: 185, tickets: 67, hot: true },
+    { date: "Jul 18-28, 2026", venue: "Wembley Stadium", city: "London", country: "UK", nights: 6, price: 185, tickets: 67, hot: true }
   ];
 
   return (

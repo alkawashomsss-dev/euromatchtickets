@@ -11,50 +11,50 @@ const REVIEW_VARIANTS = {
     title: "EuroMatchTickets Review 2026 – Is It Worth It?",
     h1: "EuroMatchTickets Review & Ratings 2026",
     subtitle: "An honest, independent look at Europe's growing ticket marketplace",
-    metaDesc: "Honest EuroMatchTickets review 2026. Real customer experiences, pros & cons, safety analysis. Is EuroMatchTickets legit? Read before you buy.",
+    metaDesc: "Honest EuroMatchTickets review 2026. Real customer experiences, pros & cons, safety analysis. Is EuroMatchTickets legit? Read before you buy."
   },
   "euromatchtickets-legit": {
     lang: "en",
     title: "Is EuroMatchTickets Legit? Honest Review 2026",
     h1: "Is EuroMatchTickets Legit? Full Analysis",
     subtitle: "We tested it ourselves — here's what we found",
-    metaDesc: "Is EuroMatchTickets legit? Comprehensive analysis of safety, pricing, delivery. Verified seller inventory. Read our unbiased 2026 review.",
+    metaDesc: "Is EuroMatchTickets legit? Comprehensive analysis of safety, pricing, delivery. Verified seller inventory. Read our unbiased 2026 review."
   },
   "is-euromatchtickets-safe": {
     lang: "en",
     title: "Is EuroMatchTickets Safe? Security Review 2026",
     h1: "Is EuroMatchTickets Safe to Buy From?",
     subtitle: "Security, payment protection & buyer guarantees explained",
-    metaDesc: "Is EuroMatchTickets safe? Full security review 2026. SSL, Stripe payments, Buyer protection. Everything you need to know before buying.",
+    metaDesc: "Is EuroMatchTickets safe? Full security review 2026. SSL, Stripe payments, Buyer protection. Everything you need to know before buying."
   },
   "euromatchtickets-erfahrung": {
     lang: "de",
     title: "EuroMatchTickets Erfahrung 2026 – Ist es sicher?",
     h1: "EuroMatchTickets Erfahrungen & Bewertungen",
     subtitle: "Ehrliche Bewertung: Lohnt sich der Kauf?",
-    metaDesc: "EuroMatchTickets Erfahrung 2026. Echte Kundenbewertungen, Vor- und Nachteile. Ist EuroMatchTickets serios? Lesen Sie vor dem Kauf.",
+    metaDesc: "EuroMatchTickets Erfahrung 2026. Echte Kundenbewertungen, Vor- und Nachteile. Ist EuroMatchTickets serios? Lesen Sie vor dem Kauf."
   },
   "euromatchtickets-avis": {
     lang: "fr",
     title: "EuroMatchTickets Avis 2026 – Fiable ou Arnaque?",
     h1: "EuroMatchTickets Avis & Evaluations 2026",
     subtitle: "Notre analyse complete et honnete de la plateforme",
-    metaDesc: "Avis EuroMatchTickets 2026. Experiences clients, avantages et inconvenients. EuroMatchTickets est-il fiable? Lisez avant d'acheter.",
+    metaDesc: "Avis EuroMatchTickets 2026. Experiences clients, avantages et inconvenients. EuroMatchTickets est-il fiable? Lisez avant d'acheter."
   },
   "euromatchtickets-opiniones": {
     lang: "es",
     title: "EuroMatchTickets Opiniones 2026 – Es Fiable?",
     h1: "EuroMatchTickets Opiniones & Valoraciones 2026",
     subtitle: "Analisis honesto e independiente de la plataforma",
-    metaDesc: "Opiniones EuroMatchTickets 2026. Experiencias reales, ventajas y desventajas. Es EuroMatchTickets fiable? Lee antes de comprar.",
+    metaDesc: "Opiniones EuroMatchTickets 2026. Experiencias reales, ventajas y desventajas. Es EuroMatchTickets fiable? Lee antes de comprar."
   },
   "euromatchtickets-recensioni": {
     lang: "it",
     title: "EuroMatchTickets Recensioni 2026 – E Affidabile?",
     h1: "EuroMatchTickets Recensioni & Valutazioni 2026",
     subtitle: "Analisi onesta e indipendente della piattaforma",
-    metaDesc: "Recensioni EuroMatchTickets 2026. Esperienze reali, pro e contro. EuroMatchTickets e affidabile? Leggi prima di acquistare.",
-  },
+    metaDesc: "Recensioni EuroMatchTickets 2026. Esperienze reali, pro e contro. EuroMatchTickets e affidabile? Leggi prima di acquistare."
+  }
 };
 
 const REVIEWS = [
@@ -65,7 +65,7 @@ const REVIEWS = [
   { name: "Julie M.", country: "France", date: "December 2025", rating: 4, event: "PSG vs Marseille", text: "Tres bon service. Les billets sont arrives rapidement par email. Le prix etait un peu plus eleve que prevu, mais c'est normal pour Le Classique.", verified: true },
   { name: "Erik V.", country: "Netherlands", date: "February 2026", rating: 5, event: "Ajax Champions League", text: "Excellent! Bought CL group stage tickets. Price was fair, delivery instant. The comparison tool helped me find the cheapest option.", verified: true },
   { name: "Laura B.", country: "UK", date: "January 2026", rating: 3, event: "Taylor Swift Wembley", text: "Tickets were real and worked fine, but the price was quite a bit above face value. I understand it's a resale marketplace, but it still stings. Service itself was professional.", verified: true },
-  { name: "Dieter W.", country: "Austria", date: "March 2026", rating: 5, event: "Austrian GP F1", text: "Perfekte Erfahrung. Tickets fur den GP in Spielberg bestellt, QR-Code kam sofort. Preis war fair. Werde wieder kaufen.", verified: true },
+  { name: "Dieter W.", country: "Austria", date: "March 2026", rating: 5, event: "Austrian GP F1", text: "Perfekte Erfahrung. Tickets fur den GP in Spielberg bestellt, QR-Code kam sofort. Preis war fair. Werde wieder kaufen.", verified: true }
 ];
 
 const ReviewStars = ({ rating }) => (
@@ -254,7 +254,7 @@ const ReviewPage = () => {
                     isGerman ? "Große Auswahl an Events" : isFrench ? "Large selection d'evenements" : "Huge selection of events across Europe",
                     isGerman ? "Oft günstiger als Viagogo" : isFrench ? "Souvent moins cher que Viagogo" : "Often cheaper than Viagogo & StubHub",
                     isGerman ? "SSL & Stripe sichere Zahlung" : isFrench ? "Paiement securise SSL & Stripe" : "encrypted + Stripe secure payments",
-                    isGerman ? "Preisvergleich-Tool" : isFrench ? "Outil de comparaison des prix" : "Built-in price comparison tool",
+                    isGerman ? "Preisvergleich-Tool" : isFrench ? "Outil de comparaison des prix" : "Built-in price comparison tool"
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
                       <Check className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
@@ -273,7 +273,7 @@ const ReviewPage = () => {
                     isGerman ? "Preise über dem Nennwert (Marktplatz)" : isFrench ? "Prix au-dessus de la valeur nominale (marketplace)" : "Prices above face value (it's a marketplace)",
                     isGerman ? "Kein Telefon-Support (nur E-Mail)" : isFrench ? "Pas de support telephonique (email uniquement)" : "No phone support (email only, but fast)",
                     isGerman ? "Servicegebühren erst beim Checkout sichtbar" : isFrench ? "Frais de service visibles au checkout" : "Service fees only visible at checkout",
-                    isGerman ? "Beliebte Events schnell ausverkauft" : isFrench ? "Evenements populaires vite epuises" : "High-demand events sell out quickly",
+                    isGerman ? "Beliebte Events schnell ausverkauft" : isFrench ? "Evenements populaires vite epuises" : "High-demand events sell out quickly"
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
                       <X className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
@@ -296,7 +296,7 @@ const ReviewPage = () => {
                 { icon: Shield, title: isGerman ? "Buyer protection Garantie" : isFrench ? "Garantie Buyer protection" : "Buyer protection", desc: isGerman ? "100% Geld-zurück-Garantie bei ungültigen Tickets oder Eventabsage." : isFrench ? "Remboursement 100% si les billets sont invalides ou l'evenement est annule." : "cancellation refund policy if tickets are invalid or event is cancelled. This is their strongest selling point." },
                 { icon: CreditCard, title: isGerman ? "Stripe-Zahlung" : isFrench ? "Paiement Stripe" : "Stripe Payment Processing", desc: isGerman ? "Zahlungen werden über Stripe abgewickelt — den gleichen Anbieter wie Shopify und Amazon." : isFrench ? "Les paiements sont traites par Stripe — le meme fournisseur que Shopify et Amazon." : "Payments processed through Stripe — the same provider used by Shopify, Amazon, and Google. Your card details never touch their servers." },
                 { icon: Lock, title: "SSL / HTTPS", desc: isGerman ? "256-bit SSL-Verschlüsselung auf der gesamten Website." : isFrench ? "Chiffrement SSL 256 bits sur l'ensemble du site." : "256-bit SSL encryption across the entire site. Standard but important." },
-                { icon: Clock, title: isGerman ? "Sofortlieferung" : isFrench ? "Livraison instantanee" : "QR delivery", desc: isGerman ? "Tickets werden als QR-Codes per E-Mail geliefert — in der Regel innerhalb von Minuten." : isFrench ? "Les billets sont livres par QR code par email — generalement en quelques minutes." : "Tickets delivered as QR codes via email — usually within minutes, not days." },
+                { icon: Clock, title: isGerman ? "Sofortlieferung" : isFrench ? "Livraison instantanee" : "QR delivery", desc: isGerman ? "Tickets werden als QR-Codes per E-Mail geliefert — in der Regel innerhalb von Minuten." : isFrench ? "Les billets sont livres par QR code par email — generalement en quelques minutes." : "Tickets delivered as QR codes via email — usually within minutes, not days." }
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="bg-blue-500/100/10 p-2 rounded-none">
@@ -334,7 +334,7 @@ const ReviewPage = () => {
                     [isGerman ? "Servicegebühr" : isFrench ? "Frais de service" : "Service Fee", "~12%", "~25-30%", "~20-25%"],
                     [isGerman ? "Bewertung" : isFrench ? "Note" : "Rating", "4.8/5", "3.2/5", "3.8/5"],
                     [isGerman ? "Europäische Events" : isFrench ? "Evenements europeens" : "European Events", "500K+", "300K+", "200K+"],
-                    [isGerman ? "Transparenz" : isFrench ? "Transparence" : "Transparency", isGerman ? "Endpreis sichtbar" : isFrench ? "Prix final visible" : "Final price visible", isGerman ? "Versteckte Gebühren" : isFrench ? "Frais caches" : "Hidden fees", isGerman ? "Gebühren im Checkout" : isFrench ? "Frais au checkout" : "Fees at checkout"],
+                    [isGerman ? "Transparenz" : isFrench ? "Transparence" : "Transparency", isGerman ? "Endpreis sichtbar" : isFrench ? "Prix final visible" : "Final price visible", isGerman ? "Versteckte Gebühren" : isFrench ? "Frais caches" : "Hidden fees", isGerman ? "Gebühren im Checkout" : isFrench ? "Frais au checkout" : "Fees at checkout"]
                   ].map((row, i) => (
                     <tr key={i} className="border-b border-gray-700/20">
                       <td className="p-4 text-gray-300 font-medium">{row[0]}</td>
@@ -368,7 +368,7 @@ const ReviewPage = () => {
                   isGerman ? "Die Preise liegen oft über dem Nennwert — manchmal 20-50% mehr. Für ausverkaufte Events wie El Clasico kann der Aufschlag noch höher sein." : isFrench ? "Les prix sont souvent au-dessus de la valeur nominale — parfois 20 a 50% de plus. Pour les evenements complets comme El Clasico, la majoration peut etre plus elevee." : "Prices are often above face value — sometimes 20-50% more. For sold-out events like El Clasico or the Champions League Final, the markup can be higher.",
                   isGerman ? "Servicegebühren (ca. 12%) werden erst beim Checkout angezeigt, nicht auf der Produktseite." : isFrench ? "Les frais de service (~12%) ne sont affiches qu'au moment du checkout, pas sur la page produit." : "Service fees (~12%) are shown at checkout, not on the product page. This is standard for the industry but can be surprising.",
                   isGerman ? "Kein telefonischer Support — nur E-Mail. Die Antwortzeiten sind gut (unter 4 Stunden), aber kein Echtzeit-Support." : isFrench ? "Pas de support telephonique — uniquement par email. Les delais de reponse sont bons (moins de 4 heures), mais pas de support en temps reel." : "No phone support — email only. Response times are good (under 4 hours) but there's no real-time support if you need immediate help.",
-                  isGerman ? "Rückerstattungen bei Meinungsänderung sind nicht möglich — nur bei Event-Absage oder ungültigen Tickets." : isFrench ? "Les remboursements pour changement d'avis ne sont pas possibles — uniquement en cas d'annulation ou de billets invalides." : "No refunds for change of mind — only for cancelled events or invalid tickets. Make sure you're committed before buying.",
+                  isGerman ? "Rückerstattungen bei Meinungsänderung sind nicht möglich — nur bei Event-Absage oder ungültigen Tickets." : isFrench ? "Les remboursements pour changement d'avis ne sont pas possibles — uniquement en cas d'annulation ou de billets invalides." : "No refunds for change of mind — only for cancelled events or invalid tickets. Make sure you're committed before buying."
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
                     <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />

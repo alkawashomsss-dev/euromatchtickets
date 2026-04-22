@@ -24,8 +24,7 @@ const ChampionsLeaguePage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "UEFA Champions League"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "85", "highPrice": "1500", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/champions-league-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "85", "highPrice": "1500", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/champions-league-tickets", "validFrom": "2025-01-01" }
   };
 
   const reviewSchema = {
@@ -35,40 +34,9 @@ const ChampionsLeaguePage = () => {
     "name": "UEFA Champions League 2025-26 Tickets",
     "description": "Verified UEFA Champions League match tickets with QR ticket delivery",
     "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "3247",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "name": "Best Champions League ticket service",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Marco R." },
-        "reviewBody": "Bought tickets for Real Madrid vs Man City. QR code arrived instantly. Smooth entry at the Bernabeu. Best ticket service!",
-        "datePublished": "2026-02-15"
-      },
-      {
-        "@type": "Review",
-        "name": "Cheaper than StubHub for UCL Final",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Sophie L." },
-        "reviewBody": "Champions League Final tickets were cheaper than StubHub. Received instantly via email. Will use again!",
-        "datePublished": "2026-01-20"
-      },
-      {
-        "@type": "Review",
-        "name": "Great Bayern Munich UCL ticket prices",
-        "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Hans W." },
-        "reviewBody": "Great prices for Bayern Munich UCL tickets. Delivery was fast. Highly recommend for European matches.",
-        "datePublished": "2025-12-10"
-      }
-    ],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "85", "highPrice": "1500", "offerCount": "299" , "validFrom": "2025-01-01" }
+    
+    
+    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "85", "highPrice": "1500","validFrom": "2025-01-01" }
   };
 
   const matches = [
@@ -77,14 +45,14 @@ const ChampionsLeaguePage = () => {
     { home: "PSG", away: "Liverpool", venue: "Parc des Princes", city: "Paris", date: "Mar 2026", price: 155, tickets: 52, link: "/checkout?event=champions-league-2026" },
     { home: "Inter Milan", away: "Arsenal", venue: "San Siro", city: "Milan", date: "Mar 2026", price: 125, tickets: 67, link: "/checkout?event=champions-league-2026" },
     { home: "Atletico Madrid", away: "Juventus", venue: "Metropolitano", city: "Madrid", date: "Apr 2026", price: 115, tickets: 78, link: "/checkout?event=champions-league-2026" },
-    { home: "UCL Final 2026", away: "Allianz Arena, Munich", venue: "Allianz Arena", city: "Munich", date: "May 30, 2026", price: 450, tickets: 23, hot: true, link: "/checkout?event=champions-league-final-2026" },
+    { home: "UCL Final 2026", away: "Allianz Arena, Munich", venue: "Allianz Arena", city: "Munich", date: "May 30, 2026", price: 450, tickets: 23, hot: true, link: "/checkout?event=champions-league-final-2026" }
   ];
 
   const reviews = [
     { name: "Marco R.", country: "Italy", rating: 5, text: "Bought tickets for Real Madrid vs Man City. QR code arrived instantly. Smooth entry at the Bernabeu!", date: "Feb 2026" },
     { name: "Sophie L.", country: "France", rating: 5, text: "Champions League Final tickets were cheaper than StubHub. Will definitely use again!", date: "Jan 2026" },
     { name: "Hans W.", country: "Germany", rating: 5, text: "Great prices for Bayern Munich UCL tickets. Delivery was fast. Highly recommend!", date: "Dec 2025" },
-    { name: "Ahmed K.", country: "UAE", rating: 4, text: "Easy booking process. Got my El Clasico tickets in seconds. Excellent service.", date: "Nov 2025" },
+    { name: "Ahmed K.", country: "UAE", rating: 4, text: "Easy booking process. Got my El Clasico tickets in seconds. Excellent service.", date: "Nov 2025" }
   ];
 
   const faqs = [
@@ -95,7 +63,7 @@ const ChampionsLeaguePage = () => {
     { question: "What is the cheapest way to watch Champions League live?", answer: "EuroMatchTickets offers the cheapest Champions League tickets in Europe, starting from \u20AC85. Group stage matches are the most affordable, while knockout rounds start at \u20AC120." },
     { question: "Can I get a refund on Champions League tickets?", answer: "Yes, all tickets come with our buyer protection guarantee. If the event is cancelled, you receive a full refund. Visit our refund policy page for details." },
     { question: "How do I receive my Champions League tickets?", answer: "Tickets are delivered instantly via email as QR codes or mobile tickets. No physical shipping needed - just show your phone at the venue gate." },
-    { question: "Which teams are in the Champions League 2025-26?", answer: "Top European clubs including Real Madrid, Manchester City, Bayern Munich, Barcelona, PSG, Liverpool, Arsenal, Inter Milan, and 28 other qualifying teams." },
+    { question: "Which teams are in the Champions League 2025-26?", answer: "Top European clubs including Real Madrid, Manchester City, Bayern Munich, Barcelona, PSG, Liverpool, Arsenal, Inter Milan, and 28 other qualifying teams." }
   ];
 
   return (

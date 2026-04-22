@@ -20,8 +20,7 @@ const HungaryGPPage = () => {
     "location": { "@type": "Place", "name": "Hungaroring", "address": { "@type": "PostalAddress", "addressLocality": "Budapest", "addressCountry": "HU" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "99", "highPrice": "1499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-hungarian-grand-prix-budapest-tickets", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "99", "highPrice": "1499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-hungarian-grand-prix-budapest-tickets", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -30,14 +29,14 @@ const HungaryGPPage = () => {
     { section: "Gold 3 Grandstand", price: 279, originalPrice: 289, available: 112, popular: true },
     { section: "Super Gold", price: 349, originalPrice: 359, available: 78, popular: false },
     { section: "VIP Hospitality", price: 889, originalPrice: 899, available: 56, popular: true },
-    { section: "Paddock Club", price: 2689, originalPrice: 2699, available: 22, popular: false },
+    { section: "Paddock Club", price: 2689, originalPrice: 2699, available: 22, popular: false }
   ];
 
   const faqs = [
     { q: "Is Hungaroring good for overtaking?", a: "The narrow, twisty circuit makes overtaking challenging, but Turn 1 and the main straight offer opportunities." },
     { q: "Are Hungarian GP tickets mobile?", a: "Yes, instant mobile QR delivery via email. Print option also available." },
     { q: "How to get to Hungaroring from Budapest?", a: "Special trains and buses run from Budapest during F1 weekend. The circuit is 20km northeast of the city." },
-    { q: "What's the weather like in July?", a: "Expect hot weather, 30-35°C. Bring sunscreen, hat, and plenty of water!" },
+    { q: "What's the weather like in July?", a: "Expect hot weather, 30-35°C. Bring sunscreen, hat, and plenty of water!" }
   ];
 
   return (

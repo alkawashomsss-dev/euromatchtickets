@@ -14,7 +14,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "../components/ui/select";
 import SEOHead from "../components/SEOHead";
 import { getEventImagePath } from "../utils/eventImages";
@@ -39,7 +39,7 @@ const getEventTypeInfo = (type) => {
     motogp: { label: "MotoGP", icon: Flag, color: "bg-orange-600 text-white border-transparent" },
     isle_of_man_tt: { label: "Isle of Man TT", icon: Flag, color: "bg-amber-600 text-white border-transparent" },
     festival: { label: "Festival", icon: Music, color: "bg-pink-600 text-white border-transparent" },
-    tennis: { label: "Tennis", icon: Trophy, color: "bg-emerald-600 text-white border-transparent" },
+    tennis: { label: "Tennis", icon: Trophy, color: "bg-emerald-600 text-white border-transparent" }
   };
   return types[type] || types.match;
 };
@@ -325,7 +325,7 @@ const EventsPage = () => {
           {[
             { type: 'match', label: 'Football', icon: Trophy },
             { type: 'concert', label: 'Concerts', icon: Music },
-            { type: 'f1', label: 'Formula 1', icon: Flag },
+            { type: 'f1', label: 'Formula 1', icon: Flag }
           ].map(({ type, label, icon: Icon }) => (
             <button
               key={type}

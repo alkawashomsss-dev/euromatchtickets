@@ -15,7 +15,7 @@ const OptimizedImage = ({
   priority = false,
   sizes = "(max-width: 640px) 400px, (max-width: 1024px) 800px, 1536px",
   fallbackSrc,
-  onError,
+  onError
 }) => {
   // 1. Real URL → single <img>, browser handles scaling
   if (directSrc || (basePath && /\.(jpg|jpeg|png|webp)$/i.test(basePath)) || basePath?.startsWith("/event-images/") || basePath?.startsWith("/api/event-images/") || basePath?.startsWith("http")) {

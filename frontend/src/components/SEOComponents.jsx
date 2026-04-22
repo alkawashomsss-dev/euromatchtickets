@@ -106,22 +106,22 @@ export const InternalLinks = ({ currentCategory }) => {
       { name: "F1 Tickets 2026", url: "/f1-tickets" },
       { name: "Abu Dhabi GP", url: "/f1-abu-dhabi-grand-prix-tickets" },
       { name: "Las Vegas GP", url: "/f1-las-vegas-grand-prix-tickets" },
-      { name: "F1 Ticket Guide", url: "/f1-ticket-prices-guide" },
+      { name: "F1 Ticket Guide", url: "/f1-ticket-prices-guide" }
     ],
     match: [
       { name: "Champions League", url: "/champions-league-tickets" },
       { name: "El Clasico", url: "/el-clasico-tickets" },
       { name: "Real Madrid", url: "/real-madrid-tickets" },
       { name: "Barcelona", url: "/barcelona-tickets" },
-      { name: "World Cup 2026", url: "/world-cup-2026-tickets" },
+      { name: "World Cup 2026", url: "/world-cup-2026-tickets" }
     ],
     concert: [
       { name: "Bruno Mars Tour", url: "/bruno-mars-tour-2026" },
       { name: "Coldplay Tour", url: "/coldplay-tour-2026" },
       { name: "Ed Sheeran", url: "/ed-sheeran-tour-2026" },
       { name: "London Events", url: "/london-events" },
-      { name: "Paris Events", url: "/paris-events" },
-    ],
+      { name: "Paris Events", url: "/paris-events" }
+    ]
   };
 
   const categoryLinks = links[currentCategory] || links.match;

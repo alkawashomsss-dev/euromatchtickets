@@ -68,8 +68,7 @@ const BahrainWorldCupPage = () => {
     "location": { "@type": "Place", "name": "Various Venues", "address": { "@type": "PostalAddress", "addressLocality": "Multiple Cities", "addressCountry": "US" } },
     "performer": { "@type": "SportsTeam", "name": "Bahrain National Football Team" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR",
-              "offerCount": "100", "lowPrice": "89", "highPrice": "2999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/bahrain-world-cup-tickets-2026", "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "89", "highPrice": "2999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/bahrain-world-cup-tickets-2026", "validFrom": "2025-01-01" }
   };
 
   const tickets = [
@@ -77,7 +76,7 @@ const BahrainWorldCupPage = () => {
     { section: "Category 2 (Mid Tier)", price: 199, tag: "POPULAR", features: ["Mid-level seating", "Great sightlines", "Instant QR delivery", "Buyer protection"] },
     { section: "Category 1 (Lower Tier)", price: 399, tag: "BEST VIEW", features: ["Lower tier close to pitch", "Premium atmosphere", "Priority entry", "Buyer protection"] },
     { section: "VIP Hospitality", price: 999, tag: "VIP", features: ["Hospitality lounge", "Gourmet catering", "Best seats", "Exclusive access"] },
-    { section: "Fan Village Pass + Match", price: 149, features: ["Fan zone access", "Big screen viewing", "Live entertainment", "Food & drinks area"] },
+    { section: "Fan Village Pass + Match", price: 149, features: ["Fan zone access", "Big screen viewing", "Live entertainment", "Food & drinks area"] }
   ];
 
   const faqs = [
@@ -86,7 +85,7 @@ const BahrainWorldCupPage = () => {
     { question: "Where can I buy Bahrain World Cup tickets?", answer: "You can buy Bahrain World Cup 2026 tickets right here on EuroMatchTickets. We offer verified tickets with QR ticket delivery and our Buyer protection buyer guarantee." },
     { question: "When do World Cup 2026 tickets go on sale?", answer: "Tickets are already available for pre-order on EuroMatchTickets! We offer early access to World Cup 2026 tickets before official sales open. All tickets are backed by our guarantee." },
     { question: "Can I buy World Cup tickets from Bahrain?", answer: "Yes! EuroMatchTickets serves fans worldwide, including Bahrain. All tickets are delivered digitally as QR codes, so you can buy from anywhere and receive them instantly." },
-    { question: "What stadiums will host World Cup 2026?", answer: "The FIFA World Cup 2026 will be hosted across 16 stadiums in the USA, Canada, and Mexico, including MetLife Stadium (New York), SoFi Stadium (Los Angeles), AT&T Stadium (Dallas), and more." },
+    { question: "What stadiums will host World Cup 2026?", answer: "The FIFA World Cup 2026 will be hosted across 16 stadiums in the USA, Canada, and Mexico, including MetLife Stadium (New York), SoFi Stadium (Los Angeles), AT&T Stadium (Dallas), and more." }
   ];
 
   return (

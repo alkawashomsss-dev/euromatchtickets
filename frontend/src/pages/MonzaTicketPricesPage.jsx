@@ -11,7 +11,7 @@ const MonzaTicketPricesPage = () => {
     { category: "Prima Variante (Turn 1)", ours: 169, official: 279, stubhub: 249, viagogo: 259, saving: "39%" },
     { category: "Ascari Chicane", ours: 139, official: 219, stubhub: 199, viagogo: 209, saving: "37%" },
     { category: "VIP Village", ours: 595, official: 999, stubhub: 899, viagogo: 949, saving: "40%" },
-    { category: "Paddock Club", ours: 1995, official: 2999, stubhub: 2799, viagogo: 2899, saving: "33%" },
+    { category: "Paddock Club", ours: 1995, official: 2999, stubhub: 2799, viagogo: 2899, saving: "33%" }
   ];
 
   const monthlyPrices = [
@@ -20,14 +20,14 @@ const MonzaTicketPricesPage = () => {
     { month: "March 2026", ga: 65, parabolica: 142, tip: "Good early-bird prices" },
     { month: "June 2026", ga: 69, parabolica: 149, tip: "Standard pricing" },
     { month: "August 2026", ga: 79, parabolica: 169, tip: "Prices starting to rise" },
-    { month: "Race Week", ga: 95, parabolica: 199, tip: "Last-minute premium" },
+    { month: "Race Week", ga: 95, parabolica: 199, tip: "Last-minute premium" }
   ];
 
   const faqs = [
     { question: "How much do Monza F1 tickets cost?", answer: "Monza F1 tickets on EuroMatchTickets start from €69 for General Admission - the cheapest F1 race in Europe. Grandstand seats range from €139-€169. VIP from €595. All prices include 3-day weekend access." },
     { question: "When is the cheapest time to buy Monza tickets?", answer: "The cheapest time is December-January, 8-9 months before the race. Prices increase by 15-25% as the race approaches. Race week prices can be 40% higher than early-bird rates." },
     { question: "Are Monza tickets cheaper than other F1 races?", answer: "Yes! Monza is the cheapest F1 race in Europe. General Admission at €69 is half the price of Monaco (€195) and cheaper than Silverstone (€95), Spa (€85), and Barcelona (€79)." },
-    { question: "Do ticket prices include all 3 days?", answer: "Yes! Every Monza GP ticket includes access to all 3 days - Friday Practice, Saturday Qualifying, and Sunday Race. You don't need to buy separate tickets for each day." },
+    { question: "Do ticket prices include all 3 days?", answer: "Yes! Every Monza GP ticket includes access to all 3 days - Friday Practice, Saturday Qualifying, and Sunday Race. You don't need to buy separate tickets for each day." }
   ];
 
   return (

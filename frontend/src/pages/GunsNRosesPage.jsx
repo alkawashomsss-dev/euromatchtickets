@@ -21,7 +21,7 @@ const GunsNRosesPage = () => {
     "location": { "@type": "Place", "name": "Olympiastadion Berlin", "address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" } },
     "performer": { "@type": "MusicGroup", "name": "Guns N' Roses" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "offerCount": "820", "lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
+    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
   };
 
   const faqs = [
@@ -29,7 +29,7 @@ const GunsNRosesPage = () => {
     { q: "When are Guns N' Roses playing in Europe 2026?", a: "June 13 to July 17, 2026. Berlin (Jun 13), Arnhem (Jun 23), Cologne (Jun 26), London Tottenham (Jun 27), Marseille (Jul 1), Hamburg (Jul 3-4), Munich (Jul 17)." },
     { q: "How long is a Guns N' Roses concert?", a: "Guns N' Roses are legendary for their marathon sets — typically 3 to 3.5 hours! One of the longest rock performances you'll ever see. Doors open 2 hours before showtime." },
     { q: "What songs do Guns N' Roses play live?", a: "Sweet Child O' Mine, Paradise City, Welcome to the Jungle, November Rain, Patience, Knockin' on Heaven's Door, Nightrain, Mr. Brownstone, Rocket Queen, Civil War, Estranged, and 20+ more classics. 35-40 songs per show." },
-    { q: "Are Guns N' Roses tickets refundable?", a: "Yes! Buyer protection cancellation refund policy on every ticket. Full refund if cancelled or postponed. Instant QR delivery." },
+    { q: "Are Guns N' Roses tickets refundable?", a: "Yes! Buyer protection cancellation refund policy on every ticket. Full refund if cancelled or postponed. Instant QR delivery." }
   ];
 
   const shows = [
@@ -39,7 +39,7 @@ const GunsNRosesPage = () => {
     { date: "Sat, Jun 27, 2026", time: "19:30", venue: "Tottenham Hotspur Stadium", city: "London", country: "UK", price: 145, tickets: 78, hot: true },
     { date: "Wed, Jul 1, 2026", time: "20:00", venue: "Stade Vélodrome", city: "Marseille", country: "France", price: 115, tickets: 134 },
     { date: "Jul 3-4, 2026", time: "19:00", venue: "Volksparkstadion", city: "Hamburg", country: "Germany", nights: 2, price: 125, tickets: 167, hot: true },
-    { date: "Fri, Jul 17, 2026", time: "19:00", venue: "Olympiastadion", city: "Munich", country: "Germany", price: 130, tickets: 95 },
+    { date: "Fri, Jul 17, 2026", time: "19:00", venue: "Olympiastadion", city: "Munich", country: "Germany", price: 130, tickets: 95 }
   ];
 
   return (

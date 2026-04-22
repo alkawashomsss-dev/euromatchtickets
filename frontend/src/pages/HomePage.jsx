@@ -56,7 +56,7 @@ const eventTypeConfig = {
   motogp: { label: "MOTOGP", icon: "flag", bg: "bg-orange-600" },
   festival: { label: "FESTIVAL", icon: "music", bg: "bg-pink-600" },
   tennis: { label: "TENNIS", icon: "trophy", bg: "bg-emerald-600" },
-  isle_of_man_tt: { label: "ISLE OF MAN TT", icon: "flag", bg: "bg-amber-600" },
+  isle_of_man_tt: { label: "ISLE OF MAN TT", icon: "flag", bg: "bg-amber-600" }
 };
 
 const EventCard = ({ event, index }) => {
@@ -211,7 +211,7 @@ const HomePage = () => {
         // Merge World Cup + club football so the Matches section shows a real variety
         const allMatches = [
           ...(worldCupRes.data || []),
-          ...(footballRes.data || []),
+          ...(footballRes.data || [])
         ].sort((a, b) => {
           const da = new Date(a.event_date || 0).getTime();
           const db = new Date(b.event_date || 0).getTime();
@@ -303,7 +303,7 @@ const HomePage = () => {
                 { icon: CheckCircle, text: "Verified Tickets" },
                 { icon: Lock, text: "Secure Payment" },
                 { icon: Zap, text: "QR delivery" },
-                { icon: Headphones, text: "Customer support" },
+                { icon: Headphones, text: "Customer support" }
               ].map((t, i) => (
                 <span key={i} className="flex items-center gap-2 text-sm text-white/60">
                   <t.icon className="w-4 h-4 text-[#e10600]" />{t.text}
@@ -324,7 +324,7 @@ const HomePage = () => {
                 { icon: Ticket, text: "QR Ticket Delivery" },
                 { icon: Lock, text: "Encrypted Payments" },
                 { icon: Globe, text: "European Marketplace" },
-                { icon: CheckCircle, text: "Verified Sellers" },
+                { icon: CheckCircle, text: "Verified Sellers" }
               ].map((item, i) => (
                 <span key={`${setIdx}-${i}`} className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
                   <item.icon className="w-3.5 h-3.5 text-[#e10600]" />
@@ -498,7 +498,7 @@ const HomePage = () => {
                   { to: "/f1-2026-schedule", title: "F1 Schedule", sub: "Full Calendar", price: "Mar - Dec 2026", img: "/images/heroes/silverstone.jpg" },
                   { to: "/motogp-tickets", title: "MotoGP", sub: "21 Races", price: "From \u20ac69", img: "/images/heroes/motogp.jpg" },
                   { to: "/motogp-2026-schedule", title: "MotoGP Schedule", sub: "Full Calendar", price: "Mar - Nov 2026", img: "/images/heroes/motogp-orange.jpg" },
-                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", price: "From \u20ac149", img: "/api/event-images/venues/isle-of-man.png" },
+                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", price: "From \u20ac149", img: "/api/event-images/venues/isle-of-man.png" }
                 ].map((item) => (
                   <Link key={item.to} to={item.to} className="group relative h-36 overflow-hidden block hover:ring-2 hover:ring-[#e10600] transition-all duration-150">
                     <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
@@ -523,7 +523,7 @@ const HomePage = () => {
                 { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "World Cup", price: "From \u20ac89", img: "/images/heroes/worldcup-trophy.jpg" },
                 { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From \u20ac85", img: "/api/event-images/venues/santiago-bernabeu.jpg" },
                 { to: "/f1-bahrain-grand-prix-tickets", label: "NIGHT RACE", title: "Bahrain GP", price: "From \u20ac149", img: "/api/event-images/venues/yas-marina.png" },
-                { to: "/f1-tickets-2026", label: "FULL SEASON", title: "F1 2026", price: "From \u20ac120", img: "/images/heroes/f1-race.jpg" },
+                { to: "/f1-tickets-2026", label: "FULL SEASON", title: "F1 2026", price: "From \u20ac120", img: "/images/heroes/f1-race.jpg" }
               ].map((cat, i) => (
                 <Link key={cat.to} to={cat.to} className="group relative h-40 overflow-hidden block hover:ring-2 hover:ring-[#e10600] transition-all duration-150">
                   <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
@@ -553,7 +553,7 @@ const HomePage = () => {
             {[
               { step: "01", title: "FIND YOUR EVENT", desc: "Browse concerts, matches, F1 races and more across Europe", icon: <Ticket className="w-7 h-7" />, bg: "bg-[#e10600]", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/c81d55ecab50a35b17dca3dfb7f64b287f0b82b8d7d635c75c2e385822b29c1e.png" },
               { step: "02", title: "CHOOSE YOUR SEATS", desc: "Select from VIP to standing with interactive venue maps", icon: <MapPin className="w-7 h-7" />, bg: "bg-[#facc15] text-black", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/3e42214e87107974158e3ba1ed1a8e361f44157d7d89c7128361b2f46bee913f.png" },
-              { step: "03", title: "GET YOUR QR CODE", desc: "Receive your verified digital ticket instantly", icon: <Shield className="w-7 h-7" />, bg: "bg-[#15803d]", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/cb060f002664f85a8dbf5d4fe28761ca72114222f8e0b9792664777f27ba4e65.png" },
+              { step: "03", title: "GET YOUR QR CODE", desc: "Receive your verified digital ticket instantly", icon: <Shield className="w-7 h-7" />, bg: "bg-[#15803d]", img: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/cb060f002664f85a8dbf5d4fe28761ca72114222f8e0b9792664777f27ba4e65.png" }
             ].map((item, index) => (
               <FadeInSection key={index} delay={index * 0.1}>
                 <div className="relative bg-[#1e1e1e] border border-white/6 hover:border-[#e10600] transition-colors duration-150 group overflow-hidden">
@@ -610,7 +610,7 @@ const HomePage = () => {
               { label: "Live Events", icon: Ticket },
               { label: "Buyer Protected", icon: Shield },
               { label: "Europe-Wide", icon: Globe },
-              { label: "Customer support", icon: Headphones },
+              { label: "Customer support", icon: Headphones }
             ].map((stat, idx) => (
               <FadeInSection key={idx} delay={idx * 0.06}>
                 <div className="bg-[#1e1e1e] border border-white/6 p-5 text-center hover:border-[#e10600] transition-colors duration-150">
@@ -628,7 +628,7 @@ const HomePage = () => {
             {[
               { icon: Shield, title: "BUYER PROTECTION", desc: "Full refund if tickets are invalid or not delivered. Every ticket verified.", to: "/buyer-protection" },
               { icon: Lock, title: "SECURE PAYMENTS", desc: "Bank-level 256-bit SSL encryption via Stripe. Your details are always safe.", to: "/payment-info" },
-              { icon: CheckCircle, title: "VERIFIED SELLERS", desc: "Every seller undergoes ID verification. Every ticket authenticated.", to: null },
+              { icon: CheckCircle, title: "VERIFIED SELLERS", desc: "Every seller undergoes ID verification. Every ticket authenticated.", to: null }
             ].map((item, i) => (
               <FadeInSection key={i} delay={i * 0.08}>
                 {item.to ? (
@@ -659,7 +659,7 @@ const HomePage = () => {
             {[
               { icon: CreditCard, text: "Powered by Stripe" },
               { icon: Lock, text: "Encrypted" },
-              { icon: Award, text: "GDPR Compliant" },
+              { icon: Award, text: "GDPR Compliant" }
             ].map((item, i) => (
               <span key={i} className="flex items-center gap-2 text-slate-600 text-xs uppercase tracking-wider"><item.icon className="w-3.5 h-3.5" />{item.text}</span>
             ))}
@@ -684,7 +684,7 @@ const HomePage = () => {
               { slug: "best-f1-circuits-2026", title: "10 Best F1 Circuits to Visit in 2026", cat: "F1", img: "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg" },
               { slug: "spa-francorchamps-travel-guide-2026", title: "Spa-Francorchamps Travel Guide 2026", cat: "F1", img: "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg" },
               { slug: "taylor-swift-eras-tour-london-guide-2026", title: "Taylor Swift London 2026 - Fan Guide", cat: "Concerts", img: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg" },
-              { slug: "how-to-buy-f1-tickets-2026", title: "How to Buy F1 Tickets - Beginner Guide", cat: "F1", img: "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg" },
+              { slug: "how-to-buy-f1-tickets-2026", title: "How to Buy F1 Tickets - Beginner Guide", cat: "F1", img: "https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg" }
             ].map(g => (
               <Link key={g.slug} to={`/blog/${g.slug}`} className="group bg-[#161620] border border-white/5 overflow-hidden hover:border-[#e10600]/30 transition-all" data-testid={`home-guide-${g.slug}`}>
                 <div className="aspect-[16/9] overflow-hidden">

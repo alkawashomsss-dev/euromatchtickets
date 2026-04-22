@@ -14,7 +14,7 @@ const TRANSLATIONS = {
   de: { title: "Harry Styles Tickets 2026", subtitle: "Together Together Tour - Offizielle Tickets", buyNow: "Jetzt Kaufen", from: "Ab", vipTitle: "VIP-Pakete Verfügbar", berlinVip: "Berlin VIP Experience €15.300" },
   fr: { title: "Billets Harry Styles 2026", subtitle: "Together Together Tour - Billets Officiels", buyNow: "Acheter", from: "À partir de", vipTitle: "Forfaits VIP Disponibles", berlinVip: "Berlin VIP Experience 15 300€" },
   es: { title: "Entradas Harry Styles 2026", subtitle: "Together Together Tour - Entradas Oficiales", buyNow: "Comprar", from: "Desde", vipTitle: "Paquetes VIP Disponibles", berlinVip: "Berlin VIP Experience €15.300" },
-  ar: { title: "تذاكر هاري ستايلز 2026", subtitle: "جولة Together Together - تذاكر رسمية", buyNow: "اشترِ الآن", from: "من", vipTitle: "باقات VIP متاحة", berlinVip: "تجربة برلين VIP €15,300" },
+  ar: { title: "تذاكر هاري ستايلز 2026", subtitle: "جولة Together Together - تذاكر رسمية", buyNow: "اشترِ الآن", from: "من", vipTitle: "باقات VIP متاحة", berlinVip: "تجربة برلين VIP €15,300" }
 };
 
 const HarryStylesPage = () => {
@@ -53,8 +53,7 @@ const HarryStylesPage = () => {
     "performer": {"@type": "Person", "name": "Harry Styles"},
     "description": "Harry Styles live in concert. Together Together Tour 2026. VIP tickets from €427 to €15,300.",
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "AggregateOffer", "lowPrice": 427, "highPrice": 15300, "priceCurrency": "EUR",
-              "offerCount": "100", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/harry-styles-tickets", "validFrom": "2025-01-01"}
+    "offers": {"@type": "Offer", "lowPrice": 427, "highPrice": 15300, "priceCurrency": "EUR","availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/harry-styles-tickets", "validFrom": "2025-01-01"}
   };
 
   return (

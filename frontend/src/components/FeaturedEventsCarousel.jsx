@@ -29,7 +29,7 @@ const FALLBACK_EVENTS = [
     href: "/world-cup-2026-tickets",
     badge: "Final",
     accent: "text-amber-400",
-    gradient: "from-amber-600/60 via-yellow-700/40 to-transparent",
+    gradient: "from-amber-600/60 via-yellow-700/40 to-transparent"
   },
   {
     title: "UEFA Champions League Final",
@@ -40,7 +40,7 @@ const FALLBACK_EVENTS = [
     href: "/champions-league-tickets",
     badge: "UCL Final",
     accent: "text-blue-400",
-    gradient: "from-blue-600/60 via-indigo-700/40 to-transparent",
+    gradient: "from-blue-600/60 via-indigo-700/40 to-transparent"
   },
   {
     title: "Monaco Grand Prix 2026",
@@ -51,8 +51,8 @@ const FALLBACK_EVENTS = [
     href: "/f1-monaco-grand-prix-tickets",
     badge: "F1",
     accent: "text-red-400",
-    gradient: "from-red-600/60 via-rose-700/40 to-transparent",
-  },
+    gradient: "from-red-600/60 via-rose-700/40 to-transparent"
+  }
 ];
 
 const useCountdown = (target) => {
@@ -87,7 +87,7 @@ function normalize(raw) {
         ? "from-red-600/60 via-rose-700/40 to-transparent"
         : raw.event_type === "match" || raw.event_type === "football"
         ? "from-blue-600/60 via-indigo-700/40 to-transparent"
-        : "from-purple-600/60 via-violet-700/40 to-transparent",
+        : "from-purple-600/60 via-violet-700/40 to-transparent"
   };
 }
 
@@ -203,7 +203,7 @@ const FeaturedEventsCarousel = () => {
                     { v: cd.d, l: "D" },
                     { v: cd.h, l: "H" },
                     { v: cd.m, l: "M" },
-                    { v: cd.s, l: "S" },
+                    { v: cd.s, l: "S" }
                   ].map((u, i) => (
                     <div
                       key={i}
@@ -224,7 +224,7 @@ const FeaturedEventsCarousel = () => {
                   {new Date(ev.event_date).toLocaleDateString("en-GB", {
                     day: "numeric",
                     month: "short",
-                    year: "numeric",
+                    year: "numeric"
                   })}
                 </div>
               )}

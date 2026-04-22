@@ -35,7 +35,7 @@ const VenueInfoSection = ({ event }) => {
             { icon: Clock, label: "Doors Open", value: "2 hours before" },
             { icon: Car, label: "Parking", value: "Available" },
             { icon: Train, label: "Public Transit", value: "Nearby" },
-            { icon: Users, label: "Capacity", value: event.capacity || "50,000+" },
+            { icon: Users, label: "Capacity", value: event.capacity || "50,000+" }
           ].map((item, i) => (
             <div key={i} className="flex items-start gap-2 text-[13px]">
               <item.icon className="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0" />

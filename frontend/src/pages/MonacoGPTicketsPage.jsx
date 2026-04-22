@@ -54,7 +54,7 @@ const MonacoGPTicketsPage = () => {
     { name: "Grandstand K", price: 890, originalPrice: 1050, seats: 8, popular: true },
     { name: "Grandstand T", price: 1250, originalPrice: 1450, seats: 6, popular: false },
     { name: "VIP Hospitality", price: 2400, originalPrice: 2800, seats: 4, popular: true },
-    { name: "Paddock Club", price: 4500, originalPrice: 5200, seats: 2, popular: false },
+    { name: "Paddock Club", price: 4500, originalPrice: 5200, seats: 2, popular: false }
   ];
 
   return (

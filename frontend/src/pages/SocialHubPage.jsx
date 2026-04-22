@@ -10,7 +10,7 @@ const SOCIALS = [
   { name: "TikTok", handle: "@euromatchtickets", url: "https://tiktok.com/@euromatchtickets", color: "bg-black", followers: "12.4K", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" },
   { name: "Instagram", handle: "@euromatchtickets", url: "https://instagram.com/euromatchtickets", color: "bg-gradient-to-br from-purple-600 to-pink-500", followers: "8.2K", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" },
   { name: "YouTube", handle: "EuroMatchTickets", url: "https://youtube.com/@euromatchtickets", color: "bg-red-600", followers: "3.1K", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" },
-  { name: "Twitter/X", handle: "@euromatchtickets", url: "https://x.com/euromatchtickets", color: "bg-black", followers: "5.6K", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" },
+  { name: "Twitter/X", handle: "@euromatchtickets", url: "https://x.com/euromatchtickets", color: "bg-black", followers: "5.6K", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" }
 ];
 
 const UPCOMING = [
@@ -18,13 +18,13 @@ const UPCOMING = [
   { name: "Champions League Final", date: "2026-05-30T20:00:00Z", category: "Football", price: 295, slug: "/champions-league-final-tickets", hot: true },
   { name: "Taylor Swift Wembley", date: "2026-06-15T19:00:00Z", category: "Concert", price: 89, slug: "/taylor-swift-london-tickets-2026", hot: false },
   { name: "Monaco Grand Prix", date: "2026-05-24T14:00:00Z", category: "F1", price: 195, slug: "/monaco-grand-prix-tickets", hot: false },
-  { name: "El Clasico", date: "2026-04-12T20:00:00Z", category: "Football", price: 195, slug: "/el-clasico-tickets", hot: false },
+  { name: "El Clasico", date: "2026-04-12T20:00:00Z", category: "Football", price: 195, slug: "/el-clasico-tickets", hot: false }
 ];
 
 const TIKTOK_VIDEOS = [
   { title: "Prices going crazy for Spa F1", views: "45.2K", thumb: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/03cb988b681379676e5183e69496cf05444643ba3dbafda8cf5cbb6915ca1eb6.png" },
   { title: "Inside VIP F1 experience", views: "32.8K", thumb: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/4ccc649fab606fb509de0ae1038444e173f0f74ad318c6dbc506c19a65640cae.png" },
-  { title: "Why tickets sell out fast", views: "28.1K", thumb: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/5cb20c6492be13cb69ae5c45587d61ce3e5a05bfee99232053c912c06464c07b.png" },
+  { title: "Why tickets sell out fast", views: "28.1K", thumb: "https://static.prod-images.emergentagent.com/jobs/24ccd820-89b3-44a4-a0f8-a7e572fe73c9/images/5cb20c6492be13cb69ae5c45587d61ce3e5a05bfee99232053c912c06464c07b.png" }
 ];
 
 const CountdownUnit = ({ value, label }) => (
@@ -56,7 +56,7 @@ const SocialHubPage = () => {
             days: Math.floor(diff / 86400000),
             hours: Math.floor((diff % 86400000) / 3600000),
             mins: Math.floor((diff % 3600000) / 60000),
-            secs: Math.floor((diff % 60000) / 1000),
+            secs: Math.floor((diff % 60000) / 1000)
           };
         }
       });
