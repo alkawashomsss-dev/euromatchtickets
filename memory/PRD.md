@@ -355,3 +355,40 @@ User SEO audit flagged 7 issues. Fixed end-to-end + verified with testing agent 
 - 🟡 `events.py` admin endpoints (`mega_fix`, `fix_all_prices`, `seed_all_missing`) missing `require_admin` auth.
 - 🟡 `StructuredData.getPrices()` dead-code 50/500 fallback.
 
+
+---
+
+## 🧹 Session Update — Feb 2026 (Iterations 63–64 — Data-Driven Architecture Migration)
+
+User demanded a systemic fix over per-page whack-a-mole:
+> "حوّل الموقع من static fake marketplace إلى dynamic data-driven marketplace"
+
+### Core changes (verified: 29/29 pytest + 8/8 hub noindex + 3/3 regression):
+
+1. **`ProductSchema.jsx` — safe-by-default rewrite.**
+   - Now requires `verified={true} + price>0` to emit anything.
+   - Single `Offer` (no `AggregateOffer`), zero `aggregateRating`, zero synthesized review rows.
+   - Kills fake Google rich-result signals across 30+ pages in one file.
+
+2. **`useLiveEventData(slug|event_type)` hook** — new single source of truth for SEO landing pages. Any page can now replace hardcoded "Upcoming Matches" arrays with live `/api/events` data + `WaitlistCTA` when inventory is absent.
+
+3. **Global honesty sweep (4 automated scripts):**
+   - `/app/scripts/honesty_sweep.py` — 99 `src/*.jsx` files cleaned (Save € / Cheapest / Europe's #1 / FanProtect / etc).
+   - `/app/scripts/index_html_honesty.py` — ~140 token replacements inside `public/index.html` (the 772-line SEO shell injecting banned strings into every route).
+   - `/app/scripts/strip_inline_schema.py` + `repair_inline_schema.py` — 125 jsx files scrubbed of `aggregateRating`, `review[]`, `AggregateOffer` (downgraded to `Offer`), `offerCount` literals. Orphan-value artifacts repaired in 53 files.
+   - `/app/scripts/hub_noindex_sweep.py` — auto-injected `noIndex={true}` into 8 club hub pages (Juventus, BayernMunich, PSG, RealMadrid, Arsenal, Liverpool, Barcelona, ManCity).
+
+4. **Critical `public/index.html` edits:**
+   - Meta description → neutral European marketplace copy.
+   - Organization schema — removed `aggregateRating: 4.8/12,847` and fake `contactPoint telephone`.
+   - WebSite schema — removed "cheapest prices in Europe" claim.
+   - Event `addLD()` — dropped entire `offers: AggregateOffer (offerCount=500)` block; Offers now emitted only by React `ProductSchema` with verified inventory.
+
+### Result (sampled 9 pages): **0 banned strings in served HTML.**
+- Homepage, /spa-gp-tickets, /monaco-gp-tickets, /taylor-swift-tickets, /super-bowl-tickets, /f1-tickets, /abu-dhabi-gp-tickets, /event/taylor-swift-eras-tour-london-2026-tickets, /motogp-tickets — all clean.
+- 8 hub pages render with `meta robots="noindex, follow"`.
+
+### Still pending (non-blocking, carried from prior iters):
+- 🟡 `events.py` admin endpoints (`mega_fix`, `fix_all_prices`, `seed_all_missing`) still unauthenticated.
+- 🟡 For strict non-JS crawlers: adding hub paths to `unverifiedDemandPages` array in `public/index.html` (so noindex is set pre-React). Current risk low — Googlebot executes JS.
+
