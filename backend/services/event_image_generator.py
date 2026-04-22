@@ -107,6 +107,8 @@ MATCHES_VENUE = [
     ("afas live", "afas-live-amsterdam"), ("lanxess", "lanxess-arena-cologne"),
     ("metropolitano", "estadio-wanda"), ("estadio olimpic", "estadi-olimpic-barcelona"),
     ("olympiastadion", "olympiastadion-berlin"),
+    ("puskás", "puskas-arena"), ("puskas", "puskas-arena"),
+    ("budapest", "puskas-arena"),
 ]
 
 TYPE_COLORS = {

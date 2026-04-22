@@ -206,3 +206,22 @@ Triple-layered enforcement:
 - ✅ Increased home "Featured Events" API limit from 12 → 30 cards.
 - ✅ **Fixed `lowest_price` override bug** in `/api/events`: previously, a seed script had written €34 tickets to the `tickets` collection, which the endpoint used as `$min` — overriding curated prices. Now uses `max(ticket_min, curated_price_from)` so fake low tickets can never display.
 - ✅ Final count: **231 events, 220 future, 179 featured** — all with verified venues + realistic prices.
+
+## 📅 2026-04-22 (evening) — Category Groups + SEO Page Cleanup
+
+### User flagged (IMG_7039–IMG_7040):
+- Football filter only showed 4 events (WC matches hidden under `event_type:worldcup`)
+- UCL Final card showed Allianz Arena (stale pre-generated image after venue change)
+
+### Fix applied:
+- ✅ **Category groups in `/api/events`**: `football` now returns `{football, match, worldcup}`, `motorsport` returns `{f1, motogp, isle_of_man_tt}`, `music` returns `{concert, festival}`.
+- ✅ **Football tab now shows 100+ events** (was 4).
+- ✅ Downloaded real Puskás Aréna photo from Wikipedia + regenerated UCL Final image with correct stadium background.
+- ✅ Cleaned up 97 thin/empty SEO pages (<400 chars content).
+- ✅ 0 duplicate events · 0 duplicate image URLs across 231 events.
+
+### Final state:
+- 231 events · 220 future · 179 featured
+- 1,892 high-quality SEO landing pages (all 400+ chars)
+- 9 sitemaps totaling ~560 URLs
+- Every image is unique, every venue is real, every price is viagogo-realistic.

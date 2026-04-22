@@ -53,8 +53,17 @@ async def get_events(
 ):
     today = datetime.now(timezone.utc)
     query = {"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today}}
+    # Category groups: allow "football" filter to also include worldcup + match
+    CATEGORY_GROUPS = {
+        "football": ["football", "match", "worldcup"],
+        "motorsport": ["f1", "motogp", "isle_of_man_tt"],
+        "music": ["concert", "festival"],
+    }
     if event_type and event_type != "all":
-        query["event_type"] = event_type
+        if event_type in CATEGORY_GROUPS:
+            query["event_type"] = {"$in": CATEGORY_GROUPS[event_type]}
+        else:
+            query["event_type"] = event_type
     if league:
         query["league"] = league
     if genre:
