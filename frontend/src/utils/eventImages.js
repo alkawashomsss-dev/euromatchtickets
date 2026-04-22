@@ -49,16 +49,25 @@ function hashString(str) {
 
 /**
  * Get the best matching image base path for an event
- * Each event gets a UNIQUE image based on its ID/title to avoid duplicates
+ * Priority:
+ *   1. event.image_url (unique photo collected for this event — best case)
+ *   2. Category hero (fallback for events without an image yet)
  */
 export function getEventImagePath(event) {
   if (!event) return CATEGORY_IMAGES.football[0];
-  
+
+  // 1. REAL unique image collected for this specific event
+  // (from Wikipedia via services/image_collector.py)
+  const real = event.image_url;
+  if (real && (real.startsWith("/event-images/") || real.startsWith("http"))) {
+    return real;
+  }
+
+  // 2. Category-themed fallback
   const type = event.event_type || event.category || "";
   const title = (event.title || "").toLowerCase();
   const id = event.event_id || event.slug || title;
-  
-  // Determine category
+
   let category = "football";
   if (type === "f1" || type === "formula" || title.includes("grand prix") || title.includes("f1")) {
     category = "f1";
@@ -69,8 +78,7 @@ export function getEventImagePath(event) {
   } else if (type === "worldcup" || title.includes("world cup") || title.includes("fifa")) {
     category = "worldcup";
   }
-  
-  // Pick a unique image from the category based on event ID
+
   const images = CATEGORY_IMAGES[category];
   const index = hashString(id) % images.length;
   return images[index];
@@ -92,9 +100,29 @@ export function getCategoryHero(category) {
 }
 
 /**
- * Get responsive image URLs
+ * Get responsive image URLs.
+ * For real collected event images (/event-images/... or http) we return
+ * the same URL for every size — browsers handle scaling natively.
+ * For category heroes (which have -sm/-md/-lg webp variants) we build
+ * a srcSet for high-DPI displays.
  */
 export function getResponsiveUrls(basePath) {
+  if (!basePath) basePath = "";
+  const isRealImage =
+    basePath.startsWith("/event-images/") ||
+    basePath.startsWith("http") ||
+    basePath.endsWith(".jpg") ||
+    basePath.endsWith(".png") ||
+    basePath.endsWith(".webp");
+  if (isRealImage) {
+    return {
+      sm: basePath,
+      md: basePath,
+      lg: basePath,
+      jpg: basePath,
+      srcSet: `${basePath} 1600w`,
+    };
+  }
   return {
     sm: `${basePath}-sm.webp`,
     md: `${basePath}-md.webp`,

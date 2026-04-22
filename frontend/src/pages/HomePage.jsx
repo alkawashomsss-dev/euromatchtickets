@@ -82,7 +82,7 @@ const EventCard = ({ event, index }) => {
         {/* Image */}
         <div className="relative h-52 overflow-hidden">
           <img 
-            src={event.image_url || `${getEventImagePath(event)}-md.webp`}
+            src={event.image_url || getEventImagePath(event)}
             alt={event.image_alt || `${event.title} tickets`}
             loading="lazy" decoding="async" width="400" height="208"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

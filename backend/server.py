@@ -223,10 +223,12 @@ uploads_dir = pathlib.Path(__file__).parent / "uploads"
 uploads_dir.mkdir(exist_ok=True)
 app.mount("/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
 
-# Generated event images (Gemini Nano Banana outputs)
+# Generated event images — mounted under /api/event-images so that the
+# kubernetes ingress routes them to the backend (only /api/* is backend-
+# routed in preview; front-end controls all other paths).
 event_images_dir = pathlib.Path(__file__).parent / "static" / "event_images"
 event_images_dir.mkdir(parents=True, exist_ok=True)
-app.mount("/event-images", StaticFiles(directory=str(event_images_dir)), name="event-images")
+app.mount("/api/event-images", StaticFiles(directory=str(event_images_dir)), name="event-images")
 
 # Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

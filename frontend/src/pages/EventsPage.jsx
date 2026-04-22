@@ -61,15 +61,15 @@ const EventRow = ({ event }) => {
       <div className="flex flex-col md:flex-row md:items-center gap-4">
         {/* Image */}
         <div className="w-full md:w-24 h-24 overflow-hidden flex-shrink-0">
-          <picture>
-            <source type="image/webp" srcSet={`${getEventImagePath(event)}-sm.webp`} />
-            <img 
-              src={`${getEventImagePath(event)}.jpg`}
-              alt={event.title}
-              loading="lazy" decoding="async" width="96" height="96"
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-          </picture>
+          <img
+            src={event.image_url || getEventImagePath(event)}
+            alt={event.title}
+            loading="lazy"
+            decoding="async"
+            width="96"
+            height="96"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          />
         </div>
 
         {/* Info */}
