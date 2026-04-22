@@ -17,7 +17,7 @@ import { NewsletterSignup } from "../components/NewsletterSignup";
 import FeaturedEventsCarousel from "../components/FeaturedEventsCarousel";
 import { getEventImagePath, getCategoryHero } from "../utils/eventImages";
 import { TrustSection, TrustBar } from "../components/TrustElements";
-import { ReviewsGrid, ReviewsStats } from "../components/ReviewsSystem";
+
 import { BreadcrumbStructuredData, FAQStructuredData, commonTicketFAQs } from "../components/StructuredData";
 
 const formatDate = (dateStr) => {
