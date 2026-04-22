@@ -107,6 +107,7 @@ const JustinBieberAmsterdamPage = lazy(() => import("./pages/JustinBieberAmsterd
 // Growth Engine — demand pages
 const ConcertsAmsterdam2026Page = lazy(() => import("./pages/ConcertsAmsterdam2026Page"));
 const ConcertsLondon2026Page = lazy(() => import("./pages/ConcertsLondon2026Page"));
+const ConcertsParis2026Page = lazy(() => import("./pages/ConcertsParis2026Page"));
 const EuropeTours2026Page = lazy(() => import("./pages/EuropeTours2026Page"));
 const MostWantedConcerts2026Page = lazy(() => import("./pages/MostWantedConcerts2026Page"));
 const SpanishLandingPage = lazy(() => import("./pages/SpanishLandingPage"));
@@ -503,6 +504,7 @@ function AppRouter() {
         {/* Growth Engine — demand pages */}
         <Route path="/concerts-in-amsterdam-2026" element={<ConcertsAmsterdam2026Page />} />
         <Route path="/concerts-in-london-2026" element={<ConcertsLondon2026Page />} />
+        <Route path="/concerts-in-paris-2026" element={<ConcertsParis2026Page />} />
         <Route path="/europe-tours-2026" element={<EuropeTours2026Page />} />
         <Route path="/most-wanted-concerts-2026" element={<MostWantedConcerts2026Page />} />
         <Route path="/justin-bieber-amsterdam-tickets-2026" element={<Navigate to="/justin-bieber-amsterdam-2026-tickets" replace />} />

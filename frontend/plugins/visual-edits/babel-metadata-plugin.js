@@ -1719,6 +1719,18 @@ const babelMetadataPlugin = ({ types: t }) => {
           if (hasProp(openingElement, "data-ve-dynamic") || hasProp(openingElement, "x-excluded")) {
             return;
           }
+          // Skip wrapping for elements that cannot legally contain <span> children
+          // (tables, lists, selects, etc.) — would cause React DOM nesting errors.
+          const NO_SPAN_CHILD_ELEMENTS = new Set([
+            "table", "thead", "tbody", "tfoot", "tr", "colgroup",
+            "select", "optgroup", "datalist",
+            "ul", "ol", "dl", "menu",
+            "picture", "video", "audio",
+            "math", "svg",
+          ]);
+          if (NO_SPAN_CHILD_ELEMENTS.has(elementName)) {
+            return;
+          }
           wrapDynamicExpressionChildren(jsxPath, t);
           return;
         }
