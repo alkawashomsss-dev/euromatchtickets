@@ -1,0 +1,41 @@
+{
+  "summary": "Iteration 58 — Verification of iter57 carry-over fixes (DOM nesting on 5 F1/MotoGP pages, new ConcertsParis2026Page, JSON-LD on world-cup-2026-tickets). RESULTS: (a) DOM nesting fix VERIFIED on all 5 target routes — bad_dom_nesting=[] and zero hydration warnings on /f1-ticket-prices-guide, /how-to-buy-f1-tickets, /motogp-2026-schedule, /f1-2026-schedule, /f1-monaco-grand-prix-tickets. JSON-LD blocks (4–6 per page) all parse cleanly. NO 'Unexpected token' errors. (b) New /concerts-in-paris-2026 page VERIFIED — title='Concerts in Paris 2026 — Full Schedule & Cheap Tickets | EuroMatchTickets', canonical=https://euromatchtickets.com/concerts-in-paris-2026, 5 JSON-LD blocks (Organization, WebSite, LocalBusiness, ItemList, FAQPage), hero renders 'CONCERTS IN PARIS', H2s include 'Paris concert venues — quick guide' and 'Frequently asked questions'. (c) Regression /concerts-in-london-2026 and /concerts-in-amsterdam-2026 still rendering with full content + 5 JSON-LD blocks each. (d) NEW CRITICAL REGRESSION on /world-cup-2026-tickets — page is completely blank (body_len=0, root.children=0) due to runtime crash 'ReferenceError: WC_FAQS is not defined' at WorldCupLandingPage.jsx:54 and :352. The constant WC_FAQS is referenced by FAQSchemaScript and EventFAQ but never declared/imported in the file. (e) sitemap-index.xml returns 200 via /api/sitemap-index.xml, but the new /concerts-in-paris-2026 route is NOT listed in any sub-sitemap (also true for /concerts-in-london-2026 and /concerts-in-amsterdam-2026 — pre-existing pattern, not a new regression).",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/auth/me", "issue": "Returns 401 on anonymous pageview (pre-known from iter56/57, harmless console noise)."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "WorldCupLandingPage.jsx (route /world-cup-2026-tickets)", "issue": "CRITICAL — page renders entirely blank. Uncaught runtime error 'ReferenceError: WC_FAQS is not defined' thrown from line 54 (<FAQSchemaScript faqs={WC_FAQS} />) and line 352 (<EventFAQ faqs={WC_FAQS} />). The variable WC_FAQS is never declared, imported, or defined anywhere in the file. This is a regression: in iter57 the page rendered hero+events but lacked JSON-LD; now it is fully broken. Likely caused by main agent attempting to add FAQ JSON-LD without also defining the WC_FAQS constant (e.g., expected `const WC_FAQS = [...]`).", "selector": "div#root (empty)", "priority": "CRITICAL"},
+      {"component": "Sitemap (cities.xml / concerts.xml)", "issue": "New /concerts-in-paris-2026 route not listed in any sub-sitemap. Same is true for /concerts-in-london-2026 and /concerts-in-amsterdam-2026 (pre-existing). If these pages should be indexed, add them to a sitemap (cities.xml or concerts.xml).", "selector": "N/A", "priority": "MEDIUM"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_seo_indexability_iter57.py"
+  ],
+  "action_items": [
+    "FIX (CRITICAL, NEW REGRESSION): WorldCupLandingPage.jsx lines 54 + 352 — declare/import the missing WC_FAQS constant (array of {question, answer} objects). Without it, the entire /world-cup-2026-tickets page is a white-screen crash. Highest priority because this URL is the primary World Cup landing page.",
+    "FIX (MEDIUM): Add /concerts-in-paris-2026 (and /concerts-in-london-2026, /concerts-in-amsterdam-2026) to the appropriate sub-sitemap so they are discoverable by Googlebot. Likely belongs in cities.xml or concerts.xml in the backend sitemap generator.",
+    "VERIFIED (no action needed): DOM nesting (<span> child of <tr>/<tbody>) fix in babel-metadata-plugin.js — works on all 5 originally-failing routes. ConcertsParis2026Page renders cleanly with full content, JSON-LD, and matches London/Amsterdam pattern."
+  ],
+  "critical_code_review_comments": [
+    "WC_FAQS bug indicates missing pre-commit/CI lint check. ESLint with `no-undef` rule (default in eslint:recommended) would have caught this before merge. Recommend adding a `yarn lint` step to CI gating PR merges.",
+    "babel-metadata-plugin.js NO_SPAN_CHILD_ELEMENTS exclusion list now spans 18+ tags (table/tbody/tr/thead/tfoot/colgroup/script/style/title/textarea/noscript/select/optgroup/datalist/ul/ol/dl/menu/picture/video/audio/math/svg). Recommend adding a unit test against this list so future regressions (e.g., someone removing 'script' to test something) are caught immediately.",
+    "Sitemap appears to be hand-maintained per category — new SEO landing pages like /concerts-in-{city}-2026 are not auto-discovered. Consider a route registry that the sitemap generator reads from so adding a new React route automatically adds it to the sitemap."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100% (sitemap-index.xml + 6 sub-sitemaps all return 200)",
+    "frontend": "88% (8/9 target routes pass — only /world-cup-2026-tickets fails with WC_FAQS regression)"
+  },
+  "test_credentials": "none required",
+  "seed_data_creation": "none",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "ITER58 RESULTS: (1) DOM nesting span-in-tr/tbody fix (babel-metadata-plugin NO_SPAN_CHILD_ELEMENTS) is FULLY VERIFIED across all 5 target F1/MotoGP routes — zero hydration warnings, zero bad-dom-nesting, all JSON-LD parses cleanly. (2) New /concerts-in-paris-2026 page is FULLY VERIFIED — proper title/canonical/H1/H2s/5 JSON-LD blocks (ItemList + FAQPage included), no 'Unexpected token' errors. Mirror of London/Amsterdam pages confirmed. (3) /concerts-in-london-2026 and /concerts-in-amsterdam-2026 regressions PASS. (4) NEW BUG INTRODUCED THIS ITERATION: /world-cup-2026-tickets is a complete white-screen crash due to undefined WC_FAQS variable in WorldCupLandingPage.jsx — needs `const WC_FAQS = [...]` declaration added. (5) /concerts-in-paris-2026 not in any sitemap, but neither are London/Amsterdam (pre-existing pattern). Reuse /app/backend/tests/test_seo_indexability_iter57.py as backend regression base; no new test file written this iteration since requested type was 'frontend only'.",
+  "rca of the issue": "WorldCupLandingPage.jsx references WC_FAQS in two locations (line 54 inside <FAQSchemaScript> and line 352 inside <EventFAQ>) but never defines or imports it. Most likely the main agent imported FAQSchemaScript+EventFAQ from ../components/EventFAQ (line 10) and added the JSX usages but forgot to also declare `const WC_FAQS = [{question, answer}, ...]` near the top of the file. Reproduction: `curl -s https://euro-indexing.preview.emergentagent.com/world-cup-2026-tickets | grep -i 'world cup'` returns the title from pre-hydration but a Playwright headless browser shows the full-page Uncaught error overlay 'WC_FAQS is not defined' at WorldCupLandingPage. Mitigation: add the missing constant declaration (e.g., `const WC_FAQS = [{question: 'When is the 2026 World Cup?', answer: '...'}, ...]`) before its first use in the component."
+}

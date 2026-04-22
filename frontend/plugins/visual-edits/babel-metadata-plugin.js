@@ -1727,6 +1727,7 @@ const babelMetadataPlugin = ({ types: t }) => {
             "ul", "ol", "dl", "menu",
             "picture", "video", "audio",
             "math", "svg",
+            "script", "style", "title", "textarea", "noscript",
           ]);
           if (NO_SPAN_CHILD_ELEMENTS.has(elementName)) {
             return;
