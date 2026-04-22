@@ -1,0 +1,47 @@
+{
+  "summary": "Iteration 57 — Re-verification of the 3 fixes applied for iter56 failures on EuroMatchTickets. (1) BreadcrumbSchema imports were auto-injected in ComparisonPage.jsx / EventsThisWeekendPage.jsx / MonthlyEventsPage.jsx / PriceGuidePage.jsx — VERIFIED (all 4 files contain `import BreadcrumbSchema`). (2) CityDemandPage.jsx now uses useEffect to set document.title / meta / canonical / og:image — VERIFIED (`/concerts-in-london-2026` now renders title 'Concerts in London 2026 — Full Schedule & Cheap Tickets | EuroMatchTickets' with 151-char description, 5 valid JSON-LD blocks, 0 JS errors). (3) ComingSoonEvent.jsx same useEffect pattern — VERIFIED (`/taylor-swift-london-tickets` now renders title 'Taylor Swift London — No Dates Confirmed Yet | Get Notified' with robots='noindex, follow' as intended, canonical correct, 4 valid JSON-LD blocks, 0 JS errors). Backend: 52/52 pytest pass (robots.txt, sitemap-index with 9 sub-sitemaps, 30 sampled URLs across events/worldcup/f1 sitemaps all 200, all 47 key routes return 200). Frontend Playwright audit with Googlebot UA on 47 routes: 39/47 clean (83%), 8 routes have pre-existing issues NOT addressed by iter57 fixes — see frontend_issues.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/auth/me", "issue": "Returns 401 on anonymous pageview producing console noise (pre-known from iter56, non-blocking for SEO)."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "F1TicketPricesGuidePage.jsx / HowToBuyF1TicketsPage.jsx / MotoGPSchedulePage.jsx / F1Schedule2026Page (f1-2026-schedule) / F1MonacoGrandPrixPage", "issue": "React 19 hydration error 'In HTML, <span> cannot be a child of <tr>' and '<span> cannot be a child of <tbody>'. This was flagged in iter56 for 3 pages; iter57 audit finds it also on /f1-2026-schedule and /f1-monaco-grand-prix-tickets. Root cause: a component (likely BreadcrumbSchema or a JSON-LD script wrapper) rendered as a direct child of <tbody>, OR a <span> used as a placeholder cell instead of <td><span>. Must locate with `grep -n 'tbody>{' -n 'tr>{' src/pages/` and wrap in <td> or move outside <table>.", "selector": "table tbody > span, table tr > span (direct child)", "priority": "HIGH"},
+      {"component": "WorldCup2026TicketsPage (route /world-cup-2026-tickets)", "issue": "No <script type=application/ld+json> present on page. All other world-cup-2026-* routes have JSON-LD. Missing structured data hurts SERP enhancement.", "selector": "script[type='application/ld+json']", "priority": "MEDIUM"},
+      {"component": "ConcertsParisPage (route /concerts-in-paris-2026)", "issue": "Page loads with title but triggers 2x 'Failed to load resource: 404' errors in console during hydration. Soft-404 concern was already flagged in iter56. Either add a proper React route + page component, or remove from sitemap, or serve with noindex.", "selector": "N/A", "priority": "MEDIUM"},
+      {"component": "WorldCup2026SchedulePage (route /world-cup-2026-schedule) + ChampionsLeague2026FinalPage (route /champions-league-2026-final-tickets)", "issue": "Both load fine but trigger 2x 'Failed to load resource: 404' console errors during hydration — likely a missing image or API asset. Non-blocking for title/meta but adds console noise Google may flag in Search Console.", "selector": "N/A", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_seo_indexability_iter57.py",
+    "/app/test_reports/pytest/pytest_iter57.xml"
+  ],
+  "action_items": [
+    "FIX (HIGH, carried over from iter56 and expanded): <span> direct child of <tr>/<tbody> hydration errors on 5 pages — /f1-ticket-prices-guide, /how-to-buy-f1-tickets, /motogp-2026-schedule, /f1-2026-schedule, /f1-monaco-grand-prix-tickets. Grep `src/pages/F1TicketPricesGuide*.jsx`, `HowToBuyF1*.jsx`, `MotoGPSchedule*.jsx`, `F12026Schedule*.jsx`, `F1MonacoGrandPrix*.jsx` for pattern `<tbody>` followed by anything other than `<tr>`, or `<tr>` followed by anything other than `<td>/<th>`. Likely a stray BreadcrumbSchema or JSON-LD <script> placed between <tbody> and the first {rows.map(...)} — move it OUTSIDE the <table>.",
+    "FIX (MEDIUM): /world-cup-2026-tickets — add ItemList JSON-LD (like other world-cup-2026-* pages).",
+    "FIX (MEDIUM): /concerts-in-paris-2026 — add dedicated page component (currently soft-404 via SPA catch-all) OR remove from sitemap-events.xml.",
+    "FIX (LOW): /world-cup-2026-schedule + /champions-league-2026-final-tickets — investigate the 2x 404 resource loads (likely missing hero image or data endpoint)."
+  ],
+  "critical_code_review_comments": [
+    "iter57 fixes (CityDemandPage + ComingSoonEvent useEffect) now write directly to document.head. This bypasses React Helmet and the pre-hydration map, which is pragmatic but creates a THIRD pattern for SEO meta in the codebase (pre-hydration map in public/index.html, SEOHead.jsx component, direct DOM useEffect). Strongly recommend consolidating into a single reusable `useSeoMeta({title, description, canonical, ogImage, robots})` hook so the pattern is consistent for future pages.",
+    "The BreadcrumbSchema missing-import bug (iter56) was caused by adding <BreadcrumbSchema> JSX without the import statement — happens because the component is copy-pasted across pages. Add an ESLint rule `no-undef` (already default) and make sure it runs in CI; or switch to barrel exports so BreadcrumbSchema is always in scope via a single `import * from '../components'`.",
+    "47 routes all return HTTP 200 via SPA catch-all even when no React route is defined. /concerts-in-paris-2026 is a soft-404 example. Consider adding a server-side 404 check against the known route registry, returning a real 404 status for undefined paths to avoid Google indexing thin/duplicate pages."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_seo_indexability_iter57.py"
+  ],
+  "success_rate": {
+    "backend": "100% (52/52 pytest — robots.txt, sitemap index, 30 sampled URLs from 3 sub-sitemaps, 47 key routes)",
+    "frontend": "83% (39/47 routes fully clean — iter56's 3 target fixes are 100% verified; 8 remaining issues are pre-existing bugs NOT in iter57 fix scope)"
+  },
+  "test_credentials": "none required",
+  "seed_data_creation": "none",
+  "retest_needed": true,
+  "main_agent_can_self_test": false,
+  "context_for_next_testing_agent": "ITER57 TARGET FIXES (3/3) ALL VERIFIED PASSING: (a) BreadcrumbSchema imports in ComparisonPage/EventsThisWeekend/MonthlyEvents/PriceGuide — confirmed by grep, /euromatchtickets-vs-viagogo loads with 0 JS errors and 5 JSON-LD. (b) CityDemandPage.jsx useEffect approach — /concerts-in-london-2026 and /concerts-in-amsterdam-2026 now have non-empty titles, descriptions, canonicals, og:images, and valid JSON-LD. (c) ComingSoonEvent.jsx useEffect approach — /taylor-swift-london-tickets has title + robots='noindex, follow' + canonical. NO duplicate titles across 47 routes audited. REMAINING ISSUES (all pre-existing, not in iter57 scope): 5 pages with <span> child-of-tr/tbody hydration errors (f1-ticket-prices-guide, how-to-buy-f1-tickets, motogp-2026-schedule, f1-2026-schedule, f1-monaco-grand-prix-tickets); /world-cup-2026-tickets missing JSON-LD; /concerts-in-paris-2026 soft-404; /world-cup-2026-schedule + /champions-league-2026-final-tickets have 404 resource loads. Reuse /app/backend/tests/test_seo_indexability_iter57.py for regression.",
+  "rca of the issue": "iter56 RCA was correct. Main agent's 3 fixes resolved all 7 original failing URLs. The residual hydration errors (span in tr/tbody) are separate and were explicitly flagged as out-of-scope for iter57. Root cause for those remaining is UNCHANGED from iter56: a stray non-<tr>/non-<td> element (likely a <script type=application/ld+json> or <BreadcrumbSchema> div) placed as a direct child of <tbody> or <tr> in the 5 affected page templates. Needs source-level grep and move outside the <table>."
+}

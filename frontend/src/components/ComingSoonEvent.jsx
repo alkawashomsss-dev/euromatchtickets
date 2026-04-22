@@ -94,13 +94,28 @@ export default function ComingSoonEvent({
   const titleStr = `${artist}${city ? ` ${city}` : ""} — No Dates Confirmed Yet | Get Notified`;
   const descStr = `${artist} has not officially announced a ${city ? `${city} ` : ""}tour date. Join the notify list — be first to know when tickets go on sale.`;
 
-  // React 19 natively hoists <title>, <meta>, <link> to <head> — no Helmet needed.
+  // Force head tags at runtime (React 19 native <title> hoisting is unreliable)
+  useEffect(() => {
+    document.title = titleStr;
+    const setMeta = (sel, attr, val) => {
+      let el = document.head.querySelector(sel);
+      if (!el) {
+        el = document.createElement(sel.startsWith("link") ? "link" : "meta");
+        sel.match(/\[(\w+)="([^"]+)"\]/g)?.forEach((m) => {
+          const [, k, v] = m.match(/\[(\w+)="([^"]+)"\]/);
+          el.setAttribute(k, v);
+        });
+        document.head.appendChild(el);
+      }
+      el.setAttribute(attr, val);
+    };
+    setMeta('meta[name="description"]', "content", descStr);
+    setMeta('meta[name="robots"]', "content", "noindex, follow");
+    if (canonical) setMeta('link[rel="canonical"]', "href", canonical);
+  }, [titleStr, descStr, canonical]);
+
   return (
     <div className="min-h-screen bg-[#0b0b0b] text-white">
-      <title>{titleStr}</title>
-      <meta name="description" content={descStr} />
-      <meta name="robots" content="noindex, follow" />
-      {canonical ? <link rel="canonical" href={canonical} /> : null}
       {faqSchema ? (
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}

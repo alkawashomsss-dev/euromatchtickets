@@ -104,17 +104,41 @@ export default function CityDemandPage({
   const metaTitle = `Concerts in ${city} ${year} — Full Schedule & Cheap Tickets | EuroMatchTickets`;
   const metaDesc = `Every confirmed concert in ${city} ${year}: venues, dates, ticket prices from €49. Full calendar updated daily. Plus the notify list for unconfirmed tours.`;
 
+  // Force head tags at runtime (React 19 native <title> hoisting is unreliable)
+  useEffect(() => {
+    document.title = metaTitle;
+    const set = (sel, attr, val) => {
+      let el = document.head.querySelector(sel);
+      if (!el) {
+        el = document.createElement(sel.split("[")[0]);
+        sel.match(/\[(\w+)="([^"]+)"\]/g)?.forEach((m) => {
+          const [, k, v] = m.match(/\[(\w+)="([^"]+)"\]/);
+          el.setAttribute(k, v);
+        });
+        document.head.appendChild(el);
+      }
+      el.setAttribute(attr, val);
+    };
+    set('meta[name="description"]', "content", metaDesc);
+    set('meta[name="robots"]', "content", "index, follow");
+    set('meta[property="og:title"]', "content", metaTitle);
+    set('meta[property="og:description"]', "content", metaDesc);
+    set('meta[property="og:type"]', "content", "website");
+    if (heroImage) set('meta[property="og:image"]', "content", heroImage);
+    if (canonical) {
+      let link = document.head.querySelector('link[rel="canonical"]');
+      if (!link) {
+        link = document.createElement("link");
+        link.setAttribute("rel", "canonical");
+        document.head.appendChild(link);
+      }
+      link.setAttribute("href", canonical);
+    }
+  }, [metaTitle, metaDesc, canonical, heroImage]);
+
   return (
     <div className="min-h-screen bg-[#0b0b0b] text-white">
-      {/* React 19 native metadata */}
-      <title>{metaTitle}</title>
-      <meta name="description" content={metaDesc} />
-      <meta name="robots" content="index, follow" />
-      {canonical ? <link rel="canonical" href={canonical} /> : null}
-      <meta property="og:title" content={metaTitle} />
-      <meta property="og:description" content={metaDesc} />
-      {heroImage ? <meta property="og:image" content={heroImage} /> : null}
-      <meta property="og:type" content="website" />
+      {/* Structured data (JSON-LD) - native React 19 script elements work reliably */}
       <script type="application/ld+json">
         {JSON.stringify(itemListSchema)}
       </script>
