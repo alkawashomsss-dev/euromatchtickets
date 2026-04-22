@@ -291,3 +291,23 @@ Triple-layered enforcement:
 - Every event page shows: block · section · row · seat info
 - VIP Gallery renders 4 real photos from the heart of the event
 - No ugly 3D iframe distracting from the checkout flow
+
+---
+
+## 🔧 Session Update — Feb 2026 (Iteration 58 — DOM Nesting + Paris Landing)
+
+### Fixed in this session:
+- ✅ **DOM Nesting hydration errors** on 5 SEO pages (`/f1-ticket-prices-guide`, `/how-to-buy-f1-tickets`, `/motogp-2026-schedule`, `/f1-2026-schedule`, `/f1-monaco-grand-prix-tickets`) — root cause was the visual-edits Babel plugin (`plugins/visual-edits/babel-metadata-plugin.js`) wrapping every JSX expression in `<span data-ve-dynamic>` even inside `<tbody>`/`<tr>`. Added a `NO_SPAN_CHILD_ELEMENTS` exclusion set covering `table, thead, tbody, tfoot, tr, colgroup, select, optgroup, datalist, ul, ol, dl, menu, picture, video, audio, math, svg, script, style, title, textarea, noscript`.
+- ✅ **"Unexpected token ')'" runtime error** on several routes — same plugin was wrapping `{JSON.stringify(...)}` children of `<script type="application/ld+json">`. Adding `script/style/title/textarea/noscript` to the exclusion set fixed it cleanly.
+- ✅ **New `/concerts-in-paris-2026` landing page** — created `ConcertsParis2026Page.jsx` mirroring London/Amsterdam pattern with Stade de France / La Défense / Accor Arena / Le Zénith / L'Olympia / Philharmonie venue guide + 6 FAQs. Added lazy import + route in `App.js` + SSR metadata block in `backend/server.py`. Page was already whitelisted in `seed_sitemaps.py`.
+- ✅ **White-screen crash on `/world-cup-2026-tickets`** caused by `WC_FAQS` being referenced but never declared in `WorldCupLandingPage.jsx`. Defined a 6-question `WC_FAQS` constant covering dates, prices, Final venue, refunds, delivery, host cities.
+
+### Verification:
+- Testing agent (iter58) — 8/9 routes pass; World Cup fix verified via screenshot after agent run.
+- All 5 DOM-nesting pages now render 4–6 clean JSON-LD blocks with zero hydration warnings.
+- Paris page: 5 JSON-LD blocks (Organization, WebSite, LocalBusiness, ItemList, FAQPage), canonical set.
+
+### Known minor:
+- `/api/auth/me` returns 401 on anonymous pageview (console noise only, non-blocking).
+- Sitemap hand-maintained — if new SEO landing pages are added, remember to extend `seed_sitemaps.py`.
+

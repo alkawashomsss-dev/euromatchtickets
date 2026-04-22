@@ -11,6 +11,15 @@ import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
 import axios from "axios";
 import { API } from "../App";
 
+const WC_FAQS = [
+  { q: "When is the 2026 FIFA World Cup?", a: "The FIFA World Cup 2026 runs from June 11 to July 19, 2026, co-hosted across the USA, Mexico, and Canada with 48 national teams." },
+  { q: "How much do World Cup 2026 tickets cost?", a: "Prices start from €65 for Group Stage matches, with premium Final seats at MetLife Stadium going up to €4,500+. VIP hospitality packages begin at €999." },
+  { q: "Where is the 2026 World Cup Final?", a: "The Final is on Sunday July 19, 2026 at MetLife Stadium in East Rutherford, New Jersey — the 82,500-capacity home of the New York Giants and Jets." },
+  { q: "Are World Cup 2026 tickets refundable?", a: "Yes. Every ticket on EuroMatchTickets is backed by our 100% Money-Back Guarantee: full refund if the match is cancelled, postponed without a replacement date, or if the ticket fails at the stadium gate." },
+  { q: "How are World Cup 2026 tickets delivered?", a: "Tickets are delivered instantly as mobile QR codes after purchase. For matches in the USA/Canada, they are typically transferred via Ticketmaster/FIFA Ticket Account closer to the match date." },
+  { q: "Which cities host the 2026 World Cup?", a: "16 host cities: Atlanta, Boston, Dallas, Guadalajara, Houston, Kansas City, Los Angeles, Mexico City, Miami, Monterrey, New York/New Jersey, Philadelphia, San Francisco Bay Area, Seattle, Toronto, and Vancouver." },
+];
+
 const WorldCupLandingPage = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
