@@ -181,7 +181,17 @@ const TicketListings = ({ groupedSections, eventId, selectedSection, onClearFilt
     : 0;
 
   const handleBuy = (ticket) => {
-    navigate(`/checkout?event=${eventId}&category=${formatCategory(ticket.category)}&price=${Math.round(ticket.price)}&ticket_id=${ticket.ticket_id}`);
+    const params = new URLSearchParams({
+      event: eventId,
+      category: formatCategory(ticket.category),
+      price: String(Math.round(ticket.price)),
+      ticket_id: ticket.ticket_id,
+      section: ticket.section || "",
+      row: ticket.row || "",
+      seat: ticket.seat || "",
+      block: ticket.block || "",
+    });
+    navigate(`/checkout?${params.toString()}`);
   };
 
   if (!groupedSections || groupedSections.length === 0) {

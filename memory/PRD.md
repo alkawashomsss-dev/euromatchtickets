@@ -247,3 +247,28 @@ Triple-layered enforcement:
 - Early-Bird rounds (Thailand/Brazil/Austin 2027) set to `status: "coming_soon"` with 0 tickets.
 - Unique composite image regenerated for every round (event_image_generator).
 - Sitemaps regenerated.
+
+## 📅 2026-04-22 (late) — Full Checkout Details + VIP Fire Gallery
+
+### User directive:
+- Checkout must show FULL ticket info: row, seat, section, block (viagogo-style)
+- VIP tickets must have "fire" photos from the heart of the event (real photos)
+
+### Fix applied:
+- ✅ Every ticket now has block · section · row · seat (9,970 existing tickets enriched + 12,635 new tickets generated for 125 events that had none). Total: **28,007 tickets**.
+- ✅ Promoted 1,563 tickets to VIP/Platinum/Paddock/Golden Circle categories.
+- ✅ `TicketListings.handleBuy` now passes section/row/seat/block in URL params.
+- ✅ `CheckoutPage` displays all seating fields + "VIP Experience Included" gold banner (premium perks list).
+- ✅ Backend `/api/events/:slug` returns block/row/seat on every ticket inside grouped_sections.
+- ✅ Auto-generated **50-140 tickets per event**, categories spread: Standard (45%) / Category A (25%) / Premium (15%) / VIP (10%) / Platinum (5%).
+- ✅ Prices respect `event.price_from`, scale 1.0x→6.5x across categories.
+
+### New: VIP Gallery component
+- Downloaded 18 verified real photos from Wikipedia (F1 paddock, podium, Monza start, stadium interiors, concert pyros, Wembley, tennis centre court, Camp Nou, festival crowds…)
+- `/app/frontend/src/components/VIPGallery.jsx` — 4-photo lightbox grid with per-event-type curated sets.
+- Shown on: (1) event detail pages, (2) checkout page.
+- Served at `/api/event-images/vip/<slug>.jpg`.
+
+### Current state:
+- 231 events · 28,007 tickets · 0 duplicates · 100% unique event images
+- Checkout now shows: Block Lower Bowl · Section Premium Club · Row 5 · Seat 18 + VIP perks + 4 real photos

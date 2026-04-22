@@ -236,6 +236,9 @@ async def get_event(event_id: str, request: Request):
             "price": ticket["price"],
             "section": section,
             "category": cat,
+            "block": ticket.get("block", ""),
+            "row": ticket.get("row", ""),
+            "seat": ticket.get("seat", ""),
             "currency": ticket.get("currency", "EUR"),
         })
 

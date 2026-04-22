@@ -20,6 +20,7 @@ import VenueViewer from "../components/VenueViewer";
 import TicketListings from "../components/TicketListings";
 import { PriceAlertButton, ScarcityBadge, HighDemandBadge, SocialProofCounter, UrgencyCountdown, AlertWatchersCount } from "../components/ConversionWidgets";
 import { VIPExperienceSection } from "../components/VIPExperience";
+import VIPGallery from "../components/VIPGallery";
 
 const FadeIn = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -270,6 +271,11 @@ export default function EventDetailsPage() {
                 />
               </FadeIn>
             )}
+
+            {/* VIP Fire Gallery — real photos from the heart of the event */}
+            <FadeIn delay={0.18}>
+              <VIPGallery eventType={event.event_type} />
+            </FadeIn>
 
             {/* Price Comparison */}
             <FadeIn delay={0.15}>

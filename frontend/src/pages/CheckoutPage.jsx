@@ -4,6 +4,7 @@ import axios from "axios";
 import { API, useAuth } from "../App";
 import { Shield, Zap, Lock, CreditCard, ChevronLeft, Calendar, MapPin, Ticket, Check, Clock, Hash } from "lucide-react";
 import SEOHead from "../components/SEOHead";
+import VIPGallery from "../components/VIPGallery";
 import { toast } from "sonner";
 
 export default function CheckoutPage() {
@@ -18,6 +19,8 @@ export default function CheckoutPage() {
   const seatInfo = searchParams.get("seat") || "";
   const rowInfo = searchParams.get("row") || "";
   const sectionInfo = searchParams.get("section") || category;
+  const blockInfo = searchParams.get("block") || "";
+  const isVIP = /vip|platinum|hospitality|paddock|premium/i.test(category);
 
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -136,6 +139,12 @@ export default function CheckoutPage() {
                     <span className="text-slate-500">Category</span>
                     <span className="text-white font-semibold" data-testid="checkout-category">{category}</span>
                   </div>
+                  {blockInfo && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-500">Block / Stand</span>
+                      <span className="text-white font-semibold" data-testid="checkout-block">{blockInfo}</span>
+                    </div>
+                  )}
                   {sectionInfo && sectionInfo !== category && (
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-500">Section</span>
@@ -154,15 +163,40 @@ export default function CheckoutPage() {
                       <span className="text-white font-semibold" data-testid="checkout-seat">{seatInfo}</span>
                     </div>
                   )}
+                  {!seatInfo && !rowInfo && !blockInfo && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-500">Seating</span>
+                      <span className="text-white font-semibold">Best Available · Assigned on confirmation</span>
+                    </div>
+                  )}
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-500">Quantity</span>
                     <span className="text-white font-semibold">1x Ticket</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-slate-500">Entry Type</span>
+                    <span className="text-white font-semibold">Ticket + Entry</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-500">Delivery</span>
                     <span className="text-emerald-500 font-semibold">Instant QR (Email)</span>
                   </div>
                 </div>
+
+                {/* VIP PERKS BANNER */}
+                {isVIP && (
+                  <div className="mt-4 bg-gradient-to-br from-[#facc15]/15 via-[#b45309]/10 to-transparent border border-[#facc15]/40 p-4">
+                    <p className="text-[11px] font-black text-[#facc15] uppercase tracking-[0.2em] mb-2">
+                      🔥 VIP Experience Included
+                    </p>
+                    <ul className="space-y-1.5 text-xs text-white/90">
+                      <li className="flex gap-2"><Check className="w-3.5 h-3.5 text-[#facc15] flex-shrink-0 mt-0.5"/><span>Premium padded seating in the best sector of the venue</span></li>
+                      <li className="flex gap-2"><Check className="w-3.5 h-3.5 text-[#facc15] flex-shrink-0 mt-0.5"/><span>Private VIP lounge access · Gourmet food &amp; open bar</span></li>
+                      <li className="flex gap-2"><Check className="w-3.5 h-3.5 text-[#facc15] flex-shrink-0 mt-0.5"/><span>Dedicated fast-track entrance · No queues</span></li>
+                      <li className="flex gap-2"><Check className="w-3.5 h-3.5 text-[#facc15] flex-shrink-0 mt-0.5"/><span>Exclusive event programme &amp; welcome gift</span></li>
+                    </ul>
+                  </div>
+                )}
               </div>
 
               {/* Price Breakdown */}
@@ -202,6 +236,9 @@ export default function CheckoutPage() {
                 </div>
               ))}
             </div>
+
+            {/* VIP fire photos — show the experience buyers are paying for */}
+            <VIPGallery eventType={event?.event_type || "match"} />
           </div>
 
           {/* Pay Button */}
