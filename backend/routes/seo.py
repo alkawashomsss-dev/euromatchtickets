@@ -198,21 +198,30 @@ async def _build_full_sitemap():
     for path, prio, freq in static_pages:
         xml_items.append(_url_with_image(f"{base_url}{path}", today, freq, prio))
 
-    events = await db.events.find({"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today}}, {"_id": 0, "event_id": 1, "slug": 1, "title": 1, "event_type": 1, "image_url": 1}).to_list(1000)
+    today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    today_dt = datetime.now(timezone.utc)
+
+    events = await db.events.find({"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today_dt}}, {"_id": 0, "event_id": 1, "slug": 1, "title": 1, "event_type": 1, "image_url": 1}).to_list(1000)
     for event in events:
         slug = event.get("slug", event["event_id"])
         loc = f"{base_url}/event/{slug}"
-        et = event.get("event_type", "")
-        if et == "f1":
-            img = f"{base_url}/images/heroes/f1-red-lg.webp"
-        elif et in ("match", "football"):
-            img = f"{base_url}/images/heroes/football-stadium-lg.webp"
-        elif et == "concert":
-            img = f"{base_url}/images/heroes/concert-purple-lg.webp"
+        # Prefer unique event image; fallback to category hero
+        ev_img = event.get("image_url")
+        if ev_img:
+            # Make image URL absolute for Google
+            img = ev_img if ev_img.startswith("http") else f"{base_url}{ev_img}"
         else:
-            img = event.get("image_url") or f"{base_url}/og-image.jpg"
+            et = event.get("event_type", "")
+            if et == "f1":
+                img = f"{base_url}/images/heroes/f1-red-lg.webp"
+            elif et in ("match", "football"):
+                img = f"{base_url}/images/heroes/football-stadium-lg.webp"
+            elif et == "concert":
+                img = f"{base_url}/images/heroes/concert-purple-lg.webp"
+            else:
+                img = f"{base_url}/og-image.jpg"
         title = event.get("title", slug.replace("-", " ").title())
-        xml_items.append(f'  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.85</priority>\n    <image:image>\n      <image:loc>{img}</image:loc>\n      <image:title>{title}</image:title>\n    </image:image>\n  </url>')
+        xml_items.append(f'  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today_str}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.85</priority>\n    <image:image>\n      <image:loc>{img}</image:loc>\n      <image:title>{title}</image:title>\n    </image:image>\n  </url>')
 
     articles = await db.articles.find({}, {"_id": 0, "slug": 1, "date_generated": 1, "title": 1}).to_list(5000)
     for a in articles:
@@ -1721,10 +1730,11 @@ async def _collect_every_url():
         urls.add(f"{base}/{p['slug']}")
 
     # 2. All future events
+    today_dt = datetime.now(timezone.utc)
     events = await db.events.find(
-        {"event_date": {"$gte": today}},
+        {"event_date": {"$gte": today_dt}},
         {"_id": 0, "event_id": 1, "slug": 1}
-    ).to_list(1000)
+    ).to_list(5000)
     for e in events:
         slug = e.get("slug") or e["event_id"]
         urls.add(f"{base}/event/{slug}")

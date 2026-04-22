@@ -138,3 +138,50 @@ Triple-layered enforcement:
 - ✅ `EventCard` (HomePage + EventsPage) now always routes through `getEventImagePath()` (which handles the `/event-images/` → `/api/event-images/` ingress rewrite).
 
 **Files:** `HomePage.jsx`, `EventsPage.jsx`, `utils/eventImages.js`, `components/OptimizedImage.jsx`, `services/venue_image_downloader.py` (new).
+
+## 📅 2026-04-22 — Professional Events Database + Unique Match Images + SEO Indexing Overhaul
+
+### 1. Seeded ALL 104 FIFA World Cup 2026 matches
+- Complete schedule: Mexico vs South Africa (11 Jun, Estadio Azteca) → Final (19 Jul, MetLife Stadium)
+- Every match has: home_team, away_team, venue, city, country, event_date (UTC), slug, price_from, featured flag, knockout round label.
+- File: `/app/backend/seed_worldcup_2026.py` (idempotent; run again to re-seed).
+
+### 2. Downloaded 80 real venue photos from Wikipedia
+- Football stadiums, F1 circuits, MotoGP tracks, concert arenas, WC host stadiums.
+- Served at `/api/event-images/venues/<slug>.<ext>`.
+- File: `/app/backend/services/venue_image_downloader.py`.
+
+### 3. Downloaded 48 country flags
+- All FIFA WC 2026 participating nations.
+- `/app/backend/static/event_images/flags/<country>.png`.
+- File: `/app/backend/services/flag_downloader.py`.
+
+### 4. UNIQUE composite image per event (PIL-generated)
+- **104 World Cup match images** — stadium background + both country flags + "VS" + venue/date overlay.
+- **26 F1 race images** — circuit photo + "FORMULA 1" red badge + round number + date.
+- **131 other events** (concerts, football, MotoGP, tennis…) — venue photo + type badge + title + date.
+- Files: `services/match_image_generator.py`, `f1_image_generator.py`, `event_image_generator.py`.
+- Result: **259 events, 259 unique images, ZERO duplicates**.
+
+### 5. Database normalization
+- `event_date` converted from string → `datetime` UTC on all 281 events.
+- Removed 20 duplicates (by title+date+venue).
+- All events have `image_url`, `slug`, proper datetime.
+- Fixed `/api/events` endpoint datetime comparison bug.
+
+### 6. Sitemap overhaul for full Google indexing
+- Regenerated every static XML sitemap from MongoDB:
+  - `sitemap-events.xml` — 259 URLs (every event, absolute image URLs)
+  - `sitemap-worldcup.xml` — 118 URLs (14 landing + 104 match pages)
+  - `sitemap-f1-motorsport.xml` — 79 URLs
+  - `sitemap-football.xml` — 59 URLs
+  - `sitemap-concerts.xml` — 54 URLs
+  - `sitemap-core.xml` — 32 URLs (home, about, comparisons, monthly pages)
+  - `sitemap.xml` (index) — points to all 9 sub-sitemaps
+- File: `/app/backend/seed_sitemaps.py`.
+- Admin endpoint: `POST /api/admin/regenerate-sitemaps` (runs on-demand).
+
+### 7. Server-side Event JSON-LD schema injection
+- `server.py` now injects a full `SportsEvent`/`Event` JSON-LD schema into every `/event/*` HTML response (production-only).
+- Includes: name, startDate, location (Place + PostalAddress), offers (price, priceCurrency, availability), organizer, competitors (home vs away).
+- OG image URLs are now absolute (`https://euromatchtickets.com/api/…`).

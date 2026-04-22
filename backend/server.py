@@ -252,6 +252,24 @@ async def api_root():
     return {"status": "EuroMatchTickets API v2.0", "version": "2.0"}
 
 
+@app.post("/api/admin/regenerate-sitemaps")
+async def regenerate_sitemaps_endpoint():
+    """Regenerate all static sitemaps from the current MongoDB state."""
+    import sys, subprocess
+    try:
+        result = subprocess.run(
+            [sys.executable, "/app/backend/seed_sitemaps.py"],
+            capture_output=True, text=True, timeout=60,
+        )
+        return {
+            "status": "success" if result.returncode == 0 else "error",
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+        }
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+
 # Background tasks
 async def cleanup_expired_events():
     while True:
@@ -813,6 +831,69 @@ if static_build_dir.exists():
                     inject += f'<meta name="twitter:image" content="{img}"/>'
                 inject += '<meta name="twitter:card" content="summary_large_image"/>'
                 inject += f'<meta name="twitter:title" content="{t_safe}"/>'
+
+                # ── Server-side Event JSON-LD schema for /event/* pages ──
+                if full_path.startswith("event/"):
+                    slug = full_path[len("event/"):]
+                    event_doc = await db.events.find_one(
+                        {"slug": slug},
+                        {"_id": 0, "title": 1, "event_date": 1, "venue": 1, "city": 1,
+                         "country": 1, "image_url": 1, "price_from": 1, "lowest_price": 1,
+                         "available_tickets": 1, "home_team": 1, "away_team": 1, "league": 1},
+                    )
+                    if event_doc:
+                        from datetime import datetime as _dt, timezone as _tz
+                        import json as _json
+                        ev_date = event_doc.get("event_date")
+                        iso_date = ev_date.isoformat() if isinstance(ev_date, _dt) else str(ev_date or "")
+                        ev_img = event_doc.get("image_url", "")
+                        if ev_img and not ev_img.startswith("http"):
+                            ev_img = f"https://euromatchtickets.com{ev_img}"
+                        price = event_doc.get("price_from") or event_doc.get("lowest_price") or 99
+                        avail = event_doc.get("available_tickets", 0)
+                        in_stock = "https://schema.org/InStock" if avail > 0 else "https://schema.org/LimitedAvailability"
+                        schema = {
+                            "@context": "https://schema.org",
+                            "@type": "SportsEvent" if event_doc.get("league") else "Event",
+                            "name": event_doc["title"],
+                            "startDate": iso_date,
+                            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                            "eventStatus": "https://schema.org/EventScheduled",
+                            "location": {
+                                "@type": "Place",
+                                "name": event_doc.get("venue", ""),
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": event_doc.get("city", ""),
+                                    "addressCountry": event_doc.get("country", ""),
+                                },
+                            },
+                            "image": [ev_img] if ev_img else [],
+                            "description": d_safe.replace("&quot;", '"'),
+                            "offers": {
+                                "@type": "Offer",
+                                "url": canon,
+                                "price": str(price),
+                                "priceCurrency": "EUR",
+                                "availability": in_stock,
+                                "validFrom": _dt.now(_tz.utc).isoformat(),
+                            },
+                            "organizer": {
+                                "@type": "Organization",
+                                "name": "EuroMatchTickets",
+                                "url": "https://euromatchtickets.com",
+                            },
+                        }
+                        if event_doc.get("home_team") and event_doc.get("away_team"):
+                            schema["competitor"] = [
+                                {"@type": "SportsTeam", "name": event_doc["home_team"]},
+                                {"@type": "SportsTeam", "name": event_doc["away_team"]},
+                            ]
+                        inject += (
+                            '<script type="application/ld+json" id="ssr-event-schema">'
+                            + _json.dumps(schema, ensure_ascii=False)
+                            + "</script>"
+                        )
                 
                 # Strategy 1: Replace the HTML comment (dev mode)
                 if '<!-- canonical set dynamically by pre-hydration script -->' in html:
@@ -888,13 +969,20 @@ async def _get_page_seo(path: str):
     # Check if it's an event page
     if path.startswith("event/"):
         slug = path.replace("event/", "")
-        event = await db.events.find_one({"slug": slug}, {"_id": 0, "title": 1, "venue": 1, "city": 1, "image_url": 1, "price_from": 1})
+        event = await db.events.find_one({"slug": slug}, {"_id": 0, "title": 1, "venue": 1, "city": 1, "image_url": 1, "price_from": 1, "lowest_price": 1, "event_date": 1, "subtitle": 1})
         if event:
-            price = event.get("price_from", 99)
+            price = event.get("price_from") or event.get("lowest_price") or 99
+            img = event.get("image_url", "")
+            # Absolute URL for Google/social-media crawlers
+            if img and not img.startswith("http"):
+                img = f"https://euromatchtickets.com{img}"
+            venue_city = ", ".join(filter(None, [event.get("venue", ""), event.get("city", "")]))
+            sub = event.get("subtitle") or ""
+            desc = f"Buy {event['title']} tickets from €{price}. {venue_city}. 100% Money-Back Guarantee · Instant QR delivery · Verified sellers."
             return {
-                "title": f"Buy {event['title']} Tickets | From €{price}",
-                "desc": f"{event['title']} tickets from €{price}. {event.get('venue', '')}, {event.get('city', '')}. Verified sellers, instant QR delivery. FanProtect guarantee.",
-                "image": event.get("image_url", "")
+                "title": f"Buy {event['title']} Tickets From €{price} | {venue_city}",
+                "desc": desc,
+                "image": img,
             }
     
     # Check SEO pages DB

@@ -51,7 +51,7 @@ async def get_events(
     date_to: Optional[str] = None, featured: Optional[bool] = None,
     search: Optional[str] = None, limit: Optional[int] = 100
 ):
-    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    today = datetime.now(timezone.utc)
     query = {"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today}}
     if event_type and event_type != "all":
         query["event_type"] = event_type
@@ -66,9 +66,15 @@ async def get_events(
     if featured is not None:
         query["featured"] = featured
     if date_from:
-        query["event_date"]["$gte"] = date_from
+        try:
+            query["event_date"]["$gte"] = datetime.fromisoformat(date_from.replace("Z", "+00:00"))
+        except Exception:
+            pass
     if date_to:
-        query["event_date"]["$lte"] = date_to
+        try:
+            query["event_date"]["$lte"] = datetime.fromisoformat(date_to.replace("Z", "+00:00"))
+        except Exception:
+            pass
     if search:
         words = [w for w in search.strip().split() if len(w) >= 2]
         field_list = ["title", "artist", "home_team", "away_team", "venue", "city", "event_type", "league", "subtitle"]
