@@ -172,7 +172,9 @@ export default function EventDetailsPage() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.25 }}
               className="flex flex-wrap items-center gap-4 text-white/70 text-sm mb-5">
               <span className="flex items-center gap-1.5"><Flag className="w-4 h-4 text-white/40" />{event.city}{event.country ? `, ${event.country}` : ''}</span>
-              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-white/40" />{totalAvailable || event.ticket_count || 0} tickets available</span>
+              {!isComingSoon && (
+                <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-white/40" />{totalAvailable || event.ticket_count || 0} tickets available</span>
+              )}
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
@@ -220,43 +222,47 @@ export default function EventDetailsPage() {
           {/* LEFT - Tickets & Map (2 cols) */}
           <div className="lg:col-span-2 space-y-6" id="tickets">
 
-            {/* Venue Map Section */}
-            <FadeIn>
-              <div className="bg-[#1e1e1e] rounded-none border border-white/10 shadow-sm overflow-hidden" data-testid="venue-map-section">
-                <div className="flex items-center justify-between p-5 pb-3">
-                  <div className="flex items-center gap-2">
-                    <Grid3X3 className="w-5 h-5 text-emerald-600" />
-                    <h2 className="text-lg font-bold text-white">Select Your Section</h2>
+            {/* Venue Map — only when we have confirmed inventory */}
+            {!isComingSoon && (
+              <FadeIn>
+                <div className="bg-[#1e1e1e] rounded-none border border-white/10 shadow-sm overflow-hidden" data-testid="venue-map-section">
+                  <div className="flex items-center justify-between p-5 pb-3">
+                    <div className="flex items-center gap-2">
+                      <Grid3X3 className="w-5 h-5 text-emerald-600" />
+                      <h2 className="text-lg font-bold text-white">Select Your Section</h2>
+                    </div>
+                    <button onClick={() => setShowMap(!showMap)}
+                      className="text-xs text-slate-500 hover:text-slate-300 flex items-center gap-1 transition">
+                      {showMap ? 'Hide' : 'Show'} Map <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showMap ? 'rotate-180' : ''}`} />
+                    </button>
                   </div>
-                  <button onClick={() => setShowMap(!showMap)}
-                    className="text-xs text-slate-500 hover:text-slate-300 flex items-center gap-1 transition">
-                    {showMap ? 'Hide' : 'Show'} Map <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showMap ? 'rotate-180' : ''}`} />
-                  </button>
+                  {showMap && (
+                    <div className="px-5 pb-5">
+                      <InteractiveVenueMap
+                        groupedSections={groupedSections}
+                        selectedSection={selectedSection}
+                        onSectionSelect={setSelectedSection}
+                        eventType={event.event_type}
+                        eventTitle={event.title || event.name}
+                      />
+                      <p className="text-[11px] text-slate-400 mt-3 text-center">Click a section on the map to filter tickets</p>
+                    </div>
+                  )}
                 </div>
-                {showMap && (
-                  <div className="px-5 pb-5">
-                    <InteractiveVenueMap
-                      groupedSections={groupedSections}
-                      selectedSection={selectedSection}
-                      onSectionSelect={setSelectedSection}
-                      eventType={event.event_type}
-                      eventTitle={event.title || event.name}
-                    />
-                    <p className="text-[11px] text-slate-400 mt-3 text-center">Click a section on the map to filter tickets</p>
-                  </div>
-                )}
-              </div>
-            </FadeIn>
+              </FadeIn>
+            )}
 
-            {/* Ticket Listings */}
-            <FadeIn delay={0.1}>
-              <TicketListings
-                groupedSections={groupedSections}
-                eventId={event.event_id}
-                selectedSection={selectedSection}
-                onClearFilter={() => setSelectedSection(null)}
-              />
-            </FadeIn>
+            {/* Ticket Listings — only when we have confirmed inventory */}
+            {!isComingSoon && (
+              <FadeIn delay={0.1}>
+                <TicketListings
+                  groupedSections={groupedSections}
+                  eventId={event.event_id}
+                  selectedSection={selectedSection}
+                  onClearFilter={() => setSelectedSection(null)}
+                />
+              </FadeIn>
+            )}
 
             {/* VIP Experience Section */}
             {groupedSections.some(g => g.category === 'vip' || g.category === 'platinum') && (
@@ -357,42 +363,56 @@ export default function EventDetailsPage() {
           <div className="space-y-5">
             <div className="sticky top-24 space-y-5">
 
-              {/* Quick Buy Card */}
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-[#1e1e1e] rounded-none border border-white/10 p-5 shadow-sm" data-testid="quick-buy-card">
-                <div className="text-center mb-4">
-                  <p className="text-xs text-slate-400 uppercase tracking-widest">Tickets from</p>
-                  <p className="text-4xl font-extrabold text-emerald-600 mt-1">&euro;{lowestPrice}</p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">per person &middot; all fees included</p>
-                </div>
-                <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full py-3.5 bg-emerald-500/100 hover:bg-emerald-600 text-white font-bold rounded-none text-base transition-all shadow-md hover:shadow-lg mb-4"
-                  data-testid="sidebar-cta">
-                  View {totalAvailable} Tickets
-                </button>
-                <div className="space-y-2">
-                  {['QR ticket delivery', 'Escrowed payment', 'Cancellation refund'].map((t, i) => (
-                    <div key={i} className="flex items-center gap-2 text-[12px] text-slate-400"><Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />{t}</div>
-                  ))}
-                </div>
-                <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-4 gap-2">
-                  {[
-                    { name: 'VISA', bg: 'bg-blue-600 text-white' },
-                    { name: 'MC', bg: 'bg-red-600 text-white' },
-                    { name: 'AMEX', bg: 'bg-blue-800 text-white' },
-                    { name: 'PAY', bg: 'bg-slate-900 text-white' },
-                  ].map(p => (
-                    <div key={p.name} className={`text-[10px] ${p.bg} py-1.5 rounded text-center font-bold`}>{p.name}</div>
-                  ))}
-                </div>
-              </motion.div>
+              {/* Quick Buy Card — ONLY when inventory is real */}
+              {!isComingSoon && (
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
+                  className="bg-[#1e1e1e] rounded-none border border-white/10 p-5 shadow-sm" data-testid="quick-buy-card">
+                  <div className="text-center mb-4">
+                    <p className="text-xs text-slate-400 uppercase tracking-widest">Tickets from</p>
+                    <p className="text-4xl font-extrabold text-emerald-600 mt-1">&euro;{lowestPrice}</p>
+                    <p className="text-[11px] text-slate-400 mt-0.5">per person &middot; all fees included</p>
+                  </div>
+                  <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="w-full py-3.5 bg-emerald-500/100 hover:bg-emerald-600 text-white font-bold rounded-none text-base transition-all shadow-md hover:shadow-lg mb-4"
+                    data-testid="sidebar-cta">
+                    View {totalAvailable} Tickets
+                  </button>
+                  <div className="space-y-2">
+                    {['QR ticket delivery', 'Escrowed payment', 'Cancellation refund'].map((t, i) => (
+                      <div key={i} className="flex items-center gap-2 text-[12px] text-slate-400"><Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />{t}</div>
+                    ))}
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-4 gap-2">
+                    {[
+                      { name: 'VISA', bg: 'bg-blue-600 text-white' },
+                      { name: 'MC', bg: 'bg-red-600 text-white' },
+                      { name: 'AMEX', bg: 'bg-blue-800 text-white' },
+                      { name: 'PAY', bg: 'bg-slate-900 text-white' },
+                    ].map(p => (
+                      <div key={p.name} className={`text-[10px] ${p.bg} py-1.5 rounded text-center font-bold`}>{p.name}</div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
 
-              {/* Conversion Widgets */}
-              <div className="space-y-3">
-                <ScarcityBadge available={totalAvailable || event.available_tickets || event.ticket_count} total={event.total_tickets || 200} />
-                <HighDemandBadge eventId={event.event_id} />
-                <SocialProofCounter eventId={event.event_id} />
-              </div>
+              {/* Waitlist card (sidebar) — ONLY when coming_soon */}
+              {isComingSoon && (
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
+                  className="bg-[#1e1e1e] rounded-none border border-amber-500/30 p-5 shadow-sm" data-testid="sidebar-waitlist">
+                  <p className="text-[10px] text-amber-300 uppercase tracking-widest font-bold mb-2">Coming soon</p>
+                  <p className="text-sm text-white/80 mb-3">No verified tickets available yet. Join the free waitlist — we'll email you within 24h of the first drop.</p>
+                  <WaitlistCTA slug={canonicalSlug} eventTitle={event.title} compact />
+                </motion.div>
+              )}
+
+              {/* Conversion Widgets — only when inventory is real */}
+              {!isComingSoon && (
+                <div className="space-y-3">
+                  <ScarcityBadge available={totalAvailable || event.available_tickets || event.ticket_count} total={event.total_tickets || 200} />
+                  <HighDemandBadge eventId={event.event_id} />
+                  <SocialProofCounter eventId={event.event_id} />
+                </div>
+              )}
 
               <UrgencyCountdown eventDate={event.event_date} />
 
@@ -453,19 +473,21 @@ export default function EventDetailsPage() {
         </div>
       </div>
 
-      {/* Mobile Sticky Buy */}
-      <div className="mobile-sticky-buy lg:hidden" data-testid="mobile-sticky-buy">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-[10px] text-slate-500 uppercase">From</p>
-            <p className="text-xl font-extrabold text-white">&euro;{lowestPrice}</p>
+      {/* Mobile Sticky Buy — only when confirmed inventory exists */}
+      {!isComingSoon && (
+        <div className="mobile-sticky-buy lg:hidden" data-testid="mobile-sticky-buy">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <p className="text-[10px] text-slate-500 uppercase">From</p>
+              <p className="text-xl font-extrabold text-white">&euro;{lowestPrice}</p>
+            </div>
+            <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-emerald-500/100 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-full text-sm transition-all shadow-md">
+              View {totalAvailable} Tickets
+            </button>
           </div>
-          <button onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-emerald-500/100 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-full text-sm transition-all shadow-md">
-            View {totalAvailable} Tickets
-          </button>
         </div>
-      </div>
+      )}
 
       <RecentlyBoughtPopup />
     </div>

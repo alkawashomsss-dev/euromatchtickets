@@ -267,14 +267,6 @@ const TicketListings = ({ groupedSections, eventId, selectedSection, onClearFilt
           No tickets found for this filter. Try a different section or category.
         </div>
       )}
-
-      {/* Trust Bar */}
-      <div className="mt-5 p-4 bg-[#15151e] rounded-none border border-white/5 flex flex-wrap items-center justify-center gap-5 text-xs text-slate-500">
-        <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-emerald-500" /> FanProtect Guarantee</span>
-        <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> 100% Verified</span>
-        <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-amber-500" /> Instant QR Delivery</span>
-        <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-blue-500" /> 50,000+ Happy Fans</span>
-      </div>
     </div>
   );
 };

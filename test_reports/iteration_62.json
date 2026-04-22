@@ -1,0 +1,29 @@
+{
+  "summary": "Re-validation after iteration_61 fixes. ALL 7 review checks PASS (4 frontend pages + backend pytest + canonical dedup). The two regressions flagged in iteration_61 (TicketListings 4-badge trust strip + ungated TicketListings on coming_soon events) are confirmed FIXED in /app/frontend/src/components/TicketListings.jsx (file ends at line 275, no trust strip) and /app/frontend/src/pages/EventDetailsPage.jsx (venue-map, TicketListings, quick-buy-card, mobile-sticky-buy, hero 'X tickets available' chip all wrapped in !isComingSoon; sidebar-waitlist mounted for coming_soon).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_honesty_layer.py",
+    "/app/test_reports/pytest/honesty_layer.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Pre-existing (carried over from iter60/61, NOT in scope of this re-test): events.py destructive admin endpoints (mega_fix, fix_all_prices, seed_all_missing) still have NO auth — should be guarded.",
+    "Optional: add data-testid='trust-signals-row' to remaining trust strips so future dedup tests are deterministic by selector (right now this run counts by visible text, which works but is fragile)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (8/8 honesty_layer pytest)", "frontend": "100% (4/4 page checks: active F1, coming_soon Taylor Swift, unknown slug, homepage mobile)"},
+  "test_credentials": "Not required",
+  "seed_data_creation": "One TEST_<uuid>@example.com waitlist entry on slug 'euro-indexing' per backend run (idempotent upsert).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Honesty layer re-validation complete after iteration_61. Verified: (1) /event/spanish-motogp-2026-jerez-tickets — Instant QR Delivery + FanProtect + Verified Sellers count = 2 (≤3), no '50,000+ Happy Fans', has Prices H2 with 'market pricing may vary' (no 'Save €X'), Location H2 present, no [data-testid='why-choose-us'] or [data-testid='price-comparison'], canonical=1, robots='index, follow'. (2) /event/taylor-swift-eras-tour-london-2026-tickets — NO ticket-listings, NO venue-map-section, NO quick-buy-card, NO mobile-sticky-buy, NO 'X tickets available' chip, NO 'Tickets From €', NO 'View N Tickets'; HAS [data-testid='waitlist-cta'] (2 instances: hero + WaitlistCTA inside hero block), HAS [data-testid='sidebar-waitlist'] (1 in sidebar), Location H2 + Wembley Stadium + London/UK present, canonical=1, robots='index, follow'. (3) /event/this-slug-does-not-exist-xyz — waitlist-cta rendered, robots='noindex, nofollow' (thin gate works), canonical=1. (4) Homepage mobile — no banned claims (2M+ TICKETS SOLD, OFFICIAL PARTNER, Europe's #1, 500,000+, 12,847 reviews, 4.9/5 from 2,940+, 50,000+ Happy Fans), footer has exactly 4 badges (Buyer protection / Verified sellers / Encrypted payments / Customer support), footer description includes 'European secondary-market platform'. Backend pytest test_honesty_layer.py: 8/8 PASS in 1.22s. No further main-agent action required.",
+  "rca of the issue": "N/A — both regressions from iteration_61 are fixed. TicketListings.jsx no longer renders the 'FanProtect Guarantee · 100% Verified · Instant QR Delivery · 50,000+ Happy Fans' bottom strip (component now ends cleanly after the section list). EventDetailsPage.jsx now gates <TicketListings/>, the venue-map section, the quick-buy sidebar, the mobile sticky bar, and the hero 'X tickets available' chip behind !isComingSoon, and mounts a [data-testid='sidebar-waitlist'] card for coming_soon events. The thin-page gate (isUglyUrl || (isComingSoon && !venue && !city)) correctly leaves Taylor Swift indexable (has Wembley Stadium + London) and noindexes unknown slugs."
+}
