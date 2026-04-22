@@ -225,3 +225,25 @@ Triple-layered enforcement:
 - 1,892 high-quality SEO landing pages (all 400+ chars)
 - 9 sitemaps totaling ~560 URLs
 - Every image is unique, every venue is real, every price is viagogo-realistic.
+
+## 📅 2026-04-22 (night) — MotoGP 2026 Official Calendar Seeded
+
+### User directive:
+- Benchmark against global-tickets.com (top Google result for "MotoGP Tickets 2026")
+- Replace existing MotoGP data with the authoritative 2026 calendar
+
+### Fix applied (`seed_motogp_2026.py`):
+- Deleted all 24 old MotoGP events.
+- Seeded all **21 official MotoGP 2026/2027 rounds** with correct dates, venues, cities, country flags:
+  - R1 Spanish (Jerez), R2 French (Le Mans), R3 Catalan (Barcelona), R4 Italian (Mugello),
+  - R5 Hungarian (Balaton Park — NEW 2026 venue), R6 Czech (Brno), R7 Dutch (Assen), R8 German (Sachsenring),
+  - R9 British (Silverstone), R10 Aragon, R11 San Marino (Misano), R12 Austrian (Red Bull Ring),
+  - R13 Japanese (Motegi), R14 Indonesian (Lombok/Mandalika), R15 Malaysian (Sepang), R16 Qatar (Lusail),
+  - R17 Portuguese (Portimão), R18 Valencian (Cheste) · + 2027 Early-Bird: Thailand, Brazil, Americas
+- Tier-based pricing (matches global-tickets resale ranges):
+  - Premium (Mugello/Assen/Silverstone/Le Mans/Barcelona/Misano/Spielberg/Jerez): €149-€699
+  - Standard (Balaton/Brno/Aragon/Valencia): €109-€499
+  - Overseas (Asia/Americas/Portugal): €129-€599
+- Early-Bird rounds (Thailand/Brazil/Austin 2027) set to `status: "coming_soon"` with 0 tickets.
+- Unique composite image regenerated for every round (event_image_generator).
+- Sitemaps regenerated.
