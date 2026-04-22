@@ -1,27 +1,23 @@
 /**
- * VenueViewer — smart wrapper
- * ============================
- * Chooses 3D stadium vs 3D circuit vs SVG fallback based on the event.
+ * VenueViewer — iframe-based, zero React/Three-fiber deps
+ * =========================================================
+ * Loads /3d/circuit.html or /3d/stadium.html in an iframe, which hosts
+ * a self-contained three.js r161 scene. This completely bypasses the
+ * React 19 + @react-three/fiber "x-line-number" runtime bug.
  *
- * Key wins:
- * 1. three.js bundle is lazy-loaded ONLY when the <canvas> comes into
- *    view (IntersectionObserver).
- * 2. Respects `prefers-reduced-motion` — falls back to a static image +
- *    SVG top-down diagram for users who asked to reduce motion.
- * 3. Works without any back-end changes — maps `venue` or `event_type`
- *    to the appropriate preset via a small lookup table.
- *
- * Usage (anywhere in event pages):
- *   <VenueViewer event={event} />
+ * Characteristics:
+ *  - IntersectionObserver: iframe src only set when the viewer is ~200px
+ *    from the viewport → three.js bundle is NOT fetched for events a
+ *    visitor never scrolls to.
+ *  - `prefers-reduced-motion`: falls back to the static SVG seat map.
+ *  - No bundle cost in the main app (the iframe page pulls three.js
+ *    from a CDN on its own).
+ *  - Works identically on dev / prod / preview — no build step.
  */
-import { useEffect, useRef, useState, lazy, Suspense } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Box, Orbit, Loader2 } from "lucide-react";
 import SeatMapSVG from "./SeatMapSVG";
 
-const StadiumViewer3D = lazy(() => import("./StadiumViewer3D"));
-const CircuitViewer3D = lazy(() => import("./CircuitViewer3D"));
-
-// Map real venue names → stadium preset slug
 const VENUE_TO_STADIUM = {
   "allianz arena": "allianz_arena",
   "allianz arena munich": "allianz_arena",
@@ -38,7 +34,6 @@ const VENUE_TO_STADIUM = {
   "spotify camp nou": "camp_nou",
 };
 
-// Map real track names → circuit preset slug
 const TRACK_TO_CIRCUIT = {
   "circuit de monaco": "monaco",
   "monaco": "monaco",
@@ -59,22 +54,19 @@ function resolvePreset(event) {
   const et = (event?.event_type || "").toLowerCase();
 
   if (et === "f1" || et === "motogp" || et === "formula1") {
-    const circuit = TRACK_TO_CIRCUIT[venue];
-    if (circuit) return { kind: "circuit", preset: circuit };
-    // Fallback: try substring match
+    if (TRACK_TO_CIRCUIT[venue]) return { kind: "circuit", preset: TRACK_TO_CIRCUIT[venue] };
     for (const k in TRACK_TO_CIRCUIT) {
       if (venue.includes(k)) return { kind: "circuit", preset: TRACK_TO_CIRCUIT[k] };
     }
-    return { kind: "circuit", preset: "monaco" }; // generic F1 fallback
+    return { kind: "circuit", preset: "monaco" };
   }
 
   if (["match", "football", "worldcup", "concert", "athletics"].includes(et)) {
-    const stad = VENUE_TO_STADIUM[venue];
-    if (stad) return { kind: "stadium", preset: stad };
+    if (VENUE_TO_STADIUM[venue]) return { kind: "stadium", preset: VENUE_TO_STADIUM[venue] };
     for (const k in VENUE_TO_STADIUM) {
       if (venue.includes(k)) return { kind: "stadium", preset: VENUE_TO_STADIUM[k] };
     }
-    return { kind: "stadium", preset: "wembley" }; // generic stadium fallback
+    return { kind: "stadium", preset: "wembley" };
   }
 
   return { kind: "svg", preset: null };
@@ -83,6 +75,7 @@ function resolvePreset(event) {
 export default function VenueViewer({ event, className = "" }) {
   const wrapperRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
@@ -113,6 +106,14 @@ export default function VenueViewer({ event, className = "" }) {
   }, []);
 
   const { kind, preset } = resolvePreset(event);
+  const iframeSrc =
+    kind === "circuit"
+      ? `/3d/circuit.html?p=${preset}`
+      : kind === "stadium"
+      ? `/3d/stadium.html?p=${preset}`
+      : null;
+
+  const useIframe = !reduced && visible && iframeSrc;
 
   return (
     <div
@@ -120,7 +121,6 @@ export default function VenueViewer({ event, className = "" }) {
       className={`relative ${className}`}
       data-testid="venue-viewer-wrapper"
     >
-      {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
           {kind === "circuit" ? (
@@ -139,10 +139,30 @@ export default function VenueViewer({ event, className = "" }) {
         </span>
       </div>
 
-      {/* 3D canvas or SVG fallback */}
-      {reduced || !visible ? (
-        <div className="w-full aspect-video bg-gradient-to-br from-[#0b0b0b] to-[#1a1a2e] border border-white/5 rounded flex items-center justify-center">
-          {visible ? (
+      {useIframe ? (
+        <div
+          className="relative w-full aspect-video bg-[#0a1426] overflow-hidden"
+          data-testid={`venue-3d-${kind}`}
+        >
+          {!iframeLoaded ? (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-slate-500 z-10 pointer-events-none">
+              <Loader2 className="w-5 h-5 animate-spin" />
+              <span className="text-xs uppercase tracking-wider">Loading 3D scene…</span>
+            </div>
+          ) : null}
+          <iframe
+            key={iframeSrc}
+            src={iframeSrc}
+            title={kind === "circuit" ? "3D circuit viewer" : "3D stadium viewer"}
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin"
+            className="absolute inset-0 w-full h-full border-0"
+            onLoad={() => setIframeLoaded(true)}
+          />
+        </div>
+      ) : reduced || !visible ? (
+        <div className="w-full aspect-video bg-gradient-to-br from-[#0b0b0b] to-[#1a1a2e] flex items-center justify-center">
+          {reduced ? (
             <SeatMapSVG event={event} />
           ) : (
             <div className="flex flex-col items-center gap-2 text-slate-500">
@@ -151,26 +171,6 @@ export default function VenueViewer({ event, className = "" }) {
             </div>
           )}
         </div>
-      ) : kind === "circuit" ? (
-        <Suspense
-          fallback={
-            <div className="w-full aspect-video bg-[#0a1426] flex items-center justify-center">
-              <Loader2 className="w-6 h-6 text-slate-400 animate-spin" />
-            </div>
-          }
-        >
-          <CircuitViewer3D preset={preset} />
-        </Suspense>
-      ) : kind === "stadium" ? (
-        <Suspense
-          fallback={
-            <div className="w-full aspect-video bg-[#0b0b0b] flex items-center justify-center">
-              <Loader2 className="w-6 h-6 text-slate-400 animate-spin" />
-            </div>
-          }
-        >
-          <StadiumViewer3D preset={preset} />
-        </Suspense>
       ) : (
         <SeatMapSVG event={event} />
       )}

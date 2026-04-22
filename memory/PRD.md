@@ -60,7 +60,16 @@ Triple-layered enforcement:
 - Core Web Vitals tracker → GA4 + backend beacon
 - Sitemap filters unverified slugs at source
 
-### Iteration 3 — INTENT-BASED SCHEMA + HOMEPAGE HONESTY (Current)
+### Iteration 4 — 3D VENUE VIEWER + UNIQUE IMAGES (Current)
+- **3D Stadium Viewer (5 presets)** — Allianz Arena, Wembley (+iconic arch), Puskás Aréna, Santiago Bernabéu, Camp Nou. Parametric bowl: concentric tiered sections + pitch + optional roof. Auto-rotating camera, drag/zoom/tap.
+- **3D Circuit Viewer (5 presets)** — Monaco, Silverstone, Monza, Spa, Zandvoort. CatmullRom curve extruded as tube ribbon + red kerbs + start/finish + flag poles. Auto-rotating aerial camera.
+- **Architecture:** IFRAME-based (`/3d/circuit.html`, `/3d/stadium.html`) — self-contained three.js r161 from CDN, ZERO React-three-fiber dependency in main bundle. Chose this after @react-three/fiber@9 + React 19 dev mode caused an unresolvable "x-line-number" JSX `__source` prop bug (troubleshoot_agent confirmed).
+- **Performance:** IntersectionObserver gates iframe load until venue is ~200px from viewport. Zero main-bundle cost. `prefers-reduced-motion` respected (falls back to SVG seat map).
+- **`SeatMapSVG` fallback component** — 4 auto-selected layouts (stadium bowl / F1 track / concert fan / auditorium) for events without a preset.
+- **`VenueViewer` smart wrapper** — auto-maps venue name → preset (Allianz Arena, Wembley, Monaco, etc.).
+- **Nano Banana image generator (built, awaiting budget)** — `/app/backend/services/image_generator.py` + `/event-images/*` static mount. Ready to batch-regenerate all 189 events the moment the Emergent LLM key budget is topped up. Problem: 135/189 events share only 41 duplicate images (Tomorrowland, Eiffel Tower, etc.) and 54 events have no image at all.
+
+
 - **Homepage `FeaturedEventsCarousel` rewritten** — removed hardcoded "Justin Bieber 73% SOLD €89" fake data. Now fetches confirmed events from `/api/events` with a tiny verified fallback (FIFA World Cup 2026 Final, UEFA Champions League Final Budapest, Monaco GP 2026) cross-checked against FIFA/UEFA/FIA official calendars.
 - **Taylor Swift London page → Coming Soon** — The Eras Tour ended 8 Dec 2024; no 2026 tour officially announced. Page now uses ComingSoonEvent wrapper (noindex, follow · zero Product/Offer schema · notify list only).
 - **Product schema audit** — enforced rule: Product schema ONLY on pages with confirmed event + real ticket inventory. Coming Soon pages render ONLY Organization/WebSite/FAQ/LocalBusiness schemas.

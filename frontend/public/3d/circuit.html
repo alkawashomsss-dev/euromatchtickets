@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>3D Circuit</title>
+  <meta name="robots" content="noindex"/>
+  <style>
+    html,body { margin:0; padding:0; height:100%; background:#0a1426; overflow:hidden; font-family:-apple-system,sans-serif; color:#fff; }
+    #wrap { position:relative; width:100vw; height:100vh; }
+    #loader { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#9ab; font-size:13px; letter-spacing:2px; }
+    canvas { display:block; width:100% !important; height:100% !important; touch-action:none; cursor:grab; }
+    canvas:active { cursor:grabbing; }
+    #label { position:absolute; top:12px; left:12px; padding:4px 10px; background:rgba(0,0,0,.45); font-size:10px; letter-spacing:2px; text-transform:uppercase; border:1px solid rgba(255,255,255,.08); }
+  </style>
+</head>
+<body>
+<div id="wrap">
+  <div id="loader">LOADING 3D SCENE…</div>
+  <div id="label"></div>
+</div>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const PRESETS = {
+  monaco: {
+    name: "Circuit de Monaco", sky:"#0a1426",
+    points:[[0,70],[20,60],[40,55],[55,45],[60,28],[55,10],[40,-5],[20,-15],[0,-25],[-20,-35],[-40,-40],[-55,-30],[-60,-12],[-55,4],[-45,20],[-50,38],[-60,52],[-55,68],[-35,75],[-15,78],[5,78],[15,75]]
+  },
+  silverstone: {
+    name: "Silverstone Circuit", sky:"#0e1a2c",
+    points:[[0,80],[30,78],[55,70],[75,50],[80,25],[65,0],[40,-15],[10,-25],[-20,-30],[-50,-25],[-75,-10],[-85,15],[-80,40],[-60,55],[-35,62],[-10,70],[-15,85],[-30,88],[-5,92],[10,88],[5,82],[-2,80]]
+  },
+  monza: {
+    name: "Autodromo di Monza", sky:"#0e1020",
+    points:[[-80,0],[-60,20],[-30,30],[0,28],[30,22],[55,10],[75,-10],[80,-35],[65,-55],[35,-62],[0,-60],[-35,-55],[-65,-40],[-82,-18],[-88,5],[-82,28],[-90,45],[-82,62],[-60,70],[-30,66],[0,58],[-40,40]]
+  },
+  spa: {
+    name: "Spa-Francorchamps", sky:"#0a1426",
+    points:[[0,70],[25,65],[50,50],[70,25],[75,-5],[60,-30],[35,-45],[5,-50],[-25,-45],[-55,-30],[-78,-5],[-85,25],[-75,55],[-50,75],[-20,82],[10,80],[-5,75],[-20,85],[-40,90],[-20,95],[0,90],[10,80]]
+  },
+  zandvoort: {
+    name: "Circuit Zandvoort", sky:"#0c1a2e",
+    points:[[0,75],[22,70],[45,55],[60,30],[60,5],[50,-20],[30,-35],[5,-40],[-22,-35],[-45,-20],[-58,5],[-60,30],[-50,50],[-60,68],[-40,82],[-15,85],[-8,78],[-5,80],[0,82],[5,78],[2,76],[0,75]]
+  }
+};
+
+const qs = new URLSearchParams(location.search);
+const preset = PRESETS[qs.get('p')] || PRESETS.monaco;
+document.getElementById('label').textContent = preset.name;
+
+const wrap = document.getElementById('wrap');
+const loader = document.getElementById('loader');
+
+const renderer = new THREE.WebGLRenderer({ antialias:true, powerPreference:"high-performance" });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+wrap.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(preset.sky);
+scene.fog = new THREE.Fog(preset.sky, 240, 560);
+
+const camera = new THREE.PerspectiveCamera(42, wrap.clientWidth / wrap.clientHeight, 1, 800);
+camera.position.set(140, 120, 180);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; controls.dampingFactor = 0.08;
+controls.enablePan = false;
+controls.minDistance = 100; controls.maxDistance = 340;
+controls.maxPolarAngle = Math.PI * 0.45; controls.minPolarAngle = Math.PI * 0.1;
+controls.autoRotate = true; controls.autoRotateSpeed = 0.55;
+
+// Lighting
+scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+const dir = new THREE.DirectionalLight(0xffd7a0, 1.2);
+dir.position.set(80, 160, 60);
+scene.add(dir);
+const back = new THREE.DirectionalLight(0x8ab0ff, 0.5);
+back.position.set(-80, 80, -60);
+scene.add(back);
+scene.add(new THREE.HemisphereLight(0x4a5a7f, 0x0c2c0c, 0.8));
+
+// Terrain
+const terrain = new THREE.Mesh(
+  new THREE.PlaneGeometry(600, 600),
+  new THREE.MeshStandardMaterial({ color: 0x0f3012, roughness: 0.95 })
+);
+terrain.rotation.x = -Math.PI / 2;
+terrain.position.y = -0.1;
+scene.add(terrain);
+
+// Curve
+const v = preset.points.map(([x,z]) => new THREE.Vector3(x, 0.5, z));
+const curve = new THREE.CatmullRomCurve3(v, true, 'catmullrom', 0.5);
+
+// Kerb (under, slightly wider, bright red/white alternating)
+const kerbGeom = new THREE.TubeGeometry(curve, 400, 4.2, 10, true);
+kerbGeom.scale(1, 0.02, 1);
+kerbGeom.computeBoundingSphere();
+const kerbMat = new THREE.MeshStandardMaterial({ color: 0xe10600 });
+const kerbMesh = new THREE.Mesh(kerbGeom, kerbMat);
+kerbMesh.position.y = 0.3;
+scene.add(kerbMesh);
+
+// Track ribbon
+const trackGeom = new THREE.TubeGeometry(curve, 400, 3.2, 10, true);
+trackGeom.scale(1, 0.06, 1);
+trackGeom.computeBoundingSphere();
+const trackMat = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, roughness: 0.92 });
+const trackMesh = new THREE.Mesh(trackGeom, trackMat);
+trackMesh.position.y = 0.55;
+scene.add(trackMesh);
+
+// Start/finish line
+const p0 = curve.getPoint(0);
+const tan0 = curve.getTangent(0);
+const line = new THREE.Mesh(
+  new THREE.BoxGeometry(8, 0.12, 1.8),
+  new THREE.MeshStandardMaterial({ color: 0xffffff })
+);
+line.position.set(p0.x, 0.75, p0.z);
+line.rotation.y = Math.atan2(tan0.x, tan0.z);
+scene.add(line);
+
+// Pit lane flag-pole markers every ~12 points
+for (let i = 0; i < preset.points.length; i += 3) {
+  const [x, z] = preset.points[i];
+  const pole = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.4, 0.4, 12, 6),
+    new THREE.MeshStandardMaterial({ color: 0xcccccc })
+  );
+  pole.position.set(x, 6, z);
+  pole.position.add(new THREE.Vector3(x, 0, z).normalize().multiplyScalar(10));
+  scene.add(pole);
+}
+
+// Resize handling
+function onResize() {
+  const w = wrap.clientWidth, h = wrap.clientHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+}
+addEventListener('resize', onResize);
+const ro = new ResizeObserver(onResize);
+ro.observe(wrap);
+
+// Animate
+let raf = 0;
+function tick() {
+  raf = requestAnimationFrame(tick);
+  controls.update();
+  renderer.render(scene, camera);
+}
+tick();
+
+loader.style.display = 'none';
+
+addEventListener('pagehide', () => {
+  cancelAnimationFrame(raf);
+  renderer.dispose();
+  ro.disconnect();
+});
+</script>
+</body>
+</html>
