@@ -3,7 +3,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 ROOT_DIR = Path(__file__).parent.parent
-load_dotenv(ROOT_DIR / '.env')
+# override=True ensures our production .env Stripe LIVE key wins over any
+# pre-seeded sk_test_* placeholder in the container environment.
+load_dotenv(ROOT_DIR / '.env', override=True)
 
 MONGO_URL = os.environ.get('MONGO_URL')
 DB_NAME = os.environ.get('DB_NAME')

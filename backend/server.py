@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 
 # Ensure backend directory is in path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
