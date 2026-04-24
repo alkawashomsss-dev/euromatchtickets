@@ -121,72 +121,87 @@ const EventStructuredData = ({ event }) => {
       "url": pageUrl
     };
 
-    // Product Schema - Shows ticket as purchasable product in Google
-    const productSchema = {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": `${event.title} Tickets`,
-      "description": `Tickets for ${event.title}${event.venue ? ` at ${event.venue}` : ''}${event.city ? `, ${event.city}` : ''}. Instant QR delivery. Buyer protection.`,
-      "image": eventImage,
-      "url": pageUrl,
-      "brand": {
-        "@type": "Organization",
-        "name": "EuroMatchTickets"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "EUR",
-        "lowPrice": lowPrice.toString(),
-        "highPrice": highPrice.toString(),
-        "offerCount": availableTickets.toString(),
-        "availability": availableTickets > 0 ? "https://schema.org/InStock" : "https://schema.org/SoldOut",
-        "url": pageUrl
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "2847",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "name": "Excellent ticket service",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Marco R." },
-          "reviewBody": "Excellent service! Tickets arrived instantly via QR code. Great experience at the event.",
-          "datePublished": "2026-01-15"
-        },
-        {
-          "@type": "Review",
-          "name": "Smooth booking with Buyer protection",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Sophie M." },
-          "reviewBody": "Very smooth booking process. Buyer protection gave me confidence. Will use again!",
-          "datePublished": "2026-02-08"
-        },
-        {
-          "@type": "Review",
-          "name": "Great prices and fast delivery",
-          "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Thomas K." },
-          "reviewBody": "Good prices compared to other platforms. Quick delivery and easy to use QR tickets.",
-          "datePublished": "2026-02-22"
-        }
-      ]
-    };
-
-    // Combine into @graph for single script tag.
-    // Gate Product schema: ONLY include when event has confirmed inventory
-    // and status is not "coming_soon" / "sold_out" — this is the honesty layer.
+    // Product Schema — ONLY emitted when we have a real verified lowest price.
+    // Includes Google-required Merchant-listing fields:
+    //   price, priceCurrency, availability, shippingDetails, hasMerchantReturnPolicy
     const hasRealInventory =
       availableTickets > 0 &&
       event.status !== 'coming_soon' &&
       event.status !== 'sold_out' &&
-      (event.lowest_price == null || event.lowest_price > 0);
+      typeof event.lowest_price === 'number' &&
+      event.lowest_price > 0;
 
-    const graph = hasRealInventory ? [eventSchema, productSchema] : [eventSchema];
+    const productSchema = hasRealInventory
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": `${event.title} Tickets`,
+          "description": `Tickets for ${event.title}${event.venue ? ` at ${event.venue}` : ''}${event.city ? `, ${event.city}` : ''}. QR ticket delivery. Buyer protection.`,
+          "image": [eventImage],
+          "url": pageUrl,
+          "sku": event.event_id || event.slug || pageUrl,
+          "brand": {
+            "@type": "Organization",
+            "name": "EuroMatchTickets",
+            "url": "https://euromatchtickets.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": Math.round(event.lowest_price).toString(),
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "url": pageUrl,
+            "priceValidUntil": new Date(Date.now() + 1000 * 60 * 60 * 24 * 30)
+              .toISOString()
+              .split('T')[0],
+            "seller": {
+              "@type": "Organization",
+              "name": "EuroMatchTickets",
+              "url": "https://euromatchtickets.com"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "EUR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": ["DE", "FR", "GB", "IT", "ES", "NL", "BE", "AT", "IE", "PT", "DK", "SE", "FI", "CH", "US", "CA", "MX"]
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 0,
+                  "unitCode": "HUR"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 0,
+                  "unitCode": "HUR"
+                }
+              }
+            },
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "name": "EuroMatchTickets refund policy",
+              "applicableCountry": ["DE", "FR", "GB", "IT", "ES", "NL", "BE", "AT"],
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 14,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/FreeReturn",
+              "merchantReturnLink": "https://euromatchtickets.com/refund-policy"
+            }
+          }
+        }
+      : null;
+
+    const graph = productSchema ? [eventSchema, productSchema] : [eventSchema];
 
     const combinedSchema = {
       "@context": "https://schema.org",
@@ -194,7 +209,7 @@ const EventStructuredData = ({ event }) => {
     };
     // Remove @context from individual items in graph
     delete eventSchema["@context"];
-    delete productSchema["@context"];
+    if (productSchema) delete productSchema["@context"];
 
     let script = document.querySelector('script[data-schema="event"]');
     if (!script) {

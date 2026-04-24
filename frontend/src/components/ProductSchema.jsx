@@ -59,14 +59,45 @@ const ProductSchema = ({
     },
     "offers": {
       "@type": "Offer",
-      "price": String(price),
+      "price": String(Math.round(price)),
       "priceCurrency": "EUR",
       "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
       "url": url,
+      "priceValidUntil": new Date(Date.now() + 1000 * 60 * 60 * 24 * 30)
+        .toISOString()
+        .split("T")[0],
       "seller": {
         "@type": "Organization",
         "name": "EuroMatchTickets",
         "url": "https://euromatchtickets.com",
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "EUR",
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": ["DE", "FR", "GB", "IT", "ES", "NL", "BE", "AT", "IE", "PT", "DK", "SE", "FI", "CH", "US", "CA", "MX"],
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "HUR" },
+          "transitTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "HUR" },
+        },
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "name": "EuroMatchTickets refund policy",
+        "applicableCountry": ["DE", "FR", "GB", "IT", "ES", "NL", "BE", "AT"],
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 14,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn",
+        "merchantReturnLink": "https://euromatchtickets.com/refund-policy",
       },
     },
   };
