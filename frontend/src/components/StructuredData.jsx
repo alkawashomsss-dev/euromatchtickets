@@ -105,11 +105,9 @@ const EventStructuredData = ({ event }) => {
       document.head.appendChild(script);
     }
     script.textContent = JSON.stringify(eventSchema);
-
-    return () => {
-      const el = document.querySelector('script[data-schema="event"]');
-      if (el) el.remove();
-    };
+    // Note: no cleanup remove(). The next event navigation will overwrite
+    // textContent above. Removing here races with React reconciliation and
+    // causes "finishedRoot.parentNode.removeChild" errors.
   }, [event]);
 
   return null;
@@ -141,11 +139,6 @@ const BreadcrumbStructuredData = ({ items }) => {
       document.head.appendChild(script);
     }
     script.textContent = JSON.stringify(structuredData);
-
-    return () => {
-      const el = document.querySelector('script[data-schema="breadcrumb"]');
-      if (el) el.remove();
-    };
   }, [items]);
 
   return null;
@@ -179,11 +172,6 @@ const FAQStructuredData = ({ faqs }) => {
       document.head.appendChild(script);
     }
     script.textContent = JSON.stringify(structuredData);
-
-    return () => {
-      const el = document.querySelector('script[data-schema="faq"]');
-      if (el) el.remove();
-    };
   }, [faqs]);
 
   return null;
@@ -249,11 +237,6 @@ const OrganizationStructuredData = () => {
       document.head.appendChild(script);
     }
     script.textContent = JSON.stringify(structuredData);
-
-    return () => {
-      const el = document.querySelector('script[data-schema="organization"]');
-      if (el) el.remove();
-    };
   }, []);
 
   return null;
@@ -291,11 +274,6 @@ const WebsiteStructuredData = () => {
       document.head.appendChild(script);
     }
     script.textContent = JSON.stringify(structuredData);
-
-    return () => {
-      const el = document.querySelector('script[data-schema="website"]');
-      if (el) el.remove();
-    };
   }, []);
 
   return null;
@@ -370,11 +348,6 @@ const LocalBusinessStructuredData = () => {
       document.head.appendChild(script);
     }
     script.textContent = JSON.stringify(structuredData);
-
-    return () => {
-      const el = document.querySelector('script[data-schema="localbusiness"]');
-      if (el) el.remove();
-    };
   }, []);
 
   return null;

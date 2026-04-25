@@ -2,6 +2,20 @@
 
 ## ✅ Completed Today
 
+### 0. Fixed JavaScript "Unexpected token ')'" + React DOM crash 🔥 (P0)
+**Symptom**: Every page threw `Uncaught SyntaxError: Unexpected token ')'` and clicking any "Buy / View Tickets" button sometimes triggered a React DOM crash:
+`null is not an object (evaluating 'finishedRoot.parentNode.removeChild')`.
+**Root causes**:
+1. `public/index.html` had a TikTok Pixel snippet whose IIFE was malformed — the closing `}(window,document,'ttq');` was missing, leaving the script unparseable.
+2. The Google Analytics 4 script that followed it referenced `d` (the `document` parameter that the broken TikTok IIFE was supposed to inject) — once TikTok was disabled, GA4 threw `Can't find variable: d`.
+3. `components/StructuredData.jsx` ran `el.remove()` inside every `useEffect` cleanup. On rapid route changes (e.g. clicking an event card) React's reconciliation could try to remove a DOM child that had already been detached → React commit phase crashed.
+**Fixes**:
+- Disabled the broken TikTok Pixel block (commented out, easy to re-enable when a real Pixel ID is provided).
+- Replaced `d.createElement` / `d.head.appendChild` → `document.createElement` / `document.head.appendChild` in the GA4 init.
+- **Restarted frontend supervisor** (CRA dev server caches `public/index.html` in memory; hot reload alone is not enough for changes to that file).
+- Removed all `cleanup() { el.remove() }` blocks from `EventStructuredData`, `BreadcrumbStructuredData`, `FAQStructuredData`, `OrganizationStructuredData`, `WebsiteStructuredData`, `LocalBusinessStructuredData`. The `script.textContent = JSON.stringify(...)` line that runs on next mount will replace the content cleanly without a destroy/recreate race.
+**Verified**: 0 page errors on Homepage, /events, and event detail page after rapid navigation. Sanity screenshot taken on `/event/spanish-motogp-2026-jerez-tickets`.
+
 ### 1. Google Login Auth — VERIFIED WORKING ✅
 - **Root cause**: NOT a code issue. The login flow (App.js `login()` → Google → AuthCallback → `/api/auth/google`) was already correct.
 - **Actual problem**: Google Cloud Console did not have the **preview** Redirect URI registered → Google returned `Error 400: redirect_uri_mismatch`.
