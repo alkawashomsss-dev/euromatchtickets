@@ -5,7 +5,6 @@ import { API } from "../App";
 import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles, Zap, Crown, ArrowRight, Check, Users, Flame, Eye } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
@@ -39,7 +38,7 @@ const WorldAthleticsPage = () => {
     "location": { "@type": "Place", "name": "Budapest National Athletics Centre", "address": { "@type": "PostalAddress", "addressLocality": "Budapest", "addressCountry": "HU" } },
     "performer": {"@type": "Organization", "name": "World Athletics"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "lowPrice": "35", "highPrice": "500", "priceCurrency": "EUR","availability": "https://schema.org/InStock", "validFrom": "2025-01-01", "url": "https://euromatchtickets.com/world-athletics-2026-tickets", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
+    
   };
 
   return (
@@ -50,7 +49,7 @@ const WorldAthleticsPage = () => {
         image="https://images.unsplash.com/photo-1532444458054-01a7dd3e9fca?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="World Athletics Championships 2026" price={49} highPrice={999} url="https://euromatchtickets.com/world-athletics-2026-tickets" category="athletics" venue="Olympic Stadium" city="Budapest" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Athletics", url: "https://euromatchtickets.com/events?type=athletics" }, { name: "World Athletics 2026", url: "https://euromatchtickets.com/world-athletics-2026-tickets" }]} />
 
       {/* HERO */}
@@ -234,7 +233,7 @@ const WorldAthleticsPage = () => {
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <Trophy className="w-12 h-12 text-blue-500 mx-auto mb-4" />
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Experience Athletic Greatness</h2>
-          <p className="text-slate-400 mb-8">Watch world champions compete live. Tickets selling fast.</p>
+          <p className="text-slate-400 mb-8">Watch world champions compete live. Tickets. </p>
           <a href="#tickets">
             <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-extrabold px-10 py-6 text-lg rounded-full shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-all">
               <Ticket className="w-5 h-5 mr-2" /> Secure Your Tickets Now

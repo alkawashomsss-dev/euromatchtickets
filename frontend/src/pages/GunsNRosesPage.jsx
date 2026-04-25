@@ -3,7 +3,6 @@ import { Calendar, MapPin, Music, Star, Shield, Zap, Skull } from "lucide-react"
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
@@ -21,7 +20,7 @@ const GunsNRosesPage = () => {
     "location": { "@type": "Place", "name": "Olympiastadion Berlin", "address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" } },
     "performer": { "@type": "MusicGroup", "name": "Guns N' Roses" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
+    
   };
 
   const faqs = [
@@ -47,8 +46,7 @@ const GunsNRosesPage = () => {
       <SEOHead title="Buy Guns N' Roses Tour Tickets 2026 | Europe From €95" description="Buy Guns N' Roses 2026 European stadium tour tickets from €95. Berlin, London, Hamburg, Cologne, Munich. 3+ hour shows. Cancellation refund policy. Instant QR." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <FAQSchemaScript faqs={faqs} />
-      <ProductSchema name="Guns N' Roses European Stadium Tour 2026" price={95} highPrice={450} url={CANONICAL} category="concert" venue="Multiple Stadiums" city="Europe" />
-      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Guns N' Roses Tour 2026", url: CANONICAL }]} />
+<BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Guns N' Roses Tour 2026", url: CANONICAL }]} />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/15 via-red-500/10 to-slate-950" />

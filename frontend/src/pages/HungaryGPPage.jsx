@@ -3,7 +3,6 @@ import { Calendar, MapPin, Shield, Zap, Flag, Ticket, HelpCircle, CreditCard, He
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const HungaryGPPage = () => {
@@ -20,7 +19,7 @@ const HungaryGPPage = () => {
     "location": { "@type": "Place", "name": "Hungaroring", "address": { "@type": "PostalAddress", "addressLocality": "Budapest", "addressCountry": "HU" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "99", "highPrice": "1499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-hungarian-grand-prix-budapest-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -42,12 +41,12 @@ const HungaryGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Hungarian GP Tickets 2026 | Budapest F1 Prices"
-        description="Buy Hungarian Grand Prix 2026 Budapest tickets from €99. Verified F1 race! Hungaroring circuit. VIP Hospitality. 100% Ticket Guarantee. Instant QR delivery!"
+        title="Hungarian GP 2026 Tickets (Hungaroring F1) — Prices & Availability | EuroMatchTickets"
+        description="Compare Hungarian Grand Prix 2026 listings at the Hungaroring, Budapest. Updated prices from €99, grandstand availability and VIP Hospitality with instant QR delivery."
         image="https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Hungarian Grand Prix Budapest 2026" price={119} highPrice={2799} url="https://euromatchtickets.com/f1-hungarian-grand-prix-budapest-tickets" category="f1" venue="Hungaroring" city="Budapest" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Hungarian GP Budapest 2026", url: "https://euromatchtickets.com/f1-hungarian-grand-prix-budapest-tickets" }]} />
 
       <section className="relative py-20 overflow-hidden">

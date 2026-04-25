@@ -3,7 +3,6 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const SilverstoneGPPage = () => {
@@ -24,7 +23,7 @@ const SilverstoneGPPage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "149", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-british-grand-prix-silverstone-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -39,12 +38,12 @@ const SilverstoneGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="British GP Tickets 2026 | Silverstone F1 Prices"
-        description="Buy British Grand Prix 2026 Silverstone tickets from €149. Best grandstands Copse, Club, Maggotts. VIP Hospitality available. Buyer protection. €10."
+        title="British GP 2026 Tickets (Silverstone F1) — Prices & Availability | EuroMatchTickets"
+        description="Compare British Grand Prix 2026 listings at Silverstone. Updated prices from €149, Copse, Club, Maggotts grandstands and VIP Hospitality availability. Instant QR delivery."
         image="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="British Grand Prix Silverstone 2026" price={149} highPrice={3499} url="https://euromatchtickets.com/f1-british-grand-prix-silverstone-tickets" category="f1" venue="Silverstone Circuit" city="Silverstone" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "British GP Silverstone 2026", url: "https://euromatchtickets.com/f1-british-grand-prix-silverstone-tickets" }]} />
 
       {/* Hero */}

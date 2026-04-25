@@ -3,7 +3,6 @@ import { Calendar, MapPin, Music, Star, Shield, Users, TrendingUp, Zap, Heart, C
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { useState } from "react";
@@ -25,7 +24,7 @@ const BrunoMarsPage = () => {
     "location": { "@type": "Place", "name": "Wembley Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "MusicGroup", "name": "Bruno Mars" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "125", "highPrice": "650", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
+    
   };
 
   const faqSchema = {
@@ -60,14 +59,13 @@ const BrunoMarsPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Buy Bruno Mars Tour Tickets 2026 | London & Europe From €125"
-        description="Buy Bruno Mars The Romantic Tour 2026 tickets from €125. 6 nights Wembley London, Berlin, Amsterdam, Madrid, Milan. Selling Fast. Cancellation refund policy. Instant QR."
+        description="Buy Bruno Mars The Romantic Tour 2026 tickets from €125. 6 nights Wembley London, Berlin, Amsterdam, Madrid, Milan. Available. Cancellation refund policy. Instant QR."
         canonicalUrl={CANONICAL}
         image="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ProductSchema name="Bruno Mars The Romantic Tour Europe 2026" price={125} highPrice={650} url={CANONICAL} category="concert" venue="Wembley Stadium" city="London" />
-      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Bruno Mars Tour 2026", url: CANONICAL }]} />
+<BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Bruno Mars Tour 2026", url: CANONICAL }]} />
 
       {/* HERO */}
       <section className="relative py-20 overflow-hidden">

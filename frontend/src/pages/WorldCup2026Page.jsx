@@ -5,7 +5,6 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import SEOHead from "../components/SEOHead";
 
@@ -63,14 +62,7 @@ const WorldCup2026Page = () => {
     "endDate": "2026-07-19",
     "performer": {"@type": "SportsTeam", "name": "FIFA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {
-      "@type": "Offer",
-      "lowPrice": events[0]?.lowest_price || 285,
-      "highPrice": 35000,
-      "priceCurrency": "USD","availability": "https://schema.org/LimitedAvailability",
-      "url": "https://euromatchtickets.com/world-cup-2026",
-      "validFrom": "2025-01-01"
-    }
+    
   };
 
   return (
@@ -82,7 +74,7 @@ const WorldCup2026Page = () => {
         canonicalUrl="https://euromatchtickets.com/world-cup-2026"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026" category="worldcup" venue="Multiple Venues" city="USA/Mexico/Canada" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "World Cup 2026", url: "https://euromatchtickets.com/world-cup-2026" }]} />
       
       <title>FIFA World Cup 2026 Tickets | Final $1,425 | Semi-Finals | Group Stage | EuroMatchTickets</title>

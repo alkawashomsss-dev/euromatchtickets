@@ -3,7 +3,6 @@ import { Calendar, MapPin, Shield, Zap, Flag, Ticket, HelpCircle, CreditCard, He
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const AustraliaGPPage = () => {
@@ -20,7 +19,7 @@ const AustraliaGPPage = () => {
     "location": { "@type": "Place", "name": "Albert Park Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "159", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -42,12 +41,12 @@ const AustraliaGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Australian GP Tickets 2026 | Melbourne F1 Prices"
-        description="Buy Australian Grand Prix 2026 Melbourne tickets from €159. Albert Park Circuit. Jones, Brabham, Prost grandstands. VIP Hospitality. 100% Ticket."
+        title="Australian GP 2026 Tickets (Melbourne F1) — Prices & Availability | EuroMatchTickets"
+        description="Compare Australian Grand Prix 2026 listings at Albert Park. Updated prices from €159, Jones, Brabham and Prost grandstands plus VIP Hospitality. Instant QR delivery."
         image="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Australian Grand Prix Melbourne 2026" price={169} highPrice={3999} url="https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets" category="f1" venue="Albert Park Circuit" city="Melbourne" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Australian GP Melbourne 2026", url: "https://euromatchtickets.com/f1-australian-grand-prix-melbourne-tickets" }]} />
 
       <section className="relative py-20 overflow-hidden">

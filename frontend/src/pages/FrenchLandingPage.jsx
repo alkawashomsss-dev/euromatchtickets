@@ -37,15 +37,6 @@ const FrenchLandingPage = () => {
     { question: "Livrez-vous en France?", answer: "Oui! Livraison instantanee par email dans le monde entier. Pas besoin d'attendre - votre QR code est pret immediatement." }
   ];
 
-  const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
-    "@type": "Product",
-    "name": "Billets EuroMatchTickets - France",
-    "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "39", "highPrice": "2500" }
-  };
-
   return (
     <div className="min-h-screen bg-[#1e1e1e]" data-testid="french-landing-page">
       <SEOHead
@@ -54,9 +45,7 @@ const FrenchLandingPage = () => {
         keywords="acheter billets, billets champions league, billets f1, billets concerts, billets pas cher, billets psg, billets monaco gp, billets taylor swift"
         canonical="https://euromatchtickets.com/fr/acheter-billets"
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
-
-      {/* Hero */}
+{/* Hero */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-slate-900 to-red-900/30" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">

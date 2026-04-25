@@ -3,7 +3,6 @@ import { Calendar, MapPin, Shield, Zap, Flag, Ticket, HelpCircle, CreditCard, He
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const SaudiGPPage = () => {
@@ -20,7 +19,7 @@ const SaudiGPPage = () => {
     "location": { "@type": "Place", "name": "Jeddah Corniche Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Jeddah", "addressCountry": "SA" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "169", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -42,12 +41,12 @@ const SaudiGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Saudi GP Tickets 2026 | Jeddah F1 Night Race"
-        description="Buy Saudi Arabian Grand Prix 2026 Jeddah tickets from €169. Fastest street circuit! Night race on the Red Sea. VIP Hospitality. 100% Ticket Guarantee."
+        title="Saudi GP 2026 Tickets (Jeddah F1) — Prices & Availability | EuroMatchTickets"
+        description="Compare Saudi Arabian Grand Prix 2026 listings at Jeddah Corniche Circuit. Updated prices from €169, night-race grandstands and VIP Hospitality. Instant QR delivery."
         image="https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Saudi Arabian Grand Prix 2026" price={199} highPrice={4499} url="https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets" category="f1" venue="Jeddah Corniche Circuit" city="Jeddah" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Saudi Arabian GP 2026", url: "https://euromatchtickets.com/f1-saudi-arabian-grand-prix-jeddah-tickets" }]} />
 
       <section className="relative py-20 overflow-hidden">

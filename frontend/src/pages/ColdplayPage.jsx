@@ -26,12 +26,12 @@ const ColdplayPage = () => {
     }).catch(() => {});
   }, []);
   const shows = [
-    { date: "Jun 12, 2026", venue: "Wembley Stadium", city: "London", time: "19:00", status: "Selling Fast", badge: "bg-amber-500/100" },
+    { date: "Jun 12, 2026", venue: "Wembley Stadium", city: "London", time: "19:00", status: "Available", badge: "bg-amber-500/100" },
     { date: "Jun 13, 2026", venue: "Wembley Stadium", city: "London", time: "19:00", status: "Few Left", badge: "bg-[#e10600]/100" },
     { date: "Jun 20, 2026", venue: "Stade de France", city: "Paris", time: "20:00", status: "Available", badge: "bg-emerald-500/100" },
     { date: "Jun 27, 2026", venue: "Olympiastadion", city: "Berlin", time: "19:30", status: "Available", badge: "bg-emerald-500/100" },
     { date: "Jul 04, 2026", venue: "Camp Nou", city: "Barcelona", time: "20:30", status: "New!", badge: "bg-blue-500/100" },
-    { date: "Jul 11, 2026", venue: "San Siro", city: "Milan", time: "20:00", status: "Selling Fast", badge: "bg-amber-500/100" }
+    { date: "Jul 11, 2026", venue: "San Siro", city: "Milan", time: "20:00", status: "Available", badge: "bg-amber-500/100" }
   ];
 
   const packages = [
@@ -41,24 +41,13 @@ const ColdplayPage = () => {
     { name: "Infinity Station", price: 495, desc: "VIP Experience", tag: "VIP", features: ["Premium lounge", "Exclusive merch", "Early venue access"] }
   ];
 
-  const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
-    "@type": "Product",
-    "name": "Coldplay European Tour 2026 Tickets",
-    "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    
-    
-    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "495","validFrom": "2025-01-01" }
-  };
-
   return (
     <div className="min-h-screen bg-[#050520]" data-testid="coldplay-page">
       <FAQSchemaScript faqs={CP_FAQS} />
-      <SEOHead title="Buy Coldplay Tour Tickets 2026 | Europe Concerts From €69 | Barcelona" description="Buy Coldplay Music of the Spheres 2026 tickets from €69. Barcelona, Berlin, London. Selling Fast. Cancellation refund policy. Instant QR delivery." canonicalUrl="https://euromatchtickets.com/coldplay-tour-2026"
+      <SEOHead title="Buy Coldplay Tour Tickets 2026 | Europe Concerts From €69 | Barcelona" description="Buy Coldplay Music of the Spheres 2026 tickets from €69. Barcelona, Berlin, London. Available. Cancellation refund policy. Instant QR delivery." canonicalUrl="https://euromatchtickets.com/coldplay-tour-2026"
         image="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&h=630&fit=crop"
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
-      <BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Coldplay Tour 2026", url: "https://euromatchtickets.com/coldplay-tour-2026" }]} />
+<BreadcrumbStructuredData items={[{ name: "Home", url: "https://euromatchtickets.com" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Coldplay Tour 2026", url: "https://euromatchtickets.com/coldplay-tour-2026" }]} />
 
       {/* Hero - Cosmic / Spheres theme */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">

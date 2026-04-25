@@ -3,7 +3,6 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const MiamiGPPage = () => {
@@ -20,7 +19,7 @@ const MiamiGPPage = () => {
     "location": { "@type": "Place", "name": "Miami International Autodrome", "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressCountry": "US" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "249", "highPrice": "3999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-miami-grand-prix-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -42,12 +41,12 @@ const MiamiGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Miami GP Tickets 2026 | F1 Beach & Marina Seats"
-        description="Buy Miami Grand Prix 2026 tickets from €249. F1 Miami International Autodrome. Beach Grandstand, Turn 1, Marina views. VIP Hospitality. 100% Ticket."
+        title="Miami GP 2026 Tickets (F1 Hard Rock Stadium) — Prices & Availability | EuroMatchTickets"
+        description="Compare Miami Grand Prix 2026 listings at Miami International Autodrome. Updated prices from €249, Beach Grandstand, Turn 1, Marina views and VIP Hospitality. Instant QR delivery."
         image="https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Miami Grand Prix 2026" price={229} highPrice={4999} url="https://euromatchtickets.com/f1-miami-grand-prix-tickets" category="f1" venue="Miami International Autodrome" city="Miami" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Miami GP 2026", url: "https://euromatchtickets.com/f1-miami-grand-prix-tickets" }]} />
 
       {/* Hero */}

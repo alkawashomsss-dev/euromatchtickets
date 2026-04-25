@@ -83,15 +83,7 @@ const MotoGPTicketsPage = () => {
             "@type": "Organization",
             "name": "MotoGP World Championship"
           },
-          "offers": {
-            "@type": "Offer",
-            "lowPrice": "45",
-            "highPrice": "1500",
-            "priceCurrency": "EUR","availability": "https://schema.org/InStock",
-            "url": "https://euromatchtickets.com/motogp-tickets",
-            "validFrom": "2025-01-01",
-            "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
-          }
+          
         }
       },
       {

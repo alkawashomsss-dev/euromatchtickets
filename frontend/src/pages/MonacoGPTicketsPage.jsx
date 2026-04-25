@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Clock, Users, Shield, Zap, Trophy, Star, ChevronRight, Ticket } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import axios from "axios";
 import { API } from "../App";
@@ -60,12 +59,12 @@ const MonacoGPTicketsPage = () => {
   return (
     <>
       <SEOHead
-        title="Monaco GP 2026 Tickets | Buy F1 Monaco Tickets"
-        description="Buy Monaco Grand Prix 2026 tickets. Grandstand, VIP Hospitality & Paddock Club available. Secure booking, instant delivery. Limited availability - Book now!"
+        title="Monaco GP 2026 Tickets — Prices & Availability | EuroMatchTickets"
+        description="Compare verified Monaco F1 2026 listings. Grandstand, VIP Hospitality and Paddock Club availability with updated prices, secure checkout and instant QR delivery."
         image="https://static.prod-images.emergentagent.com/jobs/775fd9a1-fbbf-459e-af56-55fb2499685c/images/1ad01909b1565e2be44a7b26803868d06378b04d70810a060231d8ef9d1b0c17.png"
       />
 
-      <ProductSchema name="Monaco Grand Prix 2026" price={249} highPrice={8999} url="https://euromatchtickets.com/f1-monaco-grand-prix-tickets" category="f1" venue="Circuit de Monaco" city="Monte Carlo" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Monaco GP 2026", url: "https://euromatchtickets.com/f1-monaco-grand-prix-tickets" }]} />
 
       <div className="min-h-screen bg-[#0e0e14]">
@@ -124,7 +123,7 @@ const MonacoGPTicketsPage = () => {
             <div className="flex items-center justify-center gap-4 text-white">
               <Zap className="w-6 h-6 animate-pulse" />
               <span className="text-lg md:text-xl font-bold">
-                🔥 SELLING FAST - Only {seatsLeft} tickets remaining for Monaco GP 2026!
+                Only {seatsLeft} tickets remaining for Monaco GP 2026!
               </span>
               <Zap className="w-6 h-6 animate-pulse" />
             </div>

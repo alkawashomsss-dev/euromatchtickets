@@ -5,7 +5,6 @@ import { API } from "../App";
 import { Calendar, MapPin, Ticket, Trophy, Star, Shield, ChevronRight, Sparkles, Zap, Crown, ArrowRight, Check, Users, Clock, Flame, Eye, TrendingUp } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
@@ -68,7 +67,7 @@ const SuperBowlPage = () => {
     "location": { "@type": "Place", "name": "Levi's Stadium", "address": { "@type": "PostalAddress", "addressLocality": "Santa Clara", "addressRegion": "CA", "addressCountry": "US" } },
     "performer": {"@type": "SportsTeam", "name": "NFL"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "lowPrice": "495", "highPrice": "25000", "priceCurrency": "EUR","availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/super-bowl-2027-tickets", "validFrom": "2025-01-01", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
+    
   };
 
   return (
@@ -79,7 +78,7 @@ const SuperBowlPage = () => {
         image="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Super Bowl 2027" price={2499} highPrice={29999} url="https://euromatchtickets.com/super-bowl-2026-tickets" category="football" venue="SoFi Stadium" city="Los Angeles" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "American Football", url: "https://euromatchtickets.com/events" }, { name: "Super Bowl 2027", url: "https://euromatchtickets.com/super-bowl-2026-tickets" }]} />
 
       {/* HERO */}
@@ -109,7 +108,7 @@ const SuperBowlPage = () => {
           <Countdown />
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="flex flex-wrap justify-center gap-3 mt-8 mb-6 text-xs text-slate-400">
-            <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><Users className="w-3.5 h-3.5 text-red-400" /> {liveStats.available > 0 ? `${liveStats.available} tickets left` : 'Selling Fast'}</span>
+            <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><Users className="w-3.5 h-3.5 text-red-400" /> {liveStats.available > 0 ? `${liveStats.available} tickets left` : 'Available'}</span>
             {liveStats.lowest > 0 && <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm"><TrendingUp className="w-3.5 h-3.5 text-amber-400" /> From &euro;{Math.round(liveStats.lowest)}</span>}
             <span className="flex items-center gap-1.5 bg-[#e10600]/100/10 border border-red-500/30 rounded-full px-3 py-1.5 backdrop-blur-sm text-red-300"><Flame className="w-3.5 h-3.5" /> High Demand</span>
           </motion.div>

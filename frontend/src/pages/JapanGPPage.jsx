@@ -3,7 +3,6 @@ import { Calendar, MapPin, Trophy, Star, Shield, Zap, Flag, Ticket, HelpCircle, 
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const JapanGPPage = () => {
@@ -20,7 +19,7 @@ const JapanGPPage = () => {
     "location": { "@type": "Place", "name": "Suzuka International Racing Course", "address": { "@type": "PostalAddress", "addressLocality": "Suzuka", "addressCountry": "JP" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "189", "highPrice": "2499", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-japanese-grand-prix-suzuka-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -42,12 +41,12 @@ const JapanGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Japanese GP Tickets 2026 | Suzuka F1 Prices"
-        description="Buy Japanese Grand Prix 2026 Suzuka tickets from €189. The legendary figure-8 circuit! 130R, S-Curves, Hairpin grandstands. VIP Hospitality. 100% Ticket."
+        title="Japanese GP 2026 Tickets (Suzuka F1) — Prices & Availability | EuroMatchTickets"
+        description="Compare Japanese Grand Prix 2026 listings at Suzuka Circuit. Updated prices from €189, 130R, S-Curves and Hairpin grandstands plus VIP Hospitality. Instant QR delivery."
         image="https://images.unsplash.com/photo-1528164344705-47542687000d?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Japanese Grand Prix Suzuka 2026" price={179} highPrice={3999} url="https://euromatchtickets.com/f1-japanese-grand-prix-suzuka-tickets" category="f1" venue="Suzuka International Racing Course" city="Suzuka" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Japanese GP Suzuka 2026", url: "https://euromatchtickets.com/f1-japanese-grand-prix-suzuka-tickets" }]} />
 
       <section className="relative py-20 overflow-hidden">

@@ -3,7 +3,6 @@ import { Calendar, MapPin, Music, Star, Shield, Users, TrendingUp, Zap, Flame } 
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
@@ -21,7 +20,7 @@ const BadBunnyPage = () => {
     "location": { "@type": "Place", "name": "Tottenham Hotspur Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "MusicGroup", "name": "Bad Bunny" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "145", "highPrice": "600", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
+    
   };
 
   const faqs = [
@@ -39,11 +38,10 @@ const BadBunnyPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
-      <SEOHead title="Buy Bad Bunny London Tickets 2026 | Tottenham Stadium From €145" description="Buy Bad Bunny London 2026 tickets from €145. Tottenham Hotspur Stadium, June 27-28. DeBi TiRAR MaS FOToS Tour. Selling Fast. Cancellation refund policy. Instant QR." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1200" />
+      <SEOHead title="Buy Bad Bunny London Tickets 2026 | Tottenham Stadium From €145" description="Buy Bad Bunny London 2026 tickets from €145. Tottenham Hotspur Stadium, June 27-28. DeBi TiRAR MaS FOToS Tour. Available. Cancellation refund policy. Instant QR." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1200" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <FAQSchemaScript faqs={faqs} />
-      <ProductSchema name="Bad Bunny London 2026 Tickets" price={145} highPrice={600} url={CANONICAL} category="concert" venue="Tottenham Hotspur Stadium" city="London" />
-      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Bad Bunny London 2026", url: CANONICAL }]} />
+<BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Bad Bunny London 2026", url: CANONICAL }]} />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-pink-500/10 to-slate-950" />

@@ -136,7 +136,7 @@ const SocialHubPage = () => {
             <Clock className="w-3 h-3 mr-1" /> Next Big Event
           </Badge>
           <h2 className="text-3xl font-black text-white mb-2">{nextEvent.name}</h2>
-          <p className="text-white/30 mb-8">Tickets from &euro;{nextEvent.price} &bull; Selling fast</p>
+          <p className="text-white/30 mb-8">Tickets from &euro;{nextEvent.price} &bull;. </p>
 
           <div className="flex justify-center gap-4 md:gap-6 mb-8">
             <CountdownUnit value={nextCD.days} label="Days" />

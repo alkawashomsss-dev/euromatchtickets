@@ -372,35 +372,8 @@ export default function DynamicSEOPage() {
           "@type": page.artist ? "PerformingGroup" : "Organization",
           "name": page.artist || organizer.name
         },
-        "offers": {
-          "@type": "Offer",
-          "lowPrice": String(page.price_low || 49),
-          "highPrice": String(page.price_high || (page.price_low ? page.price_low * 8 : 1500)),
-          "priceCurrency": "EUR","availability": "https://schema.org/InStock",
-          "url": `${BASE}/${page.slug}`,
-          "validFrom": "2025-01-01",
-          "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": BASE }
-        },
+        
         "organizer": { "@type": "Organization", "name": organizer.name, "url": organizer.url }
-      })}} />
-
-      {/* Structured Data - Product Schema (separate for Google Merchant) */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": `${eventName} Tickets`,
-        "description": productDesc,
-        "image": page.image_url || `${BASE}/logo-192.png`,
-        "url": `${BASE}/${page.slug}`,
-        "brand": { "@type": "Organization", "name": brand },
-        "offers": {
-          "@type": "Offer",
-          "lowPrice": String(page.price_low || 49),
-          "highPrice": String(page.price_high || (page.price_low ? page.price_low * 8 : 1500)),
-          "priceCurrency": "EUR","availability": "https://schema.org/InStock",
-          "url": `${BASE}/${page.slug}`,
-          "validFrom": "2025-01-01"
-        }
       })}} />
 
       {/* Breadcrumb Schema */}

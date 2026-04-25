@@ -50,17 +50,6 @@ const MonacoGPPage = () => {
     { icon: Gem, title: "Riviera Lifestyle", desc: "Combine your GP weekend with Monte Carlo's casinos, Michelin-star restaurants, yacht parties, and the stunning French Riviera coastline. It's F1's most glamorous weekend." }
   ];
 
-  const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
-    "@type": "Product",
-    "name": "Monaco Grand Prix 2026 Tickets",
-    "description": "Verified Monaco GP tickets with QR ticket delivery - cheapest prices guaranteed",
-    "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    
-    
-    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "195", "highPrice": "2995","validFrom": "2025-01-01" }
-  };
-
   return (
     <div className="min-h-screen bg-[#0a0a1a]" data-testid="monaco-gp-page">
       <FAQSchemaScript faqs={MONACO_FAQS} />
@@ -69,8 +58,7 @@ const MonacoGPPage = () => {
         description="Monaco F1 2026 — official race weekend dates, grandstand & yacht hospitality prices, verified-seller availability. Instant QR, full refund if the race is cancelled."
         canonicalUrl="https://euromatchtickets.com/f1-monaco-grand-prix-tickets"
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
-      <BreadcrumbStructuredData items={[
+<BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
         { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" },
         { name: "Monaco Grand Prix Tickets", url: "https://euromatchtickets.com/f1-monaco-grand-prix-tickets" }

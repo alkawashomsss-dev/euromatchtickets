@@ -5,7 +5,6 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import SEOHead from "../components/SEOHead";
 
@@ -51,7 +50,7 @@ const JohnLegendPage = () => {
     "performer": {"@type": "Person", "name": "John Legend"},
     "location": {"@type": "Place", "name": "Etihad Arena", "address": {"@type": "PostalAddress", "addressLocality": "Abu Dhabi", "addressCountry": "AE"}},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "Offer", "lowPrice": 90, "highPrice": 500, "priceCurrency": "EUR","availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/john-legend-abu-dhabi-tickets", "validFrom": "2025-01-01"}
+    
   };
 
   return (
@@ -63,7 +62,7 @@ const JohnLegendPage = () => {
         canonicalUrl="https://euromatchtickets.com/john-legend-tour-2026"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="John Legend Live 2026" price={89} highPrice={1499} url="https://euromatchtickets.com/john-legend-tour-2026" category="concert" venue="Etihad Arena" city="Abu Dhabi" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "John Legend Live 2026", url: "https://euromatchtickets.com/john-legend-tour-2026" }]} />
 
       {/* Language Selector */}

@@ -97,7 +97,7 @@ async def get_events(
                 word_conditions.append({"$or": [{f: {"$regex": word, "$options": "i"}} for f in field_list]})
             strict_query = {**query, "$and": word_conditions}
             # Try strict AND first
-            strict_results = await db.events.find(strict_query, {"_id": 0, "description": 0}).sort("event_date", 1).limit(min(limit, 200)).to_list(min(limit, 200))
+            strict_results = await db.events.find(strict_query, {"_id": 0, "description": 0}).sort("event_date", 1).limit(min(limit, 500)).to_list(min(limit, 500))
             if strict_results:
                 events_raw = strict_results
             else:
@@ -114,7 +114,7 @@ async def get_events(
     projection = {"_id": 0, "description": 0}
 
     if events_raw is None:
-        events = await db.events.find(query, projection).sort("event_date", 1).limit(min(limit, 200)).to_list(min(limit, 200))
+        events = await db.events.find(query, projection).sort("event_date", 1).limit(min(limit, 500)).to_list(min(limit, 500))
     else:
         events = events_raw
 

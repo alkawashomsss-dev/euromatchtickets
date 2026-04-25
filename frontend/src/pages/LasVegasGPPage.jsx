@@ -3,7 +3,6 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const LasVegasGPPage = () => {
@@ -24,7 +23,7 @@ const LasVegasGPPage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "249", "highPrice": "3999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-las-vegas-grand-prix-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -39,12 +38,12 @@ const LasVegasGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Las Vegas GP Tickets 2026 | F1 Night Race Prices"
-        description="Buy Las Vegas Grand Prix 2026 tickets from €249. F1 on the Strip! Sphere Grandstand, Strip View, VIP Hospitality. Night race past casinos. 100% Buyer."
+        title="Las Vegas GP 2026 Tickets (Strip F1 Night Race) — Prices & Availability | EuroMatchTickets"
+        description="Compare Las Vegas Grand Prix 2026 listings on the Strip. Updated prices from €249, Sphere Grandstand, Strip View and VIP Hospitality availability. Instant QR delivery."
         image="https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Las Vegas Grand Prix 2026" price={249} highPrice={5999} url="https://euromatchtickets.com/f1-las-vegas-grand-prix-tickets" category="f1" venue="Las Vegas Strip Circuit" city="Las Vegas" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Las Vegas GP 2026", url: "https://euromatchtickets.com/f1-las-vegas-grand-prix-tickets" }]} />
 
       {/* Hero */}

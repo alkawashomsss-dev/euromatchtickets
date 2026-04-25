@@ -145,26 +145,31 @@ const MatchesPage = () => {
     const fetchMatches = async () => {
       setLoading(true);
       try {
-        // Pull both World Cup + club football events from the events endpoint
-        const [wc, club] = await Promise.all([
-          axios.get(`${API}/events?event_type=worldcup&limit=200`),
-          axios.get(`${API}/events?event_type=football&limit=100`)
-        ]);
-        const rows = [...(wc.data || []), ...(club.data || [])].map(e => ({
-          match_id: e.slug || e.id,
-          match_date: e.event_date,
-          league: (e.league || '').toLowerCase().replace(/\s+/g, '_'),
-          league_label: e.league || (e.event_type === 'worldcup' ? 'FIFA World Cup 2026' : 'Football'),
-          home_team: e.home_team || '',
-          away_team: e.away_team || '',
-          home_logo: e.home_flag || e.home_logo || '',
-          away_logo: e.away_flag || e.away_logo || '',
-          stadium: e.venue || '',
-          city: e.city || '',
-          lowest_price: e.lowest_price,
-          available_tickets: e.available_tickets,
-          title: e.title
-        })).filter(m => m.home_team && m.away_team); // drop Finalist placeholders
+        // Single request: backend's "football" category aggregates worldcup + match + football
+        const res = await axios.get(`${API}/events?event_type=football&limit=300`);
+        const rows = (res.data || []).map(e => {
+          // Some FIFA bracket placeholders ("Round of 32 - Match 73") have no
+          // confirmed teams yet. Don't drop them — show "TBD" so the catalog
+          // size matches reality.
+          const home = e.home_team || (e.event_type === 'worldcup' ? 'TBD' : '');
+          const away = e.away_team || (e.event_type === 'worldcup' ? 'TBD' : '');
+          return {
+            match_id: e.slug || e.id || e.event_id,
+            match_date: e.event_date,
+            league: (e.league || '').toLowerCase().replace(/\s+/g, '_'),
+            league_label: e.league || (e.event_type === 'worldcup' ? 'FIFA World Cup 2026' : 'Football'),
+            home_team: home,
+            away_team: away,
+            home_logo: e.home_flag || e.home_logo || '',
+            away_logo: e.away_flag || e.away_logo || '',
+            stadium: e.venue || '',
+            city: e.city || '',
+            lowest_price: e.lowest_price,
+            available_tickets: e.available_tickets,
+            title: e.title,
+            event_type: e.event_type,
+          };
+        }).filter(m => m.home_team || m.away_team || m.title);
 
         // Apply server-side-ish filters (client-side since /api/matches endpoint was removed)
         let filtered = rows;

@@ -173,89 +173,6 @@ const F1TicketsPage = () => {
     fetchF1Events();
   }, []);
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "SportsEvent",
-        "name": "Formula 1 World Championship 2026",
-        "description": "Buy official F1 2026 tickets for all 24 Grand Prix races. Monaco GP from \u20ac289, Silverstone from \u20ac149. Market pricing may vary.",
-        "startDate": "2026-03-06",
-        "endDate": "2026-12-06",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "image": ["https://euromatchtickets.com/logo-192.png"],
-        "url": "https://euromatchtickets.com/f1-tickets",
-        "location": { "@type": "Place", "name": "24 Circuits Worldwide", "address": { "@type": "PostalAddress", "addressCountry": "GB" } },
-        "organizer": { "@type": "Organization", "name": "Formula 1", "url": "https://www.formula1.com" },
-        "performer": { "@type": "SportsTeam", "name": "Formula 1 World Championship" },
-        "offers": {
-          "@type": "Offer",
-          "lowPrice": "61",
-          "highPrice": "5989",
-          "priceCurrency": "EUR","availability": "https://schema.org/InStock",
-          "url": "https://euromatchtickets.com/f1-tickets",
-          "validFrom": "2025-01-01",
-          "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "F1 2026 Grand Prix Tickets",
-        "description": "Buy Formula 1 2026 tickets for all 24 Grand Prix races. Verified prices with 0% fees.",
-        "image": "https://euromatchtickets.com/logo-192.png",
-        "url": "https://euromatchtickets.com/f1-tickets",
-        "brand": { "@type": "Organization", "name": "EuroMatchTickets" },
-        "offers": {
-          "@type": "Offer",
-          "lowPrice": "61",
-          "highPrice": "5989",
-          "priceCurrency": "EUR","availability": "https://schema.org/InStock",
-          "url": "https://euromatchtickets.com/f1-tickets"
-        }
-      },
-      {
-        "@type": "ItemList",
-        "name": "F1 2026 Race Calendar with Tickets",
-        "numberOfItems": 24,
-        "itemListElement": raceCalendar2026.slice(0, 10).map((r, i) => {
-          const monthMap = {'Mar':'03','Apr':'04','May':'05','Jun':'06','Jul':'07','Aug':'08','Sep':'09','Oct':'10','Nov':'11','Dec':'12'};
-          const monthStr = r.dates.split(' ')[0];
-          const dayStr = r.dates.split('-')[0].split(' ').pop().padStart(2, '0');
-          const month = monthMap[monthStr] || '03';
-          const startDate = `2026-${month}-${dayStr}`;
-          const endDay = r.dates.includes('-') ? r.dates.split('-').pop().trim().padStart(2, '0') : dayStr;
-          const endDate = `2026-${month}-${endDay}`;
-          return {
-          "@type": "ListItem",
-          "position": i + 1,
-          "item": {
-            "@type": "SportsEvent",
-            "name": `${r.gp} 2026`,
-            "description": `Buy ${r.gp} 2026 tickets from €${r.price}. ${r.circuit}. Verified sellers, QR ticket delivery, cancellation refund policy.`,
-            "startDate": startDate,
-            "endDate": endDate,
-            "eventStatus": "https://schema.org/EventScheduled",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "location": { "@type": "Place", "name": r.circuit, "address": { "@type": "PostalAddress", "addressCountry": {"@type": "Country", "name": r.flag} } },
-            "image": "https://euromatchtickets.com/images/heroes/f1-red-lg.webp",
-            "performer": { "@type": "SportsTeam", "name": "Formula 1" },
-            "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-            "offers": {
-              "@type": "Offer",
-              "lowPrice": r.price,
-              "highPrice": String(parseInt(r.price) * 10),
-              "priceCurrency": "EUR","availability": "https://schema.org/InStock",
-              "url": "https://euromatchtickets.com/f1-tickets",
-              "validFrom": "2025-01-01",
-              "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
-            }
-          }
-        }})
-      }
-    ]
-  };
-
   // ISO code flags for calendar
   const codeFlags = {
     "AU": "\ud83c\udde6\ud83c\uddfa", "CN": "\ud83c\udde8\ud83c\uddf3", "JP": "\ud83c\uddef\ud83c\uddf5", "BH": "\ud83c\udde7\ud83c\udded",
@@ -296,9 +213,7 @@ const F1TicketsPage = () => {
         description="Buy F1 2026 tickets at best prices. Full 2026 calendar, driver standings, team info. Monaco GP from \u20ac289, Silverstone from \u20ac149, Monza from \u20ac99. All 24 races."
         image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200&h=630&fit=crop"
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-
-      {/* ═══════════════ HERO ═══════════════ */}
+{/* ═══════════════ HERO ═══════════════ */}
       <section className="relative py-20 overflow-hidden" data-testid="f1-hero">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">

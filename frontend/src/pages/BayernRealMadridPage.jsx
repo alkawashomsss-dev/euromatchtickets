@@ -5,7 +5,6 @@ import { API } from "../App";
 import { Calendar, MapPin, Ticket, Shield, Zap, Star, Users, Clock, Flag, Award, ChevronRight, Check, TrendingDown } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
@@ -73,7 +72,7 @@ const BayernRealMadridPage = () => {
       { "@type": "SportsTeam", "name": "Real Madrid CF" }
     ],
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "199", "highPrice": "2999", "availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/bayern-vs-real-madrid-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -102,13 +101,13 @@ const BayernRealMadridPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="bayern-real-madrid-page">
       <SEOHead
-        title="Bayern vs Real Madrid Tickets 2026 | UCL Best Prices"
-        description="Buy Bayern Munich vs Real Madrid Champions League tickets from €199. Allianz Arena, Munich. Verified tickets, QR ticket delivery, Buyer protection."
+        title="Bayern vs Real Madrid 2026 Tickets (UCL Allianz Arena) — Prices & Availability | EuroMatchTickets"
+        description="Compare Bayern Munich vs Real Madrid Champions League listings at the Allianz Arena. Updated prices from €199, verified-seller availability, instant QR delivery and full refund if the match is cancelled."
         canonicalUrl="https://euromatchtickets.com/bayern-vs-real-madrid-tickets"
         image="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Bayern Munich vs Real Madrid UCL 2026" price={129} highPrice={2999} url="https://euromatchtickets.com/bayern-munich-vs-real-madrid-tickets" category="football" venue="Allianz Arena" city="Munich" />
+
       <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
         { name: "Football Tickets", url: "https://euromatchtickets.com/football-tickets" },

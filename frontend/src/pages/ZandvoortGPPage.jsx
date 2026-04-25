@@ -3,7 +3,6 @@ import { Calendar, MapPin, Trophy, Star, Shield, Zap, Flag, Ticket } from "lucid
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
@@ -21,7 +20,7 @@ const ZandvoortGPPage = () => {
     "location": { "@type": "Place", "name": "Circuit Zandvoort", "address": { "@type": "PostalAddress", "addressLocality": "Zandvoort", "addressCountry": "NL" } },
     "performer": { "@type": "SportsTeam", "name": "Formula 1" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "189", "highPrice": "4489", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
+    
   };
 
   const faqs = [
@@ -44,11 +43,10 @@ const ZandvoortGPPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]">
-      <SEOHead title="Buy Dutch GP Tickets 2026 | Zandvoort F1 From €189" description="Buy Dutch Grand Prix 2026 tickets from €189. Circuit Zandvoort, Aug 29-31. Max Verstappen home race. Selling Fast. Cancellation refund policy. Instant QR." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1541447271487-09612b3f49f7?w=1200" />
+      <SEOHead title="Dutch GP 2026 Tickets (Zandvoort F1) — Prices & Availability | EuroMatchTickets" description="Compare Dutch Grand Prix 2026 listings at Circuit Zandvoort, Aug 29-31. Updated prices from €189, grandstand availability and VIP Hospitality. Instant QR delivery." canonicalUrl={CANONICAL} image="https://images.unsplash.com/photo-1541447271487-09612b3f49f7?w=1200" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <FAQSchemaScript faqs={faqs} />
-      <ProductSchema name="F1 Dutch Grand Prix Zandvoort 2026" price={189} highPrice={4489} url={CANONICAL} category="f1" venue="Circuit Zandvoort" city="Zandvoort" />
-      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Dutch GP Zandvoort", url: CANONICAL }]} />
+<BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Dutch GP Zandvoort", url: CANONICAL }]} />
 
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600/30 via-slate-900 to-slate-950" />

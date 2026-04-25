@@ -3,7 +3,6 @@ import { Calendar, MapPin, Shield, Zap, Flag, Ticket, HelpCircle, CreditCard, He
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const SpainGPPage = () => {
@@ -20,7 +19,7 @@ const SpainGPPage = () => {
     "location": { "@type": "Place", "name": "Circuit de Barcelona-Catalunya", "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "119", "highPrice": "1999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-spanish-grand-prix-barcelona-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -42,12 +41,12 @@ const SpainGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Spanish GP Tickets 2026 | Barcelona F1 Prices"
-        description="Buy Spanish Grand Prix 2026 Barcelona tickets from €119. Circuit de Barcelona-Catalunya. Grandstand G, C, H. VIP Hospitality. 100% Ticket Guarantee."
+        title="Spanish GP 2026 Tickets (Barcelona F1) — Prices & Availability | EuroMatchTickets"
+        description="Compare Spanish Grand Prix 2026 listings at Circuit de Barcelona-Catalunya. Updated prices from €119, Grandstand G, C, H and VIP Hospitality availability. Instant QR delivery."
         image="https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Spanish Grand Prix Barcelona 2026" price={129} highPrice={2999} url="https://euromatchtickets.com/f1-spanish-grand-prix-barcelona-tickets" category="f1" venue="Circuit de Barcelona-Catalunya" city="Barcelona" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Spanish GP Barcelona 2026", url: "https://euromatchtickets.com/f1-spanish-grand-prix-barcelona-tickets" }]} />
 
       <section className="relative py-20 overflow-hidden">

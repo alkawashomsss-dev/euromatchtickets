@@ -4,7 +4,6 @@ import { Flag, Shield, Zap, Star, ChevronRight, Check, MapPin, Ticket } from "lu
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const F1LandingPage = () => {
@@ -27,7 +26,7 @@ const F1LandingPage = () => {
         image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200&h=630&fit=crop"
       />
 
-      <ProductSchema name="F1 Tickets 2026 All Grand Prix" price={79} highPrice={8999} url="https://euromatchtickets.com/f1-tickets" category="f1" venue="Various Circuits" city="Worldwide" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets 2026", url: "https://euromatchtickets.com/f1-tickets" }]} />
 
       {/* Hero Section */}

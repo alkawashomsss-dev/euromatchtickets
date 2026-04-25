@@ -59,7 +59,7 @@ export const ScarcityIndicator = ({ ticketsLeft = 5, totalTickets = 100 }) => {
             <Flame className="w-5 h-5 text-orange-400" />
           )}
           <span className={`font-bold ${isCritical ? 'text-red-400' : isLow ? 'text-orange-400' : 'text-slate-400'}`}>
-            {isCritical ? 'Almost Sold Out!' : isLow ? 'Selling Fast!' : 'Available'}
+            {isCritical ? 'Limited availability' : isLow ? 'Available!' : 'Available'}
           </span>
         </div>
         <Badge className={`${isCritical ? 'bg-[#e10600]/100' : isLow ? 'bg-orange-500' : 'bg-emerald-500/100'} text-white`}>

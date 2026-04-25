@@ -5,7 +5,6 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import SEOHead from "../components/SEOHead";
 
@@ -47,7 +46,7 @@ const ACLFestivalPage = () => {
     "startDate": "2026-10-02",
     "endDate": "2026-10-10",
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "Offer", "lowPrice": 332, "highPrice": 25650, "priceCurrency": "USD","availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/acl-festival-2026-tickets", "validFrom": "2025-01-01"}
+    
   };
 
   return (
@@ -59,7 +58,7 @@ const ACLFestivalPage = () => {
         canonicalUrl="https://euromatchtickets.com/acl-festival-2026"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="ACL Festival Austin 2026" price={149} highPrice={1999} url="https://euromatchtickets.com/acl-festival-2026" category="festival" venue="Zilker Park" city="Austin" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Festivals", url: "https://euromatchtickets.com/events?type=festival" }, { name: "ACL Festival Austin 2026", url: "https://euromatchtickets.com/acl-festival-2026" }]} />
       
       <title>ACL Festival 2026 Tickets | Austin City Limits | Ultimate Pass $25,650 | EuroMatchTickets</title>

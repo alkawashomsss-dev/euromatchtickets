@@ -4,7 +4,6 @@ import { Calendar, MapPin, Ticket, Shield, Zap, Star, Bike, Trophy, Mountain, Cl
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import axios from "axios";
 import { API } from "../App";
@@ -62,15 +61,7 @@ const IsleOfManTTPage = () => {
       "@type": "Organization",
       "name": "Isle of Man TT Races"
     },
-    "offers": { 
-      "@type": "Offer", 
-      "lowPrice": "45",
-      "highPrice": "500",
-      "url": "https://euromatchtickets.com/isle-of-man-tt-tickets",
-      "priceCurrency": "EUR","availability": "https://schema.org/InStock",
-      "validFrom": "2025-01-01",
-      "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
-    },
+    
     "image": "https://euromatchtickets.com/images/isle-of-man-tt.jpg"
   };
 
@@ -104,7 +95,7 @@ const IsleOfManTTPage = () => {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ProductSchema name="Isle of Man TT 2026" price={79} highPrice={999} url="https://euromatchtickets.com/isle-of-man-tt-tickets" category="motogp" venue="Snaefell Mountain Course" city="Douglas" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Motorsport", url: "https://euromatchtickets.com/events?type=motogp" }, { name: "Isle of Man TT 2026", url: "https://euromatchtickets.com/isle-of-man-tt-tickets" }]} />
 
       {/* Hero */}

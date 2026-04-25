@@ -24,19 +24,7 @@ const ChampionsLeaguePage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "UEFA Champions League"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "85", "highPrice": "1500", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/champions-league-tickets", "validFrom": "2025-01-01" }
-  };
-
-  const reviewSchema = {
-    "@context": "https://schema.org",
-    "image": "https://euromatchtickets.com/logo-192.png",
-    "@type": "Product",
-    "name": "UEFA Champions League 2025-26 Tickets",
-    "description": "Verified UEFA Champions League match tickets with QR ticket delivery",
-    "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
     
-    
-    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "85", "highPrice": "1500","validFrom": "2025-01-01" }
   };
 
   const matches = [
@@ -73,9 +61,7 @@ const ChampionsLeaguePage = () => {
         description="Buy UEFA Champions League tickets from €85. UCL Final 2026 Munich, Semi-finals, Quarter-finals. Real Madrid, Man City, Barcelona. Verified. Instant QR. Verified in Europe!"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
-
-      {/* Hero */}
+{/* Hero */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-slate-900 to-slate-950" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
@@ -277,7 +263,7 @@ const ChampionsLeaguePage = () => {
       <section className="py-16 bg-gradient-to-br from-blue-600 to-blue-800">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Don't Miss the Champions League</h2>
-          <p className="text-blue-100 mb-8 text-lg">Tickets are selling fast. Secure your spot now with Europe's cheapest prices and instant delivery.</p>
+          <p className="text-blue-100 mb-8 text-lg">Tickets are. Secure your spot now with Europe's cheapest prices and instant delivery.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/events?type=match">
               <Button className="bg-[#1e1e1e] text-blue-600 hover:bg-blue-500/10 text-lg px-8 py-3" data-testid="cta-browse-matches">Browse All Matches</Button>

@@ -5,7 +5,6 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 
@@ -67,15 +66,7 @@ const SpaGPPage = () => {
       { "@type": "Person", "name": "Charles Leclerc" }
     ],
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com", "logo": "https://euromatchtickets.com/logo-192.png" },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "lowPrice": "109",
-      "highPrice": "3489","availability": "https://schema.org/InStock",
-      "url": CANONICAL,
-      "validFrom": "2025-11-01",
-      "seller": { "@type": "Organization", "name": "EuroMatchTickets" }
-    }
+    
   };
 
   const faqSchema = {
@@ -153,7 +144,7 @@ const SpaGPPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <ProductSchema name="F1 Belgian Grand Prix Spa 2026" description="Buy Spa F1 tickets for the 2026 Belgian Grand Prix at Spa-Francorchamps from €109. Eau Rouge Grandstand, Paddock Club VIP. Verified verified tickets with QR ticket delivery." price={109} highPrice={3489} image="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200" url={CANONICAL} category="f1" venue="Circuit de Spa-Francorchamps" city="Stavelot" />
+
 
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden" data-testid="spa-hero">
@@ -179,7 +170,7 @@ const SpaGPPage = () => {
               <span className="w-2 h-2 bg-[#e10600] rounded-full animate-pulse" /> LIVE: {liveViewers} viewing
             </span>
             <span className="flex items-center gap-1.5 bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-black px-3 py-1.5 uppercase tracking-wider">
-              <AlertTriangle className="w-3 h-3" /> SELLING FAST
+              <AlertTriangle className="w-3 h-3" /> AVAILABLE
             </span>
             <span className="flex items-center gap-1.5 bg-[#15803d]/20 border border-[#15803d]/40 text-green-400 text-xs font-black px-3 py-1.5 uppercase tracking-wider">
               <Shield className="w-3 h-3" /> BUYER PROTECTION

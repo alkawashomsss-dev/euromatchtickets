@@ -5,7 +5,6 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import SEOHead from "../components/SEOHead";
 
@@ -53,7 +52,7 @@ const HarryStylesPage = () => {
     "performer": {"@type": "Person", "name": "Harry Styles"},
     "description": "Harry Styles live in concert. Together Together Tour 2026. VIP tickets from €427 to €15,300.",
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "Offer", "lowPrice": 427, "highPrice": 15300, "priceCurrency": "EUR","availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/harry-styles-tickets", "validFrom": "2025-01-01"}
+    
   };
 
   return (
@@ -65,7 +64,7 @@ const HarryStylesPage = () => {
         canonicalUrl="https://euromatchtickets.com/harry-styles-tickets"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Harry Styles Love On Tour 2026" price={79} highPrice={1999} url="https://euromatchtickets.com/harry-styles-tickets" category="concert" venue="Wembley Stadium" city="London" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Harry Styles Tour 2026", url: "https://euromatchtickets.com/harry-styles-tickets" }]} />
       
       {/* SEO Meta */}
@@ -96,7 +95,7 @@ const HarryStylesPage = () => {
         
         <div className="relative max-w-6xl mx-auto px-4 pt-20 text-center">
           <Badge className="bg-gradient-to-r from-pink-600 to-purple-600 text-white border-0 mb-4">
-            <Sparkles className="w-4 h-4 mr-2" />🔥 Selling Fast!
+            <Sparkles className="w-4 h-4 mr-2" />Live availability
           </Badge>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">

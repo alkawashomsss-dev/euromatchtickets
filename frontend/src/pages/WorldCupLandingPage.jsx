@@ -4,7 +4,6 @@ import { Trophy, Shield, Zap, Clock, Star, ChevronRight, Check, Users, Ticket, C
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
@@ -64,11 +63,11 @@ const WorldCupLandingPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <FAQSchemaScript faqs={WC_FAQS} />
       <SEOHead 
-        title="Buy FIFA World Cup 2026 Tickets | From €65 | USA, Mexico, Canada"
-        description="Buy World Cup 2026 tickets from €65. Group stage to Final across USA, Mexico, Canada. Limited availability. Cancellation refund policy. Instant QR delivery."
+        title="FIFA World Cup 2026 Tickets — Prices & Availability (USA, Mexico, Canada) | EuroMatchTickets"
+        description="Compare FIFA World Cup 2026 listings across USA, Mexico and Canada. Updated prices from €65, group-stage to Final availability, instant QR delivery and full refund if the match is cancelled."
         image="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=630&fit=crop"
       />
-      <ProductSchema name="FIFA World Cup 2026 Tickets" price={99} highPrice={9999} url="https://euromatchtickets.com/world-cup-2026-tickets" category="worldcup" venue="MetLife Stadium" city="New York" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "World Cup 2026 Tickets", url: "https://euromatchtickets.com/world-cup-2026-tickets" }]} />
 
       {/* Hero Section */}
@@ -340,14 +339,7 @@ const WorldCupLandingPage = () => {
           "@type": "Place",
           "name": "Multiple Venues - USA, Mexico, Canada"
         },
-        "offers": {
-          "@type": "Offer",
-          "lowPrice": "150",
-          "highPrice": "2000",
-          "priceCurrency": "EUR","availability": "https://schema.org/InStock",
-          "url": "https://euromatchtickets.com/world-cup-2026-tickets",
-          "validFrom": "2025-01-01"
-        },
+        
         "organizer": {
           "@type": "Organization",
           "name": "EuroMatchTickets",

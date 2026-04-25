@@ -84,16 +84,7 @@ const FanProtectPage = () => {
     },
     "description": "100% ticket authenticity guarantee with full refund protection",
     "serviceType": "Ticket Protection",
-    "offers": {
-      "@type": "Offer",
-      "lowPrice": "0",
-      "highPrice": "0",
-      "priceCurrency": "EUR","description": "Free protection included with every purchase",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2025-01-01",
-      "url": "https://euromatchtickets.com/fan-protect",
-      "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" }
-    }
+    
   };
 
   return (

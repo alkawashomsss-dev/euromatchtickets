@@ -43,26 +43,14 @@ const MonzaGPPage = () => {
     { question: "Can I bring food and drinks to Monza?", answer: "Yes! Unlike many circuits, Monza allows you to bring your own food and non-alcoholic drinks. There are also excellent Italian food vendors throughout the Parco di Monza." }
   ];
 
-  const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
-    "@type": "Product",
-    "name": "Italian Grand Prix Monza 2026 Tickets",
-    "description": "Verified Monza F1 tickets with QR ticket delivery",
-    "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    
-    
-    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "69", "highPrice": "1995","validFrom": "2025-01-01" }
-  };
-
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="monza-gp-page">
       <SEOHead
-        title="Monza F1 Tickets 2026 | Italian GP from €69"
-        description="Buy Italian Grand Prix 2026 tickets at Monza from €69. The Temple of Speed! Parabolica, Ascari grandstands. Tifosi atmosphere. 40% cheaper! Buyer protection."
+        title="Monza F1 Tickets 2026 (Italian GP) — Prices & Availability | EuroMatchTickets"
+        description="Compare Monza F1 2026 listings for the Italian Grand Prix. Updated prices from €69, Parabolica & Ascari grandstand availability, instant QR delivery and full refund if the race is cancelled."
         canonicalUrl="https://euromatchtickets.com/f1-italian-grand-prix-monza-tickets"
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
-      <BreadcrumbStructuredData items={[
+<BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
         { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" },
         { name: "Italian Grand Prix Monza", url: "https://euromatchtickets.com/f1-italian-grand-prix-monza-tickets" }

@@ -3,7 +3,6 @@ import { Calendar, MapPin, Trophy, Star, Shield, Users, TrendingUp, Zap, Flag, T
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const SingaporeGPPage = () => {
@@ -24,7 +23,7 @@ const SingaporeGPPage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "189", "highPrice": "2999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-singapore-grand-prix-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -39,12 +38,12 @@ const SingaporeGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Singapore GP Tickets 2026 | F1 Marina Bay Prices"
-        description="Buy Singapore Grand Prix 2026 tickets from €189. Spectacular F1 Night Race at Marina Bay. Turn 1, Pit Grandstand, VIP available. Buyer protection."
+        title="Singapore GP 2026 Tickets (Marina Bay F1) — Prices & Availability | EuroMatchTickets"
+        description="Compare Singapore Grand Prix 2026 listings at Marina Bay Street Circuit. Updated prices from €189, Turn 1, Pit Grandstand and VIP Hospitality availability. Instant QR delivery."
         image="https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Singapore Grand Prix 2026" price={189} highPrice={4999} url="https://euromatchtickets.com/f1-singapore-grand-prix-tickets" category="f1" venue="Marina Bay Street Circuit" city="Singapore" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Singapore GP 2026", url: "https://euromatchtickets.com/f1-singapore-grand-prix-tickets" }]} />
 
       {/* Hero */}

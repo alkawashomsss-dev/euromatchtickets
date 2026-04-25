@@ -92,7 +92,7 @@ const EventRow = ({ event }) => {
             )}
             {isFast && !isLimited && (
               <Badge className="bg-[#facc15] text-black border-transparent text-[10px] font-black uppercase tracking-wider rounded-none">
-                SELLING FAST
+                AVAILABLE
               </Badge>
             )}
           </div>

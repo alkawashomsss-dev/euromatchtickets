@@ -3,7 +3,6 @@ import { Calendar, MapPin, Shield, Zap, Flag, Ticket, HelpCircle, CreditCard, He
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const AustriaGPPage = () => {
@@ -20,7 +19,7 @@ const AustriaGPPage = () => {
     "location": { "@type": "Place", "name": "Red Bull Ring", "address": { "@type": "PostalAddress", "addressLocality": "Spielberg", "addressCountry": "AT" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "119", "highPrice": "1999", "availability": "https://schema.org/InStock", "url": "https://euromatchtickets.com/f1-austrian-grand-prix-red-bull-ring-tickets", "validFrom": "2025-01-01" }
+    
   };
 
   const tickets = [
@@ -42,12 +41,12 @@ const AustriaGPPage = () => {
   return (
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
-        title="Austrian GP Tickets 2026 | Red Bull Ring F1 Prices"
-        description="Buy Austrian Grand Prix 2026 Red Bull Ring tickets from €119. Mountain circuit in Spielberg! VIP Hospitality. 100% Ticket Guarantee. Instant delivery!"
+        title="Austrian GP 2026 Tickets (Red Bull Ring F1) — Prices & Availability | EuroMatchTickets"
+        description="Compare Austrian Grand Prix 2026 listings at the Red Bull Ring, Spielberg. Updated prices from €119, mountain-circuit grandstands and VIP Hospitality availability. Instant QR delivery."
         image="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Austrian Grand Prix 2026" price={139} highPrice={2999} url="https://euromatchtickets.com/f1-austrian-grand-prix-red-bull-ring-tickets" category="f1" venue="Red Bull Ring" city="Spielberg" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" }, { name: "Austrian GP Red Bull Ring 2026", url: "https://euromatchtickets.com/f1-austrian-grand-prix-red-bull-ring-tickets" }]} />
 
       <section className="relative py-20 overflow-hidden">

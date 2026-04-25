@@ -62,27 +62,15 @@ const BahrainGPPage = () => {
     { question: "When does the Bahrain GP weekend start?", answer: "Friday: Free Practice 1 & 2. Saturday: Free Practice 3 & Qualifying. Sunday: The Grand Prix race. Your 3-day ticket covers all sessions." }
   ];
 
-  const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
-    "@type": "Product",
-    "name": "Bahrain Grand Prix 2026 Tickets",
-    "description": "Verified Bahrain F1 tickets with QR ticket delivery",
-    "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    
-    
-    "offers": { "@type": "Offer", "priceCurrency": "EUR", "lowPrice": "59", "highPrice": "1495","validFrom": "2025-01-01" }
-  };
-
   return (
     <div className="min-h-screen bg-[#0b0d17]" data-testid="bahrain-gp-page">
       <SEOHead
-        title="Bahrain GP Tickets 2026 | Night Race from €59"
-        description="Buy Bahrain Grand Prix 2026 tickets from €59. F1 night race at Sakhir. Grandstand, VIP & Paddock Club. 30% cheaper! Instant QR delivery + Buyer protection."
+        title="Bahrain GP 2026 Tickets (Sakhir F1 Night Race) — Prices & Availability | EuroMatchTickets"
+        description="Compare Bahrain Grand Prix 2026 listings at Bahrain International Circuit. Updated prices from €59, grandstand, VIP and Paddock Club availability. Instant QR delivery."
         canonicalUrl="https://euromatchtickets.com/f1-bahrain-grand-prix-tickets"
         image="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&h=630&fit=crop"
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
-      <BreadcrumbStructuredData items={[
+<BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
         { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" },
         { name: "Bahrain Grand Prix Tickets", url: "https://euromatchtickets.com/f1-bahrain-grand-prix-tickets" }

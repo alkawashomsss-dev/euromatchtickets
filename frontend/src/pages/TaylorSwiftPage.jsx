@@ -5,7 +5,6 @@ import { API } from "../App";
 import { Calendar, MapPin, Ticket, Star, Shield, ChevronRight, Sparkles, Zap, Crown, ArrowRight, Check, Users, Clock, Flame, Eye, TrendingUp, Heart, Music } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { TrustSection, RelatedEvents } from "../components/VenueTickets";
 import { motion } from "framer-motion";
@@ -14,10 +13,10 @@ const HERO_IMG = "https://static.prod-images.emergentagent.com/jobs/fa0e14ae-0b2
 
 const shows = [
   { date: "Jun 19, 2026", day: "Friday", time: "18:00", status: "Few Left", badge: "bg-[#e10600]/100" },
-  { date: "Jun 20, 2026", day: "Saturday", time: "18:00", status: "Selling Fast", badge: "bg-amber-500/100" },
+  { date: "Jun 20, 2026", day: "Saturday", time: "18:00", status: "Available", badge: "bg-amber-500/100" },
   { date: "Jun 21, 2026", day: "Sunday", time: "18:00", status: "Available", badge: "bg-emerald-500/100" },
   { date: "Jun 26, 2026", day: "Friday", time: "18:00", status: "Available", badge: "bg-emerald-500/100" },
-  { date: "Jun 27, 2026", day: "Saturday", time: "18:00", status: "Selling Fast", badge: "bg-amber-500/100" },
+  { date: "Jun 27, 2026", day: "Saturday", time: "18:00", status: "Available", badge: "bg-amber-500/100" },
   { date: "Jun 28, 2026", day: "Sunday", time: "18:00", status: "New!", badge: "bg-blue-500/100" }
 ];
 
@@ -75,19 +74,19 @@ const TaylorSwiftPage = () => {
     "location": { "@type": "Place", "name": "Wembley Stadium", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
     "performer": { "@type": "Person", "name": "Taylor Swift" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "lowPrice": "79", "highPrice": "1500", "priceCurrency": "EUR","availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/taylor-swift-wembley-2026-tickets", "validFrom": "2025-01-01", "seller": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" } }
+    
   };
 
   return (
     <div className="min-h-screen bg-[#0a0610]" data-testid="taylorswift-page">
       <SEOHead
         title="Taylor Swift Tickets 2026 | Wembley London from €89"
-        description="Buy Taylor Swift tickets 2026 from €89. Eras Tour Wembley Stadium London, 6 nights. Verified tickets, QR ticket delivery. Verified prices - selling fast!"
+        description="Buy Taylor Swift tickets 2026 from €89. Eras Tour Wembley Stadium London, 6 nights. Verified tickets, QR ticket delivery. Verified prices -. !"
         canonicalUrl="https://euromatchtickets.com/taylor-swift-wembley-2026-tickets"
         image="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Taylor Swift Eras Tour London 2026" price={89} highPrice={2999} url="https://euromatchtickets.com/taylor-swift-london-tickets" category="concert" venue="Wembley Stadium" city="London" />
+
 
       {/* HERO */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">

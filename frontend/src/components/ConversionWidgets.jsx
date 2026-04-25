@@ -116,7 +116,7 @@ export const ScarcityBadge = ({ available, total }) => {
     >
       {isUrgent ? <Flame className="w-4 h-4 animate-pulse" /> : <AlertTriangle className="w-4 h-4" />}
       <span>Only {available} tickets left!</span>
-      {isUrgent && <span className="text-[10px] font-medium opacity-70">Selling fast</span>}
+      {isUrgent && <span className="text-[10px] font-medium opacity-70">. </span>}
     </div>
   );
 };

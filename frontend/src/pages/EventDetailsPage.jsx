@@ -12,7 +12,6 @@ import { RelatedEventsSection } from "../components/RelatedEventsSection";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import EventStructuredData from "../components/StructuredData";
-import ProductSchema from "../components/ProductSchema";
 import WaitlistCTA from "../components/WaitlistCTA";
 import RelatedEventsGraph from "../components/RelatedEventsGraph";
 import EditorialByline from "../components/EditorialByline";

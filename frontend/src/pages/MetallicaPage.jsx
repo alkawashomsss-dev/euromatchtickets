@@ -5,7 +5,6 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import SEOHead from "../components/SEOHead";
 
@@ -48,7 +47,7 @@ const MetallicaPage = () => {
     "performer": {"@type": "MusicGroup", "name": "Metallica"},
     "location": {"@type": "Place", "name": "The Sphere", "address": {"@type": "PostalAddress", "addressLocality": "Las Vegas", "addressCountry": "US"}},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {"@type": "Offer", "lowPrice": 617, "highPrice": 2755, "priceCurrency": "USD","availability": "https://schema.org/LimitedAvailability", "url": "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets", "validFrom": "2025-01-01"}
+    
   };
 
   return (
@@ -60,7 +59,7 @@ const MetallicaPage = () => {
         canonicalUrl="https://euromatchtickets.com/metallica-sphere-las-vegas-tickets"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Metallica M72 Tour 2026" price={99} highPrice={2499} url="https://euromatchtickets.com/metallica-sphere-las-vegas-tickets" category="concert" venue="Sphere" city="Las Vegas" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Metallica Sphere Las Vegas", url: "https://euromatchtickets.com/metallica-sphere-las-vegas-tickets" }]} />
       
       <title>Metallica Sphere Las Vegas Tickets 2026 | Snake Pit VIP $2,755 | EuroMatchTickets</title>

@@ -112,7 +112,7 @@ const EventCard = ({ event, index }) => {
             )}
             {isFast && !isLimited && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-black bg-[#facc15] text-black">
-                <TrendingUp className="w-3 h-3" /> SELLING FAST
+                <TrendingUp className="w-3 h-3" /> AVAILABLE
               </span>
             )}
           </div>
@@ -320,14 +320,14 @@ const HomePage = () => {
         <FeaturedEventsCarousel />
       </div>
 
-      {/* ═══════ TRENDING NOW - SEO POWER SECTION ═══════ */}
+      {/* ═══════ POPULAR EVENTS - SEO POWER SECTION ═══════ */}
       <section className="py-10 bg-[#15151e] border-y border-white/5">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <FadeInSection>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-1.5 h-8 bg-[#e10600]" />
               <div>
-                <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest">TRENDING NOW</span>
+                <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest">POPULAR EVENTS</span>
                 <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight">Most Popular Tickets</h2>
               </div>
             </div>
@@ -341,7 +341,7 @@ const HomePage = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute top-3 left-3 flex items-center gap-2">
                   <span className="bg-[#e10600] text-white text-[9px] font-black px-2 py-0.5 uppercase tracking-wider">#1 TRENDING</span>
-                  <span className="bg-[#facc15] text-black text-[9px] font-black px-2 py-0.5 uppercase tracking-wider">SELLING FAST</span>
+                  <span className="bg-[#facc15] text-black text-[9px] font-black px-2 py-0.5 uppercase tracking-wider">AVAILABLE</span>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <h3 className="text-xl font-black text-white uppercase tracking-tight group-hover:text-[#e10600] transition-colors">SPA F1 TICKETS 2026</h3>

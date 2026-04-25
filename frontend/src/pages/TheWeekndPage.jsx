@@ -3,7 +3,6 @@ import { Calendar, MapPin, Ticket, Music, Star, Shield, Users, TrendingUp, Zap, 
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { useState } from "react";
@@ -29,7 +28,7 @@ const TheWeekndPage = () => {
     },
     "performer": { "@type": "MusicGroup", "name": "The Weeknd" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "95", "highPrice": "450", "availability": "https://schema.org/InStock", "url": CANONICAL, "validFrom": "2025-01-01" }
+    
   };
 
   const faqSchema = {
@@ -65,14 +64,13 @@ const TheWeekndPage = () => {
     <div className="min-h-screen bg-[#0e0e14]">
       <SEOHead 
         title="Buy The Weeknd Tour Tickets 2026 | Europe From €95"
-        description="Buy The Weeknd After Hours Til Dawn 2026 tickets from €95. Paris, London, Berlin, Amsterdam, Milan, Madrid. Selling Fast. Cancellation refund policy. Instant QR delivery."
+        description="Buy The Weeknd After Hours Til Dawn 2026 tickets from €95. Paris, London, Berlin, Amsterdam, Milan, Madrid. Available. Cancellation refund policy. Instant QR delivery."
         canonicalUrl={CANONICAL}
         image="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=630&fit=crop"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <ProductSchema name="The Weeknd After Hours Til Dawn Tour 2026" price={95} highPrice={450} url={CANONICAL} category="concert" venue="Multiple Stadiums" city="Europe" />
-      <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "The Weeknd Tour 2026", url: CANONICAL }]} />
+<BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "The Weeknd Tour 2026", url: CANONICAL }]} />
 
       {/* HERO */}
       <section className="relative py-20 overflow-hidden">
@@ -117,7 +115,7 @@ const TheWeekndPage = () => {
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-bold group-hover:text-[#e10600] transition-colors">{show.venue}</h3>
-                      {show.hot && <Badge className="bg-orange-500/10 text-orange-500 text-[10px]">SELLING FAST</Badge>}
+                      {show.hot && <Badge className="bg-orange-500/10 text-orange-500 text-[10px]">AVAILABLE</Badge>}
                     </div>
                     <p className="text-slate-500 text-sm">{show.date} at {show.time} — {show.city}</p>
                   </div>

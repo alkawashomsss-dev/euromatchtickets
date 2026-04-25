@@ -37,15 +37,6 @@ const ItalianLandingPage = () => {
     { question: "Quali metodi di pagamento accettate?", answer: "Accettiamo Visa, Mastercard, American Express, PayPal e Apple Pay. Pagamenti sicuri con crittografia SSL." }
   ];
 
-  const reviewSchema = {
-    "@context": "https://schema.org", "image": "https://euromatchtickets.com/logo-192.png",
-    "@type": "Product",
-    "name": "Biglietti EuroMatchTickets - Italia",
-    "brand": { "@type": "Brand", "name": "EuroMatchTickets" },
-    
-    "offers": { "@type": "Offer", "priceCurrency": "EUR","lowPrice": "39", "highPrice": "2500" }
-  };
-
   return (
     <div className="min-h-screen bg-[#1e1e1e]" data-testid="italian-landing-page">
       <SEOHead
@@ -54,9 +45,7 @@ const ItalianLandingPage = () => {
         keywords="comprare biglietti, biglietti champions league, biglietti f1, biglietti concerti, biglietti economici, biglietti milan, biglietti juventus, biglietti inter"
         canonical="https://euromatchtickets.com/it/biglietti"
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
-
-      {/* Hero */}
+{/* Hero */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/30 via-slate-900 to-red-900/30" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">

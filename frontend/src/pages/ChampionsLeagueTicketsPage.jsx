@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Users, Shield, Zap, Trophy, Ticket, Star } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEOHead from "../components/SEOHead";
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
@@ -86,7 +85,7 @@ const ChampionsLeagueTicketsPage = () => {
         image="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200&h=630&fit=crop"
       />
 
-      <ProductSchema name="Champions League Tickets 2026" price={99} highPrice={4999} url="https://euromatchtickets.com/champions-league-tickets" category="football" venue="Various Stadiums" city="Europe" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Football", url: "https://euromatchtickets.com/events?type=match" }, { name: "Champions League Tickets", url: "https://euromatchtickets.com/champions-league-tickets" }]} />
 
       <div className="min-h-screen bg-[#0e0e14]">

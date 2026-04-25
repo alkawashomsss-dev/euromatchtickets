@@ -5,7 +5,6 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { API } from '../App';
 import axios from 'axios';
-import ProductSchema from "../components/ProductSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import SEOHead from "../components/SEOHead";
 
@@ -122,14 +121,7 @@ const Maroon5Page = () => {
     "performer": {"@type": "MusicGroup", "name": "Maroon 5"},
     "description": t.description,
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    "offers": {
-      "@type": "Offer",
-      "lowPrice": events[0]?.lowest_price || 71,
-      "highPrice": 500,
-      "priceCurrency": "EUR","availability": "https://schema.org/InStock",
-      "url": "https://euromatchtickets.com/maroon-5-tickets",
-      "validFrom": "2025-01-01"
-    }
+    
   };
 
   return (
@@ -153,7 +145,7 @@ const Maroon5Page = () => {
       <link rel="alternate" hrefLang="ar" href="https://euromatchtickets.com/maroon-5-tickets?lang=ar" />
       
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ProductSchema name="Maroon 5 World Tour 2026" price={79} highPrice={1499} url="https://euromatchtickets.com/maroon-5-tour-2026" category="concert" venue="Olympiastadion" city="Munich" />
+
       <BreadcrumbSchema items={[{ name: "Home", url: "https://euromatchtickets.com/" }, { name: "Concerts", url: "https://euromatchtickets.com/events?type=concert" }, { name: "Maroon 5 Tour 2026", url: "https://euromatchtickets.com/maroon-5-tour-2026" }]} />
 
       {/* Language Selector */}

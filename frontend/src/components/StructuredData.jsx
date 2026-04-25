@@ -38,19 +38,6 @@ const EventStructuredData = ({ event }) => {
       return date.toISOString();
     };
 
-    const getPrices = (tickets, categories) => {
-      let lowPrice = 50, highPrice = 500;
-      if (tickets?.length > 0) {
-        const prices = tickets.map(t => t.price).filter(p => p > 0);
-        if (prices.length > 0) { lowPrice = Math.min(...prices); highPrice = Math.max(...prices); }
-      } else if (categories) {
-        const catPrices = Object.values(categories).map(c => c.lowest_price).filter(p => p > 0);
-        if (catPrices.length > 0) { lowPrice = Math.min(...catPrices); highPrice = Math.max(...catPrices) * 3; }
-      }
-      return { lowPrice: Math.round(lowPrice), highPrice: Math.round(highPrice) };
-    };
-
-    const { lowPrice, highPrice } = getPrices(event.tickets, event.categories);
     const availableTickets = event.available_tickets || event.tickets?.length || 50;
     const pageUrl = `https://euromatchtickets.com/event/${event.slug || event.event_id}`;
     const eventImage = event.image_url || event.image || "https://euromatchtickets.com/images/heroes/football-stadium-lg.webp";
@@ -73,7 +60,13 @@ const EventStructuredData = ({ event }) => {
       return { "@type": "Organization", "name": event.title || "Event" };
     };
 
-    // Main Event Schema - Google Rich Result optimized
+    // Main Event Schema - Google Rich Result optimized.
+    // NOTE: We deliberately do NOT emit `offers` here. Per platform mandate,
+    // a ticket resale marketplace cannot accurately represent a single
+    // canonical "price/availability" Offer per Event. Including a Product or
+    // AggregateOffer block on a marketplace page triggers Google validation
+    // errors (price required, etc.) without unlocking valid Merchant rich
+    // results. Keep Event schema clean and let buyers see live prices in-page.
     const eventSchema = {
       "@context": "https://schema.org",
       "@type": getEventType(event.event_type),
@@ -101,115 +94,8 @@ const EventStructuredData = ({ event }) => {
       "organizer": getOrganizer(event.event_type, event.title),
       "performer": getPerformer(),
       "image": [eventImage],
-      "offers": (availableTickets > 0 && event.status !== 'coming_soon' && event.status !== 'sold_out')
-        ? {
-            "@type": "AggregateOffer",
-            "priceCurrency": "EUR",
-            "lowPrice": lowPrice.toString(),
-            "highPrice": highPrice.toString(),
-            "offerCount": availableTickets.toString(),
-            "availability": "https://schema.org/InStock",
-            "url": pageUrl,
-            "validFrom": new Date().toISOString().split('T')[0],
-            "seller": {
-              "@type": "Organization",
-              "name": "EuroMatchTickets",
-              "url": "https://euromatchtickets.com"
-            }
-          }
-        : undefined,
       "url": pageUrl
     };
-
-    // Product Schema — ONLY emitted when we have a real verified lowest price.
-    // Includes Google-required Merchant-listing fields:
-    //   price, priceCurrency, availability, shippingDetails, hasMerchantReturnPolicy
-    const hasRealInventory =
-      availableTickets > 0 &&
-      event.status !== 'coming_soon' &&
-      event.status !== 'sold_out' &&
-      typeof event.lowest_price === 'number' &&
-      event.lowest_price > 0;
-
-    const productSchema = hasRealInventory
-      ? {
-          "@context": "https://schema.org",
-          "@type": "Product",
-          "name": `${event.title} Tickets`,
-          "description": `Tickets for ${event.title}${event.venue ? ` at ${event.venue}` : ''}${event.city ? `, ${event.city}` : ''}. QR ticket delivery. Buyer protection.`,
-          "image": [eventImage],
-          "url": pageUrl,
-          "sku": event.event_id || event.slug || pageUrl,
-          "brand": {
-            "@type": "Organization",
-            "name": "EuroMatchTickets",
-            "url": "https://euromatchtickets.com"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": Math.round(event.lowest_price).toString(),
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition",
-            "url": pageUrl,
-            "priceValidUntil": new Date(Date.now() + 1000 * 60 * 60 * 24 * 30)
-              .toISOString()
-              .split('T')[0],
-            "seller": {
-              "@type": "Organization",
-              "name": "EuroMatchTickets",
-              "url": "https://euromatchtickets.com"
-            },
-            "shippingDetails": {
-              "@type": "OfferShippingDetails",
-              "shippingRate": {
-                "@type": "MonetaryAmount",
-                "value": "0",
-                "currency": "EUR"
-              },
-              "shippingDestination": {
-                "@type": "DefinedRegion",
-                "addressCountry": ["DE", "FR", "GB", "IT", "ES", "NL", "BE", "AT", "IE", "PT", "DK", "SE", "FI", "CH", "US", "CA", "MX"]
-              },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": {
-                  "@type": "QuantitativeValue",
-                  "minValue": 0,
-                  "maxValue": 0,
-                  "unitCode": "HUR"
-                },
-                "transitTime": {
-                  "@type": "QuantitativeValue",
-                  "minValue": 0,
-                  "maxValue": 0,
-                  "unitCode": "HUR"
-                }
-              }
-            },
-            "hasMerchantReturnPolicy": {
-              "@type": "MerchantReturnPolicy",
-              "name": "EuroMatchTickets refund policy",
-              "applicableCountry": ["DE", "FR", "GB", "IT", "ES", "NL", "BE", "AT"],
-              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-              "merchantReturnDays": 14,
-              "returnMethod": "https://schema.org/ReturnByMail",
-              "returnFees": "https://schema.org/FreeReturn",
-              "merchantReturnLink": "https://euromatchtickets.com/refund-policy"
-            }
-          }
-        }
-      : null;
-
-    const graph = productSchema ? [eventSchema, productSchema] : [eventSchema];
-
-    const combinedSchema = {
-      "@context": "https://schema.org",
-      "@graph": graph
-    };
-    // Remove @context from individual items in graph
-    delete eventSchema["@context"];
-    if (productSchema) delete productSchema["@context"];
 
     let script = document.querySelector('script[data-schema="event"]');
     if (!script) {
@@ -218,7 +104,7 @@ const EventStructuredData = ({ event }) => {
       script.setAttribute('data-schema', 'event');
       document.head.appendChild(script);
     }
-    script.textContent = JSON.stringify(combinedSchema);
+    script.textContent = JSON.stringify(eventSchema);
 
     return () => {
       const el = document.querySelector('script[data-schema="event"]');
