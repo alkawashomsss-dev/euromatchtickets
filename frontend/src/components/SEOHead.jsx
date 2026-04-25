@@ -37,11 +37,13 @@ const SEOHead = ({
   const ogImage = image && typeof image === 'string' ? image : defaultImage;
 
   useEffect(() => {
-    // Only clean up breadcrumb and FAQ pre-hydration schemas
-    // Keep ph-event as a fallback until React renders its own Event schema
+    // Safely remove pre-hydration breadcrumb / FAQ schemas only if they
+    // still have a parent (React 19 is strict about double-detach).
     ['ph-bread', 'ph-faq'].forEach(id => {
       const el = document.getElementById(id);
-      if (el) el.remove();
+      if (el && el.parentNode) {
+        el.parentNode.removeChild(el);
+      }
     });
 
     // Update title
@@ -85,10 +87,12 @@ const SEOHead = ({
     updateMetaTag('meta[name="twitter:site"]', '@euromatchtickets');
 
     // Update canonical - CRITICAL for Google indexing
-    // Remove ALL existing canonical tags first to prevent duplicates
+    // Safely remove duplicate canonical tags (parent-check guards against React 19 double-detach)
     const existingCanonicals = document.querySelectorAll('link[rel="canonical"]');
     existingCanonicals.forEach((el, i) => {
-      if (i > 0) el.remove(); // Keep only the first one
+      if (i > 0 && el.parentNode) {
+        el.parentNode.removeChild(el);
+      }
     });
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
@@ -98,8 +102,10 @@ const SEOHead = ({
     }
     canonical.setAttribute('href', pageCanonicalUrl);
 
-    // Hreflang - remove old tags and set correct language-specific URLs
-    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
+    // Hreflang - safely remove old tags and set correct language-specific URLs
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    });
     
     const LANG_MAP = {
       '/': { es: '/es/comprar-entradas', de: '/de/tickets-kaufen', fr: '/fr/acheter-billets', it: '/it/biglietti' },

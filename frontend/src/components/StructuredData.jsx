@@ -227,7 +227,7 @@ const OrganizationStructuredData = () => {
 
     // Remove pre-hydration duplicate before adding React-managed version
     const phOrg = document.getElementById('ph-org');
-    if (phOrg) phOrg.remove();
+    if (phOrg && phOrg.parentNode) phOrg.parentNode.removeChild(phOrg);
 
     let script = document.querySelector('script[data-schema="organization"]');
     if (!script) {
@@ -264,7 +264,7 @@ const WebsiteStructuredData = () => {
 
     // Remove pre-hydration duplicate before adding React-managed version
     const phSite = document.getElementById('ph-site');
-    if (phSite) phSite.remove();
+    if (phSite && phSite.parentNode) phSite.parentNode.removeChild(phSite);
 
     let script = document.querySelector('script[data-schema="website"]');
     if (!script) {
