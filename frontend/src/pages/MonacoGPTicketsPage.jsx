@@ -83,7 +83,7 @@ const MonacoGPTicketsPage = () => {
             <div className="flex items-center gap-4 mb-4">
               <div className="flex items-center gap-2 bg-[#e10600]/10 border border-red-500/50 px-3 py-1.5 rounded-full">
                 <div className="w-2 h-2 bg-[#e10600]/100 rounded-full animate-pulse" />
-                <span className="text-red-600 text-sm font-medium">{viewersNow} people viewing now</span>
+                <span className="text-red-600 text-sm font-medium">Listings updated recently</span>
               </div>
               <div className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/50 px-3 py-1.5 rounded-full">
                 <Zap className="w-4 h-4 text-amber-600" />
@@ -178,7 +178,7 @@ const MonacoGPTicketsPage = () => {
                         onClick={() => navigate('/f1-tickets')}
                         className="mt-2 btn-accent px-6"
                       >
-                        Buy Now
+                        View
                       </Button>
                     </div>
                   </div>

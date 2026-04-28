@@ -151,7 +151,7 @@ const WorldAthleticsPage = () => {
                     ))}
                   </div>
                   <Link to="/events?search=Athletics" className={`block w-full py-3 rounded-none bg-gradient-to-r ${cat.color} text-white text-sm font-bold text-center hover:opacity-90 transition`}>
-                    Buy Tickets <ArrowRight className="w-4 h-4 inline ml-1" />
+                    View Tickets <ArrowRight className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
               </div>

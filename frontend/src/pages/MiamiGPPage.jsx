@@ -131,7 +131,7 @@ const MiamiGPPage = () => {
                     <div className="text-xs text-slate-400 line-through">€{ticket.originalPrice}</div>
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
-                  <Link to="/checkout?event=miami-grand-prix-2026"><Button className="bg-cyan-500 hover:bg-cyan-600">Buy Now</Button></Link>
+                  <Link to="/checkout?event=miami-grand-prix-2026"><Button className="bg-cyan-500 hover:bg-cyan-600">View</Button></Link>
                 </div>
               </div>
             ))}

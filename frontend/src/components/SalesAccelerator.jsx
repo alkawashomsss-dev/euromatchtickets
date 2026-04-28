@@ -103,7 +103,7 @@ export const LiveViewers = ({ eventId }) => {
         <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full" />
       </div>
       <span className="text-purple-300">
-        <strong className="text-purple-400">{viewers}</strong> people viewing now
+        <strong className="text-purple-400">Live</strong> listings updated recently
       </span>
     </div>
   );
@@ -324,7 +324,7 @@ export const OneClickBuyButton = ({ ticketId, price, onBuy, loading }) => {
       ) : (
         <span className="flex items-center gap-2">
           <Zap className="w-6 h-6" />
-          Buy Now - €{price}
+          View - €{price}
           <Badge className="bg-white/20 ml-2">QR delivery</Badge>
         </span>
       )}
@@ -427,7 +427,7 @@ export const StickyBuyBar = ({ price, ticketsLeft, onBuy }) => {
           className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 h-12 px-8 text-lg font-bold"
         >
           <Zap className="w-5 h-5 mr-2" />
-          Buy Now
+          View
         </Button>
       </div>
     </div>

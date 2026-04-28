@@ -217,7 +217,7 @@ const IsleOfManTTPage = () => {
                         <span className="text-2xl font-bold text-emerald-600 ml-2">€149</span>
                       </div>
                       <Button size="sm" className="bg-amber-600 hover:bg-amber-700">
-                        Buy Tickets <ChevronRight className="w-4 h-4 ml-1" />
+                        View Tickets <ChevronRight className="w-4 h-4 ml-1" />
                       </Button>
                     </div>
                   </div>

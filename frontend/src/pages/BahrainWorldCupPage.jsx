@@ -136,7 +136,7 @@ const BahrainWorldCupPage = () => {
             </div>
             <Link to="#tickets">
               <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3 rounded-full text-lg shadow-lg">
-                <Ticket className="w-5 h-5 mr-2" /> Buy World Cup Tickets
+                <Ticket className="w-5 h-5 mr-2" /> View World Cup Tickets
               </Button>
             </Link>
           </motion.div>

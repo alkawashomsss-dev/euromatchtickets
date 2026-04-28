@@ -118,7 +118,7 @@ const WorldCup2026Page = () => {
               <AlertCircle className="w-3.5 h-3.5" /> Only 2,340 tickets left for Final
             </span>
             <span className="inline-flex items-center gap-1.5 bg-amber-500/100/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
-              <Users className="w-3.5 h-3.5" /> 1,247 people viewing WC tickets now
+              <Users className="w-3.5 h-3.5" /> 1,Listings updated recently
             </span>
             <span className="inline-flex items-center gap-1.5 bg-emerald-500/100/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
               <TrendingUp className="w-3.5 h-3.5" /> Prices up 25% this month
@@ -158,7 +158,7 @@ const WorldCup2026Page = () => {
       <section className="py-4 border-y border-white/5 bg-[#1e1e1e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 text-sm">
-            <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />500,000+ Tickets Sold</div>
+            <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-emerald-600" />Live marketplace</div>
             <div className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-600" />Highly rated from Customer reviews</div>
             <div className="flex items-center gap-2"><Users className="w-4 h-4 text-violet-600" />Trusted in 25+ Countries</div>
             <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-600" />Refund policy applies</div>

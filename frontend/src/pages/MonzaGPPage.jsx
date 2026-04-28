@@ -18,7 +18,7 @@ const MonzaGPPage = () => {
     }).catch(() => {});
   }, []);
   const tickets = [
-    { section: "General Admission (Prato)", price: 69, originalPrice: 109, available: 456, badge: "CHEAPEST", features: ["Roam the circuit freely", "Big screen areas", "Fan Zone access"], color: "border-emerald-500/30" },
+    { section: "General Admission (Prato)", price: 69, originalPrice: 109, available: 456, badge: "AVAILABLE", features: ["Roam the circuit freely", "Big screen areas", "Fan Zone access"], color: "border-emerald-500/30" },
     { section: "Parabolica Grandstand", price: 149, originalPrice: 199, available: 123, badge: "FAN FAVOURITE", features: ["Legendary final corner", "High-speed exit view", "Podium visible"], color: "border-red-500/30" },
     { section: "Prima Variante Grandstand", price: 169, originalPrice: 229, available: 89, badge: "BEST OVERTAKING", features: ["Turn 1 braking zone", "Most overtakes here", "Start/finish view"], color: "border-green-500/30" },
     { section: "Ascari Chicane Grandstand", price: 139, originalPrice: 189, available: 145, badge: null, features: ["Technical chicane", "Close to track", "Great photo spot"] },
@@ -183,7 +183,7 @@ const MonzaGPPage = () => {
                   <div className={`absolute top-3 right-3 text-[10px] font-bold px-2 py-1 rounded-full ${
                     t.badge === 'EXCLUSIVE' ? 'bg-amber-100 text-amber-700' : 
                     t.badge === 'VIP' ? 'bg-purple-100 text-purple-700' : 
-                    t.badge === 'CHEAPEST' ? 'bg-emerald-100 text-emerald-700' :
+                    t.badge === 'AVAILABLE' ? 'bg-emerald-100 text-emerald-700' :
                     t.badge === 'FAN FAVOURITE' ? 'bg-red-100 text-red-700' :
                     t.badge === 'BEST OVERTAKING' ? 'bg-green-100 text-green-700' :
                     'bg-blue-100 text-blue-700'
@@ -202,7 +202,7 @@ const MonzaGPPage = () => {
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-red-500 font-medium">{t.available} left</span>
                     <Link to={`/checkout?event=f1-italian-grand-prix-monza-2026&category=${encodeURIComponent(t.section)}&price=${t.price}`}>
-                      <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">Buy Now</Button>
+                      <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">View</Button>
                     </Link>
                   </div>
                 </div>

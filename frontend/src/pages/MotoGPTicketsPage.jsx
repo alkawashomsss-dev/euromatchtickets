@@ -298,7 +298,7 @@ const MotoGPTicketsPage = () => {
                             <span className="text-2xl font-bold text-emerald-600 ml-2">€{Math.round(event.lowest_price)}</span>
                           </div>
                           <Button size="sm" className="bg-orange-600 hover:bg-orange-700">
-                            Buy Tickets <ChevronRight className="w-4 h-4 ml-1" />
+                            View Tickets <ChevronRight className="w-4 h-4 ml-1" />
                           </Button>
                         </>
                       ) : (

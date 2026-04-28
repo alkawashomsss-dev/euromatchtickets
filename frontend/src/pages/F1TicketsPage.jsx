@@ -239,7 +239,7 @@ const F1TicketsPage = () => {
               <AlertCircle className="w-3.5 h-3.5" /> Only 847 tickets left for Monaco GP
             </span>
             <span className="inline-flex items-center gap-1.5 bg-amber-500/100/20 border border-amber-500/30 rounded-none px-3 py-1.5 text-amber-300 text-sm font-medium">
-              <Users className="w-3.5 h-3.5" /> 312 people viewing F1 tickets now
+              <Users className="w-3.5 h-3.5" /> Listings updated recently
             </span>
             <span className="inline-flex items-center gap-1.5 bg-emerald-500/100/20 border border-emerald-500/30 rounded-none px-3 py-1.5 text-emerald-300 text-sm font-medium">
               <TrendingUp className="w-3.5 h-3.5" /> Prices up 12% this week
@@ -271,7 +271,7 @@ const F1TicketsPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             {[
-              { icon: Shield, label: "500,000+ Tickets Sold" },
+              { icon: Shield, label: "Live marketplace" },
               { icon: Star, label: "Highly rated from Customer reviews" },
               { icon: Globe, label: "Trusted in 25+ Countries" },
               { icon: Zap, label: "QR ticket delivery" }
@@ -631,7 +631,7 @@ const F1TicketsPage = () => {
                   "Canadian": { kw: "Buy Canadian GP Tickets 2026", sub: "Montreal Circuit Gilles Villeneuve - Sprint" },
                   "Spanish Grand Prix": { kw: "Buy Barcelona F1 Tickets 2026", sub: "Spanish GP - Circuit de Catalunya" },
                   "Austrian": { kw: "Buy Austrian GP Tickets 2026", sub: "Red Bull Ring Spielberg - F1 Sprint" },
-                  "Belgian": { kw: "Buy Spa F1 Tickets 2026", sub: "Belgian GP - Spa-Francorchamps Circuit", directLink: "/spa-f1-tickets" },
+                  "Belgian": { kw: "View Spa F1 Tickets 2026", sub: "Belgian GP - Spa-Francorchamps Circuit", directLink: "/spa-f1-tickets" },
                   "Hungarian": { kw: "Buy Hungarian GP Tickets 2026", sub: "Hungaroring Budapest - F1 Grand Prix" },
                   "Dutch": { kw: "Buy Zandvoort F1 Tickets 2026", sub: "Dutch GP Sprint - Final Year at Zandvoort", hot: true },
                   "Madrid": { kw: "Buy Madrid GP Tickets 2026", sub: "NEW - Madrid Grand Prix Debut Race", hot: true },

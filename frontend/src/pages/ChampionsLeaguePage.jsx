@@ -107,7 +107,7 @@ const ChampionsLeaguePage = () => {
       <section className="py-6 border-y border-white/5 bg-[#15151e]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>500,000+ Tickets Sold</span></div>
+            <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-5 h-5" /><span>Live marketplace</span></div>
             <div className="flex items-center gap-2 text-amber-600"><Star className="w-5 h-5" /><span>Highly rated from Customer reviews</span></div>
             <div className="flex items-center gap-2 text-blue-600"><Globe className="w-5 h-5" /><span>Trusted in 25+ Countries</span></div>
             <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-5 h-5" /><span>Refund policy applies</span></div>

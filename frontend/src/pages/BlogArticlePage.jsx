@@ -498,7 +498,7 @@ const articleContent = {
       <p>Each circuit sells tickets directly. For example, Spa-Francorchamps sells <a href="/spa-f1-tickets">Belgian Grand Prix tickets</a> through their own website. Prices are similar to F1.com.</p>
 
       <h3>3. Verified Resale Platforms</h3>
-      <p><a href="/f1-tickets"><strong>EuroMatchTickets</strong></a> offers the <strong>cheapest F1 tickets in Europe</strong> – up to Competitive market pricing than official channels. Every ticket comes with:</p>
+      <p><a href="/f1-tickets"><strong>EuroMatchTickets</strong></a> offers the <strong>cheapest F1 tickets in Europe</strong> – up to Secondary-market pricing — independent of official channels. Every ticket comes with:</p>
       <ul>
         <li>Buyer protection Cancellation refund policy</li>
         <li>Instant QR code delivery</li>
@@ -738,7 +738,7 @@ const BlogArticlePage = () => {
 
         {/* CTA */}
         <div className="mt-12 bg-[#161620] border border-[#e10600]/20 p-8">
-          <h3 className="text-2xl font-black text-white mb-3">Ready to Buy Tickets?</h3>
+          <h3 className="text-2xl font-black text-white mb-3">Ready to View Tickets?</h3>
           <p className="text-slate-400 mb-6">
             Browse thousands of verified tickets for F1, football matches and concerts across Europe. Every ticket includes Buyer protection.
           </p>

@@ -228,7 +228,7 @@ const BestF1RacesEuropePage = () => {
                     </div>
                     <Link to={race.href}>
                       <Button className="bg-[#e10600]/100 hover:bg-red-600">
-                        <Ticket className="w-4 h-4 mr-2" />Buy Tickets
+                        <Ticket className="w-4 h-4 mr-2" />View Tickets
                         <ChevronRight className="w-4 h-4 ml-1" />
                       </Button>
                     </Link>

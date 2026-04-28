@@ -174,7 +174,7 @@ export default function EventDetailsPage() {
               className="flex flex-wrap items-center gap-4 text-white/70 text-sm mb-5">
               <span className="flex items-center gap-1.5"><Flag className="w-4 h-4 text-white/40" />{event.city}{event.country ? `, ${event.country}` : ''}</span>
               {!isComingSoon && (
-                <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-white/40" />{totalAvailable || event.ticket_count || 0} tickets available</span>
+                <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-white/40" />{totalAvailable || event.ticket_count || 0} listings · prices updated recently</span>
               )}
             </motion.div>
 

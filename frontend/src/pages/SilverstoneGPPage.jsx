@@ -132,7 +132,7 @@ const SilverstoneGPPage = () => {
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
                   <Link to="/checkout?event=silverstone-grand-prix-2026">
-                    <Button className="bg-blue-500/100 hover:bg-blue-600">Buy Now</Button>
+                    <Button className="bg-blue-500/100 hover:bg-blue-600">View</Button>
                   </Link>
                 </div>
               </div>

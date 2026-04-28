@@ -33,7 +33,7 @@ const WorldCupPage = () => {
 
   const worldCupSchema = {
     "@context": "https://schema.org", "@type": "SportsEvent",
-    "name": "FIFA World Cup 2026 Tickets - Buy Now",
+    "name": "FIFA World Cup 2026 Tickets - View",
     "description": "Buy FIFA World Cup 2026 tickets from €149. VIP packages from €999. Official verified tickets with 100% buyer guarantee.",
     "image": HERO_IMG, "startDate": "2026-06-11", "endDate": "2026-07-19",
     "eventStatus": "https://schema.org/EventScheduled",
@@ -143,7 +143,7 @@ const WorldCupPage = () => {
                     ))}
                   </div>
                   <Link to="/checkout?event=world-cup-2026" className={`block w-full py-3 rounded-none bg-gradient-to-r ${cat.color} text-white text-sm font-bold hover:opacity-90 transition`} data-testid={`buy-${cat.name.toLowerCase().replace(/\s/g,'-')}`}>
-                    Buy Tickets <ArrowRight className="w-4 h-4 inline ml-1" />
+                    View Tickets <ArrowRight className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
               </div>

@@ -325,7 +325,7 @@ const BlogPage = () => {
               <h3 className="font-bold text-white text-xs uppercase tracking-wider mb-2">Why Trust EuroMatchTickets</h3>
               <ul className="space-y-1.5">
                 <li>Buyer protection cancellation refund policy on every ticket</li>
-                <li>Up to Competitive market pricing than official channels</li>
+                <li>Up to Secondary-market pricing — independent of official channels</li>
                 <li>Instant QR code delivery to your phone</li>
                 <li>Verified seller inventory across 25+ countries</li>
                 <li>Highly rated from 1+ verified reviews</li>

@@ -261,7 +261,7 @@ export default function DynamicSEOPage() {
                 <h3 className="font-bold text-white mb-4">Buyer Protection</h3>
                 <div className="space-y-3">
                   {[
-                    { icon: Shield, text: "500,000+ Tickets Sold", sub: "Refund policy applies" },
+                    { icon: Shield, text: "Live marketplace", sub: "Refund policy applies" },
                     { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
                     { icon: Clock, text: "QR ticket delivery", sub: "E-tickets sent immediately" },
                     { icon: Star, text: "Highly rated from Customer reviews", sub: "Trusted in 25+ countries" }
@@ -488,7 +488,7 @@ export default function DynamicSEOPage() {
                 <AlertCircle className="w-3.5 h-3.5" /> Only {Math.max(3, ((page.slug || '').length % 15) + 2)} tickets left at this price
               </span>
               <span className="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-200 rounded-full px-3 py-1.5 text-amber-700 text-sm font-medium" data-testid="demand-badge">
-                <Users className="w-3.5 h-3.5" /> {50 + ((page.slug || '').length % 80)} people viewing now
+                <Users className="w-3.5 h-3.5" /> Listings updated recently
               </span>
             </div>
 
@@ -578,7 +578,7 @@ export default function DynamicSEOPage() {
                 <h3 className="font-bold text-white mb-4">Buyer Protection</h3>
                 <div className="space-y-3">
                   {[
-                    { icon: Shield, text: "500,000+ Tickets Sold", sub: "Refund policy applies" },
+                    { icon: Shield, text: "Live marketplace", sub: "Refund policy applies" },
                     { icon: CreditCard, text: "Secure Payment", sub: "Stripe encrypted checkout" },
                     { icon: Clock, text: "QR ticket delivery", sub: "E-tickets sent immediately" },
                     { icon: Star, text: "Highly rated from Customer reviews", sub: "Trusted in 25+ countries" }
@@ -635,7 +635,7 @@ export default function DynamicSEOPage() {
               </div>
               <Link to={buyLink}>
                 <Button className="bg-emerald-600 hover:bg-emerald-500/100 text-white px-6 py-2 text-sm rounded-none whitespace-nowrap" data-testid="sticky-buy-btn">
-                  <Ticket className="w-4 h-4 mr-1" /> Buy Now
+                  <Ticket className="w-4 h-4 mr-1" /> View
                 </Button>
               </Link>
             </div>

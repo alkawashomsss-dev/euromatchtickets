@@ -173,7 +173,7 @@ const SuperBowlPage = () => {
                     ))}
                   </div>
                   <Link to="/events?search=Super+Bowl" className={`block w-full py-3 rounded-none bg-gradient-to-r ${p.color} text-white text-sm font-bold text-center hover:opacity-90 transition`}>
-                    Buy Now <ArrowRight className="w-4 h-4 inline ml-1" />
+                    View <ArrowRight className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
               </motion.div>
@@ -248,7 +248,7 @@ const SuperBowlPage = () => {
         <div className="max-w-4xl mx-auto px-4 space-y-6 text-slate-400">
           <h2 className="text-2xl font-bold text-white">Buy Super Bowl 2026 Tickets — The Ultimate NFL Experience</h2>
           <p>The <strong className="text-white">Super Bowl LXI</strong> is coming to <strong className="text-white">Levi's Stadium in Santa Clara, California</strong> on February 7, 2027. This is the pinnacle of American football — two elite teams battling for the Lombardi Trophy in front of 70,000+ screaming fans, with the most spectacular halftime show on Earth.</p>
-          <h3 className="text-xl font-bold text-white mt-8">Why Super Bowl 2026 Tickets Are Selling Out Fast</h3>
+          <h3 className="text-xl font-bold text-white mt-8">Why Super Bowl 2026 Tickets Are Live availability</h3>
           <p>Super Bowl tickets are among the <strong className="text-white">most expensive and coveted tickets in all of sports</strong>. With limited availability and global demand, prices increase every week. Smart fans buy early to lock in the best seats at the lowest prices.</p>
           <h3 className="text-xl font-bold text-white mt-8">Super Bowl 2026 VIP Packages</h3>
           <p>Our <strong className="text-white">VIP hospitality packages</strong> include private suites, all-inclusive food and beverages, celebrity meet-and-greets, and pre-game field access. The <strong className="text-white">Platinum Experience</strong> even includes backstage halftime show access and luxury hotel accommodation.</p>

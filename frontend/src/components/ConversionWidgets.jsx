@@ -138,28 +138,17 @@ export const HighDemandBadge = ({ eventId }) => {
   return (
     <div className="flex items-center gap-2 px-3 py-2 bg-violet-50 border border-violet-200 rounded-none text-violet-700 text-sm" data-testid="demand-badge">
       <Eye className="w-4 h-4" />
-      <span className="font-medium">{viewers} people viewing this now</span>
+      <span className="font-medium">Listings updated recently</span>
     </div>
   );
 };
 
 /* ─── SOCIAL PROOF COUNTER ─── */
 export const SocialProofCounter = ({ eventId }) => {
-  const [booked, setBooked] = useState(0);
-
-  useEffect(() => {
-    const base = Math.abs((eventId?.charCodeAt(1) || 0) + (eventId?.charCodeAt(2) || 0)) % 30 + 12;
-    setBooked(base);
-  }, [eventId]);
-
-  if (booked < 5) return null;
-
-  return (
-    <div className="flex items-center gap-2 px-3 py-2 bg-emerald-500/10 border border-emerald-200 rounded-none text-emerald-700 text-sm" data-testid="social-proof">
-      <Users className="w-4 h-4" />
-      <span className="font-medium">{booked} people booked this today</span>
-    </div>
-  );
+  // Disabled: marketplace tone — no fabricated "X booked today" claims.
+  // The live Listings count + price-updated timestamp on the hero do the
+  // social-proof job with real data.
+  return null;
 };
 
 /* ─── URGENCY COUNTDOWN ─── */

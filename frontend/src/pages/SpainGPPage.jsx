@@ -116,7 +116,7 @@ const SpainGPPage = () => {
                     <div className="text-xs text-slate-400 line-through">€{ticket.originalPrice}</div>
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
-                  <Link to="/checkout?event=spain-grand-prix-2026"><Button className="bg-yellow-500 hover:bg-yellow-600 text-black">Buy Now</Button></Link>
+                  <Link to="/checkout?event=spain-grand-prix-2026"><Button className="bg-yellow-500 hover:bg-yellow-600 text-black">View</Button></Link>
                 </div>
               </div>
             ))}

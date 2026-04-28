@@ -72,7 +72,7 @@ const ColdplayPage = () => {
               <AlertCircle className="w-3.5 h-3.5" /> Only 189 Wembley tickets left
             </span>
             <span className="inline-flex items-center gap-1.5 bg-amber-500/100/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
-              <Users className="w-3.5 h-3.5" /> 534 people viewing now
+              <Users className="w-3.5 h-3.5" /> Listings updated recently
             </span>
             <span className="inline-flex items-center gap-1.5 bg-emerald-500/100/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
               <TrendingUp className="w-3.5 h-3.5" /> Prices up 22% this week
@@ -92,7 +92,7 @@ const ColdplayPage = () => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 text-[11px] text-white/40">
-            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> 500,000+ Tickets Sold</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> Live marketplace</span>
             <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-cyan-400" /> QR ticket delivery</span>
             <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-yellow-400" /> Highly rated from Customer reviews</span>
             <span className="flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-blue-400" /> 40% cheaper than Viagogo</span>

@@ -86,7 +86,7 @@ const PaymentInfoPage = () => {
             <div className="bg-[#1e1e1e] border border-white/10 rounded-none p-6">
               <div className="flex items-center gap-3 mb-4">
                 <Shield className="w-6 h-6 text-cyan-600" />
-                <h3 className="text-lg font-semibold">Buy Now, Pay Later</h3>
+                <h3 className="text-lg font-semibold">View, Pay Later</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {['Klarna', 'Afterpay'].map((bnpl) => (

@@ -98,7 +98,7 @@ const TaylorSwiftPage = () => {
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-20 pb-14">
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-500/40 bg-pink-500/10 text-pink-400 text-xs font-bold mb-5 backdrop-blur-md animate-pulse">
-            <Flame className="w-4 h-4" /> {liveStats.available > 0 ? `${liveStats.available} tickets available` : 'Selling Out Fast'}
+            <Flame className="w-4 h-4" /> {liveStats.available > 0 ? `${liveStats.available} tickets available` : 'Live availability'}
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-tighter mb-2 leading-[0.85]" style={{ textShadow: '0 4px 40px rgba(0,0,0,0.5)' }}>
@@ -185,7 +185,7 @@ const TaylorSwiftPage = () => {
                     ))}
                   </div>
                   <Link to="/checkout?event=taylor-swift-london-2026" className={`block w-full py-3 rounded-none bg-gradient-to-r ${p.color} text-white text-sm font-bold hover:opacity-90 transition`}>
-                    Buy Now <ArrowRight className="w-4 h-4 inline ml-1" />
+                    View <ArrowRight className="w-4 h-4 inline ml-1" />
                   </Link>
                 </div>
               </div>
@@ -269,7 +269,7 @@ const TaylorSwiftPage = () => {
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <Music className="w-12 h-12 text-pink-500 mx-auto mb-4" />
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Don't Miss the Eras Tour</h2>
-          <p className="text-slate-400 mb-8">6 nights at Wembley. Once in a lifetime. Tickets selling out fast.</p>
+          <p className="text-slate-400 mb-8">6 nights at Wembley. Once in a lifetime. Tickets Live availability.</p>
           <a href="#tickets">
             <Button className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-extrabold px-10 py-6 text-lg rounded-full shadow-[0_0_40px_rgba(219,39,119,0.3)] transition-all">
               <Ticket className="w-5 h-5 mr-2" /> Get Taylor Swift Tickets

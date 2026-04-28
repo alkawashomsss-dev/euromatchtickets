@@ -73,7 +73,7 @@ const SpaGPPage = () => {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "How much do Spa F1 tickets cost in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Spa F1 tickets 2026 start from €109 for General Admission. Grandstand tickets at Eau Rouge start from €259, Raidillon from €289, and VIP Paddock Club tickets from €3,489. EuroMatchTickets offers the cheapest Spa F1 tickets in Europe." }},
+      { "@type": "Question", "name": "How much do Spa F1 tickets cost in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Spa F1 tickets 2026 start from €109 for General Admission. Grandstand tickets at Eau Rouge start from €259, Raidillon from €289, and VIP Paddock Club tickets from €3,489. EuroMatchTickets offers the verified Spa F1 listings." }},
       { "@type": "Question", "name": "Where can I buy Belgian Grand Prix 2026 tickets?", "acceptedAnswer": { "@type": "Answer", "text": "You can buy Belgian Grand Prix 2026 tickets at EuroMatchTickets.com. We offer verified Spa-Francorchamps tickets with QR ticket delivery, 100% buyer protection, and the cheapest prices compared to F1.com, StubHub, and Viagogo." }},
       { "@type": "Question", "name": "When is the Belgian Grand Prix 2026 at Spa-Francorchamps?", "acceptedAnswer": { "@type": "Answer", "text": "The Belgian Grand Prix 2026 at Circuit de Spa-Francorchamps takes place on August 28-30, 2026. Friday is practice day, Saturday is qualifying, and Sunday August 30 is race day with lights out at 2:00 PM CET." }},
       { "@type": "Question", "name": "What is the best grandstand at Spa-Francorchamps for F1?", "acceptedAnswer": { "@type": "Answer", "text": "The best grandstands at Spa-Francorchamps are Gold 3 (Eau Rouge) for the most iconic view, Gold 4 (Raidillon) for seeing cars at 300km/h, and Silver (La Source Turn 1) for dramatic overtaking. The Paddock Club offers the ultimate VIP experience above the pit lane." }},
@@ -185,7 +185,7 @@ const SpaGPPage = () => {
             <p className="text-xl md:text-2xl text-white/60 mb-2">Circuit de Spa-Francorchamps &bull; Belgium &bull; August 28-30, 2026</p>
             <p className="text-base text-slate-500 max-w-2xl mb-8">
               The longest and most dramatic circuit in Formula 1. Experience the legendary Eau Rouge, survive Raidillon,
-              and witness 300km/h battles through the stunning Belgian Ardennes. Buy the cheapest Spa F1 tickets in Europe.
+              and witness 300km/h battles through the stunning Belgian Ardennes. Buy the verified Spa F1 listings.
             </p>
           </motion.div>
 
@@ -198,7 +198,7 @@ const SpaGPPage = () => {
                 <span className="text-5xl font-black text-white">&euro;109</span>
                 <span className="text-xl text-slate-600 line-through">&euro;189</span>
               </div>
-              <p className="text-[#15803d] text-sm font-black mt-1">Save 42% vs competitors</p>
+              <p className="text-[#15803d] text-sm font-black mt-1"></p>
             </div>
 
             <div className="bg-[#15151e] border border-white/10 p-5">
@@ -217,7 +217,7 @@ const SpaGPPage = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="flex flex-wrap gap-3">
             <a href="#tickets">
               <Button size="lg" className="bg-[#e10600] hover:bg-red-700 text-white font-black px-8 py-6 text-lg rounded-none uppercase tracking-wider" data-testid="spa-buy-cta">
-                <Ticket className="w-5 h-5 mr-2" /> Buy Spa F1 Tickets
+                <Ticket className="w-5 h-5 mr-2" /> View Spa F1 Tickets
               </Button>
             </a>
             <a href="#vip">
@@ -237,7 +237,7 @@ const SpaGPPage = () => {
             [Star, "Highly rated from 1 Reviews"],
             [Zap, "QR ticket delivery"],
             [Lock, "Secure Stripe Checkout"],
-            [Users, "500K+ Tickets Sold"]
+            [Users, "Live marketplace"]
           ].map(([Icon, text], i) => (
             <div key={i} className="flex items-center gap-2 text-slate-400 font-bold uppercase tracking-wider"><Icon className="w-3.5 h-3.5 text-[#e10600]" />{text}</div>
           ))}
@@ -258,7 +258,7 @@ const SpaGPPage = () => {
               <div key={i} className={`text-center p-4 ${s.best ? 'bg-[#15803d]/10 border-2 border-[#15803d]' : 'bg-[#1e1e1e] border border-white/8'}`}>
                 <div className={`text-xs mb-1 font-bold uppercase tracking-wider ${s.best ? 'text-[#15803d]' : 'text-slate-500'}`}>{s.name}</div>
                 <div className={`font-black text-xl ${s.strike ? 'text-red-500 line-through' : 'text-[#15803d]'}`}>&#8364;{s.price}</div>
-                {s.best && <div className="text-[10px] text-[#15803d] font-bold mt-1">CHEAPEST!</div>}
+                {s.best && <div className="text-[10px] text-[#15803d] font-bold mt-1">AVAILABLE!</div>}
               </div>
             ))}
           </div>
@@ -293,7 +293,7 @@ const SpaGPPage = () => {
             <div>
               <span className="text-[10px] font-black text-[#e10600] uppercase tracking-widest mb-1 block">VIEW AVAILABILITY</span>
               <h2 className="text-3xl font-black text-white uppercase tracking-tight">Spa F1 2026 Tickets & Prices</h2>
-              <p className="text-slate-500 mt-1">687 tickets remaining &bull; Prices updating live</p>
+              <p className="text-slate-500 mt-1">687 listings · prices updated recently &bull; Prices updating live</p>
             </div>
             <div className="hidden md:flex items-center gap-2 bg-[#15803d]/10 border border-[#15803d]/30 text-[#15803d] px-4 py-2 text-sm font-black uppercase tracking-wider">
               <TrendingUp className="w-4 h-4" /> Competitive market pricing
@@ -330,7 +330,7 @@ const SpaGPPage = () => {
                   </div>
                   <Link to={`/checkout?event=belgian-grand-prix-2026-tickets&category=${encodeURIComponent(t.name)}&price=${t.price}`}>
                     <Button className="bg-[#e10600] hover:bg-red-700 text-white font-black px-5 rounded-none uppercase tracking-wider text-xs">
-                      Buy Now <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                      View <ArrowRight className="w-3.5 h-3.5 ml-1" />
                     </Button>
                   </Link>
                 </div>
@@ -598,7 +598,7 @@ const SpaGPPage = () => {
       <section className="py-14 bg-[#0e0e14]">
         <div className="max-w-4xl mx-auto px-4">
           <article className="prose-sm text-slate-400 space-y-6">
-            <h2 className="text-2xl font-black text-white uppercase tracking-tight">Buy Spa F1 Tickets 2026 - Complete Guide to the Belgian Grand Prix</h2>
+            <h2 className="text-2xl font-black text-white uppercase tracking-tight">View Spa F1 Tickets 2026 - Complete Guide to the Belgian Grand Prix</h2>
             <p>Looking for <strong className="text-white">Spa F1 tickets</strong>? The Belgian Grand Prix at <strong className="text-white">Circuit de Spa-Francorchamps</strong> is the most anticipated race on the 2026 F1 calendar. With the legendary <em>Eau Rouge-Raidillon</em> corner complex, 7.004 kilometres of pure racing adrenaline, and a capacity of 100,000+ fans, <strong className="text-white">Spa-Francorchamps tickets</strong> sell out months in advance.</p>
             
             <h3 className="text-lg font-black text-white mt-8">Spa F1 Ticket Prices 2026</h3>
@@ -614,11 +614,11 @@ const SpaGPPage = () => {
             <h3 className="text-lg font-black text-white mt-8">Why Buy Belgian GP Tickets from EuroMatchTickets?</h3>
             <p>Whether you search for <strong className="text-white">ticket F1 Spa</strong>, <strong className="text-white">Spa Grand Prix tickets</strong>, <strong className="text-white">Belgium F1 tickets</strong>, or <strong className="text-white">Belgian GP tickets</strong> - EuroMatchTickets guarantees the lowest prices with QR ticket delivery. Every <strong className="text-white">Spa-Francorchamps F1 ticket</strong> is verified and backed by our Buyer protection money-back guarantee.</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>Competitive market pricing than official F1 ticket prices</li>
+              <li>Secondary-market pricing — independent of official channels</li>
               <li>Instant QR code delivery - no waiting, no postal delays</li>
               <li>Buyer protection cancellation refund policy if event is cancelled</li>
               <li>Verified seller inventory across 25+ countries</li>
-              <li>Highly rated from 1 verified customer reviews</li>
+              <li></li>
             </ul>
 
             <h3 className="text-lg font-black text-white mt-8">Spa-Francorchamps Circuit Guide</h3>
@@ -636,8 +636,8 @@ const SpaGPPage = () => {
             <h3 className="text-lg font-black text-white mt-8">Frequently Searched: Spa F1 Tickets in Other Languages</h3>
             <p>Our customers search for Spa F1 tickets in many languages: <strong className="text-white">Formel 1 Spa Tickets</strong> (German), <strong className="text-white">Formule 1 Spa Tickets</strong> (French/Dutch), <strong className="text-white">F1 Belgien Tickets</strong>, <strong className="text-white">F1 Belgi&euml; Tickets</strong>, <strong className="text-white">GP Spa Tickets</strong>, <strong className="text-white">F1 Kaarten Spa</strong>, <strong className="text-white">Grand Prix Belgie Tickets</strong>, and <strong className="text-white">GP Belgi&euml; Tickets</strong>. Regardless of language, all customers enjoy the same low prices, QR ticket delivery, and Buyer protection.</p>
 
-            <h3 className="text-lg font-black text-white mt-8">Best Time to Buy Spa F1 Tickets</h3>
-            <p>For the best <strong className="text-white">Spa F1 ticket prices</strong>, buy 3-6 months before race day. Early bird discounts can save you up to 30%. However, even last-minute <strong className="text-white">Belgian Grand Prix 2026 tickets</strong> on EuroMatchTickets are typically 25-Competitive market pricing than official channels. The race weekend is July 24-26, 2026.</p>
+            <h3 className="text-lg font-black text-white mt-8">Best Time to View Spa F1 Tickets</h3>
+            <p>For the best <strong className="text-white">Spa F1 ticket prices</strong>, buy 3-6 months before race day. Early bird discounts can save you up to 30%. However, even last-minute <strong className="text-white">Belgian Grand Prix 2026 tickets</strong> on EuroMatchTickets are typically 25-Secondary-market pricing — independent of official channels. The race weekend is July 24-26, 2026.</p>
           </article>
         </div>
       </section>
@@ -666,12 +666,12 @@ const SpaGPPage = () => {
             <p>The circuit's unique microclimate in the <strong className="text-white">Belgian Ardennes</strong> forest means weather can change in seconds. It's not uncommon for rain to fall on one corner while sunshine bathes another. This unpredictability makes the <strong className="text-white">Belgian Grand Prix</strong> one of the most strategically complex races on the F1 calendar, and one of the most exciting to attend live.</p>
 
             <h3 className="text-lg font-black text-white mt-8">Spa F1 Tickets vs Competitors - Why EuroMatchTickets Wins</h3>
-            <p>When you search for <strong className="text-white">Spa F1 tickets</strong>, <strong className="text-white">Belgian GP tickets</strong>, or <strong className="text-white">Spa-Francorchamps F1 tickets</strong>, you'll find many options. Here's why 500,000+ fans choose EuroMatchTickets:</p>
+            <p>When you search for <strong className="text-white">Spa F1 tickets</strong>, <strong className="text-white">Belgian GP tickets</strong>, or <strong className="text-white">Spa-Francorchamps F1 tickets</strong>, you'll find many options. Here's why fans across Europe use EuroMatchTickets:</p>
             <ul className="list-disc pl-5 space-y-1">
               <li><strong className="text-white">Price</strong>: General Admission from &euro;109 vs &euro;189+ on F1.com and &euro;365+ on Viagogo. That's 42% savings.</li>
               <li><strong className="text-white">Delivery</strong>: Instant QR code to your phone. No waiting for postal delivery, no risk of lost tickets.</li>
               <li><strong className="text-white">Guarantee</strong>: Buyer protection cancellation refund if the Belgian Grand Prix is cancelled or your tickets don't work.</li>
-              <li><strong className="text-white">Selection</strong>: Every grandstand available - from GA to Paddock Club. 687 tickets currently listed.</li>
+              <li><strong className="text-white">Selection</strong>: Every grandstand available - from GA to Paddock Club. 687 listings currently available.</li>
             </ul>
           </article>
         </div>
@@ -697,7 +697,7 @@ const SpaGPPage = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#tickets">
               <Button size="lg" className="bg-white text-[#e10600] hover:bg-white/90 font-black px-10 py-6 text-lg rounded-none uppercase tracking-wider" data-testid="spa-final-buy">
-                <Ticket className="w-5 h-5 mr-2" /> Buy Spa F1 Tickets
+                <Ticket className="w-5 h-5 mr-2" /> View Spa F1 Tickets
               </Button>
             </a>
             <a href="#vip">

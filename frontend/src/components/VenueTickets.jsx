@@ -61,7 +61,7 @@ export const VenueTickets = ({ tickets, eventName, searchQuery, accentColor = "e
                 </div>
                 <Link to={`/events?search=${encodeURIComponent(searchQuery)}`}>
                   <Button className={`${c.bg} hover:opacity-90 text-white px-6`} data-testid={`buy-ticket-${i}`}>
-                    Buy Now
+                    View
                   </Button>
                 </Link>
               </div>

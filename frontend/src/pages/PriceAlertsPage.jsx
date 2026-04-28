@@ -158,7 +158,7 @@ const PriceAlertsPage = () => {
                       {priceReached && (
                         <Link to={`/event/${event?.slug || event?.event_id}`}>
                           <Button className="btn-accent">
-                            Buy Now
+                            View
                           </Button>
                         </Link>
                       )}

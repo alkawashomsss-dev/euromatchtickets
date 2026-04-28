@@ -132,7 +132,7 @@ const SingaporeGPPage = () => {
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
                   <Link to="/checkout?event=singapore-grand-prix-2026">
-                    <Button className="bg-purple-500/100 hover:bg-purple-600">Buy Now</Button>
+                    <Button className="bg-purple-500/100 hover:bg-purple-600">View</Button>
                   </Link>
                 </div>
               </div>

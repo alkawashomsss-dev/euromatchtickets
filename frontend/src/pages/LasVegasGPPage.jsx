@@ -132,7 +132,7 @@ const LasVegasGPPage = () => {
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
                   <Link to="/checkout?event=las-vegas-grand-prix-2026">
-                    <Button className="bg-pink-500 hover:bg-pink-600">Buy Now</Button>
+                    <Button className="bg-pink-500 hover:bg-pink-600">View</Button>
                   </Link>
                 </div>
               </div>

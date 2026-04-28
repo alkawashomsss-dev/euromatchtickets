@@ -1,29 +1,23 @@
 import { Shield, Star, Globe, Zap, AlertCircle, Users, TrendingUp } from 'lucide-react';
 
-export const ScarcityBadges = ({ ticketsLeft = 847, viewers = 312, priceIncrease = "12%" }) => (
+export const ScarcityBadges = ({ ticketsLeft = 847 }) => (
   <div className="flex flex-wrap justify-center gap-3 my-4">
-    <span className="inline-flex items-center gap-1.5 bg-red-500/15 border border-red-500/25 rounded-full px-3 py-1.5 text-red-400 text-sm font-medium animate-pulse" data-testid="scarcity-tickets">
-      <AlertCircle className="w-3.5 h-3.5" /> Only {ticketsLeft} tickets left
-    </span>
-    <span className="inline-flex items-center gap-1.5 bg-amber-500/15 border border-amber-500/25 rounded-full px-3 py-1.5 text-amber-400 text-sm font-medium" data-testid="scarcity-viewers">
-      <Users className="w-3.5 h-3.5" /> {viewers} people viewing now
+    <span className="inline-flex items-center gap-1.5 bg-emerald-500/15 border border-emerald-500/25 rounded-full px-3 py-1.5 text-emerald-400 text-sm font-medium" data-testid="scarcity-tickets">
+      <Users className="w-3.5 h-3.5" /> {ticketsLeft} listings available
     </span>
     <span className="inline-flex items-center gap-1.5 bg-emerald-500/15 border border-emerald-500/25 rounded-full px-3 py-1.5 text-emerald-400 text-sm font-medium" data-testid="scarcity-price">
-      <TrendingUp className="w-3.5 h-3.5" /> Prices up {priceIncrease} this week
+      <TrendingUp className="w-3.5 h-3.5" /> Prices updated recently
     </span>
   </div>
 );
 
-export const ScarcityBadgesLight = ({ ticketsLeft = 847, viewers = 312, priceIncrease = "12%" }) => (
+export const ScarcityBadgesLight = ({ ticketsLeft = 847 }) => (
   <div className="flex flex-wrap justify-center gap-3 my-4">
-    <span className="inline-flex items-center gap-1.5 bg-red-50 border border-red-200 rounded-full px-3 py-1.5 text-red-600 text-sm font-medium animate-pulse" data-testid="scarcity-tickets">
-      <AlertCircle className="w-3.5 h-3.5" /> Only {ticketsLeft} tickets left
-    </span>
-    <span className="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 rounded-full px-3 py-1.5 text-amber-600 text-sm font-medium" data-testid="scarcity-viewers">
-      <Users className="w-3.5 h-3.5" /> {viewers} people viewing now
+    <span className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1.5 text-emerald-600 text-sm font-medium" data-testid="scarcity-tickets">
+      <Users className="w-3.5 h-3.5" /> {ticketsLeft} listings available
     </span>
     <span className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1.5 text-emerald-600 text-sm font-medium" data-testid="scarcity-price">
-      <TrendingUp className="w-3.5 h-3.5" /> Prices up {priceIncrease} this week
+      <TrendingUp className="w-3.5 h-3.5" /> Prices updated recently
     </span>
   </div>
 );
@@ -33,7 +27,7 @@ export const TrustBar = () => (
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex flex-wrap justify-center gap-8 text-sm">
         <div className="flex items-center gap-2 text-emerald-600"><Shield className="w-4 h-4" /><span className="font-medium">Verified marketplace</span></div>
-        <div className="flex items-center gap-2 text-amber-600"><Star className="w-4 h-4" /><span className="font-medium">Highly rated from Customer reviews</span></div>
+        <div className="flex items-center gap-2 text-amber-600"><Star className="w-4 h-4" /><span className="font-medium">Customer reviews</span></div>
         <div className="flex items-center gap-2 text-blue-600"><Globe className="w-4 h-4" /><span className="font-medium">Trusted in 25+ Countries</span></div>
         <div className="flex items-center gap-2 text-emerald-600"><Zap className="w-4 h-4" /><span className="font-medium">Refund policy applies</span></div>
       </div>

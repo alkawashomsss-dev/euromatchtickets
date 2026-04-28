@@ -104,7 +104,7 @@ const BahrainGPPage = () => {
               <AlertCircle className="w-3.5 h-3.5" /> Only 234 tickets left
             </span>
             <span className="inline-flex items-center gap-1.5 bg-amber-500/100/20 border border-amber-500/30 rounded-full px-3 py-1.5 text-amber-300 text-sm font-medium">
-              <Users className="w-3.5 h-3.5" /> 189 people viewing now
+              <Users className="w-3.5 h-3.5" /> Listings updated recently
             </span>
             <span className="inline-flex items-center gap-1.5 bg-emerald-500/100/20 border border-emerald-500/30 rounded-full px-3 py-1.5 text-emerald-300 text-sm font-medium">
               <TrendingUp className="w-3.5 h-3.5" /> Prices up 18% this week

@@ -53,7 +53,7 @@ const SectionTicketList = ({ group, eventId, onBuy }) => {
               <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
                 isVIP ? 'text-amber-400 bg-amber-500/100/10 border border-amber-500/20' : 'text-slate-500 bg-slate-100'
               }`}>{catLabel}</span>
-              {isLow && <span className="text-[10px] font-bold text-red-600 bg-[#e10600]/10 px-2 py-0.5 rounded-full">LOW STOCK</span>}
+              {isLow && <span className="text-[10px] font-bold text-red-600 bg-[#e10600]/10 px-2 py-0.5 rounded-full"></span>}
             </div>
             <p className={`text-xs mt-0.5 ${isVIP ? 'text-white/40' : 'text-slate-400'}`}>{group.count} ticket{group.count !== 1 ? 's' : ''} available{isVIP ? ' · VIP Hospitality included' : ''}</p>
           </div>
@@ -91,7 +91,7 @@ const SectionTicketList = ({ group, eventId, onBuy }) => {
           }`}
           data-testid={`buy-quick-mobile-${group.section.toLowerCase().replace(/\s/g,'-')}`}
         >
-          {isVIP ? `Buy VIP from €${Math.round(group.lowest_price).toLocaleString()}` : `Buy from €${Math.round(group.lowest_price)}`}
+          {isVIP ? `Buy VIP from €${Math.round(group.lowest_price).toLocaleString()}` : `View from €${Math.round(group.lowest_price)}`}
         </button>
       </div>
 

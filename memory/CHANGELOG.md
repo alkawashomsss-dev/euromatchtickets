@@ -2,6 +2,39 @@
 
 ## ✅ Completed Today
 
+### -3. GLOBAL CTR v4 — applied across ALL pages (per user feedback Apr 28 evening) 🔥
+**User mandate**: All trust/copy fixes must be applied to **every page**, not just the homepage. The Spa F1 + Miami GP pages still had `Buy from €X`, `BUY NOW`, `LOW STOCK`, fake `X people viewing`, `CHEAPEST!`, `Save 42%`, `500K+ TICKETS SOLD`, etc.
+
+**Sweeps run** (`scripts/global_ctr_v4.py` + `global_ctr_v4b.py`): 71 substitutions across 45 files. Plus targeted manual edits for 4 widget components.
+
+**Replacements applied site-wide**:
+- `Buy from €X` → `View from €X` (ticket category cards)
+- `Buy Tickets` → `View Tickets`
+- `BUY NOW` → `VIEW`
+- `BUY SPA F1 TICKETS` → `VIEW SPA F1 TICKETS`
+- `BUY WORLD CUP TICKETS` → `VIEW WORLD CUP TICKETS`
+- `X tickets available` → `X listings available`
+- `X tickets remaining` → `X listings · prices updated recently`
+- `LIVE: 24 VIEWING` → removed (fake urgency)
+- `LOW STOCK` → removed (unsupported scarcity)
+- `CHEAPEST!` → `AVAILABLE`
+- `cheapest Spa F1 tickets in Europe` → `verified Spa F1 listings`
+- `Save 42% vs competitors` / `Save €X` → removed (overclaim)
+- `500K+ TICKETS SOLD` / `500,000+ Tickets Sold` → `Live marketplace`
+- `HIGHLY RATED FROM 1 REVIEWS` → removed
+- `Selling Out Fast` → `Live availability`
+- `up to Competitive market pricing than F1.com` → `Secondary-market pricing — independent of official channels`
+- `That's 42% savings.` → removed
+
+**Widget refactors** (the dynamic scarcity widgets that ran on every event page):
+- `components/ConversionElements.jsx` — `ScarcityBadges` / `ScarcityBadgesLight`: removed "Only X tickets left" + "X people viewing now" + "Prices up X% this week" → now show only `X listings available` + `Prices updated recently`. Trust bar `Highly rated from Customer reviews` → `Customer reviews`.
+- `components/ConversionWidgets.jsx` — `LiveDemandBadge`: was `{viewers} people viewing this now` → now `Listings updated recently` (real marketplace signal). `SocialProofCounter` (was `{N} people booked this today`) → returns `null` (disabled — the live listings counter on the hero already does this job with real data).
+- `components/SalesAccelerator.jsx` — `LiveViewers`: was `{viewers} people viewing now` → `Live listings updated recently`.
+- `pages/EventDetailsPage.jsx` — main hero strip: `X tickets available` → `X listings · prices updated recently`.
+
+**Verified live** on `/event/chinese-grand-prix-2026-tickets`: hero now reads
+`98 listings · prices updated recently · €161 · market pricing may vary · View All Tickets / View 98 Tickets`. 0 console errors. Body text scan confirms all targeted overclaims/fake-urgency strings are gone.
+
 ### -2. CTR v3 — "From €" cleanup, Live Listings Counter wired, copy upgrade ✅
 **User feedback (Apr 28 evening)**: "From €" was still over-repeated across category blocks → looked like a price farm. Footer trust strip duplicated the homepage one. Newsletter copy was generic. And the missing piece for SEO was a **real-data signal** to convince Google + visitors the site is a live marketplace.
 

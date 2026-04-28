@@ -132,7 +132,7 @@ const AbuDhabiGPPage = () => {
                     <div className="text-xl font-bold text-emerald-600">€{ticket.price}</div>
                   </div>
                   <Link to="/checkout?event=abu-dhabi-grand-prix-2026">
-                    <Button className="bg-amber-500/100 hover:bg-amber-600 text-black">Buy Now</Button>
+                    <Button className="bg-amber-500/100 hover:bg-amber-600 text-black">View</Button>
                   </Link>
                 </div>
               </div>
