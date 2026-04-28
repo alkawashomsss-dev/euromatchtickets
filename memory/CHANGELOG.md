@@ -2,6 +2,33 @@
 
 ## ✅ Completed Today
 
+### -4. Football Filter — fixed 100 → 113 events with debug logging ✅
+**User report**: Football filter showing only ~4 events instead of all 100+ on `/events?type=football`.
+
+**Root cause**: `EventsPage.jsx` was calling `/api/events?event_type=football` without an explicit `limit` param, so the backend returned its **default 100** instead of the full 113. The user was actually seeing 100 (not 4 — that 4 was on the legacy `/matches` route, already fixed earlier). But still cutting off 13 World Cup bracket games.
+
+**Fix applied** in `pages/EventsPage.jsx`:
+- Added `params.append('limit', '300')` to ensure the full FIFA bracket (~113 events) is fetched.
+- Added **defensive client-side aggregation** so if the user lands here with `?type=match` or `?type=worldcup`, we still fold all three event types together:
+  ```js
+  if (['football', 'match', 'worldcup'].includes(type)) {
+    visible = data.filter(e =>
+      ['football', 'match', 'worldcup'].includes((e.event_type || '').toLowerCase()) ||
+      ['football', 'soccer', 'match', 'worldcup'].includes((e.sport || e.category || '').toLowerCase())
+    );
+  }
+  ```
+- Added dev-only console log per the user's request:
+  ```
+  [Events] type=football | API returned 113 | rendered 113
+  ```
+
+**Verified live**:
+- `Showing 113 events` on the page (was 100 before).
+- All event rows have real `lowest_price` data (€349 UCL, €249 World Cup matches, etc.) and real `available_tickets` counts (95, 127, 92, 75…).
+- No `.slice(0, N)` truncation anywhere in the render path.
+- DB confirms: 113 = 104 worldcup + 5 football + 4 match — all aggregated under the Football filter.
+
 ### -3. GLOBAL CTR v4 — applied across ALL pages (per user feedback Apr 28 evening) 🔥
 **User mandate**: All trust/copy fixes must be applied to **every page**, not just the homepage. The Spa F1 + Miami GP pages still had `Buy from €X`, `BUY NOW`, `LOW STOCK`, fake `X people viewing`, `CHEAPEST!`, `Save 42%`, `500K+ TICKETS SOLD`, etc.
 

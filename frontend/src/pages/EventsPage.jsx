@@ -164,9 +164,30 @@ const EventsPage = () => {
         if (filters.type && filters.type !== 'all') params.append('event_type', filters.type);
         if (filters.city && filters.city !== 'all') params.append('city', filters.city);
         if (filters.search) params.append('search', filters.search);
+        // Backend already aggregates worldcup + match + football for the
+        // "football" event_type. Raise limit to 300 so the full FIFA bracket
+        // (~113 events) renders, not just the default 100.
+        params.append('limit', '300');
 
         const response = await axios.get(`${API}/events?${params.toString()}`);
-        setEvents(response.data);
+        const data = Array.isArray(response.data) ? response.data : [];
+
+        // Defensive client-side aggregation: in case the user navigates here
+        // with type=match (legacy), fold worldcup + match + football together.
+        let visible = data;
+        const type = filters.type;
+        if (type && ['football', 'match', 'worldcup'].includes(type)) {
+          visible = data.filter(e =>
+            ['football', 'match', 'worldcup'].includes((e.event_type || '').toLowerCase()) ||
+            ['football', 'soccer', 'match', 'worldcup'].includes((e.sport || e.category || '').toLowerCase())
+          );
+        }
+
+        if (process.env.NODE_ENV !== 'production') {
+          console.log(`[Events] type=${type || 'all'} | API returned ${data.length} | rendered ${visible.length}`);
+        }
+
+        setEvents(visible);
       } catch (error) { console.error("Error fetching events:", error); }
       finally { setLoading(false); }
     };
