@@ -298,18 +298,17 @@ const HomePage = () => {
               </div>
             </motion.div>
 
-            {/* Trust Strip */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }} className="flex flex-wrap items-center gap-6">
-              {[
-                { icon: CheckCircle, text: "Verified Tickets" },
-                { icon: Lock, text: "Secure Payment" },
-                { icon: Zap, text: "QR delivery" },
-                { icon: Headphones, text: "Customer support" }
-              ].map((t, i) => (
-                <span key={i} className="flex items-center gap-2 text-sm text-white/60">
-                  <t.icon className="w-4 h-4 text-[#e10600]" />{t.text}
-                </span>
-              ))}
+            {/* Trust Strip — softened to single line, no overclaim badges */}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }} className="flex flex-wrap items-center gap-6 text-xs text-white/60">
+              <span className="flex items-center gap-2">
+                <Lock className="w-4 h-4 text-[#e10600]" />Stripe checkout
+              </span>
+              <span className="flex items-center gap-2">
+                <Zap className="w-4 h-4 text-[#e10600]" />QR delivery by email
+              </span>
+              <span className="flex items-center gap-2">
+                <Shield className="w-4 h-4 text-[#e10600]" />Refund per policy
+              </span>
             </motion.div>
           </div>
         </motion.div>
@@ -340,7 +339,7 @@ const HomePage = () => {
                   alt="Spa F1 Tickets 2026 - Belgian Grand Prix" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute top-3 left-3 flex items-center gap-2">
-                  <span className="bg-[#e10600] text-white text-[9px] font-black px-2 py-0.5 uppercase tracking-wider">#1 TRENDING</span>
+                  <span className="bg-[#e10600] text-white text-[9px] font-black px-2 py-0.5 uppercase tracking-wider">POPULAR</span>
                   <span className="bg-[#facc15] text-black text-[9px] font-black px-2 py-0.5 uppercase tracking-wider">AVAILABLE</span>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -348,7 +347,7 @@ const HomePage = () => {
                   <p className="text-slate-400 text-xs">Belgian Grand Prix &bull; Spa-Francorchamps &bull; Aug 28-30</p>
                   <div className="flex items-center justify-between mt-2">
                     <span className="text-[#15803d] font-black text-sm">From &euro;109</span>
-                    <span className="text-[#e10600] font-black text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">Buy Tickets <ChevronRight className="w-3 h-3" /></span>
+                    <span className="text-[#e10600] font-black text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">View <ChevronRight className="w-3 h-3" /></span>
                   </div>
                 </div>
               </Link>
@@ -359,12 +358,12 @@ const HomePage = () => {
                 <img src="/images/heroes/concert-purple.jpg" alt="Taylor Swift Eras Tour London Tickets 2026" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="bg-[#e10600] text-white text-[9px] font-black px-2 py-0.5 uppercase tracking-wider w-fit mb-auto">#2 TRENDING</span>
+                  <span className="bg-[#e10600] text-white text-[9px] font-black px-2 py-0.5 uppercase tracking-wider w-fit mb-auto">POPULAR</span>
                   <h3 className="text-xl font-black text-white uppercase tracking-tight group-hover:text-[#e10600] transition-colors">TAYLOR SWIFT LONDON</h3>
                   <p className="text-slate-400 text-xs">Eras Tour &bull; Wembley Stadium &bull; Summer 2026</p>
                   <div className="flex items-center justify-between mt-2">
                     <span className="text-[#15803d] font-black text-sm">From &euro;89</span>
-                    <span className="text-[#e10600] font-black text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">Buy Tickets <ChevronRight className="w-3 h-3" /></span>
+                    <span className="text-[#e10600] font-black text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">View <ChevronRight className="w-3 h-3" /></span>
                   </div>
                 </div>
               </Link>
@@ -375,12 +374,12 @@ const HomePage = () => {
                 <img src="/api/event-images/venues/motogp-action.jpg" alt="MotoGP Tickets 2026 - All Grand Prix" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="relative h-full flex flex-col justify-end p-4">
-                  <span className="bg-amber-500 text-black text-[9px] font-black px-2 py-0.5 uppercase tracking-wider w-fit mb-auto">#3 TRENDING</span>
+                  <span className="bg-amber-500 text-black text-[9px] font-black px-2 py-0.5 uppercase tracking-wider w-fit mb-auto">POPULAR</span>
                   <h3 className="text-xl font-black text-white uppercase tracking-tight group-hover:text-[#e10600] transition-colors">MOTOGP TICKETS 2026</h3>
                   <p className="text-slate-400 text-xs">All MotoGP Races &bull; 21 Grand Prix &bull; Full Season</p>
                   <div className="flex items-center justify-between mt-2">
                     <span className="text-[#15803d] font-black text-sm">From &euro;69</span>
-                    <span className="text-[#e10600] font-black text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">Buy Tickets <ChevronRight className="w-3 h-3" /></span>
+                    <span className="text-[#e10600] font-black text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">View <ChevronRight className="w-3 h-3" /></span>
                   </div>
                 </div>
               </Link>
@@ -563,28 +562,11 @@ const HomePage = () => {
               <span className="text-[10px] font-black text-[#15803d] uppercase tracking-widest">TRUSTED PLATFORM</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3">WHY FANS TRUST US</h2>
-            <p className="text-slate-500 max-w-xl mx-auto text-sm">Your purchase is protected with our comprehensive guarantee</p>
-          </FadeInSection>
-
-          {/* Trustpilot-style Rating */}
-          <FadeInSection className="flex flex-col items-center mb-10">
-            <div className="flex items-center gap-3 bg-[#1e1e1e] border border-white/8 px-6 py-4">
-              <div className="flex gap-0.5">
-                {[1,2,3,4,5].map(i => (
-                  <div key={i} className="w-7 h-7 bg-[#00b67a] flex items-center justify-center">
-                    <Star className="w-4 h-4 text-white fill-white" />
-                  </div>
-                ))}
-              </div>
-              <div className="ml-2">
-                <span className="text-white font-black text-lg">Excellent</span>
-                <span className="text-slate-400 text-xs block">Customer ratings</span>
-              </div>
-            </div>
+            <p className="text-slate-500 max-w-xl mx-auto text-sm">Independent secondary marketplace with seller verification, escrowed payments and a clear refund policy.</p>
           </FadeInSection>
 
           {/* Trust Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 mt-10">
             {[
               { label: "Live Events", icon: Ticket },
               { label: "Buyer Protected", icon: Shield },
@@ -605,9 +587,9 @@ const HomePage = () => {
           {/* Trust Feature Cards */}
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { icon: Shield, title: "BUYER PROTECTION", desc: "Full refund if tickets are invalid or not delivered. Every ticket verified.", to: "/buyer-protection" },
-              { icon: Lock, title: "SECURE PAYMENTS", desc: "Bank-level 256-bit SSL encryption via Stripe. Your details are always safe.", to: "/payment-info" },
-              { icon: CheckCircle, title: "VERIFIED SELLERS", desc: "Every seller undergoes ID verification. Every ticket authenticated.", to: null }
+              { icon: Shield, title: "BUYER PROTECTION", desc: "Refund available according to our policy if the event is cancelled or your tickets are not delivered.", to: "/buyer-protection" },
+              { icon: Lock, title: "SECURE CHECKOUT", desc: "Payments processed by Stripe with 256-bit SSL. PCI-DSS compliant.", to: "/payment-info" },
+              { icon: CheckCircle, title: "SELLER VERIFICATION", desc: "Sellers undergo ID verification before listing tickets on the marketplace.", to: null }
             ].map((item, i) => (
               <FadeInSection key={i} delay={i * 0.08}>
                 {item.to ? (
@@ -688,7 +670,7 @@ const HomePage = () => {
             UNFORGETTABLE EXPERIENCE?
           </h2>
           <p className="text-white/70 text-base mb-8 max-w-2xl mx-auto">
-            Join thousands of fans who trust EuroMatchTickets for their live event tickets
+            Browse live ticket listings across F1, MotoGP, World Cup 2026, Champions League and major concerts.
           </p>
           <Link to="/events">
             <Button data-testid="cta-btn" className="bg-white text-[#e10600] hover:bg-white/90 text-base h-13 px-10 rounded-none font-black uppercase tracking-wider">

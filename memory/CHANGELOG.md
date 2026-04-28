@@ -2,6 +2,23 @@
 
 ## ✅ Completed Today
 
+### -1. Homepage CTR + Trust Cleanup (per user feedback Apr 28) ✅
+**User feedback**: Homepage was overclaiming + repeating trust signals → Google "trust spam" + intent-mismatch risk.
+**Changes applied to `pages/HomePage.jsx`**:
+- **Removed** the "Excellent / Customer ratings" Trustpilot-style block (no real numbers attached → fake-looking).
+- **Removed** "Join thousands of fans who trust EuroMatchTickets" → replaced with neutral marketplace description: *"Browse live ticket listings across F1, MotoGP, World Cup 2026, Champions League and major concerts."*
+- **Removed** `#1 TRENDING / #2 TRENDING / #3 TRENDING` badges from the Spa F1 / Taylor Swift / MotoGP cards. Replaced with single neutral `POPULAR` badge.
+- **Replaced** all `Buy Tickets` CTAs in the popular cards → `View`.
+- **Softened trust strip** under the hero: was 4 badges (`Verified Tickets / Secure Payment / QR delivery / Customer support`) → now 3 honest signals (`Stripe checkout · QR delivery by email · Refund per policy`).
+- **Softened trust feature cards**:
+  - `BUYER PROTECTION` desc: was *"Full refund if tickets are invalid or not delivered. Every ticket verified."* → *"Refund available according to our policy if the event is cancelled or your tickets are not delivered."*
+  - `SECURE PAYMENTS` desc: was *"Bank-level 256-bit SSL encryption via Stripe. Your details are always safe."* → *"Payments processed by Stripe with 256-bit SSL. PCI-DSS compliant."*
+  - `VERIFIED SELLERS` → renamed to `SELLER VERIFICATION`, desc: *"Sellers undergo ID verification before listing tickets on the marketplace."*
+- **Why this matters for SEO/CTR**:
+  - Removes unsupported scarcity claims that Google's "Helpful Content" classifier penalizes.
+  - Lets Google understand the page intent matches the title (marketplace, not affiliate).
+  - Reduces visual noise so the actual offer (events list) stands out.
+
 ### 0. Fixed JavaScript "Unexpected token ')'" + React DOM crash 🔥 (P0 — RESOLVED)
 **Symptom**:
 - Page-load: `Uncaught SyntaxError: Unexpected token ')'`.
