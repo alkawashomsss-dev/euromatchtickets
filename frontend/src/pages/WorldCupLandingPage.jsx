@@ -337,9 +337,15 @@ const WorldCupLandingPage = () => {
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
           "@type": "Place",
-          "name": "Multiple Venues - USA, Mexico, Canada"
+          "name": "Multiple Venues — USA, Mexico, Canada",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Multiple Cities",
+            "addressRegion": "USA / Mexico / Canada"
+          }
         },
-        
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "organizer": {
           "@type": "Organization",
           "name": "EuroMatchTickets",

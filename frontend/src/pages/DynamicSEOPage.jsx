@@ -109,7 +109,7 @@ export default function DynamicSEOPage() {
   useEffect(() => {
     if (page && !loading) {
       const phEvent = document.getElementById('ph-event');
-      if (phEvent) phEvent.remove();
+      if (phEvent && phEvent.parentNode) phEvent.parentNode.removeChild(phEvent);
     }
   }, [page, loading]);
 

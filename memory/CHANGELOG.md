@@ -2,19 +2,38 @@
 
 ## ✅ Completed Today
 
-### 0. Fixed JavaScript "Unexpected token ')'" + React DOM crash 🔥 (P0)
-**Symptom**: Every page threw `Uncaught SyntaxError: Unexpected token ')'` and clicking any "Buy / View Tickets" button sometimes triggered a React DOM crash:
-`null is not an object (evaluating 'finishedRoot.parentNode.removeChild')`.
-**Root causes**:
-1. `public/index.html` had a TikTok Pixel snippet whose IIFE was malformed — the closing `}(window,document,'ttq');` was missing, leaving the script unparseable.
-2. The Google Analytics 4 script that followed it referenced `d` (the `document` parameter that the broken TikTok IIFE was supposed to inject) — once TikTok was disabled, GA4 threw `Can't find variable: d`.
-3. `components/StructuredData.jsx` ran `el.remove()` inside every `useEffect` cleanup. On rapid route changes (e.g. clicking an event card) React's reconciliation could try to remove a DOM child that had already been detached → React commit phase crashed.
-**Fixes**:
-- Disabled the broken TikTok Pixel block (commented out, easy to re-enable when a real Pixel ID is provided).
-- Replaced `d.createElement` / `d.head.appendChild` → `document.createElement` / `document.head.appendChild` in the GA4 init.
-- **Restarted frontend supervisor** (CRA dev server caches `public/index.html` in memory; hot reload alone is not enough for changes to that file).
-- Removed all `cleanup() { el.remove() }` blocks from `EventStructuredData`, `BreadcrumbStructuredData`, `FAQStructuredData`, `OrganizationStructuredData`, `WebsiteStructuredData`, `LocalBusinessStructuredData`. The `script.textContent = JSON.stringify(...)` line that runs on next mount will replace the content cleanly without a destroy/recreate race.
-**Verified**: 0 page errors on Homepage, /events, and event detail page after rapid navigation. Sanity screenshot taken on `/event/spanish-motogp-2026-jerez-tickets`.
+### 0. Fixed JavaScript "Unexpected token ')'" + React DOM crash 🔥 (P0 — RESOLVED)
+**Symptom**:
+- Page-load: `Uncaught SyntaxError: Unexpected token ')'`.
+- Click on Buy/View Tickets: `null is not an object (evaluating 'finishedRoot.parentNode.removeChild')` (React 19 commit-phase crash).
+
+**Root causes** (validated by troubleshoot agent):
+1. `public/index.html` had a TikTok Pixel snippet whose IIFE was missing the `}(window,document,'ttq');` closing — unparseable.
+2. The Google Analytics 4 init that followed referenced `d` (the `document` param of the broken TikTok IIFE) → `Can't find variable: d`.
+3. **The Buy crash**: every component that managed `<head>` tags (`SEOHead.jsx`, `StructuredData.jsx`, `DynamicSEOPage.jsx`) called raw `el.remove()` on DOM nodes inside `useEffect`. React 19 is strict about ownership: when navigation triggers cleanup at the same moment React's commit phase tries to detach a fiber whose DOM node is already removed, `parentNode` is null and React crashes.
+
+**Fixes** (all React 19 safe):
+- Disabled the malformed TikTok Pixel block in `public/index.html` (commented; easy to re-enable with a real Pixel ID).
+- Replaced `d.createElement` → `document.createElement` for GA4 init.
+- **Restarted frontend supervisor** (CRA caches `public/index.html` in memory; hot reload alone is insufficient for index.html changes).
+- Replaced **every** `el.remove()` call with the parent-check pattern:
+  ```js
+  if (el && el.parentNode) el.parentNode.removeChild(el);
+  ```
+  Covered files:
+  - `components/SEOHead.jsx` — pre-hydration cleanup, duplicate canonical removal, hreflang reset
+  - `components/StructuredData.jsx` — `ph-org` and `ph-site` placeholders
+  - `pages/DynamicSEOPage.jsx` — `ph-event` placeholder
+- Removed **all** `cleanup() { el.remove() }` blocks from the schema components — the next mount overwrites `script.textContent` cleanly without a destroy/recreate race.
+
+**Verified live**: 
+- Homepage → 0 errors
+- /events → 0 errors
+- /event/chinese-grand-prix-2026-tickets → 0 errors
+- Click "Buy" button → routes to /checkout?event=...&category=... → 0 errors → Stripe checkout renders cleanly with €177 total.
+
+### 0b. Fixed Google Search Console "address missing in location" warning
+- `WorldCupLandingPage.jsx` JSON-LD `location` block lacked a `PostalAddress` child. Added `addressCountry / addressLocality / addressRegion` for "Multiple Cities — USA / Mexico / Canada" plus `eventAttendanceMode: OfflineEventAttendanceMode`. Will clear on next Google re-crawl.
 
 ### 1. Google Login Auth — VERIFIED WORKING ✅
 - **Root cause**: NOT a code issue. The login flow (App.js `login()` → Google → AuthCallback → `/api/auth/google`) was already correct.
