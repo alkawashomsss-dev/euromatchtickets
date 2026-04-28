@@ -12,6 +12,7 @@ import { RelatedEventsSection } from "../components/RelatedEventsSection";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import EventStructuredData from "../components/StructuredData";
+import LiveListingsCounter from "../components/LiveListingsCounter";
 import WaitlistCTA from "../components/WaitlistCTA";
 import RelatedEventsGraph from "../components/RelatedEventsGraph";
 import EditorialByline from "../components/EditorialByline";
@@ -98,12 +99,13 @@ export default function EventDetailsPage() {
   const canonicalSlug = event.slug || eventId;
   const pageUrl = `https://euromatchtickets.com/event/${canonicalSlug}`;
   const isUglyUrl = eventId !== canonicalSlug;
+  const listingCount = totalAvailable || event.ticket_count || 0;
   const seoTitle = isComingSoon
     ? `${event.title} Tickets — Dates, Venue & Waitlist | EuroMatchTickets`
-    : `Buy ${event.title} Tickets | ${event.venue ? event.venue + ' | ' : ''}From €${lowestPrice}`;
+    : `${event.title} Tickets${listingCount > 0 ? ` (${listingCount} Listings)` : ''} — Compare Prices & Availability`;
   const seoDesc = isComingSoon
     ? `${event.title} — ${event.venue || 'venue TBA'}${event.city ? ', ' + event.city : ''}. Tickets not yet on sale. Join the free waitlist and get alerted the moment verified inventory becomes available.`
-    : `${event.title} tickets from €${lowestPrice}. ${event.venue}${event.venue && event.city ? ', ' : ''}${event.city}. Verified sellers. Instant QR delivery. Buyer protection 100% guarantee.`;
+    : `Compare ${listingCount > 0 ? listingCount + ' verified ' : ''}${event.title} listings from multiple sellers${event.venue ? ' at ' + event.venue : ''}. View current prices, seating options, and availability. Market pricing may vary.`;
   const officialPrice = lowestPrice ? Math.round(lowestPrice * 1.35) : null;
   const savings = officialPrice && lowestPrice ? Math.round(officialPrice - lowestPrice) : null;
 
@@ -174,9 +176,16 @@ export default function EventDetailsPage() {
               className="flex flex-wrap items-center gap-4 text-white/70 text-sm mb-5">
               <span className="flex items-center gap-1.5"><Flag className="w-4 h-4 text-white/40" />{event.city}{event.country ? `, ${event.country}` : ''}</span>
               {!isComingSoon && (
-                <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-white/40" />{totalAvailable || event.ticket_count || 0} listings · prices updated recently</span>
+                <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-white/40" />{listingCount} listings · prices updated recently</span>
               )}
             </motion.div>
+
+            {/* Live Listings Counter — auto-refreshing real-data signal */}
+            {!isComingSoon && (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="mb-4">
+                <LiveListingsCounter searchQuery={event.title} fallbackLabel="listings" />
+              </motion.div>
+            )}
 
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-wrap items-center gap-4 mb-6">
