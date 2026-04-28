@@ -2,6 +2,24 @@
 
 ## ✅ Completed Today
 
+### -2. CTR v3 — "From €" cleanup, Live Listings Counter wired, copy upgrade ✅
+**User feedback (Apr 28 evening)**: "From €" was still over-repeated across category blocks → looked like a price farm. Footer trust strip duplicated the homepage one. Newsletter copy was generic. And the missing piece for SEO was a **real-data signal** to convince Google + visitors the site is a live marketplace.
+
+**Changes**:
+1. **Removed "From €" from Racing Row + Hot Events Grid** (10 instances). Kept only in hero (€150 World Cup) and the 3 Popular Tickets cards (Spa, Taylor Swift, MotoGP) — exactly what the user asked for.
+2. **Removed the duplicate trust strip** from `Footer.jsx` ("Buyer protection / Verified sellers / Encrypted payments / Customer support" repeated above the footer columns). The same 3 trust feature cards already render in the homepage "Why Fans Trust Us" section — no need to repeat.
+3. **CTA description**: `"Browse live ticket listings…"` → `"Compare live ticket listings…"` (Compare = higher CTR).
+4. **Newsletter copy upgrade** in `NewsletterSignup.jsx`:
+   - Title: `"Get Ticket Price Alerts"` → `"Listing Alerts"`
+   - Body: `"Be the first to know when prices drop. Join our community who never miss a deal."` → `"Get alerts when new listings appear or prices change for events you care about."` (marketplace logic, not affiliate-style pitch).
+5. 🔥 **WIRED `LiveListingsCounter` INTO THE HERO** under the price block. Live result on the homepage:
+   ```
+   1,011 WORLD CUP LISTINGS · PRICES UPDATED JUST NOW
+   ```
+   This is the **single highest-leverage SEO + CTR move** the user has been asking for. It tells Google's crawler the page is dynamic AND tells the visitor "real marketplace, real data". Wired via `<LiveListingsCounter searchQuery="World Cup 2026" fallbackLabel="World Cup listings" />` — pulls live count from `/api/events?search=...` every 90 s, only renders when the count > 0 (zero overclaim risk).
+
+**Verified**: 0 errors, screenshot confirms the counter renders with real numbers, all copy changes propagated.
+
 ### -1. Homepage CTR + Trust Cleanup (per user feedback Apr 28) ✅
 **User feedback**: Homepage was overclaiming + repeating trust signals → Google "trust spam" + intent-mismatch risk.
 **Changes applied to `pages/HomePage.jsx`**:

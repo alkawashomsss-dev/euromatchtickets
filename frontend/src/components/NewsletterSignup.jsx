@@ -72,10 +72,10 @@ export const NewsletterSignup = ({ source = "unknown", variant = "default" }) =>
           <Mail className="w-7 h-7 text-[#e10600]" />
         </div>
         <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight mb-2">
-          Get Ticket Price Alerts
+          Listing Alerts
         </h3>
         <p className="text-slate-400 text-sm mb-6">
-          Be the first to know when prices drop. Join our community who never miss a deal.
+          Get alerts when new listings appear or prices change for events you care about.
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
           <input

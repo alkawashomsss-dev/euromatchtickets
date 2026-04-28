@@ -19,6 +19,7 @@ import { getEventImagePath, getCategoryHero } from "../utils/eventImages";
 import { TrustSection, TrustBar } from "../components/TrustElements";
 
 import { BreadcrumbStructuredData, FAQStructuredData, commonTicketFAQs } from "../components/StructuredData";
+import LiveListingsCounter from "../components/LiveListingsCounter";
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);
@@ -281,6 +282,9 @@ const HomePage = () => {
                 <span className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">From</span>
                 <div className="text-3xl md:text-4xl font-black text-[#e10600] mt-0.5">&euro;150</div>
                 <span className="text-slate-500 text-[10px]">based on current listings</span>
+                <div className="mt-2">
+                  <LiveListingsCounter searchQuery="World Cup 2026" fallbackLabel="World Cup listings" />
+                </div>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-3">
@@ -472,11 +476,11 @@ const HomePage = () => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                 {[
-                  { to: "/f1-tickets", title: "F1 Tickets", sub: "23 Grand Prix", price: "From \u20ac89", img: "/images/heroes/monaco.jpg" },
-                  { to: "/f1-2026-schedule", title: "F1 Schedule", sub: "Full Calendar", price: "Mar - Dec 2026", img: "/images/heroes/silverstone.jpg" },
-                  { to: "/motogp-tickets", title: "MotoGP", sub: "21 Races", price: "From \u20ac69", img: "/images/heroes/motogp.jpg" },
-                  { to: "/motogp-2026-schedule", title: "MotoGP Schedule", sub: "Full Calendar", price: "Mar - Nov 2026", img: "/images/heroes/motogp-orange.jpg" },
-                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", price: "From \u20ac149", img: "/api/event-images/venues/isle-of-man.png" }
+                  { to: "/f1-tickets", title: "F1 Tickets", sub: "23 Grand Prix", img: "/images/heroes/monaco.jpg" },
+                  { to: "/f1-2026-schedule", title: "F1 Schedule", sub: "Mar – Dec 2026", img: "/images/heroes/silverstone.jpg" },
+                  { to: "/motogp-tickets", title: "MotoGP", sub: "21 Races", img: "/images/heroes/motogp.jpg" },
+                  { to: "/motogp-2026-schedule", title: "MotoGP Schedule", sub: "Mar – Nov 2026", img: "/images/heroes/motogp-orange.jpg" },
+                  { to: "/isle-of-man-tt-tickets", title: "Isle of Man TT", sub: "Legendary Race", img: "/api/event-images/venues/isle-of-man.png" }
                 ].map((item) => (
                   <Link key={item.to} to={item.to} className="group relative h-36 overflow-hidden block hover:ring-2 hover:ring-[#e10600] transition-all duration-150">
                     <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
@@ -484,7 +488,6 @@ const HomePage = () => {
                     <div className="relative h-full flex flex-col justify-end p-4">
                       <h3 className="text-sm font-black text-white uppercase tracking-tight">{item.title}</h3>
                       <p className="text-[10px] text-white/50 uppercase">{item.sub}</p>
-                      <span className="text-[#facc15] text-xs font-black mt-1">{item.price}</span>
                     </div>
                   </Link>
                 ))}
@@ -496,12 +499,12 @@ const HomePage = () => {
           <FadeInSection delay={0.2}>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {[
-                { to: "/concerts-in-london-2026", label: "LONDON 2026", title: "London Concerts", price: "From \u20ac45", img: "/images/heroes/concert-live.jpg" },
-                { to: "/bayern-vs-real-madrid-tickets", label: "UCL CLASSIC", title: "Bayern vs Real", price: "From \u20ac199", img: "/api/event-images/venues/allianz-arena.jpg" },
-                { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "World Cup", price: "From \u20ac89", img: "/images/heroes/worldcup-trophy.jpg" },
-                { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", price: "From \u20ac85", img: "/api/event-images/venues/santiago-bernabeu.jpg" },
-                { to: "/f1-bahrain-grand-prix-tickets", label: "NIGHT RACE", title: "Bahrain GP", price: "From \u20ac149", img: "/api/event-images/venues/yas-marina.png" },
-                { to: "/f1-tickets-2026", label: "FULL SEASON", title: "F1 2026", price: "From \u20ac120", img: "/images/heroes/f1-race.jpg" }
+                { to: "/concerts-in-london-2026", label: "LONDON 2026", title: "London Concerts", img: "/images/heroes/concert-live.jpg" },
+                { to: "/bayern-vs-real-madrid-tickets", label: "UCL CLASSIC", title: "Bayern vs Real", img: "/api/event-images/venues/allianz-arena.jpg" },
+                { to: "/bahrain-world-cup-tickets-2026", label: "FIFA 2026", title: "World Cup", img: "/images/heroes/worldcup-trophy.jpg" },
+                { to: "/champions-league-tickets", label: "UEFA", title: "Champions League", img: "/api/event-images/venues/santiago-bernabeu.jpg" },
+                { to: "/f1-bahrain-grand-prix-tickets", label: "NIGHT RACE", title: "Bahrain GP", img: "/api/event-images/venues/yas-marina.png" },
+                { to: "/f1-tickets-2026", label: "FULL SEASON", title: "F1 2026", img: "/images/heroes/f1-race.jpg" }
               ].map((cat, i) => (
                 <Link key={cat.to} to={cat.to} className="group relative h-40 overflow-hidden block hover:ring-2 hover:ring-[#e10600] transition-all duration-150">
                   <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
@@ -509,7 +512,6 @@ const HomePage = () => {
                   <div className="relative h-full flex flex-col justify-end p-4">
                     <span className="text-[9px] font-black text-[#e10600] mb-0.5 uppercase tracking-widest">{cat.label}</span>
                     <h3 className="text-sm font-black text-white uppercase tracking-tight">{cat.title}</h3>
-                    <p className="text-[10px] text-white/40">{cat.price}</p>
                   </div>
                 </Link>
               ))}
@@ -670,7 +672,7 @@ const HomePage = () => {
             UNFORGETTABLE EXPERIENCE?
           </h2>
           <p className="text-white/70 text-base mb-8 max-w-2xl mx-auto">
-            Browse live ticket listings across F1, MotoGP, World Cup 2026, Champions League and major concerts.
+            Compare live ticket listings across F1, MotoGP, World Cup 2026, Champions League and major concerts.
           </p>
           <Link to="/events">
             <Button data-testid="cta-btn" className="bg-white text-[#e10600] hover:bg-white/90 text-base h-13 px-10 rounded-none font-black uppercase tracking-wider">

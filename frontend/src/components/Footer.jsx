@@ -10,25 +10,6 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#0a0a0f] text-white" data-testid="footer">
-      {/* Trust Badges Bar — one concise row, no overclaiming */}
-      <div className="border-b border-white/6">
-        <div className="max-w-7xl mx-auto px-4 py-5">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { icon: Shield, label: "Buyer protection" },
-              { icon: CheckCircle, label: "Verified sellers" },
-              { icon: Lock, label: "Encrypted payments" },
-              { icon: Clock, label: "Customer support" }
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-slate-400">
-                <item.icon className="w-4 h-4 text-[#e10600] flex-shrink-0" />
-                <span className="text-[10px] font-bold uppercase tracking-wider">{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8">
