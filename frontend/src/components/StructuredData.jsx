@@ -61,17 +61,26 @@ const EventStructuredData = ({ event }) => {
     };
 
     // Main Event Schema - Google Rich Result optimized.
-    // NOTE: We deliberately do NOT emit `offers` here. Per platform mandate,
-    // a ticket resale marketplace cannot accurately represent a single
-    // canonical "price/availability" Offer per Event. Including a Product or
-    // AggregateOffer block on a marketplace page triggers Google validation
-    // errors (price required, etc.) without unlocking valid Merchant rich
-    // results. Keep Event schema clean and let buyers see live prices in-page.
+    // We emit a SINGLE `Offer` (not AggregateOffer) on the Event schema so
+    // Google can show the "From €X" rich snippet without triggering the
+    // Merchant-Listing validators that previously broke /f1-tickets etc.
+    // Offer here represents the lowest available ticket starting price.
+    const lowestPrice =
+      typeof event.lowest_price === 'number' && event.lowest_price > 0
+        ? event.lowest_price
+        : null;
+    const hasInventory =
+      availableTickets > 0 &&
+      event.status !== 'coming_soon' &&
+      event.status !== 'sold_out' &&
+      event.status !== 'cancelled' &&
+      lowestPrice !== null;
+
     const eventSchema = {
       "@context": "https://schema.org",
       "@type": getEventType(event.event_type),
       "name": event.title || event.name,
-      "description": event.description || `Buy tickets for ${event.title}. Secure booking with Buyer protection and QR ticket delivery.`,
+      "description": event.description || `Compare verified ticket listings for ${event.title}. Secure checkout with QR delivery.`,
       "startDate": event.event_date || event.date,
       "endDate": getEndDate(event.event_date || event.date, event.event_type),
       "eventStatus": event.status === 'postponed'
@@ -94,7 +103,17 @@ const EventStructuredData = ({ event }) => {
       "organizer": getOrganizer(event.event_type, event.title),
       "performer": getPerformer(),
       "image": [eventImage],
-      "url": pageUrl
+      "url": pageUrl,
+      ...(hasInventory && {
+        "offers": {
+          "@type": "Offer",
+          "url": pageUrl,
+          "price": lowestPrice.toString(),
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "validFrom": new Date().toISOString().split('T')[0]
+        }
+      })
     };
 
     let script = document.querySelector('script[data-schema="event"]');
