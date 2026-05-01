@@ -1,285 +1,1184 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-new-york-new-jersey-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
+    <loc>https://euromatchtickets.com/world-cup-2026-tickets</loc>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.90</priority>
+    <priority>1.00</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-lg.webp</image:loc>
-      <image:title>World Cup  New York New Jersey Tickets</image:title>
+      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
+      <image:title>World Cup 2026 Tickets</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-los-angeles-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
+    <loc>https://euromatchtickets.com/world-cup-2026</loc>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
+      <image:title>World Cup 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-schedule</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.90</priority>
     <image:image>
       <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
-      <image:title>World Cup  Los Angeles Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-dallas-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-final-lg.webp</image:loc>
-      <image:title>World Cup  Dallas Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-miami-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-final-lg.webp</image:loc>
-      <image:title>World Cup  Miami Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-houston-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-lg.webp</image:loc>
-      <image:title>World Cup  Houston Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-philadelphia-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
-      <image:title>World Cup  Philadelphia Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-atlanta-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
-      <image:title>World Cup  Atlanta Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-seattle-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-lg.webp</image:loc>
-      <image:title>World Cup  Seattle Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-san-francisco-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-lg.webp</image:loc>
-      <image:title>World Cup  San Francisco Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-kansas-city-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-final-lg.webp</image:loc>
-      <image:title>World Cup  Kansas City Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-boston-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-lg.webp</image:loc>
-      <image:title>World Cup  Boston Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-mexico-city-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
-      <image:title>World Cup  Mexico City Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-guadalajara-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-lg.webp</image:loc>
-      <image:title>World Cup  Guadalajara Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-monterrey-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-final-lg.webp</image:loc>
-      <image:title>World Cup  Monterrey Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-toronto-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-lg.webp</image:loc>
-      <image:title>World Cup  Toronto Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-vancouver-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-final-lg.webp</image:loc>
-      <image:title>World Cup  Vancouver Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-group-stage-tickets</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.80</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
-      <image:title>World Cup  Group Stage Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-round-of-16-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
-      <image:title>World Cup  Round Of 16 Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-quarter-final-tickets</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.80</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-lg.webp</image:loc>
-      <image:title>World Cup  Quarter Final Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-semi-final-tickets</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-lg.webp</image:loc>
-      <image:title>World Cup  Semi Final Tickets</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-third-place-play-off-tickets</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-final-lg.webp</image:loc>
-      <image:title>World Cup  Third Place Play Off Tickets</image:title>
+      <image:title>World Cup 2026 Schedule</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/world-cup-2026-final-tickets</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
+      <image:title>World Cup 2026 Final Tickets</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-venues</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
+      <image:title>World Cup 2026 Venues</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-group-stage</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
+      <image:title>World Cup 2026 Group Stage</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-knockout-stage</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
+      <image:title>World Cup 2026 Knockout Stage</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-new-york-new-jersey-tickets</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.92</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
+      <image:title>World Cup 2026 New York New Jersey Tickets</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-los-angeles-tickets</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.92</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
+      <image:title>World Cup 2026 Los Angeles Tickets</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/world-cup-2026-miami-tickets</loc>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
     <image:image>
       <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
-      <image:title>World Cup  Final Tickets</image:title>
+      <image:title>World Cup 2026 Miami Tickets</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-tickets-new-york</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://euromatchtickets.com/world-cup-2026-dallas-tickets</loc>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.01</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-final-lg.webp</image:loc>
-      <image:title>World Cup  Tickets New York</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-tickets-los-angeles</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.01</priority>
+    <priority>0.90</priority>
     <image:image>
       <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
-      <image:title>World Cup  Tickets Los Angeles</image:title>
+      <image:title>World Cup 2026 Dallas Tickets</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-tickets-dallas</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://euromatchtickets.com/world-cup-2026-mexico-city-tickets</loc>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.01</priority>
-    <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-lg.webp</image:loc>
-      <image:title>World Cup  Tickets Dallas</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-tickets-miami</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.01</priority>
+    <priority>0.90</priority>
     <image:image>
       <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
-      <image:title>World Cup  Tickets Miami</image:title>
+      <image:title>World Cup 2026 Mexico City Tickets</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-tickets-toronto</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://euromatchtickets.com/world-cup-2026-toronto-tickets</loc>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.01</priority>
+    <priority>0.88</priority>
     <image:image>
       <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
-      <image:title>World Cup  Tickets Toronto</image:title>
+      <image:title>World Cup 2026 Toronto Tickets</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://euromatchtickets.com/world-cup-2026-tickets-mexico-city</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://euromatchtickets.com/world-cup-2026-vancouver-tickets</loc>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.01</priority>
+    <priority>0.88</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-final-lg.webp</image:loc>
-      <image:title>World Cup  Tickets Mexico City</image:title>
+      <image:loc>https://euromatchtickets.com/images/heroes/worldcup-trophy-lg.webp</image:loc>
+      <image:title>World Cup 2026 Vancouver Tickets</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-mexico-vs-south-africa-mexico-city</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_001.jpg</image:loc>
+      <image:title>Mexico vs South Africa - Estadio Azteca</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-south-korea-vs-czech-republic-zapopan</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_002.jpg</image:loc>
+      <image:title>South Korea vs Czech Republic - Estadio Akron</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-canada-vs-bosnia-toronto</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_003.jpg</image:loc>
+      <image:title>Canada vs Bosnia - BMO Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-united-states-vs-paraguay-inglewood</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_004.jpg</image:loc>
+      <image:title>United States vs Paraguay - SoFi Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-haiti-vs-scotland-foxborough</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_005.jpg</image:loc>
+      <image:title>Haiti vs Scotland - Gillette Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-australia-vs-turkey-vancouver</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_006.jpg</image:loc>
+      <image:title>Australia vs Turkey - BC Place</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-brazil-vs-morocco-east-rutherford</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_007.jpg</image:loc>
+      <image:title>Brazil vs Morocco - MetLife Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-qatar-vs-switzerland-santa-clara</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_008.jpg</image:loc>
+      <image:title>Qatar vs Switzerland - Levi&apos;s Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-ivory-coast-vs-ecuador-philadelphia</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_009.jpg</image:loc>
+      <image:title>Ivory Coast vs Ecuador - Lincoln Financial Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-germany-vs-curacao-houston</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_010.jpg</image:loc>
+      <image:title>Germany vs Curaçao - NRG Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-netherlands-vs-japan-arlington</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_011.jpg</image:loc>
+      <image:title>Netherlands vs Japan - AT&amp;T Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-sweden-vs-tunisia-monterrey</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_012.jpg</image:loc>
+      <image:title>Sweden vs Tunisia - Estadio BBVA</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-saudi-arabia-vs-uruguay-miami</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_013.jpg</image:loc>
+      <image:title>Saudi Arabia vs Uruguay - Hard Rock Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-spain-vs-cape-verde-atlanta</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_014.jpg</image:loc>
+      <image:title>Spain vs Cape Verde - Mercedes-Benz Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-iran-vs-new-zealand-inglewood</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_015.jpg</image:loc>
+      <image:title>Iran vs New Zealand - SoFi Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-belgium-vs-egypt-seattle</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_016.jpg</image:loc>
+      <image:title>Belgium vs Egypt - Lumen Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-france-vs-senegal-east-rutherford</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_017.jpg</image:loc>
+      <image:title>France vs Senegal - MetLife Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-iraq-vs-norway-foxborough</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_018.jpg</image:loc>
+      <image:title>Iraq vs Norway - Gillette Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-argentina-vs-algeria-kansas-city</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_019.jpg</image:loc>
+      <image:title>Argentina vs Algeria - Arrowhead Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-austria-vs-jordan-santa-clara</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_020.jpg</image:loc>
+      <image:title>Austria vs Jordan - Levi&apos;s Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-ghana-vs-panama-toronto</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_021.jpg</image:loc>
+      <image:title>Ghana vs Panama - BMO Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-england-vs-croatia-arlington</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_022.jpg</image:loc>
+      <image:title>England vs Croatia - AT&amp;T Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-portugal-vs-dr-congo-houston</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_023.jpg</image:loc>
+      <image:title>Portugal vs DR Congo - NRG Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-uzbekistan-vs-colombia-mexico-city</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_024.jpg</image:loc>
+      <image:title>Uzbekistan vs Colombia - Estadio Azteca</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-czech-republic-vs-south-africa-atlanta</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_025.jpg</image:loc>
+      <image:title>Czech Republic vs South Africa - Mercedes-Benz Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-switzerland-vs-bosnia-inglewood</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_026.jpg</image:loc>
+      <image:title>Switzerland vs Bosnia - SoFi Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-canada-vs-qatar-vancouver</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_027.jpg</image:loc>
+      <image:title>Canada vs Qatar - BC Place</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-mexico-vs-south-korea-zapopan</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_028.jpg</image:loc>
+      <image:title>Mexico vs South Korea - Estadio Akron</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-brazil-vs-haiti-philadelphia</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_029.jpg</image:loc>
+      <image:title>Brazil vs Haiti - Lincoln Financial Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-scotland-vs-morocco-foxborough</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_030.jpg</image:loc>
+      <image:title>Scotland vs Morocco - Gillette Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-turkey-vs-paraguay-santa-clara</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_031.jpg</image:loc>
+      <image:title>Turkey vs Paraguay - Levi&apos;s Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-united-states-vs-australia-seattle</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_032.jpg</image:loc>
+      <image:title>United States vs Australia - Lumen Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-germany-vs-ivory-coast-toronto</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_033.jpg</image:loc>
+      <image:title>Germany vs Ivory Coast - BMO Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-ecuador-vs-curacao-kansas-city</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_034.jpg</image:loc>
+      <image:title>Ecuador vs Curaçao - Arrowhead Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-netherlands-vs-sweden-houston</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_035.jpg</image:loc>
+      <image:title>Netherlands vs Sweden - NRG Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-tunisia-vs-japan-monterrey</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_036.jpg</image:loc>
+      <image:title>Tunisia vs Japan - Estadio BBVA</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-uruguay-vs-cape-verde-miami</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_037.jpg</image:loc>
+      <image:title>Uruguay vs Cape Verde - Hard Rock Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-spain-vs-saudi-arabia-atlanta</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_038.jpg</image:loc>
+      <image:title>Spain vs Saudi Arabia - Mercedes-Benz Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-belgium-vs-iran-inglewood</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_039.jpg</image:loc>
+      <image:title>Belgium vs Iran - SoFi Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-new-zealand-vs-egypt-vancouver</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_040.jpg</image:loc>
+      <image:title>New Zealand vs Egypt - BC Place</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-norway-vs-senegal-east-rutherford</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_041.jpg</image:loc>
+      <image:title>Norway vs Senegal - MetLife Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-france-vs-iraq-philadelphia</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_042.jpg</image:loc>
+      <image:title>France vs Iraq - Lincoln Financial Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-argentina-vs-austria-arlington</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_043.jpg</image:loc>
+      <image:title>Argentina vs Austria - AT&amp;T Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-jordan-vs-algeria-santa-clara</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_044.jpg</image:loc>
+      <image:title>Jordan vs Algeria - Levi&apos;s Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-england-vs-ghana-foxborough</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_045.jpg</image:loc>
+      <image:title>England vs Ghana - Gillette Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-panama-vs-croatia-toronto</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_046.jpg</image:loc>
+      <image:title>Panama vs Croatia - BMO Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-portugal-vs-uzbekistan-houston</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_047.jpg</image:loc>
+      <image:title>Portugal vs Uzbekistan - NRG Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-colombia-vs-dr-congo-zapopan</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_048.jpg</image:loc>
+      <image:title>Colombia vs DR Congo - Estadio Akron</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-scotland-vs-brazil-miami</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_049.jpg</image:loc>
+      <image:title>Scotland vs Brazil - Hard Rock Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-morocco-vs-haiti-atlanta</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_050.jpg</image:loc>
+      <image:title>Morocco vs Haiti - Mercedes-Benz Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-switzerland-vs-canada-vancouver</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_051.jpg</image:loc>
+      <image:title>Switzerland vs Canada - BC Place</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-bosnia-vs-qatar-seattle</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_052.jpg</image:loc>
+      <image:title>Bosnia vs Qatar - Lumen Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-czech-republic-vs-mexico-mexico-city</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_053.jpg</image:loc>
+      <image:title>Czech Republic vs Mexico - Estadio Azteca</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-south-africa-vs-south-korea-monterrey</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_054.jpg</image:loc>
+      <image:title>South Africa vs South Korea - Estadio BBVA</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-curacao-vs-ivory-coast-philadelphia</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_055.jpg</image:loc>
+      <image:title>Curaçao vs Ivory Coast - Lincoln Financial Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-ecuador-vs-germany-east-rutherford</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_056.jpg</image:loc>
+      <image:title>Ecuador vs Germany - MetLife Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-japan-vs-sweden-arlington</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_057.jpg</image:loc>
+      <image:title>Japan vs Sweden - AT&amp;T Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-tunisia-vs-netherlands-kansas-city</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_058.jpg</image:loc>
+      <image:title>Tunisia vs Netherlands - Arrowhead Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-turkey-vs-united-states-inglewood</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_059.jpg</image:loc>
+      <image:title>Turkey vs United States - SoFi Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-paraguay-vs-australia-santa-clara</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_060.jpg</image:loc>
+      <image:title>Paraguay vs Australia - Levi&apos;s Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-norway-vs-france-foxborough</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_061.jpg</image:loc>
+      <image:title>Norway vs France - Gillette Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-senegal-vs-iraq-toronto</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_062.jpg</image:loc>
+      <image:title>Senegal vs Iraq - BMO Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-egypt-vs-iran-seattle</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_063.jpg</image:loc>
+      <image:title>Egypt vs Iran - Lumen Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-new-zealand-vs-belgium-vancouver</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_064.jpg</image:loc>
+      <image:title>New Zealand vs Belgium - BC Place</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-cape-verde-vs-saudi-arabia-houston</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_065.jpg</image:loc>
+      <image:title>Cape Verde vs Saudi Arabia - NRG Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-uruguay-vs-spain-zapopan</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_066.jpg</image:loc>
+      <image:title>Uruguay vs Spain - Estadio Akron</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-panama-vs-england-east-rutherford</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_067.jpg</image:loc>
+      <image:title>Panama vs England - MetLife Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-croatia-vs-ghana-philadelphia</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_068.jpg</image:loc>
+      <image:title>Croatia vs Ghana - Lincoln Financial Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-algeria-vs-austria-kansas-city</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_069.jpg</image:loc>
+      <image:title>Algeria vs Austria - Arrowhead Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-jordan-vs-argentina-arlington</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_070.jpg</image:loc>
+      <image:title>Jordan vs Argentina - AT&amp;T Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-colombia-vs-portugal-miami</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_071.jpg</image:loc>
+      <image:title>Colombia vs Portugal - Hard Rock Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-dr-congo-vs-uzbekistan-atlanta</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_072.jpg</image:loc>
+      <image:title>DR Congo vs Uzbekistan - Mercedes-Benz Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-73</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_073.jpg</image:loc>
+      <image:title>Round of 32 - Match 73 - SoFi Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-74</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_074.jpg</image:loc>
+      <image:title>Round of 32 - Match 74 - Gillette Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-75</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_075.jpg</image:loc>
+      <image:title>Round of 32 - Match 75 - Estadio BBVA</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-76</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_076.jpg</image:loc>
+      <image:title>Round of 32 - Match 76 - NRG Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-77</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_077.jpg</image:loc>
+      <image:title>Round of 32 - Match 77 - MetLife Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-78</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_078.jpg</image:loc>
+      <image:title>Round of 32 - Match 78 - AT&amp;T Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-79</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_079.jpg</image:loc>
+      <image:title>Round of 32 - Match 79 - Estadio Azteca</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-80</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_080.jpg</image:loc>
+      <image:title>Round of 32 - Match 80 - Mercedes-Benz Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-81</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_081.jpg</image:loc>
+      <image:title>Round of 32 - Match 81 - Levi&apos;s Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-82</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_082.jpg</image:loc>
+      <image:title>Round of 32 - Match 82 - Lumen Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-83</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_083.jpg</image:loc>
+      <image:title>Round of 32 - Match 83 - BMO Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-84</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_084.jpg</image:loc>
+      <image:title>Round of 32 - Match 84 - SoFi Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-85</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_085.jpg</image:loc>
+      <image:title>Round of 32 - Match 85 - BC Place</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-86</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_086.jpg</image:loc>
+      <image:title>Round of 32 - Match 86 - Hard Rock Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-87</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_087.jpg</image:loc>
+      <image:title>Round of 32 - Match 87 - Arrowhead Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-88</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_088.jpg</image:loc>
+      <image:title>Round of 32 - Match 88 - AT&amp;T Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-89</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_089.jpg</image:loc>
+      <image:title>Round of 16 - Match 89 - Lincoln Financial Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-90</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_090.jpg</image:loc>
+      <image:title>Round of 16 - Match 90 - NRG Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-91</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_091.jpg</image:loc>
+      <image:title>Round of 16 - Match 91 - MetLife Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-92</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_092.jpg</image:loc>
+      <image:title>Round of 16 - Match 92 - Estadio Azteca</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-93</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_093.jpg</image:loc>
+      <image:title>Round of 16 - Match 93 - AT&amp;T Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-94</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_094.jpg</image:loc>
+      <image:title>Round of 16 - Match 94 - Lumen Field</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-95</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_095.jpg</image:loc>
+      <image:title>Round of 16 - Match 95 - Mercedes-Benz Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-96</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_096.jpg</image:loc>
+      <image:title>Round of 16 - Match 96 - BC Place</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-quarter-final-match-97</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_097.jpg</image:loc>
+      <image:title>Quarter-Final - Match 97 - Gillette Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-quarter-final-match-98</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_098.jpg</image:loc>
+      <image:title>Quarter-Final - Match 98 - SoFi Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-quarter-final-match-99</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_099.jpg</image:loc>
+      <image:title>Quarter-Final - Match 99 - Hard Rock Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-quarter-final-match-100</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_100.jpg</image:loc>
+      <image:title>Quarter-Final - Match 100 - Arrowhead Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-semi-final-match-101</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_101.jpg</image:loc>
+      <image:title>Semi-Final - Match 101 - AT&amp;T Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-semi-final-match-102</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_102.jpg</image:loc>
+      <image:title>Semi-Final - Match 102 - Mercedes-Benz Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-third-place-play-off-match-103</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_103.jpg</image:loc>
+      <image:title>Third Place Play-off - Match 103 - Hard Rock Stadium</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-final-match-104</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_104.jpg</image:loc>
+      <image:title>Final - Match 104 - MetLife Stadium</image:title>
     </image:image>
   </url>
 </urlset>
