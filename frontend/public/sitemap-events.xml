@@ -1,2284 +1,2285 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://euromatchtickets.com/event/liverpool-vs-arsenal-2026-tickets</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/match_liverpool-vs-arsenal-2026-tickets.jpg</image:loc>
-      <image:title>Liverpool vs Arsenal Tickets</image:title>
+      <image:loc>/api/event-images/matches/match_liverpool-vs-arsenal-2026-tickets.jpg</image:loc>
+      <image:title>Liverpool vs Arsenal</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/coldplay-berlin-2026-tickets</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_coldplay-berlin-2026-tickets.jpg</image:loc>
-      <image:title>Coldplay Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_coldplay-berlin-2026-tickets.jpg</image:loc>
+      <image:title>Coldplay</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/disneyland-paris-1-day-ticket-2026-tickets</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_disneyland-paris-1-day-ticket-2026-tickets.jpg</image:loc>
-      <image:title>Disneyland Paris - 1 Day Ticket Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_disneyland-paris-1-day-ticket-2026-tickets.jpg</image:loc>
+      <image:title>Disneyland Paris - 1 Day Ticket</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/disneyland-paris-2-day-hopper-2026-tickets</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_disneyland-paris-2-day-hopper-2026-tickets.jpg</image:loc>
-      <image:title>Disneyland Paris - 2 Day Hopper Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_disneyland-paris-2-day-hopper-2026-tickets.jpg</image:loc>
+      <image:title>Disneyland Paris - 2 Day Hopper</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/europa-park-day-pass-rust-2026-tickets</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_europa-park-day-pass-rust-2026-tickets.jpg</image:loc>
-      <image:title>Europa Park - Day Pass Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_europa-park-day-pass-rust-2026-tickets.jpg</image:loc>
+      <image:title>Europa Park - Day Pass</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/portaventura-world-1-day-salou-2026-tickets</loc>
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_portaventura-world-1-day-salou-2026-tickets.jpg</image:loc>
-      <image:title>PortAventura World - 1 Day Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_portaventura-world-1-day-salou-2026-tickets.jpg</image:loc>
+      <image:title>PortAventura World - 1 Day</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/eiffel-tower-summit-access-paris-2026-tickets</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_eiffel-tower-summit-access-paris-2026-tickets.jpg</image:loc>
-      <image:title>Eiffel Tower - Summit Access Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_eiffel-tower-summit-access-paris-2026-tickets.jpg</image:loc>
+      <image:title>Eiffel Tower - Summit Access</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/louvre-museum-skip-the-line-paris-2026-tickets</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_louvre-museum-skip-the-line-paris-2026-tickets.jpg</image:loc>
-      <image:title>Louvre Museum - Skip the Line Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_louvre-museum-skip-the-line-paris-2026-tickets.jpg</image:loc>
+      <image:title>Louvre Museum - Skip the Line</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/colosseum-roman-forum-rome-2026-tickets</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_colosseum-roman-forum-rome-2026-tickets.jpg</image:loc>
-      <image:title>Colosseum &amp; Roman Forum Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_colosseum-roman-forum-rome-2026-tickets.jpg</image:loc>
+      <image:title>Colosseum &amp; Roman Forum</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/vatican-museums-sistine-chapel-rome-2026-tickets</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_vatican-museums-sistine-chapel-rome-2026-tickets.jpg</image:loc>
-      <image:title>Vatican Museums &amp; Sistine Chapel Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_vatican-museums-sistine-chapel-rome-2026-tickets.jpg</image:loc>
+      <image:title>Vatican Museums &amp; Sistine Chapel</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/sagrada-familia-fast-track-barcelona-2026-tickets</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_sagrada-familia-fast-track-barcelona-2026-tickets.jpg</image:loc>
-      <image:title>Sagrada Familia - Fast Track Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_sagrada-familia-fast-track-barcelona-2026-tickets.jpg</image:loc>
+      <image:title>Sagrada Familia - Fast Track</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/anne-frank-house-amsterdam-2026-tickets</loc>
-    <lastmod>2026-07-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_anne-frank-house-amsterdam-2026-tickets.jpg</image:loc>
-      <image:title>Anne Frank House Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_anne-frank-house-amsterdam-2026-tickets.jpg</image:loc>
+      <image:title>Anne Frank House</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/tower-of-london-2026-tickets</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_tower-of-london-2026-tickets.jpg</image:loc>
-      <image:title>Tower of London Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_tower-of-london-2026-tickets.jpg</image:loc>
+      <image:title>Tower of London</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/london-eye-standard-entry-2026-tickets</loc>
-    <lastmod>2026-07-16</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/attraction_london-eye-standard-entry-2026-tickets.jpg</image:loc>
-      <image:title>London Eye - Standard Entry Tickets</image:title>
+      <image:loc>/api/event-images/matches/attraction_london-eye-standard-entry-2026-tickets.jpg</image:loc>
+      <image:title>London Eye - Standard Entry</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/tomorrowland-2026-boom-2026-tickets</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/festival_tomorrowland-2026-boom-2026-tickets.jpg</image:loc>
-      <image:title>Tomorrowland 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/festival_tomorrowland-2026-boom-2026-tickets.jpg</image:loc>
+      <image:title>Tomorrowland 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/tomorrowland-2026-weekend-2-boom-2026-tickets</loc>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/festival_tomorrowland-2026-weekend-2-boom-2026-tickets.jpg</image:loc>
-      <image:title>Tomorrowland 2026 - Weekend 2 Tickets</image:title>
+      <image:loc>/api/event-images/matches/festival_tomorrowland-2026-weekend-2-boom-2026-tickets.jpg</image:loc>
+      <image:title>Tomorrowland 2026 - Weekend 2</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/rock-am-ring-2026-n-rburg-2026-tickets</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/festival_rock-am-ring-2026-n-rburg-2026-tickets.jpg</image:loc>
-      <image:title>Rock am Ring 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/festival_rock-am-ring-2026-n-rburg-2026-tickets.jpg</image:loc>
+      <image:title>Rock am Ring 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/glastonbury-festival-2026-pilton-2026-tickets</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/festival_glastonbury-festival-2026-pilton-2026-tickets.jpg</image:loc>
-      <image:title>Glastonbury Festival 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/festival_glastonbury-festival-2026-pilton-2026-tickets.jpg</image:loc>
+      <image:title>Glastonbury Festival 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/primavera-sound-barcelona-2026-2026-tickets</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/festival_primavera-sound-barcelona-2026-2026-tickets.jpg</image:loc>
-      <image:title>Primavera Sound Barcelona 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/festival_primavera-sound-barcelona-2026-2026-tickets.jpg</image:loc>
+      <image:title>Primavera Sound Barcelona 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/oktoberfest-2026-beer-tent-entry-munich-2026-tickets</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/festival_oktoberfest-2026-beer-tent-entry-munich-2026-tickets.jpg</image:loc>
-      <image:title>Oktoberfest 2026 - Beer Tent Entry Tickets</image:title>
+      <image:loc>/api/event-images/matches/festival_oktoberfest-2026-beer-tent-entry-munich-2026-tickets.jpg</image:loc>
+      <image:title>Oktoberfest 2026 - Beer Tent Entry</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/sziget-festival-2026-budapest-2026-tickets</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/festival_sziget-festival-2026-budapest-2026-tickets.jpg</image:loc>
-      <image:title>Sziget Festival 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/festival_sziget-festival-2026-budapest-2026-tickets.jpg</image:loc>
+      <image:title>Sziget Festival 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/creamfields-2026-warrington-2026-tickets</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/festival_creamfields-2026-warrington-2026-tickets.jpg</image:loc>
-      <image:title>Creamfields 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/festival_creamfields-2026-warrington-2026-tickets.jpg</image:loc>
+      <image:title>Creamfields 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/f1-belgian-grand-prix-2026-stavelot-2026-tickets</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_belgian-grand-prix-2026.jpg</image:loc>
-      <image:title>Belgian Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_belgian-grand-prix-2026.jpg</image:loc>
+      <image:title>Belgian Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/wimbledon-2026-centre-court-london-2026-tickets</loc>
-    <lastmod>2026-07-12</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/tennis_wimbledon-2026-centre-court-london-2026-tickets.jpg</image:loc>
-      <image:title>Wimbledon 2026 - Centre Court Tickets</image:title>
+      <image:loc>/api/event-images/matches/tennis_wimbledon-2026-centre-court-london-2026-tickets.jpg</image:loc>
+      <image:title>Wimbledon 2026 - Centre Court</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/wimbledon-2026-womens-final-london-2026-tickets</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/tennis_wimbledon-2026-womens-final-london-2026-tickets.jpg</image:loc>
-      <image:title>Wimbledon 2026 - Women&apos;s Final Tickets</image:title>
+      <image:loc>/api/event-images/matches/tennis_wimbledon-2026-womens-final-london-2026-tickets.jpg</image:loc>
+      <image:title>Wimbledon 2026 - Women's Final</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/wimbledon-2026-ground-pass-london-2026-tickets</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/tennis_wimbledon-2026-ground-pass-london-2026-tickets.jpg</image:loc>
-      <image:title>Wimbledon 2026 - Ground Pass Tickets</image:title>
+      <image:loc>/api/event-images/matches/tennis_wimbledon-2026-ground-pass-london-2026-tickets.jpg</image:loc>
+      <image:title>Wimbledon 2026 - Ground Pass</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/roland-garros-2026-final-paris-2026-tickets</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/tennis_roland-garros-2026-final-paris-2026-tickets.jpg</image:loc>
-      <image:title>Roland Garros 2026 - Final Tickets</image:title>
+      <image:loc>/api/event-images/matches/tennis_roland-garros-2026-final-paris-2026-tickets.jpg</image:loc>
+      <image:title>Roland Garros 2026 - Final</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/roland-garros-2026-semifinals-paris-2026-tickets</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/tennis_roland-garros-2026-semifinals-paris-2026-tickets.jpg</image:loc>
-      <image:title>Roland Garros 2026 - Semifinals Tickets</image:title>
+      <image:loc>/api/event-images/matches/tennis_roland-garros-2026-semifinals-paris-2026-tickets.jpg</image:loc>
+      <image:title>Roland Garros 2026 - Semifinals</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/italian-open-2026-rome-2026-tickets</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/tennis_italian-open-2026-rome-2026-tickets.jpg</image:loc>
-      <image:title>Italian Open 2026 - Rome Tickets</image:title>
+      <image:loc>/api/event-images/matches/tennis_italian-open-2026-rome-2026-tickets.jpg</image:loc>
+      <image:title>Italian Open 2026 - Rome</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/madrid-open-2026-2026-tickets</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/tennis_madrid-open-2026-2026-tickets.jpg</image:loc>
-      <image:title>Madrid Open 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/tennis_madrid-open-2026-2026-tickets.jpg</image:loc>
+      <image:title>Madrid Open 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/f1-australian-grand-prix-2026-melbourne-tickets</loc>
-    <lastmod>2026-04-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_australian-grand-prix-2026.jpg</image:loc>
-      <image:title>Australian Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_australian-grand-prix-2026.jpg</image:loc>
+      <image:title>Australian Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/f1-japanese-grand-prix-2026-suzuka-tickets</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_japanese-grand-prix-2026.jpg</image:loc>
-      <image:title>Japanese Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_japanese-grand-prix-2026.jpg</image:loc>
+      <image:title>Japanese Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/f1-emilia-romagna-grand-prix-2026-imola-tickets</loc>
-    <lastmod>2026-05-25</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_emilia-romagna-grand-prix-2026.jpg</image:loc>
-      <image:title>Emilia Romagna Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_emilia-romagna-grand-prix-2026.jpg</image:loc>
+      <image:title>Emilia Romagna Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/f1-mexico-city-grand-prix-2026-mexico-city-tickets</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_mexico-city-grand-prix-2026.jpg</image:loc>
-      <image:title>Mexico City Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_mexico-city-grand-prix-2026.jpg</image:loc>
+      <image:title>Mexico City Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/f1-brazilian-grand-prix-2026-s-o-paulo-2027-tickets</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_brazilian-grand-prix-2026.jpg</image:loc>
-      <image:title>Brazilian Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_brazilian-grand-prix-2026.jpg</image:loc>
+      <image:title>Brazilian Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/isle-of-man-tt-2026-superbike-douglas-tickets</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/isle_of_man_tt_isle-of-man-tt-2026-superbike-douglas-tickets.jpg</image:loc>
-      <image:title>Isle of Man TT 2026 - Superbike Tickets</image:title>
+      <image:loc>/api/event-images/matches/isle_of_man_tt_isle-of-man-tt-2026-superbike-douglas-tickets.jpg</image:loc>
+      <image:title>Isle of Man TT 2026 - Superbike</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/isle-of-man-tt-2026-supersport-douglas-tickets</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/isle_of_man_tt_isle-of-man-tt-2026-supersport-douglas-tickets.jpg</image:loc>
-      <image:title>Isle of Man TT 2026 - Supersport Tickets</image:title>
+      <image:loc>/api/event-images/matches/isle_of_man_tt_isle-of-man-tt-2026-supersport-douglas-tickets.jpg</image:loc>
+      <image:title>Isle of Man TT 2026 - Supersport</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/isle-of-man-tt-2026-superstock-douglas-tickets</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/isle_of_man_tt_isle-of-man-tt-2026-superstock-douglas-tickets.jpg</image:loc>
-      <image:title>Isle of Man TT 2026 - Superstock Tickets</image:title>
+      <image:loc>/api/event-images/matches/isle_of_man_tt_isle-of-man-tt-2026-superstock-douglas-tickets.jpg</image:loc>
+      <image:title>Isle of Man TT 2026 - Superstock</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/isle-of-man-tt-2026-senior-tt-douglas-tickets</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/isle_of_man_tt_isle-of-man-tt-2026-senior-tt-douglas-tickets.jpg</image:loc>
-      <image:title>Isle of Man TT 2026 - Senior TT Tickets</image:title>
+      <image:loc>/api/event-images/matches/isle_of_man_tt_isle-of-man-tt-2026-senior-tt-douglas-tickets.jpg</image:loc>
+      <image:title>Isle of Man TT 2026 - Senior TT</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/isle-of-man-tt-2026-full-week-pass-douglas-tickets</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/isle_of_man_tt_isle-of-man-tt-2026-full-week-pass-douglas-tickets.jpg</image:loc>
-      <image:title>Isle of Man TT 2026 - Full Week Pass Tickets</image:title>
+      <image:loc>/api/event-images/matches/isle_of_man_tt_isle-of-man-tt-2026-full-week-pass-douglas-tickets.jpg</image:loc>
+      <image:title>Isle of Man TT 2026 - Full Week Pass</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/maroon-5-world-tour-2026-munich-tickets</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_maroon-5-world-tour-2026-munich-tickets.jpg</image:loc>
-      <image:title>Maroon 5 World Tour 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_maroon-5-world-tour-2026-munich-tickets.jpg</image:loc>
+      <image:title>Maroon 5 World Tour 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/john-legend-live-in-abu-dhabi-abu-dhabi-2026-tickets</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_john-legend-live-in-abu-dhabi-abu-dhabi-2026-tickets.jpg</image:loc>
-      <image:title>John Legend Live in Abu Dhabi Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_john-legend-live-in-abu-dhabi-abu-dhabi-2026-tickets.jpg</image:loc>
+      <image:title>John Legend Live in Abu Dhabi</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/harry-styles-love-on-tour-2026-london-tickets</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_harry-styles-love-on-tour-2026-london-tickets.jpg</image:loc>
-      <image:title>Harry Styles - Love On Tour 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_harry-styles-love-on-tour-2026-london-tickets.jpg</image:loc>
+      <image:title>Harry Styles - Love On Tour 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/harry-styles-vip-experience-berlin-2026-tickets</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_harry-styles-vip-experience-berlin-2026-tickets.jpg</image:loc>
-      <image:title>Harry Styles VIP Experience Berlin Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_harry-styles-vip-experience-berlin-2026-tickets.jpg</image:loc>
+      <image:title>Harry Styles VIP Experience Berlin</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/acl-festival-2026-austin-city-limits-tickets</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_acl-festival-2026-austin-city-limits-tickets.jpg</image:loc>
-      <image:title>ACL Festival 2026 - Austin City Limits Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_acl-festival-2026-austin-city-limits-tickets.jpg</image:loc>
+      <image:title>ACL Festival 2026 - Austin City Limits</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/metallica-at-the-sphere-las-vegas-las-vegas-2026-tickets</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_metallica-at-the-sphere-las-vegas-las-vegas-2026-tickets.jpg</image:loc>
-      <image:title>Metallica at The Sphere Las Vegas Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_metallica-at-the-sphere-las-vegas-las-vegas-2026-tickets.jpg</image:loc>
+      <image:title>Metallica at The Sphere Las Vegas</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/uefa-champions-league-final-2026-munich-tickets</loc>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/match_uefa-champions-league-final-2026-munich-tickets.jpg</image:loc>
-      <image:title>UEFA Champions League Final 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/match_uefa-champions-league-final-2026-munich-tickets.jpg</image:loc>
+      <image:title>UEFA Champions League Final 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/el-clasico-real-madrid-vs-barcelona-2026-tickets</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/match_el-clasico-real-madrid-vs-barcelona-2026-tickets.jpg</image:loc>
-      <image:title>El Clasico: Real Madrid vs Barcelona Tickets</image:title>
+      <image:loc>/api/event-images/matches/match_el-clasico-real-madrid-vs-barcelona-2026-tickets.jpg</image:loc>
+      <image:title>El Clasico: Real Madrid vs Barcelona</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/taylor-swift-eras-tour-2026-london-tickets</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_taylor-swift-eras-tour-2026-london-tickets.jpg</image:loc>
-      <image:title>Taylor Swift - Eras Tour 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_taylor-swift-eras-tour-2026-london-tickets.jpg</image:loc>
+      <image:title>Taylor Swift - Eras Tour 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/coldplay-music-of-the-spheres-barcelona-2026-tickets</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_coldplay-music-of-the-spheres-barcelona-2026-tickets.jpg</image:loc>
-      <image:title>Coldplay - Music of the Spheres Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_coldplay-music-of-the-spheres-barcelona-2026-tickets.jpg</image:loc>
+      <image:title>Coldplay - Music of the Spheres</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/super-bowl-lxi-2027-tickets</loc>
-    <lastmod>2027-02-08</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/match_super-bowl-lxi-2027-tickets.jpg</image:loc>
-      <image:title>Super Bowl LXI 2027 Tickets</image:title>
+      <image:loc>/api/event-images/matches/match_super-bowl-lxi-2027-tickets.jpg</image:loc>
+      <image:title>Super Bowl LXI 2027</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/super-bowl-lxi-2027-vip-experience-tickets</loc>
-    <lastmod>2027-02-08</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/match_super-bowl-lxi-2027-vip-experience-tickets.jpg</image:loc>
-      <image:title>Super Bowl LXI 2027 - VIP Experience Tickets</image:title>
+      <image:loc>/api/event-images/matches/match_super-bowl-lxi-2027-vip-experience-tickets.jpg</image:loc>
+      <image:title>Super Bowl LXI 2027 - VIP Experience</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/taylor-swift-eras-tour-wembley-night-1-tickets</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-1-tickets.jpg</image:loc>
-      <image:title>Taylor Swift - Eras Tour Wembley Night 1 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-1-tickets.jpg</image:loc>
+      <image:title>Taylor Swift - Eras Tour Wembley Night 1</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/taylor-swift-eras-tour-wembley-night-2-tickets</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-2-tickets.jpg</image:loc>
-      <image:title>Taylor Swift - Eras Tour Wembley Night 2 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-2-tickets.jpg</image:loc>
+      <image:title>Taylor Swift - Eras Tour Wembley Night 2</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/taylor-swift-eras-tour-wembley-night-3-tickets</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-3-tickets.jpg</image:loc>
-      <image:title>Taylor Swift - Eras Tour Wembley Night 3 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-3-tickets.jpg</image:loc>
+      <image:title>Taylor Swift - Eras Tour Wembley Night 3</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/taylor-swift-eras-tour-wembley-night-4-tickets</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-4-tickets.jpg</image:loc>
-      <image:title>Taylor Swift - Eras Tour Wembley Night 4 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-4-tickets.jpg</image:loc>
+      <image:title>Taylor Swift - Eras Tour Wembley Night 4</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/taylor-swift-eras-tour-wembley-night-5-tickets</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-5-tickets.jpg</image:loc>
-      <image:title>Taylor Swift - Eras Tour Wembley Night 5 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-5-tickets.jpg</image:loc>
+      <image:title>Taylor Swift - Eras Tour Wembley Night 5</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/taylor-swift-eras-tour-wembley-night-6-tickets</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-6-tickets.jpg</image:loc>
-      <image:title>Taylor Swift - Eras Tour Wembley Night 6 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_taylor-swift-eras-tour-wembley-night-6-tickets.jpg</image:loc>
+      <image:title>Taylor Swift - Eras Tour Wembley Night 6</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/world-athletics-championships-2026-day-1-tickets</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/athletics_world-athletics-championships-2026-day-1-tickets.jpg</image:loc>
-      <image:title>World Athletics Championships 2026 - Day 1 Tickets</image:title>
+      <image:loc>/api/event-images/matches/athletics_world-athletics-championships-2026-day-1-tickets.jpg</image:loc>
+      <image:title>World Athletics Championships 2026 - Day 1</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/world-athletics-championships-2026-100m-final-tickets</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/athletics_world-athletics-championships-2026-100m-final-tickets.jpg</image:loc>
-      <image:title>World Athletics Championships 2026 - 100m Final Tickets</image:title>
+      <image:loc>/api/event-images/matches/athletics_world-athletics-championships-2026-100m-final-tickets.jpg</image:loc>
+      <image:title>World Athletics Championships 2026 - 100m Final</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/world-athletics-championships-2026-200m-final-tickets</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/athletics_world-athletics-championships-2026-200m-final-tickets.jpg</image:loc>
-      <image:title>World Athletics Championships 2026 - 200m Final Tickets</image:title>
+      <image:loc>/api/event-images/matches/athletics_world-athletics-championships-2026-200m-final-tickets.jpg</image:loc>
+      <image:title>World Athletics Championships 2026 - 200m Final</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/world-athletics-championships-2026-marathon-tickets</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/athletics_world-athletics-championships-2026-marathon-tickets.jpg</image:loc>
-      <image:title>World Athletics Championships 2026 - Marathon Tickets</image:title>
+      <image:loc>/api/event-images/matches/athletics_world-athletics-championships-2026-marathon-tickets.jpg</image:loc>
+      <image:title>World Athletics Championships 2026 - Marathon</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/world-athletics-championships-2026-final-day-tickets</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/athletics_world-athletics-championships-2026-final-day-tickets.jpg</image:loc>
-      <image:title>World Athletics Championships 2026 - Final Day Tickets</image:title>
+      <image:loc>/api/event-images/matches/athletics_world-athletics-championships-2026-final-day-tickets.jpg</image:loc>
+      <image:title>World Athletics Championships 2026 - Final Day</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/bad-bunny-debi-tirar-mas-fotos-tour-london-tickets</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_bad-bunny-debi-tirar-mas-fotos-tour-london-tickets.jpg</image:loc>
-      <image:title>Bad Bunny - DeBi TiRAR MaS FOToS Tour London Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_bad-bunny-debi-tirar-mas-fotos-tour-london-tickets.jpg</image:loc>
+      <image:title>Bad Bunny - DeBi TiRAR MaS FOToS Tour London</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/bruno-mars-the-romantic-tour-london-tickets</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_bruno-mars-the-romantic-tour-london-tickets.jpg</image:loc>
-      <image:title>Bruno Mars - The Romantic Tour London Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_bruno-mars-the-romantic-tour-london-tickets.jpg</image:loc>
+      <image:title>Bruno Mars - The Romantic Tour London</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/bruno-mars-the-romantic-tour-berlin-tickets</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_bruno-mars-the-romantic-tour-berlin-tickets.jpg</image:loc>
-      <image:title>Bruno Mars - The Romantic Tour Berlin Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_bruno-mars-the-romantic-tour-berlin-tickets.jpg</image:loc>
+      <image:title>Bruno Mars - The Romantic Tour Berlin</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/metallica-m72-world-tour-2026-paris-tickets</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_metallica-m72-world-tour-2026-paris-tickets.jpg</image:loc>
-      <image:title>Metallica M72 World Tour 2026 - Paris Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_metallica-m72-world-tour-2026-paris-tickets.jpg</image:loc>
+      <image:title>Metallica M72 World Tour 2026 - Paris</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/the-weeknd-after-hours-til-dawn-tour-london-tickets</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_the-weeknd-after-hours-til-dawn-tour-london-tickets.jpg</image:loc>
-      <image:title>The Weeknd After Hours Til Dawn Tour London Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_the-weeknd-after-hours-til-dawn-tour-london-tickets.jpg</image:loc>
+      <image:title>The Weeknd After Hours Til Dawn Tour London</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/acl-festival-2026-weekend-1-tickets</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/festival_acl-festival-2026-weekend-1-tickets.jpg</image:loc>
-      <image:title>ACL Festival 2026 - Weekend 1 Tickets</image:title>
+      <image:loc>/api/event-images/matches/festival_acl-festival-2026-weekend-1-tickets.jpg</image:loc>
+      <image:title>ACL Festival 2026 - Weekend 1</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/acl-festival-2026-weekend-2-tickets</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/festival_acl-festival-2026-weekend-2-tickets.jpg</image:loc>
-      <image:title>ACL Festival 2026 - Weekend 2 Tickets</image:title>
+      <image:loc>/api/event-images/matches/festival_acl-festival-2026-weekend-2-tickets.jpg</image:loc>
+      <image:title>ACL Festival 2026 - Weekend 2</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-club-world-cup-2026-final-new-york-tickets</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/football_fifa-club-world-cup-2026-final-new-york-tickets.jpg</image:loc>
-      <image:title>FIFA Club World Cup 2026 Final Tickets</image:title>
+      <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2026-final-new-york-tickets.jpg</image:loc>
+      <image:title>FIFA Club World Cup 2026 Final</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-club-world-cup-2026-real-madrid-vs-flamengo-miami-tickets</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/football_fifa-club-world-cup-2026-real-madrid-vs-flamengo-miami-tickets.jpg</image:loc>
-      <image:title>FIFA Club World Cup 2026 - Real Madrid vs Flamengo Tickets</image:title>
+      <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2026-real-madrid-vs-flamengo-miami-tickets.jpg</image:loc>
+      <image:title>FIFA Club World Cup 2026 - Real Madrid vs Flamengo</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-club-world-cup-2026-manchester-city-vs-al-ahly-orlando-tickets</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/football_fifa-club-world-cup-2026-manchester-city-vs-al-ahly-orlando-tickets.jpg</image:loc>
-      <image:title>FIFA Club World Cup 2026 - Manchester City vs Al Ahly Tickets</image:title>
+      <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2026-manchester-city-vs-al-ahly-orlando-tickets.jpg</image:loc>
+      <image:title>FIFA Club World Cup 2026 - Manchester City vs Al Ahly</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-club-world-cup-2026-bayern-munich-vs-boca-juniors-philadelphia-tickets</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/football_fifa-club-world-cup-2026-bayern-munich-vs-boca-juniors-philadelphia-tickets.jpg</image:loc>
-      <image:title>FIFA Club World Cup 2026 - Bayern Munich vs Boca Juniors Tickets</image:title>
+      <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2026-bayern-munich-vs-boca-juniors-philadelphia-tickets.jpg</image:loc>
+      <image:title>FIFA Club World Cup 2026 - Bayern Munich vs Boca Juniors</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-club-world-cup-2026-semi-final-1-dallas-tickets</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/football_fifa-club-world-cup-2026-semi-final-1-dallas-tickets.jpg</image:loc>
-      <image:title>FIFA Club World Cup 2026 Semi-Final 1 Tickets</image:title>
+      <image:loc>/api/event-images/matches/football_fifa-club-world-cup-2026-semi-final-1-dallas-tickets.jpg</image:loc>
+      <image:title>FIFA Club World Cup 2026 Semi-Final 1</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/justin-bieber-amsterdam-2026-tickets</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_justin-bieber-amsterdam-2026-tickets.jpg</image:loc>
-      <image:title>Justin Bieber World Tour 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_justin-bieber-amsterdam-2026-tickets.jpg</image:loc>
+      <image:title>Justin Bieber World Tour 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/austrian-grand-prix-2026-tickets</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_austrian-grand-prix-2026.jpg</image:loc>
-      <image:title>Austrian Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_austrian-grand-prix-2026.jpg</image:loc>
+      <image:title>Austrian Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/bahrain-grand-prix-2026-tickets</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_bahrain-grand-prix-2026.jpg</image:loc>
-      <image:title>Bahrain Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_bahrain-grand-prix-2026.jpg</image:loc>
+      <image:title>Bahrain Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/saudi-arabian-grand-prix-2026-tickets</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_saudi-arabian-grand-prix-2026.jpg</image:loc>
-      <image:title>Saudi Arabian Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_saudi-arabian-grand-prix-2026.jpg</image:loc>
+      <image:title>Saudi Arabian Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/chinese-grand-prix-2026-tickets</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_chinese-grand-prix-2026.jpg</image:loc>
-      <image:title>Chinese Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_chinese-grand-prix-2026.jpg</image:loc>
+      <image:title>Chinese Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/miami-grand-prix-2026-tickets</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_miami-grand-prix-2026.jpg</image:loc>
-      <image:title>Miami Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_miami-grand-prix-2026.jpg</image:loc>
+      <image:title>Miami Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/canadian-grand-prix-2026-tickets</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_canadian-grand-prix-2026.jpg</image:loc>
-      <image:title>Canadian Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_canadian-grand-prix-2026.jpg</image:loc>
+      <image:title>Canadian Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/spanish-grand-prix-2026-tickets</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_spanish-grand-prix-2026.jpg</image:loc>
-      <image:title>Spanish Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_spanish-grand-prix-2026.jpg</image:loc>
+      <image:title>Spanish Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/hungarian-grand-prix-2026-tickets</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_hungarian-grand-prix-2026.jpg</image:loc>
-      <image:title>Hungarian Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_hungarian-grand-prix-2026.jpg</image:loc>
+      <image:title>Hungarian Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/british-grand-prix-2026-tickets</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_british-grand-prix-2026.jpg</image:loc>
-      <image:title>British Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_british-grand-prix-2026.jpg</image:loc>
+      <image:title>British Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/dutch-grand-prix-2026-tickets</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_dutch-grand-prix-2026.jpg</image:loc>
-      <image:title>Dutch Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_dutch-grand-prix-2026.jpg</image:loc>
+      <image:title>Dutch Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/italian-grand-prix-2026-tickets</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_italian-grand-prix-2026.jpg</image:loc>
-      <image:title>Italian Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_italian-grand-prix-2026.jpg</image:loc>
+      <image:title>Italian Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/monaco-grand-prix-2026-tickets</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_monaco-grand-prix-2026.jpg</image:loc>
-      <image:title>Monaco Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_monaco-grand-prix-2026.jpg</image:loc>
+      <image:title>Monaco Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/singapore-grand-prix-2026-tickets</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_singapore-grand-prix-2026.jpg</image:loc>
-      <image:title>Singapore Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_singapore-grand-prix-2026.jpg</image:loc>
+      <image:title>Singapore Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/las-vegas-grand-prix-2026-tickets</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_las-vegas-grand-prix-2026.jpg</image:loc>
-      <image:title>Las Vegas Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_las-vegas-grand-prix-2026.jpg</image:loc>
+      <image:title>Las Vegas Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/united-states-grand-prix-2026-tickets</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_united-states-grand-prix-2026.jpg</image:loc>
-      <image:title>United States Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_united-states-grand-prix-2026.jpg</image:loc>
+      <image:title>United States Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/qatar-grand-prix-2026-tickets</loc>
-    <lastmod>2026-11-29</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_qatar-grand-prix-2026.jpg</image:loc>
-      <image:title>Qatar Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_qatar-grand-prix-2026.jpg</image:loc>
+      <image:title>Qatar Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/abu-dhabi-grand-prix-2026-tickets</loc>
-    <lastmod>2026-12-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_abu-dhabi-grand-prix-2026.jpg</image:loc>
-      <image:title>Abu Dhabi Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_abu-dhabi-grand-prix-2026.jpg</image:loc>
+      <image:title>Abu Dhabi Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/azerbaijan-grand-prix-2026-tickets</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/f1_azerbaijan-grand-prix-2026.jpg</image:loc>
-      <image:title>Azerbaijan Grand Prix 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/f1_azerbaijan-grand-prix-2026.jpg</image:loc>
+      <image:title>Azerbaijan Grand Prix 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/taylor-swift-eras-tour-london-2026-tickets</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_taylor-swift-eras-tour-london-2026-tickets.jpg</image:loc>
-      <image:title>Taylor Swift - Eras Tour London 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_taylor-swift-eras-tour-london-2026-tickets.jpg</image:loc>
+      <image:title>Taylor Swift - Eras Tour London 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/the-weeknd-tour-2026-tickets</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_the-weeknd-tour-2026-tickets.jpg</image:loc>
-      <image:title>The Weeknd - After Hours Til Dawn Tour 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_the-weeknd-tour-2026-tickets.jpg</image:loc>
+      <image:title>The Weeknd - After Hours Til Dawn Tour 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/bruno-mars-tour-2026-tickets</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_bruno-mars-tour-2026-tickets.jpg</image:loc>
-      <image:title>Bruno Mars - The Romantic Tour 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_bruno-mars-tour-2026-tickets.jpg</image:loc>
+      <image:title>Bruno Mars - The Romantic Tour 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/bad-bunny-london-2026-tickets</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_bad-bunny-london-2026-tickets.jpg</image:loc>
-      <image:title>Bad Bunny London 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_bad-bunny-london-2026-tickets.jpg</image:loc>
+      <image:title>Bad Bunny London 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/coldplay-tour-2026-tickets</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_coldplay-tour-2026-tickets.jpg</image:loc>
-      <image:title>Coldplay - Music of the Spheres Tour 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_coldplay-tour-2026-tickets.jpg</image:loc>
+      <image:title>Coldplay - Music of the Spheres Tour 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/guns-n-roses-tour-2026-tickets</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/concert_guns-n-roses-tour-2026-tickets.jpg</image:loc>
-      <image:title>Guns N&apos; Roses European Stadium Tour 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/concert_guns-n-roses-tour-2026-tickets.jpg</image:loc>
+      <image:title>Guns N' Roses European Stadium Tour 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/tyson-fury-vs-oleksandr-usyk-iii-undisputed-riyadh-2025-tickets</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/match_tyson-fury-vs-oleksandr-usyk-iii-undisputed-riyadh-2025-tickets.jpg</image:loc>
-      <image:title>Tyson Fury vs Oleksandr Usyk III - Undisputed Tickets</image:title>
+      <image:loc>/api/event-images/matches/match_tyson-fury-vs-oleksandr-usyk-iii-undisputed-riyadh-2025-tickets.jpg</image:loc>
+      <image:title>Tyson Fury vs Oleksandr Usyk III - Undisputed</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/canelo-alvarez-vs-david-benavidez-super-middleweight-las-vegas-2025-tickets</loc>
-    <lastmod>2025-09-13</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/match_canelo-alvarez-vs-david-benavidez-super-middleweight-las-vegas-2025-tickets.jpg</image:loc>
-      <image:title>Canelo Alvarez vs David Benavidez - Super Middleweight Tickets</image:title>
+      <image:loc>/api/event-images/matches/match_canelo-alvarez-vs-david-benavidez-super-middleweight-las-vegas-2025-tickets.jpg</image:loc>
+      <image:title>Canelo Alvarez vs David Benavidez - Super Middleweight</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/ufc-310-heavyweight-championship-las-vegas-2025-tickets</loc>
-    <lastmod>2025-12-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/match_ufc-310-heavyweight-championship-las-vegas-2025-tickets.jpg</image:loc>
-      <image:title>UFC 310 - Heavyweight Championship Tickets</image:title>
+      <image:loc>/api/event-images/matches/match_ufc-310-heavyweight-championship-las-vegas-2025-tickets.jpg</image:loc>
+      <image:title>UFC 310 - Heavyweight Championship</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-mexico-vs-south-africa-mexico-city</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_001.jpg</image:loc>
-      <image:title>Mexico vs South Africa Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_001.jpg</image:loc>
+      <image:title>Mexico vs South Africa</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-south-korea-vs-czech-republic-zapopan</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_002.jpg</image:loc>
-      <image:title>South Korea vs Czech Republic Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_002.jpg</image:loc>
+      <image:title>South Korea vs Czech Republic</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-canada-vs-bosnia-toronto</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_003.jpg</image:loc>
-      <image:title>Canada vs Bosnia Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_003.jpg</image:loc>
+      <image:title>Canada vs Bosnia</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-united-states-vs-paraguay-inglewood</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_004.jpg</image:loc>
-      <image:title>United States vs Paraguay Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_004.jpg</image:loc>
+      <image:title>United States vs Paraguay</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-qatar-vs-switzerland-santa-clara</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_008.jpg</image:loc>
-      <image:title>Qatar vs Switzerland Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_008.jpg</image:loc>
+      <image:title>Qatar vs Switzerland</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-brazil-vs-morocco-east-rutherford</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_007.jpg</image:loc>
-      <image:title>Brazil vs Morocco Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_007.jpg</image:loc>
+      <image:title>Brazil vs Morocco</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-australia-vs-turkey-vancouver</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_006.jpg</image:loc>
-      <image:title>Australia vs Turkey Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_006.jpg</image:loc>
+      <image:title>Australia vs Turkey</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-haiti-vs-scotland-foxborough</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_005.jpg</image:loc>
-      <image:title>Haiti vs Scotland Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_005.jpg</image:loc>
+      <image:title>Haiti vs Scotland</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-germany-vs-curacao-houston</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_010.jpg</image:loc>
-      <image:title>Germany vs Curaçao Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_010.jpg</image:loc>
+      <image:title>Germany vs Curaçao</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-netherlands-vs-japan-arlington</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_011.jpg</image:loc>
-      <image:title>Netherlands vs Japan Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_011.jpg</image:loc>
+      <image:title>Netherlands vs Japan</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-ivory-coast-vs-ecuador-philadelphia</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_009.jpg</image:loc>
-      <image:title>Ivory Coast vs Ecuador Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_009.jpg</image:loc>
+      <image:title>Ivory Coast vs Ecuador</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-sweden-vs-tunisia-monterrey</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_012.jpg</image:loc>
-      <image:title>Sweden vs Tunisia Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_012.jpg</image:loc>
+      <image:title>Sweden vs Tunisia</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-belgium-vs-egypt-seattle</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_016.jpg</image:loc>
-      <image:title>Belgium vs Egypt Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_016.jpg</image:loc>
+      <image:title>Belgium vs Egypt</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-spain-vs-cape-verde-atlanta</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_014.jpg</image:loc>
-      <image:title>Spain vs Cape Verde Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_014.jpg</image:loc>
+      <image:title>Spain vs Cape Verde</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-iran-vs-new-zealand-inglewood</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_015.jpg</image:loc>
-      <image:title>Iran vs New Zealand Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_015.jpg</image:loc>
+      <image:title>Iran vs New Zealand</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-saudi-arabia-vs-uruguay-miami</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_013.jpg</image:loc>
-      <image:title>Saudi Arabia vs Uruguay Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_013.jpg</image:loc>
+      <image:title>Saudi Arabia vs Uruguay</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-france-vs-senegal-east-rutherford</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_017.jpg</image:loc>
-      <image:title>France vs Senegal Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_017.jpg</image:loc>
+      <image:title>France vs Senegal</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-iraq-vs-norway-foxborough</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_018.jpg</image:loc>
-      <image:title>Iraq vs Norway Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_018.jpg</image:loc>
+      <image:title>Iraq vs Norway</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-argentina-vs-algeria-kansas-city</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_019.jpg</image:loc>
-      <image:title>Argentina vs Algeria Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_019.jpg</image:loc>
+      <image:title>Argentina vs Algeria</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-austria-vs-jordan-santa-clara</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_020.jpg</image:loc>
-      <image:title>Austria vs Jordan Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_020.jpg</image:loc>
+      <image:title>Austria vs Jordan</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-portugal-vs-dr-congo-houston</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_023.jpg</image:loc>
-      <image:title>Portugal vs DR Congo Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_023.jpg</image:loc>
+      <image:title>Portugal vs DR Congo</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-england-vs-croatia-arlington</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_022.jpg</image:loc>
-      <image:title>England vs Croatia Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_022.jpg</image:loc>
+      <image:title>England vs Croatia</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-ghana-vs-panama-toronto</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_021.jpg</image:loc>
-      <image:title>Ghana vs Panama Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_021.jpg</image:loc>
+      <image:title>Ghana vs Panama</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-uzbekistan-vs-colombia-mexico-city</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_024.jpg</image:loc>
-      <image:title>Uzbekistan vs Colombia Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_024.jpg</image:loc>
+      <image:title>Uzbekistan vs Colombia</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-switzerland-vs-bosnia-inglewood</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_026.jpg</image:loc>
-      <image:title>Switzerland vs Bosnia Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_026.jpg</image:loc>
+      <image:title>Switzerland vs Bosnia</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-czech-republic-vs-south-africa-atlanta</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_025.jpg</image:loc>
-      <image:title>Czech Republic vs South Africa Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_025.jpg</image:loc>
+      <image:title>Czech Republic vs South Africa</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-canada-vs-qatar-vancouver</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_027.jpg</image:loc>
-      <image:title>Canada vs Qatar Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_027.jpg</image:loc>
+      <image:title>Canada vs Qatar</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-mexico-vs-south-korea-zapopan</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_028.jpg</image:loc>
-      <image:title>Mexico vs South Korea Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_028.jpg</image:loc>
+      <image:title>Mexico vs South Korea</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-united-states-vs-australia-seattle</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_032.jpg</image:loc>
-      <image:title>United States vs Australia Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_032.jpg</image:loc>
+      <image:title>United States vs Australia</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-scotland-vs-morocco-foxborough</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_030.jpg</image:loc>
-      <image:title>Scotland vs Morocco Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_030.jpg</image:loc>
+      <image:title>Scotland vs Morocco</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-turkey-vs-paraguay-santa-clara</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_031.jpg</image:loc>
-      <image:title>Turkey vs Paraguay Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_031.jpg</image:loc>
+      <image:title>Turkey vs Paraguay</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-brazil-vs-haiti-philadelphia</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_029.jpg</image:loc>
-      <image:title>Brazil vs Haiti Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_029.jpg</image:loc>
+      <image:title>Brazil vs Haiti</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-netherlands-vs-sweden-houston</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_035.jpg</image:loc>
-      <image:title>Netherlands vs Sweden Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_035.jpg</image:loc>
+      <image:title>Netherlands vs Sweden</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-germany-vs-ivory-coast-toronto</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_033.jpg</image:loc>
-      <image:title>Germany vs Ivory Coast Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_033.jpg</image:loc>
+      <image:title>Germany vs Ivory Coast</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-ecuador-vs-curacao-kansas-city</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_034.jpg</image:loc>
-      <image:title>Ecuador vs Curaçao Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_034.jpg</image:loc>
+      <image:title>Ecuador vs Curaçao</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-tunisia-vs-japan-monterrey</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_036.jpg</image:loc>
-      <image:title>Tunisia vs Japan Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_036.jpg</image:loc>
+      <image:title>Tunisia vs Japan</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-belgium-vs-iran-inglewood</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_039.jpg</image:loc>
-      <image:title>Belgium vs Iran Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_039.jpg</image:loc>
+      <image:title>Belgium vs Iran</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-spain-vs-saudi-arabia-atlanta</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_038.jpg</image:loc>
-      <image:title>Spain vs Saudi Arabia Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_038.jpg</image:loc>
+      <image:title>Spain vs Saudi Arabia</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-uruguay-vs-cape-verde-miami</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_037.jpg</image:loc>
-      <image:title>Uruguay vs Cape Verde Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_037.jpg</image:loc>
+      <image:title>Uruguay vs Cape Verde</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-new-zealand-vs-egypt-vancouver</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_040.jpg</image:loc>
-      <image:title>New Zealand vs Egypt Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_040.jpg</image:loc>
+      <image:title>New Zealand vs Egypt</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-argentina-vs-austria-arlington</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_043.jpg</image:loc>
-      <image:title>Argentina vs Austria Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_043.jpg</image:loc>
+      <image:title>Argentina vs Austria</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-france-vs-iraq-philadelphia</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_042.jpg</image:loc>
-      <image:title>France vs Iraq Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_042.jpg</image:loc>
+      <image:title>France vs Iraq</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-jordan-vs-algeria-santa-clara</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_044.jpg</image:loc>
-      <image:title>Jordan vs Algeria Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_044.jpg</image:loc>
+      <image:title>Jordan vs Algeria</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-norway-vs-senegal-east-rutherford</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_041.jpg</image:loc>
-      <image:title>Norway vs Senegal Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_041.jpg</image:loc>
+      <image:title>Norway vs Senegal</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-portugal-vs-uzbekistan-houston</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_047.jpg</image:loc>
-      <image:title>Portugal vs Uzbekistan Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_047.jpg</image:loc>
+      <image:title>Portugal vs Uzbekistan</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-england-vs-ghana-foxborough</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_045.jpg</image:loc>
-      <image:title>England vs Ghana Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_045.jpg</image:loc>
+      <image:title>England vs Ghana</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-panama-vs-croatia-toronto</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_046.jpg</image:loc>
-      <image:title>Panama vs Croatia Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_046.jpg</image:loc>
+      <image:title>Panama vs Croatia</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-colombia-vs-dr-congo-zapopan</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_048.jpg</image:loc>
-      <image:title>Colombia vs DR Congo Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_048.jpg</image:loc>
+      <image:title>Colombia vs DR Congo</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-switzerland-vs-canada-vancouver</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_051.jpg</image:loc>
-      <image:title>Switzerland vs Canada Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_051.jpg</image:loc>
+      <image:title>Switzerland vs Canada</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-bosnia-vs-qatar-seattle</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_052.jpg</image:loc>
-      <image:title>Bosnia vs Qatar Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_052.jpg</image:loc>
+      <image:title>Bosnia vs Qatar</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-morocco-vs-haiti-atlanta</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_050.jpg</image:loc>
-      <image:title>Morocco vs Haiti Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_050.jpg</image:loc>
+      <image:title>Morocco vs Haiti</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-scotland-vs-brazil-miami</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_049.jpg</image:loc>
-      <image:title>Scotland vs Brazil Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_049.jpg</image:loc>
+      <image:title>Scotland vs Brazil</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-south-africa-vs-south-korea-monterrey</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_054.jpg</image:loc>
-      <image:title>South Africa vs South Korea Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_054.jpg</image:loc>
+      <image:title>South Africa vs South Korea</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-czech-republic-vs-mexico-mexico-city</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_053.jpg</image:loc>
-      <image:title>Czech Republic vs Mexico Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_053.jpg</image:loc>
+      <image:title>Czech Republic vs Mexico</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-curacao-vs-ivory-coast-philadelphia</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_055.jpg</image:loc>
-      <image:title>Curaçao vs Ivory Coast Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_055.jpg</image:loc>
+      <image:title>Curaçao vs Ivory Coast</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-ecuador-vs-germany-east-rutherford</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_056.jpg</image:loc>
-      <image:title>Ecuador vs Germany Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_056.jpg</image:loc>
+      <image:title>Ecuador vs Germany</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-japan-vs-sweden-arlington</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_057.jpg</image:loc>
-      <image:title>Japan vs Sweden Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_057.jpg</image:loc>
+      <image:title>Japan vs Sweden</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-tunisia-vs-netherlands-kansas-city</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_058.jpg</image:loc>
-      <image:title>Tunisia vs Netherlands Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_058.jpg</image:loc>
+      <image:title>Tunisia vs Netherlands</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-paraguay-vs-australia-santa-clara</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_060.jpg</image:loc>
-      <image:title>Paraguay vs Australia Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_060.jpg</image:loc>
+      <image:title>Paraguay vs Australia</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-turkey-vs-united-states-inglewood</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_059.jpg</image:loc>
-      <image:title>Turkey vs United States Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_059.jpg</image:loc>
+      <image:title>Turkey vs United States</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-senegal-vs-iraq-toronto</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_062.jpg</image:loc>
-      <image:title>Senegal vs Iraq Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_062.jpg</image:loc>
+      <image:title>Senegal vs Iraq</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-norway-vs-france-foxborough</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_061.jpg</image:loc>
-      <image:title>Norway vs France Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_061.jpg</image:loc>
+      <image:title>Norway vs France</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-cape-verde-vs-saudi-arabia-houston</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_065.jpg</image:loc>
-      <image:title>Cape Verde vs Saudi Arabia Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_065.jpg</image:loc>
+      <image:title>Cape Verde vs Saudi Arabia</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-uruguay-vs-spain-zapopan</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_066.jpg</image:loc>
-      <image:title>Uruguay vs Spain Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_066.jpg</image:loc>
+      <image:title>Uruguay vs Spain</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-new-zealand-vs-belgium-vancouver</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_064.jpg</image:loc>
-      <image:title>New Zealand vs Belgium Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_064.jpg</image:loc>
+      <image:title>New Zealand vs Belgium</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-egypt-vs-iran-seattle</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_063.jpg</image:loc>
-      <image:title>Egypt vs Iran Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_063.jpg</image:loc>
+      <image:title>Egypt vs Iran</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-croatia-vs-ghana-philadelphia</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_068.jpg</image:loc>
-      <image:title>Croatia vs Ghana Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_068.jpg</image:loc>
+      <image:title>Croatia vs Ghana</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-panama-vs-england-east-rutherford</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_067.jpg</image:loc>
-      <image:title>Panama vs England Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_067.jpg</image:loc>
+      <image:title>Panama vs England</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-dr-congo-vs-uzbekistan-atlanta</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_072.jpg</image:loc>
-      <image:title>DR Congo vs Uzbekistan Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_072.jpg</image:loc>
+      <image:title>DR Congo vs Uzbekistan</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-colombia-vs-portugal-miami</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_071.jpg</image:loc>
-      <image:title>Colombia vs Portugal Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_071.jpg</image:loc>
+      <image:title>Colombia vs Portugal</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-jordan-vs-argentina-arlington</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_070.jpg</image:loc>
-      <image:title>Jordan vs Argentina Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_070.jpg</image:loc>
+      <image:title>Jordan vs Argentina</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-algeria-vs-austria-kansas-city</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_069.jpg</image:loc>
-      <image:title>Algeria vs Austria Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_069.jpg</image:loc>
+      <image:title>Algeria vs Austria</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-73</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_073.jpg</image:loc>
-      <image:title>Round of 32 - Match 73 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_073.jpg</image:loc>
+      <image:title>Round of 32 - Match 73</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-76</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_076.jpg</image:loc>
-      <image:title>Round of 32 - Match 76 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_076.jpg</image:loc>
+      <image:title>Round of 32 - Match 76</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-74</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_074.jpg</image:loc>
-      <image:title>Round of 32 - Match 74 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_074.jpg</image:loc>
+      <image:title>Round of 32 - Match 74</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-75</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_075.jpg</image:loc>
-      <image:title>Round of 32 - Match 75 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_075.jpg</image:loc>
+      <image:title>Round of 32 - Match 75</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-78</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_078.jpg</image:loc>
-      <image:title>Round of 32 - Match 78 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_078.jpg</image:loc>
+      <image:title>Round of 32 - Match 78</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-77</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_077.jpg</image:loc>
-      <image:title>Round of 32 - Match 77 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_077.jpg</image:loc>
+      <image:title>Round of 32 - Match 77</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-79</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_079.jpg</image:loc>
-      <image:title>Round of 32 - Match 79 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_079.jpg</image:loc>
+      <image:title>Round of 32 - Match 79</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-80</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_080.jpg</image:loc>
-      <image:title>Round of 32 - Match 80 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_080.jpg</image:loc>
+      <image:title>Round of 32 - Match 80</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-82</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_082.jpg</image:loc>
-      <image:title>Round of 32 - Match 82 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_082.jpg</image:loc>
+      <image:title>Round of 32 - Match 82</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-81</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_081.jpg</image:loc>
-      <image:title>Round of 32 - Match 81 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_081.jpg</image:loc>
+      <image:title>Round of 32 - Match 81</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-84</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_084.jpg</image:loc>
-      <image:title>Round of 32 - Match 84 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_084.jpg</image:loc>
+      <image:title>Round of 32 - Match 84</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-83</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_083.jpg</image:loc>
-      <image:title>Round of 32 - Match 83 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_083.jpg</image:loc>
+      <image:title>Round of 32 - Match 83</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-85</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_085.jpg</image:loc>
-      <image:title>Round of 32 - Match 85 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_085.jpg</image:loc>
+      <image:title>Round of 32 - Match 85</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-88</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_088.jpg</image:loc>
-      <image:title>Round of 32 - Match 88 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_088.jpg</image:loc>
+      <image:title>Round of 32 - Match 88</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-86</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_086.jpg</image:loc>
-      <image:title>Round of 32 - Match 86 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_086.jpg</image:loc>
+      <image:title>Round of 32 - Match 86</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-32-match-87</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_087.jpg</image:loc>
-      <image:title>Round of 32 - Match 87 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_087.jpg</image:loc>
+      <image:title>Round of 32 - Match 87</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-90</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_090.jpg</image:loc>
-      <image:title>Round of 16 - Match 90 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_090.jpg</image:loc>
+      <image:title>Round of 16 - Match 90</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-89</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_089.jpg</image:loc>
-      <image:title>Round of 16 - Match 89 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_089.jpg</image:loc>
+      <image:title>Round of 16 - Match 89</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-91</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_091.jpg</image:loc>
-      <image:title>Round of 16 - Match 91 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_091.jpg</image:loc>
+      <image:title>Round of 16 - Match 91</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-92</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_092.jpg</image:loc>
-      <image:title>Round of 16 - Match 92 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_092.jpg</image:loc>
+      <image:title>Round of 16 - Match 92</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-93</loc>
-    <lastmod>2026-07-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_093.jpg</image:loc>
-      <image:title>Round of 16 - Match 93 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_093.jpg</image:loc>
+      <image:title>Round of 16 - Match 93</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-94</loc>
-    <lastmod>2026-07-06</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_094.jpg</image:loc>
-      <image:title>Round of 16 - Match 94 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_094.jpg</image:loc>
+      <image:title>Round of 16 - Match 94</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-95</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_095.jpg</image:loc>
-      <image:title>Round of 16 - Match 95 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_095.jpg</image:loc>
+      <image:title>Round of 16 - Match 95</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-round-of-16-match-96</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_096.jpg</image:loc>
-      <image:title>Round of 16 - Match 96 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_096.jpg</image:loc>
+      <image:title>Round of 16 - Match 96</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-quarter-final-match-97</loc>
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_097.jpg</image:loc>
-      <image:title>Quarter-Final - Match 97 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_097.jpg</image:loc>
+      <image:title>Quarter-Final - Match 97</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-quarter-final-match-98</loc>
-    <lastmod>2026-07-10</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_098.jpg</image:loc>
-      <image:title>Quarter-Final - Match 98 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_098.jpg</image:loc>
+      <image:title>Quarter-Final - Match 98</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-quarter-final-match-99</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_099.jpg</image:loc>
-      <image:title>Quarter-Final - Match 99 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_099.jpg</image:loc>
+      <image:title>Quarter-Final - Match 99</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-quarter-final-match-100</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_100.jpg</image:loc>
-      <image:title>Quarter-Final - Match 100 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_100.jpg</image:loc>
+      <image:title>Quarter-Final - Match 100</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-semi-final-match-101</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_101.jpg</image:loc>
-      <image:title>Semi-Final - Match 101 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_101.jpg</image:loc>
+      <image:title>Semi-Final - Match 101</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-semi-final-match-102</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_102.jpg</image:loc>
-      <image:title>Semi-Final - Match 102 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_102.jpg</image:loc>
+      <image:title>Semi-Final - Match 102</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-third-place-play-off-match-103</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_103.jpg</image:loc>
-      <image:title>Third Place Play-off - Match 103 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_103.jpg</image:loc>
+      <image:title>Third Place Play-off - Match 103</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/fifa-world-cup-2026-final-match-104</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/wc2026_match_104.jpg</image:loc>
-      <image:title>Final - Match 104 Tickets</image:title>
+      <image:loc>/api/event-images/matches/wc2026_match_104.jpg</image:loc>
+      <image:title>Final - Match 104</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/spanish-motogp-2026-jerez-tickets</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_spanish-motogp-2026-jerez-tickets.jpg</image:loc>
-      <image:title>Spanish MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_spanish-motogp-2026-jerez-tickets.jpg</image:loc>
+      <image:title>Spanish MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/french-motogp-2026-le-mans-tickets</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_french-motogp-2026-le-mans-tickets.jpg</image:loc>
-      <image:title>French MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_french-motogp-2026-le-mans-tickets.jpg</image:loc>
+      <image:title>French MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/catalan-motogp-2026-barcelona-tickets</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_catalan-motogp-2026-barcelona-tickets.jpg</image:loc>
-      <image:title>Catalan MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_catalan-motogp-2026-barcelona-tickets.jpg</image:loc>
+      <image:title>Catalan MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/italian-motogp-2026-mugello-tickets</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_italian-motogp-2026-mugello-tickets.jpg</image:loc>
-      <image:title>Italian MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_italian-motogp-2026-mugello-tickets.jpg</image:loc>
+      <image:title>Italian MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/hungarian-motogp-2026-balatonfokajar-tickets</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_hungarian-motogp-2026-balatonfokajar-tickets.jpg</image:loc>
-      <image:title>Hungarian MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_hungarian-motogp-2026-balatonfokajar-tickets.jpg</image:loc>
+      <image:title>Hungarian MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/czech-motogp-2026-brno-tickets</loc>
-    <lastmod>2026-06-21</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_czech-motogp-2026-brno-tickets.jpg</image:loc>
-      <image:title>Czech MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_czech-motogp-2026-brno-tickets.jpg</image:loc>
+      <image:title>Czech MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/dutch-motogp-2026-assen-tickets</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_dutch-motogp-2026-assen-tickets.jpg</image:loc>
-      <image:title>Dutch MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_dutch-motogp-2026-assen-tickets.jpg</image:loc>
+      <image:title>Dutch MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/german-motogp-2026-oberlungwitz-tickets</loc>
-    <lastmod>2026-07-12</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_german-motogp-2026-oberlungwitz-tickets.jpg</image:loc>
-      <image:title>German MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_german-motogp-2026-oberlungwitz-tickets.jpg</image:loc>
+      <image:title>German MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/british-motogp-2026-silverstone-tickets</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_british-motogp-2026-silverstone-tickets.jpg</image:loc>
-      <image:title>British MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_british-motogp-2026-silverstone-tickets.jpg</image:loc>
+      <image:title>British MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/aragon-motogp-2026-alcaniz-tickets</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_aragon-motogp-2026-alcaniz-tickets.jpg</image:loc>
-      <image:title>Aragon MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_aragon-motogp-2026-alcaniz-tickets.jpg</image:loc>
+      <image:title>Aragon MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/san-marino-motogp-2026-misano-tickets</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_san-marino-motogp-2026-misano-tickets.jpg</image:loc>
-      <image:title>San Marino MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_san-marino-motogp-2026-misano-tickets.jpg</image:loc>
+      <image:title>San Marino MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/austrian-motogp-2026-spielberg-tickets</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_austrian-motogp-2026-spielberg-tickets.jpg</image:loc>
-      <image:title>Austrian MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_austrian-motogp-2026-spielberg-tickets.jpg</image:loc>
+      <image:title>Austrian MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/japanese-motogp-2026-motegi-tickets</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_japanese-motogp-2026-motegi-tickets.jpg</image:loc>
-      <image:title>Japanese MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_japanese-motogp-2026-motegi-tickets.jpg</image:loc>
+      <image:title>Japanese MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/indonesian-motogp-2026-lombok-tickets</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_indonesian-motogp-2026-lombok-tickets.jpg</image:loc>
-      <image:title>Indonesian MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_indonesian-motogp-2026-lombok-tickets.jpg</image:loc>
+      <image:title>Indonesian MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/malaysian-motogp-2026-sepang-tickets</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_malaysian-motogp-2026-sepang-tickets.jpg</image:loc>
-      <image:title>Malaysian MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_malaysian-motogp-2026-sepang-tickets.jpg</image:loc>
+      <image:title>Malaysian MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/qatar-motogp-2026-doha-tickets</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_qatar-motogp-2026-doha-tickets.jpg</image:loc>
-      <image:title>Qatar MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_qatar-motogp-2026-doha-tickets.jpg</image:loc>
+      <image:title>Qatar MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/portuguese-motogp-2026-portimao-tickets</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_portuguese-motogp-2026-portimao-tickets.jpg</image:loc>
-      <image:title>Portuguese MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_portuguese-motogp-2026-portimao-tickets.jpg</image:loc>
+      <image:title>Portuguese MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/valencian-motogp-2026-cheste-tickets</loc>
-    <lastmod>2026-11-29</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_valencian-motogp-2026-cheste-tickets.jpg</image:loc>
-      <image:title>Valencian MotoGP 2026 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_valencian-motogp-2026-cheste-tickets.jpg</image:loc>
+      <image:title>Valencian MotoGP 2026</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/thailand-motogp-2027-buri-ram-tickets</loc>
-    <lastmod>2027-02-28</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_thailand-motogp-2027-buri-ram-tickets.jpg</image:loc>
-      <image:title>Thailand MotoGP 2027 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_thailand-motogp-2027-buri-ram-tickets.jpg</image:loc>
+      <image:title>Thailand MotoGP 2027</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/brazilian-motogp-2027-goiania-tickets</loc>
-    <lastmod>2027-03-28</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_brazilian-motogp-2027-goiania-tickets.jpg</image:loc>
-      <image:title>Brazilian MotoGP 2027 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_brazilian-motogp-2027-goiania-tickets.jpg</image:loc>
+      <image:title>Brazilian MotoGP 2027</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://euromatchtickets.com/event/americas-motogp-2027-austin-tickets</loc>
-    <lastmod>2027-04-11</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
     <image:image>
-      <image:loc>https://euromatchtickets.com/api/event-images/matches/motogp_americas-motogp-2027-austin-tickets.jpg</image:loc>
-      <image:title>Americas MotoGP 2027 Tickets</image:title>
+      <image:loc>/api/event-images/matches/motogp_americas-motogp-2027-austin-tickets.jpg</image:loc>
+      <image:title>Americas MotoGP 2027</image:title>
     </image:image>
   </url>
 </urlset>
