@@ -66,7 +66,14 @@ const SpaGPPage = () => {
       { "@type": "Person", "name": "Charles Leclerc" }
     ],
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com", "logo": "https://euromatchtickets.com/logo-192.png" },
-    
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/spa-f1-tickets",
+      "price": "109",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   const faqSchema = {

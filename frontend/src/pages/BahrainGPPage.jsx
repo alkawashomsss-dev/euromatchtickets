@@ -7,6 +7,34 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
+
+const BAHRAIN_EVENT_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "SportsEvent",
+  "name": "Bahrain Grand Prix 2026",
+  "description": "Compare Bahrain F1 2026 ticket listings from multiple sellers at Bahrain International Circuit. Grandstand, VIP and Paddock Club. Market pricing may vary.",
+  "url": "https://euromatchtickets.com/f1-bahrain-grand-prix-tickets",
+  "image": "https://euromatchtickets.com/og-image.jpg",
+  "startDate": "2026-03-08",
+  "endDate": "2026-03-08",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Bahrain International Circuit",
+    "address": { "@type": "PostalAddress", "addressLocality": "Sakhir", "addressCountry": "BH" }
+  },
+  "performer": { "@type": "SportsTeam", "name": "Formula 1" },
+  "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com/" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://euromatchtickets.com/f1-bahrain-grand-prix-tickets",
+    "price": "59",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-05-01"
+  }
+};
 import { InternalLinks } from "../components/InternalLinks";
 import { TrustBar } from "../components/ConversionElements";
 
@@ -70,6 +98,7 @@ const BahrainGPPage = () => {
         canonicalUrl="https://euromatchtickets.com/f1-bahrain-grand-prix-tickets"
         image="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&h=630&fit=crop"
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BAHRAIN_EVENT_SCHEMA) }} />
 <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
         { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" },

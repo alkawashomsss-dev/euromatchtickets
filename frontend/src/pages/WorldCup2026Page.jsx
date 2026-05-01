@@ -62,7 +62,14 @@ const WorldCup2026Page = () => {
     "endDate": "2026-07-19",
     "performer": {"@type": "SportsTeam", "name": "FIFA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/world-cup-2026-tickets",
+      "price": "150",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   return (

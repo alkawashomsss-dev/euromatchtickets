@@ -20,7 +20,14 @@ const ZandvoortGPPage = () => {
     "location": { "@type": "Place", "name": "Circuit Zandvoort", "address": { "@type": "PostalAddress", "addressLocality": "Zandvoort", "addressCountry": "NL" } },
     "performer": { "@type": "SportsTeam", "name": "Formula 1" },
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/f1-dutch-grand-prix-tickets",
+      "price": "189",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   const faqs = [

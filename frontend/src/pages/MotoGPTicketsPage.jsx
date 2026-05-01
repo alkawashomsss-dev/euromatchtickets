@@ -116,7 +116,15 @@ const MotoGPTicketsPage = () => {
           }
         }
       }
-    ]
+    ],
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/motogp-tickets",
+      "price": "69",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
   
   const faqSchema = {

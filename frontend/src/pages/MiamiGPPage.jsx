@@ -19,7 +19,14 @@ const MiamiGPPage = () => {
     "location": { "@type": "Place", "name": "Miami International Autodrome", "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressCountry": "US" } },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/f1-miami-grand-prix-tickets",
+      "price": "249",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   const tickets = [

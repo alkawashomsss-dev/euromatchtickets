@@ -24,7 +24,14 @@ const ChampionsLeaguePage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "UEFA Champions League"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/champions-league-tickets",
+      "price": "85",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   const matches = [
@@ -73,21 +80,18 @@ const ChampionsLeaguePage = () => {
             <Trophy className="w-4 h-4 mr-2" />UEFA Champions League
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Buy Champions League Tickets 2026
-            <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">UCL Final Munich - Limited Availability</span>
+            Champions League Tickets 2026 — Compare Prices &amp; Availability
+            <span className="block text-2xl md:text-3xl mt-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">UCL Final Munich · Knockout Rounds · Group Stage</span>
           </h1>
           <p className="text-lg text-slate-500 max-w-3xl mx-auto mb-4">
-            Secure your seat now with QR ticket delivery. Buyer protection.
+            Compare verified UEFA Champions League listings from multiple sellers. Secure Stripe checkout, QR ticket delivery, refund per policy.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-6">
-            <span className="inline-flex items-center gap-1.5 bg-[#e10600]/100/10 border border-red-500/20 rounded-full px-3 py-1.5 text-red-500 text-sm font-medium animate-pulse">
-              <AlertCircle className="w-3.5 h-3.5" /> Only 156 Final tickets remaining
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/15 border border-emerald-500/25 rounded-full px-3 py-1.5 text-emerald-500 text-sm font-medium">
+              <Eye className="w-3.5 h-3.5" /> Listings updated recently
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-amber-500/100/10 border border-amber-500/20 rounded-full px-3 py-1.5 text-amber-600 text-sm font-medium">
-              <Eye className="w-3.5 h-3.5" /> 489 people viewing UCL tickets now
-            </span>
-            <span className="inline-flex items-center gap-1.5 bg-emerald-500/100/10 border border-emerald-500/20 rounded-full px-3 py-1.5 text-emerald-600 text-sm font-medium">
-              <TrendingUp className="w-3.5 h-3.5" /> Prices up 18% this week
+            <span className="inline-flex items-center gap-1.5 bg-blue-500/15 border border-blue-500/25 rounded-full px-3 py-1.5 text-blue-500 text-sm font-medium">
+              <Trophy className="w-3.5 h-3.5" /> 36 Teams · Group + Knockout + Final
             </span>
           </div>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -98,7 +102,7 @@ const ChampionsLeaguePage = () => {
           <div className="inline-block bg-white/90 border border-white/10 rounded-none p-6">
             <div className="text-slate-500 text-sm">Tickets from</div>
             <div className="text-5xl font-bold text-white">&euro;85</div>
-            <div className="text-emerald-600 text-sm mt-1 flex items-center justify-center gap-1"><CheckCircle className="w-4 h-4" /> Up to 40% cheaper than Viagogo &amp; StubHub</div>
+            <div className="text-slate-500 text-sm mt-1">market pricing may vary</div>
           </div>
         </div>
       </section>

@@ -72,7 +72,14 @@ const BayernRealMadridPage = () => {
       { "@type": "SportsTeam", "name": "Real Madrid CF" }
     ],
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/bayern-vs-real-madrid-tickets",
+      "price": "199",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   const tickets = [

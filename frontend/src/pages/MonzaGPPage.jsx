@@ -9,6 +9,34 @@ import SEOHead from "../components/SEOHead";
 import { BreadcrumbStructuredData, FAQStructuredData } from "../components/StructuredData";
 import { ScarcityBadgesLight, TrustBar } from "../components/ConversionElements";
 
+const MONZA_EVENT_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "SportsEvent",
+  "name": "Italian Grand Prix 2026 – Monza",
+  "description": "Compare Monza F1 2026 ticket listings for the Italian Grand Prix at Autodromo Nazionale Monza. Verified marketplace listings with QR delivery. Market pricing may vary.",
+  "url": "https://euromatchtickets.com/f1-italian-grand-prix-monza-tickets",
+  "image": "https://euromatchtickets.com/og-image.jpg",
+  "startDate": "2026-09-06",
+  "endDate": "2026-09-06",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Autodromo Nazionale Monza",
+    "address": { "@type": "PostalAddress", "addressLocality": "Monza", "addressCountry": "IT" }
+  },
+  "performer": { "@type": "SportsTeam", "name": "Formula 1" },
+  "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com/" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://euromatchtickets.com/f1-italian-grand-prix-monza-tickets",
+    "price": "69",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-05-01"
+  }
+};
+
 const MonzaGPPage = () => {
   const [eventLink, setEventLink] = useState('/checkout?event=monza-grand-prix');
 
@@ -50,6 +78,7 @@ const MonzaGPPage = () => {
         description="Compare Monza F1 2026 listings for the Italian Grand Prix. Updated prices from €69, Parabolica & Ascari grandstand availability, instant QR delivery and full refund if the race is cancelled."
         canonicalUrl="https://euromatchtickets.com/f1-italian-grand-prix-monza-tickets"
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(MONZA_EVENT_SCHEMA) }} />
 <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
         { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" },

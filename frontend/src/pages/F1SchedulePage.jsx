@@ -19,7 +19,15 @@ const F1SchedulePage = () => {
     "organizer": {"@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com"}},
       { "@type": "SportsEvent", "position": 3, "name": "Australian Grand Prix", "description": "Formula 1 Australian Grand Prix 2026 at Albert Park Circuit, Melbourne. Buy tickets now.", "startDate": "2026-03-15", "endDate": "2026-03-16", "eventStatus": "https://schema.org/EventScheduled", "image": "https://euromatchtickets.com/logo-192.png", "location": {"@type": "Place", "name": "Albert Park Circuit", "address": {"@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU"}}, "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": {"@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com"}}
-    ]
+    ],
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/f1-2026-schedule",
+      "price": "69",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   const races = [

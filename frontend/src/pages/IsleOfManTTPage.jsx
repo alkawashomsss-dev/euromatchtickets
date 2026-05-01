@@ -62,7 +62,15 @@ const IsleOfManTTPage = () => {
       "name": "Isle of Man TT Races"
     },
     
-    "image": "https://euromatchtickets.com/images/isle-of-man-tt.jpg"
+    "image": "https://euromatchtickets.com/images/isle-of-man-tt.jpg",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/isle-of-man-tt-tickets",
+      "price": "149",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   const faqSchema = {

@@ -41,7 +41,14 @@ const WorldCupPage = () => {
     "location": { "@type": "Place", "name": "Multiple Venues - USA, Canada, Mexico", "address": { "@type": "PostalAddress", "addressCountry": "US" } },
     "performer": {"@type": "SportsTeam", "name": "FIFA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/fifa-world-cup-tickets",
+      "price": "65",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   const formatDate = (d) => new Date(d).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });

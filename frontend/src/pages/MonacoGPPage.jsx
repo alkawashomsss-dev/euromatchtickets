@@ -11,6 +11,34 @@ import { NewsletterSignup } from "../components/NewsletterSignup";
 import { RelatedEventsLinks } from "../components/RelatedEventsLinks";
 import { EventFAQ, FAQSchemaScript } from "../components/EventFAQ";
 
+const MONACO_EVENT_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "SportsEvent",
+  "name": "Monaco Grand Prix 2026",
+  "description": "Compare Monaco F1 2026 ticket listings from multiple sellers. Grandstand, VIP Hospitality and yacht packages at Circuit de Monaco. Market pricing may vary.",
+  "url": "https://euromatchtickets.com/f1-monaco-grand-prix-tickets",
+  "image": "https://euromatchtickets.com/og-image.jpg",
+  "startDate": "2026-05-24",
+  "endDate": "2026-05-24",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Circuit de Monaco",
+    "address": { "@type": "PostalAddress", "addressLocality": "Monte Carlo", "addressCountry": "MC" }
+  },
+  "performer": { "@type": "SportsTeam", "name": "Formula 1" },
+  "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com/" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://euromatchtickets.com/f1-monaco-grand-prix-tickets",
+    "price": "195",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-05-01"
+  }
+};
+
 const MONACO_FAQS = [
   { q: "How much are Monaco Grand Prix tickets?", a: "Monaco GP tickets: General Admission from €249. K Grandstand from €395. Tribune T from €549. Tabac Grandstand from €695. VIP Hospitality from €1,995. Yacht packages from €3,500. All include Buyer protection cancellation refund policy." },
   { q: "When is the Monaco Grand Prix 2026?", a: "May 21-24, 2026. Thursday practice, Friday rest day (unique to Monaco), Saturday qualifying, Sunday race at 15:00 CET." },
@@ -58,6 +86,7 @@ const MonacoGPPage = () => {
         description="Monaco F1 2026 — official race weekend dates, grandstand & yacht hospitality prices, verified-seller availability. Instant QR, full refund if the race is cancelled."
         canonicalUrl="https://euromatchtickets.com/f1-monaco-grand-prix-tickets"
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(MONACO_EVENT_SCHEMA) }} />
 <BreadcrumbStructuredData items={[
         { name: "Home", url: "https://euromatchtickets.com" },
         { name: "F1 Tickets", url: "https://euromatchtickets.com/f1-tickets" },

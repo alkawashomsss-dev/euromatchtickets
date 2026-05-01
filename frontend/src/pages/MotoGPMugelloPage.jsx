@@ -19,7 +19,14 @@ const MotoGPMugelloPage = () => {
     "location": { "@type": "Place", "name": "Mugello Circuit", "address": { "@type": "PostalAddress", "addressLocality": "Scarperia e San Piero", "addressCountry": "IT" } },
     "performer": {"@type": "SportsTeam", "name": "MotoGP - FIM"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/motogp-mugello-tickets",
+      "price": "99",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   const tickets = [

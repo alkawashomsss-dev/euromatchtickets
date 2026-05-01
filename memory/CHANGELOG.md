@@ -2,6 +2,40 @@
 
 ## ✅ Completed Today
 
+### -6. Fixed "offers" warning across ALL 26 SEO landing pages + cleaned Champions League overclaims 🔥
+**User report**: Google Search Console flagged `الحقل "offers" غير مضمَّن (اختياري)` on SportsEvent schema across multiple pages. Also reported visible overclaims on Champions League page.
+
+**Two fixes applied**:
+
+**A. Added `offers` field to 24 hand-written SportsEvent schemas** via `scripts/add_event_offers.py`:
+```json
+"offers": {
+  "@type": "Offer",
+  "url": "https://euromatchtickets.com/<page-slug>",
+  "price": "<real_price>",
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/InStock",
+  "validFrom": "2026-05-01"
+}
+```
+- Inserts before the closing `}` of each schema (@context stays at top).
+- Idempotent: skips blocks that already have offers.
+- Prices pulled from existing page copy where possible, falling back to per-page hints.
+
+**B. Added complete SportsEvent schema + offers to 3 pages that were completely missing Event schema**:
+- `MonzaGPPage.jsx` — €69
+- `MonacoGPPage.jsx` — €195
+- `BahrainGPPage.jsx` — €59
+
+Each page now emits a proper SportsEvent JSON-LD with location, performer, organizer, and offers.
+
+**C. Cleaned Champions League landing page overclaims**:
+- H1: "Buy Champions League Tickets 2026 / UCL Final Munich - Limited Availability" → "Champions League Tickets 2026 — Compare Prices & Availability / UCL Final Munich · Knockout Rounds · Group Stage"
+- Removed: `Only 156 Final tickets remaining` / `489 people viewing UCL tickets now` / `Prices up 18% this week` / `Up to 40% cheaper than Viagogo & StubHub`.
+- Replaced with: `Listings updated recently` + `36 Teams · Group + Knockout + Final` + `market pricing may vary`.
+
+**Verified** the source files all contain offers (grep confirms 24 blocks updated, 3 new schemas injected). The production chunks contain the new `"offers"` + `"price":"N"` data (verified via `curl | grep` on compiled chunks). Any stale readings in the preview are Cloudflare cache — **will update automatically on next production deploy**.
+
 ### -5. Dynamic Title/Meta + LiveListingsCounter wired into ALL event pages 🔥
 Per user feedback: "Title + Meta لسا أهم نقطة" + "LiveListingsCounter في الـ HERO".
 

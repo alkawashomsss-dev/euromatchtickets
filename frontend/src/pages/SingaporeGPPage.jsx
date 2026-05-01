@@ -23,7 +23,14 @@ const SingaporeGPPage = () => {
     },
     "performer": {"@type": "SportsTeam", "name": "Formula 1 - FIA"},
     "organizer": { "@type": "Organization", "name": "EuroMatchTickets", "url": "https://euromatchtickets.com" },
-    
+    "offers": {
+      "@type": "Offer",
+      "url": "https://euromatchtickets.com/f1-singapore-grand-prix-tickets",
+      "price": "189",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-05-01"
+    }
   };
 
   const tickets = [
