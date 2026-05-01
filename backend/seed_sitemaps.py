@@ -61,13 +61,41 @@ def xml_escape(s: str) -> str:
     return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&apos;")
 
 
+# TOP 10 high-demand slugs — Tier-1 priority 1.0 + hourly
+TIER1_SLUGS = {
+    "el-clasico-real-madrid-vs-barcelona-2026-tickets",
+    "fifa-world-cup-2026-final-match-104",
+    "monaco-grand-prix-2026-tickets",
+    "uefa-champions-league-final-2026-munich-tickets",
+    "coldplay-tour-2026-tickets",
+    "taylor-swift-eras-tour-2026-london-tickets",
+    "miami-grand-prix-2026-tickets",
+    "british-grand-prix-2026-tickets",
+    "spanish-motogp-2026-jerez-tickets",
+    "roland-garros-2026-final-paris-2026-tickets",
+}
+
+
+def tier_for(slug: str, event_type: str) -> tuple[float, str]:
+    """Return (priority, changefreq) based on tier."""
+    if slug in TIER1_SLUGS:
+        return 1.0, "hourly"
+    if event_type in ("f1", "motogp", "match", "football", "concert"):
+        return 0.7, "daily"
+    return 0.5, "weekly"
+
+
+# Only include events flagged as indexable (set by scripts/tag_seo_indexable.py).
+INDEXABLE_FILTER = {"seo_indexable": {"$ne": False}}
+
+
 # ─────────────────────────────────────────────────────────────
-# 1. EVENTS SITEMAP (ALL 259 events)
+# 1. EVENTS SITEMAP — INDEXABLE ONLY (filtered list)
 # ─────────────────────────────────────────────────────────────
 def build_events_sitemap():
     xml = xml_header()
     events = list(db.events.find(
-        {},
+        INDEXABLE_FILTER,
         {"_id": 0, "event_id": 1, "slug": 1, "title": 1, "event_type": 1, "image_url": 1, "event_date": 1}
     ))
     for e in events:
@@ -77,7 +105,8 @@ def build_events_sitemap():
         lastmod = ed.strftime("%Y-%m-%d") if isinstance(ed, datetime) else TODAY
         img = abs_img(e.get("image_url"))
         title = e.get("title", "Tickets")
-        xml += url_entry(loc, lastmod, "daily", 0.85, img, f"{title} Tickets")
+        prio, freq = tier_for(slug, e.get("event_type", ""))
+        xml += url_entry(loc, lastmod, freq, prio, img, f"{title} Tickets")
     xml += "</urlset>\n"
     (PUBLIC / "sitemap-events.xml").write_text(xml)
     return len(events)
@@ -113,9 +142,9 @@ def build_worldcup_sitemap():
             path.strip("/").replace("-", " ").title(),
         )
 
-    # Every one of the 104 match pages
+    # Every one of the World Cup match pages — INDEXABLE ONLY (the Final)
     matches = list(db.events.find(
-        {"event_type": "worldcup"},
+        {"event_type": "worldcup", "seo_indexable": {"$ne": False}},
         {"_id": 0, "slug": 1, "event_id": 1, "title": 1, "image_url": 1, "event_date": 1, "venue": 1}
     ).sort("match_number", 1))
     for m in matches:
@@ -125,7 +154,8 @@ def build_worldcup_sitemap():
         lastmod = ed.strftime("%Y-%m-%d") if isinstance(ed, datetime) else TODAY
         img = abs_img(m.get("image_url"))
         title = m.get("title", "FIFA World Cup 2026")
-        xml += url_entry(loc, lastmod, "daily", 0.90, img, f"{title} - {m.get('venue','')}")
+        prio, freq = tier_for(slug, "worldcup")
+        xml += url_entry(loc, lastmod, freq, prio, img, f"{title} - {m.get('venue','')}")
     xml += "</urlset>\n"
     (PUBLIC / "sitemap-worldcup.xml").write_text(xml)
     return len(landing) + len(matches)
@@ -169,9 +199,9 @@ def build_f1_sitemap():
     for path, prio, freq in landing:
         xml += url_entry(f"{SITE}{path}", TODAY, freq, prio, f1_hero, path.strip("/").replace("-", " ").title())
 
-    # Every motorsport event
+    # Every motorsport event — INDEXABLE ONLY
     events = list(db.events.find(
-        {"event_type": {"$in": ["f1", "motogp", "isle_of_man_tt"]}},
+        {"event_type": {"$in": ["f1", "motogp", "isle_of_man_tt"]}, "seo_indexable": {"$ne": False}},
         {"_id": 0, "slug": 1, "event_id": 1, "title": 1, "image_url": 1, "event_date": 1, "venue": 1}
     ).sort("event_date", 1))
     for e in events:
@@ -179,7 +209,8 @@ def build_f1_sitemap():
         loc = f"{SITE}/event/{slug}"
         ed = e.get("event_date")
         lastmod = ed.strftime("%Y-%m-%d") if isinstance(ed, datetime) else TODAY
-        xml += url_entry(loc, lastmod, "daily", 0.88, abs_img(e.get("image_url")), f"{e.get('title','')} Tickets")
+        prio, freq = tier_for(slug, e.get("event_type") or "f1")
+        xml += url_entry(loc, lastmod, freq, prio, abs_img(e.get("image_url")), f"{e.get('title','')} Tickets")
     xml += "</urlset>\n"
     (PUBLIC / "sitemap-f1-motorsport.xml").write_text(xml)
     return len(landing) + len(events)
@@ -215,7 +246,7 @@ def build_football_sitemap():
         xml += url_entry(f"{SITE}{path}", TODAY, freq, prio, hero, path.strip("/").replace("-", " ").title())
 
     events = list(db.events.find(
-        {"event_type": {"$in": ["match", "football"]}},
+        {"event_type": {"$in": ["match", "football"]}, "seo_indexable": {"$ne": False}},
         {"_id": 0, "slug": 1, "event_id": 1, "title": 1, "image_url": 1, "event_date": 1}
     ).sort("event_date", 1))
     for e in events:
@@ -223,7 +254,8 @@ def build_football_sitemap():
         loc = f"{SITE}/event/{slug}"
         ed = e.get("event_date")
         lastmod = ed.strftime("%Y-%m-%d") if isinstance(ed, datetime) else TODAY
-        xml += url_entry(loc, lastmod, "daily", 0.85, abs_img(e.get("image_url")), f"{e.get('title','')} Tickets")
+        prio, freq = tier_for(slug, e.get("event_type") or "match")
+        xml += url_entry(loc, lastmod, freq, prio, abs_img(e.get("image_url")), f"{e.get('title','')} Tickets")
     xml += "</urlset>\n"
     (PUBLIC / "sitemap-football.xml").write_text(xml)
     return len(landing) + len(events)
@@ -258,7 +290,7 @@ def build_concerts_sitemap():
         xml += url_entry(f"{SITE}{path}", TODAY, freq, prio, hero, path.strip("/").replace("-", " ").title())
 
     events = list(db.events.find(
-        {"event_type": {"$in": ["concert", "festival"]}},
+        {"event_type": {"$in": ["concert", "festival"]}, "seo_indexable": {"$ne": False}},
         {"_id": 0, "slug": 1, "event_id": 1, "title": 1, "image_url": 1, "event_date": 1}
     ).sort("event_date", 1))
     for e in events:
@@ -266,7 +298,8 @@ def build_concerts_sitemap():
         loc = f"{SITE}/event/{slug}"
         ed = e.get("event_date")
         lastmod = ed.strftime("%Y-%m-%d") if isinstance(ed, datetime) else TODAY
-        xml += url_entry(loc, lastmod, "daily", 0.85, abs_img(e.get("image_url")), f"{e.get('title','')} Tickets")
+        prio, freq = tier_for(slug, e.get("event_type") or "concert")
+        xml += url_entry(loc, lastmod, freq, prio, abs_img(e.get("image_url")), f"{e.get('title','')} Tickets")
     xml += "</urlset>\n"
     (PUBLIC / "sitemap-concerts.xml").write_text(xml)
     return len(landing) + len(events)

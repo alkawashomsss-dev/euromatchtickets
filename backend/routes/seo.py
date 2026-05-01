@@ -215,7 +215,7 @@ async def _build_full_sitemap():
         "roland-garros-2026-final-paris-2026-tickets",
     }
 
-    events = await db.events.find({"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today_dt}}, {"_id": 0, "event_id": 1, "slug": 1, "title": 1, "event_type": 1, "image_url": 1}).to_list(1000)
+    events = await db.events.find({"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today_dt}, "seo_indexable": {"$ne": False}}, {"_id": 0, "event_id": 1, "slug": 1, "title": 1, "event_type": 1, "image_url": 1}).to_list(1000)
     for event in events:
         slug = event.get("slug", event["event_id"])
         loc = f"{base_url}/event/{slug}"

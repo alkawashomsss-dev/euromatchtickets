@@ -137,7 +137,12 @@ export default function EventDetailsPage() {
 
   // Thin-page detection — noindex if we have nothing real to offer:
   // unknown slug (ugly URL) OR coming_soon without even a venue/date to anchor content.
-  const isThinPage = isUglyUrl || (isComingSoon && !event.venue && !event.city);
+  // ALSO respect DB flag `seo_indexable: false` (set by scripts/tag_seo_indexable.py
+  // for low-quality auto-generated pages like WC group matches, attractions, duplicate nights).
+  const isThinPage =
+    isUglyUrl ||
+    (isComingSoon && !event.venue && !event.city) ||
+    event.seo_indexable === false;
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="event-details-page">
