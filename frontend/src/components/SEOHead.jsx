@@ -18,7 +18,8 @@ const SEOHead = ({
   type = 'website',
   article = null,
   noIndex = false,
-  canonicalUrl = null
+  canonicalUrl = null,
+  keywords = null
 }) => {
   const location = useLocation();
   const pageCanonicalUrl = canonicalUrl || `${BASE_URL}${location.pathname}`;
@@ -67,6 +68,9 @@ const SEOHead = ({
     // Update meta tags - ALWAYS index, follow unless explicitly set
     updateMetaTag('meta[name="description"]', metaDescription);
     updateMetaTag('meta[name="robots"]', noIndex ? 'noindex, nofollow' : 'index, follow');
+    if (keywords && typeof keywords === 'string' && keywords.trim()) {
+      updateMetaTag('meta[name="keywords"]', keywords);
+    }
     
     // Open Graph - Required for Facebook sharing
     updateMetaTag('meta[property="og:title"]', fullTitle, true);
@@ -156,7 +160,7 @@ const SEOHead = ({
     return () => {
       document.title = defaultTitle;
     };
-  }, [fullTitle, metaDescription, ogImage, pageCanonicalUrl, type, noIndex, defaultTitle]);
+  }, [fullTitle, metaDescription, ogImage, pageCanonicalUrl, type, noIndex, defaultTitle, keywords]);
 
   return null; // This component doesn't render anything
 };

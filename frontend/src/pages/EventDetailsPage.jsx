@@ -23,6 +23,7 @@ import TicketListings from "../components/TicketListings";
 import { PriceAlertButton, ScarcityBadge, HighDemandBadge, SocialProofCounter, UrgencyCountdown, AlertWatchersCount } from "../components/ConversionWidgets";
 import { VIPExperienceSection } from "../components/VIPExperience";
 import VIPGallery from "../components/VIPGallery";
+import { getTop10SEO } from "../data/top10SEO";
 
 const FadeIn = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -100,16 +101,24 @@ export default function EventDetailsPage() {
   const pageUrl = `https://euromatchtickets.com/event/${canonicalSlug}`;
   const isUglyUrl = eventId !== canonicalSlug;
   const listingCount = totalAvailable || event.ticket_count || 0;
-  const seoTitle = isComingSoon
-    ? `${event.title} Tickets — Dates, Venue & Waitlist | EuroMatchTickets`
-    : `${event.title} Tickets${listingCount > 0 ? ` (${listingCount} Listings)` : ''} — Compare Prices & Availability`;
-  const seoDesc = isComingSoon
-    ? `${event.title} — ${event.venue || 'venue TBA'}${event.city ? ', ' + event.city : ''}. Tickets not yet on sale. Join the free waitlist and get alerted the moment verified inventory becomes available.`
-    : `Compare ${listingCount > 0 ? listingCount + ' verified ' : ''}${event.title} listings from multiple sellers${event.venue ? ' at ' + event.venue : ''}. View current prices, seating options, and availability. Market pricing may vary.`;
+
+  // ─── TOP 10 SEO ENRICHMENT (high-demand events) ───
+  const top10 = getTop10SEO(canonicalSlug);
+
+  const seoTitle = top10?.longTailTitle
+    ? top10.longTailTitle
+    : (isComingSoon
+      ? `${event.title} Tickets — Dates, Venue & Waitlist | EuroMatchTickets`
+      : `${event.title} Tickets${listingCount > 0 ? ` (${listingCount} Listings)` : ''} — Compare Prices & Availability`);
+  const seoDesc = top10?.longTailDesc
+    ? top10.longTailDesc
+    : (isComingSoon
+      ? `${event.title} — ${event.venue || 'venue TBA'}${event.city ? ', ' + event.city : ''}. Tickets not yet on sale. Join the free waitlist and get alerted the moment verified inventory becomes available.`
+      : `Compare ${listingCount > 0 ? listingCount + ' verified ' : ''}${event.title} listings from multiple sellers${event.venue ? ' at ' + event.venue : ''}. View current prices, seating options, and availability. Market pricing may vary.`);
   const officialPrice = lowestPrice ? Math.round(lowestPrice * 1.35) : null;
   const savings = officialPrice && lowestPrice ? Math.round(officialPrice - lowestPrice) : null;
 
-  const eventFAQs = [
+  const baseFAQs = [
     { question: `When is ${event.title}?`, answer: `${event.title} takes place on ${dateStr} at ${event.venue} in ${event.city}${event.country ? `, ${event.country}` : ''}.` },
     ...(isComingSoon
       ? [{ question: `Are ${event.title} tickets on sale yet?`, answer: `Tickets are not currently on sale on our marketplace. Join the free waitlist above and we'll email you within 24 hours of verified inventory going live — no spam, no auto-subscribe.` }]
@@ -119,6 +128,11 @@ export default function EventDetailsPage() {
     { question: `Can I get a refund?`, answer: `If the event is cancelled or significantly rescheduled, you receive a full refund automatically.` }
   ];
 
+  // Merge with long-tail FAQs for TOP-10 high-demand events
+  const eventFAQs = top10?.extraFAQs
+    ? [...top10.extraFAQs, ...baseFAQs]
+    : baseFAQs;
+
   const isMotorsport = event.event_type === 'motogp' || event.event_type === 'f1' || event.event_type === 'isle_of_man_tt' || (event.title || '').toLowerCase().includes('isle of man');
 
   // Thin-page detection — noindex if we have nothing real to offer:
@@ -127,7 +141,7 @@ export default function EventDetailsPage() {
 
   return (
     <div className="min-h-screen bg-[#0e0e14]" data-testid="event-details-page">
-      <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={isThinPage} image={event.image_url} />
+      <SEOHead title={seoTitle} description={seoDesc} canonicalUrl={pageUrl} type="website" noIndex={isThinPage} image={event.image_url} keywords={top10?.keywords || null} />
       <EventStructuredData event={event} />
       <BreadcrumbStructuredData items={[
         { name: 'Home', url: 'https://euromatchtickets.com' },
@@ -335,6 +349,9 @@ export default function EventDetailsPage() {
             <FadeIn delay={0.28}>
               <div className="prose-light" data-testid="seo-content-block">
                 <h2>About {event.title}</h2>
+                {top10?.seoIntro && (
+                  <p className="lead"><strong>{top10.seoIntro}</strong></p>
+                )}
                 {isComingSoon ? (
                   <p>
                     {event.title}{event.venue ? ` at ${event.venue}` : ''}{event.city ? `, ${event.city}` : ''} is scheduled for {shortDate}.

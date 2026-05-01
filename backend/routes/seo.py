@@ -201,6 +201,20 @@ async def _build_full_sitemap():
     today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     today_dt = datetime.now(timezone.utc)
 
+    # TOP 10 HIGH-DEMAND SLUGS — boosted priority & crawl frequency
+    TOP10_HIGH_DEMAND = {
+        "el-clasico-real-madrid-vs-barcelona-2026-tickets",
+        "fifa-world-cup-2026-final-match-104",
+        "monaco-grand-prix-2026-tickets",
+        "uefa-champions-league-final-2026-munich-tickets",
+        "coldplay-tour-2026-tickets",
+        "taylor-swift-eras-tour-2026-london-tickets",
+        "miami-grand-prix-2026-tickets",
+        "british-grand-prix-2026-tickets",
+        "spanish-motogp-2026-jerez-tickets",
+        "roland-garros-2026-final-paris-2026-tickets",
+    }
+
     events = await db.events.find({"status": {"$nin": ["cancelled", "past_event", "expired"]}, "event_date": {"$gte": today_dt}}, {"_id": 0, "event_id": 1, "slug": 1, "title": 1, "event_type": 1, "image_url": 1}).to_list(1000)
     for event in events:
         slug = event.get("slug", event["event_id"])
@@ -221,7 +235,14 @@ async def _build_full_sitemap():
             else:
                 img = f"{base_url}/og-image.jpg"
         title = event.get("title", slug.replace("-", " ").title())
-        xml_items.append(f'  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today_str}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.85</priority>\n    <image:image>\n      <image:loc>{img}</image:loc>\n      <image:title>{title}</image:title>\n    </image:image>\n  </url>')
+        # Boost TOP 10 high-demand events: priority 1.0 + hourly crawl
+        if slug in TOP10_HIGH_DEMAND:
+            priority = "1.0"
+            freq = "hourly"
+        else:
+            priority = "0.85"
+            freq = "daily"
+        xml_items.append(f'  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today_str}</lastmod>\n    <changefreq>{freq}</changefreq>\n    <priority>{priority}</priority>\n    <image:image>\n      <image:loc>{img}</image:loc>\n      <image:title>{title}</image:title>\n    </image:image>\n  </url>')
 
     articles = await db.articles.find({}, {"_id": 0, "slug": 1, "date_generated": 1, "title": 1}).to_list(5000)
     for a in articles:

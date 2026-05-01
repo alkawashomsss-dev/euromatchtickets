@@ -1,5 +1,36 @@
 # EuroMatchTickets — Changelog (Session: Apr 25, 2026)
 
+
+## ✅ May 1, 2026 — TOP 10 High-Demand Pages SEO Boost
+
+**User request**: Focus on the 10 highest-demand event pages to dominate long-tail keywords fast.
+
+**Targets (verified in DB)**:
+1. `el-clasico-real-madrid-vs-barcelona-2026-tickets`
+2. `fifa-world-cup-2026-final-match-104`
+3. `monaco-grand-prix-2026-tickets`
+4. `uefa-champions-league-final-2026-munich-tickets`
+5. `coldplay-tour-2026-tickets`
+6. `taylor-swift-eras-tour-2026-london-tickets`
+7. `miami-grand-prix-2026-tickets`
+8. `british-grand-prix-2026-tickets`
+9. `spanish-motogp-2026-jerez-tickets`
+10. `roland-garros-2026-final-paris-2026-tickets`
+
+**Implementation**:
+- **New** `/app/frontend/src/data/top10SEO.js` — long-tail title, meta description, keywords, 5 custom FAQs + SEO intro paragraph per slug
+- **Updated** `EventDetailsPage.jsx` — merges Top-10 data when slug matches (5 base FAQs + 5 enriched FAQs → 10 FAQ schema entries)
+- **Updated** `SEOHead.jsx` — now accepts `keywords` prop → writes `<meta name="keywords">`
+- **Updated** `backend/routes/seo.py` — TOP 10 slugs pushed to `<priority>1.0</priority>` + `<changefreq>hourly</changefreq>` in `/api/sitemap.xml` (faster crawl = faster indexing)
+
+**Verified live**:
+- Monaco → Title: "Monaco Grand Prix 2026 Tickets — Compare Listings, Grandstands & Yacht Packages", 10 FAQ schema entries, keywords meta set
+- Coldplay → Title: "Coldplay 2026 Tour Tickets — Music of the Spheres | Compare Listings & Best Seats", 10 FAQ entries
+- Mugello (non-TOP10 control) → fallback path intact (5 FAQs, generic title) ✅
+
+**Honesty Layer preserved**: Every enriched FAQ states "market pricing may vary", no fake scarcity, no fake "cheapest" claims.
+
+
 ## ✅ Completed Today
 
 ### -6. Fixed "offers" warning across ALL 26 SEO landing pages + cleaned Champions League overclaims 🔥
