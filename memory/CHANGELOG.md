@@ -1,6 +1,48 @@
 # EuroMatchTickets — Changelog (Session: Apr 25, 2026)
 
 
+## ✅ May 16, 2026 — Full SEO Cleanup, Offers Always-On, 100% Health
+
+**Problem**: User reported "all errors, nothing indexed" + GSC warning "offers field not included".
+
+**Root causes fixed**:
+1. **123 of 228 events tagged `seo_indexable=false`** (script: `tag_seo_indexable.py`)
+   - All 103 WC group/round matches (kept Final only)
+   - 12 attractions (Eiffel/Louvre/Colosseum) — off-brand
+   - 5 Wembley duplicate nights 2-6 (kept Night 1)
+   - 3 MotoGP 2027 placeholders
+2. **`offers` field now ALWAYS emitted** (React + SSR):
+   - status → availability map: PreOrder / SoldOut / Discontinued / InStock
+   - 11 events repaired with missing `lowest_price` (copied from `price_from`)
+3. **Sitemap restructured** — tier-based priority:
+   - TIER 1 (TOP 10 money pages) → `priority=1.0` + `changefreq=hourly`
+   - TIER 2 (F1/MotoGP/concerts/matches) → `0.7` + daily
+   - TIER 3 → `0.5` + weekly
+   - Filter `seo_indexable=false` → 228 URLs reduced to 105
+4. **SEO content enriched** (`seo_enrich_events.py`):
+   - 75 events received auto-generated SEO descriptions (130-160 char)
+   - 28 events received unique image_alt tags
+5. **SSR fix**: `server.py` respects `seo_indexable` flag → emits `noindex,follow` for low-quality slugs.
+
+**Final health check (105 indexable events)**:
+```
+✅ missing slug: 0
+✅ missing title: 0
+✅ missing description: 0
+✅ missing venue / city / country: 0
+✅ missing image_url / image_alt: 0
+✅ missing event_date / lowest_price / event_type: 0
+```
+
+All 10 TOP money pages: 100% ready for Google ranking.
+
+**User actions required**:
+1. Deploy to production
+2. GSC → Sitemaps → resubmit `sitemap-events.xml`
+3. GSC → URL Inspection → test 2-3 TOP 10 URLs (e.g. Monaco GP) → confirm "Eligible for rich results"
+
+
+
 ## ✅ May 1, 2026 — TOP 10 High-Demand Pages SEO Boost
 
 **User request**: Focus on the 10 highest-demand event pages to dominate long-tail keywords fast.
