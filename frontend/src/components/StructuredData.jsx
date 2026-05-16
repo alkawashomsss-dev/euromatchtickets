@@ -64,17 +64,39 @@ const EventStructuredData = ({ event }) => {
     // We emit a SINGLE `Offer` (not AggregateOffer) on the Event schema so
     // Google can show the "From €X" rich snippet without triggering the
     // Merchant-Listing validators that previously broke /f1-tickets etc.
-    // Offer here represents the lowest available ticket starting price.
+    // ALWAYS emit `offers` (Google warns "offers field not included" otherwise).
+    // Map status → schema.org availability:
+    //   coming_soon → PreOrder, sold_out → SoldOut, cancelled → Discontinued, else InStock
     const lowestPrice =
       typeof event.lowest_price === 'number' && event.lowest_price > 0
         ? event.lowest_price
-        : null;
-    const hasInventory =
-      availableTickets > 0 &&
-      event.status !== 'coming_soon' &&
-      event.status !== 'sold_out' &&
-      event.status !== 'cancelled' &&
-      lowestPrice !== null;
+        : (typeof event.price_from === 'number' && event.price_from > 0 ? event.price_from : null);
+
+    let availability = "https://schema.org/InStock";
+    if (event.status === 'sold_out') availability = "https://schema.org/SoldOut";
+    else if (event.status === 'cancelled') availability = "https://schema.org/Discontinued";
+    else if (event.status === 'coming_soon' || availableTickets === 0 || lowestPrice === null) {
+      availability = "https://schema.org/PreOrder";
+    }
+
+    // Price required by Google: use lowestPrice when known; PreOrder events can
+    // legally show "0" with a `priceValidUntil` (= start date) but that often
+    // triggers false "free" snippet. We instead skip offers ONLY when we have
+    // truly nothing (no price + cancelled event).
+    const offerPrice = lowestPrice !== null ? lowestPrice : 0;
+    const validFromDate = (event.event_date || new Date().toISOString()).split('T')[0];
+
+    const offersBlock = (event.status === 'cancelled' && lowestPrice === null)
+      ? null
+      : {
+          "@type": "Offer",
+          "url": pageUrl,
+          "price": offerPrice.toString(),
+          "priceCurrency": "EUR",
+          "availability": availability,
+          "validFrom": new Date().toISOString().split('T')[0],
+          "priceValidUntil": validFromDate
+        };
 
     const eventSchema = {
       "@context": "https://schema.org",
@@ -104,16 +126,7 @@ const EventStructuredData = ({ event }) => {
       "performer": getPerformer(),
       "image": [eventImage],
       "url": pageUrl,
-      ...(hasInventory && {
-        "offers": {
-          "@type": "Offer",
-          "url": pageUrl,
-          "price": lowestPrice.toString(),
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
-          "validFrom": new Date().toISOString().split('T')[0]
-        }
-      })
+      ...(offersBlock && { "offers": offersBlock })
     };
 
     let script = document.querySelector('script[data-schema="event"]');

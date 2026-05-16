@@ -791,11 +791,16 @@ if static_build_dir.exists():
                 robots_override = "noindex, follow"
             elif full_path.startswith("event/"):
                 slug = full_path[len("event/"):]
-                status, _ev = await validate_event_slug(db, slug)
-                if status in ("coming_soon",):
+                # Check seo_indexable DB flag first (set by tag_seo_indexable.py)
+                ev_doc = await db.events.find_one({"slug": slug}, {"_id": 0, "seo_indexable": 1, "status": 1})
+                if ev_doc and ev_doc.get("seo_indexable") is False:
                     robots_override = "noindex, follow"
-                elif status in ("expired", "missing"):
-                    robots_override = "noindex, nofollow"
+                else:
+                    status, _ev = await validate_event_slug(db, slug)
+                    if status in ("coming_soon",):
+                        robots_override = "noindex, follow"
+                    elif status in ("expired", "missing"):
+                        robots_override = "noindex, nofollow"
 
             if seo_meta:
                 t, d, img = seo_meta["title"], seo_meta["desc"], seo_meta.get("image", "")
@@ -839,7 +844,8 @@ if static_build_dir.exists():
                         {"slug": slug},
                         {"_id": 0, "title": 1, "event_date": 1, "venue": 1, "city": 1,
                          "country": 1, "image_url": 1, "price_from": 1, "lowest_price": 1,
-                         "available_tickets": 1, "home_team": 1, "away_team": 1, "league": 1},
+                         "available_tickets": 1, "home_team": 1, "away_team": 1, "league": 1,
+                         "status": 1},
                     )
                     if event_doc:
                         from datetime import datetime as _dt, timezone as _tz
@@ -849,9 +855,18 @@ if static_build_dir.exists():
                         ev_img = event_doc.get("image_url", "")
                         if ev_img and not ev_img.startswith("http"):
                             ev_img = f"https://euromatchtickets.com{ev_img}"
-                        price = event_doc.get("price_from") or event_doc.get("lowest_price") or 99
+                        price = event_doc.get("lowest_price") or event_doc.get("price_from") or 99
                         avail = event_doc.get("available_tickets", 0)
-                        in_stock = "https://schema.org/InStock" if avail > 0 else "https://schema.org/LimitedAvailability"
+                        ev_status = event_doc.get("status", "")
+                        # Map status → schema.org availability
+                        if ev_status == "sold_out":
+                            in_stock = "https://schema.org/SoldOut"
+                        elif ev_status == "cancelled":
+                            in_stock = "https://schema.org/Discontinued"
+                        elif ev_status == "coming_soon" or avail == 0:
+                            in_stock = "https://schema.org/PreOrder"
+                        else:
+                            in_stock = "https://schema.org/InStock"
                         schema = {
                             "@context": "https://schema.org",
                             "@type": "SportsEvent" if event_doc.get("league") else "Event",
@@ -877,6 +892,7 @@ if static_build_dir.exists():
                                 "priceCurrency": "EUR",
                                 "availability": in_stock,
                                 "validFrom": _dt.now(_tz.utc).isoformat(),
+                                "priceValidUntil": iso_date.split("T")[0] if iso_date else _dt.now(_tz.utc).strftime("%Y-%m-%d"),
                             },
                             "organizer": {
                                 "@type": "Organization",
