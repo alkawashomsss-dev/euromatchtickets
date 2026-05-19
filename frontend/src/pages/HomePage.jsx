@@ -190,15 +190,32 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [featuredRes, concertsRes, worldCupRes, footballRes] = await Promise.all([
+        const [featuredRes, concertsRes, worldCupRes, footballRes, soonestRes] = await Promise.all([
           axios.get(`${API}/events?featured=true&limit=30`),
           axios.get(`${API}/events?event_type=concert&limit=8`),
           axios.get(`${API}/events?event_type=worldcup&limit=12`),
-          axios.get(`${API}/events?event_type=football&limit=8`)
+          axios.get(`${API}/events?event_type=football&limit=8`),
+          axios.get(`${API}/events?limit=12`),
         ]);
+
+        // The "Confirmed / On Sale Now" carousel above shows the next 3
+        // soonest upcoming events. Build the same set so we can exclude them
+        // from Featured Events and avoid showing Monaco GP twice on the page.
+        const today = new Date();
+        const carouselSlugs = new Set(
+          (soonestRes.data || [])
+            .filter(e => e?.event_date && e?.title && e?.venue && new Date(e.event_date) > today
+              && !["past_event", "expired", "cancelled"].includes((e.status || "").toLowerCase()))
+            .sort((a, b) => new Date(a.event_date) - new Date(b.event_date))
+            .slice(0, 3)
+            .map(e => e.slug || e.event_id)
+        );
+
         // Deduplicate by normalized title (e.g. "El Clasico" and "Real Madrid vs Barcelona" are same)
         const seen = new Set();
         const deduped = (featuredRes.data || []).filter(e => {
+          // Skip events already showcased in the carousel above
+          if (carouselSlugs.has(e.slug || e.event_id)) return false;
           const key = (e.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
           const teams = [e.home_team, e.away_team].filter(Boolean).sort().join('').toLowerCase().replace(/[^a-z0-9]/g, '');
           const dedupKey = teams || key;

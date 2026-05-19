@@ -139,7 +139,6 @@ const ChatWidget = lazy(() => import("./components/ChatWidget"));
 const ContactFloating = lazy(() => import("./components/ContactFloating"));
 const ExitIntentPopup = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.ExitIntentPopup })));
 const PushNotificationBanner = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.PushNotificationBanner })));
-const SocialProofNotification = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.SocialProofNotification })));
 const FloatingCTA = lazy(() => import("./components/MarketingTools").then(m => ({ default: m.FloatingCTA })));
 const MarketingBotButton = lazy(() => import("./components/AIMarketingBot").then(m => ({ default: m.MarketingBotButton })));
 
@@ -743,7 +742,6 @@ function App() {
             <AppRouter />
             <Suspense fallback={null}>
               <ChatWidget />
-              <SocialProofNotification />
               {showExitPopup && <ExitIntentPopup onClose={() => setShowExitPopup(false)} />}
               {showPushBanner && <PushNotificationBanner onClose={() => setShowPushBanner(false)} />}
             </Suspense>

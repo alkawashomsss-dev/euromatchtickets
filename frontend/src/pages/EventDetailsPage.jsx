@@ -16,7 +16,6 @@ import LiveListingsCounter from "../components/LiveListingsCounter";
 import WaitlistCTA from "../components/WaitlistCTA";
 import RelatedEventsGraph from "../components/RelatedEventsGraph";
 import EditorialByline from "../components/EditorialByline";
-import { RecentlyBoughtPopup } from "../components/SalesAccelerator";
 import VenueInfoSection from "../components/VenueInfoSection";
 import InteractiveVenueMap from "../components/InteractiveVenueMap";
 import TicketListings from "../components/TicketListings";
@@ -560,8 +559,6 @@ export default function EventDetailsPage() {
           <EditorialByline topic={event.title} />
         </div>
       </section>
-
-      <RecentlyBoughtPopup />
     </div>
   );
 }
