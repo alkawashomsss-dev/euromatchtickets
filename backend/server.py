@@ -733,13 +733,25 @@ if static_build_dir.exists():
                     media_type="text/html",
                 )
 
-            # Clean slug — verify it exists in DB; HARD 404 if not
+            # Clean slug — verify it exists in DB; HARD 404 / 410 if not
             status, event_doc = await validate_event_slug(db, event_id)
             if status == "missing":
+                # Legacy auto-IDs (event_xxx, wc2026_xxx, mega_xxx, premium_xxx,
+                # e_xxx, league_xxx, ucl_xxx, concert_xxx, match_xxx, wc_xxx)
+                # → return 410 Gone so Google PERMANENTLY de-indexes them
+                # (vs 404 which Google retries forever).
+                legacy_prefixes = (
+                    "event_", "wc2026_", "mega_", "premium_", "e_",
+                    "league_", "ucl_", "concert_", "match_", "wc_",
+                    "festival_", "testfull", "test", "f1_",
+                )
+                slug_lc = event_id.lower()
+                is_legacy = any(slug_lc.startswith(p) for p in legacy_prefixes)
                 return Response(
                     content=_render_404_html(full_path),
-                    status_code=404,
+                    status_code=410 if is_legacy else 404,
                     media_type="text/html",
+                    headers={"X-Robots-Tag": "noindex, nofollow"},
                 )
             if status == "expired":
                 # Soft-redirect expired events to the category hub, 301
@@ -787,7 +799,12 @@ if static_build_dir.exists():
             # Decide robots directive for this URL (overrides React Helmet so
             # Google never sees an "index" meta for unverified pages).
             robots_override = None
-            if is_unverified_demand_page(full_path):
+            # Block all filtered/search variants of /events from being indexed
+            # (avoids "Soft 404 + duplicate" in Search Console).
+            request_path_only = request.url.path  # without querystring
+            if request.url.query and request_path_only in ("/events", "/events/"):
+                robots_override = "noindex, follow"
+            elif is_unverified_demand_page(full_path):
                 robots_override = "noindex, follow"
             elif full_path.startswith("event/"):
                 slug = full_path[len("event/"):]

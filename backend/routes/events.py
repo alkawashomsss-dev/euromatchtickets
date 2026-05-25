@@ -180,20 +180,24 @@ async def get_event(event_id: str, request: Request):
             )
     
     if not event:
-        # Event not in DB — return a minimal coming_soon stub so the frontend
-        # renders the WaitlistCTA branch instead of a fake price/buy flow.
-        prettyName = ' '.join(w.capitalize() for w in re.split(r'[-_]', event_id) if w and w not in ('tickets','ticket','2026','2027','2025'))
-        event = {
-            "event_id": event_id, "slug": event_id,
-            "title": prettyName or "Event Ticket",
-            "event_type": "event", "venue": "", "city": "", "country": "",
-            "event_date": "2026-12-31T20:00:00Z", "image_url": "",
-            "lowest_price": None, "price_from": None,
-            "status": "coming_soon", "available_tickets": 0,
-            "tickets": [], "ticket_count": 0, "categories": {},
-            "grouped_sections": [],
-        }
-        return event
+        # Legacy/auto-generated IDs (event_xxx, wc2026_xxx, mega_xxx, premium_xxx,
+        # e_xxx, league_xxx, ucl_xxx, concert_xxx, match_xxx, wc_xxx) that no
+        # longer exist in the DB MUST return 410 Gone so Google removes them
+        # from the index instead of treating /event/event_xxx as duplicates / soft 404.
+        legacy_prefixes = ("event_", "wc2026_", "mega_", "premium_", "e_",
+                           "league_", "ucl_", "concert_", "match_", "wc_",
+                           "festival_", "testfull", "test")
+        eid_lc = event_id.lower()
+        is_legacy_random = (
+            any(eid_lc.startswith(p) for p in legacy_prefixes)
+            or re.fullmatch(r"[a-z0-9]{6,}", eid_lc) is not None
+            or "_" in event_id and len(event_id.split("_")[-1]) >= 6
+        )
+        if is_legacy_random:
+            raise HTTPException(status_code=410, detail="Event no longer exists. This URL has been removed.")
+
+        # Real-looking slug (with hyphens & words) not in DB → 404 Not Found
+        raise HTTPException(status_code=404, detail="Event not found")
 
     # If accessed by ugly event_id and has a slug, return slug info for client redirect
     slug = event.get("slug")
